@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
  <reference id="ref.iconv">
   <title>iconv functions</title>
   <titleabbrev>iconv</titleabbrev>
 
   <partintro>
    <para>
-    This module contains an interface to the iconv library functions. To 
-    be able to use the functions defined in this
-    module you must compile you PHP interpreter using the --with-iconv
-    option. In order to do so, you must have iconv() function in 
-    standard C library or libiconv installed on your system.
+    이 모듈은 iconv 라이브러리 함수의 인터페이스를 내포한다.
+    이 모듈 내에 정의된 함수를 사용하기 위해서는
+    --with-iconv 옵션을 사용하여 PHP 인터프리터를 컴파일해야 한다.
+    그러기 위해서는, 표준 C 라이브러리에서 iconv() 함수를 갖고 있거나
+    libiconv가 설치되어 있어야 한다.
     libiconv library is available from <ulink url="&url.libiconv;">
      &url.libiconv;</ulink>.
    </para>
 
    <para>
-    iconv library function converts files between various encoded 
-    character sets. The supported character sets depend on iconv() 
-    implementation on your system. Note that iconv() function in some
-    system is not work well as you expect. In this case, you should
-    install libiconv library.
+    iconv 라이브러리 함수는 여러가지로 인코딩된 문자셋의 파일들을
+    변환한다. 지원되는 문자셋은 로컬 시스템 상의 iconv()함수에 의해 
+    결정된다. 어떤 시스템의 iconv() 함수는 제대로 작동되지 않을수 있다.
+    이 경우에는 libiconv 라이브러리를 설치해야 한다.
    </para>
   </partintro>
 
   <refentry id="function.iconv">
    <refnamediv>
     <refname>iconv</refname>
-    <refpurpose>Convert string to requested character encoding</refpurpose>
+    <refpurpose>원하는 문자 인코딩으로 변환한다</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -40,10 +39,9 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     It converts the string <parameter>string</parameter> encoded in
-     <parameter>in_charset</parameter> to the string encoded in
-     <parameter>out_charset</parameter>. It returns the converted
-     string or &false;, if it fails.
+     <parameter>in_charset</parameter>으로 인코드된 <parameter>string</parameter>을
+     <parameter>out_charset</parameter>으로 인코딩된 string으로
+     변환한다. 변환된 문자열을 리턴하거나, 실패하면 &false;을 리턴한다.
     </para>
     <para>
      <example>
@@ -62,7 +60,7 @@ echo iconv("ISO-8859-1","UTF-8","This is test.");
    <refnamediv>
     <refname>iconv_get_encoding</refname>
     <refpurpose>
-     Get current setting for character encoding conversion
+     문자 인코딩 변환을 위한 현재 설정 상태를 문의
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -76,9 +74,8 @@ echo iconv("ISO-8859-1","UTF-8","This is test.");
      </funcprototype>
     </funcsynopsis>
     <para>
-     It returns the current settings of 
-     <function>ob_iconv_handler</function> as array or 
-     &false; in failure.
+     배열로서 <function>ob_iconv_handler</function>함수의
+     현재 설정을 리턴하고,  실패하면, &false;을 리턴한다.
     </para>
     <para>
      See also: 
@@ -92,6 +89,7 @@ echo iconv("ISO-8859-1","UTF-8","This is test.");
    <refnamediv>
     <refname>iconv_set_encoding</refname>
     <refpurpose>
+     문자 인코딩 변환을 설정
      Set current setting for character encoding conversion
     </refpurpose>
    </refnamediv>
@@ -105,9 +103,8 @@ echo iconv("ISO-8859-1","UTF-8","This is test.");
      </funcprototype>
     </funcsynopsis>
     <para>
-     It changes the value of <parameter>type</parameter> to
-     <parameter>charset</parameter> and returns &true; in success or 
-      &false; in failure.
+     <parameter>type</parameter>을 <parameter>charset</parameter>로
+     변경하고 성공하면 &true;를 실패하면 &false;를 리턴한다.
     </para>
     <para>
      <example>
@@ -132,7 +129,7 @@ iconv_set_encoding("output_encoding", "ISO-8859-1");
    <refnamediv>
     <refname>ob_iconv_handler</refname>
     <refpurpose>
-     Convert character encoding as output buffer handler
+     출력 버퍼 핸들러로 문자 엔코딩을 변환한다
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -149,15 +146,14 @@ iconv_set_encoding("output_encoding", "ISO-8859-1");
      </funcprototype>
     </funcsynopsis>
     <para>
-     It converts the string encoded in 
-     <parameter>internal_encoding</parameter> to
-     <parameter>output_encoding</parameter>.
+     <parameter>internal_encoding</parameter>에서 인코딩된
+     문자열을 <parameter>output_encoding</parameter>로 변환한다.
     </para>
     <para>
-     <parameter>internal_encoding</parameter> and
-     <parameter>output_encoding</parameter> should be defined
-     by <function>iconv_set_encoding</function> or in 
-     configuration file.
+     <parameter>internal_encoding</parameter>과
+     <parameter>output_encoding</parameter>는 
+     <function>iconv_set_encoding</function>함수나 설정파일에서
+     정의되어있어야 한다.
     </para>
     <para>
      <example>
