@@ -32,12 +32,11 @@ linkend="ref.outcontrol">output-control functions</link> to capture
 the output of this function, and save it in a
 <type>string</type> (for example).</simpara></tip>'>
 
-<!ENTITY tip.fopen-wrapper '<tip><simpara>You can use a URL as a
-filename with this function if the <link linkend="ini.allow-url-fopen"
->fopen wrappers</link> have been enabled.
-See <function>fopen</function> for more details on how to specify
-the filename and <xref linkend="wrappers"/> for a list of supported
-URL protocols.</simpara></tip>'>
+<!ENTITY tip.fopen-wrapper '<tip><simpara><link linkend="ini.allow-url-fopen"
+>fopen wrappers</link>를 설정하면, 이 함수의 파일 이름으로
+URL을 사용할 수 있습니다. 파일 이름을 지정하는 방법은
+<function>fopen</function>을 참고하고, 지원하는 URL 프로토콜 목록은
+<xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
 <!ENTITY return.success '성공일 경우 &true;를, 실패일 경우 &false;를 반환합니다.'>
 
@@ -64,7 +63,7 @@ both share the same internal symbol.</simpara></warning>'>
 
 <!ENTITY note.registerglobals '<note><title>register_globals: 중요 경고</title><para>
 PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_globals</link>의
-기본값은 <emphasis>off</emphasis>입니다. PHP 커뮤니티는 이 설정에 의존하지 말고,
+기본값은 <emphasis>off</emphasis>입니다. PHP 커뮤니티에서는, 이 설정에 의존하지 않는
 &link.superglobals;와 같은 다른 방법을 이용하기를 권장합니다.</para></note>'>
 	
 <!ENTITY note.superglobals '<note><title>자동 전역: 사용상 주의
@@ -76,7 +75,7 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 <!ENTITY note.magicquotes.gpc '<note><title>directive note: magic_quotes_gpc
 </title><para>PHP 설정 <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>의
 기본값은 <literal>on</literal>입니다. 이것은 모든 GET, POST, COOKIE 데이터에 대해
-<function>addslashes</function>를 실행합니다. 그것들을 떼어내기 위해서
+<function>addslashes</function>를 실행합니다. 그것들을 제거하기 위해서
 <function>stripslashes</function>를 사용할 수 있습니다.</para></note>'>
 
 <!-- Various notes -->
@@ -93,10 +92,10 @@ might want to enable the <link linkend="ini.auto-detect-line-endings"
 >auto_detect_line_endings</link> run-time configuration option.</simpara>
 </note>'>
 
-<!ENTITY note.no-windows '<note><simpara>이 함수는 Windows 플랫폼에서는
+<!ENTITY note.no-windows '<note><simpara>이 함수는 윈도우 플랫폼에서는
 실행되지 않습니다.</simpara></note>'>
 
-<!ENTITY note.no-windows.extension '<note><simpara>이 확장은 Windows
+<!ENTITY note.no-windows.extension '<note><simpara>이 확장은 윈도우
 플랫폼에서는 사용할 수 없습니다.</simpara></note>'>
 
 <!ENTITY note.func-callback '<note><simpara>Instead of a function name, an
@@ -156,10 +155,9 @@ PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
 
 <!-- Used in reference/$extname/classes.xml -->
 <!ENTITY extension.classes '<simpara>
-The classes below are defined by this extension, and
-will only be available when the extension has either
-been compiled into PHP or dynamically loaded at runtime.
-</simpara>'>
+아래의 클래스는 이 확장에 의해 정의된 것으로, 확장 모듈이
+PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
+사용할 수 있습니다.</simpara>'>
 
 <!ENTITY windows.builtin '<simpara><literal>PHP</literal> 윈도우 버전에서는
 이 확장에 대한 지원이 포함되어 있습니다. 이 함수들을 이용하기 위해서
@@ -186,5 +184,5 @@ supplemental files to mark section titles -->
 (e.g. fe80::1) you must enclose the IP in square brackets.  For example,  
 <literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
 
-<!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0</literal>에서
+<!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0</literal>부터
 지원합니다.</simpara></note>'>
