@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.31 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.33 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <appendix id="wrappers">
  <title>지원 프로토콜/래퍼 목록</title>
@@ -562,8 +562,8 @@ readfile("php://filter/read=string.toupper|string.rot13/resource=http://www.exam
     <para>
      <literal>/write=&lt;쓰기 체인에 적용되는 필터 리스트&gt;</literal>
      (<emphasis>선택적</emphasis>) 이 인자는 
-     <literal>|</literal> 파이프 문자로 구분되는 하나이상의 필터명이
-     적용된다.
+     <literal>|</literal> 파이프 문자로 구분하는 하나이상의 필터명을
+     적용합니다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -580,10 +580,10 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
    </listitem>
    <listitem>
     <simpara>
-     <literal>/&lt;양쪽 체인에 적용되는 필터 리스트&gt;</literal>
+     <literal>&lt;양쪽 체인에 적용되는 필터 리스트&gt;</literal>
      (<emphasis>선택적</emphasis>) <literal>read=</literal>나 
-     <literal>write=</literal>에 선행하지 않는 모든 필터리스트가
-     읽기와 쓰기 양쪽 모두의 체인(적절하게)에 적용될것이다.
+     <literal>write=</literal>에 선행하지 않는 모든 필터 목록은 
+     읽기와 쓰기 양쪽 모두의 체인에 (적절하게) 적용합니다.
     </simpara>
    </listitem>
   </itemizedlist>
@@ -608,16 +608,16 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
       <row>
        <entry>읽기 허용</entry>
        <entry>
-        <literal>php://stdin</literal> 과
-        <literal>php://input</literal> only.
+        <literal>php://stdin</literal>,
+        <literal>php://input</literal> 전용.
        </entry>
       </row>
       <row>
        <entry>쓰기 허용</entry>
        <entry>
         <literal>php://stdout</literal>,
-        <literal>php://stderr</literal>, 과
-        <literal>php://output</literal> only.
+        <literal>php://stderr</literal>,
+        <literal>php://output</literal> 전용.
        </entry>
       </row>
       <row>
