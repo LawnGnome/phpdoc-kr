@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.16 Maintainer: progcom Status: working -->
  <reference id="ref.xml">
-  <title>XML 처리 함수</title>
+  <title>XML 해석기 함수</title>
   <titleabbrev>XML</titleabbrev>
 
   <partintro>
