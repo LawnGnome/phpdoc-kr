@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.52 -->
+<!-- EN-Revision: 1.53 -->
 
 <!ENTITY warn.experimental '<warning><simpara>This extension is
 <emphasis>EXPERIMENTAL</emphasis>. The behaviour of this extension --
@@ -71,7 +71,12 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 사용 가능합니다. 더 많은 정보를 위해서, &link.superglobals; 매뉴얼 섹션을
 읽어보십시오.</para></note>'>
 
-<!ENTITY note.magicquotes.gpc '<note><title>directive note: magic_quotes_gpc
+<!ENTITY avail.register-long-arrays 'PHP 5.0.0부터, 긴 형태의 PHP
+<link linkend="language.variables.predefined">예약 변수</link> 배열은
+<link linkend="ini.register-long-arrays">register_long_arrays</link> 지시자에
+의해 비활성화 할 수 있습니다.'>
+
+<!ENTITY note.magicquotes.gpc '<note><title>directive 주의: magic_quotes_gpc
 </title><para>PHP 설정 <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>의
 기본값은 <literal>on</literal>입니다. 이것은 모든 GET, POST, COOKIE 데이터에 대해
 <function>addslashes</function>를 실행합니다. 그것들을 제거하기 위해서
