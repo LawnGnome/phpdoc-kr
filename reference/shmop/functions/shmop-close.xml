@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/shmop.xml, last change in rev 1.1 -->
 <!-- last change to 'shmop-close' in en/ tree in rev 1.1 -->
-  <refentry id="function.shmop_close">
+  <refentry id="function.shmop-close">
    <refnamediv>
     <refname>shmop_close</refname>
     <refpurpose>공유 메모리 블럭을 닫음</refpurpose>

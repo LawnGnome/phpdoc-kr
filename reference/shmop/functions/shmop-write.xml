@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/shmop.xml, last change in rev 1.1 -->
 <!-- last change to 'shmop-write' in en/ tree in rev 1.1 -->
-  <refentry id="function.shmop_write">
+  <refentry id="function.shmop-write">
    <refnamediv>
     <refname>shmop_write</refname>
      <refpurpose>공유 메모리 블럭에 자료 기록</refpurpose>
