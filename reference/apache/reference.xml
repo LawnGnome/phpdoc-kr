@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
  <reference id="ref.apache">
   <title>아파치 함수</title>
   <titleabbrev>아파치</titleabbrev>
@@ -9,13 +9,28 @@
     <para>
      이 함수들은 PHP를 아파치 모듈로 실행할때만 사용할 수 있습니다.
     </para>
+    <note>
+     <simpara>
+      PHP 4.3.2부터는, 아파치 1에서의 상황과는 달리 아파치 2
+      <acronym>SAPI</acronym>에서는 <envar>PATH_TRANSLATED</envar>를
+      자동적으로 설정하지 않습니다. 이전에는 아파치가 생성하지 않았을 때는,
+      <envar>SCRIPT_FILENAME</envar>와 같은 값으로 설정했었습니다. 이 변경은
+      <envar>PATH_TRANSLATED</envar>는 <envar>PATH_INFO</envar>가 정의되었을
+      때만 존재한다는 <acronym>CGI</acronym> 규격에 따르기 위한 것입니다.
+     </simpara>
+     <simpara>
+      아파치 2 사용자는 <envar>PATH_INFO</envar>를 정의하기 위해서
+      <filename>httpd.conf</filename> 안에 <literal>AcceptPathInfo =
+       On</literal>를 사용할 수 있습니다.
+     </simpara>
+    </note>
    </section>
 
    <section id="apache.installation">
     &reftitle.install;
     <para>
-     아파치에 PHP를 설치하기 위해서는 설치 챕터의
-     <link linkend='install.apache'>아파치 섹션</link>을 참고하십시오.
+     아파치에 PHP를 설치하기 위해서는 <link linkend='install'>설치 장</link>을
+     참고하십시오.
     </para>
    </section>
 

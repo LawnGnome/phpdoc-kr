@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.26 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.31 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
 <chapter id="faq.using">
   <title>PHP 사용하기</title>
   <titleabbrev>PHP 사용하기</titleabbrev>
@@ -20,11 +20,13 @@
     </question>
     <answer>
      <para>
-      PHP는 많은 <link linkend="language.variables.predefined">미리 정의된 변수들</link>
-      을 갖습니다. 슈퍼 글로벌(superglobal)변수인 <varname>$_POST</varname>처럼요.
-      <varname>$_POST</varname>변수는 포스팅된 모든 변수의 연관배열이기 때문에 이 변수로
-      루프를 돌릴수도 있다. 예를 들어서 간단하게 <link linkend="control-structures.foreach">foreach</link>로
-      루프를 돌린다고 하면 <function>empty</function>함수 값을 체크하고 그 값을 출력하면된다.
+      PHP는 많은 <link linkend="language.variables.predefined">미리 정의된
+       변수들</link>을 가집니다. 슈퍼 글로벌(superglobal)변수인
+      <varname>$_POST</varname>처럼요. <varname>$_POST</varname>변수는
+      포스팅된 모든 변수의 연관배열이기 때문에 이 변수로 루프를 돌릴수도 있다.
+      예를 들어서 간단하게 <link
+       linkend="control-structures.foreach">foreach</link>로 루프를 돌린다고
+      하면 <function>empty</function>함수 값을 체크하고 그 값을 출력하면 된다.
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -194,7 +196,7 @@ echo "myfunc($variable) = " . myfunc($variable);
 <?php
 $headers = getallheaders();
 foreach ($headers as $name => $content) {
-    echo "headers[$name] = $content<br>\n";
+    echo "headers[$name] = $content<br />\n";
 }
 ?>
 ]]>
@@ -240,9 +242,9 @@ foreach ($headers as $name => $content) {
     </question>
     <answer>
      <para>
-      네스케이프는 html 태그(테이블같은)에 관한한 IE보다 엄격합니다.
+      네스케이프는 HTML 태그(테이블같은)에 관한한 IE보다 엄격합니다.
       <ulink url="&url.w3.validator;">validator.w3.org</ulink>와 같은
-      html validator로 html 출력을 검증한다면 무엇이 문제인지 도움을 받을수 있습니다.
+      HTML validator로 HTML 출력을 검증한다면 무엇이 문제인지 도움을 받을수 있습니다.
       예를 들면, &lt;/table&gt; 태그가 빠지면 이와같은 문제가 발생할수 있습니다.
      </para>
      <para>
@@ -368,6 +370,27 @@ foreach ($headers as $name => $content) {
      
      &note.superglobals;
 
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.using.shorthandbytes">
+    <question>
+     <para>
+      몇몇 PHP 지시어는 <type>integer</type> 바이트 값뿐이 아닌, 단축 바이트
+      값도 가질 수 있습니다. 어떠한 단축 바이트 옵션이 존재합니까? 그리고
+      &php.ini; 밖에서 사용할 수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      사용할 수 있는 옵션은 K(킬로바이트), M(메가바이트)입니다. 대소문자는
+      구별하지 않습니다. <literal>1M</literal>은 1 메가바이트, 즉
+      <literal>1048576</literal> 바이트와 동일합니다. <literal>1K</literal>은
+      1 킬로바이트, 즉 <literal>1024</literal> 바이트와 동일합니다. 이
+      단축어는 &php.ini; 밖에서는 사용할 수 없습니다. 대신 바이트의
+      <type>integer</type> 값을 사용하십시오. 이러한 값을 어떻게 변경하는 지에
+      대해서는 <function>ini_get</function> 문서를 참고하십시오.
+     </para>
     </answer>
    </qandaentry>
 

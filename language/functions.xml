@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.46 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.55 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter id="language.functions">
   <title>함수</title>
@@ -16,7 +16,7 @@
      <programlisting role="php">
 <![CDATA[
 <?php
-function foo ($arg_1, $arg_2, /* ..., */ $arg_n)
+function foo($arg_1, $arg_2, /* ..., */ $arg_n)
 {
     echo "예제 함수.\n";
     return $retval;
@@ -42,7 +42,7 @@ function foo ($arg_1, $arg_2, /* ..., */ $arg_n)
    <simpara>
     PHP 3에서는 함수가 참조되기 전에 선언되어야 한다. 다음 두 예제 코드와 
     같이 함수가 조건적으로 선언되는 경우를 <emphasis>제외하고</emphasis>
-    PHP 4는 이런 제약이 없다. 
+    PHP 4부터는 이러한 제약이 없습니다. 
    </simpara>
    <para>
     아래 예제 코드와 같이 함수가 조건적으로 선언되면 그 함수가 호출되기
@@ -64,7 +64,7 @@ $makefoo = true;
 bar();
 
 if ($makefoo) {
-  function foo ()
+  function foo()
   {
     echo "I don't exist until program execution reaches me.\n";
   }
@@ -129,8 +129,8 @@ bar();
     PHP 3에서 함수는 기본 인자(default argument)를 지원되지만, 
     가변 인자 갯수(variable-length argument)를 지원하지 않는다. (자세한 정보는 
     <link linkend="functions.arguments.default">기본 인자</link>섹션을 참고). 
-    PHP 4는 둘 다 지원된다: 자세한 정보는 
-    <link linkend="functions.variable-arg-list">가변 인자 목록</link>섹션과
+    PHP 4부터는 둘 다 지원합니다: 자세한 정보는 
+    <link linkend="functions.variable-arg-list">가변 길이 인자 목록</link>섹션과
     <function>func_num_args</function>,
     <function>func_get_arg</function>,
     <function>func_get_args</function>함수 레퍼런스를 참고.
@@ -218,12 +218,12 @@ echo $str;    // outputs 'This is a string, and something extra.'
       <programlisting role="php">
 <![CDATA[
 <?php
-function makecoffee ($type = "cappuccino")
+function makecoffee($type = "cappuccino")
 {
     return "Making a cup of $type.\n";
 }
-echo makecoffee ();
-echo makecoffee ("espresso");
+echo makecoffee();
+echo makecoffee("espresso");
 ?>
 ]]>
       </programlisting>
@@ -239,7 +239,28 @@ Making a cup of cappuccino.
 Making a cup of espresso.
      </screen>
     </para>
- 
+    <para>
+     또한, PHP는 배열과 특별한 값인 NULL을 기본값으로 사용할 수 있습니다. 예를
+     들면:
+    </para>
+    <para>
+     <example>
+      <title>스칼라 형이 아닌 기본값 사용하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+function makecoffee($types = array("카푸치노"), $coffeeMaker = NULL)
+{
+    $device = is_null($coffeeMaker) ? "손" : $coffeeMaker;
+    return "$device(으)로 ".join(", ", $types)."를 만듭니다.\n";
+}
+echo makecoffee();
+echo makecoffee(array("카푸치노", "라바짜"), "찻주전자");
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
     <simpara>
      기본값은 상수 표현식이 될수 있으나 (예를 들면) 변수나 
      클래스 멤버가 될수는 없다.
@@ -255,12 +276,12 @@ Making a cup of espresso.
       <programlisting role="php">
 <![CDATA[
 <?php
-function makeyogurt ($type = "acidophilus", $flavour)
+function makeyogurt($type = "acidophilus", $flavour)
 {
     return "Making a bowl of $type $flavour.\n";
 }
  
-echo makeyogurt ("raspberry");   // won't work as expected
+echo makeyogurt("raspberry");   // won't work as expected
 ?>
 ]]>
       </programlisting>
@@ -286,12 +307,12 @@ Making a bowl of raspberry .
       <programlisting role="php">
 <![CDATA[
 <?php
-function makeyogurt ($flavour, $type = "acidophilus")
+function makeyogurt($flavour, $type = "acidophilus")
 {
     return "Making a bowl of $type $flavour.\n";
 }
  
-echo makeyogurt ("raspberry");   // works as expected
+echo makeyogurt("raspberry");   // works as expected
 ?>
 ]]>
       </programlisting>
@@ -307,14 +328,21 @@ Making a bowl of acidophilus raspberry.
      </screen>
     </para>
 
+    <note>
+     <simpara>
+      PHP 5부터, 기본값을 참조로 넘길 수 있습니다.
+     </simpara>
+    </note>
+
    </sect2>
 
    <sect2 id="functions.variable-arg-list">
-    <title>가변 인자 목록</title>
+    <title>가변 길이 인자 목록</title>
 	
     <simpara>
-     PHP 4는 사용자 선언 함수에서 가변 변수 목록 기능을 지원한다.
-     이런 기능은 <function>func_num_args</function>,
+     PHP 4 이상에서는 사용자 선언 함수에서 가변 길이 변수 목록 기능을
+     지원합니다.
+     이 기능은 <function>func_num_args</function>,
      <function>func_get_arg</function>,
      <function>func_get_args</function>함수를 사용하여 손쉽게 사용가능하다.
     </simpara>
@@ -343,11 +371,11 @@ Making a bowl of acidophilus raspberry.
      <programlisting role="php">
 <![CDATA[
 <?php
-function square ($num)
+function square($num)
 {
     return $num * $num;
 }
-echo square (4);   // outputs '16'.
+echo square(4);   // outputs '16'.
 ?>
 ]]>
      </programlisting>
@@ -493,20 +521,22 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
    <title>내부 (내장) 함수</title>
    
    <para>
-    PHP는 많은 함수와 상수로 표준화되었다. 그리고 특정 PHP확장 컴파일이 요구하는 함수
-    도 제공한다. 이런 함수는 확장을 컴파일하지 않으면 "undefined function"같은 치명적
-    에러 메시지를 출력할 것이다. 예를 들면, <link linkend="ref.image">image</link>함수
-    를 사용하기 위해서는 GD 지원이 가능하게 컴파일해야 한다.<function>mysql_connect</function>
-    함수를 사용하려면 <link linkend="ref.mysql">MySQL</link>을 지원하도록
-    컴파일해야 한다. <link linkend="ref.strings">문자열</link>과 
-    <link linkend="ref.var">변수 관련</link> 함수와 같이 PHP의 모든 버전에
-    포함되어있는 많은 핵심 함수가 존재한다.
+    PHP는 많은 함수와 상수로 표준화되었다. 그리고 특정 PHP확장 컴파일이
+    요구하는 함수도 제공한다. 이런 함수는 확장을 컴파일하지 않으면 "undefined
+    function"같은 치명적 오류 메시지를 출력할 것이다. 예를 들면, <link
+     linkend="ref.image">이미지</link> 함수를 사용하기 위해서는
+    <productname>GD</productname> 지원이 가능하게 컴파일해야 합니다.
+    <function>mysql_connect</function> 함수를 사용하려면 <link
+     linkend="ref.mysql">MySQL</link>을 지원하도록 컴파일해야 한다. <link
+     linkend="ref.strings">문자열</link>과 <link linkend="ref.var">변수
+     관련</link> 함수와 같이 PHP의 모든 버전에 포함되어있는 많은 핵심 함수가
+    존재한다.
     <function>phpinfo</function>나 <function>get_loaded_extensions</function>함수
     를 호출하면 현재 PHP에 올라간 확장에 어떤것인지 확인할수 있다. 많은 확장이 
     기본값으로 활성화되어있고, PHP 매뉴얼은 여러 확장에 의해 분할되어있다는 것에 
     주의해야 한다. PHP를 셋업하는 방법을 알고 싶다면,
     <link linkend="configuration">설정</link>,  
-    <link linkend="installation">설치</link>, 각 확장에 대한 챕터를 보라.
+    <link linkend="install">설치</link>, 각 확장에 대한 챕터를 보라.
    </para>
    <para>
     함수의 원형(prototype) 읽기와 이해는 <link linkend="about.prototypes">함수 선언 읽는 법</link>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.16 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.20 Maintainer: fuzzy74 Status: ready -->
 <chapter id="faq.obtaining">
  <title>PHP 구하기</title>
   <titleabbrev>PHP 구하기</titleabbrev>
@@ -87,7 +86,7 @@
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.ucd-snmp;">SNMP* (Unix): </ulink>.
+         <ulink url="&url.net-snmp;">SNMP* (Unix): </ulink>.
         </simpara>
        </listitem>
        <listitem>
@@ -196,7 +195,7 @@
      <para>
       우선 Microsoft Visual C++ v6 (v5도 가능하지만 우리는 v6를 사용한다)
       가 필요합니다. 그리고 다른 지원 파일이 필요합니다.
-      <link linkend="install.windows.build">building PHP from
+      <link linkend="install.windows.building">building PHP from
       source on Windows</link>에 관한 섹션을 참고하시기 바랍니다.
     </para>
     </answer>
