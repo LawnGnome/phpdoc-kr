@@ -2,7 +2,7 @@
 	<title>Security</title>
 	<simpara>
 	PHP는 매우 강력한 언어이다. 
-	이 인터프리터는 웹서버의 모듈로 되어 있건 <acronym>CGI</acronym> binary로 되어 있건, 시스템 내의 파일을 사용할 수 있고, 
+	이 인터프리터는 웹서버의 모듈로 되어 있건 <acronym>CGI</acronym> 바이너리로 되어 있건, 시스템 내의 파일을 사용할 수 있고, 
 	여타의 명령이나 프로그램을 실행할 수 있을뿐 아니라, 네트웍을 통해 다른 서버로 연결을 할 수도 있다. 
 	이런 기능들은 악의를 가진 사용자나 초보자가 어떤 프로그램이든 실행시켜 웹서버를 보안상 불안한 상태로 만들 수 있다. 
 	PHP는 분명히 Perl이나 C보다 좀더 안전한 CGI 프로그램을 만들 수 있도록 되어 있다. 
@@ -14,25 +14,21 @@
 	이 옵션들의 조합과 서버의 설정에 따라 보안상의 허점을 노출시킬 수도 있다. 
   </simpara>
 	<simpara>
-   The configuration flexibility of PHP is equally rivalled by the
-   code flexibility. PHP can be used to build complete server
-   applications, with all the power of a shell user, or it can be used
-   for simple server-side includes with little risk in a tightly
-   controlled environment. How you build that environment, and how
-   secure it is, is largely up to the PHP developer.
+   PHP에서 설정의 유연성은 코드의 유연성과 비견될 만큼 훌륭하다.
+   PHP는 쉘 사용자와 동일한 권한으로 완전한 서버 어플리케이션을 만드는데 사용될 수도 있고,
+   위험이 거의 없는 매우 제한된 환경에서 간단한 server-side include에도 사용될 수 있다.
+   환경을 어떻게 만드는가, 보안은 어떻게 설정하는가는 전적으로 PHP 개발자에게 달려있다.
   </simpara>
 	<simpara>
-   This chapter starts by explaining the different configuration
-   option combinations and the situations they can be safely used. It
-   then describes different considerations in coding for different
-   levels of security, and ends with some general security advice.
+   이 장은 PHP를 안전하게 사용할수 있는 여러 다른 설정 옵션의 조합과 상황을 설명하는 것으로 시작한다.
+   그리고, 각각 상이한 보안 레벨에서의 코딩에 있어서 여러가지 고려사항을 설명한다.
   </simpara>
 	<sect1 id="security.cgi">
 		<title>Installed as CGI binary</title>
 		<sect2 id="security.cgi.attacks">
 			<title>가능한 공격 (Possible attacks)</title>
 			<simpara>
-	<acronym>CGI</acronym> binary 형태의 PHP는 어떤 이유로 (아파치 같은) 서버 소프트웨어의 모듈로 
+     <acronym>CGI</acronym> binary 형태의 PHP는 어떤 이유로 (아파치 같은) 서버 소프트웨어의 모듈로 
 	사용되기를 원하지 않는 경우에 사용할 수 있고, PHP를 다른 종류의 CGI wrapper와 함께 
 	안전한 chroot와 setuid 환경을 만들어 내는 곳에 때에 사용할 수 있다. 
 	이 설정은 보통 실행할 PHP binary를 웹서버의 cgi-bin디렉토리에 설치해야 한다. 
@@ -60,11 +56,11 @@
 					<simpara>
 	이 url의 PHP binary 이후의 path 정보(<filename role="uri">/secret/doc.html</filename>)는 
 	일반적으로 <acronym>CGI</acronym> 프로그램에 의해 읽고 해석될  파일 이름으로 사용된다. 
-	보통 웹서버는 설정 지시자(Apache의 경우 Action)를 사용하여 <filename role="url">http://my.host/secret/script.php3</filename>같은 
+	보통 웹서버는 설정 지시자(Apache의 경우 Action)를 사용하여 <filename role="url">http://my.host/secret/script.php</filename>같은 
 	문서 요청을 PHP 인터프리터로 바로 리디렉트 하도록 할 수 있다. 이렇게 설정하면, 
 	웹서버는 우선 <filename role="uri">/secret</filename> 디렉토리의 접근 권한을 검사한 후에 
-	<filename role="url">http://my.host/cgi-bin/php/secret/script.php3</filename>로 리디렉트를 한다. 
-	불행히도, 이 요청이 원래의 form에서 주어진 것이라면, 웹서버는 <filename role="uri">/secret/script.php3</filename>
+	<filename role="url">http://my.host/cgi-bin/php/secret/script.php</filename>로 리디렉트를 한다. 
+	불행히도, 이 요청이 원래의 form에서 주어진 것이라면, 웹서버는 <filename role="uri">/secret/script.php</filename>
 	파일에 대한 접근 권한 검사를 하지 않고, <filename role="uri">/cgi-bin/php</filename> 파일에 대한 검사만을 행한다. 
 	이 방법을 사용하면 <filename role="uri">/cgi-bin/php</filename>에 접근 가능한 사용자는 웹서버상의 모든 보호된 문서들도 접근할 수 있다.
       </simpara>
@@ -85,8 +81,8 @@
 	만약 여러분의 웹서버가 리디렉트를 허용하지 않거나, 서버가 해당 요구가 안전하게 리디렉트된 요구인지 대한 정보를 
 	PHP binary에 전달할 수 있는 방법이 없을 경우, config 스크립트에서
 	<link linkend="install.configure.enable-force-cgi-redirect">--enable-force-cgi-redirect</link> 옵션을 주는 것이 좋다.
-	그러나 여전히 PHP 스크립트가, <filename role="php">http://my.host/cgi-bin/php/dir/script.php3</filename>같은 직접 접근 방법이나
-	<filename role="php">http://my.host/dir/script.php3</filename>같은 리디렉션의 방법 이외의,
+	그러나 여전히 PHP 스크립트가, <filename role="php">http://my.host/cgi-bin/php/dir/script.php</filename>같은 직접 접근 방법이나
+	<filename role="php">http://my.host/dir/script.php</filename>같은 리디렉션의 방법 이외의,
 	다른 믿지 못할 방법에 의해 불려 질 때를 대비하여 대책을 강구해 두어야 합니다
     </simpara>
 			<simpara>
@@ -96,7 +92,7 @@
 		<sect2 id="security.cgi.force-redirect">
 			<title>Case 2: --enable-force-cgi-redirect 옵션 사용</title>
 			<simpara>
-	이 옵션을 주고 PHP를 컴파일 하면, 사용자가 <filename role="php">http://my.host/cgi-bin/php/secretdir/script.php3</filename>와 
+	이 옵션을 주고 PHP를 컴파일 하면, 사용자가 <filename role="php">http://my.host/cgi-bin/php/secretdir/script.php</filename>와 
 	같이 PHP를 직접 호출하는 것을 막아준다. 
 	대신, 이 모드에서 PHP는 사용자의 요구(request)가 웹서버의 리디렉트 규칙을 통과한 경우에만 동작 할 것이다.
     </simpara>
@@ -104,8 +100,8 @@
 	일반적으로 아파치에서 리디렉트 설정은 다음과 같은 지시자를 사용하여 한다. : 
     </simpara>
 			<programlisting role="apache-conf">
-Action php3-script /cgi-bin/php
-AddHandler php3-script .php3
+Action php-script /cgi-bin/php
+AddHandler php-script .php
     </programlisting>
 			<simpara>
 	이 옵션은 아파치 웹서버에서만 검증되었다. 
@@ -128,7 +124,7 @@ AddHandler php3-script .php3
 	웹서버의 document root와는 별도의 script doc_root를 설정해 주는 것이 반드시 필요하다.
     </simpara>
 			<simpara>
-	<link linkend="configuration.file">configuration file (php.ini)</link>의 <link linkend="ini.doc-root">doc_root</link> 지시자를 설정하거나, 	<envar>	PHP_DOCUMENT_ROOT</envar>라는 환경변수를 설정하여, PHP script document root를 설정할 수 있다. 
+				<link linkend="configuration.file">configuration file (php.ini)</link>의 <link linkend="ini.doc-root">doc_root</link> 지시자를 설정하거나, 	<envar>	PHP_DOCUMENT_ROOT</envar>라는 환경변수를 설정하여, PHP script document root를 설정할 수 있다. 
 	만약 이것이 설정되어 있다면, CGI 버전의 PHP는 접근하려는 파일의 이름을 
 	이 <parameter>doc_root</parameter>와 request에 있는 경로 정보를 이용하여 만들어낸다.
 	따라서 여러분은 이 디렉토리 밖에서는 어떠한 스크립트도 실행될 수 없도록 만들게 된다. (아래에 있는 user_dir 만은 예외이다)
@@ -136,19 +132,19 @@ AddHandler php3-script .php3
 			<simpara>
 	여기서 사용할 수 있는 또다른 옵션은 <link linkend="ini.user-dir">user_dir</link>이다. 
 	user_dir이 설정되어 있지 않으면 접근 가능한 파일은 <parameter>doc_root</parameter> 밑에 있는 것 뿐이다. 
-	<filename role="url">http://my.host/~user/doc.php3</filename>같은 url로는 user home directory에 있는 파일을 열 수 없다. 
-	단지 doc_root아래의 <filename role="uri">~user/doc.php3</filename> 파일을 부를 뿐이다. 
+	<filename role="url">http://my.host/~user/doc.php</filename>같은 url로는 user home directory에 있는 파일을 열 수 없다. 
+	단지 doc_root아래의 <filename role="uri">~user/doc.php</filename> 파일을 부를 뿐이다. 
 	(물론 틸데[<literal>~</literal>]로 시작하는 "~user"라는 디렉토리이다.)
     </simpara>
 			<simpara>
 	예를 들어, 만약 user_dir이 <filename role="dir">public_php</filename>로 설정되어 있다면, 
-	<filename role="url">http://my.host/~user/doc.php3</filename>와 같은 요구는 user의 home 디렉토리 밑의 
-	<filename role="dir">public_php</filename>라는 디렉토리 밑에 있는 doc.php3라는 파일을 호출 할 것이다. 
+	<filename role="url">http://my.host/~user/doc.php</filename>와 같은 요구는 user의 home 디렉토리 밑의 
+	<filename role="dir">public_php</filename>라는 디렉토리 밑에 있는 doc.php라는 파일을 호출 할 것이다. 
 	만약 사용자의 home이 <filename role="dir">/home/user</filename>라면, 
-	실행되는 파일은 <filename>/home/user/public_php/doc.php3</filename>이 된다. 
+	실행되는 파일은 <filename>/home/user/public_php/doc.php</filename>가 된다. 
     </simpara>
 			<simpara>
-	<parameter>user_dir</parameter> 확장은 <parameter>doc_root</parameter> 설정과 관련없으므로, 
+				<parameter>user_dir</parameter> 확장은 <parameter>doc_root</parameter> 설정과 관련없으므로, 
 	여러분은 document root와 user directory 접근 통제를 따로따로 할 수 있다.
     </simpara>
 		</sect2>
@@ -159,15 +155,15 @@ AddHandler php3-script .php3
 	예를 들어 <filename role="dir">/usr/local/bin</filename> 같은 곳에 둔다. 
 	이 옵션의 단점은, 모든 PHP 택을 포함하고 있는 파일의 첫번째 라인에 다음과 같이 적어주는 것 뿐이다. : 
      <informalexample>
-					<programlisting>
+      <programlisting>
 #!/usr/local/bin/php
       </programlisting>
-				</informalexample>
+     </informalexample>
 	또한 파일을 실행 가능으로 만들어 주어야 한다. 
 	즉, 자신의 실행을 위해서 <literal>#!</literal> shell-escape 메카니즘을 사용하는 
 	Perl이나 sh 혹은 다른 스크립트 언어와 같은 방식으로 다루는 것이다.
     </para>
-			<para>
+    <para>
 	이 설정에서 PHP가 <envar>PATH_INFO</envar>와 <envar>PATH_TRANSLATED</envar>정보를 정확히 다루려면, 
 	php parser가 <link linkend="install.configure.enable-discard-path">--enable-discard-path</link> 설정 옵션으로 컴파일 되어야 한다.
     </para>
@@ -176,6 +172,16 @@ AddHandler php3-script .php3
 	<sect1 id="security.apache">
 		<title>Installed as an Apache module</title>
 		<simpara>
+    PHP가 아파치 모듈로 사용되면 아파치 사용자 권한을 그대로 이어받는다. (보통 'nobody' user)
+    이것은 보안과 인증에 대해 각각 영향을 미친다. 예를들어 PHP로 데이타베이스에 접근하고,
+   이 데이타베이스의 자체적인 내장 접근 통제를 사용하지 않는다면, "nobody" 사용자를 
+    데이타베이스에 접근 가능하도록 설정해 두어야 한다.
+   이것은 username과 password를 몰라도 악의적인 스크립트를 사용하여 데이타베이스에 접근하고 
+   데이타를 수정할 수 있다는 것을 의미한다. 또한 크래커가 관리자용 웹페이지를 들락거리고,
+   데이타베이스를 삭제해 버리는 것도 가능하다. 여러분은 아파치의 인증 기능을 사용하여 
+   이런 공격에 대항하는 방어를 할 수 있다.
+
+   사용
     When PHP is used as an Apache module it inherits Apache's user
     permissions (typically those of the "nobody" user). This has several
     impacts on security and authorization. For example, if you are using
@@ -244,7 +250,7 @@ $homedir = "/home/$username";
 $file_to_delete = "$userfile";
 unlink ($homedir/$userfile);
 echo "$file_to_delete has been deleted!";
-?>
+?&gt;
      </programlisting>
 			</example>
    Since the username is postable from a user form, they can submit
@@ -263,7 +269,7 @@ $homedir = "/home/../etc/";
 $file_to_delete = "passwd";
 unlink ("/home/../etc/passwd");
 echo "/home/../etc/passwd has been deleted!";
-?>
+?&gt;
      </programlisting>
 			</example>   
     There are two important measures you should take to prevent these
@@ -300,7 +306,7 @@ fputs ($fp, $logstring);
 fclose($fp);
 
 echo "$file_to_delete has been deleted!";
-?>
+?&gt;
      </programlisting>
 			</example>
     Alternately, you may prefer to write a more customized check:
@@ -308,14 +314,14 @@ echo "$file_to_delete has been deleted!";
 				<title>More secure file name checking</title>
 				<programlisting role="php">
 &lt;?php
-$username = $HTTP_REMOTE_USER;
+$username = getenv("REMOTE_USER");
 $homedir = "/home/$username";
 
 if (!ereg('^[^./][^/]*$', $userfile))
     die('bad filename'); //die, do not process
     
 //etc...
-?>
+?&gt;
      </programlisting>
 			</example> 
     Depending on your operating system, there are a wide variety of files
@@ -339,14 +345,19 @@ if (!ereg('^[^./][^/]*$', $userfile))
     developer who is trying to debug a script, indicating such things
     as the function or file that failed, the PHP file it failed in,
     and the line number which the failure occured in. This is all
-    information that can be exploited.
+    information that can be exploited.  It is not uncommon for a php
+    developer to use <function>show_source</function>, 
+    <function>highlight_string</function>, or 
+    <function>highlight_file</function> as a debugging measure, but in 
+    a live site, this can expose hidden variables, unchecked syntax, 
+    and other dangerous information.
    </simpara>
 		<simpara>
-    For example, the very style of error indicates a system is running
-    PHP. If the attacker was looking at an .html page, and wanted to
-    probe for the back-end (to look for known weaknesses in the system),
-    by feeding it the wrong data they may be able to determine that a
-    system was built with PHP.
+    For example, the very style of a generic error indicates a system
+    is running PHP. If the attacker was looking at an .html page, and
+    wanted to probe for the back-end (to look for known weaknesses in
+    the system), by feeding it the wrong data they may be able to
+    determine that a system was built with PHP.
    </simpara>
 		<simpara>
     A function error can indicate whether a system may be running a
@@ -361,7 +372,9 @@ if (!ereg('^[^./][^/]*$', $userfile))
 		<simpara>
     A filesystem or general PHP error can indicate what permissions
     the webserver has, as well as the structure and organization of
-    files on the web server.
+    files on the web server. Developer written error code can aggravate
+    this problem, leading to easy exploitation of formerly "hidden"
+    information.
    </simpara>
 		<simpara>
     There are three major solutions to this issue. The first is to
@@ -396,7 +409,7 @@ fputs ($fp, $evil_var);
 system ($evil_var);
 exec ($evil_var);
 
-?>
+?&gt;
      </programlisting>
 			</example>
     You should always carefully examine your code to make sure that any
@@ -491,6 +504,21 @@ exec ($evil_var);
     connected to. Many cracking programs do not discern by size, they
     simply trawl massive IP blocks looking for victims. Try not to
     become one.
+   </simpara>
+	</sect1>
+	<sect1 id="security.current">
+		<title>Keeping Current</title>
+		<simpara>
+    PHP, like any other large system, is under constant scrutiny and
+    improvement. Each new version will often include both major and
+    minor changes to enhance and repair security flaws, configuration
+    mishaps, and other issues that will affect the overall security
+    and stability of your system.
+   </simpara>
+		<simpara>
+    Like other system-level scripting languages and programs, the best
+    approach is to update often, and maintain awareness of the latest
+    versions and their changes.
    </simpara>
 	</sect1>
 </chapter>

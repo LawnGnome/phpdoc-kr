@@ -3,26 +3,36 @@
 	<abstract>
 		<simpara>
 			<acronym>PHP</acronym>는 HTML에 내장되어 동작하는 스크립트 언어이다.(HTML-embedded scripting language) 
-PHP는 C와 Java, Perl등으로부터 많은 문장 형식을 빌려쓰고 있고, 몇가지는 고유한 것도 있다. 
-이 언어의 목적은 웹개발자들이 동적인 웹문서를 빠르고 쉽게 작성할 수 있도록 하는 것이다. 
+			PHP는 C와 Java, Perl등으로부터 많은 문장 형식을 빌려쓰고 있고, 몇가지는 고유한 것도 있다. 
+			이 언어의 목적은 웹개발자들이 동적인 웹문서를 빠르고 쉽게 작성할 수 있도록 하는 것이다. 
    </simpara>
 	</abstract>
 	<sect1 id="about">
 		<title>이 매뉴얼에 대하여</title>
 		<para>
-    이 매뉴얼은 <ulink url="&url.docbook.xml;">DocBook XML DTD</ulink>를 사용한 <acronym>XML</acronym>로 되어있고,
-  문서의 포매팅을 위해서 <ulink url="&url.dsssl;">
-				<acronym>DSSSL</acronym>
-			</ulink> 
-  (Document Style and Semantics Specification Language) 을 사용한다. 
- <acronym>HTML</acronym>, <acronym>TeX</acronym>, <acronym>RTF</acronym> 문서로의 포매팅은
- <ulink url="&url.jclark;">James Clark</ulink>이 제작한 <ulink url="&url.jade;">Jade</ulink>와, 
- <ulink url="&url.nwalsh;">Norman Walsh</ulink>가 제작한 <ulink url="&url.dbstyle;">The Modular DocBook Stylesheets</ulink>를 사용하였다.
-     PHP'의 문서 형태는 &link.stig; 이 관리한다.
-   </para>
+			이 매뉴얼은 <ulink url="&url.docbook.xml;">DocBook XML DTD</ulink>를 사용한 <acronym>XML</acronym>로 되어있고,
+			문서의 포매팅을 위해서 <ulink url="&url.dsssl;"><acronym>DSSSL</acronym></ulink> 
+			(Document Style and Semantics Specification Language) 을 사용한다. 
+			<acronym>HTML</acronym>, <acronym>TeX</acronym>, <acronym>RTF</acronym> 문서로의 포매팅은
+			<ulink url="&url.jclark;">James Clark</ulink>이 제작한 <ulink url="&url.jade;">Jade</ulink>와, 
+			<ulink url="&url.nwalsh;">Norman Walsh</ulink>가 제작한 
+			<ulink url="&url.dbstyle;">The Modular DocBook Stylesheets</ulink>를 사용하였다.
+			PHP의 문서 형태는 &link.stig; 이 관리한다.
+		</para>
 		<para>
-   매일 작성되는 매뉴얼의 HTML 스냅샷(번역본 포함)은 <ulink url="&url.php.snaps.manual;">&url.php.snaps.manual;</ulink>에 있다.
-   </para>
+			다양한 언어와 <acronym>PDF</acronym>, 일반 텍스트, 일반 <acronym>HTML</acronym>, 
+			WinHelp, <acronym>RTF</acronym> 등의 다양한 포맷의 매뉴얼을 
+			<ulink url="&url.php.docs;">&url.php.docs;</ulink>에서 찾을 수 있다.
+		</para>
+		<para>
+    매일 작성되는 매뉴얼의 HTML 스냅샷(번역본 포함)은 
+    <ulink url="&url.php.snaps.manual;">&url.php.snaps.manual;</ulink>에 있다.
+		</para>
+		<para>
+    이 문서의 <acronym>XML</acronym> 소스코드를 다운받는데 필요한 자세한 정보는 
+    <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>에 있다.
+    문서는 <literal>phpdoc</literal> 모듈안에 저장되어 있다.
+		</para>
 	</sect1>
 </preface>
 <!-- Keep this comment at the end of the file
