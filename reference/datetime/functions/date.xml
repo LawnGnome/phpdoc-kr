@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.9 -->
-<!-- splitted from ./en/functions/datetime.xml, last change in rev 1.2 -->
+<!-- $Revision: 1.5 $ -->
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ok -->
   <refentry id="function.date">
    <refnamediv>
     <refname>date</refname>
@@ -48,7 +47,7 @@
         <row>
          <entry><parameter>format</parameter> 문자</entry>
          <entry>설명</entry>
-         <entry>Example returned values</entry>
+         <entry>예제 반환값</entry>
         </row>
        </thead>
        <tbody>
@@ -227,13 +226,13 @@
       <programlisting role="php">
 <![CDATA[
 <?php
-// Prints something like: Wednesday
+// 다음과 비슷한 출력: Wednesday
 echo date("l");
 
-// Prints something like: Wednesday 15th of January 2003 05:51:38 AM
+// 다음과 비슷한 출력: Wednesday 15th of January 2003 05:51:38 AM
 echo date ("l dS of F Y h:i:s A");
 
-// Prints: July 1, 2000 is on a Saturday
+// 출력: July 1, 2000 is on a Saturday
 echo "July 1, 2000 is on a " . date ("l", mktime(0,0,0,7,1,2000));
 ?>
 ]]>
@@ -249,7 +248,7 @@ echo "July 1, 2000 is on a " . date ("l", mktime(0,0,0,7,1,2000));
       <programlisting role="php">
 <![CDATA[
 <?php
-// prints something like: Wednesday the 15th
+// 다음과 비슷한 출력: Wednesday the 15th
 echo date("l \\t\h\e jS");
 ?>
 ]]>
@@ -314,9 +313,9 @@ $today = date("H:i:s");                         // 17:16:17
      <function>strftime</function> 함수를 이용해야만 한다.
     </para>
     <para>
-     <function>getlastmod</function>, <function>gmdate</function>,
+     참고: <function>getlastmod</function>, <function>gmdate</function>,
      <function>mktime</function>, <function>strftime</function>,
-     <function>time</function> 참고.
+     <function>time</function>.
     </para>
    </refsect1>
   </refentry>
@@ -341,3 +340,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+

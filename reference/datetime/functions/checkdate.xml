@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.3 -->
-<!-- splitted from ./en/functions/datetime.xml, last change in rev 1.2 -->
+<!-- $Revision: 1.5 $ -->
+<!-- EN-Revision: 1.3 Maintainer: progcom status: ok -->
   <refentry id="function.checkdate">
    <refnamediv>
     <refname>checkdate</refname>
@@ -38,7 +37,7 @@
      </itemizedlist>
     </para>
     <para>
-     <function>mktime</function> 과 <function>strtotime</function> 참고.
+     참고: <function>mktime</function>, <function>strtotime</function>.
     </para>
    </refsect1>
   </refentry>
@@ -63,3 +62,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+

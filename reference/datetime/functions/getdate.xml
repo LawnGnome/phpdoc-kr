@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
-<!-- EN-Revision: 1.8 -->
-<!-- splitted from ./en/functions/datetime.xml, last change in rev 1.2 -->
+<!-- $Revision: 1.7 $ -->
+<!-- EN-Revision: 1.8 Maintainer: progcom status: ok -->
   <refentry id="function.getdate">
    <refnamediv>
     <refname>getdate</refname>
@@ -130,9 +129,9 @@ Array
      </example>
     </para>
     <para>
-     <function>date</function>,
+     참고: <function>date</function>,
      <function>time</function>,
-     <function>setlocale</function> 참고.
+     <function>setlocale</function>.
     </para>
    </refsect1>
   </refentry>
@@ -157,3 +156,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+
