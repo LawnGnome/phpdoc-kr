@@ -1,11 +1,20 @@
-Files                              Translators
 =============================================================================
-bookinfo.xml                       Yun-young Lee <progcom@yahoo.com>
-preface.xml
-language-defs.ent                  Yun-young Lee <progcom@yahoo.com>
-language-snippets.ent              Yun-young Lee <progcom@yahoo.com>
-------- appendices/ ---------------------------------------------------------
-about.xml                          Ryeonho Heo <rhheo@funit.net>
+CVS User  Name                 Contact email address
+=============================================================================
+          Gwangjong Lee        vizvil@dreamwiz.com
+fuzzy74   Taeyoung Jin         fuzzy74@hitel.net
+progcom   Yun-young Lee        progcom@yahoo.com
+rhheo     Ryeonho Heo          rhheo@funit.net
+
+=============================================================================
+Filename                           Translator
+=============================================================================
+bookinfo.xml                       progcom
+preface.xml                        rhheo
+language-defs.ent                  progcom
+language-snippets.ent              progcom
+------- appendices ----------------------------------------------------------
+about.xml                          rhheo
 aliases.xml
 debugger.xml
 history.xml
@@ -18,10 +27,10 @@ reserved.xml
 resources.xml
 tokens.xml
 wrappers.xml
-------- chapters/ -----------------------------------------------------------
-config.xml                         Yun-young Lee <progcom@yahoo.com>
+------- chapters ------------------------------------------------------------
+config.xml                         progcom
 install.*.xml
-intro.xml                          Yun-young Lee <progcom@yahoo.com>
+intro.xml                          progcom
 security.xml
 streams.common.xml
 streams.constants.xml
@@ -30,8 +39,8 @@ streams.file.xml
 streams.socket.xml
 streams.structs.xml
 streams.xml
-tutorial.xml                       Yun-young Lee <progcom@yahoo.com>
-------- faq/ ----------------------------------------------------------------
+tutorial.xml                       progcom
+------- faq -----------------------------------------------------------------
 build.xml
 com.xml
 databases.xml
@@ -45,7 +54,7 @@ migration4.xml
 misc.xml
 obtaining.xml
 using.xml
-------- features/ -----------------------------------------------------------
+------- features ------------------------------------------------------------
 commandline.xml
 connection-handling.xml
 cookies.xml
@@ -54,7 +63,7 @@ http-auth.xml
 persistent-connections.xml
 remote-files.xml
 safe-mode.xml
--------- language/ ----------------------------------------------------------
+-------- language -----------------------------------------------------------
 basic-syntax.xml
 constants.xml
 control-structures.xml
@@ -65,8 +74,8 @@ operators.xml
 references.xml
 types.xml
 variables.xml
--------- reference/ ---------------------------------------------------------
-apache/                            Yun-young Lee <progcom@yahoo.com>
+-------- reference ----------------------------------------------------------
+apache/                            progcom
 array/
 aspell/
 bc/
@@ -112,7 +121,7 @@ iconv/
 ifx/
 iisfunc/
 image/
-imap/                              Jin Taeyoung <fuzzy74@hitel.net>
+imap/                              fuzzy74
 info/
 ingres-ii/
 ircg/
@@ -120,7 +129,7 @@ java/
 ldap/
 mail/
 mailparse/
-math/                              Yun-young Lee <progcom@yahoo.com>
+math/                              fuzzy74
 mbstring/
 mcal/
 mcrypt/
@@ -140,7 +149,7 @@ network/
 nis/
 notes/
 objaggregation/
-oci8/                              Jin Taeyoung <fuzzy74@hitel.net>
+oci8/                              fuzzy74
 openssl/
 oracle/
 outcontrol/
