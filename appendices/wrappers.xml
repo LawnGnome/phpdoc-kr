@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.33 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.36 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <appendix id="wrappers">
  <title>지원 프로토콜/래퍼 목록</title>
@@ -112,11 +112,18 @@
   </itemizedlist>
 
   <simpara>
-   HTTP GET 메소드를 사용하여, HTTP 1.0으로 파일/자원의 읽기-전용
-   권한이 허용된다. <literal>Host:</literal> 헤더는 name-based 가상 호스트를
-   제어하기 위한 요청으로 보내진다. ini 파일이나 스트림 환경을 사용하여
-   <link linkend="ini.user-agent">user_agent</link> 문자열을 설정할수 있다면,
-   그 요청에 같이 포함되어질것이다.
+   HTTP GET 방식을 사용하여, HTTP 1.0으로 파일/자원에 읽기 전용 권한을
+   허용합니다. 이름 기반 가상 호스트를 처리하기 위해서
+   <literal>Host:</literal> 헤더를 전송합니다. ini 파일이나 스트림 환경을
+   사용하여 <link linkend="ini.user-agent">user_agent</link> 문자열을
+   설정하면, 요청에 같이 포함합니다.
+  </simpara>
+  &warn.ssl-non-standard;
+  <simpara>
+   리다이렉트(Redirect)는 PHP 4.0.5부터 지원합니다; 이전 버전을 사용한다면
+   URL의 마지막에 슬래쉬를 포함해야 합니다. (모든 리다이렉트를 처리한 에후)
+   문서가 어떤 URL 오는지 파악해야 한다면, 스트림을 통해 반환하는 응답 헤더를
+   처리해야 합니다.
   </simpara>
   <informalexample>
    <programlisting role="php">
@@ -142,12 +149,6 @@ foreach(stream_get_meta_data($fp) as $response) {
 ]]>
    </programlisting>
   </informalexample>
-  <simpara>
-   리다이렉트(Redirect)는 PHP 4.0.5부터 지원합니다; 이전 버전을 사용한다면 URL
-   마지막에 슬래쉬를 포함해야 합니다. (모든 리다이렉트를 처리한) 문서가 어디서
-   오는지 파악해야 한다면, 스트림이 반환하는 응답 헤더들을 이용한 처리를 해야
-   합니다.
-  </simpara>
   <simpara>
    스트림은 리소스의 <emphasis>body</emphasis>에 접속할 권한이 있다;
    헤더는 <varname>$http_response_header</varname> 변수에 저장된다.
@@ -285,6 +286,16 @@ foreach(stream_get_meta_data($fp) as $response) {
        </entry>
        <entry></entry>
       </row>
+      <row>
+       <entry><literal>request_fulluri</literal></entry>
+       <entry>
+        &true;로 설정하면, 전체 URI를 사용하여 요청을 작성합니다. (예.
+        <literal>GET http://www.example.com/path/to/file.html
+         HTTP/1.0</literal>) 이는 비표준 요청 형식이지만, 몇몇 프록시 서버는
+        이를 요구합니다.
+       </entry>
+       <entry>&false;</entry>
+      </row>
      </tbody>
     </tgroup>
    </table>
@@ -329,11 +340,11 @@ foreach(stream_get_meta_data($fp) as $response) {
    <link linkend="ref.ftp">FTP extension</link>을 사용할수 있다.
   </simpara>
   <note>
-   <title>Appending</title>
+   <title>덧붙이기</title>
    <simpara>
-    <literal>ftp://</literal> url 래퍼를 통해 
-    <literal>PHP 5.0.0</literal> 파일이 추가될것이다. 이전 버전에서,
-    <literal>ftp://</literal>를 통해 파일을 추가하려하면 실패할것이다.
+    <literal>PHP 5.0.0</literal>부터 <literal>ftp://</literal> URL 래퍼를
+    통해서 파일을 덧붙일 수 있습니다. 이전 버전에서,
+    <literal>ftp://</literal>를 통한 파일 덧붙이기는 실패합니다.
    </simpara>
   </note>
   <simpara>

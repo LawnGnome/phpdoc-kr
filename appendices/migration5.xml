@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.13 Maintainer: progcom Status: not complete -->
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
  <appendix id="migration5">
   <title>PHP 4에서 PHP 5로 이행</title>
 
@@ -48,10 +48,10 @@
      <link linkend="ref.tokenizer">Tokenizer</link> 확장은 더 이상
      <constant>T_ML_CONSTANT</constant> 상수를 정의하지 않습니다.
      error_reporting을 <constant>E_ALL</constant>로 설정하면, PHP가 주의문을
-     생성합니다. /* */에 대해서 <constant>T_ML_CONSTANT</constant> 대신, 
-     <constant>T_COMMENT</constant> 상수를 사용합니다.
+     생성합니다. <constant>T_ML_CONSTANT</constant>는 사용되지 않았지만, PHP
+     4에서 정의되어 있었습니다. PHP 4와 PHP 5 둘 다,
      <constant>T_COMMENT</constant> 상수가 //와 /* */를 모두 인식합니다.
-     그러나 PHP 5에서 도입된, PHP가 해석하는 PHPDoc 스타일 주석 /** */은,
+     그러나 PHP 5에서 도입한, PHP가 처리하는 PHPDoc 스타일 주석 /** */은,
      <constant>T_DOC_COMMENT</constant>로 인식합니다.
     </simpara></listitem>
     <listitem><simpara>
@@ -227,284 +227,284 @@ Action application/x-httpd-php "/php/php-cgi.exe"
     </simpara></listitem>
    </itemizedlist>
 
-   <para>InterBase:</para>
+   <para>인터베이스:</para>
    <itemizedlist>
     <listitem><simpara>
-      <function>ibase_affected_rows</function> - Return the number of rows
-      that were affected by the previous query
+      <function>ibase_affected_rows</function> - 이전의 질의에 영향을 받은
+      열의 수를 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_backup</function> - Initiates a backup task in the
-      service manager and returns immediately
+      <function>ibase_backup</function> - 서비스 관리자에 백업 작업을
+      실행시키고, 바로 돌아옵니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_commit_ret</function> - Commit a transaction without
-      closing it
+      <function>ibase_commit_ret</function> - 트랜젝션을 열어둔 채로
+      작업을 기록합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_db_info</function> - Request statistics about a
-      database
+      <function>ibase_db_info</function> - 데이터베이스에 관한 통계를
+      요청합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_drop_db</function> - Drops a database
+      <function>ibase_drop_db</function> - 데이터베이스를 지웁니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_errcode</function> - Return an error code
+      <function>ibase_errcode</function> - 오류 코드를 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_free_event_handler</function> - Cancels a registered
-      event handler
+      <function>ibase_free_event_handler</function> - 등록되어 있는 이벤트
+      핸들러를 취소합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_gen_id</function> - Increments the named generator and
-      returns its new value
+      <function>ibase_gen_id</function> - Named generator를 증가하고 새로운
+      값을 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_maintain_db</function> - Execute a maintenance command
-      on the database server
+      <function>ibase_maintain_db</function> - 데이터베이스 서버에 관리 명령을
+      실행합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_name_result</function> - Assigns a name to a result set
+      <function>ibase_name_result</function> - 이름을 결과셋에 할당합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_num_params</function> - Return the number of parameters
-      in a prepared query
+      <function>ibase_num_params</function> - 준비한 질의문의 인자 수를
+      반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_param_info</function> - Return information about a
-      parameter in a prepared query
+      <function>ibase_param_info</function> - 준비한 질의문의 인자에 대한
+      정보를 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_restore</function> - Initiates a restore task in the
-      service manager and returns immediately
+      <function>ibase_restore</function> - 서비스 관리자에 복구 작업을
+      실행시키고, 바로 돌아옵니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_rollback_ret</function> - Rollback transaction and
-      retain the transaction context
+      <function>ibase_rollback_ret</function> - 트랜젝션 내용은 유지한 채로
+      작업을 되돌립니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_server_info</function> - Request statistics about a
-      database
+      <function>ibase_server_info</function> - 데이터베이스에 관한 통계를
+      요청합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_service_attach</function> - Connect to the service manager
+      <function>ibase_service_attach</function> - 서비스 관리자에 접속합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_service_detach</function> - Disconnect from the service manager
+      <function>ibase_service_detach</function> - 서비스 관리자 연결을
+      끊습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_set_event_handler</function> - Register a callback
-      function to be called when events are posted
+      <function>ibase_set_event_handler</function> - 이벤트가 발생했을 때
+      호출할 콜백 함수를 등록합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ibase_wait_event</function> - Wait for an event to be posted
-      by the database
+      <function>ibase_wait_event</function> - 데이터베이스에 의해 이벤트가
+      발생하기를 기다립니다.
     </simpara></listitem>
    </itemizedlist>
 
    <para>iconv:</para>
    <itemizedlist>
     <listitem><simpara>
-      <function>iconv_mime_decode</function> - Decodes a MIME header field
+      <function>iconv_mime_decode</function> - MIME 헤더 필드를 디코드합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>iconv_mime_decode_headers</function> - Decodes multiple MIME
-      header fields at once
+      <function>iconv_mime_decode_headers</function> - 복수의 MIME 헤더 필드를
+      한번에 디코드합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>iconv_mime_encode</function> - Composes a MIME header field
+      <function>iconv_mime_encode</function> - MIME 헤더 필드를 작성합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>iconv_strlen</function> - Returns the character count of
-      string
+      <function>iconv_strlen</function> - 문자열의 문자 수를 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>iconv_strpos</function> - Finds position of first occurrence
-      of a needle within a haystack
+      <function>iconv_strpos</function> - haystack에서 needle이 처음으로
+      나타나는 위치를 찾습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>iconv_strrpos</function> - Finds the last occurrence of a
-      needle within the specified range of haystack
+      <function>iconv_strrpos</function> - haystack에 지정한 범위에서 needle이
+      마지막으로 나타나는 위치를 찾습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>iconv_substr</function> - Cut out part of a string
+      <function>iconv_substr</function> - 문자열의 부분을 잘라냅니다.
     </simpara></listitem>
    </itemizedlist>
 
    <para>스트림:</para>
    <itemizedlist>
     <listitem><simpara>
-      <function>stream_copy_to_stream</function> - Copies data from one stream
-      to another
+      <function>stream_copy_to_stream</function> - 한 스트림의 데이터를 다른
+      스트림으로 복제합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>stream_get_line</function> - Gets line from stream resource up
-      to a given delimiter
+      <function>stream_get_line</function> - 스트림 자원에서 주어진 구분자로
+      나타나는 열을 얻습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>stream_socket_accept</function> - Accept a connection on a
-      socket created by <function>stream_socket_server</function>
+      <function>stream_socket_accept</function> -
+      <function>stream_socket_server</function>로 생성한 소켓에 연결을
+      받아들입니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>stream_socket_client</function> - Open Internet or Unix domain
-      socket connection
+      <function>stream_socket_client</function> - 인터넷이나 유닉스 도메인
+      소켓 연결을 엽니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>stream_socket_get_name</function> - Retrieve the name of the
-      local or remote sockets
+      <function>stream_socket_get_name</function> - 로컬이나 원격 소켓의
+      이름을 얻습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>stream_socket_recvfrom</function> - Receives data from a
-      socket, connected or not
+      <function>stream_socket_recvfrom</function> - 연결 여부에 관계 없이,
+      소켓에서 데이터를 받습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>stream_socket_sendto</function> - Sends a message to a socket,
-      whether it is connected or not
+      <function>stream_socket_sendto</function> - 연결 여부에 관계 없이,
+      소켓에 메세지를 보냅니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>stream_socket_server</function> - Create an Internet or Unix
-      domain server socket
+      <function>stream_socket_server</function> - 인터넷이나 유닉스 도메인
+      소켓을 생성합니다.
     </simpara></listitem>
    </itemizedlist>
 
    <para>기타:</para>
    <itemizedlist>
     <listitem><simpara>
-      <function>convert_uudecode</function> - decode a uuencoded string
+      <function>convert_uudecode</function> - uuencode된 문자열을
+      디코드합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>convert_uuencode</function> - uuencode a string
+      <function>convert_uuencode</function> - 문자열을 uuencode합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>curl_copy_handle</function> - Copy a cURL handle
-      along with all of it's preferences
+      <function>curl_copy_handle</function> - 모든 속성과 함께 cURL 핸들을
+      복제합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>dba_key_split</function> - Splits a key in string
-      representation into array representation
+      <function>dba_key_split</function> - 문자열 표현에서 배열 표현으로 키를
+      분리합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>dbase_get_header_info</function> - Get the header info of a
-      dBase database
+      <function>dbase_get_header_info</function> - dBase 데이터베이스의 헤더
+      정보를 얻습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>dbx_fetch_row</function> - Fetches rows from a query-result
-      that had the DBX_RESULT_UNBUFFERED flag set
+      <function>dbx_fetch_row</function> - DBX_RESULT_UNBUFFERED 플래그를
+      설정한 질의 결과에서 열을 가져옵니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>fbsql_set_password</function> - Change the password for a given user
+      <function>fbsql_set_password</function> - 주어진 사용자의 암호를
+      변경합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>file_put_contents</function> - Write a string to a file
+      <function>file_put_contents</function> - 문자열을 파일로 씁니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ftp_alloc</function> - Allocates space for a file to be
-      uploaded
+      <function>ftp_alloc</function> - 업로드할 파일의 공간을 할당합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>get_declared_interfaces</function> - Returns an array of all
-      declared interfaces
+      <function>get_declared_interfaces</function> - 정의된 모든 인터페이스를
+      배열로 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>get_headers</function> - Fetches all the headers sent by the
-      server in response to a HTTP request
+      <function>get_headers</function> - HTTP 요청의 응답으로 서버가 보낸 모든
+      헤더를 가져옵니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>headers_list</function> - Returns a list of response headers
-      sent (or ready to send)
+      <function>headers_list</function> - 보내진 (혹은 보내질) 응답 해더의
+      목록을 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>http_build_query</function> - Generate URL-encoded query string
+      <function>http_build_query</function> - URL-encode한 쿼리 문자열을
+      생성합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>idate</function> - Format a local time/date as integer
+      <function>idate</function> - 로컬 날짜/시간을 정수로 형식화합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>image_type_to_extension</function> - Get file extension for
-      image-type returned by <function>getimagesize</function>,
+      <function>image_type_to_extension</function> -
+      <function>getimagesize</function>,
       <function>exif_read_data</function>,
       <function>exif_thumbnail</function>,
-      <function>exif_imagetype</function>
+      <function>exif_imagetype</function> 가 반환한 그림 형식으로 파일
+      확장자를 얻습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>imagefilter</function> - Applies Filter an image using a
-      custom angle 
+      <function>imagefilter</function> - 사용자 각도를 사용하여 그림에 필터를
+      적용합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>imap_getacl</function> - Gets the ACL for a given mailbox
+      <function>imap_getacl</function> - 주어진 편지함을 위한 ACL을 얻습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>ldap_sasl_bind</function> - Bind to LDAP directory using SASL
+      <function>ldap_sasl_bind</function> - SASL을 사용하여 LDAP 디렉토리에
+      바인드합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>mb_list_encodings</function> - Returns an array of all
-      supported encodings
+      <function>mb_list_encodings</function> - 지원하는 모든 인코딩을 배열로
+      반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>pcntl_getpriority</function> - Get the priority of any
-      process
+      <function>pcntl_getpriority</function> - 어떠한 프로세스의 우선권을
+      얻습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>pcntl_wait</function> - Waits on or returns the status of a
-      forked child as defined by the waitpid() system call
+      <function>pcntl_wait</function> - waitpid() 시스템 호출에 따라서 자식
+      프로세스의 상태를 얻거나 기다립니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>pg_version</function> - Returns an array with client, protocol
-      and server version (when available)
+      <function>pg_version</function> - 클라이언트, 프로토콜, (가능할 경우)
+      서버의 버전을 배열로 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>php_check_syntax</function> - Check the syntax of the
-      specified file
+      <function>php_check_syntax</function> - 지정한 파일의 문법을 확인합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>php_strip_whitespace</function> - Return source with stripped
-      comments and whitespace
+      <function>php_strip_whitespace</function> - 주석과 공백을 제거한 소스를
+      반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>proc_nice</function> - Change the priority of the current
-      process
+      <function>proc_nice</function> - 현재 프로세스의 우선권을 변경합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>pspell_config_data_dir</function> - Change location of
-      language data files
+      <function>pspell_config_data_dir</function> - 언어 데이터 파일의 위치를
+      변경합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>pspell_config_dict_dir</function> - Change location of the
-      main word list
+      <function>pspell_config_dict_dir</function> - 주 단어 목록의 위치를
+      변경합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>setrawcookie</function> - Send a cookie with no url encoding
-      of the value
+      <function>setrawcookie</function> - 값을 url 인코딩 하지 않은 쿠키를
+      전송합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>snmp_read_mib</function> - Reads and parses a MIB file into
-      the active MIB tree
+      <function>snmp_read_mib</function> - MIB 파일을 읽어서 활성 MIB 트리에
+      넣습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>sqlite_fetch_column_types</function> - Return an array of
-      column types from a particular table
+      <function>sqlite_fetch_column_types</function> - 특정 테이블의 컬럼형을
+      배열로 반환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>str_split</function> - Convert a string to an array
+      <function>str_split</function> - 문자열으로 배열로 변환합니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>strpbrk</function> - Search a string for any of a set of
-      characters
+      <function>strpbrk</function> - 문자 집합의 어떠한 문자를 문자열에서
+      찾습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>substr_compare</function> - Binary safe optionally case
-      insensitive comparison of two strings from an offset, up to length
-      characters
+      <function>substr_compare</function> - 이진 호환의 특정 위치에서 길이만큼
+      두 분자열을 비교합니다. 옵션으로 대소문자 구분을 하지 않을 수 있습니다.
     </simpara></listitem>
     <listitem><simpara>
-      <function>time_nanosleep</function> - Delay for a number of seconds and
-      nano seconds
+      <function>time_nanosleep</function> - 나노초 단위로 지연합니다.
     </simpara></listitem>
    </itemizedlist>
    <note>
     <para>
-     The <link linkend="ref.tidy">Tidy</link> extension has also changed its
-     API completly.
+     <link linkend="ref.tidy">Tidy</link> 확장도 API가 완전히 바뀌었습니다.
     </para>
    </note>
   </section>
@@ -543,25 +543,25 @@ Action application/x-httpd-php "/php/php-cgi.exe"
   </section>
 
   <section id="migration5.databases">
-   <title>Databases</title>
+   <title>데이터베이스</title>
    <para>
-    There were some changes in PHP 5 regarding databases (MySQL and SQLite).
+    PHP 5에서 데이터베이스에 관한 변경이 있습니다. (MySQL과 SQLite)
    </para>
    <para>
-    In PHP 5 the MySQL client libraries are not bundled, because of licence
-    problems and some others. For more information, read the <link
-     linkend="faq.databases.mysql.php5">FAQ entry</link>.
+    PHP 5에서, 라이센스 문제 등으로 인해 MySQL 클라이언트 라이브러리를
+    포함하지 않습니다. 자세한 정보는 <link
+     linkend="faq.databases.mysql.php5">FAQ 내용</link>을 읽어보십시오.
    </para>
    <para>
-    There is also a new extension, <link linkend="ref.mysqli">MySQLi (Improved
-     MySQL)</link>, which is designed to work with MySQL 4.1 and above.
+    또한, MySQL 4.1 이상에서 작동하도록 설계된 새로운 확장 모듈, <link
+     linkend="ref.mysqli">MySQLi (향상된 MySQL)</link>이 추가되었습니다.
    </para>
    <para>
-    Since PHP 5, the <link linkend="ref.sqlite">SQLite</link> extension is
-    built-in PHP. SQLite is embeddable SQL database engine and is not a
-    client library used to connect to a big database server (like MySQL or
-    PostgreSQL). The SQLite library reads and writes directly to and from the
-    database files on disk.
+    PHP 5부터, <link linkend="ref.sqlite">SQLite</link> 확장 모듈이 PHP에
+    포함됩니다. SQLite는 임베디드 SQL 데이터베이스 엔진으로, (MySQL이나
+    PostgreSQL처럼) 커다란 데이터베이스 서버에 접속하기 위한 클라이언트
+    라이브러리가 아닙니다. SQLite 라이브러리는 디스크의 데이터베이스 파일을
+    직접 읽고 씁니다.
    </para>
   </section>
 
