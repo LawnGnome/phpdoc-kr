@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.2 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.4 -->
 <section id="pcre.installation">
  &reftitle.install;
  <para>
@@ -11,7 +11,7 @@
   PCRE의 인크루드와 라이브러리 파일이 있는 특정한 디렉토리를 지정하십시오.
   이전 버전에서는 이 함수들을 사용하기 위해서는 PHP를 
   <option role="configure">--with-pcre-regex[=DIR]</option>를 주어서
-  설정하고 컴파일 해야합니다.
+  설정하고 컴파일해야합니다.
  </para>
  &windows.builtin;
 </section>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.5 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.7 -->
 <reference id="ref.pcre">
   <title>정규표현식 함수 (펄-호환)</title>
   <titleabbrev>PCRE</titleabbrev>   
