@@ -1,56 +1,47 @@
-﻿ <reference id="ref.cpdf">
+ <reference id="ref.cpdf">
   <title>ClibPDF functions</title>
   <titleabbrev>ClibPDF</titleabbrev>
 
   <partintro>
    <simpara>
-    ClibPDF lets you create PDF documents with PHP. It is available at
-    <ulink url="&url.fastio;">FastIO</ulink> but it isn't free
-    software. You should definitely read the licence before you start
-    playing with ClibPDF. If you cannot fullfil the licence agreement
-    consider using pdflib by Thomas Merz, which is also very powerful.
-    ClibPDF functionality and API is similar to Thomas Merz's pdflib but,
-    according to FastIO, ClibPDF is faster and creates smaller documents.
-    This may have changed with the new version 2.0 of pdflib.  A simple
-    benchmark (the pdfclock.c example from pdflib 2.0 turned into a php
-    script) actually shows no difference in speed at all. The file size
-    is also similar if compression is turned off.  So, try them both
-    and see which one does the job for you.
+	ClibPDF는 PHP에서 pdf 문서를 만들 수 있게 해 준다. 
+	ClibPDF는 <ulink url="&url.fastio;">FastIO</ulink>에서 구할 수 있으나 공개(free software)는 아니다. 
+	여러분은 ClibPDF를 사용하기 전에 라이센스를 자세히 읽어봐야 할 것이다. 
+	만약 여러분이 이 라이센스에 동의하기를 원하지 않으면 Thomas Merz의 pdflib의 사용을 고려 할 수도 있다. 
+	pdflib도 역시 강력한 기능을 가지고 있다. ClibPDF는 Thomas Merz의 pdflib와 기능이나 API가 매우 유사하지만, 
+	FastIO에 따르면 ClibPDF는 문서를 더 작은 크기로 더 빠르게 만들 수 있다고 한다. 
+	ClibPDF는 pdflib 새로운 2.0 버전을 변환한 것 같다. 
+	간단한 예제(pdflib 2.0의 pdfclock.c를 php 스크립트로 고친 것)에서는 실질적인 속도의 차이는 없었다. 
+	또한 압축기능을 꺼 놓으면 두 개의 파일 크기도 비슷하다.
    </simpara>
    <simpara>
-    This documentation should be read alongside the ClibPDF manual since it
-    explains the library in much greater detail. 
+	여기의 설명은 ClibPDF의 매뉴얼과 같이 읽는 것이 좋다. 
+	이 매뉴얼은 라이브러리에 대해 더 자세히 설명하고 있다. 
+	ClibPDF의 매뉴얼의 내용을 이해여야 PHP에서의 이 라이브러리를 사용할 수 있을 것이다.
    </simpara>
 
    <simpara>
-    Many functions in the native ClibPDF and the PHP module, as
-    well as in pdflib, have the same name.  All functions except for
-    <function>cpdf_open</function> take the handle for the document as
-    their first parameter.
+	대부분의 PHP 모듈의 함수이름은 ClibPDF 고유의 함수(pdflib도 마찬가지고) 이름과 동일하다. 
+	<function>cpdf_open</function> 을 제외한 모든 함수들은 첫 번째 인수로 작업할 문서의 핸들을 가지게 된다. 
    </simpara>
    <simpara>
-    Currently this handle is not used internally since ClibPDF does
-    not support the creation of several PDF documents at the same time.
-    Actually, you should not even try it, the results are unpredictable. I
-    can't oversee what the consequences in a multi threaded environment
-    are.  According to the author of ClibPDF this will change in one of
-    the next releases (current version when this was written is 1.10).
-    If you need this functionality use the pdflib module.
+	현재 ClibPDF가 동시에 여러개의 PDF 문서를 만들지 못하기 때문에 이 핸들은 내부적으로 아무 의미가 없다. 
+	그러나 이를 시험하지는 말라. 어떤 결과가 나올지 알 수 없다. 
+	더구나 멀티 쓰레드 환경에서는 중대한 오류가 생길 수도 있다. 
+	ClibPDF의 제작자에 따르면 이 내용은 다음 버전에서 수정될 것이라고 한다.(현재 버전은 1.10이다.) 
+	여러문서를 동시에 만드는 기능이 필요하다면 pdflib module을 사용하도록 하라.
    </simpara>
    <note>
     <simpara>
-     The function <function>cpdf_set_font</function> has changed since PHP 3
-     to support asian fonts. The encoding parameter is no longer an integer
-     but a string.
+	PHP3 이후로 <function>cpdf_set_font</function> 함수는 2byte의 아시안 폰트를 지원하도록 바뀌었다. 
+	그리고, 이 함수의 엔코딩 파라메터는 이제 정수값이 아니고 문자열이다.
     </simpara>
    </note>
    <simpara>
-    One big advantage of ClibPDF over pdflib used to be the possibility
-    to create
-    the pdf document completely in memory without using temporary files.
-    It also provides the ability to pass coordinates in a predefined
-    unit length. This is a handy feature but can be simulated with
-    <function>pdf_translate</function>.
+	pdflib에 비해서 ClibPDF의 가장 큰 장점은 pdf 문서를 임시 파일을 
+	사용하지 않고 메모리 상에서 만들 수 있다는 점이다. 
+	또한 ClibPDF는 미리 정의된 유닛 길이의 좌표를 넘겨줄 수 있다. 
+	이것은 매유 편리한 기능이지만 pdflib에서도 <function>pdf_translate</function>를 사용하면 비슷한 기능을 지원할 수 있다.
    </simpara>
    <simpara>
     Another nice feature of ClibPDF is the fact that any page can be modified
@@ -59,11 +50,10 @@
     page and presume modifying an other page.
    </simpara>
    <simpara>
-    Most of the functions are fairly easy to use. The most difficult part
-    is probably creating a very simple PDF document at all. The following
-    example should help you to get started. It creates a document
-    with one page. The page contains the text "Times-Roman" in an
-    outlined 30pt font. The text is underlined.
+	대부분의 함수들은 사용하기 쉽다. 간단한 pdf 문서를 하나 만들어보면 
+	별로 어렵지 않다는 것을 알 수 있을 것이다. 다음 예를 보면 쉽게 시작할 수 있다. 
+	이 예제은 한 장짜리 test.pdf라는 파일을 만드는 것이다. 
+	이 페이지에는 외곽선 30pt의 "Times-Roman" 폰트의 text가 쓰여진다. 이 text는 밑줄이 그어진다. 
    </simpara>
    <example>
     <title>Simple ClibPDF Example</title>
@@ -88,9 +78,8 @@ cpdf_close($cpdf);
     </programlisting>
    </example>
    <simpara>
-    The pdflib distribution contains a more complex example which creates a
-    series of pages with an analog clock. Here is that example converted
-    into PHP using the ClibPDF extension:
+	pdflib 배포본에 보면 아나로그 시계가 포함된 여러 페이지의 문서를 만드는 조금은 복잡한 예제가 있다. 
+	아래 예제는 그 예제를 ClibPDF 확장을 사용한 PHP로 변환한 것이다. :
    </simpara>
    <example>
     <title>pdfclock example from pdflib 2.0 distribution</title>
