@@ -8,37 +8,22 @@
 				<title>About XSLT and Sablotron</title>
 				<para>
       XSLT (Extensible Stylesheet Language (XSL)
-      Transformations) is a language for transforming XML
-      documents into other XML documents.  It is a standard
-      defined by The World Wide Web consortium (W3C). 
-      Information about XSLT and related technologies can be
-      found at <ulink url="&url.xslt;">&url.xslt;</ulink>.
+      Transformations)은 XML 문서 안으로 다른 XML 문서를 전환시키는 언어이다. 이것은 W3C에 의해 정의된 표준이다. XSLT에 관한 정보와 기술지원은 <ulink url="&url.xslt;">&url.xslt;</ulink>에서 찾을 수 있다..
      </para>
 			</sect2>
 			<sect2 id="xslt.install">
 				<title>Installation</title>
 				<para>
-      This extension uses <productname>Sabloton</productname>
-      and <productname>expat</productname>, which can both be
-      found at <ulink url="&url.sablotron;">&url.sablotron;</ulink>. Binaries
-      are provided as well as source.
+      이 익스텐션은 <productname>Sabloton</productname>과 <productname>expat</productname>을 사용하고, <ulink url="&url.sablotron;">&url.sablotron;</ulink>에서 구할 수 있다.
      </para>
 				<para>
-      On UNIX, run <command>configure</command> with the <option role="configure">--with-sablot</option>.  
-      The <productname>Sablotron</productname> library
-      should be installed somewhere your compiler can find it. 
+      UNIX에서, <command>configure</command>를 <option role="configure">--with-sablot</option>하여 실행시킨다. <productname>Sablotron</productname> 라이브러리는 아마도 이미 인스톨되어 있고 찾을 수 있을 것이다. 
      </para>
 			</sect2>
 			<sect2 id="xslt.about">
 				<title>About This Extension</title>
 				<para>
-      This PHP extension implements support
-      <productname>Sablotron</productname> from Ginger Alliance
-      in PHP. This toolkit lets you transform 
-      XML documents into other documents, including new XML
-      documents, but also into HTML or other target formats. It
-      basically provides a standardized and portable template
-      mechanism, separating content and design of a website.
+      이 익스텐션은 PHP의 Ginger Alliance부터 <productname>Sablotron</productname>을 지원하는 수단을 준다. 이 툴킷은 XML문서를 다른 문서에 전환하여 넣어주는데, 이는 새로운 XML문서만이 아니라, HTML이나 다른 포멧을 포함한다. 기본적으로 표준화, 적합한 템플릿 메카니즘, 컨텐츠를 분리하고 웹사이트를 디자인하는 것을 지원한다.
      </para>
 			</sect2>
 		</sect1>
@@ -46,7 +31,7 @@
 	<refentry id="function.xslt-closelog">
 		<refnamediv>
 			<refname>xslt_closelog</refname>
-			<refpurpose>Clear the logfile for a given instance of Sablotron</refpurpose>
+			<refpurpose>Sablotron 인스턴스에 관한 로그파일을 지운다.</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
@@ -66,23 +51,21 @@
 						</term>
 						<listitem>
 							<simpara>
-     A reference to the XSLT parser.
+     XSLT parser 참조.
     </simpara>
 						</listitem>
 					</varlistentry>
 				</variablelist>
 			</para>
 			<para>
-     This function returns false if <parameter>parser</parameter> does
-     not refer to a valid parser, or if the closing of the logfile
-     fails. Otherwise it returns true.
+     만일 정확한 <parameter>parser</parameter>가 참조되지 않거나 로그파일을 닫는데 실패한경우 false를 그렇지 않은 경우 true를 리턴한다.
     </para>
 		</refsect1>
 	</refentry>
 	<refentry id="function.xslt-create">
 		<refnamediv>
 			<refname>xslt_create</refname>
-			<refpurpose>Create a new XSL processor.</refpurpose>
+			<refpurpose>새 XSL processor를 생성한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
@@ -94,15 +77,14 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     This function returns a handle for a new XSL processor. This handle
-     is needed in all subsequent calls to XSL functions.
+     이 함수는 새 XSL processor의 handle을 리턴한다. 이 handle은 XSL 함수라 불리는 모든 subsequent를 필요로 한다.
     </para>
 		</refsect1>
 	</refentry>
 	<refentry id="function.xslt-errno">
 		<refnamediv>
 			<refname>xslt_errno</refname>
-			<refpurpose>Return the current error number</refpurpose>
+			<refpurpose>에러번호를 리터한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
@@ -118,16 +100,14 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     Return the current error number of the given XSL processor. If
-     no handle is given, the last error number that occured anywhere
-     is returned.
+     주어진 XSL processor의 에러넘버를 리턴한다. handle이 주어지지 않으면, 어디에서 일어나든지 마지막 에러번호가 리턴된다.
     </para>
 		</refsect1>
 	</refentry>
 	<refentry id="function.xslt-error">
 		<refnamediv>
 			<refname>xslt_error</refname>
-			<refpurpose>Return the current error string</refpurpose>
+			<refpurpose>에러정보를 리턴한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
@@ -143,16 +123,14 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     Return the current error string of the given XSL processor. If
-     no handle is given, the last error string that occured anywhere
-     is returned.
+     주어진 XSL processor의 에러를 문자로 출력한다. 만일 handle이 주어지지 않으면 어디서 발생하든지 마지막 에러 정보를 출력한다.
     </para>
 		</refsect1>
 	</refentry>
 	<refentry id="function.xslt-fetch-result">
 		<refnamediv>
 			<refname>xslt_fetch_result</refname>
-			<refpurpose>Fetch a (named) result buffer</refpurpose>
+			<refpurpose>결과를 Fetch a (named) result buffer</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
