@@ -18,14 +18,12 @@ void php3_foo(INTERNAL_FUNCTION_PARAMETERS) {
 		<sect2 id="phpdevel-addfunc-args">
 			<title>함수 인자</title>
 			<para>
-
-    Arguments are always of type pval.  This type contains a union
-    which has the actual type of the argument.  So, if your function
-    takes two arguments, you would do something like the following at
-    the top of your function:</para>
+인자는 언제나 pval타입이다. 이 타입은 인자의 실제타입(actual type)의 결합을 포함한다.
+그래서, 당신의 함수가 2개의 인자를 가진다면 당신은 당신의 함수 맨위에서 따르는것처럼 해야 할 것이다:
+</para>
 			<para>
 				<example>
-					<title>Fetching function arguments</title>
+					<title>함수 인자 가져오기</title>
 					<programlisting>
 pval *arg1, *arg2;
 if (ARG_COUNT(ht) != 2 || getParameters(ht,2,&amp;arg1,&amp;arg2)==FAILURE) {
@@ -33,33 +31,32 @@ if (ARG_COUNT(ht) != 2 || getParameters(ht,2,&amp;arg1,&amp;arg2)==FAILURE) {
 }
      </programlisting>
 				</example>
-    
-    NOTE: Arguments can be passed either by value or by reference. In
-    both cases you will need to pass &amp;(pval *) to getParameters. If
-    you want to check if the n'th parameter was sent to you by
-    reference or not, you can use the function,
-    ParameterPassedByReference(ht,n). It will return either 1 or 0.</para>
+노트 : 함수는 값이나 참조 둘중 하나로 인자를 넘길수 있다. 
+양쪽 경우다 당신은 &amp;(pval *) 에서 getParameters로 통과하는게 필요할 것이다.
+당신이 체크하겠다면 몇번째 인자가 당신에게 참조값이나 아닌것으로 보내지는지 
+안다면 함수에서 사용할수 있다.
+ParameterPassedByReference(ht,n). 그건 1이나 0 값을 반환한다.
+</para>
 			<simpara>
-    When you change any of the passed parameters, whether they are
-    sent by reference or by value, you can either start over with the
-    parameter by calling pval_destructor on it, or if it's an ARRAY
-    you want to add to, you can use functions similar to the ones in
-    internal_functions.h which manipulate return_value as an ARRAY.</simpara>
+당신은 넘겨온 인자의 어떤것을 변경할때 그들은 참조나 값에 의해 보낼지 아닐지 
+pval_destuctor 라 불리운 인자를 시작하거나, 만약 배열이라면 추가할때 함수 비숫하게 
+배열같은 반환값을 다루는 internal_functions.h내에서 사용할수 있다
+</simpara>
 			<simpara>
-    Also if you change a parameter to IS_STRING make sure you first
-    assign the new estrdup()'ed string and the string length, and only
-    later change the type to IS_STRING. If you change the string of a
-    parameter which already IS_STRING or IS_ARRAY you should run
-    pval_destructor on it first.</simpara>
+이미 당신은 IS_STRING으로 인자를 바꾼다면 새로운 estrdup()였던 문자열, 문자열 길이, 
+가장 나중에 바꾼 IS_STRING의 타입을 먼저 할당하는 것을 확실히 해야 한다.
+이미 존재하는 IS_STRING이나 IS_ARRAY같은 인자의 문자열을 바꾼다면
+pval_destructor를 먼저 실행해야 할 것이다.</simpara>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-varargs">
-			<title>Variable Function Arguments</title>
+			<title>변수형 함수 표본</title>
 			<para>
-    A function can take a variable number of arguments.  If your function can
-    take either 2 or 3 arguments, use the following:</para>
+이 함수는 표본의 변수형 숫자 가질 수 있다. 
+당신의 함수가 2개나 3개의 인자를 가질수 있다면 다음과 같이 사용하라:
+</para>
 			<para>
 				<example>
-					<title>Variable function arguments</title>
+					<title>변수형 함수 인자</title>
 					<programlisting>
 pval *arg1, *arg2, *arg3;
 int arg_count = ARG_COUNT(ht);
@@ -73,13 +70,11 @@ if (arg_count &lt; 2 || arg_count &gt; 3 ||
 			</para>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-using-args">
-			<title>Using the Function Arguments</title>
+			<title>함수 인자 사용하기</title>
 			<para>
-    The type of each argument is stored in the pval type field. This
-    type can be any of the following:
-    
+각 인자의 타입은 pval타입 필드로 저장된다. 이 타입은 다음중 어느것이든 사용할수 있다:		
     <table>
-					<title>PHP Internal Types</title>
+					<title>PHP 내부 타입들</title>
 					<tgroup cols="2">
 						<tbody>
 							<row>
@@ -123,11 +118,9 @@ if (arg_count &lt; 2 || arg_count &gt; 3 ||
 				</table>
 			</para>
 			<para>
-    If you get an argument of one type and would like to use it as
-    another, or if you just want to force the argument to be of a
-    certain type, you can use one of the following conversion
-    functions:
-
+당신이 하나의 타입 인자 가지는 것과 다른 것처럼 사용하길 바라는 것 또는 
+단지 확실한 타입의 인자를 시행하길 원한다면,
+당신은 전환함수들 중 하나를 쓸수 있다:
     <programlisting>
 convert_to_long(arg1);
 convert_to_double(arg1);
@@ -137,9 +130,9 @@ convert_string_to_number(arg1);  /* Converts string to either LONG or DOUBLE dep
      </programlisting>
 			</para>
 			<simpara>
-    These function all do in-place conversion.  They do not return anything.</simpara>
+이들 함수는 모두 하나로 변환를 한다. 아무런 반환을 하지 않는다.</simpara>
 			<para>
-    The actual argument is stored in a union; the members are:
+실제적인 인자는 결합체로 저장된다; 그 구성원은: 
     <itemizedlist>
 					<listitem>
 						<simpara>IS_STRING: arg1-&gt;value.str.val</simpara>
@@ -154,26 +147,23 @@ convert_string_to_number(arg1);  /* Converts string to either LONG or DOUBLE dep
 			</para>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-memmgmt">
-			<title>Memory Management in Functions</title>
+			<title>함수내 메모리 관리</title>
 			<simpara>
-    Any memory needed by a function should be allocated with either
-    emalloc() or estrdup().  These are memory handling abstraction
-    functions that look and smell like the normal malloc() and
-    strdup() functions.  Memory should be freed with efree().</simpara>
+모든 메모리는 emalloc()이나 estrdup()로 할당되는 함수가 필요하다.
+이것들은 malloc()와 strdup()함수과 같이 보이는 메모리처리가상함수이다.
+메모리는 efree()로 해제될수 있다.
+</simpara>
 			<simpara>
-    There are two kinds of memory in this program: memory which is
-    returned to the parser in a variable, and memory which you need for
-    temporary storage in your internal function.  When you assign a
-    string to a variable which is returned to the parser you need to
-    make sure you first allocate the memory with either emalloc() or
-    estrdup().  This memory should NEVER be freed by you, unless you
-    later in the same function overwrite your original assignment
-    (this kind of programming practice is not good though).</simpara>
+이 프로그램내에서 두 종류의 메모리는:
+변수형에서 파서를 반환하는 것과 당신이 내부 함수내 필요한 임시 기억장소.
+당신이 문자열을 변수형으로 지정할때 
+반환된 파서가 emalloc()나 estrdup()에 먼저 메모리에 할당되었는지 확인해야 한다. 
+</simpara>
 			<simpara>
-    For any temporary/permanent memory you need in your
-    functions/library you should use the three emalloc(), estrdup(),
-    and efree() functions. They behave EXACTLY like their counterpart
-    functions. Anything you emalloc() or estrdup() you have to efree()
+어떤 임시/	영구 메모리를 위해 당신은 당신의 함수/라이브러리내에서 emalloc(), estrdup(), 그리고 efree() 함수 3개를 이용해야 한다.
+당신은 사본 함수처럼 정확히 해야 할 것이다.
+
+ Anything you emalloc() or estrdup() you have to efree()
     at some point or another, unless it's supposed to stick around
     until the end of the program; otherwise, there will be a memory
     leak. The meaning of "the functions behave exactly like their
@@ -181,16 +171,13 @@ convert_string_to_number(arg1);  /* Converts string to either LONG or DOUBLE dep
     emalloc()'ed nor estrdup()'ed you might get a segmentation
     fault. So please take care and free all of your wasted memory.</simpara>
 			<simpara>
-    If you compile with "-DDEBUG", PHP 3 will print out a list of all
-    memory that was allocated using emalloc() and estrdup() but never
-    freed with efree() when it is done running the specified script.</simpara>
+만약 당신이 "-DDEBUG"로 컴파일한다면 PHP3는 지정된 emalloc()과 estrdup() 사용한 모든 메모리 리스트를 출력할 것이다. 명시된 스크립트가 실행되고 있을때는 efree()를 용한 해제를 해선 안된다.
+</simpara>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-symtab">
-			<title>Setting Variables in the Symbol Table</title>
+			<title>심볼 테이블에서 변수형 설정</title>
 			<para>
-    A number of macros are available which make it easier to set a
-    variable in the symbol table:
-    
+			매크로들의 숫자는 심볼 테이블에서 더 쉽게 변수형으로 설정할 수 있다:
     <itemizedlist>
 					<listitem>
 						<simpara>SET_VAR_STRING(name,value) <footnoteref linkend="symtab-1"/>
@@ -207,52 +194,51 @@ convert_string_to_number(arg1);  /* Converts string to either LONG or DOUBLE dep
 			<para>
 				<footnote id="symtab-1">
 					<simpara>
-      Be careful here.  The value part must be malloc'ed manually because
-      the memory management code will try to free this pointer later.  Do
-      not pass statically allocated memory into a SET_VAR_STRING.</simpara>
+이부분을 주의깊게 보라
+이 값은 수동으로 malloc했어야 한다. 왜냐하면 메모리 관리 코드는 나중에 이 부분을
+해제할 것이다. SET_VAR_STRING로부터 지정된 메모리를 정적으로 넘지 말아야 한다.</simpara>
 				</footnote>
 			</para>
 			<simpara>
-    Symbol tables in PHP 3.0 are implemented as hash tables.  At any
-    given time, &amp;symbol_table is a pointer to the 'main' symbol
-    table, and active_symbol_table points to the currently active
-    symbol table (these may be identical like in startup, or
-    different, if you're inside a function).</simpara>
+PHP 3.0의 심볼 테이블은 hash 테이블처럼 제공된다. 
+주어진 어떤 시간에 &amp;symbol_table 은 'main' 심볼 테이블을 가르키고,
+active_symbol_table은 현재 실행중인 심볼 테이블을 가르킨다.
+(이것을은 아마 함수내에서 처음또는 다른때에도 동일할 것이다.)
+</simpara>
 			<para>
-    The following examples use 'active_symbol_table'.  You should
-    replace it with &amp;symbol_table if you specifically want to work
-    with the 'main' symbol table.  Also, the same functions may be
-    applied to arrays, as explained below.</para>
+
+다음은 'active_symbol_table'을 이용한 예제들이다. 당신이 명확하게 'main' 심볼 테이블로 작업하길 원하면 &amp;symbol_table으로 그것을 대체해야 한다. 
+마찬가지로 같은 함수들도 배열도 아래에 밝힌 것처럼 적용될 것이다. 
+</para>
 			<para>
 				<example>
-					<title>Checking whether $foo exists in a symbol table</title>
+					<title>심볼테이블내 $foo가 존재하는지 체크</title>
 					<programlisting>
 if (hash_exists(active_symbol_table,"foo",sizeof("foo"))) { exists... }
 else { doesn't exist }
      </programlisting>
 				</example>
 				<example>
-					<title>Finding a variable's size in a symbol table</title>
+					<title>심볼테이블내 변수형의 크기 찾기</title>
 					<programlisting>
 hash_find(active_symbol_table,"foo",sizeof("foo"),&amp;pvalue);
 check(pvalue.type);
      </programlisting>
 				</example>
-    
-    Arrays in PHP 3.0 are implemented using the same hashtables as
-    symbol tables.  This means the two above functions can also be
-    used to check variables inside arrays.</para>
+PHP 3.0의 배열은 심볼 테이블처럼 같은 해시테이블로 사용하는 것을 제공된다.
+두개 이상의 함수가 배열내에서 변수형을 체크하는 것을 할 수 있다는 뜻이다.    
+</para>
 			<simpara>
-    If you want to define a new array in a symbol table, you should do
-    the following.</simpara>
+만약 당신 심볼테이블네에서 새로운 배열을 정의하길 원하면, 다음과 같이 해야 한다.
+</simpara>
 			<simpara>
-    First, you may want to check whether it exists and abort
-    appropiately, using hash_exists() or hash_find().</simpara>
+			먼저 당신은 체크하길 원하는 것이 존재하는 지 승인이 취소되었는지 hash_exists()나 hash_find()로 확인해야 한다.
+</simpara>
 			<simpara>
-    Next, initialize the array:</simpara>
+다음, 배열을 초기화한다:</simpara>
 			<para>
 				<example>
-					<title>Initializing a new array</title>
+					<title>새 배열 초기화</title>
 					<programlisting>
 pval arr;
   
@@ -260,14 +246,14 @@ if (array_init(&amp;arr) == FAILURE) { failed... };
 hash_update(active_symbol_table,"foo",sizeof("foo"),&amp;arr,sizeof(pval),NULL);
      </programlisting>
 				</example>
-    
-    This code declares a new array, named $foo, in the active symbol
-    table. This array is empty.</para>
+이 코드는 활성화된 심볼 테이블내에서 $foo란 이름으로 새 배열로 선언되었다.
+이 배열은 비어 있다.</para>
 			<simpara>
-    Here's how to add new entries to it:</simpara>
+여기는 새 엔트리의 추가하는 법이다:
+</simpara>
 			<para>
 				<example>
-					<title>Adding entries to a new array</title>
+					<title>새 배열에 엔트리 추가</title>
 					<programlisting>
 pval entry;
   
@@ -286,34 +272,31 @@ hash_index_update(arr.value.ht,7,&amp;entry,sizeof(pval),NULL);
 hash_next_index_insert(arr.value.ht,&amp;entry,sizeof(pval),NULL); 
      </programlisting>
 				</example>
-     
-    If you'd like to modify a value that you inserted to a hash, you
-    must first retrieve it from the hash.  To prevent that overhead,
-    you can supply a pval ** to the hash add function, and it'll be
-    updated with the pval * address of the inserted element inside the
-    hash.  If that value is NULL (like in all of the above examples) -
-    that parameter is ignored.</para>
+만약 당신이 당신이 hash에 삽입한 값을 바꾸고 싶다면 당신은 먼저 hash에서 그것을 반환해와야 한다.
+
+To prevent that overhead,
+당신은 pval ** 에서 hash 추가 함수에 공급할수 있고, 그건 hash안에서 추가된 요소의pval * 주소로 수정될 수 있다.
+만약 그 값이 NULL (모든 예제가 아닌 것처럼)이면, 그 인자는 무시된다.
+</para>
 			<simpara>
-    hash_next_index_insert() uses more or less the same logic as
-    "$foo[] = bar;" in PHP 2.0.</simpara>
+PHP 2.0에서 hash_next_index_insert() "$foo[] = bar;"같은 동일한 로직으로 사용되었다.</simpara>
 			<simpara>
-    If you are building an array to return from a function, you can
-    initialize the array just like above by doing:</simpara>
+만약 함수로부터 반환을 위한 배열을 만든다면, 다음과 같이 배열을 초기화할수 있다:
+</simpara>
 			<programlisting>
 if (array_init(return_value) == FAILURE) { failed...; }
    </programlisting>
 			<simpara>
-    ...and then adding values with the helper functions:</simpara>
+..그리고 helper함수와 함께 값을 추가한다
+</simpara>
 			<programlisting>
 add_next_index_long(return_value,long_value);
 add_next_index_double(return_value,double_value);
 add_next_index_string(return_value,estrdup(string_value));
    </programlisting>
 			<para>
-    Of course, if the adding isn't done right after the array
-    initialization, you'd probably have to look for the array first:
-      
-    <programlisting>
+물론, 배열초기화후 추가하지 않겠다면, 배열을 먼저 찾아야 한다:
+<programlisting>
 pval *arr;
   
 if (hash_find(active_symbol_table,"foo",sizeof("foo"),(void **)&amp;arr)==FAILURE) { can't find... }
@@ -321,18 +304,19 @@ else { use arr-&gt;value.ht... }
     </programlisting>
 			</para>
 			<simpara>
-    Note that hash_find receives a pointer to a pval pointer, and not
-    a pval pointer.</simpara>
+hash_find는 포인터에서 pval포인터와 pval포인터 아니어도 받는다.
+</simpara>
 			<simpara>
-    Just about any hash function returns SUCCESS or FAILURE (except
-    for hash_exists(), which returns a boolean truth value).</simpara>
+거의 모든 hash 함수는 SUCCESS나 FAILURE만 반환한다. (불린 표준값을 반환하는 hast_exists()는 제외한다).
+</simpara>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-retsimple">
-			<title>Returning simple values</title>
+			<title>간단한 값 반환</title>
 			<simpara>
-    A number of macros are available to make returning values from a
-    function easier.</simpara>
+매크로의 숫자은 함수로부터 간단하게 리턴받는게 가능하다.
+</simpara>
 			<para>
+RETURN_* 매크로들 모두 반환값과 함수에서 반환되는 되는 것을 정한다.
     The RETURN_* macros all set the return value and return from the
     function:
     <itemizedlist>
@@ -360,7 +344,7 @@ else { use arr-&gt;value.ht... }
 				</itemizedlist>
 			</para>
 			<para>
-    The RETVAL_* macros set the return value, but do not return.
+RETVAL_*  매크로는 리턴값을 설정할 수 있으나, 반환은 되지 않는다. 
     <itemizedlist>
 					<listitem>
 						<simpara>RETVAL_FALSE</simpara>
@@ -383,36 +367,36 @@ else { use arr-&gt;value.ht... }
 				</itemizedlist>
 			</para>
 			<simpara>
-    The string macros above will all estrdup() the passed 's'
-    argument, so you can safely free the argument after calling the
-    macro, or alternatively use statically allocated memory.</simpara>
+문자열 스트링은 's'인자가 통과된 모든 estrdup() 이상일 것이다.
+그리고, 당신 안전하게 부른 매크로를 부른후 인자를 해제를 할 수 있거나, 부가적으로는
+지정된 메모리를 정적으로 사용할 수 있다.
+</simpara>
 			<simpara>
-    If your function returns boolean success/error responses, always
-    use RETURN_TRUE and RETURN_FALSE respectively.</simpara>
+만약 반환된 당신의 함수가 참/거짓 불린 값을 반환하면, 각각 RETURN_TRUE와 RETURN_FALSE 언제나 사용한다.
+</simpara>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-retcomplex">
-			<title>Returning complex values</title>
+			<title>완전한 값 반환</title>
 			<simpara>
-    Your function can also return a complex data type such as an
-    object or an array.</simpara>
+당신의 함수는 이미 객체나 배열의 완전한 데이타 타입을 리턴할 수 있다.
+</simpara>
 			<para>
-    Returning an object:
+객체 반환:
 
     <orderedlist numeration="arabic">
 					<listitem>
-						<simpara>Call object_init(return_value).</simpara>
+						<simpara>object_init(return_value)를 부른다.</simpara>
 					</listitem>
 					<listitem>
-						<para>Fill it up with values. The functions available
-       for this purpose are listed below.</para>
+						<para>값으로 채운다. 모든 함수는 아래로 출력되는 결과가 가능하다.</para>
 					</listitem>
 					<listitem>
-						<para> Possibly, register functions for this object.
-       In order to obtain values from the object, the function would
-       have to fetch "this" from the active_symbol_table.  Its type
-       should be IS_OBJECT, and it's basically a regular hash table
-       (i.e., you can use regular hash functions on .value.ht).  The
-       actual registration of the function can be done using:
+						<para> 
+가능하다면 이 객체를 위한 함수는 등록시킨다.
+객체로부터 값을 차례대로 포함하고, 함수는 activ_symbol_table로부터 "this"를 가지고 와야 할 것이다.
+이들 타입은 IS_OBJECT이 아니면 안되고, 기본적으로 정규 해시 테이블이어야 한다
+(예, 당신은 .value.ht처럼 정규 해시 함수를 사용할 수 있다)
+함수의 실제 등록은 다음과 같이 할수 있다:
        <programlisting>
 add_method( return_value, function_name, function_ptr );
        </programlisting>
@@ -425,42 +409,43 @@ add_method( return_value, function_name, function_ptr );
     <itemizedlist>
 					<listitem>
 						<simpara>add_property_long( return_value,
-       property_name, l ) - Add a property named 'property_name', of
-       type long, equal to 'l'</simpara>
+       property_name, l ) - long타입, I와 동일한 'property_name'이라는 프로퍼티 추가
+</simpara>
 					</listitem>
 					<listitem>
 						<simpara>add_property_double( return_value,
-       property_name, d ) - Same, only adds a double</simpara>
+       property_name, d ) - 몇개의 double타입만 추가</simpara>
 					</listitem>
 					<listitem>
 						<simpara>add_property_string( return_value,
-       property_name, str ) - Same, only adds a string</simpara>
+       property_name, str ) - 몇개의 string타입만 추가</simpara>
 					</listitem>
 					<listitem>
 						<simpara>add_property_stringl( return_value,
-       property_name, str, l ) - Same, only adds a string of length 'l'</simpara>
+       property_name, str, l ) - 몇개의 'l'길이의 스트링만 추가'</simpara>
 					</listitem>
 				</itemizedlist>
 			</para>
 			<para>
-    Returning an array:
+배열 반환:
     
     <orderedlist numeration="arabic">
 					<listitem>
-						<simpara>Call array_init(return_value).</simpara>
+						<simpara>array_init 부르기(return_value).</simpara>
 					</listitem>
 					<listitem>
-						<simpara>Fill it up with values. The functions available
-     for this purpose are listed below.</simpara>
+						<simpara>값으로 채우기. 함수는 아래 목록의 사용을 가능하게 한다.</simpara>
 					</listitem>
 				</orderedlist>
 			</para>
 			<para>
+	
     The functions used to populate an array are:
     <itemizedlist>
 					<listitem>
-						<simpara>add_assoc_long(return_value,key,l) - add
-     associative entry with key 'key' and long value 'l'</simpara>
+						<simpara>add_assoc_long(return_value,key,l) - 
+'ken'키와 'I'의 long으로 된 공동 엔트리
+</simpara>
 					</listitem>
 					<listitem>
 						<simpara>add_assoc_double(return_value,key,d)</simpara>
@@ -470,11 +455,13 @@ add_method( return_value, function_name, function_ptr );
 					</listitem>
 					<listitem>
 						<simpara>add_assoc_stringl(return_value,key,str,length,duplicate)
-     specify the string length</simpara>
+스트링 길이 지정
+</simpara>
 					</listitem>
 					<listitem>
-						<simpara>add_index_long(return_value,index,l) - add
-     entry in index 'index' with long value 'l'</simpara>
+						<simpara>add_index_long(return_value,index,l) - 
+엔트리의 'index' 인덱스에 'i'으로 된 long을 추가
+</simpara>
 					</listitem>
 					<listitem>
 						<simpara>add_index_double(return_value,index,d)</simpara>
@@ -484,11 +471,12 @@ add_method( return_value, function_name, function_ptr );
 					</listitem>
 					<listitem>
 						<simpara>add_index_stringl(return_value,index,str,length)
-     - specify the string length</simpara>
+     - 문자열 길이 지정</simpara>
 					</listitem>
 					<listitem>
-						<simpara>add_next_index_long(return_value,l) - add an
-     array entry in the next free offset with long value 'l'</simpara>
+						<simpara>add_next_index_long(return_value,l) - 
+배열 엔트리의  'ㅣ'으로 된 long을 다음 free offset에 추가
+</simpara>
 					</listitem>
 					<listitem>
 						<simpara>add_next_index_double(return_value,d)</simpara>
@@ -498,18 +486,17 @@ add_method( return_value, function_name, function_ptr );
 					</listitem>
 					<listitem>
 						<simpara>add_next_index_stringl(return_value,str,length)
-     - specify the string length</simpara>
+     - 문자열 길이 지정</simpara>
 					</listitem>
 				</itemizedlist>
 			</para>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-reslist">
-			<title>Using the resource list</title>
+			<title>자원 목록 사용하기</title>
 			<simpara>
-    PHP 3.0 has a standard way of dealing with various types of
-    resources. This replaces all of the local linked lists in PHP 2.0.</simpara>
+    PHP 3.0은 여러 자원의 가지 형태를 다루는 표준적인 방법을 가지고 있다. 이것은 PHP 2.0의 모든 지역적인 linked list를 대체한다</simpara>
 			<para>
-    Available functions:
+가능한 함수:
 
     <itemizedlist>
 					<listitem>
@@ -581,11 +568,7 @@ php3_list_delete(resource_id-&gt;value.lval);
 		<sect2 id="phpdevel-addfunc-prestable">
 			<title>Using the persistent resource table</title>
 			<para>
-    PHP 3.0 has a standard way of storing persistent resources (i.e.,
-    resources that are kept in between hits).  The first module to use
-    this feature was the MySQL module, and mSQL followed it, so one
-    can get the general impression of how a persistent resource should
-    be used by reading mysql.c.  The functions you should look at are:
+    PHP 3.0은 영구적인 자원(persistent resources; 예, 그동안의 히트수를 보관하는 자원)을 저장하는 표준적인 방법을 가지고 있다. 이 방법은 MySQL 모듈에서 처음사용되었고, mSQL도 이것을 따르고 있다. 따라서 persistent resource를 어떻게 사용하는가에 대해 알고 싶다면 우선 mysql.c를 읽어보도록하자. 주의해서 볼 함수들은 다은과 같다:
 
     <simplelist>
 					<member>php3_mysql_do_connect</member>
@@ -594,7 +577,7 @@ php3_list_delete(resource_id-&gt;value.lval);
 				</simplelist>
 			</para>
 			<para>
-    The general idea of persistence modules is this:
+persistence 모듈의 일반적인 idea는 다음과 같다:
     <orderedlist numeration="arabic">
 					<listitem>
 						<simpara>Code all of your module to work with the
@@ -677,17 +660,9 @@ php3_list_delete(resource_id-&gt;value.lval);
     mustn't use efree() here either.</simpara>
 		</sect2>
 		<sect2 id="phpdevel-addfunc-addcfg">
-			<title>Adding runtime configuration directives</title>
+			<title>런타임 설정 지시자(directives) 추가</title>
 			<para>
-    Many of the features of PHP 3 can be configured at runtime.  These
-    configuration directives can appear in either the designated
-    php3.ini file, or in the case of the Apache module version in the
-    Apache .conf files.  The advantage of having them in the Apache
-    .conf files is that they can be configured on a per-directory
-    basis.  This means that one directory may have a certain
-    safemodeexecdir for example, while another directory may have
-    another.  This configuration granularity is especially handy when
-    a server supports multiple virtual hosts.</para>
+    많은 PHP의 기능(feature)들이 실행중에 설정 가능하다. 이 설정 지시자(configuration directives)는 php3.ini에 설정되거나, Apache 모듈의 경우 .conf 파일에 설정가능하도록 되어 있다. Apache .conf 파일에 설정하는 것의 장점은 디렉토리별로 설정을 다르게 할 수 있다는 점이다. 이것은 예를들어 어떤 디렉토리가 다른 디렉토리를 가지고 있어도, 해당하는 한 디렉토리에만 safemodeexecdir 설정을 할 수 있다는 것이다. 이 개별 설정 기능은 서버가 multiple virtual hosts를 지원할 때 무척 유용하다</para>
 			<para>
     The steps required to add a new directive:
 
@@ -727,10 +702,9 @@ php3_list_delete(resource_id-&gt;value.lval);
 		</sect2>
 	</sect1>
 	<sect1 id="calling-user-functions">
-		<title>Calling User Functions</title>
+		<title>사용자 함수를 부르기</title>
 		<simpara>
-   To call user functions from an internal function, you should use
-   the <function>call_user_function</function> function.
+내부 함수(internal function)에서 사용자 함수를 부르려면, <function>call_user_function</function>함수를 사용하여야 한다.
   </simpara>
 		<simpara>
 			<function>call_user_function</function> returns SUCCESS on success,
@@ -806,98 +780,73 @@ php3_list_delete(resource_id-&gt;value.lval);
 	<sect1 id="phpdevel-errors">
 		<title>Reporting Errors</title>
 		<simpara>
-   To report errors from an internal function, you should call the
-   <function>php3_error</function> function. This takes at least two
-   parameters -- the first is the level of the error, the second is
-   the format string for the error message (as in a standard
-   <function>printf</function> call), and any following arguments
-   are the parameters for the format string. The error levels are:
-  </simpara>
+내부 함수에서 에러를 report할 때는 <function>php3_error</function>함수를 사용하는 것이 좋다. 이 함수는 최소 두개의 인수를 가지고 호출된다. 첫번째는 에러의 level이고, 다른 하나는 에러 메세지를 위한 format string( <function>printf</function>에서 사용되는 것과 같은 형태) 이다. 그리고 그 나머지는 주어진 format string의 parameter가 된다. 에러 level은 다음과 같다:  </simpara>
 		<sect2 id="internal.e-notice">
 			<title>E_NOTICE</title>
 			<simpara>
-    Notices are not printed by default, and indicate that the script
-    encountered something that could indicate an error, but could also
-    happen in the normal course of running a script. For example,
-    trying to access the value of a variable which has not been set,
-    or calling <function>stat</function> on a file that doesn't exist.
+Notice는 기본적으로는 출력되지 않는다. 이것은 스크립트가 뭔가 에러를 감지했지만, 그것이 정상적인 상황에서 발생하는 것이라는 의미이다. 예를들어 설정되지 않은 변수를 사용하려 했거나, 존재하지 않는 파일에 <function>stat</function>함수를 호출하는 것 등이다.
    </simpara>
 		</sect2>
 		<sect2 id="internal.e-warning">
 			<title>E_WARNING</title>
 			<simpara>
-    Warnings are printed by default, but do not interrupt script
-    execution.  These indicate a problem that should have been trapped
-    by the script before the call was made. For example, calling 
-	<function>ereg</function> with an invalid regular expression.
+Warning은 기본적으로 출력된다. 그러나, 스크립트의 실행을 멈추지는 않는다. 이것은 호출이 완료되기 전에 스크립트에 의해 잡혀져야 하는 문제를 가리킨다. 예를들어 잘못된 regular expression으로 <function>ereg</function>를 호출하는 것 등이다. 
    </simpara>
 		</sect2>
 		<sect2 id="internal.e-error">
 			<title>E_ERROR</title>
 			<simpara>
-    Errors are also printed by default, and execution of the script is
-    halted after the function returns. These indicate errors that can
-    not be recovered from, such as a memory allocation problem.
-   </simpara>
+Error도 기본적으로 출력된다. 그리고, 함수의 실행이 완료된 직후, 스크립트의 실행을 멈춘다. 이것은 memory allocation 문제같은 복구가 불가능한 에러를 의미한다   </simpara>
 		</sect2>
 		<sect2 id="internal.e-parse">
 			<title>E_PARSE</title>
 			<simpara>
-    Parse errors should only be generated by the parser. The code is
-    listed here only for the sake of completeness.
+Parse error는 오직 Parser만이 생성가능하다. code가 list된다.
    </simpara>
 		</sect2>
 		<sect2 id="internal.e-core-error">
 			<title>E_CORE_ERROR</title>
 			<simpara>
-    This is like an E_ERROR, except it is generated by the core
-    of PHP. Functions should not generate this type of error.
-   </simpara>
+PHP의 core에의해 생성된다는 점을 제외하고는 E_ERROR와 동일하다. 일반 함수로는 이 형태의 에러를 만들지 못한다. </simpara>
 		</sect2>
 		<sect2 id="internal.e-core-warning">
 			<title>E_CORE_WARNING</title>
 			<simpara>
-    This is like an E_WARNING, except it is generated by the core
-    of PHP. Functions should not generate this type of error.
-   </simpara>
+PHP의 core에의해 생성된다는 점을 제외하고는 E_WARNING와 동일하다. 일반 함수로는 이 형태의 에러를 만들지 못한다.</simpara>
 		</sect2>
 		<sect2 id="internal.e-compile-error">
 			<title>E_COMPILE_ERROR</title>
 			<simpara>
-     This is like an E_ERROR, except it is generated by the Zend Scripting
-     Engine. Functions should not generate this type of error.
+이것은 E-Error랑 비슷하다, 예외적으로 Zend스크립팅 엔진에 의해 발생한다.
+함수는 이 에러의 	타입을 발생하지 않는다.
    </simpara>
 		</sect2>
 		<sect2 id="internal.e-compile-warning">
 			<title>E_COMPILE_WARNING</title>
 			<simpara>
-     This is like an E_WARNING, except it is generated by the Zend Scripting
-     Engine. Functions should not generate this type of error.
-   </simpara>
+이것은 E_WARNING이랑 비슷하다. 예외적으로 Zend 스크립팅 엔진에 의해 발생한다.
+함수는 이 에러의 타입을 발생하지 않는다.			
+</simpara>
 		</sect2>
 		<sect2 id="internal.e-user-error">
 			<title>E_USER_ERROR</title>
 			<simpara>
-     This is like an E_ERROR, except it is generated in PHP code by using
-     the PHP function <function>trigger_error</function>. Functions should 
-     not generate this type of error.
+이것은 E_ERROR이랑 비슷하다. 예외적으로 PHP 함수<function>trigger_error</function>를 이요하는 PHP코드에 의해 발생한다.
+함수는 이 에러의 타입을 발생하지 않는다.
    </simpara>
 		</sect2>
 		<sect2 id="internal.e-user-warning">
 			<title>E_USER_WARNING</title>
 			<simpara>
-     This is like an E_WARNING, except it is generated  by using the PHP 
-     function <function>trigger_error</function>. Functions should not 
-     generate this type of error.
+이것은 E_WARNING이랑 비슷하다. 예외적으로 PHP 함수<function>trigger_error</function>를 이요하는 PHP코드에 의해 발생한다.
+함수는 이 에러의 타입을 발생하지 않는다.
    </simpara>
 		</sect2>
 		<sect2 id="internal.e-user-notice">
 			<title>E_USER_NOTICE</title>
 			<simpara>
-     This is like an E_NOTICE, except it is generated by using the PHP
-     function <function>trigger_error</function>. Functions should not 
-     generate this type of error.
-   </simpara>
+이것은 E_NOTICE랑 비슷하다. 예외적으로 PHP 함수<function>trigger_error</function>를 이요하는 PHP코드에 의해 발생한다.
+함수는 이 에러의 타입을 발생하지 않는다.</simpara>
 		</sect2>
 	</sect1>
 </appendix>

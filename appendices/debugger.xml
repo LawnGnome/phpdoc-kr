@@ -1,63 +1,54 @@
 <appendix id="debugger">
 	<title>The PHP Debugger</title>
 	<sect1 id="debugger-using">
-		<title>Using the Debugger</title>
+		<title>디버거 사용기</title>
 		<para>
-    PHP's internal debugger is useful for tracking down evasive bugs.
-    The debugger works by connecting to a <acronym>TCP</acronym> port
-    for every time PHP starts up.  All error messages from that
-    request will be sent to this TCP connection.  This information is
-    intended for "debugging server" that can run inside an
-    <acronym>IDE</acronym> or programmable editor (such as Emacs).
+		PHP의 내부 디버거는 알수없는 다운 버그들에 유용하다.
+		이 디버거는 PHP가 작동하는 동안 내내 <acronym>TCP</acronym> 포트에 접속해서 작업된다. 
+		요청(Request)는 TCP접속에 보내서 모든 에러 메세지가 나온다.
+		<acronym>IDE</acronym>나 Progrmmable 에디터 안에서 실행되는 "디버깅 서버(Debugging server"의 강제적인 정보이다(Emacs처럼). 
+
    </para>
 		<para>
-    How to set up the debugger:
+		디버거 설치하는 방법:
     <orderedlist>
 				<listitem>
 					<simpara> 
-       Set up a TCP port for the debugger in the <link linkend="configuration.file">configuration file</link> (<link linkend="ini.debugger.port">debugger.port</link>) and enable it
-       (<link linkend="ini.debugger.enabled">debugger.enabled</link>).
+					디버거를 위한 TCP 포트 설치는 <link linkend="configuration.file">configuration file</link>안에 있다.
+					(<link linkend="ini.debugger.port">debugger.port</link>)과 가능설정 (<link linkend="ini.debugger.enabled">debugger.enabled</link>)
       </simpara>
 				</listitem>
 				<listitem>
 					<simpara> 
-       Set up a TCP listener on that port somewhere (for example
+					어딘가의 포트에서 TCP 감시자(lestener) 설치 (예를 들어
        <command>socket -l -s 1400</command> on UNIX).
       </simpara>
 				</listitem>
 				<listitem>
 					<simpara> 
-       In your code, run
-       "debugger_on(<replaceable>host</replaceable>)", where
-       <replaceable>host</replaceable> is the IP number or name of the
-       host running the <acronym>TCP</acronym> listener.
+당신의 코드에서 하고, 
+<acronym>TCP</acronym> 감시자(listener)가 실해되는 동안 <replaceable>host</replaceable>는 IP 숫자와 호스트의 이름을 가진 <replaceable>host</replaceable>에서 "debugger_on(<replaceable>host</replaceable>)"을 실행.
       </simpara>
 				</listitem>
 			</orderedlist>
-    Now, all warnings, notices etc. will show up on that listener
-    socket, <emphasis>even if you them turned off with
-    <function>error_reporting</function>
-			</emphasis>.  
+			모든 경고는 감시자 소켓(listener socket)는 공지된다. 
+			<emphasis>비록 <function>error_reporting</function>에 의해 꺼져있더라도</emphasis>.  
    </para>
 		<note>
 			<para>
-	 The code for the debugger has not been ported to PHP 4, at the
-	 present time only PHP 3 supports the debugger code.
-	</para>
+	 디버거를 위한 코드 PHP4에서는 제공되지 않는다. 이것은 PHP3에서만 제공된다.
+		</para>
 		</note>
 	</sect1>
 	<sect1 id="debugger-protocol">
-		<title>Debugger Protocol</title>
+		<title>디버거 프로토콜(Debugger Protocl)</title>
 		<para>
-    The debugger protocol is line-based.  Each line has a
-    <emphasis>type</emphasis>, and several lines compose a
-    <emphasis>message</emphasis>.  Each message starts with a line of
-    the type <literal>start</literal> and terminates with a line of
-    the type <literal>end</literal>.  PHP may send lines for different
-    messages simultaneously.
+		디버거 프로코톨은 라인 기반이다. 각 라인은 <emphasis>type</emphasis>과 <emphasis>message</emphasis>로 이루어진 몇몇 라인들을 가진다.
+		각 메세지는 <literal>start</literal>타입의 라인으로 시작되고, <literal>end</literal>타입의 라인으로 의해 중지된다. 
+		PHP는 아마 일제히 다른 메세지들의 라인들을 보낼것이다.
    </para>
 		<para>
-    A line has this format:
+각 라인은 다음의 포맷을 가진다:
     <informalexample>
 				<literallayout>
 					<replaceable>date</replaceable>
