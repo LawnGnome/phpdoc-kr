@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <reference id="ref.network">
 	<title>네트워크 관련 함수</title>
 	<titleabbrev>네트워크</titleabbrev>

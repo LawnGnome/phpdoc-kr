@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <reference id="ref.bzip2">
 	<title>Bzip2 압축 함수</title>
 	<titleabbrev>Bzip2</titleabbrev>

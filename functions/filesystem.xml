@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <reference id="ref.filesystem">
 	<title>파일시스템 관련함수</title>
 	<titleabbrev>파일시스템</titleabbrev>
