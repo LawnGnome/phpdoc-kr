@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- splitted from ./en/functions/apache.xml, last change in rev 1.20 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.4 -->
+
   <refentry id="function.virtual">
    <refnamediv>
     <refname>virtual</refname>
-    <refpurpose>아파치의 하위 요청을 실행한다.</refpurpose>
+    <refpurpose>아파치의 하위 요청을 실행합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -14,18 +15,20 @@
      </methodsynopsis>
     <para>
      <function>virtual</function>은 mod_include에서의
-     &lt;!--#include virtual...--&gt;와 동일한 아파치 특정 함수이다.
-     이것은 아파치의 하위 요청을 실행한다. CGI 스크립트나 .shtml 파일,
-     또는 아파치를 통해서 분석 가능한 무언가를 포함할 때 유용하다.
+     &lt;!--#include virtual...--&gt;와 동일한 아파치 특정 함수입니다.
+     아파치의 하위 요청을 실행합니다. CGI 스크립트나 .shtml 파일 등
+     아파치를 통해서 실행가능한 무엇이든 가능합니다.
      CGI 스크립트의 경우, 그 스크립트가 유효한 CGI 헤더를 생성해야 함에
-     주의하라. 적어도 Content-type 헤더는 생성해야 한다. PHP 파일의 경우,
-     <function>include</function>나 <function>require</function>를
-     사용할 필요가 있다; <function>virtual</function>은 PHP 파일인
-     문서를 포함할 때는 사용할 수 없다.
+     주의하십시오. 최소한 Content-type 헤더가 필요합니다.
     </para>
     <para>
-     하위 요청을 실행하기 위해, 모든 버퍼를 종료하고 브라우저로
-     내보낸다. 버퍼에 존재하는 헤더 역시 보내진다.
+     하위 요청을 실행할 때, 헤더를 포함하여 모든 버퍼를 종료하고
+     브라우저로 출력합니다.
+    </para>
+    <para>
+     PHP 4.0.6부터, PHP 파일에 <function>virtual</function>을 사용할 수
+     있습니다. 그러나, 다른 PHP 파일을 포함할때는 <function>include</function>나
+     <function>require</function>를 사용하는 편이 좋습니다.
     </para>
    </refsect1>
   </refentry>
