@@ -1,4 +1,5 @@
 <!-- $Revision$ -->
+<!-- EN-Revision: 1.14 -->
 
 <!ENTITY PHPManual         "PHP 매뉴얼">
 <!ENTITY Date              "날짜:">
@@ -14,6 +15,6 @@
 <!ENTITY api               "PHP API: Interfaces for extension writers">
 <!ENTITY apiabbrev         "PHP API">
 <!ENTITY FunctionIndex     "함수 인덱스">
-<!ENTITY CHMEdition        "HTML Help Edition">
-<!ENTITY ReservedConstants "Predefined Constants">
+<!ENTITY CHMEdition        "HTML 도움말 에디션">
+<!ENTITY ReservedConstants "예약 정의 상수">
 <!ENTITY MissingStuff      "Missing Stuff">
