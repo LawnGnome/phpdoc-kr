@@ -196,7 +196,7 @@ endif;
 			<literal>while</literal>
 		</title>
 		<para>
-	<literal>while</literal> 루프는 PHP의 가장 간단한 제어구조이다. 
+			<literal>while</literal> 루프는 PHP의 가장 간단한 제어구조이다. 
 	이것은 C와 동일하게 작동한다. <literal>while</literal>의 기본 형태는 다음과 같다. :
     <informalexample>
 				<programlisting>
@@ -258,7 +258,7 @@ endwhile;
 			<literal>do..while</literal>
 		</title>
 		<simpara>
-	<literal>do..while</literal> 루프는 비교식이 앞이 아닌 맨 뒤에 있다는 점을 제외하면 
+			<literal>do..while</literal> 루프는 비교식이 앞이 아닌 맨 뒤에 있다는 점을 제외하면 
 	<literal>while</literal> 루프와 비슷하다. 
     The main difference from regular <literal>while</literal> loops is
     that the first iteration of a <literal>do..while</literal> loop is
@@ -325,7 +325,7 @@ do {
 			<literal>for</literal>
 		</title>
 		<para>
-	<literal>for</literal> 루프는 PHP에서 가장 복잡한 루프이다. 
+			<literal>for</literal> 루프는 PHP에서 가장 복잡한 루프이다. 
 	이것의 형태은 C와 매우 유사하다. <literal>for</literal> 루프의 문법은 다음과 같다. :
     <informalexample>
 				<programlisting>
@@ -348,7 +348,8 @@ for (expr1; expr2; expr3) statement
 	각 평가식은 비워둘 수 있다. <replaceable>expr2</replaceable>가 비어있으면 무한 루프를 뜻한다. 
 	(PHP는 C와 같이 비어있으면 TRUE로 인식한다.) 
 	이건 별로 좋은 방법이 아니지만, 종종 이렇게 사용하고 <link linkend="control-structures.break">
-	<literal>break</literal></link>를 사용하여 종료하는 방법도 있다. 
+				<literal>break</literal>
+			</link>를 사용하여 종료하는 방법도 있다. 
    </simpara>
 		<para>
 	다음 예는 1에서 10까지 출력하는 예제들이다. : 
@@ -434,7 +435,7 @@ foreach(array_expression as $key => $value) statement
 		<para>
 			<note>
 				<para>
-	<literal>foreach</literal> 문이 처음 수행될 때, 내부 배열 포인터(internal array pointer)는 
+					<literal>foreach</literal> 문이 처음 수행될 때, 내부 배열 포인터(internal array pointer)는 
 	자동적으로 배열의 첫번째 원소로 설정된다. 이말의 의미는 여러분이 <literal>foreach</literal>문을 사용할 때 
 	<function>reset</function>을 미리 호출할 필요는 없다는 것이다.
 	 </para>
@@ -520,12 +521,12 @@ foreach($a as $k => $v) {
 			<literal>break</literal>
 		</title>
 		<simpara>
-	<literal>break</literal>는 <literal>for</literal>나, <literal>while</literal>, <literal>switch</literal>에서 빠져 나가는 명령이다.
+			<literal>break</literal>는 <literal>for</literal>나, <literal>while</literal>, 
+			<literal>switch</literal>에서 빠져 나가는 명령이다.
    </simpara>
 		<simpara>
-			<literal>break</literal> accepts an optional numeric argument
-    which tells it how many nested enclosing structures are to be
-    broken out of. 
+			<literal>break</literal>에는 숫자 옵션을 줄 수 있는데, 
+			이것은 한번에 빠져 나갈 제어 구조의 수를 의미한다.
    </simpara>
 		<para>
 			<informalexample>
@@ -562,14 +563,11 @@ while (++$i) {
 			<literal>continue</literal>
 		</title>
 		<simpara>
-			<literal>continue</literal> is used within looping structures to
-    skip the rest of the current loop iteration and continue execution
-    at the beginning of the next iteration.
+			<literal>continue</literal> 는 현재 루프의 처음으로 가도록 하는 명령이다.
    </simpara>
 		<simpara>
-			<literal>continue</literal> accepts an optional numeric argument
-    which tells it how many levels of enclosing loops it should skip
-    to the end of.
+			<literal>continue</literal>도 숫자 옵션을 줄 수 있는데, 
+			이것도 <literal>break</literal>에서와 같이 한번에 처음으로 갈 제어 구조의 수를 의미한다.
    </simpara>
 		<para>
 			<informalexample>
@@ -603,18 +601,14 @@ while ($i++ &lt; 5) {
 			<literal>switch</literal>
 		</title>
 		<simpara>
-    The <literal>switch</literal> statement is similar to a series of
-    IF statements on the same expression.  In many occasions, you may
-    want to compare the same variable (or expression) with many
-    different values, and execute a different piece of code depending
-    on which value it equals to.  This is exactly what the
-    <literal>switch</literal> statement is for.
+			<literal>switch</literal>문은 내용상 동일한 표현식의 IF문을 나열한 것과 비슷하다. 
+	많은 경우에 한 변수를 여러 다른 값과 비교하여, 
+	두개의 값이 같는냐에 따라 서로 다른 코드들이 수행되기를 원하는 때가 있다.
+	바로 이런 경우에 <literal>switch</literal>문이 사용된다.
    </simpara>
 		<para>
-    The following two examples are two different ways to write the
-    same thing, one using a series of <literal>if</literal>
-    statements, and the other using the <literal>switch</literal>
-    statement:
+	다음은 동일한 결과를 가져오는 예를 각각 <literal>if</literal>문과 
+	<literal>switch</literal>문으로 표현한 것이다. :
     <informalexample>
 				<programlisting role="php">
 if ($i == 0) {
@@ -642,19 +636,11 @@ switch ($i) {
 			</informalexample>
 		</para>
 		<para>
-    It is important to understand how the <literal>switch</literal>
-    statement is executed in order to avoid mistakes.  The
-    <literal>switch</literal> statement executes line by line
-    (actually, statement by statement).  In the beginning, no code is
-    executed.  Only when a <literal>case</literal> statement is found
-    with a value that matches the value of the
-    <literal>switch</literal> expression does PHP begin to execute the
-    statements.  PHP continues to execute the statements until the end
-    of the <literal>switch</literal> block, or the first time it sees
-    a <literal>break</literal> statement.  If you don't write a
-    <literal>break</literal> statement at the end of a case's
-    statement list, PHP will go on executing the statements of the
-    following case.  For example:
+			<literal>switch</literal>문은 문장 단위로 실행된다. 
+	<literal>switch</literal>에 있는 평가식과 일치하는 <literal>case</literal>문을 찾아 
+	그 이후부터 <literal>switch</literal> 블럭이 끝날 때의 모든 문장을 실행한다. 
+	따라서 원하는 경우 <literal>break</literal>로 실행을 중지시킬 필요가 있다. 
+	다음 예를 보자. :
     <informalexample>
 				<programlisting role="php">
 switch ($i) {
@@ -669,13 +655,10 @@ switch ($i) {
 			</informalexample>
 		</para>
 		<simpara>
-    Here, if $i equals to 0, PHP would execute all of the print
-    statements!  If $i equals to 1, PHP would execute the last two
-    print statements, and only if $i equals to 2, you'd get the
-    'expected' behavior and only 'i equals 2' would be displayed.  So,
-    it's important not to forget <literal>break</literal> statements
-    (even though you may want to avoid supplying them on purpose under
-    certain circumstances).
+	여기서 $i가 0이면 모든 print문을 실행할 것이다. 
+	만약 $i가 1이면 마지막 두개의 print문을 실행한다. 
+	따라서 각각의 경우에 하나의 print 문만이 실행되기를 원한다면,
+	<literal>break</literal>문을 잊지 않아야한다.
    </simpara>
 		<simpara>
     In a <literal>switch</literal> statement, the condition is
@@ -703,8 +686,8 @@ switch ($i) {
 			</informalexample>
 		</para>
 		<para>
-    A special case is the default case.  This case matches anything
-    that wasn't matched by the other cases.  For example:
+	특별한 case로 default case가 있다. 
+	이것은 다른 어떤 case에도 맞지 않는 경우를 의미한다. 예를 들어 : 
     <informalexample>
 				<programlisting role="php">
 switch ($i) {
@@ -724,15 +707,13 @@ switch ($i) {
 			</informalexample>
 		</para>
 		<para>
-    The <literal>case</literal> expression may be any expression that
-    evaluates to a simple type, that is, integer or floating-point
-    numbers and strings.  Arrays or objects cannot be used here unless
-    they are dereferenced to a simple type.
+	다른 중요한 점은 <literal>case</literal> 표현식에는 정수, 실수, 문자열같은 
+	스칼리 타입으로 평가되는 어떤 표현식이와도 된다는 것이다. 
+	배열이나 객체는 스칼리 타입으로 변환시켜 사용하지 않는 한 사용할 수 없다.
    </para>
 		<para>
-    The alternative syntax for control structures is supported with
-    switches. For more information, see <link linkend="control-structures.alternative-syntax">Alternative syntax
-    for control structures</link> .
+	switch 문에 대해서도 Alternative syntax가 지원된다. 자세한 내용은 
+	<link linkend="control-structures.alternative-syntax">Alternative syntax for control structures</link>를 살펴보자
     <informalexample>
 				<programlisting role="php">
 switch ($i):
@@ -757,56 +738,43 @@ endswitch;
 			<function>require</function>
 		</title>
 		<simpara>
-    The <function>require</function> statement replaces itself with
-    the specified file, much like the C preprocessor's
-    <literal>#include</literal> works.
+			<function>require</function> 문은 C preprocessor의 <literal>#include</literal>와 비슷하게, 
+	자신을 지정된 파일로 대체한다. 
    </simpara>
 		<simpara>
-    If "URL fopen wrappers" are enabled in PHP (which they are in the
-    default configuration), you can specify the file to be
-    <function>require</function>ed using an URL instead of a local
-    pathname. See <link linkend="features.remote-files">Remote
-    files</link> and <function>fopen</function> for more information.
+	PHP에서 "URL fopen wrappers"가 enabled되어 있으면 (기본값은 enabled이다.),
+	<function>require</function>될 함수로 일반 파일 뿐 아니라 URL도 사용할 수 있다.
+	자세한 내용은 <link linkend="features.remote-files">Remote files</link>와
+	<function>fopen</function>을 살펴보기 바란다.
    </simpara>
 		<simpara>
-    An important note about how this works is that when a file is
-    <function>include</function>ed or <function>require</function>ed,
-    parsing drops out of PHP mode and into HTML mode at the beginning
-    of the target file, and resumes PHP mode again at the end. For
-    this reason, any code inside the target file which should be
-    executed as PHP code must be enclosed within <link linkend="language.basic-syntax.phpmode">valid PHP start and end
-    tags</link>.
+			<function>include</function> 되거나 <function>require</function> 되어 읽혀지는 파일은 
+	포함된 파일의 처음에 PHP모드에서 빠져나와 HTML모드로 들어가고, 마지막에 PHP모드로 복귀한다. 
+	따라서 포함될 파일의 PHP 코드는 <link linkend="language.basic-syntax.phpmode">적절한 PHP 시작, 
+	종료 택</link>에 둘러싸여 있어야 한다.
    </simpara>
 		<simpara>
-			<function>require</function> is not actually a function in PHP;
-    rather, it is a language construct. It is subject to some
-    different rules than functions are. For instance,
-    <function>require</function> is not subject to any containing
-    control structures. For another, it does not return any value;
-    attempting to read a return value from a
-    <function>require</function> call results in a parse error.
+			<function>require</function>는 함수가 아니라 제어구조이다. 
+	따라서 당연히 함수와는 다른 규칙을 따른다. 
+	이를테면 <function>require</function>는 다른 어떤 제어구조와도 함께사용할 수 없다. 
+	또한, 이것은 반환값이 없다. (반환값을 돌려받으려하면 문법 에러가 난다.)
    </simpara>
 		<simpara>
-    Unlike <function>include</function>, <function>require</function>
-    will <emphasis>always</emphasis> read in the target file,
-    <emphasis>even if the line it's on never executes</emphasis>. If
-    you want to conditionally include a file, use
-    <function>include</function>. The conditional statement won't
-    affect the <function>require</function>. However, if the line on
-    which the <function>require</function> occurs is not executed,
-    neither will any of the code in the target file be executed.
+			<function>include</function>와 다르게, <function>require</function>는 언제나 해당 파일을 읽어온다. 
+	<emphasis>심지어 해당 라인이 전혀 실행되지 않아도 읽어온다.</emphasis> 
+	만약 조건에 따라 파일을 포함시키고 싶다면 <function>include</function>문을 사용하여야 한다. 
+	조건절은 <function>require</function>문에 아무 영향을 미치지 못한다. 
+	그러나, <function>require</function>문이 있는 줄이 실행되지 않으면 읽어온 파일의 어떤 코드도 실행되지는 않는다.
    </simpara>
 		<simpara>
-    Similarly, looping structures do not affect the behaviour of
-    <function>require</function>. Although the code contained in the
-    target file is still subject to the loop, the
-    <function>require</function> itself happens only once.
+	마찬가지로, 순환문도 <function>require</function>문에 영향을 주지 못한다. 
+	포함된 파일의 코드가 루프에 적용을 받기는 하지만,
+	<function>require</function> 동작 자체는 단지 한번만 일어나는 것이다.
    </simpara>
 		<para>
-    This means that you can't put a <function>require</function>
-    statement inside of a loop structure and expect it to include the
-    contents of a different file on each iteration. To do that, use an
-    <function>include</function> statement.
+	이것은 매 순환시마다 다른 파일을 읽어오려 한다면 
+	순환문 안에 <function>require</function> 문을 사용해서는 안된다는 것을 의미한다.
+	이런 경우에는  <function>include</function>문을 사용하여야 한다는 것이다.
     <informalexample>
 				<programlisting role="php">
 require ('header.inc');
@@ -857,13 +825,10 @@ require ("file.php");  /* Works. */
 			</informalexample>
 		</para>
 		<simpara>
-    In PHP 3, it is possible to execute a <literal>return</literal>
-    statement inside a <function>require</function>ed file, as long as
-    that statement occurs in the global scope of the
-    <function>require</function>ed file. It may not occur within any
-    block (meaning inside braces ({}). In PHP 4, however, this ability
-    has been discontinued. If you need this functionality, see
-    <function>include</function>.
+	PHP3에서는 <function>require</function>로 포함된 파일안에서 <literal>return</literal> 문을 사용할 수 있었다. 
+	단, return 문이 포함된 파일의 global scope에서만 가능하고, 어떠한 블록내({} 내부)에서도 사용할 수 없다. 
+	그러나, PHP4에서는 이런 기능 자체가 없어져 버렸다. 
+	만약 여러분이 이런 기능을 사용하고 싶다면 <function>include</function>문을 사용하기 바란다.
    </simpara>
 		<simpara>
     See also <function>include</function>, <function>require_once</function>,
@@ -876,8 +841,7 @@ require ("file.php");  /* Works. */
 			<function>include</function>
 		</title>
 		<simpara>
-    The <function>include</function> statement includes and evaluates
-    the specified file.
+			<function>include</function>문은 지정한 파일을 읽고 실행한다.
    </simpara>
 		<simpara>
     If "URL fopen wrappers" are enabled in PHP (which they are in the
@@ -887,19 +851,14 @@ require ("file.php");  /* Works. */
     files</link> and <function>fopen</function> for more information.
    </simpara>
 		<simpara>
-    An important note about how this works is that when a file is
-    <function>include</function>ed or <function>require</function>ed,
-    parsing drops out of PHP mode and into HTML mode at the beginning
-    of the target file, and resumes again at the end. For this reason,
-    any code inside the target file which should be executed as PHP
-    code must be enclosed within <link linkend="language.basic-syntax.phpmode">valid PHP start and end
-    tags</link>.
+			<function>include</function>되거나 <function>require</function> 되어 읽혀지는 파일은 
+	포함된 파일의 처음에 PHP모드에서 빠져나와 HTML모드로 들어가고, 마지막에 PHP모드로 복귀한다. 
+	따라서 포함될 파일의 PHP 코드는 <link linkend="language.basic-syntax.phpmode">적절한 PHP 시작, 종료 택</link>에 
+	둘러싸여 있어야 한다.
    </simpara>
 		<para>
-    This happens each time the <function>include</function> statement
-    is encountered, so you can use an <function>include</function>
-    statement within a looping structure to include a number of
-    different files.
+	해당 파일을 읽어들이는 동작은 실행중 <function>include</function> 문을 만날 때 마다 일어난다. 
+	따라서 <function>include</function> 문을 루프 구조 안에 두어 매번 다른 파일을 읽어 들이도록 할 수 있다. 
     <informalexample>
 				<programlisting role="php">
 $files = array ('first.inc', 'second.inc', 'third.inc');
@@ -910,19 +869,14 @@ for ($i = 0; $i &lt; count($files); $i++) {
 			</informalexample>
 		</para>
 		<para>
-			<function>include</function> differs from
-    <function>require</function> in that the include statement is
-    re-evaluated each time it is encountered (and only when it is
-    being executed), whereas the <function>require</function>
-    statement is replaced by the required file when it is first
-    encountered, whether the contents of the file will be evaluated or
-    not (for example, if it is inside an <link linkend="control-structures.if">if</link> statement whose
-    condition evaluated to false).
+	<function>include</function>는 이 문장을 만날 때 마다 매번 새로 읽어들이고 실행된다는 점에서 
+	<function>require</function>와 다르다. 반면에 require()문은 지정된 파일의 내용이 실행되는가에 관계없이
+	(예를들어 <link linkend="control-structures.if">if</link> 문 안에 들어있고 상태가 거짓인 경우에도), 
+	이 문장을 처음 만났을 때 지정된 파일로 대체된다. 
    </para>
 		<para>
-    Because <function>include</function> is a special language
-    construct, you must enclose it within a statement block if it is
-    inside a conditional block.
+	<function>include</function>는 특별한 구조이므로, 만약 이것이 조전절 안에 놓여있다면 
+	반드시 {}(statement block)으로 둘러싸야 한다.
     <informalexample>
 				<programlisting role="php">
 /* This is WRONG and will not work as desired. */
@@ -943,27 +897,20 @@ if ($condition) {
 			</informalexample>
 		</para>
 		<simpara>
-    In both PHP 3 and PHP 4, it is possible to execute a
-    <literal>return</literal> statement inside an
-    <function>include</function>ed file, in order to terminate
-    processing in that file and return to the script which called
-    it. Some differences in the way this works exist, however. The
-    first is that in PHP 3, the <literal>return</literal> may not
-    appear inside a block unless it's a function block, in which case
-    the <literal>return</literal> applies to that function and not the
-    whole file. In PHP 4, however, this restriction does not
-    exist. Also, PHP 4 allows you to return values from
-    <function>include</function>ed files. You can take the value of
-    the <function>include</function> call as you would a normal
-    function. This generates a parse error in PHP 3.
+	PHP3, PHP4 모두 <function>include</function>된 파일 내에서, 이 파일내의 수행을 종료하고, 
+	이 파일을 부른 스크립트로 복귀하기 위해 <literal>return</literal>문을 사용할 수 있다. 
+	약간 다른점이 있기는하다. 우선, PHP3에서는 해당 블록이 함수의 블록이 아닌한 return 문이 블록안에 올 수 없다. 
+	(함수의 블록 안에 있는 경우는 해당 함수에서 return 하는 것이지 현재 파일에서 return 하는 것은 아니다.) 
+	반드시 Global scope에 위치해야 한다. 그러나, PHP4에서는 이 제한이 없다. 
+	또한 PHP4에서는 <function>include</function> 파일의 <literal>return</literal>시에 리턴값을 사용할 수 있다. 
+	<function>include</function>문을 일반 함수처럼 사용하여 반환값을 받을 수 있다. 
+	PHP3에서는 이렇게 사용하면 구문에러를 발생시킨다.
    </simpara>
 		<example>
 			<title>
 				<function>include</function> in PHP 3 and PHP 4</title>
 			<para>
-     Assume the existence of the following file (named
-     <filename>test.inc</filename>) in the same directory as the main
-     file:
+	다음의 <filename>test.inc</filename>라는 파일이 메인 파일과 동일한 디렉토리에 있다고 가정한다. : 
      <programlisting role="php">
 &lt;?php
 echo "Before the return &lt;br&gt;\n";
@@ -975,8 +922,7 @@ echo "After the return &lt;br&gt;\n";
      </programlisting>
 			</para>
 			<para>
-     Assume that the main file (<filename>main.html</filename>)
-     contains the following:
+	<filename>main.html</filename> 이라는 메인파일의 내용은 다음과 같다. : 
      <programlisting role="php">
 &lt;?php
 $retval = include ('test.inc');
@@ -985,18 +931,17 @@ echo "File returned: '$retval'&lt;br&gt;\n";
      </programlisting>
 			</para>
 			<para>
-     When <filename>main.html</filename> is called in PHP 3, it will
-     generate a parse error on line 2; you can't take the value of an
-     <function>include</function> in PHP 3. In PHP 4, however, the
-     result will be:
+	<filename>main.html</filename>이 PHP3에서 불려지면, 이 파일은 두 번째 줄에서 
+	"you can't take the value of an <function>include</function> " 라는 구문 에러를 발생시킨다. 
+	그러나, PHP4에서는 다음돠 같은 결과를 출력한다. :
+
      <screen>
 Before the return
 File returned: '27'
      </screen>
 			</para>
 			<para>
-     Now, assume that <filename>main.html</filename> has been altered
-     to contain the following:
+	이제 <filename>main.html</filename>을 다음과 같은 내용으로 고쳐서 실행해 보자. : 
      <programlisting role="php">
 &lt;?php
 include ('test.inc');
@@ -1005,12 +950,12 @@ echo "Back in main.html&lt;br&gt;\n";
      </programlisting>
 			</para>
 			<para>
-     In PHP 4, the output will be:
+	PHP4에서는 다음과 같은 결과가 출력된다. : 
      <screen>
 Before the return
 Back in main.html
      </screen>
-     However, PHP 3 will give the following output:
+	그러나 PHP3에서는 다음과 같은 결과가 나온다. :
      <screen>
 Before the return 
 27Back in main.html
@@ -1019,18 +964,16 @@ Parse error: parse error in /home/torben/public_html/phptest/main.html on line 5
      </screen>
 			</para>
 			<para>
-     The above parse error is a result of the fact that the
-     <literal>return</literal> statement is enclosed in a non-function
-     block within <filename>test.inc</filename>. When the return is
-     moved outside of the block, the output is:
+	위의 구문 에러는 <filename>test.inc</filename>에서 <literal>return</literal> 문이 
+	함수블록이외의 블록안에 사용되었기 때문에 생긴다. 
+	<literal>return</literal> 문을 블록 밖으로 꺼내면 다음과 같은 경과가 출력된다. : 
      <screen>
 Before the return
 27Back in main.html
      </screen>
 			</para>
 			<para>
-     The spurious '27' is due to the fact that PHP 3 does not support
-     <literal>return</literal>ing values from files like that.
+	위의 '27'이 출력된 것은 PHP3가 include파일로 부터의 값의 반환을 지원하지 않기 때문이다. 
     </para>
 		</example>
 		<simpara>
