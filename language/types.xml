@@ -1,7 +1,8 @@
+<!-- edited with XML Spy v3.0.7 NT (http://www.xmlspy.com) by panda (bra) -->
 <chapter id="language.types">
 	<title>변수 형태 (Types)</title>
 	<para>
-	PHP는 다음 형태의 type을 지원한다. : 
+	PHP는 다음과 같은 변수형을 지원한다. : 
    <itemizedlist>
 			<listitem>
 				<simpara>
@@ -49,13 +50,13 @@
     정수형은 다음과 같은 형태의 명령으로 지정할 수 있다.
     <informalexample>
 				<programlisting role="php">
-$a = 1234; # decimal number
-$a = -123; # a negative number
-$a = 0123; # octal number (equivalent to 83 decimal)
-$a = 0x12; # hexadecimal number (equivalent to 18 decimal)
+$a = 1234; # 십진수
+$a = -123; # 음수
+$a = 0123; # 8진수 (십진수 83과 같음)
+$a = 0x12; # 16진수 (십진수 18과 같음)
      </programlisting>
 			</informalexample>
-	정수의 크기는 실행환경에따라 다르다.(platform-dependent) 
+	정수의 크기는 실행환경에따라 다르다(platform-dependent).
 	보통 최대값이 약 20억(32 bits signed)인 경우가 많다.
    </para>
 	</sect1>
@@ -83,12 +84,12 @@ $a = 1.234; $a = 1.2e3;
      really being something like <literal>7.9999999999...</literal>.
     </para>
 			<para>
-     This is related to the fact that it is impossible to exactly
-     express some fractions in decimal notation with a finite number
-     of digits. For instance, <literal>1/3</literal> in decimal form
-     becomes <literal>0.3333333. . .</literal>.
+     이는 유한한 십진수로 분수를 정확하게 표현하기 불가는 하다는 것과 일맥상통한다.
+     예를 들자면 분수
+<literal>1/3</literal> 을 십진수로 표현하자면
+<literal>0.3333333. . .</literal>이 된다.
     </para>
-			<para>
+			<para>     
      So never trust floating number results to the last digit and
      never compare floating point numbers for equality. If you really
      need higher precision, you should use the <link linkend="ref.bc">arbitrary precision math functions</link>
@@ -102,7 +103,7 @@ $a = 1.234; $a = 1.2e3;
     문자열은 두 개의 delimiters를 사용해 나타낸다.
    </para>
 		<para>
-	문자열을 큰 따옴표(")로 둘러 싸게 되면, 특수 문자들은 다음과 같이 표시하여 포함시킨다.
+	문자열을 큰 따옴표(")로 둘러 싸게 되며, 특수 문자들은 다음과 같이 표시하여 포함시킨다.
 	C나 Perl에서처럼 백슬래시(\)를 사용하여 특수 기호를 표시하게 된다.
     <table>
 				<title>Escaped characters</title>
@@ -190,13 +191,13 @@ $a = 1.234; $a = 1.2e3;
 	영문자와 숫자, 밑줄(_)만을 사용하여야 하고, 첫글자로 숫자는 안된다.
    </simpara>
 		<para>
-	Here doc 문자열은 큰따옴표를 제외하고는 큰따옴표로 묶인 문자열과 동일하게 취급된다.
+	Here doc 문자열은 닫는 큰따옴표를 사용하지 않고 여는 큰따옴표로만 묶인 문자열과 동일하게 취급된다.
 	이것은 Here doc 문자열내에서는 큰따옴표를 escape 할 필요가 없고,
 	위에 적힌 다른 escape 코드는 사용할 수 있다는 것을 의미한다.
 	문자열내에 변수를 사용하여 그 변수의 내용을 문자열에 삽입하는 기능을 사용할 수 있지만,
 	변수가 들어가는 식이 복잡할 경우 주의해서 사용하자.
     <example>
-				<title>Here doc string quoting example</title>
+				<title>doc string 예제</title>
 				<programlisting>
 &lt;?php
 $str = &lt;&lt;&lt;EOD
@@ -205,7 +206,7 @@ spanning multiple lines
 using heredoc syntax.
 EOD;
 
-/* More complex example, with variables. */
+/* 변수도 사용된 좀더 복잡한 예제. */
 class foo {
     var $foo;
     var $bar;
@@ -236,7 +237,7 @@ EOT;
 		<para>
 	문자열은 '.' (점) 연산자로 연결할 수 있다. 
 	'+' (더하기) 연산자는 사용할 수 없다. 
-	자세한 정보는 <link linkend="language.operators.string">String operators</link> 부분을 참조하기 바란다.
+	자세한 정보는 <link linkend="language.operators.string">문자열 연산자(String operators)</link> 부분을 참조하기 바란다.
    </para>
 		<para>
 	문자열내의 개개의 문자는, C 언어에서의 문자의 배열로된 문자열처럼 
@@ -244,31 +245,31 @@ EOT;
    </para>
 		<para>
 			<example>
-				<title>Some string examples</title>
+				<title>문자열 예제</title>
 				<programlisting role="php">
 &lt;?php
-/* Assigning a string. */
+/* 문자열을 대입한다. */
 $str = "This is a string";
 
-/* Appending to it. */
+/* 문자열 추가. */
 $str = $str . " with some more text";
 
-/* Another way to append, includes an escaped newline. */
+/* newline까지 포함해서 문자열 추가하는 다른방법. */
 $str .= " and a newline at the end.\n";
 
 /* This string will end up being '&lt;p&gt;Number: 9&lt;/p&gt;' */
 $num = 9;
 $str = "&lt;p&gt;Number: $num&lt;/p&gt;";
 
-/* This one will be '&lt;p&gt;Number: $num&lt;/p&gt;' */
+/* '&lt;p&gt;Number: $num&lt;/p&gt;' 자체가 문자열이 된다 */
 $num = 9;
 $str = '&lt;p&gt;Number: $num&lt;/p&gt;';
 
-/* Get the first character of a string  */
+/* 문자열의 첫번째 문자 얻기  */
 $str = 'This is a test.';
 $first = $str[0];
 
-/* Get the last character of a string. */
+/* 문자열의 마지막 문자 얻기. */
 $str = 'This is still a test.';
 $last = $str[strlen($str)-1];
 ?&gt;	  
@@ -294,14 +295,14 @@ $last = $str[strlen($str)-1];
     </simpara>
 			<informalexample>
 				<programlisting role="php">
-$foo = 1 + "10.5";              // $foo is double (11.5)
-$foo = 1 + "-1.3e3";            // $foo is double (-1299)
-$foo = 1 + "bob-1.3e3";         // $foo is integer (1)
-$foo = 1 + "bob3";              // $foo is integer (1)
-$foo = 1 + "10 Small Pigs";     // $foo is integer (11)
-$foo = 1 + "10 Little Piggies"; // $foo is integer (11)
-$foo = "10.0 pigs " + 1;        // $foo is integer (11)
-$foo = "10.0 pigs " + 1.0;      // $foo is double (11)     
+$foo = 1 + "10.5";              // $foo 는 double형 (11.5)
+$foo = 1 + "-1.3e3";            // $foo 는 double형 (-1299)
+$foo = 1 + "bob-1.3e3";         // $foo 는 정수형 (1)
+$foo = 1 + "bob3";              // $foo 는 정수형 (1)
+$foo = 1 + "10 Small Pigs";     // $foo 는 정수형 (11)
+$foo = 1 + "10 Little Piggies"; // $foo 는 정수형 (11)
+$foo = "10.0 pigs " + 1;        // $foo 는 정수형 (11)
+$foo = "10.0 pigs " + 1.0;      // $foo 는 double형 (11)     
      </programlisting>
 			</informalexample>
 			<simpara>
@@ -356,10 +357,10 @@ $a[] = "world"; // $a[3] == "world"
      <function>uksort</function> 함수들을 이용해 순서대로 정렬할 수 있다. 
     </para>
 			<para>
-     <function>count</function> 함수를 사용하면 배열의 원소 개수를 셀 수 있다. 
+				<function>count</function> 함수를 사용하면 배열의 원소 개수를 셀 수 있다. 
     </para>
 			<para>
-	<function>next</function>와 <function>prev</function>함수를 이용하여 배열의 내용을 탐색할 수 있다. 
+				<function>next</function>와 <function>prev</function>함수를 이용하여 배열의 내용을 탐색할 수 있다. 
 	배열의 내용을 탐색하는 방법으로 <function>each</function>함수를 사용할 수도 있다.
     </para>
 		</sect2>
@@ -369,14 +370,14 @@ $a[] = "world"; // $a[3] == "world"
 	다차원 배열도 실제로 매우 간단한다. 배열의 각 차원에 대하여 단지 [key]값을 뒤에 붙여주면 된다.:
      <informalexample>
 					<programlisting role="php"> 
-$a[1]      = $f;               # one dimensional examples
+$a[1]      = $f;               # 일차원 배열의 예제
 $a["foo"]  = $f;   
 
-$a[1][0]     = $f;             # two dimensional
-$a["foo"][2] = $f;             # (you can mix numeric and associative indices)
-$a[3]["bar"] = $f;             # (you can mix numeric and associative indices)
+$a[1][0]     = $f;             # 이차원 배열의 예제
+$a["foo"][2] = $f;             # (배열 지시자를 숫자와 문자로 혼합할수 있다)
+$a[3]["bar"] = $f;             # (배열 지시자를 숫자와 문자로 혼합할수 있다)
 
-$a["foo"][4]["bar"][0] = $f;   # four dimensional!
+$a["foo"][4]["bar"][0] = $f;   # 4차원배열!
       </programlisting>
 				</informalexample>
 			</para>
@@ -433,7 +434,7 @@ $a = array(
 				</informalexample>
 			</para>
 			<para>
-	<function>array</function> 함수는 다차원 배열에 대해서도 다음과 같이 사용할 수 있다. :
+				<function>array</function> 함수는 다차원 배열에 대해서도 다음과 같이 사용할 수 있다. :
      <informalexample>
 					<programlisting role="php"> 
 &lt;?php
@@ -489,49 +490,42 @@ $bar->do_foo();
 		</sect2>
 	</sect1>
 	<sect1 id="language.types.type-juggling">
-		<title>Type 전환 (Type juggling)</title>
+		<title>형 다루기 (Type juggling)</title>
 		<simpara>
-    PHP does not require (or support) explicit type definition in
-    variable declaration; a variable's type is determined by the
-    context in which that variable is used. That is to say, if you
-    assign a string value to variable <parameter>var</parameter>,
-    <parameter>var</parameter> becomes a string. If you then assign an
-    integer value to <parameter>var</parameter>, it becomes an
-    integer.
-   </simpara>
-		<para>
-    An example of PHP's automatic type conversion is the addition
-    operator '+'. If any of the operands is a double, then all
-    operands are evaluated as doubles, and the result will be a
-    double. Otherwise, the operands will be interpreted as integers,
-    and the result will also be an integer. Note that this does NOT
-    change the types of the operands themselves; the only change is in
-    how the operands are evaluated.
+    PHP에서는 변수형을 명확하게 선언할 필요도 없고, 변수형 선언이
+    제공되지도 않는다. 변수의 type은 구문내에서 사용되어질때 결정된다.
+    다시말해 변수<parameter>var</parameter>에 문자열을 할당(assign)하면, 변수
+    <parameter>var</parameter> 의 형은 문자열이 되고, 변수
+<parameter>var</parameter>에 정수를 할당(assign)하면 정수형 변수가 된다
+</simpara>
+		<para>   PHP의 자동형변환에 대한 예는 '+'연산자에 대한 역활을 보면 알수 있다.
+   '+'연산자가 사용된 연산식중 하나의 피연산자가 double형이라면 다른 피연산자들도
+   double형으로 계산되어 결과는 double형이 된다. 마찬가지로 하나의 피연산자가 
+   정수형이라면 그 결과도 정수형이 된다. 여기서 주의해야 할것은 하나의 피연자에 의해
+   다른 피연산자의 형이 바뀌는 것이 아니라 단지 그 결과값에만 영향을 미친다.
     <informalexample>
 				<programlisting role="php">
-$foo = "0";  // $foo is string (ASCII 48)
-$foo++;      // $foo is the string "1" (ASCII 49)
-$foo += 1;   // $foo is now an integer (2)
-$foo = $foo + 1.3;  // $foo is now a double (3.3)
-$foo = 5 + "10 Little Piggies"; // $foo is integer (15)
-$foo = 5 + "10 Small Pigs";     // $foo is integer (15)
+$foo = "0";  // $foo 는 문자열 변수 (ASCII 48)
+$foo++;      // $foo 는 문자열 변수 "1" (ASCII 49)
+$foo += 1;   // $foo 는 정수형 변수로 변환되었다. (2)
+$foo = $foo + 1.3;  // $foo 는 double형 변수로 변환되었다. (3.3)
+$foo = 5 + "10 Little Piggies"; // $foo 는 정수형 변수 (15)
+$foo = 5 + "10 Small Pigs";     // $foo 는 정수형 변수 (15)
      </programlisting>
 			</informalexample>
 		</para>
-		<simpara>
-    If the last two examples above seem odd, see <link linkend="language.types.string.conversion">String
-    conversion</link>.
+		<simpara>    위의 예들 중 마지막 두 예가 이해가 되지 않는다면 
+<link linkend="language.types.string.conversion">문자열 변환(String
+    conversion)</link>을 참조하기 바란다.
    </simpara>
-		<simpara>
-    If you wish to force a variable to be evaluated as a certain type,
-    see the section on <link linkend="language.types.typecasting">Type
-    casting</link>. If you wish to change the type of a variable, see
-    <function>settype</function>.
+		<simpara>    변수가 특정한 형(type)으로 계산되어지게 하고자할 경우
+<link linkend="language.types.typecasting">Type
+    casting</link>을 참조하고, 변수의 형을 변환시카고자 할 경우는
+    <function>settype</function>을 참조하기 바란다.
    </simpara>
 		<para>
-    If you would like to test any of the examples in this section, you
-    can cut and paste the examples and insert the following line to
-    see for yourself what's going on:
+    이 섹션에의 예제를 테스트 해보고자 한다면, 예제를 php file에 복사하고
+    아래의 문장을 써준다면 어떻게 변수형이 변하는지 확인해 볼수 있을것이다.
     <informalexample>
 				<programlisting role="php">
 echo "\$foo==$foo; type is " . gettype ($foo) . "&lt;br&gt;\n";
@@ -540,74 +534,68 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "&lt;br&gt;\n";
 		</para>
 		<note>
 			<para>
-     The behaviour of an automatic conversion to array is currently
-     undefined.
+     배열에서의 자동 형변환은 통상적으로 정의되어져 있지 않다.
      <informalexample>
 					<programlisting role="php">
-$a = 1;       // $a is an integer
-$a[0] = "f";  // $a becomes an array, with $a[0] holding "f"
+$a = 1;       // $a 는 정수형이다
+$a[0] = "f";  // $a 는 $a[0]가 "f"의 값을 가진 배열이다.      </programlisting>
+				</informalexample>
+			</para>
+			<para>
+     위의 예는 $a가 첫번째 요소로 'f'를 가지는 배열로 형변환 되는게 명확하게 보이지만,
+     아래의 경우를 생각해 보자
+     <informalexample>
+					<programlisting role="php">
+$a = "1";     // $a는 문자열이다
+$a[0] = "f";  // 첨자 0이 문자열에 대한 오프셋(offset)인가? 여기서는 어떤일이 일어날 것인가?
       </programlisting>
 				</informalexample>
 			</para>
 			<para>
-     While the above example may seem like it should clearly result in
-     $a becoming an array, the first element of which is 'f', consider
-     this:
-     <informalexample>
-					<programlisting role="php">
-$a = "1";     // $a is a string
-$a[0] = "f";  // What about string offsets? What happens?
-      </programlisting>
-				</informalexample>
-			</para>
-			<para>
-     Since PHP supports indexing into strings via offsets using the
-     same syntax as array indexing, the example above leads to a
-     problem: should $a become an array with its first element being
-     "f", or should "f" become the first character of the string $a?
+     PHP에서 배열의 인덱스(index)와 같은 오프셋(offset)을 이용한 인덱스(index)를
+     문자열 변수에도 사용할 수 있다. 따라서 위의 예는 다음과 같은 문제를 안고 있다.:
+     $a가 첫번째 요소가 "f"인 배열인가?
+     "f"가 문자열 변수 $a의 첫번째 문자가 되어야 하는가?
     </para>
 			<para>
-     For this reason, as of PHP 3.0.12 and PHP 4.0b3-RC4, the result
-     of this automatic conversion is considered to be undefined. Fixes
-     are, however, being discussed.
+     이러한 이유로, PHP 3.0.12 and PHP 4.0b3-RC4에서 위와 같은 경우의 
+     자동 형 변환은 정의되어 있지 않다고 한다. 이에 대한 정확한 정의는 논의 되어 질것이다.
     </para>
 		</note>
 		<sect2 id="language.types.typecasting">
-			<title>Type Casting</title>
+			<title>형 적용(Type Casting)</title>
 			<para>
-     Type casting in PHP works much as it does in C: the name of the
-     desired type is written in parentheses before the variable which
-     is to be cast.
+     PHP에서 형적용(type casting)은 C language에서와 매우 유사하다.
+     원하는 타입을 적용(casting)되어지는 변수앞에 괄호로 묶어서 써 주기만 하면 된다.
      <informalexample>
 					<programlisting role="php">
-$foo = 10;   // $foo is an integer
-$bar = (double) $foo;   // $bar is a double
+$foo = 10;   // $foo는 정수형이다.
+$bar = (double) $foo;   // $bar는 type casting으로 double형이다
       </programlisting>
 				</informalexample>
 			</para>
 			<para>
-     The casts allowed are:
+     아래와 같은 경우를 적용할 수 있다:
      <itemizedlist>
 					<listitem>
-						<simpara>(int), (integer) - cast to integer</simpara>
+						<simpara>(int), (integer) - 정수로 cast</simpara>
 					</listitem>
 					<listitem>
-						<simpara>(real), (double), (float) - cast to double</simpara>
+						<simpara>(real), (double), (float) - double형으로 cast</simpara>
 					</listitem>
 					<listitem>
-						<simpara>(string) - cast to string</simpara>
+						<simpara>(string) - 문자열로 cast</simpara>
 					</listitem>
 					<listitem>
-						<simpara>(array) - cast to array</simpara>
+						<simpara>(array) - 배열로 cast</simpara>
 					</listitem>
 					<listitem>
-						<simpara>(object) - cast to object</simpara>
+						<simpara>(object) - 객체(object)로 cast</simpara>
 					</listitem>
 				</itemizedlist>
 			</para>
 			<para>
-     Note that tabs and spaces are allowed inside the parentheses, so
-     the following are functionally equivalent:
+     괄호안에 tab이나 공백문자는 허용되므로 아래의 두 문장은 같이 취급된다.
      <informalexample>
 					<programlisting role="php">
 $foo = (int) $bar;
@@ -616,30 +604,28 @@ $foo = ( int ) $bar;
 				</informalexample>
 			</para>
 			<para>
-     It may not be obvious exactly what will happen when casting
-     between certain types. For instance, the following should be
-     noted.
+     특정한 타입으로 casting될때의 결과는 명확하지 않다.
+     예를 들어 다음과 같은 경우 주의를 요한다.
     </para>
 			<para>
-     When casting from a scalar or a string variable to an array, the
-     variable will become the first element of the array:
+     스칼라(scalar)변수나 문자열 변수가 배열로 casting될때 그 변수는
+     배열의 첫번째 요소가 된다.
      <informalexample>
 					<programlisting role="php">
 $var = 'ciao';
 $arr = (array) $var;
-echo $arr[0];  // outputs 'ciao'  
+echo $arr[0];  // 결과값은 'ciao'  이 된다
       </programlisting>
 				</informalexample>
 			</para>
 			<para>
-     When casting from a scalar or a string variable to an object, the
-     variable will become an attribute of the object; the attribute
-     name will be 'scalar':
+     스칼라(scalar)변수나 문자열 변수가 객체로 casting될때 그 변수는
+     'scalar'라는 객체의 속성값이 된다.     
      <informalexample>
 					<programlisting role="php">
 $var = 'ciao';
 $obj = (object) $var;
-echo $obj-&gt;scalar;  // outputs 'ciao'
+echo $obj-&gt;scalar;  // 결과값은 'ciao' 이 된다
       </programlisting>
 				</informalexample>
 			</para>
