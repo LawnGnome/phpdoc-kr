@@ -1,11 +1,11 @@
-﻿ <chapter id="functions">
-  <title>Functions</title>
+ <chapter id="functions">
+  <title>함수 (Functions)</title>
 
   <sect1 id="functions.user-defined">
-   <title>User-defined functions</title>
+   <title>사용자 정의 함수 (User-defined functions)</title>
  
    <para>
-    A function may be defined using syntax such as the following:
+	함수는 다음과 같이 정의한다. :
  
     <informalexample>
      <programlisting role="php">
@@ -18,28 +18,23 @@ function foo ($arg_1, $arg_2, ..., $arg_n) {
    </para>
      
    <simpara>
-    Any valid PHP code may appear inside a function, even other
-    functions and <link linkend="keyword.class">class</link>
-    definitions.
+	함수 안에는 다른 함수나 <link linkend="keyword.class">class</link>의 선언 등을 포함한 모든 가능한 PHP 코드가 사용될 수 있다.
    </simpara>
    <simpara>
-    In PHP 3, functions must be defined before they are referenced. No
-    such requirement exists in PHP 4.
+	PHP3에서는 함수는 그 함수가 사용되기 이전에 선언되어 있어야 하였으나 
+	PHP4에서는 이런 제약이 없어졌다.
    </simpara>
    <simpara>
-    PHP does not support function overloading, nor is it possible to
-    undefine or redefine previously-declared functions.
+	PHP는 function overloading을 지원하지 않고, 
+	이미 정의된 함수를 재정의하거나 없애지 못한다.
    </simpara>
    <simpara>
-    PHP 3 does not support variable numbers of arguments to functions,
-    although default arguments are supported (see <link
-    linkend="functions.arguments.default">Default argument
-    values</link> for more information). PHP 4 supports both: see <link
-    linkend="functions.variable-arg-list">Variable-length argument
-    lists</link> and the function references for
-    <function>func_num_args</function>,
-    <function>func_get_arg</function>, and
-    <function>func_get_args</function> for more information.
+	PHP3에서는 함수 파라메터의 기본값을 설정해주는 것
+	(<link linkend="functions.arguments.default">Default argument values</link>를 보라.)은 가능해도, 
+	파라메터의 개수를 가변으로 설정하는 것은 불가능했지만, PHP4는 두가지 모두 가능하다. 
+	자세한 내용은 <link linkend="functions.variable-arg-list">Variable-length argument lists</link>와
+	<function>func_num_args</function>, <function>func_get_arg</function>, 
+	<function>func_get_args</function> 함수의 설명을 보기 바란다.
    </simpara>
 
   </sect1>
@@ -48,24 +43,18 @@ function foo ($arg_1, $arg_2, ..., $arg_n) {
    <title>Function arguments</title>
  
    <simpara>
-    Information may be passed to functions via the argument list,
-    which is a comma-delimited list of variables and/or constants.
+	argument list를 통해 함수에 어떤 정보를 넘겨줄 수 있다. 
+	이 argument list는 쉼표(,)로 나뉘어진 변수나 상수의 list이다. 
    </simpara> 
    <para>
-     PHP supports passing arguments by value (the default), <link
-     linkend="functions.arguments.by-reference">passing by
-     reference</link>, and <link
-     linkend="functions.arguments.default">default argument
-     values</link>. Variable-length argument lists are supported only
-     in PHP 4 and later; see <link
-     linkend="functions.variable-arg-list">Variable-length argument
-     lists</link> and the function references for
-     <function>func_num_args</function>,
-     <function>func_get_arg</function>, and
-     <function>func_get_args</function> for more information. A
-     similar effect can be achieved in PHP 3 by passing an array of
-     arguments to a function:
- 
+	PHP는 passing by value(기본적으로 이것을 사용)와 
+	<link linkend="functions.arguments.by-reference">passing by reference</link>, 
+	<link linkend="functions.arguments.default">default argument values</link>의 3가지 방법을 제공한다. 
+	가변 길이(Variable-length) argument list는 PHP4이후에서만 제공된다. 
+	자세한 내용은 <link linkend="functions.variable-arg-list">Variable-length argument lists</link>와 
+     <function>func_num_args</function>, <function>func_get_arg</function>, 
+     <function>func_get_args</function> 함수의 설명을 보기 바란다. 
+	그러나 PHP3에서도 배열을 통한 전달을 사용한다면 비슷한 효과를 낼 수 있다.
     <informalexample>
      <programlisting role="php">
 function takes_array($input) {
@@ -79,17 +68,12 @@ function takes_array($input) {
     <title>Making arguments be passed by reference</title>
  
     <simpara>
-     By default, function arguments are passed by value (so that if
-     you change the value of the argument within the function, it does
-     not get changed outside of the function). If you wish to allow a
-     function to modify its arguments, you must pass them by
-     reference.
+	기본값으로 함수의 인수(argument)들은 값으로 전달된다(passed by value). 
+	함수내에서 변화시킨 값을 함수 밖에서도 적용시키려면 pass by reference로 인수를 넘겨야 한다.
     </simpara>
     <para>
-     If you want an argument to a function to always be passed by
-     reference, you can prepend an ampersand (&amp;) to the argument
-     name in the function definition:
- 
+	어떤 함수의 인수를 항상 pass by reference로 넘기려 한다면, 
+	함수를 선언할 때 ampersand(&amp;)를 인수의 앞에 붙여주면 된다. :
      <informalexample>
       <programlisting role="php">
 function add_some_extra(&amp;$string) {
@@ -103,9 +87,8 @@ echo $str;    // outputs 'This is a string, and something extra.'
     </para>
  
     <para>
-     If you wish to pass a variable by reference to a function which
-     does not do this by default, you may prepend an ampersand to the
-     argument name in the function call:
+	만약 기본값은 by value 로 하지만 필요에 따라 by reference로 호출하고 싶다면 
+	함수 호출 시에 인수의 앞에 &amp;를 붙이면 된다. :
  
      <informalexample>
       <programlisting role="php">
@@ -127,9 +110,7 @@ echo $str;    // outputs 'This is a string, and something extra.'
     <title>Default argument values</title>
  
     <para>
-     A function may define C++-style default values for scalar
-     arguments as follows:
- 
+	스칼라 인수(argument)에 대해서는 다음과 같이 C++ 과 비슷하게 기본값을 정해줄 수 있다. : 
      <informalexample>
       <programlisting role="php">
 function makecoffee ($type = "cappucino") {
@@ -142,7 +123,7 @@ echo makecoffee ("espresso");
     </para>
  
     <para>
-     The output from the above snippet is:
+     위의 코드의 실행 결과는 다음과 같다 :
  
      <screen>
 Making a cup of cappucino.
@@ -151,14 +132,12 @@ Making a cup of espresso.
     </para>
  
     <simpara>
-     The default value must be a constant expression, not (for
-     example) a variable or class member.
+	default 값은 반드시 상수이어야 한다. 
+	(예를들어) 변수나 class의 멤버를 사용해서는 안된다.
     </simpara>
     <para>
-     Note that when using default arguments, any defaults should be on
-     the right side of any non-default arguments; otherwise, things
-     will not work as expected. Consider the following code snippet:
- 
+	default argument를 사용할 때, default가 되는 인수들은 non-default인 인수들보다 
+	오른쪽에 위치해야 한다. 그렇지 않으면 원하는 결과가 나오지 않는다. 다음을 보자. :
      <informalexample>
       <programlisting role="php">
 function makeyogurt ($type = "acidophilus", $flavour) {
@@ -171,7 +150,7 @@ echo makeyogurt ("raspberry");   // won't work as expected
     </para>
  
     <para>
-     The output of the above example is:
+     위 코드의 실행 결과는 다음과 같다 :
  
      <screen>
 Warning: Missing argument 2 in call to makeyogurt() in 
@@ -181,7 +160,7 @@ Making a bowl of raspberry .
     </para>
  
     <para>
-     Now, compare the above with this:
+     그러면 이제 위의 것과 아래것을 비교해 보자. : 
  
      <informalexample>
       <programlisting role="php">
@@ -195,7 +174,7 @@ echo makeyogurt ("raspberry");   // works as expected
     </para>
  
     <para>
-     The output of this example is:
+     이 예제의 실행 결과는 다음과 같다. : 
  
      <screen>
 Making a bowl of acidophilus raspberry.
@@ -208,17 +187,14 @@ Making a bowl of acidophilus raspberry.
     <title>Variable-length argument lists</title>
 	
     <simpara>
-     PHP 4 has support for variable-length argument lists in
-     user-defined functions. This is really quite easy, using the
-     <function>func_num_args</function>,
-     <function>func_get_arg</function>, and
-     <function>func_get_args</function> functions.
+	PHP4에서는 사용자 정의 함수에 가변 길이(Variable-length) argument list를 제공한다. 
+	<function>func_num_args</function>, <function>func_get_arg</function>, 
+	<function>func_get_args</function> 함수를 사용하여 쉽게 사용할 수 있다.
     </simpara>
 
     <simpara>
-     No special syntax is required, and argument lists may still be
-     explicitly provided with function definitions and will behave as
-     normal.
+	특별한 문법이 사용되지도 않고, 함수의 정의시나 사용시 argument list는 
+	보통의 경우와 동일하게 사용하면 된다.
     </simpara>
 
    </sect2>
@@ -229,9 +205,8 @@ Making a bowl of acidophilus raspberry.
    <title>Returning values</title>
  
    <para>
-    Values are returned by using the optional return statement. Any
-    type may be returned, including lists and objects.
- 
+	함수는 return 문을 통해 함수값을 돌려줄 수 있다. 
+	list나 object를 포함한 어떤 type도 돌려질 수 있다.
     <informalexample>
      <programlisting role="php">
 function square ($num) {
@@ -243,8 +218,8 @@ echo square (4);   // outputs '16'.
    </para>
       
    <para>
-    You can't return multiple values from a function, but similar
-    results can be obtained by returning a list.
+	여러값을 돌려줄 수는  없다. 
+	그러나 list를 돌려줌으로써 비슷한 일을 할 수 있다. :
  
     <informalexample>
      <programlisting role="php">
@@ -276,23 +251,20 @@ $newref =&amp;returns_reference();
    <title><literal>old_function</literal></title>
  
    <simpara>
-    The <literal>old_function</literal> statement allows you to
-    declare a function using a syntax identical to PHP/FI2 (except you
-    must replace 'function' with 'old_function'.
+	<literal>old_function</literal> 구문은 PHP/FI2에서와 동일한 함수 사용법을 제공한다. 
+	(function대신 old_function을 사용한다는 점은 제외하고)
    </simpara>
    <simpara>
-    This is a deprecated feature, and should only be used by the
-    PHP/FI2->PHP 3 convertor.
+	이것을 사용하는 것은 매우 좋지 않은 방법이다. 
+	이것이 사용될 때는 PHP/FI2->PHP3 변환기에서 뿐이다. 
    </simpara>
    <warning>
     <para>
-     Functions declared as <literal>old_function</literal> cannot be
-     called from PHP's internal code. Among other things, this means
-     you can't use them in functions such as
-     <function>usort</function>, <function>array_walk</function>, and
-     <function>register_shutdown_function</function>. You can get
-     around this limitation by writing a wrapper function (in normal
-     PHP 3 form) to call the <literal>old_function</literal>.
+	<literal>old_function</literal>으로 정의된 함수들은 PHP의 내부 코드에서 호출될 수 없다. 
+	이 말은 <function>usort</function>나, <function>array_walk</function>, 
+	<function>register_shutdown_function</function>같은 함수에 사용할 수 없다는 의미이다. 
+	이를 해결하기 위해서는 이 <literal>old_function</literal>으로 선언된 함수를 호출하는 
+	PHP3 형태의 함수를 만들어 사용하는 것이다.
     </para>
    </warning>
 
@@ -302,11 +274,9 @@ $newref =&amp;returns_reference();
    <title>Variable functions</title>
 
    <para>
-    PHP supports the concept of variable functions. This means that if
-    a variable name has parentheses appended to it, PHP will look for
-    a function with the same name as whatever the variable evaluates
-    to, and will attempt to execute it. Among other things, this can
-    be used to implement callbacks, function tables, and so forth.
+	PHP는 가변 함수(variable functions) 개념을 지원한다. 이것은 변수명 뒤에 괄호가 왔을 때, 
+	PHP는 그 이름을 가진 함수를 찾아 실행한다는 것을 의미한다. 
+	이 기능은  callbacks, function table 등의 기능에 사용하면 매우 유용하게 사용할 수 있다
    </para>
 
    <para>
