@@ -31,7 +31,8 @@
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Aspell_new</function> 함수는 새 사전을 열고 다른 aspell 함수에서 사용할 수 있는 사전 연결 identifier 를 반환합니다.</simpara>
+				<function>Aspell_new</function> 함수는 새 사전을 열고 다른 aspell 함수에서 사용할 수 있도록
+				사전 연결 identifier 를 반환합니다.</simpara>
 			<para>
 				<example>
 					<title>
@@ -62,7 +63,8 @@ $aspell_link=aspell_new ("english");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Aspell_check</function> 함수는 단어를 검사하고 단어가 올바를 경우 true, 틀릴 경우 false를 반환합니다.
+				<function>Aspell_check</function> 함수는 단어를 검사하고 단어가 올바를 경우 true, 틀릴 경우 false를
+				 반환합니다.
     </simpara>
 			<para>
 				<example>
@@ -101,7 +103,8 @@ if (aspell_check ($aspell_link, "testt")) {
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Aspell_check_raw</function> 함수는 단어가 올바른지만 검사합니다. 단어가 올바를 경우  true, 틀릴 경우 false를 반환합니다.</simpara>
+				<function>Aspell_check_raw</function> 함수는 단어가 올바른지만 검사합니다.
+				단어가 올바를 경우  true, 틀릴 경우 false를 반환합니다.</simpara>
 			<para>
 				<example>
 					<title>

@@ -1,3 +1,4 @@
+<!-- edited with XML Spy v3.5 (http://www.xmlspy.com) by  () -->
 <!-- edited by Jeongha Kwon(SuViA) -->
 <reference id="ref.bc">
 	<title>BCMath Arbitrary Precision 수학 함수</title>
@@ -39,7 +40,8 @@
 			</funcsynopsis>
 			<para>
 				<parameter>left operand</parameter>와
-     <parameter>right operand</parameter>를 더해서 합을 문자열로 반환합니다.   선택사항인 <parameter>scale</parameter>는 결과값의 소수 자리수를 지정합니다.
+     <parameter>right operand</parameter>를 더해서 합을 문자열로 반환합니다.
+      선택사항인 <parameter>scale</parameter>는 결과값의 소수 자리수를 지정합니다.
     </para>
 			<para>
      관련 함수: <function>bcsub</function>.
@@ -70,9 +72,11 @@
 			</funcsynopsis>
 			<para>
 				<parameter>left operand</parameter>와
-     <parameter>right operand</parameter>를 비교해서 정수형의 값을 반환합니다..  선택사항인 <parameter>scale</parameter>는 소수 몇자리까지 비교할지  정합니다.  두 값이 같을 경우 0,<parameter>left operand</parameter>
+     <parameter>right operand</parameter>를 비교해서 정수형의 값을 반환합니다.
+     선택사항인 <parameter>scale</parameter>는 소수 몇자리까지 비교할지  정합니다.  두 값이 같을 경우 0,<parameter>left operand</parameter>
      가<parameter>right operand</parameter>보다 크면 +1,<parameter>left operand</parameter>
-     가<parameter>right operand</parameter>보다 크면 -1을 반환합니다.
+     가<parameter>right operand</parameter>보다 크면 -1을
+     반환합니다.
     </para>
 		</refsect1>
 	</refentry>
@@ -100,7 +104,8 @@
 			</funcsynopsis>
 			<para>
 				<parameter>left operand</parameter>를
-     <parameter>right operand</parameter>로 나눈 결과를 반환합니다 선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
+     <parameter>right operand</parameter>로 나눈 결과를 반환합니다. 
+     선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
     </para>
 			<para>
       관련 함수: <function>bcmul</function>.
@@ -159,7 +164,8 @@
 			</funcsynopsis>
 			<para>
 				<parameter>left operand</parameter>와
-     <parameter>right operand</parameter>를 곱해서 결과를 반환합니다. 선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
+     <parameter>right operand</parameter>를 곱해서 결과를 반환합니다.
+     선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
     </para>
 			<para>
      관련 함수:<function>bcdiv</function>.
@@ -217,7 +223,8 @@ arbitrary precision number를 제곱하기</refpurpose>
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     이 함수는 scale 파라미터를 지정하지 않은 이후의 모든 bc 수학함수에 대해 기본 scale 파라미터를 지정합니다.
+     이 함수는 scale 파라미터를 지정하지 않은 이후의 모든 bc 수학함수에 대해
+     기본 scale 파라미터를 지정합니다.
     </para>
 		</refsect1>
 	</refentry>
@@ -245,7 +252,7 @@ arbitrary precision number를 제곱하기</refpurpose>
 			</funcsynopsis>
 			<para>
 				<parameter>operand</parameter>의 제곱근을 반환합니다.
-     선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
+				 선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
     </para>
 			<para>
      관련함수:<function>bcpow</function>.
@@ -278,7 +285,8 @@ arbitrary precision number를 제곱하기</refpurpose>
 			</funcsynopsis>
 			<para>
 				<parameter>left operand</parameter>에서
-     <parameter>right operand</parameter>를 빼서 결과를 문자열로 반환합니다.  선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
+     <parameter>right operand</parameter>를 빼서 결과를 문자열로 반환합니다.
+       선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
     </para>
 			<para>
      관련 함수: <function>bcadd</function>.

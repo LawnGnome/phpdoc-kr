@@ -29,8 +29,11 @@
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_add_to_personal</function> 함수는 사용자 단어목록에 단어를 추가합니다. 만약 사전을 열때<function>pspell_new_config</function> 함수와
-	 <function>pspell_config_personal</function> 함수를 사용하면 나중에 <function>pspell_save_wordlist</function>함수를 사용해서 단어목록을 저장할 수 있습니다. 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
+				<function>Pspell_add_to_personal</function> 함수는 사용자 단어목록에 단어를 추가합니다.
+				 만약 사전을 열때<function>pspell_new_config</function> 함수와 <function>pspell_config_personal</function> 함수를 사용하면
+				나중에 <function>pspell_save_wordlist</function>함수를 사용해서
+				단어목록을 저장할 수 있습니다.
+				이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
     </simpara>
 			<para>
 				<example>
@@ -68,9 +71,8 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_add_to_session</function> 함수는 현재 세션의 단어목록에 단어를 추가합니다. 이것은 다음 함수와 매우 비슷합니다. 
-	 <function>pspell_add_to_personal</function>
-			</simpara>
+				<function>Pspell_add_to_session</function> 함수는 현재 세션의 단어목록에 단어를 추가합니다.
+				 이것은 <function>pspell_add_to_personal</function>함수와 매우 비슷합니다</simpara>
 		</refsect1>
 	</refentry>
 	<refentry id="function.pspell-check">
@@ -91,7 +93,8 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_check</function> 함수는 단어의 철자를 검사하고 올바를 경우 true, 틀릴경우 false를 반환합니다.
+				<function>Pspell_check</function> 함수는 단어의 철자를 검사하고 올바를 경우 true, 틀릴경우 false를
+				 반환합니다.
     </simpara>
 			<para>
 				<example>
@@ -127,7 +130,10 @@ if (pspell_check ($pspell_link, "testt")) {
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_clear_session</function>함수는 현재 연결된 세션을 제거합니다. 현재 단어목록은 비워집니다.  예를들어 <function>pspell_save_wordlist</function>함수를 사용해서 단어목록에 저장할려고 하면 아무일도 생기지 않습니다.
+				<function>Pspell_clear_session</function>함수는 현재 연결된 세션을 제거합니다.
+				 현재 단어목록은 비워집니다. 
+				 예를들어 <function>pspell_save_wordlist</function>함수를 사용해서 단어목록에 저장할려고 하면
+				 아무일도 생기지 않습니다.
     </simpara>
 			<para>
 				<example>
@@ -179,26 +185,28 @@ pspell_save_wordlist ($pspell_link);	//"Vlad" will not be saved
 			</funcsynopsis>
 			<simpara>
 				<function>Pspell_config_create</function> 함수는 
-	 <function>pspell_new</function>함수와 매우비슷한 문법입니다. 사실
-	 <function>pspell_new_config</function>함수를 사용한 이후에
-	 <function>pspell_config_create</function>함수를 사용하게 되면 동일한 결과를 나타낼 것입니다.
-	 향상된 기능을 사용하기 위해서는 새로운 설정을 만들었더라도 
-	 <function>pspell_new_config</function> 함수를 호출하기 전에
-	 <function>pspell_config_*</function> 함수를 사용해야합니다.
+	 <function>pspell_new</function>함수와 매우비슷한 문법입니다.
+	 사실 <function>pspell_new_config</function>함수를 사용한 이후에	 <function>pspell_config_create</function>함수를 사용하게 되면
+	  동일한 결과를 나타낼 것입니다. 향상된 기능을 사용하기 위해서는 새로운 설정을
+	 만들었더라도 <function>pspell_new_config</function> 함수를 호출하기 전에 <function>pspell_config_*</function> 함수를
+	 사용해야 합니다.
     </simpara>
 			<para>
-    language 파라미터는 두자로 된 ISO 639 언어 코드입니다. 선택적으로 ISO 639 언어 코드 이후 '-' 나 '_' 를 적고 두자로 된 ISO 3166 국가코드를  추가할 수 있습니다.
+    language 파라미터는 두자로 된 ISO 639 언어 코드입니다. 선택적으로
+    ISO 639 언어 코드 이후 '-' 나 '_' 를 적고 두자로 된 ISO 3166 국가코드를  추가할 수 있습니다.
     </para>
 			<para>
-     spelling 파라미터는 English 와 같이 한 철자 이상의 철자가 있는 언어에 대해 철자를 지정합니다. English 의 경우 알려진 값에는 'american', 'british', and 'canadian' 가 있습니다.
+     spelling 파라미터는 English 와 같이 한 철자 이상의 철자가 있는 언어에 대해 철자를
+     지정합니다. English 의 경우 알려진 값에는 'american', 'british', and 'canadian' 가 있습니다.
     </para>
 			<para>
-     jargon 파라미터는 동일한 language와 spelling 파라미터를 가지고 있는 두 다른 단어 목록을 구별하기 위한 추가정보입니다.
+     jargon 파라미터는 동일한 language와 spelling 파라미터를 가지고 있는
+     두 다른 단어 목록을 구별하기 위한 추가정보입니다.
     </para>
 			<para>
      encoding 파라미터는 단어의 인코딩 정보입니다. 가능한 값에는 'utf-8', 'iso8859-*', 'koi8-r',
-     'viscii', 'cp1252', 'machine unsigned 16', 'machine unsigned
-     32' 가 있습니다. 이 파라미터는 거의 테스트되지 않았으니, 사용할 때 주의하세요.
+     'viscii', 'cp1252', 'machine unsigned 16', 'machine unsigned 32' 가 있습니다.
+     이 파라미터는 거의 테스트되지 않았으니, 사용할 때 주의하세요.
     </para>
 			<para>
      mode 파라미터는 단어검사기의 실행모드입니다.
@@ -257,7 +265,8 @@ $pspell_link = pspell_new_personal (pspell_config);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_ignore</function> 함수는<function>pspell_new_config</function>함수를 호출하기 전에 설정이 되어야 합니다. 이 함수는 문자길이가 n보다 작은 단어는 검사하지 않고 무시합니다.
+				<function>Pspell_config_ignore</function> 함수는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
+				 합니다. 이 함수는 문자길이가 n보다 작은 단어는 검사하지 않고 무시합니다.
     </simpara>
 			<para>
 				<example>
@@ -292,8 +301,8 @@ pspell_check($pspell_link, "abcd");	//will not result in an error
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_mode</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다. 이 함수는  
-	 <function>pspell_suggest</function>함수에 의해 반환되는 추천 단어의 수를 결정합니다.
+				<function>Pspell_config_mode</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
+				 합니다. 이 함수는  <function>pspell_suggest</function>함수에 의해 반환되는 추천 단어의 수를 결정합니다.
 	</simpara>
 			<para>
      mode 파라미터는 단어검사기의 실행모드입니다.
@@ -349,9 +358,12 @@ pspell_check($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_personal</function>는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다. 사용자 단어목록은 읽혀지고<function>pspell_new_config</function>함수를 호출한 후에 표준 단어목록에 추가적으로 사용됩니다. 파일이 존재하지 않을경우  생성됩니다. 파일은 
-	 <function>pspell_save_wordlist</function>함수에서 사용자 단어목록을 저장하는 파일이기도 합니다.
-	 파일은 PHP 실행 사용자(예, nobody) 가 쓰기가능한 모드로 되어있어야 합니다. 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
+				<function>Pspell_config_personal</function>는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
+				사용자 단어목록은 읽혀지고 <function>pspell_new_config</function>함수를 호출한 후에 표준 단어목록에
+				 추가적으로 사용됩니다. 파일이 존재하지 않을경우  생성됩니다.
+				 파일은 <function>pspell_save_wordlist</function>함수에서 사용자 단어목록을 저장하는 파일이기도 합니다.
+				 파일은 PHP 실행 사용자(예, nobody) 가 쓰기가능한 모드로 되어있어야 합니다.
+				 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
     </simpara>
 			<para>
 				<example>
@@ -386,7 +398,12 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다. 교정내용은 단어검사기의 질적 성능을 향상시킵니다. 단어의 철자가 틀리고 목록에서 적당한 추천단어를 찾지 못했을 경우,<function>pspell_store_replacement</function>함수는 교정목록을 저장하고<function>pspell_save_wordlist</function>함수는 교정목록을 포함한 단어목록을 저장하는데 사용할 수 있습니다. 파일은 PHP 실행 사용자(예, nobody)가 쓰기 가능한 모드로 되어 있어야 합니다. 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
+				<function>Pspell_config_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
+				 교정내용은 단어검사기의 질적 성능을 향상시킵니다. 단어의 철자가 틀리고 목록에서 적당한
+				 추천단어를 찾지 못했을 경우,<function>pspell_store_replacement</function>함수는 교정목록을 저장하고
+				<function>pspell_save_wordlist</function>함수는 교정목록을 포함한 단어목록을 저장하는데 사용할 수 
+				있습니다. 파일은 PHP 실행 사용자(예, nobody)가 쓰기 가능한 모드로 되어 있어야 합니다.
+				 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
     </simpara>
 			<para>
 				<example>
@@ -422,8 +439,11 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_runtogether</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다. 이 함수는 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.  즉, 말하자면 두 단어 사이에 공백(space)이 있어야 할지라도 "thecat"은 정당한 합성어가 됩니다. 이 설정을 바꾸면 <function>pspell_check</function>함수에 의해 반환되는 결과값에만 영향을 미칩니다.;
-	 <function>pspell_suggest</function>함수는 여전히 추천단어를 반환합니다.
+				<function>Pspell_config_runtogether</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에
+				 설정되어야 합니다. 이 함수는 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.
+				  즉, 말하자면 두 단어 사이에 공백(space)이 있어야 할지라도 "thecat"은 정당한 합성어가 됩니다.
+				 이 설정을 바꾸면 <function>pspell_check</function>함수에 의해 반환되는 결과값에만 영향을 미칩니다.
+				<function>pspell_suggest</function>함수는 여전히 추천단어를 반환합니다.
     </simpara>
 			<para>
 				<example>
@@ -458,7 +478,12 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_save_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다. 이 함수는<function>pspell_save_wordlist</function>함수가 교정내용목록을 단어목록과 같이 저장할지를 결정합니다. 일반적으로 이 함수는 사용할 필요가 없습니다. 왜냐하면, 만약<function>pspell_config_repl</function>함수를 사용했을 경우, 교정내용은<function>pspell_save_wordlist</function>함수에 의해 자동으로 저장이 됩니다. 만약 pspell_config_repl()함수를 사용하지 않았을경우 교정내용은 저장되지 않습니다. 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.</simpara>
+				<function>Pspell_config_save_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
+				 합니다. 이 함수는<function>pspell_save_wordlist</function>함수가 교정내용목록을 단어목록과 같이
+				 저장할지를 결정합니다. 일반적으로 이 함수는 사용할 필요가 없습니다. 만약<function>pspell_config_repl</function>함수를 사용했을 경우, 교정내용은
+				<function>pspell_save_wordlist</function>함수에 의해 자동으로 저장이 되기 때문입니다.
+				 만약 pspell_config_repl()함수를 사용하지 않았을경우 교정내용은 저장되지 않습니다. 
+				이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.</simpara>
 		</refsect1>
 	</refentry>
 	<refentry id="function.pspell-new">
@@ -497,21 +522,25 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_new</function>함수는 새 사전을 열고 다른 pspell함수에서 사용하기 위한 사전 연결 identifier를 반환합니다.
+				<function>Pspell_new</function>함수는 새 사전을 열고 다른 pspell함수에서 사용할수 있도록
+				사전 연결 identifier를 반환합니다.
     </simpara>
 			<para>
-     language 파라미터는 두자로 된 ISO 639 언어 코드입니다. 선택적으로 ISO 639 언어 코드 이후 '-' 나 '_' 를 적고 두자로 된 ISO 3166 국가코드를  추가할 수 있습니다.
+     language 파라미터는 두자로 된 ISO 639 언어 코드입니다. 선택적으로
+     ISO 639 언어 코드 이후 '-' 나 '_' 를 적고 두자로 된 ISO 3166 국가코드를  추가할 수 있습니다.
     </para>
 			<para>
-     spelling 파라미터는 English 와 같이 한 철자 이상의 철자가 있는 언어에 대해 철자를 지정합니다. English 의 경우 알려진 값에는 'american', 'british', and 'canadian' 가 있습니다.
+     spelling 파라미터는 English 와 같이 한 철자 이상의 철자가 있는 언어에 대해 철자를
+     지정합니다. English 의 경우 알려진 값에는 'american', 'british', and 'canadian' 가 있습니다.
     </para>
 			<para>
-      jargon 파라미터는 동일한 language와 spelling 파라미터를 가지고 있는 두 다른 단어 목록을 구별하기 위한 추가정보입니다.
+      jargon 파라미터는 동일한 language와 spelling 파라미터를 가지고 있는
+      두 다른 단어 목록을 구별하기 위한 추가정보입니다.
     </para>
 			<para>
      encoding 파라미터는 단어의 인코딩 정보입니다. 가능한 값에는 'utf-8', 'iso8859-*', 'koi8-r',
-     'viscii', 'cp1252', 'machine unsigned 16', 'machine unsigned
-     32' 가 있습니다. 이 파라미터는 거의 테스트되지 않았으니, 사용할 때 주의하세요.
+     'viscii', 'cp1252', 'machine unsigned 16', 'machine unsigned 32' 가 있습니다.
+     이 파라미터는 거의 테스트되지 않았으니, 사용할 때 주의하세요.
     </para>
 			<para>
      mode 파라미터는 단어검사기의 실행모드입니다.
@@ -534,16 +563,19 @@ pspell_check ($pspell_link, "thecat");
 					</listitem>
 					<listitem>
 						<simpara>
-	PSPELL_RUN_TOGETHER - 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.  즉, 말하자면 두 단어 사이에 공백(space)이 있어야 할지라도 "thecat"은 정당한 합성어가 됩니다. 이 설정을 바꾸면        <function>pspell_check</function>함수에 의해 반환되는 결과값에만 영향을 미칩니다.;
+	PSPELL_RUN_TOGETHER - 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.
+	 즉, 말하자면 두 단어 사이에 공백(space)이 있어야 할지라도 "thecat"은
+	정당한 합성어가 됩니다. 이 설정을 바꾸면
+	<function>pspell_check</function>함수에 의해 반환되는 결과값에만 영향을 미칩니다.;
 	<function>pspell_suggest</function>함수는 여전히 추천단어를 반환합니다.
        </simpara>
 					</listitem>
 				</itemizedlist>
      모드는 위에 나열된 서로 다른 상수로 구성된 bitmask 입니다.
-     PSPELL_FAST, PSPELL_NORMAL, PSPELL_BAD_SPELLERS 이 서로 배타적일지라도,
-     이것들중에 하나만을 선택해야합니다.</para>
+     PSPELL_FAST, PSPELL_NORMAL, PSPELL_BAD_SPELLERS 이 서로 배타적일지라도,  이것들중에
+     하나만을 선택해야합니다.</para>
 			<para>
-     자세한 정보와 예제는 pspell 웹사이트(<ulink url="&url.pspell;">&url.pspell;</ulink>의 매뉴얼을 참고하세요.
+     자세한 정보와 예제는 pspell 웹사이트(<ulink url="&url.pspell;">&url.pspell;</ulink>)의 매뉴얼을 참고하세요.
     </para>
 			<para>
 				<example>
@@ -575,11 +607,12 @@ $pspell_link = pspell_new ("en", "", "", "",
 			</funcsynopsis>
 			<simpara>
 				<function>Pspell_new_config</function>함수는 <function>pspell_config_create</function>함수에 의해서 생성되고,
-	 <function>pspell_config_*</function>함수로 수정된 설정을 사용해서 새 사전을 엽니다. 이 방법은 가장 융통성이 있고,<function>pspell_new</function>함수와
-	 <function>pspell_new_personal</function>함수에 의해 제공되는 모든 기능을 을 제공합니다.
+				<function>pspell_config_*</function>함수로 수정된 설정을 사용해서 새 사전을 엽니다. 이 방법은
+				가장 융통성이 있고,<function>pspell_new</function>함수와 <function>pspell_new_personal</function>함수에 의해 제공되는
+				 모든 기능을 을 제공합니다.
     </simpara>
 			<para>
-     config 파라미터는 설정이 생성될 때<function>pspell_config_create</function>함수에 의해 반환되는 것입니다.
+     config 파라미터는 설정이 생성될 때 <function>pspell_config_create</function>함수에 의해 반환되는 것입니다.
     </para>
 			<para>
 				<example>
@@ -634,25 +667,36 @@ $pspell_link = pspell_new_personal (pspell_config);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_new_personal</function>함수는 사용자 단어목록으로 새 사전을 열고 다른 pspell 함수에서 사용하기위한 사전열기 identifier를 반환합니다. 원할경우, 단어목록은 <function>pspell_save_wordlist</function>함수에 의해 수정되고 저장될수 있습니다. 교정목록이 저장되지 않았더라도, 교정목록을 저장하기 위해서는<function>pspell_config_create</function>함수를 사용해서 설정을 생성하고,<function>pspell_config_personal
-	 </function>함수를 사용해서 사용자 단어목록파일을 지정하고,<function>pspell_config_repl</function>함수를 사용해서 교정목록파일을 지정하고,
-	 <function>pspell_new_config</function>함수를 사용해서 새 사전을 열어야만 합니다.
+				<function>Pspell_new_personal</function>함수는 사용자 단어목록으로 새 사전을 열고 다른 pspell 함수에서
+				 사용하기위한 사전열기 identifier를 반환합니다. 원할경우, 단어목록은
+				<function>pspell_save_wordlist</function>함수에 의해 수정되고 저장될수 있습니다.
+				 교정목록이 저장되지 않았더라도, 교정목록을 저장하기 위해서는 
+				<function>pspell_config_create</function>함수를 사용해서 설정을 생성하고,
+				<function>pspell_config_personal</function>함수를 사용해서 사용자 단어목록파일을 지정하고,
+				<function>pspell_config_repl</function>함수를 사용해서 교정목록파일을 지정하고,
+				<function>pspell_new_config</function>함수를 사용해서 새 사전을 열어야만 합니다.
     </simpara>
 			<para>
-     personal 파라미터는 단어가 추가되고 저장될 사용자 단어목록 파일을 지정합니다. personal 파라미터는 "/"로 시작하는 절대경로 파일명이어야 합니다. 왜냐하면 그렇지 않을 경우 거의 모든 시스템에서 "/root"인 $HOME 으로부터의 상대경로가 됩니다. 그것은 아마도 당신이 원하는 경로가 아닐 것입니다.</para>
+     personal 파라미터는 단어가 추가되고 저장될 사용자 단어목록 파일을 지정합니다.
+     personal 파라미터는 "/"로 시작하는 절대경로 파일명이어야 합니다.
+    왜냐하면 그렇지 않을 경우 거의 모든 시스템에서 $HOME의 경로인 "/root"로 부터 상대경로가 됩니다.
+    그것은 아마도 당신이 원하는 경로가 아닐 것입니다.</para>
 			<para>
-     language 파라미터는 두자로 된 ISO 639 language 코드입니다. 선택적으로 ISO 639 language 코드 이후 '-' 나 '_' 를 적고 두자로 된 ISO 3166 국가코드를  추가 할 수 있습니다.
+     language 파라미터는 두자로 된 ISO 639 language 코드입니다. 선택적으로
+     ISO 639 language 코드 이후 '-' 나 '_' 를 적고 두자로 된 ISO 3166 국가코드를  추가 할 수 있습니다.
     </para>
 			<para>
-     spelling 파라미터는 English 와 같이 한 철자 이상의 철자가 있는 언어에 대해 철자를 지정합니다. English 의 경우 알려진 값에는 'american', 'british', and 'canadian' 가 있습니다.
+     spelling 파라미터는 English 와 같이 한 철자 이상의 철자가 있는 언어에 대해 철자를
+    지정합니다. English 의 경우 알려진 값에는 'american', 'british', and 'canadian' 가 있습니다.
     </para>
 			<para>
-     jargon 파라미터는 동일한 language와 spelling 파라미터를 가지고 있는 두 다른 단어 목록을 구별하기 위한 추가정보입니다.
+     jargon 파라미터는 동일한 language와 spelling 파라미터를 가지고 있는
+     두 다른 단어 목록을 구별하기 위한 추가정보입니다.
     </para>
 			<para>
      encoding 파라미터는 단어의 인코딩 정보입니다. 가능한 값에는 'utf-8', 'iso8859-*', 'koi8-r',
-     'viscii', 'cp1252', 'machine unsigned 16', 'machine unsigned
-     32' 가 있습니다. 이 파라미터는 거의 테스트되지 않았으니, 사용할 때 주의하세요.
+     'viscii', 'cp1252', 'machine unsigned 16', 'machine unsigned 32' 가 있습니다.
+      이 파라미터는 거의 테스트되지 않았으니, 사용할 때 주의하세요.
     </para>
 			<para>
      mode 파라미터는 단어검사기의 실행모드입니다.
@@ -675,7 +719,10 @@ $pspell_link = pspell_new_personal (pspell_config);
 					</listitem>
 					<listitem>
 						<simpara>
-	PSPELL_RUN_TOGETHER - 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.  즉, 말하자면 두 단어 사이에 공백(space)이 있어야 할지라도 "thecat"은 정당한 합성어가 됩니다. 이 설정을 바꾸면  <function>pspell_check</function>함수에 의해 반환되는 결과값에만 영향을 미칩니다.;
+	PSPELL_RUN_TOGETHER - 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.
+	 즉, 말하자면 두 단어 사이에 공백(space)이 있어야 할지라도 "thecat"은
+	 정당한 합성어가 됩니다. 이 설정을 바꾸면  
+	<function>pspell_check</function>함수에 의해 반환되는 결과값에만 영향을 미칩니다.
 	<function>pspell_suggest</function>함수는 여전히 추천단어를 반환합니다.
        </simpara>
 					</listitem>
@@ -685,7 +732,7 @@ $pspell_link = pspell_new_personal (pspell_config);
      이것들중에 하나만을 선택해야합니다.
     </para>
 			<para>
-     자세한 정보와 예제는 pspell 웹사이트(<ulink url="&url.pspell;">&url.pspell;</ulink>의 매뉴얼을 참고하세요.
+     자세한 정보와 예제는 pspell 웹사이트(<ulink url="&url.pspell;">&url.pspell;</ulink>)의 매뉴얼을 참고하세요.
     </para>
 			<para>
 				<example>
@@ -716,8 +763,11 @@ $pspell_link = pspell_new_personal ("/var/dictionaries/custom.pws",
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_save_wordlist</function>함수는 현재 세션의 사용자 단어목록을 저장합니다. 사전은 
-	 <function>pspell_new_personal</function>함수를 사용해서 열고,  저장된 파일의 위치는<function>pspell_config_personal</function>함수를 사용해서 지정되어야 하고, 선택적으로<function>pspell_config_repl</function>함수를 사용할수 있습니다. 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
+				<function>Pspell_save_wordlist</function>함수는 현재 세션의 사용자 단어목록을 저장합니다.
+				 사전은 <function>pspell_new_personal</function>함수를 사용해서 열고, 저장된 
+				파일의 위치는 <function>pspell_config_personal</function>함수를 사용해서 지정되어야 하고, 
+				선택적으로<function>pspell_config_repl</function>함수를 사용할수 있습니다. 
+				이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
     </simpara>
 			<para>
 				<example>
@@ -756,9 +806,14 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_store_replacement</function>함수는 단어의 교정목록을 저장합니다. 그래서 나중에 <function>pspell_suggest</function>함수를 사용해서  교정내용을 반환할 수 있습니다. 이 함수를 사용할 수 있게 하기 위해서 사전을 열때<function>pspell_new_personal</function>함수를 사용해야 합니다. 교정목록을 영구적으로 저장하기위해서는<function>pspell_config_personal</function>함수와
-	 <function>pspell_config_repl</function>함수를 사용해서 사용자 단어목록을 저장할 경로를 지정해야 합니다. 그리고 변경된것을 디스크에 저장하기 위해<function>pspell_save_wordlist</function>
-	 함수를 사용해야 합니다. 이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
+				<function>Pspell_store_replacement</function>함수는 단어의 교정목록을 저장합니다.
+				 나중에 <function>pspell_suggest</function>함수를 사용해서  교정내용을 반환할 수 있습니다.
+				 이 함수를 사용할 수 있게 하기 위해서 사전을 열때 <function>pspell_new_personal</function>함수를
+				 사용해야 합니다. 교정목록을 영구적으로 저장하기위해서는 
+				<function>pspell_config_personal</function>함수와 <function>pspell_config_repl</function>함수를 사용해서 
+				사용자 단어목록을 저장할 경로를 지정해야 합니다. 그리고 
+				변경된 것을 디스크에 저장하기 위해<function>pspell_save_wordlist</function> 함수를 사용해야 합니다. 
+				이 함수는 pspell .11.2와 aspell .32.5 또는 이후의 버전에서만 실행됩니다.
     </simpara>
 			<para>
 				<example>
