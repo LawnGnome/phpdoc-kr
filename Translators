@@ -31,7 +31,6 @@ wrappers.xml
 config.xml                         progcom                 Maintain
 install.*.xml
 intro.xml                          progcom                 Maintain
-security.xml                       progcom                 Assign
 streams.common.xml
 streams.constants.xml
 streams.dir.xml
@@ -57,9 +56,9 @@ using.xml                          fuzzy74                 Assign
 ------- features ------------------------------------------------------------
 commandline.xml
 connection-handling.xml
-cookies.xml
-file-upload.xml
-http-auth.xml
+cookies.xml                        progcom                 Assign
+file-upload.xml                    progcom                 Assign
+http-auth.xml                      progcom                 Assign
 persistent-connections.xml
 remote-files.xml
 safe-mode.xml
@@ -189,4 +188,6 @@ xslt/
 yaz/
 zip/
 zlib/
+-------- security -----------------------------------------------------------
+index.xml                          progcom
 -----------------------------------------------------------------------------
