@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <sect1 id="install.unix">
    <title>유닉스 시스템에 설치</title>
    <para>
@@ -52,9 +52,9 @@
    <para>
     PHP 설치의 첫 단계는 <filename>configure</filename> 스크립트를 통한
     명령줄 옵션의 설정입니다. 이 페이지에서는 가장 일반적인 옵션을 설명하지만,
-    사용할 수 있는 다른 많은 옵션이 존재합니다. 철저히 하기 위해서는 <link
-    linkend="install.configure">설정 옵션의 전체 목록</link>을 확인하십시오.
-    PHP를 인스톨하는 여러가지 방법이 존재합니다:
+    사용할 수 있는 다른 많은 옵션이 존재합니다. 자세한 설명은 <link
+     linkend="configure">환경 설정 옵션</link> 챕터를 참고하십시오.
+    PHP를 설치하는 방법은 여러가지가 있습니다:
     <itemizedlist>
      <listitem>
       <simpara>

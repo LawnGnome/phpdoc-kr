@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
 <section id="filesystem.configuration">
  &reftitle.runtime;
  &extension.runtime;
@@ -11,14 +11,14 @@
      <row>
       <entry>이름</entry>
       <entry>기본값</entry>
-      <entry>변경가능성</entry>
+      <entry>변경권한</entry>
      </row>
     </thead>
     <tbody>
      <row>
       <entry>allow_url_fopen</entry>
       <entry>"1"</entry>
-      <entry>PHP_INI_ALL</entry>
+      <entry>PHP_INI_SYSTEM</entry>
      </row>
      <row>
       <entry>user_agent</entry>
@@ -64,9 +64,14 @@
      </para>
      <note>
       <para>
+       보안을 위해, 이 옵션은 php.ini에서만 설정할 수 있습니다.
+      </para>
+     </note>
+     <note>
+      <para>
        이 옵션은 버전 4.0.3 릴리즈 후에 추가되었습니다. 버전 4.0.3과 이전
        버전에서 이 기능을 무효화 하려면 설정 스위치 <link
-       linkend="install.configure.disable-url-fopen-wrapper"><parameter>
+       linkend="configure.disable-url-fopen-wrapper"><parameter>
        --disable-url-fopen-wrapper</parameter></link>를 사용하여 컴파일해야만
        했습니다.
       </para>
