@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.65 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.78 Maintainer: progcom Status: ready -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -21,6 +21,11 @@ Windows 버전 <literal>PHP</literal>에서는 이 함수를 이용하여 원격
 활성화하여도 마찬가지입니다.
 </para></warning>'>
 
+<!ENTITY warn.ssl-non-standard '<warning><para>IIS 등의 표준과 호환되지 않는
+일부 웹서버에서는 이 방법으로 데이터를 전송할 때 PHP가 경고를 발생합니다.
+이러한 웹서버에서 사용할 때는 <link linkend="ini.error-reporting">error_reporting</link>
+레벨을 낮춰서, 경고를 포함하지 않도록 하십시오.</para></warning>'>
+
 <!ENTITY note.no-remote '<note><simpara>이 함수는
 <link linkend="features.remote-files">원격 파일</link>을 다루지 못합니다.
 파일은 서버 파일시스템을 통해서 사용 가능해야만 합니다.</simpara></note>'>
@@ -37,7 +42,7 @@ URL을 사용할 수 있습니다. 파일 이름을 지정하는 방법은
 <xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
 <!ENTITY tip.fopen-wrapper.stat '<tip><simpara><literal>PHP 5.0.0</literal>부터
-이 함수는 <emphasis>몇몇</emphasis> url 랩퍼를 사용할 수 있습니다. 어떤 랩퍼가
+이 함수는 <emphasis>몇몇</emphasis> URL 래퍼를 사용할 수 있습니다. 어떤 래퍼가
 기능적으로 <functoin>stat</function> 패밀리를 지원하는가에 대한 목록은
 <xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
@@ -115,6 +120,15 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 객체 레퍼런스와 메쏘드 이름을 가진 배열을 사용할 수 있습니다.
 </simpara></note>'>
 
+<!ENTITY warn.escapeshell '<warning><para>사용자가 입력한 데이터를 이 함수로
+넘길 때는, <function>escapeshellarg</function>나 <function>escapeshellcmd</function>를
+사용하여, 사용자가 어떠한 명령을 실행하여 시스템을 조작하지 못하게 하여야 합니다.</para></warning>'>
+
+<!ENTITY note.exec-bg '<note><para>이 함수를 사용하여 프로그램을 실행하고,
+백그라운드에서 작업하게 내버려두려면, 그 프로그램의 출력이 파일이나 다른 출력 
+스트림을 향하게 하여야 합니다. 그렇지 않으면 PHP는 그 프로그램이 종료할 때까지
+정지합니다.</para></note>'>
+
 <!-- Notes for safe-mode limited functions: -->
 <!ENTITY note.sm.disabled '<note><simpara>&sm.disabled;</simpara></note>'>
 
@@ -136,6 +150,16 @@ linkend="features.safe-mode">안전 모드</link>를 활성화했을 경우, PHP
      should have been inline in safe-mode.xml -->
 <!ENTITY sm.uidcheck '작업하려는 파일이나 디렉토리가 실행 중인
 스크립트와 같은 UID (owner)를 가지고 있는지 확인합니다.'>
+
+<!ENTITY warn.sm.exec '<warning><simpara><link linkend="features.safe-mode">안전
+모드</link>에서는 처음 명령어 이후에 따라오는 모든 단어를 하나의 인수로 취급합니다.
+그러므로, <literal>echo y | echo x</literal>은 <literal>echo "y | echo x"</literal>가
+됩니다.</simpara></warning>'>
+
+<!ENTITY note.exec-path '<note><simpara><link linkend="features.safe-mode">안전
+모드</link>에서 실행 명령은 <link linkend="ini.safe-mode-exec-dir">safe_mode_exec_dir</link>
+안에서만 실행할 수 있습니다. 실용적인 이유로, 실행 경로에 <literal>..</literal>을 허용하지
+않습니다.</simpara></note>'>
 
 <!ENTITY sm.uidcheck.dir '작업하려는 디렉토리가 실행 중인 스크립트와
 같은 UID (owner)를 가지고 있는지 확인합니다.'>
@@ -181,15 +205,22 @@ PHP에 내장했거나, 실행시에 동적으로 읽어들일 경우에만
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
-<!ENTITY reftitle.intro     '<title>소개</title>'>
-<!ENTITY reftitle.required  '<title>요구 사항</title>'>
-<!ENTITY reftitle.install   '<title>설치</title>'>
-<!ENTITY reftitle.runtime   '<title>런타임 설정</title>'>
-<!ENTITY reftitle.resources '<title>리소스 종류</title>'>
-<!ENTITY reftitle.constants '<title>상수 정의</title>'>
-<!ENTITY reftitle.classes   '<title>클래스 정의</title>'>
-<!ENTITY reftitle.examples  '<title>예제</title>'>
-<!ENTITY reftitle.seealso   '<title>참고</title>'>
+<!ENTITY reftitle.intro        '<title>소개</title>'>
+<!ENTITY reftitle.required     '<title>요구 사항</title>'>
+<!ENTITY reftitle.install      '<title>설치</title>'>
+<!ENTITY reftitle.runtime      '<title>런타임 설정</title>'>
+<!ENTITY reftitle.resources    '<title>리소스 종류</title>'>
+<!ENTITY reftitle.constants    '<title>상수 정의</title>'>
+<!ENTITY reftitle.classes      '<title>클래스 정의</title>'>
+<!ENTITY reftitle.constructor  '<title>생성자</title>'>
+<!ENTITY reftitle.methods      '<title>메쏘드</title>'>
+<!ENTITY reftitle.properties   '<title>속성</title>'>
+<!ENTITY reftitle.returnvalues '<title>반환값</title>'>
+<!ENTITY reftitle.examples     '<title>예제</title>'>
+<!ENTITY reftitle.seealso      '<title>참고</title>'>
+
+<!ENTITY note.pecl-php5 '<note><simpara>이 확장 모듈은 PHP 5에서 제거되어,
+<ulink url="&url.pecl;">PECL</ulink>로 이동되었습니다.</simpara></note>'>
 
 <!-- Common pieces for reference part END -->
 
@@ -200,6 +231,11 @@ supplemental files to mark section titles -->
 <!-- These are here as helpers for manual consistency and brievety-->
 <!ENTITY php '<literal>PHP</literal>'>
 <!ENTITY safemode '<link linkend="ini.safe-mode">안전 모드</link>'>
+
+<!-- SimpleXML Notes -->
+<!ENTITY simplexml.iteration '<note><simpara>SimpleXML은 대부분의 메쏘드에 반복하여
+속성을 추가하는 규칙을 가지고 있습니다. 이들은 <function>var_dump</function>나 객체를
+조사하는 어떠한 것으로도 볼 수 없습니다.</simpara></note>'>
 
 <!-- Database Notes -->
 <!ENTITY database.field-case '<note><simpara>이 함수가 반환하는
@@ -235,8 +271,16 @@ supplemental files to mark section titles -->
 있습니다. Tidy 2.0에서 제거되었습니다.</simpara></note>'>
 
 <!ENTITY note.tidy2.only '<note><simpara>선택적인 인자
-<literal>config_options</literal>와 <literal>encoding</literal>은 Tidy 2.0에서
+<literal>config</literal>와 <literal>encoding</literal>은 Tidy 2.0에서
 추가되었습니다.</simpara></note>'>
+
+<!ENTITY tidy.conf-enc '<para><parameter>config</parameter> 인수는 배열이나
+문자열을 전달할 수 있습니다. 문자열을 넘기면, 설정 파일의 이름을 의미합니다. 그
+외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <ulink
+url="&url.tidy.conf;">&url.tidy.conf;</ulink>를 확인하십시오.
+<parameter>encoding</parameter> 인수는 입출력 문서의 인코등을 지정합니다. 가능한
+<parameter>encoding</parameter> 값은: ascii, latin0, latin1, raw, utf8, iso202,
+utf16le, utf16be, utf16, mac, win1252, ibm858, big5, shiftjis.</para>'>
 
 <!-- Korean translation entity -->
 <!ENTITY ko.reference.ini.constants 'PHP_INI_* 상수에 대한 자세한 내용 및 정의는
