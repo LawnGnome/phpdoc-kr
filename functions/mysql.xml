@@ -16,10 +16,10 @@
     하며, 어떠한 충돌도 피할 수 있게 해준다.
    </simpara>
    <simpara>
-    MySQL에 대한 더 상세한 정보는 <ulink url="&url.mysql;">&url.mysql;</ulink>에서 얻을 수 있다.
+    MySQL에 대한 더 상세한 정보는 <ulink url="&url.mysql;">&amp;url.mysql;</ulink>에서 얻을 수 있다.
    </simpara>
    <simpara>
-    MySQL 문서는 <ulink url="&url.mysql.docs;">&url.mysql.docs;</ulink>에 있다.
+    MySQL 문서는 <ulink url="&url.mysql.docs;">&amp;url.mysql.docs;</ulink>에 있다.
    </simpara>
 
   </partintro>
