@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/array.xml, last change in rev 1.4 -->
-<!-- last change to 'current' in en/ tree in rev 1.2 -->
-	<refentry id="function.current">
-		<refnamediv>
-			<refname>current</refname>
-			<refpurpose>배열의 현재 원소를 돌려준다</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>mixed</type><methodname>current</methodname>
-					<methodparam><type>array</type><parameter>array</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-	가각의 배열은 현재 원소를 가리키는 내부포인터를 갖는데,
-	이 내부 포인터는 배열에 삽입되어진 첫번째 원소에서 초기화된다.
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.7 -->
+<!-- splitted from ./en/functions/array.xml, last change in rev 1.2 -->
+  <refentry id="function.current">
+   <refnamediv>
+    <refname>current</refname>
+    <refpurpose>배열의 현재 원소를 반환한다</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>mixed</type><methodname>current</methodname>
+      <methodparam><type>array</type><parameter>array</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     모든 배열은 "현재" 원소를 가리키는 내부 포인터를 갖는데,
+     이 내부 포인터는 배열에 삽입되어진 첫번째 원소로 초기화된다.
     </para>
-			<para>
-	<function>current</function> 함수는 단순히 내부 포인터에 의해
-	지시되는 현재의 원소를 반환한다.
-	이 함수는 포인터를 어떠한 방법으로든 이동시키지 않는다.
-	내부 포인터가 원소 목록의 범위를 넘어선 곳을 지시하면,
-	<function>current</function> 는 거짓(&false;)를 반환한다.
+    <para>
+     <function>current</function> 함수는 단순히 현재 내부 포인터에서 가리키고
+     있는 배열 원소의 값을 반환한다. 어떤 방법으로든 그 포인터를 움직이지 않는다.
+     내부 포인터가 원소 목록의 끝에서 벗어난 곳을 가리키면, 
+     <function>current</function>는 &false;를 반환한다.
      <warning>
-					<para> 
-	배열이 가지는 원소가 하나도 없다면 (0 이거나 "", 빈문자열)
-	이 함수는 이 원소들에 대해서도 거짓(&false;)를 반환한다.
-	이때문에 지금 사용중인 <function>current</function> 배열에서
-	정말 리스트의 끝에 있는지 아니면 빈 배열인지를 구분하기 어렵다.
-	배열이 원소가 없는 빈 배열인지를 알맞게 검토하기 위해서는 
-	<function>each</function> 함수를 사용하라.
+      <para>
+       배열이 빈 원소를 포함하면(0 이나 "", 빈 문자열) 이 함수는 이 원소들에
+       대해서도 &false;를 반환한다. <function>current</function>를
+       사용하여 그 배열 안의 목록 끝인지 확인할수 없게 만든다.
+       빈 원소를 포함할수도 있는 배열을 적절하게 거닐기 위해서는,
+       <function>each</function> 함수를 이용한다.
       </para>
-				</warning>
-			</para>
-			<para>
-     <function>end</function>, <function>next</function>,
-     <function>prev</function>, 그리고 <function>reset</function>를 참조하라.
+     </warning>
     </para>
-		</refsect1>
-	</refentry>
+    <para>
+     <example>
+      <title><function>current</function>의 사용예와 관련 함수</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$transport = array('foot', 'bike', 'car', 'plane');
+$mode = current($transport); // $mode = 'foot';
+$mode = next($transport);    // $mode = 'bike';
+$mode = current($transport); // $mode = 'bike';
+$mode = prev($transport);    // $mode = 'foot';
+$mode = end($transport);     // $mode = 'plane';
+$mode = current($transport); // $mode = 'plane';
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <para>
+     <function>end</function>, <function>key</function>,
+     <function>next</function>, <function>prev</function>,
+     <function>reset</function> 참고.
+    </para>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
