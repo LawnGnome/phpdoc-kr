@@ -23,7 +23,6 @@ bzip2/                             pcraft           fuzzy74       maintain
 calendar/                          regina           fuzzy74       maintain
 classobj/                          corean           fuzzy74       maintain
 filesystem/                        vizvil           vizvil        maintain
-imap/                              fuzzy74          fuzzy74       maintain
 mysql/                             pcraft           fuzzy74       maintain
 network/                           vizvil           fuzzy74       maintain
 nis/                               vizvil           fuzzy74       maintain
