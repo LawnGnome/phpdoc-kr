@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
 <!-- EN-Revision: 1.36 Maintainer: progcom Status: ready -->
  <chapter id="features.http-auth">
   <title>PHP로 HTTP 인증하기</title>
 
   <simpara>
-   PHP를 이용한 HTTP 인증은 아파치 모듈로 실행할때만 사용할 수 있으며,
-   CGI 버전에서는 사용할 수 없습니다. 아파치 모듈의 PHP 스크립트에서,
-   <function>header</function> 함수를 이용하여 "인증 요구" 메세지를
-   클라이언트 브라우저에 전송하여 유저네임/패스워드 입력창을 띄울 수 있습니다.
-   사용자가 유저네임과 패스워드를 입력하면 PHP 스크립트의 URL이 다시 호출되고,
-   <link linkend="reserved.variables">예약 정의 변수</link>
+   PHP를 이용한 HTTP 인증은 아파치 모듈로 실행할때만 사용할 수 있으며, CGI
+   버전에서는 사용할 수 없습니다. 아파치 모듈에서 PHP 스크립트가
+   <function>header</function> 함수를 이용하여 "인증 요구" 메세지를 클라이언트
+   브라우저에 전송함으로써, 사용자명/패스워드 입력창을 띄울 수 있습니다.
+   사용자가 사용자명과 패스워드를 입력하면, PHP 스크립트의 URL이 다시
+   호출되고, <link linkend="reserved.variables">예약 정의 변수</link>
    <varname>PHP_AUTH_USER</varname>, <varname>PHP_AUTH_PW</varname>,
-   <varname>AUTH_TYPE</varname>에 유저네임, 패스워드, 인증 형식이 설정됩니다.
-   이 예약 정의 변수들은 <link linkend="reserved.variables.server">$_SERVER</link>와 
-   <varname>$HTTP_SERVER_VARS</varname> 배열에서 발견할 수 있습니다.
-   "Basic" 인증만이 지원됩니다. 추가 정보를 위해서는 <function>header</function>
+   <varname>AUTH_TYPE</varname>에 사용자명, 패스워드, 인증 형식이 들어갑니다.
+   이 예약 정의 변수들은 <link
+    linkend="reserved.variables.server">$_SERVER</link>와
+   <varname>$HTTP_SERVER_VARS</varname> 배열로 확인할 수 있습니다. 현재는
+   "Basic" 인증만을 지원합니다. 자세한 정보는 <function>header</function>
    함수를 참고하십시오.
   </simpara>
 
@@ -87,16 +87,16 @@
   </simpara>
 
   <note>
-   <title>환경설정 주의</title>
+   <title>설정 주의</title>
    <para>
-    PHP는 외부 인증을 검증하기 위해서 <literal>AuthType</literal>
-    지시자의 존재를 사용합니다.
+    PHP는 외부 인증을 검증할 때 <literal>AuthType</literal> 지시어의 존재를
+    확인합니다.
    </para>
   </note>
 
   <simpara>
-   그러나, 이 작동은 비인증 URL을 조작해서 같은 서버의 인증 URL의
-   패스워드를 훔치는 것을 방지하지는 못함에 주의하십시오.
+   이 방식은 비인증 URL을 조작해서 같은 서버의 인증 URL의 패스워드를 훔치는
+   것은 방지할 수 없다는 점에 주의하십시오.
   </simpara>
   <simpara>
    넷스케이프 네비게이터와 인터넷 익스플로러는 서버 응답 401을 받았을 때,
