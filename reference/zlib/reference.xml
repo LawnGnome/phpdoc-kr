@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.4 $ -->
+<!-- EN-Revisoin: 1.11 Maintainer: progcom Status: ok -->
+ <reference id="ref.zlib">
+  <title>Zlib 압축 함수</title>
+  <titleabbrev>Zlib</titleabbrev>
+
+  <partintro>
+   <section id="zlib.intro">
+    &reftitle.intro;
+    <para>
+     이 모듈은 gzip (.gz) 압축 파일을 읽고 쓸 수 있게 하며, 버전에
+     따라서는 대부분의 <link linkend="ref.filesystem">파일시스템</link>
+     함수에서 gzip-압축 파일 작업을 할 수 있게 합니다. (비압축 파일도
+     가능하지만, 소켓에는 불가능합니다)
+    </para>
+    <note>
+     <para>
+      버전 4.0.4에서 .gz 파일을 위해 'zlib:' URL로 접근하는 fopen-랩퍼가
+      추가되었습니다. <function>fopen</function>을 호출할 때 파일 이름이나
+      경로 앞에 'zlib:'을 덧붙여서 보통의 f*() 파일 접근 함수에서 압축
+      파일에 자유롭게 접근할 수 있습니다.
+     </para>
+     <para>
+      버전 4.3.0에서 이 특별한 prefix는 ':'을 포함하는 파일 이름과의
+      혼동을 막기 위해서 'zlib://'으로 변경되었습니다.
+     </para>
+     <para>
+      이 기능은 <literal>fopencookie()</literal> 함수를 제공하는
+      C 런타임 라이브러리가 필요합니다. 현재 지식으로는 GNU libc가
+      이 기능을 제공하는 유일한 라이브러리입니다.
+     </para>
+    </note>
+   </section>
+
+   <section id="zlib.requirements">
+    &reftitle.required;
+    <para>
+     이 모듈을 Jean-loup Gailly와 Mark Adler가 작성한
+     <ulink url="&url.zlib;">zlib</ulink>의 함수들을 사용합니다.
+     이 모듈에서는 zlib 버전 &gt;= 1.0.9를 사용해야 합니다.
+    </para>
+   </section>
+
+   &reference.zlib.configure;
+
+   &reference.zlib.ini;
+
+   <section id="zlib.resources">
+    &reftitle.resources;
+    &no.resource;
+   </section>
+
+   &reference.zlib.constants;
+
+   <section id="zlib.examples">
+    &reftitle.examples;
+    <para>
+     이 예제는 임시 파일을 열어서 테스트 문자열을 쓰고, 이 파일의
+     내용을 두번 출력합니다.
+    </para>
+    <example>
+     <title>작은 Zlib 예제</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+
+$filename = tempnam ('/tmp', 'zlibtest').'.gz';
+print "<html>\n<head></head>\n<body>\n<pre>\n";
+$s = "Only a test, test, test, test, test, test, test, test!\n";
+
+// 최대 압축으로 쓰기 위한 파일을 엽니다.
+$zp = gzopen($filename, "w9");
+
+// 파일에 문자열을 씁니다.
+gzwrite($zp, $s);
+
+// 파일을 닫습니다.
+gzclose($zp);
+
+// 읽기 위해 파일을 엽니다.
+$zp = gzopen($filename, "r");
+
+// 3 문자를 읽습니다.
+print gzread($zp, 3);
+
+// 파일을 끝까지 출력하고 닫습니다.
+gzpassthru($zp);
+
+print "\n";
+
+// 파일을 읽어서 내용을 출력합니다. (두번째)
+if (readgzfile($filename) != strlen($s)) {
+        echo "zlib 함수의 에러!";
+}
+unlink($filename);
+print "</pre>\n</h1></body>\n</html>\n";
+
+?>
+]]>
+     </programlisting>
+    </example>
+   </section>
+  </partintro>
+
+&reference.zlib.functions;
+
+ </reference>
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+
