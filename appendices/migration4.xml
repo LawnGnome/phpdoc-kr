@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
+<!-- $Revision: 1.7 $ -->
 <!-- EN-Revision: 1.34 -->
  <appendix id="migration4">
   <title>PHP 3 에서 PHP 4로 이주</title>
@@ -288,7 +288,7 @@ php_admin_flag [PHP directive name] [On|Off]
     static 변수와 클래스 멤버 초기화는 오직 스칼라 값만을 허용한다.
     반면에 PHP 3에서는 모든 유효 표현식이 허용된다. 이것은
     ,다시 한번 말하지만, 해석과 실행이 분리되었기 때문이다. 
-    즉 해석기가 생성자를 볼때는 아무 코드도 아직 실행되어 있지
+    즉 해석기가 생성자를 볼때는 아직 아무 코드도 실행되어 있지
     않은 상태에 있다.
    </para>
    <para>
@@ -315,134 +315,131 @@ php_admin_flag [PHP directive name] [On|Off]
   </section>
 
   <section id='migration4.missing'>
-   <title>Missing functions</title>
+   <title>사라진 함수들</title>
    <para>
-    While PHP 4 comes with a lot of new features, functions and
-    extensions, you may still find some functions from version 3
-    missing. A small number of core functions has vanished because
-    they do not work with the new scheme of splitting parsing and
-    execution as introduced into 4 with the Zend engine.  Other
-    functions and even complete extensions have become obsolete as
-    newer functions and extensions serve the same task better and/or
-    in a more general way. Some functions just simply haven't been
-    ported yet and finally some functions or extensions may be missing
-    due to license conflicts.
+    PHP 4는 수많은 새로운 기능, 함수, 확장과 함께 릴리즈되었다.
+    그러나 버전 3에서 제공되던 함수가 몇개 빠졌다는것을 발견할수 있다.
+    소량의 핵심 함수는 그 함수들이 젠드가 4로 제공하는 해석과 실행을
+    분리하는 새로운 구조때문에 사라지게 되었다. 다른 함수와
+    완벽한 확장까지도 새로운 함수와 확장이 같은 작업을 더 잘수행하고
+    그리고/또는 좀더 일반화된 방식으로 수행되기 때문에 쓸모없게 되었다.
+    몇개의 함수들은 단순히 아직 포팅되지 않았고 마지막으로 몇개의 함수와
+    확장은 라이센스 때문에 사라질수도 있게 되었다.
    </para>
 
    <section id='migration4.missing.concept'>
-    <title>Functions missing due to conceptual changes</title>
+    <title>구조적 변화때문에 사라진 함수들</title>
     <para>
-     As PHP 4 now separates parsing from execution it is no longer
-     possible to change the behavior of the parser (now embedded in
-     the Zend engine) at runtime as parsing already happened by
-     then. So the function <function>short_tags</function> no longer
-     exists. You can still change the parsers behavior by setting
-     appropriate values in the &php.ini; file.
+     현재 PHP 4는 실행과 해석을 분리했기 때문에 이미 
+     해석기(젠드 엔진에 내장됨)에 의해 해석이 끝나고 나서 런타임시에는
+     해석기에 의해 동작을 변경할수 없다. 그래서 함수 
+     <function>short_tags</function>은 더이상 존재하지 않는다. 
+     그러나 아직은 &php.ini; 파일에 적절한 값을 설정함으로써
+     해석기의 동작을 변경할수 있다.
     </para>
     <para>
-     Another feature of PHP 3 that is not a part of PHP 4 is the bundled
-     debugging interface. There are third-party add-ons for the Zend engine
-     which add similar functionality.
+     PHP 4의 일부가 아니지만 PHP 3의 또다른 기능은 같이 제공된 디버깅
+     인터페이스이다. 같은 기능을 추가한 젠드 엔진용의 서드파티 애드온이
+     존재한다.
     </para>
    </section>
 
    <section id='migration4.deprecate'>
-    <title>Deprecate functions and extensions</title>
+    <title>지원되지 않는 함수와 확장</title>
     <para>
-     The Adabas and Solid database extensions are no more. Long live
-     the unified ODBC extension instead.
+     Adabas 와 Solid 데이터베이스 확장은 더이상 지원되지 않는다.
+     대신 단일화된 ODBC 확장이 살아 남았다.
     </para>
    </section>
 
    <section id='migration4.unset'>
+    <title><function>unset</function>을 위한 변경 상태</title>
     <title>Changed status for <function>unset</function></title>
     <para>
-     <function>unset</function>, although still available, is
-     implemented as a language construct rather than a function.
+     <function>unset</function>, 아직 지원되지만, 함수로서보다는
+     언어 구조로서 구현되었다.
     </para>
     <para>
-     This does not have any consequences on the behavior of
-     <function>unset</function>, but testing for "unset" using
-     <function>function_exists</function> will return &false; as it would with
-     other language constructs that look like functions such as
-     <function>echo</function>.
+     <function>unset</function>의 동작에 대해 어떤 영향도 받지 않는다.
+     <function>function_exists</function>을 사용하여 "unset"을
+     테스트하면 &false;를 리턴할것이다. 
+     <function>echo</function>함수처럼 언어 구조로서의 역할을 담당한다.
     </para>
     <para>
-     Another more practical change is that it is no longer possible to
-     call <function>unset</function> indirectly, that is
-     <literal>$func="unset"; $func($somevar)</literal> won't work
-     anymore.
+     좀더 실질적인 변화는 간접적으로 <function>unset</function>을
+     호출할수 없다는 것이다. 즉,
+     <literal>$func="unset"; $func($somevar)</literal>은 더이상
+     동작하지 않을것이다.
     </para>
    </section>
   </section>
 
   <section id='migration4.extensions'>
-   <title>PHP 3 extension</title>
+   <title>PHP 3 확장</title>
    <para>
-    Extensions written for PHP 3 will not work with PHP 4, neither as binaries
-    nor at the source level. It is not difficult to port extensions to PHP 4
-    if you have access to the original source. A detailed description of the
-     actual porting process is not part of this text.
+    PHP 3를 위해 씌여진 확장은 PHP 4에서 작동하지 않을것이다. 이진파일도 안되고
+    소스 레벨도 되지 않는다. 원 소스를 접근할수 있다면 PHP 4로 확장을 포팅하는것은
+    어렵지 않다. 실제 포팅 방법에 대한 상세한 설명은 이 매뉴얼에는 존재하지 않는다.
    </para>
   </section>
 
   <section id='migration4.strings'>
    <title>Variable substitution in strings</title>
    <para>
-    PHP 4 adds a new mechanism to variable substitution in
-    strings. You can now finally access object member variables and
-    elements from multidimensional arrays within strings.
+    PHP 4는 문자열의 가변 치환이라는 새로운 메카니즘을 추가시켰다.
+    그래서 문자열 안에서 객체 멤버 변수와 다차원 배열의 구성요소에
+    접근할수 있다.
    </para>
    <para>
-    To do so you have to enclose your variables with curly braces with
-    the dollar sign immediately following the opening brace:
+    그렇게 하기 위해서는 달러사인이 바로 뒤에 붙고 중괄호로 막아놓은 변수를 
+    사용해야 한다. 다음과 같은 형태의 중괄호:
     <literal>{$...}</literal>
    </para>
    <para>
-    To embed the value of an object member variable into a string you
-    simply write <literal>"text {$obj-&gt;member} text"</literal> while
-    in PHP 3 you had to use something like <literal>"text
-    ".$obj-&gt;member." text"</literal>.
+    문자열 안에 객체 멤버 변수의 값을 내장시키기 위해서는 간단히
+    <literal>"text {$obj-&gt;member} text"</literal>이라고 쓰면 된다.
+    PHP 3에서는 <literal>"text ".$obj-&gt;member." text"</literal>와
+    같은 형태로 사용해야 했다.
    </para>
    <para>
-    This should lead to more readable code, while it may break
-    existing scripts written for PHP 3. But you can easily check for
-    this kind of problem by checking for the character combination
-    <literal>{$</literal> in your code and by replacing it with
-    <literal>\{$</literal> with your favorite search-and-replace
-    tool.
+    이런 형태는 좀더 읽기 좋은 코드로 유도되어야 한다. PHP 3를 위해
+    쓰여진 기존의 스크립트를 동작시키지 않을수도 있기 때문이다. 그러나
+    이런 종류의 문제는 코드내에서 <literal>{$</literal> 문자 조합을
+    체크함으로서 간단하게 확인될수 있다. 그리고 선호하는 검색-변경 툴을
+    사용하여 <literal>\{$</literal>으로 대체하면 된다. 
    </para>
   </section>
 
   <section id='migration4.cookies'>
-   <title>Cookies</title>
+   <title>쿠키</title>
    <para>
-    PHP 3 had the bad habit of setting cookies in the reverse order
-    of the <function>setcookie</function> calls in your code. PHP 4
-    breaks with this habit and creates the cookie header lines in
-    exactly the same order as you set the cookies in the code.
+    PHP 3는 코드내에서 <function>setcookie</function> 호출은 반대방향으로
+    쿠키를 설정하는 좋지 않은 방식을 사용한다. PHP 4는 이런 방식에 의해
+    동작하지 않는다. 코드에서 쿠키를 설정하는 순대대로 정확하게 쿠키 헤더
+    줄을 만든다.
    </para>
    <para>
-    This might break some existing code, but the old behaviour was so
-    strange to understand that it deserved a change to prevent further
-    problems in the future.
+    이런 동작은 몇몇 기존 코드를 파괴할수 있다. 그러나 구버전의 동작은
+    매우 이상해서 앞으로의 더 큰 문제를 차단하기 위해 변경할 필요가 있는지
+    이해할수 없다.
    </para>
   </section>
 
   <section id='migration4.variables'>
-   <title>Handling of global variables</title>
+   <title>전역 변수 다루기</title>
    <para>
-    While handling of global variables had the focus on to be easy in
-    PHP 3 and early versions of PHP 4, the focus has changed to be more
-    secure. While in PHP 3 the following example worked fine, in PHP 4 it
-    has to be unset($GLOBALS["id"]);. This is only one issue of global
-    variable handling. You should always have used $GLOBALS, with
-    newer versions of PHP 4 you are forced to do so in most cases.
-    Read more on this subject in the <link linkend="references.global">
-    <literal>global</literal> references section</link>.
+    PHP 3와 초기 PHP 4버전에서는 전역 변수를 좀 더 쉽게 다룰수 있지만
+    약점이 될수 있기 때문에 좀더 안전하게 바뀌었다.
+    PHP 3에서 다음 예제 코드는 잘 작동하지만, PHP 4에서는 unset($GLOBALS["id"]);을
+    해야 한다. 이 이슈는 단지 전역 변수를 다루는 데만 한정된다. 
+    PHP 4의 최신 버전에서는 항상 $GLOBALS를 사용해야 하고
+    대부분의 경우에 그렇게 해야 할것이다.
+    <link linkend="references.global">
+    <literal>global</literal> 레퍼런스 섹션</link>에서 이 주제에 대한 더 많은
+    정보를 볼수 있다.
    </para>
    <example>
-    <title>Migration of global variables</title>
+    <title>전역변수의 이주</title>
     <programlisting role="php">
 <![CDATA[
 <?php
