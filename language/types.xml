@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
+<!-- $Revision: 1.12 $ -->
 <!-- EN-Revision: 1.119 -->
  <chapter id="language.types">
   <title>타입</title>
@@ -974,14 +974,15 @@ echo "I'd like to have another {${ strrev('reeb') }}, hips";
     </sect3>
     
     <sect3 id="language.types.string.substr">
-     <title>String access by character</title>
+     <title>문자열 내의 문자에 접근하기</title>
      <para>
-      Characters within strings may be accessed by specifying the
-      zero-based offset of the desired character after the string 
-      in curly braces.
+      문자열 내의 문자들 중 원하는 문자를 중괄호안에
+      제로-베이스 오프셋을 표기하여 접근할수 있다.
      </para>
      <note>
       <simpara>
+       하위버전의 호환성을 위해, 같은 목적으로 배열-중괄호를 사용할수 있다.
+       하지만, 이 문법은 PHP 4에서 사용할수 없다.
        For backwards compatibility, you can still use array-braces
        for the same purpose. However, this syntax is deprecated as
        of PHP 4.
@@ -989,7 +990,7 @@ echo "I'd like to have another {${ strrev('reeb') }}, hips";
      </note>
      <para>
       <example>
-       <title>Some string examples</title>
+       <title>몇 가지 문자열 예</title>
        <programlisting role="php">
 <![CDATA[
 <?php
@@ -1013,122 +1014,111 @@ $last = $str{strlen($str)-1};
    </sect2><!-- end syntax -->
 
    <sect2 id="language.types.string.useful-funcs">
-    <title>Useful functions and operators</title>
+    <title>유용한 함수와 연산자</title>
     <para>
-     Strings may be concatenated using the '.' (dot) operator. Note
-     that the '+' (addition) operator will not work for this. Please
-     see <link linkend="language.operators.string">String
-     operators</link> for more information.
+     문자열들은 '.' (점) 연산자를 사용하여 합칠수 있다. '+' (덧셈) 연산자는
+     이 목적에 부합되지 않는다는 것에 주의해야 한다. 자세한 정보는
+     <link linkend="language.operators.string">문자열 연산자</link>를 참고
     </para>
     <para>
-     There are a lot of useful functions for string modification.
+     문자열 조작을 위한 많은 유용한 함수가 지원된다.
     </para>
     <simpara>
-     See the <link linkend="ref.strings">string functions section</link> 
-     for general functions, the regular expression functions for
-     advanced find&amp;replacing (in two tastes: 
-     <link linkend="ref.pcre">Perl</link> and 
+     일반적인 기능을 대해서는 <link linkend="ref.strings">문자열 함수 섹션</link>을
+     참고하고, 향상된 find&amp;replace 기능을 위해 정규표현식 함수를 참고
+     (두가지 중 선택할수 있다:
+     <link linkend="ref.pcre">Perl</link>과 
      <link linkend="ref.regex">POSIX extended</link>).
     </simpara>
     <simpara>
-     There are also <link linkend="ref.url">functions for URL-strings</link>,
-     and functions to encrypt/decrypt strings 
-     (<link linkend="ref.mcrypt">mcrypt</link> and 
+     <link linkend="ref.url">URL-문자열을 위한 함수</link>와
+     문자열을 encrypt/decrypt하는 함수도 지원된다.
+     (<link linkend="ref.mcrypt">mcrypt</link>과
      <link linkend="ref.mhash">mhash</link>).
     </simpara>
     <simpara>
-     Finally, if you still didn't find what you're looking for,
-     see also the <link linkend="ref.ctype">character type functions</link>.
+     그래도 원하는 기능을 찾을수 없다면,
+     <link linkend="ref.ctype">문자 타입 함수</link>로 참고.
     </simpara>
    </sect2>
 
    <sect2 id="language.types.string.casting">
-    <title>Converting to string</title>
+    <title>문자열로 변환</title>
     
     <para>
-     You can convert a value to a string using the <literal>(string)</literal>
-     cast, or the <function>strval</function> function. String conversion
-     is automatically done in the scope of an expression for you where a
-     string is needed. This happens when you use the <function>echo</function>
-     or <function>print</function> functions, or when you compare a variable
-     value to a string.  Reading the manual sections on <link
-     linkend="language.types">Types</link> and <link
-     linkend="language.types.type-juggling">Type Juggling</link> will make
-     the following clearer.  See also <function>settype</function>.
+     <literal>(string)</literal>이나 <function>strval</function>함수를 사용하여
+     값을 문자열로 변환할수 있다. 문자열 변환은 문자열이 필요한 표현식의 유효영역
+     내에서 자동적으로 이루어진다.이런 일은 <function>echo</function>나 
+     <function>print</function>함수를 쓸때, 또는 변수값을 문자열과 비교할때 발생한다.
+     <link linkend="language.types">타입</link>과 
+     <link linkend="language.types.type-juggling">타입 저글링</link> 매뉴얼 섹션을
+     읽음으로써 다음에서 설명하는 것을 더욱 명확하게 이해하게 될것이다.
+     <function>settype</function>함수도 참고.
     </para>
     
     <para>
-     A <type>boolean</type> &true; value is converted to the string <literal>"1"</literal>,
-     the &false; value is represented as <literal>""</literal> (empty string).
-     This way you can convert back and forth between boolean and string values.
+     <type>boolean</type> &true;값은 문자열 <literal>"1"</literal>로 변환된다.
+     &false; 값은 <literal>""</literal> (빈 문자열)로 표현된다.
+     이 원리로 불린과 문자열값 사이에서 어느 방향으로든 변환이 가능하다.
     </para>
     <para> 
-     An <type>integer</type> or a floating point number (<type>float</type>) 
-     is converted to a string representing the number with its digits
-     (including the exponent part for floating point numbers).
+     <type>integer</type>나 부동소수점(<type>float</type>)은 각 자리의 숫자를
+     문자열로 변환할수 있다 (부동소수점수에 대한 지수부를 포함함).
     </para>
     <para>
-     Arrays are always converted to the string <literal>"Array"</literal>,
-     so you cannot dump out the contents of an <type>array</type> with 
-     <function>echo</function> or <function>print</function> to see what is inside 
-     them.  To view one element, you'd do something like <literal>
-     echo $arr['foo']</literal>.  See below for tips on dumping/viewing the 
-     entire contents.
+     배열은 항상 문자열 <literal>"Array"</literal>로 변환된다. 그래서 
+     배열 안에 무엇이 들었는지 보기 위해 <function>echo</function>나 
+     <function>print</function>를 쓴다고 해서 <type>array</type>의 내용을 덤프할수 없다.
+     한 요소를 보기 위해서는 <literal>echo $arr['foo']</literal>와 같이 써줘야 한다.
+     전체 내용물을 덤프/보기 위한 팁을 아래글에서 볼수 있다.
     </para>
     <para>
-     Objects are always converted to the string <literal>"Object"</literal>.
-     If you would like to print out the member variable values of an 
-     <type>object</type> for debugging reasons, read the paragraphs 
-     below. If you would like to find out the class name of which an object 
-     is an instance of, use <function>get_class</function>.
+     객체는 항상 문자열 <literal>"Object"</literal>로 변환된다. 만약 
+     디버깅 목적으로 <type>object</type>의 멤버 변수를 모두 출력하고 싶으면,
+     아래 단락을 보라. 특정 객체를 만들어내는 클래스명을 확인하려한다면,
+     <function>get_class</function>를 사용하라.
     </para>
     <para>
-     Resources are always converted to strings with the structure
-     <literal>"Resource id #1"</literal> where <literal>1</literal> is
-     the unique number of the <type>resource</type> assigned by PHP during runtime.
-     If you would like to get the type of the resource, use
-     <function>get_resource_type</function>.
+     자원은 항상 구조체 <literal>"Resource id #1"</literal>를 갖는 문자열로
+     변환된다. <literal>1</literal>은 실행기간동안 PHP에 의해 설정되는
+     <type>resource</type>의 유일한 수이다. 자원의 타입을 얻고자 하면,
+     <function>get_resource_type</function>함수를 사용하라.
     </para>
     <para>
-     &null; is always converted to an empty string.
+     &null; 은 항상 빈 문자열로 변환된다.
     </para>
     
     <para>
-     As you can see above, printing out the arrays, objects or resources does not
-     provide you any useful information about the values themselfs. Look at the
-     functions <function>print_r</function> and <function>var_dump</function>
-     for better ways to print out values for debugging.
+     위글에서 볼수 있듯이, 배열, 객체 또는 자원을 출력하는 것은 배열자체에
+     대한 어떤 유용한 정보도 제공해주지 않는다. 디버깅을 위해 그 값들을
+     출력하는 가장 좋은 방법인 <function>print_r</function>과 
+     <function>var_dump</function> 함수를 참고할것.
     </para>
     
     <para>
-     You can also convert PHP values to strings to store them permanently. This
-     method is called serialization, and can be done with the function
-     <function>serialize</function>. You can also serialize PHP values to
-     XML structures, if you have <link linkend="ref.wddx">WDDX</link> support
-     in your PHP setup.
+     PHP 값을 지속적으로 저장하기 위해 문자열로 변환할수 있다. 이런 방법을
+     직렬화(serialization)라고 한다. 함수 <function>serialize</function>를
+     사용하면 된다. PHP 값을 XML 구조체로 직렬화할수도 있다.
+     PHP 설정시 <link linkend="ref.wddx">WDDX</link> 지원 옵션을 추가하면 된다.
     </para>
    </sect2>
 
    <sect2 id="language.types.string.conversion">
-    <title>String conversion to numbers</title>
+    <title>문자열을 숫자로 변환하기</title>
 
     <simpara>
-     When a string is evaluated as a numeric value, the resulting
-     value and type are determined as follows.
+     문자열을 숫자값으로 취급할때, 결과값과 타입은 다음과 같이 결정된다.
     </simpara>
     <simpara>
-     The string will evaluate as a <type>float</type> if it contains any of the
-     characters '.', 'e', or 'E'. Otherwise, it will evaluate as an
-     integer.
+     그 값이 '.', 'e', 'E' 중에 어느것이든 포함하고 있으면 <type>float</type>으로
+     취급될것이다. 그렇지 않으면, 정수로 취급할것이다.
     </simpara>
     <para>
-     The value is given by the initial portion of the string. If the
-     string starts with valid numeric data, this will be the value
-     used. Otherwise, the value will be 0 (zero). Valid numeric data
-     is an optional sign, followed by one or more digits (optionally
-     containing a decimal point), followed by an optional
-     exponent. The exponent is an 'e' or 'E' followed by one or more
-     digits.
+     그 값은 문자열의 시작부분에 의해 주어진다. 문자열이 유효한 숫자
+     데이터로 시작되면, 이것이 사용되는 값이 될것이다. 그렇지 않으면
+     그 값은 0(zero)로 된다. 유효한 숫자 데이터는 선택적인 부호,
+     한자리 이상(선택적인 십진 포인트를 포함)의 수, 선택적인 지수가 될수있다.
+     지수는 한자리 이상의 수가 'e' 이나 'E'의 뒤에 오면 된다.
     </para>
     <informalexample>
      <programlisting role="php">
@@ -1147,13 +1137,12 @@ $foo = "10.0 pigs " + 1.0;        // $foo is float (11)
      </programlisting>
     </informalexample>
     <simpara>
-     For more information on this conversion, see the Unix manual page
-     for strtod(3).
+     이런 종류의 변환에 대한 더 많은 정보는 strtod(3)의 
+     유닉스 매뉴얼 페이지에서 볼수 있다.
     </simpara>
     <para>
-     If you would like to test any of the examples in this section,
-     you can cut and paste the examples and insert the following line
-     to see for yourself what's going on:
+     이 섹션의 어떤 예제를 테스트하려면, 예제를 복사해서 붙여넣으면 되고
+     무슨일이 일어나는지 확인하기 위해 다음 줄을 삽입할수 있다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -1165,47 +1154,43 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "<br />\n";
      </informalexample>
     </para>
     <para>
-     Do not expect to get the code of one character by converting it
-     to integer (as you would do in C for example). Use the functions
-     <function>ord</function> and <function>chr</function> to convert
-     between charcodes and characters.
+     정수로 변환하여 한 문자의 코드를 얻을수 있다고 기대하지 마시오
+     (예를 들면 C에서 하는 것처럼). 캐릭터코드와 문자 사이의 변환을
+     위해서는 <function>ord</function>와 <function>chr</function>함수를
+     사용할수 있다.
     </para>
 
    </sect2>
   </sect1><!-- end string -->
 
   <sect1 id="language.types.array">
-   <title>Arrays</title>
+   <title>배열</title>
 
    <para>
-    An array in PHP is actually an ordered map. A map is a type that
-    maps <emphasis>values</emphasis> to <emphasis>keys</emphasis>. 
-    This type is optimized in several ways,
-    so you can use it as a real array, or a list (vector), 
-    hashtable (which is an implementation of a map), 
-    dictionary, collection,
-    stack, queue and probably more. Because you can have another
-    PHP array as a value, you can also quite easily simulate
-    trees.
+    PHP에서 배열은 실질적으로 순서가 있는 맵이다. 한 맵은 
+    <emphasis>values</emphasis>를 <emphasis>keys</emphasis>로 맵핑하는
+    타입이다. 이 타입은 몇가지 목적에 의해 옵티마이징될수 있다.
+    그래서 그 타입을 실제 배열이나 리스트(vector), 해쉬테이블(map의 구현),
+    딕셔너리(dictionary), 컬렉션(collection), 스택(stack), 큐(queue),
+    등등으로 사용할수 있다. 다른 PHP 배열을 값으로 갖을수 있기 때문에,
+    트리(tree)를 아주 쉽게 시뮬레이션할수 있다.
    </para>
    <para>
-    Explanation of those data structures is beyond the scope of this
-    manual, but you'll find at least one example for each of them.
-    For more information we refer you to external literature about
-    this broad topic.
+    그런 데이터 구조(자료 구조)는 이 매뉴얼의 범위를 벗어난다. 그러나 
+    그들 각각의 예를 최소한 하나는 발견할수 있을것이다. 자세한 정보를
+    위해 이 광범위한 주제에 대한 참고서적을 제시해줄것이다.
    </para>
    
    <sect2 id="language.types.array.syntax">
-    <title>Syntax</title>
+    <title>문법</title>
     
     <sect3 id="language.types.array.syntax.array-func">
-     <title>Specifying with <function>array</function></title>
+     <title><function>array</function>함수로 명기</title>
      <para>
-      An <type>array</type> can be created by the <function>array</function> 
-      language-construct. It takes a certain number of comma-separated
-      <literal><replaceable>key</replaceable> =&gt; <replaceable
-      >value</replaceable></literal>
-      pairs.
+      <type>array</type>는 <function>array</function> 언어-구조에 의해 생성될수 있다.
+      이 함수는 콤마로 구분되는 
+      몇 개의 <literal><replaceable>key</replaceable> =&gt; <replaceable>value</replaceable></literal>쌍을
+      취할수 있다.
      </para>
      <para>
       <synopsis>
@@ -1231,18 +1216,15 @@ echo $arr[12];    // 1
       </informalexample>
      </para>
      <para>
-      A <varname>key</varname> may be either an
-      <literal>integer</literal> or a <type>string</type>. If a key is
-      the standard representation of an <type>integer</type>, it will
-      be interpreted as such (i.e.  <literal>"8"</literal> will be
-      interpreted as <literal>8</literal>, while
-      <literal>"08"</literal> will be interpreted as
-      <literal>"08"</literal>). There are no different indexed and
-      associative array types in PHP; there is only one array type,
-      which can both contain integer and string indices.
+      <varname>key</varname>는 <literal>integer</literal>나 <type>string</type>타입이
+      될수 있다. key가 표준적인 <type>integer</type>타입이면, 그 값으로 해석될것이다
+      (즉, <literal>"8"</literal>은 <literal>8</literal>로 해석되는 반면,
+      <literal>"08"</literal>은 <literal>"08"</literal>로 해석된다). PHP에서
+      인덱스 배열과 연관 배열 사이는 아무 차이가 없다; 오직 하나의 배열 타입만이 있는데,
+      그 배열은 정수나 문자열 인덱스를 모두 포함할수 있다.
      </para>
      <para>
-      A value can be of any PHP type.
+      값은 모든 종류의 PHP 타입이 될수 있다.
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1258,14 +1240,12 @@ echo $arr["somearray"]["a"];  // 42
       </informalexample>
      </para>
      <para>
-      If you do not specify a key for a given value, then the maximum
-      of the integer indices is taken, and the new key will be that
-      maximum value + 1--unless that maximum value is negative (is it
-      perfectly legal to have negative array indices). In this case,
-      the new key will be <literal>0</literal>.  If no integer indices
-      exist yet, the key will be <literal>0</literal> (zero). If you
-      specify a key that already has a value assigned to it, that
-      value will be overwritten.
+      주어진 값에 대한 key를 표기하지 않으면, 정수 인덱스의 최대값이
+      취해져서 새로운 key는 최대값 + 1이 될것이다--최대값이 음수가 아니면
+      (음수 배열 인덱스를 갖는것은 가능하다). 이 경우에, 새로운 key는
+      <literal>0</literal>이 될것이다. 정수 인덱스가 아직 존재하지 않으면,
+      key는 <literal>0</literal> (zero)이 될것이다. 그 key가 이미 할당되어
+      있는데도 지정하면, 그 key로 값이 덮어씌워질것이다.
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1281,41 +1261,37 @@ array(5 => 43, 6 => 32, 7 => 56, "b" => 12);
       </informalexample>
      </para>
      <para>
-      Using &true; as a key will evaluate to <type>integer</type>
-      <literal>1</literal> as key. Using &false; as a key will evaluate
-      to <type>integer</type> <literal>0</literal> as key. Using
-      <literal>NULL</literal> as a key will evaluate to the empty
-      string. Using the empty string as key will create (or overwrite)
-      a key with the empty string and its value; it is not the same as
-      using empty brackets.
+      key로 &true;를 사용하는 것은 <type>integer</type> <literal>1</literal>
+      key가 될것이다. key로 &false;를 사용하면 <type>integer</type> <literal>0</literal>
+      key가 될것이다. key로 <literal>NULL</literal>을 사용하면 빈 문자열로
+      취급될것이다. key로 빈문자열을 사용하는 것은 빈 문자열을 갖는 key를
+      만들고 그 값을 생성 (또는 덮어씀)한다; 빈 대괄호를 사용하는것과는 다르다.
      </para>
      <para>
-      You cannot use arrays or objects as keys. Doing so will result in a
-      warning: <literal>Illegal offset type</literal>.
+      key로 배열이나 객체를 사용할수 없다. 그렇게 하면 다음과 같은 경고가
+      발생할것이다: <literal>Illegal offset type</literal>.
      </para>
     </sect3>
     
     <sect3 id="language.types.array.syntax.modifying">
-     <title>Creating/modifying with square-bracket syntax</title>
+     <title>대괄호 문법을 사용하여 생성/변경</title>
      <para>
-      You can also modify an existing array by explicitly setting
-      values in it.
+      그 안에 값을 명시적으로 표시함으로써 기존의 배열을 변경할수 있다.
      </para>
      <para>
-      This is done by assigning values to the array while specifying the 
-      key in brackets. You can also omit the key, add an empty pair
-      of brackets ("<literal>[]</literal>") to the variable name in that case.
+      이와 같은 일은 대괄호 안에 key를 표시함으로해서 배열에 
+      값을 지정하여 수행한다. key를 빼먹을수도 있고, 그 경우에
+      변수명에  빈 대괄호("<literal>[]</literal>")를 추가한다.
       <synopsis>
 $arr[<replaceable>key</replaceable>] = <replaceable>value</replaceable>;
 $arr[] = <replaceable>value</replaceable>;
 // <replaceable>key</replaceable> may be an <type>integer</type> or <type>string</type>
 // <replaceable>value</replaceable> may be any value
       </synopsis>
-      If <varname>$arr</varname> doesn't exist yet, it will be created. 
-      So this is also an alternative way to specify an array.
-      To change a certain value, just assign a new value
-      to an element specified with its key. If you want to
-      remove a key/value pair, you need to <function>unset</function> it. 
+      <varname>$arr</varname>이 아직 존재하지 않으면, 생성될것이다.
+      그래서 이 방법이 배열을 표현하는 대안이 된다. 어떤 값을 변경하려면,
+      그 key로 표현되는 요소에 새로운 값을 지정한다. key/value 쌍을 제거하려면,
+      그것을 <function>unset</function>할 필요가 있다.
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1338,21 +1314,17 @@ unset($arr);    // This deletes the whole array
      </para>
      <note>
       <para>
-       As mentioned above, if you provide the brackets with no key
-       specified, then the maximum of the existing integer indices is
-       taken, and the new key will be that maximum value + 1--unless
-       that maximum value is negative (is it perfectly legal to have
-       negative array indices). In this case, the new key will be
-       <literal>0</literal>.  If no integer indices exist yet, the key
-       will be <literal>0</literal> (zero). If you specify a key that
-       already has a value assigned to it, that value will be
-       overwritten. 
+       위에서 설명한바와 같이, key가 없는 대괄호를 사용한다면, 존재하는
+       정수 인덱스의 최대값이 취해질것이고, 새로운 key는 최대값의 + 1이
+       될것이다--최대값이 음수가 아니면(음수 배열 인덱스를 갖는것은 완벽하게
+       합법이다). 그 경우에 새로운 key는 <literal>0</literal>이 된다.
+       정수 인덱스가 아직 존재하지 않으면, key는 <literal>0</literal> (zero)이 될것이다.
+       이미 존재하는 key로 지정하면, 그 값은 덮어씌어질것이다.
       </para>
       <para>
-       Note that the maximum integer key used for this <emphasis>need
-       not currently exist in the array</emphasis>. It simply must
-       have existed in the array at some time since the last time the
-       array was re-indexed. The following example illustrates:
+       이 목적을 위한 최대 정수 key는 <emphasis>현재까지는 배열 안에 
+       존재할 필요가 없다</emphasis>. 단순히 배열을 마지막으로 인덱스
+       한 이후 어떤 시간내에 배열 안에 존재해야 한다. 다음 예를 보면:
       </para>
 
       <informalexample>
@@ -1382,7 +1354,7 @@ print_r($array);
 ]]> 
        </programlisting>
        <para>
-        The above example would produce the following output:
+        위 예제 코드는 다음을 출력할것이다:
         <screen>
 <![CDATA[
 Array
@@ -1415,17 +1387,17 @@ Array
    </sect2><!-- end syntax -->
    
    <sect2 id="language.types.array.useful-funcs">
-    <title>Useful functions</title>
+    <title>유용한 함수</title>
     <para>
-     There are quite a few useful functions for working with arrays.
-     See the <link linkend="ref.array">array functions</link> section.
+     배열을 위한 유용한 함수가 지원된다.
+     <link linkend="ref.array">배열 함수</link> 섹션을 볼것.
     </para>
     <note>
      <para>
-      The <function>unset</function> function allows unsetting keys of an 
-      array. Be aware that the array will NOT be reindexed. If you only
-      use "usual integer indices" (starting from zero, increasing by one),
-      you can achive the reindex effect by using <function>array_values</function>.
+      <function>unset</function>함수는 항상 배열의 key를 unset한다. 배열이
+      다시 인덱스되지 않을것이라는것에 주의한다. 오직 "가용한 정수 인덱스"를
+      사용한다면(제로에서 시작해서, 하나씩 증가), <function>array_values</function>를
+      사용하여 재인덱싱 효과를 수행할수 있다.
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1448,22 +1420,22 @@ $b = array_values($a);
      </para>    
     </note> 
     <para>
-     The <link linkend="control-structures.foreach">foreach</link> 
-     control structure exists specifically for arrays. It 
-     provides an easy way to traverse an array.
+     <link linkend="control-structures.foreach">foreach</link> 제어 구조는
+     배열을 위해 특별히 지원되는것이다. 배열 안을 이동하는 가장 빠른
+     방법을 제공한다.
     </para>
    </sect2>
    
    <sect2 id="language.types.array.donts">
-    <title>Array do's and don'ts</title>
+    <title>배열이 하는것과 하지 않는것</title>
 
     <sect3 id="language.types.array.foo-bar">
-     <title>Why is <literal>$foo[bar]</literal> wrong?</title>
+     <title>왜 <literal>$foo[bar]</literal>이 잘못인가?</title>
      <para>
-      You should always use quotes around a string literal
-      array index.  For example, use $foo['bar'] and not
-      $foo[bar]. But why is $foo[bar] wrong? You might have seen the
-      following syntax in old scripts:
+      항상 문자열 리터럴 배열 인덱스 주위에는 따옴표를 사용해야 한다.
+      예를 들면, $foo['bar']을 사용하고 $foo[bar]은 사용하지 말라.
+      그러나 왜 $foo[bar]이 잘못인가? 오래된 스크립트에서 다음 문법을
+      볼수 있을것이다:
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1475,24 +1447,21 @@ echo $foo[bar];
 ]]>
        </programlisting>
       </informalexample>
-      This is wrong, but it works. Then, why is it wrong? The reason
-      is that this code has an undefined constant (bar) rather than a
-      string ('bar' - notice the quotes), and PHP may in future define
-      constants which, unfortunately for your code, have the same
-      name.  It works because PHP automatically converts a
-      <emphasis>bare string</emphasis> (an unquoted string which does
-      not correspond to any known symbol) into a string which contains
-      the bare string. For instance, if there is no defined constant
-      named <constant>bar</constant>, then PHP will substitute in the
-      string <literal>'bar'</literal> and use that.
+      이것은 잘못된것이지만, 동작하다. 그렇다면, 왜 잘못인가? 그 이유는
+      이 코드가 문자열('bar' - 따옴표 사용) 보다는 정의되지 않은 상수 (bar)를
+      갖는다는것이다. 그리고 PHP는 미래에 상수를 정의할수 있는데, 불운하게도
+      이 코드에서, 같은 이름을 갖을수도 있다. 이것은 잘 작동하는 이유는
+      PHP가 자동으로 <emphasis>bare string</emphasis>(알려진 심벌과 대응되지
+      않는 따옴표 없는 문자열)을 bare string을 포함하는 문자열로 변환하기
+      때문이다. <constant>bar</constant>라는 이름으로 정의된 상수가 없으면,
+      PHP는 그것을 <literal>'bar'</literal>로 대치시켜서 사용할것이다.
      </para>
      <note>
       <simpara>
-       This does not mean to <emphasis>always</emphasis> quote the
-       key. You do not want to quote keys which are <link
-       linkend="language.constants">constants</link> or <link
-       linkend="language.variables">variables</link>, as this will
-       prevent PHP from interpreting them.
+       위 말은 <emphasis>항상</emphasis> key를 따옴표 처리하라는
+       것이 아니다. <link linkend="language.constants">상수</link>나
+       <link linkend="language.variables">변수</link>가 PHP에서 해석되는것을
+       방지하기 위해  key에서 이들을 따옴표처리하지 않을수 있다.
       </simpara>
       <informalexample>
        <programlisting role="php">
@@ -1516,7 +1485,7 @@ for ($i = 0; $i < $count; $i++) {
        </programlisting>
       </informalexample>
       <para>
-       The output from the above is:
+       위 예제코드의 출력은 다음과 같다:
        <screen>
 <![CDATA[
 Checking 0: 
@@ -1539,7 +1508,7 @@ Good: 2
       </para>
      </note>
      <para>
-      More examples to demonstrate this fact:
+      위 사실을 설명하는 몇가지 예제 코드:
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1590,18 +1559,16 @@ print "Hello " . $arr['fruit']; // Hello apple
       </informalexample>
      </para>
      <para>
-      When you turn <function>error_reporting</function> up to show
-      <constant>E_NOTICE</constant> level errors (such as setting
-      it to <constant>E_ALL</constant>) then you will see these
-      errors.  By default, <link linkend="ini.error-reporting">
-      error_reporting</link> is turned down to not show them.
+      <constant>E_NOTICE</constant> 레벨 에러(<constant>E_ALL</constant>로 설정)
+      를 보이기 위해 <function>error_reporting</function>함수를 쓸때,
+      다음과 같은 에러를 보게 될것이다. 기본값으로, 
+      <link linkend="ini.error-reporting">error_reporting</link>은 그들을
+      보여주지 않는다.
      </para>
      <para>
-      As stated in the <link
-      linkend="language.types.array.syntax">syntax</link> section,
-      there must be an expression between the square brackets
-      ('<literal>[</literal>' and '<literal>]</literal>').  That means
-      that you can write things like this:
+      <link linkend="language.types.array.syntax">문법</link> 섹션에서
+      설명한대로, 대괄호('<literal>[</literal>' 과 '<literal>]</literal>') 사이에
+      표현식이 존재해야 한다. 이 말의 의미는 다음과 같은 코드를 쓸수 있다는 뜻이다:
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1611,10 +1578,9 @@ echo $arr[somefunc($bar)];
 ]]>
        </programlisting>
       </informalexample>
-      This is an example of using a function return value
-      as the array index. PHP also knows about constants,
-      as you may have seen the <literal>E_*</literal> ones
-      before.      
+      배열 인덱스로 값을 돌려주는 함수를 사용하는 예를 보인다. 
+      전에 <literal>E_*</literal>와 같은 것을 보았듯이,
+      PHP는 상수들을 알고 있다.
 
       <informalexample>
        <programlisting role="php">
@@ -1627,9 +1593,8 @@ $error_descriptions[E_NOTICE]  = "This is just an informal notice";
 ]]>
        </programlisting>
       </informalexample>
-      Note that <literal>E_ERROR</literal> is also a valid identifier, 
-      just like <literal>bar</literal> in the first example. But the last
-      example is in fact the same as writing:
+      첫번째 예의<literal>bar</literal>처럼, <literal>E_ERROR</literal>는
+      유효한 식별자라는것에 주의한다. 그러나 위 예는 다음과 같다:
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -1641,36 +1606,35 @@ $error_descriptions[8] = "This is just an informal notice";
 ]]>
        </programlisting>
       </informalexample>
-      because <literal>E_ERROR</literal> equals <literal>1</literal>, etc.
+      왜냐하면 <literal>E_ERROR</literal>는 <literal>1</literal>과 같기때문이다 etc.
      </para>
      <para>
-      As we already explained in the above examples, 
-      <literal>$foo[bar]</literal> still works but is wrong.
-      It works, because <literal>bar</literal> is due to its syntax
-      expected to be a constant expression. However, in this case no 
-      constant with the name <literal>bar</literal> exists. PHP now
-      assumes that you meant <literal>bar</literal> literally, 
-      as the string <literal>"bar"</literal>, but that you forgot
-      to write the quotes.
+      위 예에서 이미 설명했듯이, <literal>$foo[bar]</literal>은 작동하지만 잘못되었다.
+      이 코드는 작동한다. 왜냐하면 이 문법에서 <literal>bar</literal>는
+      상수 표현으로 인식될수도 있기 때문이다. 하지만, 이 경우에
+      <literal>bar</literal>란 이름을 갖는 상수는 존재하지 않는다. PHP는
+      문자그대로 <literal>bar</literal>를 표시했다고 인식해서
+      문자열 <literal>"bar"</literal>으로 보기 때문이다.
+      따옴표 쓰는것을 잊었다고 인식한다.
      </para>
      <sect4>
-      <title>So why is it bad then?</title>
+      <title>그래서 그것이 왜 나쁜가?</title>
       <para>
-       At some point in the future, the PHP team might want to add another
-       constant or keyword, or you may introduce another constant into your
-       application, and then you get in trouble. For example,
-       you already cannot use the words <literal>empty</literal> and 
-       <literal>default</literal> this way, since they are special 
-       <link linkend="reserved">reserved keywords</link>.
+       미래의 어떤 시점에서, PHP 팀은 또다른 상수나 키워드를 추가할수도
+       있거나, 애플리케이션안에 또다른 상수를 사용할수도 있다. 그러면
+       이 경우에 어려움에 빠지게 된다. 예를 들면, 
+       <literal>empty</literal>와 <literal>default</literal>워드는 이런 이유로
+       사용할수 없다. 왜냐하면 그들은 특별한 
+       <link linkend="reserved">예약 키워드</link>이기 때문이다.
       </para>
       <note>
        <simpara>
-        To reiterate, inside a double-quoted <type>string</type>, it's
-        valid to not surround array indexes with quotes so
-        <literal>"$foo[bar]"</literal> is valid.  See the above 
-        examples for details on why as well as the section on
-        <link linkend="language.types.string.parsing">variable parsing 
-        in strings</link>.
+        배반복하지만, 큰따옴표로 둘러싼 <type>string</type>안에서 
+        <literal>"$foo[bar]"</literal>이 유효하도록 따옴표를 배열 인덱스에
+        둘러싸지 않는것이 유효한다. 그 이유에 대한 상세 설명을 위해
+        위 예제코드를 보는 것은 물론
+        <link linkend="language.types.string.parsing">문자열 안에서 해석되는 변수</link>에
+        관한 섹션도 참고할것.
        </simpara>
       </note>
      </sect4>
@@ -1678,32 +1642,30 @@ $error_descriptions[8] = "This is just an informal notice";
    </sect2>
 
    <sect2 id="language.types.array.casting">
-    <title>Converting to array</title>
+    <title>배열로 변환</title>
     
     <para>
-     For any of the types: <type>integer</type>, <type>float</type>,
-     <type>string</type>, <type>boolean</type> and <type>resource</type>,
-     if you convert a value to an <type>array</type>, you get an array 
-     with one element (with index 0), which is the scalar value you 
-     started with.
+     다른 타입을 갖는: <type>integer</type>, <type>float</type>,
+     <type>string</type>, <type>boolean</type>, <type>resource</type>,
+     어떤 값을 <type>array</type>로 변환한다면, 한개의 요소를 갖는 (인덱스 0)
+     배열을 얻을수 있다. 그 구성요소는 스칼라 값이다.
     </para>
     
     <para>
-     If you convert an <type>object</type> to an array, you get the
-     properties (member variables) of that object as the array's elements. 
-     The keys are the member variable names.
+     <type>object</type>를 배열로 변환하면, 각 객체의 속성(멤버 변수)를 
+     배열의 구성요소로서 취할수 있다. key는 멤버 변수명이 된다.
     </para>
     
     <para>
-     If you convert a &null; value to an array, you get an empty array.
+     &null;값을 배열로 변환하면, 빈 배열을 얻을수 있다.
     </para>
    </sect2>
 
    <sect2 id="language.types.array.examples">
-    <title>Examples</title>
+    <title>예제 코드</title>
     <para>
-     The array type in PHP is very versatile, so here will be some 
-     examples to show you the full power of arrays.
+     PHP에서 배열 타입은 다용도로 쓰인다. 그래서 여기서 배열의 완벽한
+     능력을 보이기 위해 몇가지 예제 코드를 보일것이다.
     </para>
     <para>
       <informalexample>
@@ -1737,7 +1699,7 @@ $b[] = 'c';
      </para>
     
     <example>
-     <title>Using array()</title>
+     <title>array() 사용하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1780,7 +1742,7 @@ $empty = array();
     </example>
 
     <example id="language.types.array.examples.loop">
-     <title>Collection</title>
+     <title>컬렉션</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1802,17 +1764,17 @@ Do you like yellow?
     </example>
     
     <para>
-     Note that it is currently not possible to change the values of the array
-     directly in such a loop. 
+     현재까지 배열의 값을 이런 루프 안에서 직접 변경하는 것은 불가능하다는
+     것에 주의해야 한다.
       <!--
        Should be made possible, if you write:
        foreach ( $colors as &$color )
       
        See bug#3074
       -->
-     A workaround is the following: 
+     다음과 같은 편법이 있다:
      <example id="language.types.array.examples.changeloop">
-      <title>Collection</title>
+      <title>컬렉션</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -1840,7 +1802,7 @@ Array
      </example>
     </para>
     <para>
-     This example creates a one-based array.
+     이 예제 코드는 one-based 배열을 생성한다.
      <example>
       <title>One-based index</title>
       <programlisting role="php">
@@ -1862,7 +1824,7 @@ Array
      </example>
     </para>
     <example>
-     <title>Filling an array</title>
+     <title>배열 채우기</title>
      <programlisting role="php">
 <![CDATA[
 // fill an array with all items from a directory
@@ -1876,14 +1838,12 @@ closedir($handle);
      </programlisting>
     </example>
     <para>
-     Arrays are ordered. You can also change the order using various
-     sorting functions. See the <link linkend="ref.array">array
-     functions</link> section for more information. You can count
-     the number of items in an array using the
-     <function>count</function> function.
+     배열은 순서가 있다. 다양한 정력함수를 사용하여 그 순서를 변경할수도 있다.
+     더 자세한 정보는 <link linkend="ref.array">배열 함수</link>섹션을 참고.
+     <function>count</function>함수를 사용하여  배열 내의 아이템 수를 셀수 있다.
     </para>
     <example>
-     <title>Sorting an array</title>
+     <title>배열 정렬하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1894,12 +1854,11 @@ print_r($files);
      </programlisting>
     </example>
     <para>
-     Because the value of an array can be anything, it can also be
-     another array. This way you can make recursive and
-     multi-dimensional arrays.
+     배열의 값은 어느것이든 될수 있기 때문에, 또한 다른 배열이 될수 있다.
+     이 방식으로 재귀적이고 다차원인 배열을 만들수 있다.
     </para>
     <example>
-     <title>Recursive and multi-dimensional arrays</title>
+     <title>재귀적이고 다차원인 배열</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1932,9 +1891,8 @@ $juices["apple"]["green"] = "good";
      </programlisting>
     </example>
     <para>
-     You should be aware that array assignment always involves
-     value copying. You need to use the reference operator to copy
-     an array by reference.
+     배열 지정은 항상 값 복사에 관련되어 있다는 것을 알고 있어야 한다.
+     참조에 의해 배열을 복사하려면 참조 연산자를 사용하여야 한다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -1955,14 +1913,14 @@ $arr3[] = 4; // now $arr1 and $arr3 are the same
   </sect1>
 
   <sect1 id="language.types.object">
-   <title>Objects</title>
+   <title>객체</title>
 
    <sect2 id="language.types.object.init">
-    <title>Object Initialization</title>
+    <title>객체 초기화</title>
 
     <para>
-     To initialize an object, you use the <literal>new</literal>
-     statement to instantiate the object to a variable.
+     객체를 초기화하기 위해서는 변수로 객체를 인스턴스화하는 
+     <literal>new</literal>문을 사용하라.
 
      <informalexample>
       <programlisting role="php">
@@ -1984,21 +1942,19 @@ $bar->do_foo();
      </informalexample>
     </para>
     <simpara>
-     For a full discussion, please read the section <link
-     linkend="language.oop">Classes and Objects</link>.
+     더 자세한 사항은 <link linkend="language.oop">클래스와 객체</link> 섹션을
+     참고한다.
     </simpara>
    </sect2>
    
    <sect2 id="language.types.object.casting">
-    <title>Converting to object</title>
+    <title>객체로 변환하기</title>
     
     <para>
-     If an object is converted to an object, it is not modified. If a value
-     of any other type is converted to an object, a new instance of the
-     <literal>stdClass</literal> built in class is created. If the value
-     was null, the new instance will be empty. For any other value, a
-     member variable named <literal>scalar</literal> will contain the
-     value.
+     객체가 객체로 변환되면, 그것은 변경되지 않는다. 다른 타입의 값이
+     객체로 변환되면, <literal>stdClass</literal>내장 클래스의 새로운
+     인스턴스가 생성된다. 그 값이 null이면, 새로운 인스턴스는 텅빌것이다.
+     다른 값은 <literal>scalar</literal>라는 멤버 변수명이 포함할것이다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -2015,20 +1971,18 @@ echo $obj->scalar;  // outputs 'ciao'
   </sect1>
 
   <sect1 id="language.types.resource">
-   <title>Resource</title>
+   <title>자원</title>
     
     <para>
-     A resource is a special variable, holding
-     a reference to an external resource. Resources
-     are created and used by special functions.
-     See the <link linkend="resource">appendix</link> 
-     for a listing of all these
-     functions and the corresponding resource types.
+     resource는 특별한 변수이고, 특별한 자원에 대한 참조를 포함한다.
+     자원은 특별한 함수에 의해 생성되고 사용된다. 이런 모든 함수의
+     목록과 대응하는 자원 타입에 대해서는 
+     <link linkend="resource">부록</link> 섹션을 참고한다.
     </para>
     
     <note>
      <simpara>
-      The resource type was introduced in PHP 4
+      resource 타입은 PHP 4에서부터 지원된다.
      </simpara>
     </note>
 
