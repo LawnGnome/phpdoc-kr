@@ -36,7 +36,7 @@
 						<entry>8</entry>
 						<entry>E_NOTICE  </entry>
 						<entry>
-						Notices (무시할 수 있는 알림이지만 버그의 가능성을 가지고 있는 경우) 
+						Notices (알림-무시할 수 있는 알림이지만 버그의 가능성을 가지고 있는 경우) 
 						</entry>
 						<entry/>
 					</row>
@@ -95,61 +95,52 @@
 		</table>
 	</para>
 	<para>
-   The above values (either numerical or symbolic) are used to build
-   up a bitmask that specifies which errors to report. You can use the
-   <link linkend="language.operators.bitwise">bitwise operators</link>
-   to combine these values or mask out certain types of errors. Note
-   that only '|', '~', '!', and '&amp;' will be understood within
-   <filename>php.ini</filename>, however, and that no bitwise
-   operators will be understood within <filename>php3.ini</filename>.
+	위의 값(숫자, 상수 모두)은 레포트하기 원하는 내용의 비트를 설정하기 위해 조합하여 사용할 수 있다.
+	원하는 값을 조합해내기 위해 <link linkend="language.operators.bitwise">bitwise operators</link>에
+	있는 비트 조작 연산자를 사용한다. 단 <filename>php.ini</filename> 파일에서는 '|', '~', '!', '&amp;'의 
+	네개의 연산자만 사용가능하고, <filename>php3.ini</filename>에서는 어떤 비트단위 연산자도 사용할 수 없다.
   </para>
 	<para>
-   In PHP 4, the default <link linkend="ini.error-reporting">error_reporting</link> setting is
-   <literal>E_ALL &amp; ~E_NOTICE</literal>, meaning to display all errors
-   and warnings which are not E_NOTICE-level. In PHP 3, the default
-   setting is <literal>(E_ERROR | E_WARNING | E_PARSE)</literal>,
-   meaning the same thing. Note, however, that since constants are not
-   supported in PHP 3's <filename>php3.ini</filename>, the <link linkend="ini.error-reporting">error_reporting</link> setting there
-   must be numeric; hence, it is <literal>7</literal>.
+	PHP4에서 <link linkend="ini.error-reporting">error_reporting</link>의 기본값은
+	<literal>E_ALL &amp; ~E_NOTICE</literal>이다. 즉, 모든 에러와 경고를 출력하지만 알림(notice)는 레포팅하지 않는다.
+	PHP3에서의 기본값은 <literal>(E_ERROR | E_WARNING | E_PARSE)</literal>이다.
+	내용적으로는 PHP4와 같다.
+	PHP3의 <filename>php3.ini</filename>에서는 상수를 사용한 설정을 사용할 수 없으므로,
+	<link linkend="ini.error-reporting">error_reporting</link>의 값은 반드시 숫자여야 한다.
+	그러므로 기본값은 <literal>7</literal>이다.
   </para>
 	<para>
-   The initial setting can be changed in the ini file with the <link linkend="ini.error-reporting">error_reporting</link> directive, in
-   your Apache <filename>httpd.conf</filename> file with the
-   php_error_reporting (php3_error_reporting for PHP 3) directive, and
-   lastly it may be set at runtime within a script by using the
-   <function>error_reporting</function> function.
+	초기 설정은 ini 파일에 있는 <link linkend="ini.error-reporting">error_reporting</link> 지시자를 사용하여 변할 수 있고,
+	아파치의 <filename>httpd.conf</filename>파일에서 php_error_reporting (PHP3에서는 php3_error_reporting) 지시자를
+	사용하여 설정할 수도 있다. 또한, 스크립트 실행중에 <function>error_reporting</function> 함수를 사용하여 설정할 수도 있다.
   </para>
 	<warning>
 		<para>
-    When upgrading code or servers from PHP 3 to PHP 4 you should
-    check these settings and calls to
-    <function>error_reporting</function> or you might disable
-    reporting the new error types, especially E_COMPILE_ERROR.  This
-    may lead to empty documents without any feedback of what happened
-    or where to look for the problem.
+	PHP3에서 PHP4로 프로그램 코드나 서버 자체를 이전할 경우, 
+	이 설정과 <function>error_reporting</function> 함수의 호출 내역을 반드시 확인하거나,
+	E_COMPILE_ERROR를 포함한 새로운 에러 타입에 대한 레포팅을 불가능하게 하여야 한다.
+	자칫하면 어떤 문제가 어디서 발생했는가에 대한 정보없이 빈 문서를 만들어 낼 수도 있으므로 주의하자.
    </para>
 	</warning>
 	<para>
-	모든 <link linkend="language.expressions">PHP 표현식(expression)</link>은 "@"를 앞에 붙이고 호출되면 error reporting을 하지 않는다. 
-	만약 <link linkend="ini.track-errors">track_errors</link> 옵션이 Enabled로 되어 있고 해당 문장에서 에러가 발생했다면, 
-	$php_errormsg라는 전역변수에 에러 메시지가 담겨 있게 된다.
+	모든 <link linkend="language.expressions">PHP 표현식(expression)</link>은 "@"를 앞에 붙이고 호출되면 
+	error reporting을 하지 않는다. 만약 <link linkend="ini.track-errors">track_errors</link> 옵션이 Enabled로 
+	되어 있고 해당 문장에서 에러가 발생했다면, $php_errormsg라는 전역변수에 에러 메시지가 담겨 있게 된다.
   </para>
 	<warning>
 		<para>
-    Currently the <link linkend="language.operators.errorcontrol">@
-    error-control operator</link> prefix will even disable error
-    reporting for critical errors that will terminate script
-    execution. Among other things, this means that if you use <link linkend="language.operators.errorcontrol">@</link> to suppress
-    errors from a certain function and either it isn't available or
-    has been mistyped, the script will die right there with no
-    indication as to why.
+	현재 <link linkend="language.operators.errorcontrol">@
+    error-control operator</link> 선행자(prefix)는 스크립트를 중단시킬 정도의
+	치명적인 에러에 대해서도 에러 레포팅을 하지 않게 한다.
+	특히 <link linkend="language.operators.errorcontrol">@</link>이 특정 함수의 에러레포팅을
+	억제 하려고 사용된 경우에, 이 함수가 존재 하지 않거나, 이름을 잘못 쓴 경우 해당 스크립트는
+	아무런 이유를 표시하지 않고 죽어버리게 된다.
    </para>
 	</warning>
 	<para>
-   Below we can see an example of using the error handling capabilities in
-   PHP. We define a error handling function which logs the information into
-   a file (using an XML format), and e-mails the developer in case a critical
-   error in the logic happens.
+	아래에 PHP에서 에러를 다루는 기능에 대한 사용 예를 적어 놓았다.
+	이 예에서 우리는 파일로(XML 포맷을 사용) 해당 정보의 로그를 남기고, 
+	논리적인 문제로 치명적인 에러가 생긴경우는 개발자에게 e-mail을 보내는 에러 핸들링 함수를 정의하였다.
    <example>
 			<title>Using error handling in a script</title>
 			<programlisting role="php">
@@ -254,9 +245,8 @@ $t3 = distance($a,$b).&quot;\n&quot;;
 ?&gt;
     </programlisting>
 		</example>
-   This is just a simple example showing how to use the 
-   <link linkend="ref.errorfunc">Error Handling and Logging
-   functions</link>.
+	이것은 <link linkend="ref.errorfunc">Error Handling and Logging functions</link>에 
+	있는 함수들을 어떻게 사용하는 가를 보여주는 간단한 예이다.
   </para>
 	<para>
    See also <function>error_reporting</function>,
