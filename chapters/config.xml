@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
+<!-- $Revision: 1.10 $ -->
 <!-- EN-Revision: 1.96 -->
  <chapter id="configuration">
   <title>환경 설정</title>
@@ -72,29 +72,25 @@ include_path = ".;c:\php\lib"
    <title>환경 설정을 변경하는 방법</title>
 
    <sect2 id="configuration.changes.apache">
-    <title>Running <literal>PHP</literal> as Apache module</title>
+    <title><literal>PHP</literal>를 아파치 모듈로 실행</title>
     <simpara>
-     When using PHP as an Apache module, you can also change the
-     configuration settings using directives in Apache configuration
-     files (e.g. &httpd.conf;) and
-     &htaccess; files (You will need
-     "AllowOverride Options" or "AllowOverride All" privileges)
+     PHP를 아파치 모듈로 사용할 때, 아파치 환경 설정 파일(예. &httpd.conf;)과
+     &htaccess; 파일("AllowOverride Options"이나 "AllowOverride All" 권한이
+     필요합니다)을 이용해서 환경 설정을 변경할 수 있습니다.
     </simpara>
 
     <para>
-     With PHP 4.0, there are several Apache directives that allow you
-     to change the PHP configuration from within the Apache configuration
-     files.  For a listing of which directives are 
-     <constant>PHP_INI_ALL</constant>, <constant>PHP_INI_PERDIR</constant>, 
-     or <constant>PHP_INI_SYSTEM</constant>, have a look at the table
-     found within the <function>ini_set</function> documentation.
+     PHP 4.0에서는, 아파치 환경 설정 파일에서 PHP 설정을 변경할 수 있게
+     하는 몇가지 아파치 설정이 존재합니다. 가능한 설정 목록은
+     <function>ini_set</function> 문서에 있는 테이블의
+     <constant>PHP_INI_ALL</constant>, <constant>PHP_INI_PERDIR</constant>,
+     <constant>PHP_INI_SYSTEM</constant>을 참고하십시오.
     </para>
     
     <note>
      <simpara>
-      With PHP 3.0, there are Apache directives that correspond to each
-      configuration setting in the <filename>php3.ini</filename> name,
-      except the name is prefixed by "php3_".
+      PHP 3.0에서는, <filename>php3.ini</filename> 이름에 각각 대응하는
+      "php3_"를 붙여서 사용할 수 있는 아파치 설정이 존재합니다.
      </simpara>
     </note>
 
@@ -103,14 +99,14 @@ include_path = ".;c:\php\lib"
       <varlistentry>
        <term>
         <systemitem role="directive">php_value</systemitem>
-        <parameter>name</parameter>
-        <parameter>value</parameter>
+        <parameter>이름</parameter>
+        <parameter>값</parameter>
        </term>
        <listitem>
         <para>
-         Sets the value of the specified directive.
-         Can be used only with PHP_INI_ALL and PHP_INI_PERDIR type directives.
-         To clear a previously set value use <literal>none</literal> as the value.
+         특정한 설정값을 설정합니다.
+         PHP_INI_ALL과 PHP_INI_PERDIR형 설정에만 사용 가능합니다.
+         기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
          <informalexample>
           <programlisting role="ini">
 <![CDATA[
@@ -124,29 +120,29 @@ php_value auto_prepend_file none
       <varlistentry>
        <term>
         <systemitem role="directive">php_flag</systemitem>
-        <parameter>name</parameter>
+        <parameter>이름</parameter>
         <parameter>on|off</parameter>
        </term>
        <listitem>
         <para>
-         Used to set a Boolean configuration directive.
-         Can be used only with PHP_INI_ALL and PHP_INI_PERDIR type directives.
+         Boolean 환경 설정에 사용합니다.
+         PHP_INI_ALL과 PHP_INI_PERDIR형 설정에만 사용 가능합니다.
         </para>
        </listitem>
       </varlistentry>
       <varlistentry>
        <term>
         <systemitem role="directive">php_admin_value</systemitem>
-        <parameter>name</parameter>
-        <parameter>value</parameter>
+        <parameter>이름</parameter>
+        <parameter>값</parameter>
        </term>
        <listitem>
         <para>
-         Sets the value of the specified directive.
-         This can NOT be used in &htaccess; files.
-         Any directive type set with <systemitem role="directive">php_admin_value</systemitem>
-         can not be overridden by &htaccess; or virtualhost directives.
-         To clear a previously set value use <literal>none</literal> as the value.
+         특정한 설정값을 설정합니다.
+         &htaccess; 파일에서는 사용할 수 없습니다.
+         <systemitem role="directive">php_admin_value</systemitem>의 설정값은
+         &htaccess;나 버추얼 호스트 설정으로 바꿀 수 없습니다.
+         기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
          <informalexample>
           <programlisting role="ini">
 <![CDATA[
@@ -160,15 +156,15 @@ php_admin_value open_basedir none
       <varlistentry>
        <term>
         <systemitem role="directive">php_admin_flag</systemitem>
-        <parameter>name</parameter>
+        <parameter>이름</parameter>
         <parameter>on|off</parameter>
        </term>
        <listitem>
         <para>
-         Used to set a Boolean configuration directive.
-         This can NOT be used in &htaccess; files.
-         Any directive type set with <systemitem role="directive">php_admin_flag</systemitem>
-         can not be overridden by &htaccess; or virtualhost directives.
+         Boolean 환경 설정에 사용합니다.
+         <systemitem role="directive">php_admin_flag</systemitem>의 설정값은
+         &htaccess;나 버추얼 호스트 설정으로 바꿀 수 없습니다.
+         기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
         </para>
        </listitem>
       </varlistentry>
@@ -176,7 +172,7 @@ php_admin_value open_basedir none
     </para>
     <para>
      <example>
-      <title>Apache configuration example</title>
+      <title>아파치 환경 설정 예제</title>
       <programlisting role="ini">
 <![CDATA[
 <IfModule mod_php4.c>
