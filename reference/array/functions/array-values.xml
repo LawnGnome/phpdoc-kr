@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/array.xml, last change in rev 1.4 -->
-<!-- last change to 'array-values' in en/ tree in rev 1.2 -->
-	<refentry id="function.array-values">
-		<refnamediv>
-			<refname>array_values</refname>
-			<refpurpose>배열의 모든 값들을 반환한다.</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>array</type><methodname>array_values</methodname>
-					<methodparam><type>array</type><parameter>input</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-				<function>array_values</function> 는 
-		<parameter>input</parameter> 배열의 모든 값들을 반환한다.
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.7 -->
+<!-- splitted from ./en/functions/array.xml, last change in rev 1.2 -->
+  <refentry id="function.array-values">
+   <refnamediv>
+    <refname>array_values</refname>
+    <refpurpose>배열의 모든 값들을 반환한다</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>array</type><methodname>array_values</methodname>
+      <methodparam><type>array</type><parameter>input</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     <function>array_values</function>는 <parameter>input</parameter> 배열에서
+     모든 값들과 숫자로된 인덱스의 배열을 반환한다.
     </para>
-			<para>
-				<example>
-					<title>
-						<function>array_values</function> 예</title>
-					<programlisting role="php">
-$array = array ("size" =&gt; "XL", "color" =&gt; "gold");
-array_values ($array);    // returns array ("XL", "gold")
+    <para>
+     <example>
+      <title><function>array_values</function> 예제코드</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$array = array ("size" => "XL", "color" => "gold");
+print_r(array_values ($array));
+?>
+]]>
       </programlisting>
-				</example>
-			</para>
-			<note>
-				<para>
-	이 함수는 PHP 4 에서 추가되었고, 다음은 PHP3에서의 구현이다. 
-      <example>
-						<title>
-    PHP 3 사용자를 위한<function>array_values</function> 의 구현
-       </title>
-						<programlisting role="php">
-function array_values ($arr) {
-    $t = array();
-    while (list($k, $v) = each ($arr)) {
-        $t[] = $v;
-        return $t;
-    }
-}
-       </programlisting>
-					</example>
-				</para>
-			</note>
-		</refsect1>
-	</refentry>
+      <para>
+       이 코드의 결과는 다음과 같다:
+      </para>
+      <screen role="php">
+<![CDATA[
+Array
+(
+    [0] => XL
+    [1] => gold
+)
+]]>
+      </screen>
+     </example>
+    </para>
+    <para>
+     <function>array_keys</function> 참고.
+    </para>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
