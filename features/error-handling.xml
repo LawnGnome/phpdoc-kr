@@ -1,7 +1,7 @@
 <chapter id="features.error-handling">
 	<title>Error Handling</title>
 	<para>
-	PHPÏóêÎäî Îã§ÏùåÍ„º ÍƒôÏùÄ Ïó¨Îü¨ ÏóêÎü¨ÏôÄ Í¾‡Í„İ ÌòïÌÉúÍƒÄ ÏûàÎã§.:
+	PHPì—ëŠ” ë‹¤ìŒê³¼ ê°™ì€ ì—¬ëŸ¬ ì—ëŸ¬ì™€ ê²½ê³  í˜•íƒœê°€ ìˆë‹¤.:
    <table>
 			<title>PHP error types</title>
 			<tgroup cols="4">
@@ -17,26 +17,26 @@
 					<row>
 						<entry>1</entry>
 						<entry>E_ERROR</entry>
-						<entry>Normal Function Errors (ÏùºÎƒòÏİÅÏù½ ÏóêÎü¨)</entry>
+						<entry>Normal Function Errors (ì¼ë°˜ì ì¸ ì—ëŸ¬)</entry>
 						<entry/>
 					</row>
 					<row>
 						<entry>2</entry>
 						<entry>E_WARNING</entry>
-						<entry>Normal Warnings (ÏùºÎƒòÏİÅÏù½ Í¾‡Í„İ)</entry>
+						<entry>Normal Warnings (ì¼ë°˜ì ì¸ ê²½ê³ )</entry>
 						<entry/>
 					</row>
 					<row>
 						<entry>4</entry>
 						<entry>E_PARSE</entry>
-						<entry>Parser Errors (Î¨½Î¾ï ÏóêÎü¨)</entry>
+						<entry>Parser Errors (ë¬¸ë²• ì—ëŸ¬)</entry>
 						<entry/>
 					</row>
 					<row>
 						<entry>8</entry>
 						<entry>E_NOTICE  </entry>
 						<entry>
-						Notices (Î¨¥ÏãúÌïİ Ïàò ÏûàÎäî ÏïåÎ¶ºÏù¥ÏßÄÎßå Î¾ÑÍ…½Ïùò ÍƒÄÎä€ÏÑ±ÏùÑ ÍƒÄÏßÄÍ„İ ÏûàÎäî Í¾‡Ïöƒ) 
+						Notices (ë¬´ì‹œí•  ìˆ˜ ìˆëŠ” ì•Œë¦¼ì´ì§€ë§Œ ë²„ê·¸ì˜ ê°€ëŠ¥ì„±ì„ ê°€ì§€ê³  ìˆëŠ” ê²½ìš°) 
 						</entry>
 						<entry/>
 					</row>
@@ -44,50 +44,50 @@
 						<entry>16</entry>
 						<entry>E_CORE_ERROR</entry>
 						<entry>fatal errors that occur during PHP's initial startup 
-						(PHPÍƒÄ Ï¾òÏùå ÏãúÏûëÎêİ Îïå ÎƒúÏÉùÌïú Ï¼òÎÖÏİÅ ÏóêÎü¨)</entry>
+						(PHPê°€ ì²˜ìŒ ì‹œì‘ë  ë•Œ ë°œìƒí•œ ì¹˜ëª…ì  ì—ëŸ¬)</entry>
 						<entry>PHP 4 only</entry>
 					</row>
 					<row>
 						<entry>32</entry>
 						<entry>E_CORE_WARNING</entry>
 						<entry>warnings (non fatal errors) that occur during PHP's initial startup 
-						(PHPÍƒÄ Ï¾òÏùå ÏãúÏûëÎêİ Îïå ÎƒúÏÉùÌïú Ï¼òÎÖÏİÅÏù¥ÏßÄ ÏïäÏùÄ Í¾‡Í„İ)</entry>
+						(PHPê°€ ì²˜ìŒ ì‹œì‘ë  ë•Œ ë°œìƒí•œ ì¹˜ëª…ì ì´ì§€ ì•Šì€ ê²½ê³ )</entry>
 						<entry>PHP 4 only</entry>
 					</row>
 					<row>
 						<entry>64</entry>
 						<entry>E_COMPILE_ERROR</entry>
-						<entry>fatal compile-time errors (Ïª¥ÌååÏùºÏãú ÏÉùÍ½¥ Ï¼òÎÖÏİÅ ÏóêÎü¨)</entry>
+						<entry>fatal compile-time errors (ì»´íŒŒì¼ì‹œ ìƒê¸´ ì¹˜ëª…ì  ì—ëŸ¬)</entry>
 						<entry>PHP 4 only</entry>
 					</row>
 					<row>
 						<entry>128</entry>
 						<entry>E_COMPILE_WARNING</entry>
-						<entry>compile-time warnings (non fatal errors) (Ïª¥ÌååÏùºÏãú ÎƒúÏÉùÌïú Ï¼òÎÖÏİÅÏù¥ÏßÄ ÏïäÏùÄ Í¾‡Í„İ)</entry>
+						<entry>compile-time warnings (non fatal errors) (ì»´íŒŒì¼ì‹œ ë°œìƒí•œ ì¹˜ëª…ì ì´ì§€ ì•Šì€ ê²½ê³ )</entry>
 						<entry>PHP 4 only</entry>
 					</row>
 					<row>
 						<entry>256</entry>
 						<entry>E_USER_ERROR</entry>
-						<entry>user-generated error message (ÏÇ¨Ïö©ÏûêÍƒÄ ÎßåÎìİ ÏóêÎü¨ Î©îÏÑ½ÏßÄ)</entry>
+						<entry>user-generated error message (ì‚¬ìš©ìê°€ ë§Œë“  ì—ëŸ¬ ë©”ì„¸ì§€)</entry>
 						<entry>PHP 4 only</entry>
 					</row>
 					<row>
 						<entry>512</entry>
 						<entry>E_USER_WARNING</entry>
-						<entry>user-generated warning message (ÏÇ¨Ïö©ÏûêÍƒÄ ÎßåÎìİ Í¾‡Í„İ Î©îÏÑ½ÏßÄ)</entry>
+						<entry>user-generated warning message (ì‚¬ìš©ìê°€ ë§Œë“  ê²½ê³  ë©”ì„¸ì§€)</entry>
 						<entry>PHP 4 only</entry>
 					</row>
 					<row>
 						<entry>1024</entry>
 						<entry>E_USER_NOTICE </entry>
-						<entry>user-generated notice message (ÏÇ¨Ïö©ÏûêÍƒÄ ÎßåÎìİ ÏïåÎ¶º Î©îÏÑ½ÏßÄ)</entry>
+						<entry>user-generated notice message (ì‚¬ìš©ìê°€ ë§Œë“  ì•Œë¦¼ ë©”ì„¸ì§€)</entry>
 						<entry>PHP 4 only</entry>
 					</row>
 					<row>
 						<entry/>
 						<entry>E_ALL</entry>
-						<entry>all of the above, as supported (ÏßÄÏõêÍƒÄÎä€Ìïú ÏúÑÏùò Í¾É Î®Îëê)</entry>
+						<entry>all of the above, as supported (ì§€ì›ê°€ëŠ¥í•œ ìœ„ì˜ ê²ƒ ëª¨ë‘)</entry>
 						<entry/>
 					</row>
 				</tbody>
@@ -130,9 +130,9 @@
    </para>
 	</warning>
 	<para>
-	Î®Îìİ <link linkend="language.expressions">PHP ÌëúÌòÑÏãù(expression)</link>ÏùÄ "@"Î€º ÏïûÏóê ÎôÏù¥Í„İ Ìò½ÏúÎêòÎ©¥ error reportingÏùÑ ÌïòÏßÄ ÏïäÎäîÎã§. 
-	ÎßåÏï‡ <link linkend="ini.track-errors">track_errors</link> ÏòµÏÖòÏù¥ EnabledÎ°ú ÎêòÏñ¥ ÏûàÍ„İ Ìï¥Îã¼ Î¨½Ïû€ÏóêÏÑú ÏóêÎü¨ÍƒÄ ÎƒúÏÉùÌñàÎã§Î©¥, 
-	$php_errormsgÎùºÎäî ÏİÑÏó‚Î„ÄÏàòÏóê ÏóêÎü¨ Î©îÏãúÏßÄÍƒÄ Îã¥Í¾® ÏûàÍ¾å ÎêúÎã§.
+	ëª¨ë“  <link linkend="language.expressions">PHP í‘œí˜„ì‹(expression)</link>ì€ "@"ë¥¼ ì•ì— ë¶™ì´ê³  í˜¸ì¶œë˜ë©´ error reportingì„ í•˜ì§€ ì•ŠëŠ”ë‹¤. 
+	ë§Œì•½ <link linkend="ini.track-errors">track_errors</link> ì˜µì…˜ì´ Enabledë¡œ ë˜ì–´ ìˆê³  í•´ë‹¹ ë¬¸ì¥ì—ì„œ ì—ëŸ¬ê°€ ë°œìƒí–ˆë‹¤ë©´, 
+	$php_errormsgë¼ëŠ” ì „ì—­ë³€ìˆ˜ì— ì—ëŸ¬ ë©”ì‹œì§€ê°€ ë‹´ê²¨ ìˆê²Œ ëœë‹¤.
   </para>
 	<warning>
 		<para>
