@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
+<!-- $Revision: 1.10 $ -->
 <!-- EN-Revision: 1.43 -->
  <chapter id="language.oop">
   <title>클래스와 객체</title>
@@ -621,44 +621,41 @@ $b->example();
  </sect1>
 
  <sect1 id="language.oop.serialization">
-  <title>Serializing objects - objects in sessions</title>
+  <title>객체 일렬화 - 세션 내의 객체</title>
 
   <note>
    <simpara>
-    In PHP 3, objects will lose their class association
-    throughout the process of serialization and unserialization. 
-    The resulting variable is of type object, but has no class
-    and no methods, thus it is pretty useless (it has become
-    just like an array with a funny syntax).
+    PHP 3에서 객체는 일렬화(serialization)와 비일렬화(unserialization)처리 
+    과정에서 클래스의 구성요소를 잃게 된다. 처리후 이 변수는 더이상 객체 타입 
+    이 아니다. 그래서 클래스와 메소드를 갖지 않는다. 결국은 거의 쓸모 없게 
+    되는것이다 (웃기는 문법을 갖는 배열처럼 바뀌게 된다)
    </simpara>
   </note>
 
   <caution>
    <simpara>
-    The following information is valid for PHP 4 only. 
+    다음 설명은 PHP 4로만 한정되는 내용이다.
    </simpara>
   </caution>
 
   <para>
-   <function>serialize</function> returns a string containing a
-   byte-stream representation of any value that can be stored in
-   PHP. <function>unserialize</function> can use this string to
-   recreate the original variable values. Using serialize to
-   save an object will save all variables in an object.  The
-   functions in an object will not be saved, only the name of
-   the class.
+   <function>serialize</function>함수는 PHP에 저장할수 있는 값은 뭐든지 
+   바이트-스트림(byte-stream) 대표성을 내포하는 문자열로 돌려준다.
+   <function>unserialize</function>함수는 이런 문자열을 원래 변수값으로
+   되돌려준다. serialize를 사용하여 객체를 저장하면 객체 내의 모든 변수
+   를 저장할 수 있다. 객체 내의 함수들을 저장할 수는 없고, 오직 클래스의 
+   이름만 저장될것이다.
   </para>
   
   <para>
-   In order to be able to <function>unserialize</function> an object, the
-   class of that object needs to be defined. That is, if you have an object
-   <varname>$a</varname> of class A on page1.php and serialize this, you'll
-   get a string that refers to class A and contains all values of variabled
-   contained in <varname>$a</varname>. If you want to be able to unserialize
-   this on page2.php, recreating <varname>$a</varname> of class A, the
-   definition of class A must be present in page2.php. This can be done for
-   example by storing the class defintion of class A in an include file and
-   including this file in both page1.php and page2.php.
+   객체를 <function>unserialize</function>하기 위해서는, 그 객체의 클래스가
+   선언되어 있어야 한다. 즉, page1.php에서 클래스 A의 객체 <varname>$a</varname>
+   가 있고 이것을 일렬화하면, 클래스 A를 참조하는 문자열을 얻게 되고, 이 
+   문자열은 <varname>$a</varname>에 속해있는 모든 변수값을 포함하게 될것이다.
+   Page2.php에서 이 문자열을 비일렬화하려면, 클래스 A의 <varname>$a</varname>를
+   재생성하고, 클래스 A의 선언이 page2.php에 존재해야 한다. 예를 들면
+   인클루드 파일 안에 클래스 A의 클래스 선언부를 저장하고 page1.php와 page2.php
+   에서 이 파일을 인클루드 하면 된다.
   </para>
   
   <informalexample>
@@ -704,72 +701,63 @@ $b->example();
   </informalexample>
   
   <para>
-   If you are using sessions and use <function>session_register</function>
-   to register objects, these objects are serialized automatically
-   at the end of each PHP page, and are unserialized automatically on
-   each of the following pages. This basically means that these objects
-   can show up on any of your pages once they become part of your
-   session.
+   세션을 사용해서 객체를 등록하기 위해 <function>session_register</function>함수를
+   사용한다면, 이 객체들은 각 PHP 페이지의 끝에서 자동으로 일렬화되고, 
+   다음 페이지들 각각에서 자동으로 비일렬화된다. 이 객체들이 일단 세션의
+   일부분이 되면 페이지의 어느 부분에서도 이런 객체가 나타날 수 있다는것을
+   의미한다.
   </para>
   
   <para>
-   It is strongly recommended that you include the class
-   definitions of all such registered objects on all of your
-   pages, even if you do not actually use these classes on all
-   of your pages. If you don't and an object is being
-   unserialized without its class definition being present, it
-   will lose its class association and become an object of class
-   <literal>stdClass</literal> without any functions available
-   at all, that is, it will become quite useless.
+   모든 페이지에서 실제로 이런 클래스를 사용하지 않더라도, 모든 페이지에 
+   등록된 모든 객체의 클래스 선언을 인클루드하도록 한다. 이렇게 하지 않고,
+   존재하는 클래스 선언부없이 객체가 일렬화되면, 그 객체는 클래스 구성원을
+   잃게 될것이고 어떤 함수도 갖지 않는 <literal>stdClass</literal>클래스의
+   객체가 될것이다. 즉, 그 객체는 쓸모없게 될것이다.
   </para>
   
   <para>
-   So if in the example above <varname>$a</varname> became part of a session
-   by running <literal>session_register("a")</literal>, you should include the
-   file <literal>classa.inc</literal> on all of your pages, not only page1.php
-   and page2.php.
+   그래서 위 예제코드에서 <varname>$a</varname>가 <literal>session_register("a")</literal>
+   수행하여 세션의 일부분이 되면, page1.php와 page2.php뿐만 아니라 사용중인 모든
+   페이지에 <literal>classa.inc</literal>파일을 인클루드해야 한다.
   </para>
  </sect1>
 
  <sect1 id="language.oop.magic-functions">
-  <title>The magic functions <literal>__sleep</literal> and <literal>__wakeup</literal></title>
+  <title>매직함수 <literal>__sleep</literal>와 <literal>__wakeup</literal></title>
 
   <para>
-   <function>serialize</function> checks if your class has a function with
-   the magic name <literal>__sleep</literal>. If so, that function is
-   being run prior to any serialization. It can clean up the object
-   and is supposed to return an array with the names of all variables
-   of that object that should be serialized.
+   <function>serialize</function>는 클래스가 <literal>__sleep</literal>라는 
+   매직 이름을 갖는 함수를 갖는지 체크한다. 이 함수를 갖고있다면, 
+   일렬화되기 전에 이 함수가 수행된다. 이 함수는 객체를 깨끗하게 비울수 있고,
+   일렬화되어야 하는 그 객체의 모든 변수명을 갖는 배열을 돌려준다.
   </para>
   
   <para>
-   The intended use of <literal>__sleep</literal> is to close any
-   database connections that object may have, committing pending
-   data or perform similar cleanup tasks. Also, the function is
-   useful if you have very large objects which need not be
-   saved completely.
+   <literal>__sleep</literal>의 의도된 사용은 그 객체가 소유할지도 모르는
+   모든 데이터베이스의 접속을 종료하고, 아직 수행되지 않은 커밋(commit)
+   을 수행하거나 청소작업을 수행한다. 또한, 완전히 저장할 필요가 없는
+   매우 거대한 객체를 갖고 있다면 이 함수를 유용하게 쓸수 있다.
   </para>
   
   <para>
-   Conversely, <function>unserialize</function> checks for the
-   presence of a function with the magic name 
-   <literal>__wakeup</literal>. If present, this function can
-   reconstruct any resources that object may have.
+   반대로, <function>unserialize</function>는 <literal>__wakeup</literal>라는
+   매직 이름을 갖는 함수의 존재를 체크한다. 이 함수가 존재하면, 객체가
+   갖고 있을지도 모르는 모든 자원을 해제할수 있다.
   </para>
   
   <para>
-    The intended use of <literal>__wakeup</literal> is to
-    reestablish any database connections that may have been lost
-    during serialization and perform other reinitialization
-    tasks.
+    <literal>__wakeup</literal>의 의도된 사용은 일렬화동안에 소실될수
+    있는 모든 데이터베이스 접속을 재구축하고 다른 재초기화 작업을 수행
+    한다.
   </para>
  </sect1>
   
  <sect1 id="language.oop.newref">
-   <title>References inside the constructor</title>
+   <title>생성자의 재참조</title>
    <para>
-    Creating references within the constructor can lead to confusing
-    results. This tutorial-like section helps you to avoid problems.
+    생성자 내로 참조를 만드는 것은 혼란스런 결과를 유도할수 있다. 이런
+    튜토리얼같은 섹션이 문제를 회피하도록 도와준다.
  
     <informalexample>
      <programlisting role="php">
@@ -779,12 +767,12 @@ class Foo
 {
     function Foo($name)
     {
-        // create a reference inside the global array $globalref
+        // 전역 배열 $globalref 안에 참조를 만든다
         global $globalref;
         $globalref[] = &$this;
-        // set name to passed value
+        // 값을 전달하기 위해 이름을 부여한다
         $this->setName($name);
-        // and put it out
+        // 그리고 그것을 출력한다
         $this->echoName();
     }
 
@@ -805,12 +793,9 @@ class Foo
   </para>
     
    <para>
-    Let us check out if there is a difference between
-    <varname>$bar1</varname> which has been created using
-    the copy <literal>=</literal> operator and
-    <varname>$bar2</varname> which has been created using
-    the reference <literal>=&amp;</literal> operator...
-
+    <literal>=</literal> 복사 연산자를 사용하여 만들어지는 <varname>$bar1</varname>과 
+    <literal>=&amp;</literal> 참조 연산자를 사용하여 만들어지는 <varname>$bar2</varname>
+    사이에 차이점이 있는지 확인해보자...
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -838,24 +823,24 @@ set in constructor */
     </informalexample>
    </para>
    <para>
-    Apparently there is no difference, but in fact there is a
-    very significant one: <varname>$bar1</varname> and
-    <varname>$globalref[0]</varname> are _NOT_ referenced, they
-    are NOT the same variable. This is because "new" does not
-    return a reference by default, instead it returns a copy.
+    외관상으로 둘 사이에는 아무 차이점도 없다. 그러나 실제로
+    매우 중요한 사실이 하나 있다: <varname>$bar1</varname>과 
+    <varname>$globalref[0]</varname>은 참조되지 않는다. 그들은 
+    같은 변수가 아니다. 이것은 "new"가 기본적으로 참조를 돌려주지
+    않기 때문이다. 대신 그것은 복사본을 돌려준다.
+
     <note>
      <simpara>
-      There is no performance loss (since PHP 4 and up use reference
-      counting) returning copies instead of references. On the
-      contrary it is most often better to simply work with copies
-      instead of references, because creating references takes some
-      time where creating copies virtually takes no time (unless none
-      of them is a large array or object and one of them gets changed
-      and the other(s) one(s) subsequently, then it would be wise to
-      use references to change them all concurrently).
+      참조 대신 복사본을 돌려주는것 (PHP 4이상의 버전은 참조 카운팅을
+      사용한다) 때문에 퍼포먼스가 나빠지지는 않는다. 반대로 참조
+      대신에 복사본을 사용하는 것이 대부분 더 낫다. 왜냐하면 참조를
+      생성하는 것은 가상적으로 복사본을 만드는 데 약간의 시간이 걸리기
+      때문이다 (그것들이 거대한 배열이나 객체이고 그들 중 하나만 바뀌고
+      다른것들이 연속적으로 존재한다면, 그리고 동시에 그들 모두를 변경하려한다면
+      참조를 쓰는것이 더 현명할것이다)
      </simpara>
     </note>
-    To prove what is written above let us watch the code below.
+    위에서 서술한 것을 검증하기 위해 아래 예제 코드를 보자.
 
     <informalexample>
      <programlisting role="php">
@@ -890,7 +875,7 @@ set from outside */
     </informalexample>   
    </para>   
    <para>
-   Another final example, try to understand it.
+   마지막으로 다음 예제를 보고 이해하도록 하자.
    
     <informalexample>
      <programlisting role="php">
@@ -962,17 +947,17 @@ class B: 11
   </sect1>
 
   <sect1 id="language.oop.object-comparison-php4">
-   <title>Comparing objects in PHP 4</title>
+   <title>PHP 4에서 객체 비교</title>
   <para>
-   In PHP 4, objects are compared in a very simple manner, namely: Two object
-   instances are equal if they have the same attributes and values, and are
-   instances of the same class. Similar rules are applied when comparing two
-   objects using the identity operator (<literal>===</literal>).
+   PHP 4에서 객체는 매우 단순한 방식으로 비교된다. 즉: 두 객체 인스턴스
+   가 같은 속성과 값을 갖고, 같은 클래스의 인스턴스라면 두 객체는 동일하다.
+   식별 연산자 (<literal>===</literal>)를 사용하여 두 객체를 비교할때에도
+   비슷한 규칙이 적용된다.
   </para>
   <para>
-   If we were to execute the code in the example below:
+   아래 예제 코드를 실행해보면:
    <example>
-    <title>Example of object comparison in PHP 4</title>
+    <title>PHP 4에서 객체 비교를 위한 예제코드</title>
     <programlisting role='php'>
 <![CDATA[
 <?php
@@ -1028,7 +1013,7 @@ compareObjects($o, $r);
 ]]>
     </programlisting>
    </example>
-   We will see:
+   결과는 다음과 같다:
    <screen>
 Compare instances created with the same parameters
 o1 == o2 : TRUE
@@ -1048,16 +1033,16 @@ o1 != o2 : TRUE
 o1 === o2 : FALSE
 o1 !== o2 : TRUE
    </screen>
-   Which is the output we will expect to obtain given the comparison rules
-   above. Only instances with the same values for their attributes and from the same
-   class are considered equal and identical.
+   위 출력중 어떤것은 위에서 설명한 비교 규칙이 적용된다는 것을 알수 있다.
+   같은 속성에 대해 같은 값을 갖고, 같은 클래스에서 파생된 인스턴스만 동일
+   하고 동치로 판단한다. 
   </para>
   <para>
-   Even in the cases where we have object composition, the same comparison
-   rules apply. In the example below we create a container class that stores
-   an associative array of <classname>Flag</classname> objects.
+   복합 객체를 갖는 경우에도 같은 비교 규칙이 적용된다. 아래 예제 코드에서는
+   컨테이너 클래스를 만들어서 <classname>Flag</classname> 객체의 결합 배열을
+   저장한다. 
    <example>
-    <title>Compound object comparisons in PHP 4</title>
+    <title>PHP 4에서 복합 객체 비교</title>
     <programlisting role='php'>
 <![CDATA[
 <?php
@@ -1095,7 +1080,7 @@ compareObjects($u, $w);
 ]]>
     </programlisting>
    </example>
-   Which gives the expected output:
+   이 코드의 결과는 다음과 같은 출력이 기대된다:
    <screen>
 Composite objects u(o,p) and v(q,p)
 o1 == o2 : TRUE
@@ -1113,28 +1098,27 @@ o1 !== o2 : TRUE
  </sect1>
 
   <sect1 id="language.oop.object-comparison-php5">
-   <title>Comparing objects in PHP 5</title>
+   <title>PHP 5에서 객체 비교</title>
    &warn.experimental;
    <para>
-    In PHP 5, object comparison is a more complicated than in PHP 4 and more
-    in accordance to what one will expect from an Object Oriented Language
-    (not that PHP 5 is such a language).
+    PHP 5에서 객체 비교는 PHP 4보다 좀더 복잡하고 객체 지향 언어
+    (PHP 5는 그런 언어가 아니다)에서 기대할수 있는 특성에 더 가깝다. 
    </para>
    <para>
-    When using the comparison operator (<literal>==</literal>), 
-    object variables are compared in a simple manner, namely: Two object
-    instances are equal if they have the same attributes and values, and are
-    instances of the same class, defined in the same namespace.
+    비교 연산자 (<literal>==</literal>)를 사용할 때에는 객체 변수는 단순
+    한 방식으로 비교된다. 즉: 두 객체 인스턴스가 같은 속성과 값을 갖고, 
+    같은 클래스에서 파생된 인스턴스이고, 같은 네임스페이스에서 선언되었
+    다면 동일한 객체라고 본다.
    </para>
    <para>
-    On the other hand, when using the identity operator (<literal>===</literal>),
-    object variables are identical if and only if they refer to the same
-    instance of the same class (in a particular namespace).
+    하지만, 식별 연산자 (<literal>===</literal>)를 사용하면 객체 변수는 오직 
+    같은 클래스(특별한 네임스페이스에서)의 같은 인스턴스로 참조될때만 
+    동일한 객체라고 본다.
    </para>
    <para>
-    An example will clarify these rules.
+    다음 예제 코드를 보고 이런 규칙을 음미해보자.
     <example>
-     <title>Example of object comparison in PHP 5</title>
+     <title>PHP 5에서의 객체 비교에 대한 예제 코드</title>
      <programlisting role='php'>
 <![CDATA[
 <?php
@@ -1190,7 +1174,7 @@ compareObjects($o, $r);
 ]]>
      </programlisting>
     </example>
-    This example will output:
+    이 예제 코드는 다음과 같이 출력한다:
     <screen>
 Two instances of the same class
 o1 == o2 : TRUE
