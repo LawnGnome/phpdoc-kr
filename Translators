@@ -123,7 +123,7 @@ java/
 ldap/
 mail/
 mailparse/
-math/
+math/                              Yun-young Lee <progcom@yahoo.com>
 mbstring/
 mcal/
 mcrypt/
