@@ -356,7 +356,7 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 			<para>
 파일 포인터가 파일의 끝에 있거나 에러가 발생하면 true, 그렇지 않으면 false를 반환합니다.
     </para>
-			<para/>파일포인터는 반드시 유효한 것이어야하고,<function>fopen</function> 이나 <function>popen</function> 또는  <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 지정해야 합니다. 
+			<para>파일포인터는 반드시 유효한 것이어야하고,<function>fopen</function> 이나 <function>popen</function> 또는  <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 지정해야 합니다. 
 		</refsect1>
 	</refentry>
 	<refentry id="function.fflush">
@@ -379,7 +379,7 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
      <parameter>fp</parameter>.
 성공하면 true, 실패하면 false를 반환.
     </para>
-			<para/>이 파일포인터는 반드시 유효한 것이어야 하고,<function>fopen</function>이나 <function>popen</function>또는 <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 가리켜야 합니다.
+			<para>이 파일포인터는 반드시 유효한 것이어야 하고,<function>fopen</function>이나 <function>popen</function>또는 <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 가리켜야 합니다.
 		</refsect1>
 	</refentry>
 	<refentry id="function.fgetc">
@@ -400,7 +400,7 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 			<para>
 fp에 의해 가리켜진 파일로부터 한개의 문자를 포함한 문자열을 반환합니다.  FALSE 나 EOF를 반환합니다.
     </para>
-			<para/>이 파일포인터는 반드시 유효한 것이어야 하고,<function>fopen</function>이나 <function>popen</function> 또는 <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 가리켜야 합니다.
+			<para>이 파일포인터는 반드시 유효한 것이어야 하고,<function>fopen</function>이나 <function>popen</function> 또는 <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 가리켜야 합니다.
 			<para> 
      참조: <function>fread</function>, <function>fopen</function>,
      <function>popen</function>, <function>fsockopen</function>, 그리고 <function>fgets</function>.
@@ -584,7 +584,7 @@ fgetss가 읽어들인 텍스트에서 HTML과 PHP 태그를 없애는 것을 �
 			<para>
 				<function>file</function>이 파일을 배열로 반환하는 것을 제외하고는 <function>readfile</function>과 같습니다.  새로운 라인이 연결되는 것을 포함해서 배열의 매 요소는 파일의 라인과 비슷합니다.
     </para>
-			<para/>파일에서 <link linkend="ini.include-path">include_path</link>에서 파일을 찾고 싶다면 두번째 매개변수로 "1"을 사용하면 됩니다.	
+			<para>파일에서 <link linkend="ini.include-path">include_path</link>에서 파일을 찾고 싶다면 두번째 매개변수로 "1"을 사용하면 됩니다.	
 	<para>
 				<informalexample>
 					<programlisting role="php">
