@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.45 -->
+<!-- EN-Revision: 1.46 -->
 
 <!ENTITY warn.experimental '<warning><simpara>This extension is
 <emphasis>EXPERIMENTAL</emphasis>. The behaviour of this extension --
@@ -145,14 +145,13 @@ PHP 코어의 일부입니다.</para>'>
 
 <!-- Used in reference/$extname/constants.xml -->
 <!ENTITY extension.constants '<simpara>
-The constants below are defined by this extension, and
-will only be available when the extension has either
-been compiled into PHP or dynamically loaded at runtime.
-</simpara>'>
+아래의 상수는 이 확장에 의해 정의된 것으로, 확장 모듈이
+PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
+사용할 수 있습니다.</simpara>'>
 
 <!-- For STANDARD Constants used in reference/$extname/constants.xml -->
 <!ENTITY extension.constants.core '<simpara>
-아래의 상수는 PHP 코어의 일부로써, 항상 사용 가능합니다.
+아래의 상수는 PHP 코어의 일부로, 항상 사용 가능합니다.
 </simpara>'>
 
 <!-- Used in reference/$extname/classes.xml -->
@@ -162,9 +161,9 @@ will only be available when the extension has either
 been compiled into PHP or dynamically loaded at runtime.
 </simpara>'>
 
-<!ENTITY windows.builtin '<simpara> The windows version of <literal>PHP</literal>
-has built in support for this extension. You do not need to load any additional
-extension in order to use these functions.</simpara>'>
+<!ENTITY windows.builtin '<simpara><literal>PHP</literal> 윈도우 버전에서는
+이 확장에 대한 지원이 포함되어 있습니다. 이 함수들을 이용하기 위해서
+추가로 확장 모듈을 읽을 필요가 없습니다.</simpara>'>
 
 <!-- These are here as helpers for manual consistency and brievety-->
 <!ENTITY php '<literal>PHP</literal>'>
@@ -186,3 +185,6 @@ supplemental files to mark section titles -->
 <!ENTITY ipv6.brackets '<note><simpara>When specifying a numerical IPv6 address
 (e.g. fe80::1) you must enclose the IP in square brackets.  For example,  
 <literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
+
+<!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0</literal>에서
+지원합니다.</simpara></note>'>
