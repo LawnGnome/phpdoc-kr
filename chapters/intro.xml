@@ -1,19 +1,18 @@
-﻿ <chapter id="introduction">
-  <title>?뚭컻 (Introduction)</title>
-
-  <sect1 id="intro-whatis">
-   <title>PHP? 臾댁뾿?멸??</title>
-   <simpara>
-    PHP(怨듭떇?곸쑝濡?"PHP: Hypertext Preprocessor ")??server-side
-    HTML-embedded scripting language?낅땲??
+<chapter id="introduction">
+	<title>소개 (Introduction)</title>
+	<sect1 id="intro-whatis">
+		<title>PHP란 무엇인가?</title>
+		<simpara>
+    PHP(공식적으로 "PHP: Hypertext Preprocessor ")는 server-side
+    HTML-embedded scripting language입니다.
    </simpara>
-   <para>
-    媛꾨떒???듭씠吏留? 臾댁뾿???섎??좉퉴? ?ㅼ쓬 ?덈? 蹂댁옄:
+		<para>
+    간단한 답이지만, 무엇을 의미할까? 다음 예를 보자:
    </para>
-   <para>
-    <example>
-     <title>?뚭컻???덈Ц</title>
-     <programlisting role="php">
+		<para>
+			<example>
+				<title>소개용 예문</title>
+				<programlisting role="php">
 &lt;html&gt;
     &lt;head&gt;
         &lt;title&gt;Example&lt;/title&gt;
@@ -27,67 +26,65 @@
     &lt;/body&gt;
 &lt;/html&gt;
      </programlisting>
-    </example>
+			</example>
+		</para>
+		<para>
+   Perl이나 C와 같은 다른 CGI 스크립트와 달리 PHP는 HTML을 출력하는데 많은 명령어가 필요없다. 
+   HTML내에 하고자 하는 일(위의 영우 한줄의 문자열 출력)에 대한 스크립트를 적어주면 된다.
+   PHP코드는 특정한 <link linkend="language.basic-syntax.phpmode">시작과 끝 태그</link>
+   사이에 들어가게 되는데, 이 태그를 통해 HTML 모드에서 PHP모드로 들어가거나 나오는 것이다.
    </para>
-   <para>
-   Perl?대굹 C? 媛숈? ?ㅻⅨ CGI ?ㅽ겕由쏀듃? ?щ━ HTML??異쒕젰?섎뒗??留롮? 紐낅졊?닿? ?꾩슂?녿떎. 
-   ?뱀떊? HTML?댁뿉 ?뱀떊???섍퀬???섎뒗 ???꾩쓽 ?곸슦 ?쒖쨪??臾몄옄??異쒕젰)??????ㅽ겕由쏀듃瑜??곸뼱二쇰㈃ ?쒕떎.
-   PHP肄붾뱶???뱀젙??<link linkend="language.basic-syntax.phpmode">?쒖옉怨????쒓렇</link>
-   ?ъ씠???ㅼ뼱媛寃??섎뒗?? ???쒗겕??PHP紐⑤뱶濡??ㅼ뼱媛嫄곕굹 ?섏삤??寃껋씠??
-   </para>
-   <para>
-   PHP媛 ?ㅻⅨ Clien-side Javascrip? 援щ퀎?섎뒗 寃껋? ??肄붾뱶媛 ?쒕쾭?먯꽌 ?ㅽ뻾?쒕떎??寃껋씠??
-    If you were to have a
-    script similar to the above on your server, the client would receive
+		<para>
+   PHP가 다른 Clien-side Javascrip와 구별되는 것은 이 코드가 서버에서 실행된다는 것이다.
+    If you were to have a script similar to the above on your server, the client would receive
     the results of running that script, with no way of determining what
     the underlying code may be. You can even configure your web server
     to process all your HTML files with PHP, and then there's really no
     way that users can tell what you have up your sleeve.
    </para>
-  </sect1>
-
-  <sect1 id="intro-whatcando">
-   <title>PHP濡?臾댁뾿???????덈뒗媛?</title>
-   <para>
-    媛??湲곕낯?곸씤 ?덈꺼?먯꽌, PHP???ㅻⅨ CGI?꾨줈洹몃옩???????덈뒗 紐⑤뱺 寃껋쓣 ?좎닔 ?덈떎.
-    from data瑜?媛?몄삤怨?  ?숈쟻???뱁럹?댁?瑜?留뚮뱾嫄곕굹, Cookie瑜?蹂대궡怨?諛쏆쓣 ?섎룄 ?덈떎.
+	</sect1>
+	<sect1 id="intro-whatcando">
+		<title>PHP로 무엇을 할 수 있는가?</title>
+		<para>
+    가장 기본적인 레벨에서, PHP는 다른 CGI프로그램이 할 수 있는 모든 것을 할수 있다.
+    from data를 가져오고,  동적인 웹페이지를 만들거나, Cookie를 보내고 받을 수도 있다.
    </para>
-   <para>
-    ?꾨쭏 PHP??媛??媛뺣젰?섍퀬 愿?ъ씠 媛??遺遺꾩? ?곗씠?踰좎씠?ㅻ뱾????꼻? 吏?먯씠??
-    PHP瑜??ъ슜?섎㈃ ?뱀떊? Database瑜??ъ슜???뱁럹?댁?瑜???띾룄濡?媛꾨떒??留뚮뱾 ???덈떎.
-    ?ㅼ쓬???쇰컲?곸씤 Database?ㅼ쓣 吏?먰븳??
+		<para>
+    아마 PHP의 가장 강력하고 관심이 가는 부분은 데이타베이스들의 폭넓은 지원이다.
+    PHP를 사용하면 당신은 Database를 사용한 웹페이지를 놀랍도록 간단히 만들 수 있다.
+    다음의 일반적인 Database들을 지원한다:
     <blockquote>
-     <simplelist columns="3">
-      <member>Adabas D</member>
-      <member>dBase</member>
-      <member>Empress</member>
-      <member>FilePro (read-only)</member>
-      <member>Hyperwave</member>
-      <member>IBM DB2</member>
-      <member>Informix</member>
-      <member>Ingres</member>
-      <member>InterBase</member>
-      <member>FrontBase</member>
-      <member>mSQL</member>
-      <member>Direct MS-SQL</member>
-      <member>MySQL</member>
-      <member>ODBC</member>
-      <member>Oracle (OCI7 and OCI8)</member>
-      <member>Ovrimos</member>
-      <member>PostgreSQL</member>
-      <member>Solid</member>
-      <member>Sybase</member>
-      <member>Velocis</member>
-      <member>Unix dbm</member>
-     </simplelist>
-    </blockquote>
+				<simplelist columns="3">
+					<member>Adabas D</member>
+					<member>dBase</member>
+					<member>Empress</member>
+					<member>FilePro (read-only)</member>
+					<member>Hyperwave</member>
+					<member>IBM DB2</member>
+					<member>Informix</member>
+					<member>Ingres</member>
+					<member>InterBase</member>
+					<member>FrontBase</member>
+					<member>mSQL</member>
+					<member>Direct MS-SQL</member>
+					<member>MySQL</member>
+					<member>ODBC</member>
+					<member>Oracle (OCI7 and OCI8)</member>
+					<member>Ovrimos</member>
+					<member>PostgreSQL</member>
+					<member>Solid</member>
+					<member>Sybase</member>
+					<member>Velocis</member>
+					<member>Unix dbm</member>
+				</simplelist>
+			</blockquote>
+		</para>
+		<para>
+    PHP는 IMAP, SNMP, NNTP, POP3, HTTP등의 프로코톨과 또 다른 것들을 사용하는
+    다른 서비스들에 대해서도 이미 지원하고 있다. 심어지는 raw network 소켓을 사용하면,
+    그외의 다른 프로토콜들을 사용할 수도 있다.
    </para>
-   <para>
-    PHP??IMAP, SNMP, NNTP, POP3, HTTP?깆쓽 ?꾨줈肄뷀넧怨????ㅻⅨ 寃껊뱾???ъ슜?섎뒗
-    ?ㅻⅨ ?쒕퉬?ㅻ뱾????댁꽌???대? 吏?먰븯怨??덈떎. ?ъ뼱吏??raw network ?뚯폆???ъ슜?섎㈃,
-    洹몄쇅???ㅻⅨ ?꾨줈?좎퐳?ㅼ쓣 ?ъ슜???섎룄 ?덈떎.
-   </para>
-<!--
+		<!--
    <figure>
     <title>Internal Structure</title>
     <graphic fileref="../images/php3_internal_structure.gif"/>
@@ -97,66 +94,54 @@
     <graphic fileref="../images/php3_request_scheme.gif"/>
    </figure>
 -->
-  </sect1>
-
-  <sect1 id="intro-history">
-   <title>PHP????궗</title>
-   <simpara>
-    PHP??1994??媛??&link.rasmus;媛 泥섏쓬 怨좎븞?섏???
-    珥덇린 鍮꾧났媛쒕쾭?꾩? 洹몄쓽 ?덊럹?댁????щ늻媛 ?꾧? 洹몄쓽 ?⑤씪???대젰?쒕? 遊ㅻ뒗吏 蹂닿??섎뒗???ъ슜?섏뿀??
-    The first version
-    used by others was available sometime in early 1995 and was known
-    as the Personal Home Page Tools.  It consisted of a very
-    simplistic parser engine that only understood a few special macros
-    and a number of utilities that were in common use on home pages
-    back then.  A guestbook, a counter and some other stuff.  The
-    parser was rewritten in mid-1995 and named PHP/FI Version 2.  The
-    FI came from another package Rasmus had written which interpreted
-    html form data.  He combined the Personal Home Page tools scripts
-    with the Form Interpreter and added mSQL support and PHP/FI was
-    born.  PHP/FI grew at an amazing pace and people started
-    contributing code to it.
+	</sect1>
+	<sect1 id="intro-history">
+		<title>PHP의 역사</title>
+		<simpara>
+    PHP는 1994년 가을 &link.rasmus;가 처음 고안하였다.
+    초기 비공개버전은 그의 홈페이지에서 누가 그의 온라인 이력서를 보았는지 기록하는데 사용되었다.
+    외부에 사용된 것은 1995년 초부터이며 이때는 Personal Home Page Tools라고 불리게 되었다. 
+    이것은 몇 개의 특별한 매크로를 사용할 수 있는 단순한 파서(명령 해석기) 엔진과 
+    방명록이나 카운터 같이 여러 홈페이지에서 공통적으로 사용할 수 있는 
+    몇 개의 간단한 유틸리티로 구성되었다
+    이 파서는 1995년 중반에 재작성되어 PHP/FI Version 2라고 명명되었다
+    FI는 Rasmus가 작성한 것으로 html 형식의 데이터를 해석할 수 있는 별도의 패키지다. 
+    그는 Personal Home Page tools와 Form Interpreter의 두가지를 합치고,
+    mSQL을 지원하도록하여 PHP/FI를 탄생시켰다. 
+    PHP/FI는 놀랍도록 빠른 속도로 발전하였고, 많은 사람들이 이에 공헌하였다
    </simpara>
-   <simpara>
-    It is difficult to give any hard statistics, but it is estimated
-    that by late 1996 PHP/FI was in use on at least 15,000 web sites
-    around the world.  By mid-1997 this number had grown to over
-    50,000.  Mid-1997 also saw a change in the development of PHP.  It
-    changed from being Rasmus' own pet project that a handful of
-    people had contributed to, to being a much more organized team
-    effort. The parser was rewritten from scratch by Zeev Suraski and
-    Andi Gutmans and this new parser formed the basis for PHP Version
-    3.  A lot of the utility code from PHP/FI was ported over to PHP 3
-    and a lot of it was completely rewritten.
+		<simpara>
+    정확한 통계는 없지만 1996년 후반 PHP/FI는 전세계적으로 최소한 
+    15,000개 이상의 웹사이트에서 사용되는 것으로 추정되었고, 
+    1997년 중반에 그수는 50,000으로 늘어났다. 
+    1997년 중반 PHP는 또다른 중요한 변화를 가져왔다. 
+    이때부터 PHP는 Rasmus의 개인이 아닌 팀에 의해 개발되고 있다. 
+    새 파서는 Zeev Suraski와 Andi Gutmans에의해 다시 작성되어 
+    PHP Version 3라는 이름으로 등장했다.
+    많은 PHP/FI의 기능들이 옮겨져 왔고, 그외에도 많은 기능들이 새로 추가되었다.
    </simpara>
-   <simpara>
-    Today (10/2000) PHP 3 or PHP 4 now ships with a number of
-    commercial products such as C2's StrongHold web server and RedHat
-    Linux. A conservative estimate based on an extrapolation from
-    numbers provided by <ulink url="&url.netcraft;">NetCraft</ulink>
-    (see also <ulink url="&url.netcraft-survey;">Netcraft Web Server
-    Survey</ulink>) would be that PHP is in use on over 3,300,000
-    sites around the world.  To put that in perspective, that is more
-    sites than run Netscape's flagship Enterprise server on the
-    Internet, and close to the total number of IIS servers on the
-    Internet (3.8 million).
+		<simpara>
+    현재(10/2000) PHP3 와 PHP4는 C2의 StrongHold web server나 
+    RedHat Linux같은 여러 상업적인 제품과 함께 제공되고 있다.
+    <ulink url="&url.netcraft;">NetCraft</ulink>에서 제공되는 정보
+    (<ulink url="&url.netcraft-survey;">Netcraft Web Server Survey</ulink>)를 바탕으로 
+    보면 PHP는 전세계적으로 최소한 3,300,000개 이상의 사이트에서 사용되고 있다. 
+    이것은 인터넷에서 사용되고 있는 Netscape의 flagship Enterprise server 
+    보다 많은수이고, IIS 서버의 수(380만)와 거의 비슷하다.
    </simpara>
-<!--
+		<!--
    <figure>
     <title>NetCraft Webserver Survey</title>
     <graphic fileref="&url.php.stats;"/>
    </figure>
 -->
-   <simpara>
-	The latest version (PHP 4) uses the powerful <ulink 
-	url="&url.zend;">Zend</ulink> scripting engine to deliver higher
-    performance, and also supports running under webservers other
-    than Apache as a native server module.
+		<simpara>
+     최근 버전의 PHP4에서는 <ulink url="&url.zend;">Zend</ulink> 
+     같은 효율적인 스크립트 엔진을 사용하고 있고,
+     Apache이외의 웹서버에서도 모듈로 실행될 수 있도록 개발되고 있다.
    </simpara>
-  </sect1>
-
- </chapter>
-
+	</sect1>
+</chapter>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
