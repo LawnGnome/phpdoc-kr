@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.12 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter id="faq.misc">
   <title>기타 문제들</title>
   <titleabbrev>기타 문제들</titleabbrev>
@@ -10,39 +10,17 @@
    </para>
 
   <qandaset>
-   <qandaentry id="faq.misc.popup">
-    <question>
-     <para>
-      Where did the pop-ups go on the website? 
-      Can I have the code for that?
-     </para>
-    </question>
-    <answer>
-     <para>
-      The yellow pop-up windows on the old site were pretty cool, but
-      were very difficult to maintain (since some companies seem to
-      enjoy changing the way their browsers work with every new release).
-    </para>
-    <para>
-      All the code for previous versions of the website is still available
-      through CVS.  Specifically, the last version of shared.inc (that had
-      all the Javascript and DHTML to do the popups) is available 
-      <ulink url="&url.popup;">here</ulink>.
-     </para>
-    </answer>
-   </qandaentry>
-
    <qandaentry id="faq.misc.bz2">
     <question>
      <para>
-      윈도우에서 bz2로 압축된 매뉴얼을 제어할수 있습니까?
+      윈도우에서 bz2로 압축된 매뉴얼을 제어할 수 있습니까?
      </para>
     </question>
     <answer>
      <para>
       bz2 파일을 제어할 아카이브 툴을 갖고 있지 않다면 커맨드 라인 툴을
       레드햇에서 <ulink url="&url.bzip2;">다운로드</ulink>합니다.
-      (아래에서 더많은 정보를 얻을수 있습니다).
+      (아래에서 더 많은 정보를 얻을수 있습니다).
      </para>
      <para>
       커맨드 라인 툴이 내키지 않는다면 
@@ -66,8 +44,6 @@
       경우입니다. 여기서 C는 윈도우가 설치되어있는 드라이버입니다.
      </para>
      <para>
-      Note: lang stands for your language and x for the desired format, e.g.: pdf.
-      To uncompress the php_manual_lang.x.bz2 follow these simple instructions:
       주의: lang는 사용중인 랭귀지를 뜻하고, x는 요구되는 포맷입니다(즉, pdf).
       php_manual_lang.x.bz2파일을 압축해제하려면 다음 지시를 따릅니다:
       

@@ -1,27 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
  <reference id="ref.iconv">
-  <title>iconv functions</title>
+  <title>iconv 함수</title>
   <titleabbrev>iconv</titleabbrev>
 
   <partintro>
-   <para>
-    이 모듈은 iconv 라이브러리 함수의 인터페이스를 내포한다.
-    이 모듈 내에 정의된 함수를 사용하기 위해서는
-    --with-iconv 옵션을 사용하여 PHP 인터프리터를 컴파일해야 한다.
-    그러기 위해서는, 표준 C 라이브러리에서 iconv() 함수를 갖고 있거나
-    libiconv가 설치되어 있어야 한다.
-    libiconv library is available from <ulink url="&url.libiconv;">
-     &url.libiconv;</ulink>.
-   </para>
+   <section id="iconv.intro">
+    &reftitle.intro;
+    <para>
+     이 모듈은 iconv 라이브러리 함수에 접근하는 인터페이스입니다. iconv
+     라이브러리 함수는 문자열을 여러가지 문자셋 인코딩끼리 변환합니다.
+     지원하는 문자셋은 시스템의 iconv() 수행에 의존합니다. 몇몇 시스템에서
+     iconv() 함수가 기대한 대로 작동하지 않는 점에 주의하십시오. 이런 경우,
+     libiconv 라이브러리를 설치해야 합니다.
+    </para>
+   </section>
 
-   <para>
-    iconv 라이브러리 함수는 여러가지로 인코딩된 문자셋의 파일들을
-    변환한다. 지원되는 문자셋은 로컬 시스템 상의 iconv()함수에 의해 
-    결정된다. 어떤 시스템의 iconv() 함수는 제대로 작동되지 않을수 있다.
-    이 경우에는 libiconv 라이브러리를 설치해야 한다.
-   </para>
+   <section id="iconv.requirements">
+    &reftitle.required;
+    <para>
+     시스템 표준 C 라이브러리에서 iconv() 함수를 제공하거나, 시스템에
+     libiconv를 설치해야만 합니다. libiconv는 <ulink
+      url="&url.libiconv;">&url.libiconv;</ulink>에서 얻을 수 있습니다.
+    </para>
+   </section>
+
+   &reference.iconv.configure;
+
+   &reference.iconv.ini;
+
+   <section id="iconv.resources">
+    &reftitle.resources;
+    &no.resource;
+   </section>
+
+   &reference.iconv.constants;
+
+   <section id="iconv.seealso">
+    &reftitle.seealso;
+    <para>
+     참고: <link linkend="ref.recode">GNU Recode 함수</link>.
+    </para>
+   </section>
+
   </partintro>
 
 &reference.iconv.functions;
@@ -47,4 +68,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-
