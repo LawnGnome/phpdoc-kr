@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
-<!-- EN-Revision: 1.62 -->
+<!-- $Revision: 1.9 $ -->
+<!-- EN-Revision: 1.63 -->
  <chapter id="features.file-upload">
   <title>파일 업로드 다루기</title>
 
@@ -178,6 +178,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
     print "파일 업로드 공격의 가능성이 있습니다! 디버깅 정보입니다:\n";
     print_r($_FILES);
 }
+print "</pre>";
 
 ?>
 ]]>
@@ -185,34 +186,31 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
     </example>
    </para>
    <simpara>
-    The PHP script which receives the uploaded file should implement
-    whatever logic is necessary for determining what should be done
-    with the uploaded file.  You can for example use the
-    <varname>$_FILES['userfile']['size']</varname> variable
-    to throw away any files that are either too small or too big.  You
-    could use the
-    <varname>$_FILES['userfile']['type']</varname> variable
-    to throw away any files that didn't match a certain type criteria.
-    As of PHP 4.2.0, you could use <varname>$_FILES['userfile']['error']</varname> 
-    and plan your logic according to the <link
-    linkend="features.file-upload.errors">error codes</link>.
-    Whatever the logic, you should either delete the file from the
-    temporary directory or move it elsewhere.
+    업로드된 파일을 받는 PHP 스크립트는 업로드된 파일로 무엇을 할 지를
+    결정하는 로직을 포함하고 있어야 합니다. 예를 들면
+    <varname>$_FILES['userfile']['size']</varname> 변수를
+    너무 작거나 큰 파일을 처리하는데 이용할 수 있습니다.
+    <varname>$_FILES['userfile']['type']</varname> 변수를 형식 기준에
+    맞지 않는 파일을 처리하는데에 이용할 수도 있습니다.
+    PHP 4.2.0부터, <varname>$_FILES['userfile']['error']</varname>를
+    이용하여 <link linkend="features.file-upload.errors">에러 코드</link>에
+    따라 처리하게 할 수 있습니다.
+    어떠한 로직이던, 임시 디렉토리에서 파일을 지우거나 다른 곳으로
+    이동시켜야 합니다.
    </simpara>
    <simpara>
-    The file will be deleted from the temporary directory at the end
-    of the request if it has not been moved away or renamed.
+    요청의 마지막에 이동되거나 이동이 변경되지 않은 임시 디렉토리의
+    파일은 지워지게 됩니다.
    </simpara>
   </sect1>
 
   <sect1 id="features.file-upload.errors">
    <title>에러 메세지 설명</title>
    <simpara>
-    Since PHP 4.2.0, PHP returns an appropriate error code along with the 
-    file array.  The error code can be found in the 
-    <emphasis>['error']</emphasis> segment of the file array that is created 
-    during the file upload by PHP.  In otherwords, the error might be 
-    found in <varname>$_FILES['userfile']['error']</varname>.
+    PHP 4.2.0부터, PHP는 파일 배열에 적절한 에러 코드를 반환합니다. 에러 코드는
+    PHP로 파일을 업로드 했을때 만들어지는 파일 배열의 <emphasis>['error']</emphasis>
+    세그먼트에서 확인할 수 있습니다. 예를 들면,
+    <varname>$_FILES['userfile']['error']</varname>에서 확인할 수 있을겁니다.
    </simpara>
    <para>
     <variablelist>
@@ -220,7 +218,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
       <term><varname>UPLOAD_ERR_OK</varname></term>
       <listitem>
        <para>
-        Value: 0; There is no error, the file uploaded with success.
+        값: 0; 오류 없이 파일 업로드가 성공했습니다.
        </para>
       </listitem>
      </varlistentry>
@@ -228,9 +226,9 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
       <term><varname>UPLOAD_ERR_INI_SIZE</varname></term>
       <listitem>
        <para>
-        Value: 1; The uploaded file exceeds the
-        <link linkend="ini.upload-max-filesize">upload_max_filesize</link> 
-        directive in &php.ini;.
+        값: 1; 파일이 &php.ini;의
+        <link linkend="ini.upload-max-filesize">upload_max_filesize</link>
+        지시자에 도달했습니다.
        </para>
       </listitem>
      </varlistentry>
@@ -238,8 +236,8 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
       <term><varname>UPLOAD_ERR_FORM_SIZE</varname></term>
       <listitem>
        <para>
-        Value: 2; The uploaded file exceeds the <emphasis>MAX_FILE_SIZE</emphasis> 
-        directive that was specified in the html form.
+        값: 2; 파일이 HTML 폼에서 지정한 <emphasis>MAX_FILE_SIZE</emphasis>
+        지시자에 도달했습니다.
        </para>
       </listitem>
      </varlistentry>
@@ -247,7 +245,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
       <term><varname>UPLOAD_ERR_PARTIAL</varname></term>
       <listitem>
        <para>
-        Value: 3; The uploaded file was only partially uploaded.
+        값: 3; 파일이 일부분만 전송되었습니다.
        </para>
       </listitem>
      </varlistentry>
@@ -255,7 +253,7 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
       <term><varname>UPLOAD_ERR_NO_FILE</varname></term>
       <listitem>
        <para>
-        Value: 4; No file was uploaded.
+        값: 4; 파일이 전송되지 않았습니다.
        </para>
       </listitem>
      </varlistentry>
@@ -263,55 +261,52 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
    </para>
    <note>
     <para>
-     These became PHP constants in PHP 4.3.0
+     이들은 PHP 4.3.0에서 PHP 상수가 되었습니다.
     </para>
    </note>
   </sect1>
 
   <sect1 id="features.file-upload.common-pitfalls">
-   <title>Common Pitfalls</title>
+   <title>일반적인 문제</title>
    <simpara>
-    The <literal>MAX_FILE_SIZE</literal> item cannot specify a file size 
-    greater than the file size that has been set in the <link
-    linkend="ini.upload-max-filesize">upload_max_filesize</link> ini-setting.
-    The default is 2 Megabytes.
+    <literal>MAX_FILE_SIZE</literal>는 ini 설정 <link
+    linkend="ini.upload-max-filesize">upload_max_filesize</link>보다
+    큰 파일 크기를 지정할 수 없습니다. 기본값은 2 메가바이트입니다.
    </simpara>
    <simpara>
-    If memory limit is enabled, larger <link
-    linkend="ini.memory-limit">memory_limit</link> may be needed. Make
-    sure to set <link linkend="ini.memory-limit">memory_limit</link>
-    large enough.
+    메모리 제한을 활성화하면, 큰 값의 <link
+    linkend="ini.memory-limit">memory_limit</link>가 필요합니다.
+    <link linkend="ini.memory-limit">memory_limit</link>를 충분히
+    크게 설정했는지 확인해보십시오.
    </simpara>
    <simpara>
-    If <link linkend="ini.max-execution-time">max_execution_time</link>
-    is set too small, script execution may be exceeded the value. Make
-    sure to set <literal>max_execution_time</literal> large enough.
+    <link linkend="ini.max-execution-time">max_execution_time</link>을
+    너무 작게 설정하면, 스크립트 실행이 값에 도달해버립니다.
+    <literal>max_execution_time</literal>을 충분히 크게 설정했는지
+    확인해보십시오.
    </simpara>
    <note>
     <simpara>
-     <link linkend="ini.max-execution-time">max_execution_time</link> only
-     affects the execution time of the script itself.  Any time spent
-     on activity that happens outside the execution of the script
-     such as system calls using <function>system</function>, the
-     <function>sleep</function> function, database queries, time taken by
-     the file upload process, etc. is not included when determining the maximum
-     time that the script has been running.
+     <link linkend="ini.max-execution-time">max_execution_time</link>은
+     스크립트 자신의 실행 시간에만 영향을 미칩니다. <function>system</function>,
+     <function>sleep</function> 함수의 시스템 호출, 데이터베이스 쿼리,
+     파일 업로드 과정에 걸리는 시간 등 스크립트 밖에서 실행하는데 소모되는
+     시간은 스크립트 실행의 최대 시간을 측정하는 데에 포함되지 않습니다.
     </simpara>
    </note>    
    <simpara>
-    If <link linkend="ini.post-max-size">post_max_size</link> set too
-    small, large files cannot be uploaded.  Make sure to set
-    <literal>post_max_size</literal> large enough.
+    <link linkend="ini.post-max-size">post_max_size</link>을 너무 작게
+    설정하면, 큰 파일은 업로드할 수 없습니다. <literal>post_max_size</literal>을
+    충분히 크게 설정했는지 확인해보십시오.
    </simpara>
    <simpara>
     Not validating which file you operate on may mean that users can access
     sensitive information in other directories.
    </simpara>
    <simpara>
-    Please note that the CERN httpd seems to strip off everything
-    starting at the first whitespace in the content-type mime header
-    it gets from the client.  As long as this is the case, CERN httpd
-    will not support the file upload feature.
+    CERN httpd는 클라이언트에서 보내지는 content-type 마임 헤더의
+    첫번째 공백을 제거하는 것에 주의하십시오. 이 문제로 인해서, CERN
+    httpd는 파일 업로드 기능을 지원하지 않습니다.
    </simpara>
    <simpara>
     Due to the large amount of directory listing styles we cannot guarantee
@@ -322,8 +317,8 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
   <sect1 id="features.file-upload.multiple">
    <title>복수 파일 업로드하기</title>
    <simpara>
-    Multiple files can be uploaded using different
-    <literal>name</literal> for <literal>input</literal>.
+    복수 파일은 <literal>input</literal>에서 다른
+    <literal>name</literal>을 사용해서 업로드 할 수 있습니다.
    </simpara>
    <simpara>
     It is also possible to upload multiple files simultaneously and
