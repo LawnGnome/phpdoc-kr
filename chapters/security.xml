@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.9 $ -->
 <!-- EN-Revision: 1.52 -->
  <chapter id="security">
   <title>보안</title>
@@ -35,16 +35,15 @@
   <sect1 id="security.general">
    <title>일반적인 고려 사항</title>
    <simpara>
-    A completely secure system is a virtual impossibility, so an
-    approach often used in the security profession is one of balancing
-    risk and usability. If every variable submitted by a user required
-    two forms of biometric validation (such as a retinal scan and a
-    fingerprint), you would have an extremely high level of
-    accountability. It would also take half an hour to fill out a fairly
-    complex form, which would tend to encourage users to find ways of
-    bypassing the security.
+    완벽한 보안 시스템은 불가능에 가깝기에, 보안 대책의 지향점은 보통
+    위험성과 사용성의 조화점입니다. 유저가 송신하는 모든 변수가 두가지
+    형태의 생물학적 인증(망막 스캔이나 지문 등)이 필요하다면, 매우 높은
+    수준의 보안을 얻을 수 있습니다. 그러나 이 방법은 매우 복잡한 폼을
+    채우기 위해 30여분의 시간을 필요로 할 것이며, 유저가 보안을 넘어갈
+    수 있는 방법을 찾도록 할 것입니다.
    </simpara>
    <simpara>
+    최고의 보안은 종종 
     The best security is often inobtrusive enough to suit the
     requirements without the user being prevented from accomplishing
     their work, or over-burdening the code author with excessive

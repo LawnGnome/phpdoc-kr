@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.13 $ -->
-<!-- EN-Revision: 1.18 -->
+<!-- $Revision: 1.14 $ -->
+<!-- EN-Revision: 1.19 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
 
@@ -281,7 +281,9 @@ Internet Explorer를 사용하고 있습니다.<br />
     <link linkend="control-structures.else">else</link>, 그리고
     <function>strtoupper</function>나 <function>strlen</function> 등의
     함수를 사용하는 비슷한 예제를 생각해보십시오. 관련된 매뉴얼 페이지들은
-    예제를 포함하고 있습니다.
+    예제를 포함하고 있습니다. 어떻게 함수를 사용하는지를 모르겠다면,
+    매뉴얼의 <link linkend="about.prototypes">함수 정의를 읽는 방법</link>과
+    <link linkend="functions">PHP 함수</link> 섹션을 읽어보십시오.
    </para>
    <para>
     한걸음 더 나아가서, PHP 블록 안에서 어떻게 PHP 모드를 드나드는지
