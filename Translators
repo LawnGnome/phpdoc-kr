@@ -14,21 +14,21 @@ preface.xml                        rhheo
 language-defs.ent                  progcom                 Maintain
 language-snippets.ent              progcom                 Maintain
 ------- appendices ----------------------------------------------------------
-about.xml
-aliases.xml
-comparisons.xml
-debugger.xml
-history.xml
-migration.xml
-migration4.xml
-phpdevel.xml
-reserved.constant.core.xml
-reserved.constant.standard.xml
-reserved.xml
-resources.xml
-tokens.xml
-transports.xml
-wrappers.xml
+about.xml                          fuzzy74                 translating..
+aliases.xml                        
+comparisons.xml                    
+debugger.xml                       
+history.xml                        
+migration.xml                      
+migration4.xml                     
+phpdevel.xml                       
+reserved.constant.core.xml         
+reserved.constant.standard.xml     
+reserved.xml                       
+resources.xml                      
+tokens.xml                         
+transports.xml                     
+wrappers.xml                       
 ------- chapters ------------------------------------------------------------
 config.xml                         progcom                 Maintain
 install.*.xml
