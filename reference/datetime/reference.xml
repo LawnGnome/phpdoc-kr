@@ -1,7 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.3 $ -->
  <reference id="ref.datetime">
-  <title>Date and Time functions</title>
-  <titleabbrev>Date/time</titleabbrev>
+  <title>날짜와 시간 함수</title>
+  <titleabbrev>날짜/시간</titleabbrev>
+  <partintro>
+   <section id="datetime.intro">
+    &reftitle.intro;
+    <para>
+     날짜와 시간을 다루기 위해 이 함수들을 이용할 수 있다.
+     이 함수들은 PHP가 실행되고 있는 서버로부터 날짜와 시간을
+     얻을 수 있게 한다. 많은 다른 방법으로 날짜와 시간 출력을
+     형식화하기 위해 이 함수들을 이용할 수 있다.
+    </para>
+    <note>
+     <simpara>
+      이 함수들은 서버의 지역설정에 의존한다는 점을 명심하라.
+      특별히 윤년과 일광 절약 시간을 생각하라.
+     </simpara>
+    </note>
+
+   </section>
+   
+   <section id="datetime.required">
+    &reftitle.required;
+    &no.requirement;
+   </section>
+   
+   <section id="datetime.installation">
+    &reftitle.install;
+    &no.install;
+   </section>
+   
+   <section id="datetime.runtime">
+    &reftitle.runtime;
+    &no.config;
+   </section>
+
+   <section id="datetime.resources">
+    &reftitle.resources;
+    &no.resource;
+   </section>
+   
+   <section id="datetime.constants">
+    &reftitle.constants;
+    &no.constants;
+   </section>
+   
+  </partintro>
 
 &reference.datetime.functions;
 
@@ -22,5 +67,7 @@ sgml-exposed-tags:nil
 sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
 -->
-
