@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.24 $ -->
-<!-- EN-Revision: 1.103 -->
+<!-- $Revision: 1.25 $ -->
+<!-- EN-Revision: 1.106 -->
  <chapter id="configuration">
   <title>환경 설정</title>
 
@@ -735,6 +735,27 @@ php_admin_value open_basedir none
        </listitem>
       </varlistentry>
 
+      <varlistentry id="ini.register-long-arrays">
+       <term>
+        <parameter>register_long_arrays</parameter>
+        <type>boolean</type>
+       </term>
+       <listitem>
+        <simpara>
+         PHP에서 사용을 권하지 않는 <varname>$HTTP_*_VARS</varname> 형태의 
+         <link linkend="language.variables.predefined">예약
+         변수</link>의 등록 여부를 결정합니다. On (기본값)일때,
+         <varname>$HTTP_GET_VARS</varname> 등의 긴 형태의 PHP 예약 변수가
+         정의됩니다. 이 형태를 사용하지 않는다면, 성능 향상을 위해 off로
+         설정하는 것을 권장합니다. 대신, <varname>$_GET</varname> 등의 자동
+         전역 배열을 사용하십시오.
+        </simpara>
+        <simpara>
+         이 지시자는 PHP 5.0.0부터 사용 가능합니다.
+        </simpara>
+       </listitem>
+      </varlistentry>
+
       <varlistentry id="ini.post-max-size">
        <term>
         <parameter>post_max_size</parameter>
@@ -930,6 +951,11 @@ php_admin_value open_basedir none
          <entry>"0"</entry>
          <entry>PHP_INI_SYSTEM</entry>
         </row>
+        <row>
+         <entry>cgi.rfc2616_headers</entry>
+         <entry>"0"</entry>
+         <entry>PHP_INI_SYSTEM</entry>
+        </row>
        </tbody>
       </tgroup>
      </table>
@@ -1090,6 +1116,22 @@ include_path=".;c:\php\includes"
          지원합니다. 이 지시자는 IIS에게 요청에 대한 보안 문장을 정의하도록 허용합니다.
          아파치의 mod_fastcgi에서는 현재(2002/03/17) 이 기능을 지원하지 않습니다.
          IIS에서 실행할때는 1로 설정하십시오. 기본값은 0입니다.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry id="ini.cgi.rfc2616-headers">
+       <term>
+        <parameter>cgi.rfc2616_headers</parameter>
+        <type>int</type>
+       </term>
+       <listitem>
+        <para>
+         PHP가 HTTP 응답 코드를 보낼 때 어떤 형식의 헤더를 사용할지를 결정합니다.
+         0으로 설정하면, PHP는 아파치 및 기타 웹 서버에서 지원하는 Status: 헤더를
+         이용합니다. 이 옵션을 1로 설정하면, PHP는
+         <ulink url="&url.rfc;2616">RFC 2616</ulink> 호환 헤더를 전송합니다.
+         어떤 일을 하는지 알 수 없는 한 0으로 설정해두십시오.
         </para>
        </listitem>
       </varlistentry>
