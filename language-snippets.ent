@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.83 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.86 Maintainer: progcom Status: ready -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -98,6 +98,20 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 
 <!ENTITY note.bundled.gd '<note><simpara>이 함수는 PHP에 포함된 GD 라이브러리를
 사용하여 컴파일하였을 경우에만 사용할 수 있습니다.</simpara></note>'>
+
+<!-- DomXml Notes -->
+<!ENTITY node.inserted '이 노드는 <function>domnode_append_child</function> 등을
+통하여 삽입하지 않으면 보여지지 않습니다.'>
+
+<!-- Dom Notes -->
+<!ENTITY dom.node.inserted '이 노드는 <link
+linkend="function.dom-domnode-appendchild">DOMNode->appendChild()</link> 등을
+통하여 삽입하지 않으면 보여지지 않습니다.'>
+
+<!-- PCNTL Notes -->
+<!ENTITY pcntl.parameter.status '<para><parameter>status</parameter> 인수는
+<function>pnctl_waitpid</function>의 성공적인 호출에 제공하는 status
+인수입니다.'>
 
 <!-- Various notes -->
 <!ENTITY note.randomseed '<note><simpara>PHP 4.2.0부터 
