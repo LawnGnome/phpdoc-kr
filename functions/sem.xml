@@ -1,44 +1,42 @@
- <reference id="ref.sem">
-  <title>Semaphore and Shared Memory Functions</title>
-  <titleabbrev>Semaphore</titleabbrev>
+﻿ <reference id="ref.sem">
+  <title>세마포어(semaphore)와 공유 메모리(shared memory) 함수</title>
+  <titleabbrev>세마포어</titleabbrev>
 
   <partintro>
    <para>
-    This module provides semaphore functions using System V
-    semaphores.  Semaphores may be used to provide exclusive access to
-    resources on the current machine, or to limit the number of
-    processes that may simultaneously use a resource.
+    이 모듈은 System V 세마포어가 사용하는 세마포어 함수를 포함한다.
+    세마포어는 현재 머신에 자원을 한정적으로 접근하는데 사용되거나
+    프로세스가 일제히 자원을 사용하는 개수를 제한하는데 사용된다.
    </para>
    <para>
-    This module provides also shared memory functions using System V
-    shared memory. Shared memory may be used to provide access to
-    global variables. Different httpd-daemons and even other programs
-    (such as Perl, C, ...) are able to access this data to provide a
-    global data-exchange. Remember, that shared memory is NOT safe
-    against simultaneous access. Use semaphores for synchronization.
+    이 모듈은 또한 System V의 공유 메모리를 사용하기 위한 공유 메모리 함수도 포함한다.
+    공유 메모리는 전역 변수에 접근하는데 사용된다.
+    각기 다른 httpd-daemon과 다른 프로그램(Perl, C와 같은) 조차도
+    전역 데이터 교환을 지원하여 이 데이터를 접근할 수 있다.
+    주의할 점은, 공유 메모리는 동시 접근에는 안전하지 않다는 것이다.
+    동기화를 위해서는 세마포어를 사용하면 된다.
     <table>
-     <title>Limits of Shared Memory by the Unix OS</title>
+     <title>Unix OS에 의한 공유 메모리의 제한</title>
      <tgroup cols="2">
       <tbody>
        <row>
         <entry>SHMMAX</entry> 
-        <entry>max size of shared memory, normally 131072 bytes</entry>
+        <entry>공유 메모리의 최대값, 보통 131072 바이트임.</entry>
        </row>
        <row>
         <entry>SHMMIN</entry>
-        <entry>minimum size of shared memory, normally 1 byte</entry>
+        <entry>공유 메모리의 최소값, 보통 1바이트임.</entry>
        </row>
        <row>
         <entry>SHMMNI</entry> 
         <entry>
-         max amount of shared memory segments on a system,
-         normally 100
+         시스템 상의 공유 메모리 세그먼트의 최대 합계, 보통 100임.
         </entry>
        </row>
        <row>
         <entry>SHMSEG</entry>
         <entry>
-         max amount of shared memory segments per process, normally 6
+         프로세서당 공유 메모리 세그먼트의 최대 합계, 보통 6임.
         </entry>
        </row>
       </tbody>
@@ -47,7 +45,7 @@
    </para>
    <note>
     <simpara>
-     These functions do not work on Windows systems.
+     이 함수는 윈도우즈 시스템에서 동작하지 않는다.
     </simpara>
    </note>
   </partintro>
@@ -55,10 +53,10 @@
   <refentry id="function.sem-get">
    <refnamediv>
     <refname>sem_get</refname>
-    <refpurpose>Get a semaphore id</refpurpose>
+    <refpurpose>세마포어 id를 얻음</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>sem_get</function></funcdef>
@@ -72,30 +70,27 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns: A positive semaphore identifier on success, or false on
-     error.
+     반환값: 성공하면 실제적인 세마포어 identifier가, 실패하면 에러가 발생한다.
     </para>
     <para>
-     <function>Sem_get</function> returns an id that can be used to
-     access the System V semaphore with the given key.  The semaphore
-     is created if necessary using the permission bits specified in
-     perm (defaults to 0666).  The number of processes that can
-     acquire the semaphore simultaneously is set to max_acquire
-     (defaults to 1).  Actually this value is set only if the process
-     finds it is the only process currently attached to the semaphore.
+     <function>Sem_get</function>는 주어진 키와 함께 System V 세마포어에 접근하는데 사용하는 id를 반환한다.
+     세마포어는 퍼미션에서 특정 퍼미션 비트가 사용될 필요성이 있을 때 생성된다(기본값은 0666).
+     세마포어가 동시에 필요로 할 수 있는 프로세서의 개수는 max_acquire(기본값은 1)로 설정할 수 있다.
+     실제로 이 값은 설정된다.
+     얻은 프로세서가 일반적으로 세마포어에 첨부된 것일 경우에만 설정한다.
     </para>
     <para>
-     A second call to <function>sem_get</function> for the same key
-     will return a different semaphore identifier, but both
-     identifiers access the same underlying semaphore.
+     동일 키로 <function>sem_get</function>를 두 번 호출하면,
+     각기 다른 세마포어 identifier로 반환되겠지만,
+     양쪽 identifier들은 동일한 세마포어에서 접근이 가능하다.
     </para>  
     <para> 
-     See also: <function>sem_acquire</function> and
+     참조: <function>sem_acquire</function>, 
      <function>sem_release</function>.
     </para>
     <note>
      <simpara>
-      This function does not work on Windows systems
+      이 함수는 윈도우즈 시스템에서 동작하지 않는다.
      </simpara>
     </note>
    </refsect1>
@@ -104,10 +99,10 @@
   <refentry id="function.sem-acquire">
    <refnamediv>
     <refname>sem_acquire</refname>
-    <refpurpose>Acquire a semaphore</refpurpose>
+    <refpurpose>세마포어를 획득</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>sem_acquire</function></funcdef>
@@ -115,23 +110,18 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns: true on success, false on error.
+     반환값: 성공하면 true, 실패하면 에러를 출력한다.
     </para>
     <para>
-     <function>Sem_acquire</function> blocks (if necessary) until the
-     semaphore can be acquired.  A process attempting to acquire a
-     semaphore which it has already acquired will block forever
-     if acquiring the semaphore would cause its max_acquire value to
-     be exceeded.
+     <function>Sem_acquire</function>함수는 (만일 필요하다면)세마포어를 획득할 수 있을 때까지 막는다.
+     이미 획득된 세마포어를 획득하려는 프로세서가 세마포어의 max_acquire를 초과한다면 영원히 중단될 것이다.
     </para>
     <para>
-     After processing a request, any semaphores acquired by the
-     process but not explicitly released will be released automatically
-     and a warning will be generated.
+     리퀘스트 처리후, 명백하게 릴리즈되지 않은 프로세서에 의해 획득된 어떤 세마포어도 자동적으로 릴리즈 되며, 경고를 발생시킬 것이다.
+     (After processing a request, any semaphores acquired by the process but not explicitly released will be released automatically and a warning will be generated.)
     </para>
     <para> 
-     See also: <function>sem_get</function> and
-     <function>sem_release</function>.
+     참조: <function>sem_get</function>, <function>sem_release</function>.
     </para>
    </refsect1>
   </refentry>
@@ -139,10 +129,10 @@
   <refentry id="function.sem-release">
    <refnamediv>
     <refname>sem_release</refname>
-    <refpurpose>Release a semaphore</refpurpose>
+    <refpurpose>세마포어 릴리즈</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>sem_release</function></funcdef>
@@ -150,24 +140,21 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns: true on success, false on error.
+     반환값: 성공하면 true, 실패하면 에러 출력.
     </para>
     <para>
-     <function>Sem_release</function> releases the semaphore if it
-     is currently acquired by the calling process, otherwise
-     a warning is generated.
+     <function>Sem_release</function>는 호출 과정에 의해 일반적으로 획득된 세마포어를 릴리즈한다.
+     그렇지 않으면, 경고를 발생시킨다.
     </para>
     <para>
-      After releasing the semaphore, <function>sem_acquire</function>
-      may be called to re-acquire it.
+      세마포어를 릴리즈한 후, <function>sem_acquire</function>함수는 이를 재획득하려고 호출될 것이다.
     </para>
     <para> 
-     See also: <function>sem_get</function> and
-     <function>sem_acquire</function>.
+     참조: <function>sem_get</function>, <function>sem_acquire</function>.
     </para>
     <note>
      <simpara>
-      This function does not work on Windows systems
+      이 함수는 윈도우즈 시스템에서는 동작하지 않는다.
      </simpara>
     </note>    
    </refsect1>
@@ -176,10 +163,10 @@
   <refentry id="function.shm-attach">
    <refnamediv>
     <refname>shm_attach</refname>
-    <refpurpose>Creates or open a shared memory segment</refpurpose>
+    <refpurpose>공유 메모리 세그먼트를 열거나 생성</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>shm_attach</function></funcdef>
@@ -193,23 +180,19 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>Shm_attach</function> returns an id that that can be
-     used to access the System V shared memory with the given key, the
-     first call creates the shared memory segment with mem_size
-     (default: sysvshm.init_mem in the <link
-     linkend="configuration.file">configuration file</link>, otherwise
-     10000 bytes) and the optional perm-bits (default: 0666).
+     <function>Shm_attach</function>함수는 주어진 키와 함께 System V 공유 메모리를 접근하기위해 사용되는 id를 반환한다.
+     첫 호출은 mem_size(기본값: <link linkend="configuration.file">설정 파일</link>에서의
+     sysvshm.init_mem 값, 그렇지 않으면, 10000 바이트)과 임의의 perm-bit(기본값: 0666)과 함께
+     공유 메모리 세그먼트를 생성한다.
     </para>
     <para>
-     A second call to <function>shm_attach</function> for the same
-     <parameter>key</parameter> will return a different shared memory
-     identifier, but both identifiers access the same underlying
-     shared memory. <parameter>Memsize</parameter> and
-     <parameter>perm</parameter> will be ignored.
+     동일한 <parameter>key</parameter> 인자로 <function>shm_attach</function>함수의 두번째 호출은
+     또다른 공유 메모리 identifier를 반환할 것이다.
+     <parameter>Memsize</parameter> 인자와 <parameter>perm</parameter> 인자는 무시될 것이다.
     </para>
     <note>
      <simpara>
-      This function does not work on Windows systems
+      이 함수는 윈도우즈 시스템에서는 동작하지 않는다.
      </simpara>
     </note>
    </refsect1>
@@ -218,10 +201,10 @@
   <refentry id="function.shm-detach">
    <refnamediv>
     <refname>shm_detach</refname>
-    <refpurpose>Disconnects from shared memory segment</refpurpose>
+    <refpurpose>공유 메모리 세그먼트 접속을 종료</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>shm_detach</function></funcdef>
@@ -229,10 +212,11 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>Shm_detach</function> disconnects from the shared
-     memory given by the <parameter>shm_identifier</parameter> created
-     by <function>shm_attach</function>. Remember, that shared memory
-     still exist in the Unix system and the data is still present.
+     <function>Shm_detach</function>함수는 
+     <function>shm_attach</function>에 의해 생성되는
+     <parameter>shm_identifier</parameter> 인자에 의해 주어진 공유 메모리를 종료시킨다.
+     주의할 점은, 함수를 호출하더라도 Unix 시스템에서의 공유메모리는 여전히 존재하며,
+     데이터 역시 존재하고 있다는 것이다.
     </para>
    </refsect1>
   </refentry>
@@ -240,10 +224,10 @@
   <refentry id="function.shm-remove">
    <refnamediv>
     <refname>shm_remove</refname> 
-    <refpurpose>Removes shared memory from Unix systems</refpurpose>
+    <refpurpose>Unix 시스템에서 공유 메모리를 제거</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>shm_remove</function></funcdef>
@@ -251,12 +235,11 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Removes shared memory from Unix systems. All data will be
-     destroyed.
+     Unix 시스템에서 공유 메모리를 제거하며, 모든 데이터가 제거된다.
     </para>
     <note>
      <simpara>
-      This function does not work on Windows systems
+      이 함수는 윈도우즈 시스템에서는 동작하지 않는다.
      </simpara>
     </note>
    </refsect1>
@@ -265,11 +248,10 @@
   <refentry id="function.shm-put-var">
    <refnamediv>
     <refname>shm_put_var</refname> 
-    <refpurpose>Inserts or updates a variable in shared
-     memory</refpurpose>
+    <refpurpose>공유 메모리 변수를 삽입하거나 경신</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>shm_put_var</function></funcdef>
@@ -279,13 +261,13 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Inserts or updates a <parameter>variable</parameter> with a given
-     <parameter>variable_key</parameter>. All variable-types (double,
-     int, string, array) are supported.
+     <parameter>variable_key</parameter> 인자로 주어진
+     <parameter>variable</parameter> 인자를 삽입하거나 경신한다.
+     모든 변수 타입(double, int, string, array)가 지원된다.
     </para> 
     <note>
      <simpara>
-      This function does not work on Windows systems
+      이 함수는 윈도우즈 시스템에서는 동작하지 않는다.
      </simpara>
     </note>
    </refsect1>
@@ -294,11 +276,10 @@
   <refentry id="function.shm-get-var">
    <refnamediv>
     <refname>shm_get_var</refname> 
-    <refpurpose>Returns a variable from shared memory
-    </refpurpose>
+    <refpurpose>공유 메모리로부터 변수를 반환</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>mixed <function>shm_get_var</function></funcdef>
@@ -307,13 +288,12 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>Shm_get_var</function> returns the variable with a given
-     <parameter>variable_key</parameter>. The variable is still present
-     in the shared memory.
+     <function>Shm_get_var</function>함수는 <parameter>variable_key</parameter> 인자로 주어진 변수를 반환한다.
+     공유메모리에서의 변수는 여전히 존재한다.
     </para>
     <note>
      <simpara>
-      This function does not work on Windows systems
+      이 함수는 윈도우즈 시스템에서는 동작하지 않는다.
      </simpara>
     </note>
    </refsect1>
@@ -322,11 +302,10 @@
   <refentry id="function.shm-remove-var">
    <refnamediv>
     <refname>shm_remove_var</refname> 
-    <refpurpose>Removes a variable from shared memory
-    </refpurpose>
+    <refpurpose>공유 메모리로부터 변수를 제거</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>shm_remove_var</function></funcdef>
@@ -335,12 +314,11 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Removes a variable with a given <parameter>variable_key</parameter>
-     and frees the occupied memory.
+     <parameter>variable_key</parameter>로 주어진 변수를 제거하고 점유된 메모리에서 제거한다.
     </para>
     <note>
      <simpara>
-      This function does not work on Windows systems
+      이 함수는 윈도우즈 시스템에서 동작하지 않는다.
      </simpara>
     </note>
    </refsect1>
