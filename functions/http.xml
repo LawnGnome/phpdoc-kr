@@ -3,66 +3,41 @@
   <titleabbrev>HTTP</titleabbrev>
 
   <partintro>
-   <simpara>
-    These functions let you manipulate the output sent back to the
-    remote browser right down to the HTTP protocol level.
+   <simpara>    여기 설명되어질 함수들은 원격브라우저에 보내질 각종 출력들을    HTTP 프로토콜에 충실히 기반하여 다룰 수 있게 해준다.
    </simpara>
   </partintro>
 
   <refentry id="function.header">
    <refnamediv>
     <refname>header</refname>
-    <refpurpose>Send a raw HTTP header</refpurpose>
+    <refpurpose>HTTP 헤더를 전송한다.</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>함수 설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>header</function></funcdef>
       <paramdef>string <parameter>string</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
-    <para>
-     The <function>Header</function> function is used at the top of an
-     <acronym>HTML</acronym> file to send raw <acronym>HTTP</acronym>
-     header strings.  See the <ulink url="&spec.http1.1;">HTTP 1.1
-     Specification</ulink> for more information on raw http headers.
+    <para>     <function>Header</function> 함수는 <acronym>HTML</acronym> 파일     상단에 <acronym>HTTP</acronym> 헤더 문자열을 전송한다. HTTP 헤더에     대한 자세한 정보는      <ulink url="&spec.http1.1;">HTTP 1.1 Specification</ulink> 를 참조하기      바란다.
     </para>
-    <para>
-     There are two special-case header calls.  The first is the
-     &quot;Location&quot; header.  Not only does it send this header
-     back to the browser, it also returns a REDIRECT status code to
-     Apache.  From a script writer's point of view this should not be
-     important, but for people who understand Apache internals it is
-     important to understand.
-     <informalexample>
+    <para>     헤더와 관련된 두가지 특별한 경우가 있다. 첫번째로 &quot;Location     &quot; 헤더에 대해 설명하겠다. 이것은 지정된 헤더내용을 브라우저에      전송하면서 동시에 아파치 서버로 REDIRECT 코드(REDIRECT status code)를      돌려준다. 스크립트 작성자의 관점으로 볼때 이것은 별로 중요한 것이      아니지만 아파치 내부동작에 관심이 있는 사람들은 알아두어야 할 것이다.      <informalexample>
       <programlisting role="php">
-header ("Location: http://www.php.net"); /* Redirect browser 
-                                            to PHP web site */
-exit;                 /* Make sure that code below does 
-                         not get executed when we redirect. */
+header ("Location: http://www.php.net"); /* PHP 웹사이트로 
+                                            리다이렉트한다. */
+exit;                 /* 리다이렉트되고 있을때 아래에 있는 
+                         코드가 실행되지 않도록 한다 */
       </programlisting>
      </informalexample>
     </para>
-    <para>
-     The second special-case is any header that starts with the
-     string, &quot;HTTP/&quot; (case is not significant).  For
-     example, if you have your ErrorDocument 404 Apache directive
-     pointed to a PHP script, it would be a good idea to make sure
-     that your PHP script is actually generating a 404.  The first
-     thing you do in your script should then be:
-     <informalexample>
+    <para>     두번째는 "HTTP/" 문자열로 시작하는 헤더를 사용하는 경우이다.     (대소문자는 상관없음) 예를 들어, 아파치의 ErrorDocument 404 지시자가      여러분의 PHP 스크립트를 가리키게 해두었다면 그 스크립트가 실제로 404      코드를 생성하고 있는지 확실히 해두는 것이 좋다. 아래의 예를 참조하라.     <informalexample>
       <programlisting role="php">
 header ("HTTP/1.0 404 Not Found");
       </programlisting>
      </informalexample>
     </para>
-    <para>
-     PHP scripts often generate dynamic HTML that must not be cached
-     by the client browser or any proxy caches between the server and the
-     client browser. Many proxies and clients can be forced to disable
-     caching with
-     <informalexample>
+    <para>     PHP 스크립트를 사용하다보면 클라이언트 브라우저와 프록시서버에 캐쉬되지      말아야할 출력(예: 다이내믹 HTML)을 만들어야 할 경우가 있다. 이럴 경우      아래와 같이 클라이언트와 프록시서버의 캐쉬기능을 강제로 해제할 수 있다.      <informalexample>
       <programlisting role="php">
 header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");    // Date in the past
 header ("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT"); 
@@ -72,27 +47,19 @@ header ("Pragma: no-cache");                          // HTTP/1.0
       </programlisting>
      </informalexample>
     </para>
-    <para>
-     Remember that the <function>header</function> function must be
-     called before any actual output is sent, either by normal HTML
-     tags blank lines in a file, or from PHP. It is a very common
-     error to read code with <function>include</function>, or
-     <function>require</function>, functions, or another file access
-     function, and have spaces or empty lines that will output before
-     <function>header</function> is called. The same problem exists
-     when using a single PHP/HTML file.
+    <para>     <function>header</function> 함수는 HTML의 공백라인이나 PHP가 만들어낸      어떠한 출력보다도 가장 먼저 호출되어야 한다. <function>header</function>      함수가 호출되기 전에 <function>include</function> 와     <function>require</function> 혹은 기타 다른 파일엑세스 관련 함수를     사용하거나 코드내에 공백을 넣는 경우는 스크립트 작성자가 흔히      저지르는 실수이다. 설령 PHP/HTML 파일 하나만 사용한다고 해도     이같은 실수의 가능성은 여전히 존재한다.
      <informalexample>
       <programlisting role="php">
 &lt;?php require("user_logging.inc") ?>
 
 
 &lt;?php header ("Content-Type: audio/x-pn-realaudio"); ?>
-// Broken, Note the blank lines above
+// 윗줄에 공백이 있으므로 제대로 동작하지 않을 것이다.
       </programlisting>
      </informalexample>
     </para>    
     <para>
-     See also <function>headers_sent</function>
+     <function>headers_sent</function>도 참고하라.
     </para>
    </refsect1>
   </refentry>
@@ -100,10 +67,10 @@ header ("Pragma: no-cache");                          // HTTP/1.0
   <refentry id="function.headers-sent">
    <refnamediv>
     <refname>headers_sent</refname>
-    <refpurpose>Returns true if headers have been sent</refpurpose>
+    <refpurpose>헤더가 전송되었으면 참(true)을 돌려준다.</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>함수 설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>boolean <function>headers_sent</function></funcdef>
@@ -111,11 +78,9 @@ header ("Pragma: no-cache");                          // HTTP/1.0
      </funcprototype>
     </funcsynopsis>
     <para>
-     This function returns true if the HTTP headers have already been
-     sent, false otherwise.
-    </para>
+     이 함수는 HTTP 헤더가 이미 전송되어진 경우 참(true)을, 반대의 경우      거짓(false)을 돌려준다.    </para>
     <para>
-     See also <function>header</function>
+     <function>header</function>도 참고하라.
     </para>
    </refsect1>
   </refentry>
@@ -123,7 +88,7 @@ header ("Pragma: no-cache");                          // HTTP/1.0
   <refentry id="function.setcookie">
    <refnamediv>
     <refname>setcookie</refname>
-    <refpurpose>Send a cookie</refpurpose>
+    <refpurpose>쿠키를 설정한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -148,56 +113,25 @@ header ("Pragma: no-cache");                          // HTTP/1.0
       </paramdef>
      </funcprototype>
     </funcsynopsis>
+    <para>     <function>Setcookie</function> 함수는 쿠키를 설정하기 위해 쓰인다.       쿠키는 다른 어떠한 헤더보다도 <emphasis>먼저</emphasis> 전송되어야 한다.      (이것은 PHP와는 상관없는 쿠키 자체의 제약이다) 즉, 이 함수를 쓰기 위해서     는 <literal>&lt;html></literal> 이나 <literal>&lt;head></literal> 내부에      오는 어떠한 태그들 보다 먼저 호출되어야 하는 것이다.    </para>
+    <para>     <parameter>name</parameter> 을 제외한 모든 인수들은 선택적으로 주어질 수     있다. (만약 <parameter>name</parameter>인수만 주어진 경우 그 이름을 가진      쿠키는 모두 삭제될 것이다). 또한 주어지지 않은 인수를 빈 문자열      (<emphasis>&quot;&quot;</emphasis>) 로 대체할 수 있다.      <emphasis>expire</emphasis> 와 <emphasis>secure</emphasis> 인수는 정수값     이며, 주어지지 않을 경우 빈 문자열로 대체될 수 없는 대신 숫자 0 으로      대체할 수 있다. <emphasis>expire</emphasis> 인수는 표준 유닉스 시간으로      <function>time</function> 이나 <function>mktime</function> 함수가      돌려보내는 정수값을 쓸 수 있다. <function>secure</function> 인수가 지정된     쿠키는 안전한 HTTPS 접속에서만 전송이 허용된다.     </para>
     <para>
-     <function>Setcookie</function> defines a cookie to be sent along
-     with the rest of the header information.  Cookies must be sent
-     <emphasis>before</emphasis> any other headers are sent (this is a
-     restriction of cookies, not PHP). This requires you to place
-     calls to this function before any <literal>&lt;html></literal> or
-     <literal>&lt;head></literal> tags.
-    </para>
-    <para>
-     All the arguments except the <parameter>name</parameter> argument
-     are optional.  If only the name argument is present, the cookie
-     by that name will be deleted from the remote client.  You may
-     also replace any argument with an empty string
-     (<emphasis>&quot;&quot;</emphasis>) in order to skip that
-     argument.  The <parameter>expire</parameter> and
-     <parameter>secure</parameter> arguments are integers and cannot
-     be skipped with an empty string.  Use a zero
-     (<emphasis>0</emphasis>) instead.  The
-     <parameter>expire</parameter> argument is a regular Unix time
-     integer as returned by the <function>time</function> or
-     <function>mktime</function> functions.  The
-     <parameter>secure</parameter> indicates that the cookie should
-     only be transmitted over a secure HTTPS connection.
-    </para>
-    <para>
-     Common Pitfalls:
+     주의해야할 사항:
      <itemizedlist>
       <listitem>
        <simpara>
-        Cookies will not become visible until the next loading of a page that 
-        the cookie should be visible for.
-       </simpara>
+        쿠키는 그 쿠키를 유효하게 하기 위해 페이지를 재로딩하기 전까지는 작동        되지 않는다.               </simpara>
       </listitem>
       <listitem>
        <simpara>
-        Cookies must be deleted with the same parameters as they were set with.
-       </simpara>
+        쿠키는 생성될 당시의 인수(parameter)를 그대로 넣어 삭제해야 한다.            </simpara>
       </listitem>
      </itemizedlist>
     </para>
-    <simpara>
-     In PHP 3, multiple calls to <function>setcookie</function> in the same
-     script will be performed in reverse order. If you are trying to
-     delete one cookie before inserting another you should put the
-     insert before the delete. In PHP 4, multiple calls to
-     <function>setcookie</function> are performed in the order called.
+    <simpara>     PHP3는 <function>setcookie</function> 함수가 하나의 스크립트 안에서      여러번 호출된 경우 그 호출된 역순으로 처리를 한다. 이 경우 새로운 쿠키를      하나 추가하기 전에 기존의 쿠키를 하나 삭제하려면 추가하는 구문이 삭제하는     구문보다 먼저 놓여야 원하는 결과를 얻을 수 있다. 반대로 PHP4는 여러번      호출된 <function>setcookie</function> 함수들을 호출된 순서 그대로      처리한다. 
     </simpara>
     <para>
-     Some examples follow how to send cookies:
-     <example>
+     아래는 쿠키를 전송하는 예제이다:     <example>
       <title><function>Setcookie</function> send examples</title>
       <programlisting role="php">
 setcookie ("TestCookie", "Test Value");
@@ -207,26 +141,19 @@ setcookie ("TestCookie", $value,time()+3600, "/~rasmus/", ".utoronto.ca", 1);
      </example>
     </para>
     <para>
-     Examples follow how to delete cookies send in previous example:
+     아래는 위의 예제에서 전송한 쿠키를 삭제하는 예제이다:
      <example>
       <title><function>setcookie</function> delete examples</title>
       <programlisting role="php">
 setcookie ("TestCookie");
-// set the expiration date to one hour ago
+// 만료시기를 한시간 전으로 설정
 setcookie ("TestCookie", "", time() - 3600);
 setcookie ("TestCookie", "", time() - 3600, "/~rasmus/", ".utoronto.ca", 1);
       </programlisting>
      </example>
-	 When deleting a cookie you should assure that the expiration date
-	 is in the past, to trigger the removal mechanism in your browser.
-	</para>
+	 쿠키를 삭제하려면 인수로 주어질 만료시기가 만료시점을 기준으로 과거를      가리키고 있는지 확인해야 한다. 	    </para>
     <para>
-     Note that the value portion of the cookie will automatically be
-     urlencoded when you send the cookie, and when it is received, it
-     is automatically decoded and assigned to a variable by the same
-     name as the cookie name.  To see the contents of our test
-     cookie in a script, simply use one of the following examples:
-     <informalexample>
+     쿠키의 일부분은 필요한 경우 자동적으로 url인코딩(urlencoded)이 된후      전송이 되며, 그것을 다시 받을 경우에도 자동적인 디코딩 및 쿠키 이름에      해당하는 변수할당이 이루어진다. 자세한 사항은 아래의 예제를 참조하라:     <informalexample>
       <programlisting role="php">
 echo $TestCookie;
 echo $HTTP_COOKIE_VARS["TestCookie"];
@@ -234,12 +161,7 @@ echo $HTTP_COOKIE_VARS["TestCookie"];
      </informalexample>
     </para>
     <para>
-     You may also set array cookies by using array notation in the
-     cookie name. This has the effect of setting as many cookies as
-     you have array elements, but when the cookie is received by your
-     script, the values are all placed in an array with the cookie's
-     name:
-     <informalexample>
+     또한 여러분은 쿠키 이름에 배열기수법(array notation)을 활용하여      배열형태의 쿠키(array cookies)를 만들 수 있다. 이러한 방법은 당신이 가지     고 있는 배열요소의 갯수만큼 동일한 갯수의 쿠키를 설정할 수 있으며, 이러한     방법으로 설정된 쿠키를 가져올 때에는 각각의 쿠키값들이 설정당시의      쿠키이름을 활용한 배열의 형태로 변수할당이 이루어진다.      <informalexample>
       <programlisting role="php">
 setcookie ("cookie[three]", "cookiethree");
 setcookie ("cookie[two]", "cookietwo");
@@ -252,21 +174,11 @@ if (isset ($cookie)) {
       </programlisting>
      </informalexample>
     </para>
-    <para>
-     For more information on cookies, see Netscape's cookie
-     specification at <ulink
-     url="&spec.cookies;">&spec.cookies;</ulink>.
-    </para>
+    <para>     쿠키에 대한 자세한 정보는 넷스케이프에서 제공하는      <ulink url="&spec.cookies;">&spec.cookies;</ulink> 문서를 참조하기 바란다.     </para>
     <simpara>
-     Microsoft Internet Explorer 4 with Service Pack 1 applied does
-     not correctly deal with cookies that have their path parameter
-     set.
-    </simpara>
+     경로인수(path parameter set)와 함께 설정된 쿠키는 서비스팩 1 이      적용된 마이크로소프트 인터넷 익스플로러 4 에서 제대로 동작하지 않는다.       </simpara>
     <simpara>
-     Netscape Communicator 4.05 and Microsoft Internet Explorer 3.x
-     appear to handle cookies incorrectly when the path and time
-     are not set.
-    </simpara>
+     경로인수(path)와 만료시기(time)가 설정되지 않은 쿠키는 넷스케이프      커뮤니케이터 4.05 와 마이크로소프트 인터넷 익스플로러 3.x 에서 제대로      동작하지 않는다.    </simpara>
    </refsect1>
   </refentry>
 
