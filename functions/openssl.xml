@@ -1,4 +1,4 @@
-﻿ <reference id="ref.openssl">
+ <reference id="ref.openssl">
   <title>OpenSSL functions</title>
   <titleabbrev>OpenSSL</titleabbrev>
   <partintro>

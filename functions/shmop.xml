@@ -1,4 +1,4 @@
-﻿<reference id="ref.shmop">
+ <reference id="ref.shmop">
   <title>Shared Memory Functions</title>
   <titleabbrev>shmop</titleabbrev>
   

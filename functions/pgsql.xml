@@ -1,4 +1,4 @@
-﻿ <reference id="ref.pgsql">
+ <reference id="ref.pgsql">
   <title>PostgreSQL functions</title>
   <titleabbrev>PostgreSQL</titleabbrev>
 

@@ -1,4 +1,4 @@
-﻿<reference id="ref.pcre">
+ <reference id="ref.pcre">
   <title>Regular Expression Functions (Perl-Compatible)</title>
   <titleabbrev>PCRE</titleabbrev>   
 

@@ -1,4 +1,4 @@
-﻿ <reference id="ref.dba">
+ <reference id="ref.dba">
   <title>Database (dbm-style) abstraction layer functions</title>
   <titleabbrev>dba</titleabbrev>
 
