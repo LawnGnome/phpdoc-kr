@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.4 -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.5 -->
   <refentry id="function.max">
    <refnamediv>
     <refname>max</refname>
@@ -9,27 +9,61 @@
    <refsect1>
     <title>설명</title>
     <methodsynopsis>
-     <type>number</type><methodname>max</methodname>
-     <methodparam><type>mixed</type><parameter>arg1</parameter></methodparam>
-     <methodparam><type>mixed</type><parameter>arg2</parameter></methodparam>
-     <methodparam><type>mixed</type><parameter>argn</parameter></methodparam>
+     <type>mixed</type><methodname>max</methodname>
+     <methodparam><type>number</type><parameter>arg1</parameter></methodparam>
+     <methodparam><type>number</type><parameter>arg2</parameter></methodparam>
+     <methodparam choice="opt"><type>number</type><parameter>...</parameter></methodparam>
+    </methodsynopsis>
+    <methodsynopsis>
+     <type>mixed</type><methodname>max</methodname>
+     <methodparam><type>array</type><parameter>numbers</parameter></methodparam>
+     <methodparam choice="opt"><type>array</type><parameter>...</parameter></methodparam>
     </methodsynopsis>
     <para>
      <function>max</function>는 인자 중 수치적인 최고값을 반환합니다.
     </para>
     <para>
-     첫번째 인자가 배열이라면, <function>max</function>는 그 배열에서의
+     첫번째 인자만이 배열이라면, <function>max</function>는 그 배열에서의
      최고값을 반환합니다. 첫번째 인자가 정수, 문자열, 혹은 실수일 경우
      최소한 2개의 인자가 필요하며, <function>max</function>는 그 중에
      최고값을 반환합니다. 비교할 수 있는 값의 수는 무제한입니다.
     </para>
+    <note>
+     <para>
+      PHP는 숫자가 아닌 <type>string</type>은 <literal>0</literal>으로
+      계산하지만, 그것이 가장 큰 값일 경우 그 문자열을 반환합니다.
+      <literal>0</literal>으로 계산된 여러 인자가 존재할 경우,
+      <function>max</function>는 가장 처음 나온 값을 사용합니다.
+      (가장 왼쪽의 값)
+     </para>
+    </note>
     <para>
-     1개, 혹은 그 이상의 값이 실수라면, 모든 값을 실수로 취급하고,
-     실수값을 반환합니다. 어떤 값도 실수가 아니라면, 모두 정수로 취급하고,
-     정수값을 반환합니다.
+     <example>
+      <title><function>max</function>의 사용 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+echo max(1, 3, 5, 6, 7);  // 7
+echo max(array(2, 4, 5)); // 5
+
+echo max(0, 'hello');     // 0
+echo max('hello', 0);     // hello
+echo max(-1, 'hello');    // hello
+
+// 복수 배열일 경우, max는 왼쪽에서 오른쪽으로 비교합니다.
+// 이 예제에서는: 2 == 2, 그 다음에 4 < 5
+$val = max(array(2, 4, 8), array(2, 5, 7)); // array(2, 5, 7)
+
+// 배열과 배열이 아닌것이 주어질 때는 배열 중에서
+// 가장 큰 배열을 반환합니다.
+$val = max('string', array(2, 5, 7), 42);   // array(2, 5, 7)
+?>
+]]>
+      </programlisting>
+     </example>
     </para>
     <para>
-     참고: <function>min</function>.
+     참고: <function>min</function>, <function>count</function>.
     </para>
    </refsect1>
   </refentry>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.4 -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.6 -->
   <refentry id="function.rand">
    <refnamediv>
     <refname>rand</refname>
@@ -19,11 +19,17 @@
      사이의 모조 난수를 반환합니다. 예를 들어, 5와 15(포함) 사이의
      난수를 얻으려면, <literal>rand (5, 15)</literal>로 사용합니다.
     </simpara>
-    <simpara>
-     예전 버전의 PHP에서는, 사용하기 전에 <function>srand</function>를
-     이용하여 난수 생성기를 초기화했어야 합니다. 4.2.0부터는 더 이상 그럴
-     필요가 없습니다.
-    </simpara>
+
+    <note>
+     <simpara>
+      몇몇 플래폼(Windows 등)에서는 <constant>RAND_MAX</constant>는
+      32768까지 입니다. 32768보다 큰 범위가 필요할 때는
+      <function>mt_rand</function>의 사용을 고려하십시오.
+     </simpara>
+    </note>
+
+    &note.randomseed;
+
     <note>
      <para>
       3.0.7 이전의 버전에서는 <parameter>max</parameter>의 의미는
