@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
+<!-- $Revision: 1.8 $ -->
 <!-- EN-Revision: 1.34 -->
  <appendix id="migration4">
   <title>PHP 3 에서 PHP 4로 이주</title>
@@ -354,7 +354,6 @@ php_admin_flag [PHP directive name] [On|Off]
 
    <section id='migration4.unset'>
     <title><function>unset</function>을 위한 변경 상태</title>
-    <title>Changed status for <function>unset</function></title>
     <para>
      <function>unset</function>, 아직 지원되지만, 함수로서보다는
      언어 구조로서 구현되었다.
