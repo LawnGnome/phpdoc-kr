@@ -21,14 +21,14 @@ debugger.xml                       fuzzy74                 Maintain
 history.xml                        fuzzy74                 Maintain
 migration.xml                      fuzzy74                 Maintain
 migration4.xml                     fuzzy74                 Maintain
-phpdevel.xml                       fuzzy74                 Assign
+phpdevel.xml
 reserved.constant.core.xml         fuzzy74                 Maintain
 reserved.constant.standard.xml     fuzzy74                 Maintain
 reserved.xml                       fuzzy74                 Maintain
 resources.xml                      fuzzy74                 Maintain
 tokens.xml                         fuzzy74                 Maintain
 transports.xml                     fuzzy74                 Maintain
-wrappers.xml                       fuzzy74                 Assign
+wrappers.xml                       fuzzy74                 Maintain
 ------- chapters ------------------------------------------------------------
 config.xml                         progcom                 Maintain
 install.*.xml
