@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.17 $ -->
-<!-- EN-Revision: 1.66 Maintainer: fuzzy74 Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.76 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter id="language.variables">
   <title>변수</title>
   
@@ -129,7 +129,7 @@ $bar = &test();    // Invalid.
     </simpara>
     <simpara>
      이와 관련된 변경사항은 <link linkend="ini.register-globals">register_globals</link>의
-     설정 엔트리를 읽거나, <link linkend="security.registerglobals">Using Register Globals</link>에 관한
+     설정 엔트리를 읽거나, <link linkend="security.globals">전역 등록 사용하기</link>에 관한
      보안 챕터는 물론, <ulink url="&url.php.release4.1.0;">4.1.0</ulink>과
      <ulink url="&url.php.release4.2.0;">4.2.0</ulink> Release Announcements도 참고하기 바란다.
     </simpara>
@@ -140,7 +140,7 @@ $bar = &test();    // Invalid.
    </warning>
 
    <simpara>
-    4.1.0 버전 이후에, pHP는 웹서버, 환경, 유저 입력과 관련된 미리 선언된 배열 
+    4.1.0 버전 이후에, PHP는 웹서버, 환경, 유저 입력과 관련된 미리 선언된 배열 
     변수 집합을 추가적으로 제공한다. 이 새로운 배열은 자동적으로 전역화되기 때문에
     더 특별해진다. 즉, 자동적으로 모든 유효영역안에서 적용이 가능하다. 이런 이유로,
     이런 변수를 '자동전역변수' 또는 '슈퍼전역변수' 이라고 불리기도 한다. (PHP에서는
@@ -330,11 +330,18 @@ Test();
     자동적으로 함수안에서 사용가능하다는 점에서 C 언어와 약간 차이가 있다는 것에
     주의해야 할것이다. 이런 생각으로 부주의하게 전역변수를 변경하려한다면
     문제가 될것이다. PHP에서 전역변수가 함수내에서 계속적으로 사용이 된다면
-    함수안에서 global로 선언되어야 한다. 예를 들면:
+    함수안에서 global로 선언해야 합니다.
    </simpara>
 
-   <informalexample>
-    <programlisting role="php">
+   <sect2 id="language.variables.scope.global">
+    <title>global 키워드</title>
+    <simpara>
+     우선, <literal>global</literal>의 사용 예제입니다:
+    </simpara>
+    <para>
+     <example>
+      <title>global 사용하기</title>
+      <programlisting role="php">
 <![CDATA[
 <?php
 $a = 1;
@@ -351,8 +358,9 @@ Sum();
 echo $b;
 ?>
 ]]>
-    </programlisting>
-   </informalexample>
+      </programlisting>
+     </example>
+    </para>
 
    <simpara>
     위 스크립느는 &quot;3&quot;를 출력할것이다. <varname>$a</varname>와
@@ -364,11 +372,13 @@ echo $b;
    <simpara>
     전역 유효영역의 변수에 접근할수 있는 두번째 방법이
     특별 PHP-선언 <varname>$GLOBALS</varname> 배열을 사용하는 것이다.
-    이전 예제코드는 다음과 같이 다시 작성될수 있다.
+    이전 예제코드는 다음과 같이 다시 작성할 수 있습니다:
    </simpara>
 
-   <informalexample>
-    <programlisting role="php">
+    <para>
+     <example>
+      <title>global 대신 <varname>$GLOBALS</varname> 사용하기</title>
+      <programlisting role="php">
 <![CDATA[
 <?php
 $a = 1;
@@ -383,8 +393,9 @@ Sum();
 echo $b;
 ?>
 ]]>
-    </programlisting>
-   </informalexample>
+      </programlisting>
+     </example>
+    </para>
 
    <simpara>
     <varname>$GLOBALS</varname> 배열은 전역변수명이 key가 되는 연관배열이고
@@ -394,38 +405,43 @@ echo $b;
     때문이다. 아래에 슈퍼전역변수의 파워를 설명하는 예제코드를 보였다:
    </simpara>
    <para>
-   
-   <informalexample>
-    <programlisting role="php">
+     <example>
+      <title>자동 전역과 영역을 보여주는 예제</title>
+      <programlisting role="php">
 <![CDATA[
 <?php
 function test_global()
 {
-    // Most predefined variables aren't "super" and require 
-    // 'global' to be available to the functions local scope.
+    // 대부분의 예약 변수는 "자동 전역"이 아니기에,
+    // 함수 내부 영역에서 사용하려면 'global'이 필요합니다.
     global $HTTP_POST_VARS;
+
+    echo $HTTP_POST_VARS['name'];
     
-    print $HTTP_POST_VARS['name'];
-    
-    // Superglobals are available in any scope and do 
-    // not require 'global'.  Superglobals are available 
-    // as of PHP 4.1.0
-    print $_POST['name'];
+    // 자동 전역은 어떠한 영역에서도 사용할 수 있고,
+    // 'global'이 필요하지 않습니다. 자동 전역은
+    // PHP 4.1.0부터 사용할 수 있습니다.
+    echo $_POST['name'];
 }
 ?>
 ]]>
-     </programlisting>
-    </informalexample>
-   </para>
-   
+      </programlisting>
+     </example>
+    </para>
+   </sect2>
+
+   <sect2 id="language.variables.scope.static">
+    <title>정적 변수 사용하기</title>
    <simpara>
     변수 유효영역의 또 다른 중요한 기능이 <emphasis>static</emphasis> 변수이다.
     정적(static) 변수는 로컬 함수 영역에서만 존재한다. 그러나 프로그램이 그 영역을
-    떠나지 않으면 그 값을 잃지 않는다. 다음예를 보자:
+    떠나지 않으면 그 값을 잃지 않는다. 다음 예제를 생각해 봅시다:
    </simpara>
 
-   <informalexample>
-    <programlisting role="php">
+    <para>
+     <example>
+      <title>정적 변수의 필요성을 보여주는 예제</title>
+      <programlisting role="php">
 <![CDATA[
 <?php
 function Test ()
@@ -436,8 +452,9 @@ function Test ()
 }
 ?>
 ]]>
-    </programlisting>
-   </informalexample>
+      </programlisting>
+     </example>
+    </para>
 
    <simpara>
     이 함수는 매번 호출될때마다 <varname>$a</varname>를 <literal>0</literal>으로
@@ -447,8 +464,10 @@ function Test ()
     <varname>$a</varname> 변수를 static으로 선언한다.
    </simpara>
 
-   <informalexample>
-    <programlisting role="php">
+    <para>
+     <example>
+      <title>정적 변수의 사용 예제</title>
+      <programlisting role="php">
 <![CDATA[
 <?php
 function Test()
@@ -459,8 +478,9 @@ function Test()
 }
 ?>
 ]]>
-    </programlisting>
-   </informalexample>
+      </programlisting>
+     </example>
+    </para>
 
    <simpara>
     이제 Test() 함수가 호출될 때마다 <varname>$a</varname> 값이 출력되고
@@ -475,8 +495,10 @@ function Test()
     정적 변수 <varname>$count</varname>는 멈춰야 할 때는 안다.
    </simpara>
 
-   <informalexample>
-    <programlisting role="php">
+    <para>
+     <example>
+      <title>재귀 함수에서 정적 변수</title>
+      <programlisting role="php">
 <![CDATA[
 <?php
 function Test()
@@ -492,16 +514,49 @@ function Test()
 }
 ?>
 ]]>
-    </programlisting>
-   </informalexample>
+      </programlisting>
+     </example>
+    </para>
 
-   <simpara>
-    <literal>PHP4</literal>를 운용하는 The Zend Engine 1 은 참조로 
-    <literal>static</literal>과 <literal>global</literal>의 
-    변경자(modifier)를 구현한다. 예를 들면 함수 영역안에서 
-    <literal>global</literal>절로 선언되는 전역 변수는 실제는 전역 변수의 참조를
-    생성한다. 이런 구현방법은 다음 예에서 제기되는 원치 않는 동작을 유발할수 있다.
-   </simpara>
+    <note>
+     <para>
+      정적 변수는 위 예제처럼 선언해야 합니다. 이 변수에 표현식의 결과를
+      할당하려 할 경우는 해석 오류를 발생합니다.
+     </para>
+     <para>
+      <example>
+       <title>정적 변수 선언하기</title>
+       <programlisting role="php">
+<![CDATA[
+<?php
+function foo() {
+    static $int = 0;          // 적합
+    static $int = 1+2;        // 오류 (표현식이기에)
+    static $int = sqrt(121);  // 오류 (역시 표현식이기에)
+
+    $int++;
+    echo $int;
+}
+?>
+]]>
+       </programlisting>
+      </example>
+     </para>
+    </note>
+   </sect2>
+
+   <sect2 id="language.variables.scope.references">
+    <title>전역 변수와 정적 변수의 참조</title>
+    <simpara>
+     <literal>PHP 4</literal>를 작동하는 Zend Engine 1은 <link
+      linkend="language.variables.scope.static">static</link>과 <link
+      linkend="language.variables.scope.global">global</link>을 <link
+      linkend="language.references">참조</link>를 통한 변수 변경자로
+     구현합니다. 예를 들어, 실제 전역 변수를 <literal>global</literal>
+     키워드를 사용하여 함수 영역 내부로 가져올 경우, 그 전역 변수의 참조를
+     생성합니다. 이로 인해 다음 예제에서 처럼 원하지 않은 동작을 할 수
+     있습니다:
+    </simpara>
 
    <informalexample>
     <programlisting role="php">
@@ -601,8 +656,7 @@ Static object: object(stdClass)(1) {
     <literal>&amp;get_instance_ref()</literal>함수가 두번째로 호출되는 때에
     <emphasis>기억</emphasis>되지 않는다는 것을 보여준다.
    </simpara>
-
-
+   </sect2>
   </sect1>
 
   <sect1 id="language.variables.variable">
@@ -714,10 +768,10 @@ echo "$a $hello";
       <title>단순한 HTML 폼</title>
       <programlisting role="html">
 <![CDATA[
-<form action="foo.php" method="POST">
-    Name:  <input type="text" name="username"><br>
-    Email: <input type="text" name="email"><br>
-    <input type="submit" name="submit" value="Submit me!">
+<form action="foo.php" method="post">
+    이름:  <input type="text" name="username" /><br />
+    메일: <input type="text" name="email" /><br />
+    <input type="submit" name="submit" value="전송합니다!" />
 </form>
 ]]>
       </programlisting>
@@ -735,24 +789,24 @@ echo "$a $hello";
       <programlisting role="html">
 <![CDATA[
 <?php 
-// Available since PHP 4.1.0
+// PHP 4.1.0부터 사용 가능
 
-   print $_POST['username'];
-   print $_REQUEST['username'];
+   echo $_POST['username'];
+   echo $_REQUEST['username'];
 
    import_request_variables('p', 'p_');
-   print $p_username;
+   echo $p_username;
 
-// Available since PHP 3.  As of PHP 5.0.0, these long predefined
-// variables can be disabled with the register_long_arrays directive.
+// PHP 3부터 사용 가능. PHP 5.0.0부터, 이러한 긴 예약 변수는
+// register_long_arrays 지시어로 비활성화 할 수 있습니다.
 
-   print $HTTP_POST_VARS['username'];
+   echo $HTTP_POST_VARS['username'];
 
-// Available if the PHP directive register_globals = on.  As of 
-// PHP 4.2.0 the default value of register_globals = off.
-// Using/relying on this method is not preferred.
+// PHP 지시어 register_globals = on 일 경우에 사용할 수 있습니다.
+// PHP 4.2.0부터 기본값은 register_globals = off 입니다.
+// 이 방법을 사용하는 것은 권장되지 않습니다.
 
-   print $username;
+   echo $username;
 ?>
 ]]>
       </programlisting>
@@ -808,25 +862,24 @@ echo "$a $hello";
 <![CDATA[
 <?php
 if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
-    print '<pre>';
-
+    echo '<pre>';
     print_r($_POST);
-    print '<a href="'. $_SERVER['PHP_SELF'] .'">Please try again</a>';
+    echo '<a href="'. $_SERVER['PHP_SELF'] .'">다시 시도하십시오.</a>';
 
-    print '</pre>';
+    echo '</pre>';
 } else {
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-    Name:  <input type="text" name="personal[name]"><br>
-    Email: <input type="text" name="personal[email]"><br>
-    Beer: <br>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    이름: <input type="text" name="personal[name]" /><br />
+    메일: <input type="text" name="personal[email]" /><br />
+    맥주: <br />
     <select multiple name="beer[]">
         <option value="warthog">Warthog</option>
         <option value="guinness">Guinness</option>
         <option value="stuttgarter">Stuttgarter Schwabenbräu</option>
-    </select><br>
-    <input type="hidden" name="action" value="submitted">
-    <input type="submit" name="submit" value="submit me!">
+    </select><br />
+    <input type="hidden" name="action" value="submitted" />
+    <input type="submit" name="submit" value="전송합니다!" />
 </form>
 <?php
 }
@@ -852,7 +905,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
      <informalexample>
       <programlisting role="html">
 <![CDATA[
-<input type="image" src="image.gif" name="sub">
+<input type="image" src="image.gif" name="sub" />
 ]]>
       </programlisting>
      </informalexample>
@@ -919,7 +972,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
      <programlisting role="php">
 <![CDATA[
 <?php
-$count++;
+if (isset($_COOKIE['count'])) {
+    $count = $_COOKIE['count'] + 1;
+} else {
+    $count++;
+}
 setcookie("count", $count, time()+3600);
 setcookie("Cart[$count]", $item, time()+3600);
 ?>

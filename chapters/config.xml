@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.115 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.116 Maintainer: progcom Status: ready -->
  <chapter id="configuration">
   <title>실행 환경 설정</title>
 
@@ -704,7 +704,7 @@ include_path = ".;c:\php\lib"
          <varname>$_POST</varname>, <varname>$_COOKIE</varname>,
          <varname>$_SERVER</varname> 등의 PHP <link linkend="reserved.variables">예약
          정의 변수</link>를 사용하는 것을 권장합니다. 보안 챕터의
-         <link linkend="security.registerglobals">register_globals 사용</link>에 대한
+         <link linkend="security.globals">register_globals 사용</link>에 대한
          관련 정보를 읽어보십시오.
         </para>
         <para>

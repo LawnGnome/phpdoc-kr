@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
-<!-- EN-Revision: 1.36 Maintainer: fuzzy74 Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.39 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
 
  <appendix id="reserved">
   <title>예약어 목록</title>
@@ -268,7 +268,7 @@
      설정되어있으면, 이 변수들은 스크립트의 전역 유효영역에서 사용이 가능해
      진다. 즉 <varname>$_SERVER</varname> 와 <varname>$HTTP_SERVER_VARS</varname> 
      배열과 분리된다. 관련정보는
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      이름의 보안 챕터를 참고한다. 이들 각각의 전역은 자동전역이 아니다.
     </simpara>
 
@@ -463,7 +463,7 @@
        <term>'<varname>HTTP_USER_AGENT</varname>'</term>
        <listitem>
         <simpara>
-         현재 요청에 대한 <literal>User_Agent:</literal> 헤더 내용.
+         현재 요청에 대한 <literal>User-Agent:</literal> 헤더 내용.
          이 값은 페이지에 접근 중인 유저 에이전트를 표시하는 문자열이다.
          표준적인 예로는: <computeroutput>Mozilla/4.5 [en] (X11; U;
          Linux 2.2.9 i586)</computeroutput>. 
@@ -511,9 +511,17 @@
       <varlistentry>
        <term>'<varname>SCRIPT_FILENAME</varname>'</term>
        <listitem>
-        <simpara>
+        <para>
          현재 수행되는 스크립트의 절대 경로명.
-        </simpara>
+         <note>
+          <para>
+           <filename>file.php</filename>, <filename>../file.php</filename>처럼
+           스크립트를 상대 경로로 지정하여 CLI로 실행할 경우,
+           <varname>$_SERVER['SCRIPT_FILENAME']</varname>은 사용자가 지정한
+           상대 경로를 포함합니다.
+          </para>
+         </note>
+        </para>
        </listitem>
       </varlistentry>
 
@@ -657,7 +665,7 @@
      설정되어있으면, 이변수는 스크립트의 전역 유효영역에서 사용가능해진다.
      즉,<varname>$_ENV</varname>과 <varname>$HTTP_ENV_VARS</varname> 배열에서
      독립적으로 사용된다. 관련 정보는,
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      보안 챕터를 참고한다. 이들 각각의 전역변수는 자동전역이 아니다.
     </simpara>
    </sect2>
@@ -697,7 +705,7 @@
      설정되어있으면, 이변수는 스크립트의 전역 유효영역에서 사용가능해진다.
      즉,<varname>$_COOKIE</varname>와 <varname>$HTTP_COOKIE_VARS</varname> 배열에서
      독립적으로 사용된다. 관련 정보는,
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      보안 챕터를 참고한다. 이들 각각의 전역변수는 자동전역이 아니다.
     </simpara>
    </sect2>
@@ -737,7 +745,7 @@
      설정되어있으면, 이변수는 스크립트의 전역 유효영역에서 사용가능해진다.
      즉,<varname>$_GET</varname>와 <varname>$HTTP_GET_VARS</varname> 배열에서
      독립적으로 사용된다. 관련 정보는,
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      보안 챕터를 참고한다. 이들 각각의 전역변수는 자동전역이 아니다.
     </simpara>
    </sect2>
@@ -777,7 +785,7 @@
      설정되어있으면, 이변수는 스크립트의 전역 유효영역에서 사용가능해진다.
      즉,<varname>$_POST</varname>와 <varname>$HTTP_POST_VARS</varname> 배열에서
      독립적으로 사용된다. 관련 정보는,
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      보안 챕터를 참고한다. 이들 각각의 전역변수는 자동전역이 아니다.
     </simpara>
    </sect2>
@@ -815,7 +823,7 @@
      설정되어있으면, 이변수는 스크립트의 전역 유효영역에서 사용가능해진다.
      즉,<varname>$_FILES</varname>와 <varname>$HTTP_POST_FILES</varname> 배열에서
      독립적으로 사용된다. 관련 정보는,
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      보안 챕터를 참고한다. 이들 각각의 전역변수는 자동전역이 아니다.
     </simpara>
    </sect2>
@@ -851,7 +859,7 @@
      <link linkend="ini.register-globals">register_globals</link> 디렉티브가
      설정되어있으면, 이변수는 스크립트의 전역 유효영역에서 사용가능해진다.
      즉,<varname>$_REQUEST</varname> 배열에서 독립적으로 사용된다. 관련 정보는,
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      보안 챕터를 참고한다. 이들 각각의 전역변수는 자동전역이 아니다.
     </simpara>
    </sect2>
@@ -890,7 +898,7 @@
      설정되어있으면, 이변수는 스크립트의 전역 유효영역에서 사용가능해진다.
      즉,<varname>$_SESSION</varname>와 <varname>$HTTP_SESSION_FILES</varname> 배열에서
      독립적으로 사용된다. 관련 정보는,
-     <link linkend="security.registerglobals">전역 등록 사용하기</link>라는
+     <link linkend="security.globals">전역 등록 사용하기</link>라는
      보안 챕터를 참고한다. 이들 각각의 전역변수는 자동전역이 아니다.
     </simpara>
    </sect2>

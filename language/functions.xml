@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.45 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.46 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter id="language.functions">
   <title>함수</title>
@@ -497,9 +497,9 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
     도 제공한다. 이런 함수는 확장을 컴파일하지 않으면 "undefined function"같은 치명적
     에러 메시지를 출력할 것이다. 예를 들면, <link linkend="ref.image">image</link>함수
     를 사용하기 위해서는 GD 지원이 가능하게 컴파일해야 한다.<function>mysql_connect</function>
-    함수를 사용하려면 <link linkend="ref.mysql">MySQL</link>지원이 가능하게
-    컴파일해야 한다.  <link linkend="ref.strings">string</link>과 
-    <link linkend="ref.variables">variable</link> 함수와 같이 PHP의 모든 버전에
+    함수를 사용하려면 <link linkend="ref.mysql">MySQL</link>을 지원하도록
+    컴파일해야 한다. <link linkend="ref.strings">문자열</link>과 
+    <link linkend="ref.var">변수 관련</link> 함수와 같이 PHP의 모든 버전에
     포함되어있는 많은 핵심 함수가 존재한다.
     <function>phpinfo</function>나 <function>get_loaded_extensions</function>함수
     를 호출하면 현재 PHP에 올라간 확장에 어떤것인지 확인할수 있다. 많은 확장이 

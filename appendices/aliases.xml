@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.26 Maintainer: fuzzy74 Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.28 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
 <appendix id="aliases">
  <title>함수 별칭 목록</title>
  <para>
@@ -16,8 +16,8 @@
   <function>is_integer</function> 은 모두 양호하다)
  </para>
  <para>
-  이 목록은 PHP 4.0.6를 기준으로 한다. 매일 업데이트되는 별칭목록을 보려면,
-  <ulink url="&url.zend.aliaslist;">여기</ulink>를 보도록 한다.
+  이 목록은 PHP 4.0.6 기준입니다. 매일 갱신하는 별칭 목록은 <ulink
+   url="&url.zend.aliaslist;">&url.zend.aliaslist;</ulink>를 참고하십시오.
  </para>
  <para>
   <table>
@@ -1084,12 +1084,12 @@
 <row>
  <entry>odbc_do</entry>
  <entry><function>odbc_exec</function></entry>
- <entry><link linkend="ref.odbc">OCI8</link></entry>
+ <entry><link linkend="ref.uodbc">OCI8</link></entry>
 </row>
 <row>
  <entry>odbc_field_precision</entry>
  <entry><function>odbc_field_len</function></entry>
- <entry><link linkend="ref.odbc">OCI8</link></entry>
+ <entry><link linkend="ref.uodbc">OCI8</link></entry>
 </row>
 <row>
  <entry>output</entry>

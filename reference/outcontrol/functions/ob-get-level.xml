@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
   <refentry id="function.ob-get-level">
    <refnamediv>
     <refname>ob_get_level</refname>
@@ -14,7 +14,8 @@
       <void/>
      </methodsynopsis>
     <para>
-     겹쳐진 출력 버퍼링 핸들러의 레벨을 반환합니다.
+     겹쳐져 있는 출력 버퍼링 핸들러의 레벨을 반환합니다. 출력 버퍼링을 하고
+     있지 않을 경우에는 0을 반환합니다.
     </para>
     <para>
      참고: <function>ob_start</function>,

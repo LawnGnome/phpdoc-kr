@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
   <refentry id="function.rand">
    <refnamediv>
     <refname>rand</refname>
@@ -46,8 +46,10 @@ echo rand(5, 15);
     <note>
      <simpara>
       몇몇 플래폼(Windows 등)에서는 <constant>RAND_MAX</constant>는
-      32768까지 입니다. 32768보다 큰 범위가 필요할 때는
-      <function>mt_rand</function>의 사용을 고려하십시오.
+      32768까지 입니다. 32768보다 큰 범위가 필요할 경우에는,
+      <parameter>min</parameter>과 <parameter>max</parameter>를 지정하여
+      RAND_MAX보다 큰 범위를 만들거나, <function>mt_rand</function>을
+      사용하십시오.
      </simpara>
     </note>
     &note.randomseed;
