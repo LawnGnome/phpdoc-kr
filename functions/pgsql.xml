@@ -19,7 +19,7 @@
 	사용한 새로운 데이타베이스 접속예를 나타내고 있다. 소켓의 경로는 
 	<filename>/tmp/.s.PGSQL.5432</filename> 이다. 이 옵션은 
 	<command>postmaster</command> 에 -i 플래그를 넣어줌으로써 가능하며 
-	그 의미는 "유닉스 도메인 소켓의 응답과 함께 TCP/IP 소켓의 응답도 동시에 
+	그 의미는 "유닉스 도메인 소켓의 요청과 함께 TCP/IP 소켓의 요청도 동시에 
 	기다린다"는 뜻이다. 
     <table>
 				<title>Postmaster and PHP</title>
