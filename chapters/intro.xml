@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
+<!-- $Revision: 1.8 $ -->
  <chapter id="introduction">
   <title>소개</title>
 
   <sect1 id="intro-whatis">
    <title>PHP란 무엇인가?</title>
-   <para>
-    <acronym>PHP</acronym>(공식적으로 "PHP: Hypertext Preprocessor")는 server-side
-    HTML-embedded scripting language입니다.
    <para>
     <acronym>PHP</acronym>(정식 명칭 "PHP: Hypertext
     Preprocessor")는 범용성을 지닌 널리 사용되는 오픈 소스
