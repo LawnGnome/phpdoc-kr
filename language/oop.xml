@@ -1,13 +1,14 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.7 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.8 $ -->
+<!-- EN-Revision: 1.43 -->
  <chapter id="language.oop">
-  <title>Classes and Objects</title>
+  <title>클래스와 객체</title>
 
   <sect1 id="keyword.class">
-   <title><literal>class</literal></title>
+   <title><literal>클래스</literal></title>
    <para>
-    A class is a collection of variables and functions working with
-    these variables.  A class is defined using the following syntax:
+    클래스는 특정 변수들과 그리고 이 변수들을 써서 동작하는 함수의 집합체이다.
+    다음과 같은 문법을 사용하여 선언한다:
    </para>
    <para>
     <informalexample>
@@ -44,15 +45,14 @@ class Cart
    </para>
  
    <para>
-    This defines a class named Cart that consists of an associative
-    array of articles in the cart and two functions to add and remove
-    items from this cart.
+    위 코드는 카트(cart)를 위한 품목의 연관 배열과 cart에 아이템을 추가하거나
+    제거하는 두 개의 함수로 구성된 Cart라는 이름을 갖는 클래스를 선언하고 있다.
    </para>
 
    <warning>
     <simpara>
-     You can <emphasis>NOT</emphasis> break up a class definition into
-     multiple files, or multiple PHP blocks. The following will not work:
+     클래스 선언부를 여러 파일이나 여러 PHP블록으로 분리할수 <emphasis>없다</emphasis>
+     다음 코드는 동작하지 않을것이다:
     </simpara>
     <para>
      <informalexample>
@@ -74,47 +74,45 @@ class test {
    </warning>
 
    <simpara>
-    The following cautionary notes are valid for PHP 4.
+    PHP 4에서는 다음과 같은 주의사항을 숙지해야 한다.
    </simpara>
     
    <caution>
     <simpara>
-     The name <literal>stdClass</literal> is used interally by
-     Zend and is reserved. You cannot have a class named
-     <literal>stdClass</literal> in PHP.
+     Zend에서는 <literal>stdClass</literal>같은 명칭을 내부적으로
+     사용하며 이 명칭은 예약되어있다. 따라서 PHP에서는 <literal>stdClass</literal>라는
+     클래스명을 만들수 없다.
     </simpara>
    </caution>
     
    <caution>
     <simpara>
-      The function names <literal>__sleep</literal> and
-      <literal>__wakeup</literal> are magical in PHP classes. You
-      cannot have functions with these names in any of your
-      classes unless you want the magic functionality associated
-      with them. See below for more information.
+      <literal>__sleep</literal>과 <literal>__wakeup</literal>함수는
+      PHP 클래스에서 중요한 역할을 수행한다. 이들과 결합된 매직 기능을 원
+      하지 않는다면 이런 이름을 클래스내에서 사용할수 없다. 
+      아래 글에서 자세하게 설명할것이다.
     </simpara>
    </caution>
     
    <caution>
     <simpara>
-      PHP reserves all function names starting with __ as magical.
-      It is recommended that you do not use function names with
-      __ in PHP unless you want some documented magic functionality.
+      PHP에서 __으로 시작하는 함수명은 매직 기능을 수행하도록 예약되어있다.
+      문서화된 매직 기능을 원하지 않는다면 PHP에서 __를 갖는 함수명을 
+      사용하지 않도록 한다.
     </simpara>
    </caution>
 
    <simpara>
-    In PHP 4, only constant initializers for <literal>var</literal>
-    variables are allowed. To initialize variables with non-constant
-    values, you need an initialization function which is called
-    automatically when an object is being constructed from the
-    class. Such a function is called a constructor (see below).
+    PHP 4에서 <literal>var</literal>로 변수를 선언할때는 상수로만 초기화될수
+    있다. 상수가 아닌 값으로 초기화하려면, 클래스로부터 객체가 생성될때 자동적
+    으로 호출되는 함수에서 초기화할 필요가 있다. 이런 함수를 생성자(constructor)
+    라고 부른다. (아래글을 보라)
    </simpara>
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-/* None of these will work in PHP 4. */
+/* PHP 4에서 이 코드는 작동하지 않을것이다 */
 class Cart
 {
     var $todays_date = date("Y-m-d");
@@ -123,7 +121,7 @@ class Cart
     var $items = array("VCR", "TV");
 }
 
-/* This is how it should be done. */
+/* 이와 같이 해야 한다 */
 class Cart
 {
     var $todays_date;
@@ -144,9 +142,8 @@ class Cart
    </informalexample>
 
    <para>
-    Classes are types, that is, they are blueprints for actual
-    variables. You have to create a variable of the desired type with
-    the <literal>new</literal> operator.
+    클래스는 타입이다. 즉, 실제 변수를 위한 청사진이다. <literal>new</literal>
+    연산자를 사용하여 원하는 타입의 변수를 생성해야 한다.
    </para>
  
    <informalexample>
@@ -164,29 +161,26 @@ $another_cart->add_item("0815", 3);
    </informalexample>
  
    <para>
-    This creates the objects <varname>$cart</varname> and
-    <varname>$another_cart</varname>, both of the class Cart. The function
-    add_item() of the <varname>$cart</varname> object is being called to add 1
-    item of article number 10 to the <varname>$cart</varname>. 3 items of
-    article number 0815 are being added to <varname>$another_cart</varname>.
+    위 예제 코드는 Cart클래스의 <varname>$cart</varname>, <varname>$another_cart</varname>
+    객체를 생성한다. <varname>$cart</varname>의 add_item() 함수는 <varname>$cart</varname>
+    에 품목 번호가 10인 아이템 1개를 추가하고, <varname>$another_cart</varname>에
+    품목 번호가 0815인 아이템 3개를 추가한다.
    </para>
    
    <para>
-    Both, <varname>$cart</varname> and <varname>$another_cart</varname>, have
-    functions add_item(), remove_item() and a variable items. These are
-    distinct functions and variables. You can think of the objects as
-    something similar to directories in a filesystem. In a filesystem you can
-    have two different files README.TXT, as long as they are in different
-    directories.  Just like with directories where you'll have to type the
-    full pathname in order to reach each file from the toplevel directory, you
-    have to specify the complete name of the function you want to call: In PHP
-    terms, the toplevel directory would be the global namespace, and the
-    pathname separator would be <literal>-&gt;</literal>.  Thus, the names
-    <varname>$cart-&gt;items</varname> and
-    <varname>$another_cart-&gt;items</varname> name two different variables.
-    Note that the variable is named <varname>$cart-&gt;items</varname>, not
-    <varname>$cart-&gt;$items</varname>, that is, a variable name in PHP has
-    only a single dollar sign.
+    <varname>$cart</varname>와 <varname>$another_cart</varname> 둘다 
+    add_item(), remove_item() 함수와 items변수를 갖는다. 이들 모두 서로
+    다른 함수와 변수이다. 이런 객체는 파일시스템의 디렉토리에 비유될수 있다.
+    파일시스템에서는 서로 다른 디렉토리에 있으면 두개의 다른 README.TXT파일을 
+    저장할수 있다. 이 파일 각각에 접근하기 위해서는 최상위 디렉토리에서
+    각 파일로의 경로를 지정해 줘야 하듯이, 이런 각 함수를 호출하고자 한다면 
+    각 함수의 완벽한 이름을 지정해야 한다: PHP에서 최상위 디렉토리는 전역 
+    네임스페이스를 갖고, 경로 구분자로 <literal>-&gt;</literal>를 사용할수 있다. 
+    따라서, <varname>$cart-&gt;items</varname>과 <varname>$another_cart-&gt;items</varname>
+    은 서로 다른 변수를 지칭하는 것이다.
+    변수는 <varname>$cart-&gt;$items</varname>이 아니라, <varname>$cart-&gt;items</varname>
+    로 지정해야 한다는 것에 주의해야 한다. 즉, PHP에서 변수명은 오직 한개의
+    달러사인($) 기호만 허용된다.
    </para>
 
    <informalexample>
@@ -209,26 +203,22 @@ $cart->$myvar = array("10" => 1);
    </informalexample>
 
    <para>
-    Within a class definition, you do not know under which name the object
-    will be accessible in your program: at the time the Cart class was
-    written, it was unknown that the object will be named
-    <varname>$cart</varname> or <varname>$another_cart</varname> later. Thus,
-    you cannot write <varname>$cart-&gt;items</varname> within the Cart class
-    itself. Instead, in order to be able to access it's own functions and
-    variables from within a class, one can use the pseudo-variable
-    <varname>$this</varname> which can be read as 'my own' or 'current
-    object'. Thus, '<varname>$this-&gt;items[$artnr]</varname> +=
-    <varname>$num</varname>' can be read as 'add <varname>$num</varname> to
-    the <varname>$artnr</varname> counter of my own items array' or 'add
-    <varname>$num</varname> to the <varname>$artnr</varname> counter of the
-    items array within the current object'.
+    클래스의 선언부에서는 프로그램이 객체에 접근할때 어느 객체명 밑에 속해있을지
+    알수 없다: Cart 클래스가 선언된 후에 그 객체가 <varname>$cart</varname>나 
+    <varname>$another_cart</varname> 객체명을 갖을지 알수 없는것이다. 따라서,
+    Cart 클래스 선언부 안에서 <varname>$cart-&gt;items</varname>라고 쓸수 없다.
+    대신에, 클래스내의 함수나 변수에 접근할 수 있게 하려면 '내 소유'나 '현재
+    객체'라고 해석할수 있는 <varname>$this</varname>라는 의사-변수를 사용할수 있다.
+    따라서, '<varname>$this-&gt;items[$artnr]</varname> += <varname>$num</varname>'
+    이라는 코드는 '내 소유의 items 배열의 <varname>$artnr</varname>카운터를
+    <varname>$num</varname>만큼 더하라' 또는 '현재 객체의 items 배열의 <varname>$artnr</varname>
+    카운터를 <varname>$num</varname>만큼 더하라'고 해석할 수 있다.
    </para>
 
    <note>
     <para>
-    There are some nice functions to handle classes and objects. You might want
-    to take a look at the <link linkend="ref.classobj">Class/Object
-    Functions</link>
+    클래스와 객체를 제어할 수 있는 몇가지의 유용한 함수가 제공된다.
+    <link linkend="ref.classobj">클래스/객체 함수</link>에서 확인할수 있다.
     </para>
    </note>
   </sect1>
@@ -237,19 +227,16 @@ $cart->$myvar = array("10" => 1);
    <title><literal>extends</literal></title>
 
    <para>
-    Often you need classes with similar variables and functions
-    to another existing class. In fact, it is good practice to
-    define a generic class which can be used in all your
-    projects and adapt this class for the needs of each of your
-    specific projects. To facilitate this, classes can be
-    extensions of other classes.  The extended or derived class
-    has all variables and functions of the base class (this is
-    called 'inheritance' despite the fact that nobody died) and what
-    you add in the extended definition. It is not possible to
-    substract from a class, that is, to undefine any existing 
-    functions or variables. An extended class is always dependent
-    on a single base class, that is, multiple inheritance is
-    not supported. Classes are extended using the keyword 'extends'.
+    때때로 기존의 클래스와 비슷한 변수와 함수를 갖는 클래스가 필요할때
+    가 있다. 실제로, 모든 프로젝트에서 사용할수 있는 범용의 클래스를 
+    선언하고, 특정 프로젝트에서 이런 클래스를 필요에 의해 변경하는 것은 
+    좋은 습관이다. 이런 일을 수월하게 하기 위해서 클래스는 다른 클래스에서
+    확장(extension) 될수 있다. 이렇게 확장되거나 파생된 클래스는 원래
+    클래스의 모든 변수와 함수를 소유하고 (이런 경우를 아무도 죽지 않았음
+    에도 불구하고 '상속'이라고 부른다) 필요로 하는 확장된 선언을 추가할수 있다.
+    기존 클래스에서 기존 함수나 변수의 선언을 해제하여 뺄수는 없다.
+    확장 클래스는 항상 하나의 기존 클래스에만 연관되어있다. 즉 다중 상속은
+    지원되지 않는다. 클래스는 'extends'라는 키워드를 사용하여 확장된다.
    </para>
  
    <informalexample>
@@ -271,43 +258,39 @@ class Named_Cart extends Cart
    </informalexample>
  
    <para>
-    This defines a class Named_Cart that has all variables and functions of
-    Cart plus an additional variable <varname>$owner</varname> and an
-    additional function set_owner(). You create a named cart the usual way and
-    can now set and get the carts owner. You can still use normal cart
-    functions on named carts:
+    위 코드는 Cart의 모든 변수와 함수는 물론 추가된 변수 <varname>$owner</varname>
+    와 추가된 함수 set_owner()를 갖는 클래스를 선언한다. 이로써 이름이 있는 카트를 만들고
+    카트의 소유자를 설정하고 얻어올수 있다. 이름이 있는 카트에서는 물론 기존의 일반 카트 함수
+    도 쓸수 있다:
    </para>
  
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-$ncart = new Named_Cart;    // Create a named cart
-$ncart->set_owner("kris");  // Name that cart
-print $ncart->owner;        // print the cart owners name
-$ncart->add_item("10", 1);  // (inherited functionality from cart)
+$ncart = new Named_Cart;    // 이름이 있는 카트 만들기
+$ncart->set_owner("kris");  // 그 카트에 소유자를 설정
+print $ncart->owner;        // 소유자 이름을 출력
+$ncart->add_item("10", 1);  // (기존 cart에서 상속한 함수 사용)
 ?>
 ]]>
     </programlisting>
    </informalexample>
 
    <para>
-    This is also called a "parent-child" relationship. You create a class,
-    parent, and use <literal>extends</literal> to create a new class
-    <emphasis>based</emphasis> on the parent class: the child class. You can
-    even use this new child class and create another class based on this child
-    class.
+    이런 경우를 "부모-자식" 관계라고 부르기도 한다. 부모 클래스를 만들고,
+    부모 클래스에 <emphasis>기반한</emphasis> 새 클래스를 만들려면
+    <literal>extends</literal>를 사용한다: 자식 클래스. 심지어 이런 새로운 
+    자식 클래스를 사용하거나 이 자식 클래스에 기반한 다른 클래스도 만들수 있다.
    </para>
    <note>
     <para>
-     Classes must be defined before they are used! If you want the class
-     <literal>Named_Cart</literal> to extend the class
-     <literal>Cart</literal>, you will have to define the class
-     <literal>Cart</literal> first. If you want to create another class called
-     <literal>Yellow_named_cart</literal> based on the class
-     <literal>Named_Cart</literal> you have to define
-     <literal>Named_Cart</literal> first. To make it short: the order in which
-     the classes are defined is important.
+     클래스는 그것이 사용되기 전에 선언되어야 한다! 
+     <literal>Cart</literal>클래스를 상속하는 <literal>Named_Cart</literal>클래스가
+     필요하면 우선 <literal>Cart</literal>클래스를 먼저 선언해야 할것이다.
+     <literal>Named_Cart</literal>클래스에 기반한 다른 클래스 <literal>Yellow_named_cart</literal>
+     를 생성하고자 한다면 <literal>Named_Cart</literal>클래스를 먼저 선언해야 한다.
+     짧게 말해서: 클래스가 선언되는 순서는 중요하다.
     </para>
    </note>
   </sect1>
@@ -317,26 +300,24 @@ $ncart->add_item("10", 1);  // (inherited functionality from cart)
 
    <caution>
     <simpara>
-     In PHP 3 and PHP 4 constructors behave differently. The PHP 4
-     semantics are strongly preferred.
+     PHP 3와 PHP 4에서 생성자(constructor)는 서로 다르게 동작한다.
+     PHP 4의 문법이 강력히 선호된다.
     </simpara>
    </caution>
 
    <para>
-    Constructors are functions in a class that are automatically
-    called when you create a new instance of a class with
-    <literal>new</literal>. In PHP 3, a
-    function becomes a constructor when it has the same name as 
-    the class. In PHP 4, a function becomes a constructor, when
-    it has the same name as the class it is defined in - the
-    difference is subtle, but crucial (see below).
+    생성자는 <literal>new</literal>를 사용하여 클래스의 새 인스턴스를
+    생성할때 자동으로 호출되는 클래스 내의 함수이다. PHP 3에서는 클래스의
+    이름과 동일한 함수가 생성자가 된다. PHP 4에서는 클래스가 선언될때의
+    클래스명과 동일한 이름을 갖는 함수가 생성자가 된다. - 차이는 
+    미묘하지만 매우 중요하다 (아래 글을 볼것).
    </para>
  
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-// Works in PHP 3 and PHP 4.
+// PHP 3와  PHP 4에서 작동함
 class Auto_Cart extends Cart
 {
     function Auto_Cart()
@@ -350,20 +331,19 @@ class Auto_Cart extends Cart
    </informalexample>
  
    <para>
-    This defines a class Auto_Cart that is a Cart plus a constructor
-    which initializes the cart with one item of article number "10"
-    each time a new Auto_Cart is being made with "new". Constructors
-    can take arguments and these arguments can be optional, which
-    makes them much more useful. To be able to still use the class
-    without parameters, all parameters to constructors should be
-    made optional by providing default values.
+    위 코드는 Cart와 같은 Auto_Cart 클래스를 선언하고
+    "new"로 새로운 Auto_Cart가 생성될때마다 상품번호 "10"인
+    아이템 하나를 갖는 카트로 초기화하는 생성자를 만든다.
+    생성자는 인자를 취할수 있고 이런 인자로 인해 생성자를 더 유용하게
+    만들어주지만 없을수도 있다. 인자가 없는 클래스를 사용하려면 
+    생성자의 모든 인자는 기본값을 제공함으로써 선택적일수 있다.
    </para>
  
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-// Works in PHP 3 and PHP 4.
+// PHP 3와 PHP 4에서 동작함.
 class Constructor_Cart extends Cart
 {
     function Constructor_Cart($item = "10", $num = 1)
@@ -385,16 +365,15 @@ $different_cart = new Constructor_Cart("20", 17);
    </informalexample>
 
    <para>
-    You also can use the <literal>@</literal> operator to
-    <emphasis>mute</emphasis> errors occuring in the constructor, e.g.
-    <literal>@new</literal>.
+    생성자에서 발생할수 있는 에러 메시지를 <emphasis>보이지 않게</emphasis>
+    하려면 <literal>@</literal>연산자를 사용할수 있다.즉,
+    <literal>@new</literal>를 쓸수 있다.
    </para>
 
    <caution>
     <simpara>
-     In PHP 3, derived classes and constructors have a number of
-     limitations. The following examples should be read carefully
-     to understand these limitations.
+     PHP 3에서 파생 클래스와 생성자는 많은 제약을 갖는다.
+     다음 예제 코드는 이런 제약을 이해하기 위해 주의깊게 봐야할것이다.
     </simpara> 
    </caution>
    
@@ -418,7 +397,7 @@ class B extends A
     }
 }
 
-// no constructor is being called in PHP 3.
+// PHP 3에서는 어떤 생성자도 호출되지 않는다.
 $b = new B;
 ?>
 ]]>
@@ -426,17 +405,16 @@ $b = new B;
    </informalexample>
 
    <para>
-    In PHP 3, no constructor is being called in the above example.
-    The rule in PHP 3 is: 'A constructor is a function of the same
-    name as the class.'. The name of the class is B, and there is
-    no function called B() in class B. Nothing happens.
+    위 예제 코드는 PHP 3에서 어떤 생성자도 호출되지 않는다. PHP 3의
+    규칙은 : '생성자는 클래스와 같은 이름을 갖는 함수이다'. 클래스명 
+    이 B이고 이 클래스에서는 B()함수가 없으므로 아무일도 일어나지 않는다.
    </para>
    
    <para>
-    This is fixed in PHP 4 by introducing another rule: If a class
-    has no constructor, the constructor of the base class is being
-    called, if it exists. The above example would have printed
-    'I am the constructor of A.&lt;br>' in PHP 4.
+    PHP 4에서는 다른 규칙이 적용되어서 이런 규칙이 고쳐졌다: 클래스가
+    생성자를 갖지 않을때, 원래 클래스에서 생성자가 존재하면 그 생성자가 
+    호출된다. 위 예제 코드는 PHP 4에서 'I am the constructor of A.&lt;br>'
+    를 출력할것이다.
    </para>
 
    <informalexample>
@@ -473,43 +451,39 @@ $b = new B;
    </informalexample>
    
    <para>
-    In PHP 3, the function B() in class A will suddenly become a
-    constructor in class B, although it was never intended to be.
-    The rule in PHP 3 is: 'A constructor is a function of the same
-    name as the class.'. PHP 3 does not care if the function is
-    being defined in class B, or if it has been inherited.
+    PHP 3에서 클래스 A의 함수 B()는 의도하지 않았을지라도 즉시 
+    클래스 B의 생성자가 될것이다. PHP 3의 규칙: '생성자는 클래스와 
+    같은 이름을 갖는 함수이다'. PHP 3에서는 그 함수가 클래스 B에서
+    선언되었는지 또는 거기서 상속되었는지는 상관하지 않는다.
    </para>
    
    <para>
-    This is fixed in PHP 4 by modifying the rule to: 'A constructor
-    is a function of the same name as the class it is being defined
-    in.'. Thus in PHP 4, the class B would have no constructor function
-    of its own and the constructor of the base class would have been
-    called, printing 'I am the constructor of A.&lt;br>'.
+    이런 규칙은 PHP 4에서 다음과 같이 고쳐졌다: '생성자는 그것이 선언
+    된 클래스와 같은 이름을 갖는 함수이다'. 따라서 PHP 4는 클래스 B
+    가 생성자를 갖지 않으므로 원래 클래스의 생성자가 호출되어서
+    'I am the constructor of A.&lt;br>'를 출력한다.
    </para>
    
    <caution>
     <simpara>
-     Neither PHP 3 nor PHP 4 call constructors of the base class 
-     automatically from a constructor of a derived class. It is
-     your responsibility to propagate the call to constructors
-     upstream where appropriate.
+     PHP 3와 PHP 4 모두 파생 클래스의 생성자에서 자동으로 원래
+     클래스의 생성자를 호출하지 않는다. 적절한 상단의 생성자 호출을 
+     전달할 책임은 당신에게 달려있다.
     </simpara>
    </caution>
    
    <note>
     <simpara>
-     There are no destructors in PHP 3 or PHP 4. You may use
-     <function>register_shutdown_function</function> instead
-     to simulate most effects of destructors.
+     PHP 3나 PHP 4에서는 소멸자(destructor)를 지원하지 않는다. 대신 이런
+     소멸자의 기능을 수행하기 위해 <function>register_shutdown_function</function>
+     함수를 사용할수 있다.
     </simpara>
    </note>
    
    <para>
-    Destructors are functions that are called automatically
-    when an object is destroyed, either with <function>unset</function>
-    or by simply going out of scope. There are no destructors
-    in PHP.
+    소멸자는 객체가 파괴될때, <function>unset</function>함수로, 
+    단순히 현재 영역을 벗어남으로써 자동으로 호출되는 함수이다.
+    PHP에서는 소멸자가 없다.
    </para>
   </sect1>
 
@@ -518,15 +492,14 @@ $b = new B;
 
    <caution>
     <simpara>
-     The following is valid for PHP 4 and later only.
+     다음은 PHP 4 이후에서만 적용되는 글이다.
     </simpara>
    </caution>
 
    <para>
-    Sometimes it is useful to refer to functions and variables
-    in base classes or to refer to functions in classes that
-    have not yet any instances. The :: operator is being used
-    for this.
+    때때로 원래 클래스의 함수와 변수를 참조하거나 아직 어떤 
+    인스턴스도 갖지 않는 클래스의 함수를 참조할 필요가 있다.
+    이런 목적으로 :: 연산자를 사용한다.
    </para>
    
    <informalexample>
@@ -550,15 +523,15 @@ class B extends A
     }
 }
 
-// there is no object of class A.
-// this will print
-//   I am the original function A::example().<br>
+// 여기서는 클래스 A의 객체가 존재하지 않는다.
+// 이 코드는
+//   I am the original function A::example().<br>를 출력한다.
 A::example();
 
-// create an object of class B.
+// B 클래스의 객체를 생성한다.
 $b = new B;
 
-// this will print 
+// 여기서는 다음과 같이 출력할것이다.
 //   I am the redefined function B::example().<br>
 //   I am the original function A::example().<br>
 $b->example();
@@ -568,36 +541,32 @@ $b->example();
    </informalexample>
 
    <para>
-    The above example calls the function example() in
-    class A, but there is no object of class A, so that
-    we cannot write $a->example() or similar. Instead we
-    call example() as a 'class function', that is, as a
-    function of the class itself, not any object of that
-    class.
+    위 예제 코드는 클래스 A의 함수 example()이 호출된다.
+    그러나 클래스 A의 객체가 존재하지 않는다. 그래서 
+    $a->example()와 비슷한 코드를 쓸수 없다. 대신에 
+    '클래스 함수'인 example()을 호출한다. 즉, 그 클래스의
+    객체가 아니라 클래스 자체의 함수를 호출하는 것이다.
    </para>
    
    <para>
-    There are class functions, but there are no class variables.
-    In fact, there is no object at all at the time of the call.
-    Thus, a class function may not use any object variables (but
-    it can use local and global variables), and it may no use
-    <varname>$this</varname> at all.
+    클래스 함수는 존재하지만, 클래스 변수는 존재하지 않는다. 실제로, 호출의
+    모든 시간동안 전혀 객체가 없었고 따라서, 클래스 함수는 어떤 객체 변수도
+    사용할수 없다 (그러나 로컬 변수와 전역 변수는 사용할수 있다) 
+    그래서 <varname>$this</varname>를 전혀 사용하지 않는다.
    </para>
 
    <para>
-    In the above example, class B redefines the function example(). 
-    The original definition in class A is shadowed
-    and no longer available, unless you are refering specifically
-    to the implementation of example() in class A using the 
-    ::-operator. Write A::example() to do this (in fact, you
-    should be writing parent::example(), as shown in the next
-    section).
+    위 예제 코드에서 클래스 B는 함수 example()을 재선언한다. ::을 사용하여
+    클래스 A의 example 구현에 대해 특별히 참조하지 않으면, 클래스 A의
+    원래 선언은 가려지게 되고 더이상 가용하지 않다. 이와 같이 하려면
+    A::example()라고 써야 한다 (다음섹션에서 설명한대로 parent::example()
+    라고 써야 한다).
    </para>
    
    <para>
-    In this context, there is a current object and it may have object
-    variables. Thus, when used from WITHIN an object function, you may use
-    <varname>$this</varname> and object variables.
+    이런 환경에서는 현재 객체가 있고 그 객체는 객체 변수를 갖을수도 있다.
+    따라서 객체 함수 안에서 사용할때에는 <varname>$this</varname>와 
+    객체 변수를 사용해야 할것이다.
    </para>
 
  </sect1>
@@ -606,22 +575,18 @@ $b->example();
    <title><literal>parent</literal></title>
 
   <para>
-   You may find yourself writing code that refers to
-   variables and functions in base classes. This is
-   particularly true if your derived class is a refinement
-   or specialisation of code in your base class. 
+   원래 클래스의 변수와 함수를 참조하는 코드를 짜야할 필요가 생길수 있다.
+   파생 클래스가 세밀하게 고안되었거나 원래 클래스의 코드에서 특수화되어
+   있는경우에는 더욱 그럴 필요성이 생긴다.
   </para>
   
   <para>
-   Instead of using the literal name of the base class in your
-   code, you should be using the special name
-   <literal>parent</literal>, which refers to the name of your
-   base class as given in the <literal>extends</literal>
-   declaration of your class. By doing this, you avoid using the
-   name of your base class in more than one place. Should
-   your inheritance tree change during implementation, the
-   change is easily made by simply changing the 
-   <literal>extends</literal> declaration of your class.
+   코드에서 원래 클래스명을 사용하는 대신에, 특별한 이름 <literal>parent</literal>
+   을 사용해야 한다. 이 용어는 현재 클래스의 <literal>extends</literal>선언
+   안에 주어진 원래 클래스에 대한 참조한다는 의미를 갖는다. 이렇게 씀으로써
+   여러 곳에서 원래 클래스명을 쓰는것을 피할수 있다. 구현중에 상속이 세번
+   바뀌게 되면, 단순히 현재 클래스의 <literal>extends</literal>선언을
+   바꾸기만 하면 된다.
   </para>
 
   <informalexample>
