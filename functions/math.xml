@@ -505,7 +505,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-	<parameter>number</parameter>보다 작거나 같은 가장 작은 정수를 반환한다.
+				<parameter>number</parameter>보다 작거나 같은 가장 작은 정수를 반환한다.
 	<function>floor</function>에 정수를 사용하는 것은 시간 낭비일 뿐이다.
     </simpara>
 			<simpara>
@@ -513,7 +513,7 @@ $x = ceil(4.25);
 	이 버젼의 효과를 내기 위해 <literal>$new = (double)floor($number);</literal>를 사용하라.
     </simpara>
 			<simpara>
-     <function>ceil</function> 그리고
+				<function>ceil</function> 그리고
      <function>round</function>를 참고하라.
     </simpara>
 		</refsect1>
@@ -533,10 +533,10 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-	<function>rand</function> 함수의 호출에 의해 받을 수 있는 가장 큰 값을 반환한다.
+				<function>rand</function> 함수의 호출에 의해 받을 수 있는 가장 큰 값을 반환한다.
     </simpara>
 			<simpara>
-     <function>rand</function>, <function>srand</function>,
+				<function>rand</function>, <function>srand</function>,
      <function>mt_rand</function>, <function>mt_srand</function>, 그리고
      <function>mt_getrandmax</function>을 참고하라.
     </simpara>
@@ -563,7 +563,7 @@ $x = ceil(4.25);
 	변환될 수 있는 가장 큰 수는 7fffffff 이거나 10진수로 2147483647 이다.
     </para>
 			<para>
-     <function>dechex</function>함수를 참고하라.
+				<function>dechex</function>함수를 참고하라.
     </para>
 		</refsect1>
 	</refentry>
@@ -582,7 +582,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<function>lcg_value</function>는 (0, 1) 사이의 의사 랜덤 숫자(pseudo number)를 반환한다.
+				<function>lcg_value</function>는 (0, 1) 사이의 의사 랜덤 숫자(pseudo number)를 반환한다.
 	이 함수는 2^31 - 85 와 2^31 - 249 사이의 두개의 CG를 조합한다. 
 	이 함수의 구간은 두 소수의 산물과 일치한다.
 	(The period of this function is equal to the product of both primes.)
@@ -625,7 +625,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<parameter>arg</parameter>의 사용로그 값을 반환한다.
+				<parameter>arg</parameter>의 사용로그 값을 반환한다.
     </para>
 		</refsect1>
 	</refentry>
@@ -649,7 +649,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<function>max</function>는 매개 변수의 값 중 숫자로 표시되는 가장 큰 값을 반환한다.
+				<function>max</function>는 매개 변수의 값 중 숫자로 표시되는 가장 큰 값을 반환한다.
     </para>
 			<para>
 	처음 매개변수가 배열이라면, <function>max</function>는
@@ -686,7 +686,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<function>Min</function>는 매개변수의 값 중 숫자로 표시되는 가장 작은 값을 반환한다.
+				<function>Min</function>는 매개변수의 값 중 숫자로 표시되는 가장 작은 값을 반환한다.
     </para>
 			<para>
 	처음 매개변수가 배열이라면, <function>min</function>은
@@ -728,46 +728,40 @@ $x = ceil(4.25);
 			</funcsynopsis>
 			<simpara>
 	예전 libc의 많은 난수 생성기는 모호하거나 혹은
-	unknown characteristics를 갖고 있으며 느리다.
+	unknown characteristics를 갖고 있으며 느렸었다.
 	기본적으로 PHP의 <function>rand</function>함수는
 	libc 난수 생성기를 사용한다.
 	<function>mt_rand</function> 함수는 이를 위한
 	드롭-인 교체(drop-in replacement) 이다.
-	이 함수는 난수 발생기로 known characteristics를 사용하며,  
-     Many random number generators of older libcs have or	
-     unknown characteristics and are slow. By default, PHP uses the
-     libc random number generator with the <function>rand</function>
-     function.  <function>mt_rand</function> function is a drop-in
-     replacement for this.  It uses a random number generator with
-     known characteristics, the Mersenne Twister, which will produce
-     random numbers that should be suitable for seeding some kinds
-     of cryptography (see the home pages for details) and is four
-     times faster than what the average libc provides. The Homepage
-     of the Mersenne Twister can be found at
-     <ulink url="&url.mersenne;">&url.mersenne;</ulink>, and an
-     optimized version of the MT source is available from
-     <ulink url="&url.mersenne.twister;">&url.mersenne.twister;
-     </ulink>.
+	이 함수는 난수 발생기로 known characteristics인
+	 the Mersenne Twister를 사용하는데 이는
+	몇몇 종류의 암호문을 seed하는데 쉽고(더 자세한 내용은
+	홈페이지를 참고하라), libc가 제공하는 것보다 네배나 빠르다.
+	Mersenne Twister의 홈페이지는 
+	<ulink url="&url.mersenne;">&url.mersenne;</ulink>이며,
+	최적화된 MT의 소스는 
+	<ulink url="&url.mersenne.twister;">&url.mersenne.twister;</ulink>에서
+	얻을 수 있다.
     </simpara>
 			<simpara>
-     If called without the optional <parameter>min</parameter>,
-     <parameter>max</parameter> arguments <function>mt_rand</function>
-     returns a pseudo-random value between 0 and
-     <constant>RAND_MAX</constant>.  If you want a random number
-     between 5 and 15 (inclusive), for example, use <literal>mt_rand
-     (5, 15)</literal>.
+	선택적 매개변수인 <parameter>min</parameter>과 
+	<parameter>max</parameter>인수 없이 호출되면, 
+	<function>mt_rand</function>는 0 과 <constant>RAND_MAX</constant>
+	사이의 의사-랜덤 변수를 반환한다.
+	만약 예를 들어 5보다 크거나 같고 15보다 작거나 같은 범위의 난수를
+	원한다면, <literal>mt_rand (5,15)</literal>를 사용하라.
     </simpara>
 			<simpara>
-     Remember to seed the random number generator before use with
+	이 함수를 사용하기 전에 난수 발생기(random number generator)를 
+	선언하는 것을 잊지 말라.
      <function>mt_srand</function>.
     </simpara>
 			<note>
 				<para>
-      In versions before 3.0.7 the meaning of
-      <parameter>max</parameter> was <parameter>range</parameter>. To
-      get the same results in these versions the short example should
-      be <literal>mt_rand (5, 11)</literal> to get a random number
-      between 5 and 15.
+	3.0.7 이전 버젼에서의 <parameter>max</parameter>의 
+	의미는 <parameter>range</parameter>였다.
+	이 버젼에서 5와 15 사이의 난수를 얻기 위해
+	<literal>rand (5, 11)</literal> 가 사용된다.
      </para>
 			</note>
 			<simpara>
@@ -780,10 +774,10 @@ $x = ceil(4.25);
 	<refentry id="function.mt-srand">
 		<refnamediv>
 			<refname>mt_srand</refname>
-			<refpurpose>Seed the better random number generator</refpurpose>
+			<refpurpose>더 낳은 난수 발생기를 심는다.</refpurpose>
 		</refnamediv>
 		<refsect1>
-			<title>Description</title>
+			<title>설명</title>
 			<funcsynopsis>
 				<funcprototype>
 					<funcdef>void <function>mt_srand</function>
@@ -793,8 +787,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     Seeds the random number generator with
-     <parameter>seed</parameter>.
+	<parameter>seed</parameter>로 난수 발생기를 심는다.
      <informalexample>
 					<programlisting role="php">
 // seed with microseconds since last "whole" second
@@ -804,10 +797,10 @@ $randval = mt_rand();
 				</informalexample>
 			</para>
 			<simpara>
-     See also <function>mt_rand</function>,
+      <function>mt_rand</function>,
      <function>mt_getrandmax</function>, <function>srand</function>,
-     <function>rand</function>, and
-     <function>getrandmax</function>.
+     <function>rand</function>, 그리고
+     <function>getrandmax</function>를 참고하라.
     </simpara>
 		</refsect1>
 	</refentry>
@@ -826,10 +819,10 @@ $randval = mt_rand();
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-	<function>mt_rand</function>의 호출에 의해 반환될 수 있는 가장 큰 값을 반환한다.
+				<function>mt_rand</function>의 호출에 의해 반환될 수 있는 가장 큰 값을 반환한다.
     </simpara>
 			<simpara>
-     <function>mt_rand</function>,
+				<function>mt_rand</function>,
      <function>mt_srand</function>
 				<function>rand</function>,
      <function>srand</function>, 그리고
@@ -859,7 +852,7 @@ $randval = mt_rand();
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<function>Number_format</function>은 <parameter>number</parameter>의 정형화된 형테를 반환한다.
+				<function>Number_format</function>은 <parameter>number</parameter>의 정형화된 형테를 반환한다.
 	이 함수는 하나, 두개 혹은 네개(세개는 올 수 없다.)의 매개변수를 가질 수 있다.
     </para>
 			<para>
@@ -902,7 +895,7 @@ $randval = mt_rand();
 	변환될 수 있는 가장 큰 값은 17777777777 혹은 10진수로 2147483647 이다.
     </para>
 			<para>
-     <function>decoct</function>를 참고하라.
+				<function>decoct</function>를 참고하라.
     </para>
 		</refsect1>
 	</refentry>
@@ -943,10 +936,10 @@ $randval = mt_rand();
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<parameter>base</parameter>의 <parameter>exp</parameter>승 값을 반환한다.
+				<parameter>base</parameter>의 <parameter>exp</parameter>승 값을 반환한다.
     </para>
-			<para> 
-     <function>exp</function>을 참고하라.
+			<para>
+				<function>exp</function>을 참고하라.
     </para>
 		</refsect1>
 	</refentry>
@@ -971,7 +964,7 @@ $randval = mt_rand();
 	이 함수는 <parameter>number</parameter>을 라디안에서 각도로 변환한다.
     </para>
 			<para>
-     <function>deg2rad</function>을 참고하라.
+				<function>deg2rad</function>을 참고하라.
     </para>
 		</refsect1>
 	</refentry>
@@ -999,32 +992,31 @@ $randval = mt_rand();
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-	<parameter>min</parameter>없이 호출되면, 
-     If called without the optional <parameter>min</parameter>,
-     <parameter>max</parameter> arguments <function>rand</function>
-     returns a pseudo-random value between 0 and
-     <constant>RAND_MAX</constant>.  If you want a random number
-     between 5 and 15 (inclusive), for example, use <literal>rand (5,
-     15)</literal>. 
+	선택적 매개변수인 <parameter>min</parameter>과 
+	<parameter>max</parameter>인수 없이 호출되면, 
+	<function>rand</function>는 0 과 <constant>RAND_MAX</constant>
+	사이의 의사-랜덤 변수를 반환한다.
+	만약 예를 들어 5보다 크거나 같고 15보다 작거나 같은 범위의 난수를
+	원한다면, <literal>rand (5,15)</literal>를 사용하라.
     </simpara>
 			<simpara>
-     Remember to seed the random number generator before use with
+	이 함수를 사용하기 전에 난수 발생기(random number generator)를 
+	선언하는 것을 잊지 말라.
      <function>srand</function>.
     </simpara>
 			<note>
 				<para>
-      In versions before 3.0.7 the meaning of
-      <parameter>max</parameter> was <parameter>range</parameter>. To
-      get the same results in these versions the short example should
-      be <literal>rand (5, 11)</literal> to get a random number
-      between 5 and 15.
+	3.0.7 이전 버젼에서의 <parameter>max</parameter>의 
+	의미는 <parameter>range</parameter>였다.
+	이 버젼에서 5와 15 사이의 난수를 얻기 위해
+	<literal>rand (5, 11)</literal> 가 사용된다.
      </para>
 			</note>
 			<simpara>
-     See also <function>srand</function>,
+     <function>srand</function>,
      <function>getrandmax</function>, <function>mt_rand</function>,
-     <function>mt_srand</function>, and
-     <function>mt_getrandmax</function>.
+     <function>mt_srand</function>, 그리고
+     <function>mt_getrandmax</function>를 참고하라.
     </simpara>
 		</refsect1>
 	</refentry>
@@ -1062,12 +1054,12 @@ $foo = round (1.95583, 2);  // $foo == 1.96
 				</informalexample>
 			</para>
 			<note>
-				<simpara> 
-			<parameter>precision</parameter> 는 PHP 4 에서만 유용하다.
+				<simpara>
+					<parameter>precision</parameter> 는 PHP 4 에서만 유용하다.
 		 </simpara>
 			</note>
 			<simpara>
-     <function>ceil</function> 그리고
+				<function>ceil</function> 그리고
      <function>floor</function>을 참고하라.
     </simpara>
 		</refsect1>
@@ -1091,7 +1083,7 @@ $foo = round (1.95583, 2);  // $foo == 1.96
 	arg의 사인값을 라디안으로 반환한다.
     </para>
 			<para>
-     <function>cos</function> 그리고 <function>tan</function>을 참고하라.
+				<function>cos</function> 그리고 <function>tan</function>을 참고하라.
     </para>
 		</refsect1>
 	</refentry>
@@ -1111,17 +1103,17 @@ $foo = round (1.95583, 2);  // $foo == 1.96
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<parameter>arg</parameter>의 평방제곱근을 반환한다.
+				<parameter>arg</parameter>의 평방제곱근을 반환한다.
     </para>
 		</refsect1>
 	</refentry>
 	<refentry id="function.srand">
 		<refnamediv>
 			<refname>srand</refname>
-			<refpurpose>Seed the random number generator</refpurpose>
+			<refpurpose>난수 발생기(random number generator)를 심는다(?-seed)</refpurpose>
 		</refnamediv>
 		<refsect1>
-			<title>Description</title>
+			<title>설명</title>
 			<funcsynopsis>
 				<funcprototype>
 					<funcdef>void <function>srand</function>
@@ -1131,8 +1123,7 @@ $foo = round (1.95583, 2);  // $foo == 1.96
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     Seeds the random number generator with
-     <parameter>seed</parameter>.
+	<parameter>seed</parameter>로 난수발생기를 심는다.
      <informalexample>
 					<programlisting role="php">
 // seed with microseconds since last "whole" second
@@ -1142,20 +1133,20 @@ $randval = rand();
 				</informalexample>
 			</para>
 			<simpara>
-     See also <function>rand</function>,
+     <function>rand</function>,
      <function>getrandmax</function>, <function>mt_rand</function>,
-     <function>mt_srand</function>, and
-     <function>mt_getrandmax</function>.
+     <function>mt_srand</function>, 그리고
+     <function>mt_getrandmax</function>를 참고하라.
     </simpara>
 		</refsect1>
 	</refentry>
 	<refentry id="function.tan">
 		<refnamediv>
 			<refname>tan</refname>
-			<refpurpose>Tangent</refpurpose>
+			<refpurpose>탄젠트</refpurpose>
 		</refnamediv>
 		<refsect1>
-			<title>Description</title>
+			<title>설명</title>
 			<funcsynopsis>
 				<funcprototype>
 					<funcdef>float <function>tan</function>
@@ -1165,10 +1156,10 @@ $randval = rand();
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     Returns the tangent of arg in radians.
+	arg의 탄젠트 값을 라디안으로 반환한다.
     </para>
 			<para>
-     See also <function>sin</function> and <function>cos</function>.
+     <function>sin</function> and <function>cos</function>을 참고하라.
     </para>
 		</refsect1>
 	</refentry>
