@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
+<!-- $Revision: 1.7 $ -->
 <!-- EN-Revision: 1.51 -->
  <chapter id="language.operators">
   <title>연산자</title>
@@ -422,7 +422,6 @@ if (empty($_POST['action'])) {
    <simpara>
     PHP는 에러 제어 연산자를 지원한다: 앳 부호 (@). PHP에서 표현식의
     앞에 덧붙이면, 그 표현식에서 발생할수 있는 에러 메시지가 출력되지 않도록 한다.
-   <simpara>
     <link linkend="ini.track-errors">track_errors</link> 기능은 활성화되어있으면,
     표현식에서 발생하는 모든 에러는 
     <link linkend="reserved.variables.phperrormsg">$php_errormsg</link>변수에
