@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.1 $ -->
+<!-- EN-Revision: 1.21 -->
+ <chapter id="faq.html">
+  <title>PHP와 HTML</title>
+  <titleabbrev>PHP와 HTML</titleabbrev>
+
+  <para>
+   PHP와 HTML은 많은 연관성을 가지고 있습니다: PHP는 HTML을 생성할 수있고,
+   HTML은 PHP로 정보를 넘겨줄수 있습니다. 이 faq를 읽기전에
+   <link linkend="language.variables.external">PHP로 변수를 가져오는 방법</link>을
+   아는것이 필요합니다. 이 주제에 관한 매뉴얼 페이지는 많은 예제도 포함되있습니다.
+   <literal>register_globals</literal>가 무슨 의미인지도 알아야 합니다.
+  </para>
+
+  <qandaset>
+   <qandaentry id="faq.html.encoding">
+    <question>
+     <para>
+      폼/URL을 통해서 변수를 넘겨줄때 인코딩(encoding)/디코딩(decoding)이 필요합니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      어떤 인코딩을 써야 하는지에 대해서 여러 경우가 존재합니다.
+      <type>string</type> <varname>$data</varname>라는 변수를 사용한다고 가정하면
+      그리고 그 스트링의 값을 인코딩되는 않는 방식으로 넘겨주길 원하면, 다음과 같은
+      경우가 있습니다.
+      <itemizedlist>
+       <listitem>
+        <para>
+         HTML 해석. 랜덤한 스트링을 지정하려면, <emphasis>반드시</emphasis>
+         큰 따옴표로 막아줘야 합니다. 그리고 그 값을 <function>htmlspecialchars</function>함수로
+         처리합니다.
+        </para>
+       </listitem>
+       <listitem>
+        <para>
+         URL: URL은 여러 부분으로 구성됩니다. 이 값전체를 하나의 항목으로 해석하길 원한다면,
+         <emphasis>반드시</emphasis> <function>urlencode</function>함수로 인코딩해야합니다.
+        </para>
+       </listitem>
+      </itemizedlist>
+     </para>
+     <para>
+      <example>
+       <title>숨겨진 HTML 폼의 엘리먼트(element)</title>
+        <programlisting role="php">
+<![CDATA[
+<?php
+    echo "<input type=hidden value=\"" . htmlspecialchars($data) . "\">\n";
+?>
+]]>
+        </programlisting>
+      </example>
+      <note>
+       <simpara>
+        <varname>$data</varname>를 <function>urlencode</function>함수로 처리하는것은
+        잘못된것입니다. 왜냐하면 그 데이터를 <function>urlencode</function>
+        처리할 책임은 브라우저에 있기 때문입니다. 많이 사용되는 브라우저는
+        정확하게 이와같은 일을 처리합니다. 이와같은 일은 메소드(method) 
+        (즉, GET이나 POST)에 따라 발생한다는것을 명심하세요. GET 요구의 경우에만 
+        이 일을 처리합니다. POST 요구일때는 숨겨지기때문입니다.
+       </simpara>
+      </note>
+      <example>
+       <title>유저에 의해 조장되는 데이터</title>
+        <programlisting role="php">
+<![CDATA[
+<?php
+    echo "<textarea name=mydata>\n";
+    echo htmlspecialchars($data)."\n";
+    echo "</textarea>";
+?>
+]]>
+        </programlisting>
+      </example>
+      <note>
+       <simpara>
+        이 데이터는 브라우저에 의해 보여집니다. 왜냐하면 브라우저는 HTML 회피문자(escaped symbol)를
+        해석할것이기 때문입니다.
+       </simpara>
+       <simpara>
+        폼을 GET이나 POST로 보낼때, 데이터는 전송중에 브라우저에 의해 urlencode되고,
+        PHP에 의해 직접적으로 urldecode될것입니다. 그래서 결국에는 urlencoding/urldecoding할
+        필요가 없는것입니다. 모든것은 자동적인 처리됩니다.
+       </simpara>
+      </note>
+      <example>
+       <title>URL내에서</title>
+        <programlisting role="php">
+<![CDATA[
+<?php
+    echo "<a href=\"" . htmlspecialchars("/nextpage.php?stage=23&data=" .
+        urlencode($data)) . "\">\n";
+?>
+]]>
+        </programlisting>
+      </example>
+      <note>
+       <simpara>
+        사실 HTML GET 요구처럼 보이게 하는것이므로 이 데이터는 
+        <function>urlencode</function>를 할 필요가 있습니다.
+       </simpara>
+      </note>
+      <note>
+       <simpara>
+        URL은 HTML속성 값으로 만들어지기 때문에 전체 URL을 
+        <function>htmlspecialchars</function>함수로 처리해야 합니다.
+        이 경우에 브라우저는 처음에 이 값을 un-<function>htmlspecialchars</function>로 
+        처리하고나서 URL을 넘겨주게 됩니다. PHP는 URL을 정확하게 이해할것입니다.
+        왜냐하면 그 데이터를 <function>urlencoded</function>처리했기 때문입니다.
+       </simpara>
+       <simpara>
+        URL에서 <literal>&amp;</literal>는 <literal>&amp;amp;</literal>로 변환이
+        된다는것을 명심해야 합니다. 이것을 잊었다고 하더라도 대부분의 브라우저는
+        제대로 처리하겠지만, 항상 그렇지는 않습니다. 그래서 URL이 동적이지 않더라도
+        URL을 <emphasis>반드시</emphasis> <function>htmlspecialchars</function>처리해야
+        할 것입니다.
+       </simpara>
+      </note>
+     </para>
+     <!-- TODO: a note about addgpcslashes? -->
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.html.form-image">
+    <question>
+     <para>
+      &lt;input type="image"&gt;태그를 사용하려 합니다. 그런데
+      <varname>$foo.x</varname>과 <varname>$foo.y</varname>변수를 사용할수 없습니다.
+      <varname>$_GET['foo.x']</varname>도 존재하지 않습니다. 그것들은 어디 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      폼을 보낼때 표준 submit 버튼을 사용하는 대신에 image버튼을 사용할수 있습니다
+      <programlisting role="html">
+<![CDATA[
+<input type="image" src="image.gif" name="foo">
+]]>
+      </programlisting>
+      유저가 image버튼을 클릭할때, 수행 폼은 추가적인 변수:
+      <varname>foo.x</varname>와 <varname>foo.y</varname>을 보낼것입니다.
+     </para>
+     <para>
+      <varname>foo.x</varname>와 <varname>foo.y</varname>변수명은 PHP내에서 
+      유효하지 않은 변수이기 때문에, 자동적으로
+      <varname>foo_x</varname>와 <varname>foo_y</varname>변수명으로 바뀝니다.
+      즉, 밑줄(underscore)로 변경이 됩니다. 그래서 
+      <link linkend="language.variables.external">PHP로 변수를 가져오는 방법</link>에서
+      설명된것처럼 다른 방법으로 이 변수를 이용할수 있습니다. 예를 들면
+      <varname>$_GET['foo_x']</varname>과 같습니다.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.html.arrays">
+    <question>
+     <para>&lt;form&gt; 안에 어떻게 배열을 만들수 있습니까?</para>
+    </question>
+    <answer>
+     <para>
+      To get your &lt;form&gt; result sent as an 
+      <link linkend="language.types.array">array</link> to your PHP script
+      you name the &lt;input&gt;, &lt;select&gt; or &lt;textarea&gt;
+      elements like this:
+      
+      PHP스크립트에 <link linkend="language.types.array">배열</link>을 보내는
+      &lt;form&gt;을 만들려면 
+      &lt;input&gt;, &lt;select&gt; 또는 &lt;textarea&gt; 엘리먼트를 다음처럼
+      이름을 붙여봅니다:
+      <programlisting role="html">
+<![CDATA[
+<input name="MyArray[]">
+<input name="MyArray[]">
+<input name="MyArray[]">
+<input name="MyArray[]">
+]]>
+      </programlisting>
+      변수명의 다음에 대괄호가 있습니다. 그것이 이 변수를 배열로 만들어줍니다.
+      다른 엘리먼트에 같은 이름을 부여함으로써 그 엘리먼트를 다른 배열로 
+      그룹화할수 있습니다:
+      <programlisting role="html">
+<![CDATA[
+<input name="MyArray[]">
+<input name="MyArray[]">
+<input name="MyOtherArray[]">
+<input name="MyOtherArray[]">
+]]>
+      </programlisting>
+      이것은 두 배열을 만들어냅니다. MyArray와 MyOtherArray배열은 PHP 스크립트로
+      보내집니다. 또한 배열에 특정 키값을 지정할수 있습니다:
+      <programlisting role="html">
+<![CDATA[
+<input name="AnotherArray[]">
+<input name="AnotherArray[]">
+<input name="AnotherArray[email]">
+<input name="AnotherArray[phone]">
+]]>
+      </programlisting>
+      AnotherArray배열은 0, 1의 키와 email과 phone키를 내포하게 됩니다.
+      </para>
+      <para>
+       <note>
+        <para>
+     배열의 키는 HTML에서는 추가적인 특성입니다. 키로 지정하지 않으면
+     배열은 폼에 보여지는 엘리먼트 순서값으로 채워집니다. 첫번째 예제에서는
+     0, 1, 2, 3이 키값이 됩니다.
+        </para>
+       </note>
+      </para>
+      <para>
+      <link linkend="ref.array">배열 함수</link>
+      <link linkend="language.variables.external">PHP로 변수를 가져오는 방법</link>를 참고하세요.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.html.select-multiple">
+    <question>
+     <para>
+      How do I get all the results from a select multiple HTML tag?
+      다중 선택 (select multiple) HTML 태그에서 어떻게 모든값을 가져올수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      The select multiple tag in an HTML construct allows users to
+      select multiple items from a list. These items are then passed
+      to the action handler for the form. The problem is that they
+      are all passed with the same widget name. ie.
+      다중 선택 (select multiple)태그는 리스트 중에서 여러 아이템을
+      선택할수있게 합니다. 이 아이템들은 폼의 액션 핸들러로 보내집니다.
+      문제는 그들이 같은 위젯(widget)명으로 전달이 된다는 것입니다.
+      <programlisting role="html">
+<![CDATA[
+<select name="var" multiple>
+]]>
+      </programlisting>
+      선택된 각 옵션(option)값은 액션 핸들러에 다음처럼 도착합니다:
+      <programlisting>
+var=option1
+var=option2
+var=option3
+      </programlisting>
+      각 옵션은 <varname>$var</varname>변수의 이전 값을 덮어쓸것입니다.
+      해결방법은 PHP의 "폼 엘리먼트의 배열" 특성을 이용하는 것입니다.
+      다음처럼 사용합니다.
+      <programlisting role="html">
+<![CDATA[
+<select name="var[]" multiple>
+]]>
+      </programlisting>
+      이것은 PHP가 <varname>$var</varname>변수를 배열로 취급하고 배열의
+      각 아이템이 var[]로 지정되도록 합니다. 첫번째 아이템은 <varname>$var[0]</varname>
+      다음은 <varname>$var[1]</varname>, 등등이 됩니다. <function>count</function>함수로
+      몇개의 옵션이 선택되었는지 알수 있습니다. 필요하다면 <function>sort</function>함수로
+      옵션 배열을 정렬할수도 있을것입니다.
+     </para>
+     <para>
+      자바스크립트에서 각 엘리먼트에<literal>[]</literal>을 사용하는것은 
+      문제가 발생한다는것을 명심해야 합니다. 대신에 숫자 폼의 ID를 사용하기 바랍니다.
+      또는 작은 따옴표로 변수명을 싸주십시오 그리고 엘리먼트 배열의 인덱스로
+      사용합니다. 예를 들면 다음과 같습니다.
+      <programlisting>
+variable = documents.forms[0].elements['var[]'];
+      </programlisting>
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.html.javascript-variable">
+    <question>
+     <para>
+      어떻게 하면 자바스크립트에서 PHP로 변수를 넘겨줄수있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      자바스크립트는 (주로) 클라이언트측 기술이고 PHP는 (주로) 서버측 기술이기
+      때문에, 그리고 HTTP는 "statless" 프로토콜이기 때문에 두 언어는 직접적으로
+      변수를 공유하지 못합니다.
+     </para>
+     <para>
+      하지만, 둘 사이에 변수를 넘겨주는 것은 가능합니다.
+      이를 수행할수 있는 방법으로는 PHP로 자바스크립트 코드를 생성하는 방법입니다.
+      그리고 그것을 브라우저가 리프레쉬하도록 하고 PHP스크립트로 특정
+      변수를 넘겨주게 됩니다. 예를 들면 아래와 같이 이를 수행할수 있습니다.
+      -- PHP코드는 스크린의 높이와 넓이를 보유하도록 해줍니다,
+      이것은 보통 클라이언트측에서만 가능한것입니다.
+     </para>
+     <para>
+      <programlisting>
+<![CDATA[
+<?php
+if (isset($_GET['width']) AND isset($_GET['height'])) {
+  // output the geometry variables
+  echo "Screen width is: ". $_GET['width'] ."<br />\n";
+  echo "Screen height is: ". $_GET['height'] ."<br />\n";
+} else {
+  // pass the geometry variables
+  // (preserve the original query string
+  //   -- post variables will need to handled differently)
+
+  echo "<script language=\"javascript\">\n";
+  echo "  location.href=\"${_SERVER['SCRIPT_NAME']}?${_SERVER['QUERY_STRING']}"
+            . "&width=\" + screen.width + \"&height=\" + screen.height;\n";
+  echo "</script>\n";
+  exit();
+}
+?>
+]]>
+      </programlisting>
+     </para>
+    </answer>
+   </qandaentry>
+
+  </qandaset>
+ </chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
