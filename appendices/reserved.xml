@@ -1,4 +1,4 @@
-<appendix id="reserved_words">
+<appendix id="reserved">
 	<title>PHP reserved words</title>
 	<para>
 	이곳에는 PHP의 예약된 핵심어와 미리 정의된 상수들의 목록이 정리되어 있다.
