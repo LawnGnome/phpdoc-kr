@@ -90,12 +90,10 @@
     <term><emphasis>A</emphasis> (PCRE_ANCHORED)</term>
     <listitem>
      <simpara>
-      이 변경자를 지정하면, 패턴을 강제적으로 "anchored"합니다.
-      이는 ("주어진 문자열"에서) 검색된 문자열의 시작에만 매치도록
-      강제합니다. 
-      This effect can also be achieved by appropriate
-      constructs in the pattern itself, which is the only way to
-      do it in Perl.
+      이 변경자를 지정하면, 패턴을 강제적으로 "고정"합니다. 이는 ("주어진
+      문자열"에서) 검색된 문자열의 시작에만 매치도록 강제합니다. 패턴 자체에서
+      특정한 구조를 가지게 하는, 펄에서는 유일한 방법으로 같은 효과를 얻을 수
+      있습니다.
      </simpara>
     </listitem>
        </varlistentry>
@@ -119,7 +117,7 @@
       패턴이 여러번 이용되면, 매칭에 걸리는 시간을 절약하기 위해서
       분석에 더 많은 시간을 들일 가치가 있습니다. 이 변경자를 지정하면,
       추가 분석을 행합니다. 현 시점에서, 패턴의 분석은 하나의 고정된 시작
-      문자를 가지지 않는 non-ahchored 패턴에만 유용합니다.
+      문자를 가지지 않는 비고정 패턴에만 유용합니다.
      </simpara>
     </listitem>
        </varlistentry>
