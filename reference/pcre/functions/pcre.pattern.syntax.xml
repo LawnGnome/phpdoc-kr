@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.5 -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
@@ -35,11 +35,10 @@
      </listitem>
      <listitem>
       <simpara>
-     PCRE does not allow repeat quantifiers on lookahead
-     assertions. Perl permits them, but they do not mean what you
-     might think. For example, (?!a){3} does not assert that  the
-     next three characters are not "a". It just asserts that the
-     next character is not "a" three times.
+     PCRE는 lookahead assertions에 반복 수를 허용하지 않습니다.
+     펄은 허용하지만, 생각하는 대로의 의미를 가지지는 않습니다.
+     예를 들면, (?!a){3}는 다음의 세 문자가 "a"가 아닌 것을 의미하지
+     않습니다. 단순히 다음 문자가 "a"가 아니라는 것을 세번 확인합니다.
       </simpara>
      </listitem>
      <listitem>
