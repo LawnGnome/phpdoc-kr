@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.13 $ -->
+<!-- $Revision: 1.14 $ -->
 <!-- EN-Revision: 1.119 -->
  <chapter id="language.types">
   <title>타입</title>
@@ -156,6 +156,8 @@ if (is_string($bool)) {
    변수는 특수한 상황에서는 그 당시에 무슨 타입을 쓰는지에 따라
    다른 값으로 변경될수 있다는 것에 주의 해야 한다. 자세한 정보는
    <link linkend="language.types.type-juggling">타입 저글링</link>을 참고.
+   <link linkend="types.comparisons">타입 비교 테이블</link>를 보면,
+   다양한 타입의 비교의 예제코드를 볼수 있다.
   </simpara>
  </sect1>
    
@@ -983,9 +985,6 @@ echo "I'd like to have another {${ strrev('reeb') }}, hips";
       <simpara>
        하위버전의 호환성을 위해, 같은 목적으로 배열-중괄호를 사용할수 있다.
        하지만, 이 문법은 PHP 4에서 사용할수 없다.
-       For backwards compatibility, you can still use array-braces
-       for the same purpose. However, this syntax is deprecated as
-       of PHP 4.
       </simpara>
      </note>
      <para>
@@ -1241,12 +1240,9 @@ echo $arr["somearray"]["a"];  // 42
      </para>
      <para>
       주어진 값에 대한 key를 표기하지 않으면, 정수 인덱스의 최대값이
-      취해져서 새로운 key는 최대값 + 1이 될것이다--최대값이 음수가 아니면
-      (음수 배열 인덱스를 갖는것은 가능하다). 이 경우에, 새로운 key는
-      <literal>0</literal>이 될것이다. 정수 인덱스가 아직 존재하지 않으면,
-      key는 <literal>0</literal> (zero)이 될것이다. 그 key가 이미 할당되어
-      있는데도 지정하면, 그 key로 값이 덮어씌워질것이다.
-      <informalexample>
+      취해져서 새로운 key는 최대값 + 1이 될것이다. 이미 값을 보유하고
+      있는 key를 지정하게 되면, 그 값은 덮어씌어질것이다.
+       <informalexample>
        <programlisting role="php">
 <![CDATA[
 <?php
@@ -1260,6 +1256,14 @@ array(5 => 43, 6 => 32, 7 => 56, "b" => 12);
        </programlisting>
       </informalexample>
      </para>
+     <warning>
+      <simpara>
+         PHP 4.3.0에서는 위에서 설명한 인덱스 생성 동작이 변경되었다.
+         즉, 현재 최대 key가 음수인 배열에 추가동작이 발생하면, 다음 key는
+         제로 (<literal>0</literal>)가 될것이다. 전에는, 새로운 인덱스는
+         기존의 가장 큰 key + 1로 되었었다. 양수의 인덱스에는 같은 동작을 한다.
+      </simpara>
+     </warning>
      <para>
       key로 &true;를 사용하는 것은 <type>integer</type> <literal>1</literal>
       key가 될것이다. key로 &false;를 사용하면 <type>integer</type> <literal>0</literal>
@@ -1316,10 +1320,20 @@ unset($arr);    // This deletes the whole array
       <para>
        위에서 설명한바와 같이, key가 없는 대괄호를 사용한다면, 존재하는
        정수 인덱스의 최대값이 취해질것이고, 새로운 key는 최대값의 + 1이
-       될것이다--최대값이 음수가 아니면(음수 배열 인덱스를 갖는것은 완벽하게
-       합법이다). 그 경우에 새로운 key는 <literal>0</literal>이 된다.
-       정수 인덱스가 아직 존재하지 않으면, key는 <literal>0</literal> (zero)이 될것이다.
-       이미 존재하는 key로 지정하면, 그 값은 덮어씌어질것이다.
+       될것이다. 정수 인덱스가 아직 존재하지 않으면, key는 <literal>0</literal>(제로)가
+       될것이다. 이미 값을 보유하고 있는 key로 지정하면, 그 값은 덮어 씌어질것이다.
+      </para>
+     <para>
+     <warning>
+      <simpara>
+         PHP 4.3.0에서는 위에서 설명한 인덱스 생성 동작이 변경되었다.
+         즉, 현재 최대 key가 음수인 배열에 추가동작이 발생하면, 다음 key는
+         제로 (<literal>0</literal>)가 될것이다. 전에는, 새로운 인덱스는
+         기존의 가장 큰 key + 1로 되었었다. 양수의 인덱스에는 같은 동작을 한다.
+      </simpara>
+     </warning>
+       </para>
+       <para>
       </para>
       <para>
        이 목적을 위한 최대 정수 key는 <emphasis>현재까지는 배열 안에 
@@ -2133,24 +2147,24 @@ $var = NULL;
 <?php 
 
 // simple callback example
-function foobar() {
-    echo "hello world!";
+function my_callback_function() {
+    echo 'hello world!';
 }
-call_user_func("foobar"); 
++call_user_func('my_callback_function'); 
 
 // method callback examples
-class foo {
-  function bar() {
-    echo "hello world!";
-  }
+class MyClass {
+    function myCallbackMethod() {
+        echo 'Hello World!';
+    }
 }
 
 // static class method call without instantiating an object
-call_user_func(array("foo", "bar")); 
-
-$foo = new foo;
-
-call_user_func(array($foo, "bar")); // object method call
+call_user_func(array('MyClass', 'myCallbackMethod')); 
+ 
+// object method call
+$obj = new MyClass();
+call_user_func(array(&$obj, 'myCallbackMethod'));
 
 
 ?>
@@ -2379,6 +2393,11 @@ if ($fst === $str) {
         &null;</link></simpara>
       </listitem>
       -->
+      <listitem>
+       <simpara>
+        <link linkend="types.comparisons">타입 비교 테이블</link>
+       </simpara>
+      </listitem>
      </itemizedlist>
     </para>
    </sect2>
