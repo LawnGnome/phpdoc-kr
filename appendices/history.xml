@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.8 $ -->
+<!-- EN-Revision: 1.19 -->
+
+<appendix id="history">
+ <title>PHP와 PHP 관련 프로젝트의 역사</title>
+ <para>
+  PHP는 최근 몇년간 출세가도를 달려왔다. 웹을 강화하는 가장 부각되는
+  언어중 하나로 성장하는 것은 쉬운 일이 아니었다. 오늘날 PHP가 어떻게
+  성장했는지에 대해 간단히 보고자 한다면, 계속 읽어나가자.
+  구버전의 PHP는 <ulink url="&url.php.museum;">PHP Museum</ulink>에서
+  확인할수있다.
+ </para>
+ 
+ <sect1 id="history.php">
+  <title>PHP의 역사</title>
+  
+  <sect2 id="history.phpfi">
+   <title>PHP/FI</title>
+   <para>
+    PHP는 PHP/FI라는 이름의 오래된 소프트웨어를 계승했다. PHP/FI는
+    1995년에 Rasmus Lerdorf에 의해 만들어졌다. 그의 온라인 이력서의
+    접속수를 추적하기 위한 단순한 펄 스크립트 구성물로 시작되었다.
+    그는 그 스트립트 구성물을 'Personal Home Page Tools'라고 명명했다.
+    좀더 많은 기능이 요구됨에 따라, Rasmus는 좀 더 많은 C 구현물을 작성했다.
+    이 구현물은 데이터베이스와 의사소통을 하고, 유저가 단순한
+    동적 웹 애플리케이션을 작성할수 있게 하였다. Rasmus는
+    모든 사람이 볼수 있도록 PHP/FI의 소스 코드를
+    <ulink url="&url.php.release1.0.0;">release</ulink>하기로 결정했다.
+    그래서 모든 사람이 그것을 사용하고, 버그를 고칠수 있을뿐만 아니라
+    코드를 향상시킬수 있었다.
+   </para>
+   <para>
+    PHP/FI, Personal Home Page / Forms Interpreter의 약어, 는 오늘날
+    우리가 알고있는것처럼 PHP의 기본적인 기능의 일부를 포함하고 있다.
+    그것은 펄과 비슷하게 생긴 변수, 폼 변수의 자동 해석과 HTML 내장 문법을
+    갖고 있었다. 그 문법 자체는 좀더 제한적이고, 단순하고 약간은 일관성이
+    떨어지기는 하지만 펄과 비슷했다.
+   </para>
+   <para>
+    1997년까지, PHP/FI 2.0, C로 쓰여진 두번째 구현물,은 전세계에서 수천
+    사용자의 숭배자를 갖게 된다(추정치). 그리고 대략 50,000의 도메인에서
+    설치되었던것으로 보고되었고, 이수치는 인터넷 모든 도메인의 약 1%에 해당된다.
+    이 프로젝트에 많은 코드를 공헌한 몇명의 사람이 있었지만, 아직은
+    대체로 한사람의 프로젝트였다.
+   </para>
+   <para>
+    PHP/FI 2.0은 그 삶의 대부분을 베타 릴리즈로 보낸 이후,
+    1997년 11월에만 공식적으로 릴리즈되었다. 그후 얼마안되어 
+    PHP 3.0의 첫번째 알파버전에 의해 계승되었다.
+   </para>
+  </sect2>
+
+  <sect2 id="history.php3">
+   <title>PHP 3</title>
+   <para>
+    PHP 3.0은 오늘날 알려진 PHP와 매우 가깝게 닮아있는 첫번째
+    버전이었다. 그것은 1997년 Andi Gutmans 와 Zeev Suraski에 의해
+    의해 완전히 재작성되어 만들어졌다. 그들이 대학 프로젝트 수행시
+    이커머스(eCommerce) 응용프로그램을 개발하기 위해 기능이 떨어지는
+    PHP/FI 2.0을 발견한것이 계기가 되었다. PHP/FI의 기존 사용자 기반위에서
+    협력하고 개발을 시작할 의도를 가지고, Andi, Rasmus, Zeev는 PHP/FI 2.0의
+    공식적인 계승자로서 PHP 3.0을 발표하였고, PHP/FI 2.0의 개발을
+    대부분 중단하게 되었다.
+   </para>
+   <para>
+    PHP 3.0의 가장 큰 강점중의 하나는 강력한 확장 기능이었다. 엔드유저에게
+    다양한 데이터베이스접근를 위한 견고한 인프라구조, 여러가지 프로토콜과 API를
+    제공해주었고, 이런 PHP 3.0의 확장 기능은 수십명의 개발자가 개발에 참여하도록
+    유도했고, 그들은 새로운 확장 모듈을 개발해주었다. 확실하게, 이런 특징이
+    PHP 3.0의 엄청난 성공의 열쇠였다. PHP 3.0으로 유도하는 다른 핵심 기능이
+    객체 지향 문법 지원과 좀더 파워풀하고 일관성있는 언어 문법이었다.
+   </para>
+   <para>
+    모든 새로운 언어는 새로운 이름하에 릴리즈되었다. PHP/FI 2.0이라는 이름이
+    내포하는 제한된 개인 사용 목적에 대한 연루성을 제거하고, 그 이름을
+    'PHP'로 명명하였다. 이 단어는 PHP: Hypertext Preprocessor 의 
+    재귀적 약어이다.
+   </para>
+   <para>
+    1998년 말까지, PHP는 수만명의 사용자가 설치(추정치)하였고 수십만의
+    웹사이트에 설치되었다고 보고되었다. 이런 급성장에서, PHP 3.0은
+    인터넷상의 웹서버중 거의 10%가 설치되었다.
+   </para>
+   <para>
+    PHP 3.0은 1998년 6월에 공식적으로 릴리즈되었다. 공개적인 테스트 이후
+    약 9개월만이었다.
+   </para>
+  </sect2>
+
+  <sect2 id="history.php4">
+   <title>PHP 4</title>
+   <para>
+    1998년 겨울까지, PHP 3.0이 공식적으로 릴리즈된후 얼마안되어서,
+    Andi Gutmans 와 Zeev Suraski는 PHP의 코어를 재작성하는 작업을
+    시작했다. 설계 목적은 복잡한 응용프로그램의 퍼포먼스를 향상시키고,
+    PHP의 코드 베이스의 모듈화를 향상시키는것이었다. 그런 응용프로그램은
+    PHP 3.0의 새로운 기능과 다양하고 광범위한 서드파티 데이터베이스와 API의
+    지원으로 가능하게 되었다. 그러나, PHP 3.0은 그런 복잡한 응용 프로그램을
+    효율적으로 제어하도록 설계되지는 않았었다.
+   </para>
+   <para>
+    새로운 엔진, 'Zend Engine'로 명명됨(그들 Zeev와 Andi의 이름으로 구성됨),
+    은 이런 설계 목적에 성공적으로 부합하였다. 그리고 1999년 중반 처음으로
+    소개되었다. 이 엔진에 기반하였고, 광범위한 새 추가 기능과
+    같이 동작하는 PHP 4.0은 2000년 5월에 공식적으로 릴리즈되었다.
+    전임자인 PHP 3.0이 나온지 거의 2년만이다. 이 버전의 크게 향상된 퍼포먼스
+    뿐만아니라, PHP 4.0은 다른 핵심 기능도 제공하고 있다. 여러가지 웹서버에 대한
+    지원, HTTP 세션, 출력 버퍼링, 보안이 강화된 유저 입력 제어, 몇가지
+    새로운 언어 구조이다. 
+   </para>
+   <para>
+    PHP 4는 현재까지 가장 마지막으로 릴리즈된 PHP 버전이다. 
+    PHP 5.0을 위해 설계된 기능을 구체화시키기 위해서 젠드 엔진을
+    변경하고 향상시키는 작업이 이미 시작되었다. 
+   </para>
+   <para>
+    현재, PHP는 수십만명의 개발자들에 의해서 사용되고있고(추정치), 수백만
+    사이트에 설치되어있다고 보고되었다. 이 수치는 인터넷상에서 20% 이상의
+    도메인수가 된다.
+   </para>
+   <para>
+    PHP 개발팀은 수십명의 개발자들을 포함하고, 그외에 PEAR, 문서 프로젝트와
+    같은 PHP 관련 프로젝트에서 수십명이 참여 중이다.
+   </para>
+  </sect2>
+
+  <sect2 id="history.php5">
+   <title>PHP 5</title>
+   <para>
+    PHP의 미래는 주로 그 코어, 젠드 엔진에 의해 운영된다. PHP 5는 새로운
+    젠드 엔진 2.0을 포함할것이다. 이 엔진에 대한 더 자세한 정보를 원한다면,
+    <ulink url="&url.zend.future;">이 웹페이지를 참고한다</ulink>.
+   </para>
+  </sect2>
+ </sect1>
+ 
+ <sect1 id="history.php.related">
+  <title>PHP 관련 프로젝트의 역사</title>
+  
+  <!-- Hope Stig and/or Egon can do this
+  
+  <sect2 id="history.phpdoc">
+   <title>PHP Documentation Project</title>
+   <para>
+   </para>
+  </sect2>
+  
+  -->
+
+  <sect2 id="history.pear">
+   <title>PEAR</title>
+   <para>
+    PEAR, PHP Extension 과 Application Repository (원래,
+    PHP Extension 과 Add-on Repository)는 PHP의 기초 클래스 버전이다.
+    앞으로 개발자들 사이에서 PHP와 C기반 PHP확장 모두를 제공하는 핵심
+    수단의 하나로 성장할 것이다.
+   </para>
+   <para>
+    PEAR는 Tel Aviv에서 2000년 1월에 개최된 PHP Developers' Meeting (PDM)
+    의 논의를 거쳐 탄생하게 되었다. Stig S. Bakken가 만들었고,
+    그의 첫번째 딸인 Malin Bakken에게 헌정되었다.
+   </para>
+   <para>
+    2000 초기 이래로, PEAR는 거대하고, 중요한 프로젝트로 성장하였고,
+    수많은 개발자들이 공통된, 재사용가능한 기능을 전체 PHP 커뮤니티의
+    이익을 위해 개발하고 있다. 오늘날 PEAR는 데이터베이스 접속, 컨텐츠 캐슁,
+    수학적 계산, 이커머스(eCommerce) 등등을 위한 광범위한 인프라구조 기초 클래스를
+    포함한다.
+   </para>
+  </sect2>
+
+  <sect2 id="history.phpqa">
+   <title>PHP 품질 보증 발의</title>
+   <para>
+    PHP 품질 보증 발의(PHP Quality Assurance Initiative)는 2000년 여름에
+    PHP 릴리즈가 제조 환경을 위해 충분히 테스트되지 않는다는 토론에 대응하여
+    설치되었다. 이 팀은 PHP 코드 베이스의 충분한 이해를 갖고있는 
+    핵심 개발 그룹으로 구성되었다. 이 개발자들은 PHP를 지역화하고 PHP 내의 버그를
+    고치는데 그들 대부분의 시간을 보낸다. 추가로 다양한 플랫폼을 사용하여
+    이런 버그 수리에 대하여 많은 다른 팀 멤버도 피드백을 제공중이다.
+   </para>
+  </sect2>
+
+  <sect2 id="history.phpgtk">
+   <title>PHP-GTK</title>
+   <para>
+    PHP-GTK는 클라이언트측 GUI 응용프로그램을 작성하기 위한 PHP 솔루션이다.
+    Andrei Zmievski는 PHP-GTK를 계획하고 창조한 과정을 다음과 같이 회고한다:
+   </para>
+   <blockquote>
+    <para>
+     GUI 프로그래밍은 내가 항상 관심을 갖어왔었고, C안에서 이 언어로 
+     프로그램하는것은 조금은 지루하지만 Gtk+가 가장 좋은 툴킷이라는것을
+     발견하였다. PyGtk 과 GTK-Perl 구현을 관찰한 후에,
+     나는 PHP가 최소한 Gtk+와 인터페이스되어 만들어질수 있는지 확인하기로
+     결정했다. 2000년 8월에 시작하여서, 실험을 시작할수 있는 때가
+     되도록 좀더 많은 자유 시간을 갖기 시작했다. 나의 주요 정책은
+     PyGtk 구현이었는데 그것은 기능적으로 충분히 완벽하게 동작하게 하고
+     적절한 객체 지향 인터페이스를 갖는것이었다. James Henstridge,파이썬의 저자,
+     는 이 초기 단계에서 매우 도움이 되는 조언을 제공해주었다.
+    </para>
+    <para>
+     모든 Gtk+ 함수의 인터페이스를 손으로 쓰는것은 문제가 있었다.
+     PyGtk가 동작하는 방식과 비슷하게 동작하도록 만들기 위해 나는 
+     코드 생성기에 대한 아이디어에 골몰하게 되었고, 이 코드 생성기는 
+     Gtk+ 클래스, 상수, 메소드 정보를 포함하는 .defs 파일 구성체를 읽어들이고
+     그들과 같이 PHP와 인터페이스화하는 C 코드를 생성하는 PHP 프로그램이다.
+     자동적으로 생성될수 없는 것은 손으로 .overrides 파일을 작성하였다.
+    </para>
+    <para>
+     코드 생성기와 인프라구조의 작업은 약간의 시간이 걸렸다. 왜냐하면,
+     나는 2000년 가을에 PHP-GTK에 거의 시간을 쓸수 없었기 때문이다. 
+     Frank Kromann에게 PHP-GTK를 보여준 후, 그는 흥미을 보였고 코드 생성기 
+     작업과 윈32 구현에 대해 나를 도와주기 시작했다. 우리가 처음으로 
+     Hello World 프로그램을 작성하고 그 프로그램을 시작으로 
+     극도로 흥분하게 되었다. 소개용 환경의 프로젝트를
+     마치는데 약 두달이 걸렸고 2001년 3월 1일에 첫번째 버전을 릴리즈했다.
+     이 이야기는 SlashDot에서 바로 히트하게 되었다.
+    </para>
+    <para>
+     PHP-GTK가 확장될수 있을거라는 생각으로, 나는 그것에 관한
+     별도의 메일링리스트와 CVS 저장소를 설치한다. 또한 Colin Viebrock의
+     도움으로 gtk.php.net 웹사이트도 만들게 된다. 문서화도 또한 필요했고
+     James Moore는 이 작업에 도움을 주었다.
+    </para>
+    <para>
+     릴리즈되고 나서 PHP-GTK는 유행하게 되었다. 우리는 문서화 팀을 구성했고
+     이 매뉴얼은 계속 향상되고 있다.그래서 사람들은 PHP-GTK의 확장을
+     쓰기 시작했고 더 많은 흥미로운 응용프로그램을 작성하게 되었다.
+    </para>
+   </blockquote>
+  </sect2>
+ </sect1>
+
+ <sect1 id="history.php.books">
+  <title>PHP 관련 서적</title>
+  <para>
+   PHP가 성장함에 따라, 그것은 전세계적으로 유행하는 개발 플랫폼으로
+   인식되기 시작했다. 이런 추세를 확인하는 가장 재미있는 방법이 몇년동안
+   나온 PHP 관련 서적을 찾아보는것이다.
+  </para>
+  <para>
+    우리가 알기로는, PHP에 관련된 최초의 서적은
+    'PHP - tvorba interaktivn�ch internetov�ch aplikac�'
+- 1999년 4월에
+    체코에서 출판된 책이다, Jirka Kosek가 저자이다. 다음해에 Egon Schmid,
+    Christian Cartus, and Richard Blume 가 저술한 독일 서적이 출판되었다.
+    PHP에 관한 최초의 영문 서적은 그후 얼마 안되어서 Leon Atkinson에 의해
+    저술된 'Core PHP Programming' 이었는데, 이 책 모두 PHP 3.0을 다루고 있다.
+  </para>
+  <para>
+    이런 책들이 PHP 관련의 최초 서적이었고, 다수의 저자와 출판인들에 의해
+    수많은 책들이 출판되었다. 영어로는 40권이상, 독일어로는 50권 이상,
+    프랑스어로는 20권 이상이다! 추가로, 다른 많은 언어의 PHP 관련서적을
+    발견할수 있다. 스페인어, 한국어, 일본어, 이스라엘어가 포함된다.
+  </para>
+  <para>
+   확실히, 이렇게 수많은 책들, 다양한 저자에 의해 저술되고, 많은 출판인들에
+   의해 출판되고, 매우 많은 언어로 쓰여졌다는것은 PHP의 전세계적인 성공에
+   대한 강력한 반증이다.
+  </para>
+ </sect1>
+ 
+ <sect1 id="history.php.publications">
+  <title>PHP에 관한 출판물</title>
+  <para>
+   우리가 아는한, 잡지에서 PHP에 관한 최초의 기사는 
+   1998년 봄의 Computerworld 체코 판에 출판되었다. 이 기사는 PHP 3.0을
+   다루고 있다. 이 기사는 많은 유명 잡지중에서 PHP 관련 시리즈물의
+   최초기사였다.
+  </para>
+  <para>
+   PHP에 관한 기사는 Dr. Dobbs, Linux Enterprise, Linux Magazine 등등에서
+   보이게 되었고, ASP기반 응용 프로그램을 윈도우의 PHP로 마이그레이션하는 기사는
+   마이크로소프트의 MSDN에도 보인다!
+  </para>
+ </sect1>
+
+</appendix>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
