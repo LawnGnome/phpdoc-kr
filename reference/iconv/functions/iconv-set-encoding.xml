@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/iconv.xml, last change in rev 1.1 -->
-<!-- last change to 'iconv-set-encoding' in en/ tree in rev 1.1 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.0 Maintainer: fuzzy74 Status: unknown -->
   <refentry id="function.iconv-set-encoding">
    <refnamediv>
     <refname>iconv_set_encoding</refname>

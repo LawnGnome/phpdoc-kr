@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.0 Maintainer: fuzzy74 Status: unknown -->
  <reference id="ref.iconv">
   <title>iconv functions</title>
   <titleabbrev>iconv</titleabbrev>

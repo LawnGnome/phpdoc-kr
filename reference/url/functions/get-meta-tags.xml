@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ok -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ok -->
   <refentry id="function.get-meta-tags">
    <refnamediv>
     <refname>get_meta_tags</refname>
