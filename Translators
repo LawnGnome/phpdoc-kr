@@ -55,8 +55,8 @@ using.xml                          fuzzy74          fuzzy74       maintain
 commandline.xml                    fuzzy74          fuzzy74       maintain
 connection-handling.xml            regina           fuzzy74       maintain
 cookies.xml                        progcom          progcom       maintain
-file-upload.xml                    progcom                        Translate..
-http-auth.xml                      progcom                        Translate..
+file-upload.xml                    progcom          progcom       maintain
+http-auth.xml                      progcom          progcom       maintain
 persistent-connections.xml         regina           fuzzy74       maintain
 remote-files.xml                   regina           fuzzy74       maintain
 safe-mode.xml                      fuzzy74          fuzzy74       maintain
