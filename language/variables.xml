@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.14 $ -->
+<!-- $Revision: 1.15 $ -->
 <!-- EN-Revision: 1.66 -->
  <chapter id="language.variables">
   <title>변수</title>
@@ -36,7 +36,7 @@ echo "$var, $Var";      // outputs "Bob, Joe"
 
 $4site = 'not yet';     // invalid; starts with a number
 $_4site = 'not yet';    // valid; starts with an underscore
-$t乴e = 'mansikka';    // valid; '䧠is (Extended) ASCII 228.
+$täyte = 'mansikka';    // valid; 'ä' is ASCII 228.
 ?>
 ]]>
      </programlisting>
