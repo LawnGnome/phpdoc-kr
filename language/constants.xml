@@ -1,3 +1,4 @@
+<!-- edited with XML Spy v3.0.7 NT (http://www.xmlspy.com) by panda (bra) -->
 <chapter id="language.constants">
 	<title>상수(Constants)</title>
 	<simpara>
@@ -99,9 +100,8 @@
 				<term>E_ALL</term>
 				<listitem>
 					<simpara>
-       All of the E_* constants rolled into one. If used with
-       <function>error_reporting</function>, will cause any and all
-       problems noticed by PHP to be reported.
+       'E_'로 시작되는 상수의 역활은 거의 동일하다. 이 상수가 
+       <function>error_reporting</function>와 같이 쓰인다면 PHP에서의 발생되는 경고나 에러를 출력시키는 역활을 한다.
       </simpara>
 				</listitem>
 			</varlistentry>
@@ -120,7 +120,7 @@
 			<programlisting>
 &lt;?php
 define("CONSTANT", "Hello world.");
-echo CONSTANT; // outputs "Hello world."
+echo CONSTANT; // 출력되는 결과는 "Hello world."이다.
 ?&gt;
      </programlisting>
 		</example>
