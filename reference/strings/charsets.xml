@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 <para>
- 다음 문자셋은 PHP 4.3.0 이상에서 지원합니다.
+ PHP 4.3.0 이상에서 다음 문자셋을 지원합니다.
  <table>
   <title>지원 문자셋</title>
   <tgroup cols="3">

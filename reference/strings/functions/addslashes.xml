@@ -1,28 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/strings.xml, last change in rev 1.3 -->
-<!-- last change to 'addslashes' in en/ tree in rev 1.2 -->
-	<refentry id="function.addslashes">
-		<refnamediv>
-			<refname>AddSlashes</refname>
-			<refpurpose>슬래쉬로 문자를 인용한다.</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>string</type><methodname>addslashes</methodname>
-					<methodparam><type>string</type><parameter>str</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-			데이터 베이스 쿼리와 같이 인용된 부분 앞에 백슬래쉬를 붙여 반환한다.
-			이런 문자에는 작은따옴표 (<literal>'</literal>), 큰따옴표(<literal>"</literal>),백슬래쉬(<literal>\</literal>), 그리고 &null;(null byte)이 있다.
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
+  <refentry id="function.addslashes">
+   <refnamediv>
+    <refname>addslashes</refname>
+    <refpurpose>문자열에 슬래쉬를 덧붙입니다.</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>string</type><methodname>addslashes</methodname>
+      <methodparam><type>string</type><parameter>str</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     데이터베이스 쿼리 등에서 처리할 필요가 있는 문자 앞에 백슬래쉬를 붙인
+     문자열을 반환합니다. 이 문자들은 작은 따옴표(<literal>'</literal>), 큰
+     따옴표(<literal>"</literal>), 백슬래쉬(<literal>\</literal>), NUL(&null;
+     바이트)입니다.
     </para>
-			<para>
-				<function>stripslashes</function>, 
-     <function>htmlspecialchars</function>, 그리고
-     <function>quotemeta</function>를 참고하라.
+    <para>
+     <function>addslashes</function>를 사용하는 대표적인 예는 데이터베이스에
+     데이터를 넣을 때 입니다. 예를 들어, 데이터베이스에
+     <literal>O'reilly</literal>라는 이름을 넣으려고 할때, 이스케이프할 필요가
+     있습니다. 대부분의 데이터베이스는 <literal>\</literal>을 사용하기에
+     <literal>O\'reilly</literal>가 되어야 합니다. 이 데이터를 데이터베이스에
+     넣으면 추가한 <literal>\</literal>은 저장되지 않습니다. PHP 지시어 <link
+     linkend="ini.magic-quotes-sybase">magic_quotes_sybase</link>를
+     <literal>on</literal>으로 설정하면 <literal>'</literal>은
+     <literal>'</literal>을 이용하여 이스케이프합니다.
     </para>
-		</refsect1>
-	</refentry>
+    <para>
+     PHP 지시어 <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>는
+     기본값으로 <literal>on</literal>이고, 자동적으로 모든 GET, POST, COOKIE
+     데이터에 <function>addslashes</function>을 실행합니다. <link
+     linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>로 이스케이프된
+     문자열에 <function>addslashes</function>를 사용하지 마십시오. 그렇지
+     않으면 두번 이스케이프하게 됩니다. 이를 확인하기 위해서
+     <function>get_magic_quotes_gpc</function>를 사용할 수 있습니다.
+    </para>
+    <para>
+     <example>
+      <title><function>addslashes</function> 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$str = "Is your name O'reilly?";
+
+// 출력: Is your name O\'reilly?
+echo addslashes($str);
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <para>
+     참고: <function>stripslashes</function>, 
+     <function>htmlspecialchars</function>,
+     <function>quotemeta</function>, and 
+     <function>get_magic_quotes_gpc</function>.
+    </para>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
@@ -44,3 +82,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+
