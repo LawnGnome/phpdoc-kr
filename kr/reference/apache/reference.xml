@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
  <reference id="ref.apache">
   <title>아파치 특정 함수</title>
   <titleabbrev>아파치</titleabbrev>
