@@ -1,175 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.36 Maintainer: progcom Status: ready -->
-
- <bookinfo id="bookinfo">
-  <title>&PHPManual;</title>
-  <authorgroup id="authors">
-
-   <author>
-    <firstname>Stig</firstname><surname>S&aelig;ther Bakken</surname>
-    <!-- email: ssb%40php.net -->
-   </author>
-
-   <author>
-    <firstname>Alexander</firstname><surname>Aulbach</surname>
-    <!-- email: ssilk%40ssilk.de  [no cvs user listed at master.php.net!] -->
-   </author>
-
-   <author>
-    <firstname>Egon</firstname><surname>Schmid</surname>
-    <!-- email: eschmid%40php.net -->
-   </author>
-
-   <author>
-    <firstname>Jim</firstname><surname>Winstead</surname>
-    <!-- email: jimw%40php.net -->
-   </author>
-
-   <author>
-    <firstname>Lars Torben</firstname><surname>Wilson</surname>
-    <!-- email: torben%40php.net -->
-   </author>
-
-   <author>
-    <firstname>Rasmus</firstname><surname>Lerdorf</surname>
-    <!-- email: rasmus%40php.net -->
-   </author>
-
-   <author>
-    <firstname>Andrei</firstname><surname>Zmievski</surname>
-    <!-- email: andrei%40php.net -->
-   </author>
-
-   <author>
-    <firstname>Jouni</firstname><surname>Ahto</surname>
-    <!-- email: jah%40php.net -->
-   </author>
-
-  </authorgroup>
-
-  <pubdate>&php.build-date;</pubdate>
-
-  <authorgroup id="editors">
-   <editor>
-    <firstname>Stig</firstname><surname>S&aelig;ther Bakken</surname>
-   </editor>
-   <editor>
-    <firstname>Egon</firstname><surname>Schmid</surname>
-   </editor>
-  </authorgroup>
-
-  <authorgroup id="translators">
-   <collab>
-    <collabname>Korean Translators (한글 번역)</collabname>
-   </collab>
-   <collab>
-    <collabname>Jin Tae-young (진태영)</collabname>
-   </collab>
-   <collab>
-    <collabname>Lee Yun-young (이윤영)</collabname>
-    <!-- email: progcom%40php.net -->
-   </collab>
-   <collab>
-    <collabname>Byon Jaemin (변재민)</collabname>
-   </collab>
-   <collab>
-    <collabname>Choi Joong-yeon (최중연)</collabname>
-   </collab>
-   <collab>
-    <collabname>Hwang Won-hee (황원희)</collabname>
-   </collab>
-   <collab>
-    <collabname>Kim Younsoo (김윤수)</collabname>
-   </collab>
-   <collab>
-    <collabname>Kwon Jeonha (권전하)</collabname>
-   </collab>
-   <collab>
-    <collabname>Lee Gwangjong (이광종)</collabname>
-   </collab>
-   <collab>
-    <collabname>Lee SeungHwan (이승환)</collabname>
-   </collab>
-   <collab>
-    <collabname>Shim Seungjoon (심승준)</collabname>
-   </collab>
-   <collab>
-    <collabname>Song Jungmin (송정민)</collabname>
-   </collab>
-   <collab>
-    <collabname>Suk Bong-woon (석봉운)</collabname>
-   </collab>
-  </authorgroup>
-
-  <copyright>
-   <year>1997</year>
-   <year>1998</year>
-   <year>1999</year>
-   <year>2000</year>
-   <year>2001</year>
-   <year>2002</year>
-   <year>2003</year>
-   <year>2004</year>
-   <holder>the PHP Documentation Group (PHP 문서 그룹)</holder>
-  </copyright>
-
-  <legalnotice id="copyright">
-   <title>저작권</title>
-   <simpara>
+<bookinfo id="bookinfo">
+	<title>&PHPManual;</title>
+	<authorgroup id="authors">
+		<author>
+			<firstname>Stig</firstname>
+			<surname>S&aelig;ther Bakken</surname>
+			<!-- email: ssb%40php.net -->
+		</author>
+		<author>
+			<firstname>Alexander</firstname>
+			<surname>Aulbach</surname>
+			<!-- email: ssilk%40ssilk.de  [no cvs user listed at master.php.net!] -->
+		</author>
+		<author>
+			<firstname>Egon</firstname>
+			<surname>Schmid</surname>
+			<!-- email: eschmid%40php.net -->
+		</author>
+		<author>
+			<firstname>Jim</firstname>
+			<surname>Winstead</surname>
+			<!-- email: jimw%40php.net -->
+		</author>
+		<author>
+			<firstname>Lars Torben</firstname>
+			<surname>Wilson</surname>
+			<!-- email: torben%40php.net -->
+		</author>
+		<author>
+			<firstname>Rasmus</firstname>
+			<surname>Lerdorf</surname>
+			<!-- email: rasmus%40php.net -->
+		</author>
+		<author>
+			<firstname>Andrei</firstname>
+			<surname>Zmievski</surname>
+			<!-- email: andrei%40php.net -->
+		</author>
+		<author>
+			<firstname>Jouni</firstname>
+			<surname>Ahto</surname>
+			<!-- email: jah%40php.net -->
+		</author>
+	</authorgroup>
+	<pubdate>&php.build-date;</pubdate>
+	<authorgroup id="editors">
+		<editor>
+			<firstname>Stig</firstname>
+			<surname>S&aelig;ther Bakken</surname>
+		</editor>
+		<editor>
+			<firstname>Egon</firstname>
+			<surname>Schmid</surname>
+		</editor>
+	</authorgroup>
+	<authorgroup id="translators">
+		<collab>
+			<collabname>Korean Translators (한글 번역)</collabname>
+		</collab>
+		<collab>
+			<collabname>Jin Tae-young (진태영)</collabname>
+		</collab>
+		<collab>
+			<collabname>Lee Yun-young (이윤영)</collabname>
+			<!-- email: progcom%40php.net -->
+		</collab>
+		<collab>
+			<collabname>Byon Jaemin (변재민)</collabname>
+		</collab>
+		<collab>
+			<collabname>Choi Joong-yeon (최중연)</collabname>
+		</collab>
+		<collab>
+			<collabname>Hwang Won-hee (황원희)</collabname>
+		</collab>
+		<collab>
+			<collabname>Kim Younsoo (김윤수)</collabname>
+		</collab>
+		<collab>
+			<collabname>Kwon Jeongha (권정하)</collabname>
+		</collab>
+		<collab>
+			<collabname>Lee Gwangjong (이광종)</collabname>
+		</collab>
+		<collab>
+			<collabname>Lee SeungHwan (이승환)</collabname>
+		</collab>
+		<collab>
+			<collabname>Shim Seungjoon (심승준)</collabname>
+		</collab>
+		<collab>
+			<collabname>Song Jungmin (송정민)</collabname>
+		</collab>
+		<collab>
+			<collabname>Suk Bong-woon (석봉운)</collabname>
+		</collab>
+	</authorgroup>
+	<copyright>
+		<year>1997</year>
+		<year>1998</year>
+		<year>1999</year>
+		<year>2000</year>
+		<year>2001</year>
+		<year>2002</year>
+		<year>2003</year>
+		<year>2004</year>
+		<holder>the PHP Documentation Group (PHP 문서 그룹)</holder>
+	</copyright>
+	<legalnotice id="copyright">
+		<title>저작권</title>
+		<simpara>
     Copyright &copy; 1997 - 2004 by the PHP Documentation Group.
     This material may be distributed only subject to the terms and
     conditions set forth in the Open Publication License, v1.0 or
     later (the latest version is presently available at
     <ulink url="&url.opl;">&url.opl;</ulink>).
    </simpara>
-   <simpara>
+		<simpara>
     PHP 문서 그룹에 저작권이 있습니다. (Copyright &copy; 1997 - 2004 by the
     PHP Documentation Group) 이 저작물은 Open Publication License 1.0 또는
     이후 버전(최신 버전은 <ulink url="&url.opl;">&url.opl;</ulink>에
     있습니다)의 조항과 제약에 따를 경우에만 재배포 할 수 있습니다.
    </simpara>
-   <simpara>
+		<simpara>
     Distribution of substantively modified versions of this document
     is prohibited without the explicit permission of the copyright
     holder.
    </simpara>
-   <simpara>
+		<simpara>
     Distribution of the work or derivative of the work in any
     standard (paper) book form is prohibited unless prior permission
     is obtained from the copyright holder.
    </simpara>
-   <simpara>
+		<simpara>
     저작권 부분에 대한 명시적 동의가 없을 경우, 이 문서의 변경된 버전에 대한
     재배포를 금합니다. 저작권 부분에 따른 허가가 없을 경우, 어떠한 일반적인
     (종이) 책 형태로의 재배포 작업 및 유사 작업을 금합니다.
    </simpara>
-   <simpara>
+		<simpara>
     PHP 문서 그룹의 구성원은 매뉴얼 첫 페이지에 나열되어 있습니다. 그룹과
-    접촉하기 위해서는, <ulink
-     url="mailto:&email.php.doc;">&email.php.doc;</ulink>로 작성해 주십시오.
+    접촉하기 위해서는, <ulink url="mailto:&email.php.doc;">&email.php.doc;</ulink>로 작성해 주십시오.
    </simpara>
-   <simpara>
+		<simpara>
     The 'Extending PHP 4.0' section of this manual is copyright &copy; 2000 by
     Zend Technologies, Ltd. This material may be distributed only subject to
     the terms and conditions set forth in the Open Publication License, v1.0
     or later (the latest version is presently available at
     <ulink url="&url.opl;">&url.opl;</ulink>).
    </simpara>
-   <simpara>
+		<simpara>
     이 매뉴얼의 'PHP 4.0 확장하기' 섹션은 젠드 테크놀로지 사에 저작권이
     있습니다. (Copyright &copy; 2000 by Zend Technologies, Ltd.) 이 저작물은
-    Open Publication License 1.0 또는 이후 버전(최신 버전은 <ulink
-     url="&url.opl;">&url.opl;</ulink>에 있습니다)의 조항과 제약에 따를
+    Open Publication License 1.0 또는 이후 버전(최신 버전은 <ulink url="&url.opl;">&url.opl;</ulink>에 있습니다)의 조항과 제약에 따를
     경우에만 재배포 할 수 있습니다.
    </simpara>
-   <para>
+		<para>
     이 매뉴얼은 <link linkend="opl.license">Open Publication License</link>의
     사본을 포함하고 있습니다.
    </para>
-  </legalnotice>
-
- </bookinfo>
- 
+	</legalnotice>
+</bookinfo>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
