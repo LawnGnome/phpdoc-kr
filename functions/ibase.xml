@@ -1,61 +1,73 @@
- <reference id="ref.ibase">
-  <title>InterBase 함수</title>
-  <titleabbrev>InterBase</titleabbrev>
-
-  <partintro>
-   <para>
-    인터베이스는 Borland/Inprise에 의해 내 놓은 유명한 데이터베이스이다. 보다 많은 인터베이스에 관한 정보가 필요하다면<ulink
-    url="&url.ibase;">&url.ibase;</ulink>에서 찾아 볼 수 있다. 게다가 인터베이스는 오픈 소스 운동에 참가하게 되었다!
+<!-- edited with XML Spy v3.0.7 NT (http://www.xmlspy.com) by karoora (karoora) -->
+<reference id="ref.ibase">
+	<title>InterBase 함수</title>
+	<titleabbrev>InterBase</titleabbrev>
+	<partintro>
+		<para>
+    인터베이스는 Borland/Inprise에 의해 내 놓은 유명한 데이터베이스이다. 보다 많은 인터베이스에 관한 정보가 필요하다면<ulink url="&url.ibase;">&url.ibase;</ulink>에서 찾아 볼 수 있다. 게다가 인터베이스는 오픈 소스 운동에 참가하게 되었다!
    </para>
-   <note>
-    <para>
+		<note>
+			<para>
      PHP 4.0에서는 인터베이스에 관한 모든 지원이 추가 되었다. 
     </para>
-	<para>
+			<para>
 	 이 데이터베이스는 따옴표(a single quote ('))를 escaping문자로 사용하며, behavior는 Sybase database와 유사하다. <filename>php.ini</filename>파일에서 다음과 같이 설정한다.:
 	 <informalexample>
-	  <programlisting>
+					<programlisting>
 magic_quotes_sybase = On
 	  </programlisting>
-	 </informalexample>
-	</para>
-   </note>
-  </partintro>
-
-  <refentry id="function.ibase-connect">
-   <refnamediv>
-    <refname>ibase_connect</refname>
-    <refpurpose>
+				</informalexample>
+			</para>
+		</note>
+	</partintro>
+	<refentry id="function.ibase-connect">
+		<refnamediv>
+			<refname>ibase_connect</refname>
+			<refpurpose>
      InterBase database와 연결을 설정한다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_connect</function></funcdef>
-      <paramdef>string <parameter>database</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>username</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>password</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>charset</optional></parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>buffers</optional></parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>dialect</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>role</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_connect</function>
+					</funcdef>
+					<paramdef>string <parameter>database</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>username</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>password</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>charset</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>buffers</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>dialect</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>role</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
      InterBase server와의 연결을 설정한다.
      <parameter>database</parameter>인수는 서버에 위치한 데이터베이스의 유효한 파일경로를 가진다.(역주:현재 win32용 ODBC드라이버가 존재한다. 이것은 Iterbase 5.x용이지만 별 에러업ㅅ이 잘 작동한다.)
      만일 로컬 서버가 아닌 경우에는, 사용된 연결 프로토콜에 의존하는 'hostname:' (TCP/IP), '//hostname/' (NetBEUI) 또는 'hostname@' (IPX/SPX),
@@ -65,13 +77,14 @@ magic_quotes_sybase = On
      <parameter>dialect</parameter>는 연결되는 동안 실행되는 어떠한 구문의 특정 SQL값의 기본 값을 선택하는데, 그 기본값은(즉, 값이 주어지지 않은 경우)
      클라이언트 라이브러리가 지원하는 최상의 것으로 한다.
     </para>
-    <para>
+			<para>
      같은 인자들을 사용한<function>ibase_connect</function>의 두번째 호출의 경우에는, 새로운 link를 설정하지 않고, 
      대신에 이미 연결된 link의 식별자를 리턴하게 된다. 서버의 link는 <function>ibase_close</function>가 호출되어 연결이 닫히지 않는한,
       스크립트의 종료태그를 만나면 곧 닫히게 된다. 
      <example>
-      <title><function>Ibase_connect</function> example</title>
-      <programlisting role="php">
+					<title>
+						<function>Ibase_connect</function> example</title>
+					<programlisting role="php">
 &lt;?php
     $dbh = ibase_connect ($host, $username, $password);
     $stmt = 'SELECT * FROM tblname';
@@ -82,194 +95,213 @@ magic_quotes_sybase = On
     ibase_close ($dbh);
 ?>
       </programlisting>
-     </example>
-    </para>
-    <note>
-     <para>
-      <parameter>buffers</parameter>는 PHP4-RC2에서 추가되었다.
+				</example>
+			</para>
+			<note>
+				<para>
+					<parameter>buffers</parameter>는 PHP4-RC2에서 추가되었다.
      </para>
-    </note>
-    <note>
-     <para>
-      <parameter>dialect</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 6.0 versions 또는 그 상위 버젼에서 작동한다.
+			</note>
+			<note>
+				<para>
+					<parameter>dialect</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 6.0 versions 또는 그 상위 버젼에서 작동한다.
      </para>
-    </note>
-    <note>
-     <para>
-      <parameter>role</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 5 versions 또는 그 상위 버젼에서 작동한다.
+			</note>
+			<note>
+				<para>
+					<parameter>role</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 5 versions 또는 그 상위 버젼에서 작동한다.
      </para>
-    </note>
-    <para>
+			</note>
+			<para>
      참고 : <function>ibase_pconnect</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-pconnect">
-   <refnamediv>
-    <refname>ibase_pconnect</refname>
-    <refpurpose>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-pconnect">
+		<refnamediv>
+			<refname>ibase_pconnect</refname>
+			<refpurpose>
      InterBase database의 영속적인 연결을 생성한다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_pconnect</function></funcdef>
-      <paramdef>string <parameter>database</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>username</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>password</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>charset</optional></parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>buffers</optional></parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>dialect</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>role</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>ibase_pconnect</function>의 동작은 <function>ibase_connect</function>와 유사하나 두 가지의 중요한 차이가 있다.
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_pconnect</function>
+					</funcdef>
+					<paramdef>string <parameter>database</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>username</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>password</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>charset</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>buffers</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>dialect</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>role</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>ibase_pconnect</function>의 동작은 <function>ibase_connect</function>와 유사하나 두 가지의 중요한 차이가 있다.
      첫째로, 연결될때, 이 함수는 첫째로 이미 동일한 인자들로 열린 (persistent) link를 찾을 것이다. 
      만일 발견이 된다면, 새로운 연결을 여는 대신에 이전의 식별자를 리턴하게 된다. 
      둘째로, InterBase server의 연결이 나중에 이용되기 위하여 스크립트의 종료태그를 만나도 닫히지 않는다.
      (<function>ibase_close</function>은 <function>ibase_pconnect</function>에 의해 설정된 연결을 닫을 수 없다). 이러한 연결의 타입이 'persistent'라 불리운다.
     </para>
-    <note>
-     <para>
-      <parameter>buffers</parameter>는 PHP4-RC2에서 추가되었다.
+			<note>
+				<para>
+					<parameter>buffers</parameter>는 PHP4-RC2에서 추가되었다.
      </para>
-    </note>
-    <note>
-     <para>
-      <parameter>dialect</parameter> 는 PHP4-RC2에서 추가되었다. 이것은 InterBase 6.0 versions 또는 그 상위 버젼에서 작동한다.
+			</note>
+			<note>
+				<para>
+					<parameter>dialect</parameter> 는 PHP4-RC2에서 추가되었다. 이것은 InterBase 6.0 versions 또는 그 상위 버젼에서 작동한다.
      </para>
-    </note>
-    <note>
-     <para>
-      <parameter>role</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 5 versions 또는 그 상위 버젼에서 작동한다.
+			</note>
+			<note>
+				<para>
+					<parameter>role</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 5 versions 또는 그 상위 버젼에서 작동한다.
      </para>
-    </note>
-    <para>
+			</note>
+			<para>
      이 함수의 인자는 이전의 <function>ibase_connect</function>와 동일하다
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-close">
-   <refnamediv>
-    <refname>ibase_close</refname>
-    <refpurpose>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-close">
+		<refnamediv>
+			<refname>ibase_close</refname>
+			<refpurpose>
      InterBase database의 연결을 닫는다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_close</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>connection_id</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>ibase_connect</function>로 부터 리턴된 연결 식별자가 나타내는 InterBase database의 연결을 닫는다.
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_close</function>
+					</funcdef>
+					<paramdef>int 
+       <parameter>
+							<optional>connection_id</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>ibase_connect</function>로 부터 리턴된 연결 식별자가 나타내는 InterBase database의 연결을 닫는다.
      만일 연결 식별자가 생략된 경우에는 가장 나중에 열린 연결로 간주한다. 링크의 기본 transaction을 실행하고, 
      나머지 다른 transaction들을 되돌린다. 
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-query">
-   <refnamediv>
-    <refname>ibase_query</refname>
-    <refpurpose>InterBase database의 쿼리를 실행한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_query</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter>
-      </paramdef>
-      <paramdef>string
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-query">
+		<refnamediv>
+			<refname>ibase_query</refname>
+			<refpurpose>InterBase database의 쿼리를 실행한다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_query</function>
+					</funcdef>
+					<paramdef>int 
+       <parameter>
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string
        <parameter>query</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>bind_args</optional></parameter> 
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>bind_args</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
      InterBase database의 쿼리를 실행하고, <function>ibase_fetch_row</function>,
      <function>ibase_fetch_object</function>,
      <function>ibase_free_result</function>와
      <function>ibase_free_query</function>의 실행에 사용되는 식별자를 리턴한다.
     </simpara>
-    <note>
-     <para>
+			<note>
+				<para>
       Although this function supports variable binding to parameter
       placeholders, there is not very much meaning using this capability
       with it. For real life use and an example, see
       <function>ibase_prepare</function> and
       <function>ibase_execute</function>.
      </para>
-    </note>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-fetch-row">
-   <refnamediv>
-    <refname>ibase_fetch_row</refname>
-    <refpurpose>InterBase database부터 열을 가지고 온다</refpurpose> 
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>ibase_fetch_row</function></funcdef>
-      <paramdef>int
+			</note>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-fetch-row">
+		<refnamediv>
+			<refname>ibase_fetch_row</refname>
+			<refpurpose>InterBase database부터 열을 가지고 온다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>array <function>ibase_fetch_row</function>
+					</funcdef>
+					<paramdef>int
        <parameter>result_identifier</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
-     <function>ibase_query</function>를 사용하여 얻어진 결과 식별자에 의해 기록된 다음 열을 가지고 온다.
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
+				<function>ibase_query</function>를 사용하여 얻어진 결과 식별자에 의해 기록된 다음 열을 가지고 온다.
     </simpara>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-fetch-object">
-   <refnamediv>
-    <refname>ibase_fetch_object</refname>
-    <refpurpose>InterBase database로 부터 객체를 얻는다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>ibase_fetch_object</function></funcdef>
-      <paramdef>int
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-fetch-object">
+		<refnamediv>
+			<refname>ibase_fetch_object</refname>
+			<refpurpose>InterBase database로 부터 객체를 얻는다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>object <function>ibase_fetch_object</function>
+					</funcdef>
+					<paramdef>int
        <parameter>result_id</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>ibase_query</function> 또는 <function>ibase_execute</function>에 의해 얻어진 <parameter>result_id</parameter>로 부터의 pseudo-object의 열을 가지고 온다.
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>ibase_query</function> 또는 <function>ibase_execute</function>에 의해 얻어진 <parameter>result_id</parameter>로 부터의 pseudo-object의 열을 가지고 온다.
      <informalexample>
-      <programlisting role="php">
+					<programlisting role="php">
 &lt;php
     $dbh = ibase_connect ($host, $username, $password);
     $stmt = 'SELECT * FROM tblname';
@@ -280,39 +312,41 @@ magic_quotes_sybase = On
     ibase_close ($dbh);
 ?>
       </programlisting>
-     </informalexample>
-    </para>
-    <para>
+				</informalexample>
+			</para>
+			<para>
      See also <function>ibase_fetch_row</function>.
     </para>
-   </refsect1>
-  </refentry>
-  
-  <refentry id="function.ibase-field-info">
-   <refnamediv>
-    <refname>ibase_field_info</refname>
-    <refpurpose>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-field-info">
+		<refnamediv>
+			<refname>ibase_field_info</refname>
+			<refpurpose>
      field관한 정보를 얻는다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>ibase_field_info</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field number</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>array <function>ibase_field_info</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>field number</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
      select쿼리의 실행후 필드의 정보를 배열로 리턴한다. 배열은 name, alias, relation, length, type이다.
      <informalexample>
-      <programlisting role="php">
+					<programlisting role="php">
 // helio@helio.com.br  08-Dec-2000 02:53
 
 $rs=ibase_query("Select * from something"); 
 $coln = ibase_num_fields($rs); 
-for ($i=0 ; $i < $coln ; $i++) { 
+for ($i=0 ; $i &lt; $coln ; $i++) { 
     $col_info = ibase_field_info($rs, $i); 
     echo "name: ".$col_info['name']."\n"; 
     echo "alias: ".$col_info['alias']."\n"; 
@@ -321,81 +355,86 @@ for ($i=0 ; $i < $coln ; $i++) {
     echo "type: ".$col_info['type']."\n"; 
     }
       </programlisting>
-     </informalexample>
-    </para>
-   </refsect1>
-  </refentry>
-  
-  <refentry id="function.ibase-free-result">
-   <refnamediv>
-    <refname>ibase_free_result</refname>
-    <refpurpose>result set을 해제한다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_free_result</function></funcdef>
-      <paramdef>int
+				</informalexample>
+			</para>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-free-result">
+		<refnamediv>
+			<refname>ibase_free_result</refname>
+			<refpurpose>result set을 해제한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_free_result</function>
+					</funcdef>
+					<paramdef>int
        <parameter>result_identifier</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
-     <function>ibase_query</function>에 의해 생성된 결과 셋을 해제한다.
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
+				<function>ibase_query</function>에 의해 생성된 결과 셋을 해제한다.
     </simpara>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-prepare">
-   <refnamediv>
-    <refname>ibase_prepare</refname>
-    <refpurpose>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-prepare">
+		<refnamediv>
+			<refname>ibase_prepare</refname>
+			<refpurpose>
      Prepare a query for later binding of parameter placeholders and
      execution
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_prepare</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter>
-      </paramdef>
-      <paramdef>string <parameter>query</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_prepare</function>
+					</funcdef>
+					<paramdef>int 
+       <parameter>
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string <parameter>query</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
      Prepare a query for later binding of parameter placeholders and
      execution (via <function>ibase_execute</function>).
     </simpara>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-execute">
-   <refnamediv>
-    <refname>ibase_execute</refname>
-    <refpurpose>이전에 준비된 query를 실행한다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_execute</function></funcdef>
-      <paramdef>int 
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-execute">
+		<refnamediv>
+			<refname>ibase_execute</refname>
+			<refpurpose>이전에 준비된 query를 실행한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_execute</function>
+					</funcdef>
+					<paramdef>int 
        <parameter>query</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>bind_args</optional></parameter> 
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>ibase_prepare</function>함수에 의해 준비된 쿼리를 실행한다.
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>bind_args</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>ibase_prepare</function>함수에 의해 준비된 쿼리를 실행한다.
      만일 몇몇의 인자가 바뀌는 같은 쿼리문을 반복해서 실행할때, 이 함수는 <function>ibase_query</function>보다 유용하다.
      <informalexample>
-      <programlisting role="php">
+					<programlisting role="php">
 &lt;?php
     $updates = array(
         1 => 'Eric',
@@ -410,174 +449,185 @@ for ($i=0 ; $i < $coln ; $i++) {
     }
 ?>
       </programlisting>
-     </informalexample>
-    </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-trans">
-   <refnamediv>
-    <refname>ibase_trans</refname>
-    <refpurpose>transaction을 시작한다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_trans</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>trans_args</optional></parameter> 
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter> 
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
+				</informalexample>
+			</para>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-trans">
+		<refnamediv>
+			<refname>ibase_trans</refname>
+			<refpurpose>transaction을 시작한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_trans</function>
+					</funcdef>
+					<paramdef>int 
+       <parameter>
+							<optional>trans_args</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
      transaction을 시작.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-commit">
-   <refnamediv>
-    <refname>ibase_commit</refname>
-    <refpurpose>transaction을 실행</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_commit</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter> 
-      </paramdef>
-      <paramdef>int <parameter>trans_number</parameter> 
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>ibase_trans</function>로 생성된 <parameter>trans_number</parameter>의 transaction을 실행
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-commit">
+		<refnamediv>
+			<refname>ibase_commit</refname>
+			<refpurpose>transaction을 실행</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_commit</function>
+					</funcdef>
+					<paramdef>int 
+       <parameter>
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>int <parameter>trans_number</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>ibase_trans</function>로 생성된 <parameter>trans_number</parameter>의 transaction을 실행
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-rollback">
-   <refnamediv>
-    <refname>ibase_rollback</refname>
-    <refpurpose>transaction을 되돌린다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_rollback</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter> 
-      </paramdef>
-      <paramdef>int <parameter>trans_number</parameter> 
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>ibase_trans</function>에 의해 생성된 <parameter>trans_number</parameter>의 transaction을 되돌린다.
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-rollback">
+		<refnamediv>
+			<refname>ibase_rollback</refname>
+			<refpurpose>transaction을 되돌린다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_rollback</function>
+					</funcdef>
+					<paramdef>int 
+       <parameter>
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>int <parameter>trans_number</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>ibase_trans</function>에 의해 생성된 <parameter>trans_number</parameter>의 transaction을 되돌린다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-free-query">
-   <refnamediv>
-    <refname>ibase_free_query</refname>
-    <refpurpose>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-free-query">
+		<refnamediv>
+			<refname>ibase_free_query</refname>
+			<refpurpose>
      prepared query에 의해 지정된 메모리를 해제한다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_free_query</function></funcdef>
-      <paramdef>int
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_free_query</function>
+					</funcdef>
+					<paramdef>int
        <parameter>query</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
-     <function>ibase_prepare</function>에의해 준비된 쿼리를 해제한다.
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
+				<function>ibase_prepare</function>에의해 준비된 쿼리를 해제한다.
     </simpara>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-timefmt">
-   <refnamediv>
-    <refname>ibase_timefmt</refname>
-    <refpurpose>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-timefmt">
+		<refnamediv>
+			<refname>ibase_timefmt</refname>
+			<refpurpose>
      쿼리로 부터 리턴된 날짜와 시간타입의 포맷을 지정한다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_timefmt</function></funcdef>
-      <paramdef>string
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_timefmt</function>
+					</funcdef>
+					<paramdef>string
        <parameter>format</parameter>
-      </paramdef>
-      <paramdef>int
-       <parameter><optional>columntype</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
+					</paramdef>
+					<paramdef>int
+       <parameter>
+							<optional>columntype</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
      쿼리로 부터 리턴된 날짜와 시간타입의 포맷을 지정한다. 내부적으로, 컬럼은 c-function의 strftime()에 의한 포맷이어서,
      그 문서는 문자 포멧으로 간주되어 제공된다.
      <parameter>columntype</parameter>은 IBASE_TIMESTAMP에 포함된 것(IBASE_DATE and IBASE_TIME)들중 하나이다.
      만약 생략된 경우, IBASE_TIMESTAMP의 기본 값은 backwards compatibility이다.
      <informalexample>
-      <programlisting role="php">
+					<programlisting role="php">
 &lt;?php
     // InterBase 6 TIME-type columns will be returned in
     // the form '05 hours 37 minutes'. 
     ibase_timefmt("%H hours %M minutes", IBASE_TIME);
 ?>
       </programlisting>
-     </informalexample>
-    </para>
-    <para>
+				</informalexample>
+			</para>
+			<para>
      이 기본값은 PHP 설정의 ibase.timestampformat(ibase.dateformat 와 ibase.timeformat)에서 지정할 수 있다.
     </para>
-    <note>
-     <para>
-      <parameter>columntype</parameter>은 PHP 4.0에서 추가되었다. 이것은 InterBase version 6 또는 그 이상의 버젼에서 읨가 있다.
+			<note>
+				<para>
+					<parameter>columntype</parameter>은 PHP 4.0에서 추가되었다. 이것은 InterBase version 6 또는 그 이상의 버젼에서 읨가 있다.
      </para>
-    </note>
-    <note>
-     <para>
+			</note>
+			<note>
+				<para>
       A backwards incompatible change happened in PHP 4.0 when PHP configuration directive ibase.timeformat was renamed to ibase.timestampformat and directives ibase.dateformat and ibase.timeformat were added, so that the names would match better their functionality
      </para>
-    </note>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-num-fields">
-   <refnamediv>
-    <refname>ibase_num_fields</refname>
-    <refpurpose>
+			</note>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-num-fields">
+		<refnamediv>
+			<refname>ibase_num_fields</refname>
+			<refpurpose>
      result set의 필드의 수를 얻는다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ibase_num_fields</function></funcdef>
-      <paramdef>int <parameter>result_id</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>ibase_num_fields</function>
+					</funcdef>
+					<paramdef>int <parameter>result_id</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
      결가 셋의 필드의 수를 정수의 형으로 리턴한다.
      <informalexample>
-      <programlisting role="php">
+					<programlisting role="php">
 &lt;?php
     $dbh = ibase_connect ($host, $username, $password);
     $stmt = 'SELECT * FROM tblname';
@@ -594,42 +644,41 @@ for ($i=0 ; $i < $coln ; $i++) {
     ibase_close ($dbh);
 ?>
       </programlisting>
-     </informalexample>
-    </para>
-    <para>
+				</informalexample>
+			</para>
+			<para>
      See also: <function>ibase_field_info</function>.
     </para>
-    <note>
-     <para>
-      <function>Ibase_num_fields</function>는 일반적으로 PHP 4에서 작동하지 않는다.
+			<note>
+				<para>
+					<function>Ibase_num_fields</function>는 일반적으로 PHP 4에서 작동하지 않는다.
      </para>
-    </note>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.ibase-errmsg">
-   <refnamediv>
-    <refname>ibase_errmsg</refname>
-    <refpurpose>
+			</note>
+		</refsect1>
+	</refentry>
+	<refentry id="function.ibase-errmsg">
+		<refnamediv>
+			<refname>ibase_errmsg</refname>
+			<refpurpose>
      error messages를 반환
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>ibase_errmsg</function></funcdef>
-      <paramdef>void <parameter></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>ibase_errmsg</function>
+					</funcdef>
+					<paramdef>void <parameter/>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
      error message를 포함한 문자를 반환한다.
     </simpara>
-   </refsect1>
-  </refentry>
-
- </reference>
-
+		</refsect1>
+	</refentry>
+</reference>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
