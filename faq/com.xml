@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.10 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.10 Maintainer: fuzzy74 Status: ready -->
  <chapter id="faq.com">
   <title>PHP와 COM</title>
   <titleabbrev>PHP와 COM</titleabbrev>

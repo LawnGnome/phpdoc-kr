@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
-<!-- EN-Revision: 1.25 -->
+<!-- $Revision: 1.10 $ -->
+<!-- EN-Revision: 1.25 Maintainer: fuzzy74 Status: ready -->
  <appendix id="debugger">
   <title>PHP 디버깅하기</title>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
-<!-- EN-Revision: 1.22 -->
+<!-- $Revision: 1.7 $ -->
+<!-- EN-Revision: 1.22 Maintainer: fuzzy74 Status: ready -->
+<!-- CREDITS: regina -->
  <chapter id="features.remote-files">
   <title>원격 파일 사용하기</title>
 

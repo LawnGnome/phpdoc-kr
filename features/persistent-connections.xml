@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
-<!-- EN-Revision: 1.21 -->
+<!-- $Revision: 1.10 $ -->
+<!-- EN-Revision: 1.21 Maintainer: fuzzy74 Status: ready -->
+<!-- CREDITS: regina -->
 <chapter id="features.persistent-connections">
     <title>영구적인 데이터베이스 접속</title>
     <simpara>

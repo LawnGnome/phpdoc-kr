@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
-<!-- EN-Revision: 1.34 -->
+<!-- $Revision: 1.9 $ -->
+<!-- EN-Revision: 1.34 Maintainer: fuzzy74 Status: ready -->
  <appendix id="migration4">
   <title>PHP 3 에서 PHP 4로 이주</title>
 	

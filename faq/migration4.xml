@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.9 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.9 Maintainer: fuzzy74 Status: ready -->
  <chapter id="faq.migration4">
   <title>PHP 3에서 PHP 4로의 마이그레이션</title>
   <titleabbrev>PHP 3에서 PHP 4로의 마이그레이션</titleabbrev>

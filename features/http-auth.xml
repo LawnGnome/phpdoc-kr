@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
-<!-- EN-Revision: 1.36 -->
+<!-- $Revision: 1.10 $ -->
+<!-- EN-Revision: 1.36 Maintainer: progcom Status: ready -->
  <chapter id="features.http-auth">
   <title>PHP로 HTTP 인증하기</title>
 

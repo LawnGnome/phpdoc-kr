@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
-<!-- EN-Revision: 1.65 -->
+<!-- $Revision: 1.13 $ -->
+<!-- EN-Revision: 1.65 Maintainer: progcom Status: ready -->
  <chapter id="features.file-upload">
   <title>파일 업로드 다루기</title>
 
