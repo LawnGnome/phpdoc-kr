@@ -8,7 +8,7 @@
 
    <simpara>
     환경 설정 파일(PHP 3에서 <filename>php3.ini</filename>, PHP
-    4.0부터는 단순히 &php.ini;)은 PHP가 시작될 때 읽혀집니다.
+    4부터는 단순히 &php.ini;)은 PHP가 시작될 때 읽혀집니다.
     PHP의 서버 모듈 버전에서는 웹 서버가 시작될 때 한번만 읽혀집니다.
     <acronym>CGI</acronym>와 <acronym>CLI</acronym> 버전에서는 실행될 때마다
     읽혀집니다.
