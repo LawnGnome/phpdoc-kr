@@ -1,4 +1,48 @@
-<!-- EN-Revision: 1.86 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.111 Maintainer: progcom Status: ready -->
+<!-- must be sort -->
+
+<!-- Notes -->
+<!ENTITY note.bin-safe '<note><simpara>이 함수는 바이너리
+호환(binary-safe)입니다.</simpara></note>'>
+
+<!ENTITY note.clearstatcache '<note><simpara>이 함수의 결과는 캐시에
+저장합니다. 자세한 설명은 <function>clearstatcache</function>를
+참고하십시오.</simpara></note>'>
+
+<!ENTITY note.context-support '<note><simpara>Context 지원은 PHP 5.0.0에서
+추가되었습니다.</simpara></note>'>
+
+<!ENTITY note.exec-bg '<note><para>이 함수를 사용하여 프로그램을 백그라운드에서
+실행시키려면, 프로그램의 출력이 파일이나 다른 출력 스트림을 향하게 해야 합니다.
+그렇지 않으면, PHP는 프로그램이 종료할 때까지 멈춰있을 것입니다.</para></note>'>
+
+<!ENTITY note.func-callback '<note><simpara>함수 이름 대신에, 객체의 참조와
+메쏘드 이름을 가지는 배열을 사용할 수 있습니다.</simpara></note>'>
+
+<!ENTITY note.line-endings '<note><simpara>매킨토시 컴퓨터에서 작성한 파일을
+읽어들일 때 PHP가 줄의 끝을 판단하지 못하면, <link
+linkend="ini.auto-detect-line-endings">auto_detect_line_endings</link> 실행
+옵션을 활성화할 수 있습니다.</simpara></note>'>
+
+<!ENTITY note.no-remote '<note><simpara>이 함수는
+<link linkend="features.remote-files">원격 파일</link>을 다루지 못합니다.
+파일은 서버 파일시스템을 통해서 사용 가능해야만 합니다.</simpara></note>'>
+
+<!ENTITY note.not-bin-safe '<warning><simpara>이 함수는 (아직) 바이너리
+호환(binary safe)이 아닙니다!</simpara></warning>'>
+
+<!ENTITY note.no-windows '<note><simpara>이 함수는 윈도우 플랫폼에서는
+작동하지 않습니다.</simpara></note>'>
+
+<!ENTITY note.no-windows.extension '<note><simpara>이 확장 모듈은 윈도우
+플랫폼에서는 사용할 수 없습니다.</simpara></note>'>
+
+
+
+
+
+
+
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -26,9 +70,6 @@ Windows 버전 <literal>PHP</literal>에서는 이 함수를 이용하여 원격
 이러한 웹서버에서 사용할 때는 <link linkend="ini.error-reporting">error_reporting</link>
 레벨을 낮춰서, 경고를 포함하지 않도록 하십시오.</para></warning>'>
 
-<!ENTITY note.no-remote '<note><simpara>이 함수는
-<link linkend="features.remote-files">원격 파일</link>을 다루지 못합니다.
-파일은 서버 파일시스템을 통해서 사용 가능해야만 합니다.</simpara></note>'>
 
 <!ENTITY tip.ob-capture '<tip><simpara>어떠한 결과가 브라우저로 직접
 출력될 때, <link linkend="ref.outcontrol">출력 제어 함수</link>를
@@ -46,16 +87,10 @@ URL을 사용할 수 있습니다. 파일 이름을 지정하는 방법은
 기능적으로 <functoin>stat</function> 패밀리를 지원하는가에 대한 목록은
 <xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
-<!ENTITY note.context-support '<note><simpara>Context 지원은 <literal>PHP
-5.0.0</literal>에서 추가되었습니다.</simpara></note>'>
-
 <!ENTITY return.success '성공일 경우 &true;를, 실패일 경우 &false;를 반환합니다.'>
 
 <!ENTITY array.resetspointer '<note><simpara>이 함수는 사용 후에
 <type>array</type> 포인터를 <function>reset</function>합니다.</simpara></note>'>
-
-<!ENTITY note.clearstatcache '<note><simpara>이 함수의 결과는 캐쉬됩니다.
-더 자세한 내용은 <function>clearstatcache</function>를 참고하십시오.</simpara></note>'>
 
 <!ENTITY return.falseproblem '<warning><simpara>이 함수는 Boolean &false;를
 반환하지만, <literal>0</literal>이나 &quot;&quot;와 같은 &false;로
@@ -111,7 +146,7 @@ linkend="function.dom-domnode-appendchild">DOMNode->appendChild()</link> 등을
 <!-- PCNTL Notes -->
 <!ENTITY pcntl.parameter.status '<para><parameter>status</parameter> 인수는
 <function>pnctl_waitpid</function>의 성공적인 호출에 제공하는 status
-인수입니다.'>
+인수입니다.</para>'>
 
 <!-- Various notes -->
 <!ENTITY note.randomseed '<note><simpara>PHP 4.2.0부터 
@@ -119,36 +154,9 @@ linkend="function.dom-domnode-appendchild">DOMNode->appendChild()</link> 등을
 난수값 생성기를 초기화 할 필요가 없습니다. 자동적으로 이루어집니다.
 </simpara></note>'>
 
-<!ENTITY note.not-bin-safe '<warning><simpara>이 함수는 (아직)
-바이너리 호환(binary safe)이 아닙니다!</simpara></warning>'>
-
-<!ENTITY note.bin-safe '<note><simpara>이 함수는 바이너리
-호환(binary-safe)입니다.</simpara></note>'>
-
-<!ENTITY note.line-endings '<note><simpara><literal>PHP</literal>가
-매킨토시 컴퓨터에서 제작되거나 존재하는 파일을 읽을때 라인 끝을
-감지하지 못하는 문제가 있다면, <link linkend="ini.auto-detect-line-endings"
->auto_detect_line_endings</link> 실행 설정 옵션을 활성화 할
-수 있습니다.</simpara></note>'>
-
-<!ENTITY note.no-windows '<note><simpara>이 함수는 윈도우 플랫폼에서는
-작동하지 않습니다.</simpara></note>'>
-
-<!ENTITY note.no-windows.extension '<note><simpara>이 확장 모듈은 윈도우
-플랫폼에서는 사용할 수 없습니다.</simpara></note>'>
-
-<!ENTITY note.func-callback '<note><simpara>함수 이름을 대신해서
-객체 레퍼런스와 메쏘드 이름을 가진 배열을 사용할 수 있습니다.
-</simpara></note>'>
-
 <!ENTITY warn.escapeshell '<warning><para>사용자가 입력한 데이터를 이 함수로
 넘길 때는, <function>escapeshellarg</function>나 <function>escapeshellcmd</function>를
 사용하여, 사용자가 어떠한 명령을 실행하여 시스템을 조작하지 못하게 하여야 합니다.</para></warning>'>
-
-<!ENTITY note.exec-bg '<note><para>이 함수를 사용하여 프로그램을 실행하고,
-백그라운드에서 작업하게 내버려두려면, 그 프로그램의 출력이 파일이나 다른 출력 
-스트림을 향하게 하여야 합니다. 그렇지 않으면 PHP는 그 프로그램이 종료할 때까지
-정지합니다.</para></note>'>
 
 <!-- Notes for safe-mode limited functions: -->
 <!ENTITY note.sm.disabled '<note><simpara>&sm.disabled;</simpara></note>'>
