@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.58 -->
+<!-- EN-Revision: 1.59 -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -80,6 +80,10 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 <function>addslashes</function>를 실행합니다. 그것들을 제거하기 위해서
 <function>stripslashes</function>를 사용할 수 있습니다.</para></note>'>
 
+<!ENTITY note.config.t1lib '<note><simpara>이 함수는
+<option role="configure">--enable-t1lib</option>를 사용하여 PHP를
+컴파일 했을 때만 사용할 수 있습니다.</simpara></note>'>
+
 <!-- Various notes -->
 <!ENTITY note.randomseed '<note><simpara>PHP 4.2.0부터 
 <function>srand</function>나 <function>mt_srand</function>를 이용해서
@@ -127,13 +131,11 @@ linkend="features.safe-mode">안전 모드</link>가 활성화 되었을 때, PH
 <!-- Common pieces in features/safe-mode.xml 
      Jade doesn't allow in-line entities, so I put them here... Though they 
      should have been inline in safe-mode.xml -->
-<!ENTITY sm.uidcheck 'Checks whether the files or directories you are 
-about to operate on have the same UID (owner) as the script that is being
-executed.'>
+<!ENTITY sm.uidcheck '작업하려는 파일이나 디렉토리가 실행 중인
+스크립트와 같은 UID (owner)를 가지고 있는지 확인합니다.'>
 
-<!ENTITY sm.uidcheck.dir 'Checks whether the directory in which
-you are about to operate has the same UID (owner) as the script that is being
-executed.'>
+<!ENTITY sm.uidcheck.dir '작업하려는 디렉토리가 실행 중인 스크립트와
+같은 UID (owner)를 가지고 있는지 확인합니다.'>
 
 <!ENTITY sm.disabled '이 함수는 <link linkend="features.safe-mode">안전
 모드</link>에서 사용할 수 없습니다.'>
