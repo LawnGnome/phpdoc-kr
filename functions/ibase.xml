@@ -194,7 +194,7 @@ magic_quotes_sybase = On
   <refentry id="function.ibase-query">
    <refnamediv>
     <refname>ibase_query</refname>
-    <refpurpose>InterBase database의 쿼리를 실행한다se>
+    <refpurpose>InterBase database의 쿼리를 실행한다</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
