@@ -16,6 +16,7 @@ language-snippets.ent              progcom                 Maintain
 ------- appendices ----------------------------------------------------------
 about.xml
 aliases.xml
+comparisons.xml
 debugger.xml
 history.xml
 migration.xml
@@ -26,33 +27,29 @@ reserved.constant.standard.xml
 reserved.xml
 resources.xml
 tokens.xml
+transports.xml
 wrappers.xml
 ------- chapters ------------------------------------------------------------
 config.xml                         progcom                 Maintain
 install.*.xml
 intro.xml                          progcom                 Maintain
-streams.common.xml
-streams.constants.xml
-streams.dir.xml
-streams.file.xml
-streams.socket.xml
-streams.structs.xml
+streams.*.xml
 streams.xml
 tutorial.xml                       progcom                 Maintain
 ------- faq -----------------------------------------------------------------
-build.xml                          fuzzy74                 Assign
-com.xml                            fuzzy74                 Assign
-databases.xml                      fuzzy74                 Assign
-general.xml                        fuzzy74                 Assign
-html.xml                           fuzzy74                 Assign
-installation.xml                   fuzzy74                 Assign
-languages.xml                      fuzzy74                 Assign
-mailinglist.xml                    fuzzy74                 Assign
-migration.xml                      fuzzy74                 Assign
-migration4.xml                     fuzzy74                 Assign
-misc.xml                           fuzzy74                 Assign
-obtaining.xml                      fuzzy74                 Assign
-using.xml                          fuzzy74                 Assign
+build.xml                          fuzzy74                 Maintain
+com.xml                            fuzzy74                 Maintain
+databases.xml                      fuzzy74                 Maintain
+general.xml                        fuzzy74                 Maintain
+html.xml                           fuzzy74                 Maintain
+installation.xml                   fuzzy74                 Maintain
+languages.xml                      fuzzy74                 Maintain
+mailinglist.xml                    fuzzy74                 Maintain
+migration.xml                      fuzzy74                 Maintain
+migration4.xml                     fuzzy74                 Maintain
+misc.xml                           fuzzy74                 Maintain
+obtaining.xml                      fuzzy74                 Maintain
+using.xml                          fuzzy74                 Maintain
 ------- features ------------------------------------------------------------
 commandline.xml
 connection-handling.xml
@@ -63,16 +60,16 @@ persistent-connections.xml
 remote-files.xml
 safe-mode.xml
 -------- language -----------------------------------------------------------
-basic-syntax.xml                   fuzzy74                 Assign
-constants.xml                      fuzzy74                 Assign
-control-structures.xml             fuzzy74                 Assign
-expressions.xml                    fuzzy74                 Assign
-functions.xml                      fuzzy74                 Assign
-oop.xml                            fuzzy74                 Assign
-operators.xml                      fuzzy74                 Assign
-references.xml                     fuzzy74                 Assign
-types.xml                          fuzzy74                 Assign
-variables.xml                      fuzzy74                 Assign
+basic-syntax.xml                   fuzzy74                 Maintain
+constants.xml                      fuzzy74                 Maintain
+control-structures.xml             fuzzy74                 Maintain
+expressions.xml                    fuzzy74                 Maintain
+functions.xml                      fuzzy74                 Maintain
+oop.xml                            fuzzy74                 Maintain
+operators.xml                      fuzzy74                 Maintain
+references.xml                     fuzzy74                 Maintain
+types.xml                          fuzzy74                 Maintain
+variables.xml                      fuzzy74                 Maintain
 -------- reference ----------------------------------------------------------
 apache/                            progcom
 array/
@@ -119,7 +116,7 @@ iconv/
 ifx/
 iisfunc/
 image/
-imap/                              fuzzy74
+imap/                              fuzzy74                 Maintain
 info/
 ingres-ii/
 ircg/
@@ -147,7 +144,7 @@ network/
 nis/
 notes/
 objaggregation/
-oci8/                              fuzzy74
+oci8/                              fuzzy74                 Maintain
 openssl/
 oracle/
 outcontrol/
