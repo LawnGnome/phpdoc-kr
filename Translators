@@ -64,16 +64,16 @@ persistent-connections.xml
 remote-files.xml
 safe-mode.xml
 -------- language -----------------------------------------------------------
-basic-syntax.xml
-constants.xml
-control-structures.xml
-expressions.xml
-functions.xml
-oop.xml
-operators.xml
-references.xml
-types.xml
-variables.xml
+basic-syntax.xml                   fuzzy74                 Assign
+constants.xml                      fuzzy74                 Assign
+control-structures.xml             fuzzy74                 Assign
+expressions.xml                    fuzzy74                 Assign
+functions.xml                      fuzzy74                 Assign
+oop.xml                            fuzzy74                 Assign
+operators.xml                      fuzzy74                 Assign
+references.xml                     fuzzy74                 Assign
+types.xml                          fuzzy74                 Assign
+variables.xml                      fuzzy74                 Assign
 -------- reference ----------------------------------------------------------
 apache/                            progcom
 array/
