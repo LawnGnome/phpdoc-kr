@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.13 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
@@ -331,7 +331,7 @@ if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
   </sect1>
    
   <sect1 id="tutorial.forms">
-   <title>Dealing with Forms</title>
+   <title>폼(Form) 다루기</title>
    <para>
     One of the most powerful features of PHP is the way it handles HTML
     forms. The basic concept that is important to understand is that any
@@ -439,13 +439,13 @@ You are 22 years old.
      </listitem>
     </itemizedlist>
     이 변화에 대한 자세한 내용은
-    <link linkend="language.variables.predefined">predefined variables</link>
+    <link linkend="language.variables.predefined">예약 정의 변수</link>
     섹션과 그 안의 링크들을 참고하십시오.
    </para>
   </sect1>
   
   <sect1 id="tutorial.whatsnext">
-   <title>What's next?</title>
+   <title>다음은?</title>
    <para>
     With what you know now you should be able to understand most of 
     the manual and also the various example scripts available in the
