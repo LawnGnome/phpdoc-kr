@@ -14,7 +14,7 @@ preface.xml                        rhheo
 language-defs.ent                  progcom
 language-snippets.ent              progcom
 ------- appendices ----------------------------------------------------------
-about.xml                          rhheo
+about.xml
 aliases.xml
 debugger.xml
 history.xml
