@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ok -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 <section id="zlib.configuration">
  &reftitle.runtime;
  &extension.runtime;
@@ -37,8 +36,7 @@
     </tbody>
    </tgroup>
   </table>
-  PHP_INI_* 상수에 관한 자세한 내용과 정의는
-  <function>ini_set</function>을 참고하십시오.
+  &ko.reference.ini.constants;
  </para>
  
  &ini.descriptions.title;
@@ -132,4 +130,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
 <section id="mysql.configuration">
  &reftitle.runtime;
@@ -64,13 +63,12 @@
     </tbody>
    </tgroup>
   </table>
-  PHP_INI_* 상수에 관한 상세와 정의는 <function>ini_set</function>을
-  참고하십시오.
-</para>
+  &ko.reference.ini.constants;
+ </para>
 
-&ini.descriptions.title;
+ &ini.descriptions.title;
 
-<para>
+ <para>
  <variablelist>
    <varlistentry id="ini.mysql.allow-persistent">
    <term>
@@ -215,4 +213,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

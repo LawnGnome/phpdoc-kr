@@ -63,8 +63,7 @@
     </tbody>
    </tgroup>
   </table>
-  PHP_INI_* 상수에 관한 상세와 정의는 <function>ini_set</function>을
-  참고하십시오.
+  &ko.reference.ini.constants;
  </para>
  
  &ini.descriptions.title;
