@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
-<!-- EN-Revision: 1.14 -->
+<!-- $Revision: 1.12 $ -->
+<!-- EN-Revision: 1.17 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
 
@@ -442,6 +442,11 @@ Joe씨 안녕하세요.
     대부분을 이해할 수 있을 것입니다. php.net 사이트의 또다른 예제들을
     다음 링크 섹션에서 찾아볼 수 있습니다:
     <ulink url="&url.php.links;">&url.php.links;</ulink>.
+   </para>
+   <para>
+    PHP로 할 수 있는 많은 일들에 대한 다양한 슬라이드 프리젠테이션을
+    PHP Conference Material 사이트에서 볼 수 있습니다: <ulink url="&url.php.conf;">
+    &url.php.conf;</ulink>, <ulink url="&url.php.talks;">&url.php.talks;</ulink>
    </para>
   </sect1>
  </chapter>
