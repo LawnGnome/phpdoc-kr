@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.1 $ -->
 <!-- splitted from ./en/functions/mysql.xml, last change in rev 1.62 -->
-  <refentry id="function.mysql-get-host-info">
+  <refentry id="function.mysql-get-proto-info">
    <refnamediv>
-    <refname>mysql_get_host_info</refname>
-    <refpurpose>MySQL 호스트 정보를 얻는다</refpurpose>
+    <refname>mysql_get_proto_info</refname>
+    <refpurpose>MySQL 프로토콜 정보를 얻는다</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
      <methodsynopsis>
-      <type>string</type><methodname>mysql_get_host_info</methodname>
+      <type>int</type><methodname>mysql_get_proto_info</methodname>
       <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>mysql_get_host_info</function>는 <parameter>link_identifier</parameter> 접속에
-	 사용되는 접속 형태를 설명하는 서버 호스트 이름을 포함하는 문자열을 반환한다.
-	 만약 <parameter>link_identifier</parameter>가 생략되면, 최근 오픈된 접속이 사용될 것이다.
+     <function>mysql_get_proto_info</function>는 <parameter>link_identifier</parameter> 접속에 사용된 프로토콜 버전을 반환한다. 만약 <parameter>link_identifier</parameter>가 생략되면,
+	 최근 오픈된 접속이 사용될 것이다.
     </para>
     <para>
      <example>
-      <title><function>mysql_get_host_info</function> 예</title>
+      <title><function>mysql_get_proto_info</function> example</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -27,7 +26,7 @@ $link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
 if (!$link) {
     die('Could not connect: ' . mysql_error());
 }
-printf("MySQL host info: %s\n", mysql_get_host_info());
+printf("MySQL protocol version: %s\n", mysql_get_proto_info());
 ?>
 ]]>
       </programlisting>
@@ -36,7 +35,7 @@ printf("MySQL host info: %s\n", mysql_get_host_info());
       </para>
       <screen>
 <![CDATA[
-MySQL host info: Localhost via UNIX socket
+MySQL protocol version: 10
 ]]>
       </screen>
      </example>
@@ -44,7 +43,7 @@ MySQL host info: Localhost via UNIX socket
     <para>
      참조: 
      <function>mysql_get_client_info</function>,
-     <function>mysql_get_proto_info</function>,
+     <function>mysql_get_host_info</function>,
      <function>mysql_get_server_info</function>.
     </para>
    </refsect1>
