@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: working -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.1 Maintainer: progcom Status: working -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
     <refname>패턴 문법</refname>
@@ -666,18 +666,18 @@
       word 경계는 현재 문자와 이전 문자가 둘 다 <literal>\w</literal>에
       매치하지 않거나 둘 다 <literal>\W</literal>에 매치하지 않는 (즉, 하나는
       <literal>\w</literal>에 매치하고 다른 하나는 <literal>\W</literal>에
-      매치) 목표 문자열의 위치이거나, 처음이나 마지막 문자가 \w에 매치하는
-      경우에 문자열의 처음이나 마지막입니다.
+      매치) 목표 문자열의 위치이거나, 처음이나 마지막 문자가
+      <literal>\w</literal>에 매치할 경우는 문자열의 처음이나 마지막입니다.
      </para>
      <para>
       <literal>\A</literal>, <literal>\Z</literal>, <literal>\z</literal>
       단정은 전통적인 circumflex와 달러와는 달리 옵션과 관계 없이 목표
       문자열의 가장 처음이나 가장 마지막에만 매치합니다. 이들은
-      <link linkend="pcre.pattern.modifiers">PCRE_NOTBOL</link>이나
-      <link linkend="pcre.pattern.modifiers">PCRE_NOTEOL</link> 옵션에 영향을
-      받지 않습니다. <literal>\Z</literal>와 <literal>\z</literal>의 차이는,
-      <literal>\Z</literal>가 문자열의 마지막뿐만 아니라 문자열 마지막 문자가
-      줄바꿈일 경우에는 바로 앞에도 매치하지만, <literal>\z</literal>는
+      <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>이나
+      <link linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLU</link> 옵션에
+      영향을 받지 않습니다. <literal>\Z</literal>와 <literal>\z</literal>의
+      차이는, <literal>\Z</literal>가 문자열의 마지막뿐만 아니라 문자열 마지막
+      문자가 줄바꿈일 경우에는 바로 앞에도 매치하지만, <literal>\z</literal>는
       마지막에만 매치합니다.
      </para>
     </refsect2>
