@@ -8,7 +8,7 @@
 			이 언어의 목적은 웹개발자들이 동적인 웹문서를 빠르고 쉽게 작성할 수 있도록 하는 것이다. 
    </simpara>
 	</abstract>
-	<sect1 id="about">
+	<sect1 id="see.en.appendices.about.xml">
 		<title>이 매뉴얼에 대하여</title>
 		<para>
 			이 매뉴얼은 <ulink url="&url.docbook.xml;">DocBook XML DTD</ulink>를 사용한 <acronym>XML</acronym>로 되어있고,
