@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+  <refentry id="function.serialize">
+   <refnamediv>
+    <refname>serialize</refname>
+    <refpurpose>
+     값의 저장 표현을 생성합니다.
+    </refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>string</type><methodname>serialize</methodname>
+      <methodparam><type>mixed</type><parameter>value</parameter></methodparam>
+     </methodsynopsis>
+    <simpara>
+     <function>serialize</function>는 어디에도 저장할 수 있도록
+     <parameter>value</parameter>의 바이트 스트림 표현을 포함하는 문자열을
+     반환합니다.
+    </simpara>
+    <simpara>
+     이는 PHP 값을 저장하거나 전달할 때 형이나 구조를 잃어버리지 않게 합니다.
+    </simpara>
+   <simpara>
+    serialize된 문자열을 다시 PHP 변수로 만들때는,
+    <function>unserialize</function>를 사용합니다.
+    <function>serialize</function>는 <type>resource</type>형을 제외한 모든 형을
+    다릅니다. 심지어 자기 자신을 참조하는 배열을
+    <function>serialize</function>할 수도 있습니다. 배열/객체 안의 참조는
+    <function>serialize</function>할 때 저장됩니다.
+   </simpara>
+   <simpara>
+   객체를 일렬화할 때, 일렬화에 앞서 <function>__sleep</function> 멤버
+   함수를 호출합니다. 이는 일렬화하기 전에 객체를 마지막으로 정리할 수 있도록
+   합니다. 비슷하게, <function>unserialize</function>을 사용하려 객체를 되돌릴
+   때, <function>__wakeup</function> 멤버 함수를 호출합니다.
+   </simpara>
+   <!-- TODO
+        in 4.0.4pl1 this didn't work properly, however, there
+        been some fixes. I don't know whether this all
+        works correctly now, and if so, whether it is since 405
+        or 406
+   <note>
+    <simpara>
+     This didn't work correctly until 4.0.?
+    </simpara>
+   </note>
+   </simpara>
+   -->
+   <note>
+    <para>
+     PHP 3에서, 객체 속성은 일렬화되지만, 메쏘드는 잃어버립니다. PHP
+     4에서는 이런 제한이 사라졌고, 속성과 메쏘드를 둘다 복구합니다. 자세한
+     정보는 <link linkend="laguage.oop">클래스와 객체</link>의 <link
+     linkend="language.oop.serialization">객체 일렬화하기</link> 섹션을
+     참고하십시오.
+    </para>
+   </note>
+    <para>
+     <example>
+      <title><function>serialize</function> 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+// $session_data는 현재 사용자의 세션 정보를 다차원 배열로
+// 가집니다. 요청의 마지막에 이것을 데이터베이스에 저장하기
+// 위해서 serialize()를 사용합니다.
+
+$conn = odbc_connect ("webdb", "php", "chicken");
+$stmt = odbc_prepare ($conn,
+      "UPDATE sessions SET data = ? WHERE id = ?");
+$sqldata = array (serialize($session_data), $PHP_AUTH_USER);
+if (!odbc_execute ($stmt, &$sqldata)) {
+    $stmt = odbc_prepare($conn,
+     "INSERT INTO sessions (id, data) VALUES(?, ?)");
+    if (!odbc_execute($stmt, &$sqldata)) {
+        /* 무언가 잘못되었을때 할 일.. */
+    }
+}
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+   <para>
+    참고: <function>unserialize</function>.
+   </para>
+   </refsect1>
+  </refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+

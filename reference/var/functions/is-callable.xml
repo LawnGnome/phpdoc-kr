@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.1 $ -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+  <refentry id="function.is-callable">
+   <refnamediv>
+    <refname>is_callable</refname>
+    <refpurpose>
+     변수의 내용이 함수처럼 호출할 수 있는지 확인합니다.
+    </refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>bool</type><methodname>is_callable</methodname>
+      <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
+      <methodparam choice="opt"><type>bool</type><parameter>syntax_only</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>callable_name</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     변수의 내용이 함수처럼 호출할 수 있는지 확인합니다. 변수가 유효한
+     함수의 이름을 포함하고 있는지, 혹은 인코드된 객체와 함수 이름을
+     가지는 배열인지를 간단히 확인할 수 있습니다.
+    </para>
+    <para>
+     var 인자는 문자열 변수에 저장한 함수의 이름이거나, 객체 안의 객체와
+     메쏘드의 이름일 수 있습니다. 예:
+     <screen>array( $SomeObject, 'MethodName' )</screen>
+    </para>
+    <para>
+     <parameter>syntax_only</parameter> 인자가 &true; 라면 이 함수는
+     <parameter>var</parameter>가 함수나 메쏘드일 수 있는지만을 확인합니다.
+     이는 단순히 문자열이 아닌 변수나 유효하게 콜백에 사용할 수 있는 구조가
+     아닌 배열을 거부합니다. 유효한 것은 2 엔트리뿐이며, 첫번째는 객체나
+     문자열, 두번째는 문자열입니다.
+    </para>
+    <para>
+     <parameter>callable_name</parameter> 인자는 "호출할 수 있는 이름"을
+     받습니다. 아래의 예제에서 이는 "someClass:someMethod"입니다. 그러나
+     somClass::SomeMethod()가 호출할 수 있는 정적 메쏘드라면, 불가능하다는
+     점에 주의하십시오.
+    </para>
+    <informalexample>
+     <programlisting role="php">
+<![CDATA[
+<? php
+//  변수가 함수처럼 호출할 수 있는지
+//  체크하는 방법.
+
+//
+//  함수를 포함하는 간단한 변수
+//
+
+function someFunction() {
+}
+
+$functionVariable = 'someFunction';
+
+var_dump( is_callable( $functionVariable, false, $callable_name ));  // bool(true)
+
+echo $callable_name, "\n";  // someFunction
+
+//
+//  메쏘드를 포함하는 배열
+//
+
+class someClass {
+
+  function someMethod() {
+  }
+
+}
+
+$anObject = new someClass();
+
+$methodVariable = array( $anObject, 'someMethod' );
+
+var_dump( is_callable( $methodVariable, true, $callable_name ));  //  bool(true)
+
+echo $callable_name, "\n";  //  someClass:someMethod
+
+?>
+]]>
+     </programlisting>
+    </informalexample>   
+   </refsect1>
+  </refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
+
