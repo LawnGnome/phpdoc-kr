@@ -129,7 +129,7 @@ java/
 ldap/
 mail/
 mailparse/
-math/                              fuzzy74
+math/                              progcom
 mbstring/
 mcal/
 mcrypt/
