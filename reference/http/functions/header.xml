@@ -180,7 +180,7 @@ header("Pragma: no-cache");
 <html>
 <?php
 /* 에러가 납니다. header() 호출 전에
- * 위의 출력이 있는 점에 주의하십시오.
+ * 위의 출력이 있는 점에 주의하십시오. */
 header('Location: http://www.example.com/');
 ?>
 ]]>
