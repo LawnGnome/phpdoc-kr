@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/oci8.xml, last change in rev 1.1 -->
-<!-- last change to 'ocilogon' in en/ tree in rev 1.2 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.0 Maintainer: fuzzy74 Status: unknown -->
   <refentry id="function.ocilogon">
    <refnamediv>
     <refname>OCILogon</refname>
