@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Stauts: cannot -->
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: cannot -->
   <refentry id="function.levenshtein">
    <refnamediv>
     <refname>levenshtein</refname> 

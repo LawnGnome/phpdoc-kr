@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-<!-- CREDITS: cycle98 -->
-	 <refentry id="function.quotemeta">
+  <refentry id="function.nl-langinfo">
    <refnamediv>
-    <refname>quotemeta</refname>
-    <refpurpose>메타 문자를 인용합니다.</refpurpose>
+    <refname>nl_langinfo</refname>
+    <refpurpose>
+     언어와 로케일 정보를 얻습니다.
+    </refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
      <methodsynopsis>
-      <type>string</type><methodname>quotemeta</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
+      <type>string</type><methodname>nl_langinfo</methodname>
+      <methodparam><type>int</type><parameter>item</parameter></methodparam>
      </methodsynopsis>
     <para>
-     모든 <screen>. \\ + * ? [ ^ ] ( $ )</screen> 문자 앞에
-     백슬래쉬(<literal>\</literal>)를 덧붙인 <parameter>str</parameter>을
-     반환합니다.
+     &warn.undocumented.func;
     </para>
-    <simpara>
-     참고: <function>addslashes</function>,
-     <function>htmlentities</function>, 
-     <function>htmlspecialchars</function>, 
-     <function>nl2br</function>,
-     <function>stripslashes</function>.
-    </simpara>
    </refsect1>
   </refentry>
 

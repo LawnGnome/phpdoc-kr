@@ -1,42 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/strings.xml, last change in rev 1.3 -->
-<!-- last change to 'parse-str' in en/ tree in rev 1.2 -->
-	<refentry id="function.parse-str">
-		<refnamediv>
-			<refname>parse_str</refname>
-			<refpurpose>문자열을 변수로 파싱한다.</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>void</type><methodname>parse_str</methodname>
-					<methodparam><type>string</type><parameter>str</parameter></methodparam>
-					<methodparam choice="opt"><type>array</type><parameter>
-							arr
-						</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-     문자열 <parameter>str</parameter>을 마치  URL을 통해 온 질의문인것 처럼 파싱하고
-	전역 변수로 변수를 지정한다.
-	만약 두번째 매개변수 <parameter>arr</parameter>이 존재하면, 
-	변수는 <parameter>arr</parameter>이름을 갖는 배열의 원소로 저장된다. 
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+  <refentry id="function.parse-str">
+   <refnamediv>
+    <refname>parse_str</refname>
+    <refpurpose>문자열을 처리하여 변수를 생성합니다.</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>void</type><methodname>parse_str</methodname>
+      <methodparam><type>string</type><parameter>str</parameter></methodparam>
+      <methodparam choice="opt"><type>array</type><parameter>arr
+       </parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     <parameter>str</parameter>을 URL을 통한 질의 문자열처럼 처리하여, 현재
+     위치에 변수를 설정합니다. 두번째 인자 <parameter>arr</parameter>이
+     존재하면, 변수를 설정하는 대신 이 배열 변수의 원소로 저장합니다.
     </para>
-			<para>
-				<example>
-					<title>
-						<function>parse_str</function>의 사용
-					</title>
-					<programlisting role="php">
-$str = "first=value&amp;second[]=this+works&amp;second[]=another";
+    <note>
+     <para>
+      선택적인 두번째 인자는 PHP 4.0.3에서 추가되었습니다.
+     </para>
+    </note>
+    <note>
+     <para>
+      현지 <emphasis>QUERY_STRING</emphasis>을 얻으려면, <link
+       linkend="reserved.variables.server">$_SERVER['QUERY_STRING']</link>를
+      사용할 수 있습니다. 또한, <link
+       linkend="language.variables.external">PHP 외부에서 들어오는 변수</link>
+      섹션을 읽어보는 편이 좋습니다.
+     </para>
+    </note>
+    <para>
+     <example>
+      <title><function>parse_str</function> 사용하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$str = "first=value&arr[]=foo+bar&arr[]=baz";
 parse_str($str);
-echo $first;     /* "value" 를 출력 */
-echo $second[0]; /* "this works" 를 출력 */
-echo $second[1]; /*  "another" 를 출력 */
+echo $first;  // value
+echo $arr[0]; // foo bar
+echo $arr[1]; // baz
+
+parse_str($str, $output);
+echo $output['first'];  // value
+echo $output['arr'][0]; // foo bar
+echo $output['arr'][1]; // baz
+
+?>
+]]>
       </programlisting>
-				</example>
-			</para>
-		</refsect1>
-	</refentry>
+     </example>
+    </para>
+    <para>
+     참고: <function>parse_url</function>, <function>pathinfo</function>,
+     <function>set_magic_quotes_runtime</function>,
+     <function>urldecode</function>.
+    </para>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
