@@ -24,7 +24,7 @@
      <methodsynopsis><type>void</type><methodname>close</methodname><void/></methodsynopsis>
     </classsynopsis>
     <para>
-     디렉토리를 읽는 가짜 객체 지향 방법입니다. 주어진
+     디렉토리를 읽는 모조-객체 기반 방법입니다. 주어진
      <parameter>directory</parameter>를 엽니다. 열려진 디렉토리에 사용할 수
      있는 두가지 속성이 존재합니다. handle 속성은
      <function>readdir</function>, <function>rewinddir</function>,
@@ -33,11 +33,11 @@
      메쏘드를 사용할 수 있습니다: read, rewind, close.
     </para>
     <para>
-     <function>dir</function>의 반환값은 아래 예제처럼 확인해야하는 점에
+     <function>dir</function>의 반환값은 아래 예제처럼 확인해야 하는 점에
      주의하십시오. 반환값이 &false;와 완전히 동일한지 (형까지 같게--자세한
-     정보는 <link linkend="language.operators.comparison">비교 연산자</link>를
-     참고하십시오) 확인하고 있습니다. 이렇게 하지 않으면, &false;로 판단할 수
-     있는 이름을 가진 디렉토리 엔트리에서 루프가 멈춥니다.
+     정보는 <link linkend="language.operators.comparison">비교
+     연산자</link>를 참고하십시오) 확인하고 있습니다. 이렇게 하지 않으면,
+     &false;로 판단할 수 있는 이름을 가진 디렉토리 엔트리에서 루프가 멈춥니다.
      <example>
       <title><function>dir</function> 예제</title>
       <programlisting role="php">
