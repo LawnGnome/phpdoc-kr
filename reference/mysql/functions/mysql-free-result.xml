@@ -4,7 +4,7 @@
 	<refentry id="function.mysql-free-result">
 		<refnamediv>
 			<refname>mysql_free_result</refname>
-			<refpurpose>Free result memory</refpurpose>
+			<refpurpose>질의 결과로 사용한 메모리를 해제</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
