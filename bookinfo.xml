@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.18 $ -->
+<!-- $Revision: 1.19 $ -->
 <!-- EN-Revision: 1.34 -->
 
  <bookinfo id="bookinfo">
@@ -60,6 +60,9 @@
   </authorgroup>
 
   <authorgroup id="translators">
+   <editor>
+    <firstname>WonHee</firstname><surname>Hwang</surname>
+   </editor>
    <editor>
     <firstname>Gwangjong</firstname><surname>Lee</surname>
    </editor>
