@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
+<!-- $Revision: 1.9 $ -->
  <chapter id="introduction">
   <title>소개</title>
 
@@ -109,40 +109,34 @@
     </itemizedlist>
    </para>
    <para>
-    PHP can be used on all major operating systems, including
-    Linux, many Unix variants (including HP-UX, Solaris and OpenBSD),
-    Microsoft Windows, Mac OS X, RISC OS, and probably others.
-    PHP has also support for most of the web servers today. This
-    includes Apache, Microsoft Internet Information Server,
-    Personal Web Server, Netscape and iPlanet servers, Oreilly
-    Website Pro server, Caudium, Xitami, OmniHTTPd, and many
-    others. For the majority of the servers PHP has a module,
-    for the others supporting the CGI standard, PHP can work
-    as a CGI processor.
+    PHP는 리눅스, 많은 유닉스 계열 (HP-UX, Solaris와 OpenBSD를 포함),
+    Microsoft Windows, 맥 OS X, RISC OS 등과 같은 모든 유명한 OS에서 사용할
+    수 있다. 또한, PHP는 오늘날의 대부분의 웹 서버를 지원한다.
+    이것에는 아파치, Microsoft Internet Information Server, Personal Web Server,
+    Netscape and iPlanet servers, Oreilly, Website Pro server, Caudium, Xitami,
+    OmniHTTPd, 그 외의 많은 서버들이 포함된다.
+    유명한 서버에 대해서는 PHP 모듈이 있으며, 다른 것에 대해서는
+    CGI 표준을 지원한다면, PHP는 CGI 프로세서로 동작할 수 있다.
    </para>
    <para>
-    So with PHP, you have the freedom of choosing an operating
-    system and a web server. Furthermore, you also have the choice
-    of using procedural programming or object oriented
-    programming, or a mixture of them. Although not every
-    standard OOP feature is realized in the current version
-    of PHP, many code libraries and large applications (including the
-    PEAR library) are written only using OOP code.
+    그러므로 PHP라면, OS와 웹서버를 선택하는 것에서 자유로워 질 수 있다.
+    추가로, 함수 지향형이나 객체 지향형, 또는 그 둘을 섞은 형태로 프로그램을
+    할 수 있다. 비록 현재 버전의 PHP에서는 표준 OOP 기능을 모두 포함하고 있지 않지만,
+    많은 코드 라이브러리와 커다란 애플리케이션들(PEAR 라이브러리를 포함하여)이
+    OOP 코드만을 이용하여 작성되고 있다.
    </para>
    <para>
-    With PHP you are not limited to output HTML. PHP's abilities
-    includes outputting images, PDF files and even Flash movies
-    (using libswf and Ming) generated on the fly. You can also
-    output easily any text, such as XHTML and any other XML file.
-    PHP can autogenerate these files, and save them in the file
-    system, instead of printing it out, forming a server-side
-    cache for your dynamic content.
+    PHP는 HTML을 출력하는 것에만 제한되지 않는다. PHP의 능력은
+    이미지, PDF 파일, 심지어 플래쉬 무비(libswf와 Ming를 사용하여)까지
+    만들어서 출력할 수 있다. 또한 XHTML이나 다른 종류의 XML 파일과 같은
+    어떠한 텍스트 파일이라도 쉽게 출력할 수 있다. PHP로 출력을 하는 대신,
+    자동적으로 만들어진 파일들을 파일 시스템에 저장하여 동적 컨텐츠에 대한
+    서버측 캐쉬를 구현할 수도 있다.
    </para>
    <para>
-    One of the strongest and most significant feature in PHP is its
-    support for a wide range of databases. Writing a database-enabled
-    web page is incredibly simple. The following databases are currently
-    supported:
+    PHP의 가장 강력하고 인상적인 기능 중 하나는 넓은 범위의 데이터베이스에
+    대한 지원이다. 데이터베이스를 이용하는 웹 페이지를 작성하는것은 매우
+    간단하다. 현재 다음과 같은 데이터베이스가 지원되고 있다:
     <blockquote>
      <simplelist columns="3">
       <member>Adabas D</member>
@@ -168,49 +162,42 @@
       <member>Unix dbm</member>
      </simplelist>
     </blockquote>
-    We also have a DBX database abstraction extension allowing you
-    to transparently use any database supported by that extension.
-    Additionally PHP supports ODBC, the Open Database Connection
-    standard, so you can connect to any other database supporting
-    this world standard.
+    또한 DBX database abstraction 확장은 이 확장이 지원하는 어떠한
+    데이터베이스라도 명백히 사용할 수 있을 것이다.
+    추가로 PHP는 ODBC(Open Database Connection 표준)를 지원하기 때문에,
+    이 세계 표준을 지원하는 어떤 데이터베이스라도 연결할 수 있다.
    </para>
    <para>
-    PHP also has support for talking to other services using protocols
-    such as LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (on Windows) and
-    countless others. You can also open raw network sockets and
-    interact using any other protocol. PHP has support for the WDDX
-    complex data exchange between virtually all Web programming
-    languages. Talking about interconnection, PHP has support for
-    instantiation of Java objects and using them transparently
-    as PHP objects. You can also use our CORBA extension to
-    access remote objects.
+    또한 PHP는 LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (Windows에서),
+    그리고 셀 수 없는 여러가지 프로토콜들을 이용해서 다른 서비스와
+    연계할 수 있도록 지원한다. 또한 비어있는 네트워크 소켓을 열수도 있기에
+    어떤 프로토콜과도 연계해서 실행할 수 있다. PHP는 WDDX complex data
+    exchange between virtually all Web programming languages를 지원한다.
+    이를 통한 연계로, PHP는 자바 객체를 그대로 PHP 객체로 옮겨서 이용할
+    수 있다. 또한 원거리 객체 접근을 위해 우리의 CORBA 익스텐션을 이용할 수도 있다.
    </para>
    <para>
-    PHP has extremely useful text processing features, from the
-    POSIX Extended or Perl regular expressions to parsing XML
-    documents. For parsing and accessing XML documents, we
-    support the SAX and DOM standards. You can use our XSLT
-    extension to transform XML documents.
+    PHP는 POSIX 확장이나 펄 정규 표현부터 XML 문서 파싱까지 가능한,
+    극도로 유용한 텍스트 프로세싱 기능을 가지고 있다.
+    XML 문서를 파싱하고 접근하기 위해서, SAX와 DOM 표준을 지원한다.
+    또한, XML 문서를 변환하기 위해서 우리의 XSLT 확장을 이용할 수도 있다.
    </para>
    <para>
-    While using PHP in the ecommerce field, you'll find
-    the Cybercash payment, CyberMUT, VeriSign Payflow
-    Pro and CCVS functions useful for your online payment
-    programs.
+    PHP를 ecommerce 영역에서 사용한다면, Cybercash payment,
+    CyberMUT, VeriSign Payflow Pro와 CCVS 함수가 온라인 지불
+    프로그램에 매우 유용함을 알게 될 것이다.
    </para>
    <para>
-    At last but not least, we have many other interesting
-    extensions, the mnoGoSearch search engine functions,
-    the IRC Gateway functions, many compression utilities
-    (gzip, bz2), calendar conversion, translation...
+    마지막으로, 하지만 적지 않게 (At last but not least),
+    많은 또다른 재미있는 확장들이 있다. mnoGoSearch 검색 엔진 함수,
+    IRC 게이트웨이 함수, 많은 압축 유틸리티 (gzip, bz2),
+    달력 변환, 번역...
    </para>
    <para>
-    As you can see this page is not enough to list all
-    the features and benefits PHP can offer. Read on in
-    the sections about <link linkend="installation">installing
-    PHP</link>, and see the <link linkend="funcref">function
-    reference</link> part for explanation of the extensions
-    mentioned here.
+    이 페이지만을 보는 것으로는 PHP가 제공할 수 있는 모든
+    기능과 이득을 알기에는 충분하지 않다. <link linkend="installation">PHP
+    설치하기</link> 섹션을 읽어보고, 이곳에 언급된 확장들에 대한
+    <link linkend="funcref">함수 레퍼런스</link>를 참고하라.
    </para>
   </sect1>
 
