@@ -155,7 +155,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<parameter>arg</parameter>의 아크 코사인(Arc cosine) 값을 라디인으로 반환한다.
+				<parameter>arg</parameter>의 아크 코사인(Arc cosine) 값을 라디안으로 반환한다.
     </para>
 			<para>
 				<function>asin</function> 그리고 <function>atan</function>을 참고하라.
@@ -178,7 +178,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<parameter>arg</parameter>의 아크 사인(Arc sine) 라디인으로 값을 반환한다.
+				<parameter>arg</parameter>의 아크 사인(Arc sine) 라디안으로 값을 반환한다.
     </para>
 			<para>
 				<function>acos</function> 그리고 <function>atan</function>을 참고하라.
@@ -201,7 +201,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<parameter>arg</parameter>의 아크 탄젠트(Arc tangent)값을 라디인으로 반환한다.
+				<parameter>arg</parameter>의 아크 탄젠트(Arc tangent)값을 라디안으로 반환한다.
     </para>
 			<para>
 				<function>asin</function> 그리고 <function>acos</function>을 참고하라.
@@ -787,7 +787,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<parameter>seed</parameter>로 난수 발생기를 심는다.
+				<parameter>seed</parameter>로 난수 발생기를 심는다.
      <informalexample>
 					<programlisting role="php">
 // seed with microseconds since last "whole" second
@@ -797,7 +797,7 @@ $randval = mt_rand();
 				</informalexample>
 			</para>
 			<simpara>
-      <function>mt_rand</function>,
+				<function>mt_rand</function>,
      <function>mt_getrandmax</function>, <function>srand</function>,
      <function>rand</function>, 그리고
      <function>getrandmax</function>를 참고하라.
@@ -1013,7 +1013,7 @@ $randval = mt_rand();
      </para>
 			</note>
 			<simpara>
-     <function>srand</function>,
+				<function>srand</function>,
      <function>getrandmax</function>, <function>mt_rand</function>,
      <function>mt_srand</function>, 그리고
      <function>mt_getrandmax</function>를 참고하라.
@@ -1123,7 +1123,7 @@ $foo = round (1.95583, 2);  // $foo == 1.96
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	<parameter>seed</parameter>로 난수발생기를 심는다.
+				<parameter>seed</parameter>로 난수발생기를 심는다.
      <informalexample>
 					<programlisting role="php">
 // seed with microseconds since last "whole" second
@@ -1133,7 +1133,7 @@ $randval = rand();
 				</informalexample>
 			</para>
 			<simpara>
-     <function>rand</function>,
+				<function>rand</function>,
      <function>getrandmax</function>, <function>mt_rand</function>,
      <function>mt_srand</function>, 그리고
      <function>mt_getrandmax</function>를 참고하라.
@@ -1159,7 +1159,7 @@ $randval = rand();
 	arg의 탄젠트 값을 라디안으로 반환한다.
     </para>
 			<para>
-     <function>sin</function> and <function>cos</function>을 참고하라.
+				<function>sin</function> and <function>cos</function>을 참고하라.
     </para>
 		</refsect1>
 	</refentry>
