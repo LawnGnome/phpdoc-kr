@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+  <sect1 id="security.cgi-bin">
+   <title>CGI 바이너리로 설치</title>
+
+   <sect2 id="security.cgi-bin.attacks">
+    <title>가능한 공격</title>
+    <simpara>
+     몇가지 이유로 인해 PHP를 서버 소프트웨어(아파치 등)의 모듈로
+     사용하지 않거나, 다른 종류의 CGI wrappers로 스크립트에 대해
+     안전한 chroot와 setuid 환경을 제공하기 위해 <acronym>CGI</acronym>
+     바이너리로 PHP를 사용하는 것을 선택할 수 있습니다.
+     이 설치는 보통 실행 가능한 PHP 바이너리를 웹서버 cgi-bin 디렉토리에
+     두는 것입니다. CERT 권고 <ulink url="&url.cert;">CA-96.11</ulink>는
+     어떠한 인터프리터도 cgi-bin에 두지 않을 것을 권장합니다. PHP 바이너리는
+     독립 인터프리터로 사용할 수 있지만, 이러한 방법의 설치가 가능하도록 하는
+     몇가지 공격을 방지하도록 설계되어 있습니다.
+    </simpara>
+    <itemizedlist>
+     <listitem>
+      <simpara>
+       시스템 파일에의 접근: <filename
+       role="url">http://my.host/cgi-bin/php?/etc/passwd</filename>
+      </simpara>
+      <simpara>
+       URL 후의 물음표(?)에 존재하는 질의 정보는 CGI 인터페이스에 의해
+       인터프리터에 명령줄 인자로 전해집니다. 보통 인터프리터는
+       명령줄의 첫 인자에 지정한 파일을 열고 실행합니다.
+      </simpara>
+      <simpara>
+       CGI 바이너리로 호출할 때, PHP는 명령줄 인자를 해석하는 것을
+       거절합니다.
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       서버의 어떠한 웹 문서로의 접근: <filename
+       role="url">http://my.host/cgi-bin/php/secret/doc.html</filename>
+      </simpara>
+      <simpara>
+       PHP 바이너리 이름 뒤의 URL의 경로 정보 부분,
+       <filename role="uri">/secret/doc.html</filename>는 일반적으로
+       <acronym>CGI</acronym> 프로그램에 의해 그 이름의 파일을
+       열고 해석하도록 사용합니다. 보통 몇몇 웹 서버 환경 설정
+       지시자(아파치: Action)는 PHP 인터프리터에 <filename
+       role="url">http://my.host/secret/script.php</filename> 등의
+       요청으로 리다이렉트하도록 합니다. 이러한 설치로는, 웹 서버는
+       우선 디렉토리 <filename role="uri">/secret</filename>에 대해
+       접근 권한을 확인하고, 리다이렉트된 요청 <filename
+       role="url">http://my.host/cgi-bin/php/secret/script.php</filename>을
+       생성합니다. 불행하게도, 이러한 형식으로 요청이 주어지면,
+       <filename role="uri">/secret/script.php</filename>에 대한 접근 확인은
+       이루어지지 않고, 단순히 <filename role="uri">/cgi-bin/php</filename>
+       파일만을 확인합니다. 이 방법으로 <filename
+       role="uri">/cgi-bin/php</filename>에 접근할 수 있는 어떠한 유저라도
+       웹 서버로 보호된 어떠한 문서라도 접근할 수 있습니다.
+      </simpara>
+      <simpara>
+       PHP에서는, 서버 문서 트리에 접근 제한을 가진 어떠한 디렉토리가
+       존재한다면, 컴파일시의 환경설정 옵션 <link
+       linkend="install.configure.enable-force-cgi-redirect">--enable-force-cgi-redirect</link>,
+       실행시 환경설정 지시자 <link
+       linkend="ini.doc-root">doc_root</link>와 <link
+       linkend="ini.user-dir">user_dir</link>를 사용하여 이 공격을
+       방지할 수 있습니다. 여러가지 조합에 관한 자세한 설명은 아래쪽을
+       참고하십시오.
+      </simpara>
+     </listitem>
+    </itemizedlist>
+   </sect2>
+
+   <sect2 id="security.cgi-bin.default">
+    <title>방법 1: 공개 파일만을 제공</title>
+    <simpara>
+     서버가 패스워드나 IP 기반 접근 컨트롤로 제한하는 콘텐츠를 가지고
+     있지 않다면, 이러한 환경 설정 옵션을 사용할 필요가 없습니다.
+     웹 서버가 리다이렉트를 허용하지 않거나, 안전하게 리다이렉트된
+     요청에 대해서 PHP 바이너리와 통신할 방법을 가지고 있지 않다면,
+     설정 스크립트에 <link
+     linkend="install.configure.enable-force-cgi-redirect">--enable-force-cgi-redirect</link>
+     옵션을 지정할 수 있습니다. 하지만, 여전히 PHP 스크립트를
+     호출하는 방법으로 직접 호출 <filename
+     role="php">http://my.host/cgi-bin/php/dir/script.php</filename>이나
+     리다이렉션 호출 <filename
+     role="php">http://my.host/dir/script.php</filename>에
+     의존하고 있지 않음을 확인해야 할 것입니다.
+    </simpara>
+    <simpara>
+     아파치에서 리다이렉션은 AddHandler와 Action 지시자를 통해서
+     설정할 수 있습니다. (아래 참조)
+    </simpara>
+   </sect2>
+
+   <sect2 id="security.cgi-bin.force-redirect">
+    <title>방법 2: --enable-force-cgi-redirect 사용</title>
+    <simpara>
+     이 컴파일시의 옵션은 누구라도 <filename
+     role="php">http://my.host/cgi-bin/php/secretdir/script.php</filename>와
+     같은 URL을 통해서 PHP를 직접 호출할 수 없게 합니다.
+     대신, 이 모드에서 PHP는 웹서버의 리다이렉트 규칙에 따를 때만
+     해석을 시도할 것입니다.
+    </simpara>
+    <simpara>
+     아파치에서 리다이렉션의 설정은 다음과 같은 지시자로 설정합니다:
+    </simpara>
+    <programlisting role="apache-conf">
+<![CDATA[
+Action php-script /cgi-bin/php
+AddHandler php-script .php
+]]>
+    </programlisting>
+    <simpara>
+     이 옵션은 아파치 웹 서버에만 테스트되었고, 리다이렉트된 요청에 대해
+     아파치가 비표준 CGI 환경 변수 <envar>REDIRECT_STATUS</envar>를
+     설정하게 합니다. 웹 서버가 요청이 직접적인지 리다이렉트된 것인지의
+     구분을 제공하지 않는다면, 이 옵션을 사용할 수 없고, 이 문서에
+     제시된 다른 방법의 CGI 실행 방법을 이용해야 합니다.
+    </simpara>
+   </sect2>
+
+   <sect2 id="security.cgi-bin.doc-root">
+    <title>방법 3: doc_root나 user_dir을 설정</title>
+    <simpara>
+     스크립트나 실행 파일과 같은 활동적인 콘텐츠를 웹서버 디렉토리에
+     놓는 것은 때때로 비보안적인 행동으로 생각됩니다. 몇몇 환경 설정의
+     실수로 스크립트가 실행되지 않고 보통의 HTML 문서로 보여진다면,
+     지적 재산이나 패스워드와 같은 보안 정보를 노출시키는 결과를 가져올
+     수 있습니다. 그러므로 많은 시스템 관리자는 파일이 항상 해석이 되고
+     어떤 방법으로도 표시되어지지 않도록, PHP CGI를 통해서만 접근할 수 있는
+     스크립트를 위한 또 다른 디렉토리 구조를 만드는 것을 선호합니다.
+    </simpara>
+    <simpara>
+     또한, 앞의 섹션에서 설명한 방법으로 요청을 리다이렉트하지 않게 만드는게
+     불가능하다면, doc_root를 웹 문서 루트와 다른 장소로 설정할 필요가
+     있습니다.
+    </simpara>
+    <simpara>
+     PHP 스크립트 문서 루트를 <link linkend="configuration.file">설정
+      파일</link>에서 지시어 <link linkend="ini.doc-root">doc_root</link>나,
+     환경 변수 <envar>PHP_DOCUMENT_ROOT</envar>로 설정할 수 있습니다. 이를
+     설정하면, PHP의 CGI 버전은 항상 열 파일 이름 및 요청의 경로 정보를
+     <parameter>doc_root</parameter>와 결합하여, 이 디렉토리 밖에서는 어떠한
+     스크립트도 실행하지 못하게 합니다. (아래의
+     <parameter>user_dir</parameter>를 제외하고)
+    </simpara>
+    <simpara>
+     Another option usable here is <link
+     linkend="ini.user-dir">user_dir</link>.  When user_dir is unset,
+     only thing controlling the opened file name is
+     <parameter>doc_root</parameter>.  Opening an URL like <filename
+     role="url">http://my.host/~user/doc.php</filename> does not
+     result in opening a file under users home directory, but a file
+     called <filename role="uri">~user/doc.php</filename> under
+     doc_root (yes, a directory name starting with a tilde
+     [<literal>~</literal>]).
+    </simpara>
+    <simpara>
+     If user_dir is set to for example <filename
+     role="dir">public_php</filename>, a request like <filename
+     role="url">http://my.host/~user/doc.php</filename> will open a
+     file called <filename>doc.php</filename> under the directory
+     named <filename role="dir">public_php</filename> under the home
+     directory of the user.  If the home of the user is <filename
+     role="dir">/home/user</filename>, the file executed is
+     <filename>/home/user/public_php/doc.php</filename>.
+    </simpara>
+    <simpara>
+     <parameter>user_dir</parameter> expansion happens regardless of
+     the <parameter>doc_root</parameter> setting, so you can control
+     the document root and user directory access
+     separately.
+    </simpara>
+   </sect2>
+
+   <sect2 id="security.cgi-bin.shell">
+    <title>방법 4: 웹 트리 외부의 PHP 파서</title>
+    <para>
+     매우 안전한 옵션은 PHP 파서 바이너리를 웹트리 밖에 위치시키는
+     것입니다. 예를 들면, <filename role="dir">/usr/local/bin</filename> 안에.
+     이 방법의 단 한가지 단점은 다음과 같은 줄을 PHP 태그를 포함하는
+     모든 파일의 첫번째 줄에 넣어야 한다는 점입니다:
+     <informalexample>
+      <programlisting>
+<![CDATA[
+#!/usr/local/bin/php
+]]>
+      </programlisting>
+     </informalexample>
+     또한 파일을 실행 가능하게 해 둘 필요가 있습니다. 이것은 정확하게
+     실행을 위해서 <literal>#!</literal> 쉘 이스케이핑 메카니즘을 사용하는
+     펄이나 sh, 혹은 다른 일반적인 스크립팅 언어로 쓰여진 CGI 스크립트와
+     동일하게 취급합니다.
+    </para>
+    <para>
+     이 방법을 사용할 때, PHP가 <envar>PATH_INFO</envar>와
+     <envar>PATH_TRANSLATED</envar>를 올바르게 다룰 수 있게 하기 위해서는
+     PHP 파서를 컴파일 할 때,
+     <link linkend="install.configure.enable-discard-path">--enable-discard-path</link>
+     옵션을 주어야 합니다.
+    </para>
+   </sect2>
+
+  </sect1>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
