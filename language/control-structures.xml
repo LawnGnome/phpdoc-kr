@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.13 $ -->
+<!-- $Revision: 1.14 $ -->
 <!-- EN-Revision: 1.78 -->
  <chapter id="control-structures">
   <title>제어 구조</title>
@@ -31,13 +31,15 @@ if (expr)
    <simpara>
     <link linkend="language.expressions">표현식에 관한 섹션</link>에서 설명된것처럼
     <replaceable>expr</replaceable>은 논리(Boolean)값으로 취급된다.
-    <replaceable>expr</replaceable>이 &true;와 같다면 PHP는 <replaceable>statement</replaceable>를
+    <replaceable>expr</replaceable>이 &true;와 같다면 PHP는 
+    <replaceable>statement</replaceable>를
     수행할것이고, &false;라면 무시될것이다. 무슨값이 &false;인지 알려면
-    <link linkend="language.types.boolean.casting">'Converting to boolean'</link>에 관한 섹션을 참고하세요.
+    <link linkend="language.types.boolean.casting">'논리값으로 변환하기'</link>
+    섹션을 참고한다.
    </simpara>
    <para>
     다음 예는 <replaceable>$a</replaceable>가 <replaceable>$b</replaceable>보다
-    크다면 <computeroutput>a는 b보다 크다</computeroutput>를 출력할 것입니다.
+    크다면 <computeroutput>a는 b보다 크다</computeroutput>를 출력할 것이다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -50,13 +52,13 @@ if ($a > $b)
     </informalexample>
    </para>
    <para>
-    종종 하나 이상의 구문을 조건적으로 수행시켜야 하는 때가 있습니다.
-    물론 <literal>if</literal>절로 각 구문을 감싸줄 필요는 없습니다.
-    대신, 구문 그룹안에 몇개의 구문을 그룹화할 수 있습니다. 예를 들면,
+    종종 하나 이상의 구문을 조건적으로 수행시켜야 하는 때가 있다.
+    물론 <literal>if</literal>절로 각 구문을 감싸줄 필요는 없다.
+    대신, 구문 그룹안에 몇개의 구문을 그룹화할 수 있다. 예를 들면,
     이코드는 <replaceable>$a</replaceable>가 <replaceable>$b</replaceable>보다
     크다면 <computeroutput>a는 b보다 크다</computeroutput>라고 출력할것이고,
     <replaceable>$a</replaceable>의 값을 <replaceable>$b</replaceable>로
-    지정하게 될것입니다.
+    지정하게 될것이다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -72,15 +74,15 @@ if ($a > $b) {
    </para>
    <simpara>
     <literal>If</literal>문은 다른 <literal>if</literal>문안에 무한정으로
-    내포될수 있습니다. 이와 같은 기능은 프로그램의 여러부분을 조건적으로
-    수행하기 위한 유연성을 제공합니다.
+    내포될수 있다. 이와 같은 기능은 프로그램의 여러부분을 조건적으로
+    수행하기 위한 유연성을 제공한다.
    </simpara>
   </sect1>
 
   <sect1 id="control-structures.else">
    <title><literal>else</literal></title>
    <para>
-    가끔은 특정 조건에 맞을때 구문 수행하지 않고, 조건과 맞지 않을 때 
+    가끔은 특정 조건에 맞을때 구문을 수행하지 않고, 조건과 맞지 않을 때 
     다른 구문을 수행하게 하고 싶은 때가 있다. <literal>else</literal>
     문은 이 목적을 위한 것이다. <literal>if</literal>문 다음의
     <literal>else</literal>문은 <literal>if</literal>구문안의 표현식이
@@ -103,8 +105,8 @@ if ($a > $b) {
     </informalexample>
     <literal>else</literal>문은 <literal>if</literal>문이 &false;일때만
     수행이 된다. 그리고 그들 모두 &false;값이 될수있다면 <literal>elseif</literal>문
-    을 쓸수 있습니다.
-    (<link linkend="control-structures.elseif">elseif</link>를 보세요)
+    을 쓸수 있다.
+    (<link linkend="control-structures.elseif">elseif</link>를 참고)
    </para>
   </sect1>
 
