@@ -1,91 +1,76 @@
-﻿ <chapter id="features.persistent-connections">
-  <title>Persistent Database Connections</title>
+ <chapter id="features.persistent-connections">
+  <title>영구적인 데이터베이스 접속 (Persistent database connections)</title>
 
   <simpara>
-   Persistent connections are SQL links that do not close when the
-   execution of your script ends. When a persistent connection is
-   requested, PHP checks if there's already an identical persistent
-   connection (that remained open from earlier) - and if it exists, it
-   uses it. If it does not exist, it creates the link. An 'identical'
-   connection is a connection that was opened to the same host, with
-   the same username and the same password (where applicable).
+	영구적인 접속(Persistent connection)은 여러분의 스크립트가 종료되어도 
+	SQL link를 닫지 않는 접속을 말한다. 영구적인 접속이 요청되면, 
+	PHP는 기존의 (이전에 열어 두었던) 동일한(identical) 영구적인 접속이 있는가를 검사한다. 
+	만약 있다면 기존의 것을 사용하고, 없다면 새로운 link를 만든다. 
+	'동일한' 접속이란 같은 호스트에 같은 사용자명과 같은 암호를 사용한 접속을 말한다.
   </simpara>
   <simpara>
-   People who aren't thoroughly familiar with the way web servers work
-   and distribute the load may mistake persistent connects for what
-   they're not. In particular, they do <emphasis>not</emphasis> give
-   you an ability to open 'user sessions' on the same SQL link, they
-   do <emphasis>not</emphasis> give you an ability to build up a
-   transaction efficently, and they don't do a whole lot of other
-   things. In fact, to be extremely clear about the subject,
-   persistent connections don't give you <emphasis>any</emphasis>
-   functionality that wasn't possible with their non-persistent
-   brothers.
+	가끔 웹서버의 작동과 작업의 할당에 대해 잘 알고 있지 못한 사람들은 
+	영구적인 접속이 사실은 별 것 아니라고 오해하기도 한다. 
+	특히, 영구적인 접속이 동일한 SQL link에서 'user sessions'를 여는데 별 나을 것도 없다던가, 	transaction을 효율적으로 처리하는 것도 아니라다던가, 혹은 다른 어떤 
+	특별한 것을 하는 것도 아니라고 한다. 사실, 이런 말들에 대해 명백히 말하자면, 
+	영구적인 접속은 비영구적인 접속에 비해 어떠한 기능적인 향상도 주지 못한다.
   </simpara>
   <simpara>
-   Why?
+   왜?
   </simpara> 
   <simpara>
-   This has to do with the way web servers work. There are three ways
-   in which your web server can utilize PHP to generate web pages.
+	이것은 웹서버의 동작 방식에 따라 다른 효과를 낸다.
+	여러분의 웹서버가 웹 페이지를 만들기위해 PHP를 이용하는데는 3가지 방법이 있다.
   </simpara>
   <simpara>
-   The first method is to use PHP as a CGI "wrapper". When run this
-   way, an instance of the PHP interpreter is created and destroyed
-   for every page request (for a PHP page) to your web server.
-   Because it is destroyed after every request, any resources that it
-   acquires (such as a link to an SQL database server) are closed when
-   it is destroyed. In this case, you do not gain anything from trying
-   to use persistent connections -- they simply don't persist.
+	첫 번째 방법은 PHP를 CGI "wrapper"이 형태로 사용하는 것이다. 
+	이 방법의 경우, 웹서버에 매 PHP 페이지가 요구될 때 마다, 
+	PHP 인터프리터의 실행이 만들어지고 종료된다. 
+	따라서 매 요구가 종료될 때마다 인터프리터의 실행이 종료되므로, 
+	실행 중 만들었던 (SQL link를 포함한) 모든 자원은 실행 종료와 더불어 해제된다. 
+	이 경우 영구적입 접속을 사용하여 어떤 이득도 얻을 수 없다. 
+	다르게 말하면 이 경우는 영구적인 접속을 해도 영구적이 아니다.
   </simpara>
   <simpara>
-   The second, and most popular, method is to run PHP as a module in a
-   multiprocess web server, which currently only includes Apache. A
-   multiprocess server typically has one process (the parent) which
-   coordinates a set of processes (its children) who actually do the
-   work of serving up web pages. When each request comes in from a
-   client, it is handed off to one of the children that is not already
-   serving another client. This means that when the same client makes
-   a second request to the server, it may be serviced by a different
-   child process than the first time. What a persistent connection
-   does for you in this case it make it so each child process only
-   needs to connect to your SQL server the first time that it serves a
-   page that makes us of such a connection. When another page then
-   requires a connection to the SQL server, it can reuse the
-   connection that child established earlier.
+	두 번째 방법은 가장 대중적인 방법인데, 
+	PHP를 다중프로세스(multiprocess) 웹서버의 모듈로 사용하는 것이다. 
+	(현재는 Apache가 유일하다.) 다중프로세스 서버는 보통 한 개의 부모(parent) 프로세스와, 
+	이와 유기적으로 연결되어 웹 페이지를 실제로 만드는 작업을 하는 여러개의 
+	자식(child) 프로세스들을 가지고 있다. 클라이언트로부터 들어오는 개별 요구는 
+	다른 클라이언트의 요구를 처리하고 있지 않고 놀고있는 자식 프로세스로 넘겨진다. 
+	이것은 동일한 클라이언트가 서버에 두 번째 요구를 보낼 때, 
+	보통 처음과 다른 자식 프로세스에서 처리된다는 것을 의미한다. 
+	이 경우 영구적인 접속을 사용하면 각각의 자식 프로세스들은 
+	자신이 처음 요구받았을 때 SQL 서버에 접속하게 된다. 
+	다른 페이지에서 SQL 서버에 접속 요구시는 이전에 만들어진 접속을 다시 사용하게 된다.
   </simpara>
   <simpara>
-   The last method is to use PHP as a plug-in for a multithreaded web
-   server. Currently this is only theoretical -- PHP does not yet work
-   as a plug-in for any multithreaded web servers. Work is progressing
-   on support for ISAPI, WSAPI, and NSAPI (on Windows), which will all
-   allow PHP to be used as a plug-in on multithreaded servers like
-   Netscape FastTrack, Microsoft's Internet Information Server (IIS),
-   and O'Reilly's WebSite Pro. When this happens, the behavior will be
-   essentially the same as for the multiprocess model described
-   before.
+	마지막 방법은 PHP를 멀티쓰레드(multithreaded) 웹서버의 플러그-인의 
+	형태로 작동시키는 것인데, 현재 이방법은 이론적으로만 존재하고, 
+	실제로 만들어 진 것은 없다. ISAPI, WSAPI, NSAPI (Windows에서) 등의 
+	방법을 사용하여 Netscape FastTrack, Microsoft's Internet Information Server (IIS), 
+	O'Reilly's WebSite Pro 등의 멀티쓰레드 웹서버에서 PHP를 플러그-인으로 
+	동작시키려는 작업이 현재 진행중이다. 이 경우 기본 동작은 위에서 언급한 
+	다중프로세스 모델과 동일하게 동작한다.
   </simpara>
   <simpara>
-   If persistent connections don't have any added functionality, what
-   are they good for?
+	영구적인 접속이 실제로 어떠한 기능적인 향상도 주지 못한다면,
+	이것을 사용해 어떤 이점이 있나요?
   </simpara>
   <simpara>
-   The answer here is extremely simple -- efficiency. Persistent
-   connections are good if the overhead to create a link to your SQL
-   server is high. Whether or not this overhead is really high depends
-   on many factors. Like, what kind of database it is, whether or not
-   it sits on the same computer on which your web server sits, how
-   loaded the machine the SQL server sits on is and so forth. The
-   bottom line is that if that connection overhead is high, persistent
-   connections help you considerably. They cause the child process to
-   simply connect only once for its entire lifespan, instead of every
-   time it processes a page that requires connecting to the SQL
-   server. This means that for every child that opened a persistent
-   connection will have its own open persistent connection to the
-   server. For example, if you had 20 different child processes that
-   ran a script that made a persistent connection to your SQL server,
-   you'd have 20 different connections to the SQL server, one from
-   each child.
+	이것에 대한 간단한 답은 효율성이다. 
+	영구적인 접속은 SQL 서버와의 link를 만드는 것에 따른 overhead가 클 경우에 유용하다. 
+	이  overhead는 많은 요인에 따라 커지기도 하고 작아지기도 한다. 
+	어떤 종류의 데이터베이스인가? 웹서버와 같은 컴퓨터에 데이터베이스 서버가 있는가? 
+	SQL 서버가 어떻게 사용되고 있는가? 등에 따라 크게 달라진다. 
+	접속에 따른 overhead가 클 경우에 영구적인 접속은 여러분에게 
+	적지 않은 도움을 줄 것이다. 이것은 자식 process에서 SQL 서버에 
+	접속을 요청할 때 마다 접속을 만드는 대신, 이 프로세스가 종료될 때 까지 
+	살아있는 한 개의 접속 만을 사용한다. 이것은 모든 영구적인 접속을 사용한 
+	프로세스는, 그에 해당하는 한 대의 영구적인 접속을 가지고 있다는 것을 의미한다. 
+	예를 들어 SQL 서버에 대하여 영구적인 접속을 사용하는 스크립트를 
+	실행하였던 20개의 다른 자식 프로세스가 있다면, 
+	아마도 각각의 자식 프로세스에대해 1개씩, 20개의 SQL 접속이 있을 것이다.
   </simpara>
   <simpara>
    Note, however, that this can have some drawbacks if you are using a
@@ -99,13 +84,11 @@
    information on handling abandoned or idle connections.
   </simpara>
   <simpara>
-   An important summary. Persistent connections were designed to have
-   one-to-one mapping to regular connections. That means that you
-   should <emphasis>always</emphasis> be able to replace persistent
-   connections with non-persistent connections, and it won't change
-   the way your script behaves. It <emphasis>may</emphasis> (and
-   probably will) change the efficiency of the script, but not its
-   behavior!
+	중요한 언급 한가지! 
+	영구적인 접속은 일반적인 접속에 일대일로 대응되도록 설계되었다. 
+	이것은 스크립트의 다른 부분은 그대로 두고, 
+	언제라도 비영구적인 연결을 영구적인 연결로 대치할 수 있다는 것을 의미한다. 
+	이것으로 여러분은 아마도 스크립트의 효율을 향상시킬 수도 있을 것이다.
   </simpara>
 
  </chapter>

@@ -1,29 +1,29 @@
-﻿ <chapter id="features.remote-files">
+ <chapter id="features.remote-files">
   <title>Using remote files</title>
 
   <para>
-   As long as support for the &quot;URL fopen wrapper&quot; is enabled when
-   you configure PHP (which it is unless you explicitly pass the
-   <option>--disable-url-fopen-wrapper</option> flag to configure (for versions 
-   up to 4.0.3) or set <parameter>allow_url_fopen</parameter> to off in php.ini 
-   (for newer versions),
-   you can use HTTP and FTP URLs with most functions that take a
-   filename as a parameter, including the <function>require</function>
-   and <function>include</function> statements.
+	여러분이 PHP를 설정할 때 "URL fopen wrapper"를 enable로 설정하였다면
+	(이 설정은 PHP 4.0.3 이하에서는 configure 스크립트에서 
+	<option>--disable-url-fopen-wrapper</option>로 명시하지 하거나,
+	그 이후의 버전에서는 php.ini 파일에 <parameter>allow_url_fopen</parameter>을 
+	off로 설정하지 않으면 설정된다.), 
+	여러분은 파일이름을 파라메타로 가지는 대부분의 함수에 HTTP나 FTP URL을 
+	파일이름으로 사용할 수 있다. 심지어 <function>require</function>와 
+	<function>include</function>  함수에도 사용이 가능하다.
   </para>
   <para>
    <note>
     <para>
-     You can't use remote files in <function>include</function> and
-     <function>require</function> statements on Windows.
+	단, Windows환경의 <function>require</function>와
+	<function>include</function> 함수에서는 사용할 수 없다.
     </para>
    </note>
   </para>
   <para>
-   For example, you can use this to open a file on a remote web server,
-   parse the output for the data you want, and then use that data in a
-   database query, or simply to output it in a style matching the rest
-   of your website.
+	예를 들어, 이 기능을 사용하여 원격 웹 서버가 출력하는 내용을 파일로 열고, 
+	그 출력 내용에서 원하는 데이타를 분석하여, 
+	이 원하는 데이타로 데이타베이스 질의에 사용하거나, 
+	웹 사이트에 맞는 모양으로 변형 시켜 출력할 수 있다
   </para>
   <para>
    <example>
@@ -51,13 +51,12 @@ fclose($file);
    </example>
   </para>
   <para>
-   You can also write to files on an FTP as long you connect as a user
-   with the correct access rights, and the file doesn't exist already.
-   To connect as a user other than 'anonymous', you need to specify
-   the username (and possibly password) within the URL, such as
-   'ftp://user:password@ftp.example.com/path/to/file'. (You can use the
-   same sort of syntax to access files via HTTP when they require Basic
-   authentication.)
+	여러분은 해당 서버에 권한이 있는 사용자로 접속하고, 
+	해당 파일이 존재하지 않는다면, FTP를 이용한 파일에 쓸 수도 있다. 
+	'anonymous'가 아닌 사용자로 접속하려면, URL내에 username을 
+	(필요하다면 password도) 다음과 같이 명시해야 한다 : 
+	'ftp://user:password@ftp.example.com/path/to/file'. 
+	(또한 HTTP에서 Basic authentication을 사용한 인증을 요구하는 경우에도 이와 같은 문법을 사용할 수 있다.) 
   </para>
   <para>
    <example>
@@ -81,11 +80,9 @@ fclose ($file);
   <para>
    <note>
     <para>
-     You might get the idea from the example above to use this
-     technique to write to a remote log, but as mentioned above, you
-     can only write to a new file using the URL fopen() wrappers. To
-     do distributed logging like that, you should take a look at
-     <function>syslog</function>.
+	여러분은 위의 예제를 보고, 이 테크닉을 사용하여 remote log를 작성할 수 있겠다고 생각할 수도 있다. 
+	그러나 위에 언급한대로 URL fopen() wrapper는 새 파일에만 쓸 수 있다. 
+	여러분이 원하는 대로 분산된 log를 하고 싶다면 <function>syslog</function>의 내용을 살펴보라.
     </para> 
    </note>
   </para>

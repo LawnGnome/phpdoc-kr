@@ -1,13 +1,12 @@
-﻿ <chapter id="features.connection-handling">
+ <chapter id="features.connection-handling">
   <title>Connection handling</title>
 
   <note>
-   <para>The following applies to 3.0.7 and later.</para>
+   <para>이 기능은 PHP version 3.0.7 이후부터 적용된 것들이다.</para>
   </note>
 
   <para>
-   Internally in PHP a connection status is maintained.  There are 3
-   possible states:
+	내부적으로 PHP는 연결의 상태를 다음 3가지중 하나로 설정한다. :
    <itemizedlist>
     <listitem><simpara>0 - NORMAL</simpara></listitem>
     <listitem><simpara>1 - ABORTED</simpara></listitem>
@@ -16,60 +15,55 @@
   </para>
 
   <simpara>
-   When a PHP script is running normally the NORMAL state, is active.
-   If the remote client disconnects the ABORTED state flag is
-   turned on.  A remote client disconnect is usually caused by the
-   user hitting his STOP button.  If the PHP-imposed time limit (see
-   <function>set_time_limit</function>) is hit, the TIMEOUT state flag
-   is turned on.</simpara>
+	PHP 스크립트가 일반적으로 실행되고 있을 때는 NORMAL 상태가 active된다. 
+	만약 원격 클라이언트가 연결을 끊게되면 ABORTED 상태 flag가 켜지게 된다. 
+	보통 클라이언트가 연결을 끊는 것은 사용자가 STOP 버튼을 눌렀을 때 일어난다. 
+	만약 PHP가 설정한 시간 제한에 (<function>set_time_limit</function>을 보라) 걸리게 되면 
+	TIMEOUT 상태 flag가 켜지게 된다.
+  </simpara>
 
   <simpara>
-   You can decide whether or not you want a client disconnect to cause
-   your script to be aborted.  Sometimes it is handy to always have your
-   scripts run to completion even if there is no remote browser receiving
-   the output.  The default behaviour is however for your script to be
-   aborted when the remote client disconnects.  This behaviour can be
-   set via the ignore_user_abort php3.ini directive as well as through
-   the corresponding php3_ignore_user_abort Apache .conf directive or
-   with the <function>ignore_user_abort</function> function.  If you do
-   not tell PHP to ignore a user abort and the user aborts, your script
-   will terminate.  The one exception is if you have registered a shutdown
-   function using <function>register_shutdown_function</function>.  With a
-   shutdown function, when the remote user hits his STOP button, the
-   next time your script tries to output something PHP will detect that
-   the connection has been aborted and the shutdown function is called.
-   This shutdown function will also get called at the end of your script
-   terminating normally, so to do something different in case of a client
-   diconnect you can use the <function>connection_aborted</function>
-   function.  This function will return true if the connection was
-   aborted.</simpara>
+	여러분은 클라이언트가 연결을 끊었을 때 스크립트가 수행을 중단할 것인가 아닌가를 결정하여야 한다. 
+	때때로 원격 브라우저가 어떤 결과도 받아들이지 않더라도 스크립트를 끝까지 실행하는 것이 편리할 때가 많다. 
+	기본 동작은 클라이언트가 연결을 끊으면 스크립트도 중단되는 것이다. 
+	이 동작은 ignore_user_abort라는 php3.ini 지시자(directive)나, 
+	php3_ignore_user_abort라는 Apache의 .conf의 지시자로 설정이 가능하고, 
+	<function>ignore_user_abort</function> 함수를 사용하여 설정할 수도 있다. 
+	만약 PHP에게 사용자가 내린 중지 명령을 무시하라고 말해주지 않았다면, 
+	사용자의 중지 신호는 여러분의 스크립트를 종료시킨다. 
+	단, <function>register_shutdown_function</function>을 사용하여 
+	shutdown 함수를 등록해 놓은 경우는 예외가 된다. 
+	shutdown 함수를 사용하면, 사용자가 STOP버튼을 눌렀을 때, 
+	여러분의 스크립트는 남은 출력을 하려고 하고, 
+	PHP는 연결이 중단되었음을 인지하여 shutdown 함수를 호출하게 된다. 
+	shutdown 함수는 여러분의 스크립트가 정상적으로 종료되었을 때도 호출 된다. 
+	만약 여기서 클라이언트의 연결 중단 때와 일반적인 종료시에 다른 동작을 원한다면 
+	<function>connection_aborted</function> 함수를 사용하면 된다. 
+	이 함수는 연결이 중단되었다면 true를 반환한다.
+  </simpara>
 
   <simpara>
-   Your script can also be terminated by the built-in script timer.
-   The default timeout is 30 seconds.  It can be changed using
-   the max_execution_time php3.ini directive or the corresponding
-   php3_max_execution_time Apache .conf directive as well as with
-   the <function>set_time_limit</function> function.  When the timer
-   expires the script will be aborted and as with the above client
-   disconnect case, if a shutdown function has been registered it will
-   be called.  Within this shutdown function you can check to see if
-   a timeout caused the shutdown function to be called by calling the
-   <function>connection_timeout</function> function.  This function will
-   return true if a timeout caused the shutdown function to be called.</simpara>
-
+	스크립트는 내장된 타이머에 의해 종료될 수 있다. 
+	기본 timeout 시간은 30초로 되어 있다. 
+	이것은 max_execution_time이라는 php3.ini 지시자(directive)나,
+	 동일한 내용의 php3_max_execution_time이라는 Apache의 .conf 지시자에 의해 
+	다르게 설정이 가능하고 <function>set_time_limit</function> 함수를 사용하여 설정할 수도 있다. 
+	설정한 시간이 경과하면 스크립트는 자동으로 중단되고, 
+	이 스크립트는 위에 설명한 클라이언트와의 연결이 종료된 것처럼 동작한다. 
+	따라서 shutdown 함수가 등록되어 있다면 이 함수가 실행된다. 
+	shutdown 함수내에서 이 함수가 timeout에 의해 호출된 것인가를 판단하려면 
+	<function>connection_timeout</function> 함수를 사용하면 된다. 
+	이 함수는 timeout에 의해 shutdown 함수가 호출되었다면 true를 반환한다.
+  </simpara>
   <simpara>
-   One thing to note is that both the ABORTED and the TIMEOUT states
-   can be active at the same time.  This is possible if you tell
-   PHP to ignore user aborts.  PHP will still note the fact that
-   a user may have broken the connection, but the script will keep
-   running.  If it then hits the time limit it will be aborted and
-   your shutdown function, if any, will be called.  At this point
-   you will find that <function>connection_timeout</function>
-   and <function>connection_aborted</function> return true.
-   You can also check both states in a single call by using the
-   <function>connection_status</function>.  This function returns a
-   bitfield of the active states.  So, if both states are active it
-   would return 3, for example.</simpara>
+	한가지 유의할 사항은 ABORTED와 TIMEOUT 상태는 두 개가 동시에 active될 수 있다는 것이다. 
+	이것은 PHP가 사용자 중단을 무시하도록 설정해 놓았을 때 생길 수 있다.
+	또 다른 경우는 사용자가 연결을 끊지는 않았지만 연결에 어떤 문제가 생겨 연결이 망가진 경우로, 
+	이런 경우에 스크립트는 계속실행되고, 시간 제한에 걸려 스크립트의 수행이 중단되고 shutdown 함수가 호출되면, 	<function>connection_timeout</function>과 <function>connection_aborted</function>함수 모두 true를 반환하게 된다. 
+	여러분은 <function>connection_status</function> 함수를 사용하여 두가지 상태 모두를 검사할 수 있다. 
+	함수는 각 상태에 대한 정보를 bit단위로 가지고 있다. 
+	를들어 위와같이 ABORT와 TIMEOUT 두 개의 상태가 모두 active되어 있다면 이 함수는 3을 반환한다.
+  </simpara>
 
  </chapter>
 
