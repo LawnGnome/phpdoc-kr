@@ -109,20 +109,21 @@
    <year>2001</year>
    <year>2002</year>
    <year>2003</year>
+   <year>2004</year>
    <holder>the PHP Documentation Group (PHP 문서 그룹)</holder>
   </copyright>
 
   <legalnotice id="copyright">
    <title>저작권</title>
    <simpara>
-    Copyright &copy; 1997 - 2003 by the PHP Documentation Group.
+    Copyright &copy; 1997 - 2004 by the PHP Documentation Group.
     This material may be distributed only subject to the terms and
     conditions set forth in the Open Publication License, v1.0 or
     later (the latest version is presently available at
     <ulink url="&url.opl;">&url.opl;</ulink>).
    </simpara>
    <simpara>
-    PHP 문서 그룹에 저작권이 있습니다. (Copyright &copy; 1997 - 2003 by the
+    PHP 문서 그룹에 저작권이 있습니다. (Copyright &copy; 1997 - 2004 by the
     PHP Documentation Group) 이 저작물은 Open Publication License 1.0 또는
     이후 버전(최신 버전은 <ulink url="&url.opl;">&url.opl;</ulink>에
     있습니다)의 조항과 제약에 따를 경우에만 재배포 할 수 있습니다.

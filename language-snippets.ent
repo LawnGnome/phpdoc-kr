@@ -74,9 +74,9 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 읽어보십시오.</para></note>'>
 
 <!ENTITY avail.register-long-arrays 'PHP 5.0.0부터, 긴 형태의 PHP
-<link linkend="language.variables.predefined">예약 변수</link> 배열은
-<link linkend="ini.register-long-arrays">register_long_arrays</link> 지시자에
-의해 비활성화 할 수 있습니다.'>
+<link linkend="language.variables.predefined">예약 변수</link> 배열을
+<link linkend="ini.register-long-arrays">register_long_arrays</link> 지시어로
+비활성화할 수 있습니다.'>
 
 <!ENTITY note.magicquotes.gpc '<note><title>directive 주의: magic_quotes_gpc
 </title><para>PHP 설정 <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>의
