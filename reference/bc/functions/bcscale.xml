@@ -1,25 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/bc.xml, last change in rev 1.3 -->
-<!-- last change to 'bcscale' in en/ tree in rev 1.2 -->
-	<refentry id="function.bcscale">
-		<refnamediv>
-			<refname>bcscale</refname>
-			<refpurpose>
-     모든 bc 수학함수의 기본 scale 파라미터 지정.
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.2 -->
+<!-- splitted from ./en/functions/bc.xml, last change in rev 1.2 -->
+  <refentry id="function.bcscale">
+   <refnamediv>
+    <refname>bcscale</refname>
+    <refpurpose>
+     모든 bc 수치계산 함수의 scale 매개변수의 기본값을 설정한다
     </refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>string</type><methodname>bcscale</methodname>
-					<methodparam><type>int</type><parameter>scale</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-     이 함수는 scale 파라미터를 지정하지 않은 이후의 모든 bc 수학함수에 대해
-     기본 scale 파라미터를 지정합니다.
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>string</type><methodname>bcscale</methodname>
+      <methodparam><type>int</type><parameter>scale</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     이 함수는 scale 매개변수를 명시하지 않은 모든 bc 수치계산 함수의 
+     의 scale 매개변수의 기본값을 설정한다.
     </para>
-		</refsect1>
-	</refentry>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
