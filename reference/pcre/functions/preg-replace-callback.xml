@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.7 -->
   <refentry id="function.preg-replace-callback">
    <refnamediv>
@@ -55,7 +55,7 @@
      종종 단 한번의 <function>preg_replace_callback</function>에서
      사용하기 위한 <parameter>callback</parameter> 함수가 필요합니다.
      이 경우에, <function>create_function</function>을 사용해서
-     <function>preg_replace_callback</functoin> 호출 안에서 익명의
+     <function>preg_replace_callback</function> 호출 안에서 익명의
      함수를 만들 수 있습니다. 이 방법으로 호출에 필요한 모든 정보를
      한군데에 위치하게 하여, 다른곳에서 사용되지 않는 콜백함수의
      네임스페이스를 절약할 수 있습니다.
