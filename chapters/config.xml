@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
+<!-- $Revision: 1.11 $ -->
 <!-- EN-Revision: 1.96 -->
  <chapter id="configuration">
   <title>환경 설정</title>
@@ -189,72 +189,70 @@ php_admin_value open_basedir none
     
      <note>
       <para>
-       PHP constants do not exist outside of PHP. For example, in 
-       &httpd.conf; you can not use PHP constants 
-       such as <constant>E_ALL</constant> or <constant>E_NOTICE</constant> 
-       to set the <link linkend="ini.error-reporting">error_reporting</link> 
-       directive as they will have no meaning and will evaluate to
-       <emphasis>0</emphasis>. Use the associated bitmask values instead.
-       These constants can be used in &php.ini;
+       PHP 상수는 PHP 외부에서는 존재하지 않습니다. 예를 들면,
+       &httpd.conf;에서는 <link linkend="ini.error-reporting">error_reporting</link>을
+       설정하기 위해서 <constant>E_ALL</constant>나 <constant>E_NOTICE</constant>
+       등의 PHP 상수를 사용할 수 없으며, 아무런 의미를 가지지 않기에
+       <emphasis>0</emphasis>으로 처리합니다. 대신 비트마스크 결합값을
+       사용하십시오. &php.ini에서는 상수를 사용할 수 있습니다.
       </para>
      </note>
     </para>
    </sect2>
 
    <sect2 id="configuration.changes.other">
-    <title>Other interfaces to <literal>PHP</literal></title>
+    <title><literal>PHP</literal>의 다른 인터페이스</title>
     <para>
-     Regardless of the interface to <literal>PHP</literal> you can change
-     certain values at runtime of your scripts through
-     <function>ini_set</function>. The following table provides an overview
-     at which level a directive can be set/changed.
+     <literal>PHP</literal>의 인터페이스에 상관 없이, <function>ini_set</function>를
+     이용하여 스크립트 실행시의 몇가지 값을 변경할 수 있습니다. 아래의
+     표는 설정값이 어느 레벨에서 변경/지정될 수 있는지 보여줍니다.
     </para>
     <para>
      <table>
-     <title>Definition of PHP_INI_* constants</title>
+     <title>PHP_INI_* 상수 정의</title>
      <tgroup cols="3">
       <thead>
        <row>
-        <entry>Constant</entry>
-        <entry>Value</entry>
-        <entry>Meaning</entry>
+        <entry>상수</entry>
+        <entry>값</entry>
+        <entry>의미</entry>
        </row>
       </thead>
       <tbody>
        <row>
         <entry>PHP_INI_USER</entry>
         <entry>1</entry>
-        <entry>Entry can be set in user scripts</entry>
+        <entry>유저 스크립트에서 설정 가능한 엔트리</entry>
        </row>
        <row>
         <entry>PHP_INI_PERDIR</entry>
         <entry>2</entry>
         <entry>
-         Entry can be set in &php.ini;, &htaccess; or
-         &httpd.conf;
+         &php.ini;, &htaccess;, &httpd.conf;에서
+         설정 가능한 엔트리
         </entry>
        </row>
        <row>
         <entry>PHP_INI_SYSTEM</entry>
         <entry>4</entry>
         <entry>
-         Entry can be set in &php.ini; or &httpd.conf;
+         &php.ini나 &httpd.conf;에서 설정 가능한 엔트리
         </entry>
        </row>
        <row>
         <entry>PHP_INI_ALL</entry>
         <entry>7</entry>
-        <entry>Entry can be set anywhere</entry>
+        <entry>어디에서라도 설정 가능한 엔트리</entry>
        </row>
       </tbody>
      </tgroup>
     </table>
     </para>
     <para>
-     You can view the settings of the configuration values in
-     the output of <function>phpinfo</function>. You can also
-     access the values of individual configuration directives using
-     <function>ini_get</function> or <function>get_cfg_var</function>.
+     환경 설정의 설정값은 <function>phpinfo</function> 출력에서
+     확인할 수 있습니다. <function>ini_get</function>나
+     <function>get_cfg_var</function>을 이용하여 개별 설정값에
+     접근할 수도 있습니다.
     </para>
    </sect2>
   </sect1>
