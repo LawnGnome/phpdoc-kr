@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.14 $ -->
+<!-- $Revision: 1.15 $ -->
 <!-- EN-Revision: 1.119 -->
  <chapter id="language.types">
   <title>타입</title>
@@ -162,7 +162,7 @@ if (is_string($bool)) {
  </sect1>
    
    <sect1 id="language.types.boolean">
-    <title>불린</title>
+    <title>논리값</title>
     
     <simpara>
      이 타입은 가장 쉬운 타입니다.<type>boolean</type>은 논리값을
@@ -439,7 +439,7 @@ var_dump(round(25/7));  // float(4)
       </simpara>
       
       <sect3 id="language.types.integer.casting.from-boolean">
-       <title><link linkend="language.types.boolean">불린</link>에서</title>
+       <title><link linkend="language.types.boolean">논리값</link>에서</title>
        <simpara>
         &false;는 <literal>0</literal> (zero), 그리고
         &true;는 <literal>1</literal> (one).
@@ -492,7 +492,7 @@ echo (int) ( (0.1+0.7) * 10 ); // echoes 7!
         <caution>
          <simpara>
           정수로의 변환은 다른 타입에 대해 정의되지 않는다. 현재까지는 값이 
-          <link linkend="language.types.boolean.casting">불린으로 변환</link>될때와 
+          <link linkend="language.types.boolean.casting">논리값으로 변환</link>될때와 
           동일하게 동작한다. 하지만, 경고 없이 변할수 있기 
           때문에 이 동작에 연관짓지 <emphasis>말것</emphasis>
          </simpara>
@@ -1058,7 +1058,7 @@ $last = $str{strlen($str)-1};
     <para>
      <type>boolean</type> &true;값은 문자열 <literal>"1"</literal>로 변환된다.
      &false; 값은 <literal>""</literal> (빈 문자열)로 표현된다.
-     이 원리로 불린과 문자열값 사이에서 어느 방향으로든 변환이 가능하다.
+     이 원리로 논리값과 문자열값 사이에서 어느 방향으로든 변환이 가능하다.
     </para>
     <para> 
      <type>integer</type>나 부동소수점(<type>float</type>)은 각 자리의 숫자를
@@ -2367,7 +2367,7 @@ if ($fst === $str) {
     
      <itemizedlist>
       <listitem>
-       <simpara><link linkend="language.types.boolean.casting">boolean으로 변환하기</link></simpara>
+       <simpara><link linkend="language.types.boolean.casting">논리값으로 변환하기</link></simpara>
       </listitem>
       <listitem>
        <simpara><link linkend="language.types.integer.casting">정수로 변환하기</link></simpara>
