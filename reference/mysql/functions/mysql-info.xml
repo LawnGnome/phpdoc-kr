@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- splitted from ./en/functions/mysql.xml, last change in rev 1.2 -->
   <refentry id="function.mysql-info">
    <refnamediv>
@@ -24,7 +24,7 @@
     </para>
     <para>
      <function>mysql_info</function>는 아래 나열된 모든 문장들을 문자열로 반환한다.
-	 그렇지 않다면, &false가 아닌 값을 반환한다. 문자열 형식은 주어진 구문에 따라 다르다.
+	 그렇지 않다면, &false;가 아닌 값을 반환한다. 문자열 형식은 주어진 구문에 따라 다르다.
      <example>
       <title>관련된 MySQL 구문들</title>
       <programlisting role="mysql">
