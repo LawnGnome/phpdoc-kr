@@ -4,9 +4,9 @@
    <title>서버-아파치</title>
    <para>
     이 섹션은 PHP의 아파치 인스톨에 관한 주의와 힌트를 포함하고 있습니다.
-    <link linkend="installs.apache.unix">유닉스</link>와 <link
-    linkend="installs.apache.windows">윈도우즈</link> 버전 양쪽 모두 대응합니다.
-    <link linkend="installs.apache2">아파치 2에 대한 안내와 주의</link>는
+    <link linkend="install.apache.unix">유닉스</link>와 <link
+    linkend="install.apache.windows">윈도우즈</link> 버전 양쪽 모두 대응합니다.
+    <link linkend="install.apache2">아파치 2에 대한 안내와 주의</link>는
     별도의 페이지에 존재합니다.
    </para>   
    <sect2 id="install.apache.unix">

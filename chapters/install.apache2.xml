@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
   <sect1 id="install.apache2">
    <title>서버-아파치 2.0</title>
    <para>
     이 섹션은 아파치 2.0에 <literal>PHP</literal>을 설치할 때의 정보와 힌트를
     담고 있습니다. <link linkend="install.apache2.unix">유닉스</link>와 <link
-    linkend="install.apache2.windwos">윈도우즈</link> 버전을 모두 다루고
+    linkend="install.apache2.windows">윈도우즈</link> 버전을 모두 다루고
     있습니다.
    </para>
    <warning>
@@ -208,7 +208,7 @@
      </para>
     </warning>
     <para>
-     가장 최신 버전의 <ulink url="&url.apahce;">아파치 2.0</ulink>와 위에서
+     가장 최신 버전의 <ulink url="&url.apache;">아파치 2.0</ulink>와 위에서
      언급한 적합한 PHP 버전을 받으십시오. <link
      linkend="install.windows.manual">수동 설치 단계</link>를 확인하고
      <literal>PHP</literal>과 아파치의 결합으로 돌아오십시오.

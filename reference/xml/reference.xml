@@ -222,7 +222,7 @@ libexpat.a: $(OBJS)
      <para>
       소스 인코딩은 XML 문서가 <link
        linkend="function.xml-parse">parse</link>되었을 때 이루어집니다. <link
-       linkend="functoin.xml-parser-create">XML 파서를 작성</link>할 때, 소스
+       linkend="function.xml-parser-create">XML 파서를 작성</link>할 때, 소스
       인코딩을 지정할 수 있습니다. (이 인코딩은 XML 파서가 종료될때까지 변경할
       수 없습니다) 지원하는 소스 인코딩은 <literal>ISO-8859-1</literal>,
       <literal>US-ASCII</literal>, <literal>UTF-8</literal>입니다. 앞쪽의

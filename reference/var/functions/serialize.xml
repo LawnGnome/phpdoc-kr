@@ -51,7 +51,7 @@
     <para>
      PHP 3에서, 객체 속성은 일렬화되지만, 메쏘드는 잃어버립니다. PHP
      4에서는 이런 제한이 사라졌고, 속성과 메쏘드를 둘다 복구합니다. 자세한
-     정보는 <link linkend="laguage.oop">클래스와 객체</link>의 <link
+     정보는 <link linkend="language.oop">클래스와 객체</link>의 <link
      linkend="language.oop.serialization">객체 일렬화하기</link> 섹션을
      참고하십시오.
     </para>
