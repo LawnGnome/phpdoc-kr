@@ -11,7 +11,9 @@ PHP는 C와 Java, Perl등으로부터 많은 문장 형식을 빌려쓰고 있�
 		<title>이 매뉴얼에 대하여</title>
 		<para>
     이 매뉴얼은 <ulink url="&url.docbook.xml;">DocBook XML DTD</ulink>를 사용한 <acronym>XML</acronym>로 되어있고,
-  문서의 포매팅을 위해서 <ulink url="&url.dsssl;">	<acronym>DSSSL</acronym></ulink> 
+  문서의 포매팅을 위해서 <ulink url="&url.dsssl;">
+				<acronym>DSSSL</acronym>
+			</ulink> 
   (Document Style and Semantics Specification Language) 을 사용한다. 
  <acronym>HTML</acronym>, <acronym>TeX</acronym>, <acronym>RTF</acronym> 문서로의 포매팅은
  <ulink url="&url.jclark;">James Clark</ulink>이 제작한 <ulink url="&url.jade;">Jade</ulink>와, 
