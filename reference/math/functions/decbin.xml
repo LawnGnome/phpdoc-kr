@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry id="function.decbin">
    <refnamediv>
     <refname>decbin</refname>
@@ -15,6 +15,28 @@
      주어진 <parameter>number</parameter> 인자에 대응하는 2진수 표현의
      문자열을 반환합니다. 변환 가능한 가장 큰 숫자는
      10진수 4294967295로, 결과값은 1이 32개 들어간 문자열이 됩니다.
+    </para>
+    <para>
+     <example>
+      <title><function>decbin</function> 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+echo decbin(12) . "\n";
+echo decbin(26);
+?>
+]]>
+      </programlisting>
+      <para>
+       위 예제의 출력은:
+      </para>
+      <screen>
+<![CDATA[
+1101
+11010
+]]>
+      </screen>
+     </example>
     </para>
     <para>
      참고: <function>bindec</function>, <function>decoct</function>,

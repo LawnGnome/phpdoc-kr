@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.bindec">
    <refnamediv>
     <refname>bindec</refname>
@@ -19,6 +19,31 @@
      <function>bindec</function>는 이진수를 <type>integer</type>로
      변환합니다. 변환 가능한 가장 큰 숫자는 1의 31비트로,
      10진수 2147483647에 해당합니다.
+    </para>
+    <para>
+     <example>
+      <title><function>bindec</function> 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+echo bindec('110011') . "\n";
+echo bindec('000110011') . "\n";
+
+echo bindec('111');
+?>
+]]>
+      </programlisting>
+      <para>
+       위 예제의 출력은:
+      </para>
+      <screen>
+<![CDATA[
+51
+51
+7
+]]>
+      </screen>
+     </example>
     </para>
     <para>
      참고: <function>decbin</function>, <function>octdec</function>,

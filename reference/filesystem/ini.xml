@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
 <section id="filesystem.configuration">
  &reftitle.runtime;
  &extension.runtime;
  <para>
   <table>
-   <title>파일시스템과 시트림 설정 옵션</title>
+   <title>파일시스템과 스트림 설정 옵션</title>
    <tgroup cols="3">
     <thead>
      <row>
@@ -173,4 +172,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-
