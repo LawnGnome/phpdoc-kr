@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.19 Maintainer: progcom Status: ok -->
+<!-- EN-Revision: 1.20 Maintainer: progcom Status: ready -->
   <refentry id="function.header">
    <refnamediv>
     <refname>header</refname>
@@ -9,7 +8,7 @@
    <refsect1>
     <title>설명</title>
      <methodsynopsis>
-      <type>int</type><methodname>header</methodname>
+      <type>void</type><methodname>header</methodname>
       <methodparam><type>string</type><parameter>string</parameter></methodparam>
       <methodparam choice="opt"><type>bool</type><parameter>replace</parameter></methodparam>
       <methodparam choice="opt"><type>int</type><parameter>http_response_code</parameter></methodparam>
@@ -264,4 +263,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
   <refentry id="function.preg-replace">
    <refnamediv>
     <refname>preg_replace</refname>
@@ -70,14 +69,14 @@ April1,2003
      그렇지 않으면 변경되지 않은 <parameter>subject</parameter>를 반환합니다.
     </para>
     <para>
-     <parameter>limit</parameter>를 제외한 <function>preg_replace</function>의
-     모든 인자는 배열로 할 수 있습니다. <parameter>pattern</parameter>과
-     <parameter>replacement</parameter>에 배열을 사용할 때, 배열에 나타나는
-     순서대로 키를 생성합니다. 똑같은 숫자 인덱스 순서를 가질 <emphasis>필요가
-     없습니다</emphasis>. 어떤 <parameter>pattern</parameter>를
-     어떤 <parameter>replacement</parameter>로 교체할건지를 정하기 위해서는,
-     <function>preg_replace</function>를 호출하기 전에 각각의 배열에
-     <function>ksort</function>를 실행해야만 합니다.
+     (<parameter>limit</parameter>를 제외한) <function>preg_replace</function>의
+     모든 인자에는 일차원 배열을 사용할 수 있습니다.
+     <parameter>pattern</parameter>과 <parameter>replacement</parameter>에 배열을
+     사용할 때는, 배열에 나타나는 순서대로 키를 생성합니다. 똑같은 숫자 인덱스
+     순서를 가질 <emphasis>필요가 없습니다</emphasis>. 어떤
+     <parameter>pattern</parameter>을 어떠한 <parameter>replacement</parameter>로
+     교체할건지를 결정하기 위해서는, <function>preg_replace</function>를 호출하기
+     전에 각각의 배열에 <function>ksort</function>를 실행해야만 합니다.
     </para>
     <para>
      <example>

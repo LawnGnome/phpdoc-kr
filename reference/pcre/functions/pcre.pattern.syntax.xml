@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: wip -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: working -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
     <refname>패턴 문법</refname>
@@ -157,7 +156,7 @@
      <para>     
      정규표현식의 강력함은 패턴에 선택과 반복을 포함하는 것에서 생겨납니다.
      이는 특별한 방법으로 해석되는
-     <emphasis>메타</emphasis>-<emphasis>문자</emphasis>를 사용하여 패턴에
+     <emphasis>메타 문자</emphasis>를 사용하여 패턴에
      들어가게 됩니다.
      </para>
      <para>
@@ -287,7 +286,7 @@
         <term><emphasis>\</emphasis></term>
            <listitem>
          <simpara>
-          일반적인 이스테이프 문자
+          일반적인 이스케이프 문자
          </simpara>
         </listitem>
        </varlistentry>
@@ -425,23 +424,21 @@
     </para>
     <para>
      "<literal>\cx</literal>"의 효과는 다음과 같이 계산합니다:
-     "<literal>x</literal>"가 소문자라면, 대문자로 변환합니다. 
-     Then bit 6 of the character (hex 40) is inverted. 
-     Thus "<literal>\cz</literal>" becomes  hex 1A, but
-     "<literal>\c{</literal>" becomes hex 3B, while "<literal>\c;</literal>"
-     becomes hex 7B.
+     "<literal>x</literal>"가 소문자라면, 대문자로 변환합니다. 그 후, 문자의
+     6번째 비트(hex 40)가 뒤집어집니다. 즉 "<literal>\cz</literal>"은 hex 1A가
+     되고, "<literal>\c{</literal>"은 hex 3B, 그리고
+     "<literal>\c;</literal>"은 hex 7B가 됩니다.
     </para>
     <para>
      "<literal>\x</literal>" 뒤에, 두개의 16진 숫자를 읽습니다. (대소문자
      구별은 하지 않습니다)
     </para>
     <para>
-     After "<literal>\0</literal>" up to two further octal digits are read.
-     In  both cases,  if  there are fewer than two digits, just those that
-     are present are used. Thus the sequence "<literal>\0\x\07</literal>" 
-     specifies two binary zeros followed by a BEL character. Make sure you
-     supply two digits after the initial zero if the character
-     that follows is itself an octal digit.
+     "<literal>\0</literal>"은 다음의 두자리의 8진수를 읽습니다. 양쪽 모두,
+     두자리가 되지 않을 경우, 그 표현을 그대로 사용합니다. 즉
+     "<literal>\0\x\07</literal>" 시퀀스는 두개의 바이너리 제로에 이어지는 BEL
+     문자를 정의합니다. 바로 뒤에 8진수로 인식되는 문자가 이어질 경우에는
+     처음의 제로 뒤에 두자리 수를 써야한다는 것을 잊지 마십시오.
     </para>
     <para>
      The handling of a backslash followed by a digit other than 0
@@ -460,7 +457,7 @@
      subpatterns, PCRE re-reads up to three octal digits following 
      the backslash, and generates a single byte from the
      least significant 8 bits of the value. Any subsequent digits
-     stand for themselves.  For example:
+     stand for themselves. 예를 들면:
     </para>
     <para>
      <variablelist>
@@ -611,13 +608,13 @@
      matches one, and only one, of each pair.
     </para>
     <para>
-     A "word" character is any letter or digit or the underscore
-     character,  that  is,  any  character which can be part of a
-     Perl "<literal>word</literal>". The definition of letters and digits is  
+     "word"문자는 어떠한 문자나 숫자, 혹은 언더스코어(_)입니다. 즉, 펄
+     "<literal>word</literal>"에 해당하는 어떠한 문자입니다. 
+     The definition of letters and digits is  
      controlled by PCRE's character tables, and may vary if locale-specific
      matching is taking place (see  "Locale  support"
-     above). For example, in the "fr" (French) locale, some char-
-     acter codes greater than 128 are used for accented letters,
+     above). For example, in the "fr" (French) locale, some
+     character codes greater than 128 are used for accented letters,
      and these are matched by <literal>\w</literal>.
     </para>
     <para>
@@ -628,8 +625,8 @@
      is no character to match.
     </para>
     <para>
-     The fourth use of backslash is  for  certain  simple  asser-
-     tions. An assertion specifies a condition that has to be met
+     The fourth use of backslash is  for  certain  simple
+     assertions. An assertion specifies a condition that has to be met
      at a particular point in  a match, without consuming any
      characters from the subject string. The use of subpatterns
      for more complicated assertions is described below. The
@@ -721,11 +718,11 @@
      Circumflex need not be the first character of the pattern if
      a number of alternatives are involved, but it should be the
      first thing in each alternative in which it appears  if  the
-     pattern is ever to match that branch. If all possible alter-
-     natives start with a circumflex, that is, if the pattern  is
+     pattern is ever to match that branch. If all possible
+     alternatives start with a circumflex, that is, if the pattern  is
      constrained to match only at the start of the subject, it is
-     said to be an "anchored" pattern. (There are also other con-
-     structs that can cause a pattern to be anchored.)
+     said to be an "anchored" pattern. (There are also other
+     constructs that can cause a pattern to be anchored.)
 
      A dollar character is an assertion which is &true; only if the
      current  matching point is at the end of the subject string,
@@ -748,10 +745,11 @@
      before an internal "\n" character, respectively, in addition
      to matching at the start and end of the subject string.  For
      example,  the  pattern  /^abc$/  matches  the subject string
-     "def\nabc" in multiline  mode,  but  not  otherwise.  Conse-
-     quently,  patterns  that  are  anchored  in single line mode
-     because all branches start with "^" are not anchored in mul-
-     tiline  mode.  The  <link linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>  option is ignored if
+     "def\nabc" in multiline  mode,  but  not  otherwise.
+     Consequently,  patterns  that  are  anchored  in single line mode
+     because all branches start with "^" are not anchored in
+     multiline  mode.  The  <link
+      linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>  option is ignored if
      <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  is set.
 
      Note that the sequences \A, \Z, and \z can be used to  match
@@ -767,9 +765,9 @@
      Outside a character class, a dot in the pattern matches  any
      one  character  in  the  subject,  including  a non-printing
      character, but not (by default) newline.  If the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
-     option  is  set,  then dots match newlines as well. The han-
-     dling of dot is entirely independent of the handling of cir-
-     cumflex  and  dollar,  the only relationship being that they
+     option  is  set,  then dots match newlines as well. The
+     handling of dot is entirely independent of the handling of
+     circumflex  and  dollar,  the only relationship being that they
      both involve newline characters.  Dot has no special meaning
      in a character class.
      </literallayout>
@@ -778,25 +776,25 @@
     <refsect2 id="regexp.reference.squarebrackets">
      <title>스퀘어 브라켓</title>
      <literallayout>
-     An opening square bracket introduces a character class, ter-
-     minated  by  a  closing  square  bracket.  A  closing square
+      An opening square bracket introduces a character class,
+      terminated  by  a  closing  square  bracket.  A  closing square
      bracket on its own is  not  special.  If  a  closing  square
      bracket  is  required as a member of the class, it should be
-     the first data character in the class (after an initial cir-
-     cumflex, if present) or escaped with a backslash.
+     the first data character in the class (after an initial
+     circumflex, if present) or escaped with a backslash.
 
      A character class matches a single character in the subject;
      the  character  must  be in the set of characters defined by
-     the class, unless the first character in the class is a cir-
-     cumflex,  in which case the subject character must not be in
+     the class, unless the first character in the class is
+     circumflex,  in which case the subject character must not be in
      the set defined by the class. If a  circumflex  is  actually
      required  as  a  member  of  the class, ensure it is not the
      first character, or escape it with a backslash.
 
      For example, the character class [aeiou] matches  any  lower
      case vowel, while [^aeiou] matches any character that is not
-     a lower case vowel. Note that a circumflex is  just  a  con-
-     venient  notation for specifying the characters which are in
+     a lower case vowel. Note that a circumflex is  just  a
+     convenient  notation for specifying the characters which are in
      the class by enumerating those that are not. It  is  not  an
      assertion:  it  still  consumes a character from the subject
      string, and fails if the current pointer is at  the  end  of
@@ -805,8 +803,8 @@
      When caseless matching  is  set,  any  letters  in  a  class
      represent  both their upper case and lower case versions, so
      for example, a caseless [aeiou] matches "A" as well as  "a",
-     and  a caseless [^aeiou] does not match "A", whereas a case-
-     ful version would.
+     and  a caseless [^aeiou] does not match "A", whereas a
+     caseful version would.
 
      The newline character is never treated in any special way in
      character  classes,  whatever the setting of the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
@@ -817,17 +815,17 @@
      of  characters  in  a  character  class.  For example, [d-m]
      matches any letter between d and m, inclusive.  If  a  minus
      character  is required in a class, it must be escaped with a
-     backslash or appear in a position where it cannot be  inter-
-     preted as indicating a range, typically as the first or last
+     backslash or appear in a position where it cannot be
+     interpreted as indicating a range, typically as the first or last
      character in the class.
      
      It is not possible to have the literal character "]" as  the
      end  character  of  a  range.  A  pattern such as [W-]46] is
-     interpreted as a class of two characters ("W" and "-")  fol-
-     lowed by a literal string "46]", so it would match "W46]" or
+     interpreted as a class of two characters ("W" and "-")
+     followed by a literal string "46]", so it would match "W46]" or
      "-46]". However, if the "]" is escaped with a  backslash  it
-     is  interpreted  as  the end of range, so [W-\]46] is inter-
-     preted as a single class containing a range followed by  two
+     is  interpreted  as  the end of range, so [W-\]46] is
+     interpreted as a single class containing a range followed by  two
      separate characters. The octal or hexadecimal representation
      of "]" can also be used to end a range.
 
@@ -844,8 +842,8 @@
      appear  in  a  character  class, and add the characters that
      they match to the class. For example, [\dABCDEF] matches any
      hexadecimal  digit.  A  circumflex  can conveniently be used
-     with the upper case character types to specify a  more  res-
-     tricted set of characters than the matching lower case type.
+     with the upper case character types to specify a  more
+     restricted set of characters than the matching lower case type.
      For example, the class [^\W_] matches any letter  or  digit,
      but not underscore.
 
@@ -880,7 +878,8 @@
      The settings of <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> , 
      <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link> ,  
      <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> ,
-     and  <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>  can be changed from within the pattern by
+     and  <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>
+     can be changed from within the pattern by
      a sequence of Perl option letters enclosed between "(?"  and
      ")". The option letters are
 
@@ -923,7 +922,8 @@
        (a(?i)b)c
 
      matches  abc  and  aBc  and  no  other   strings   (assuming
-     <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link>   is  not used).  By this means, options can be
+     <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link>
+     is  not used).  By this means, options can be
      made to have different settings in different  parts  of  the
      pattern.  Any  changes  made  in one alternative do carry on
      into subsequent branches within  the  same  subpattern.  For
@@ -953,8 +953,8 @@
      which can be nested.  Marking part of a pattern as a subpattern
      does two things:
 
-     1. It localizes a set of alternatives. For example, the pat-
-     tern
+     1. It localizes a set of alternatives. For example, the
+     pattern
 
        cat(aract|erpillar|)
 
@@ -1100,8 +1100,8 @@
 
      does the right thing with the C comments. The meaning of the
      various  quantifiers is not otherwise changed, just the preferred
-     number of matches.  Do not confuse this use of  ques-
-     tion  mark  with  its  use as a quantifier in its own right.
+     number of matches.  Do not confuse this use of
+     question  mark  with  its  use as a quantifier in its own right.
      Because it has two uses, it can sometimes appear doubled, as
      in
 
@@ -1343,8 +1343,8 @@
      <title>Once-only subpatterns</title>
      <literallayout>
      With both maximizing and minimizing repetition,  failure  of
-     what  follows  normally  causes  the repeated item to be re-
-     evaluated to see if a different number of repeats allows the
+     what  follows  normally  causes  the repeated item to be
+     reevaluated to see if a different number of repeats allows the
      rest  of  the  pattern  to  match. Sometimes it is useful to
      prevent this, either to change the nature of the  match,  or
      to  cause  it fail earlier than it otherwise might, when the
@@ -1370,8 +1370,8 @@
 
      This kind of parenthesis "locks up" the  part of the pattern
      it  contains once it has matched, and a failure further into
-     the pattern is prevented from backtracking  into  it.  Back-
-     tracking  past  it to previous items, however, works as normal.
+     the pattern is prevented from backtracking  into  it.
+     Backtracking  past  it to previous items, however, works as normal.
 
      An alternative description is that a subpattern of this type
      matches  the  string  of  characters that an identical standalone
@@ -1388,8 +1388,8 @@
      This construction can of course contain arbitrarily  complicated
      subpatterns, and it can be nested.
 
-     Once-only subpatterns can be used in conjunction with  look-
-     behind  assertions  to specify efficient matching at the end
+     Once-only subpatterns can be used in conjunction with
+     lookbehind  assertions  to specify efficient matching at the end
      of the subject string. Consider a simple pattern such as
 
        abcd$
@@ -1516,8 +1516,8 @@
      comment play no part in the pattern matching at all.
 
      If the <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>  option is set, an unescaped # character
-     outside  a character class introduces a comment that contin-
-     ues up to the next newline character in the pattern.
+     outside  a character class introduces a comment that
+     continues up to the next newline character in the pattern.
      </literallayout>
     </refsect2>
 
@@ -1540,8 +1540,8 @@
        \( ( (?>[^()]+) | (?R) )* \)
 
      First it matches an opening parenthesis. Then it matches any
-     number  of substrings which can either be a sequence of non-
-     parentheses, or a recursive  match  of  the  pattern  itself
+     number  of substrings which can either be a sequence of
+     non-parentheses, or a recursive  match  of  the  pattern  itself
      (i.e. a correctly parenthesized substring). Finally there is
      a closing parenthesis.
 
