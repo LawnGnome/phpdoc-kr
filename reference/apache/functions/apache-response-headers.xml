@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry id="function.apache-response-headers">
    <refnamediv>
     <refname>apache_response_headers</refname>
@@ -17,7 +17,7 @@
      모든 아파치 응답 헤더의 배열을 반환합니다. 이 기능은 PHP 4.3.0 이상에서만
      사용할 수 있습니다.
     </para>
-    &reference.apache.note-nsapi-module;
+    &note.apache.nsapi-module;
     <para>
      참고: <function>apache_request_headers</function>,
      <function>headers_sent</function>.

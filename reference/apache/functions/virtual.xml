@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry id="function.virtual">
    <refnamediv>
     <refname>virtual</refname>
@@ -30,7 +28,7 @@
      있습니다. 그러나, 다른 PHP 파일을 포함할때는 <function>include</function>나
      <function>require</function>를 사용하는 편이 좋습니다.
     </para>
-    &reference.apache.note-nsapi-module;
+    &note.apache.nsapi-module;
    </refsect1>
   </refentry>
 
