@@ -1,42 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
+<!-- $Revision: 1.8 $ -->
 <!-- EN-Revision: 1.52 -->
  <chapter id="security">
   <title>보안</title>
 
   <simpara>
-   PHP is a powerful language and the interpreter, whether included
-   in a web server as a module or executed as a separate
-   <acronym>CGI</acronym> binary, is able to access files, execute
-   commands and open network connections on the server.  These
-   properties make anything run on a web server insecure by default.
-   PHP is designed specifically to be a more secure language for
-   writing CGI programs than Perl or C, and with correct selection of
-   compile-time and runtime configuration options, and proper coding
-   practices, it can give you exactly the combination of freedom and
-   security you need.
+   PHP는 강력한 언어와 인터프리터입니다. 웹서버 모듈로 포함하거나
+   별도의 <acronym>CGI</acronym> 바이너리로 실행해서, 서버에서
+   파일에 접근하거나, 명령을 실행하거나, 네트워크 연결을 열 수 있게
+   해줍니다. 기본적으로 이러한 기능은 웹서버의 보안을 위협합니다.
+   PHP는 펄이나 C로 쓰여진 CGI 프로그램에 비해서 더욱 안전한 언어로
+   설계되었습니다. 컴파일 시와 실행시 환경 설정 옵션의 적절한 선택과
+   충분한 코딩 능력은 자유와 보안의 조합을 얻을 수 있을 것입니다.
   </simpara>
   <simpara>
-   As there are many different ways of utilizing PHP, there are many
-   configuration options controlling its behaviour.  A large
-   selection of options guarantees you can use PHP for a lot of
-   purposes, but it also means there are combinations of these
-   options and server configurations that result in an insecure
-   setup.
+   PHP를 이용하는 다른 방법들에 따라, 실행을 조절하는 많은 환경
+   설정 옵션이 존재합니다. 많은 옵션의 선택은 PHP를 여러 목적으로
+   사용할 수 있게 보장해주지만, 이러한 옵션과 서버 환경 설정의 조합에
+   따라서는 보안을 위협하는 결과를 가져올 수도 있습니다.
   </simpara>
   <simpara>
-   The configuration flexibility of PHP is equally rivalled by the
-   code flexibility. PHP can be used to build complete server
-   applications, with all the power of a shell user, or it can be used
-   for simple server-side includes with little risk in a tightly
-   controlled environment. How you build that environment, and how
-   secure it is, is largely up to the PHP developer.
+   PHP 환경 설정의 유연성은 코드의 유연성과 상대적이 됩니다. PHP는
+   쉘 유저의 모든 권한을 가지는 완벽한 서버 어플리케이션을 작성할 수도
+   있고, 강력히 제어된 환경에서 적은 위험으로 단순한 서버측 포함으로
+   사용할 수도 있습니다. 어떻게 환경을 구축하고, 어떻게 보안을 유지하는
+   지는, 많은 부분이 PHP 개발자에 의존하고 있습니다.
   </simpara>
   <simpara>
-   This chapter starts with some general security advice, explains
-   the different configuration option combinations and the situations
-   they can be safely used, and describes different considerations in
-   coding for different levels of security.
+   이 챕터에서는 몇가지 일반적인 보안 조언으로 시작해서, 서로 다른
+   환경 설정 옵션의 조합과 안전하게 사용할 수 있는 상황, 그리고 보안
+   단계에 따른 코딩에서 고려할 점에 대해서 설명합니다.
   </simpara>
 
   <sect1 id="security.general">
@@ -163,7 +156,7 @@
    </sect2>
 
    <sect2 id="security.cgi-bin.default">
-    <title>Case 1: only public files served</title>
+    <title>선택 1: 공개 파일만을 제공</title>
 
     <simpara>
      If your server does not have any content that is not restricted
@@ -187,7 +180,7 @@
    </sect2>
 
    <sect2 id="security.cgi-bin.force-redirect">
-    <title>Case 2: --enable-force-cgi-redirect 사용</title>
+    <title>선택 2: --enable-force-cgi-redirect 사용</title>
     <simpara>
      This compile-time option prevents anyone from calling PHP
      directly with a url like <filename
@@ -217,7 +210,7 @@ AddHandler php-script .php
    </sect2>
 
    <sect2 id="security.cgi-bin.doc-root">
-    <title>Case 3: doc_root나 user_dir을 설정</title>
+    <title>선택 3: doc_root나 user_dir을 설정</title>
     <simpara>
      To include active content, like scripts and executables, in the
      web server document directories is sometimes consider an insecure
@@ -277,7 +270,7 @@ AddHandler php-script .php
    </sect2>
 
    <sect2 id="security.cgi-bin.shell">
-    <title>Case 4: 웹 트리 밖의 PHP 파서</title>
+    <title>선택 4: 웹 트리 외부의 PHP 파서</title>
     <para>
      A very secure option is to put the PHP parser binary somewhere
      outside of the web tree of files.  In <filename
@@ -569,7 +562,7 @@ if (!ereg('^[^./][^/]*$', $username))
    </sect2>
 
    <sect2 id="security.database.storage">
-    <title>Encrypted Storage Model</title>
+    <title>암호화 저장 모델</title>
     <simpara>
      SSL/SSH protects data travelling from the client to the server, SSL/SSH
      does not protect the persistent data stored in a database. SSL is an
@@ -625,7 +618,7 @@ else {
    </sect2>
 
    <sect2 id="security.database.sql-injection">
-    <title>SQL Injection</title>
+    <title>SQL 인젝션</title>
     <simpara>
      Many web developers are unaware of how SQL queries can be tampered with,
      and assume that an SQL query is a trusted command. It means that SQL
@@ -807,7 +800,7 @@ $result = mssql_query($query);
     </note>
 
     <sect3 id="security.database.avoiding">
-     <title>Avoiding techniques</title>
+     <title>회피 테크닉</title>
      <simpara>
       You may plead that the attacker must possess a piece of information
       about the database schema in most examples. You are right, but you
@@ -1022,7 +1015,7 @@ if ($good_login == 1) { // If above test fails, not initialized or checked befor
   </sect1>
 
   <sect1 id="security.registerglobals">
-   <title>Using Register Globals</title>
+   <title>전역 등록 사용</title>
    <para>
     One feature of PHP that can be used to enhance security is configuring PHP with
     <link linkend="ini.register-globals">register_globals</link> = off.
@@ -1102,7 +1095,7 @@ if ($_COOKIE['username'] &&
 
 
   <sect1 id="security.variables">
-   <title>User Submitted Data</title>
+   <title>유저 송신 데이터</title>
    <para>
     The greatest weakness in many PHP programs is not inherent in the
     language itself, but merely an issue of code not being written with
@@ -1231,7 +1224,7 @@ AddType application/x-httpd-php .htm .html
   </sect1>
 
   <sect1 id="security.current">
-   <title>Keeping Current</title>
+   <title>최신 버전 유지</title>
    <simpara>
     PHP, like any other large system, is under constant scrutiny and
     improvement. Each new version will often include both major and
