@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
-<!-- EN-Revision: 1.20 -->
+<!-- $Revision: 1.10 $ -->
+<!-- EN-Revision: 1.21 -->
  <chapter id="language.expressions">
    <title>표현식</title>
 
@@ -112,13 +112,19 @@ function foo ()
    <para>
     다른 언어에서 본적이 없다면 이상하게 보이는 표현식이 있다.
     3중 조건적 연산자이다:
-    <informalexample><programlisting>
+   </para>
+   <para>
+    <informalexample>
+    <programlisting>
 <![CDATA[
 <?php
 $first ? $second : $third
 ?>
 ]]>
-    </programlisting></informalexample>
+    </programlisting>
+    </informalexample>
+   </para>
+   <para>
     first 하위 표현식의 값이 &true; (non-zero)이면 second 하위 표현식이
     적용되고, 이것이 조건적 표현식의 결과가 된다. 이 경우가 아니면,
     third 하위 표현식이 적용되고, 그 값이 된다.
@@ -127,7 +133,8 @@ $first ? $second : $third
    <para>
     다음 예제 코드는 좀더 일반적으로 사용된 전처리/후처리-증가와 표현식을
     이해하는데 도움이 될것이다.
-
+   </para>
+   <para>
     <informalexample>
      <programlisting role="php">
 <![CDATA[
