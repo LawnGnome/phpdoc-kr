@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.21 -->
  <chapter id="faq.installation">
   <title>설치</title>
   <titleabbrev>설치</titleabbrev>
 
   <para>
-   이 섹션은 PHP 설치에 관련되어 자주 문의되는 것들을 다룬다. 
-   PHP는 거의 모든 OS에서 사용가능하다 (현재까지는 OS X 이전의 MacOS는 제외된다)
-   그리고 거의 모든 웹서버와 연동이 가능하다.
+   이 섹션은 PHP 설치에 관련되어 자주 문의되는 것들을 다룹니다. 
+   PHP는 거의 모든 OS에서 사용가능합니다 (현재까지 OS X 이전의 MacOS는 제외된다)
+   그리고 거의 모든 웹서버와 연동이 가능합니다.
   </para>
   <para>
    PHP 설치시에는 설치 디렉토리(PHP소스를 압축풀어놓은곳)밑의 
-   <ulink url="&url.file.installation;">INSTALL</ulink>파일에 적힌 설치방법을 따른다. 
+   <ulink url="&url.file.installation;">INSTALL</ulink>파일에 적힌 설치방법을 따릅니다. 
    윈도우 사용자는 <ulink url="&url.file.readmewin;">install.txt</ulink>파일도
-   살펴봐야 한다. 다음 링크도 윈도우 사용자에게 도움이 될것이다. <link linkend="install.windows">여기</link>
+   살펴봐야 합니다. <link linkend="install.windows">이</link> 링크도 윈도우 사용자에게 도움이 됩니다. 
   </para>
 
   <qandaset>
@@ -26,7 +26,7 @@
     </question>
     <answer>
      <para>
-      유닉스에서는 기본값으로 <filename>/usr/local/lib</filename>입니다.
+      유닉스에서는 기본값이 <filename>/usr/local/lib</filename>입니다.
       <filename>&lt;install-path&gt;/lib</filename>과 같은 디렉토리입니다.
       <link linkend="install.configure.with-config-file-path">--with-config-file-path</link>이라는 옵션으로
       그 위치를 변경할수 있습니다. 예를 들면,
@@ -46,7 +46,7 @@
       이런 방식으로 서로다른 아파치 버전별로 &php.ini;파일을 둘 수 있게 해줍니다.
      </para>
      <para>
-     <link linkend="configuration.file">설치 파일</link>에 관한 챕터로 보시오.
+     <link linkend="configuration.file">설치 파일</link>에 관한 챕터도 보세오.
      </para>
     </answer>
    </qandaentry>
@@ -63,8 +63,8 @@
       PHP의 에러로 인해 코어 덤프(core-dumping)가 되었을 가능성이 높습니다.
       무슨 문제인지 알라보려면 웹서버의 에러 로그(error log)을 확인하세요.
       좀더 원인을 밝히기 위해서는 에러가 일어나는 상황을 재연해야 합니다.
-      gdb를 사용할줄 안다면, 버그 레포트(bug report)를 포함하는 백트레이스를
-      개발자에게 보내줌으로써 원인을 밝히는데 큰 도움을 줄 수 있습니다.
+      gdb를 사용할줄 안다면, 버그 레포트(bug report)를 포함하는 실행추적(backtrace)를
+      개발자에게 보냄으로써 원인을 밝히는데 큰 도움을 줄 수 있습니다.
       아파치 모듈로 PHP를 사용한다면 다음처럼 하세요.
       <itemizedlist>
        <listitem>
@@ -110,7 +110,7 @@
        <listitem>
         <para>
          버그 레포드(bug report)안에 실행추적(backtrace)한 과정을 넣어서 
-         <ulink url="&url.php.bugs;">&url.php.bugs;</ulink>에 보내야 한다.
+         <ulink url="&url.php.bugs;">&url.php.bugs;</ulink>에 보내세요.
         </para>
        </listitem>
       </itemizedlist>
@@ -118,8 +118,8 @@
      <para>
       PHP스크립트 내에 정규표현식(regular expression)함수
       (<function>ereg</function>관련 함수들)를 사용하면
-      PHP와 아파치가 같은 정규표현식 패키지여야 한다. 
-      이것은 PHP와 아파치 1.3.x버전에서는 자동적으로 일치시켜준다.
+      PHP와 아파치가 같은 정규표현식 패키지여야 합니다. 
+      이것은 PHP와 아파치 1.3.x버전에서는 자동적으로 일치시켜줍니다.
      </para>
     </answer>
    </qandaentry>
@@ -127,14 +127,15 @@
    <qandaentry id="faq.installation.processing">
     <question>
      <para>
-      유닉스: RPM으로 PHP를 설치했다. 그런데 아파치가 PHP 페이지를 제대로 처리하지 못한다.
+      유닉스: RPM으로 PHP를 설치했습니다. 그런데 아파치가 PHP 페이지를 제대로 
+      처리하지 못합니다.
      </para>
     </question>
     <answer>
      <para>
       아파치와 PHP 모두 RPM으로 설치했다고 가정하면,
-      &httpd.conf;파일에서 주석 처리해줄 부분과 추가해줘야 할 부분이 있다.
-      다음 줄을 보고 설치된 버전에 맞게 처리해 주기 바란다.
+      &httpd.conf;파일에서 주석 처리해줄 부분과 추가해줘야 할 부분이 있습니다.
+      다음 줄을 보고 설치된 버전에 맞게 처리해 주기 바랍니다.
       <programlisting>
 # Extra Modules
 AddModule mod_php.c
@@ -153,7 +154,7 @@ AddType application/x-httpd-php3 .php3    /* for PHP 3 */
 AddType application/x-httpd-php .php      /* for PHP 4 */
       </programlisting>
       아파치의 전역적인 설정으로 놓던가, 아니면 PHP를 지원해줄
-      버추얼 도메인(VirtualDomain)내에 설정하면 된다.
+      버추얼 도메인(VirtualDomain)내에 설정하면 됩니다.
      </para>
     </answer>
    </qandaentry>
@@ -162,30 +163,30 @@ AddType application/x-httpd-php .php      /* for PHP 4 */
     <question>
      <para>
       유닉스: RPM으로 PHP3를 설치했습니다. 그런데 필요한 데이터베이스와의
-      연동은 어떻게 되는 것입니까?
+      연동은 어떻게 해야 합니까?
      </para>
     </question>
     <answer>
      <para>
-      PHP3가 빌드되는 방법때문에, 유연한 PHP RPM을 만들기는 쉽지 않다.
-      이것과 관련된 이슈가 PHP4에 설명이 되어있다. PHP3설치를 위해서는
-      PHP 설치디렉토리 밑의 INSTALL.REDHAT 파일을 참조하라. 
-      PHP3를 RPM으로 설치하고자 한다면 반드시 읽어야 한다.
+      PHP3가 빌드되는 방법때문에, 유연한 PHP RPM을 만들기는 쉽지 않습니다.
+      이와 관련된 이슈가 PHP4에 설명이 되어있습니다. PHP3설치를 위해서는
+      PHP 설치디렉토리 밑의 INSTALL.REDHAT 파일을 참조하세요. 
+      PHP3를 RPM으로 설치하고자 한다면 반드시 읽어야 합니다.
      </para>
      <para>
       RPM 배포자들은 설치를 단순화시키기 위해 데이터베이스 지원없이 설치되도록
-      설정해놓는다. <emphasis>그리고</emphasis> 또다른 이유는 
-      RPM은 표준적인 /usr/local/이 아니라 /usr/디렉토리를 사용하기 때문이다.
+      설정해놓습니다. <emphasis>그리고</emphasis> 또다른 이유는 
+      RPM은 표준적인 /usr/local/이 아니라 /usr/디렉토리를 사용하기 때문입니다.
       따라서 지원할 데이터베이스와 데이터베이스 서버의 상위디렉토리를 RPM spec 파일에
       설정해야 합니다.
      </para>
      <para>
-      다음은 아파치 모듈로 설치하여 MySQL 데이터베이스 지원이 
-      추가되도록 설치하는 과정을 소개한다.
+      다음은 아파치의 모듈로 설치하여 MySQL 데이터베이스 지원이 
+      되도록 설치하는 과정을 소개합니다.
      </para>
      <para>
-      여기에서 소개하는 것은 PHP를 지원하는 데이터베이스에 맞게 변경해야 한다.
-      이 예는 RPM버전으로 MySQL과 아파치를 설치했다고 가정한다.
+      여기에서 소개하는 것은 PHP를 지원하는 데이터베이스에 맞게 변경해야 합니다.
+      이 예는 RPM버전으로 MySQL과 아파치를 설치했다고 가정한것입니다.
       <itemizedlist>
        <listitem>
 	      <para>
@@ -245,9 +246,9 @@ rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
 	      </para>
  	     </listitem>
       </itemizedlist>
-      아파치를 재시동하라. 이제 RPM으로 MySQL 지원이 되는 PHP 3설치가 된것이다.
-      이 방법은 PHP3의 tarball 배포형식에서 설치하는 것보다 싶다. 
-      그리고 <filename>INSTALL.REDHAT</filename>파일내의 지시대로 하면 된다.
+      아파치를 재시동합니다. 이제 RPM으로 MySQL 지원이 되는 PHP 3설치가 된것입니다.
+      이 방법은 PHP3의 타볼(tarball) 배포형식에서 설치하는 것보다 싶습니다. 
+      그리고 <filename>INSTALL.REDHAT</filename>파일내의 지시대로 하면 됩니다.
    	 </para>
     </answer>
    </qandaentry>
@@ -255,23 +256,16 @@ rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
    <qandaentry id="faq.installation.frontpage">
     <question>
      <para>
-      Unix: I patched Apache with the FrontPage extensions patch, and
-      suddenly PHP stopped working. Is PHP incompatible with the
-      Apache FrontPage extensions?
-      유닉스: 아파치를 Frontpage확장이 가능하도록 패치했다. 그런데
-      갑자기 PHP작동이 중단되었다. 아파치 FrontPage확장과 PHP는 호환되지
-      않는가?
+      유닉스: 아파치를 Frontpage확장이 가능하도록 패치했습니다. 그런데
+      갑자기 PHP작동이 중단되었습니다. 아파치 FrontPage확장과 PHP는 호환되지
+      않습니까?
      </para>
     </question>
     <answer>
      <para>
-      No, PHP works fine with the FrontPage extensions. The problem
-      is that the FrontPage patch modifies several Apache structures,
-      that PHP relies on. Recompiling PHP (using 'make clean ; make')
-      after the FP patch is applied would solve the problem.
-      아니다. PHP는 FrontPage 확장과 잘 동작한다. 문제는 FrontPage패치가
-      아파치의 구조를 변경시키는데 있다. 이 구조가 PHP와 관련되어있는부분이다.
-      FP 패치 후에 PHP를 다시 컴파일하라(make clean; make). 그러면 해결될것이다.
+      아닙니다. PHP는 FrontPage 확장과 잘 동작합니다. 문제는 FrontPage패치가
+      아파치의 구조를 변경시키는데 있습니다. 이 구조가 PHP와 관련되어있는부분입니다.
+      FP 패치 후에 PHP를 다시 컴파일하세요(make clean; make). 그러면 해결됩니다.
      </para>
     </answer>
    </qandaentry>
@@ -279,15 +273,15 @@ rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
    <qandaentry id="faq.installation.blankscreen">
     <question>
      <para>
-      유닉스/윈도우: PHP를 설치했다. 그런데 웹브라우저로 PHP스크립트 파일을
-      읽으려고 하면 하얀 화면만 보인다.
+      유닉스/윈도우: PHP를 설치했습니다. 그런데 웹브라우저로 PHP스크립트 파일을
+      읽으려고 하면 하얀 화면만 보입니다.
      </para>
     </question>
     <answer>
      <para>
-      웹브라우저에서 '소스 보기'를 해보면 PHP스크립트의 소스를 볼수 있을지도 모른다.
+      웹브라우저에서 '소스 보기'를 해보면 PHP스크립트의 소스를 볼수도  있습니다.
       이것은 웹서버가 PHP를 해석한 후에 보내주지 않았다는 것이고, 웹서버 설정이
-      잘못되었다는 것이다. PHP설치 명령에 관련되어 있는 서버 설정을 다시 점검하라.
+      잘못되었다는 것입니다. PHP와 관련되어 있는 서버 설정을 다시 점검하십시오.
      </para>
     </answer>
    </qandaentry>
@@ -295,20 +289,20 @@ rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
    <qandaentry id="faq.installation.500error">
     <question>
      <para>
-      유닉스/윈도우: PHP를 설치했다. 웹브라우저로 PHP스크립트를 보려고 하면
-      500 서버 에러가 발생한다.
+      유닉스/윈도우: PHP를 설치했습니다. 웹브라우저로 PHP스크립트를 보려고 하면
+      500 서버 에러가 발생합니다.
      </para>
     </question>
     <answer>
      <para>
-      이 에러는 웹서버가 PHP를 실행하려고 할때 무슨 문제가 있다는것이다.
+      이 에러는 웹서버가 PHP를 실행하려고 할때 무슨 문제가 있다는것입니다.
       좀더 구체적인 에러 메시지를 보려면, 커맨드 라인에서 PHP 실행파일
-      (윈도우는 <filename>php.exe</filename>)이 있는 디렉토리로 이동하라.
-      그리고 <literal>php -i</literal>명령을 실행하라. PHP가 어떤 문제가
-      있다면, 관련된 에러 메시지가 보일것이다. 이 에러메시지를 통해서
-      다음에 해야할 일들을 위한 단서를 얻을 수 있다. 
+      (윈도우는 <filename>php.exe</filename>)이 있는 디렉토리로 이동하세요.
+      그리고 <literal>php -i</literal>명령을 실행하세요. PHP가 어떤 문제가
+      있다면, 관련된 에러 메시지가 보일것입니다. 이 에러메시지를 통해서
+      다음에 해야할 일들을 위한 단서를 얻을 수 있습니다. 
       PHP의 html변환된 코드를 볼수 있다면(<function>phpinfo</function>함수의 실행결과)
-      PHP는 작동하는것이다. 웹서버 설정과 관련된 문제라면, 다시 점검하라.
+      PHP는 작동하는것입니다다. 웹서버 설정과 관련된 문제라면, 다시 점검하십시오.
      </para>
     </answer>
    </qandaentry>
@@ -316,8 +310,8 @@ rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
    <qandaentry id="faq.installation.undefinedsyms">
     <question>
      <para> 
-      특정 운영체제: 에러없이 PHP를 설치했다. 그런데 아파치를 실행하려하면
-      undefined symbol error 가 발생한다.
+      특정 운영체제: 에러없이 PHP를 설치했습니다. 그런데 아파치를 실행하려하면
+      undefined symbol error 가 발생합니다.
       <programlisting>
 [mybox:user /src/php4] root# apachectl configtest
  apachectl: /usr/local/apache/bin/httpd Undefined symbols:
@@ -328,9 +322,9 @@ rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
     </question>
     <answer>
      <para>
-      이 에러는 PHP와 관련된것이 아니다. MySQL의 클라이언트 라이브러리
-      (client libraris)와 관련된 문제이다. --with-zlib옵션이 필요할수도 있다.
-      이것과 관련된 문제는 MySQL FAQ를 참조하라.
+      이 에러는 PHP와 관련된것이 아닙니다. MySQL의 클라이언트 라이브러리
+      (client libraris)와 관련된 문제입니다. --with-zlib옵션이 필요할수도 있습니다.
+      이것과 관련된 문제는 MySQL FAQ를 참조하세요.
      </para>
     </answer>
    </qandaentry>
@@ -338,8 +332,8 @@ rpm -ivh /usr/src/redhat/RPMS/i386/mod_php3-3.0.5-2.i386.rpm
    <qandaentry id="faq.installation.cgierror">
     <question>
      <para>
-      윈도우: PHP를 설치했다.  그런데 웹브라우저로 PHP스크립트
-      파일을 보려하면 다음과 같은 에러가 발생한다.
+      윈도우: PHP를 설치했습니다.  그런데 웹브라우저로 PHP스크립트
+      파일을 보려하면 다음과 같은 에러가 발생합니다.
       <programlisting>
 cgi error:
  The specified CGI application misbehaved by not
@@ -350,36 +344,36 @@ cgi error:
     </question>
     <answer>
      <para>
-      이 에러 메시지는 PHP가 출력에 실패했다는것을 의미한다.
+      이 에러 메시지는 PHP가 출력에 실패했다는것을 의미합니다.
       좀더 구체적인 에러 메시지를 보려면, 커맨드 라인에서 PHP 실행파일
-      (윈도우는 <filename>php.exe</filename>)이 있는 디렉토리로 이동하라.
-      그리고 <literal>php -i</literal>명령을 실행하라. PHP가 어떤 문제가
-      있다면, 관련된 에러 메시지가 보일것이다. 이 에러메시지를 통해서
-      다음에 해야할 일들을 위한 단서를 얻을 수 있다.  PHP의 html변환된 
+      (윈도우는 <filename>php.exe</filename>)이 있는 디렉토리로 이동하세요.
+      그리고 <literal>php -i</literal>명령을 실행하세요. PHP가 어떤 문제가
+      있다면, 관련된 에러 메시지가 보일것입니다. 이 에러메시지를 통해서
+      다음에 해야할 일들을 위한 단서를 얻을 수 있습니다.  PHP의 html변환된 
       코드를 볼수 있다면(<function>phpinfo</function>함수의 실행결과)
-      PHP는 작동하는것이다.
+      PHP는 작동하는것입니다.
      </para>
      <para>
       PHP가 커맨드 라인에서 일단 잘동한다면, 다시 웹브라우저상에서
-      접근을 시도한다. 아직도 문제가 발생한다면 원인은 다음중에 있을 가능성이 있다.
+      접근을 시도합니다. 아직도 문제가 발생한다면 원인은 다음중에 있을 가능성이 있습니다.
      </para>
      <itemizedlist>
       <listitem>
        <simpara>
         PHP 스크립트 파일, <filename>php.exe</filename>, <filename>php4ts.dll</filename>,
-        &php.ini; 그리고 다른 PHP 확장 파일들은 무기명 인터넷 유저(anonymous internet user)
+        &php.ini; 그리고 다른 PHP 확장 파일들은 익명 인터넷 유저(anonymous internet user)
         인 <literal>ISUR_&lt;machinename&gt;</literal>
-        가 접근할 수 있도록 파일 권한을 설정해야 한다.
+        가 접근할 수 있도록 파일 권한을 설정해야 합니다.
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        이 스크립트 파일이 존재하지 않는다 (또는 웹서버의 루트 디렉토리와
+        이 스크립트 파일이 존재하지 않는것입니다 (또는 웹서버의 루트 디렉토리와
         관련되어 있는 그 파일이 거기 없던가). 
         IIS에서는 인터넷 서버 매니저(Internet Server Manager)내의 
         스크립트 매핑을 설정할 때 'check file exists'박스를 클릭함으로써 
-        이 에러를 잡을수 있다. 스크립트가 거기에 없다면 웹서버는 404에러를
-        발생시킨다. 
+        이 에러를 잡을수 있습니다. 스크립트가 거기에 없다면 웹서버는 404에러를
+        발생시킵니다. 
         There is also the additional benefit that IIS will do any
         authentication required for you based on the NTLanMan
         permissions on your script file.
@@ -392,18 +386,18 @@ cgi error:
    <qandaentry id="faq.installation.phpandiis">
     <question>
      <para>
-      윈도우: 모든 지시대로 따랐다. 그런데 여전히 PHP가 IIS와 연동이 되지 않는다.
+      윈도우: 모든 지시대로 따랐습니다. 그런데 여전히 PHP가 IIS와 연동이 되지 않습니다.
      </para>
     </question>
     <answer>
      <para>
       PHP를 실행시키려고 하는 유저가 <filename>php.exe</filename>를 실행할
-      권한이 있는지 확인할것! IIS는 익명 유저(anonymouse user)가 필요하다.
-      이 유저는 IIS 가 설치될때 추가된다. 이 유저가 <filename>php.exe</filename>
-      을 실행시킬 권한이 필요하다. 또한, 다른 검증된 유저도 <filename>php.exe</filename>를
-      실행시킬 권한이 필요하다. IIS4에서는 PHP가 스크립트 엔진이라는것을 알려줄필요가 있다.
+      권한이 있는지 확인하세요! IIS는 익명 유저(anonymouse user)가 필요합니다.
+      이 유저는 IIS 가 설치될때 추가됩니다. 이 유저가 <filename>php.exe</filename>
+      을 실행시킬 권한이 필요합니다. 또한, 다른 검증된 유저도 <filename>php.exe</filename>를
+      실행시킬 권한이 필요합니다. IIS4에서는 PHP가 스크립트 엔진이라는것을 알려줄필요가 있습니다.
       좀 더 알아보려면, 이 <link linkend="faq.installation.forceredirect">faq</link>
-      를 참조하라.
+      를 참조하세요.
      </para>
     </answer>
    </qandaentry>
@@ -412,20 +406,20 @@ cgi error:
     <question>
      <para>
        IIS나 PWS나 OmniHTTPD나 Xitami과 함께 PHP를 CGI로 실행시킬때,
-       다음과 같은 에러가 발생한다.
+       다음과 같은 에러가 발생합니다.
        <literal>Security Alert! PHP CGI cannot be accessed directly.</literal>.
      </para>
     </question>
     <answer>
      <para>
       <link linkend="ini.cgi.force-redirect">cgi.force_redirect</link>를 
-      <literal>0</literal>으로 놓아야 한다. 기본값(default)은 <literal>1</literal>
-      이다.  모든 설정치(directive)는 &php.ini;파일에서 설정된다.
+      <literal>0</literal>으로 놓아야 합니다. 기본값(default)은 <literal>1</literal>
+      입니다.  모든 설정치(directive)는 &php.ini;파일에서 설정됩니다.
      </para>
      <para>
       기본값(default)는 <literal>1</literal>이기 때문에 현재의 &php.ini;파일이
       적용되는지 확인하는것이 매우 중요하다. 더 자세한 것은 
-      이 <link linkend="faq.installation.findphpini">faq</link>를 참고한다.
+      이 <link linkend="faq.installation.findphpini">faq</link>를 참고하세요.
      </para>
     </answer>
    </qandaentry>
@@ -433,23 +427,23 @@ cgi error:
    <qandaentry id="faq.installation.findphpini">
     <question>
      <para>
-      변경한 &php.ini;파일이 적용되고 있는지 어떻게 알수 있는가?
-      설정이 변경된대로 적용이 되고 있는것 같지 않다.
+      변경한 &php.ini;파일이 적용되고 있는지 어떻게 알수 있습니까?
+      설정이 변경된대로 적용이 되고 있는것 같지 않습니다.
      </para>
     </question>
     <answer>
      <para>
       &php.ini;파일이 PHP에 의해 읽히고 있는지 확인하기 위해서는
       <function>phpinfo</function>를 실행시켜서 제일 윗쪽에
-      <literal>Configuration File (php.ini)</literal>부분을 확인해야 한다.
-      이 부분을 보면 PHP가 어디에서 &php.ini;파일을 찾는지 알수 있다.
-      단지 디렉토리 경로(PATH)만 존재한다면 읽히지 않는것이다. 
-      그 경로로 &php.ini;파일을 놓아야 한다. 
-      그 경로 안에 &php.ini;도 같이 있으면 읽히고 있는것이다.
+      <literal>Configuration File (php.ini)</literal>부분을 확인해야 합니다다.
+      이 부분을 보면 PHP가 어디에서 &php.ini;파일을 찾는지 알수 있습니다.
+      단지 디렉토리 경로(PATH)만 존재한다면 읽히지 않는것입니다. 
+      그 경로로 &php.ini;파일을 놓아야 합니다. 
+      그 경로 안에 &php.ini;도 같이 있으면 읽히고 있는것입니다.
      </para>
      <para>
       &php.ini;파일이 읽히고 있지 않고 모듈로 PHP가 실행되고 있다면
-      &php.ini;파일을 변경한 후에 PHP를 재시동해야 한다.
+      &php.ini;파일을 변경한 후에 PHP를 재시동해야 합니다.
      </para>
     </answer>
    </qandaentry>
