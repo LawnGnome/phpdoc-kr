@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.26 -->
+
+<!--
+  TODO: add manual conventions section (eg. how to read
+        function usage parts, what is fixed width, what is
+        bold, what is linked
+        
+        add some tips about combining the versions (online-
+        offline), and using "http://anymirror.php.net/funcname"
+-->
+<appendix id="about">
+ <title>이 매뉴얼에 관하여</title>
+
+ <sect1 id="about.formats">
+  <title>포맷</title>
+  <para>
+   PHP 매뉴얼은 여러 종류의 포맷으로 제공되고 있다. 이 포맷들은 두가지 그룹으로
+   나눌수 있는데, 다음과 같다: 온라인상에서 읽을수 있는 포맷, 다운로드될수 있는 패키지.
+  </para>
+  <note>
+   <para>
+    이 매뉴얼을 출력한 형태로 만들수 있으나, 이렇게 하는것을 추천하지 않는다.
+    왜냐하면, 이런 출력물은 최신판에서 매우 빨리 뒤쳐질것이기 때문이다.
+   </para>
+  </note>
+  <para>
+   온라인 상의 <ulink url="&url.php;">&url.php;</ulink>과 그외 여러 
+   미러사이트를 통해서 이 매뉴얼을 볼 수 있다. 빠른 속도를 위해서는 접속지역과 
+   가장 가까운 미러사이트에 접속해야 할것이다. 이 매뉴얼을 단순한(출력용) HTML
+   포맷이나 PHP 웹사이트 자체에 통합된 매뉴얼의 HTML 포맷으로도 볼수 있다.
+  </para>
+  <para>
+   대부분의 오프라인 포맷에 비해 온라인 매뉴얼의 장점은 
+   <link linkend="about.notes">user-contributed notes</link>의 통합이다.
+   확실한 단점은 온라인 포맷의 매뉴얼을 보기 위해서 온라인상에 있어야 한다는
+   것이다.
+  </para>
+  <para>
+   몇가지의 오프라인 매뉴얼 포맷이 제공되며, 이중 가장 적합한 포맷은
+   사용중인 운영체제와 개인적인 독서 스타일에 달려있다. 그런 많은 매뉴얼들이
+   어떻게 생성되는지 알기 위해서는 이 부록의
+   <link linkend="about.generate">'How we generate the formats'</link> 섹션을
+   참고한다.
+  </para>
+  <para>
+   이 매뉴얼 포맷중 가장 운영체제간 호환성이 높은것은 HTML과 단순-텍스트 버전이다.
+   HTML 포맷은 단일의 HTML 파일과 섹션 파일들로 구성된 패키지로 제공된다.
+   (각 섹션은 몇천개의 파일 묶음으로 되어있다)
+   HTML과 단순텍스트 포맷은 bzip2 아카이브를 이용하여 압축된 타(tar)파일로 제공된다.
+  </para>
+  <para>
+   또다른 호환성 높고 가장 일반적인 포맷이며 가장 출력하기 적합한 포맷이 PDF
+   (어도브 아크로뱃이라고 하기도 함)이다. 이 포맷을 다운로드하고 출력 버튼을 
+   누르기 전에, 이 매뉴얼이 거의 2000 페이지 가량된다는 것과 지속적으로 개정된다는
+   것을 명심해야 할것이다.
+  </para>
+  <note>
+   <para>
+    PDF 포맷 파일을 볼수 있도록 하는 프로그램을 아직 설치하지 않았다면,
+    <ulink url="&url.adobe.acrobat;">Adobe Acrobat Reader</ulink>을 다운로드해야 할것이다.
+   </para>
+  </note>
+  <para>
+   팜(Palm) 호환 핸드헬드 사용자라면, 팜 문서와 아이실로(iSilo) 포맷이 이
+   플랫폼에 가장 적합하다. 통근중에 이 핸드헬드를 갖고다니면서
+   <ulink url="&url.palm.doc;">DOC</ulink>이나 <ulink url="&url.palm.isilo;">iSilo</ulink> 리더를
+   사용하여 PHP 지식을 연마할수 있다. 또는 퀵 레퍼런스로 이 포맷을 사용할수있다.
+  </para>
+  <para>
+   윈도우 플랫폼을 위해 이 매뉴얼을 윈도우 HTML 헬프 버전으로 제공된다.
+   이 버전은 윈도우 HTML 헬프 응용프로그램에서 사용하는 HTML 포맷으로 구성되며,
+   문서전체 검색과 전체 인덱스, 북마크도 제공한다. 많이 사용되는 윈도우의 PHP 개발 환경은
+   쉬운 접근을 위해 이 문서 형태도 함께 제공된다.
+  </para>
+<!--
+  mmmm, this project seems to be dead. Any news?
+  <note>
+   <para>
+    A Visual Basic for Linux project is in the planning stage, which will
+    include the development of a CHM Creator and Viewer for Linux. See their
+    <ulink url="&url.vb4linux;">SourceForge.net page</ulink> if you are
+    interested in the progress.
+   </para>
+  </note>
+  -->
+ </sect1>
+ 
+ <sect1 id="about.notes">
+  <title>user notes에 관하여</title>
+  <para>
+   user-contributed notes는 이 매뉴얼 개발에 있어서 매우 중요한 역할을 담당하고
+   있다. 브라우저상에서 매뉴얼의 독자에게 예제코드, 경고, 좀더 자세한 설명을
+   제공해줌으로써, 매뉴얼의 주요 텍스트안에 피드백을 함께 추가시킬수 있다.
+   이런 notes가 통합되어 않으면, 온라인이나 일부 오프라인 포맷에서 제출폼이 보일것이다.
+  </para>
+  <note>
+   <para>
+    The user-contributed notes are not moderated before they appear online, so
+    the quality of the writing or code examples, and even the veracity of the
+    contribution, cannot be guaranteed. (Not that there is any guarantee of
+    the quality or accuracy of the manual text itself.)
+   </para>
+  </note>
+  <note>
+   <para>
+    For the purposes of license coverage the user-contributed notes are
+    considered part of the PHP manual, and are therefore covered by the
+    same license that covers this documentation (GPL at the moment). For
+    more details see the <link linkend="copyright">Manual's Copyright</link>
+    page.
+   </para>
+  </note>
+ </sect1>
+
+ <sect1 id="about.prototypes">
+   <title>How to read a function definition (prototype)</title>
+   <para>
+    Each function is documented for quick reference, knowing how 
+    to read and understand the manual will make using PHP 
+    much easier.  Rather than relying on examples or cut/paste, you want 
+    to know how to read function definitions (prototypes).  Let's begin:
+   </para>
+   <note>
+    <title>
+     Prerequisite: Basic understanding of <link linkend="language.types">types</link>
+    </title>
+    <para>
+     Although PHP is a loosly typed language, it's important to have 
+     a basic understanding of <link linkend="language.types">types</link> as 
+     they have important meaning.
+    </para>
+   </note>
+   <para>
+    Function definitions tell us what 
+    type of value is <link linkend="functions.returning-values">returned</link>, 
+    let's use the definition for <function>strlen</function> as our first example:
+   </para>
+   <para>
+    <screen>
+strlen
+
+(PHP 3, PHP 4 >= 4.0.0)
+strlen -- Get string length
+
+Description
+int strlen ( string str )
+
+Returns the length of string.
+    </screen>
+   </para>
+   <para>
+    <table>
+     <title>Explanation of a function definition</title>
+      <tgroup cols="2">
+       <thead>
+        <row>
+         <entry>Part</entry>
+         <entry>Description</entry>
+        </row>
+       </thead>
+       <tbody>
+        <row>
+         <entry>
+          strlen
+         </entry>
+         <entry>
+          The function name.
+         </entry>
+        </row>
+        <row>
+         <entry>
+          (PHP 3, PHP 4 >= 4.0.0)
+         </entry>
+         <entry>
+          strlen() has been around in both all of PHP 3 and PHP 4
+         </entry>
+        </row>
+        <row>
+         <entry>
+          int
+         </entry>
+         <entry>
+          Type of value this function returns, which is an 
+          <type>integer</type> (i.e. The length of a string is measured in
+          numbers). 
+         </entry>
+        </row>
+        <row>
+         <entry>
+          ( string str )
+         </entry>
+         <entry>
+          The first (and in this case the only) parameter/argument for the 
+          function strlen() is named <parameter>str</parameter>, and it's a 
+          <type>string</type>.
+         </entry>
+        </row>
+       </tbody>
+      </tgroup>
+     </table>
+    </para>
+    <para>
+     We could rewrite the above function definition in a generic way:
+    </para>
+    <para>
+     <screen role="html">
+      returned type    function name    ( parameter type   parameter name )
+     </screen>
+    </para>
+    <para>
+     Many functions take on multiple parameters, such as <function>in_array</function>.
+     It's prototype is as follows:
+    </para>
+    <para>
+     <screen role="html">    
+      bool in_array ( mixed needle, array haystack [, bool strict])
+     </screen>
+    </para>
+    <para>
+     What does this mean?  in_array() returns a 
+     <link linkend="language.types.boolean">boolean</link> value, &true; on 
+     success (the <parameter>needle</parameter> was found in the 
+     <parameter>haystack</parameter>) or &false; on failure (the 
+     <parameter>needle</parameter> was not found in the 
+     <parameter>haystack</parameter>).  The first parameter is named 
+     <parameter>needle</parameter> and it can be many different 
+     <link linkend="language.types">types</link>, so we call it 
+     "<emphasis>mixed</emphasis>".  This mixed <parameter>needle</parameter> 
+     (what we're looking for) can either be a scalar value (string, integer, 
+     or <link linkend="language.types.float">float</link>), or an
+     <link linkend="language.types.array">array</link>.  
+     <parameter>haystack</parameter> (the array we're searching in) is the 
+     second parameter.  The third <emphasis>optional</emphasis> parameter is 
+     named <parameter>strict</parameter>.  All optional parameters are seen 
+     in <emphasis>[</emphasis> brackets <emphasis>]</emphasis>.  The manual 
+     states that the <parameter>strict</parameter> parameter defaults to 
+     boolean &false;.  See the manual page on each function for details on 
+     how they work.
+    </para>
+ </sect1>
+ 
+ <sect1 id="about.phpversions">
+  <title>PHP versions documented in this manual</title>
+  <para>
+   This documentation contains information about PHP 4, with some added
+   migration and compatibility notes regarding PHP 3. Behaviour,
+   parameter, return value and other changes between different PHP
+   versions are documented in notes and inline text in the manual.
+  </para>
+  <para>
+   You may find documentation pieces for the CVS version of PHP, which
+   always means the very latest development version available through
+   the CVS version handling system. If you are not a developer of PHP
+   itself, and you are not keen on using the very latest development
+   version of PHP, features marked with the "available in CVS" wording
+   are not accessible to you. Though these features will probably be
+   available in the next stable version of PHP. If you would like to
+   download the CVS version, see the <ulink url="&url.php.anoncvs;">anonymous
+   CVS access page</ulink>.
+  </para>
+  <para>
+   You may also encounter documentation for a PHP version which is
+   not released (something like PHP 5.0.0 as the latest stable version
+   is 4.3.0). Most of the time, this is not an error in the documentation.
+   Explanation is often added for features not available in the current
+   PHP release, but will be available in a known future PHP version.
+  </para>
+ </sect1>
+   
+ <sect1 id="about.more">
+  <title>How to find more information about PHP</title>
+  <para>
+   This manual does not attempt to provide instruction about general
+   programming practices. If you are a first-time, or even just a beginning,
+   programmer, you may find it difficult to learn how to program in PHP using
+   just this manual. You may want to seek out a text more oriented towards
+   beginners. You can find a list of PHP-related books at <ulink
+   url="&url.php.books;">&url.php.books;</ulink>.
+  </para>
+  <para>
+   There are a number of active mailing lists for discussion of all aspects of
+   programming with PHP. If you find yourself stuck on a problem for which you
+   can't find your own solution, you may be able to get help from someone on
+   these lists. You can find a list of the mailing lists at <ulink
+   url="&url.php.support;">&url.php.support;</ulink>, as well as links to the
+   mailing list archives and other online support resources. Furthermore, at
+   <ulink url="&url.php.links;">&url.php.links;</ulink> there is a list of
+   websites devoted to PHP articles, forums, and code galleries.
+  </para>
+ </sect1>
+
+ <sect1 id="about.howtohelp">
+  <title>How to help improve the documentation</title>
+  <para>
+   There are three ways you can help to improve this documentation.
+  </para>
+  <para>
+   If you find errors in this manual, in any language, please report them
+   using the bug system at <ulink url="&url.php.bugs;">&url.php.bugs;</ulink>.
+   Classify the bug as "Documentation Problem". You can also submit problems
+   related to specific manual formats here.
+  </para>
+  <note>
+   <para>
+    Please don't abuse the bug system by submitting requests for help. Use the
+    mailing lists or community sites mentioned earlier, instead.
+   </para>
+  </note>
+  <para>
+   By contributing notes, you can provide additional examples, caveats, and
+   clarifications for other readers. But do not submit bug reports using the
+   annotation system please. You can read more about annotations in the <link
+   linkend="about.notes">'About user notes'</link> section of this
+   appendix.
+  </para>
+  <para>
+   If you know English and some foreign language, you may also
+   help out in the translations. If you would like to start a new
+   translation, or help in a translation project, please read
+   <ulink url="&url.php.dochowto;">&url.php.dochowto;</ulink>.
+  </para>
+ </sect1>
+ 
+ <sect1 id="about.generate">
+  <title>How we generate the formats</title>
+  <para>
+   This manual is written in <acronym>XML</acronym> using the <ulink
+   url="&url.docbook.xml;">DocBook XML DTD</ulink>, using <ulink
+   url="&url.dsssl;"><acronym>DSSSL</acronym></ulink> (Document
+   Style and Semantics Specification Language) for formatting, and
+   experimentally the <ulink url="&url.xslt;"><acronym>XSLT</acronym></ulink> 
+   (Extensible Stylesheet Language Transformations)
+   for maintenance and formatting.
+  </para>
+  <para>
+   Using <acronym>XML</acronym> as a source format gives us
+   the ability to generate many output formats from the source
+   files, while only maintaining one source document for all formats.
+   The tools used for formatting <acronym>HTML</acronym> and
+   <acronym>TeX</acronym> versions are
+   <ulink url="&url.jade;">Jade</ulink>, written by <ulink
+   url="&url.jclark;">James Clark</ulink> and <ulink
+   url="&url.dbstyle;">The Modular DocBook Stylesheets</ulink>
+   written by <ulink url="&url.nwalsh;">Norman Walsh</ulink>.
+   We use <ulink url="&url.winhelp;">Microsoft HTML Help
+   Workshop</ulink> to generate the Windows HTML Help format
+   of the manual, and of course PHP itself to do some
+   additional conversions and formatting.
+  </para>
+  <para>
+   You can download the manual in various languages and
+   formats, including plain text, plain <acronym>HTML</acronym>,
+   <acronym>PDF</acronym>, PalmPilot DOC, PalmPilot iSilo and
+   Windows HTML Help, from
+   <ulink url="&url.php.docs;">&url.php.docs;</ulink>.
+   The manuals are updated automatically as the text is updated.
+  </para>
+  <para>
+   You can find more information about downloading the
+   <acronym>XML</acronym> source code of this documentation
+   at <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>. The
+   documentation is stored in the <literal>phpdoc</literal> module.
+  </para>
+ </sect1>
+
+ <sect1 id="about.translations">
+  <title>Translations</title>
+  <para>
+   The PHP manual is not only available in various formats,
+   it is also available in various languages. The text of the 
+   manual is first written in english, then teams of people across 
+   the world take care of translating it to their native language.
+   If a translation for a specified function or chapter has not yet
+   been made, the build system of the manual falls back to the 
+   english version of it.
+  </para>
+  <para>
+   Peoples involved in the translations start from the <acronym>XML</acronym>
+   source code available from <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>
+   and from it they translate to thier mother language. They do 
+   <emphasis>not use</emphasis> the <acronym>HTML</acronym>, the plain text, 
+   or the <acronym>PDF</acronym> version. It is the build system which takes 
+   care of the conversions from <acronym>XML</acronym> to human readable formats.
+  </para>
+  <note>
+   <para>
+    If you would like to help translating the documentation to your native 
+    language, please get in touch with the translation/documentation team
+    subscribing to the phpdoc mailinglist: send an empty mail to <ulink
+    url="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</ulink>.
+    The mailing list address is <literal>&email.php.doc;</literal>. State in the
+    message that you are interested in translating the manual to a language 
+    and someone will get back to you, helping you start a new language translation 
+    or reach the already active documentation team for your language.
+   </para>    
+  </note>
+  <para>
+   At the moment the manual is available, partly or not, in the following languages:
+   Brazilian Portuguese, Chinese (Simplified), Chinese (Traditional), Czech, 
+   Dutch, Finnish, French, German, Hebrew, Hungarian, Italian, Japanese, 
+   Korean, Polish, Romanian, Russian, Slovak, Slovenian, Spanish, Swedish, and
+   Turkish.
+  </para>
+  <para>
+   They all can be downloaded here: <ulink url="&url.php.docs;">&url.php.docs;</ulink>.
+  </para>
+ </sect1>
+
+</appendix>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
