@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
-<!-- EN-Revision: 1.8 Maintainer: progcom status: ok -->
+<!-- $Revision: 1.8 $ -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ok -->
   <refentry id="function.getdate">
    <refnamediv>
     <refname>getdate</refname>

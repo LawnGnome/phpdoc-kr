@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
+<!-- EN-Revision: 1.0 Maintainer: progcom Status: revunknown -->
  <reference id="ref.datetime">
   <title>날짜와 시간 함수</title>
   <titleabbrev>날짜/시간</titleabbrev>
