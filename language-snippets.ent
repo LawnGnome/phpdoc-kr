@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.59 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.60 Maintainer: progcom Status: ready -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -152,6 +152,8 @@ PHP 코어의 일부입니다.</para>'>
 <!ENTITY ini.descriptions.title '<para>위 환경 설정 지시자에 대한
 간단한 설명입니다.</para>'>
 
+<!-- Common pieces for reference part BEGIN -->
+
 <!-- Used in reference/$extname/ini.xml -->
 <!ENTITY extension.runtime '<simpara>
 이 함수의 작동은 &php.ini;의 설정에 영향을 받습니다.
@@ -173,6 +175,20 @@ PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
 아래의 클래스는 이 확장에 의해 정의된 것으로, 확장 모듈이
 PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
 사용할 수 있습니다.</simpara>'>
+
+<!-- These are using in reference/$extname/reference.xml and other
+supplemental files to mark section titles -->
+<!ENTITY reftitle.intro     '<title>소개</title>'>
+<!ENTITY reftitle.required  '<title>요구 사항</title>'>
+<!ENTITY reftitle.install   '<title>설치</title>'>
+<!ENTITY reftitle.runtime   '<title>런타임 설정</title>'>
+<!ENTITY reftitle.resources '<title>리소스 종류</title>'>
+<!ENTITY reftitle.constants '<title>정의된 상수</title>'>
+<!ENTITY reftitle.classes   '<title>정의된 클래스</title>'>
+<!ENTITY reftitle.examples  '<title>예제</title>'>
+<!ENTITY reftitle.seealso   '<title>참고</title>'>
+
+<!-- Common pieces for reference part END -->
 
 <!ENTITY windows.builtin '<simpara><literal>PHP</literal> 윈도우 버전에서는
 이 확장에 대한 지원이 포함되어 있습니다. 이 함수들을 이용하기 위해서
@@ -199,18 +215,6 @@ PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
 유니트 길이를 결정합니다. 0이나 없을 경우에는 페이지를 위한 특정값을
 기본 유니트로 사용합니다. 그렇지 않으면 현재 유니트를 무시하고
 포스트스크립트 상에서 좌표를 측정합니다.</para>'>
-
-<!-- These are using in reference/$extname/reference.xml and other
-supplemental files to mark section titles -->
-<!ENTITY reftitle.intro     '<title>소개</title>'>
-<!ENTITY reftitle.required  '<title>요구 사항</title>'>
-<!ENTITY reftitle.install   '<title>설치</title>'>
-<!ENTITY reftitle.runtime   '<title>런타임 설정</title>'>
-<!ENTITY reftitle.resources '<title>리소스 종류</title>'>
-<!ENTITY reftitle.constants '<title>정의 상수</title>'>
-<!ENTITY reftitle.classes   '<title>정의 클래스</title>'>
-<!ENTITY reftitle.examples  '<title>예제</title>'>
-<!ENTITY reftitle.seealso   '<title>참고</title>'>
 
 <!-- Notes for IPv6 -->
 <!ENTITY ipv6.brackets '<note><simpara>숫자로 이루어진 IPv6 주소(예. fe80::1)를

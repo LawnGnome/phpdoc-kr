@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
   <refentry id="function.is-real">
    <refnamediv>
     <refname>is_real</refname>
-    <refpurpose><function>is_float</function>의 다른 이름.</refpurpose>
+    <refpurpose><function>is_float</function>의 별칭.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
     <para>
-     이 함수는 <function>is_float</function>의 다른 이름입니다.
+     이 함수는 <function>is_float</function>의 별칭입니다.
     </para>
    </refsect1>
   </refentry>

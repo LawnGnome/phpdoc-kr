@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- $Revision: 1.6 $ -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 
   <refentry id="function.virtual">
    <refnamediv>
@@ -15,27 +15,22 @@
      </methodsynopsis>
     <para>
      <function>virtual</function>은 mod_include의
-     &lt;!--#include virtual...--&gt;와 동일한 아파치 전용 함수입니다.
+     &lt;!--#include virtual...--&gt;과 동일한 아파치 전용 함수입니다.
      이것은 아파치 하위 요청을 실행합니다. CGI 스크립트나 .shtml 파일
      등 아파치를 통해서 실행 가능한 무엇이든 가능합니다.
      CGI 스크립트의 경우, 그 스크립트가 유효한 CGI 헤더를 생성해야 함에
      주의하십시오. 최소한 Content-type 헤더가 필요합니다.
     </para>
     <para>
-     하위 요청을 실행할 때, 헤더를 포함하여 모든 버퍼를 종료하고
-     브라우저로 출력합니다.
+     하위 요청을 실행할 때, 헤더를 포함한 모든 버퍼를 종료하고
+     브라우저에 출력합니다.
     </para>
     <para>
      PHP 4.0.6부터, PHP 파일에 <function>virtual</function>을 사용할 수
      있습니다. 그러나, 다른 PHP 파일을 포함할때는 <function>include</function>나
      <function>require</function>를 사용하는 편이 좋습니다.
     </para>
-    <note>
-     <para>
-      PHP 4.3.3부터 이 함수를 Netscape/iPlanet/SunONE 웹 서버의
-      <link linkend='ref.nsapi'>NSAPI 서버 모듈</link>에서도 사용할 수 있습니다.
-     </para>
-    </note>
+    &reference.apache.note-nsapi-module;
    </refsect1>
   </refentry>
 
@@ -59,3 +54,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+
