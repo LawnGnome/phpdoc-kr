@@ -134,7 +134,7 @@
     PHP의 설정이 완료되면 CGI 실행 파일을 생성할 준비가 끝난 것이다. 
     <command>make</command> 명령으로 결과물을 만들 수 있다. 
      만약 실패하였는데, 그 이유를 모를 경우에는 
-    <link linkend="install-problems">Problems section</link>을 살펴보기 바란다.
+    <link linkend="install.problems">Problems section</link>을 살펴보기 바란다.
     </simpara>
 		</sect2>
 	</sect1>
@@ -2474,7 +2474,7 @@ Paul Mckay.
 			</variablelist>
 		</sect2>
 	</sect1>
-	<sect1 id="install-windows">
+	<sect1 id="install.windows">
 		<title>Windows 9x/Me/NT/2000 시스템에 설치</title>
 		<para>
     PHP를 윈도우로 설치하는데는 두가지 방법이 있다.
@@ -3811,7 +3811,7 @@ From: bhager@invacare.com
    대부분의 웹서버에서 사용이 가능하다.
    </para>
 	</sect1>
-	<sect1 id="install-problems">
+	<sect1 id="install.problems">
 		<title>Problems?</title>
 		<sect2>
 			<title>Read the FAQ</title>
