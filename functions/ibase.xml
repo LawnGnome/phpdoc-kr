@@ -1,22 +1,18 @@
  <reference id="ref.ibase">
-  <title>InterBase functions</title>
+  <title>InterBase 함수</title>
   <titleabbrev>InterBase</titleabbrev>
 
   <partintro>
    <para>
-    InterBase is a popular database put out by Borland/Inprise.  More
-    information about InterBase is available at <ulink
-    url="&url.ibase;">&url.ibase;</ulink>.  Oh, by the way, InterBase
-    just joined the open source movement!
+    인터베이스는 Borland/Inprise에 의해 내 놓은 유명한 데이터베이스이다. 보다 많은 인터베이스에 관한 정보가 필요하다면<ulink
+    url="&url.ibase;">&url.ibase;</ulink>에서 찾아 볼 수 있다. 게다가 인터베이스는 오픈 소스 운동에 참가하게 되었다!
    </para>
    <note>
     <para>
-     Full support for InterBase 6 was added in PHP 4.0. 
+     PHP 4.0에서는 인터베이스에 관한 모든 지원이 추가 되었다. 
     </para>
 	<para>
-	 This database uses a single quote (') character for escaping, a
-	 behavior similar to the Sybase database, add to your
-	 <filename>php.ini</filename> the following directive:
+	 이 데이터베이스는 따옴표(a single quote ('))를 escaping문자로 사용하며, behavior는 Sybase database와 유사하다. <filename>php.ini</filename>파일에서 다음과 같이 설정한다.:
 	 <informalexample>
 	  <programlisting>
 magic_quotes_sybase = On
@@ -30,7 +26,7 @@ magic_quotes_sybase = On
    <refnamediv>
     <refname>ibase_connect</refname>
     <refpurpose>
-     Open a connection to an InterBase database
+     InterBase database와 연결을 설정한다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -60,28 +56,19 @@ magic_quotes_sybase = On
      </funcprototype>
     </funcsynopsis>
     <para>
-     Establishes a connection to an InterBase server.
-     The <parameter>database</parameter> argument
-     has to be a valid path to database file on the server it resides on.
-     If the server is not local, it must be prefixed with either
-     'hostname:' (TCP/IP), '//hostname/' (NetBEUI) or 'hostname@' (IPX/SPX),
-     depending on the connection protocol used. <parameter>username</parameter>
-     and <parameter>password</parameter> can also
-     be specified with PHP configuration directives ibase.default_user and
-     ibase.default_password. <parameter>charset</parameter> is the default
-     character set for a database. <parameter>buffers</parameter> is the number
-     of database buffers to allocate for the server-side cache. If 0 or omitted,
-     server chooses its own default. <parameter>dialect</parameter> selects
-     the default SQL dialect for any statement executed within a connection,
-     and it defaults to the highest one supported by client libraries.
+     InterBase server와의 연결을 설정한다.
+     <parameter>database</parameter>인수는 서버에 위치한 데이터베이스의 유효한 파일경로를 가진다.(역주:현재 win32용 ODBC드라이버가 존재한다. 이것은 Iterbase 5.x용이지만 별 에러업ㅅ이 잘 작동한다.)
+     만일 로컬 서버가 아닌 경우에는, 사용된 연결 프로토콜에 의존하는 'hostname:' (TCP/IP), '//hostname/' (NetBEUI) 또는 'hostname@' (IPX/SPX),
+     를 먼저 추가해 주어야 한다. <parameter>username</parameter>
+     and <parameter>password</parameter> 는 PHP 설정 부분의 ibase항목에서 ibase.default_user 와 ibase.default_password에 기록할 수 있다. . <parameter>charset</parameter>은 데이터베이스 서버 무자셋의 디폴트 값을 나타낸다.
+     <parameter>buffers</parameter>는 server-side cache에 할당되는 database buffers의 수이다. 만일 0인 경우나 생략된 경우에는, 서버자신의 설정된 값으로 선택된다.
+     <parameter>dialect</parameter>는 연결되는 동안 실행되는 어떠한 구문의 특정 SQL값의 기본 값을 선택하는데, 그 기본값은(즉, 값이 주어지지 않은 경우)
+     클라이언트 라이브러리가 지원하는 최상의 것으로 한다.
     </para>
     <para>
-     In case a second call is made to
-     <function>ibase_connect</function> with the same arguments, no new link
-     will be established, but instead, the link identifier of the already opened
-     link will be returned. The link to the server will be closed as soon as the
-     execution of the script ends, unless it's closed earlier by explicitly calling
-     <function>ibase_close</function>. 
+     같은 인자들을 사용한<function>ibase_connect</function>의 두번째 호출의 경우에는, 새로운 link를 설정하지 않고, 
+     대신에 이미 연결된 link의 식별자를 리턴하게 된다. 서버의 link는 <function>ibase_close</function>가 호출되어 연결이 닫히지 않는한,
+      스크립트의 종료태그를 만나면 곧 닫히게 된다. 
      <example>
       <title><function>Ibase_connect</function> example</title>
       <programlisting role="php">
@@ -99,23 +86,21 @@ magic_quotes_sybase = On
     </para>
     <note>
      <para>
-      <parameter>buffers</parameter> was added in PHP4-RC2.
+      <parameter>buffers</parameter>는 PHP4-RC2에서 추가되었다.
      </para>
     </note>
     <note>
      <para>
-      <parameter>dialect</parameter> was added in PHP4-RC2. It is functional
-       only with InterBase 6 and versions higher than that.
+      <parameter>dialect</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 6.0 versions 또는 그 상위 버젼에서 작동한다.
      </para>
     </note>
     <note>
      <para>
-      <parameter>role</parameter> was added in PHP4-RC2. It is functional
-       only with InterBase 5 and versions higher than that.
+      <parameter>role</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 5 versions 또는 그 상위 버젼에서 작동한다.
      </para>
     </note>
     <para>
-     See also: <function>ibase_pconnect</function>.
+     참고 : <function>ibase_pconnect</function>.
     </para>
    </refsect1>
   </refentry>
@@ -124,7 +109,7 @@ magic_quotes_sybase = On
    <refnamediv>
     <refname>ibase_pconnect</refname>
     <refpurpose>
-     Creates an persistent connection to an InterBase database
+     InterBase database의 영속적인 연결을 생성한다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -154,38 +139,29 @@ magic_quotes_sybase = On
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>ibase_pconnect</function> acts very much like
-     <function>ibase_connect</function> with two major differences.
-     First, when connecting, the function will first try to find a
-     (persistent) link that's already opened with the same parameters.
-     If one is found, an identifier for it will be returned instead of
-     opening a new connection. Second, the connection to the InterBase
-     server will not be closed when the execution of the script ends.
-     Instead, the link will remain open for future use
-     (<function>ibase_close</function> will not close links established
-     by <function>ibase_pconnect</function>). This type of link is
-     therefore called 'persistent'.
+     <function>ibase_pconnect</function>의 동작은 <function>ibase_connect</function>와 유사하나 두 가지의 중요한 차이가 있다.
+     첫째로, 연결될때, 이 함수는 첫째로 이미 동일한 인자들로 열린 (persistent) link를 찾을 것이다. 
+     만일 발견이 된다면, 새로운 연결을 여는 대신에 이전의 식별자를 리턴하게 된다. 
+     둘째로, InterBase server의 연결이 나중에 이용되기 위하여 스크립트의 종료태그를 만나도 닫히지 않는다.
+     (<function>ibase_close</function>은 <function>ibase_pconnect</function>에 의해 설정된 연결을 닫을 수 없다). 이러한 연결의 타입이 'persistent'라 불리운다.
     </para>
     <note>
      <para>
-      <parameter>buffers</parameter> was added in PHP4-RC2.
+      <parameter>buffers</parameter>는 PHP4-RC2에서 추가되었다.
      </para>
     </note>
     <note>
      <para>
-      <parameter>dialect</parameter> was added in PHP4-RC2. It is functional
-       only with InterBase 6 and versions higher than that.
+      <parameter>dialect</parameter> 는 PHP4-RC2에서 추가되었다. 이것은 InterBase 6.0 versions 또는 그 상위 버젼에서 작동한다.
      </para>
     </note>
     <note>
      <para>
-      <parameter>role</parameter> was added in PHP4-RC2. It is functional
-       only with InterBase 5 and versions higher than that.
+      <parameter>role</parameter>는 PHP4-RC2에서 추가되었다. 이것은 InterBase 5 versions 또는 그 상위 버젼에서 작동한다.
      </para>
     </note>
     <para>
-     See also <function>ibase_connect</function> for the meaning of
-     parameters passed to this function. They are exactly the same.
+     이 함수의 인자는 이전의 <function>ibase_connect</function>와 동일하다
     </para>
    </refsect1>
   </refentry>
@@ -194,7 +170,7 @@ magic_quotes_sybase = On
    <refnamediv>
     <refname>ibase_close</refname>
     <refpurpose>
-     Close a connection to an InterBase database
+     InterBase database의 연결을 닫는다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -208,11 +184,9 @@ magic_quotes_sybase = On
      </funcprototype>
     </funcsynopsis>
     <para>
-     Closes the link to an InterBase database that's associated with
-     a connection id returned from <function>ibase_connect</function>.
-     If the connection id is omitted, the last opened link is assumed.
-     Default transaction on link is committed, other transactions are
-     rolled back. 
+     <function>ibase_connect</function>로 부터 리턴된 연결 식별자가 나타내는 InterBase database의 연결을 닫는다.
+     만일 연결 식별자가 생략된 경우에는 가장 나중에 열린 연결로 간주한다. 링크의 기본 transaction을 실행하고, 
+     나머지 다른 transaction들을 되돌린다. 
     </para>
    </refsect1>
   </refentry>
@@ -220,7 +194,7 @@ magic_quotes_sybase = On
   <refentry id="function.ibase-query">
    <refnamediv>
     <refname>ibase_query</refname>
-    <refpurpose>Execute a query on an InterBase database</refpurpose>
+    <refpurpose>InterBase database의 쿼리를 실행한다se>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -239,11 +213,10 @@ magic_quotes_sybase = On
      </funcprototype>
     </funcsynopsis>
     <simpara>
-     Performs a query on an InterBase database, returning a result
-     identifier for use with <function>ibase_fetch_row</function>,
+     InterBase database의 쿼리를 실행하고, <function>ibase_fetch_row</function>,
      <function>ibase_fetch_object</function>,
-     <function>ibase_free_result</function> and
-     <function>ibase_free_query</function>.
+     <function>ibase_free_result</function>와
+     <function>ibase_free_query</function>의 실행에 사용되는 식별자를 리턴한다.
     </simpara>
     <note>
      <para>
@@ -260,7 +233,7 @@ magic_quotes_sybase = On
   <refentry id="function.ibase-fetch-row">
    <refnamediv>
     <refname>ibase_fetch_row</refname>
-    <refpurpose>Fetch a row from an InterBase database</refpurpose>
+    <refpurpose>InterBase database부터 열을 가지고 온다</refpurpose> 
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -273,8 +246,7 @@ magic_quotes_sybase = On
      </funcprototype>
     </funcsynopsis>
     <simpara>
-     Returns the next row specified by the result identifier obtained
-     using the <function>ibase_query</function>.
+     <function>ibase_query</function>를 사용하여 얻어진 결과 식별자에 의해 기록된 다음 열을 가지고 온다.
     </simpara>
    </refsect1>
   </refentry>
@@ -282,7 +254,7 @@ magic_quotes_sybase = On
   <refentry id="function.ibase-fetch-object">
    <refnamediv>
     <refname>ibase_fetch_object</refname>
-    <refpurpose>Get an object from a InterBase database</refpurpose>
+    <refpurpose>InterBase database로 부터 객체를 얻는다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -295,10 +267,7 @@ magic_quotes_sybase = On
      </funcprototype>
     </funcsynopsis>
     <para>
-     Fetches a row as a pseudo-object from a
-     <parameter>result_id</parameter> obtained either by
-     <function>ibase_query</function> or
-     <function>ibase_execute</function>.
+     <function>ibase_query</function> 또는 <function>ibase_execute</function>에 의해 얻어진 <parameter>result_id</parameter>로 부터의 pseudo-object의 열을 가지고 온다.
      <informalexample>
       <programlisting role="php">
 &lt;php
@@ -323,7 +292,7 @@ magic_quotes_sybase = On
    <refnamediv>
     <refname>ibase_field_info</refname>
     <refpurpose>
-     Get information about a field
+     field관한 정보를 얻는다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -336,9 +305,7 @@ magic_quotes_sybase = On
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns an array with information about a field after a select
-     query has been run. The array is in the form of name, alias,
-     relation, length, type.
+     select쿼리의 실행후 필드의 정보를 배열로 리턴한다. 배열은 name, alias, relation, length, type이다.
      <informalexample>
       <programlisting role="php">
 // helio@helio.com.br  08-Dec-2000 02:53
@@ -362,7 +329,7 @@ for ($i=0 ; $i < $coln ; $i++) {
   <refentry id="function.ibase-free-result">
    <refnamediv>
     <refname>ibase_free_result</refname>
-    <refpurpose>Free a result set</refpurpose>
+    <refpurpose>result set을 해제한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -375,8 +342,7 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <simpara>
-     Free's a result set the has been created by
-     <function>ibase_query</function>.
+     <function>ibase_query</function>에 의해 생성된 결과 셋을 해제한다.
     </simpara>
    </refsect1>
   </refentry>
@@ -410,7 +376,7 @@ for ($i=0 ; $i < $coln ; $i++) {
   <refentry id="function.ibase-execute">
    <refnamediv>
     <refname>ibase_execute</refname>
-    <refpurpose>Execute a previously prepared query</refpurpose>
+    <refpurpose>이전에 준비된 query를 실행한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -426,10 +392,8 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <para>
-     Execute a query prepared by <function>ibase_prepare</function>.
-     This is a lot more effective than using <function>ibase_query</function>
-     if you are repeating a same kind of query several times with only
-     some parameters changing.
+     <function>ibase_prepare</function>함수에 의해 준비된 쿼리를 실행한다.
+     만일 몇몇의 인자가 바뀌는 같은 쿼리문을 반복해서 실행할때, 이 함수는 <function>ibase_query</function>보다 유용하다.
      <informalexample>
       <programlisting role="php">
 &lt;?php
@@ -454,7 +418,7 @@ for ($i=0 ; $i < $coln ; $i++) {
   <refentry id="function.ibase-trans">
    <refnamediv>
     <refname>ibase_trans</refname>
-    <refpurpose>Begin a transaction</refpurpose>
+    <refpurpose>transaction을 시작한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -470,7 +434,7 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <para>
-     Begins a transaction.
+     transaction을 시작.
     </para>
    </refsect1>
   </refentry>
@@ -478,7 +442,7 @@ for ($i=0 ; $i < $coln ; $i++) {
   <refentry id="function.ibase-commit">
    <refnamediv>
     <refname>ibase_commit</refname>
-    <refpurpose>Commit a transaction</refpurpose>
+    <refpurpose>transaction을 실행</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -493,8 +457,7 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <para>
-     Commits transaction <parameter>trans_number</parameter> which was
-     created with <function>ibase_trans</function>.
+     <function>ibase_trans</function>로 생성된 <parameter>trans_number</parameter>의 transaction을 실행
     </para>
    </refsect1>
   </refentry>
@@ -502,7 +465,7 @@ for ($i=0 ; $i < $coln ; $i++) {
   <refentry id="function.ibase-rollback">
    <refnamediv>
     <refname>ibase_rollback</refname>
-    <refpurpose>Rolls back a transaction</refpurpose>
+    <refpurpose>transaction을 되돌린다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -517,8 +480,7 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <para>
-     Rolls back transaction <parameter>trans_number</parameter> which was
-     created with <function>ibase_trans</function>.
+     <function>ibase_trans</function>에 의해 생성된 <parameter>trans_number</parameter>의 transaction을 되돌린다.
     </para>
    </refsect1>
   </refentry>
@@ -527,7 +489,7 @@ for ($i=0 ; $i < $coln ; $i++) {
    <refnamediv>
     <refname>ibase_free_query</refname>
     <refpurpose>
-     Free memory allocated by a prepared query
+     prepared query에 의해 지정된 메모리를 해제한다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -541,7 +503,7 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <simpara>
-     Free a query prepared by <function>ibase_prepare</function>.
+     <function>ibase_prepare</function>에의해 준비된 쿼리를 해제한다.
     </simpara>
    </refsect1>
   </refentry>
@@ -550,7 +512,7 @@ for ($i=0 ; $i < $coln ; $i++) {
    <refnamediv>
     <refname>ibase_timefmt</refname>
     <refpurpose>
-     Sets the format of timestamp, date and time type columns returned from queries
+     쿼리로 부터 리턴된 날짜와 시간타입의 포맷을 지정한다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -567,12 +529,10 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <para>
-     Sets the format of timestamp, date or time type columns returned
-     from queries. Internally, the columns are formatted by c-function
-     strftime(), so refer to it's documentation regarding to the format
-     of the string. <parameter>columntype</parameter> is one of the
-     constants IBASE_TIMESTAMP, IBASE_DATE and IBASE_TIME. If omitted,
-     defaults to IBASE_TIMESTAMP for backwards compatibility.
+     쿼리로 부터 리턴된 날짜와 시간타입의 포맷을 지정한다. 내부적으로, 컬럼은 c-function의 strftime()에 의한 포맷이어서,
+     그 문서는 문자 포멧으로 간주되어 제공된다.
+     <parameter>columntype</parameter>은 IBASE_TIMESTAMP에 포함된 것(IBASE_DATE and IBASE_TIME)들중 하나이다.
+     만약 생략된 경우, IBASE_TIMESTAMP의 기본 값은 backwards compatibility이다.
      <informalexample>
       <programlisting role="php">
 &lt;?php
@@ -584,22 +544,16 @@ for ($i=0 ; $i < $coln ; $i++) {
      </informalexample>
     </para>
     <para>
-     You can also set defaults for these formats with PHP configuration
-     directives ibase.timestampformat, ibase.dateformat and ibase.timeformat.
+     이 기본값은 PHP 설정의 ibase.timestampformat(ibase.dateformat 와 ibase.timeformat)에서 지정할 수 있다.
     </para>
     <note>
      <para>
-      <parameter>columntype</parameter> was added in PHP 4.0. It has any
-      meaning only with InterBase version 6 and higher.
+      <parameter>columntype</parameter>은 PHP 4.0에서 추가되었다. 이것은 InterBase version 6 또는 그 이상의 버젼에서 읨가 있다.
      </para>
     </note>
     <note>
      <para>
-      A backwards incompatible change happened in PHP 4.0 when PHP
-      configuration directive ibase.timeformat was renamed to
-      ibase.timestampformat and directives ibase.dateformat and
-      ibase.timeformat were added, so that the names would match better
-      their functionality.
+      A backwards incompatible change happened in PHP 4.0 when PHP configuration directive ibase.timeformat was renamed to ibase.timestampformat and directives ibase.dateformat and ibase.timeformat were added, so that the names would match better their functionality
      </para>
     </note>
    </refsect1>
@@ -609,7 +563,7 @@ for ($i=0 ; $i < $coln ; $i++) {
    <refnamediv>
     <refname>ibase_num_fields</refname>
     <refpurpose>
-     Get the number of fields in a result set
+     result set의 필드의 수를 얻는다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -621,8 +575,7 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns an integer containing the number of fields in a result
-     set.
+     결가 셋의 필드의 수를 정수의 형으로 리턴한다.
      <informalexample>
       <programlisting role="php">
 &lt;?php
@@ -648,8 +601,7 @@ for ($i=0 ; $i < $coln ; $i++) {
     </para>
     <note>
      <para>
-      <function>Ibase_num_fields</function> is currently not functional
-      in PHP 4.
+      <function>Ibase_num_fields</function>는 일반적으로 PHP 4에서 작동하지 않는다.
      </para>
     </note>
    </refsect1>
@@ -659,7 +611,7 @@ for ($i=0 ; $i < $coln ; $i++) {
    <refnamediv>
     <refname>ibase_errmsg</refname>
     <refpurpose>
-     Returns error messages
+     error messages를 반환
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -671,7 +623,7 @@ for ($i=0 ; $i < $coln ; $i++) {
      </funcprototype>
     </funcsynopsis>
     <simpara>
-     Returns a string containing an error message.
+     error message를 포함한 문자를 반환한다.
     </simpara>
    </refsect1>
   </refentry>
