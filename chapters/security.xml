@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
+<!-- $Revision: 1.13 $ -->
 <!-- EN-Revision: 1.56 -->
  <chapter id="security">
   <title>보안</title>
@@ -150,38 +150,36 @@
    <sect2 id="security.cgi-bin.default">
     <title>방법 1: 공개 파일만을 제공</title>
     <simpara>
-     If your server does not have any content that is not restricted
-     by password or ip based access control, there is no need for
-     these configuration options.  If your web server does not allow
-     you to do redirects, or the server does not have a way to
-     communicate to the PHP binary that the request is a safely
-     redirected request, you can specify the option <link
+     서버가 패스워드나 IP 기반 접근 컨트롤로 제한하는 콘텐츠를 가지고
+     있지 않다면, 이러한 환경 설정 옵션을 사용할 필요가 없습니다.
+     웹 서버가 리다이렉트를 허용하지 않거나, 안전하게 리다이렉트된
+     요청에 대해서 PHP 바이너리와 통신할 방법을 가지고 있지 않다면,
+     설정 스크립트에 <link
      linkend="install.configure.enable-force-cgi-redirect">--enable-force-cgi-redirect</link>
-     to the configure script.  You still have to make sure your PHP
-     scripts do not rely on one or another way of calling the script,
-     neither by directly <filename
-     role="php">http://my.host/cgi-bin/php/dir/script.php</filename>
-     nor by redirection <filename
-     role="php">http://my.host/dir/script.php</filename>.
+     옵션을 지정할 수 있습니다. 하지만, 여전히 PHP 스크립트를
+     호출하는 방법으로 직접 호출 <filename
+     role="php">http://my.host/cgi-bin/php/dir/script.php</filename>이나
+     리다이렉션 호출 <filename
+     role="php">http://my.host/dir/script.php</filename>에
+     의존하고 있지 않음을 확인해야 할 것입니다.
     </simpara>
     <simpara>
-     Redirection can be configured in Apache by using AddHandler and
-     Action directives (see below).
+     아파치에서 리다이렉션은 AddHandler와 Action 지시자를 통해서
+     설정할 수 있습니다. (아래 참조)
     </simpara>
    </sect2>
 
    <sect2 id="security.cgi-bin.force-redirect">
     <title>방법 2: --enable-force-cgi-redirect 사용</title>
     <simpara>
-     This compile-time option prevents anyone from calling PHP
-     directly with a url like <filename
-     role="php">http://my.host/cgi-bin/php/secretdir/script.php</filename>.
-     Instead, PHP will only parse in this mode if it has gone through
-     a web server redirect rule.
+     이 컴파일시의 옵션은 누구라도 <filename
+     role="php">http://my.host/cgi-bin/php/secretdir/script.php</filename>와
+     같은 URL을 통해서 PHP를 직접 호출할 수 없게 합니다.
+     대신, 이 모드에서 PHP는 웹서버의 리다이렉트 규칙에 따를 때만
+     해석을 시도할 것입니다.
     </simpara>
     <simpara>
-     Usually the redirection in the Apache configuration is done with
-     the following directives:
+     아파치에서 리다이렉션의 설정은 다음과 같은 지시자로 설정합니다:
     </simpara>
     <programlisting role="apache-conf">
 <![CDATA[
@@ -190,13 +188,11 @@ AddHandler php-script .php
 ]]>
     </programlisting>
     <simpara>
-     This option has only been tested with the Apache web server, and
-     relies on Apache to set the non-standard CGI environment variable
-     <envar>REDIRECT_STATUS</envar> on redirected requests.  If your
-     web server does not support any way of telling if the request is
-     direct or redirected, you cannot use this option and you must use
-     one of the other ways of running the CGI version documented
-     here.
+     이 옵션은 아파치 웹 서버에만 테스트되었고, 리다이렉트된 요청에 대해
+     아파치가 비표준 CGI 환경 변수 <envar>REDIRECT_STATUS</envar>를
+     설정하게 합니다. 웹 서버가 요청이 직접적인지 리다이렉트된 것인지의
+     구분을 제공하지 않는다면, 이 옵션을 사용할 수 없고, 이 문서에
+     제시된 다른 방법의 CGI 실행 방법을 이용해야 합니다.
     </simpara>
    </sect2>
 
