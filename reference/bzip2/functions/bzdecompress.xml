@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/bzip2.xml, last change in rev 1.3 -->
-<!-- last change to 'bzdecompress' in en/ tree in rev 1.1 -->
-	<refentry id="function.bzdecompress">
-		<refnamediv>
-			<refname>bzdecompress</refname>
-			<refpurpose>bzip2로 인코딩된 데이터 압축을 해제</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>string</type><methodname>bzdecompress</methodname>
-					<methodparam><type>string</type><parameter>source</parameter></methodparam>
-					<methodparam choice="opt"><type>int</type><parameter>
-							small
-						</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-				<function>bzdecompress</function> 함수는 <parameter>source</parameter> 인자로 지정된 bzip2 인코딩 데이터를 압축을 풀어 그 문자열을 반환한다.
-				<parameter>small</parameter> 선택인자가 &true; 값이면 압축 해제 알고리즘은 최소한의 메모리를 사용할 것이다(참고로, 최대 메모리 요구량은 2300K 이하이다).
-				그러나, 속도는 반으로 감소하게 된다. 더 많은 정보를 얻으려면 <ulink url="&url.bzip2;">bzip2 문서</ulink>를 참조하라.
-               </para>
-			<para>
-				<example>
-					<title>
-						<function>bzdecompress</function>
-					</title>
-					<programlisting role="php">
-$str = $bzdecompress($bzstr);
-      </programlisting>
-				</example>
-			</para>
-			<para>
-     참조: <function>bzcompress</function>.
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.2 -->
+<!-- splitted from ./en/functions/bzip2.xml, last change in rev 1.1 -->
+  <refentry id="function.bzdecompress">
+   <refnamediv>
+    <refname>bzdecompress</refname>
+    <refpurpose>bzip2 인코딩 데이터의 압축을 해제한다</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>string</type><methodname>bzdecompress</methodname>
+      <methodparam><type>string</type><parameter>source</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>small</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     <function>bzdecompress</function>는 
+     bzip2 인코딩 데이터를 포함하는 <parameter>source</parameter> 문자열의
+     압축을 해제하고 반환한다.  선택적인 매개변수 <parameter>small</parameter>
+     이 &true;이면, 메모리를 더 적게 사용하는 대체 압축 해제 알고리즘이 
+     사용될것이다 (최대 메모리 요구량은 2300K 이하이다). 
+     그러나 속도는 반으로 줄게 된다.이 기능에 대해 더많은 정보를
+     얻으려면 <ulink url="&url.bzip2;">bzip2 문서</ulink>를 참고한다.
     </para>
-		</refsect1>
-	</refentry>
+    <para>
+     <example>
+      <title><function>bzdecompress</function></title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$start_str = "This is not an honest face?";
+$bzstr = bzcompress($start_str);
+
+print( "압축 문자열: " );
+print( $bzstr );
+print( "\n<br>\n" );
+
+$str = bzdecompress($bzstr);
+print( "압축 해제된 문자열: " );
+print( $str );
+print( "\n<br>\n" );
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <para>
+     <function>bzcompress</function> 참고.
+    </para>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
