@@ -3,22 +3,18 @@
 	<sect1 id="features.file-upload.post-method">
 		<title>POST method uploads</title>
 		<simpara>
-    PHP is capable of receiving file uploads from any RFC-1867
-    compliant browser (which includes Netscape Navigator 3 or later,
-    Microsoft Internet Explorer 3 with a patch from Microsoft, or
-    later without a patch).  This feature lets people upload both text
-    and binary files.  With PHP's authentication and file manipulation
-    functions, you have full control over who is allowed to upload and
-    what is to be done with the file once it has been uploaded.
+	PHP는 RFC-1867을 지원하는 브라우저로부터 파일을 업로드 받을 수 있는 기능이 있다. 
+	이 기능을 사용하면 Text뿐 아니라 Binary파일도 업로드가 가능하다. 
+	여러분은 PHP의 authetication과 파일을 다루는 함수를 사용하여, 
+	파일이 Upload된 후에 해야 할 일을 스크립트에 반드시 정해 두어야 한다.
    </simpara>
 		<para>
-    Note that PHP also supports PUT-method file uploads as used by
-    Netscape Composer and W3C's Amaya clients.  See the <link linkend="features.file-upload.put-method">PUT Method
-    Support</link> for more details.
+	PHP는 또한 Netscape Composer 와 W3C's Amaya clients를 사용할 경우 
+	PUT-method 의 파일 업로드도 지원한다. 자세한 내용은 
+	<link linkend="features.file-upload.put-method">PUT Method Support</link>를 읽어보기바란다.
    </para>
 		<para>
-    A file upload screen can be built by creating a special form which
-    looks something like this:
+	파일 업로드 화면은 다음과 같은 좀 특별한 폼을 만들어 띄울 수 있다. : 
     <example>
 				<title>File Upload Form</title>
 				<programlisting>
@@ -29,9 +25,9 @@ Send this file: &lt;INPUT NAME=&quot;userfile&quot; TYPE=&quot;file&quot;&gt;
 &lt;/FORM&gt;
      </programlisting>
 			</example>
-    The _URL_ should point to a PHP file.  The MAX_FILE_SIZE hidden
-    field must precede the file input field and its value is the
-    maximum filesize accepted.  The value is in bytes.
+	여기서 _URL_은 PHP html파일이어야 합니다. 
+	hidden 필드인 MAX_FILE_SIZE는 File input 필드들보다 선행되어야 합니다. 
+	이 값은 PHP html이 받아들이는 최대 파일 크기를 Byte단위로 나타냅니다. 
    </para>
 		<para>
     In PHP 3, the following variables will be defined within the
@@ -45,36 +41,31 @@ Send this file: &lt;INPUT NAME=&quot;userfile&quot; TYPE=&quot;file&quot;&gt;
     <itemizedlist>
 				<listitem>
 					<simpara>
-						<varname>$userfile</varname> - The temporary filename in which
-       the uploaded file was stored on the server machine.
+						<varname>$userfile</varname> - 업로드된 파일 내용이 저장되어 있는 서버의 임시 파일명.
       </simpara>
 				</listitem>
 				<listitem>
 					<simpara>
-						<varname>$userfile_name</varname> - The original name or path
-       of the file on the sender's system.
+						<varname>$userfile_name</varname> - 업로드한 시스템에서 사용하는 파일의 원래 이름.
       </simpara>
 				</listitem>
 				<listitem>
 					<simpara>
-						<varname>$userfile_size</varname> - The size of the uploaded
-       file in bytes.
+						<varname>$userfile_size</varname> - byte단위의 Upload된 파일의 크기.
       </simpara>
 				</listitem>
 				<listitem>
 					<simpara>
-						<varname>$userfile_type</varname> - The mime type of the file
-       if the browser provided this information.  An example would be
-       &quot;image/gif&quot;.
+						<varname>$userfile_type</varname> - 만약 browser가 업로드된 파일의 mime 형식을 안다면, 그 mime 형식. 
+      (예: &quot;image/gif&quot;).
       </simpara>
 				</listitem>
 			</itemizedlist>
-    Note that the &quot;$userfile&quot; part of the above variables is
-    whatever the name of the INPUT field of TYPE=file is in the upload
-    form.  In the above upload form example, we chose to call it
-    &quot;userfile&quot;
+	위 변수의 "$userfile"부분은 upload form에서 TYPE=filed을 가진 INPUT 필드의 이름이 된다. 
+	위의 예제에서 우리는 그 이름은 "userfile"이라고 정했다.
    </para>
 		<para>
+
     In PHP 4, the behaviour is slightly different, in that the new
     global array <varname>$HTTP_POST_FILES</varname> is provided to
     contain the uploaded file information. This is still only
@@ -133,15 +124,11 @@ Send this file: &lt;INPUT NAME=&quot;userfile&quot; TYPE=&quot;file&quot;&gt;
 			</variablelist>
 		</para>
 		<para>
-    Files will by default be stored in the server's default temporary
-    directory, unless another location has been given with the <link linkend="ini.upload-tmp-dir">upload_tmp_dir</link> directive in
-    <filename>php.ini</filename>. The server's default directory can
-    be changed by setting the environment variable
-    <envar>TMPDIR</envar> in the environment in which PHP runs.
-    Setting it using <function>putenv</function> from within a PHP
-    script will not work. This environment variable can also be used
-    to make sure that other operations are working on uploaded files,
-    as well.
+	업로드된 File은 <filename>php.ini</filename>의 
+	<link linkend="ini.upload-tmp-dir">upload_tmp_dir</link>지시자가 특정 디렉토리를 지정하지 않으면,
+	기본적으로 우선 서버의 default temporary directory에 저장된다. 
+	이 디폴트 디렉토리는 PHP가 돌아가는 컴퓨터의 환경변수 <envar>TMPDIR</envar>을 설정하여 변경할 수 있다. 
+	이를 PHP 스크립트 안에서 <function>putenv</function> 함수를 사용하여 변경하는 것은 동작하지 않는다.
     <example>
 				<title>Validating file uploads</title>
 				<para>
@@ -194,51 +181,43 @@ if (is_uploaded_file($userfile)) {
 			</example>
 		</para>
 		<simpara>
-    The PHP script which receives the uploaded file should implement
-    whatever logic is necessary for determining what should be done
-    with the uploaded file.  You can for example use the
-    <varname>$file_size</varname> variable to throw away any files
-    that are either too small or too big.  You could use the
-    <varname>$file_type</varname> variable to throw away any files
-    that didn't match a certain type criteria.  Whatever the logic,
-    you should either delete the file from the temporary directory or
-    move it elsewhere.
+	업로드된 파일을 다루는 PHP 스크립트는  그 파일을 다루는 작업을 설정해 줄 필요가 있다. 
+	예를들어, 여러분은 <varname>$file_size</varname> 변수를 사용하여 너무 작거나 큰 파일을 버릴 수도 있다. 
+	또한 여러분은 <varname>$file_type</varname> 변수를 가지고 특정한 타입에 맞지 않는 파일을 버릴 수 있다. 
+	어떤 로직이던, 여러분은 임시 디렉토리에 있는 파일을 지우거나 나중에 필요할 경우에는 다른 곳에 이동시켜야 한다. 
    </simpara>
 		<simpara>
-    The file will be deleted from the temporary directory at the end
-    of the request if it has not been moved away or renamed.
+	만약 임시 디렉토리에 있는 파일을 해당 request가 끝날 때 까지도 지우거나 이동시키지 않았다면, 
+	이 파일은 해당 request가 종료되는 시점에서 자동으로 지워진다.
    </simpara>
 	</sect1>
 	<sect1 id="features.file-upload.common-pitfalls">
-		<title>Common Pitfalls</title>
+		<title>일반적인 주의사항 (Common Pitfalls)</title>
 		<simpara>
-    The MAX_FILE_SIZE item cannot specify a file size greater than the file 
-    size that has been set in the upload_max_filesize in the PHP 3.ini file
-    or the corresponding php3_upload_max_filesize Apache .conf directive. 
-    The default is 2 Megabytes.
+	MAX_FILE_SIZE 아이템의 값은  php3.ini에 설정된 upload_max_filesize의 값이나 
+	Apache의 .conf에 설정한 php3_upload_max_filesize의 값보다 크게 설정할 수 없다. 
+	기본값은 2메가 바이트이다.
    </simpara>
 		<simpara>
     Not validating which file you operate on may mean that users can access
     sensitive information in other directories.
    </simpara>
 		<simpara>
-    Please note that the CERN httpd seems to strip off everything
-    starting at the first whitespace in the content-type mime header
-    it gets from the client.  As long as this is the case, CERN httpd
-    will not support the file upload feature.
+	CERN httpd 서버는 client로부터 입력받은 mime header의 앞쪽 여백을 모두 strip off 시켜버리므로, 
+	CERN httpd 서버에서는 File Upload 기능이 동작하지 않는다. 
    </simpara>
 	</sect1>
 	<sect1 id="feature-fileupload.multiple">
-		<title>Uploading multiple files</title>
+		<title>여러 파일을 Upload하기 (Uploading multiple files)</title>
 		<simpara>
-    It is possible to upload multiple files simultaneously and have
-    the information organized automatically in arrays for you. To
-    do so, you need to use the same array submission syntax in the
-    HTML form as you do with multiple selects and checkboxes:
+	한번에 여러개의 파일을 동시에 전송하는 것도 가능하다. 
+	이때 PHP는 이 파일들에 대한 정보를 배열로 전달한다. 
+	따라서 이런 경우에는 여러개를 선택하는 select나 checkbox 때처럼 HTML의 form의 아이템에 
+	동일한 array명을 적어주어야 한다.:
    </simpara>
 		<note>
 			<para>
-     Support for multiple file uploads was added in version 3.0.10.
+     여러 파일 전송 기능은 3.0.10부터 추가된 기능이다. 
     </para>
 		</note>
 		<para>
@@ -255,25 +234,21 @@ if (is_uploaded_file($userfile)) {
 			</example>
 		</para>
 		<simpara>
-    When the above form is submitted, the arrays
-    <computeroutput>$userfile</computeroutput>,
-    <computeroutput>$userfile_name</computeroutput>, and
-    <computeroutput>$userfile_size</computeroutput> will be formed in
-    the global scope (as well as in $HTTP_POST_FILES ($HTTP_POST_VARS
-    in PHP 3)). Each of these will be a numerically indexed array of
-    the appropriate values for the submitted files.
+	위의 폼이 전송될 때 <computeroutput>$userfile</computeroutput>,
+    <computeroutput>$userfile_name</computeroutput>, 
+    <computeroutput>$userfile_size</computeroutput>의 배열이 전역 변수로 만들어진다. 
+	($HTTP_POST_FILES(PHP3 에서는 $HTTP_POST_VARS)에도 만들어진다.) 
+	이 배열들은 전송된 파일의 정보를 가지고 있고, 각 배열은 번호로 인덱스되어 있다.
    </simpara>
 		<simpara>
-    For instance, assume that the filenames
-    <filename>/home/test/review.html</filename> and
-    <filename>/home/test/xwp.out</filename> are submitted.  In this
-    case, <computeroutput>$userfile_name[0]</computeroutput> would
-    contain the value <computeroutput>review.html</computeroutput>,
-    and <computeroutput>$userfile_name[1]</computeroutput> would
-    contain the value
-    <computeroutput>xwp.out</computeroutput>. Similarly,
-    <computeroutput>$userfile_size[0]</computeroutput> would contain
-    <filename>review.html</filename>'s filesize, and so forth.
+	예를 들어, 위의 예에서 <filename>/home/test/review.html</filename>와
+	<filename>/home/test/xwp.out</filename> 의 두 개의 파일을 전송했다면 
+	<computeroutput>$userfile_name[0]</computeroutput> 에는 
+	<computeroutput>review.html</computeroutput>이라는 값이, 
+	<computeroutput>$userfile_name[1]</computeroutput>에는 
+	<computeroutput>xwp.out</computeroutput>이라는 값이 저장되게 된다. 
+	동시에, <computeroutput>$userfile_size[0]</computeroutput> 에는 
+	<filename>review.html</filename>의 파일 크기가 저장되는 식이 된다
    </simpara>
 		<simpara>
 			<computeroutput>$userfile['name'][0]</computeroutput>,
@@ -285,9 +260,8 @@ if (is_uploaded_file($userfile)) {
 	<sect1 id="features.file-upload.put-method">
 		<title>PUT method support</title>
 		<para>
-    PHP provides support for the HTTP PUT method used by clients such
-    as Netscape Composer and W3C Amaya.  PUT requests are much simpler
-    than a file upload and they look something like this:
+	PHP는 Netscape Composer나 W3C Amaya같은 클라이언트에 대해 HTTP PUT 방식(method)을 지원한다. 
+	PUT 요구(request)는 file upload보다 훨씬 쉽다. 단지 다음과 같이 하면 된다. :
     <informalexample>
 				<programlisting>
 PUT /path/filename.html HTTP/1.1
@@ -295,16 +269,15 @@ PUT /path/filename.html HTTP/1.1
 			</informalexample>
 		</para>
 		<para>
-    This would normally mean that the remote client would like to save
-    the content that follows as: /path/filename.html in your web tree.
-    It is obviously not a good idea for Apache or PHP to automatically
-    let everybody overwrite any files in your web tree.  So, to handle
-    such a request you have to first tell your web server that you
-    want a certain PHP script to handle the request.  In Apache you do
-    this with the <emphasis>Script</emphasis> directive.  It can be
-    placed almost anywhere in your Apache configuration file.  A
-    common place is inside a &lt;Directory&gt; block or perhaps inside
-    a &lt;Virtualhost&gt; block.  A line like this would do the trick:
+	이것은 보통 원격 클라이언트가 보낸 내용을 웹 트리 밑의 /path/filename.html로 저장하라는 의미이다. 
+	그런데 여러분의 웹 트리밑에 있는 파일들을 아무나 덮어 쓸 수 있다는 것은 
+	Apache나 PHP에 있어서 좋지 않은 생각이다. 
+	따라서 이와 같은 요구를 다루기 전에, 우선 웹 서버에게 이런 요구를 다루는 
+	PHP 스크립트를 미리 지정해 주어야 한다. 
+	아파치에서는 <emphasis>Script</emphasis> 지시자로 그 내용을 지정한다. 
+	이 지시자는 Apache 설정 파일중의 어느 위치에 있어도 괜찮으나, 
+	보통 &lt;Directory&gt; 블록 안이나 &lt;Virtualhost&gt; 블록 안에 위치하는 것이 일반적이다. 
+	보통 다음과 같이 설정한다. :
     <informalexample>
 				<programlisting>
 Script PUT /put.php3
@@ -312,13 +285,12 @@ Script PUT /put.php3
 			</informalexample>
 		</para>
 		<simpara>
-    This tells Apache to send all PUT requests for URIs that match the
-    context in which you put this line to the put.php3 script.  This
-    assumes, of course, that you have PHP enabled for the .php3
-    extension and PHP is active.
+	이것은 이 라인이 속하는 블록의 URI에 해당되는 모든 PUT 요구를 
+	put.php3 스크립트에게 전달하라고 Apache에게 알려 준다. 
+	물론 이 경우 .php3 확장자에 대하여 PHP설정이 완료되어 있고, PHP가 작동중이어야 한다.
    </simpara>
 		<simpara>
-    Inside your put.php3 file you would then do something like this:
+	put.php3 파일은 보통 다음과 같이 구성될 수 있다. :
    </simpara>
 		<para>
 			<informalexample>
@@ -328,20 +300,16 @@ Script PUT /put.php3
 			</informalexample>
 		</para>
 		<simpara>
-    This would copy the file to the location requested by the remote
-    client.  You would probably want to perform some checks and/or
-    authenticate the user before performing this file copy.  The only
-    trick here is that when PHP sees a PUT-method request it stores
-    the uploaded file in a temporary file just like those handled but
-    the <link linkend="features.file-upload.post-method">POST-method</link>.
-    When the request ends, this temporary file is deleted.  So, your
-    PUT handling PHP script has to copy that file somewhere.  The
-    filename of this temporary file is in the $PHP_PUT_FILENAME
-    variable, and you can see the suggested destination filename in
-    the $REQUEST_URI (may vary on non-Apache web servers).  This
-    destination filename is the one that the remote client specified.
-    You do not have to listen to this client.  You could, for example,
-    copy all uploaded files to a special uploads directory.
+	위의 명령은 해당 파일을 원격 클라이언트가 요청한 위치에 복사하는 것이다. 
+	아마 여러분은 복사하기 전에 사용자를 확인하거나 파일을 검사하는 등의 기능을 원할 것이다. 
+	여기서 알 수 있는 것은 PHP가 <link linkend="features.file-upload.post-method">POST-method</link>의 요구를 받았을 때 
+	POST-method기능과 마찬가지로 임시 파일에 해당 내용을 저장한다는 것이다. 
+	즉, 요구가 끝나게 되면 임시파일은 지워진다. 
+	따라서 PUT을 다루는 PHP 스크립트는 해당 파일을 어디 다른 곳에 복사해 두어야 한다. 
+	임시파일의 이름은 $PHP_PUT_FILENAME 이라는 변수에 저장되고, 
+	$REQUEST_URI 변수에 클라이언트에서 보내온 저장할 파일의 경로와 이름이 저장된다.
+	(Apache가 아닌 웹서버에서는 모양이 조금 달라진다.) 
+	물론 여러분은 이 경로명과 파일명이 아닌 전혀 다른 위치에 다른 파일명을 사용할 수도 있다.
    </simpara>
 	</sect1>
 </chapter>
