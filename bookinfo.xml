@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.20 $ -->
+<!-- $Revision: 1.21 $ -->
 <!-- EN-Revision: 1.34 -->
 
  <bookinfo id="bookinfo">
@@ -60,21 +60,24 @@
   </authorgroup>
 
   <authorgroup id="translators">
-   <editor>
-    <firstname>WonHee</firstname><surname>Hwang</surname>
-   </editor>
-   <editor>
-    <firstname>Gwangjong</firstname><surname>Lee</surname>
-   </editor>
-   <editor>
-    <firstname>Tae-young</firstname><surname>Jin</surname>
-   </editor>
-   <editor>
-    <firstname>Yun-young</firstname><surname>Lee</surname>
-   </editor>
-   <editor>
-    <firstname>Ryeonho</firstname><surname>Heo</surname>
-   </editor>
+   <collab>
+    <collabname>PHPDOCÊKorean Translators:</collabname>
+   </collab>
+   <collab>
+    <collabname>Hwang WonHee</collabname>
+   </collab>
+   <collab>
+     <collabname>Lee Gwangjong</collabname>
+   </collab>
+   <collab>
+     <collabname>Jin Tae-young</collabname>
+   </collab>
+   <collab>
+     <collabname>Lee Yun-young</collabname>
+   </collab>
+   <collab>
+     <collabname>Heo Ryeonho</collabname>
+   </collab>
   </authorgroup>
 
   <copyright>
