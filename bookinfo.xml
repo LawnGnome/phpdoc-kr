@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.13 $ -->
+<!-- $Revision: 1.14 $ -->
+<!-- EN-Revision: 1.33 -->
+
  <bookinfo id="bookinfo">
+  <title>&PHPManual;</title>
   <authorgroup id="authors">
 
    <author>
@@ -87,12 +90,16 @@
    <simpara>
     This manual is &copy; Copyright 1997 - 2003 by the PHP Documentation Group.
     The members of this group are listed on the front page of this manual.
+    이 매뉴얼은 PHP 문서 그룹에서 저작권을 가집니다. (&copy; Copyright 1997 - 2003)
+    그룹의 구성원 목록은 매뉴얼의 첫 페이지에 있습니다.
    </simpara>
    <simpara>
     This manual can be redistributed under the terms of the GNU
     General Public License as published by the Free Software
     Foundation; either version 2 of the License, or (at your option)
     any later version.
+    자유 소프트웨어 재단의 GUN General Public License에 따라서
+    재배포할 수 있습니다; 라이센스 버전 2나 이후 버전(원한다면)을 따릅니다.
    </simpara>
    <simpara>
     The 'Extending PHP 4.0' section of this manual is copyright &copy; 2000 by
@@ -100,6 +107,10 @@
     the terms and conditions set forth in the Open Publication License, v1.0
     or later (the latest version is presently available at
     <ulink url="&url.opl;">&url.opl;</ulink>).
+    매뉴얼의 'PHP 4.0 확장하기' 섹션은 Zend Technologies, Ltd에서 저작권을 가집니다.
+    (&copy; 2000) 이 부분은 Open Publication License v1.0이나 이후(최신 버전은
+    <ulink url="&url.opl;">&url.opl;</ulink>에서 확인할 수 있습니다)에
+    따를 경우에만 재배포 할 수 있습니다.
    </simpara>
   </legalnotice>
 
