@@ -3,7 +3,7 @@
 	<authorgroup id="authors">
 		<author>
 			<firstname>Stig</firstname>
-			<surname>S峨er Bakken</surname>
+			<surname>S&aelig;ther Bakken</surname>
 		</author>
 		<author>
 			<firstname>Alexander</firstname>
@@ -41,8 +41,8 @@
 	<pubdate>&php.build-date;</pubdate>
 	<authorgroup id="editors">
 		<editor>
-			<firstname>Stig S峨er</firstname>
-			<surname>Bakken</surname>
+			<firstname>Stig</firstname>
+			<surname>S&aelig;ther Bakken</surname>
 		</editor>
 		<editor>
 			<firstname>Egon</firstname>
