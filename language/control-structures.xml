@@ -1,26 +1,24 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.9 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.10 $ -->
+<!-- EN-Revision: 1.78 -->
  <chapter id="control-structures">
-  <title>Control Structures</title>
+  <title>제어 구조</title>
 
   <simpara>
-   Any PHP script is built out of a series of statements. A statement
-   can be an assignment, a function call, a loop, a conditional
-   statement of even a statement that does nothing (an empty
-   statement). Statements usually end with a semicolon. In addition,
-   statements can be grouped into a statement-group by encapsulating a
-   group of statements with curly braces. A statement-group is a
-   statement by itself as well. The various statement types are
-   described in this chapter.
+   모든 PHP 스크립트는 연속적인 구문으로 이루어진다. 하나의 구문은 지정문
+   이 될수도 있고, 함수 호출, 반복문, 조건문이 될수 있으며 심지어는 아무
+   내용이 없는 빈 문장일수도 있다. 한 구문은 보통 세미콜른(;)으로 끝난다.
+   또한 여러개의 구문을 중괄호({,})를 사용하여 하나의 그룹으로 만들어 사용할 수도 있다.
+   이 구문 그룹은 그 그룹의 모든 구문들이 하나의 구문인 것처럼 인식된다.
+   이 장에서는 여러 가지 구문형태에 대해 알아본다.
   </simpara>
 
   <sect1 id="control-structures.if">
    <title><literal>if</literal></title>
    <para>
-    The <literal>if</literal> construct is one of the most important
-    features of many languages, PHP included.  It allows for
-    conditional execution of code fragments.  PHP features an
-    <literal>if</literal> structure that is similar to that of C:
+    <literal>if</literal>문은 PHP를 포함해서 모든 언어에 있어서 가장
+    중요한 기능(feature) 중 하나이다. 이 제어문으로 각각 다른 코드에 대해
+    조건적인 수행을 가능케한다. <literal>if</literal>문의 기능은 C와 비슷하다:
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -31,45 +29,40 @@ if (expr)
     </informalexample>
    </para>
    <simpara>
-    As described in <link linkend="language.expressions">the section about
-    expressions</link>, <replaceable>expr</replaceable> is evaluated to its
-    Boolean value.  If <replaceable>expr</replaceable> evaluates to &true;,
-   PHP will execute <replaceable>statement</replaceable>, and if it evaluates
-    to &false; - it'll ignore it. More information about what values evaluate
-    to &false; can be found in the <link
-    linkend="language.types.boolean.casting">'Converting to boolean'</link>
-    section.
+    <link linkend="language.expressions">표현식에 관한 섹션</link>에서 설명된것처럼
+    <replaceable>expr</replaceable>은 논리(Boolean)값으로 취급된다.
+    <replaceable>expr</replaceable>이 &true;와 같다면 PHP는 <replaceable>statement</replaceable>를
+    수행할것이고, &false;라면 무시될것이다. 무슨값이 &false;인지 알려면
+    <link linkend="language.types.boolean.casting">'Converting to boolean'</link>에 관한 섹션을 참고하세요.
    </simpara>
    <para>
-    The following example would display <computeroutput>a is bigger
-    than b</computeroutput> if <replaceable>$a</replaceable> is bigger
-    than <replaceable>$b</replaceable>:
+    다음 예는 <replaceable>$a</replaceable>가 <replaceable>$b</replaceable>보다
+    크다면 <computeroutput>a는 b보다 크다</computeroutput>를 출력할 것입니다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 if ($a > $b)
-    print "a is bigger than b";
+    print "a는 b보다 크다";
 ?>
 ]]>
      </programlisting>
     </informalexample>
    </para>
    <para>
-    Often you'd want to have more than one statement to be executed
-    conditionally.  Of course, there's no need to wrap each statement
-    with an <literal>if</literal> clause.  Instead, you can group
-    several statements into a statement group.  For example, this code
-    would display <computeroutput>a is bigger than b</computeroutput>
-    if <replaceable>$a</replaceable> is bigger than
-    <replaceable>$b</replaceable>, and would then assign the value of
-    <replaceable>$a</replaceable> into <replaceable>$b</replaceable>:
+    종종 하나 이상의 구문을 조건적으로 수행시켜야 하는 때가 있습니다.
+    물론 <literal>if</literal>절로 각 구문을 감싸줄 필요는 없습니다.
+    대신, 구문 그룹안에 몇개의 구문을 그룹화할 수 있습니다. 예를 들면,
+    이코드는 <replaceable>$a</replaceable>가 <replaceable>$b</replaceable>보다
+    크다면 <computeroutput>a는 b보다 크다</computeroutput>라고 출력할것이고,
+    <replaceable>$a</replaceable>의 값을 <replaceable>$b</replaceable>로
+    지정하게 될것입니다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 if ($a > $b) {
-    print "a is bigger than b";
+    print "a는 b보다 크다";
     $b = $a;
 }
 ?>
@@ -78,47 +71,40 @@ if ($a > $b) {
     </informalexample>
    </para>
    <simpara>
-    <literal>If</literal> statements can be nested indefinitely within other
-    <literal>if</literal> statements, which provides you with complete
-    flexibility for conditional execution of the various parts of your
-    program.
+    <literal>If</literal>문은 다른 <literal>if</literal>문안에 무한정으로
+    내포될수 있습니다. 이와 같은 기능은 프로그램의 여러부분을 조건적으로
+    수행하기 위한 유연성을 제공합니다.
    </simpara>
   </sect1>
 
   <sect1 id="control-structures.else">
    <title><literal>else</literal></title>
    <para>
-    Often you'd want to execute a statement if a certain condition is
-    met, and a different statement if the condition is not met.  This
-    is what <literal>else</literal> is for.  <literal>else</literal>
-    extends an <literal>if</literal> statement to execute a statement
-    in case the expression in the <literal>if</literal> statement
-    evaluates to &false;.  For example, the following
-    code would display <computeroutput>a is bigger than
-    b</computeroutput> if <replaceable>$a</replaceable> is bigger than
-    <replaceable>$b</replaceable>, and <computeroutput>a is NOT bigger
-    than b</computeroutput> otherwise:
+    가끔은 특정 조건에 맞을때 구문 수행하지 않고, 조건과 맞지 않을 때 
+    다른 구문을 수행하게 하고 싶은 때가 있다. <literal>else</literal>
+    문은 이 목적을 위한 것이다. <literal>if</literal>문 다음의
+    <literal>else</literal>문은 <literal>if</literal>구문안의 표현식이
+    &false;일때 수행된다. 예를 들면, 다음 코드는 <replaceable>$a</replaceable>가
+    <replaceable>$b</replaceable>보다 크다면 <computeroutput>a는 b보다 크다</computeroutput> 
+    를 출력할것이고, 그렇지않다면 <computeroutput>a는 b보다 크지 않다</computeroutput>를 
+    출력할것이다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 if ($a > $b) {
-    print "a is bigger than b";
+    print "a는 b보다 크다";
 } else {
-    print "a is NOT bigger than b";
+    print "a는 b보다 크지 않다";
 }
 ?>
 ]]>
      </programlisting>
     </informalexample>
-
-    The <literal>else</literal> statement is only executed if the
-    <literal>if</literal> expression evaluated to
-    &false;, and if there were any
-    <literal>elseif</literal> expressions - only if they evaluated to
-    &false; as well (see <link
-    linkend="control-structures.elseif">elseif</link>).
-
+    <literal>else</literal>문은 <literal>if</literal>문이 &false;일때만
+    수행이 된다. 그리고 그들 모두 &false;값이 될수있다면 <literal>elseif</literal>문
+    을 쓸수 있습니다.
+    (<link linkend="control-structures.elseif">elseif</link>를 보세요)
    </para>
   </sect1>
 
@@ -137,16 +123,27 @@ if ($a > $b) {
     following code would display <computeroutput>a is bigger than
     b</computeroutput>, <computeroutput>a equal to b</computeroutput>
     or <computeroutput>a is smaller than b</computeroutput>:
+
+    <literal>elseif</literal>, 이 이름에서 알수 있듯이,
+    <literal>if</literal>와 <literal>else</literal>의 조합이다.
+    <literal>else</literal>처럼 이 구문은 <literal>if</literal>절 
+    다음에 와서 원래 <literal>if</literal>표현식이 &false;와 같은 경우에
+    다른 구문을 수행한다. 그러나, <literal>else</literal>와는 달리
+    <literal>elseif</literal>조건 표현식이 &true;일 때만 대체 표현식을
+    수행할것이다. 예를 들면 다음 코드는 <computeroutput>a는 b보다 크다</computeroutput>,
+    <computeroutput>a는 b와 같다</computeroutput>나 
+    <computeroutput>a는 b보다 작다</computeroutput>을 출력할것이다.
+
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 if ($a > $b) {
-    print "a is bigger than b";
+    print "a는 b보다 크다";
 } elseif ($a == $b) {
-    print "a is equal to b";
+    print "a는 b와 같다";
 } else {
-    print "a is smaller than b";
+    print "a는 b보다 작다";
 }
 ?>
 ]]>
@@ -154,70 +151,60 @@ if ($a > $b) {
     </informalexample>
    </para>
    <simpara>
-    There may be several <literal>elseif</literal>s within the same
-    <literal>if</literal> statement.  The first
-    <literal>elseif</literal> expression (if any) that evaluates to
-    &true; would be executed.  In PHP, you can also
-    write 'else if' (in two words) and the behavior would be identical
-    to the one of 'elseif' (in a single word).  The syntactic meaning
-    is slightly different (if you're familiar with C, this is the same
-    behavior) but the bottom line is that both would result in exactly
-    the same behavior.
+    같은 <literal>if</literal>절 안에 몇개의 <literal>elseif</literal>절이
+    존재할수 있다. 가장 먼저 &true;가 되는 <literal>elseif</literal>표현식이 
+    수행될것이다. PHP에서는 'else if' (두 단어)로 쓸수 있고 'elseif' (한 단어)
+    와 방식은 같다. 문장적(syntactic)으로는 다르다 (C에 익숙하다면,
+    이것은 같은 방식이다) 그러나 그 둘 모두 완전히 같은 결과를 보여줄것이다.
    </simpara>
    <simpara>
-    The <literal>elseif</literal> statement is only executed if the
-    preceding <literal>if</literal> expression and any preceding
-    <literal>elseif</literal> expressions evaluated to
-    &false;, and the current
-    <literal>elseif</literal> expression evaluated to
-    &true;.
+    <literal>elseif</literal>절은 선행 <literal>if</literal> 표현식과
+    다른 <literal>elseif</literal>표현식이 &false;이고,
+    이 <literal>elseif</literal>표현식이 &true;일때만 수행된다.
    </simpara>
   </sect1>
 
   <sect1 id="control-structures.alternative-syntax">
-   <title>Alternative syntax for control structures</title>
+   <title>제어 구조의 대체 문법</title>
    <para>
-    PHP offers an alternative syntax for some of its control
-    structures; namely, <literal>if</literal>,
-    <literal>while</literal>, <literal>for</literal>,
-    <literal>foreach</literal>, and <literal>switch</literal>.
-    In each case, the basic form of the alternate syntax is to change
-    the opening brace to a colon (:) and the closing brace to
-    <literal>endif;</literal>, <literal>endwhile;</literal>,
-    <literal>endfor;</literal>, <literal>endforeach;</literal>, or
-    <literal>endswitch;</literal>, respectively.
+    PHP는 제어 구조를 위해 대체 문법을 제공한다; 즉
+    <literal>if</literal>, <literal>while</literal>, <literal>for</literal>,
+    <literal>foreach</literal>, 그리고 <literal>switch</literal>.
+    각 경우에 대체 문법의 기본형태는 괄호열기를 콜른 (:)으로 대체하고
+    괄호닫기는 각각 <literal>endif;</literal>, <literal>endwhile;</literal>,
+    <literal>endfor;</literal>, <literal>endforeach;</literal>, 또는
+    <literal>endswitch;</literal>으로 대체한다.
+
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php if ($a == 5): ?>
-A is equal to 5
+A는 5와 같다
 <?php endif; ?>
 ]]>
      </programlisting>
     </informalexample>
    </para>
    <simpara>
-    In the above example, the HTML block "A is equal to 5" is nested within an
-    <literal>if</literal> statement written in the alternative syntax.  The
-    HTML block would be displayed only if $a is equal to 5.
+    위 예에서는 대체 문법으로 쓰여진 <literal>if</literal>구문안에 "A는 5와 같다"
+    HTML 블록이 포함되어있다. 이 HTML 블록은 $a가 5와 같을때만 출력될것이다.
    </simpara>
    <para>
-    The alternative syntax applies to <literal>else</literal> and
-    <literal>elseif</literal> as well.  The following is an
-    <literal>if</literal> structure with <literal>elseif</literal> and
-    <literal>else</literal> in the alternative format:
+    대체 문법은 <literal>else</literal>와 <literal>elseif</literal>문에도
+    적용이 된다. 다음은 <literal>elseif</literal>와 <literal>else</literal>문
+    과 같이 있는 <literal>if</literal>문 절의 대체 형태이다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 if ($a == 5):
-    print "a equals 5";
+    print "a는 5와 같다";
     print "...";
 elseif ($a == 6):
-    print "a equals 6";
+    print "a는 6과 같다";
     print "!!!";
 else:
-    print "a is neither 5 nor 6";
+    print "a는 5도 아니고 6도 아니다";
 endif;
 ?>
 ]]>
@@ -225,9 +212,9 @@ endif;
     </informalexample>
    </para>
    <para>
-    See also <link linkend="control-structures.while">while</link>,
-    <link linkend="control-structures.for">for</link>, and <link
-    linkend="control-structures.if">if</link> for further examples.
+    더 많은 예는<link linkend="control-structures.while">while</link>,
+    <link linkend="control-structures.for">for</link>와 <link
+    linkend="control-structures.if">if</link>섹션에 있다.
    </para>
   </sect1>
 
