@@ -1,11 +1,11 @@
  <reference id="ref.dl">
-  <title>Dynamic Loading functions</title>
+  <title>동적으로 funtions 읽어오기</title>
   <titleabbrev>Dyn.loading</titleabbrev>
 
   <refentry id="function.dl">
    <refnamediv>
     <refname>dl</refname>
-    <refpurpose>런타임상에서 PHP 확장 읽어오기</refpurpose>
+    <refpurpose>런타임상에서 PHP 확장 읽어오기 </refpurpose>
    </refnamediv>
    <refsect1>
     <title>설 명</title>
