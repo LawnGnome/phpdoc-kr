@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.22 $ -->
+<!-- $Revision: 1.23 $ -->
 <!-- EN-Revision: 1.34 -->
 
  <bookinfo id="bookinfo">
@@ -64,10 +64,7 @@
     <collabname>Korean Translators:</collabname>
    </collab>
    <collab>
-    <collabname>Hwang WonHee</collabname>
-   </collab>
-   <collab>
-     <collabname>Lee Gwangjong</collabname>
+    <collabname>Hwang Won-Hee</collabname>
    </collab>
    <collab>
      <collabname>Jin Tae-young</collabname>
@@ -76,7 +73,16 @@
      <collabname>Lee Yun-young</collabname>
    </collab>
    <collab>
+     <collabname>Lee Gwangjong</collabname>
+   </collab>
+   <collab>
      <collabname>Heo Ryeonho</collabname>
+   </collab>
+   <collab>
+    <collabname>Hur Jae-yeon</collabname>
+   </collab>
+   <collab>
+    <collabname>Kim Younsoo</collabname>
    </collab>
   </authorgroup>
 
