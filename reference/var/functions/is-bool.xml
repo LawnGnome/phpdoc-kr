@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.is-bool">
    <refnamediv>
     <refname>is_bool</refname>
@@ -29,12 +28,12 @@ $b = 0;
 
 // $a는 불린이기 때문에, true입니다.
 if (is_bool($a)) {
-    print "불린입니다.";
+    echo "불린입니다.";
 }
 
 // $b는 불린이 아니기 때문에, true가 아닙니다.
 if (is_bool($b)) {
-    print "불린입니다.";
+    echo "불린입니다.";
 }
 ?>
 ]]>
@@ -73,4 +72,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

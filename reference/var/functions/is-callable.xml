@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
   <refentry id="function.is-callable">
    <refnamediv>
     <refname>is_callable</refname>
@@ -22,9 +21,9 @@
      가지는 배열인지를 간단히 확인할 수 있습니다.
     </para>
     <para>
-     var 인자는 문자열 변수에 저장한 함수의 이름이거나, 객체 안의 객체와
-     메쏘드의 이름일 수 있습니다. 예:
-     <screen>array( $SomeObject, 'MethodName' )</screen>
+     <parameter>var</parameter> 인자는 문자열 변수에 저장한 함수의 이름이거나,
+     객체 안의 객체와 메쏘드의 이름일 수 있습니다. 예:
+     <screen>array($SomeObject, 'MethodName')</screen>
     </para>
     <para>
      <parameter>syntax_only</parameter> 인자가 &true; 라면 이 함수는
@@ -42,8 +41,8 @@
     <informalexample>
      <programlisting role="php">
 <![CDATA[
-<? php
-//  변수가 함수처럼 호출할 수 있는지
+<?php
+//  변수를 함수처럼 호출할 수 있는지
 //  체크하는 방법.
 
 //
@@ -55,7 +54,7 @@ function someFunction() {
 
 $functionVariable = 'someFunction';
 
-var_dump( is_callable( $functionVariable, false, $callable_name ));  // bool(true)
+var_dump(is_callable($functionVariable, false, $callable_name));  // bool(true)
 
 echo $callable_name, "\n";  // someFunction
 
@@ -72,9 +71,9 @@ class someClass {
 
 $anObject = new someClass();
 
-$methodVariable = array( $anObject, 'someMethod' );
+$methodVariable = array($anObject, 'someMethod');
 
-var_dump( is_callable( $methodVariable, true, $callable_name ));  //  bool(true)
+var_dump(is_callable($methodVariable, true, $callable_name));  //  bool(true)
 
 echo $callable_name, "\n";  //  someClass:someMethod
 
@@ -105,4 +104,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
   <refentry id="function.unserialize">
    <refnamediv>
     <refname>unserialize</refname>
@@ -52,7 +51,7 @@
 $serialized_object='O:1:"a":1:{s:5:"value";s:3:"100";}';
 
 // unserialize_callback_func 지시어는 PHP 4.2.0부터 사용할 수 있습니다.
-ini_set('unserialize_callback_func','mycallback'); // 콜백 함수를 설정
+ini_set('unserialize_callback_func', 'mycallback'); // 콜백 함수를 설정
 
 function mycallback($classname) {
     // 단지 클래스를 정의하는 파일을 포함합니다.
@@ -82,16 +81,16 @@ function mycallback($classname) {
 // 배열에 세션 데이터를 읽어들일 때 unserialize()를 사용합니다.
 // 이 예제는 serialize()에 설명된 예제를 보완합니다.
 
-$conn = odbc_connect ("webdb", "php", "chicken");
-$stmt = odbc_prepare ($conn, "SELECT data FROM sessions WHERE id = ?");
+$conn = odbc_connect("webdb", "php", "chicken");
+$stmt = odbc_prepare($conn, "SELECT data FROM sessions WHERE id = ?");
 $sqldata = array ($PHP_AUTH_USER);
-if (!odbc_execute ($stmt, &$sqldata) || !odbc_fetch_into ($stmt, &$tmp)) {
+if (!odbc_execute($stmt, &$sqldata) || !odbc_fetch_into($stmt, &$tmp)) {
     // excute나 fetch가 실패하면, 빈 배열로 초기화합니다.
     $session_data = array();
 } else {
-    // 여기서 일렬화된 데이터를 $tmp[0]에 가집니다.
-    $session_data = unserialize ($tmp[0]);
-    if (!is_array ($session_data)) {
+    // 여기서는 일렬화된 데이터를 $tmp[0]에 가집니다.
+    $session_data = unserialize($tmp[0]);
+    if (!is_array($session_data)) {
         // 무언가 잘못되면, 빈 배열로 초기화합니다.
         $session_data = array();
     }
@@ -127,4 +126,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

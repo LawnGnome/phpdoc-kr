@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ok -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
   <refentry id="function.get-meta-tags">
    <refnamediv>
     <refname>get_meta_tags</refname>
@@ -59,10 +58,10 @@ $tags = get_meta_tags('http://www.example.com/');
 
 // 키가 전부 소문자가 되었고,
 // .이 _로 치환되었다는 점에 주의하십시오.
-print $tags['author'];       // name
-print $tags['keywords'];     // php documentation
-print $tags['description'];  // a php manual
-print $tags['geo_position']; // 49.33;-86.59
+echo $tags['author'];       // name
+echo $tags['keywords'];     // php documentation
+echo $tags['description'];  // a php manual
+echo $tags['geo_position']; // 49.33;-86.59
 ?>
 ]]>
       </programlisting>
@@ -101,4 +100,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

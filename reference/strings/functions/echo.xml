@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
   <refentry id="function.echo">
    <refnamediv>
     <refname>echo</refname>
@@ -52,7 +52,7 @@ echo 'foo는 $foo'; // foo는 $foo
 
 // 다른 문자를 사용하지 않는다면, 바로 변수를 echo할 수 있습니다.
 echo $foo;          // foobar
-echo $foo,$bar;     // foobarbarbaz
+echo $foo, $bar;    // foobarbarbaz
 
 echo <<<END
 이는 $variable 인터폴레이션을 가지는 여러 줄을
@@ -62,11 +62,11 @@ document 종료어는 줄에 세미콜론만을 가지고 있어야
 END;
 
 // echo는 함수가 아니기에, 다음 코드는 유효하지 않습니다.
-($some_var) ? echo('true'): echo('false');
+($some_var) ? echo 'true' : echo 'false';
 
 // 그러나, 다음 예제는 작동합니다.
 ($some_var) ? print('true'): print('false'); // print는 함수입니다.
-echo $some_var ? 'true': 'false'; // changing the statement around
+echo $some_var ? 'true': 'false'; // 구문을 변경하여 처리
 ?>
 ]]>
       </programlisting>

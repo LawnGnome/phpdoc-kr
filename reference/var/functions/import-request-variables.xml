@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
   <refentry id="function.import-request-variables">
    <refnamediv>
     <refname>import_request_variables</refname>
@@ -53,7 +52,7 @@
 // "rvar_" prefix로 가져옵니다.
 import_request_variables("gP", "rvar_");
 
-print $rvar_foo;
+echo $rvar_foo;
 ?>
 ]]>
      </programlisting>
@@ -87,4 +86,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry id="function.unset">
    <refnamediv>
     <refname>unset</refname>
@@ -30,13 +29,13 @@
 <![CDATA[
 <?php
 // 하나의 변수를 파괴
-unset ($foo);
+unset($foo);
 
 // 배열의 한 요소를 파괴
-unset ($bar['quux']);
+unset($bar['quux']);
 
 // 하나 이상의 변수를 파괴
-unset ($foo1, $foo2, $foo3);
+unset($foo1, $foo2, $foo3);
 ?>
 ]]>
       </programlisting>
@@ -188,4 +187,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

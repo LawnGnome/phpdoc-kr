@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ok -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.preg-split">
    <refnamediv>
     <refname>preg_split</refname>
@@ -70,8 +69,8 @@
 <![CDATA[
 <?php
 // " ", \r, \t, \n, \f를 포함하여
-// 수개의 콤마나 스페이스로 구문을 나눕니다.
-$keywords = preg_split ("/[\s,]+/", "hypertext language, programming");
+// 임의 갯수의 콤마와 스페이스로 구문을 나눕니다.
+$keywords = preg_split("/[\s,]+/", "hypertext language, programming");
 ?>
 ]]>
       </programlisting>

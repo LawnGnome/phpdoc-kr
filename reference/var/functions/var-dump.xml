@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.var-dump">
    <refnamediv>
     <refname>var_dump</refname>
@@ -28,12 +27,17 @@
       <title><function>var_dump</function> 예제</title>
       <programlisting role="php">
 <![CDATA[
-<pre>
 <?php
 $a = array (1, 2, array ("a", "b", "c"));
-var_dump ($a);
-
-/* 출력:
+var_dump($a);
+?>
+]]>
+      </programlisting>
+      <para>
+       출력:
+      </para>
+      <screen>
+<![CDATA[
 array(3) {
   [0]=>
   int(1)
@@ -49,22 +53,26 @@ array(3) {
     string(1) "c"
   }
 }
-
-*/
-
+]]>
+      </screen>
+      <programlisting role="php">
+<![CDATA[
+<?php
 $b = 3.1;
-$c = TRUE;
-var_dump($b,$c);
-
-/* 출력:
-float(3.1)
-bool(true)
-
-*/
+$c = true;
+var_dump($b, $c);
 ?>
-</pre>
 ]]>
       </programlisting>
+      <para>
+       출력:
+      </para>
+      <screen>
+<![CDATA[
+float(3.1)
+bool(true)
+]]>
+      </screen>
      </example>
     </para>
    </refsect1>
@@ -90,4 +98,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

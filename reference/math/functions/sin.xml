@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
   <refentry id="function.sin">
    <refnamediv>
     <refname>sin</refname>
@@ -23,8 +22,8 @@
 <?php
 
 // 정밀도는 precision 설정에 의존합니다.
-print sin(deg2rad(60));  //  0.866025403 ...
-print sin(60);           // -0.304810621 ...
+echo sin(deg2rad(60));  //  0.866025403 ...
+echo sin(60);           // -0.304810621 ...
 
 ?>
 ]]>

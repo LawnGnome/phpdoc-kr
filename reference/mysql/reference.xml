@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
  <reference id="ref.mysql">
   <title>MySQL 함수</title>
   <titleabbrev>MySQL</titleabbrev>
@@ -53,7 +52,7 @@
     /* 접속하고, 데이터베이스를 선택 */
     $link = mysql_connect("mysql_host", "mysql_user", "mysql_password")
         or die("접속할 수 없습니다 : " . mysql_error());
-    print "접속 성공";
+    echo "접속 성공";
     mysql_select_db("my_database") or die("데이터베이스를 선택할 수 없습니다.");
 
     /* SQL 쿼리 실행하기 */
@@ -61,15 +60,15 @@
     $result = mysql_query($query) or die("쿼리 실패 : " . mysql_error());
 
     /* HTML로 결과 출력하기 */
-    print "<table>\n";
+    echo "<table>\n";
     while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
-        print "\t<tr>\n";
+        echo "\t<tr>\n";
         foreach ($line as $col_value) {
-            print "\t\t<td>$col_value</td>\n";
+            echo "\t\t<td>$col_value</td>\n";
         }
-        print "\t</tr>\n";
+        echo "\t</tr>\n";
     }
-    print "</table>\n";
+    echo "</table>\n";
 
     /* 결과셋 풀어주기 */
     mysql_free_result($result);
@@ -108,4 +107,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

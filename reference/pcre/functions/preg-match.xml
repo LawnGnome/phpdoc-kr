@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.preg-match">
    <refnamediv>
     <refname>preg_match</refname>
-    <refpurpose>정규표현식 매치를 합니다.</refpurpose>
+    <refpurpose>정규표현식 매치를 수행합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -69,10 +68,10 @@
 <![CDATA[
 <?php
 // 패턴 구분자 뒤의 "i"는 대소문자를 구별하지 않게 합니다.
-if (preg_match ("/php/i", "PHP is the web scripting language of choice.")) {
-    print "발견하였습니다.";
+if (preg_match("/php/i", "PHP is the web scripting language of choice.")) {
+    echo "발견하였습니다.";
 } else {
-    print "발견하지 못했습니다.";
+    echo "발견하지 못했습니다.";
 }
 ?>
 ]]>
@@ -87,16 +86,16 @@ if (preg_match ("/php/i", "PHP is the web scripting language of choice.")) {
 <?php
 /* 패턴에서 \b는 단어를 지시합니다. 단어 "web"만 매치하고,
  * "webbing"이나 "cobweb" 등의 부분적인 경우에는 매치하지 않습니다. */
-if (preg_match ("/\bweb\b/i", "PHP is the web scripting language of choice.")) {
-    print "발견하였습니다.";
+if (preg_match("/\bweb\b/i", "PHP is the web scripting language of choice.")) {
+    echo "발견하였습니다.";
 } else {
-    print "발견하지 못했습니다.";
+    echo "발견하지 못했습니다.";
 }
 
-if (preg_match ("/\bweb\b/i", "PHP is the website scripting language of choice.")) {
-    print "발견하였습니다.";
+if (preg_match("/\bweb\b/i", "PHP is the website scripting language of choice.")) {
+    echo "발견하였습니다.";
 } else {
-    print "발견하지 못했습니다.";
+    echo "발견하지 못했습니다.";
 }
 ?>
 ]]>

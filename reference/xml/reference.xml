@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: working -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: working -->
  <reference id="ref.xml">
   <title>XML 파서 함수</title>
   <titleabbrev>XML</titleabbrev>
@@ -129,8 +129,7 @@ libexpat.a: $(OBJS)
            <function>xml_set_unparsed_entity_decl_handler</function>
           </entry>
           <entry>
-           This handler will be called for declaration of an unparsed
-           (NDATA) entity.
+           이 핸들러는 unparsed (NDATA) 엔트리의 정의를 호출합니다.
           </entry>
          </row>
          <row>
@@ -138,7 +137,7 @@ libexpat.a: $(OBJS)
            <function>xml_set_notation_decl_handler</function>
           </entry>
           <entry>
-           This handler is called for declaration of a notation.
+           이 핸들러는 notation의 정의를 호출합니다.
           </entry>
          </row>
          <row>
@@ -160,7 +159,7 @@ libexpat.a: $(OBJS)
     </section>
 
     <section id="xml.case-folding">
-     <title>케이스 접기</title>
+     <title>케이스 폴딩</title>
      <para>
       The element handler functions may get their element names
       <glossterm>case-folded</glossterm>.  Case-folding is defined by
@@ -272,9 +271,9 @@ $depth = array();
 function startElement($parser, $name, $attrs) {
     global $depth;
     for ($i = 0; $i < $depth[$parser]; $i++) {
-        print "  ";
+        echo "  ";
     }
-    print "$name\n";
+    echo "$name\n";
     $depth[$parser]++;
 }
 
@@ -286,12 +285,12 @@ function endElement($parser, $name) {
 $xml_parser = xml_parser_create();
 xml_set_element_handler($xml_parser, "startElement", "endElement");
 if (!($fp = fopen($file, "r"))) {
-    die("could not open XML input");
+    die("XML 입력을 열 수 없습니다.");
 }
 
 while ($data = fread($fp, 4096)) {
     if (!xml_parse($xml_parser, $data, feof($fp))) {
-        die(sprintf("XML error: %s at line %d",
+        die(sprintf("XML 에러: %s at line %d",
                     xml_error_string(xml_get_error_code($xml_parser)),
                     xml_get_current_line_number($xml_parser)));
     }
@@ -308,12 +307,11 @@ xml_parser_free($xml_parser);
      <title>XML 태그 매핑 예제</title>
      <para>
       <example>
-       <title>XML을 HTML로 Map</title>
+       <title>XML을 HTML로 맵</title>
        <para>
-        This example maps tags in an XML document directly to HTML
-        tags.  Elements not found in the "map array" are ignored.  Of
-        course, this example will only work with a specific XML
-        document type.
+        이 예제는 XML 문서의 태그를 직접 HTML 태그로 매핑합니다. "맵 배열"에
+        존재하지 않는 요소는 무시합니다. 물론, 이 예제는 특정한 XML 문서형에만
+        작동합니다.
        </para>
        <para>
         <programlisting role="php">
@@ -329,19 +327,19 @@ $map_array = array(
 function startElement($parser, $name, $attrs) {
     global $map_array;
     if ($htmltag == $map_array[$name]) {
-        print "<$htmltag>";
+        echo "<$htmltag>";
     }
 }
 
 function endElement($parser, $name) {
     global $map_array;
     if ($htmltag == $map_array[$name]) {
-        print "</$htmltag>";
+        echo "</$htmltag>";
     }
 }
 
 function characterData($parser, $data) {
-    print $data;
+    echo $data;
 }
 
 $xml_parser = xml_parser_create();
@@ -350,12 +348,12 @@ xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, true);
 xml_set_element_handler($xml_parser, "startElement", "endElement");
 xml_set_character_data_handler($xml_parser, "characterData");
 if (!($fp = fopen($file, "r"))) {
-    die("could not open XML input");
+    die("XML 입력을 열 수 없습니다.");
 }
 
 while ($data = fread($fp, 4096)) {
     if (!xml_parse($xml_parser, $data, feof($fp))) {
-        die(sprintf("XML error: %s at line %d",
+        die(sprintf("XML 에러: %s at line %d",
                     xml_error_string(xml_get_error_code($xml_parser)),
                     xml_get_current_line_number($xml_parser)));
     }
@@ -370,7 +368,7 @@ xml_parser_free($xml_parser);
     </section>
 
     <section id="example.xml-external-entity">
-     <title>XML External Entity Example</title>
+     <title>XML 외부 엔티티 예제</title>
      <para>
       This example highlights XML code.  It illustrates how to use an
       external entity reference handler to include and parse other
@@ -400,22 +398,22 @@ function trustedFile($file) {
 }
 
 function startElement($parser, $name, $attribs) {
-    print "&lt;<font color=\"#0000cc\">$name</font>";
+    echo "&lt;<font color=\"#0000cc\">$name</font>";
     if (sizeof($attribs)) {
         while (list($k, $v) = each($attribs)) {
-            print " <font color=\"#009900\">$k</font>=\"<font 
+            echo " <font color=\"#009900\">$k</font>=\"<font 
                    color=\"#990000\">$v</font>\"";
         }
     }
-    print "&gt;";
+    echo "&gt;";
 }
 
 function endElement($parser, $name) {
-    print "&lt;/<font color=\"#0000cc\">$name</font>&gt;";
+    echo "&lt;/<font color=\"#0000cc\">$name</font>&gt;";
 }
 
 function characterData($parser, $data) {
-    print "<b>$data</b>";
+    echo "<b>$data</b>";
 }
 
 function PIHandler($parser, $target, $data) {
@@ -493,7 +491,7 @@ if (!(list($xml_parser, $fp) = new_xml_parser($file))) {
     die("could not open XML input");
 }
 
-print "<pre>";
+echo "<pre>";
 while ($data = fread($fp, 4096)) {
     if (!xml_parse($xml_parser, $data, feof($fp))) {
         die(sprintf("XML error: %s at line %d\n",
@@ -501,8 +499,8 @@ while ($data = fread($fp, 4096)) {
                     xml_get_current_line_number($xml_parser)));
     }
 }
-print "</pre>";
-print "parse complete\n";
+echo "</pre>";
+echo "parse complete\n";
 xml_parser_free($xml_parser);
 
 ?>
@@ -538,7 +536,7 @@ xml_parser_free($xml_parser);
   <title>About this Document</title>
   <para>
    <!-- this is a comment -->
-   <?php print 'Hi!  This is PHP version '.phpversion(); ?>
+   <?php echo 'Hi!  This is PHP version '.phpversion(); ?>
   </para>
  </section>
 </chapter>
@@ -547,7 +545,7 @@ xml_parser_free($xml_parser);
       </example>
      </para>
      <para>
-      This file is included from <filename>xmltest.xml</filename>:
+      이 파일은 <filename>xmltest.xml</filename>에서 포함합니다:
       <example>
        <title>xmltest2.xml</title>
        <programlisting role="xml">
@@ -559,7 +557,7 @@ xml_parser_free($xml_parser);
 <foo>
    <element attrib="value"/>
    &testEnt;
-   <?php print "This is some more PHP code being executed."; ?>
+   <?php echo "This is some more PHP code being executed."; ?>
 </foo>
 ]]>
        </programlisting>

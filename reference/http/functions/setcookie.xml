@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.25 Maintainer: progcom Status: ok -->
+<!-- EN-Revision: 1.26 Maintainer: progcom Status: ready -->
   <refentry id="function.setcookie">
    <refnamediv>
     <refname>setcookie</refname>
@@ -208,9 +207,9 @@
 <?php
 $value = 'something from somewhere';
 
-setcookie ("TestCookie", $value);
-setcookie ("TestCookie", $value,time()+3600);  /* 1시간 뒤에 만료 */
-setcookie ("TestCookie", $value,time()+3600, "/~rasmus/", ".example.com", 1);
+setcookie("TestCookie", $value);
+setcookie("TestCookie", $value,time()+3600);  /* 1시간 뒤에 만료 */
+setcookie("TestCookie", $value,time()+3600, "/~rasmus/", ".example.com", 1);
 ?>
 ]]>
       </programlisting>
@@ -267,9 +266,9 @@ setcookie ("TestCookie", "", time() - 3600, "/~rasmus/", ".example.com", 1);
 <![CDATA[
 <?php
 // 쿠키를 설정
-setcookie ("cookie[three]", "cookiethree");
-setcookie ("cookie[two]", "cookietwo");
-setcookie ("cookie[one]", "cookieone");
+setcookie("cookie[three]", "cookiethree");
+setcookie("cookie[two]", "cookietwo");
+setcookie("cookie[one]", "cookieone");
 
 // 페이지가 리로드된 뒤에, 출력
 if (isset($_COOKIE['cookie'])) {
@@ -277,17 +276,19 @@ if (isset($_COOKIE['cookie'])) {
         echo "$name : $value <br />\n";
     }
 }
-
-/* 출력은
-
-three : cookiethree
-two : cookietwo
-one : cookieone
-
-*/
 ?>
 ]]>
       </programlisting>
+      <para>
+       출력은
+      </para>
+      <screen>
+<![CDATA[
+three : cookiethree
+two : cookietwo
+one : cookieone
+]]>
+      </screen>
      </example>
     </para>
     <note>
@@ -305,11 +306,11 @@ one : cookieone
     <note>
      <simpara>
       Microsoft Internet Explorer 4 서비스팩 1은 path 인자가 지정되었을 때
-      쿠키를 정상적으로 다루지 못합니다.
+      쿠키를 정상적으로 처리하지 못합니다.
      </simpara>
      <simpara>
       넷스케이프 커뮤니케이터 4.05와 Microsoft Internet Explorer 3.x는 경로와
-      시간을 설정하지 않았을 때 쿠키를 비정상적으로 다룹니다.
+      시간을 설정하지 않았을 때 쿠키를 비정상적으로 처리합니다.
      </simpara>
     </note>
     <para>
@@ -339,4 +340,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

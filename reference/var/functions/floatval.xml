@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.3 Maintainer: progcom Status: none -->
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
   <refentry id="function.floatval">
    <refnamediv>
     <refname>floatval</refname>
@@ -24,7 +23,7 @@
 <?php
 $var = '122.34343The';
 $float_value_of_var = floatval ($var);
-print $float_value_of_var; // 122.34343를 출력
+echo $float_value_of_var; // 122.34343를 출력
 ?>
 ]]>
       </programlisting>
@@ -59,4 +58,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-
