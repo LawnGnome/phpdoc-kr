@@ -31,12 +31,12 @@
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Aspell_new</function> 함수는 새 사전을 열고 다른 aspell 함수에서 사용할 수 있도록
+				<function>aspell_new</function> 함수는 새 사전을 열고 다른 aspell 함수에서 사용할 수 있도록
 				사전 연결 identifier 를 반환합니다.</simpara>
 			<para>
 				<example>
 					<title>
-						<function>Aspell_new</function>
+						<function>aspell_new</function>
 					</title>
 					<programlisting role="php">
 $aspell_link=aspell_new ("english");
@@ -63,13 +63,13 @@ $aspell_link=aspell_new ("english");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Aspell_check</function> 함수는 단어를 검사하고 단어가 올바를 경우 true, 틀릴 경우 false를
+				<function>aspell_check</function> 함수는 단어를 검사하고 단어가 올바를 경우 true, 틀릴 경우 false를
 				 반환합니다.
     </simpara>
 			<para>
 				<example>
 					<title>
-						<function>Aspell_check</function>
+						<function>aspell_check</function>
 					</title>
 					<programlisting>
 $aspell_link=aspell_new ("english");
@@ -103,12 +103,12 @@ if (aspell_check ($aspell_link, "testt")) {
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Aspell_check_raw</function> 함수는 단어가 올바른지만 검사합니다.
+				<function>aspell_check_raw</function> 함수는 단어가 올바른지만 검사합니다.
 				단어가 올바를 경우  true, 틀릴 경우 false를 반환합니다.</simpara>
 			<para>
 				<example>
 					<title>
-						<function>Aspell_check_raw</function>
+						<function>aspell_check_raw</function>
 					</title>
 					<programlisting role="php">
 $aspell_link=aspell_new ("english");
@@ -140,12 +140,12 @@ if (aspell_check_raw ($aspell_link, "test")) {
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Aspell_suggest</function>함수는 주어진 단어에 대한 추천단어를 배열형으로 반환합니다. 
+				<function>aspell_suggest</function>함수는 주어진 단어에 대한 추천단어를 배열형으로 반환합니다. 
     </simpara>
 			<para>
 				<example>
 					<title>
-						<function>Aspell_suggest</function>
+						<function>aspell_suggest</function>
 					</title>
 					<programlisting role="php">
 $aspell_link=aspell_new ("english");

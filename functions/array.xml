@@ -42,7 +42,7 @@
 			<para>
 				<note>
 					<para>
-						<function>Array</function> is a language construct used to
+						<function>array</function> is a language construct used to
        represent literal arrays, and not a regular function.
       </para>
 				</note>
@@ -59,7 +59,7 @@
 	, 숫자 인덱스가 배열에서 어떤 규칙으로 생성 되는지를 설명한다.
      <example>
 					<title>
-						<function>Array</function> example</title>
+						<function>array</function> example</title>
 					<programlisting role="php">
 $fruits = array (
     "fruits"  =&gt; array ("a"=&gt;"orange", "b"=&gt;"banana", "c"=&gt;"apple"),
@@ -72,7 +72,7 @@ $fruits = array (
 			<para>
 				<example>
 					<title>
-						<function>Array</function>함수에서 인덱스의 자동생성
+						<function>array</function>함수에서 인덱스의 자동생성
 					</title>
 					<programlisting role="php">
 $array = array( 1, 1, 1, 1,  1, 8=>1,  4=>1, 19, 3=>13);
@@ -102,7 +102,7 @@ Array
 	일차원 배열 생성의 예.
      <example>
 					<title>
-						<function>Array</function>에서의 1차원배열 인덱스
+						<function>array</function>에서의 1차원배열 인덱스
 					</title>
 					<programlisting role="php">
         $firstquarter  = array(1 => 'January', 'February', 'March');
@@ -142,13 +142,13 @@ Array
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_count_values</function> 는 <parameter>input</parameter> 배열의 값을
+				<function>array_count_values</function> 는 <parameter>input</parameter> 배열의 값을
 				 키로 갖고 그 값들의 빈도를 값으로 갖는 배열을 반환한다.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_count_values</function>예</title>
+						<function>array_count_values</function>예</title>
 					<programlisting role="php">
 $array = array (1, "hello", 1, "world", "hello");
 array_count_values ($array); //  array (1=&gt;2, "hello"=&gt;2, "world"=&gt;1) 을 반환한다.
@@ -180,14 +180,14 @@ array_count_values ($array); //  array (1=&gt;2, "hello"=&gt;2, "world"=&gt;1) �
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_diff</function>는 인수로 온 <parameter>array1</parameter>이외의 
+				<function>array_diff</function>는 인수로 온 <parameter>array1</parameter>이외의 
 				 배열의 값과 중복되지 않는 <parameter>array1</parameter>의 값을 포함하는 배열을 반환한다.
 				키(keys)는 보존됨에 유의하라.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_diff</function> 예</title>
+						<function>array_diff</function> 예</title>
 					<programlisting role="php">
 $array1 = array ("a" =&gt; "green", "red", "blue");
 $array2 = array ("b" =&gt; "green", "yellow", "red");
@@ -219,12 +219,12 @@ $result = array_diff ($array1, $array2);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_flip</function> returns an array in flip order.
+				<function>array_flip</function> returns an array in flip order.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_flip</function> example</title>
+						<function>array_flip</function> example</title>
 					<programlisting role="php">
 $trans = array_flip ($trans);
 $original = strtr ($str, $trans);
@@ -256,13 +256,13 @@ $original = strtr ($str, $trans);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_intersect</function>는 인수로 온 모든 배열에 존재하는 <parameter>array1</parameter>의 값을 모두 포함하는 배열을 반환한다. 
+				<function>array_intersect</function>는 인수로 온 모든 배열에 존재하는 <parameter>array1</parameter>의 값을 모두 포함하는 배열을 반환한다. 
 				키는 보존됨을 유의하라.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_intersect</function> 예</title>
+						<function>array_intersect</function> 예</title>
 					<programlisting role="php">
 $array1 = array ("a" =&gt; "green", "red", "blue");
 $array2 = array ("b" =&gt; "green", "yellow", "red");
@@ -300,7 +300,7 @@ $result = array_intersect ($array1, $array2);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_keys</function> 는 <parameter>input</parameter> 배열로 부터 숫자형과 문자형의 키를 배열로 반환한다.
+				<function>array_keys</function> 는 <parameter>input</parameter> 배열로 부터 숫자형과 문자형의 키를 배열로 반환한다.
     </para>
 			<para>
      옵션인 <parameter>search_value</parameter>이 지정된다면, 그 값을 가지는 키만이 반환되고 생략되면 <parameter>input</parameter> 의 모든 키가 배열로 반환된다.
@@ -308,7 +308,7 @@ $result = array_intersect ($array1, $array2);
 			<para>
 				<example>
 					<title>
-						<function>Array_keys</function> 예</title>
+						<function>array_keys</function> 예</title>
 					<programlisting role="php">
 $array = array (0 =&gt; 100, "color" =&gt; "red");
 array_keys ($array);       // array (0, "color") 을 반환한다.
@@ -367,7 +367,7 @@ function array_keys ($arr, $term="") {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_merge</function> 는 두개 혹은 그 이상의 배열을 병합하며, 
+				<function>array_merge</function> 는 두개 혹은 그 이상의 배열을 병합하며, 
 				값은 이전 배열의 끝에 붙어 추가된다. 그 결과를 배열로 반환한다.
     </para>
 			<para>
@@ -417,7 +417,7 @@ array_merge ($array1, $array2);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_merge_recursive</function> 는 두개 이상의 배열 요소를 병합하여 값을 이전 배열에 추가하고 이를 배열로 반환한다. 
+				<function>array_merge_recursive</function> 는 두개 이상의 배열 요소를 병합하여 값을 이전 배열에 추가하고 이를 배열로 반환한다. 
     </para>
 			<para>
 	입력된 배열에 같은 문자열 키가 있으면, 이 키는 배열로 합쳐지고 이는 재귀적으로 진행된다. 
@@ -427,7 +427,7 @@ array_merge ($array1, $array2);
 			<para>
 				<example>
 					<title>
-						<function>Array_merge_recursive</function> 예</title>
+						<function>array_merge_recursive</function> 예</title>
 					<programlisting role="php">
 $ar1 = array ("color" =&gt; array ("favorite" =&gt; "red"), 5);
 $ar2 = array (10, "color" =&gt; array ("favorite" =&gt; "green", "blue"));
@@ -475,7 +475,7 @@ $result = array_merge_recursive ($ar1, $ar2);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_multisort</function> 는 다중 배열에 대해서 여러개의 배열을 한번에 정렬하거나 다차원 배열에서 내부에 포함되는 가가각의 배열을 정렬하는데 사용된다.
+				<function>array_multisort</function> 는 다중 배열에 대해서 여러개의 배열을 한번에 정렬하거나 다차원 배열에서 내부에 포함되는 가가각의 배열을 정렬하는데 사용된다.
 				정렬될 때 키값도 유지된다.
 			</para>
 			<para>
@@ -578,7 +578,7 @@ array_multisort ($ar[0], SORT_ASC, SORT_STRING,
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_pad</function> returns a copy of the
+				<function>array_pad</function> returns a copy of the
      			<parameter>pad_value</parameter>의 값으로 <parameter>pad_size</parameter> 길이만큼 채워진 <parameter>input</parameter>배열의 복사본을 반환한다.
 			    <parameter>pad_size</parameter> 가 양의 값이면, 배열의 오른쪽이 채워지고, 음수라면, 왼쪽이 채워진다.
 			     <parameter>pad_size</parameter> 값이 <parameter>input</parameter> 배열의 길이보다 작거나 같다면, 패딩(padding)은 일어나지 않는다.
@@ -586,7 +586,7 @@ array_multisort ($ar[0], SORT_ASC, SORT_STRING,
 			<para>
 				<example>
 					<title>
-						<function>Array_pad</function> 예</title>
+						<function>array_pad</function> 예</title>
 					<programlisting role="php">
 $input = array (12, 10, 9);
 
@@ -619,12 +619,12 @@ $result = array_pad ($input, 2, "noop");
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_pop</function> 은  <parameter>array</parameter>의 마지막 값을 뽑아 내고 그 값을 반환하며, <parameter>array</parameter>의 길이를 원소 하나만큼 줄인다.
+				<function>array_pop</function> 은  <parameter>array</parameter>의 마지막 값을 뽑아 내고 그 값을 반환하며, <parameter>array</parameter>의 길이를 원소 하나만큼 줄인다.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_pop</function> 예</title>
+						<function>array_pop</function> 예</title>
 					<programlisting role="php">
 $stack = array ("orange", "apple", "raspberry");
 $fruit = array_pop ($stack);
@@ -667,7 +667,7 @@ $fruit = array_pop ($stack);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_push</function> 는 <parameter>array</parameter> 을 스택과 같이 다루며, <parameter>array</parameter>의 끝에 전달되어진 값을 집어 넣는다.
+				<function>array_push</function> 는 <parameter>array</parameter> 을 스택과 같이 다루며, <parameter>array</parameter>의 끝에 전달되어진 값을 집어 넣는다.
     				<parameter>array</parameter>의 길이는 집어넣어진 값들의 수만큼 늘어나며 다음과 같은 효과가 있다.
 			     <programlisting role="php"/>
 			     반복되는 각각의 <parameter>var</parameter>에 대해
@@ -679,7 +679,7 @@ $fruit = array_pop ($stack);
 			<para>
 				<example>
 					<title>
-						<function>Array_push</function> 예</title>
+						<function>array_push</function> 예</title>
 					<programlisting role="php">
 $stack = array (1, 2);
 array_push ($stack, "+", 3);
@@ -719,7 +719,7 @@ array_push ($stack, "+", 3);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_rand</function>은 배열의 요소중 임의로 하나 혹은 여러개의 원소를 가져올 때 유용하다.
+				<function>array_rand</function>은 배열의 요소중 임의로 하나 혹은 여러개의 원소를 가져올 때 유용하다.
 				<parameter>input</parameter> 배열을 필요로 하고, 선택 인자로 <parameter>num_req</parameter>이 올 수 있는데,
 				뽑아내고 싶은 엘리먼트의 수를 지정할 수 있고 특별히 지정되지 않았을 때의 기본 값은 1이다.
 		    </para>
@@ -733,7 +733,7 @@ array_push ($stack, "+", 3);
 			<para>
 				<example>
 					<title>
-						<function>Array_rand</function> 예</title>
+						<function>array_rand</function> 예</title>
 					<programlisting role="php">
 srand ((double) microtime() * 10000000);
 $input = array ("Neo", "Morpheus", "Trinity", "Cypher", "Tank");
@@ -763,14 +763,14 @@ print $input[$rand_keys[1]]."\n";
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_reverse</function>는 입력으로 
+				<function>array_reverse</function>는 입력으로 
      <parameter>array</parameter> 를 가지며 엘리먼트들이 
      역순으로 정렬된 새로운 배열을 반환한다.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_reverse</function> 예</title>
+						<function>array_reverse</function> 예</title>
 					<programlisting role="php">
 $input = array ("php", 4.0, array ("green", "red"));
 $result = array_reverse ($input);
@@ -801,14 +801,14 @@ $result = array_reverse ($input);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_shift</function> 는 <parameter>array</parameter>의 
+				<function>array_shift</function> 는 <parameter>array</parameter>의 
 				첫번째 값을 꺼내고 그 꺼낸 값을 반환하며, <parameter>array</parameter>의 
 				첫번째 엘리먼트를 삭제하고 다른 모든 엘리먼트를 한칸 앞으로 이동시킨다.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_shift</function> 예</title>
+						<function>array_shift</function> 예</title>
 					<programlisting role="php">
 $args = array ("-v", "-f");
 $opt = array_shift ($args);
@@ -849,7 +849,7 @@ $opt = array_shift ($args);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_slice</function> 는 일련의 엘리먼트를 
+				<function>array_slice</function> 는 일련의 엘리먼트를 
 	<parameter>offset</parameter> and <parameter>length</parameter>의 
 	매개변수에 따라 <parameter>array</parameter> 로부터 반환한다.
     </para>
@@ -871,7 +871,7 @@ $opt = array_shift ($args);
 			<para>
 				<example>
 					<title>
-						<function>Array_slice</function> 예</title>
+						<function>array_slice</function> 예</title>
 					<programlisting role="php">
 $input = array ("a", "b", "c", "d", "e");
 
@@ -917,7 +917,7 @@ $output = array_slice ($input, 0, 3);   //  "a", "b", 그리고 "c" 를 반환�
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_splice</function>는 <parameter>input</parameter>
+				<function>array_splice</function>는 <parameter>input</parameter>
 	배열로 부터 <parameter>offset</parameter> 와 <parameter>length</parameter>로 정해진
 	엘린먼트를 삭제하고, <parameter>replacement</parameter>배열이 제공된다면  
 	이를 제공된 배열으리 엘리먼트로 대체시킨다.
@@ -974,7 +974,7 @@ $a[$x] = $y                     array_splice ($input, $x, 1, $y)
 			<para>
 				<example>
 					<title>
-						<function>Array_splice</function> examples</title>
+						<function>array_splice</function> examples</title>
 					<programlisting role="php">
 $input = array ("red", "green", "blue", "yellow");
 
@@ -1009,7 +1009,7 @@ array_splice ($input, -1, 1, array("black", "maroon"));
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_unique</function> 는 입력으로 
+				<function>array_unique</function> 는 입력으로 
 			<parameter>array</parameter>를 출력으로는 중복된 값이 없는 
 			배열을 반환한다.
 			키값은 보존됨을 유의하라.
@@ -1017,7 +1017,7 @@ array_splice ($input, -1, 1, array("black", "maroon"));
 			<para>
 				<example>
 					<title>
-						<function>Array_unique</function> 예</title>
+						<function>array_unique</function> 예</title>
 					<programlisting role="php">
 $input = array ("a" =&gt; "green", "red", "b" =&gt; "green", "blue", "red");
 $result = array_unique ($input);
@@ -1055,11 +1055,11 @@ $result = array_unique ($input);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_unshift</function> 는 <parameter>array</parameter> 의
+				<function>array_unshift</function> 는 <parameter>array</parameter> 의
 	앞에 전달되어진 원소를 첨가한다.
 	원소의 목록은 전체적으로 프리펜드되고, 그 결과 프리펜드된 원소는 
 	동일한 순서로 남아있게 된다.
-				<function>Array_unshift</function> prepends passed elements to
+				<function>array_unshift</function> prepends passed elements to
      the front of the <parameter>array</parameter>. Note that the list
      of elements is prepended as a whole, so that the prepended
      elements stay in the same order.
@@ -1070,7 +1070,7 @@ $result = array_unique ($input);
 			<para>
 				<example>
 					<title>
-						<function>Array_unshift</function> 예</title>
+						<function>array_unshift</function> 예</title>
 					<programlisting role="php">
 $queue = array ("p1", "p3");
 array_unshift ($queue, "p4", "p5", "p6");
@@ -1104,13 +1104,13 @@ array_unshift ($queue, "p4", "p5", "p6");
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Array_values</function> 는 
+				<function>array_values</function> 는 
 		<parameter>input</parameter> 배열의 모든 값들을 반환한다.
     </para>
 			<para>
 				<example>
 					<title>
-						<function>Array_values</function> 예</title>
+						<function>array_values</function> 예</title>
 					<programlisting role="php">
 $array = array ("size" =&gt; "XL", "color" =&gt; "gold");
 array_values ($array);    // returns array ("XL", "gold")
@@ -1197,7 +1197,7 @@ function array_values ($arr) {
 			<para>
 				<example>
 					<title>
-						<function>Array_walk</function> 예</title>
+						<function>array_walk</function> 예</title>
 					<programlisting role="php">
 $fruits = array ("d"=&gt;"lemon", "a"=&gt;"orange", "b"=&gt;"banana", "c"=&gt;"apple");
 
@@ -1250,7 +1250,7 @@ array_walk ($fruits, 'test_print');
 	상관배열을 정렬할 경우 이용된다.
      <example>
 					<title>
-						<function>Arsort</function> 예</title>
+						<function>arsort</function> 예</title>
 					<programlisting role="php">
 $fruits = array ("d"=&gt;"lemon", "a"=&gt;"orange", "b"=&gt;"banana", "c"=&gt;"apple");
 arsort ($fruits);
@@ -1313,7 +1313,7 @@ fruits[c] = apple
 	상관배열을 정렬할 경우 이용된다.
      <example>
 					<title>
-						<function>Asort</function> 예</title>
+						<function>asort</function> 예</title>
 					<programlisting role="php">
 $fruits = array ("d"=&gt;"lemon", "a"=&gt;"orange", "b"=&gt;"banana", "c"=&gt;"apple");
 asort ($fruits);
@@ -1375,7 +1375,7 @@ fruits[a] = orange
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Compact</function> 는 다양한 수의 매개변수를 갖는다.
+				<function>compact</function> 는 다양한 수의 매개변수를 갖는다.
 	각각 매개변수는 변수의 이름을 포함하는 문자열이 될 수도 있고,
 	변수 이름의 배열이 될 수도 있다.
 	배열은 그 안에 변수 이름의 배열을 포함할 수 도 있다.
@@ -1395,7 +1395,7 @@ fruits[a] = orange
 			<para>
 				<example>
 					<title>
-						<function>Compact</function> 예</title>
+						<function>compact</function> 예</title>
 					<programlisting role="php">
 $city = "San Francisco";
 $state = "CA";
@@ -1443,7 +1443,7 @@ $result = compact ("event", "nothing_here", $location_vars);
 	변수가 선언 되지 않았다면 0을 반환한다.
      <warning>
 					<para>
-						<function>Count</function> 는 선언되지 않은 변수에 대해 0을 반환하겠지만,
+						<function>count</function> 는 선언되지 않은 변수에 대해 0을 반환하겠지만,
 	원소가 없는 배열로 초기화된 변수도 0을 반환한다.
 	변수가 선언되었는지를 알기 위해 <function>isset</function>를 사용하라.
       </para>
@@ -1452,7 +1452,7 @@ $result = compact ("event", "nothing_here", $location_vars);
 			<para>
 				<example>
 					<title>
-						<function>Count</function> 예</title>
+						<function>count</function> 예</title>
 					<programlisting role="php">
 $a[0] = 1; 
 $a[1] = 3; 
@@ -1556,7 +1556,7 @@ $result = count ($a);
 			<para>
 				<example>
 					<title>
-						<function>Each</function> 예</title>
+						<function>each</function> 예</title>
 					<programlisting role="php">
 $foo = array ("bob", "fred", "jussi", "jouni", "egon", "marliese");
 $bar = each ($foo);
@@ -1603,7 +1603,7 @@ $bar = each ($foo);
 				</example>
 			</para>
 			<para>
-	<function>Each</function> 는 대체로  배열을 검토하기 위해
+	<function>each</function> 는 대체로  배열을 검토하기 위해
 	<function>list</function> 와 함께 쓰인다; 예를 들면
 	<varname>$HTTP_POST_VARS</varname>: 
      <example>
@@ -1650,7 +1650,7 @@ while (list ($key, $val) = each ($HTTP_POST_VARS)) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>End</function> advances <parameter>array</parameter>'s
+				<function>end</function> advances <parameter>array</parameter>'s
      internal pointer to the last element, and returns that element.
     </para>
 			<para>
@@ -1697,7 +1697,7 @@ while (list ($key, $val) = each ($HTTP_POST_VARS)) {
      <parameter>prefix</parameter> parameters.
     </para>
 			<para>
-				<function>Extract</function> checks for colissions with existing
+				<function>extract</function> checks for colissions with existing
      variables.  The way collisions are treated is determined by
      <parameter>extract_type</parameter>. It can be one of the
      following values:
@@ -1747,7 +1747,7 @@ while (list ($key, $val) = each ($HTTP_POST_VARS)) {
      EXTR_PREFIX_ALL.
     </para>
 			<para>
-				<function>Extract</function> checks each key to see if it
+				<function>extract</function> checks each key to see if it
      constitues a valid variable name, and if it does only then does
      it proceed to import it.
     </para>
@@ -1759,7 +1759,7 @@ while (list ($key, $val) = each ($HTTP_POST_VARS)) {
 			<para>
 				<example>
 					<title>
-						<function>Extract</function> example</title>
+						<function>extract</function> example</title>
 					<programlisting role="php">
 &lt;?php
 
@@ -1828,7 +1828,7 @@ blue, large, sphere, medium
 			<para>
 				<example>
 					<title>
-						<function>In_array</function> example</title>
+						<function>in_array</function> example</title>
 					<programlisting role="php">
 $os = array ("Mac", "NT", "Irix", "Linux");
 if (in_array ("Irix", $os)){
@@ -1855,7 +1855,7 @@ if (in_array ("Irix", $os)){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Key</function> returns the index element of the
+				<function>key</function> returns the index element of the
      current array position.
     </para>
 			<para>
@@ -1888,7 +1888,7 @@ if (in_array ("Irix", $os)){
      correlations. This is useful mainly for associative arrays.
      <example>
 					<title>
-						<function>Krsort</function> example</title>
+						<function>krsort</function> example</title>
 					<programlisting role="php">
 $fruits = array ("d"=&gt;"lemon", "a"=&gt;"orange", "b"=&gt;"banana", "c"=&gt;"apple");
 krsort ($fruits);
@@ -1950,7 +1950,7 @@ fruits[a] = orange
      is useful mainly for associative arrays.
      <example>
 					<title>
-						<function>Ksort</function> example</title>
+						<function>ksort</function> example</title>
 					<programlisting role="php">
 $fruits = array ("d"=&gt;"lemon", "a"=&gt;"orange", "b"=&gt;"banana", "c"=&gt;"apple");
 ksort ($fruits);
@@ -2013,7 +2013,7 @@ fruits[d] = lemon
      assign a list of variables in one operation.
      <example>
 					<title>
-						<function>List</function> example</title>
+						<function>list</function> example</title>
 					<programlisting role="php">
 &lt;table>
  &lt;tr>
@@ -2180,7 +2180,7 @@ Array
      internal array pointer, or false if there are no more elements.
     </para>
 			<para>
-				<function>Next</function> behaves like
+				<function>next</function> behaves like
      <function>current</function>, with one difference.  It advances
      the internal array pointer one place forward before returning the
      element.  That means it returns the next array element and
@@ -2258,7 +2258,7 @@ Array
 				</warning>
 			</para>
 			<para>
-				<function>Prev</function> behaves just like
+				<function>prev</function> behaves just like
      <function>next</function>, except it rewinds the internal array
      pointer one place instead of advancing it.
     </para>
@@ -2288,7 +2288,7 @@ Array
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Range</function> returns an array of integers from
+				<function>range</function> returns an array of integers from
      <parameter>low</parameter> to <parameter>high</parameter>,
      inclusive.
     </para>
@@ -2315,11 +2315,11 @@ Array
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Reset</function> rewinds <parameter>array</parameter>'s
+				<function>reset</function> rewinds <parameter>array</parameter>'s
      internal pointer to the first element.
     </para>
 			<para>
-				<function>Reset</function> returns the value of the first array
+				<function>reset</function> returns the value of the first array
      element.
     </para>
 			<para>
@@ -2353,7 +2353,7 @@ Array
      This function sorts an array in reverse order (highest to lowest).
      <example>
 					<title>
-						<function>Rsort</function> example</title>
+						<function>rsort</function> example</title>
 					<programlisting role="php">
 $fruits = array ("lemon", "orange", "banana", "apple");
 rsort ($fruits);
@@ -2413,7 +2413,7 @@ fruits[3] = apple
      function.
      <example>
 					<title>
-						<function>Shuffle</function> example</title>
+						<function>shuffle</function> example</title>
 					<programlisting role="php">
 $numbers = range (1,20);
 srand ((double)microtime()*1000000);
@@ -2478,7 +2478,7 @@ while (list (, $number) = each ($numbers)) {
      lowest to highest when this function has completed.
      <example>
 					<title>
-						<function>Sort</function> example</title>
+						<function>sort</function> example</title>
 					<programlisting role="php">
 &lt;?php
 
@@ -2611,7 +2611,7 @@ fruits[3] = orange
 			<para>
 				<example>
 					<title>
-						<function>Uksort</function> example</title>
+						<function>uksort</function> example</title>
 					<programlisting role="php">
 function cmp ($a, $b) {   
     if ($a == $b) return 0;
@@ -2684,7 +2684,7 @@ while (list ($key, $value) = each ($a)) {
 			<para>
 				<example>
 					<title>
-						<function>Usort</function> example</title>
+						<function>usort</function> example</title>
 					<programlisting role="php">
 function cmp ($a, $b) {   
     if ($a == $b) return 0;
@@ -2724,7 +2724,7 @@ while (list ($key, $value) = each ($a)) {
 			<para>
 				<example>
 					<title>
-						<function>Usort</function> example using multi-dimensional array
+						<function>usort</function> example using multi-dimensional array
       </title>
 					<programlisting role="php">
 function cmp ($a, $b) {

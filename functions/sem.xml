@@ -73,7 +73,7 @@
      반환값: 성공하면 실제적인 세마포어 identifier가, 실패하면 에러가 발생한다.
     </para>
     <para>
-     <function>Sem_get</function>는 주어진 키와 함께 System V 세마포어에 접근하는데 사용하는 id를 반환한다.
+     <function>sem_get</function>는 주어진 키와 함께 System V 세마포어에 접근하는데 사용하는 id를 반환한다.
      세마포어는 퍼미션에서 특정 퍼미션 비트가 사용될 필요성이 있을 때 생성된다(기본값은 0666).
      세마포어가 동시에 필요로 할 수 있는 프로세서의 개수는 max_acquire(기본값은 1)로 설정할 수 있다.
      실제로 이 값은 설정된다.
@@ -113,7 +113,7 @@
      반환값: 성공하면 true, 실패하면 에러를 출력한다.
     </para>
     <para>
-     <function>Sem_acquire</function>함수는 (만일 필요하다면)세마포어를 획득할 수 있을 때까지 막는다.
+     <function>sem_acquire</function>함수는 (만일 필요하다면)세마포어를 획득할 수 있을 때까지 막는다.
      이미 획득된 세마포어를 획득하려는 프로세서가 세마포어의 max_acquire를 초과한다면 영원히 중단될 것이다.
     </para>
     <para>
@@ -143,7 +143,7 @@
      반환값: 성공하면 true, 실패하면 에러 출력.
     </para>
     <para>
-     <function>Sem_release</function>는 호출 과정에 의해 일반적으로 획득된 세마포어를 릴리즈한다.
+     <function>sem_release</function>는 호출 과정에 의해 일반적으로 획득된 세마포어를 릴리즈한다.
      그렇지 않으면, 경고를 발생시킨다.
     </para>
     <para>
@@ -180,7 +180,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>Shm_attach</function>함수는 주어진 키와 함께 System V 공유 메모리를 접근하기위해 사용되는 id를 반환한다.
+     <function>shm_attach</function>함수는 주어진 키와 함께 System V 공유 메모리를 접근하기위해 사용되는 id를 반환한다.
      첫 호출은 mem_size(기본값: <link linkend="configuration.file">설정 파일</link>에서의
      sysvshm.init_mem 값, 그렇지 않으면, 10000 바이트)과 임의의 perm-bit(기본값: 0666)과 함께
      공유 메모리 세그먼트를 생성한다.
@@ -212,7 +212,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>Shm_detach</function>함수는 
+     <function>shm_detach</function>함수는 
      <function>shm_attach</function>에 의해 생성되는
      <parameter>shm_identifier</parameter> 인자에 의해 주어진 공유 메모리를 종료시킨다.
      주의할 점은, 함수를 호출하더라도 Unix 시스템에서의 공유메모리는 여전히 존재하며,
@@ -288,7 +288,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>Shm_get_var</function>함수는 <parameter>variable_key</parameter> 인자로 주어진 변수를 반환한다.
+     <function>shm_get_var</function>함수는 <parameter>variable_key</parameter> 인자로 주어진 변수를 반환한다.
      공유메모리에서의 변수는 여전히 존재한다.
     </para>
     <note>

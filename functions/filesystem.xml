@@ -211,7 +211,7 @@ chmod ("/somedir/somefile", 0755);  // 8진수 : 정확한 모드 값
 파일의 복사본을 만듭니다. 복사가 되면 true, 그렇지 않으면 false를 반환합니다.
      <example>
 					<title>
-						<function>Copy</function>예문</title>
+						<function>copy</function>예문</title>
 					<programlisting role="php">
 if (!copy($file, $file.'.bak')) {
     print ("$file을 복사하는데 실패했습니다...&lt;br>\n");
@@ -271,7 +271,7 @@ if (!copy($file, $file.'.bak')) {
 			<para>
 				<example>
 					<title>
-						<function>Dirname</function> 예문</title>
+						<function>dirname</function> 예문</title>
 					<programlisting role="php">
 $path = "/etc/passwd";
 $file = dirname ($path); // $file 은 "/etc" 로 설정됩니다.
@@ -443,14 +443,14 @@ fp에 의해 가리켜진 파일로부터 한개의 문자를 포함한 문자�
      CSV 파일에서 가장 긴 라인보다 더 길어야 합니다.(마지막 문자 찾기가 허용되었을 때)
     </simpara>
 			<simpara>
-				<function>Fgetcsv</function>는 파일의 끝이거나 실패시 false를 반환합니다. 
+				<function>fgetcsv</function>는 파일의 끝이거나 실패시 false를 반환합니다. 
     </simpara>
 			<simpara>
      주의-- CSV 파일에서 비어있는 라인은 null 필드를 배열로 만들어서 반환하고 에러로 처리되지 않습니다.
     </simpara>
 			<example>
 				<title>
-					<function>Fgetcsv</function>예문 - CSV 파일의 전체 내용을 읽고 프린트하기
+					<function>fgetcsv</function>예문 - CSV 파일의 전체 내용을 읽고 프린트하기
      </title>
 				<programlisting role="php">
 $row = 1;
@@ -932,7 +932,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</itemizedlist>
 			</para>
 			<simpara>
-				<function>Flock</function>은  실제로 모든 환경에서 
+				<function>flock</function>은  실제로 모든 환경에서 
 				간단한 읽기/쓰기 예를 수행할 수 있게 만들어줍니다
      reader/writer model which can be used on virtually every platform
      (대부분의 유닉스와 윈도우즈 환경에서도). 접근을 막을 수가 없다면
@@ -940,7 +940,7 @@ $fcontents = join ('', file ('http://www.php.net'));
      errno condition)
     </simpara>
 			<simpara>
-				<function>Flock</function>은 성공하면 true를 반환하고 실패하면 false를 반환합니다.
+				<function>flock</function>은 성공하면 true를 반환하고 실패하면 false를 반환합니다.
 				(예를 들면 파일 접근을 막는것이 요청되지 못할 때).
     </simpara>
 			<warning>
@@ -1055,7 +1055,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 			<para>
 				<example>
 					<title>
-						<function>Fopen</function> example</title>
+						<function>fopen</function> example</title>
 					<programlisting role="php">
 $fp = fopen ("/home/rasmus/file.txt", "r");
 $fp = fopen ("/home/rasmus/file.gif", "wb");
@@ -1148,7 +1148,7 @@ $fp = fopen ("c:\\data\\info.txt", "r");
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Fputs</function>는 <function>fwrite</function>로 언제나 앨리어스 됩니다.  
+				<function>fputs</function>는 <function>fwrite</function>로 언제나 앨리어스 됩니다.  
 		<parameter>length</parameter>매개변수는 선택이 가능하고 전체 문자열이 나열되지 않으면 쓰여진다는 것을 주의하세요.
     </para>
 		</refsect1>
@@ -1171,7 +1171,7 @@ $fp = fopen ("c:\\data\\info.txt", "r");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Fread</function>는  <parameter>fp</parameter>에 의해 참조가 되는 
+				<function>fread</function>는  <parameter>fp</parameter>에 의해 참조가 되는 
      파일 포인터로부터 <parameter>length</parameter>를 바이트로 증가시키며 읽습니다.
     <parameter>length</parameter>바이트가 읽혔거나 파일의 끝에 도달되거나 
     둘중에 먼저 끝나는 것이 있으면 읽기가 종료됩니다..
@@ -1228,7 +1228,7 @@ fclose ($fd);
      선택적인 매개변수는 반드시 passed by reference여야 합니다.
      <example>
 					<title>
-						<function>Fscanf</function>예</title>
+						<function>fscanf</function>예</title>
 					<programlisting role="php">
 $fp = fopen ("users.txt","r");
 while ($userinfo = fscanf ($fp, "%s\t%s\t%s\n")) {
@@ -1760,7 +1760,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Link</function> hard link를 만듭니다.</para>
+				<function>link</function> hard link를 만듭니다.</para>
 			<para>
      참조 <function>symlink</function>soft links를 만듭니다.
      그리고<function>linkinfo</function>와 함께 수행되는<function>readlink</function>
@@ -1788,7 +1788,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Linkinfo</function>는 마지막 시스템 호출에 의해서 반환이 되는 유닉스 C stat 구조체입니다.
+				<function>linkinfo</function>는 마지막 시스템 호출에 의해서 반환이 되는 유닉스 C stat 구조체입니다.
       이 함수는 링크(<parameter>path</parameter>에 의해 지정된)가 실제로 있는지 검증하는데 사용이 되곤 합니다.
       (stat.h에 매크로 정의된 S_ISLINK 와 같은 방법을 사용합니다.) This
       0을 반환하거나 실패시 FALSE를 반환합니다.
@@ -2015,7 +2015,7 @@ $fp = popen ("/bin/ls", "r");
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Readlink</function>는 C에서의 readlink 함수와 같은 일을 수행합니다. symbolic link의 경로를 반환하거나 실패시 0 을 반환합니다.
+				<function>readlink</function>는 C에서의 readlink 함수와 같은 일을 수행합니다. symbolic link의 경로를 반환하거나 실패시 0 을 반환합니다.
     </para>
 			<para>
      참조<function>symlink</function>,
@@ -2324,7 +2324,7 @@ $real_path = realpath ("../../index.php");
      새로운 임시 파일이름이나 널 문자열을 반환합니다.
      <example>
 					<title>
-						<function>Tempnam</function>예문</title>
+						<function>tempnam</function>예문</title>
 					<programlisting role="php">
 $tmpfname = tempnam ("/tmp", "FOO");
       </programlisting>
@@ -2398,7 +2398,7 @@ $tmpfname = tempnam ("/tmp", "FOO");
      성공하면 true 를 반환하고 그렇지 않으면 false를 반환합니다.
      <example>
 					<title>
-						<function>Touch</function>예문</title>
+						<function>touch</function>예문</title>
 					<programlisting role="php">
 if (touch ($FileName)) {
     print "$FileName 은 오늘 날짜와 시간으로 변경되었습니다.";
@@ -2426,10 +2426,10 @@ if (touch ($FileName)) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Umask</function>는 PHP의 umask를 mask &amp; 0777로 바꾸고 이전의 umask를 반환합니다. PHP가 서버 모듈로 사용될 때 umask는 매 요청(request)가 끝날때 마다 저장이 됩니다.
+				<function>umask</function>는 PHP의 umask를 mask &amp; 0777로 바꾸고 이전의 umask를 반환합니다. PHP가 서버 모듈로 사용될 때 umask는 매 요청(request)가 끝날때 마다 저장이 됩니다.
     </para>
 			<para>
-				인수가 없는 <function>Umask</function>는 단순히 현재의 umask를 반환합니다.
+				인수가 없는 <function>umask</function>는 단순히 현재의 umask를 반환합니다.
     </para>
 			<note>
 				<simpara>

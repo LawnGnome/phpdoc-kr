@@ -9,7 +9,7 @@
 	<simpara>
 	PHP를 사용한 HTTP 인증은 Apache 모듈로 사용될 때만 동작한다. 
 	CGI 버젼에서는 이 기능을 사용할 수 없다.
-	Apache 모듈의 PHP 스크립트에서 <function>Header</function>라는 함수를 사용하면 
+	Apache 모듈의 PHP 스크립트에서 <function>header</function>라는 함수를 사용하면 
 	Client 브라우저에게 Username과 Password를 입력받는 윈도우를 띄우도록 하는 
 	"인증 요구"("Authentication Required") 메시지를 보낼 수 있다. 
 	일단 사용자가 Username과 Password를 입력하면, 
@@ -17,7 +17,7 @@
 	$PHP_AUTH_USER, $PHP_AUTH_PW, $PHP_AUTH_TYPE의 3개의 변수를 가지고 
 	해당 URL(PHP 스크립트를 포함한)이 다시 불리워진다. 
 	현재 authentication type은 "Basic"만이 지원된다.
-	자세한 사용법은 <function>Header</function> 함수를 살펴 보자.</simpara>
+	자세한 사용법은 <function>header</function> 함수를 살펴 보자.</simpara>
 	<para>
 	client authentication을 사용하여 그 입력된 값을 출력하는 예제가 아래에 있다. : 
    <example>

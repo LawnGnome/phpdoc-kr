@@ -22,7 +22,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Header</function> 함수는 <acronym>HTML</acronym> 파일 상단에 <acronym>HTTP</acronym> 헤더 문자열을 전송한다. 
+				<function>header</function> 함수는 <acronym>HTML</acronym> 파일 상단에 <acronym>HTTP</acronym> 헤더 문자열을 전송한다. 
 				HTTP 헤더에 대한 자세한 정보는 <ulink url="&spec.http1.1;">HTTP 1.1 Specification</ulink> 를 참조하기 바란다.
                </para>
 			<para>     
@@ -144,7 +144,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Setcookie</function> 함수는 쿠키를 설정하기 위해 쓰인다. 쿠키는 다른 어떠한 헤더보다도 <emphasis>먼저</emphasis> 전송되어야 한다. 
+				<function>setcookie</function> 함수는 쿠키를 설정하기 위해 쓰인다. 쿠키는 다른 어떠한 헤더보다도 <emphasis>먼저</emphasis> 전송되어야 한다. 
 				(이것은 PHP와는 상관없는 쿠키 자체의 제약이다) 즉, 이 함수를 쓰기 위해서는 <literal>&lt;html></literal> 이나 <literal>&lt;head></literal> 내부에 오는 
 				어떠한 태그들 보다 먼저 호출되어야 하는 것이다.    
 		     </para>
@@ -179,7 +179,7 @@
                  아래는 쿠키를 전송하는 예제이다:     
                  <example>
 					<title>
-						<function>Setcookie</function> send examples</title>
+						<function>setcookie</function> send examples</title>
 					<programlisting role="php">
                            setcookie ("TestCookie", "Test Value");
                            setcookie ("TestCookie", $value,time()+3600);  /* 만료시기를 1시간 후로 설정 */

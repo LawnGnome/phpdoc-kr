@@ -373,7 +373,7 @@
     </para>
 
     <example>
-     <title><function>Mysql_db_name</function> 예제</title>
+     <title><function>mysql_db_name</function> 예제</title>
      <programlisting role="php">
 &lt;?php 
 error_reporting(E_ALL);
@@ -614,7 +614,7 @@ select t1.f1 as foo t2.f1 as bar from t1, t2
      참조: <function>mysql_fetch_row</function>, <function>mysql_fetch_assoc</function>.
     </para>
     <example>
-     <title><function>Mysql_fetch_array</function></title>
+     <title><function>mysql_fetch_array</function></title>
      <programlisting role="php">
 &lt;?php 
 mysql_connect ($host, $user, $password);
@@ -672,7 +672,7 @@ mysql_free_result ($result);
      참조: <function>mysql_fetch_row</function>, <function>mysql_fetch_array</function>.
     </para>
     <example>
-     <title><function>Mysql_fetch_assoc</function></title>
+     <title><function>mysql_fetch_assoc</function></title>
      <programlisting role="php">
 &lt;?php 
 mysql_connect ($host, $user, $password);
@@ -784,7 +784,7 @@ mysql_free_result ($result);
 			</para>
 			<example>
 				<title>
-					<function>Mysql_fetch_field</function>
+					<function>mysql_fetch_field</function>
 				</title>
 				<programlisting role="php">
 &lt;?php 
@@ -1780,7 +1780,7 @@ field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이�
 <function>mysql_num_rows</function> 함수는 결과 포인터에서 테이블 개수를 얻는데 사용된다.
      <example>
 					<title>
-						<function>Mysql_tablename</function> 예제</title>
+						<function>mysql_tablename</function> 예제</title>
 					<programlisting role="php">
 &lt;?php 
 mysql_connect ("localhost:3306");

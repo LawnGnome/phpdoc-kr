@@ -139,12 +139,12 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_cmdtuples</function> 는 INSERT, UPDATE, DELETE 쿼리에 의해 영향을 
+				<function>pg_cmdtuples</function> 는 INSERT, UPDATE, DELETE 쿼리에 의해 영향을 
 				받은 튜플(tuples 혹은 instances)의 갯수를 돌려준다. 만약 영향을 받은 튜플이 없다면
 				0을 돌려준다.
      <example>
 					<title>
-						<function>Pg_cmdtuples</function>
+						<function>pg_cmdtuples</function>
 					</title>
 					<programlisting role="php">
 &lt;?php
@@ -596,7 +596,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_fieldname</function> 함수는 인수로 주어진 결과지시자가 가리키는
+				<function>pg_fieldname</function> 함수는 인수로 주어진 결과지시자가 가리키는
 				컬럼번호에 해당하는 이름을 돌려준다. 필드번호는 0부터 매겨진다.
 		    </para>
 		</refsect1>
@@ -619,7 +619,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_fieldnum</function> will return the number of the
+				<function>pg_fieldnum</function> will return the number of the
      column slot that corresponds to the named field in the given
      PosgreSQL result identifier.  Field numbering starts at 0.  This
      function will return -1 on error.
@@ -646,7 +646,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_fieldprtlen</function> will return the actual
+				<function>pg_fieldprtlen</function> will return the actual
      printed length (number of characters) of a specific value in a
      PostgreSQL result.  Row numbering starts at 0.  This function
      will return -1 on an error.
@@ -673,7 +673,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_fieldsize</function> will return the internal
+				<function>pg_fieldsize</function> will return the internal
      storage size (in bytes) of the field number in the given
      PostgreSQL result. Field numbering starts at 0. A field size of
      -1 indicates a variable length field. This function will return
@@ -701,7 +701,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_fieldtype</function> 함수는 PostgreSQL 결과지시자가
+				<function>pg_fieldtype</function> 함수는 PostgreSQL 결과지시자가
 				가리키는 필드의 데이터형을 돌려준다. 필드번호는 0부터 매겨진다.
 	    </para>
 		</refsect1>
@@ -722,7 +722,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_freeresult</function> 함수는 여러분의 스크립트가 실행되고 있을때
+				<function>pg_freeresult</function> 함수는 여러분의 스크립트가 실행되고 있을때
 				너무 많은 메모리 공간을 사용한다고 판단될 경우 쓰일 수 있다. 실행 결과값을 담아두고
 				있는 모든 메모리는 스크립트의 실행이 끝났을때 자동적으로 비워지지만 만약 그 메모리에
 				저장된 결과값이 더이상 필요없다고 확신할 경우 그것에 해당하는 결과지시자를 인수로 넣어
@@ -746,7 +746,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_getlastoid</function> can be used to retrieve the
+				<function>pg_getlastoid</function> can be used to retrieve the
      <varname>oid</varname> assigned to an inserted tuple if the
      result identifier is used from the last command sent via
      <function>pg_exec</function> and was an SQL INSERT.  This
@@ -775,7 +775,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_host</function> 함수는 인수로 주어진 PostgreSQL 접속지시자에
+				<function>pg_host</function> 함수는 인수로 주어진 PostgreSQL 접속지시자에
 				해당하는 호스트의 이름을 돌려준다.
 		    </para>
 		</refsect1>
@@ -796,7 +796,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_loclose</function> closes an Inversion Large
+				<function>pg_loclose</function> closes an Inversion Large
      Object. <parameter>Fd</parameter> is a file descriptor for the
      large object from <function>pg_loopen</function>.
     </para>
@@ -818,7 +818,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_locreate</function> creates an Inversion Large
+				<function>pg_locreate</function> creates an Inversion Large
      Object and returns the <varname>oid</varname> of the large
      object.  <parameter>conn</parameter> specifies a valid database
      connection.  PostgreSQL access modes INV_READ, INV_WRITE, and
@@ -912,7 +912,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_loopen</function> open an Inversion Large Object and
+				<function>pg_loopen</function> open an Inversion Large Object and
      returns file descriptor of the large object. The file descriptor
      encapsulates information about the connection. Do not close the
      connection before closing the large object file descriptor.
@@ -966,7 +966,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_loreadall</function> reads a large object and
+				<function>pg_loreadall</function> reads a large object and
      passes it straight through to the browser after sending all pending
      headers. Mainly intended for sending binary data like images or sound.
     </para>
@@ -990,7 +990,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_lounlink</function> deletes a large object with the
+				<function>pg_lounlink</function> deletes a large object with the
      <parameter>lobjid</parameter> identifier for that large object.
     </para>
 		</refsect1>
@@ -1013,7 +1013,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_lowrite</function> writes at most to a large object
+				<function>pg_lowrite</function> writes at most to a large object
      from a variable <parameter>buf</parameter> and returns the number
      of bytes actually written, or false in the case of an error.
      <parameter>fd</parameter> is a file descriptor for the large
@@ -1037,7 +1037,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_numfields</function> will return the number of
+				<function>pg_numfields</function> will return the number of
      fields (columns) in a PostgreSQL result.  The argument is a valid
      result identifier returned by <function>pg_exec</function>. This
      function will return -1 on error.
@@ -1060,7 +1060,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_numrows</function> will return the number of rows in a
+				<function>pg_numrows</function> will return the number of rows in a
      PostgreSQL result.  The argument is a valid result identifier
      returned by <function>pg_exec</function>. This function will
      return -1 on error.
@@ -1083,7 +1083,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_options</function> will return a string containing
+				<function>pg_options</function> will return a string containing
      the options specified on the given PostgreSQL connection
      identifier.
     </para>
@@ -1148,7 +1148,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_port</function> will return the port number that the
+				<function>pg_port</function> will return the port number that the
      given PostgreSQL connection identifier is connected to.
     </para>
 		</refsect1>
@@ -1227,7 +1227,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_result</function> will return values from a result
+				<function>pg_result</function> will return values from a result
      identifier produced by <function>pg_Exec</function>.  The
      <parameter>row_number</parameter> and
      <parameter>fieldname</parameter> sepcify what cell in the table
@@ -1406,7 +1406,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Pg_tty</function> will return the tty name that server
+				<function>pg_tty</function> will return the tty name that server
      side debugging output is sent to on the given PostgreSQL
      connection identifier.
     </para>

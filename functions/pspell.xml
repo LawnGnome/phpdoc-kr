@@ -29,7 +29,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_add_to_personal</function> 함수는 사용자 단어목록에 단어를 추가합니다.
+				<function>pspell_add_to_personal</function> 함수는 사용자 단어목록에 단어를 추가합니다.
 				 만약 사전을 열때<function>pspell_new_config</function> 함수와 <function>pspell_config_personal</function> 함수를 사용하면
 				나중에 <function>pspell_save_wordlist</function>함수를 사용해서
 				단어목록을 저장할 수 있습니다.
@@ -38,7 +38,7 @@
 			<para>
 				<example>
 					<title>
-						<function>Pspell_add_to_personal</function>
+						<function>pspell_add_to_personal</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -71,7 +71,7 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_add_to_session</function> 함수는 현재 세션의 단어목록에 단어를 추가합니다.
+				<function>pspell_add_to_session</function> 함수는 현재 세션의 단어목록에 단어를 추가합니다.
 				 이것은 <function>pspell_add_to_personal</function>함수와 매우 비슷합니다</simpara>
 		</refsect1>
 	</refentry>
@@ -93,13 +93,13 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_check</function> 함수는 단어의 철자를 검사하고 올바를 경우 true, 틀릴경우 false를
+				<function>pspell_check</function> 함수는 단어의 철자를 검사하고 올바를 경우 true, 틀릴경우 false를
 				 반환합니다.
     </simpara>
 			<para>
 				<example>
 					<title>
-						<function>Pspell_check</function>
+						<function>pspell_check</function>
 					</title>
 					<programlisting role="php">
 $pspell_link = pspell_new ("en");
@@ -130,7 +130,7 @@ if (pspell_check ($pspell_link, "testt")) {
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_clear_session</function>함수는 현재 연결된 세션을 제거합니다.
+				<function>pspell_clear_session</function>함수는 현재 연결된 세션을 제거합니다.
 				 현재 단어목록은 비워집니다. 
 				 예를들어 <function>pspell_save_wordlist</function>함수를 사용해서 단어목록에 저장할려고 하면
 				 아무일도 생기지 않습니다.
@@ -138,7 +138,7 @@ if (pspell_check ($pspell_link, "testt")) {
 			<para>
 				<example>
 					<title>
-						<function>Pspell_add_to_personal</function>
+						<function>pspell_add_to_personal</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -184,7 +184,7 @@ pspell_save_wordlist ($pspell_link);	//"Vlad" will not be saved
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_create</function> 함수는 
+				<function>pspell_config_create</function> 함수는 
 	 <function>pspell_new</function>함수와 매우비슷한 문법입니다.
 	 사실 <function>pspell_new_config</function>함수를 사용한 이후에	 <function>pspell_config_create</function>함수를 사용하게 되면
 	  동일한 결과를 나타낼 것입니다. 향상된 기능을 사용하기 위해서는 새로운 설정을
@@ -235,7 +235,7 @@ pspell_save_wordlist ($pspell_link);	//"Vlad" will not be saved
 			<para>
 				<example>
 					<title>
-						<function>Pspell_config_create</function>
+						<function>pspell_config_create</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -265,13 +265,13 @@ $pspell_link = pspell_new_personal (pspell_config);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_ignore</function> 함수는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
+				<function>pspell_config_ignore</function> 함수는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
 				 합니다. 이 함수는 문자길이가 n보다 작은 단어는 검사하지 않고 무시합니다.
     </simpara>
 			<para>
 				<example>
 					<title>
-						<function>Pspell_config_ignore</function>
+						<function>pspell_config_ignore</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -301,7 +301,7 @@ pspell_check($pspell_link, "abcd");	//will not result in an error
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_mode</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
+				<function>pspell_config_mode</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
 				 합니다. 이 함수는  <function>pspell_suggest</function>함수에 의해 반환되는 추천 단어의 수를 결정합니다.
 	</simpara>
 			<para>
@@ -328,7 +328,7 @@ pspell_check($pspell_link, "abcd");	//will not result in an error
 			<para>
 				<example>
 					<title>
-						<function>Pspell_config_mode</function>
+						<function>pspell_config_mode</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -358,7 +358,7 @@ pspell_check($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_personal</function>는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
+				<function>pspell_config_personal</function>는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
 				사용자 단어목록은 읽혀지고 <function>pspell_new_config</function>함수를 호출한 후에 표준 단어목록에
 				 추가적으로 사용됩니다. 파일이 존재하지 않을경우  생성됩니다.
 				 파일은 <function>pspell_save_wordlist</function>함수에서 사용자 단어목록을 저장하는 파일이기도 합니다.
@@ -368,7 +368,7 @@ pspell_check($pspell_link, "thecat");
 			<para>
 				<example>
 					<title>
-						<function>Pspell_config_personal</function>
+						<function>pspell_config_personal</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -398,7 +398,7 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
+				<function>pspell_config_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
 				 교정내용은 단어검사기의 질적 성능을 향상시킵니다. 단어의 철자가 틀리고 목록에서 적당한
 				 추천단어를 찾지 못했을 경우,<function>pspell_store_replacement</function>함수는 교정목록을 저장하고
 				<function>pspell_save_wordlist</function>함수는 교정목록을 포함한 단어목록을 저장하는데 사용할 수 
@@ -408,7 +408,7 @@ pspell_check ($pspell_link, "thecat");
 			<para>
 				<example>
 					<title>
-						<function>Pspell_config_repl</function>
+						<function>pspell_config_repl</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -439,7 +439,7 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_runtogether</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에
+				<function>pspell_config_runtogether</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에
 				 설정되어야 합니다. 이 함수는 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.
 				  즉, 말하자면 두 단어 사이에 공백(space)이 있어야 할지라도 "thecat"은 정당한 합성어가 됩니다.
 				 이 설정을 바꾸면 <function>pspell_check</function>함수에 의해 반환되는 결과값에만 영향을 미칩니다.
@@ -448,7 +448,7 @@ pspell_check ($pspell_link, "thecat");
 			<para>
 				<example>
 					<title>
-						<function>Pspell_config_runtogether</function>
+						<function>pspell_config_runtogether</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -478,7 +478,7 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_config_save_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
+				<function>pspell_config_save_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
 				 합니다. 이 함수는<function>pspell_save_wordlist</function>함수가 교정내용목록을 단어목록과 같이
 				 저장할지를 결정합니다. 일반적으로 이 함수는 사용할 필요가 없습니다. 만약<function>pspell_config_repl</function>함수를 사용했을 경우, 교정내용은
 				<function>pspell_save_wordlist</function>함수에 의해 자동으로 저장이 되기 때문입니다.
@@ -522,7 +522,7 @@ pspell_check ($pspell_link, "thecat");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_new</function>함수는 새 사전을 열고 다른 pspell함수에서 사용할수 있도록
+				<function>pspell_new</function>함수는 새 사전을 열고 다른 pspell함수에서 사용할수 있도록
 				사전 연결 identifier를 반환합니다.
     </simpara>
 			<para>
@@ -580,7 +580,7 @@ pspell_check ($pspell_link, "thecat");
 			<para>
 				<example>
 					<title>
-						<function>Pspell_new</function>
+						<function>pspell_new</function>
 					</title>
 					<programlisting role="php">
 $pspell_link = pspell_new ("en", "", "", "", 
@@ -606,7 +606,7 @@ $pspell_link = pspell_new ("en", "", "", "",
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_new_config</function>함수는 <function>pspell_config_create</function>함수에 의해서 생성되고,
+				<function>pspell_new_config</function>함수는 <function>pspell_config_create</function>함수에 의해서 생성되고,
 				<function>pspell_config_*</function>함수로 수정된 설정을 사용해서 새 사전을 엽니다. 이 방법은
 				가장 융통성이 있고,<function>pspell_new</function>함수와 <function>pspell_new_personal</function>함수에 의해 제공되는
 				 모든 기능을 을 제공합니다.
@@ -617,7 +617,7 @@ $pspell_link = pspell_new ("en", "", "", "",
 			<para>
 				<example>
 					<title>
-						<function>Pspell_new_config</function>
+						<function>pspell_new_config</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -667,7 +667,7 @@ $pspell_link = pspell_new_personal (pspell_config);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_new_personal</function>함수는 사용자 단어목록으로 새 사전을 열고 다른 pspell 함수에서
+				<function>pspell_new_personal</function>함수는 사용자 단어목록으로 새 사전을 열고 다른 pspell 함수에서
 				 사용하기위한 사전열기 identifier를 반환합니다. 원할경우, 단어목록은
 				<function>pspell_save_wordlist</function>함수에 의해 수정되고 저장될수 있습니다.
 				 교정목록이 저장되지 않았더라도, 교정목록을 저장하기 위해서는 
@@ -737,7 +737,7 @@ $pspell_link = pspell_new_personal (pspell_config);
 			<para>
 				<example>
 					<title>
-						<function>Pspell_new_personal</function>
+						<function>pspell_new_personal</function>
 					</title>
 					<programlisting role="php">
 $pspell_link = pspell_new_personal ("/var/dictionaries/custom.pws", 
@@ -763,7 +763,7 @@ $pspell_link = pspell_new_personal ("/var/dictionaries/custom.pws",
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_save_wordlist</function>함수는 현재 세션의 사용자 단어목록을 저장합니다.
+				<function>pspell_save_wordlist</function>함수는 현재 세션의 사용자 단어목록을 저장합니다.
 				 사전은 <function>pspell_new_personal</function>함수를 사용해서 열고, 저장된 
 				파일의 위치는 <function>pspell_config_personal</function>함수를 사용해서 지정되어야 하고, 
 				선택적으로<function>pspell_config_repl</function>함수를 사용할수 있습니다. 
@@ -772,7 +772,7 @@ $pspell_link = pspell_new_personal ("/var/dictionaries/custom.pws",
 			<para>
 				<example>
 					<title>
-						<function>Pspell_add_to_personal</function>
+						<function>pspell_add_to_personal</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -806,7 +806,7 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_store_replacement</function>함수는 단어의 교정목록을 저장합니다.
+				<function>pspell_store_replacement</function>함수는 단어의 교정목록을 저장합니다.
 				 나중에 <function>pspell_suggest</function>함수를 사용해서  교정내용을 반환할 수 있습니다.
 				 이 함수를 사용할 수 있게 하기 위해서 사전을 열때 <function>pspell_new_personal</function>함수를
 				 사용해야 합니다. 교정목록을 영구적으로 저장하기위해서는 
@@ -818,7 +818,7 @@ pspell_save_wordlist ($pspell_link);
 			<para>
 				<example>
 					<title>
-						<function>Pspell_store_replacement</function>
+						<function>pspell_store_replacement</function>
 					</title>
 					<programlisting role="php">
 $pspell_config = pspell_config_create ("en");
@@ -851,12 +851,12 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Pspell_suggest</function>함수는 주어진 단어에 대한 가능한 철자를 배열형으로 반환합니다. 
+				<function>pspell_suggest</function>함수는 주어진 단어에 대한 가능한 철자를 배열형으로 반환합니다. 
     </simpara>
 			<para>
 				<example>
 					<title>
-						<function>Pspell_suggest</function>
+						<function>pspell_suggest</function>
 					</title>
 					<programlisting role="php">
 $pspell_link = pspell_new ("en");

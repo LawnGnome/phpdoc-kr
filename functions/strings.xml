@@ -34,7 +34,7 @@
 			"\0..\37"과 같이 특별한 범위를 <parameter>charlist</parameter>에서 지정할 수 있으며, 이는 ASCII 코드 0과 31 사이의 모든 문자를 이스케이프 할 것이다.
      <example>
 					<title>
-						<function>Addcslashes</function>의 예</title>
+						<function>addcslashes</function>의 예</title>
 					<programlisting role="php">
 $escaped = addcslashes ($not_escaped, "\0..\37!@\177..\377");
       </programlisting>
@@ -102,7 +102,7 @@ $escaped = addcslashes ($not_escaped, "\0..\37!@\177..\377");
 	</refentry>
 	<refentry id="function.chop">
 		<refnamediv>
-			<refname>Chop</refname>
+			<refname>chop</refname>
 			<refpurpose>뒤부분의 공백을 제거한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -119,7 +119,7 @@ $escaped = addcslashes ($not_escaped, "\0..\37!@\177..\377");
 			뉴라인(newline)을 포함하는 뒷부분의 공백을 제거한 문자열을 반환한다.
      <example>
 					<title>
-						<function>Chop</function>의 예</title>
+						<function>chop</function>의 예</title>
 					<programlisting role="php">
 $trimmed = chop ($line);
       </programlisting>
@@ -138,7 +138,7 @@ $trimmed = chop ($line);
 	</refentry>
 	<refentry id="function.chr">
 		<refnamediv>
-			<refname>Chr</refname>
+			<refname>chr</refname>
 			<refpurpose>특정 문자를 반환한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -155,7 +155,7 @@ $trimmed = chop ($line);
 				<parameter>ascii</parameter>에 의해 정의된 문자를 나타내는 문자를 반환한다.
      <example>
 					<title>
-						<function>Chr</function> 의 예</title>
+						<function>chr</function> 의 예</title>
 					<programlisting role="php">
 $str .= chr (27); /* $str 의 끝에 에스케이프 문자를 추가한다. */
 
@@ -203,7 +203,7 @@ $str = sprintf ("The string ends in escape: %c", 27);
      new string leaving the original string untouched.
      <example>
 					<title>
-						<function>Chunk_split</function> example</title>
+						<function>chunk_split</function> example</title>
 					<programlisting role="php">
 # format $data using RFC 2045 semantics
 
@@ -463,10 +463,10 @@ $new_string = chunk_split (base64_encode($data));
      무돈 인수를 출력한다.
     </simpara>
 			<para>
-				<function>Echo</function> 는 실제로 함수가 아니다(이는 하나의 랭귀지 스트럭쳐이다.) 따라서 이 함수와 함께 parantheses 를 사용할 필요가 없다.  
+				<function>echo</function> 는 실제로 함수가 아니다(이는 하나의 랭귀지 스트럭쳐이다.) 따라서 이 함수와 함께 parantheses 를 사용할 필요가 없다.  
      <example>
 					<title>
-						<function>Echo</function> 예</title>
+						<function>echo</function> 예</title>
 					<programlisting role="php">
 echo "Hello World";
 
@@ -526,7 +526,7 @@ echo "This spans\nmultiple lines. The newlines will be\noutput as well.";
 			<para>
 				<example>
 					<title>
-						<function>Explode</function> 예</title>
+						<function>explode</function> 예</title>
 					<programlisting role="php">
 $pizza = "piece1 piece2 piece3 piece4 piece5 piece6";
 $pieces = explode (" ", $pizza);
@@ -855,7 +855,7 @@ $new = htmlspecialchars("&lt;a href='test'&gt;Test&lt;/a&gt;", ENT_QUOTES);
 	각각의 배열 요소 사이에 스트링을 포함하는 문자열을 반환한다.
      <example>
 					<title>
-						<function>Implode</function> example</title>
+						<function>implode</function> example</title>
 					<programlisting role="php">
 $colon_separated = implode (":", $array);
       </programlisting>
@@ -1091,7 +1091,7 @@ $colon_separated = implode (":", $array);
 	</refentry>
 	<refentry id="function.metaphone">
 		<refnamediv>
-			<refname>Metaphone</refname>
+			<refname>metaphone</refname>
 			<refpurpose>문자열의 메타폰 키(metaphone key) 를 계산한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -1150,7 +1150,7 @@ $colon_separated = implode (":", $array);
 	</refentry>
 	<refentry id="function.ord">
 		<refnamediv>
-			<refname>Ord</refname>
+			<refname>ord</refname>
 			<refpurpose>문자의 ASCII 값을 반환한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -1168,7 +1168,7 @@ $colon_separated = implode (":", $array);
 	이 함수는 <function>chr</function>을 보충한다. 
      <example>
 					<title>
-						<function>Ord</function> 예</title>
+						<function>ord</function> 예</title>
 					<programlisting role="php">
 if (ord ($str) == 10) {
     echo "The first character of \$str is a line feed.\n";
@@ -1383,14 +1383,14 @@ $trimmed = rtrim ($line);
 			</funcsynopsis>
 			<para>
 				<function>sscanf</function> 함수는 <function>printf</function>의 입력 유사성을 가진다.
-	<function>Sscanf</function>sms <parameter>str</parameter> 문자열로 부터 입력을 읽어 
+	<function>sscanf</function>sms <parameter>str</parameter> 문자열로 부터 입력을 읽어 
 	특정한 <parameter>format</parameter> 에 따라 인터럽트한다.
-	 - <function>Sscanf</function> reads from the string <parameter>str</parameter> 
+	 - <function>sscanf</function> reads from the string <parameter>str</parameter> 
 	and interprets it according to the specified <parameter>format</parameter>. 
 	만약 두개의 매개변수만이 이 함수로 전달된다면, 파싱된 값은 배열로서 반환된다.	
 	 <example>
 					<title>
-						<function>Sscanf</function> 예</title>
+						<function>sscanf</function> 예</title>
 					<programlisting role="php">
 // 시리얼 번호를 얻는다.
 $serial = sscanf("SN/2350001","SN/%d");
@@ -1404,7 +1404,7 @@ echo "Item $serial was manufactured on: $year-".substr($month,0,3)."-$day\n";
 	선택적인 매개변수는 반드시 참조에 의해 전달되어야 한다.
  <example>
 					<title>
-						<function>Sscanf</function> - 선택적인 매개변수 사용하기</title>
+						<function>sscanf</function> - 선택적인 매개변수 사용하기</title>
 					<programlisting role="php">
 // 작가 정보를 얻고 DocBook의 인트리를 활성화한다.
 $auth = "24\tLewis Carroll";
@@ -1681,14 +1681,14 @@ soundex ("Lukasiewicz") == soundex ("Lissajous") == 'L222';
 			<para>
 				<example>
 					<title>
-						<function>Sprintf</function>: 0으로 채워진 정수</title>
+						<function>sprintf</function>: 0으로 채워진 정수</title>
 					<programlisting role="php">
 $isodate = sprintf ("%04d-%02d-%02d", $year, $month, $day);
       </programlisting>
 				</example>
 				<example>
 					<title>
-						<function>Sprintf</function>: 통화의 포맷</title>
+						<function>sprintf</function>: 통화의 포맷</title>
 					<programlisting role="php">
 $money1 = 68.75;
 $money2 = 54.35;
@@ -2351,7 +2351,7 @@ if (is_string ($pos) &amp;&amp; !$pos) {
 	숫자로 변환되어 문자의 서열값(ordinal value) 로서 적용된다.
      <example>
 					<title>
-						<function>Strrchr</function> 예</title>
+						<function>strrchr</function> 예</title>
 					<programlisting role="php">
 // $PATH 안에서 마지막 디렉토리를 얻는다.
 $dir = substr (strrchr ($PATH, ":"), 1);
@@ -2391,7 +2391,7 @@ $last = substr (strrchr ($text, 10), 1 );
     </para>
 			<example>
 				<title>
-					<function>Str_repeat</function> 예</title>
+					<function>str_repeat</function> 예</title>
 				<programlisting role="php">
 echo str_repeat ("-=", 10);
      </programlisting>
@@ -2565,7 +2565,7 @@ strspn ("42 is the answer, what is the question ...", "1234567890");
 			<para>
 				<example>
 					<title>
-						<function>Strstr</function> 예</title>
+						<function>strstr</function> 예</title>
 					<programlisting role="php">
 $email = 'sterling@designmultimedia.com';
 $domain = strstr ($email, '@');
@@ -2603,7 +2603,7 @@ print $domain; // prints @designmultimedia.com
 	 토큰으로 공백 문자를 사용하여 이 문자열을 가각의 단어를 토큰화 할 수 있다.
      <example>
 					<title>
-						<function>Strtok</function> 예</title>
+						<function>strtok</function> 예</title>
 					<programlisting role="php">
 $string = "This is an example string";
 $tok = strtok ($string," ");
@@ -2657,7 +2657,7 @@ while ($tok) {
     </para>
 			<example>
 				<title>
-					<function>Strtolower</function> 예</title>
+					<function>strtolower</function> 예</title>
 				<programlisting role="php">
 $str = "Mary Had A Little Lamb and She LOVED It So";
 $str = strtolower($str);	
@@ -2694,7 +2694,7 @@ print $str; #  mary had a little lamb and she loved it so 를 출력한다.
     </para>
 			<example>
 				<title>
-					<function>Strtoupper</function> 예</title>
+					<function>strtoupper</function> 예</title>
 				<programlisting role="php">
 $str = "Mary Had A Little Lamb and She LOVED It So";
 $str = strtoupper ($str);	
@@ -2739,7 +2739,7 @@ print $str; #  MARY HAD A LITTLE LAMB AND SHE LOVED IT SO 을 출력한다.
 			<para>
 				<example>
 					<title>
-						<function>Str_replace</function> 예</title>
+						<function>str_replace</function> 예</title>
 					<programlisting role="php">
 $bodytag = str_replace ("%body%", "black", "&lt;body text=%body%>");
       </programlisting>
@@ -2750,7 +2750,7 @@ $bodytag = str_replace ("%body%", "black", "&lt;body text=%body%>");
     </para>
 			<note>
 				<para>
-					<function>Str_replace</function>는   PHP 3.0.6,에서 추가되었지만, 
+					<function>str_replace</function>는   PHP 3.0.6,에서 추가되었지만, 
 					 PHP 3.0.8 에 버그가 수정되었다.
      </para>
 			</note>
@@ -2788,7 +2788,7 @@ $bodytag = str_replace ("%body%", "black", "&lt;body text=%body%>");
 	다른 길이일 때 둘 중 긴 문자열의 나머지 문자들은 무시된다.
      <example>
 					<title>
-						<function>Strtr</function> 예</title>
+						<function>strtr</function> 예</title>
 					<programlisting role="php">
 $addr = strtr($addr, "妶", "aao");
       </programlisting>
@@ -2991,7 +2991,7 @@ print substr_count("This is a test", "is"); // 2를 출력한다.
 			<para>
 				<example>
 					<title>
-						<function>Substr_replace</function> 예</title>
+						<function>substr_replace</function> 예</title>
 					<programlisting role="php">
 &lt;?php
 $var = 'ABCDEFGH:/MNRPQR/';
@@ -3020,7 +3020,7 @@ echo substr_replace ($var, '', 10, -1) . "&lt;br&gt;\n";
     </para>
 			<note>
 				<simpara>
-					<function>Substr_replace</function> 는 PHP 4.0에서 추가되었다.
+					<function>substr_replace</function> 는 PHP 4.0에서 추가되었다.
      </simpara>
 			</note>
 		</refsect1>
@@ -3076,7 +3076,7 @@ echo substr_replace ($var, '', 10, -1) . "&lt;br&gt;\n";
 	umlaut-a(⧠  같은 문자는 바뀌지 않는다.
      <example>
 					<title>
-						<function>Ucfirst</function> 예</title>
+						<function>ucfirst</function> 예</title>
 					<programlisting role="php">    
 $text = 'mary had a little lamb and she loved it so.';
 $text = ucfirst ($text); // $text 는 Mary had a little lamb 

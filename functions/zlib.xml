@@ -276,10 +276,10 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
      as in "wb1h". (strategy parameter에 관한 보다 많은 정보를 원한다면 the description of deflateInit2 in zlib.h보라.)
     </para>
 			<para>
-				<function>Gzopen</function>은 gzip 포멧이 아닌 파일을 읽는데 사용될 수 있다.; 이 경우 <function>gzread</function>로 압축해제 없이 바로 파일로 부터 읽을 수 있다.
+				<function>gzopen</function>은 gzip 포멧이 아닌 파일을 읽는데 사용될 수 있다.; 이 경우 <function>gzread</function>로 압축해제 없이 바로 파일로 부터 읽을 수 있다.
     </para>
 			<para>
-				<function>Gzopen</function>은 열고자 지정한 파일을 리턴 한다. 그리고는 읽고자 하는 모든것을 압축해제하고, 기록하고 압축할 수 있다.
+				<function>gzopen</function>은 열고자 지정한 파일을 리턴 한다. 그리고는 읽고자 하는 모든것을 압축해제하고, 기록하고 압축할 수 있다.
 				    </para>
 			<para>
      만일 열기에 실패하면 false를 리턴한다.
@@ -290,7 +290,7 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 			<para>
 				<example>
 					<title>
-						<function>Gzopen</function> Example</title>
+						<function>gzopen</function> Example</title>
 					<programlisting role="php">
 $fp = gzopen ("/tmp/file.gz", "r");
       </programlisting>
@@ -355,7 +355,7 @@ $fp = gzopen ("/tmp/file.gz", "r");
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Gzputs</function>은 <function>gzwrite</function>와 모든면에서 동일하다.
+				<function>gzputs</function>은 <function>gzwrite</function>와 모든면에서 동일하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -513,7 +513,7 @@ gzclose ($zd);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>Gzwrite</function>는 <parameter>zp</parameter>에 의해 지정된 .gz파일스트림에 <parameter>string</parameter>을 기록한다.
+				<function>gzwrite</function>는 <parameter>zp</parameter>에 의해 지정된 .gz파일스트림에 <parameter>string</parameter>을 기록한다.
 				만일 <parameter>length</parameter>가 주어지면,  <parameter>length</parameter> (압축되지않은) 바이트마큼 쓰여지거나, <parameter>string</parameter>의 끝에 도달하거나, 혹은 초기화되거나하면 '쓰기'가 중지된다.
     </simpara>
 			<simpara>
@@ -550,7 +550,7 @@ gzclose ($zd);
      파일을 읽고, 압축해제를하고 standard output으로 출력한다.
     </para>
 			<para>
-				<function>Readgzfile</function>은 gzip format이 아니더라도 읽을 수 있다.; 이 경우 <function>readgzfile</function>은 바로 압축해제없이 파일을 읽어들이 수 있다.
+				<function>readgzfile</function>은 gzip format이 아니더라도 읽을 수 있다.; 이 경우 <function>readgzfile</function>은 바로 압축해제없이 파일을 읽어들이 수 있다.
     </para>
 			<para> 
      파일로부터 읽어들인 바이트수(압축되지 않은)를 리턴한다. 만일 에러가 발생하면, -<literal>@readgzfile</literal>라고 불리우는 경우가 아닌한- false를 반환하고, 에러메세지를 출력한다.

@@ -271,7 +271,7 @@
 	a 는 10을 b는 11을 그리고 z는 35에 해당하는 숫자를 나타낸다.
      <example>
 					<title>
-						<function>Base_convert</function>
+						<function>base_convert</function>
 					</title>
 					<programlisting role="php">
 $binary = base_convert ($hexadecimal, 16, 2);
@@ -686,7 +686,7 @@ $x = ceil(4.25);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Min</function>는 매개변수의 값 중 숫자로 표시되는 가장 작은 값을 반환한다.
+				<function>min</function>는 매개변수의 값 중 숫자로 표시되는 가장 작은 값을 반환한다.
     </para>
 			<para>
 	처음 매개변수가 배열이라면, <function>min</function>은
@@ -852,7 +852,7 @@ $randval = mt_rand();
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Number_format</function>은 <parameter>number</parameter>의 정형화된 형테를 반환한다.
+				<function>number_format</function>은 <parameter>number</parameter>의 정형화된 형테를 반환한다.
 	이 함수는 하나, 두개 혹은 네개(세개는 올 수 없다.)의 매개변수를 가질 수 있다.
     </para>
 			<para>

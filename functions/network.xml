@@ -57,7 +57,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Closelog</function>는  정보서술자가 시스템 로그에 기록해 오던 것을 닫습니다.
+				<function>closelog</function>는  정보서술자가 시스템 로그에 기록해 오던 것을 닫습니다.
      <function>closelog</function>를 사용하는 것은 선택사항입니다. 
     </para>
 			<para>
@@ -180,7 +180,7 @@
 	시간초과가 몇 초안에 이루어지도록 설정할 수 있습니다.
     </para>
 			<para>
-				<function>Fsockopen</function>은 다른 파일관련 함수(다음과 같은
+				<function>fsockopen</function>은 다른 파일관련 함수(다음과 같은
      <function>fgets</function>, <function>fgetss</function>,
      <function>fputs</function>, <function>fclose</function> 그리고 <function>feof</function>)
 	와 사용할 수 있는 파일 포인터를 반환합니다.
@@ -204,7 +204,7 @@
 	로 전환할 수 있습니다..
      <example>
 					<title>
-						<function>Fsockopen</function> 예문</title>
+						<function>fsockopen</function> 예문</title>
 					<programlisting role="php">
 $fp = fsockopen ("www.php.net", 80, $errno, $errstr, 30);
 if (!$fp) {
@@ -387,7 +387,7 @@ if (!$fp) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Getprotobyname</function>은 /etc/protocols 각 프로토콜 <parameter>name</parameter>
+				<function>getprotobyname</function>은 /etc/protocols 각 프로토콜 <parameter>name</parameter>
 				과 조합이 된 프로토콜의 번호를 반환합니다.
     </para>
 			<para>
@@ -413,7 +413,7 @@ if (!$fp) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Getprotobynumber</function> 은 /etc/protocols 각 프로토콜 <parameter>number</parameter>
+				<function>getprotobynumber</function> 은 /etc/protocols 각 프로토콜 <parameter>number</parameter>
 				와 조합이 된 프로토콜의 이름을 반환합니다.
     </para>
 			<para>
@@ -441,7 +441,7 @@ if (!$fp) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Getservbyname</function>은 <filename>/etc/services</filename>
+				<function>getservbyname</function>은 <filename>/etc/services</filename>
 	에 정의된 <parameter>protocol</parameter>의 <parameter>service</parameter>에 
 	대응이 되는 인터넷 포트를 반환합니다.
      <parameter>protocol</parameter>은  <literal>TCP</literal> 이거나 <literal>UDP</literal>입니다.
@@ -471,7 +471,7 @@ if (!$fp) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Getservbyport</function>는 /etc/services의 각 <parameter>protocol</parameter>
+				<function>getservbyport</function>는 /etc/services의 각 <parameter>protocol</parameter>
 	에 정의된  <parameter>port</parameter>와 조합이 되는 인터넷 서비스를 반환합니다.
      <parameter>protocol</parameter>은 <literal>TCP</literal>이거나 <literal>UDP</literal>입니다.
     </para>
@@ -501,7 +501,7 @@ if (!$fp) {
 				<function>ip2long</function> 함수는  보통의(점이 찍혀 있는 문자열) 인터넷 표시 형식에서 IPv4 인터넷 네트워크 주소를 생성합니다.
      <example>
 					<title>
-						<function>Ip2long</function> Example</title>
+						<function>ip2long</function> Example</title>
 					<programlisting role="php">
 &lt;?php
 $ip = gethostbyname("www.php.net");
@@ -563,7 +563,7 @@ echo $out;
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Openlog</function>는 프로그램에 사용하는 시스템 로그 기록자에 연결을 열어줍니다. opens a connection to the system
+				<function>openlog</function>는 프로그램에 사용하는 시스템 로그 기록자에 연결을 열어줍니다. opens a connection to the system
      logger for a program.  문자열 <parameter>ident</parameter>는 각각의 메시지에 추가됩니다.
 	<parameter>option</parameter>과 <parameter>facility</parameter>에 대한 값은 아래에 주어집니다.
      <parameter>option</parameter>의 인수는 로그 메시지를 생성할때 어떤 로긴 옵션이 사용되었는지 
@@ -576,7 +576,7 @@ echo $out;
 			<para>
 				<table>
 					<title>
-						<function>Openlog</function> Options</title>
+						<function>openlog</function> Options</title>
 					<tgroup cols="2">
 						<thead>
 							<row>
@@ -622,7 +622,7 @@ echo $out;
 			<para>
 				<table>
 					<title>
-						<function>Openlog</function> Facilities</title>
+						<function>openlog</function> Facilities</title>
 					<tgroup cols="2">
 						<thead>
 							<row>
@@ -890,7 +890,7 @@ if(!$fp) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>Syslog</function>는 시스템 기록자에 의해 배분이 될 로그 메시지를 생성합니다.
+				<function>syslog</function>는 시스템 기록자에 의해 배분이 될 로그 메시지를 생성합니다.
      <parameter>priority</parameter>는 다음 장에서 주어진 값에 대한 난이도와 수준의 조합입니다.
      남겨진 인수는 현재의 <errortype>errno</errortype> 값에 대응이 되는 에러 메시지 문자열(strerror)은 
 	<literal>%m</literal>의 두개 문자로 대치가 되고 나머지는 보내지는 메시지 입니다.
@@ -898,7 +898,7 @@ if(!$fp) {
 			<para>
 				<table>
 					<title>
-						<function>Syslog</function> 우선순위 (역순정렬)</title>
+						<function>syslog</function> 우선순위 (역순정렬)</title>
 					<tgroup cols="2">
 						<thead>
 							<row>

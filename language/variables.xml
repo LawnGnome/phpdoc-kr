@@ -725,7 +725,7 @@ echo "$a $hello";
 	여러분은 cookie를 설정하기 위해 <function>SetCookie</function>함수를 사용할 수 있다. 
 	Cookie는 HTTP 헤더의 한 부분이므로, <function>SetCookie</function> 
 	함수는 브라우저로 보내는 어떤 데이터보다도 앞에 사용해야 한다. 
-	이 제약은 <function>Header</function> 함수와 같은 제약으로 보면 된다. 
+	이 제약은 <function>header</function> 함수와 같은 제약으로 보면 된다. 
 	보낸 모든 cookie는 자동적으로 GET이나 POST 방식 데이터와 같은 PHP 변수로 변환된다. 
 			</simpara>
 			<simpara>

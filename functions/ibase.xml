@@ -83,7 +83,7 @@ magic_quotes_sybase = On
       스크립트의 종료태그를 만나면 곧 닫히게 된다. 
      <example>
 					<title>
-						<function>Ibase_connect</function> example</title>
+						<function>ibase_connect</function> example</title>
 					<programlisting role="php">
 &lt;?php
     $dbh = ibase_connect ($host, $username, $password);
@@ -651,7 +651,7 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
     </para>
 			<note>
 				<para>
-					<function>Ibase_num_fields</function>는 일반적으로 PHP 4에서 작동하지 않는다.
+					<function>ibase_num_fields</function>는 일반적으로 PHP 4에서 작동하지 않는다.
      </para>
 			</note>
 		</refsect1>
