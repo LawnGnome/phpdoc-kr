@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.17 $ -->
-<!-- EN-Revision: 1.100 -->
+<!-- $Revision: 1.18 $ -->
+<!-- EN-Revision: 1.101 -->
  <chapter id="configuration">
   <title>환경 설정</title>
 
@@ -276,7 +276,7 @@ php_admin_value open_basedir none
        <thead>
         <row>
          <entry>이름</entry>
-         <entry>초기값</entry>
+         <entry>기본값</entry>
          <entry>변경가능성</entry>
         </row>
        </thead>
@@ -303,7 +303,7 @@ php_admin_value open_basedir none
      <thead>
       <row>
        <entry>이름</entry>
-       <entry>초기값</entry>
+       <entry>기본값</entry>
        <entry>변경가능성</entry>
       </row>
      </thead>
@@ -342,8 +342,10 @@ php_admin_value open_basedir none
     </tgroup>
    </table>
    </para>
+
+   &ini.descriptions.title;
+
     <para>
-     위 환경 설정 지시자에 대한 간단한 설명입니다.
      <variablelist>
       <varlistentry id="ini.short-open-tag">
        <term>
@@ -463,7 +465,7 @@ php_admin_value open_basedir none
       <thead>
        <row>
         <entry>이름</entry>
-        <entry>초기값</entry>
+        <entry>기본값</entry>
         <entry>변경가능성</entry>
        </row>
       </thead>
@@ -477,8 +479,10 @@ php_admin_value open_basedir none
      </tgroup>
     </table>
    </para>
+
+   &ini.descriptions.title;
+
    <para>
-     위 환경 설정 지시자에 대한 간단한 설명입니다.
     <variablelist>
 
      <varlistentry id="ini.memory-limit">
@@ -513,7 +517,7 @@ php_admin_value open_basedir none
        <thead>
         <row>
          <entry>이름</entry>
-         <entry>초기값</entry>
+         <entry>기본값</entry>
          <entry>변경가능성</entry>
         </row>
        </thead>
@@ -592,8 +596,10 @@ php_admin_value open_basedir none
       </tgroup>
      </table>
     </para>
+
+    &ini.descriptions.title;
+
     <para>
-     위 환경 설정 지시자에 대한 간단한 설명입니다.
      <variablelist>
       <varlistentry id="ini.track-vars">
        <term>
@@ -839,7 +845,7 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Always populate the $HTTP_RAW_POST_DATA variable.
+         항상 $HTTP_RAW_POST_DATA 변수를 선언합니다.
         </para>
        </listitem>
       </varlistentry>
@@ -851,35 +857,33 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Allow handling of WebDAV http requests within PHP scripts (eg.
-         PROPFIND, PROPPATCH, MOVE, COPY, etc..)
-         If you want to get the post data of those requests, you have to
-         set <link linkend="ini.always-populate-raw-post-data">
-         always_populate_raw_post_data</link> as well.
+         PHP 스크립트에서 WebDAV http 요청(즉, PROPFIND, PROPPATCH, MOVE,
+         COPY 등등..)을 핸들링할 수 있게 합니다. 이 요청들로부터
+         포스트 데이터를 얻기 원한다면, <link linkend="ini.always-populate-raw-post-data">
+         always_populate_raw_post_data</link>도 설정해야 합니다.
         </para>
        </listitem>
       </varlistentry>
      </variablelist>
     </para>
     <para>
-     See also: <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>,
+     참고: <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>,
      <link linkend="ini.magic-quotes-runtime">magic-quotes-runtime</link>,
-     and
      <link linkend="ini.magic-quotes-sybase">magic_quotes_sybase</link>.
     </para>
    </sect2>
 
   <sect2 id="ini.sect.path-directory">
-   <title>Paths and Directories</title>
+   <title>경로와 디렉토리</title>
     <para>
      <table>
-      <title>Paths and Directories Configuration Options</title>
+      <title>경로와 디렉토리 환경 설정 옵션</title>
       <tgroup cols="3">
        <thead>
         <row>
-         <entry>Name</entry>
-         <entry>Default</entry>
-         <entry>Changeable</entry>
+         <entry>이름</entry>
+         <entry>기본값</entry>
+         <entry>변경가능성</entry>
         </row>
        </thead>
        <tbody>
@@ -922,8 +926,10 @@ php_admin_value open_basedir none
       </tgroup>
      </table>
     </para>
+
+    &ini.descriptions.title;
+
     <para>
-     Here is a short explanation of the configuration directives.
      <variablelist>
 
       <varlistentry id="ini.include-path">
@@ -1119,6 +1125,9 @@ include_path=".;c:\php\includes"
       </tgroup>
      </table>
     </para>
+
+    &ini.descriptions.title;
+
     <para>
      Here is a short explanation of the configuration directives.
      <variablelist>
@@ -1191,6 +1200,9 @@ include_path=".;c:\php\includes"
       </tgroup>
      </table>
     </para>
+
+    &ini.descriptions.title;
+
     <para>
      Here is a short explanation of the configuration directives.
      <variablelist>
