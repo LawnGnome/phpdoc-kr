@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
+<!-- $Revision: 1.8 $ -->
 <!-- EN-Revision: 1.36 -->
 
  <appendix id="reserved">
@@ -785,7 +785,6 @@
    <sect2 id="reserved.variables.files">
     <title>HTTP File 업로드 변수: <varname>$_FILES</varname></title>
     
-   <sect2 id="reserved.variables.files">
     <note>
      <simpara>
       4.1.0부터 지원됨. 이전 버전에서는
