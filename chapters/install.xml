@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
+<!-- $Revision: 1.11 $ -->
 <chapter id="installation">
     <title>설치(Installation)</title>
 
@@ -3456,9 +3456,9 @@ $ /usr/local/sbin/php4-enable
         <para>
     PHP를 fhttpd 모듈로 만들려면, "Build as an fhttpd module?"의 질문에 
    "yes"로 답하고, fhttpd 소스의 base 디렉토리를 명시해 주면 된다.
-   (configure에서는 <option>
+   (configure에서는 
                 <link linkend="install.configure.with-fhttpd">--with-fhttpd</link>=<replaceable>DIR</replaceable>
-            </option> 옵션을 주면 된다.) 
+             옵션을 주면 된다.) 
     기본 디렉토리는<filename class="directory">/usr/local/src/fhttpd</filename>이다. 
     여러분이 fhttpd를 운영중에 있다면, 모듈 형태로 만들어 실행하는 것이 
     더 좋은 성능을 제공하며, 또한 제어가 가능해지고 원격 실행도 가능해 진다.
@@ -3779,8 +3779,8 @@ $ /usr/local/sbin/php4-enable
         <title>Netscape 와 iPlanet Enterprise 서버 설치</title>
         <para>
     PHP를 NES 나 iPlanet 웹 서버에 설치하려면 
-    <option><link linkend="install.configure.with-nsapi">--with-nsapi</link> = 
-    <replaceable>DIR</replaceable></option> 옵션에 올바른 설치 디렉토리를 지정해 주면 된다.
+    <link linkend="install.configure.with-nsapi">--with-nsapi</link> = 
+    <replaceable>DIR</replaceable> 옵션에 올바른 설치 디렉토리를 지정해 주면 된다.
     보통 기본값은 <filename class="directory">/opt/netscape/suitespot/</filename>이다.
     <filename>/php-xxx-version/sapi/nsapi/nsapi-readme.txt</filename> 파일을 읽어보기 바란다.
    </para>
