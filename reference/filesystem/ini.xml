@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
 <section id="filesystem.configuration">
  &reftitle.runtime;
@@ -133,7 +133,7 @@
     <listitem>
      <para>
       on일 때, PHP는 <function>fgets</function>과
-      <function>file</finction>으로 읽혀지는 데이터가 줄바꿈 방식으로 유닉스,
+      <function>file</function>으로 읽혀지는 데이터가 줄바꿈 방식으로 유닉스,
       MS-DOS, 매킨토시 방식 중 어느걸 사용하는지 검사합니다.
      </para>
      <para>

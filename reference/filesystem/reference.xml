@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.4 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.5 $ -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
  <reference id="ref.filesystem">
   <title>파일시스템 함수</title>
   <titleabbrev>파일시스템</titleabbrev>
@@ -34,7 +35,7 @@
    <section id="filesystem.seealso">
    &reftitle.seealso;
     <simpara>
-     관련이 있는 함수인, <link linkend="ref.dir">디렉토리<link>와 <link
+     관련있는 함수인, <link linkend="ref.dir">디렉토리</link>와 <link
      linkend="ref.exec">프로그램 실행</link> 섹션을 참고하십시오.
     </simpara>
     <simpara>
