@@ -1,28 +1,27 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.11 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.12 $ -->
+<!-- EN-Revision: 1.66 -->
  <chapter id="language.variables">
-  <title>Variables</title>
+  <title>변수</title>
   
   <sect1 id="language.variables.basics">
-   <title>Basics</title>
+   <title>기본문법</title>
 
    <simpara>
-    Variables in PHP are represented by a dollar sign followed by the
-    name of the variable. The variable name is case-sensitive.
+    PHP에서 변수는 변수명 앞에 달러사인을 덧붙여 표현된다. 변수명은 
+    대소문자를 구별한다.
    </simpara>
 
    <para>
-    Variable names follow the same rules as other labels in PHP. A
-    valid variable name starts with a letter or underscore, followed
-    by any number of letters, numbers, or underscores. As a regular
-    expression, it would be expressed thus:
+    PHP에서 변수명은 다음 규칙을 따른다. 유효한 변수명은 문자나 밑줄로
+    시작하고, 그 뒤에 문자, 숫자, 밑줄이 붙을수 있다. 정규표현식으로 표현하면
+    다음과 같다:
     '[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'
    </para>
    
    <note>
     <simpara>
-     For our purposes here, a letter is a-z, A-Z, and the ASCII
-     characters from 127 through 255 (0x7f-0xff).
+     여기서, 문자는 a-z, A-Z, 그리고 아스키문자(ASCII) 127에서 255까지(0x7f-0xff).
     </simpara>
    </note>
 
@@ -45,33 +44,29 @@ $t�yte = 'mansikka';    // valid; '�' is (Extended) ASCII 228.
    </para>
 
    <para>
-    In PHP 3, variables are always assigned by value. That is to say,
-    when you assign an expression to a variable, the entire value of
-    the original expression is copied into the destination
-    variable. This means, for instance, that after assigning one
-    variable's value to another, changing one of those variables will
-    have no effect on the other. For more information on this kind of
-    assignment, see the chapter on <link
-    linkend="language.expressions">Expressions</link>.
+    PHP 3에서 변수는 항상 값에 의해 지정되야 한다(assinged by value). 
+    변수를 표현식으로 지정할때에 원래 표현식의 모든 값이 목표 변수로 복사된다.
+    이 말의 의미는 예를 들면, 어떤 변수값을 다른 변수로 지정한 후에,
+    그 변수중 어떤 하나를 변경하는것이 다른 변수에 영향을 미치지 않는다는
+    의미를 갖는다.  이런 종류의 지정에 대해서 
+    <link linkend="language.expressions">표현식</link>을 참고.
    </para>
    <para>
-    PHP 4 offers another way to assign values to variables:
-    <link linkend="language.references">assign by reference</link>. 
-    This means that the new variable simply references (in other words, 
-    "becomes an alias for" or "points to") the original variable. 
-    Changes to the new variable affect the original, and vice versa. 
-    This also means that no copying is performed; thus, the assignment 
-    happens more quickly. However, any speedup will likely be noticed 
-    only in tight loops or when assigning large 
-    <link linkend="language.types.array">arrays</link> or 
-    <link linkend="language.types.object">objects</link>.
+    PHP 4에서는 이와 다른 방법으로 변수에 값이 지정된다:
+    <link linkend="language.references">참조에 의한 지정</link>. 
+    이 용어의 의미는 새로운 변수가 원래 변수를 참조한다는 것이다.(즉,
+    "원래 변수의 별명이 되는것" 이나 "가리키는 것")
+    새 변수의 변경은 원래 변수에 영향을 미치고, 그 반대도 가능하다.
+    이것은 복사가 수행되지 않는다는 것을 의미한다. 따라서, 지정은
+    매우 신속하게 이루어진다. 하지만, 속도향상은 견고한 루프나 
+    거대한 <link linkend="language.types.array">배열</link>이나
+    <link linkend="language.types.object">객체</link>를 지정할때만
+    효과가 있을것이다.
    </para>
    <para>
-    To assign by reference, simply prepend an ampersand (&amp;) to the
-    beginning of the variable which is being assigned (the source
-    variable). For instance, the following code snippet outputs 'My
-    name is Bob' twice:
-
+    참조에 의한 지정을 위해서는, 단순히 지정되는(소스 변수) 변수의 시작부분에
+    엠퍼센트(&amp;)를 덧붙이면 된다. 예를 들면 다음 코드 예는
+    'My name is Bob'이 두번 출력된다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -88,8 +83,7 @@ echo $foo;                 // $foo is altered too.
    </para>
 
    <para>
-    One important thing to note is that only named variables may be
-    assigned by reference.
+    주의할 것은 오직 이름이 부여된 변수만이 참조에 의해 지정된다는 것이다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -112,45 +106,36 @@ $bar = &test();    // Invalid.
   </sect1>
 
   <sect1 id="language.variables.predefined">
-   <title>Predefined variables</title>
+   <title>미리 선언된 변수</title>
    
    <simpara>
-    PHP provides a large number of predefined variables to any script
-    which it runs. Many of these variables, however, cannot be fully
-    documented as they are dependent upon which server is running, the
-    version and setup of the server, and other factors. Some of these
-    variables will not be available when PHP is run on the 
-    <link linkend="features.commandline">command line</link>. 
-    For a listing of these variables, please see the section on 
-    <link linkend="reserved.variables">Reserved Predefined Variables</link>.
+    PHP는 실행되는 스크립트에 적용이되는 상당량의 미리 선언된 변수를 제공한다.
+    하지만, 이 변수의 대부분은 운영되는 서버, 서버의 버전, 서버의 설정, 
+    다른 팩터와 관련되어 있어서 완벽하게 문서화되지 않았다. 이 중 몇개의 변수는
+    <link linkend="features.commandline">커맨드 라인</link>에서 실행되는 PHP에서는
+    유효하지 않다. 
+    <link linkend="reserved.variables">예약된 미리 선언된 변수</link>의 섹션을 참고.
    </simpara>
 
    <warning>
     <simpara>
-     In PHP 4.2.0 and later, the default value for the PHP directive <link
-     linkend="ini.register-globals">register_globals</link> is 
-     <emphasis>off</emphasis>. This is a major change in PHP.  Having 
-     register_globals <emphasis>off</emphasis> affects the set of predefined 
-     variables available in the global scope.  For example, to get 
-     <varname>DOCUMENT_ROOT</varname> you'll use 
-     <varname>$_SERVER['DOCUMENT_ROOT']</varname> instead of 
-     <varname>$DOCUMENT_ROOT</varname>, or <varname>$_GET['id']</varname> from 
-     the URL <literal>http://www.example.com/test.php?id=3</literal> instead 
-     of <varname>$id</varname>, or <varname>$_ENV['HOME']</varname> instead of 
-     <varname>$HOME</varname>.
+     PHP 4.2.0 이후 버전부터, PHP 디렉티브 <link linkend="ini.register-globals">register_globals</link>의
+     기본값은 <emphasis>off</emphasis>가 되었다.
+     register_globals를 <emphasis>off</emphasis>로 놓으면, 전역 유효영역안의 미리 선언된 변수 집합들에
+     영향을 미친다. 예를 들면, <varname>DOCUMENT_ROOT</varname>값을 얻기 위해서는
+     <varname>$DOCUMENT_ROOT</varname> 대신에 <varname>$_SERVER['DOCUMENT_ROOT']</varname>를,
+     <literal>http://www.example.com/test.php?id=3</literal>에서 <varname>$id</varname> 대신에
+     <varname>$_GET['id']</varname>를, <varname>$HOME</varname> 대신에 <varname>$_ENV['HOME']</varname>을 사용해야 한다.
     </simpara>
     <simpara>
-     For related information on this change, read the configuration entry for 
-     <link linkend="ini.register-globals">register_globals</link>, the security 
-     chapter on <link linkend="security.registerglobals">Using Register Globals
-     </link>, as well as the PHP <ulink url="&url.php.release4.1.0;">4.1.0
-     </ulink> and <ulink url="&url.php.release4.2.0;">4.2.0</ulink> Release 
-     Announcements.
+     이와 관련된 변경사항은 <link linkend="ini.register-globals">register_globals</link>의
+     설정 엔트리를 읽거나, <link linkend="security.registerglobals">Using Register Globals</link>에 관한
+     보안 챕터는 물론, <ulink url="&url.php.release4.1.0;">4.1.0</ulink>과
+     <ulink url="&url.php.release4.2.0;">4.2.0</ulink> Release Announcements도 참고하기 바란다.
     </simpara>
     <simpara>
-     Using the available PHP Reserved Predefined Variables, like the 
-     <link linkend="language.variables.superglobals">superglobal arrays</link>, 
-     is preferred.
+     <link linkend="language.variables.superglobals">superglobal arrays</link>와 같은
+     가용한 PHP의 예약된 미리 선언된 변수를 사용하는 것을 추천한다.
     </simpara>
    </warning>
 
@@ -266,14 +251,20 @@ $bar = &test();    // Invalid.
      <term><link linkend="reserved.variables.request">$_REQUEST</link></term>
      <listitem>
       <simpara>
-       Variables provided to the script via any user input mechanism,
-       and which therefore cannot be trusted. The presence and order 
-       of variable inclusion in this array is defined according to the <link
-       linkend="ini.variables-order">variables_order</link>
-       configuration directive. This array has no direct analogue in
-       versions of PHP prior to 4.1.0.  See also 
+       Variables provided to the script via the GET, POST, and COOKIE input
+       mechanisms, and which therefore cannot be trusted. The presence and
+       order of variable inclusion in this array is defined according to the
+       PHP <link linkend="ini.variables-order">variables_order</link>
+       configuration directive. This array has no direct analogue in versions
+       of PHP prior to 4.1.0.  See also 
        <function>import_request_variables</function>.
       </simpara>
+      <caution>
+       <simpara>
+        Since PHP 4.3.0, FILE information from <varname>$_FILES</varname> does
+        not exist in <varname>$_REQUEST</varname>.
+       </simpara>
+      </caution>
       <note>
        <simpara>
         When running on the <link linkend="features.commandline">command line
@@ -850,16 +841,16 @@ echo "$a $hello";
       <programlisting role="php">
 <![CDATA[
 <?php
-if ($HTTP_POST_VARS['action'] == 'submitted') {
+if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
     print '<pre>';
 
-    print_r($HTTP_POST_VARS);
-    print '<a href="'. $HTTP_SERVER_VARS['PHP_SELF'] .'">Please try again</a>';
+    print_r($_POST);
+    print '<a href="'. $_SERVER['PHP_SELF'] .'">Please try again</a>';
 
     print '</pre>';
 } else {
 ?>
-<form action="<?php echo $HTTP_SERVER_VARS['PHP_SELF']; ?>" method="POST">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
     Name:  <input type="text" name="personal[name]"><br>
     Email: <input type="text" name="personal[email]"><br>
     Beer: <br>
