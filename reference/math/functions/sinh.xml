@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.2 -->
-<!-- splitted from ./en/functions/math.xml, last change in rev 1.57 -->
-  <refentry id="function.sinh">
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<refentry id="function.sinh">
    <refnamediv>
     <refname>sinh</refname>
     <refpurpose>쌍곡선 사인</refpurpose>

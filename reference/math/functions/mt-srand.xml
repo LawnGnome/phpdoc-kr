@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.5 -->
+<!-- $Revision: 1.4 $ -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.mt-srand">
    <refnamediv>
     <refname>mt_srand</refname>
-    <refpurpose>더 낳은 난수 생성기를 초기화합니다.</refpurpose>
+    <refpurpose>향상된 난수 생성기를 초기화합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
