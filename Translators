@@ -33,7 +33,7 @@ streams.file.xml
 streams.socket.xml
 streams.structs.xml
 streams.xml
-tutorial.xml
+tutorial.xml                       Yun-young Lee <progcom@yahoo.com>
 ------- faq/ ----------------------------------------------------------------
 build.xml
 com.xml
