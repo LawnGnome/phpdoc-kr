@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.2 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.3 -->
   <refentry id='function.is-infinite'>
    <refnamediv>
     <refname>is_infinite</refname>
@@ -14,9 +14,11 @@
       <methodparam><type>float</type><parameter>val</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <parameter>val</parameter>가 무한수(부호에 상관 없이)일 경우 &true;를 반환합니다.
-     <literal>log(0)</literal>의 결과나, 이 플랫폼에서 float로 처리할 수 없는
-     너무 큰 숫자가 포함됩니다.
+     <parameter>val</parameter>가 <literal>log(0)</literal>의 결과 등의 무한수이거나,
+     이 플랫폼에서 float로 처리할 수 없는 너무 큰 숫자일 경우 &true;를 반환합니다.
+    </para>
+    <para>
+     참고: <function>is_finite</function>, <function>is_nan</function>.
     </para>
    </refsect1>
   </refentry>

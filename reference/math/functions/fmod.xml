@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.4 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.5 -->
   <refentry id="function.fmod">
    <refnamediv>
     <refname>fmod</refname>
@@ -22,17 +22,21 @@
      <varname>r</varname>는 <parameter>x</parameter>와 같은 부호와
      <parameter>y</parameter>의 크기보다 작은 크기를 가집니다.
     </para>
-    <example>
-     <title><function>fmod</function> 사용하기</title>
-     <programlisting role="php">
+    <para>
+      <example>
+       <title><function>fmod</function> 사용하기</title>
+       <programlisting role="php">
 <![CDATA[
+<?php
 $x = 5.7;
 $y = 1.3;
 $r = fmod($x, $y);
 // 4 * 1.3 + 0.5 = 5.7이기 때문에, $r은 0.5가 된다.
+?>
 ]]>
-     </programlisting>
-    </example>
+       </programlisting>
+      </example>
+    </para>
    </refsect1>
   </refentry>
 

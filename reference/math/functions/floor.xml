@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.4 -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.5 -->
   <refentry id="function.floor">
    <refnamediv>
     <refname>floor</refname>
@@ -19,15 +19,19 @@
      크기 때문에, <function>floor</function>의 반환값은 여전히
      <type>float</type>를 유지합니다.
     </simpara>
-    <example>
-     <title><function>floor</function> 예제</title>
-     <programlisting role="php">
+    <para>
+      <example>
+       <title><function>floor</function> 예제</title>
+       <programlisting role="php">
 <![CDATA[
+<?php
 echo floor(4.3);   // 4
 echo floor(9.999); // 9
+?>
 ]]>
-     </programlisting>
-    </example>
+       </programlisting>
+      </example>
+    </para>
     <simpara>
      참고: <function>ceil</function>, <function>round</function>.
     </simpara>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.3 -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.4 -->
   <refentry id="function.hexdec">
    <refnamediv>
     <refname>hexdec</refname>
@@ -26,13 +26,15 @@
       <title><function>hexdec</function> 예제</title>
       <programlisting role="php">
 <![CDATA[
+<?php
 var_dump(hexdec("See"));
 var_dump(hexdec("ee"));
-// 모두 "int(238)"을 출력합니다.
+// 둘 다 "int(238)"을 출력합니다.
 
 var_dump(hexdec("that"));
 var_dump(hexdec("a0"));
-// 모두 int(160)을 출력합니다.
+// 둘 다 int(160)을 출력합니다.
+?>
 ]]>
       </programlisting>
      </example>
