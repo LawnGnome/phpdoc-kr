@@ -3,21 +3,20 @@
   <titleabbrev>OCI8</titleabbrev>
   <partintro>
    <para>
-    These functions allow you to access Oracle8 and Oracle7 databases.
-    It uses the Oracle8 Call-Interface (OCI8). You will need the Oracle8
-    client libraries to use this extension.
+		이 함수들은 Oracle8과 Oracle7 데이터베이스를 접근할 수 있도록 해준다.
+		이것은 Oracle8 Call-Interface (OCI8)를 사용한다.
+		이 드라이버를 사용하려면 Oracle8 client libraries가 필요하다.
    </para>
    <para>
-    This extension is more flexible than the standard Oracle
-    extension. It supports binding of global and local PHP variables
-    to Oracle placeholders, has full LOB, FILE and ROWID support
-    and allows you to use user-supplied define variables.
+		이 드라이버는 보통의 PHP Ora_ 드라이버보다 더욱 유연하다. 
+		이것은 PHP의 전역, 지역 변수들의 Oracle placeholder로의 binding을 지원하고, 
+		full LOB와 FILE, ROWID를 지원하며, user-supplied define variable을 
+		사용할 수 있도록 해 준다. 
    </para>
    <para>
-    Before using this extension, make sure that you have set up your
-    oracle environment variables properly for the Oracle user, as well
-    as your web daemon user. The variables you might need to set are as
-    follows:
+		이 드라이버를 사용하기 전에 오라클 유저와 웹서버 유저에게 
+		유효한 오라클 환경변수를 적용했는지 확인해야한다. 
+		적용시킬 환경변수:
     <itemizedlist>
      <listitem>
       <simpara>
@@ -52,9 +51,8 @@
     </itemizedlist>
    </para>
    <para>
-    After setting up the environment variables for your webserver user,
-    be sure to also add the webserver user (nobody, www) to the oracle
-    group.
+		웹서버 유저에게 환경변수를 적용한후에,
+		웹서버 유저(nobody, www)를 오라클 그룹에 추가했는지 확인해야 한다.
    </para>
    <para>
     <example>
@@ -86,10 +84,10 @@ $clob->save ("some text");
     </example>
    </para>
    <para>
-    You can easily access stored procedures in the same way as you
-    would from the commands line.
+		command-line에서 내장 프로시저(stored procedures)를 쓰는것처럼 
+		사용이 간편하다.
     <example>
-     <title>Using Stored Procedures</title>
+     <title>내장 프로시저(Stored Procedures) 사용하기</title>
       <programlisting role="php">
 &lt;?php
 // by webmaster@remoterealty.com
@@ -115,7 +113,7 @@ $sth = OCIParse ( $dbh, "begin sp_newaddress( :address_id, '$firstname',
    <refnamediv>
     <refname>OCIDefineByName</refname>
     <refpurpose>
-     Use a PHP variable for the define-step during a SELECT
+		 SELECT 구문을 사용하는 동안 정의단계(define-step)를 위한 PHP 변수를 할당한다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -131,19 +129,18 @@ $sth = OCIParse ( $dbh, "begin sp_newaddress( :address_id, '$firstname',
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCIDefineByName</function> uses fetches SQL-Columns
-     into user-defined PHP-Variables. Be careful that Oracle user
-     ALL-UPPERCASE column-names, whereby in your select you can also
-     write lower-case. <function>OCIDefineByName</function> expects
-     the <parameter>Column-Name</parameter> to be in uppercase. If you
-     define a variable that doesn't exists in you select statement, no
-     error will be given!
+     <function>OCIDefineByName</function>페치(fetch)한 컬럼을 사용자정의 변수
+     에 할당한다.  
+     물론, 오라클 유저는 select 구문에서 소문자 컬럼명을  쓸수 있지만,
+     <function>OCIDefineByName</function>함수의 
+     <parameter>Column-Name</parameter>인수는 반드시 대문자로 적어야 한다.
+     select 구문에서 존재하지도 않는 변수를 선언해도, 에러는 발생하지않을것이다!
     </para>
     <para>
-     If you need to define an abstract Datatype (LOB/ROWID/BFILE) you
-     need to allocate it first using
-     <function>OCINewDescriptor</function> function. See also the
-     <function>OCIBindByName</function> function.
+     추상 데이터타입(LOB/ROWID/BFILE)을 다룰 때는
+     <function>OCINewDescriptor</function>함수를 사용하여
+     그 컬럼에 대한 변수영역을 미리 할당해야 한다. 
+     <function>OCIBindByName</function>를 보시오.
     </para>
      <example>
       <title>OCIDefineByName</title>
@@ -179,6 +176,7 @@ OCILogoff($conn);
    <refnamediv>
     <refname>OCIBindByName</refname>
     <refpurpose>
+     오라클 위치보유자(Placeholder)를 PHP 변수에 연계(bind)시킨다.
      Bind a PHP variable to an Oracle Placeholder
     </refpurpose>
    </refnamediv>
