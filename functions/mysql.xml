@@ -4,15 +4,15 @@
   <partintro>
    <simpara>
     아래 함수들은 MySQL 데이터베이스 서버에 접근할 수 있게 해준다.
-    이들 함수를 사용하려면 <option role="configure">--with-mysql</option>
-    옵션으로 MySQL과 함께 PHP를 컴파일해야 한다.
-    만일 위 옵션을 MySQL이 설치된 경로 없이 사용한다면
+    이들 함수를 사용하려면 PHP를 <option role="configure">--with-mysql</option>
+    인자를 사용하여 컴파일해야 한다.
+    만일 위의 인자를 설치된 MySQL의 경로 없이 사용한다면,
     PHP는 내장된 클라이언트 라이브러리를 대신 사용할 것이다.
     서로 다른 어플리케이션을 이용하는 사용자들이 MySQL을
     사용하려 할 때(예를들어, PHP3와 PHP4가 동시에 apache 모듈로써 돌아가거나,
     auth-mysql일 경우) MySQL 경로를 반드시 다음과 같이 설정해야 한다:
     <option role="configure">--with-mysql=/path/to/mysql</option>.
-    위 옵션은 php가 mysql에 의해 설치된 클라이언트 라이브러리를 사용하도록
+    위 옵션은 php가 MySQL에 의해 설치된 클라이언트 라이브러리를 사용하도록
     하며, 어떠한 충돌도 피할 수 있게 해준다.
    </simpara>
    <simpara>
@@ -27,7 +27,7 @@
   <refentry id="function.mysql-affected-rows">
    <refnamediv>
     <refname>mysql_affected_rows</refname> 
-    <refpurpose>최근 MySQL 작업으로 처리된 줄(row) 개수를 얻음</refpurpose>
+    <refpurpose>최근 MySQL 작업으로 처리된 행(row) 개수를 얻음</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -44,12 +44,12 @@
     <para> 
      <function>mysql_affected_rows</function>는 link identifier로
      접속되어 있는 서버에서 최근 실행된 INSERT, UPDATE, DELETE 질의로
-     처리된 줄의 개수를 돌려준다. 만약 link identifier 인자를
-     생략하면, 최근 열려진 link에서 정보를 얻는다.
+     처리된 행의 개수를 돌려준다. 만약 link identifier 인자를
+     생략하면, 최근 열려진 link를 사용한다.
     </para>
     <para>
-     마지막 질의가 WHERE 절이 없는 DELETE 질의라면 테이블의 모든 레코드가
-     삭제되겠지만 이 함수의 경우 0값을 돌려준다.
+     마지막 질의가 WHERE 절이 없는 DELETE 질의라면, 테이블의 모든 레코드가
+     삭제되더라도 이 함수는 0값을 돌려준다.
     </para>
     <para>
      이 함수는 SELECT 문에는 동작하지 않으며, 레코드가 수정되는 경우에만 동작한다.
@@ -63,7 +63,7 @@
    <refnamediv>
     <refname>mysql_change_user</refname> 
     <refpurpose>
-     현재 접속에서 로그인된 사용자를 변경
+     현 접속에서 로그인된 사용자를 변경
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -86,7 +86,7 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     <function>mysql_change_user</function>함수는 현재 사용중인 접속 또는
+     <function>mysql_change_user</function> 함수는 현재 사용중인 접속 또는
      link identifier 인자로 주어진 접속에서 로그인된 사용자를 변경한다.
      데이터베이스 이름이 지정되면, 사용자가 변경된 다음
      이 데이터베이스가 기본값으로 되며, 그렇지 않을 경우 현재 데이터베이스가 사용된다.
@@ -115,10 +115,10 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     반환값: 성공하면 TRUE값을 실패하면 FALSE값을 되돌림
+     반환값: 성공하면 TRUE값을 실패하면 FALSE값을 반환
     </para>
     <para> <function>mysql_close</function> link identifier와 관련된
-     MySQL 서버 접속을 닫는다. <parameter>link identifier</parameter>를
+     MySQL 접속을 닫는다. <parameter>link identifier</parameter>를
      지정하지 않으면 마지막 열려진 link를 사용한다.
     </para>
     <para>
@@ -193,7 +193,7 @@
     <para>
      hostname은 &quot;hostname:port&quot;와 같이 포트 번호를 포함할 수 있다.
      또한 로컬호스트에서 &quot;:/path/to/socket&quot;와 같이
-     소켓도 사용할 수 있다.
+     소켓으로도 사용할 수 있다.
      <note>
       <para>
         &quot;:port&quot;는 PHP 3.0B4에서 추가된 기능이다.
@@ -208,11 +208,11 @@
     </para>
     <para>
      동일한 인수로 <function>mysql_connect</function>을 다시 호출하면,
-     새로운 link가 생성되지 않는 대신, 이미 열려진 link identifier 값을
+     새로운 link가 생성되는 것이 아니라, 이미 생성된 link identifier 값을
      돌려받게 된다.
     </para>
     <para>
-     서버와의 링크는 스크립트 끝부분이 실행되는 즉시 종료가 되지만,
+     link는 스크립트 종료 부분에서 자동으로 닫히지만,
      <function>mysql_close</function>을 사용하면 스크립트 끝부분이 아니더라도
      종료가 가능하다.
     </para>  
@@ -253,7 +253,7 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     <function>mysql_create_db</function>는 link identifier와 관련된 서버에
+     <function>mysql_create_db</function>는 link identifier로 연결된 서버에
      새로운 데이터베이스를 생성하도록 한다.
     </para>
     <example>
@@ -271,7 +271,7 @@
      </programlisting>
     </example>
     <para> 
-     하위 호환성을 가지는 <function>mysql_createdb</function>함수 역시 사용 가능하다.
+     하위 호환성을 가지는 <function>mysql_createdb</function> 함수 역시 사용 가능하다.
     </para>
     <para> 
      참조: <function>mysql_drop_db</function>.
@@ -294,16 +294,16 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     반환값: 성공하면 TRUE, 실패하면 FALSE.수
+     반환값: 성공하면 TRUE, 실패하면 FALSE 반환.
     </para>
     <para> 
-     <function>mysql_data_seek</function>함수는 MySQL 결과중
+     <function>mysql_data_seek</function> 함수는 MySQL 결과중
      인자로 지정된 행번호를 이용하여 내부적인 행 포인터를
      이동시켜준다.
      <function>mysql_fetch_row</function>를 사용하여 행의 내용을 얻을 수 있다.
     </para>
     <para>
-     <parameter>Row_number</parameter>는 0부터 시작된다.
+     <parameter>row_number</parameter>는 0부터 시작된다.
     </para>
 
     <example>
@@ -420,20 +420,20 @@ while ($i < $cnt) {
     </funcsynopsis>
     <para> 
      반환값: MySQL 질의로 발생한 result identifier값을,
-     에러가 발생했을 경우 false를 돌려준다.
+     에러가 발생했을 경우 false를 반환.
     </para>
     <para> 
      <function>mysql_db_query</function>는 데이터베이스를 선택하고,
       동시에 질의문을 실행한다. 만약 link identifier가 지정되지 않는다면,
       함수는 MySQL 서버에서 접속된 링크를 찾을 것이며, 찾지 못할 경우에는
-      인자없이 실행된 <function>mysql_connect</function>과 같이
-      링크를 생성하여 사용한다.
+      인자없이 실행된 <function>mysql_connect</function>와 같이
+      link를 생성하여 사용한다.
     </para>
     <para> 
      참조: <function>mysql_connect</function>.
     </para>
     <para>
-     하위 호환성을 가지는 <function>mysql</function>함수 역시 사용 가능하다.
+     하위 호환성을 가지는 <function>mysql</function> 함수 역시 사용 가능하다.
     </para>
    </refsect1>
   </refentry>
@@ -466,7 +466,7 @@ while ($i < $cnt) {
     </para>
     <para> 
      참조: <function>mysql_create_db</function>.
-     하위 호환성이 있는 <function>mysql_dropdb</function>함수 역시 사용 가능하다.
+     하위 호환성이 있는 <function>mysql_dropdb</function> 함수 역시 사용 가능하다.
     </para>
    </refsect1>
   </refentry>
@@ -490,14 +490,14 @@ while ($i < $cnt) {
     </funcsynopsis>
     <para>
      최근 실행된 MySQL 함수의 에러번호를, 에러가 없을 경우 
-     <literal>0</literal> 값을 반환한다.
+     <literal>0</literal>값을 반환한다.
     </para>
     <para>
-     한번 MySQL 데이터베이스로부터의 발생된 에러는 또다시 경고 메시지를 나타내지 않는다.
-     대신, <function>mysql_errno</function>를 사용하면 에러 코드(code)를 얻을 수 있다.
-     이 함수는 최근에 실행된 MySQL 함수(<function>mysql_error</function>과
+     한번 MySQL 데이터베이스로부터의 발생된 에러는 다시 경고 메시지를 나타내지는 않는다.
+     그러나, <function>mysql_errno</function>를 사용하면 에러 코드(code)를 얻을 수 있다.
+     이 함수는 최근에 실행된 MySQL 함수(<function>mysql_error</function>와
      <function>mysql_errno</function>를 제외한)로 발생된 에러 코드만 얻을 수 있다.
-     그러나 사용하기 위해서는 다른 MySQL 함수를 사용하기 이전에 사용해야 한다.
+     그러나, 다른 MySQL 함수를 사용하기 이전에 사용해야만 한다.
      <informalexample>
       <programlisting role="php">
 &lt;?php
@@ -539,10 +539,10 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
      에러가 발생하지 않았을 경우에는 <literal>''</literal> (공백문자)를 얻을 수 있다.
     </para>
     <para>
-     한번 MySQL 데이터베이스로부터의 발생된 에러는 또다시 경고 메시지를 나타내지 않는다.
+     한번 MySQL 데이터베이스로부터의 발생된 에러는 또다시 경고 메시지를 나타내지는 않는다.
      대신, <function>mysql_error</function>를 사용하면 에러 메시지를 얻을 수 있다.
      이 함수는 최근에 실행된 MySQL 함수(<function>mysql_error</function>과
-     <function>mysql_errno</function>를 제외한)로 발생된 에러 코드만 얻을 수 있다.
+     <function>mysql_errno</function>를 제외한)로 발생된 에러 메시지를 얻을 수 있다.
      그러나 사용하기 위해서는 다른 MySQL 함수를 사용하기 이전에 사용해야 한다.
      <informalexample>
       <programlisting role="php">
@@ -567,7 +567,7 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
    <refnamediv>
     <refname>mysql_fetch_array</refname> 
     <refpurpose>
-     결과를 필드이름 색인 또는 숫자 색인으로 된 배열로 얻음
+     결과를 필드이름 색인 또는 숫자 색인으로 된 배열로 반환
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -592,7 +592,7 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
      또한, 배열의 색인으로 테이블의 필드 이름으로도 사용할 수 있다.
     </para>
     <para>
-     결과로 두개 이상의 동일한 필드 이름을 가진 열이 있다면,
+     결과로 두 개 이상의 동일한 필드 이름을 가진 열이 있다면,
      마지막 열이 우선권을 가진다. 동일한 다른 열을 사용하기 위해서는
      색인 번호를 이용하거나 질의 문장에서 열의 별명을 주어 이용하여야 한다.
      <informalexample>
@@ -636,7 +636,7 @@ mysql_free_result ($result);
    <refnamediv>
     <refname>mysql_fetch_assoc</refname> 
     <refpurpose>
-     결과를 필드이름 색인으로 된 배열로 얻음
+     결과를 필드이름 색인으로 된 배열로 반환
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -692,7 +692,7 @@ mysql_free_result ($result);
    <refnamediv>
     <refname>mysql_fetch_field</refname>
     <refpurpose>
-     결과로부터 열 정보를 얻어서 객체로 돌려줌
+     결과로부터 열 정보를 얻어서 객체로 반환
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -713,7 +713,7 @@ mysql_free_result ($result);
     </para>  
     <para>
      <function>mysql_fetch_field</function>는 특정 질의 결과로부터
-     필드 정보를 얻을 목적으로 사용할 수 있다. 만일 field_offset을 지정하지 않으면,
+     필드 정보를 얻을 목적으로 사용할 수 있다. 만일, field_offset을 지정하지 않으면,
      <function>mysql_fetch_field</function>에 의해 아직 얻지 못한 다음 필드 정보를
      얻게 된다.
     </para>
@@ -829,7 +829,7 @@ mysql_free_result ($result);
 		<refnamediv>
 			<refname>mysql_fetch_lengths</refname>
 			<refpurpose>
-     결과로부터 각 출력의 길이를 얻음
+     결과로부터 각 출력의 길이를 반환
     </refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -880,8 +880,7 @@ mysql_free_result ($result);
 				</funcprototype>
 			</funcsynopsis>
 			<para> 
-     행(row)에 대응되는 객체로 돌려주고,
-     가져올 행이 없을 경우 false를 반환한다.
+     행(row)에 대응되는 객체로 돌려주고, 가져올 행이 없을 경우 false를 반환한다.
     </para>
 			<para>
 				<function>mysql_fetch_object</function>는
@@ -922,7 +921,7 @@ mysql_free_result ($result);
 	<refentry id="function.mysql-fetch-row">
 		<refnamediv>
 			<refname>mysql_fetch_row</refname>
-			<refpurpose>결과를 숫자색인으로 된 배열로 얻음</refpurpose>
+			<refpurpose>결과를 숫자색인으로 된 배열로 반환</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
@@ -959,7 +958,7 @@ mysql_free_result ($result);
 		<refnamediv>
 			<refname>mysql_field_flags</refname>
 			<refpurpose>
-     결과로부터 특정 필드(field)의 상태정보(flag)를 얻음
+     결과로부터 특정 필드(field)의 상태정보(flag)를 반환
     </refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -986,7 +985,7 @@ mysql_free_result ($result);
      필드 상태정보에 따라 위의 단어들이 출력될 것이다.
     </para>
 			<para> 
-     <function>mysql_fieldflags</function>와 하위 호환성이 있다.
+     하위 호환성이 있는 <function>mysql_fieldflags</function>도 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -994,7 +993,7 @@ mysql_free_result ($result);
 		<refnamediv>
 			<refname>mysql_field_name</refname>
 			<refpurpose>
-     결과로부터 특정 필드 이름을 얻음
+     결과로부터 특정 필드 이름을 반환
     </refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -1049,7 +1048,7 @@ password
 				</informalexample>
 			</para>
 			<para>
-     <function>mysql_fieldname</function>와 하위 호환성이 있다.
+     하위 호환성이 있는 <function>mysql_fieldname</function>도 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -1057,7 +1056,7 @@ password
 		<refnamediv>
 			<refname>mysql_field_len</refname>
 			<refpurpose>
-     특정 필드의 길이를 얻음
+     특정 필드의 길이를 반환
     </refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -1076,7 +1075,7 @@ password
 				<function>mysql_field_len</function>은 특정 필드의 길이를 얻는다.
     </para>
 			<para>
-     <function>mysql_fieldlen</function>는 하위 호환성이 있다.
+     하위 호환성이 있는 <function>mysql_fieldlen</function>도 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -1132,7 +1131,7 @@ password
      특정 필드가 속한 테이블 이름을 얻는다.
     </para>
 			<para>
-     <function>mysql_fieldtable</function>과 하위 호환성이 있다.
+     하위 호환성이 있는 <function>mysql_fieldtable</function>도 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -1140,7 +1139,7 @@ password
 		<refnamediv>
 			<refname>mysql_field_type</refname>
 			<refpurpose>
-     결과로부터 특정 필드의 타입정보(type)을 얻음
+     결과로부터 특정 필드의 데이터 형(type) 정보를 반환
     </refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -1191,7 +1190,7 @@ mysql_close();
 				</example>
 			</para>
 			<para> 
-     <function>mysql_fieldtype</function>과 하위 호환성이 있다.
+     하위 호환성이 있는 <function>mysql_fieldtype</function>도 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -1218,7 +1217,7 @@ mysql_close();
 			<para>
 				<function>mysql_free_result</function>는 결과로부터 얻은 질의 값이
 커서 많은 메모리를 사용할 염려가 있을 때 사용된다.
-그러나, 스크립트(script) 실행부 마지막에는 자동적으로 결과에 관련된 메모리는 지워진다.
+단, 결과 값은 스크립트(script) 실행부가 종료되면서 메모리에서 자동적으로 지워진다.
     </para>
 			<para>
      <function>mysql_freeresult</function>와는 하위 호환성이 있다.
@@ -1229,7 +1228,7 @@ mysql_close();
 		<refnamediv>
 			<refname>mysql_insert_id</refname>
 			<refpurpose>
-     최근 INSERT 작업으로부터 생성된 identifier 값을 얻음
+     최근 INSERT 작업으로부터 생성된 identifier 값을 반환
     </refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -1248,8 +1247,8 @@ mysql_close();
 			<para>
 				<function>mysql_insert_id</function>는
          <parameter>link_identifier</parameter>를 사용하면, INSERT 질의로 행(row)를 추가한 뒤
-         AUTO_INCREMENT로 생성된 컬럼에 추가된 값을 얻을 수 있다. 
-         <parameter>link_identifier</parameter>를 지정하지 않으면 마지막에 열려진 링크(link)를
+         AUTO_INCREMENT로 생성된 테이블의 컬럼에 추가된 값을 얻을 수 있다. 
+         <parameter>link_identifier</parameter>를 지정하지 않으면, 마지막에 열려진 link를
          사용한다.
     </para>
 			<para>
@@ -1260,7 +1259,7 @@ mysql_close();
 			<note>
 				<para>
       <literal>LAST_INSERT_ID()</literal>는 
-AUTO_INCREMENT 값으로 생성된 가장 최근 값이 보관되며 질의 사이에는 없어지지 않는다.
+AUTO_INCREMENT 값으로 생성된 가장 최근 값이 보관되며, 질의할 동안에는 없어지지 않는다.
     </para>
 			</note>
 			<warning>
@@ -1278,7 +1277,7 @@ AUTO_INCREMENT 값으로 생성된 가장 최근 값이 보관되며 질의 사�
 		<refnamediv>
 			<refname>mysql_list_dbs</refname>
 			<refpurpose>
-     MySQL 서버에 있는 데이터베이스 이름을 얻음
+     MySQL 서버에 있는 데이터베이스 이름을 반환
     </refpurpose>
 		</refnamediv>
 		<refsect1>
@@ -1297,8 +1296,7 @@ AUTO_INCREMENT 값으로 생성된 가장 최근 값이 보관되며 질의 사�
 			<para>
 			<function>mysql_list_dbs</function>는 현재 MySQL 데몬(daemon)으로부터
       사용가능한 데이터베이스를 포함한 결과 포인터로 반환할 것이다.
-			Use the <function>mysql_tablename</function> function to
-     traverse this result pointer.
+			이 결과 포인터를 사용하여 <function>mysql_tablename</function> 함수도 사용할 수 있다.
     </para>
 			<para>
 				<example>
@@ -1331,14 +1329,14 @@ database3
      </para>
 			</note>
 			<para>
-			<function>mysql_listdbs</function>는 하위 호환성이 있다.
+     하위 호환성이 있는 <function>mysql_listdbs</function>도 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
 	<refentry id="function.mysql-list-fields">
 		<refnamediv>
 			<refname>mysql_list_fields</refname>
-			<refpurpose>MySQL 결과의 필드 리스트를 얻음</refpurpose>
+			<refpurpose>MySQL 결과의 필드 리스트로 반환</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
@@ -1400,7 +1398,7 @@ field3
 				</informalexample>
 			</para>
 			<para>
-     <function>mysql_listfields</function>는 하위 호환성이 있다.
+     하위 호환성이 있는 <function>mysql_listfields</function>도 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -1544,7 +1542,7 @@ echo "$NumMembers Members";
 				</funcprototype>
 			</funcsynopsis>
 			<para> 
-			반환값: 접속에 성공하면 MySQL 영구적 link identifier를 반환하고, 실패하면 에러를 출력.
+			반환값: 접속에 성공하면 MySQL 영구적 link identifier를 반환, 실패하면 에러를 출력.
     </para>
 			<para>
 				<function>mysql_pconnect</function>는 MySQL 서버로부터 접속을 설정하는 함수이다.
@@ -1573,7 +1571,7 @@ echo "$NumMembers Members";
     </para>
 			<para> 
 둘째, SQL 서버로 접속은 스크립트 실행이 끝나도 계속 유지가 되며, 이후에도 사용이 가능하다.
-(주의: <function>mysql_pconnect</function>로 열려진 링크는 <function>mysql_close</function>함수로 닫지는 못한다.)
+(주의: <function>mysql_pconnect</function>로 열려진 링크는 <function>mysql_close</function> 함수로 닫지는 못한다.)
     </para>
 			<para> 
 그러므로, 이 형태의 링크를 '영구적(persistent)'으로 부른다.
@@ -1604,7 +1602,7 @@ echo "$NumMembers Members";
 				<function>mysql_query</function>는 현재 서버에서 동작중인 데이터베이스로부터
  특정 link identifier로 질의를 전송한다.
 만일, <parameter>link_identifier</parameter>를 설정하지 않으면 가장 최근에 열려진 link를 사용하게 된다.
-열려진 link가 없으면, 옵션 인자 없이 실행된 <function>mysql_connect</function>함수처럼
+열려진 link가 없으면, 옵션 인자 없이 실행된 <function>mysql_connect</function> 함수처럼
 link를 생성하여 사용한다.
     </para>
 			<note>
@@ -1613,7 +1611,7 @@ link를 생성하여 사용한다.
      </para>
 			</note>
 			<para>
-				<function>mysql_query</function>함수는 질의 성공 여부에 따라 TRUE(0이 아닌값) 또는 FALSE를 반환한다.
+				<function>mysql_query</function> 함수는 질의 성공 여부에 따라 TRUE(0이 아닌값) 또는 FALSE를 반환한다.
 서버로부터 실행된 질의가 실행되고 그 질의 내용에 문제가 없어야만, TRUE값을 반환한다.
 이 반환 값은 질의에 해당하는 열 개수 등과는 관련이 없다.
     </para>
@@ -1634,7 +1632,7 @@ $result = mysql_query ("SELECT * WHERE 1=1")
 			<para>
      다음 질의는 문법은 맞지만 실제로 테이블 <literal>my_tbl</literal>에
      행 <literal>my_col</literal>이 없기 때문에
-     <function>mysql_query</function>함수는 실패하며, FALSE값을 반환한다:
+     <function>mysql_query</function> 함수는 실패하며, FALSE값을 반환한다:
      <example>
 					<title>
 						<function>mysql_query</function>
@@ -1648,16 +1646,16 @@ $result = mysql_query ("SELECT my_col FROM my_tbl")
 				</example>
 			</para>
 			<para>
-				<function>mysql_query</function>는 질의로 참조되는 테이블에 대한 접근 권한이 없다면 실패하며, FALSE값을 반환한다.
+				<function>mysql_query</function>는 질의로 참조되는 테이블에 대한 접근 권한이 없다면 실패하며, false값을 반환한다.
     </para>
 			<para>
-질의가 성공하면 <function>mysql_num_rows</function>함수를 사용하여 SELECT문으로 반환되는 행의 개수를 얻을 수 있으며,
-<function>mysql_affected_rows</function>함수를 사용하면, DELETE, INSERT, REPLACE, UPDATE로 적용된 행의 개수를 얻을 수 있다.
+질의가 성공하면 <function>mysql_num_rows</function> 함수를 사용하여 SELECT문으로 반환되는 행의 개수를 얻을 수 있으며,
+<function>mysql_affected_rows</function> 함수를 사용하면, DELETE, INSERT, REPLACE, UPDATE로 적용된 행의 개수를 얻을 수 있다.
     </para>
 			<para>
-SELECT문을 위해 <function>mysql_query</function>함수는 
-<function>mysql_result</function>함수에서 사용할 수 있는 새로운 result identifier를 반환한다.
-결과셋을 사용한 후, <function>mysql_free_result</function>함수를 사용하여 메모리에서 제거할 수 있다.
+SELECT문을 위해 <function>mysql_query</function> 함수는 
+<function>mysql_result</function> 함수에서 사용할 수 있는 새로운 result identifier를 반환한다.
+결과셋을 사용한 후, <function>mysql_free_result</function> 함수를 사용하여 메모리에서 제거할 수 있다.
 그러나, 스크립트가 종료되는 시점에 자동적으로 메모리에서 제거가 된다.
     </para>
 			<para>
@@ -1693,24 +1691,24 @@ SELECT문을 위해 <function>mysql_query</function>함수는
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>mysql_result</function>함수는 MySQL 결과셋으로부터 한개의 셀(cell) 내용을 반환한다.
+				<function>mysql_result</function> 함수는 MySQL 결과셋으로부터 한개의 셀(cell) 내용을 반환한다.
 field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이름 사이에 점(테이블이름.필드이름)으로 연결된 인자를 사용할 수 있다.
 만약, 열(column)이름이 별명('select foo as bar from...')으로 되어 있다면 열이름 대신 별명(alias)를 사용해야한다.
     </para>
 			<para>
 큰 결과셋으로 작업할 경우, 전체 행을 얻어오는 함수중 하나를 사용하는 것이 좋을 것이다.
 이 함수들은 한 번의 함수 호출로 다중 셀의 내용을 얻을 수 있는 장점이 있으며,
-<function>mysql_result</function>함수보다 더 빠르다.
+<function>mysql_result</function> 함수보다 더 빠르다.
 또한 필드 인자로 숫자 offset을 사용하면 필드이름 또는 테이블이름.필드이름 인자를 사용한 것보다 더 빠르다.
     </para>
 			<para>
-			<function>mysql_result</function>함수를 사용하면서 결과셋을 다른 함수에서 함께 사용할 수 없다.
+			<function>mysql_result</function> 함수를 사용하면서 결과셋을 다른 함수에서 함께 사용할 수 없다.
     </para>
 			<para>
 성능 향상을 위해 
      <function>mysql_fetch_row</function>, 
      <function>mysql_fetch_array</function>, 
-     <function>mysql_fetch_object</function>함수를 사용하는 것이 좋다.
+     <function>mysql_fetch_object</function> 함수를 사용하는 것이 좋다.
     </para>
 		</refsect1>
 	</refentry>
@@ -1735,15 +1733,15 @@ field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이�
 				</funcprototype>
 			</funcsynopsis>
 			<para> 
-			반환값: 성공하면 TRUE값, 실패하면 에러발생.
+			반환값: 성공하면 true값, 실패하면 에러발생.
     </para>
 			<para>
-				<function>mysql_select_db</function>함수는 link identifier로 지정된 연결을 이용하여
+				<function>mysql_select_db</function> 함수는 link identifier로 지정된 연결을 이용하여
 				사용가능한 데이터베이스를 선택한다.
 				link identifier를 지정하지 않으면 최근 열려진 link를 사용한다.
 				만약 열려진 link가 없다면, 
 				<function>mysql_connect</function>를 호출하면
-				<function>mysql_connect</function>함수가 호출되며 link를 생성하며, 이를 사용한다.
+				<function>mysql_connect</function> 함수가 호출되며 link를 생성하며, 이를 사용한다.
     </para>
 			<para>
      Every subsequent call to <function>mysql_query</function> will be made on the active database.
@@ -1754,7 +1752,7 @@ field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이�
      <function>mysql_query</function>.
     </para>
 			<para>
-     하위 호환성을 가지는 <function>mysql_selectdb</function>함수 역시 사용 가능하다.
+     하위 호환성을 가지는 <function>mysql_selectdb</function> 함수 역시 사용 가능하다.
     </para>
 		</refsect1>
 	</refentry>
@@ -1776,10 +1774,10 @@ field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이�
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>mysql_tablename</function>함수는 인자로 
-<function>mysql_list_tables</function>함수로 반환되는 결과 포인터와 동시에 
+				<function>mysql_tablename</function> 함수는 인자로 
+<function>mysql_list_tables</function> 함수로 반환되는 결과 포인터와 동시에 
 테이블이름을 반환하고 정수형 인덱스를 가진다.
-<function>mysql_num_rows</function>함수는 결과 포인터에서 테이블 개수를 얻는데 사용된다.
+<function>mysql_num_rows</function> 함수는 결과 포인터에서 테이블 개수를 얻는데 사용된다.
      <example>
 					<title>
 						<function>Mysql_tablename</function> 예제</title>
