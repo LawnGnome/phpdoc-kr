@@ -1,6 +1,3 @@
-New structure at 2003/03/08
-All updates can see at http://news.php.net/group.php?group=php.doc.kr
-
 Files                              Translators
 =============================================================================
 bookinfo.xml
@@ -22,8 +19,8 @@ resources.xml
 tokens.xml
 wrappers.xml
 ------- chapters/ -----------------------------------------------------------
-config.xml
-install.xml
+config.xml                         Yun-young Lee <progcom@yahoo.com>
+install.*.xml
 intro.xml                          Yun-young Lee <progcom@yahoo.com>
 security.xml
 streams.common.xml
