@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
+<!-- $Revision: 1.11 $ -->
 <!-- EN-Revision: 1.78 -->
  <chapter id="control-structures">
   <title>제어 구조</title>
@@ -221,9 +221,9 @@ endif;
   <sect1 id="control-structures.while">
    <title><literal>while</literal></title>
    <para>
-    <literal>while</literal> loops are the simplest type of loop in
-    PHP.  They behave just like their C counterparts.  The basic form
-    of a <literal>while</literal> statement is:
+    <literal>while</literal>는 PHP에서 제일 간단한 루프형이다.
+    C와 똑같은 방식으로 동작한다. <literal>while</literal>문의
+    기본적인 형태는 다음과 같다:
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -233,23 +233,18 @@ while (expr) statement
     </informalexample>
    </para>
    <simpara>
-    The meaning of a <literal>while</literal> statement is simple.  It
-    tells PHP to execute the nested statement(s) repeatedly, as long
-    as the <literal>while</literal> expression evaluates to
-    &true;.  The value of the expression is checked
-    each time at the beginning of the loop, so even if this value
-    changes during the execution of the nested statement(s), execution
-    will not stop until the end of the iteration (each time PHP runs
-    the statements in the loop is one iteration).  Sometimes, if the
-    <literal>while</literal> expression evaluates to
-    &false; from the very beginning, the nested
-    statement(s) won't even be run once.
+    <literal>while</literal>문의 의미는 단순하다. <literal>while</literal>
+    표현식이 계속 &true;이면, PHP에게 내포되어있는 구문(들)을 반복 수행하도
+    록 하라는것이다. 표현식의 값은 루프의 시작에서 매번 체크가 된다. 그래서
+    이 표현식 값이 내포된 구문(들)의 수행동안에 바뀔지라도 반복(iteration)
+    의 끝이 아니면 수행은 끝나지 않게 된다.(루프에서 PHP가 구문을 한번수행
+    할때 한번 반복(iteration)이다) 시작된지 얼마안되어 <literal>while</literal>표현식이 
+    &false;로 판명되면, 내포된 구문(들)은 즉시 수행을 멈출것이다.
    </simpara>
    <para>
-    Like with the <literal>if</literal> statement, you can group
-    multiple statements within the same <literal>while</literal> loop
-    by surrounding a group of statements with curly braces, or by
-    using the alternate syntax:
+    <literal>if</literal>문과 마찬가지로 중괄호나 대체문법을 사용하여
+    구문의 그룹을 둘러쌉으로써 <literal>while</literal>루프 안에 여러
+    구문을 그룹화할수 있다
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -259,8 +254,7 @@ while (expr): statement ... endwhile;
     </informalexample>
    </para>
    <para>
-    The following examples are identical, and both print numbers from
-    1 to 10:
+    다음 예는 모두 동일하다. 둘다 1부터 10까지의 숫자를 출력한다.:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -291,21 +285,17 @@ endwhile;
   <sect1 id="control-structures.do.while">
    <title><literal>do..while</literal></title>
    <simpara>
-    <literal>do..while</literal> loops are very similar to
-    <literal>while</literal> loops, except the truth expression is
-    checked at the end of each iteration instead of in the beginning.
-    The main difference from regular <literal>while</literal> loops is
-    that the first iteration of a <literal>do..while</literal> loop is
-    guaranteed to run (the truth expression is only checked at the end
-    of the iteration), whereas it's may not necessarily run with a
-    regular <literal>while</literal> loop (the truth expression is
-    checked at the beginning of each iteration, if it evaluates to
-    &false; right from the beginning, the loop
-    execution would end immediately).
+    <literal>do..while</literal>루프는 시작부분이 아니라 각 반복(iteration)의
+    끝부분에서 표현식이 참인지 체크한다는것을 제외하고 <literal>while</literal>루프와
+    매우 비슷하다. 일반적인 <literal>while</literal>문과의 주요한 차이점은
+    <literal>do..while</literal>문의 첫번째 반복이 반드시 수행된다는것이다
+    (반복의 끝부분에서 표현식이 참인지 체크한다), 이와 같은 경우는
+    일반 <literal>while</literal>루프로 수행시킬수 없을것이다. (while루프에서는
+    각 반복의 시작부분에서 표현식이 참인지 체크되고, 시작부터 바로 그 값이 
+    &false;이면 그 루프는 즉시 수행을 멈추게 된다)
    </simpara>
    <para>
-    There is just one syntax for <literal>do..while</literal> loops:
-
+    다음에 <literal>do..while</literal>루프의 한가지 문법을 보인다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -320,25 +310,21 @@ do {
     </informalexample>
    </para>
    <simpara>
-     The above loop would run one time exactly, since after the first
-     iteration, when truth expression is checked, it evaluates to
-     &false; ($i is not bigger than 0) and the loop
-     execution ends.
+     위 루프는 정확히 한번 수행된다. 첫번째 반복(iteration) 이후에 표현식이
+     참인지 체크할때, &false;가 되므로 ($i는 0보다 크지 않다) 루프 수행이 멈춘다. 
    </simpara>
    <para>
-    Advanced C users may be familiar with a different usage of the
-    <literal>do..while</literal> loop, to allow stopping execution in
-    the middle of code blocks, by encapsulating them with
-    <literal>do..while</literal>(0), and using the <link
-    linkend="control-structures.break"><literal>break</literal></link>
-    statement.  The following code fragment demonstrates this:
+    고급 C 유저는 <literal>do..while</literal>루프의 다른 사용법에 익숙할것이다.
+    즉, <literal>do..while</literal>(0)으로 감싸고, <link linkend="control-structures.break"><literal>break</literal></link>절을
+    사용해서 코드 블록의 중간에서 수행을 멈출수 있도록 해준다.
+    다음 코드 예는 이런 경우를 보여준다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 do {
     if ($i < 5) {
-        print "i is not big enough";
+        print "i는 충분히 크지 않다";
         break;
     }
     $i *= $factor;
@@ -356,18 +342,18 @@ do {
     </informalexample>
    </para>
    <simpara>
-    Don't worry if you don't understand this right away or at all.
-    You can code scripts and even powerful scripts without using this
-    'feature'.
+    이 코드를 바로 또는 전혀 이해할수 없다고 걱정하지 마라.
+    이런 '기능'을 사용하지 않고도 일반스크립트나 심지어 굉장한 스크립트를
+    작성할 수 있다.
    </simpara>
   </sect1>
 
   <sect1 id="control-structures.for">
    <title><literal>for</literal></title>
    <para>
-    <literal>for</literal> loops are the most complex loops in PHP.
-    They behave like their C counterparts.  The syntax of a
-    <literal>for</literal> loop is:
+    <literal>for</literal>루프는 PHP에서 제일 복잡한 루프이다.
+    C와 똑같은 방식으로 동작한다. <literal>for</literal>루프의 문법은 
+    다음과 같다:
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -377,35 +363,27 @@ for (expr1; expr2; expr3) statement
     </informalexample>
    </para>
    <simpara>
-    The first expression (<replaceable>expr1</replaceable>) is
-    evaluated (executed) once unconditionally at the beginning of the
-    loop.
+    첫번째 표현식(<replaceable>expr1</replaceable>)은 루프의 시작에서
+    바로 조건없이 평가된다 (수행된다).
    </simpara>
    <simpara>
-    In the beginning of each iteration,
-    <replaceable>expr2</replaceable> is evaluated.  If it evaluates to
-    &true;, the loop continues and the nested
-    statement(s) are executed.  If it evaluates to
-    &false;, the execution of the loop ends.
+    각 반복(iteration)의 시작부분에서 <replaceable>expr2</replaceable>이 평
+    가된다. 이 표현식이 &true;이면 루프는 계속되고 내포된 구문(들)이
+    수행된다. &false;이면, 루프 수행을 멈춘다.
    </simpara>
    <simpara>
-    At the end of each iteration, <replaceable>expr3</replaceable> is
-    evaluated (executed).
+    <replaceable>expr3</replaceable>표현식은 각 반복의 끝부분에서
+    평가된다 (수행된다).
    </simpara>
    <simpara>
-    Each of the expressions can be empty.
-    <replaceable>expr2</replaceable> being empty means the loop should
-    be run indefinitely (PHP implicitly considers it as
-    &true;, like C).  This may not be as useless as
-    you might think, since often you'd want to end the loop using a
-    conditional <link
-    linkend="control-structures.break"><literal>break</literal></link>
-    statement instead of using the <literal>for</literal> truth
-    expression.
+    각 표현식은 비어 있을수 있다. <replaceable>expr2</replaceable>이 비어있다는
+    것은 루프가 무제한 수행되어야 한다는 것을 의미한다 (PHP는 C처럼 &true;로 인식)
+    이런 기법은 생각처럼 필요없지는 않다. 왜냐 하면 종종 <literal>for</literal>문의 
+    표현식 대신에 <link linkend="control-structures.break"><literal>break</literal></link>문으로
+    루프를 끝낼 필요가 있기 때문이다.
    </simpara>
    <para>
-    Consider the following examples.  All of them display numbers from
-    1 to 10:
+    다음 예제 코드들을 보세요. 이 코드 모두 1부터 10까지의 숫자를 출력한다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -445,14 +423,12 @@ for ($i = 1; $i <= 10; print $i, $i++);
     </informalexample>
    </para>
    <simpara>
-    Of course, the first example appears to be the nicest one (or
-    perhaps the fourth), but you may find that being able to use empty
-    expressions in <literal>for</literal> loops comes in handy in many
-    occasions.
+    물론, 첫번째 예제(또는 네번째) 코드가 가장 좋은 방법이다. 그러나 
+    <literal>for</literal>루프에서 빈 표현식을 사용해야 하는 경우도 부딪히게
+    될것이다.
    </simpara>
    <para>
-    PHP also supports the alternate "colon syntax" for
-    <literal>for</literal> loops.
+    PHP는 <literal>for</literal>루프에 대한 대체 "콜른 문법"을 지원한다.
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -462,14 +438,12 @@ for (expr1; expr2; expr3): statement; ...; endfor;
      </informalexample>
    </para>
    <para>
-    Other languages have a <literal>foreach</literal> statement to
-    traverse an array or hash. PHP 3 has no such construct; PHP 4 does
-    (see <link
-    linkend="control-structures.foreach">foreach</link>). In PHP 3, you
-    can combine <link linkend="control-structures.while">while</link>
-    with the <function>list</function> and <function>each</function>
-    functions to achieve the same effect. See the documentation for
-    these functions for an example.
+    다른 언어에서는 배열이나 해쉬를 편리하게 사용하기위해 <literal>foreach</literal>구문도 
+    지원합니다. PHP 3는 이 구조를 지원하지 않지만, PHP 4는 지원합니다.
+    (<link linkend="control-structures.foreach">foreach</link>를 보세요)
+    PHP 3에서는 <link linkend="control-structures.while">while</link>문과
+    <function>list</function>, <function>each</function>함수를 조합하여 같은 
+    효과를 볼수있습니다. 이런 예제는 위 함수에 대한 문서를 보세요.
    </para>
 
   </sect1>
@@ -477,12 +451,11 @@ for (expr1; expr2; expr3): statement; ...; endfor;
   <sect1 id="control-structures.foreach">
    <title><literal>foreach</literal></title>
    <para>
-    PHP 4 (not PHP 3) includes a <literal>foreach</literal> construct, much
-    like Perl and some other languages. This simply gives an easy way to
-    iterate over arrays. <literal>foreach</literal> works only on arrays, and
-    will issue an error when you try to use it on a variable with a different
-    data type or an uninitialized variable. There are two syntaxes; the
-    second is a minor but useful extension of the first:
+    PHP 4(PHP 3는 아님)는 펄이나 다른 언어와 같이 <literal>foreach</literal>구문을 지원합니다.
+    이런 구문은 간단하게 배열에 대한 작업을 수행하는 가장 쉬운 기법입니다.
+    <literal>foreach</literal>는 배열에서만 작동하고 다른 데이터형을 갖는 변수나
+    초기화되지 않은 변수에 대해서 이 구문을 사용하려한다면 에러 메시지를 만날것입니다.
+    이 구문은 두가지 문법이 있습니다; 두번째보다는 첫번째문법이 더 유용한 사용법입니다:
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -493,54 +466,47 @@ foreach (array_expression as $key => $value) statement
     </informalexample>
    </para>
    <simpara>
-    The first form loops over the array given by
-    <literal>array_expression</literal>. On each loop, the value of
-    the current element is assigned to <literal>$value</literal> and
-    the internal array pointer is advanced by one (so on the next
-    loop, you'll be looking at the next element).
+    첫번째 형태는 <literal>array_expression</literal>에서 주어진 배열에
+    대해 루프를 돈다. 각 루프에서 현재 배열요소(element)의 값은 <literal>$value</literal>
+    로 지정되고 내부적인 배열 포인터는 하나씩 이동하게 된다 (그래서
+    다음 루프에서 다음 배열 요소를 보게 될것이다)
    </simpara>
    <simpara>
-    The second form does the same thing, except that the current
-    element's key will be assigned to the variable
-    <literal>$key</literal> on each loop.
+    두번째 루프도 같은 일을 한다. 단 현재 배열요소의 키(key)값은
+    각 루프의 <literal>$key</literal>변수로 지정된다.
    </simpara>
    <para>
     <note>
      <para>
-      When <literal>foreach</literal> first starts executing, the
-      internal array pointer is automatically reset to the first element
-      of the array. This means that you do not need to call
-      <function>reset</function> before a <literal>foreach</literal>
-      loop.
+      <literal>foreach</literal>문이 처음 실행할때, 내부적인 배열 포인터는
+      자동적으로 배열의 첫번째 요소(element)로 리셋된다. 따라서 
+      <literal>foreach</literal>절 이전에 <function>reset</function>함수를
+      호출할 필요는 없다.
      </para>
     </note>
    </para>
    <para>
     <note>
      <para>
-      Also note that <literal>foreach</literal> operates on a copy of
-      the specified array and not the array itself. Therefore, the
-      array pointer is not modified as with the
-      <function>each</function> construct, and changes to the array
-      element returned are not reflected in the original array.
-      However, the internal pointer of the original array
-      <emphasis>is</emphasis> advanced with the processing of the
-      array.  Assuming the foreach loop runs to completion, the
-      array's internal pointer will be at the end of the array.
+      <literal>foreach</literal>는 특정 배열의 복사본에 작용하는것이며 
+      배열 자체를 직접 건드리지 않는다. 따라서, 배열 포인터는 <function>each</function>함수
+      에 의해 변경이 되는것이 아니다. 넘어온 배열요소에 대한 변화는 원래 
+      배열에는 영향을 주지 않는다. 하지만, 원래 배열의 내부적 포인터는
+      배열 처리에 의해 <emphasis>이동한다</emphasis>. foreach루프는 
+      완료될때까지 루프를 돌고, 배열의 내부적 포인터는 배열 끝을 가리키게된다.
      </para>
     </note>
    </para>
    <para>
     <note>
      <para>
-      <literal>foreach</literal> does not support the ability to
-      suppress error messages using '@'.
+      <literal>foreach</literal>는 '@'를 사용해서 에러메시지를 출력하지 못하도록
+      할수는 없다.
      </para>
     </note>
    </para>
    <para>
-    You may have noticed that the following are functionally
-    identical:
+    다음 예는 기능적으로 동일하다는것을 알 필요가 있다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -558,7 +524,7 @@ foreach ($arr as $value) {
 ]]>
      </programlisting>
     </informalexample>
-    The following are also functionally identical:
+    다음 예도 기능적으로 동일하다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -577,7 +543,7 @@ foreach ($arr as $key => $value) {
     </informalexample>
    </para>
    <para>
-    Some more examples to demonstrate usages:
+    더 많은 예제 코드들이 사용법에 대해서 설명해준다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -642,15 +608,13 @@ foreach (array(1, 2, 3, 4, 5) as $v) {
   <sect1 id="control-structures.break">
    <title><literal>break</literal></title>
    <simpara>
-    <literal>break</literal> ends execution of the current
-    <literal>for</literal>, <literal>foreach</literal>
-    <literal>while</literal>, <literal>do..while</literal> or
-    <literal>switch</literal> structure.
+    <literal>break</literal>는 현재 <literal>for</literal>, <literal>foreach</literal>
+    <literal>while</literal>, <literal>do..while</literal> 또는
+    <literal>switch</literal>절의 수행을 멈춘다.
    </simpara>
    <simpara>
-    <literal>break</literal> accepts an optional numeric argument
-    which tells it how many nested enclosing structures are to be
-    broken out of.
+    <literal>break</literal>는 숫자 인자 옵션을 허용함으로써
+    내포된 구문구조의 깊이를 표시하고 거기서 빠져나올수 있게 해준다.
    </simpara>
    <para>
     <informalexample>
@@ -690,22 +654,18 @@ while (++$i) {
   <sect1 id="control-structures.continue">
    <title><literal>continue</literal></title>
    <simpara>
-    <literal>continue</literal> is used within looping structures to
-    skip the rest of the current loop iteration and continue execution
-    at the beginning of the next iteration.
+    <literal>continue</literal>는 루프 구조의 절안에서 현재 루프 반복의 
+    나머지부분을 건너뛰게 하고 다음 반복의 시작으로 실행을 속행시켜준다.
    </simpara>
    <note>
     <simpara>
-     Note that in PHP the
-     <link linkend="control-structures.switch">switch</link> statement is
-     considered a looping structure for the purposes of
-     <literal>continue</literal>.
+     PHP에서 <link linkend="control-structures.switch">switch</link>구문은 
+     <literal>continue</literal>에 의해 루프 구조로 사용할수 있다는것을 참고할것.
     </simpara>
    </note>
    <simpara>
-    <literal>continue</literal> accepts an optional numeric argument
-    which tells it how many levels of enclosing loops it should skip
-    to the end of.
+    <literal>continue</literal>는 숫자 인자 옵션을 사용하여 루프의 깊이를
+    표시할수 있고, 루프의 끝까지 건너뛸수 있다.
    </simpara>
    <para>
     <informalexample>
@@ -742,27 +702,24 @@ while ($i++ < 5) {
   <sect1 id="control-structures.switch">
    <title><literal>switch</literal></title>
    <simpara>
-    The <literal>switch</literal> statement is similar to a series of
-    IF statements on the same expression.  In many occasions, you may
-    want to compare the same variable (or expression) with many
-    different values, and execute a different piece of code depending
-    on which value it equals to.  This is exactly what the
-    <literal>switch</literal> statement is for.
+    <literal>switch</literal>구문은 연속적인 같은 표현식을 갖는 
+    연속적인 IF구문과 비슷하다. 많은 경우, 하나의 변수(또는 표현식)으로
+    다른 많은 값과 비교할 필요가 있으며, 그 값이 동일한 코드의 파편들을
+    수행할 필요가 생기게 된다. 정확히 이런 목적을 위해 <literal>switch</literal>구문이 
+    사용된다.
    </simpara>
    <note>
     <simpara>
-     Note that unlike some other languages, the
-     <link linkend="control-structures.continue">continue</link> statement
-     applies to switch and acts similar to <literal>break</literal>.  If you
-     have a switch inside a loop and wish to continue to the next iteration of
-     the outer loop, use <literal>continue 2</literal>.
+     다른 언어와는 달리 <link linkend="control-structures.continue">continue</link>문은 
+     switch문에서 사용할수 있고, <literal>break</literal>문과 비슷하게 동작한다.
+     루프 내에 switch문을 포함하고 있고 바깥 루프의 다음 반복문으로 진행하고 싶다면
+     <literal>continue 2</literal>를 사용한다.
     </simpara>
    </note>
    <para>
-    The following two examples are two different ways to write the
-    same thing, one using a series of <literal>if</literal>
-    statements, and the other using the <literal>switch</literal>
-    statement:
+    다음 예제 코드들은 같은 일을 서로 다르게 표현한 것이다. 하나는
+    <literal>if</literal>문을 연속적으로 사용한것이고, 다른 것은
+    <literal>switch</literal>문을 사용하고 있다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -792,30 +749,26 @@ switch ($i) {
     </informalexample>
    </para>
    <para>
-    It is important to understand how the <literal>switch</literal>
-    statement is executed in order to avoid mistakes.  The
-    <literal>switch</literal> statement executes line by line
-    (actually, statement by statement).  In the beginning, no code is
-    executed.  Only when a <literal>case</literal> statement is found
-    with a value that matches the value of the
-    <literal>switch</literal> expression does PHP begin to execute the
-    statements.  PHP continues to execute the statements until the end
-    of the <literal>switch</literal> block, or the first time it sees
-    a <literal>break</literal> statement.  If you don't write a
-    <literal>break</literal> statement at the end of a case's
-    statement list, PHP will go on executing the statements of the
-    following case.  For example:
+    실수하지 않기 위해 <literal>switch</literal>문이 어떻게 동작하는지
+    이해할 필요가 있다. <literal>switch</literal>문은 한줄씩 수행된다
+    (실제는, 한구문씩). 처음에는 아무 코드도 수행되지 않는다. 오직
+    값을 갖는 <literal>case</literal>문이 발견될때에만 구문을 수행하기 
+    시작한다. PHP는 <literal>switch</literal>블록의 끝부분이 될때까지,
+    또는 <literal>break</literal>문와 첫번째 조우를 할때까지
+    구문을 계속 수행해 간다. 만약 각 case 구문 목록의 끝부분에
+    <literal>break</literal>문을 쓰지않는다면 PHP는 다음 case문으로 계속
+    진행하게 된다. 예를 들면 다음과 같다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 switch ($i) {
     case 0:
-        print "i equals 0";
+        print "i는 0과 같다";
     case 1:
-        print "i equals 1";
+        print "i는 1과 같다";
     case 2:
-        print "i equals 2";
+        print "i는 2와 같다";
 }
 ?>
 ]]>
@@ -823,25 +776,21 @@ switch ($i) {
     </informalexample>
    </para>
    <simpara>
-    Here, if $i is equal to 0, PHP would execute all of the print
-    statements!  If $i is equal to 1, PHP would execute the last two
-    print statements. You would get the expected behavior ('i equals 2' 
-    would be displayed) only if $i is equal to 2.  Thus,
-    it is important not to forget <literal>break</literal> statements
-    (even though you may want to avoid supplying them on purpose under
-    certain circumstances).
+    이 예제 코드에서, $i가 0과 같으면, PHP는 모든 print구문을 수행할것이다!
+    $i가 1이면 밑의 두 print구문을 수행한다. $i가 2일때만 원하는 동작
+    ('i는 2와 같다')을 보게 될것이다. 따라서 <literal>break</literal>문을 
+    반드시 빠뜨려서는 안된다. (어떤 경우에는 일부러 빠뜨릴수 있을지 모르지만)
    </simpara>
    <simpara>
-    In a <literal>switch</literal> statement, the condition is
-    evaluated only once and the result is compared to each
-    <literal>case</literal> statement. In an <literal>elseif</literal>
-    statement, the condition is evaluated again. If your condition is
-    more complicated than a simple compare and/or is in a tight loop,
-    a <literal>switch</literal> may be faster.
+    <literal>switch</literal>구문에서, 조건문은 오직 한번만 평가되고
+    각 <literal>case</literal>문에서 결과가 비교되어진다.
+    <literal>elseif</literal>문에서는 조건문은 다시 평가된다. 조건문이 
+    한번 이상의 비교가 필요한 복잡한 것이거나 거친(tight) 루프안에 있다면
+    <literal>switch</literal>문 좀 더 빠를것이다.
    </simpara>
    <para>
-    The statement list for a case can also be empty, which simply
-    passes control into the statement list for the next case.
+    case에 대한 구문 목록은 비어있을수 있다. 이것은 단순히 다음 case문으로
+    제어권을 넘겨줄 뿐이다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -861,25 +810,25 @@ switch ($i) {
     </informalexample>
    </para>
    <para>
-    A special case is the <literal>default</literal> case.  This case matches
-    anything that wasn't matched by the other cases, and should be the last
-    <literal>case</literal> statement.  For example:
+    특별한 case가 바로 <literal>default</literal> case문이다. 이것은 다른 case문과
+    모두 조건이 맞지 않을때의 경우를 위한것이고, <literal>case</literal>구문의 
+    마지막에 위치해야 한다. 예제 코드는 다음과 같다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 switch ($i) {
     case 0:
-        print "i equals 0";
+        print "i는 0과 같다";
         break;
     case 1:
-        print "i equals 1";
+        print "i는 1과 같다";
         break;
     case 2:
-        print "i equals 2";
+        print "i는 2와 같다";
         break;
     default:
-        print "i is not equal to 0, 1 or 2";
+        print "i는 0, 1, 2 어느것도 아니다";
 }
 ?>
 ]]>
@@ -887,16 +836,13 @@ switch ($i) {
     </informalexample>
    </para>
    <para>
-    The <literal>case</literal> expression may be any expression that
-    evaluates to a simple type, that is, integer or floating-point
-    numbers and strings.  Arrays or objects cannot be used here unless
-    they are dereferenced to a simple type.
+    <literal>case</literal>의 표현식은 정수나 부동소수점 수와 문자열같은
+    단순형으로 평가되는 어던 표현식도 될수 있다. 여기에 단순형으로
+    재참조(dereference)되지 않는 배열이나 객체를 사용할수는 없다.
    </para>
    <para>
-    The alternative syntax for control structures is supported with
-    switches. For more information, see <link
-    linkend="control-structures.alternative-syntax">Alternative syntax
-    for control structures</link> .
+    switch문을 위한 제어 구조의 대체 문법이 지원된다. 더 자세한 정보는
+    <link linkend="control-structures.alternative-syntax">제어 구조의 대체 문법</link>을 참고.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -924,10 +870,10 @@ endswitch;
   <sect1 id="control-structures.declare">
    <title><literal>declare</literal></title>
    <para>
-    The <literal>declare</literal> construct is used to
-    set execution directives for a block of code.
-    The syntax of <literal>declare</literal> is similar to
-    the syntax of other flow control constructs:
+    <literal>declare</literal>구문은 코드 블록의 수행 디렉티브(directive)를
+    활성화하기 위해 사용된다.
+    <literal>declare</literal>문법은 다른 흐름 제어 구조의 문법과
+    비슷하다:
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -937,25 +883,19 @@ declare (directive) statement
     </informalexample>
    </para>
    <para>
-    The <literal>directive</literal> section allows the
-    behavior of the <literal>declare</literal> block to
-    be set.
-    Currently only one directive is recognized: the
-    <literal>ticks</literal> directive. (See below for more
-    information on the
-    <link linkend="control-structures.declare.ticks">ticks</link>
-    directive)
+    <literal>directive</literal>부분은 <literal>declare</literal>블록의 동작이
+    활성화되도록 해준다. 현재는 오직 한 디렉티브만 인식된다:
+    <literal>ticks</literal> 디렉티브. (더 자세한 정보는
+    <link linkend="control-structures.declare.ticks">ticks</link> 디렉티브를 볼것)
    </para>
    <para>
-    The <literal>statement</literal> part of the
-    <literal>declare</literal> block will be executed -- how
-    it is executed and what side effects occur during execution
-    may depend on the directive set in the
-    <literal>directive</literal> block.
+    <literal>declare</literal>블록의 <literal>statement</literal>부분이 수행될것이다
+    - 어떻게 수행이 되고 수행중에 어떤 사이드 이펙트가 발생할지는 
+    <literal>directive</literal>블록의 디렉티브에 달려있다.
    </para>
    <para>
-    The <literal>declare</literal> construct can also be used in the global 
-    scope, affecting all code following it.
+    <literal>declare</literal> 구문은 전역 유효영역 안에서 사용할수 있다.
+    그래서 모든 코드가 그 디렉티브에 영향을 받는다. 
     <informalexample>
      <programlisting>
 <![CDATA[
@@ -976,7 +916,7 @@ declare(ticks=1);
     </informalexample>
    </para>
    <sect2 id="control-structures.declare.ticks">
-    <title>Ticks</title>
+    <title>틱(Ticks)</title>
     <para>A tick is an event that occurs for every
     <replaceable>N</replaceable> low-level statements executed
     by the parser within the <literal>declare</literal> block.
