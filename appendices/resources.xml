@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.2 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.30 -->
 <appendix id="resource">
- <title>List of Resource Types</title>
+ <title>리소스 타입 목록</title>
  <para>
-  The following is a list of functions which create, use or destroy
-  PHP resources.  The function <function>is_resource</function> can be
-  used to determine if a variable is a resource and
-  <function>get_resource_type</function> will return the type of
-  resource it is.
+  다음은 PHP 리소스를 생성, 사용, 파괴하는 함수 목록이다.
+  함수 <function>is_resource</function>는 특정 변수가 리소스인지 확인하기
+  위해 사용될수 있고 <function>get_resource_type</function>은 변수의 리소스
+  타입을 리턴할것이다.
   <table>
-   <title>Resource Types</title>
+   <title>리소스 타입</title>
    <tgroup cols="5">
      <colspec colwidth='1*'/>
      <colspec colwidth='1*'/>
@@ -18,11 +18,11 @@
      <colspec colwidth='1*'/>
      <thead>
       <row>
-       <entry>Resource Type Name</entry>
-       <entry>Created By</entry>
-       <entry>Used By</entry>
-       <entry>Destroyed By</entry>
-       <entry>Definition</entry>
+       <entry>리소스 타입명</entry>
+       <entry>생성 함수</entry>
+       <entry>사용 함수</entry>
+       <entry>파괴 함수</entry>
+       <entry>선언</entry>
       </row>
      </thead>
      <tbody>
@@ -75,7 +75,7 @@
     <entry>
      None
     </entry>
-    <entry>COM object reference</entry>
+    <entry>COM 객체 레퍼런스</entry>
    </row>
    <row>
      <entry>VARIANT</entry>
@@ -152,7 +152,7 @@
     <entry>
      <function>cpdf_close</function>
     </entry>
-    <entry>PDF document with CPDF lib</entry>
+    <entry>CPDF lib에 의한 PDF 문서</entry>
    </row>
    <row>
      <entry>cpdf outline</entry>
@@ -192,7 +192,7 @@
     <entry>
      <function>dbmclose</function>
     </entry>
-    <entry>Link to DBM database</entry>
+    <entry>DBM database로의 연결</entry>
    </row>
    <row>
     <entry>dba</entry>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.1 $ -->
+<!-- EN-Revision: 1.4 -->
+<appendix id="transports">
+ <title>지원되는 소켓 전송 목록</title>
+ <para>
+  다음은 <function>fsockopen</function>과 <function>stream_socket_client</function>같은 
+  스트림 기반 소켓 함수를 사용하기 위해 PHP가 내장하고 있는 다양한 
+  URL 스타일의 소켓 전송 목록이다. 이런 전송들은
+  <link linkend="ref.sockets">Sockets Extension</link>에 적용되지
+  <emphasis>않는다</emphasis>.
+ </para>
+
+ <para>
+  설치된 <literal>PHP</literal> 버전안에 사용가능한 전송 리스트를 보려면
+ <function>stream_get_transports</function>를 사용하라.
+ </para>
+
+ <section id="transports.inet">
+  <title>인터넷 도메인: TCP, UDP, SSL, TLS</title>
+  <simpara>PHP 3, PHP 4. <literal>ssl://</literal> &amp; PHP 4.3이후의 <literal>tls://</literal></simpara>
+
+  <note>
+   <simpara>
+    전송이 표시되지 않으면 <literal>tcp://</literal>라고 가정할것이다.
+   </simpara>
+  </note>
+
+  <itemizedlist>
+   <listitem><simpara><literal>127.0.0.1</literal></simpara></listitem>
+   <listitem><simpara><literal>fe80::1</literal></simpara></listitem>
+   <listitem><simpara><literal>www.example.com</literal></simpara></listitem>
+   <listitem><simpara><literal>tcp://127.0.0.1</literal></simpara></listitem>
+   <listitem><simpara><literal>tcp://fe80::1</literal></simpara></listitem>
+   <listitem><simpara><literal>tcp://www.example.com</literal></simpara></listitem>
+   <listitem><simpara><literal>udp://www.example.com</literal></simpara></listitem>
+   <listitem><simpara><literal>ssl://www.example.com</literal></simpara></listitem>
+   <listitem><simpara><literal>tls://www.example.com</literal></simpara></listitem>
+  </itemizedlist>
+
+  <simpara>
+   인터넷 도메인 소켓은 목표 주소에 더하여 포트 번호가 올것을
+   예상할수 있다. <function>fsockopen</function>의 경우 이것은 두번째
+   인수에서 설정되고 따라서 전송 url의 구성에 영향을 주지 않는다.
+   <function>stream_socket_client</function>와 이와 관련된 함수는 전통적인 URL을
+   갖는다. 포트 번호는 전송 URL의 끝에 콜론으로 구분되어 덧붙여진다.
+  </simpara>
+
+  <itemizedlist>
+   <listitem><simpara><literal>tcp://127.0.0.1:80</literal></simpara></listitem>
+   <listitem><simpara><literal>tcp://[fe80::1]:80</literal></simpara></listitem>
+   <listitem><simpara><literal>tcp://www.example.com:80</literal></simpara></listitem>
+  </itemizedlist>
+
+  <note>
+   <title>포트 번호를 갖는 IPv6 숫자 주소</title>
+   <simpara>
+    위 예제중 두번째는, IPv4의 호스트명 예제가 콜른과 포트번호의
+    추가와는 별개로 남겨져있는데 반하여, IPv6 주소는 대괄호:
+    <literal>[fe80::1]</literal>에 둘러쌓여 있다.
+    이것은 IPv6 주소에서 사용되는 콜론과 
+    포트번호를 구분하기 위해 사용되는 콜론을 구별하기 위한 것이다.
+   </simpara>
+  </note>
+
+  <simpara>
+   <literal>ssl://</literal> 과 <literal>tls://</literal> 전송은 
+   (openssl 지원이 PHP안에 컴파일되었을때만 가용) SSL 암호화를 포함하는
+   <literal>tcp://</literal> 전송의 확장이다.
+   <literal>PHP 4.3.0</literal>이후에 OpenSSL 지원은 <literal>PHP</literal>와 
+   정적으로 컴파일되어야 한다. <literal>PHP 5.0.0</literal> 이후부터는
+   모듈이건 정적이건 아무거나 컴파일 되어 사용될수 있을것이다.
+  </simpara>
+
+  <para>
+   <table>
+    <title>
+     <literal>ssl://</literal>와 <literal>tls://</literal>에 대한 환경 옵션
+     (<literal>PHP 4.3.2</literal> 이후 버전)
+    </title>
+    <tgroup cols="4">
+     <thead>
+      <row>
+       <entry>이름</entry>
+       <entry>용도</entry>
+       <entry>기본값</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry><literal>verify_peer</literal></entry>
+       <entry>
+        &true; or &false;.
+        사용되는 SSL 인증의 조회를 요구
+       </entry>
+       <entry>&false;</entry>
+      </row>
+      <row>
+       <entry><literal>allow_self_signed</literal></entry>
+       <entry>
+        &true; or &false;.
+        자체-사인된 인증을 허용
+       </entry>
+       <entry>&false;</entry>
+      </row>
+      <row>
+       <entry><literal>cafile</literal></entry>
+       <entry>
+        원격단의 신원을 인증하기 위한 <literal>verify_peer</literal> 환경 옵션으로
+        사용될수 있는 로컬 파일시스템상의 인증 증명서 파일의 위치
+       </entry>
+       <entry></entry>
+      </row>
+      <row>
+       <entry><literal>capath</literal></entry>
+       <entry>
+        <literal>cafile</literal>에서 설정되지 않거나 인증서를 거기서 찾을수 없다면,
+        <literal>capath</literal>에 의해 지정된 디렉토리에서 적절한 인증서를 검색한다.
+        <literal>capath</literal>는 정확하게 해쉬된 인증서 디렉토리여야 한다.
+       </entry>
+       <entry></entry>
+      </row>
+      <row>
+       <entry><literal>local_cert</literal></entry>
+       <entry>
+        파일시스템 상의 로컬 인증서 파일로의 경로. 인증과 개인키를 포함하는
+        인코딩된 PEM 파일이 되어야 한다. 이것은 요구자의 인증 체인을
+        선택적으로 포함할수 있다.
+       </entry>
+       <entry></entry>
+      </row>
+      <row>
+       <entry><literal>passphrase</literal></entry>
+       <entry>
+        인코딩된 <literal>local_cert</literal>파일의 패스구절(passphrase).
+       </entry>
+       <entry></entry>
+      </row>
+      <row>
+       <entry><literal>CN_match</literal></entry>
+       <entry>
+        Common Name 이 와야 함. PHP는 제한된 와일드카드 비교를 수행할것이다.
+        Common Name이 이와 일치하지 않으면, 접속시도가 실패할것이다.
+       </entry>
+       <entry></entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+
+  <note>
+   <simpara>
+    <literal>ssl://</literal>은
+    <link linkend="wrappers.http"><literal>https://</literal></link>와
+    <link linkend="wrappers.ftp"><literal>ftps://</literal></link> 래퍼를
+    위한 중요한 전송이기 때문에, 
+    <literal>ssl://</literal>에 적용되는 환경 옵션은
+    <literal>https://</literal>와 <literal>ftps://</literal>에도 적용된다.
+   </simpara>
+  </note>
+ </section>
+
+ <section id="transports.unix">
+  <title>유닉스 도메인: UNIX와 UDG</title>
+  <simpara>
+   <literal>PHP 3</literal> 이후의 <literal>unix://</literal>,
+   <literal>PHP 5</literal> 이후의 <literal>udg://</literal> 
+  </simpara>
+
+  <itemizedlist>
+   <listitem><simpara><literal>unix:///tmp/mysock</literal></simpara></listitem>
+   <listitem><simpara><literal>udg:///tmp/mysock</literal></simpara></listitem>
+  </itemizedlist>
+
+  <simpara>
+   <literal>unix://</literal>는 유닉스 도메인에 대한 소켓 스트림 접속 시도를
+   제공한다. <literal>udg://</literal>는 user datagram protocol을 사용하는
+   유닉스 도메인 소켓에 대한 대체 전송을 제공한다.
+  </simpara>
+
+  <simpara>
+   유닉스 도메인 소켓은 인터넷 도메인 소켓과는 달리 포트 번호를 쓰지 않는다.
+   <function>fsockopen</function>에서
+   <parameter>portno</parameter> 인자는 0이 되어야 한다.
+  </simpara>
+ </section>
+
+</appendix>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
