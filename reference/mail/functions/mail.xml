@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.25 Maintainer: progcom Status: ok -->
+<!-- EN-Revision: 1.26 Maintainer: progcom Status: ready -->
   <refentry id="function.mail">
    <refnamediv>
     <refname>mail</refname>
@@ -84,9 +83,9 @@ mail("joecool@example.com", "My Subject", "Line 1\nLine 2\nLine 3");
 <![CDATA[
 <?php
 mail("nobody@example.com", "the subject", $message,
-     "From: webmaster@{$_SERVER['SERVER_NAME']}\r\n"
-    ."Reply-To: webmaster@{$_SERVER['SERVER_NAME']}\r\n"
-    ."X-Mailer: PHP/" . phpversion());
+     "From: webmaster@{$_SERVER['SERVER_NAME']}\r\n" .
+     "Reply-To: webmaster@{$_SERVER['SERVER_NAME']}\r\n" .
+     "X-Mailer: PHP/" . phpversion());
 ?>
 ]]>
       </programlisting>
@@ -216,4 +215,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

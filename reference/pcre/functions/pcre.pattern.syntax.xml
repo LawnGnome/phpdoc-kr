@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: working -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: working -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
     <refname>패턴 문법</refname>
@@ -19,117 +19,117 @@
     <title>펄과의 차이</title>
     <para>
      여기 설명된 차이는 펄 5.005 기준입니다.
-    <orderedlist>
-     <listitem>
-      <simpara>
-       PCRE를 다른 문자 집합으로 컴파일할 수 있지만,
-       기본적으로 공백 문자는 C 라이브러리 함수 isspace()가 인식하는
-       모든 문자입니다. 보통 isspace()는 스페이스, 폼피드, 뉴라인,
-       캐리지 리턴, 수평 탭, 수직 탭을 인식합니다. 펄 5는
-       공백 문자에 수직 탭을 포함하지 않습니다. 오랜 기간동안
-       펄 문서의 \v 이스케이프는 사실상 인정되지 않았습니다.
-       그러나 문자 자체는 적어도 5.002까지 공백으로 취급되었으며,
-       5.004와 5.005는 \s로 인식하지 않습니다.
-      </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-     PCRE는 lookahead assertions에 반복 수를 허용하지 않습니다.
-     펄은 허용하지만, 생각하는 대로의 의미를 가지지는 않습니다.
-     예를 들면, (?!a){3}는 다음의 세 문자가 "a"가 아닌 것을 의미하지
-     않습니다. 단순히 다음 문자가 "a"가 아니라는 것을 세번 확인합니다.
-      </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-     부정 lookahead 단정 안에서 일어나는 서브패턴 검출은 카운트되지만, 시작
-     위치 벡터에 그 엔트리는 설정되지 않습니다. 펄은 부정 lookahead 단정이 단
-     하나의 브랜치를 가지고 있을 경우에 한하여, 그 단정이 매치에 실패(즉,
-     성공)하기 전에 매치된 어떠한 패턴에 대해서도 그에 대한 숫자 변수를
-     설정합니다.
-      </simpara>
-     </listitem>
-     <listitem>
-      <simpara>
-     바이너리 제로 문자는 목표 문자열에서는 지원하지만, 패턴 문자열에서는
-     허용되지 않습니다. 패턴은 제로로 종료되는 일반의 C 문자열로 넘어가기
-     때문입니다. 패턴에서 바이너리 제로를 표현하기 위해 이스케이프 시퀀스
-     "\\x00"를 사용할 수 있습니다.
-      </simpara>
+     <orderedlist>
+      <listitem>
+       <simpara>
+        PCRE는 다른 문자 집합으로 컴파일할 수 있지만, 기본적으로 공백 문자는 C
+        라이브러리 함수 isspace()가 인식하는 모든 문자입니다. 보통 isspace()는
+        스페이스, 폼피드, 뉴라인, 캐리지 리턴, 수평 탭, 수직 탭을 인식합니다.
+        펄 5는 공백 문자에 수직 탭을 포함하지 않습니다. 오랜 기간동안 펄
+        문서의 \v 이스케이프는 사실상 인정되지 않았습니다. 그러나 문자 자체는
+        적어도 5.002까지 공백으로 취급되었으며, 5.004와 5.005는 \s에서
+        인식하지 않습니다.
+       </simpara>
       </listitem>
       <listitem>
-      <simpara>
-     다음의 펄 이스케이프 시퀀스는 지원하지 않습니다:
-     \l,  \u,  \L,  \U,  \E, \Q. 사실, 이것들은 펄의 일반 문자열
-     핸들링이며, 패턴 매칭 엔진의 부분이 아닙니다.
-      </simpara>
+       <simpara>
+        PCRE는 lookahead assertions에 반복 수를 허용하지 않습니다. 펄은
+        허용하지만, 생각하는 대로의 의미를 가지지는 않습니다. 예를 들면,
+        (?!a){3}는 다음의 세 문자가 "a"가 아닌 것을 의미하지 않습니다. 단순히
+        다음 문자가 "a"가 아니라는 것을 세번 확인합니다.
+       </simpara>
       </listitem>
       <listitem>
-      <simpara>
-     펄의 \G는 싱글 패턴 매치에 적절하지 않기 때문에
-     지원하지 않습니다.
-      </simpara>
+       <simpara>
+        부정 lookahead 단정 안에서 일어나는 서브패턴 검출은 카운트되지만, 시작
+        위치 벡터에 그 엔트리는 설정되지 않습니다. 펄은 부정 lookahead 단정이
+        단 하나의 브랜치를 가지고 있을 경우에 한하여, 그 단정이 매치에
+        실패(즉, 성공)하기 전에 매치된 어떠한 패턴에 대해서도 그에 대한 숫자
+        변수를 설정합니다.
+       </simpara>
       </listitem>
       <listitem>
-      <simpara>
-     당연하게도, PCRE는 (?{code}) 구조를 지원하지 않습니다.
-      </simpara>
+       <simpara>
+        바이너리 제로 문자는 목표 문자열에서는 지원하지만, 패턴 문자열에서는
+        허용하지 않습니다. 패턴은 제로로 종료되는 일반의 C 문자열로 처리하기
+        때문입니다. 패턴에서 바이너리 제로를 표현하기 위해 이스케이프 시퀀스
+        "\\x00"를 사용할 수 있습니다.
+       </simpara>
       </listitem>
       <listitem>
-      <simpara>
-     패턴의 일부가 반복될 때, 잡혀진 문자열의 설정에 관한 펄 5.005_02에서 일부
-     이상함이 존재합니다. 예를 들면, "aba"에 대해서 패턴 /^(a(b)?)+$/를
-     매칭하면 $2를 "b" 값으로 설정하지만, "aabbaa"에 대해서 /^(aa(bb)?)+$/를
-     매칭하면 $2를 설정하지 않습니다. 하지만 패턴을 /^(aa(b(b))?)+$/로
-     변경하면 $2(와 $3)를 설정합니다.
-     펄 5.004에서는 $2를 두 경우 모두 설정하며, PCRE에서도 &true;입니다.
-     앞으로 펄이 이 차이를 일관성 있게 변경한다면, PCRE는 따라서 변경할
-     것입니다.
-      </simpara>
+       <simpara>
+        다음의 펄 이스케이프 시퀀스는 지원하지 않습니다:
+        \l,  \u,  \L,  \U,  \E, \Q. 사실, 이들은 펄의 일반 문자열
+        핸들링이며, 패턴 매칭 엔진의 부분이 아닙니다.
+       </simpara>
       </listitem>
       <listitem>
-      <simpara>
-     또다른 해결되지 않은 모순점은 펄 5.005_02는 패턴 /^(a)?(?(1)a|b)+$/가
-     문자열 "a"를 매치하지만, PCRE는 하지 않습니다. 그러나 펄과 PCRE 모두
-     /^(a)?a/로 "a"를 매치하고 $1을 설정하지 않습니다.
-      </simpara>
+       <simpara>
+        펄의 \G는 싱글 패턴 매치에 적절하지 않기 때문에 지원하지 않습니다.
+       </simpara>
       </listitem>
       <listitem>
-      <para>
-     PCRE는 펄 정규표현식 기능의 몇가지 확장을 지원합니다:
+       <simpara>
+        당연하게도, PCRE는 (?{code}) 구조를 지원하지 않습니다.
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        패턴의 일부가 반복될 때, 잡아낸 문자열의 설정에 관해서, 펄
+        5.005_02에서 일부 이상한 동작을 합니다. 예를 들면, "aba"에 대해서 패턴
+        /^(a(b)?)+$/를 매칭하면 $2를 "b" 값으로 설정하지만, "aabbaa"에 대해서
+        /^(aa(bb)?)+$/를 매칭하면 $2를 설정하지 않습니다. 하지만 패턴을
+        /^(aa(b(b))?)+$/로 변경하면 $2(와 $3)를 설정합니다. 펄 5.004에서는
+        $2를 두 경우 모두 설정하며, PCRE에서도 &true;입니다. 앞으로 펄이 이
+        차이를 일관성 있게 변경한다면, PCRE는 그 변경에 따라갈 것입니다.
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        또다른 해결되지 않은 모순점은 펄 5.005_02가 패턴 /^(a)?(?(1)a|b)+$/을
+        문자열 "a"를 매치하지만, PCRE는 하지 않습니다. 그러나 펄과 PCRE 모두
+        /^(a)?a/로 "a"를 매치하고 $1을 설정하지 않습니다.
+       </simpara>
+      </listitem>
+      <listitem>
+       <para>
+        PCRE는 펄 정규표현식 기능의 몇가지 확장을 지원합니다:
         <orderedlist>
          <listitem>
           <simpara>
-     lookbehind 단정은 고정 길이 문자열에만 매치해야하지만, 양자 택일의
-     lookbehind 단정은 다른 길이의 문자열을 매치할 수 있습니다. 펄 5.005에서는
-     전부 같은 길이를 가질 것을 요구합니다.
-         </simpara>
-        </listitem>
-        <listitem>
-         <simpara>
-     <link linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>를
-     설정하고 <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>를
-     설정하지 않으면 $ 메타 문자는 문자열의 가장 마지막에만 매치합니다.
-         </simpara>
-        </listitem>
-        <listitem>
-         <simpara>
-     <link linkend="pcre.pattern.modifiers">PCRE_EXTRA</link>를 설정하면,
-     백슬래쉬 뒤에 특별한 의미를 가지지 않는 문자를 사용하면 실패하게 됩니다.
-         </simpara>
-        </listitem>
-        <listitem>
-         <simpara>
-     <link linkend="pcre.pattern.modifiers">PCRE_UNGREEDY</link>를 설정하면,
-     반복 수량사의 greediness가 뒤집어져서, 기본값으로 greedy하지 않게 됩니다.
-     하지만 뒤에 물음표가 붙으면 greedy하게 됩니다.
-         </simpara>
-        </listitem>
-       </orderedlist>
-      </para>
-     </listitem>
-    </orderedlist>
-   </para>
+           lookbehind 단정은 고정 길이 문자열에만 매치해야하지만, 양자 택일의
+           lookbehind 단정은 다른 길이의 문자열을 매치할 수 있습니다. 펄
+           5.005에서는 모두 같은 길이를 가질 것을 요구합니다.
+          </simpara>
+         </listitem>
+         <listitem>
+          <simpara>
+           <link linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>를
+           설정하고 <link
+            linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>를 설정하지
+           않으면 $ 메타 문자는 문자열의 가장 마지막에만 매치합니다.
+          </simpara>
+         </listitem>
+         <listitem>
+          <simpara>
+           <link linkend="pcre.pattern.modifiers">PCRE_EXTRA</link>를
+           설정하면, 백슬래쉬 뒤에 특별한 의미를 가지지 않는 문자의 사용은
+           실패하게 됩니다.
+          </simpara>
+         </listitem>
+         <listitem>
+          <simpara>
+           <link linkend="pcre.pattern.modifiers">PCRE_UNGREEDY</link>를
+           설정하면, 반복 수량사의 greediness가 뒤집어져서, 기본값으로
+           greedy하지 않게 됩니다. 하지만 뒤에 물음표가 붙으면 greedy하게
+           됩니다.
+          </simpara>
+         </listitem>
+        </orderedlist>
+       </para>
+      </listitem>
+     </orderedlist>
+    </para>
    </refsect1>
 
    <refsect1 id="regexp.reference">
@@ -137,33 +137,29 @@
     <refsect2 id="regexp.introduction">
      <title>소개</title>
      <para>
-     아래의 설명은 PCRE가 지원하는 정규 표현식의 문법과 의미입니다.
-     정규 표현식은 펄 문서와 많은 책들에 설명이 있으며, 몇몇은 풍부한
-     예제가 존재합니다. O'Reilly에서 출판한 Jeffrey Friedl의
-     "Mastering  Regular  Expressions"(ISBN 1-56592-257-3)는
-     예제들을 매우 자세하게 다루고 있습니다. 여기의 설명은 레퍼런스
-     문서에 따릅니다.
+      아래의 설명은 PCRE가 지원하는 정규 표현식의 문법과 의미입니다. 정규
+      표현식은 펄 문서와 많은 책들에 설명이 있으며, 그 중 일부는 풍부한 예제가
+      존재합니다. O'Reilly에서 출판한 Jeffrey Friedl의 "Mastering  Regular
+      Expressions"(ISBN 1-56592-257-3)는 예제들을 매우 자세하게 다루고
+      있습니다. 여기의 설명은 레퍼런스 문서에 따릅니다.
 
-     정규 표현식은 주어진 문자열에 대하여 왼쪽에서 오른쪽으로 매치하는
-     패턴입니다. 문자는 패턴에 준비되고, 표적에서 대응하는 문자에
-     매치합니다. 간단한 예제로, 패턴 
-       <literal>The quick brown fox</literal>
-     은 표적 문자열의 동일한 부분에 매치합니다.
+      정규 표현식은 주어진 문자열에 대하여 왼쪽에서 오른쪽으로 매치하는
+      패턴입니다. 문자는 패턴에 준비되고, 표적에서 대응하는 문자에 매치합니다.
+      간단한 예제로, 패턴 <literal>The quick brown fox</literal>은 표적
+      문자열의 동일한 부분에 매치합니다.
      </para>
     </refsect2>
     <refsect2 id="regexp.reference.meta">
      <title>메타 문자</title>
      <para>     
-     정규표현식의 강력함은 패턴에 선택과 반복을 포함하는 것에서 생겨납니다.
-     이는 특별한 방법으로 해석되는
-     <emphasis>메타 문자</emphasis>를 사용하여 패턴에
-     들어가게 됩니다.
+      정규표현식의 강력함은 패턴에 선택과 반복을 포함할 수 있는 점입니다. 이는
+      특별한 방법으로 해석하는 <emphasis>메타 문자</emphasis>를 사용하여
+      패턴에 들어갑니다.
      </para>
      <para>
-     메타 문자는 두가지 세트가 존재합니다: 스퀘어 브라켓([])안을
-     제외하고 패턴의 어디에서든 작동하는 것들과, 스퀘어 브라켓안에서
-     작동하는 것들입니다. 다음은 스퀘어 브라켓 밖에서 사용하는
-     메타 문자들입니다.
+      메타 문자는 두가지 세트가 존재합니다: 스퀘어 브라켓([])안을 제외하고
+      패턴의 어디에서든 작동하는 것들과, 스퀘어 브라켓안에서 작동하는
+      것들입니다. 다음은 스퀘어 브라켓 밖에서 사용하는 메타 문자들입니다.
       <variablelist>
        <varlistentry>
         <term><emphasis>\</emphasis></term>
@@ -175,7 +171,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>^</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           subject의 시작 (멀티라인 모드에서는 줄의 시작)
          </simpara>
@@ -183,7 +179,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>$</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           subject의 끝 (멀티라인 모드에서는 줄의 끝)
          </simpara>
@@ -191,7 +187,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>.</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           (기본값으로) 뉴라인을 제외한 아무 문자
          </simpara>
@@ -199,15 +195,15 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>[</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
-           클래스 정의의 시작 문자
+          클래스 정의의 시작 문자
          </simpara>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><emphasis>]</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           클래스 정의의 끝 문자
          </simpara>
@@ -215,23 +211,23 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>|</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
-           선택 브랜치의 시작
+          선택 브랜치의 시작
          </simpara>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><emphasis>(</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
-           서브패턴 시작
+          서브패턴 시작
          </simpara>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><emphasis>)</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           서브패턴 끝
          </simpara>
@@ -239,7 +235,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>?</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           ( 의미의 확장, 또한 0회나 1회, 또는 수량어 minimizer
          </simpara>
@@ -247,7 +243,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>*</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           0회 이상의 양
          </simpara>
@@ -255,7 +251,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>+</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           1회 이상의 양
          </simpara>
@@ -263,7 +259,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>{</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           최소/최대 양 시작
          </simpara>
@@ -271,7 +267,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>}</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           최소/최대 양 끝
          </simpara>
@@ -279,12 +275,12 @@
        </varlistentry>
       </variablelist>
 
-     스퀘어 브라켓 안쪽의 패턴은 "문자 클래스"라고 부릅니다.
-     문자 클래스에서 사용하는 메타 캐릭터들:
+      스퀘어 브라켓 안쪽의 패턴은 "문자 클래스"라고 부릅니다. 문자 클래스에서
+      사용하는 메타 문자들:
       <variablelist>
        <varlistentry>
         <term><emphasis>\</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           일반적인 이스케이프 문자
          </simpara>
@@ -292,7 +288,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>^</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           처음 문자로 올 때, 부정 클래스로 설정
          </simpara>
@@ -300,7 +296,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>-</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           문자 범위 지정
          </simpara>
@@ -308,49 +304,49 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>]</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           문자 클래스의 종료
          </simpara>
         </listitem>
        </varlistentry>
       </variablelist>
-     다음 섹션은 각 메타 문자의 사용을 설명합니다.
+      다음 섹션은 각 메타 문자의 사용을 설명합니다.
      </para>
     </refsect2>
-   <refsect2 id="regexp.reference.backslash">
-    <title>백슬래쉬</title>
-    <para>
-     백슬래쉬 문자는 여러가지 사용법을 가집니다. 먼저, 뒤에 영숫자가 아닌
-     문자가 붙는다면, 그 문자가 가지고 있는 특별한 의미가 사라집니다. 이러한
-     이스케이프 문자로 백슬래쉬를 사용하는 것은 문자 클래스 안과 밖 양쪽에
-     모두 적용됩니다.
-    </para>
-    <para>
-     예를 들어, "*" 문자를 매치하길 원한다면, 패턴에는 "\*"로 써야합니다. 이는
-     따라오는 문자가 메타 문자이던 아니던간에 관계 없이 적용하기 떄문에,
-     영숫자가 아닌 문자에 그 자체를 사용하기 위해 "\"를 붙이는 것은 언제나
-     안전합니다. 특히, 백슬래쉬를 매치하고자 한다면, "\\"로 써야합니다.
-    </para>
-    <para>
-     패턴에 <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link> 옵션을
-     사용하면, 패턴에 존재하는 (문자 클래스 안이 아닌) 공백, 그리고 문자
-     클래스 밖의 "#"사이의 문자와 바로 뒤의 뉴라인 문자를 무시합니다.
-     이스케이프하는 백슬래쉬를 공백이나 "#"문자를 패턴에 넣기 위해 사용할 수
-     있습니다.
-    </para>
-    <para>
-     백슬래쉬의 두번째 사용은 패턴에서 출력할 수 없는 문자를 보여지게
-     인코딩하는 방법을 제공합니다. 바이너리 제로가 패턴 종료를 의미하는걸
-     제외하면, 출력할 수 없는 문자가 나타나는 제한은 존재하지 않습니다. 그러나
-     패턴을 텍스트 편집으로 준비할 때, 다음의 이스케이프 스퀀스를 사용하는
-     편이 바이너리 문자를 직접 표현하는 것보다 간편합니다:
-    </para>
-    <para>
+    <refsect2 id="regexp.reference.backslash">
+     <title>백슬래쉬</title>
+     <para>
+      백슬래쉬 문자는 여러가지 사용법을 가집니다. 먼저, 뒤에 영숫자가 아닌
+      문자가 붙는다면, 그 문자가 가지고 있는 특별한 의미가 사라집니다. 이러한
+      이스케이프 문자로 백슬래쉬를 사용하는 것은 문자 클래스 안과 밖 양쪽에
+      모두 적용됩니다.
+     </para>
+     <para>
+      예를 들어, "*" 문자를 매치하길 원한다면, 패턴에는 "\*"로 써야합니다.
+      이는 따라오는 문자가 메타 문자이던 아니던간에 관계 없이 적용하기 떄문에,
+      영숫자가 아닌 문자에 그 자체를 사용하기 위해 "\"를 붙이는 것이 항상
+      안전합니다. 특히, 백슬래쉬를 매치하고자 한다면, "\\"로 써야합니다.
+     </para>
+     <para>
+      패턴에 <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>
+      옵션을 사용하면, 패턴에 존재하는 (문자 클래스 안이 아닌) 공백, 그리고
+      문자 클래스 밖의 "#"사이의 문자와 바로 뒤의 뉴라인 문자를 무시합니다.
+      이스케이프하는 백슬래쉬를 공백이나 "#"문자를 패턴에 넣기 위해 사용할 수
+      있습니다.
+     </para>
+     <para>
+      백슬래쉬의 두번째 사용은 패턴에서 출력할 수 없는 문자를 보여지게
+      인코딩하는 방법을 제공합니다. 바이너리 제로가 패턴 종료를 의미하는걸
+      제외하면, 출력할 수 없는 문자가 나타나는 제한은 존재하지 않습니다.
+      그러나 패턴을 텍스트 편집으로 준비할 때는, 다음의 이스케이프 시퀀스를
+      사용하는 편이 바이너리 문자를 직접 표현하는 것보다 간편합니다:
+     </para>
+     <para>
       <variablelist>
        <varlistentry>
         <term><emphasis>\a</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           알람, BEL 문자(hex 07)
          </simpara>
@@ -358,15 +354,15 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\cx</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
-           "control-x", x는 임의의 문자
+          "control-x", x는 임의의 문자
          </simpara>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><emphasis>\e</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           이스케이프 (hex 1B)
          </simpara>
@@ -374,7 +370,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\f</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           폼피드 (hex 0C)
          </simpara>
@@ -382,7 +378,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\n</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           뉴라인 (hex 0A)
          </simpara>
@@ -390,7 +386,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\r</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           캐리지 리턴 (hex 0D)
          </simpara>
@@ -398,7 +394,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\t</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           탭 (hex 09)
          </simpara>
@@ -406,64 +402,58 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\xhh</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
-           16진 코드 hh 문자
+          16진 코드 hh 문자
          </simpara>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><emphasis>\ddd</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           8진 코드 ddd 문자, 혹은 역참조
          </simpara>
         </listitem>
        </varlistentry>
       </variablelist>
-    </para>
-    <para>
-     "<literal>\cx</literal>"의 효과는 다음과 같이 계산합니다:
-     "<literal>x</literal>"가 소문자라면, 대문자로 변환합니다. 그 후, 문자의
-     6번째 비트(hex 40)가 뒤집어집니다. 즉 "<literal>\cz</literal>"은 hex 1A가
-     되고, "<literal>\c{</literal>"은 hex 3B, 그리고
-     "<literal>\c;</literal>"은 hex 7B가 됩니다.
-    </para>
-    <para>
-     "<literal>\x</literal>" 뒤에, 두개의 16진 숫자를 읽습니다. (대소문자
-     구별은 하지 않습니다)
-    </para>
-    <para>
-     "<literal>\0</literal>"은 다음의 두자리의 8진수를 읽습니다. 양쪽 모두,
-     두자리가 되지 않을 경우, 그 표현을 그대로 사용합니다. 즉
-     "<literal>\0\x\07</literal>" 시퀀스는 두개의 바이너리 제로에 이어지는 BEL
-     문자를 정의합니다. 바로 뒤에 8진수로 인식되는 문자가 이어질 경우에는
-     처음의 제로 뒤에 두자리 수를 써야한다는 것을 잊지 마십시오.
-    </para>
-    <para>
-     The handling of a backslash followed by a digit other than 0
-     is complicated. Outside a character class, PCRE reads it
-     and any following digits as a decimal number. If the  number
-     is  less  than  10, or if there have been at least that many
-     previous capturing left parentheses in the  expression,  the
-     entire  sequence is taken as a <emphasis>back</emphasis> 
-     <emphasis>reference</emphasis>. A description
-     of how this works is given later, following  the  discussion
-     of parenthesized subpatterns.
-    </para>
-    <para>
-     Inside a character  class,  or  if  the  decimal  number  is
-     greater than 9 and there have not been that many capturing
-     subpatterns, PCRE re-reads up to three octal digits following 
-     the backslash, and generates a single byte from the
-     least significant 8 bits of the value. Any subsequent digits
-     stand for themselves. 예를 들면:
-    </para>
-    <para>
-     <variablelist>
+     </para>
+     <para>
+      "<literal>\cx</literal>"의 효과는 다음과 같이 계산합니다:
+      "<literal>x</literal>"가 소문자라면, 대문자로 변환합니다. 그 후, 문자의
+      6번째 비트(hex 40)가 뒤집어집니다. 즉 "<literal>\cz</literal>"은 hex
+      1A가 되고, "<literal>\c{</literal>"은 hex 3B, 그리고
+      "<literal>\c;</literal>"은 hex 7B가 됩니다.
+     </para>
+     <para>
+      "<literal>\x</literal>" 뒤에, 두개의 16진 숫자를 읽습니다. (대소문자는
+      구별하지 않습니다)
+     </para>
+     <para>
+      "<literal>\0</literal>"은 다음의 두자리의 8진수를 읽습니다. 양쪽 모두,
+      두자리가 되지 않을 경우, 그 표현을 그대로 사용합니다. 즉
+      "<literal>\0\x\07</literal>" 시퀀스는 두개의 바이너리 제로에 이어지는 BEL
+      문자를 정의합니다. 바로 뒤에 8진수로 인식되는 문자가 이어질 경우에는
+      처음의 제로 뒤에 두자리 수를 써야한다는 것을 잊지 마십시오.
+     </para>
+     <para>
+      백슬래쉬 뒤에 0이 아닌 수가 올 경우에 혼동할 수 있습니다. 문자 클래스
+      밖에서, PCRE는 그것과 따라오는 수를 10진수로 읽습니다. 수가 10보다
+      작거나, 표현식에서 수 이상의 묶음을 잡아냈다면, 이 시퀀스는
+      <emphasis>역참조</emphasis>가 됩니다. 이 작동에 관해서는 아래에, 묶음
+      서브패턴에 설명이 있습니다.
+     </para>
+     <para>
+      문자 클래스 안이나, 10진수 9 이상이 없고 서브패턴이 그만큼 존재하지 않을
+      경우, PCRE는 백슬래쉬 뒤의 세자리 8진수로 다시 읽어들여, 해당하는 8비트
+      값으로 하나의 바이트를 생성합니다. 어떠한 수라도 사용할 수 있습니다. 예를
+      들면:
+     </para>
+     <para>
+      <variablelist>
        <varlistentry>
         <term><emphasis>\040</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           스페이스의 다른 표현 방법
          </simpara>
@@ -471,7 +461,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\40</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           40개 미만의 서브 패턴을 검출하였을때, 동일한 의미
          </simpara>
@@ -479,7 +469,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\7</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           항상 역참조
          </simpara>
@@ -487,7 +477,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\11</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           역참조, 혹은 탭의 다른 표현 방법
          </simpara>
@@ -495,7 +485,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\011</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           항상 탭
          </simpara>
@@ -503,7 +493,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\0113</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           문자 "3"이 따라오는 탭
          </simpara>
@@ -511,7 +501,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\113</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           8진 코드 113 문자 (역참조는 99까지입니다)
          </simpara>
@@ -519,42 +509,41 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\377</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
-           is a byte consisting entirely of 1 bits
+          1비트만을 제외한 바이트
          </simpara>
         </listitem>
        </varlistentry>
        <varlistentry>
         <term><emphasis>\81</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           역참조이거나 "8"과 "1"의 두 문자가
           따라오는 바이너리 제로
          </simpara>
         </listitem>
        </varlistentry>
-     </variablelist>
-    </para>
-    <para>
-     100이상의 8진 값은 앞에 제로가 붙지 않아야만 합니다.
-     세자리를 넘어가는 8진 값은 읽지 않습니다.
-    </para>
-    <para>
-     All the sequences that define a single byte value can  be
-     used both inside and outside character classes. In addition,
-     inside a character class, the sequence "<literal>\b</literal>"
-     is interpreted as the backspace character (hex 08). Outside a character
-     class it has a different meaning (see below).
-    </para>
-    <para>
-     백슬래쉬의 세번째 사용법은 일반적인 문자 타입의 지정입니다:
-    </para>
-    <para>
+      </variablelist>
+     </para>
+     <para>
+      100이상의 8진 값은 앞에 제로가 붙지 않아야만 합니다. 세자리를 넘어가는
+      8진 값은 읽지 않습니다.
+     </para>
+     <para>
+      하나의 바이트값을 정의하는 모든 시퀀스는 문자 클래스 내외, 어디에서도
+      사용할 수 있습니다. 추가로, 문자 클래스 안에서 "<literal>\b</literal>"
+      시퀀스는 백스페이스 문자(hex 08)로 해석합니다. 문자 클래스 밖에서는 다른
+      의미를 가집니다. (아래를 참고)
+     </para>
+     <para>
+      백슬래쉬의 세번째 사용법은 일반적인 문자 타입의 지정입니다:
+     </para>
+     <para>
       <variablelist>
        <varlistentry>
         <term><emphasis>\d</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           임의의 10진 숫자
          </simpara>
@@ -562,7 +551,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\D</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           10진 숫자가 아닌 임의의 문자
          </simpara>
@@ -570,7 +559,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\s</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           임의의 공백 문자
          </simpara>
@@ -578,7 +567,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\S</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           공백이 아닌 임의의 문자
          </simpara>
@@ -586,7 +575,7 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\w</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           임의의 "word" 문자
          </simpara>
@@ -594,182 +583,182 @@
        </varlistentry>
        <varlistentry>
         <term><emphasis>\W</emphasis></term>
-           <listitem>
+        <listitem>
          <simpara>
           임의의 "non-word" 문자
          </simpara>
         </listitem>
        </varlistentry>
       </variablelist>
-    </para>
-    <para>
-     Each pair of escape sequences partitions the complete set of
-     characters into two disjoint sets. Any given character
-     matches one, and only one, of each pair.
-    </para>
-    <para>
-     "word"문자는 어떠한 문자나 숫자, 혹은 언더스코어(_)입니다. 즉, 펄
-     "<literal>word</literal>"에 해당하는 어떠한 문자입니다. 
-     The definition of letters and digits is  
-     controlled by PCRE's character tables, and may vary if locale-specific
-     matching is taking place (see  "Locale  support"
-     above). For example, in the "fr" (French) locale, some
-     character codes greater than 128 are used for accented letters,
-     and these are matched by <literal>\w</literal>.
-    </para>
-    <para>
-     These character type sequences can appear both inside and
-     outside  character classes. They each match one character of
-     the appropriate type. If the current matching  point is at
-     the end of the subject string, all of them fail, since there
-     is no character to match.
-    </para>
-    <para>
-     The fourth use of backslash is  for  certain  simple
-     assertions. An assertion specifies a condition that has to be met
-     at a particular point in  a match, without consuming any
-     characters from the subject string. The use of subpatterns
-     for more complicated assertions is described below. The
-     backslashed assertions are
-    </para>
-    <para>
-     <variablelist>
-      <varlistentry>
-       <term><emphasis>\b</emphasis></term>
-          <listitem>
-        <simpara>
-         word boundary
-        </simpara>
-       </listitem>
-      </varlistentry>
-      <varlistentry>
-       <term><emphasis>\B</emphasis></term>
-          <listitem>
-        <simpara>
+     </para>
+     <para>
+      Each pair of escape sequences partitions the complete set of
+      characters into two disjoint sets. Any given character
+      matches one, and only one, of each pair.
+     </para>
+     <para>
+      "word"문자는 어떠한 문자나 숫자, 혹은 언더스코어(_)입니다. 즉, 펄
+      "<literal>word</literal>"에 해당하는 어떠한 문자입니다. 
+      The definition of letters and digits is  
+      controlled by PCRE's character tables, and may vary if locale-specific
+      matching is taking place (see  "Locale  support"
+      above). For example, in the "fr" (French) locale, some
+      character codes greater than 128 are used for accented letters,
+      and these are matched by <literal>\w</literal>.
+     </para>
+     <para>
+      These character type sequences can appear both inside and
+      outside  character classes. They each match one character of
+      the appropriate type. If the current matching  point is at
+      the end of the subject string, all of them fail, since there
+      is no character to match.
+     </para>
+     <para>
+      The fourth use of backslash is  for  certain  simple
+      assertions. An assertion specifies a condition that has to be met
+      at a particular point in  a match, without consuming any
+      characters from the subject string. The use of subpatterns
+      for more complicated assertions is described below. The
+      backslashed assertions are
+     </para>
+     <para>
+      <variablelist>
+       <varlistentry>
+        <term><emphasis>\b</emphasis></term>
+        <listitem>
+         <simpara>
+          word boundary
+         </simpara>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><emphasis>\B</emphasis></term>
+        <listitem>
+         <simpara>
           not a word boundary
-        </simpara>
-       </listitem>
-      </varlistentry>
-      <varlistentry>
-       <term><emphasis>\A</emphasis></term>
-          <listitem>
-        <simpara>
-         start of subject (independent of multiline mode)
-        </simpara>
-       </listitem>
-      </varlistentry>
-      <varlistentry>
-       <term><emphasis>\Z</emphasis></term>
-          <listitem>
-        <simpara>
-        end of subject or newline at end (independent of
-        multiline mode)
-        </simpara>
-       </listitem>
-      </varlistentry>
-      <varlistentry>
-       <term><emphasis>\z</emphasis></term>
-          <listitem>
-        <simpara>
-         end of subject(independent of multiline mode)
-        </simpara>
-       </listitem>
-      </varlistentry>
-     </variablelist>
-    </para>
-    <para>
-     These assertions may not appear in  character  classes  (but
-     note that "<literal>\b</literal>" has a different meaning, namely the backspace
-     character, inside a character class).
-    </para>
-    <para>
-     A word boundary is a position in the subject string where
-     the current character and the previous character do not both
-     match <literal>\w</literal> or <literal>\W</literal> (i.e. one matches 
-     <literal>\w</literal> and  the  other  matches
-     <literal>\W</literal>), or the start or end of the string if the first
-     or last character matches \w, respectively.
-    </para>
-    <para>
-     The <literal>\A</literal>, <literal>\Z</literal>, and
-     <literal>\z</literal> assertions differ  from  the  traditional
-     circumflex  and  dollar  (described below) in that they only
-     ever match at the very start and end of the subject  string,
-     whatever  options  are  set.  They  are  not affected by the
-     <link linkend="pcre.pattern.modifiers">PCRE_NOTBOL</link> or
-     <link linkend="pcre.pattern.modifiers">PCRE_NOTEOL</link> options.
-     The  difference  between <literal>\Z</literal> and
-     <literal>\z</literal>  is that <literal>\Z</literal>
-     matches before a newline that is the
-     last character of the string as well as at the  end  of  the
-     string, whereas <literal>\z</literal> matches only at the end.
+         </simpara>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><emphasis>\A</emphasis></term>
+        <listitem>
+         <simpara>
+          start of subject (independent of multiline mode)
+         </simpara>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><emphasis>\Z</emphasis></term>
+        <listitem>
+         <simpara>
+          end of subject or newline at end (independent of
+          multiline mode)
+         </simpara>
+        </listitem>
+       </varlistentry>
+       <varlistentry>
+        <term><emphasis>\z</emphasis></term>
+        <listitem>
+         <simpara>
+          end of subject(independent of multiline mode)
+         </simpara>
+        </listitem>
+       </varlistentry>
+      </variablelist>
+     </para>
+     <para>
+      These assertions may not appear in  character  classes  (but
+      note that "<literal>\b</literal>" has a different meaning, namely the backspace
+      character, inside a character class).
+     </para>
+     <para>
+      A word boundary is a position in the subject string where
+      the current character and the previous character do not both
+      match <literal>\w</literal> or <literal>\W</literal> (i.e. one matches 
+      <literal>\w</literal> and  the  other  matches
+      <literal>\W</literal>), or the start or end of the string if the first
+      or last character matches \w, respectively.
+     </para>
+     <para>
+      The <literal>\A</literal>, <literal>\Z</literal>, and
+      <literal>\z</literal> assertions differ  from  the  traditional
+      circumflex  and  dollar  (described below) in that they only
+      ever match at the very start and end of the subject  string,
+      whatever  options  are  set.  They  are  not affected by the
+      <link linkend="pcre.pattern.modifiers">PCRE_NOTBOL</link> or
+      <link linkend="pcre.pattern.modifiers">PCRE_NOTEOL</link> options.
+      The  difference  between <literal>\Z</literal> and
+      <literal>\z</literal>  is that <literal>\Z</literal>
+      matches before a newline that is the
+      last character of the string as well as at the  end  of  the
+      string, whereas <literal>\z</literal> matches only at the end.
      </para>
     </refsect2>
 
     <refsect2 id="regexp.reference.circudollar">
      <title>Circumflex and dollar</title>
      <literallayout>
-     Outside a character class, in the default matching mode, the
-     circumflex  character  is an assertion which is true only if
-     the current matching point is at the start  of  the  subject
-     string. Inside a character class, circumflex has an entirely
-     different meaning (see below).
+      Outside a character class, in the default matching mode, the
+      circumflex  character  is an assertion which is true only if
+      the current matching point is at the start  of  the  subject
+      string. Inside a character class, circumflex has an entirely
+      different meaning (see below).
 
-     Circumflex need not be the first character of the pattern if
-     a number of alternatives are involved, but it should be the
-     first thing in each alternative in which it appears  if  the
-     pattern is ever to match that branch. If all possible
-     alternatives start with a circumflex, that is, if the pattern  is
-     constrained to match only at the start of the subject, it is
-     said to be an "anchored" pattern. (There are also other
-     constructs that can cause a pattern to be anchored.)
+      Circumflex need not be the first character of the pattern if
+      a number of alternatives are involved, but it should be the
+      first thing in each alternative in which it appears  if  the
+      pattern is ever to match that branch. If all possible
+      alternatives start with a circumflex, that is, if the pattern  is
+      constrained to match only at the start of the subject, it is
+      said to be an "anchored" pattern. (There are also other
+      constructs that can cause a pattern to be anchored.)
 
-     A dollar character is an assertion which is &true; only if the
-     current  matching point is at the end of the subject string,
-     or immediately before a newline character that is  the  last
-     character in the string (by default). Dollar need not be the
-     last character of the pattern if a  number  of  alternatives
-     are  involved,  but it should be the last item in any branch
-     in which it appears.  Dollar has no  special  meaning  in  a
-     character class.
+      A dollar character is an assertion which is &true; only if the
+      current  matching point is at the end of the subject string,
+      or immediately before a newline character that is  the  last
+      character in the string (by default). Dollar need not be the
+      last character of the pattern if a  number  of  alternatives
+      are  involved,  but it should be the last item in any branch
+      in which it appears.  Dollar has no  special  meaning  in  a
+      character class.
 
-     The meaning of dollar can be changed so that it matches only
-     at   the   very   end   of   the   string,  by  setting  the
-     <link linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>
-     option at compile or matching time. This
-     does not affect the \Z assertion.
+      The meaning of dollar can be changed so that it matches only
+      at   the   very   end   of   the   string,  by  setting  the
+      <link linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>
+      option at compile or matching time. This
+      does not affect the \Z assertion.
 
-     The meanings of the circumflex  and  dollar  characters  are
-     changed  if  the  <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  option is set. When this is
-     the case,  they  match  immediately  after  and  immediately
-     before an internal "\n" character, respectively, in addition
-     to matching at the start and end of the subject string.  For
-     example,  the  pattern  /^abc$/  matches  the subject string
-     "def\nabc" in multiline  mode,  but  not  otherwise.
-     Consequently,  patterns  that  are  anchored  in single line mode
-     because all branches start with "^" are not anchored in
-     multiline  mode.  The  <link
-      linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>  option is ignored if
-     <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  is set.
+      The meanings of the circumflex  and  dollar  characters  are
+      changed  if  the  <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  option is set. When this is
+      the case,  they  match  immediately  after  and  immediately
+      before an internal "\n" character, respectively, in addition
+      to matching at the start and end of the subject string.  For
+      example,  the  pattern  /^abc$/  matches  the subject string
+      "def\nabc" in multiline  mode,  but  not  otherwise.
+      Consequently,  patterns  that  are  anchored  in single line mode
+      because all branches start with "^" are not anchored in
+      multiline  mode.  The  <link
+       linkend="pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>  option is ignored if
+      <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  is set.
 
-     Note that the sequences \A, \Z, and \z can be used to  match
-     the  start  and end of the subject in both modes, and if all
-     branches of a pattern start with \A is it  always  anchored,
-     whether <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  is set or not.
+      Note that the sequences \A, \Z, and \z can be used to  match
+      the  start  and end of the subject in both modes, and if all
+      branches of a pattern start with \A is it  always  anchored,
+      whether <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  is set or not.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.dot">
      <title>FULL STOP</title>
      <literallayout>
-     Outside a character class, a dot in the pattern matches  any
-     one  character  in  the  subject,  including  a non-printing
-     character, but not (by default) newline.  If the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
-     option  is  set,  then dots match newlines as well. The
-     handling of dot is entirely independent of the handling of
-     circumflex  and  dollar,  the only relationship being that they
-     both involve newline characters.  Dot has no special meaning
-     in a character class.
+      Outside a character class, a dot in the pattern matches  any
+      one  character  in  the  subject,  including  a non-printing
+      character, but not (by default) newline.  If the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
+      option  is  set,  then dots match newlines as well. The
+      handling of dot is entirely independent of the handling of
+      circumflex  and  dollar,  the only relationship being that they
+      both involve newline characters.  Dot has no special meaning
+      in a character class.
      </literallayout>
     </refsect2>
 
@@ -778,877 +767,878 @@
      <literallayout>
       An opening square bracket introduces a character class,
       terminated  by  a  closing  square  bracket.  A  closing square
-     bracket on its own is  not  special.  If  a  closing  square
-     bracket  is  required as a member of the class, it should be
-     the first data character in the class (after an initial
-     circumflex, if present) or escaped with a backslash.
+      bracket on its own is  not  special.  If  a  closing  square
+      bracket  is  required as a member of the class, it should be
+      the first data character in the class (after an initial
+      circumflex, if present) or escaped with a backslash.
 
-     A character class matches a single character in the subject;
-     the  character  must  be in the set of characters defined by
-     the class, unless the first character in the class is
-     circumflex,  in which case the subject character must not be in
-     the set defined by the class. If a  circumflex  is  actually
-     required  as  a  member  of  the class, ensure it is not the
-     first character, or escape it with a backslash.
+      A character class matches a single character in the subject;
+      the  character  must  be in the set of characters defined by
+      the class, unless the first character in the class is
+      circumflex,  in which case the subject character must not be in
+      the set defined by the class. If a  circumflex  is  actually
+      required  as  a  member  of  the class, ensure it is not the
+      first character, or escape it with a backslash.
 
-     For example, the character class [aeiou] matches  any  lower
-     case vowel, while [^aeiou] matches any character that is not
-     a lower case vowel. Note that a circumflex is  just  a
-     convenient  notation for specifying the characters which are in
-     the class by enumerating those that are not. It  is  not  an
-     assertion:  it  still  consumes a character from the subject
-     string, and fails if the current pointer is at  the  end  of
-     the string.
+      For example, the character class [aeiou] matches  any  lower
+      case vowel, while [^aeiou] matches any character that is not
+      a lower case vowel. Note that a circumflex is  just  a
+      convenient  notation for specifying the characters which are in
+      the class by enumerating those that are not. It  is  not  an
+      assertion:  it  still  consumes a character from the subject
+      string, and fails if the current pointer is at  the  end  of
+      the string.
 
-     When caseless matching  is  set,  any  letters  in  a  class
-     represent  both their upper case and lower case versions, so
-     for example, a caseless [aeiou] matches "A" as well as  "a",
-     and  a caseless [^aeiou] does not match "A", whereas a
-     caseful version would.
+      When caseless matching  is  set,  any  letters  in  a  class
+      represent  both their upper case and lower case versions, so
+      for example, a caseless [aeiou] matches "A" as well as  "a",
+      and  a caseless [^aeiou] does not match "A", whereas a
+      caseful version would.
 
-     The newline character is never treated in any special way in
-     character  classes,  whatever the setting of the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
-     or <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  options is. A  class  such  as  [^a]  will
-     always match a newline.
+      The newline character is never treated in any special way in
+      character  classes,  whatever the setting of the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
+      or <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  options is. A  class  such  as  [^a]  will
+      always match a newline.
 
-     The minus (hyphen) character can be used to specify a  range
-     of  characters  in  a  character  class.  For example, [d-m]
-     matches any letter between d and m, inclusive.  If  a  minus
-     character  is required in a class, it must be escaped with a
-     backslash or appear in a position where it cannot be
-     interpreted as indicating a range, typically as the first or last
-     character in the class.
-     
-     It is not possible to have the literal character "]" as  the
-     end  character  of  a  range.  A  pattern such as [W-]46] is
-     interpreted as a class of two characters ("W" and "-")
-     followed by a literal string "46]", so it would match "W46]" or
-     "-46]". However, if the "]" is escaped with a  backslash  it
-     is  interpreted  as  the end of range, so [W-\]46] is
-     interpreted as a single class containing a range followed by  two
-     separate characters. The octal or hexadecimal representation
-     of "]" can also be used to end a range.
+      The minus (hyphen) character can be used to specify a  range
+      of  characters  in  a  character  class.  For example, [d-m]
+      matches any letter between d and m, inclusive.  If  a  minus
+      character  is required in a class, it must be escaped with a
+      backslash or appear in a position where it cannot be
+      interpreted as indicating a range, typically as the first or last
+      character in the class.
 
-     Ranges operate in ASCII collating sequence. They can also be
-     used  for  characters  specified  numerically,  for  example
-     [\000-\037]. If a range that includes letters is  used  when
-     caseless  matching  is set, it matches the letters in either
-     case. For example, [W-c] is equivalent  to  [][\^_`wxyzabc],
-     matched  caselessly,  and  if  character tables for the "fr"
-     locale are in use, [\xc8-\xcb] matches accented E characters
-     in both cases.
+      It is not possible to have the literal character "]" as  the
+      end  character  of  a  range.  A  pattern such as [W-]46] is
+      interpreted as a class of two characters ("W" and "-")
+      followed by a literal string "46]", so it would match "W46]" or
+      "-46]". However, if the "]" is escaped with a  backslash  it
+      is  interpreted  as  the end of range, so [W-\]46] is
+      interpreted as a single class containing a range followed by  two
+      separate characters. The octal or hexadecimal representation
+      of "]" can also be used to end a range.
 
-     The character types \d, \D, \s, \S,  \w,  and  \W  may  also
-     appear  in  a  character  class, and add the characters that
-     they match to the class. For example, [\dABCDEF] matches any
-     hexadecimal  digit.  A  circumflex  can conveniently be used
-     with the upper case character types to specify a  more
-     restricted set of characters than the matching lower case type.
-     For example, the class [^\W_] matches any letter  or  digit,
-     but not underscore.
+      Ranges operate in ASCII collating sequence. They can also be
+      used  for  characters  specified  numerically,  for  example
+      [\000-\037]. If a range that includes letters is  used  when
+      caseless  matching  is set, it matches the letters in either
+      case. For example, [W-c] is equivalent  to  [][\^_`wxyzabc],
+      matched  caselessly,  and  if  character tables for the "fr"
+      locale are in use, [\xc8-\xcb] matches accented E characters
+      in both cases.
 
-     All non-alphanumeric characters other than \,  -,  ^  (at  the
-     start)  and  the  terminating ] are non-special in character
-     classes, but it does no harm if they are escaped.
+      The character types \d, \D, \s, \S,  \w,  and  \W  may  also
+      appear  in  a  character  class, and add the characters that
+      they match to the class. For example, [\dABCDEF] matches any
+      hexadecimal  digit.  A  circumflex  can conveniently be used
+      with the upper case character types to specify a  more
+      restricted set of characters than the matching lower case type.
+      For example, the class [^\W_] matches any letter  or  digit,
+      but not underscore.
+
+      All non-alphanumeric characters other than \,  -,  ^  (at  the
+      start)  and  the  terminating ] are non-special in character
+      classes, but it does no harm if they are escaped.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.verticalbar">
      <title>수직 바</title>
      <literallayout>
-     Vertical bar characters are  used  to  separate  alternative
-     patterns. For example, the pattern
+      Vertical bar characters are  used  to  separate  alternative
+      patterns. For example, the pattern
 
-       gilbert|sullivan
+      gilbert|sullivan
 
-     matches either "gilbert" or "sullivan". Any number of alternatives
-     may  appear,  and an empty alternative is permitted
-     (matching the empty string).   The  matching  process  tries
-     each  alternative in turn, from left to right, and the first
-     one that succeeds is used. If the alternatives are within  a
-     subpattern  (defined  below),  "succeeds" means matching the
-     rest of the main pattern as well as the alternative  in  the
-     subpattern.
+      matches either "gilbert" or "sullivan". Any number of alternatives
+      may  appear,  and an empty alternative is permitted
+      (matching the empty string).   The  matching  process  tries
+      each  alternative in turn, from left to right, and the first
+      one that succeeds is used. If the alternatives are within  a
+      subpattern  (defined  below),  "succeeds" means matching the
+      rest of the main pattern as well as the alternative  in  the
+      subpattern.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.internal-options">
      <title>내부 옵션 설정</title>
      <literallayout>
-     The settings of <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> , 
-     <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link> ,  
-     <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> ,
-     and  <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>
-     can be changed from within the pattern by
-     a sequence of Perl option letters enclosed between "(?"  and
-     ")". The option letters are
+      The settings of <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> , 
+      <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link> ,  
+      <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> ,
+      and  <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>
+      can be changed from within the pattern by
+      a sequence of Perl option letters enclosed between "(?"  and
+      ")". The option letters are
 
-       i  for <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> 
-       m  for <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link> 
-       s  for <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
-       x  for <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link> 
+      i  for <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> 
+      m  for <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link> 
+      s  for <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
+      x  for <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link> 
 
-     For example, (?im) sets caseless, multiline matching. It  is
-     also possible to unset these options by preceding the letter
-     with a hyphen, and a combined setting and unsetting such  as
-     (?im-sx),  which sets <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link>  and <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  while
-     unsetting <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>  and <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link> , is also  permitted.
-     If  a  letter  appears both before and after the hyphen, the
-     option is unset.
+      For example, (?im) sets caseless, multiline matching. It  is
+      also possible to unset these options by preceding the letter
+      with a hyphen, and a combined setting and unsetting such  as
+      (?im-sx),  which sets <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link>  and <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link>  while
+      unsetting <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>  and <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link> , is also  permitted.
+      If  a  letter  appears both before and after the hyphen, the
+      option is unset.
 
-     The scope of these option changes depends on  where  in  the
-     pattern  the  setting  occurs. For settings that are outside
-     any subpattern (defined below), the effect is the same as if
-     the  options were set or unset at the start of matching. The
-     following patterns all behave in exactly the same way:
+      The scope of these option changes depends on  where  in  the
+      pattern  the  setting  occurs. For settings that are outside
+      any subpattern (defined below), the effect is the same as if
+      the  options were set or unset at the start of matching. The
+      following patterns all behave in exactly the same way:
 
-       (?i)abc
-       a(?i)bc
-       ab(?i)c
-       abc(?i)
+      (?i)abc
+      a(?i)bc
+      ab(?i)c
+      abc(?i)
 
-     which in turn is the same as compiling the pattern abc  with
-     <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> set.
-     In  other words, such "top level" settings apply to the whole
-     pattern  (unless  there  are  other changes  inside subpatterns).
-     If there is more than one setting of the same option at top level,
-     the rightmost  setting is used.
+      which in turn is the same as compiling the pattern abc  with
+      <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> set.
+      In  other words, such "top level" settings apply to the whole
+      pattern  (unless  there  are  other changes  inside subpatterns).
+      If there is more than one setting of the same option at top level,
+      the rightmost  setting is used.
 
-     If an option change occurs inside a subpattern,  the  effect
-     is  different.  This is a change of behaviour in Perl 5.005.
-     An option change inside a subpattern affects only that  part
-     of the subpattern that follows it, so
+      If an option change occurs inside a subpattern,  the  effect
+      is  different.  This is a change of behaviour in Perl 5.005.
+      An option change inside a subpattern affects only that  part
+      of the subpattern that follows it, so
 
-       (a(?i)b)c
+      (a(?i)b)c
 
-     matches  abc  and  aBc  and  no  other   strings   (assuming
-     <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link>
-     is  not used).  By this means, options can be
-     made to have different settings in different  parts  of  the
-     pattern.  Any  changes  made  in one alternative do carry on
-     into subsequent branches within  the  same  subpattern.  For
-     example,
+      matches  abc  and  aBc  and  no  other   strings   (assuming
+      <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link>
+      is  not used).  By this means, options can be
+      made to have different settings in different  parts  of  the
+      pattern.  Any  changes  made  in one alternative do carry on
+      into subsequent branches within  the  same  subpattern.  For
+      example,
 
-       (a(?i)b|c)
+      (a(?i)b|c)
 
-     matches "ab", "aB", "c", and "C", even though when  matching
-     "C" the first branch is abandoned before the option setting.
-     This is because the effects of  option  settings  happen  at
-     compile  time. There would be some very weird behaviour otherwise.
+      matches "ab", "aB", "c", and "C", even though when  matching
+      "C" the first branch is abandoned before the option setting.
+      This is because the effects of  option  settings  happen  at
+      compile  time. There would be some very weird behaviour otherwise.
 
-     The PCRE-specific options <link linkend="pcre.pattern.modifiers">PCRE_UNGREEDY</link>  and  
-     <link linkend="pcre.pattern.modifiers">PCRE_EXTRA</link>   can
-     be changed in the same way as the Perl-compatible options by
-     using the characters U and X  respectively.  The  (?X)  flag
-     setting  is  special in that it must always occur earlier in
-     the pattern than any of the additional features it turns on,
-     even when it is at top level. It is best put at the start.
+      The PCRE-specific options <link linkend="pcre.pattern.modifiers">PCRE_UNGREEDY</link>  and  
+      <link linkend="pcre.pattern.modifiers">PCRE_EXTRA</link>   can
+      be changed in the same way as the Perl-compatible options by
+      using the characters U and X  respectively.  The  (?X)  flag
+      setting  is  special in that it must always occur earlier in
+      the pattern than any of the additional features it turns on,
+      even when it is at top level. It is best put at the start.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.subpatterns">
      <title>서브패턴</title>
      <literallayout>
-     Subpatterns are delimited by parentheses  (round  brackets),
-     which can be nested.  Marking part of a pattern as a subpattern
-     does two things:
+      Subpatterns are delimited by parentheses  (round  brackets),
+      which can be nested.  Marking part of a pattern as a subpattern
+      does two things:
 
-     1. It localizes a set of alternatives. For example, the
-     pattern
+      1. It localizes a set of alternatives. For example, the
+      pattern
 
-       cat(aract|erpillar|)
+      cat(aract|erpillar|)
 
-     matches one of the words "cat",  "cataract",  or  "caterpillar".
-     Without  the  parentheses, it would match "cataract",
-     "erpillar" or the empty string.
+      matches one of the words "cat",  "cataract",  or  "caterpillar".
+      Without  the  parentheses, it would match "cataract",
+      "erpillar" or the empty string.
 
-     2. It sets up the subpattern as a capturing  subpattern  (as
-     defined  above).   When the whole pattern matches, that portion
-     of the subject string that matched  the  subpattern  is
-     passed  back  to  the  caller  via  the  <emphasis>ovector</emphasis>
-     argument of
-     <function>pcre_exec</function>. Opening parentheses are counted
-     from  left  to right (starting from 1) to obtain the numbers of the
-     capturing subpatterns.
+      2. It sets up the subpattern as a capturing  subpattern  (as
+      defined  above).   When the whole pattern matches, that portion
+      of the subject string that matched  the  subpattern  is
+      passed  back  to  the  caller  via  the  <emphasis>ovector</emphasis>
+      argument of
+      <function>pcre_exec</function>. Opening parentheses are counted
+      from  left  to right (starting from 1) to obtain the numbers of the
+      capturing subpatterns.
 
-     For example, if the string "the red king" is matched against
-     the pattern
+      For example, if the string "the red king" is matched against
+      the pattern
 
-       the ((red|white) (king|queen))
+      the ((red|white) (king|queen))
 
-     the captured substrings are "red king", "red",  and  "king",
-     and are numbered 1, 2, and 3.
+      the captured substrings are "red king", "red",  and  "king",
+      and are numbered 1, 2, and 3.
 
-     The fact that plain parentheses fulfil two functions is  not
-     always  helpful.  There are often times when a grouping subpattern
-     is required without a capturing requirement.  If  an
-     opening parenthesis is followed by "?:", the subpattern does
-     not do any capturing, and is not counted when computing  the
-     number of any subsequent capturing subpatterns. For example,
-     if the string "the  white  queen"  is  matched  against  the
-     pattern
+      The fact that plain parentheses fulfil two functions is  not
+      always  helpful.  There are often times when a grouping subpattern
+      is required without a capturing requirement.  If  an
+      opening parenthesis is followed by "?:", the subpattern does
+      not do any capturing, and is not counted when computing  the
+      number of any subsequent capturing subpatterns. For example,
+      if the string "the  white  queen"  is  matched  against  the
+      pattern
 
-       the ((?:red|white) (king|queen))
+      the ((?:red|white) (king|queen))
 
-     the captured substrings are "white queen" and  "queen",  and
-     are  numbered  1  and 2. The maximum number of captured substrings
-     is 99, and the maximum number  of  all  subpatterns,
-     both capturing and non-capturing, is 200.
+      the captured substrings are "white queen" and  "queen",  and
+      are  numbered  1  and 2. The maximum number of captured substrings
+      is 99, and the maximum number  of  all  subpatterns,
+      both capturing and non-capturing, is 200.
 
-     As a  convenient  shorthand,  if  any  option  settings  are
-     required  at  the  start  of a non-capturing subpattern, the
-     option letters may appear between the "?" and the ":".  Thus
-     the two patterns
+      As a  convenient  shorthand,  if  any  option  settings  are
+      required  at  the  start  of a non-capturing subpattern, the
+      option letters may appear between the "?" and the ":".  Thus
+      the two patterns
 
-       (?i:saturday|sunday)
-       (?:(?i)saturday|sunday)
+      (?i:saturday|sunday)
+      (?:(?i)saturday|sunday)
 
-     match exactly the same set of strings.  Because  alternative
-     branches  are  tried from left to right, and options are not
-     reset until the end of the subpattern is reached, an  option
-     setting  in  one  branch does affect subsequent branches, so
-     the above patterns match "SUNDAY" as well as "Saturday".
+      match exactly the same set of strings.  Because  alternative
+      branches  are  tried from left to right, and options are not
+      reset until the end of the subpattern is reached, an  option
+      setting  in  one  branch does affect subsequent branches, so
+      the above patterns match "SUNDAY" as well as "Saturday".
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.repetition">
      <title>Repetition</title>
      <literallayout>
-     Repetition is specified by quantifiers, which can follow any
-     of the following items:
+      Repetition is specified by quantifiers, which can follow any
+      of the following items:
 
-       a single character, possibly escaped
-       the . metacharacter
-       a character class
-       a back reference (see next section)
-       a parenthesized subpattern (unless it is  an  assertion  -
-     see below)
+      a single character, possibly escaped
+      the . metacharacter
+      a character class
+      a back reference (see next section)
+      a parenthesized subpattern (unless it is  an  assertion  -
+      see below)
 
-     The general repetition quantifier specifies  a  minimum  and
-     maximum  number  of  permitted  matches,  by  giving the two
-     numbers in curly brackets (braces), separated  by  a  comma.
-     The  numbers  must be less than 65536, and the first must be
-     less than or equal to the second. For example:
+      The general repetition quantifier specifies  a  minimum  and
+      maximum  number  of  permitted  matches,  by  giving the two
+      numbers in curly brackets (braces), separated  by  a  comma.
+      The  numbers  must be less than 65536, and the first must be
+      less than or equal to the second. For example:
 
-       z{2,4}
+      z{2,4}
 
-     matches "zz", "zzz", or "zzzz". A closing brace on  its  own
-     is not a special character. If the second number is omitted,
-     but the comma is present, there is no upper  limit;  if  the
-     second number and the comma are both omitted, the quantifier
-     specifies an exact number of required matches. Thus
+      matches "zz", "zzz", or "zzzz". A closing brace on  its  own
+      is not a special character. If the second number is omitted,
+      but the comma is present, there is no upper  limit;  if  the
+      second number and the comma are both omitted, the quantifier
+      specifies an exact number of required matches. Thus
 
-       [aeiou]{3,}
+      [aeiou]{3,}
 
-     matches at least 3 successive vowels,  but  may  match  many
-     more, while
+      matches at least 3 successive vowels,  but  may  match  many
+      more, while
 
-       \d{8}
+      \d{8}
 
-     matches exactly 8 digits.  An  opening  curly  bracket  that
-     appears  in a position where a quantifier is not allowed, or
-     one that does not match the syntax of a quantifier, is taken
-     as  a literal character. For example, {,6} is not a quantifier,
-     but a literal string of four characters.
+      matches exactly 8 digits.  An  opening  curly  bracket  that
+      appears  in a position where a quantifier is not allowed, or
+      one that does not match the syntax of a quantifier, is taken
+      as  a literal character. For example, {,6} is not a quantifier,
+      but a literal string of four characters.
 
-     The quantifier {0} is permitted, causing the  expression  to
-     behave  as  if the previous item and the quantifier were not
-     present.
+      The quantifier {0} is permitted, causing the  expression  to
+      behave  as  if the previous item and the quantifier were not
+      present.
 
-     For convenience (and  historical  compatibility)  the  three
-     most common quantifiers have single-character abbreviations:
+      For convenience (and  historical  compatibility)  the  three
+      most common quantifiers have single-character abbreviations:
 
-       *    is equivalent to {0,}
-       +    is equivalent to {1,}
-       ?    is equivalent to {0,1}
+      *    is equivalent to {0,}
+      +    is equivalent to {1,}
+      ?    is equivalent to {0,1}
 
-     It is possible to construct infinite loops  by  following  a
-     subpattern  that  can  match no characters with a quantifier
-     that has no upper limit, for example:
+      It is possible to construct infinite loops  by  following  a
+      subpattern  that  can  match no characters with a quantifier
+      that has no upper limit, for example:
 
-       (a?)*
+      (a?)*
 
-     Earlier versions of Perl and PCRE used to give an  error  at
-     compile  time  for such patterns. However, because there are
-     cases where this  can  be  useful,  such  patterns  are  now
-     accepted,  but  if  any repetition of the subpattern does in
-     fact match no characters, the loop is forcibly broken.
+      Earlier versions of Perl and PCRE used to give an  error  at
+      compile  time  for such patterns. However, because there are
+      cases where this  can  be  useful,  such  patterns  are  now
+      accepted,  but  if  any repetition of the subpattern does in
+      fact match no characters, the loop is forcibly broken.
 
-     By default, the quantifiers  are  "greedy",  that  is,  they
-     match  as much as possible (up to the maximum number of permitted
-     times), without causing the rest of  the  pattern  to
-     fail. The classic example of where this gives problems is in
-     trying to match comments in C programs. These appear between
-     the  sequences /* and */ and within the sequence, individual
-     * and / characters may appear. An attempt to  match  C  comments
-     by applying the pattern
+      By default, the quantifiers  are  "greedy",  that  is,  they
+      match  as much as possible (up to the maximum number of permitted
+      times), without causing the rest of  the  pattern  to
+      fail. The classic example of where this gives problems is in
+      trying to match comments in C programs. These appear between
+      the  sequences /* and */ and within the sequence, individual
+      * and / characters may appear. An attempt to  match  C  comments
+      by applying the pattern
 
-       /\*.*\*/
+      /\*.*\*/
 
-     to the string
+      to the string
 
-       /* first command */  not comment  /* second comment */
+      /* first command */  not comment  /* second comment */
 
-     fails, because it matches  the  entire  string  due  to  the
-     greediness of the .*  item.
+      fails, because it matches  the  entire  string  due  to  the
+      greediness of the .*  item.
 
-     However, if a quantifier is followed  by  a  question  mark,
-     then it ceases to be greedy, and instead matches the minimum
-     number of times possible, so the pattern
+      However, if a quantifier is followed  by  a  question  mark,
+      then it ceases to be greedy, and instead matches the minimum
+      number of times possible, so the pattern
 
-       /\*.*?\*/
+      /\*.*?\*/
 
-     does the right thing with the C comments. The meaning of the
-     various  quantifiers is not otherwise changed, just the preferred
-     number of matches.  Do not confuse this use of
-     question  mark  with  its  use as a quantifier in its own right.
-     Because it has two uses, it can sometimes appear doubled, as
-     in
+      does the right thing with the C comments. The meaning of the
+      various  quantifiers is not otherwise changed, just the preferred
+      number of matches.  Do not confuse this use of
+      question  mark  with  its  use as a quantifier in its own right.
+      Because it has two uses, it can sometimes appear doubled, as
+      in
 
-       \d??\d
+      \d??\d
 
-     which matches one digit by preference, but can match two  if
-     that is the only way the rest of the pattern matches.
+      which matches one digit by preference, but can match two  if
+      that is the only way the rest of the pattern matches.
 
-     If the <link linkend="pcre.pattern.modifiers">PCRE_UNGREEDY</link>  option is set (an option which  is  not
-     available  in  Perl)  then the quantifiers are not greedy by
-     default, but individual ones can be made greedy by following
-     them  with  a  question mark. In other words, it inverts the
-     default behaviour.
+      If the <link linkend="pcre.pattern.modifiers">PCRE_UNGREEDY</link>  option is set (an option which  is  not
+      available  in  Perl)  then the quantifiers are not greedy by
+      default, but individual ones can be made greedy by following
+      them  with  a  question mark. In other words, it inverts the
+      default behaviour.
 
-     When a parenthesized subpattern is quantified with a minimum
-     repeat  count  that is greater than 1 or with a limited maximum,
-     more store is required for the  compiled  pattern,  in
-     proportion to the size of the minimum or maximum.
+      When a parenthesized subpattern is quantified with a minimum
+      repeat  count  that is greater than 1 or with a limited maximum,
+      more store is required for the  compiled  pattern,  in
+      proportion to the size of the minimum or maximum.
 
-     If a pattern starts with .* or  .{0,}  and  the  <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
-     option (equivalent to Perl's /s) is set, thus allowing the .
-     to match newlines, then the pattern is implicitly  anchored,
-     because whatever follows will be tried against every character
-     position in the subject string, so there is no point  in
-     retrying  the overall match at any position after the first.
-     PCRE treats such a pattern as though it were preceded by \A.
-     In  cases where it is known that the subject string contains
-     no newlines, it is worth setting <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>  when  the  pattern begins with .* in order to
-     obtain this optimization, or
-     alternatively using ^ to indicate anchoring explicitly.
+      If a pattern starts with .* or  .{0,}  and  the  <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> 
+      option (equivalent to Perl's /s) is set, thus allowing the .
+      to match newlines, then the pattern is implicitly  anchored,
+      because whatever follows will be tried against every character
+      position in the subject string, so there is no point  in
+      retrying  the overall match at any position after the first.
+      PCRE treats such a pattern as though it were preceded by \A.
+      In  cases where it is known that the subject string contains
+      no newlines, it is worth setting <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>  when  the  pattern begins with .* in order to
+      obtain this optimization, or
+      alternatively using ^ to indicate anchoring explicitly.
 
-     When a capturing subpattern is repeated, the value  captured
-     is the substring that matched the final iteration. For example, after
+      When a capturing subpattern is repeated, the value  captured
+      is the substring that matched the final iteration. For example, after
 
-       (tweedle[dume]{3}\s*)+
+      (tweedle[dume]{3}\s*)+
 
-     has matched "tweedledum tweedledee" the value  of  the  captured
-     substring  is  "tweedledee".  However,  if  there are
-     nested capturing  subpatterns,  the  corresponding  captured
-     values  may  have been set in previous iterations. For example,
-     after
-     
-       /(a|(b))+/
+      has matched "tweedledum tweedledee" the value  of  the  captured
+      substring  is  "tweedledee".  However,  if  there are
+      nested capturing  subpatterns,  the  corresponding  captured
+      values  may  have been set in previous iterations. For example,
+      after
 
-     matches "aba" the value of the second captured substring  is
-     "b".
+      /(a|(b))+/
+
+      matches "aba" the value of the second captured substring  is
+      "b".
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.back-references">
      <title>BACK REFERENCES</title>
      <literallayout>
-     Outside a character class, a backslash followed by  a  digit
-     greater  than  0  (and  possibly  further  digits) is a back
-     reference to a capturing subpattern  earlier  (i.e.  to  its
-     left)  in  the  pattern,  provided there have been that many
-     previous capturing left parentheses.
+      Outside a character class, a backslash followed by  a  digit
+      greater  than  0  (and  possibly  further  digits) is a back
+      reference to a capturing subpattern  earlier  (i.e.  to  its
+      left)  in  the  pattern,  provided there have been that many
+      previous capturing left parentheses.
 
-     However, if the decimal number following  the  backslash  is
-     less  than  10,  it is always taken as a back reference, and
-     causes an error only if there are not  that  many  capturing
-     left  parentheses in the entire pattern. In other words, the
-     parentheses that are referenced need not be to the  left  of
-     the  reference  for  numbers  less  than 10. See the section
-     entitled "Backslash" above for further details of  the  handling
-     of digits following a backslash.
+      However, if the decimal number following  the  backslash  is
+      less  than  10,  it is always taken as a back reference, and
+      causes an error only if there are not  that  many  capturing
+      left  parentheses in the entire pattern. In other words, the
+      parentheses that are referenced need not be to the  left  of
+      the  reference  for  numbers  less  than 10. See the section
+      entitled "Backslash" above for further details of  the  handling
+      of digits following a backslash.
 
-     A back reference matches whatever actually matched the  capturing
-     subpattern in the current subject string, rather than
-     anything matching the subpattern itself. So the pattern
+      A back reference matches whatever actually matched the  capturing
+      subpattern in the current subject string, rather than
+      anything matching the subpattern itself. So the pattern
 
-       (sens|respons)e and \1ibility
+      (sens|respons)e and \1ibility
 
-     matches "sense and sensibility" and "response and  responsibility",
-     but  not  "sense  and  responsibility". If caseful
-     matching is in force at the time of the back reference, then
-     the case of letters is relevant. For example,
+      matches "sense and sensibility" and "response and  responsibility",
+      but  not  "sense  and  responsibility". If caseful
+      matching is in force at the time of the back reference, then
+      the case of letters is relevant. For example,
 
-       ((?i)rah)\s+\1
+      ((?i)rah)\s+\1
 
-     matches "rah rah" and "RAH RAH", but  not  "RAH  rah",  even
-     though  the  original  capturing subpattern is matched caselessly.
+      matches "rah rah" and "RAH RAH", but  not  "RAH  rah",  even
+      though  the  original  capturing subpattern is matched caselessly.
 
-     There may be more than one back reference to the  same  subpattern.
-     If  a  subpattern  has not actually been used in a
-     particular match, then any  back  references  to  it  always
-     fail. For example, the pattern
+      There may be more than one back reference to the  same  subpattern.
+      If  a  subpattern  has not actually been used in a
+      particular match, then any  back  references  to  it  always
+      fail. For example, the pattern
 
-       (a|(bc))\2
+      (a|(bc))\2
 
-     always fails if it starts to match  "a"  rather  than  "bc".
-     Because  there  may  be up to 99 back references, all digits
-     following the backslash are taken as  part  of  a  potential
-     back reference number. If the pattern continues with a digit
-     character, then some delimiter must be used to terminate the
-     back reference. If the <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>  option is set, this can
-     be whitespace.  Otherwise an empty comment can be used.
+      always fails if it starts to match  "a"  rather  than  "bc".
+      Because  there  may  be up to 99 back references, all digits
+      following the backslash are taken as  part  of  a  potential
+      back reference number. If the pattern continues with a digit
+      character, then some delimiter must be used to terminate the
+      back reference. If the <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>  option is set, this can
+      be whitespace.  Otherwise an empty comment can be used.
 
-     A back reference that occurs inside the parentheses to which
-     it  refers  fails when the subpattern is first used, so, for
-     example, (a\1) never matches.  However, such references  can
-     be useful inside repeated subpatterns. For example, the pattern
+      A back reference that occurs inside the parentheses to which
+      it  refers  fails when the subpattern is first used, so, for
+      example, (a\1) never matches.  However, such references  can
+      be useful inside repeated subpatterns. For example, the pattern
 
-       (a|b\1)+
+      (a|b\1)+
 
-     matches any number of "a"s and also "aba", "ababaa" etc.  At
-     each iteration of the subpattern, the back reference matches
-     the character string corresponding to  the  previous  iteration.
-     In order for this to work, the pattern must be such
-     that the first iteration does not need  to  match  the  back
-     reference.  This  can  be  done using alternation, as in the
-     example above, or by a quantifier with a minimum of zero.
+      matches any number of "a"s and also "aba", "ababaa" etc.  At
+      each iteration of the subpattern, the back reference matches
+      the character string corresponding to  the  previous  iteration.
+      In order for this to work, the pattern must be such
+      that the first iteration does not need  to  match  the  back
+      reference.  This  can  be  done using alternation, as in the
+      example above, or by a quantifier with a minimum of zero.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.assertions">
      <title>Assertions</title>
      <literallayout>
-     An assertion is  a  test  on  the  characters  following  or
-     preceding  the current matching point that does not actually
-     consume any characters. The simple assertions coded  as  \b,
-     \B,  \A,  \Z,  \z, ^ and $ are described above. More complicated
-     assertions are coded as  subpatterns.  There  are  two
-     kinds:  those that look ahead of the current position in the
-     subject string, and those that look behind it.
+      An assertion is  a  test  on  the  characters  following  or
+      preceding  the current matching point that does not actually
+      consume any characters. The simple assertions coded  as  \b,
+      \B,  \A,  \Z,  \z, ^ and $ are described above. More complicated
+      assertions are coded as  subpatterns.  There  are  two
+      kinds:  those that look ahead of the current position in the
+      subject string, and those that look behind it.
 
-     An assertion subpattern is matched in the normal way, except
-     that  it  does not cause the current matching position to be
-     changed. Lookahead assertions start with  (?=  for  positive
-     assertions and (?! for negative assertions. For example,
+      An assertion subpattern is matched in the normal way, except
+      that  it  does not cause the current matching position to be
+      changed. Lookahead assertions start with  (?=  for  positive
+      assertions and (?! for negative assertions. For example,
 
-       \w+(?=;)
+      \w+(?=;)
 
-     matches a word followed by a semicolon, but does not include
-     the semicolon in the match, and
+      matches a word followed by a semicolon, but does not include
+      the semicolon in the match, and
 
-       foo(?!bar)
+      foo(?!bar)
 
-     matches any occurrence of "foo"  that  is  not  followed  by
-     "bar". Note that the apparently similar pattern
+      matches any occurrence of "foo"  that  is  not  followed  by
+      "bar". Note that the apparently similar pattern
 
-       (?!foo)bar
+      (?!foo)bar
 
-     does not find an occurrence of "bar"  that  is  preceded  by
-     something other than "foo"; it finds any occurrence of "bar"
-     whatsoever, because the assertion  (?!foo)  is  always  &true;
-     when  the  next  three  characters  are  "bar". A lookbehind
-     assertion is needed to achieve this effect.
-     
-     Lookbehind assertions start with (?&lt;=  for  positive  assertions
-     and (?&lt;! for negative assertions. For example,
+      does not find an occurrence of "bar"  that  is  preceded  by
+      something other than "foo"; it finds any occurrence of "bar"
+      whatsoever, because the assertion  (?!foo)  is  always  &true;
+      when  the  next  three  characters  are  "bar". A lookbehind
+      assertion is needed to achieve this effect.
 
-       (?&lt;!foo)bar
+      Lookbehind assertions start with (?&lt;=  for  positive  assertions
+      and (?&lt;! for negative assertions. For example,
 
-     does find an occurrence of "bar" that  is  not  preceded  by
-     "foo". The contents of a lookbehind assertion are restricted
-     such that all the strings  it  matches  must  have  a  fixed
-     length.  However, if there are several alternatives, they do
-     not all have to have the same fixed length. Thus
+      (?&lt;!foo)bar
 
-       (?&lt;=bullock|donkey)
+      does find an occurrence of "bar" that  is  not  preceded  by
+      "foo". The contents of a lookbehind assertion are restricted
+      such that all the strings  it  matches  must  have  a  fixed
+      length.  However, if there are several alternatives, they do
+      not all have to have the same fixed length. Thus
 
-     is permitted, but
+      (?&lt;=bullock|donkey)
 
-       (?&lt;!dogs?|cats?)
+      is permitted, but
 
-     causes an error at compile time. Branches  that  match  different
-     length strings are permitted only at the top level of
-     a lookbehind assertion. This is an extension  compared  with
-     Perl  5.005,  which  requires all branches to match the same
-     length of string. An assertion such as
+      (?&lt;!dogs?|cats?)
 
-       (?&lt;=ab(c|de))
+      causes an error at compile time. Branches  that  match  different
+      length strings are permitted only at the top level of
+      a lookbehind assertion. This is an extension  compared  with
+      Perl  5.005,  which  requires all branches to match the same
+      length of string. An assertion such as
 
-     is not permitted, because its single  top-level  branch  can
-     match two different lengths, but it is acceptable if rewritten
-     to use two top-level branches:
+      (?&lt;=ab(c|de))
 
-       (?&lt;=abc|abde)
+      is not permitted, because its single  top-level  branch  can
+      match two different lengths, but it is acceptable if rewritten
+      to use two top-level branches:
 
-     The implementation of lookbehind  assertions  is,  for  each
-     alternative,  to  temporarily move the current position back
-     by the fixed width and then  try  to  match.  If  there  are
-     insufficient  characters  before  the  current position, the
-     match is deemed to fail.  Lookbehinds  in  conjunction  with
-     once-only  subpatterns can be particularly useful for matching
-     at the ends of strings; an example is given at  the  end
-     of the section on once-only subpatterns.
+      (?&lt;=abc|abde)
 
-     Several assertions (of any sort) may  occur  in  succession.
-     For example,
+      The implementation of lookbehind  assertions  is,  for  each
+      alternative,  to  temporarily move the current position back
+      by the fixed width and then  try  to  match.  If  there  are
+      insufficient  characters  before  the  current position, the
+      match is deemed to fail.  Lookbehinds  in  conjunction  with
+      once-only  subpatterns can be particularly useful for matching
+      at the ends of strings; an example is given at  the  end
+      of the section on once-only subpatterns.
 
-       (?&lt;=\d{3})(?&lt;!999)foo
+      Several assertions (of any sort) may  occur  in  succession.
+      For example,
 
-     matches "foo" preceded by three digits that are  not  "999".
-     Notice  that each of the assertions is applied independently
-     at the same point in the subject string. First  there  is  a
-     check  that  the  previous  three characters are all digits,
-     then there is a check that the same three characters are not
-     "999".   This  pattern  does not match "foo" preceded by six
-     characters, the first of which are digits and the last three
-     of  which  are  not  "999".  For  example,  it doesn't match
-     "123abcfoo". A pattern to do that is
+      (?&lt;=\d{3})(?&lt;!999)foo
 
-       (?&lt;=\d{3}...)(?&lt;!999)foo
+      matches "foo" preceded by three digits that are  not  "999".
+      Notice  that each of the assertions is applied independently
+      at the same point in the subject string. First  there  is  a
+      check  that  the  previous  three characters are all digits,
+      then there is a check that the same three characters are not
+      "999".   This  pattern  does not match "foo" preceded by six
+      characters, the first of which are digits and the last three
+      of  which  are  not  "999".  For  example,  it doesn't match
+      "123abcfoo". A pattern to do that is
 
-     This time the first assertion looks  at  the  preceding  six
-     characters,  checking  that  the first three are digits, and
-     then the second assertion checks that  the  preceding  three
-     characters are not "999".
+      (?&lt;=\d{3}...)(?&lt;!999)foo
 
-     Assertions can be nested in any combination. For example,
+      This time the first assertion looks  at  the  preceding  six
+      characters,  checking  that  the first three are digits, and
+      then the second assertion checks that  the  preceding  three
+      characters are not "999".
 
-       (?&lt;=(?&lt;!foo)bar)baz
+      Assertions can be nested in any combination. For example,
 
-     matches an occurrence of "baz" that  is  preceded  by  "bar"
-     which in turn is not preceded by "foo", while
+      (?&lt;=(?&lt;!foo)bar)baz
 
-       (?&lt;=\d{3}(?!999)...)foo
+      matches an occurrence of "baz" that  is  preceded  by  "bar"
+      which in turn is not preceded by "foo", while
 
-     is another pattern which matches  "foo"  preceded  by  three
-     digits and any three characters that are not "999".
+      (?&lt;=\d{3}(?!999)...)foo
 
-     Assertion subpatterns are not capturing subpatterns, and may
-     not  be  repeated,  because  it makes no sense to assert the
-     same thing several times. If any kind of assertion  contains
-     capturing  subpatterns  within it, these are counted for the
-     purposes of numbering the capturing subpatterns in the whole
-     pattern.   However,  substring capturing is carried out only
-     for positive assertions, because it does not make sense  for
-     negative assertions.
+      is another pattern which matches  "foo"  preceded  by  three
+      digits and any three characters that are not "999".
 
-     Assertions count towards the maximum  of  200  parenthesized
-     subpatterns.
+      Assertion subpatterns are not capturing subpatterns, and may
+      not  be  repeated,  because  it makes no sense to assert the
+      same thing several times. If any kind of assertion  contains
+      capturing  subpatterns  within it, these are counted for the
+      purposes of numbering the capturing subpatterns in the whole
+      pattern.   However,  substring capturing is carried out only
+      for positive assertions, because it does not make sense  for
+      negative assertions.
+
+      Assertions count towards the maximum  of  200  parenthesized
+      subpatterns.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.onlyonce">
      <title>Once-only subpatterns</title>
      <literallayout>
-     With both maximizing and minimizing repetition,  failure  of
-     what  follows  normally  causes  the repeated item to be
-     reevaluated to see if a different number of repeats allows the
-     rest  of  the  pattern  to  match. Sometimes it is useful to
-     prevent this, either to change the nature of the  match,  or
-     to  cause  it fail earlier than it otherwise might, when the
-     author of the pattern knows there is no  point  in  carrying
-     on.
+      With both maximizing and minimizing repetition,  failure  of
+      what  follows  normally  causes  the repeated item to be
+      reevaluated to see if a different number of repeats allows the
+      rest  of  the  pattern  to  match. Sometimes it is useful to
+      prevent this, either to change the nature of the  match,  or
+      to  cause  it fail earlier than it otherwise might, when the
+      author of the pattern knows there is no  point  in  carrying
+      on.
 
-     Consider, for example, the pattern \d+foo  when  applied  to
-     the subject line
+      Consider, for example, the pattern \d+foo  when  applied  to
+      the subject line
 
-       123456bar
+      123456bar
 
-     After matching all 6 digits and then failing to match "foo",
-     the normal action of the matcher is to try again with only 5
-     digits matching the \d+ item, and then with 4,  and  so  on,
-     before ultimately failing. Once-only subpatterns provide the
-     means for specifying that once a portion of the pattern  has
-     matched,  it  is  not to be re-evaluated in this way, so the
-     matcher would give up immediately on failing to match  "foo"
-     the  first  time.  The  notation  is another kind of special
-     parenthesis, starting with (?&gt; as in this example:
+      After matching all 6 digits and then failing to match "foo",
+      the normal action of the matcher is to try again with only 5
+      digits matching the \d+ item, and then with 4,  and  so  on,
+      before ultimately failing. Once-only subpatterns provide the
+      means for specifying that once a portion of the pattern  has
+      matched,  it  is  not to be re-evaluated in this way, so the
+      matcher would give up immediately on failing to match  "foo"
+      the  first  time.  The  notation  is another kind of special
+      parenthesis, starting with (?&gt; as in this example:
 
-       (?&gt;\d+)bar
+      (?&gt;\d+)bar
 
-     This kind of parenthesis "locks up" the  part of the pattern
-     it  contains once it has matched, and a failure further into
-     the pattern is prevented from backtracking  into  it.
-     Backtracking  past  it to previous items, however, works as normal.
+      This kind of parenthesis "locks up" the  part of the pattern
+      it  contains once it has matched, and a failure further into
+      the pattern is prevented from backtracking  into  it.
+      Backtracking  past  it to previous items, however, works as normal.
 
-     An alternative description is that a subpattern of this type
-     matches  the  string  of  characters that an identical standalone
-     pattern would match, if anchored at the current point
-     in the subject string.
+      An alternative description is that a subpattern of this type
+      matches  the  string  of  characters that an identical standalone
+      pattern would match, if anchored at the current point
+      in the subject string.
 
-     Once-only subpatterns are not capturing subpatterns.  Simple
-     cases  such as the above example can be thought of as a maximizing
-     repeat that must  swallow  everything  it  can.  So,
-     while both \d+ and \d+? are prepared to adjust the number of
-     digits they match in order to make the rest of  the  pattern
-     match, (?&gt;\d+) can only match an entire sequence of digits.
+      Once-only subpatterns are not capturing subpatterns.  Simple
+      cases  such as the above example can be thought of as a maximizing
+      repeat that must  swallow  everything  it  can.  So,
+      while both \d+ and \d+? are prepared to adjust the number of
+      digits they match in order to make the rest of  the  pattern
+      match, (?&gt;\d+) can only match an entire sequence of digits.
 
-     This construction can of course contain arbitrarily  complicated
-     subpatterns, and it can be nested.
+      This construction can of course contain arbitrarily  complicated
+      subpatterns, and it can be nested.
 
-     Once-only subpatterns can be used in conjunction with
-     lookbehind  assertions  to specify efficient matching at the end
-     of the subject string. Consider a simple pattern such as
+      Once-only subpatterns can be used in conjunction with
+      lookbehind  assertions  to specify efficient matching at the end
+      of the subject string. Consider a simple pattern such as
 
-       abcd$
+      abcd$
 
-     when applied to a long string which does not match.  Because
-     matching  proceeds  from  left  to right, PCRE will look for
-     each "a" in the subject and then see if what follows matches
-     the rest of the pattern. If the pattern is specified as
+      when applied to a long string which does not match.  Because
+      matching  proceeds  from  left  to right, PCRE will look for
+      each "a" in the subject and then see if what follows matches
+      the rest of the pattern. If the pattern is specified as
 
-       ^.*abcd$
+      ^.*abcd$
 
-     then the initial .* matches the entire string at first,  but
-     when  this  fails  (because  there  is no following "a"), it
-     backtracks to match all but the last character, then all but
-     the  last  two  characters, and so on. Once again the search
-     for "a" covers the entire string, from right to left, so  we
-     are no better off. However, if the pattern is written as
+      then the initial .* matches the entire string at first,  but
+      when  this  fails  (because  there  is no following "a"), it
+      backtracks to match all but the last character, then all but
+      the  last  two  characters, and so on. Once again the search
+      for "a" covers the entire string, from right to left, so  we
+      are no better off. However, if the pattern is written as
 
-       ^(?>.*)(?&lt;=abcd)
+      ^(?>.*)(?&lt;=abcd)
 
-     then there can be no backtracking for the .*  item;  it  can
-     match  only  the  entire  string.  The subsequent lookbehind
-     assertion does a single test on the last four characters. If
-     it  fails,  the  match  fails immediately. For long strings,
-     this approach makes a significant difference to the processing time.
+      then there can be no backtracking for the .*  item;  it  can
+      match  only  the  entire  string.  The subsequent lookbehind
+      assertion does a single test on the last four characters. If
+      it  fails,  the  match  fails immediately. For long strings,
+      this approach makes a significant difference to the processing time.
 
-     When a pattern contains an unlimited repeat inside a subpattern
-     that can itself be repeated an unlimited number of
-     times, the use of a once-only subpattern is the only way  to
-     avoid  some  failing matches taking a very long time indeed.
-     The pattern
+      When a pattern contains an unlimited repeat inside a subpattern
+      that can itself be repeated an unlimited number of
+      times, the use of a once-only subpattern is the only way  to
+      avoid  some  failing matches taking a very long time indeed.
+      The pattern
 
-       (\D+|&lt;\d+>)*[!?]
+      (\D+|&lt;\d+>)*[!?]
 
-     matches an unlimited number of substrings that  either  consist
-     of  non-digits,  or digits enclosed in &lt;>, followed by
-     either ! or ?. When it matches, it runs quickly. However, if
-     it is applied to
+      matches an unlimited number of substrings that  either  consist
+      of  non-digits,  or digits enclosed in &lt;>, followed by
+      either ! or ?. When it matches, it runs quickly. However, if
+      it is applied to
 
-       aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
-     it takes a long  time  before  reporting  failure.  This  is
-     because the string can be divided between the two repeats in
-     a large number of ways, and all have to be tried. (The example
-     used  [!?]  rather  than a single character at the end,
-     because both PCRE and Perl have an optimization that  allows
-     for  fast  failure  when  a  single  character is used. They
-     remember the last single character that is  required  for  a
-     match,  and  fail early if it is not present in the string.)
-     If the pattern is changed to
+      it takes a long  time  before  reporting  failure.  This  is
+      because the string can be divided between the two repeats in
+      a large number of ways, and all have to be tried. (The example
+      used  [!?]  rather  than a single character at the end,
+      because both PCRE and Perl have an optimization that  allows
+      for  fast  failure  when  a  single  character is used. They
+      remember the last single character that is  required  for  a
+      match,  and  fail early if it is not present in the string.)
+      If the pattern is changed to
 
-       ((?>\D+)|&lt;\d+>)*[!?]
+      ((?>\D+)|&lt;\d+>)*[!?]
 
-     sequences of non-digits cannot be broken, and  failure  happens quickly.
+      sequences of non-digits cannot be broken, and  failure  happens quickly.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.conditional">
      <title>Conditional subpatterns</title>
      <literallayout>
-     It is possible to cause the matching process to obey a  subpattern 
-     conditionally  or to choose between two alternative
-     subpatterns, depending on the result  of  an  assertion,  or
-     whether  a previous capturing subpattern matched or not. The
-     two possible forms of conditional subpattern are
+      It is possible to cause the matching process to obey a  subpattern 
+      conditionally  or to choose between two alternative
+      subpatterns, depending on the result  of  an  assertion,  or
+      whether  a previous capturing subpattern matched or not. The
+      two possible forms of conditional subpattern are
 
-       (?(condition)yes-pattern)
-       (?(condition)yes-pattern|no-pattern)
+      (?(condition)yes-pattern)
+      (?(condition)yes-pattern|no-pattern)
 
-     If the condition is satisfied, the yes-pattern is used; otherwise
-     the  no-pattern  (if  present) is used. If there are
-     more than two alternatives in the subpattern, a compile-time
-     error occurs.
+      If the condition is satisfied, the yes-pattern is used; otherwise
+      the  no-pattern  (if  present) is used. If there are
+      more than two alternatives in the subpattern, a compile-time
+      error occurs.
 
-     There are two kinds of condition. If the  text  between  the
-     parentheses  consists  of  a  sequence  of  digits, then the
-     condition is satisfied if the capturing subpattern  of  that
-     number  has  previously matched. Consider the following pattern,
-     which contains non-significant white space to make  it
-     more  readable  (assume  the  <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>   option)  and to
-     divide it into three parts for ease of discussion:
+      There are two kinds of condition. If the  text  between  the
+      parentheses  consists  of  a  sequence  of  digits, then the
+      condition is satisfied if the capturing subpattern  of  that
+      number  has  previously matched. Consider the following pattern,
+      which contains non-significant white space to make  it
+      more  readable  (assume  the  <link
+      linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link> option) and to
+      divide it into three parts for ease of discussion:
 
-       ( \( )?    [^()]+    (?(1) \) )
+      ( \( )?    [^()]+    (?(1) \) )
 
-     The first part matches an optional opening parenthesis,  and
-     if  that character is present, sets it as the first captured
-     substring. The second part matches one  or  more  characters
-     that  are  not  parentheses. The third part is a conditional
-     subpattern that tests whether the first set  of  parentheses
-     matched  or  not.  If  they did, that is, if subject started
-     with an opening parenthesis, the condition is &true;,  and  so
-     the  yes-pattern  is  executed  and a closing parenthesis is
-     required. Otherwise, since no-pattern is  not  present,  the
-     subpattern  matches  nothing.  In  other words, this pattern
-     matches a sequence of non-parentheses,  optionally  enclosed
-     in parentheses.
+      The first part matches an optional opening parenthesis,  and
+      if  that character is present, sets it as the first captured
+      substring. The second part matches one  or  more  characters
+      that  are  not  parentheses. The third part is a conditional
+      subpattern that tests whether the first set  of  parentheses
+      matched  or  not.  If  they did, that is, if subject started
+      with an opening parenthesis, the condition is &true;,  and  so
+      the  yes-pattern  is  executed  and a closing parenthesis is
+      required. Otherwise, since no-pattern is  not  present,  the
+      subpattern  matches  nothing.  In  other words, this pattern
+      matches a sequence of non-parentheses,  optionally  enclosed
+      in parentheses.
 
-     If the condition is not a sequence of digits, it must be  an
-     assertion.  This  may be a positive or negative lookahead or
-     lookbehind assertion. Consider this pattern, again  containing
-     non-significant  white space, and with the two alternatives on
-     the second line:
+      If the condition is not a sequence of digits, it must be  an
+      assertion.  This  may be a positive or negative lookahead or
+      lookbehind assertion. Consider this pattern, again  containing
+      non-significant  white space, and with the two alternatives on
+      the second line:
 
-       (?(?=[^a-z]*[a-z])
-       \d{2}-[a-z]{3}-\d{2}  |  \d{2}-\d{2}-\d{2} )
+      (?(?=[^a-z]*[a-z])
+      \d{2}-[a-z]{3}-\d{2}  |  \d{2}-\d{2}-\d{2} )
 
-     The condition is a positive lookahead assertion that matches
-     an optional sequence of non-letters followed by a letter. In
-     other words, it tests for  the  presence  of  at  least  one
-     letter  in the subject. If a letter is found, the subject is
-     matched against  the  first  alternative;  otherwise  it  is
-     matched  against the second. This pattern matches strings in
-     one of the two forms dd-aaa-dd or dd-dd-dd,  where  aaa  are
-     letters and dd are digits.
+      The condition is a positive lookahead assertion that matches
+      an optional sequence of non-letters followed by a letter. In
+      other words, it tests for  the  presence  of  at  least  one
+      letter  in the subject. If a letter is found, the subject is
+      matched against  the  first  alternative;  otherwise  it  is
+      matched  against the second. This pattern matches strings in
+      one of the two forms dd-aaa-dd or dd-dd-dd,  where  aaa  are
+      letters and dd are digits.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.comments">
      <title>코멘트</title>
      <literallayout>
-     The  sequence  (?#  marks  the  start  of  a  comment  which
-     continues   up  to  the  next  closing  parenthesis.  Nested
-     parentheses are not permitted. The characters that make up a
-     comment play no part in the pattern matching at all.
+      The  sequence  (?#  marks  the  start  of  a  comment  which
+      continues   up  to  the  next  closing  parenthesis.  Nested
+      parentheses are not permitted. The characters that make up a
+      comment play no part in the pattern matching at all.
 
-     If the <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>  option is set, an unescaped # character
-     outside  a character class introduces a comment that
-     continues up to the next newline character in the pattern.
+      If the <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>  option is set, an unescaped # character
+      outside  a character class introduces a comment that
+      continues up to the next newline character in the pattern.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.recursive">
      <title>Recursive patterns</title>
      <literallayout>
-     Consider the problem of matching a  string  in  parentheses,
-     allowing  for  unlimited nested parentheses. Without the use
-     of recursion, the best that can be done is to use a  pattern
-     that  matches  up  to some fixed depth of nesting. It is not
-     possible to handle an arbitrary nesting depth. Perl 5.6  has
-     provided   an  experimental  facility  that  allows  regular
-     expressions to recurse (amongst other things).  The  special 
-     item (?R) is  provided for  the specific  case of recursion. 
-     This PCRE  pattern  solves the  parentheses  problem (assume 
-     the <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>
-     option is set so that white space is 
-     ignored):
+      Consider the problem of matching a  string  in  parentheses,
+      allowing  for  unlimited nested parentheses. Without the use
+      of recursion, the best that can be done is to use a  pattern
+      that  matches  up  to some fixed depth of nesting. It is not
+      possible to handle an arbitrary nesting depth. Perl 5.6  has
+      provided   an  experimental  facility  that  allows  regular
+      expressions to recurse (among other things).  The  special 
+      item (?R) is  provided for  the specific  case of recursion. 
+      This PCRE  pattern  solves the  parentheses  problem (assume 
+      the <link linkend="pcre.pattern.modifiers">PCRE_EXTENDED</link>
+      option is set so that white space is 
+      ignored):
 
-       \( ( (?>[^()]+) | (?R) )* \)
+      \( ( (?>[^()]+) | (?R) )* \)
 
-     First it matches an opening parenthesis. Then it matches any
-     number  of substrings which can either be a sequence of
-     non-parentheses, or a recursive  match  of  the  pattern  itself
-     (i.e. a correctly parenthesized substring). Finally there is
-     a closing parenthesis.
+      First it matches an opening parenthesis. Then it matches any
+      number  of substrings which can either be a sequence of
+      non-parentheses, or a recursive  match  of  the  pattern  itself
+      (i.e. a correctly parenthesized substring). Finally there is
+      a closing parenthesis.
 
-     This particular example pattern  contains  nested  unlimited
-     repeats, and so the use of a once-only subpattern for matching
-     strings of non-parentheses is  important  when  applying
-     the  pattern to strings that do not match. For example, when
-     it is applied to
+      This particular example pattern  contains  nested  unlimited
+      repeats, and so the use of a once-only subpattern for matching
+      strings of non-parentheses is  important  when  applying
+      the  pattern to strings that do not match. For example, when
+      it is applied to
 
-       (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa()
+      (aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa()
 
-     it yields "no match" quickly. However, if a  once-only  subpattern
-     is  not  used,  the match runs for a very long time
-     indeed because there are so many different ways the + and  *
-     repeats  can carve up the subject, and all have to be tested
-     before failure can be reported.
+      it yields "no match" quickly. However, if a  once-only  subpattern
+      is  not  used,  the match runs for a very long time
+      indeed because there are so many different ways the + and  *
+      repeats  can carve up the subject, and all have to be tested
+      before failure can be reported.
 
-     The values set for any capturing subpatterns are those  from
-     the outermost level of the recursion at which the subpattern
-     value is set. If the pattern above is matched against
+      The values set for any capturing subpatterns are those  from
+      the outermost level of the recursion at which the subpattern
+      value is set. If the pattern above is matched against
 
-       (ab(cd)ef)
+      (ab(cd)ef)
 
-     the value for the capturing parentheses is  "ef",  which  is
-     the  last  value  taken  on  at the top level. If additional
-     parentheses are added, giving
+      the value for the capturing parentheses is  "ef",  which  is
+      the  last  value  taken  on  at the top level. If additional
+      parentheses are added, giving
 
-       \( ( ( (?>[^()]+) | (?R) )* ) \)
-          ^                        ^
-          ^                        ^ then the string they capture
-     is "ab(cd)ef", the contents of the top level parentheses. If
-     there are more than 15 capturing parentheses in  a  pattern,
-     PCRE  has  to  obtain  extra  memory  to store data during a
-     recursion, which it does by using  pcre_malloc,  freeing  it
-     via  pcre_free  afterwards. If no memory can be obtained, it
-     saves data for the first 15 capturing parentheses  only,  as
-     there is no way to give an out-of-memory error from within a
-     recursion.
+      \( ( ( (?>[^()]+) | (?R) )* ) \)
+      ^                        ^
+      ^                        ^ then the string they capture
+      is "ab(cd)ef", the contents of the top level parentheses. If
+      there are more than 15 capturing parentheses in  a  pattern,
+      PCRE  has  to  obtain  extra  memory  to store data during a
+      recursion, which it does by using  pcre_malloc,  freeing  it
+      via  pcre_free  afterwards. If no memory can be obtained, it
+      saves data for the first 15 capturing parentheses  only,  as
+      there is no way to give an out-of-memory error from within a
+      recursion.
      </literallayout>
     </refsect2>
 
     <refsect2 id="regexp.reference.performances">
      <title>Performances</title>
      <literallayout>
-     Certain items that may appear in patterns are more efficient
-     than  others.  It is more efficient to use a character class
-     like [aeiou] than a set of alternatives such as (a|e|i|o|u).
-     In  general,  the  simplest  construction  that provides the
-     required behaviour is usually the  most  efficient.  Jeffrey
-     Friedl's  book contains a lot of discussion about optimizing
-     regular expressions for efficient performance.
+      Certain items that may appear in patterns are more efficient
+      than  others.  It is more efficient to use a character class
+      like [aeiou] than a set of alternatives such as (a|e|i|o|u).
+      In  general,  the  simplest  construction  that provides the
+      required behaviour is usually the  most  efficient.  Jeffrey
+      Friedl's  book contains a lot of discussion about optimizing
+      regular expressions for efficient performance.
 
-     When a pattern begins with .* and the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>  option  is
-     set,  the  pattern  is implicitly anchored by PCRE, since it
-     can match only at the start of a subject string. However, if
-     <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>   is not set, PCRE cannot make this optimization,
-     because the . metacharacter does not then match  a  newline,
-     and if the subject string contains newlines, the pattern may
-     match from the character immediately following one  of  them
-     instead of from the very start. For example, the pattern
+      When a pattern begins with .* and the <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>  option  is
+      set,  the  pattern  is implicitly anchored by PCRE, since it
+      can match only at the start of a subject string. However, if
+      <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link>   is not set, PCRE cannot make this optimization,
+      because the . metacharacter does not then match  a  newline,
+      and if the subject string contains newlines, the pattern may
+      match from the character immediately following one  of  them
+      instead of from the very start. For example, the pattern
 
-       (.*) second
+      (.*) second
 
-     matches the subject "first\nand second" (where \n stands for
-     a newline character) with the first captured substring being
-     "and". In order to do this, PCRE  has  to  retry  the  match
-     starting after every newline in the subject.
+      matches the subject "first\nand second" (where \n stands for
+      a newline character) with the first captured substring being
+      "and". In order to do this, PCRE  has  to  retry  the  match
+      starting after every newline in the subject.
 
-     If you are using such a pattern with subject strings that do
-     not  contain  newlines,  the best performance is obtained by
-     setting <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> , or starting the  pattern  with  ^.*  to
-     indicate  explicit anchoring. That saves PCRE from having to
-     scan along the subject looking for a newline to restart at.
+      If you are using such a pattern with subject strings that do
+      not  contain  newlines,  the best performance is obtained by
+      setting <link linkend="pcre.pattern.modifiers">PCRE_DOTALL</link> , or starting the  pattern  with  ^.*  to
+      indicate  explicit anchoring. That saves PCRE from having to
+      scan along the subject looking for a newline to restart at.
 
-     Beware of patterns that contain nested  indefinite  repeats.
-     These  can  take a long time to run when applied to a string
-     that does not match. Consider the pattern fragment
+      Beware of patterns that contain nested  indefinite  repeats.
+      These  can  take a long time to run when applied to a string
+      that does not match. Consider the pattern fragment
 
-       (a+)*
+      (a+)*
 
-     This can match "aaaa" in 33 different ways, and this  number
-     increases  very  rapidly  as  the string gets longer. (The *
-     repeat can match 0, 1, 2, 3, or 4 times,  and  for  each  of
-     those  cases other than 0, the + repeats can match different
-     numbers of times.) When the remainder of the pattern is such
-     that  the entire match is going to fail, PCRE has in principle
-     to try every possible variation, and this  can  take  an
-     extremely long time.
+      This can match "aaaa" in 33 different ways, and this  number
+      increases  very  rapidly  as  the string gets longer. (The *
+      repeat can match 0, 1, 2, 3, or 4 times,  and  for  each  of
+      those  cases other than 0, the + repeats can match different
+      numbers of times.) When the remainder of the pattern is such
+      that  the entire match is going to fail, PCRE has in principle
+      to try every possible variation, and this  can  take  an
+      extremely long time.
 
-     An optimization catches some of the more simple  cases  such
-     as
+      An optimization catches some of the more simple  cases  such
+      as
 
-       (a+)*b
+      (a+)*b
 
-     where a literal character follows. Before embarking  on  the
-     standard matching procedure, PCRE checks that there is a "b"
-     later in the subject string, and if there is not,  it  fails
-     the  match  immediately. However, when there is no following
-     literal this optimization cannot be used. You  can  see  the
-     difference by comparing the behaviour of
+      where a literal character follows. Before embarking  on  the
+      standard matching procedure, PCRE checks that there is a "b"
+      later in the subject string, and if there is not,  it  fails
+      the  match  immediately. However, when there is no following
+      literal this optimization cannot be used. You  can  see  the
+      difference by comparing the behaviour of
 
-       (a+)*\d
+      (a+)*\d
 
-     with the pattern above. The former gives  a  failure  almost
-     instantly  when  applied  to a whole line of "a" characters,
-     whereas the latter takes an appreciable  time  with  strings
-     longer than about 20 characters.
+      with the pattern above. The former gives  a  failure  almost
+      instantly  when  applied  to a whole line of "a" characters,
+      whereas the latter takes an appreciable  time  with  strings
+      longer than about 20 characters.
      </literallayout>
     </refsect2>
    </refsect1>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
   <refentry id="function.preg-quote">
    <refnamediv>
     <refname>preg_quote</refname>
@@ -52,9 +52,9 @@ echo $keywords; // \$40 for a g3\/400 를 반환합니다.
 
 $textbody = "This book is *very* difficult to find.";
 $word = "*very*";
-$textbody = preg_replace ("/".preg_quote($word)."/",
-                          "<i>" . $word . "</i>",
-                          $textbody);
+$textbody = preg_replace("/" . preg_quote($word) . "/",
+                         "<i>" . $word . "</i>",
+                         $textbody);
 ?>
 ]]>
       </programlisting>
