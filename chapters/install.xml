@@ -3102,7 +3102,6 @@ Paul Mckay.
 		</sect2>
 		<sect2 id="install.apache.windows">
 			<title>Windows에서 Apache 1.3.x에 PHP를 설치하는 상세 내용</title>
-----
 			<simpara>
     PHP를 windows하의 Apache 1.3.x에서 동작하도록 설치하는 방법은 두가지가 있다.
     CGI binary (php.exe)를 사용하는 방법과, Apache module dll을 사용하는 방법이다.
