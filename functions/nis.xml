@@ -4,7 +4,7 @@
 	<partintro>
 		<para>
     NIS (이전에는 옐로우 페이지(Yellow Pages)라고 불려졌습니다)는 중요한 관리자용 파일(예를 들면 패스워드 파일같은)을 네트워크 관리가 가능하도록 합니다.
-	더 이상의 정보는 NIS의 man 페이지와 <ulink url="&url.nis;">Introduction to YP/NIS</ulink>에 좀 더 참조할 만한 정보가 있습니다.
+	더 이상의 정보는 NIS의 man 페이지와 <ulink url="&url.nis;"> Introduction to YP/NIS </ulink>에 좀 더 참조할 만한 정보가 있습니다.
 	또 <ulink url="&url.nis.book;">Managing NFS and NIS</ulink>라고 부르는 Hal Stern의 책도 있습니다.
    </para>
 		<para>
