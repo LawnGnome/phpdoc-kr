@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.6 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.7 $ -->
+<!-- EN-Revision: 1.39 -->
  <chapter id="functions">
-  <title>Functions</title>
+  <title>함수</title>
 
   <sect1 id="functions.user-defined">
-   <title>User-defined functions</title>
+   <title>사용자 선언 함수</title>
  
    <para>
-    A function may be defined using syntax such as the following:
+    다음과 같은 문법을 사용하여 함수를 선언한다:
    </para>
    <para>
     <example>
-     <title>Psuedo code to demonstrate function uses</title>
+     <title>함수 선언방법을 설명하기 위한 의사(Psuedo)코드</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -33,26 +34,23 @@ function foo ($arg_1, $arg_2, ..., $arg_n)
     I've never seen it before... what's its use? (or was...)
     
     -->
-     
    <simpara>
-    Any valid PHP code may appear inside a function, even other
-    functions and <link linkend="keyword.class">class</link>
-    definitions.
+    모든 유효 PHP코드는 특정 함수 내에서 뿐만 아니라, 여러 다른 함수나
+    <link linkend="keyword.class">class</link>정의 안에서도 
+    나타날수있다.
    </simpara>
    <simpara>
-    In PHP 3, functions must be defined before they are referenced. No
-    such requirement exists in PHP 4. <emphasis>Except</emphasis> when
-    a function is conditionally defined such as shown in the two examples
-    below.
+    PHP 3에서는 함수가 참조되기 전에 선언되어야 한다. 다음 두 예제 코드와 
+    같이 함수가 조건적으로 선언되는 경우를 <emphasis>제외하고</emphasis>
+    PHP 4는 이런 제약이 없다. 
    </simpara>
    <para>
-    When a function is defined in a conditional manner such as the two
-    examples shown.  Its definition must be processed <emphasis>prior</emphasis>
-    to being called.
+    아래 예제 코드와 같이 함수가 조건적으로 선언되면 그 함수가 호출되기
+    <emphasis>전에</emphasis> 함수를 선언해야 한다.
    </para>
    <para>
     <example>
-     <title>Conditional functions</title>
+     <title>조건적인 함수</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -89,7 +87,7 @@ function bar()
    </para>
    <para>
     <example>
-     <title>Functions within functions</title>
+     <title>함수 안의 함수</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -118,54 +116,50 @@ bar();
     </example>
    </para>
    <simpara>
-    PHP does not support function overloading, nor is it possible to
-    undefine or redefine previously-declared functions.
+    PHP는 함수 오버로딩(overloading)을 지원하지 않으며, 함수 정의를
+    해제하거나 이미 선언된 함수를 다시 선언할수 없다.
    </simpara>
    <note>
     <simpara>
-     Function names are case-insensitive, though it is usually good form
-     to call functions as they appear in their declaration.
+     함수명은 선언시에 그 함수를 호출하기 편하게 만들겠지만,
+     대소문자 구별을 하지 않는다. 
     </simpara>
    </note>   
    <simpara>
-    PHP 3 does not support variable numbers of arguments to functions,
-    although default arguments are supported (see <link
-    linkend="functions.arguments.default">Default argument
-    values</link> for more information). PHP 4 supports both: see <link
-    linkend="functions.variable-arg-list">Variable-length argument
-    lists</link> and the function references for
+    PHP 3에서 함수는 기본 인자(default argument)를 지원되지만, 
+    가변 인자 갯수(variable-length argument)를 지원하지 않는다. (자세한 정보는 
+    <link linkend="functions.arguments.default">기본 인자</link>섹션을 참고). 
+    PHP 4는 둘 다 지원된다: 자세한 정보는 
+    <link linkend="functions.variable-arg-list">가변 인자 목록</link>섹션과
     <function>func_num_args</function>,
-    <function>func_get_arg</function>, and
-    <function>func_get_args</function> for more information.
+    <function>func_get_arg</function>,
+    <function>func_get_args</function>함수 레퍼런스를 참고.
    </simpara>
 
   </sect1>
  
   <sect1 id="functions.arguments">
-   <title>Function arguments</title>
+   <title>함수 인자</title>
  
    <simpara>
-    Information may be passed to functions via the argument list,
-    which is a comma-delimited list of variables and/or constants.
+    함수 인자를 통해서 함수에 정보를 넘겨줄수 있다. 이런 함수 인자는
+    콤마(,)로 구별되는 변수나 상수의 목록이다.
    </simpara> 
    <para>
-    PHP supports passing arguments by value (the default), <link
-    linkend="functions.arguments.by-reference">passing by
-    reference</link>, and <link
-    linkend="functions.arguments.default">default argument
-    values</link>. Variable-length argument lists are supported only
-    in PHP 4 and later; see <link
-    linkend="functions.variable-arg-list">Variable-length argument
-    lists</link> and the function references for
+    PHP는 값에 의한 인자 전달(passing by value) (기본값),
+    <link linkend="functions.arguments.by-reference">참조에 의한 전달(passing by reference)</link>, 
+    <link linkend="functions.arguments.default">기본 인자 값(default argument value)</link>기능
+    을 지원한다. 가변 인자 목록(variable-length argument)은 PHP 4이후 버전에서만 지원된다;
+    더 자세한 정보는
+    <link linkend="functions.variable-arg-list">가변 인자 목록</link>섹션과
     <function>func_num_args</function>,
-    <function>func_get_arg</function>, and
-    <function>func_get_args</function> for more information. A
-    similar effect can be achieved in PHP 3 by passing an array of
-    arguments to a function:
+    <function>func_get_arg</function>,
+    <function>func_get_args</function>함수 레퍼런스를 참고.
+    PHP 3에서는 함수에 인자 배열을 넘겨줌으로써 비슷한 효과를 낼수있다:
    </para>
    <para>
     <example>
-     <title>Passing arrays to functions</title>
+     <title>함수에 배열 넘겨주기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -180,23 +174,20 @@ function takes_array($input)
    </para>
  
    <sect2 id="functions.arguments.by-reference">
-    <title>Making arguments be passed by reference</title>
+    <title>참조에 의한 인자 전달하기</title>
  
     <simpara>
-     By default, function arguments are passed by value (so that if
-     you change the value of the argument within the function, it does
-     not get changed outside of the function). If you wish to allow a
-     function to modify its arguments, you must pass them by
-     reference.
+     기본적으로, 함수 인자는 값에 의해 전달된다 (그래서 함수내의 인자값
+     이 변경되도 함수 밖에서는 바뀌지 않는다). 함수가 그 인자까지 변경가능하게
+     하려면, 참조에 의해 인자를 전달해야 한다.
     </simpara>
     <para>
-     If you want an argument to a function to always be passed by
-     reference, you can prepend an ampersand (&amp;) to the argument
-     name in the function definition:
+     함수의 인자를 참조로 전달하려면, 함수 선언시에 엠퍼센트(&amp;)를 인자명 앞에
+     덧붙이면 된다: 
     </para>
     <para>
      <example>
-      <title>Passing function parameters by reference</title>
+      <title>참조에 의해 함수 인자 전달하기</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -216,15 +207,14 @@ echo $str;    // outputs 'This is a string, and something extra.'
    </sect2>
  
    <sect2 id="functions.arguments.default">
-    <title>Default argument values</title>
+    <title>기본 인수 값</title>
  
     <para>
-     A function may define C++-style default values for scalar
-     arguments as follows:
+     함수는 다음과 같이 스칼라 인자에 대해 C++스타일 기본값으로 지정할수있다:
     </para>
     <para>
      <example>
-      <title>Use of default parameters in functions</title>
+      <title>함수에 기본 인자 사용하기</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -241,7 +231,7 @@ echo makecoffee ("espresso");
     </para>
  
     <para>
-     The output from the above snippet is:
+     위 예제 코드의 출력은 다음과 같다:
     </para>
     <para>
      <screen>
@@ -251,17 +241,17 @@ Making a cup of espresso.
     </para>
  
     <simpara>
-     The default value must be a constant expression, not (for
-     example) a variable or class member.
+     기본값은 상수 표현식이 될수 있으나 (예를 들면) 변수나 
+     클래스 멤버가 될수는 없다.
     </simpara>
     <para>
-     Note that when using default arguments, any defaults should be on
-     the right side of any non-default arguments; otherwise, things
-     will not work as expected. Consider the following code snippet:
+     기본 인자를 사용할때에는 모든 기본값은 기본값을 쓰지 않는 인자의
+     오른쪽으로 가야 한다; 그렇지 않으면, 기대하던대로 작동하지 않을것이다.
+     다음 예제 코드를 참고:
     </para>
     <para>
      <example>
-      <title>Incorrect usage of default function arguments</title>
+      <title>기본 함수 인자가 잘못 사용된 예</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -278,7 +268,7 @@ echo makeyogurt ("raspberry");   // won't work as expected
     </para>
  
     <para>
-     The output of the above example is:
+     위 예제 코드의 출력은 다음과 같다:
     </para>
     <para>
      <screen>
@@ -288,11 +278,11 @@ Making a bowl of raspberry .
      </screen>
     </para>
     <para>
-     Now, compare the above with this:
+     위 코드를 아래 코드와 비교하라:
     </para>
     <para>
      <example>
-      <title>Correct usage of default function arguments</title>
+      <title>기본 함수 인자의 정확한 사용예</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -309,7 +299,7 @@ echo makeyogurt ("raspberry");   // works as expected
     </para>
  
     <para>
-     The output of this example is:
+     이 예제코드의 출력은 다음과 같다:
     </para>
     <para>
      <screen>
@@ -320,20 +310,18 @@ Making a bowl of acidophilus raspberry.
    </sect2>
 
    <sect2 id="functions.variable-arg-list">
-    <title>Variable-length argument lists</title>
+    <title>가변 인자 목록</title>
 	
     <simpara>
-     PHP 4 has support for variable-length argument lists in
-     user-defined functions. This is really quite easy, using the
-     <function>func_num_args</function>,
-     <function>func_get_arg</function>, and
-     <function>func_get_args</function> functions.
+     PHP 4는 사용자 선언 함수에서 가변 변수 목록 기능을 지원한다.
+     이런 기능은 <function>func_num_args</function>,
+     <function>func_get_arg</function>,
+     <function>func_get_args</function>함수를 사용하여 손쉽게 사용가능하다.
     </simpara>
 
     <simpara>
-     No special syntax is required, and argument lists may still be
-     explicitly provided with function definitions and will behave as
-     normal.
+     특별한 문법이 필요하지 않다. 인자 목록은 함수선언부에서 밝혀야하고
+     일반 인자와 동일하게 작동할것이다.
     </simpara>
 
    </sect2>
@@ -341,18 +329,17 @@ Making a bowl of acidophilus raspberry.
   </sect1>
  
   <sect1 id="functions.returning-values">
-   <title>Returning values</title>
+   <title>값 돌려주기</title>
  
    <para>
-    Values are returned by using the optional return statement. Any
-    type may be returned, including lists and objects. This causes the
-    function to end its execution immediately and pass control back to
-    the line from which it was called. See <function>return</function>
-    for more information.
+    선택적인 return문을 사용하여 값을 돌려준다. 리스트나 객체를 포함하여
+    모든 타입을 돌려줄수있다. 이 구문에서 함수의 수행이 즉시 중단되고
+    현재 함수를 호출한 코드줄로 제어를 되돌린다. 
+    자세한 정보는 <function>return</function>섹션을 참고할것.
    </para>
    <para>
     <example>
-     <title>Use of <function>return</function></title>
+     <title><function>return</function>의 사용예</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -368,12 +355,12 @@ echo square (4);   // outputs '16'.
    </para>
       
    <para>
-    You can't return multiple values from a function, but similar
-    results can be obtained by returning a list.
+    함수는 여러 값을 돌려줄수 없다. 그러나 리스트를 돌려줌으로서
+    비슷한 효과를 볼수있다.
    </para>
    <para>
     <example>
-     <title>Returning an array to get multiple values</title>
+     <title>여러 값을 취하기 위해 배열을 돌려줌</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -388,13 +375,12 @@ list ($zero, $one, $two) = small_numbers();
     </example>
    </para>
    <para>
-    To return a reference from a function, you have to use
-    the reference operator &amp; in both the function declaration and
-    when assigning the returned value to a variable:
+    함수에서 참조를 돌려주기위해서는, 함수 선언부와 돌려주는 변수값을
+    지정하는 곳에서 참조 연산자 &amp; 를 사용해야 한다.
    </para>
    <para>
     <example>
-     <title>Returning a reference from a function</title>
+     <title>함수에서 참조 돌려주기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -410,33 +396,31 @@ $newref =& returns_reference();
     </example>
    </para>
    <simpara>
-    For more information on references, please check out <link
-    linkend="language.references">References Explained</link>.
+    참조에 관한 자세한 정보는, <link linkend="language.references">참조 표현</link>섹션을
+    참고.
    </simpara>
   </sect1>
  
   <sect1 id="functions.variable-functions">
-   <title>Variable functions</title>
+   <title>가변 함수</title>
 
    <para>
-    PHP supports the concept of variable functions. This means that if
-    a variable name has parentheses appended to it, PHP will look for
-    a function with the same name as whatever the variable evaluates
-    to, and will attempt to execute it. Among other things, this can
-    be used to implement callbacks, function tables, and so forth.
+    PHP는 가변 함수에 대한 개념을 지원한다. 이 용어의 의미는 어떤 변수
+    뒤에 괄호가 따라온다면, PHP는 그 변수의 값을 갖는 함수를 찾아서 실행하려
+    할것이란 것이다. 이런 개념은 이기능 외에도 콜백과 함수 테이블 등등을 구현할수 
+    있게 해준다.
    </para>
    <para>
-    Variable functions won't work with language constructs such 
-    as <function>echo</function>, <function>print</function>,
+    가변 함수는 <function>echo</function>, <function>print</function>,
     <function>unset</function>, <function>isset</function>,
     <function>empty</function>, <function>include</function>,
-    <function>require</function> and the like. You need to use
-    your own wrapper function to utilize any of these constructs
-    as variable functions.
+    <function>require</function>와 같은 언어 구조와 함께 작동하지 않을것이다.
+    이런 구조를 가변 변수로 사용하기 위해서는 보호 함수(wrapper function)를 
+    사용할 필요가 있다.
    </para>
    <para>
     <example>
-     <title>Variable function example</title>
+     <title>가변 변수 사용예</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -470,10 +454,9 @@ $func('test');  // This calls echoit()
     </example>
    </para>
    <para>
-    You can also call an object's method by using the variable functions
-    feature.
+    가변 함수 기능을 사용하여 객체의 메소드를 호출할수 있다.
     <example>
-     <title>Variable method example</title>
+     <title>가변 메소드 사용예</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -501,53 +484,47 @@ $foo->$funcname();  // This calls $foo->Var()
     </example>
    </para>
    <para>
-    See also <function>call_user_func</function>,
-    <link linkend="language.variables.variable">
-    variable variables</link> and <function>function_exists</function>.
+    또 <function>call_user_func</function>,
+    <link linkend="language.variables.variable">variable variables</link>, 
+    <function>function_exists</function>섹션을 참고
    </para>
   </sect1>
   
   <sect1 id="functions.internal">
-   <title>Internal (built-in) functions</title>
+   <title>내부 (내장) 함수</title>
    
    <para>
-    PHP comes standard with many functions and constructs.  There are also
-    functions that require specific PHP extensions compiled in otherwise 
-    you'll get fatal "undefined function" errors.  For example, to use 
-    <link linkend="ref.image">image</link> functions such as 
-    <function>imagecreatetruecolor</function>, you'll need your PHP compiled
-    with GD support.  Or, to use <function>mysql_connect</function> you'll
-    need your PHP compiled in with <link linkend="ref.mysql">MySQL</link>
-    support.  There are many core functions that are included in every
-    version of PHP like the <link linkend="ref.strings">string</link> and 
-    <link linkend="ref.variables">variable</link> functions.  A call 
-    to <function>phpinfo</function> or
-    <function>get_loaded_extensions</function> will show you which
-    extensions are loaded into your PHP.  Also note that many extensions are
-    enabled by default and that the PHP manual is split up by extension.
-    See the <link linkend="configuration">configuration</link>,  
-    <link linkend="installation">installation</link>, and individual
-    extension chapters, for information on how to setup your PHP.
+    PHP는 많은 함수와 상수로 표준화되었다. 그리고 특정 PHP확장 컴파일이 요구하는 함수
+    도 제공한다. 이런 함수는 확장을 컴파일하지 않으면 "undefined function"같은 치명적
+    에러 메시지를 출력할 것이다. 예를 들면, <link linkend="ref.image">image</link>함수
+    를 사용하기 위해서는 GD 지원이 가능하게 컴파일해야 한다.<function>mysql_connect</function>
+    함수를 사용하려면 <link linkend="ref.mysql">MySQL</link>지원이 가능하게
+    컴파일해야 한다.  <link linkend="ref.strings">string</link>과 
+    <link linkend="ref.variables">variable</link> 함수와 같이 PHP의 모든 버전에
+    포함되어있는 많은 핵심 함수가 존재한다.
+    <function>phpinfo</function>나 <function>get_loaded_extensions</function>함수
+    를 호출하면 현재 PHP에 올라간 확장에 어떤것인지 확인할수 있다. 많은 확장이 
+    기본값으로 활성화되어있고, PHP 매뉴얼은 여러 확장에 의해 분할되어있다는 것에 
+    주의해야 한다. PHP를 셋업하는 방법을 알고 싶다면,
+    <link linkend="configuration">설정</link>,  
+    <link linkend="installation">설치</link>, 각 확장에 대한 챕터를 보라.
    </para>
    <para>
-    Reading and understanding a function's prototype is explained within the
-    manual section titled 
-    <link linkend="about.prototypes">how to read a function definition</link>.
-    It's important to realize what a function returns or if a function works
-    directly on a passed in value.  For example,
-    <function>str_replace</function> will return the modified string while 
-    <function>usort</function> works on the actual passed in variable
-    itself.  Each manual page also has specific information for each
-    function like information on function parameters, behavior changes,
-    return values for both success and failure, and availability information.
-    Knowing these important (yet often subtle) differences is crucial for
-    writing correct PHP code.
+    함수의 원형(prototype) 읽기와 이해는 <link linkend="about.prototypes">함수 선언 읽는 법</link>
+    이라는 매뉴얼 섹션에서 설명한다.
+    함수가 돌려주는 것이나 함수가 값으로 직접 전달하는지 이해하는것이 중요하다.
+    예를 들면,  
+    <function>str_replace</function>함수는 변경된 문자열을 돌려주는 반면에
+    <function>usort</function>함수는 실질적으로 변수 자체에 전달하도록 동작한다.
+    각 매뉴얼 페이지는 각함수에 대해서 함수 인자와 동작 변경,성공과 실패시 
+    돌려주는 값과 유용한 정보에 대해서 나와있다. 이런 중요한 차이점(아직은 희박)
+    을 아는 것은 PHP 코드를 정확하게 쓰는데 있어서 매우 결정적인 역할을 한다.
    </para>
    <para>
-    See also <function>function_exists</function>, 
+    더불어 <function>function_exists</function>, 
     <link linkend="funcref">the function reference</link>,
-    <function>get_extension_funcs</function>, and 
-    <function>dl</function>.
+    <function>get_extension_funcs</function>, 
+    <function>dl</function>섹션을 참고할것.
    </para>
   </sect1>
 
