@@ -1,4 +1,4 @@
-﻿ <reference id="ref.shmop">
+<reference id="ref.shmop">
   <title>공유 메모리 함수</title>
   <titleabbrev>shmop</titleabbrev>
   
