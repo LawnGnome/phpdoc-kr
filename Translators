@@ -73,7 +73,7 @@ types.xml                          fuzzy74          fuzzy74       maintain
 variables.xml                      fuzzy74          fuzzy74       maintain
 -------- reference ----------------------------------------------------------
 apache/                            progcom          progcom       maintain
-array/
+array/                             hholzgra,fuzzy74 fuzzy74       maintain
 aspell/
 bc/
 bzip2/
