@@ -31,7 +31,7 @@ wrappers.xml
 config.xml                         progcom
 install.*.xml
 intro.xml                          progcom
-security.xml
+security.xml                       progcom
 streams.common.xml
 streams.constants.xml
 streams.dir.xml
@@ -89,7 +89,6 @@ crack/
 ctype/
 curl/
 cybercash/
-cybermut/
 cyrus/
 datetime/
 dba/
