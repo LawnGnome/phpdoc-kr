@@ -1,103 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/array.xml, last change in rev 1.4 -->
-<!-- last change to 'array-splice' in en/ tree in rev 1.14 -->
-	<refentry id="function.array-splice">
-		<refnamediv>
-			<refname>array_splice</refname>
-			<refpurpose>
-     배열의 일부를 삭제하고, 그 위치에 다른 내용을 끼워 넣는다.
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.8 -->
+<!-- splitted from ./en/functions/array.xml, last change in rev 1.14 -->
+  <refentry id="function.array-splice">
+   <refnamediv>
+    <refname>array_splice</refname>
+    <refpurpose>
+     배열의 일부를 삭제하고, 그 위치에 다른 내용을 대체한다
     </refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>array</type><methodname>array_splice</methodname>
-					<methodparam><type>array</type><parameter>input</parameter></methodparam>
-					<methodparam><type>int</type><parameter>offset</parameter></methodparam>
-					<methodparam choice="opt"><type>int</type><parameter>
-							length
-						</parameter></methodparam>
-					<methodparam choice="opt"><type>array</type><parameter>
-							replacement
-						</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-				<function>array_splice</function>는 <parameter>input</parameter>
-	배열로 부터 <parameter>offset</parameter> 와 <parameter>length</parameter>로 정해진
-	엘린먼트를 삭제하고, <parameter>replacement</parameter>배열이 제공된다면  
-	이를 제공된 배열으리 엘리먼트로 대체시킨다.
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>array</type><methodname>array_splice</methodname>
+      <methodparam><type>array</type><parameter>input</parameter></methodparam>
+      <methodparam><type>int</type><parameter>offset</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>length</parameter></methodparam>
+      <methodparam choice="opt"><type>array</type><parameter>
+        replacement
+       </parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     <function>array_splice</function>는 <parameter>input</parameter> 배열로부터
+     <parameter>offset</parameter> 과 <parameter>length</parameter> 에
+     정해진대로 배열원소를 제거하고, 매개변수가 주어진다면
+     <parameter>replacement</parameter> 배열의 배열원소로 그부분을 대체한다.
+     그리고 확장된 배열원소를 포함하는 배열을 반환한다.
     </para>
-			<para>
-	만약 <parameter>offset</parameter>이 양의 값이라면, 
-	삭제 부분의 시작은 <parameter>input</parameter> 배열의 
-	처음 부터 그 해당하는 옵셋까지이다.
-	만약 <parameter>offset</parameter>이 음의 값이라면,
-	<parameter>input</parameter> 배열의 끝에서 부터 옵셋만큼 떨어진
-	곳에서 부터 시작된다.
+    <para>
+     <parameter>offset</parameter>이 양수이면 삭제될 부분의 시작은 
+     <parameter>input</parameter> 배열의 시작에서부터의 offset에서 시작된다.
+     <parameter>offset</parameter>이 음수이면 
+     <parameter>input</parameter> 배열의 끝에서부터의 옵셋 수에서 시작된다.
     </para>
-			<para>
-	만약 <parameter>length</parameter>이 생략되면,
-	<parameter>offset</parameter>에서부터 배열의 끝까지의 모든 
-	엘리먼트를 삭제한다.
-	만약 <parameter>length</parameter>가 정의되고 양의 값을 갖는다면,
-	그 수 만큼의 엘리먼트가 삭제된다.
-	<parameter>length</parameter>가 정의되고 음의 값을 갖는다면,
-	삭제되는 부분의 끝이 배열의 끝에서부터의 숫자가 된다. 
-	팁: <parameter>replacement</parameter>가 지정되어 있을 때,
-	<parameter>offset</parameter>에서부터 배열의 끝까지의 
-	모든 엘리먼트를 삭제하려면, <parameter>length</parameter>대신
-	<literal>count($input)</literal>을 사용하라.
+    <para>
+     <parameter>length</parameter>가 생략되면, <parameter>offset</parameter>에서
+     배열의 끝까지의 모든 원소를 삭제된다.  <parameter>length</parameter>가
+     주어지고 양수이면, 그 수만큼의 원소가 삭제될것이다.
+     <parameter>length</parameter>가 주어지고 음수이면, 삭제되는 부분의 끝은
+     배열의 끝에서부터 그 수만큼의 원소가 될것이다.
+     팁: <parameter>replacement</parameter>가 주어져있고
+     <parameter>offset</parameter>에서 배열 끝까지의 모든 원소를 삭제하려면
+     <parameter>length</parameter> 매개변수에 <literal>count($input)</literal>을
+     사용하도록 한다.
     </para>
-			<para>
-				<parameter>replacement</parameter> 배열이 지정되어 있으면, 
-	삭제된 엘리먼트는 이 배열의 엘리먼트로 대체된다.
-	
-     If <parameter>replacement</parameter> array is specified, then
-     the removed elements are replaced with elements from this array.
-     If <parameter>offset</parameter> and
-     <parameter>length</parameter> are such that nothing is removed,
-     then the elements from the <parameter>replacement</parameter>
-     array are inserted in the place specified by the
-     <parameter>offset</parameter>. Tip: if the replacement is just
-     one element it is not necessary to put <literal>array()</literal>
-     around it, unless the element is an array itself.
+    <para>
+     <parameter>replacement</parameter> 배열이 주어지면, 제거된 원소들은 이
+     배열의 원소들로 대체된다.  <parameter>offset</parameter>과
+     <parameter>length</parameter>가 아무것도 삭제되지 않도록 주어지면,
+     <parameter>replacement</parameter> 배열의 원소들을
+     <parameter>offset</parameter>에 의해 설정된 위치에 끼워넣는다.
+     팁: 한개의 원소만 대체되는 경우이고 그 원소가 배열자체가 아니라면
+     <literal>array()</literal>를 넣을 필요는 없다.
     </para>
-			<para>
-     The following equivalences hold:
-     <programlisting>
-array_push ($input, $x, $y)     array_splice ($input, count ($input), 0, 
-                                             array ($x, $y))
-array_pop ($input)              array_splice ($input, -1)
-array_shift ($input)            array_splice ($input, 0, 1)
-array_unshift ($input, $x, $y)  array_splice ($input, 0, 0, array ($x, $y))
-$a[$x] = $y                     array_splice ($input, $x, 1, $y)
-     </programlisting>
-			</para>
-			<para>
-     Returns the array consisting of removed elements.
+    <para>
+     다음은 동일한 결과를 낸다:
+   <table>
+    <title><function>array_splice</function> 동치</title>
+    <tgroup cols="2">
+     <tbody>
+      <row>
+       <entry>
+        array_push($input, $x, $y) 
+       </entry>
+       <entry>
+        array_splice($input, count($input), 0, array($x, $y))
+       </entry>
+      </row>
+      <row>
+       <entry>
+        array_pop($input) 
+       </entry>
+       <entry>
+        array_splice($input, -1)
+       </entry>
+      </row>
+      <row>
+       <entry>
+        array_shift($input)
+       </entry>
+       <entry>
+        array_splice($input, -1)
+       </entry>
+      </row>
+      <row>
+       <entry>
+        array_unshift($input, $x, $y)
+       </entry>
+       <entry>
+        array_splice($input, 0, 0, array($x, $y))
+       </entry>
+      </row>
+      <row>
+       <entry>
+        $a[$x] = $y
+       </entry>
+       <entry>
+        array_splice($input, $x, 1, $y)
+       </entry>
+      </row>
+     </tbody>      
+    </tgroup>
+   </table>
     </para>
-			<para>
-				<example>
-					<title>
-						<function>array_splice</function> examples</title>
-					<programlisting role="php">
+    <para>
+     제거된 원소로 구성된 배열을 반환한다.
+    </para>
+    <para>
+     <example>
+      <title><function>array_splice</function> 예제코드</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
 $input = array ("red", "green", "blue", "yellow");
+array_splice ($input, 2);
+// $input is now array ("red", "green")
 
-array_splice ($input, 2);      // $input is now array ("red", "green")
-array_splice ($input, 1, -1);  // $input is now array ("red", "yellow")
-array_splice ($input, 1, count($input), "orange");  
-                               // $input is now array ("red", "orange")
-array_splice ($input, -1, 1, array("black", "maroon")); 
-                               // $input is now array ("red", "green", 
-                               //          "blue", "black", "maroon")
+$input = array ("red", "green", "blue", "yellow");
+array_splice ($input, 1, -1);
+// $input is now array ("red", "yellow")
+
+$input = array ("red", "green", "blue", "yellow");
+array_splice ($input, 1, count($input), "orange");
+// $input is now array ("red", "orange")
+
+$input = array ("red", "green", "blue", "yellow");
+array_splice ($input, -1, 1, array("black", "maroon"));
+// $input is now array ("red", "green",
+//          "blue", "black", "maroon")
+
+$input = array ("red", "green", "blue", "yellow");
+array_splice ($input, 3, 0, "purple");
+// $input is now array ("red", "green",
+//          "blue", "purple", "yellow");
+?>
+]]>
       </programlisting>
-				</example>
-			</para>
-			<para>
-     See also <function>array_slice</function>.
+     </example>
     </para>
-		</refsect1>
-	</refentry>
+    <para>
+     <function>array_slice</function>, 
+     <function>unset</function>,
+     <function>array_merge</function> 참고.
+    </para>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
