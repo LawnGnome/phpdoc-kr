@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.18 -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.19 -->
  <chapter id="faq.databases">
   <title>데이터베이스와 관련된 문제</title>
   <titleabbrev>데이터베이스와 관련된 문제</titleabbrev>
@@ -148,9 +148,60 @@
     </answer>
    </qandaentry>
 
+   <qandaentry id="faq.databases.mysql.php5">
+    <question>
+     <para>
+      PHP 5 부터는 더이상 <link linkend="ref.mysql">MySQL</link> 클라이언트
+      라이브러리를 함께 제공하지 않는다고 하는데, 이말은 무슨 의미인가요?
+      PHP로 계속 MySQL을 사용할수 있나요? MySQL을 사용하려고 하면 "function undefined"라는
+      에러 메시지를 보여줍니다. 뭣때문인지요?
+     </para>
+    </question>
+    <answer>
+     <para>
+      네, PHP에서는 앞으로도 계속 MySQL지원이 될것입니다. PHP 5의 단 하나의 변화가
+      클라이언트 라이브러리 자체를 함께 제공하지 않는다는 것입니다. 그 이유는 
+      특별한 순서없이 아래글에서 설명하도록 하겠습니다:
+     </para>
+     <para>
+      1. 요근래의 대부분의 시스템은 이미 클라이언트 라이브러리가 설치되어있습니다.
+     </para>
+     <para>
+      2. 위에서 언급한대로, 라이브러리를 여러가지 버전을 갖게 되면
+      혼란스러워질수 있습니다. 예를 들면 어떤 버전은 mod_auth_mysql을
+      링크하고 다른 버전에는 PHP를 링크하고나서 아파치안에서 두개 버전을
+      모두 활성화시키면, 큰 충돌이 발생하게 됩니다.
+      또한, 함께 제공된 라이브러리가 설치된 서버버전과 항상 잘 작동하지도
+      않습니다. 이런 경우를 잘 보여주는 예가 mysql.socket 유닉스 도메인 소켓
+      파일이 있는 곳을 찾을수 없을때입니다.
+     </para>
+     <para>
+      3. 유지관리가 약간 더디게 되고 최신판 버전에 점점더 뒤떨어지게 될것입니다.
+     </para>
+     <para>
+      4. 앞으로의 라이브러리 버전은 GPL을 따르고 따라서 우리가 BSD/아파치 스타일의
+      라이센스 프로젝트인 GPL의 라이브러리를 함께 제공할수 없기 때문에 
+      업그레이드 경로를 갖을수 없습니다. PHP 5에서 이런 깨끗한 중단이 최고의 선택으로
+      보입니다.
+     </para>
+     <para>
+      이와 같은 사실은 실제로 많은 사람들에게 영향이 있지는 않을것입니다.
+      유닉스 유저, 최소한 그들이 무엇을 하는지 아는 유저,는 PHP를 빌드할때 단순히
+      --with-mysql=/usr 을 추가시킴으로써 시스템의 libmysqlclient에 대한 PHP
+      를 빌드하려 할것이기 때문입니다. 윈도우 유저는 &php.ini;안에
+      <filename>php_mysql.dll</filename> 확장을 활성화시킬수 있습니다.
+      또한 <filename>dll</filename> 디렉토리에 함께 제공된 다른 모든 DLL을 사용하듯이,
+      적절한 <literal>%SYSTEMROOT%</literal> 디렉토리안에
+      <filename>libmySQL.dll</filename>파일을 카피할수 있습니다.
+     </para>
+    </answer>
+   </qandaentry>
+
    <qandaentry id="faq.databases.upgraded">
     <question>
      <para>
+      I upgraded to PHP 4, and now mysql keeps telling me
+      "Warning: MySQL: Unable to save result set in ...". What's up?
       PHP 4로 업그레이드했습니다. 그런데 mysql이 다음과같은 메시지를 보여줍니다.
       "Warning: MySQL: Unable to save result set in ...". 뭐죠?
      </para>
