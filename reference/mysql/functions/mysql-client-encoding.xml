@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- splitted from ./en/functions/mysql.xml, last change in rev 1.100 -->
+<!-- EN-Revision: 1.6 Maintainer: pcraft Status: ok -->
   <refentry id="function.mysql-client-encoding">
    <refnamediv>
     <refname>mysql_client_encoding</refname>
