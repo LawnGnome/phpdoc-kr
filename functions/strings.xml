@@ -1338,10 +1338,12 @@ echo $second[1]; /*  "another" 를 출력 */
 		<refsect1>
 			<title>설명</title>
 			<funcsynopsis>
+       <funcprototype>
 				<funcdef>string <function>rtrim</function>
 				</funcdef>
 				<paramdef>string <parameter>str</parameter>
 				</paramdef>
+       </funcprototype>
 			</funcsynopsis>
 			<para>
 	인수로 넘어온 문자열에서 뉴라인을 포함하는 문자열 끝의 공백을 제거한 문자열을 반환 하며, 

@@ -163,10 +163,7 @@
       <funcdef>int <function>mysql_connect</function></funcdef>
       <paramdef>string 
        <parameter>
-        <optional>hostname
- 	<optional>:port</optional>
- 	<optional>:/path/to/socket</optional>
-        </optional>
+        <optional>server</optional>
        </parameter>
       </paramdef>
       <paramdef>string 
@@ -1524,10 +1521,7 @@ echo "$NumMembers Members";
 					</funcdef>
 					<paramdef>string 
        <parameter>
-							<optional>hostname
- 	<optional>:port</optional>
-								<optional>:/path/to/socket</optional>
-							</optional>
+							<optional>hostname</optional>
 						</parameter>
 					</paramdef>
 					<paramdef>string 

@@ -1814,7 +1814,7 @@ blue, large, sphere, medium
 			<title>설명</title>
 			<funcsynopsis>
 				<funcprototype>
-					<funcdef>bool in_array</funcdef>
+					<funcdef>bool <function>in_array</function></funcdef>
 					<paramdef>mixed <parameter>needle</parameter>
 					</paramdef>
 					<paramdef>array <parameter>haystack</parameter>

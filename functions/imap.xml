@@ -720,6 +720,8 @@ imap_close ($mbox);
    <refsect1>
     <title>Description</title>
     <funcsynopsis>
+     <funcprototype>
+
      <funcdef>object <function>imap_headerinfo</function></funcdef>
      <paramdef>int <parameter>imap_stream</parameter></paramdef>
      <paramdef>int <parameter>msg_number</parameter></paramdef>
@@ -732,6 +734,8 @@ imap_close ($mbox);
      <paramdef>string 
       <parameter><optional>defaulthost</optional></parameter>
      </paramdef>
+     </funcprototype>
+
     </funcsynopsis>
     <para>
      이 함수는 다양한 머릿글 구성요소의 객체를 가져온다.
@@ -835,6 +839,8 @@ fetchsubject (subject line formatted to fit <parameter>subjectlength</parameter>
    <refsect1>
     <title>Description</title>
     <funcsynopsis>
+     <funcprototype>
+
      <funcdef>object <function>imap_header</function></funcdef>
      <paramdef>int <parameter>imap_stream</parameter></paramdef>
      <paramdef>int <parameter>msg_number</parameter></paramdef>
@@ -847,6 +853,8 @@ fetchsubject (subject line formatted to fit <parameter>subjectlength</parameter>
      <paramdef>string 
       <parameter><optional>defaulthost</optional></parameter>
      </paramdef>
+     </funcprototype>
+
     </funcsynopsis>
     <para>
      This is an alias to <function>imap_headerinfo</function>
