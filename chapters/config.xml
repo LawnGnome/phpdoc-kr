@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.14 $ -->
-<!-- EN-Revision: 1.96 -->
+<!-- $Revision: 1.15 $ -->
+<!-- EN-Revision: 1.99 -->
  <chapter id="configuration">
   <title>환경 설정</title>
 
@@ -105,7 +105,8 @@ include_path = ".;c:\php\lib"
        <listitem>
         <para>
          특정한 설정값을 설정합니다.
-         PHP_INI_ALL과 PHP_INI_PERDIR형 설정에만 사용 가능합니다.
+         <constant>PHP_INI_ALL</constant>과 <constant>PHP_INI_PERDIR</constant>형
+         지시자에만 사용할 수 있습니다.
          기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
          <informalexample>
           <programlisting role="ini">
@@ -126,7 +127,8 @@ php_value auto_prepend_file none
        <listitem>
         <para>
          Boolean 환경 설정에 사용합니다.
-         PHP_INI_ALL과 PHP_INI_PERDIR형 설정에만 사용 가능합니다.
+         <constant>PHP_INI_ALL</constant>과 <constant>PHP_INI_PERDIR</constant>형
+         지시자에만 사용할 수 있습니다.
         </para>
        </listitem>
       </varlistentry>
@@ -707,13 +709,12 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <simpara>
-         Tells PHP whether to declare the argv &amp; argc variables 
-         (that would contain the GET information).
+         (GET 정보를 포함하는) argv와 argc 변수 사용 여부를 결정합니다.
         </simpara>
         <simpara>
-         See also <link linkend="features.commandline">command line</link>.
-         Also, this directive became available in PHP 4.0.0 and
-         was always "on" before that.
+         참고 : <link linkend="features.commandline">command line</link>.
+         이 지시자는 PHP 4.0.0부터 사용 가능하며, 그 이전에는
+         항상 "on"이였습니다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -725,16 +726,16 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <simpara>
-         Sets max size of post data allowed. This setting also affects
-         file upload. To upload large files, this value must be larger
-         than <link linkend="ini.upload-max-filesize">upload_max_filesize</link>.
+         POST 데이터가 허용하는 최대 사이즈를 설정합니다. 이 설정은
+         파일 업로드에도 관여합니다. 큰 파일을 업로드 하기 위해서는
+         이 값이 <link linkend="ini.upload-max-filesize">upload_max_filesize</link>보다
+         커야만 합니다.
         </simpara>
         <simpara>
-         If memory limit is enabled by your configure script, <link
-         linkend="ini.memory-limit">memory_limit</link> also affects
-         file uploading. Generally speaking,
-         <link linkend="ini.memory-limit">memory_limit</link> should be
-         larger than <parameter>post_max_size</parameter>.
+         환경 설정시에 메모리 제한이 활성화 되었으면, <link
+         linkend="ini.memory-limit">memory_limit</link>도 파일 업로드에
+         관여합니다. 일반적으로, <link linkend="ini.memory-limit">memory_limit</link>는
+         <parameter>post_max_size</parameter>보다 커야만 합니다.
         </simpara>
        </listitem>
       </varlistentry>
