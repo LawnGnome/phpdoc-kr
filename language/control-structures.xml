@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
+<!-- $Revision: 1.13 $ -->
 <!-- EN-Revision: 1.78 -->
  <chapter id="control-structures">
   <title>제어 구조</title>
@@ -111,19 +111,6 @@ if ($a > $b) {
   <sect1 id="control-structures.elseif">
    <title><literal>elseif</literal></title>
    <para>
-    <literal>elseif</literal>, as its name suggests, is a combination
-    of <literal>if</literal> and <literal>else</literal>.  Like
-    <literal>else</literal>, it extends an <literal>if</literal>
-    statement to execute a different statement in case the original
-    <literal>if</literal> expression evaluates to
-    &false;.  However, unlike
-    <literal>else</literal>, it will execute that alternative
-    expression only if the <literal>elseif</literal> conditional
-    expression evaluates to &true;.  For example, the
-    following code would display <computeroutput>a is bigger than
-    b</computeroutput>, <computeroutput>a equal to b</computeroutput>
-    or <computeroutput>a is smaller than b</computeroutput>:
-
     <literal>elseif</literal>, 이 이름에서 알수 있듯이,
     <literal>if</literal>와 <literal>else</literal>의 조합이다.
     <literal>else</literal>처럼 이 구문은 <literal>if</literal>절 
