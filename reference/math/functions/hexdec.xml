@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry id="function.hexdec">
    <refnamediv>
     <refname>hexdec</refname>
@@ -18,9 +18,8 @@
      변환 가능한 가장 큰 수는 7fffffff로, 10진수 2147483647에 해당합니다.
     </para>
     <para>
-     <function>hexdec</function> 16진수 표현이 아닌 문자를
-     <literal>0</literal>으로 치환합니다. 왼쪽에 표현되는 모든
-     0은 무시되지만, 오른쪽에 있는 0은 계산됩니다.
+     <function>hexdec</function>는 16진수를 나타내는 문자가 아닌 모든 문자를
+     무시합니다.
      <example>
       <title><function>hexdec</function> 예제</title>
       <programlisting role="php">
@@ -30,17 +29,18 @@ var_dump(hexdec("See"));
 var_dump(hexdec("ee"));
 // 둘 다 "int(238)"을 출력합니다.
 
-var_dump(hexdec("that"));
-var_dump(hexdec("a0"));
-// 둘 다 "int(160)"을 출력합니다.
+var_dump(hexdec("that")); // "int(10)"을 출력합니다.
+var_dump(hexdec("a0")); // "int(160)"을 출력합니다.
 ?>
 ]]>
       </programlisting>
      </example>
     </para>
     <para>
-     참고: <function>dechex</function>, <function>bindec</function>,
-     <function>octdec</function>, <function>base_convert</function>.
+     참고: <function>dechex</function>,
+     <function>bindec</function>,
+     <function>octdec</function>,
+     <function>base_convert</function>.
     </para>
    </refsect1>
   </refentry>

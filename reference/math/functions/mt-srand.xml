@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.mt-srand">
    <refnamediv>
     <refname>mt_srand</refname>
@@ -15,7 +15,10 @@
      <parameter>seed</parameter>로 난수 생생기를 초기화합니다.
      PHP 4.2.0부터, <parameter>seed</parameter>는 선택적으로 변경되었고,
      생략할 경우에도 기본값으로 난수를 생성합니다.
-     <informalexample>
+    </para>
+    <para>
+     <example>
+      <title><function>mt_srand</function> 예제</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -30,14 +33,16 @@ $randval = mt_rand();
 ?>
 ]]>
       </programlisting>
-     </informalexample>
+     </example>
     </para>
 
     &note.randomseed;
 
     <simpara>
-     참고: <function>mt_rand</function>,
-     <function>mt_getrandmax</function>, <function>srand</function>.
+     참고:
+     <function>mt_rand</function>,
+     <function>mt_getrandmax</function>,
+     <function>srand</function>.
     </simpara>
    </refsect1>
   </refentry>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
   <refentry id="function.mt-getrandmax">
    <refnamediv>
     <refname>mt_getrandmax</refname>
@@ -17,8 +16,10 @@
      가장 큰 값을 반환합니다.
     </simpara>
     <simpara>
-     참고: <function>mt_rand</function>,
-     <function>mt_srand</function>, <function>getrandmax</function>.
+     참고:
+     <function>mt_rand</function>,
+     <function>mt_srand</function>,
+     <function>getrandmax</function>.
     </simpara>
    </refsect1>
   </refentry>

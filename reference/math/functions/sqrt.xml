@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.sqrt">
    <refnamediv>
     <refname>sqrt</refname>
-    <refpurpose>평방제곱근</refpurpose>
+    <refpurpose>평방 제곱근</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>float</type><methodname>sqrt</methodname>
       <methodparam><type>float</type><parameter>arg</parameter></methodparam>
@@ -16,7 +15,8 @@
      <parameter>arg</parameter>의 평방제곱근을 반환합니다.
     </para>
     <para>
-     <informalexample>
+     <example>
+      <title><function>sqrt</function> 예제</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -26,7 +26,7 @@ echo sqrt(10); // 3.16227766 ...
 ?>
 ]]>
       </programlisting>
-     </informalexample>
+     </example>
     </para>
     <para>
      참고: <function>pow</function>.

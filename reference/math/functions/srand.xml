@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.srand">
    <refnamediv>
     <refname>srand</refname>
@@ -15,7 +15,10 @@
      <parameter>seed</parameter>로 난수 생성기를 초기화합니다.
      PHP 4.2.0부터 <parameter>seed</parameter>는 선택적이 되었고, 생략할
      경우에도 기본값으로 난수값을 생성합니다.
-     <informalexample>
+    </para>
+    <para>
+     <example>
+      <title><function>srand</function> 예제</title>
       <programlisting role="php">
 <![CDATA[
 // 마이크로초로 초기화
@@ -28,14 +31,16 @@ srand(make_seed());
 $randval = rand();
 ]]>
       </programlisting>
-     </informalexample>
+     </example>
     </para>
 
     &note.randomseed;
 
     <simpara>
-     참고: <function>rand</function>,
-     <function>getrandmax</function>, <function>mt_srand</function>.
+     참고:
+     <function>rand</function>,
+     <function>getrandmax</function>,
+     <function>mt_srand</function>.
     </simpara>    
    </refsect1>
   </refentry>

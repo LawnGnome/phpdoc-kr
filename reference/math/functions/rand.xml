@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
   <refentry id="function.rand">
    <refnamediv>
     <refname>rand</refname>
-    <refpurpose>난수를 생성합니다.</refpurpose>
+    <refpurpose>정수형의 난수를 생성합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -15,7 +15,7 @@
     <simpara>
      부수적인 <parameter>min</parameter>, <parameter>max</parameter> 인수
      없이 호출하면, <function>rand</function>는 0과 <constant>RAND_MAX</constant>
-     사이의 모조 난수를 반환합니다. 예를 들어, 5와 15(포함) 사이의
+     사이의 임의의 난수를 반환합니다. 예를 들어, 5와 15(포함) 사이의
      난수를 얻으려면, <literal>rand (5, 15)</literal>로 사용합니다.
     </simpara>
     <para>
@@ -50,9 +50,7 @@ echo rand(5, 15);
       <function>mt_rand</function>의 사용을 고려하십시오.
      </simpara>
     </note>
-
     &note.randomseed;
-
     <note>
      <para>
       3.0.7 이전의 버전에서는 <parameter>max</parameter>의 의미는
@@ -62,8 +60,10 @@ echo rand(5, 15);
      </para>
     </note>
     <simpara>
-     참고: <function>srand</function>,
-     <function>getrandmax</function>, <function>mt_rand</function>.
+     참고:
+     <function>srand</function>,
+     <function>getrandmax</function>,
+     <function>mt_rand</function>.
     </simpara>
    </refsect1>
   </refentry>

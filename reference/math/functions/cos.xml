@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.cos">
    <refnamediv>
     <refname>cos</refname>
@@ -13,7 +12,7 @@
       <methodparam><type>float</type><parameter>arg</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>cos</function>은 <parameter>arg</parameter> 인자의 코사인값을
+     <function>cos</function>은 <parameter>arg</parameter> 인수의 코사인값을
      반환합니다. <parameter>arg</parameter> 인자는 라디안 값으로 주어집니다.
     </para>
     <para>
@@ -31,8 +30,11 @@ echo cos(M_PI); // -1
      </example>
     </para>
     <para>
-     참고: <function>acos</function>, <function>sin</function>,
-     <function>tan</function>, <function>deg2rad</function>.
+     참고:
+     <function>acos</function>,
+     <function>sin</function>,
+     <function>tan</function>,
+     <function>deg2rad</function>.
     </para>
    </refsect1>
   </refentry>
