@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.6 -->
  <reference id="ref.apache">
-  <title>아파치 특정 함수</title>
+  <title>아파치 함수</title>
   <titleabbrev>아파치</titleabbrev>
   <partintro>
-   <para>
-    이 함수들은 PHP가 아파치 모듈로써 작동할 때만 사용 가능하다.
-   </para>
+   <section id="apache.intro">
+    &reftitle.intro;
+    <para>
+     이 함수는 PHP를 아파치 1.x 모듈로 실행할때만 사용할 수 있습니다.
+    </para>
+   </section>
+
+   <section id="apache.installation">
+    &reftitle.install;
+    <para>
+     아파치 1.x에 PHP를 설치하기 위해서는 설치 챕터의
+     <link linkend='install.apache'>아파치 섹션</link>을 참고하십시오.
+    </para>
+   </section>
+
+   &reference.apache.ini;
+
+   <section id="apache.resources">
+    &reftitle.resources;
+    &no.resource;
+   </section>
+
+   <section id="apache.constants">
+    &reftitle.constants;
+    &no.constants;
+   </section>
   </partintro>
 
 &reference.apache.functions;
