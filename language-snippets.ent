@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.54 -->
+<!-- EN-Revision: 1.55 -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -46,14 +46,13 @@ URL을 사용할 수 있습니다. 파일 이름을 지정하는 방법은
 <!ENTITY note.clearstatcache '<note><simpara>이 함수의 결과는 캐쉬됩니다.
 더 자세한 내용은 <function>clearstatcache</function>를 참고하십시오.</simpara></note>'>
 
-<!ENTITY return.falseproblem '<warning><simpara>This function may
-return Boolean &false;, but may also return a non-Boolean value which
-evaluates to &false;, such as <literal>0</literal> or
-&quot;&quot;. Please read the section on <link
-linkend="language.types.boolean">Booleans</link> for more
-information. Use <link linkend="language.operators.comparison">the ===
-operator</link> for testing the return value of this
-function.</simpara></warning>'>
+<!ENTITY return.falseproblem '<warning><simpara>이 함수는 Boolean &false;를
+반환하지만, <literal>0</literal>이나 &quot;&quot;와 같은 &false;로
+취급하는 Boolean이 아닌 값을 반환할 수도 있습니다. <link
+linkend="language.types.boolean">Booleans</link> 섹션에서 자세한 정보를
+얻을 수 있습니다. 이 함수의 반환값을 테스트하기 위해서
+<link linkend="language.operators.comparison">=== 연산자</link>를
+이용하십시오.</simpara></warning>'>
 
 <!ENTITY warn.imaprecodeyaz '<warning><simpara><link
 linkend="ref.imap">IMAP</link> 확장은 <link linkend="ref.recode">recode</link>나
@@ -94,12 +93,11 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 <!ENTITY note.bin-safe '<note><simpara>이 함수는 바이너리
 호환(binary-safe)입니다.</simpara></note>'>
 
-<!ENTITY note.line-endings '<note><simpara>If you are having problems
-with <literal>PHP</literal> not recognizing the line endings when
-reading files either on or created by a Macintosh computer, you
-might want to enable the <link linkend="ini.auto-detect-line-endings"
->auto_detect_line_endings</link> run-time configuration option.</simpara>
-</note>'>
+<!ENTITY note.line-endings '<note><simpara><literal>PHP</literal>가
+매킨토시 컴퓨터에서 제작되거나 존재하는 파일을 읽을때 라인 끝을
+감지하지 못하는 문제가 있다면, <link linkend="ini.auto-detect-line-endings"
+>auto_detect_line_endings</link> 실행 환경 설정 옵션을 활성화 할
+수 있습니다.</simpara></note>'>
 
 <!ENTITY note.no-windows '<note><simpara>이 함수는 윈도우 플랫폼에서는
 작동하지 않습니다.</simpara></note>'>
@@ -182,6 +180,10 @@ PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
 <!-- These are here as helpers for manual consistency and brievety-->
 <!ENTITY php '<literal>PHP</literal>'>
 <!ENTITY safemode '<link linkend="ini.safe-mode">안전 모드</link>'>
+
+<!-- Database Notes -->
+<!ENTITY database.field-case '<note><simpara>이 함수가 반환하는
+필드 이름은 <emphasis>대소문자를 구별</emphasis>합니다.</simpara></note>'>
 
 <!-- Some MySQL Notes -->
 <!ENTITY mysql.field-case '<note><simpara>이 함수는 필드 이름을
