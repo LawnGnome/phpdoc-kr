@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.19 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -18,9 +18,17 @@
 <!ENTITY apiabbrev         "PHP API">
 <!ENTITY FunctionIndex     "함수 인덱스">
 <!ENTITY CHMEdition        "HTML 도움말 에디션">
-<!ENTITY ReservedConstants "예약 정의 상수">
+<!ENTITY ReservedConstants "예약 상수">
 <!ENTITY MissingStuff      "빠진 내용">
 <!ENTITY AndSeveralOthers  "기타">
+<!ENTITY Version           "버전">
+<!ENTITY Description       "설명">
+<!ENTITY Changeable        "가변성">
+<!ENTITY ConfigureOptions  "설정 옵션">
+<!ENTITY Default           "기본값">
+<!ENTITY Definition        "정의">
+<!ENTITY Functions         "함수">
+<!ENTITY Name              "이름">
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
@@ -29,8 +37,8 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.install      '<title>설치</title>'>
 <!ENTITY reftitle.runtime      '<title>런타임 설정</title>'>
 <!ENTITY reftitle.resources    '<title>리소스 종류</title>'>
-<!ENTITY reftitle.constants    '<title>상수 정의</title>'>
-<!ENTITY reftitle.classes      '<title>클래스 정의</title>'>
+<!ENTITY reftitle.constants    '<title>예약 상수</title>'>
+<!ENTITY reftitle.classes      '<title>예약 클래스</title>'>
 <!ENTITY reftitle.constructor  '<title>생성자</title>'>
 <!ENTITY reftitle.methods      '<title>메쏘드</title>'>
 <!ENTITY reftitle.properties   '<title>속성</title>'>
@@ -38,4 +46,5 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.returnvalues '<title>반환값</title>'>
 <!ENTITY reftitle.examples     '<title>예제</title>'>
 <!ENTITY reftitle.seealso      '<title>참고</title>'>
-
+<!ENTITY reftitle.changelog    '<title>변경 기록</title>'>
+<!ENTITY reftitle.parameters   '<title>인수 목록</title>'>
