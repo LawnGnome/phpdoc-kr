@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.57 -->
+<!-- EN-Revision: 1.58 -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -26,11 +26,10 @@ Windows 버전 <literal>PHP</literal>에서는 이 함수를 이용하여 원격
 <link linkend="features.remote-files">원격 파일</link>을 다루지 못합니다.
 파일은 서버 파일시스템을 통해서 사용 가능해야만 합니다.</simpara></note>'>
 
-<!ENTITY tip.ob-capture '<tip><simpara>As with anything that outputs
-its result directly to the browser, you can use the <link
-linkend="ref.outcontrol">output-control functions</link> to capture
-the output of this function, and save it in a
-<type>string</type> (for example).</simpara></tip>'>
+<!ENTITY tip.ob-capture '<tip><simpara>어떠한 결과가 브라우저로 직접
+출력될 때, <link linkend="ref.outcontrol">출력 제어 함수</link>를
+이용해서 이 함수의 출력을 잡아내고, (예를 들면) <type>string</type>으로
+저장할 수 있습니다.</simpara></tip>'>
 
 <!ENTITY tip.fopen-wrapper '<tip><simpara><link linkend="ini.allow-url-fopen"
 >fopen wrappers</link>를 설정하면, 이 함수의 파일 이름으로
@@ -192,6 +191,12 @@ PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
 <!-- Some MySQL Notes -->
 <!ENTITY mysql.field-case '<note><simpara>이 함수는 필드 이름을
 <emphasize>대소문자를 구별</emphasize>하여 반환합니다.</simpara></note>'>
+
+<!-- CPDF Unit length -->
+<!ENTITY cpdf.ul '<para>선택 인자 <parameter>mode</parameter>는
+유니트 길이를 결정합니다. 0이나 없을 경우에는 페이지를 위한 특정값을
+기본 유니트로 사용합니다. 그렇지 않으면 현재 유니트를 무시하고
+포스트스크립트 상에서 좌표를 측정합니다.</para>'>
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
