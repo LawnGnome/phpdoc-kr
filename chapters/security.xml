@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.13 $ -->
+<!-- $Revision: 1.14 $ -->
 <!-- EN-Revision: 1.56 -->
  <chapter id="security">
   <title>보안</title>
@@ -58,13 +58,11 @@
    </simpara>
    <simpara>
     테스트를 할 때, 가장 간단한 페이지라 할지라도 모든 가능성을 테스트할
-    수는 없다는 것을 명심하십시오. The input you
-    may expect will be completely unrelated to the input given by
-    a disgruntled employee, a cracker with months of time on their
-    hands, or a housecat walking across the keyboard. This is why it's
-    best to look at the code from a logical perspective, to discern
-    where unexpected data can be introduced, and then follow how it is
-    modified, reduced, or amplified.
+    수는 없다는 것을 명심하십시오. 화가 난 고용인이나, 엄청난 시간을 가진
+    크랙커, 혹은 키보드 위를 걸어가는 고양이 등에 의해 기대했던 입력값과는
+    완전히 무관하게 될 수도 있습니다. 이것이 기대하지 않는 데이터를 분별하고,
+    그 뒤에 어떻게 변경하고, 줄이고, 늘릴지에 대해 논리적 관점에서 코드를
+    바라보아야 할 이유입니다.
    </simpara>
    <simpara>
     The Internet is filled with people trying to make a name for
@@ -199,15 +197,13 @@ AddHandler php-script .php
    <sect2 id="security.cgi-bin.doc-root">
     <title>방법 3: doc_root나 user_dir을 설정</title>
     <simpara>
-     To include active content, like scripts and executables, in the
-     web server document directories is sometimes consider an insecure
-     practice.  If, because of some configuration mistake, the scripts
-     are not executed but displayed as regular HTML documents, this
-     may result in leakage of intellectual property or security
-     information like passwords.  Therefore many sysadmins will prefer
-     setting up another directory structure for scripts that are
-     accessible only through the PHP CGI, and therefore always
-     interpreted and not displayed as such.
+     스크립트나 실행 파일과 같은 활동적인 콘텐츠를 웹서버 디렉토리에
+     놓는 것은 때때로 비보안적인 행동으로 생각됩니다. 몇몇 환경 설정의
+     실수로 스크립트가 실행되지 않고 보통의 HTML 문서로 보여진다면,
+     지적 재산이나 패스워드와 같은 보안 정보를 노출시키는 결과를 가져올
+     수 있습니다. 그러므로 많은 시스템 관리자는 파일이 항상 해석이 되고
+     어떤 방법으로도 표시되어지지 않도록, PHP CGI를 통해서만 접근할 수 있는
+     스크립트를 위한 또 다른 디렉토리 구조를 만드는 것을 선호합니다.
     </simpara>
     <simpara>
      Also if the method for making sure the requests are not
@@ -259,11 +255,10 @@ AddHandler php-script .php
    <sect2 id="security.cgi-bin.shell">
     <title>방법 4: 웹 트리 외부의 PHP 파서</title>
     <para>
-     A very secure option is to put the PHP parser binary somewhere
-     outside of the web tree of files.  In <filename
-     role="dir">/usr/local/bin</filename>, for example.  The only real
-     downside to this option is that you will now have to put a line
-     similar to:
+     매우 안전한 옵션은 PHP 파서 바이너리를 웹트리 밖에 위치시키는
+     것입니다. 예를 들면, <filename role="dir">/usr/local/bin</filename> 안에.
+     이 방법의 단 한가지 단점은 다음과 같은 줄을 PHP 태그를 포함하는
+     모든 파일의 첫번째 줄에 넣어야 한다는 점입니다:
      <informalexample>
       <programlisting>
 <![CDATA[
@@ -271,19 +266,17 @@ AddHandler php-script .php
 ]]>
       </programlisting>
      </informalexample>
-     as the first line of any file containing PHP tags.  You will also
-     need to make the file executable.  That is, treat it exactly as
-     you would treat any other CGI script written in Perl or sh or any
-     other common scripting language which uses the
-     <literal>#!</literal> shell-escape mechanism for launching
-     itself.
+     또한 파일을 실행 가능하게 해 둘 필요가 있습니다. 이것은 정확하게
+     실행을 위해서 <literal>#!</literal> 쉘 이스케이핑 메카니즘을 사용하는
+     펄이나 sh, 혹은 다른 일반적인 스크립팅 언어로 쓰여진 CGI 스크립트와
+     동일하게 취급합니다.
     </para>
     <para>
-     To get PHP to handle <envar>PATH_INFO</envar> and
-     <envar>PATH_TRANSLATED</envar> information correctly with this
-     setup, the php parser should be compiled with the <link
-     linkend="install.configure.enable-discard-path">--enable-discard-path</link>
-     configure option.
+     이 방법을 사용할 때, PHP가 <envar>PATH_INFO</envar>와
+     <envar>PATH_TRANSLATED</envar>를 올바르게 다룰 수 있게 하기 위해서는
+     PHP 파서를 컴파일 할 때,
+     <link linkend="install.configure.enable-discard-path">--enable-discard-path</link>
+     옵션을 주어야 합니다.
     </para>
    </sect2>
 

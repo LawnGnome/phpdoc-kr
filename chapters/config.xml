@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.26 $ -->
+<!-- $Revision: 1.27 $ -->
 <!-- EN-Revision: 1.109 -->
  <chapter id="configuration">
-  <title>실행시 환경 설정</title>
+  <title>실행 환경 설정</title>
 
   <sect1 id="configuration.file">
    <title>환경 설정 파일</title>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.16 $ -->
-<!-- EN-Revision: 1.21 -->
+<!-- $Revision: 1.17 $ -->
+<!-- EN-Revision: 1.22 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
 
@@ -76,8 +76,7 @@
       모든 것이 제대로 설치 되었다면 이 파일은 PHP에 의해 파싱되어 브라우저에
       다음과 같은 출력을 할 것입니다:
      </simpara>
-     <para>
-      <screen role="html">
+     <screen role="html">
 <![CDATA[
 <html>
  <head>
@@ -88,8 +87,7 @@
  </body>
 </html>
 ]]>
-      </screen>
-     </para>
+     </screen>
     </example>
    </para>
    <para>
@@ -174,7 +172,6 @@
     변수는 <varname>$_SERVER["HTTP_USER_AGENT"]</varname>입니다.
    </para>
    <note>
-    <title>PHP 자동 전역 노트</title>
     <para>
      <link linkend="reserved.variables.server">$_SERVER</link>는 모든 웹 서버
      정보를 포함하기 위해 특별히 예약된 PHP 변수입니다. 이것은 자동 전역(Autoglobal
@@ -200,10 +197,10 @@
     </programlisting>
     <para>
      이 스크립트의 출력 예제는 다음과 같습니다:
-     <screen role="html">
-Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)
-     </screen>
     </para>
+    <screen role="html">
+Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)
+    </screen>
    </example>
    </para>
    <para>
@@ -250,13 +247,13 @@ if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
 ]]>
      </programlisting>
      <para>
-      이 스크립트의 출력 예제:
-      <screen role="html">
+      이 스크립트의 출력 예제는:
+     </para>
+     <screen role="html">
 <![CDATA[
 Internet Explorer를 사용하고 있습니다.<br />
 ]]>
-      </screen>
-     </para>
+     </screen>
     </example>
    </para>
    <para>
@@ -311,13 +308,13 @@ if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
      </programlisting>
      <para>
       이 스크립트의 출력 예제:
-      <screen role="html">
+     </para>
+     <screen role="html">
 <![CDATA[
 <h3>strstr은 true를 반환했습니다.</h3>
 <center><b>Internet Explorer를 사용하고 있습니다.</b></center>
 ]]>
-      </screen>
-     </para>
+     </screen>
     </example>
    </para>
    <para>
@@ -369,13 +366,13 @@ if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
      </programlisting>
      <para>
       이 스크립트의 출력 예제:
-      <screen role="html">
+     </para>
+     <screen role="html">
 <![CDATA[
 Joe씨 안녕하세요.
 당신은 22세입니다.
 ]]>
-      </screen>
-     </para>
+     </screen>
     </example>
    </para>
    <para>
