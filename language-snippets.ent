@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.47 -->
+<!-- EN-Revision: 1.49 -->
 
 <!ENTITY warn.experimental '<warning><simpara>This extension is
 <emphasis>EXPERIMENTAL</emphasis>. The behaviour of this extension --
@@ -104,15 +104,18 @@ supplied.</simpara></note>'>
 <!-- Notes for safe-mode limited functions: -->
 <!ENTITY note.sm.disabled '<note><simpara>&sm.disabled;</simpara></note>'>
 
-<!ENTITY note.sm.uidcheck '<note><simpara>When <link 
-linkend="features.safe-mode">safe mode</link> is enabled, PHP checks whether 
-the files or directories you are about to operate on have the same UID (owner) as the 
-script that is being executed.</simpara></note>'>
+<!ENTITY note.sm.uidcheck '<note><simpara><link linkend="features.safe-mode">안전
+모드</link>일때, PHP는 조작하려는 파일이나 디렉토리가 같은 UID (owner)인지 확인한
+후에 실행합니다.</simpara></note>'>
 
 <!ENTITY note.sm.uidcheck.dir '<note><simpara>When <link 
 linkend="features.safe-mode">safe mode</link> is enabled, PHP checks whether 
 the directory in which you are about to operate has the same UID (owner) as the 
 script that is being executed.</simpara></note>'>
+
+<!ENTITY note.language-construct '<note><simpara>이것은 함수가 아닌
+언어 구조이기 때문에, <link linkend="functions.variable-functions">변수
+함수</link> 방식으로 호출할 수 없습니다.</simpara></note>'>
 
 <!-- Common pieces in features/safe-mode.xml 
      Jade doesn't allow in-line entities, so I put them here... Though they 
