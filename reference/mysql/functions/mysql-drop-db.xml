@@ -19,9 +19,8 @@
      반환값: 성공하면 &true;, 실패하면 &false;.
     </para>  
     <para> 
-     <function>mysql_drop_db</function> attempts to drop (remove) an
-     entire database from the server associated with the specified
-     link identifier.
+     <function>mysql_drop_db</function>는 지정된 link_identifier와
+	 관련된 서버로부터 데이터베이스 삭제를 시도한다.
     </para>
     <para> 
      참조: <function>mysql_create_db</function>.
