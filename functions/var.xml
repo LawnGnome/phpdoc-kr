@@ -886,7 +886,7 @@ bar
      was called.
      <informalexample>
       <programlisting role="php">
-function foo(&$bar) { 
+function foo(&amp;$bar) { 
     unset($bar); 
     $bar = "blah"; 
 }
