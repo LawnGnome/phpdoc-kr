@@ -75,7 +75,7 @@ $sql = "insert into table (field1, field2) values (field1 = 'value',
  field2 = empty_clob()) returning field2 into :field2";
 OCIParse($conn, $sql);
 $clob = OCINewDescriptor($conn, OCI_D_LOB);
-OCIBindByName ($stmt, ":field2", &$clob, -1, OCI_B_CLOB);
+OCIBindByName ($stmt, ":field2", &amp;$clob, -1, OCI_B_CLOB);
 OCIExecute($stmt, OCI_DEFAULT);
 $clob->save ("some text");
 
