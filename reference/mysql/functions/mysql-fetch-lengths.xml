@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/mysql.xml, last change in rev 1.3 -->
+<!-- last change to 'mysql-fetch-lengths' in en/ tree in rev 1.2 -->
+	<refentry id="function.mysql-fetch-lengths">
+		<refnamediv>
+			<refname>mysql_fetch_lengths</refname>
+			<refpurpose>
+     결과로부터 각 출력의 길이를 반환
+    </refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+				<methodsynopsis>
+					<type>array</type><methodname>mysql_fetch_lengths</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
+			<para> 
+     반환값: 최근 <function>mysql_fetch_row</function>로 얻은
+     행(row)의 각 필드 길이를 배열로 얻거나, 에러 발생시에는 &false;값을
+     얻는다.
+    </para>
+			<para>
+				<function>mysql_fetch_lengths</function>는
+     최근 <function>mysql_fetch_row</function>,
+     <function>mysql_fetch_array</function>,
+     <function>mysql_fetch_object</function>로 얻은 행으로부터
+     각 열(column)의 길이를 색인값이 0으로 시작하는 배열로 저장하여 반환한다.
+    </para>
+			<para> 
+     참조: <function>mysql_fetch_row</function>.
+    </para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

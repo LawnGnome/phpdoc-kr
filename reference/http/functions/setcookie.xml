@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/http.xml, last change in rev 1.5 -->
+<!-- last change to 'setcookie' in en/ tree in rev 1.2 -->
+	<refentry id="function.setcookie">
+		<refnamediv>
+			<refname>setcookie</refname>
+			<refpurpose>쿠키를 설정한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+				<methodsynopsis>
+					<type>int</type><methodname>setcookie</methodname>
+					<methodparam><type>string</type><parameter>name</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							value
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							expire
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							path
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							domain
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							secure
+						</parameter></methodparam>
+				</methodsynopsis>
+			<para>
+				<function>setcookie</function> 함수는 쿠키를 설정하기 위해 쓰인다. 쿠키는 다른 어떠한 헤더보다도 <emphasis>먼저</emphasis> 전송되어야 한다. 
+				(이것은 PHP와는 상관없는 쿠키 자체의 제약이다) 즉, 이 함수를 쓰기 위해서는 <literal>&lt;html></literal> 이나 <literal>&lt;head></literal> 내부에 오는 
+				어떠한 태그들 보다 먼저 호출되어야 하는 것이다.    
+		     </para>
+			<para>
+				<parameter>name</parameter> 을 제외한 모든 인수들은 선택적으로 주어질 수  있다. (만약 <parameter>name</parameter>인수만 주어진 경우 그 이름을 가진 
+				쿠키는 모두 삭제될 것이다). 또한 주어지지 않은 인수를 빈 문자열 (<emphasis>&quot;&quot;</emphasis>) 로 대체할 수 있다. <emphasis>expire</emphasis> 와
+				<emphasis>secure</emphasis> 인수는 정수값이며, 주어지지 않을 경우 빈 문자열로 대체될 수 없는 대신 숫자 0 으로 대체할 수 있다. <emphasis>expire</emphasis> 
+				인수는 표준 유닉스 시간으로 <function>time</function> 이나 <function>mktime</function> 함수가 돌려보내는 정수값을 쓸 수 있다. <function>secure</function> 
+				인수가 지정된 쿠키는 안전한 HTTPS 접속에서만 전송이 허용된다.     
+			</para>
+			<para>
+                 주의해야할 사항:
+                 <itemizedlist>
+					<listitem>
+						<simpara>
+                                쿠키는 그 쿠키를 유효하게 하기 위해 페이지를 재로딩하기 전까지는 작동되지 않는다.
+                              </simpara>
+					</listitem>
+					<listitem>
+						<simpara>
+                                쿠키는 생성될 당시의 인수(parameter)를 그대로 넣어 삭제해야 한다.
+                              </simpara>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<simpara>
+			  PHP3는 <function>setcookie</function> 함수가 하나의 스크립트 안에서 여러번 호출된 경우 그 호출된 역순으로 처리를 한다. 이 경우 새로운 쿠키를 
+			  하나 추가하기 전에 기존의 쿠키를 하나 삭제하려면 추가하는 구문이 삭제하는 구문보다 먼저 놓여야 원하는 결과를 얻을 수 있다. 반대로 PHP4는 여러번
+			  호출된 <function>setcookie</function> 함수들을 호출된 순서 그대로 처리한다. 
+               </simpara>
+			<para>
+                 아래는 쿠키를 전송하는 예제이다:     
+                 <example>
+					<title>
+						<function>setcookie</function> send examples</title>
+					<programlisting role="php">
+                           setcookie ("TestCookie", "Test Value");
+                           setcookie ("TestCookie", $value,time()+3600);  /* 만료시기를 1시간 후로 설정 */
+                           setcookie ("TestCookie", $value,time()+3600, "/~rasmus/", ".utoronto.ca", 1);
+                         </programlisting>
+				</example>
+			</para>
+			<para>
+                 아래는 위의 예제에서 전송한 쿠키를 삭제하는 예제이다:
+                 <example>
+					<title>
+						<function>setcookie</function> delete examples</title>
+					<programlisting role="php">
+                           setcookie ("TestCookie");
+                           // 만료시기를 한시간 전으로 설정
+                           setcookie ("TestCookie", "", time() - 3600);
+                           setcookie ("TestCookie", "", time() - 3600, "/~rasmus/", ".utoronto.ca", 1);
+                         </programlisting>
+				</example>
+	            쿠키를 삭제하려면 인수로 주어질 만료시기가 만료시점을 기준으로 과거를 가리키고 있는지 확인해야 한다.
+	          </para>
+			<para>
+                 쿠키의 일부분은 필요한 경우 자동적으로 url인코딩(urlencoded)이 된후 전송이 되며, 그것을 다시 받을 경우에도 자동적인 디코딩 및 쿠키 이름에 
+                 해당하는 변수할당이 이루어진다. 자세한 사항은 아래의 예제를 참조하라:     
+                 <informalexample>
+					<programlisting role="php">
+                           echo $TestCookie;
+                           echo $HTTP_COOKIE_VARS["TestCookie"];
+                         </programlisting>
+				</informalexample>
+			</para>
+			<para>
+                 또한 여러분은 쿠키 이름에 배열기수법(array notation)을 활용하여 배열형태의 쿠키(array cookies)를 만들 수 있다. 이러한 방법은 당신이 가지고
+                 있는 배열요소의 갯수만큼 동일한 갯수의 쿠키를 설정할 수 있으며, 이러한 방법으로 설정된 쿠키를 가져올 때에는 각각의 쿠키값들이 설정당시의 
+                 쿠키이름을 활용한 배열의 형태로 변수할당이 이루어진다.
+                 <informalexample>
+					<programlisting role="php">
+                           setcookie ("cookie[three]", "cookiethree");
+                           setcookie ("cookie[two]", "cookietwo");
+                           setcookie ("cookie[one]", "cookieone");
+                           if (isset ($cookie)) {
+                              while (list ($name, $value) = each ($cookie)) {
+                                   echo "$name == $value&lt;br>\n";
+                              }
+                           }
+                          </programlisting>
+				</informalexample>
+			</para>
+			<para>     
+			  쿠키에 대한 자세한 정보는 넷스케이프에서 제공하는 <ulink url="&spec.cookies;">&spec.cookies;</ulink> 문서를 참조하기 바란다.
+			</para>
+			<simpara>
+                 경로인수(path parameter set)와 함께 설정된 쿠키는 서비스팩 1 이 적용된 마이크로소프트 인터넷 익스플로러 4 에서 제대로 동작하지 않는다.       
+               </simpara>
+			<simpara>
+                 경로인수(path)와 만료시기(time)가 설정되지 않은 쿠키는 넷스케이프 커뮤니케이터 4.05 와 마이크로소프트 인터넷 익스플로러 3.x 에서 제대로 동작하지 않는다.
+               </simpara>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/pspell.xml, last change in rev 1.3 -->
+<!-- last change to 'pspell-config-create' in en/ tree in rev 1.6 -->
+	<refentry id="function.pspell-config-create">
+		<refnamediv>
+			<refname>pspell_config_create</refname>
+			<refpurpose>사전을 열때 사용할 설정을 생성</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_create</methodname>
+					<methodparam><type>string</type><parameter>language</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							spelling
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							jargon
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							encoding
+						</parameter></methodparam>
+				</methodsynopsis>
+			<simpara>
+				<function>pspell_config_create</function> 함수는 
+	 <function>pspell_new</function>함수와 매우비슷한 문법입니다.
+	 사실 <function>pspell_new_config</function>함수를 사용한 이후에	 <function>pspell_config_create</function>함수를 사용하게 되면
+	  동일한 결과를 나타낼 것입니다. 향상된 기능을 사용하기 위해서는 새로운 설정을
+	 만들었더라도 <function>pspell_new_config</function> 함수를 호출하기 전에 <function>pspell_config_*</function> 함수를
+	 사용해야 합니다.
+    </simpara>
+			<para>
+    language 파라미터는 두자로 된 ISO 639 언어 코드입니다. 선택적으로
+    ISO 639 언어 코드 이후 '-' 나 '_' 를 적고 두자로 된 ISO 3166 국가코드를  추가할 수 있습니다.
+    </para>
+			<para>
+     spelling 파라미터는 English 와 같이 한 철자 이상의 철자가 있는 언어에 대해 철자를
+     지정합니다. English 의 경우 알려진 값에는 'american', 'british', and 'canadian' 가 있습니다.
+    </para>
+			<para>
+     jargon 파라미터는 동일한 language와 spelling 파라미터를 가지고 있는
+     두 다른 단어 목록을 구별하기 위한 추가정보입니다.
+    </para>
+			<para>
+     encoding 파라미터는 단어의 인코딩 정보입니다. 가능한 값에는 'utf-8', 'iso8859-*', 'koi8-r',
+     'viscii', 'cp1252', 'machine unsigned 16', 'machine unsigned 32' 가 있습니다.
+     이 파라미터는 거의 테스트되지 않았으니, 사용할 때 주의하세요.
+    </para>
+			<para>
+     mode 파라미터는 단어검사기의 실행모드입니다.
+     아래에 몇가지 가능한 모드가 있습니다.
+     <itemizedlist>
+					<listitem>
+						<simpara>
+	PSPELL_FAST - 빠른 실행모드 (최소한의 추천단어)
+       </simpara>
+					</listitem>
+					<listitem>
+						<simpara>
+	PSPELL_NORMAL - 보통 실행모드 (더 많은 추천단어)
+       </simpara>
+					</listitem>
+					<listitem>
+						<simpara>
+	PSPELL_BAD_SPELLERS - 느린 실행모드 (가장많은 추천단어)
+       </simpara>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<para>
+     자세한 정보와 예제는 pspell 웹사이트(<ulink url="&url.pspell;">&url.pspell;</ulink>)의 매뉴얼을 참고하세요.
+    </para>
+			<para>
+				<example>
+					<title>
+						<function>pspell_config_create</function>
+					</title>
+					<programlisting role="php">
+$pspell_config = pspell_config_create ("en");
+pspell_config_personal ($pspell_config, "/var/dictionaries/custom.pws");
+pspell_config_repl ($pspell_config, "/var/dictionaries/custom.repl");
+$pspell_link = pspell_new_personal (pspell_config);
+      </programlisting>
+				</example>
+			</para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

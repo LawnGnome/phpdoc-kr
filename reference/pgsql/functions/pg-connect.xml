@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/pgsql.xml, last change in rev 1.3 -->
+<!-- last change to 'pg-connect' in en/ tree in rev 1.2 -->
+	<refentry id="function.pg-connect">
+		<refnamediv>
+			<refname>pg_connect</refname>
+			<refpurpose>PostgreSQL에 접속한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>함수 설명</title>
+				<methodsynopsis>
+					<type>int</type><methodname>pg_connect</methodname>
+					<methodparam><type>string</type><parameter>conn_string</parameter></methodparam>
+				</methodsynopsis>
+			<para>
+			접속에 성공하면 접속지시자(a connection index)를 돌려주고,
+			실패하면 거짓(&false;)을 돌려준다. 이 함수의 목적은 PostgreSQL에
+			접속하는 것이다. 인수들은 인용부호안에 표기해야 한다.
+      <example>
+					<title>Using pg_connect arguments</title>
+					<programlisting role="php">
+&lt;?php
+$dbconn = pg_Connect ("dbname=mary");
+// "mary"라는 이름의 데이터베이스에 접속
+$dbconn2 = pg_Connect ("host=localhost port=5432 dbname=mary");
+// "localhost"의 "5432"포트를 통해 "mary"라는 이름의 데이터베이스에 접속
+$dbconn3 = pg_Connect ("user=lamb password=baaaa dbname=mary ");
+// 유저명과 패스워드가 지정된 "mary"라는 이름의 데이터베이스에 접속
+?>
+     </programlisting>
+				</example>
+     이 함수와 함께 사용 가능한 인수는 <parameter>dbname</parameter>
+				<parameter>port</parameter>, <parameter>host</parameter>, 
+     <parameter>tty</parameter>, <parameter>options</parameter>,
+     <parameter>user</parameter>, 그리고 <parameter>password</parameter>이다.
+			</para>
+			<para>
+	이 함수는 PHP의 다른 PostgreSQL 함수에서 필요로 하는 접속지시자를
+	돌려준다. 필요하다면 한번에 여러개의 접속을 만들 수 있다.
+        </para>
+			<para>
+     예전에 사용하던 접속구문
+     <command>$conn = pg_connect ("host", "port", "options", "tty",
+    "dbname")
+     </command>
+     은 추천하지 않는다.
+    </para>
+			<para>
+				<function>pg_pconnect</function>도 참고하라.
+    </para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

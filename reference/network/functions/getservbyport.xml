@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/network.xml, last change in rev 1.3 -->
+<!-- last change to 'getservbyport' in en/ tree in rev 1.2 -->
+	<refentry id="function.getservbyport">
+		<refnamediv>
+			<refname>getservbyport</refname>
+			<refpurpose>
+     포트와 프로토콜에 대응이 되는 인터넷 서비스를 가져옵니다.
+    </refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+				<methodsynopsis>
+					<type>string</type><methodname>getservbyport</methodname>
+					<methodparam><type>int</type><parameter>port</parameter></methodparam>
+					<methodparam><type>string</type><parameter>protocol</parameter></methodparam>
+				</methodsynopsis>
+			<para>
+				<function>getservbyport</function>는 /etc/services의 각 <parameter>protocol</parameter>
+	에 정의된  <parameter>port</parameter>와 조합이 되는 인터넷 서비스를 반환합니다.
+     <parameter>protocol</parameter>은 <literal>TCP</literal>이거나 <literal>UDP</literal>입니다.
+    </para>
+			<para>
+     참조: <function>getservbyname</function>.
+    </para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

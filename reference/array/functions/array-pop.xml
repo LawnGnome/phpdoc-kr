@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/array.xml, last change in rev 1.4 -->
+<!-- last change to 'array-pop' in en/ tree in rev 1.2 -->
+	<refentry id="function.array-pop">
+		<refnamediv>
+			<refname>array_pop</refname>
+			<refpurpose>배열 끝의 요소를 뽑아낸다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+				<methodsynopsis>
+					<type>mixed</type><methodname>array_pop</methodname>
+					<methodparam><type>array</type><parameter>array</parameter></methodparam>
+				</methodsynopsis>
+			<para>
+				<function>array_pop</function> 은  <parameter>array</parameter>의 마지막 값을 뽑아 내고 그 값을 반환하며, <parameter>array</parameter>의 길이를 원소 하나만큼 줄인다.
+    </para>
+			<para>
+				<example>
+					<title>
+						<function>array_pop</function> 예</title>
+					<programlisting role="php">
+$stack = array ("orange", "apple", "raspberry");
+$fruit = array_pop ($stack);
+      </programlisting>
+				</example>
+			</para>
+			<para>
+     이 이후, <varname>$stack</varname> 은 "orange" 와 "apple" 단 2개의 원소만 가진다:
+    <varname>$fruit</varname> 는 "raspberry" 의 값을 갖는다.
+    </para>
+			<para>
+				<function>array_push</function>,
+     <function>array_shift</function>, 그리고
+     <function>array_unshift</function> 을 참조하라.
+    </para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

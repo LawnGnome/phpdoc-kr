@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
+<!-- last change to 'flock' in en/ tree in rev 1.2 -->
+	<refentry id="function.flock">
+		<refnamediv>
+			<refname>flock</refname>
+			<refpurpose>파일 잠김에 관한 간단한 도움말</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+				<methodsynopsis>
+					<type>bool</type><methodname>flock</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>operation</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							wouldblock
+						</parameter></methodparam>
+				</methodsynopsis>
+			<simpara>PHP는 파일에 대한 접근을 막는데 간단한 방법을 제공합니다. 
+			이것은 모든 접근하는 프로그램이 파일을 잠그는데 같은 방법을 사용해야 하며 
+			그렇지 않으면 동작하지 않습니다.
+    </simpara>
+			<simpara>
+				<function>flock</function>은 <parameter>fp</parameter>가 열려진 
+				파일에 대한 포인터일때 이것위에서 동작합니다
+		<parameter>operation</parameter>은 산출되는 값중에 하나입니다:
+</simpara>
+			<para>
+				<itemizedlist>
+					<listitem>
+						<simpara>공동으로 접근을 막고자 할때(읽는 사람) 
+         <parameter>operation</parameter>을 LOCK_SH로 설정합니다 (PHP 4.0.1 이전버전은 1로 설정합니다).
+       </simpara>
+					</listitem>
+					<listitem>
+						<simpara>
+         단독으로 접근을 막는 것이 필요할때(쓰는 사람)
+         <parameter>operation</parameter>을 LOCK_EX로 설정합니다 (PHP 4.0.1이전버전은 2로 설정합니다).
+       </simpara>
+					</listitem>
+					<listitem>
+						<simpara>
+         파일에 대한 접근을 풀어줄때 (공동 또는 단독)
+         <parameter>operation</parameter>을 LOCK_UN으로 설정합니다. (PHP 4.0.1이전 버전은 3으로 설정합니다).
+       </simpara>
+					</listitem>
+					<listitem>
+						<simpara>
+         파일에 대한 접근을 막는데 <function>flock</function>을 사용하고 싶지않으면 
+         LOCK_NB을 추가 하세요 (PHP 4.0.1 이전버젼에서는)
+         <parameter>operation</parameter>을 4로 설정하세요.
+       </simpara>
+					</listitem>
+				</itemizedlist>
+			</para>
+			<simpara>
+				<function>flock</function>은  실제로 모든 환경에서 
+				간단한 읽기/쓰기 예를 수행할 수 있게 만들어줍니다
+     reader/writer model which can be used on virtually every platform
+     (대부분의 유닉스와 윈도우즈 환경에서도). 접근을 막을 수가 없다면
+     세번째 매개변수가 &true;로 설정되어 있는 것입니다.(EWOULDBLOCK
+     errno condition)
+    </simpara>
+			<simpara>
+				<function>flock</function>은 성공하면 &true;를 반환하고 실패하면 &false;를 반환합니다.
+				(예를 들면 파일 접근을 막는것이 요청되지 못할 때).
+    </simpara>
+			<warning>
+				<para>
+					<function>flock</function>은 대부분의 운영체제에서 프로세스 단계에서 실행됩니다
+     . ISAPI같은 멀티쓰레드된 서버 API를 사용하고자 할 경우에 
+      <function>flock</function>이 같은 서버의 인스턴스의 병렬 쓰레드로서 
+     다른 PHP스크립트가 진행될때 파일을 보호할 것을 기대하지 마십시오
+     </para>
+			</warning>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

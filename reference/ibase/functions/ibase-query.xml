@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/ibase.xml, last change in rev 1.6 -->
+<!-- last change to 'ibase-query' in en/ tree in rev 1.2 -->
+	<refentry id="function.ibase-query">
+		<refnamediv>
+			<refname>ibase_query</refname>
+			<refpurpose>InterBase database의 쿼리를 실행한다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_query</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+					<methodparam><type>string</type><parameter>query</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							bind_args
+						</parameter></methodparam>
+				</methodsynopsis>
+			<simpara>
+     InterBase database의 쿼리를 실행하고, <function>ibase_fetch_row</function>,
+     <function>ibase_fetch_object</function>,
+     <function>ibase_free_result</function>와
+     <function>ibase_free_query</function>의 실행에 사용되는 식별자를 리턴한다.
+    </simpara>
+			<note>
+				<para>
+      Although this function supports variable binding to parameter
+      placeholders, there is not very much meaning using this capability
+      with it. For real life use and an example, see
+      <function>ibase_prepare</function> and
+      <function>ibase_execute</function>.
+     </para>
+			</note>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

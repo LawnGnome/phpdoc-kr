@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
+<!-- last change to 'move-uploaded-file' in en/ tree in rev 1.2 -->
+	<refentry id="function.move-uploaded-file">
+		<refnamediv>
+			<refname>move_uploaded_file</refname>
+			<refpurpose>업로드된 파일을 다른곳으로 이동하기</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+				<methodsynopsis>
+					<type>bool</type><methodname>move_uploaded_file</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>string</type><parameter>destination</parameter></methodparam>
+				</methodsynopsis>
+			<para>
+     이 함수는 PHP 3 에서는 3.0.16 이후, PHP 4 에서는 4.0.2 이후 버전부터 사용할 수 있습니다.
+    </para>
+			<para>
+     이 함수는 <parameter>filename</parameter>에 의해서 지정된 파일이 PHP의 HTTP POST 파일 업로드 메카니즘을 
+   통해서 업로드된 파일인지 확인합니다. 파일이 유효한 것일때 <parameter>destination</parameter>에 주어진 filename으로 이동이 됩니다
+    </para>
+			<para>
+				<parameter>filename</parameter>이 유효한 것이 아니면 아무 일도 발생하지 않습니다.
+     그리고 <function>move_uploaded_file</function>는 &false;를 반환합니다. 
+    </para>
+			<para>
+				<parameter>filename</parameter>은 유효하나 어떤 이유가 있어서 이동할 수가 없을 때
+     아무런 일도 발생하지 않습니다. 그리고 <function>move_uploaded_file</function>은
+     &false;를 반환합니다. 덧붙여서 경고문이 보여집니다.
+    </para>
+			<para>
+     이런 체크방법은 파일의내용을 이용자, 같은 시스템내의 다른 사람에게 파일을 
+     손대지 않고 파일의 내용을 감출 수 있는 어떤 기회가 있다면 특별히 더욱 중요합니다.
+    </para>
+			<para>
+      참조 <function>is_uploaded_file</function>, 그리고 간단한 사용법 예를 위한
+     <link linkend="features.file-upload">Handling file uploads</link>부분.
+    </para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

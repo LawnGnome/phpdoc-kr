@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
+<!-- last change to 'fileinode' in en/ tree in rev 1.2 -->
+	<refentry id="function.fileinode">
+		<refnamediv>
+			<refname>fileinode</refname>
+			<refpurpose>파일의 아이노드를 가져옵니다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+				<methodsynopsis>
+					<type>int</type><methodname>fileinode</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
+			<para> 
+      파일의 아이노드 숫자를 반환하거나 에러일 경우에는 &false;를 반환합니다.
+     </para>
+			<para>
+     이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶을 때는 
+     <function>clearstatcache</function>를 보십시오.    </para>
+			<note>
+				<simpara>
+     이 함수는 윈도우즈에서는 동작하지 않습니다
+     </simpara>
+			</note>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

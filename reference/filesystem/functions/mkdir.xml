@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
+<!-- last change to 'mkdir' in en/ tree in rev 1.39 -->
+	<refentry id="function.mkdir">
+		<refnamediv>
+			<refname>mkdir</refname>
+			<refpurpose>디렉토리 만들기</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+				<methodsynopsis>
+					<type>int</type><methodname>mkdir</methodname>
+					<methodparam><type>string</type><parameter>pathname</parameter></methodparam>
+					<methodparam><type>int</type><parameter>mode</parameter></methodparam>
+				</methodsynopsis>
+			<para>
+     pathname에 명기된 이름으로 디렉토리 만들기
+    </para>
+			<para>
+     모드를 명기하는데 8진수를 사용하려고 할 경우에 주의할 것은 앞에 0이 붙어야 한다는 것입니다.
+     <informalexample>
+					<programlisting role="php">
+    mkdir ("/path/to/my/dir", 0700);
+      </programlisting>
+				</informalexample>
+			</para>
+			<para>
+     성공하면 &true;, 실패하면 &false;를 반환합니다.
+    </para>
+			<para>
+     참조<function>rmdir</function>.
+    </para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

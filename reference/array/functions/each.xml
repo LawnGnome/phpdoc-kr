@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- splitted from ./kr/functions/array.xml, last change in rev 1.4 -->
+<!-- last change to 'each' in en/ tree in rev 1.2 -->
+	<refentry id="function.each">
+		<refnamediv>
+			<refname>each</refname>
+			<refpurpose>
+	배열로부터 다음원소의 키와 값 쌍을 반환한다.
+     Return the next key and value pair from an array
+    </refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+				<methodsynopsis>
+					<type>array</type><methodname>each</methodname>
+					<methodparam><type>array</type><parameter>array</parameter></methodparam>
+				</methodsynopsis>
+			<para>
+	<parameter>array</parameter> 배열에서 다음 key/value 쌍을 반환한다.
+	이 쌍은 네 개의 원소를 가진 배열로 반환되는데 이 네 개의 원소의 key는 
+	<emphasis>0</emphasis>, <emphasis>1</emphasis>,
+     <emphasis>key</emphasis>, 그리고 <emphasis>value</emphasis>
+	이다.
+	<emphasis>0</emphasis> 과 <emphasis>key</emphasis>
+	원소는 각각 변수의 key 이름을 가지고, 
+	<emphasis>1</emphasis> 과 <emphasis>value</emphasis>는
+	그 값을 가지고 있다. 
+    </para>
+			<para>
+	만약 그 배열에 해당하는 내부 포인터가 배열의 범위를 지나면,
+	<function>each</function>는 거짓(&false;)를 반환한다.
+    </para>
+			<para>
+				<example>
+					<title>
+						<function>each</function> 예</title>
+					<programlisting role="php">
+$foo = array ("bob", "fred", "jussi", "jouni", "egon", "marliese");
+$bar = each ($foo);
+      </programlisting>
+					<para>
+						<varname>$bar</varname> 는 다음의 키(key)/값(value) 쌍을 갖는다.
+       pairs:
+       <itemizedlist spacing="compact">
+							<listitem>
+								<simpara>0 =&gt; 0</simpara>
+							</listitem>
+							<listitem>
+								<simpara>1 =&gt; 'bob'</simpara>
+							</listitem>
+							<listitem>
+								<simpara>key =&gt; 0</simpara>
+							</listitem>
+							<listitem>
+								<simpara>value =&gt; 'bob'</simpara>
+							</listitem>
+						</itemizedlist>
+						<programlisting role="php">
+$foo = array ("Robert" =&gt; "Bob", "Seppo" =&gt; "Sepi");
+$bar = each ($foo);
+       </programlisting>
+					</para>
+					<para>
+						<varname>$bar</varname> 는 다음의 키(key)/값(value) 쌍을 갖는다.
+       <itemizedlist spacing="compact">
+							<listitem>
+								<simpara>0 =&gt; 'Robert'</simpara>
+							</listitem>
+							<listitem>
+								<simpara>1 =&gt; 'Bob'</simpara>
+							</listitem>
+							<listitem>
+								<simpara>key =&gt; 'Robert'</simpara>
+							</listitem>
+							<listitem>
+								<simpara>value =&gt; 'Bob'</simpara>
+							</listitem>
+						</itemizedlist>
+					</para>
+				</example>
+			</para>
+			<para>
+	<function>each</function> 는 대체로  배열을 검토하기 위해
+	<function>list</function> 와 함께 쓰인다; 예를 들면
+	<varname>$HTTP_POST_VARS</varname>: 
+     <example>
+					<title>
+       Traversing <varname>$HTTP_POST_VARS</varname> with
+       <function>each</function>
+					</title>
+					<programlisting role="php">
+echo "Values submitted via POST method:&lt;br&gt;";
+reset ($HTTP_POST_VARS);
+while (list ($key, $val) = each ($HTTP_POST_VARS)) {
+    echo "$key =&gt; $val&lt;br&gt;";
+}
+      </programlisting>
+				</example>
+			</para>
+			<para>
+     After <function>each</function> has executed, the array cursor
+     will be left on the next element of the array, or on the last
+     element if it hits the end of the array.
+    </para>
+			<para>
+     See also <function>key</function>, <function>list</function>,
+     <function>current</function>, <function>reset</function>,
+     <function>next</function>, and <function>prev</function>.
+    </para>
+		</refsect1>
+	</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
