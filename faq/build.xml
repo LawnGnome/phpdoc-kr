@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.1 $ -->
+<!-- EN-Revision: 1.26 -->
+<chapter id="faq.build">
+  <title>빌드 시의 문제발생</title>
+  <titleabbrev>빌드 시 발생할수 있는 문제점</titleabbrev>
+
+   <para>
+    이 절은 빌드 시에 가장 자주 발생하는 에러에 대해서 정리한다.
+   </para>
+
+  <qandaset>
+   <qandaentry id="faq.build.configure">
+    <question>
+     <para>
+      저는 익명 CVS 서버스에서 PHP의 가장 최종 버전을 가져왔습니다.
+      그런데 거기에는 configure 스크립트가 없네요!?
+     </para>
+    </question>
+    <answer>
+     <para>
+      님께서는 <filename>configure.in</filename>파일이 configure 스크립트를 생성할수 있도록
+      GNU autoconf 패키지가 설치되어 있어야 합니다.
+      그리고 나서 CVS 서버에서 소스를 가져오신 후에 최상위 디렉토리에서
+      <command>./buildconf</command>명령을 실행하세요. (또한,
+      <literal>--enable-maintainer-mode</literal>옵션으로 configure를 실행하지 않으면,
+      <filename>configure.in</filename>파일이 갱신되었을때,
+      configure 스크립트는 자동적으로 재생성 되지 않을겁니다.
+      그래서 configure.in 파일이 갱신되었다는것을 알고나서 손수 재생성해야 할것입니다.
+      이것을 알아챌수 있는 방법은 configure 나 <filename>config.status</filename>이 실행된후
+      Makefile의 @VARIABLE@같은 것을 찾아 보는 것입니다.)
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.configuring">
+    <question>
+     <para>
+      저는 아파치와 연동하여 PHP 를 설정하려 하는데 문제가 발생합니다.
+      <filename>httpd.h</filename>를 찾을 수 없다는 군요. 하지만 그 파일은 거기에 있거든요!
+     </para>
+    </question>
+    <answer>
+     <para>
+      님은 configure/setup 스크립트에게 아파치 소스 트리의 최상위 디렉토리의 위치를
+      알려줄 필요가 있습니다. 즉, <literal>--with-apache=/path/to/apache</literal>으로
+      적어주세요. <literal>--with-apache=/path/to/apache/src</literal>이 <emphasis>아닙니다</emphasis>.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.lex">
+    <question>
+     <para>
+      PHP를 설정하려 하는데 (<literal>./configure</literal>), 다음과 같은 에러
+      를 본적이 있습니까?
+     </para>
+     <para>
+      <screen>
+       checking lex output file root... ./configure: lex: command not found
+       configure: error: cannot find output from lex; giving up
+      </screen>
+     </para>
+    </question>
+    <answer>
+     <para>
+      <link linkend="install.unix">installation</link>섹션을 주의깊게
+      읽어보세요. PHP를 컴파일하기 위해서는 flex와 bison 이 필요합니다.
+      bison과 flex를 소스나 RPM패키지를 구해서 설치하세요.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.apache-sharedcore">
+    <question>
+     <para>
+      제가 아파치를 시작하려하면, 다음과 같은 메시지가 뜹니다.
+     </para>
+     <para>
+      <screen>
+       fatal: relocation error: file /path/to/libphp4.so:
+       symbol ap_block_alarms: referenced symbol not found
+      </screen>
+     </para>
+    </question>
+    <answer>
+     <para>
+      이 에러는 공유 사용 목적의 DSO 라이브러리로 아파치 프로그램을
+      컴파일 할때 주로 발생합니다. 아파치를 재설정(reconfigure)하세요
+      최소한 다음 옵션이 붙어야 합니다.
+     </para>
+     <para>
+      <screen>
+      --enable-shared=max --enable-rule=SHARED_CORE
+      </screen>
+     </para>
+     <para>
+      더 자세한 정보는 아파치 디렉토리의 최상위에 위치한
+      <filename>INSTALL</filename> 파일이나 아파치의
+      <ulink url="&url.apachedso;">DSO manual page</ulink>를 보세요.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.not-found">
+    <question>
+     <para>
+      configure를 실행하려하는데, GD, gdbm 이나 다른 패키지에 대한
+      라이브러리(library)와 인클루드(include) 파일을 읽지 못한다는 에러가 나네요!
+     </para>
+    </question>
+    <answer>
+     <para>
+      비표준적인 위치에 존재하는 헤더파일이나 라이브러리를 찾을 수 있도록
+      configure 스크립트를 조정할수 있습니다. C 전처리기나 링커를 넘겨주기
+      위한 다음과같은 플래그를 설정함으로써 가능합니다.
+      <programlisting>
+<![CDATA[
+    CPPFLAGS=-I/path/to/include LDFLAGS=-L/path/to/library ./configure
+]]>
+      </programlisting>
+      로그인 셸이 csh계열이라면(왜?) 다음처럼 처리해도됩니다
+      <programlisting>
+<![CDATA[
+    env CPPFLAGS=-I/path/to/include LDFLAGS=-L/path/to/library ./configure
+]]>
+      </programlisting>
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.yytname">
+    <question>
+     <para>
+      <filename>language-parser.tab.c</filename>파일을 컴파일할때, 
+      <literal>yytname undeclared</literal>라는 에러메시지를 보여주네요.
+     </para>
+    </question>
+    <answer>
+     <para>
+      Bison 을 업그레이드할필요가 있습니다. 
+      <ulink url="&url.bison;">&url.bison;</ulink>에서 최신버전을 받을수 있을겁니다.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.link">
+    <question>
+     <para>
+      <command>make</command>명령을 실행시킬때, 처음엔 잘나가다가 마지막에서 프로그램을 링크하려고
+      할때 어떤 파일을 찾지 못한다고 하며 종료되어 버립니다.
+     </para>
+    </question>
+    <answer>
+     <para>
+      make의 구버전 일부는 functions 디렉토리안에 functions 디렉토리에 들어있는
+      파일을 정확하게 옮겨놓지 못합니다. 
+      <command>cp *.o functions</command> 명령을 실행하고 나서
+      <command>make</command>명령을 재실행시켜보세요. 
+      이래도 똑같은 증상을 보이면, GNU make 최신버전으로 업그레이드해야할것입니다
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.undefined">
+    <question>
+     <para>
+      PHP를 링크할때, 엄청나게 많은 수의 undefined reference 에러메시지를 뿌려줍니다.
+     </para>
+    </question>
+    <answer>
+     <para>
+      링크 관련 줄을 보고 정확하게 라이브러리가 설정되었는지 확인하기 바랍니다.
+      보통  '-ldl'이라는 옵션을 빠뜨리거나, 데이터베이스 지원을 위한 라이브러리를
+      빠뜨린 경우가 대부분입니다.
+     </para>
+     <para>
+      아파치 1.2.x 버전과 함께 설치하는것이라면, 설정파일의 EXTRA_LIBS에
+      적절한 정보를 추가했는지, 아파치 설정 스크립트를 재실행했는지 확인하세요.
+      아파치에 포함되어있는 <ulink url="&url.file.installation;">INSTALL</ulink>파일을
+      확인하는것도 도움이 될것입니다.
+     </para>
+     <para>
+      Some people have also reported that they had to add '-ldl' immediately
+      following <filename>libphp4.a</filename> when linking with Apache.
+      어떤분들의 보고에 따르면 아파치와 같이 설치할때에는 
+       <filename>libphp4.a</filename>파일 다음에 '-ldl'옵션을 추가해야한다고 합니다. 
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.Apache">
+    <question>
+     <para>
+      아파치 1.3 버전과 같이 설치하는 방법을 잘 모르겠습니다.
+     </para>
+    </question>
+    <answer>
+     <para>
+      매우 쉽습니다. 다음 단계를 차근차근 따라해보세요.
+      <itemizedlist>
+       <listitem>
+        <simpara>
+         <ulink url="&url.apache.source;">&url.apache.source;</ulink>에서
+         아파치 1.3 최신 버전을 다운받는다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         그 파일을 특정 디렉토리에 압축을 풉니다. 예를 들면,
+         <filename>/usr/local/src/apache-1.3</filename>와 같은 디렉토리가
+         될수 있습니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         우선 다음명령을 실행시킵니다.
+         <command>./configure --with-apache=/&lt;path&gt;/apache-1.3</command>
+         (여기서 &lt;path&gt;는 아파치 1.3 디렉토리의 실제 경로로 대치하십시오.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         그리고 <command>make</command>명령과 <command>make install</command>명령을 차례대로
+         실행시킵니다. 그러면 아파치의 하위 디렉토리에 필요한 파일들이 복사가 되는것입니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         <filename>/&lt;path&gt;/apache-1.3/src</filename>디렉토리로 들어가서
+         <filename>설정</filename>파일을 변경하십시오.
+         설정 파일에 다음줄을 추가하세요.
+         <literal>AddModule modules/php4/libphp4.a</literal>.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         Type: <command>./configure</command>명령실행후에 <literal>make</literal>명령을
+                실행하면 됩니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         이제 PHP가 연동되는 아파치 실행파일이 생겼을겁니다!
+        </simpara>
+       </listitem>
+      </itemizedlist>
+     </para>
+     <para>
+      <emphasis>Note:</emphasis> 새로운 아파치의 <literal>./configure</literal>스크립트
+      를 사용할수 있습니다. 아파치 디렉토리의 <literal>README.configure</literal>파일을
+      보거나, PHP 디렉토리의 <filename>INSTALL</filename>파일을 참고하세요.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.not-running">
+    <question>
+     <para>
+      UNIX상에서 아파치 모듈을 인스톨하기 위한 모든 단계를 따라했습니다.
+      그리고 브라우저에서 PHP 스크립트를 보려고하면 저장하겠냐고 물어옵니다.
+     </para>
+    </question>
+    <answer>
+     <para>
+      이것은 어떤 이유로 PHP 모듈이 제대로 불려오지 못한 결과입니다.
+      우선은 다음의 세가지 경우를 체크하시기 바랍니다
+      <itemizedlist>
+       <listitem>
+        <simpara>
+         현재 실행되는있는 아파치의 실행파일이 새로 빌드된 실행파일인지
+         확인해야 합니다. 다음 명령을 실행하세요
+         <literal>/path/to/binary/httpd -l</literal>
+        </simpara>
+        <simpara>
+         출력된 리스트중에서 <filename>mod_php4.c</filename>파일이 보이지 않으면,
+         잘못된 파일을 실행하고 있는것입니다. 올바른 파일을 찾아서 실행하세요.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         <literal>아파치의 .conf</literal>파일에 다음과 같은 Mime 타입 설정을
+         추가했는지 확인하세요.
+         <literal>AddType application/x-httpd-php3 .php3</literal> (for PHP 3)
+        </simpara>
+        <simpara>
+         또는 <literal>AddType application/x-httpd-php .php</literal> (for PHP 4)
+        </simpara>
+        <simpara> 
+         그리고 &lt;Virtualhost&gt; 이나 &lt;Directory&gt; 블록안에 이
+         AddType 줄이 숨겨져 있는지 확인하시기 바랍니다. 이렇게 되면
+         PHP 스크립트의 위치에 따라서 적용이 안될수 있기 때문입니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         마지막으로, 아파치 1.2와 아파치 1.3 버전간에 설정파일의 기본(default) 디렉토리가
+         바뀔수도 있습니다. 따라서 실질적으로 AddType 줄이 추가된 설정파일이
+         정확한 위치에 있는지 체크해야 합니다. 
+         &httpd.conf;파일에 일부러 문법에러(Syntax error)를 일으킬만한 
+         설정을 해보거나 다른 방법으로 이 파일이 실제로 적용되는 파일인지
+         확인할수 있습니다.
+        </simpara>
+       </listitem>
+      </itemizedlist>
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.activate-module">
+    <question>
+     <para>
+      <literal>--activate-module=src/modules/php4/libphp4.a</literal>옵션으로
+      실행하라고 하지만 그 파일은 존재하지않았다. 그래서 
+      <literal>--activate-module=src/modules/php4/libmodphp4.a</literal>으로
+      변경을 했다. 근데, 제대로 설치가 안된다!? 무엇이 잘못된것인가?
+     </para>
+    </question>
+    <answer>
+     <para>
+      처음에는 <filename>libphp4.a</filename>파일은 존재하지 않습니다.
+      그 파일은 아파치 설치 과정중에 생기는것입니다!
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.ansi">
+    <question>
+     <para>
+      PHP를 정적인 모듈로 아파치와 연동하려고 
+      <literal>--activate-module=src/modules/php4/libphp4.a</literal> 
+      옵션으로 빌드하려 했습니다.
+      그런데 컴파일러가 ANSI 호환이 아니라는 나옵니다.
+     </para>
+    </question>
+    <answer>
+     <para>
+      이 에러 메시지는 잘못된 것입니다. 요즘의 아파치버전은 이런
+      에러 메시지가 수정되었다고 합니다.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.apxs">
+    <question>
+     <para>
+      <literal>--with-apxs</literal>옵션으로 PHP를 빌드하려고 하는데
+      이상한 메시지를 봤습니다.
+     </para>
+    </question>
+    <answer>
+     <para>
+      이경우에는 다음 세가지 경우를 확인해봐야 합니다.
+      첫째, 아파치가 apxs 펄 스크립트를 빌드 할때, 어떤 이유로
+      종종 적절한 컴파일러와 플래그 변수(flag variables)들 없이
+      끝나버리는 경우가 있습니다. ( <command>which apxs</command> 명령을수행) 
+      대부분 <filename>/usr/local/apache/bin/apxs</filename>나 <filename>/usr/sbin/apxs</filename>
+      인 경우가 많습니다.
+      그 파일을 열어서 다음과 비슷한지 점검하십시오.
+      <programlisting>
+<![CDATA[
+my $CFG_CFLAGS_SHLIB  = ' ';          # substituted via Makefile.tmpl
+my $CFG_LD_SHLIB      = ' ';          # substituted via Makefile.tmpl
+my $CFG_LDFLAGS_SHLIB = ' ';          # substituted via Makefile.tmpl
+]]>
+      </programlisting>
+      이것과 똑같다면 그것이 바로 문제입니다. 공백이나 잘못된 값이
+      채워져있을수 있습니다. 예를 들어서 'q()' 같은 경우입니다.
+      이 줄들은 다음으로 변경합니다
+      <programlisting>
+<![CDATA[
+my $CFG_CFLAGS_SHLIB  = '-fpic -DSHARED_MODULE'; # substituted via Makefile.tmpl
+my $CFG_LD_SHLIB      = 'gcc';                   # substituted via Makefile.tmpl
+my $CFG_LDFLAGS_SHLIB = q(-shared);              # substituted via Makefile.tmpl 
+]]>
+      </programlisting>
+      두번째는 레드햇 6.1과 레드햇 6.2에 관련된 경우입니다.
+      레드햇 배포판의 apxs가 깨지는 경우인데. 다음처럼 되어있습니다
+      <programlisting>
+<![CDATA[
+my $CFG_LIBEXECDIR    = 'modules';         # substituted via APACI install
+]]>
+      </programlisting>
+      이와 같다면 다음으로 변경합니다
+      <programlisting>
+<![CDATA[
+my $CFG_LIBEXECDIR    = '/usr/lib/apache'; # substituted via APACI install
+]]>
+      </programlisting>
+       마지막으로, 아파치를 재설정/재설치했을경우에  <command>make clean</command> 명령을
+       <command>./configure</command> 명령 후와  <command>make</command> 명령 전에
+       실행해보라는 것입니다.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.build.microtime">
+    <question>
+     <para>
+      During <command>make</command>, I get errors in microtime, 
+      and a lot of <literal>RUSAGE_</literal> stuff.
+      <command>make</command>명령 실행 중에 몇몇의 에러와
+      많은 수의 <literal>RUSAGE_</literal>관련 메시지를 봅니다.
+    </para>
+    </question>
+    <answer>
+     <para>
+      <command>make</command>명령 실행 중에 다음과 비슷한 
+      상황이 벌어진다면:
+      <programlisting>
+<![CDATA[
+microtime.c: In function `php_if_getrusage':
+microtime.c:94: storage size of `usg' isn't known
+microtime.c:97: `RUSAGE_SELF' undeclared (first use in this function)
+microtime.c:97: (Each undeclared identifier is reported only once
+microtime.c:97: for each function it appears in.)
+microtime.c:103: `RUSAGE_CHILDREN' undeclared (first use in this function)
+make[3]: *** [microtime.lo] Error 1
+make[3]: Leaving directory `/home/master/php-4.0.1/ext/standard'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/home/master/php-4.0.1/ext/standard'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/master/php-4.0.1/ext'
+make: *** [all-recursive] Error 1
+]]>
+      </programlisting>
+     </para>
+     <para>
+      당신의 시스템은 정상이 아닙니다. glibc-devel 패키지를 설치해서
+      <filename>/usr/include</filename>밑의 파일들을 고칠필요가 있습니다.
+      이것이 PHP를 위해 절대적인것은 아닙니다. 이런것을 해결하기 위해서는
+      다음과 같은 테스트를 해보세요.
+     <programlisting>
+<![CDATA[
+$ cat >test.c <<X
+#include <sys/resource.h>
+X
+$ gcc -E test.c >/dev/null
+]]>
+      </programlisting>
+      이 테스트 결과 에러가 발생한다면 그 include파일들은 확실히 정상이 아닙니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.build.mysql.tempnam">
+    <question>
+     <para>
+      MySQL과 연동하여 PHP를 컴파일하려고 할때 configure는 잘 진행되지만
+      <literal>make</literal>명령 실행중에는 다음과 같은 에러가 납니다.
+      <emphasis>ext/mysql/libmysql/my_tempnam.o(.text+0x46): In function 
+      my_tempnam': /php4/ext/mysql/libmysql/my_tempnam.c:103: the 
+      use of tempnam' is dangerous, better use mkstemp'</emphasis>, 
+      무엇이 잘못된 건가요?
+     </para>
+    </question>
+    <answer>
+     <para>
+      우선, 이것이 <literal>경고(Warning)</literal>이고 치명적인 에러(Fatal Error)가 아니라는
+      것을 파악하는 것이 중요합니다. 이 메시지들이 <literal>make</literal>명령이
+      실행되는 동안 종종 마지막에 나오기 때문에 치명적인 에러(Fatal Error)처럼 보일지도 모르지만,
+      그렇지는 않습니다. 즉 컴파일러가 경고(Warning)메시지를 안보이도록 할수 있다면, 
+      아무 메시지도 보여주지 않게 되는것입니다.
+      또 명심할것은 MySQL 은 기본적으로(default) 지원이 된다는것입니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.build.upgrade">
+    <question>
+     <para>
+      PHP를 업그레이드 하고 싶습니다. 현재 PHP 설치를 위해 사용되었던 <command>./configure</command>
+      실행 옵션을 어디서 발견할수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      현재 PHP설치 디렉토리의 config.nice 파일이나 다음스크립트를 실행시키면
+      확인할수 있습니다.
+      <programlisting>
+<![CDATA[
+       <?php phpinfo(); ?> 
+]]>
+      </programlisting>
+      이 스크립트의 결과 페이지에서 상단에 <command>./configure</command>실행 옵션이 보이므로
+      그 옵션을 쓰시면 됩니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.build.gdlibs">
+    <question>
+     <para>
+      GD라이브러리와 연동하여 PHP를 빌드하려 하면 이상한 컴파일 에러를 보이거나
+      실행중 세그먼테이션 폴트(segfault)를 발생시킵니다.
+     </para>
+    </question>
+    <answer>
+     <para>
+      GD라이브러리와 PHP가 관련 라이브러리(예를 들면, libpng)와 제대로 링크가
+      되었는지 확인하십시오.
+     </para>
+    </answer>
+   </qandaentry>   
+   
+  </qandaset>
+ </chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
