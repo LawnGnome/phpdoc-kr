@@ -1,44 +1,31 @@
-﻿ <reference id="ref.zlib">
-  <title>Zlib Compression Functions</title>
-  <titleabbrev>Zlib</titleabbrev>
-  <partintro>
-  <para>
-   This module uses the functions of <ulink
-   url="&url.zlib;">zlib</ulink> by Jean-loup Gailly and Mark Adler to
-   transparently read and write gzip (.gz) compressed files. You have
-   to use a zlib version >= 1.0.9 with this module.
+<reference id="ref.zlib">
+	<title>Zlib Compression Functions</title>
+	<titleabbrev>Zlib</titleabbrev>
+	<partintro>
+		<para>
+   이 모듈은 Jean-loup Gailly 과 Mark Adler 의 <ulink url="&url.zlib;">zlib</ulink> 사용하며 gzip(.gz)로 압축된 파일을 잘 읽고 쓸수 있다. 이 모듈은 zlib 1.0.9버젼 이상과 사용할 수 있다.
   </para>
-  <para>
-   This module contains versions of most of the <link
-   linkend="ref.filesystem">filesystem</link> functions which work
-   with gzip-compressed files (and uncompressed files, too, but not
+		<para>
+   이 모듈은 gzip 압축된 파일과 연동하는 대부분의 <link linkend="ref.filesystem">filesystem</link> 함수 버젼을 포함하고 있다. (and uncompressed files, too, but not
    with sockets).
   </para>
-  <note>
-   <para>
-    The current CVS version 4.0.4-dev introduces a fopen-wrapper
-    for .gz-files, so that you can use a special 'zlib:' URL to
-    access compressed files transparently using the normal 
-    f*() file access functions if you prepend the filename or path
-    with a 'zlib:' prefix when calling <function>fopen</function>.
+		<note>
+			<para>
+    현재 CVS 4.0.4-dev 버젼은 .gz-files를 위한 fopen-wrapper를 소개하고 있다. 압축된 파일을 
+다루는 특별한 'zlib:'URL을 사용할 수 있기 위하여 일반적인 f*() 파일 제어 함수가 사용되며 <function>fopen</function>함수 호출 전에 이미 알고 있는 파일명이나 경로가 'zlib:'와 함께 선행되어야 한다.
    </para>
-   <para>
-    This feature requires a C runtime library that provides the
-    <literal>fopencookie()</literal> function. To my current
-    knowledge the GNU libc is the only library that provides
-    this feature.
+			<para>
+    이 경우 <literal>fopencookie()</literal> 함수를 제공하는 C 런타임 라이브러리가 필요하다. 현재 이것을 제공하는 라이브러리는 GNU libc가 유일하다.
    </para>
-  </note>
-
-   <sect1 id="zlib-example">
-    <title>Small code example</title>
-    <para>
-     Opens a temporary file and writes a test string to it, then it
-     prints out the content of this file twice.
-    </para>
-    <example>
-     <title>Small Zlib Example</title>
-<programlisting role="php">
+		</note>
+		<sect1 id="zlib-example">
+			<title>Small code example</title>
+			<para>
+     임시 파일을 열어 테스트 문자를 기록하고, 그 내용을 두번 출력한다 .
+  </para>
+			<example>
+				<title>Small Zlib Example</title>
+				<programlisting role="php">
 &lt;?php
 
 $filename = tempnam ('/tmp', 'zlibtest').'.gz';
@@ -74,598 +61,569 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 
 ?>
      </programlisting>
-    </example>
-   </sect1>
-  </partintro>
-
-  <refentry id="function.gzclose">
-   <refnamediv>
-    <refname>gzclose</refname>
-    <refpurpose>Close an open gz-file pointer</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzclose</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     The gz-file pointed to by zp is closed.
+			</example>
+		</sect1>
+	</partintro>
+	<refentry id="function.gzclose">
+		<refnamediv>
+			<refname>gzclose</refname>
+			<refpurpose>지정된 .gz 파일을 닫는다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzclose</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     zp에의해 지정된 .gz 파일이 닫혀진다.
     </para>
-    <para>
-     Returns true on success and false on failure.
+			<para>
+     성공시 true를 실패시 failure를 반환한다.
     </para>
-    <para>
-     The gz-file pointer must be valid, and must point to a file
-     successfully opened by <function>gzopen</function>.
+			<para>
+     .gz파일의 지정은 정확해야 하고, <function>gzopen</function>에 의해 성공적으로 열린 파일을 지정해야 한다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzeof">
-   <refnamediv>
-    <refname>gzeof</refname>
-    <refpurpose>Test for end-of-file on a gz-file pointer</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzeof</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Returns true if the gz-file pointer is at EOF or an error occurs;
-     otherwise returns false.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzeof">
+		<refnamediv>
+			<refname>gzeof</refname>
+			<refpurpose>지정된 .gz 파일의 끝을 테스트한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzeof</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     지정된 .gz 파일의 끝이거나 에러가 일어나면 true를 반환하고; 그렇지 않은 경우 false를 반환한다.
     </para>
-    <para>
-     The gz-file pointer must be valid, and must point to a file
-     successfully opened by <function>gzopen</function>.
+			<para>
+     .gz 파일지정은 정확해야 하고, <function>gzopen</function>에 의해 성공적으로 열린 파일을 지정해야 한다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzfile">
-   <refnamediv>
-    <refname>gzfile</refname> 
-    <refpurpose>Read entire gz-file into an array</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>gzfile</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>use_include_path</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Identical to <function>readgzfile</function>, except that
-     <function>gzfile</function> returns the file in an array.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzfile">
+		<refnamediv>
+			<refname>gzfile</refname>
+			<refpurpose>gz 파일 내용을 배열로 읽어들인다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>array <function>gzfile</function>
+					</funcdef>
+					<paramdef>string <parameter>filename</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>use_include_path</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+     <function>readgzfile</function>와 동일하나, <function>gzfile</function>은 파일을 배열로 반환한다.
     </para>
-    <para>
-     You can use the optional second parameter and set it to "1", if
-     you want to search for the file in the <link
-     linkend="ini.include-path">include_path</link>, too.
+			<para>
+     만일 <link linkend="ini.include-path">include_path</link>안의 파일을 검색하기 원한다면, 두번째 옵션의 파라미터에 "1"을 넣으면 된다.
     </para>
-    <para> 
-     See also <function>readgzfile</function>, and
+			<para> 
+     참고<function>readgzfile</function>, 와
      <function>gzopen</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzgetc">
-   <refnamediv>
-    <refname>gzgetc</refname>
-    <refpurpose>Get character from gz-file pointer</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>gzgetc</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Returns a string containing a single (uncompressed) character
-     read from the file pointed to by zp.  Returns FALSE on EOF (as
-     does <function>gzeof</function>).
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzgetc">
+		<refnamediv>
+			<refname>gzgetc</refname>
+			<refpurpose>지정된 .gz파일로부터 문자를 추출한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>gzgetc</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     zp에 의해 지정된 파일로부터 문자열에 포함된 단문자(압축되지 않은)를  반환한다. EOF의 경우 FALSE를 반환한다(마치 <function>gzeof</function>처럼).
     </para>
-    <para>
-     The gz-file pointer must be valid, and must point to a file
-     successfully opened by <function>gzopen</function>.
+			<para>
+     .gz 파일의 지정은 정확해야 하고 ,<function>gzopen</function>에 의해 성공적으로 열린 파일이어야 한다.
     </para>
-    <para> 
-     See also <function>gzopen</function>, and
+			<para> 
+     참고 <function>gzopen</function>, 과
      <function>gzgets</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzgets">
-   <refnamediv>
-    <refname>gzgets</refname>
-    <refpurpose>Get line from file pointer</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>gzgets</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-      <paramdef>int <parameter>length</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Returns a (uncompressed) string of up to length - 1 bytes read
-     from the file pointed to by fp. Reading ends when length - 1
-     bytes have been read, on a newline, or on EOF (whichever comes
-     first).
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzgets">
+		<refnamediv>
+			<refname>gzgets</refname>
+			<refpurpose>지정된 파일로 부터 라인을 읽어 들인다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>gzgets</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+					<paramdef>int <parameter>length</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     fp에 의해 지정된 파일로부터 length - 1 bytes의 문장을 리턴한다. length - 1 bytes를 읽거나, 새로운 라인을 만나거나, EOF의 경우 (혹 처음으로 돌아가든지), 읽는것을 그만둔다.
     </para>
-    <para> 
-     If an error occurs, returns false.
+			<para> 
+     에러가 일어난 경우 false를 반환한다.
     </para>
-    <para> 
-     The file pointer must be valid, and must point to a file
-     successfully opened by <function>gzopen</function>.
+			<para> 
+     파일의 지정은 정확해야 하고, <function>gzopen</function>에 의해 성공적으로 열린 파일이어야 한다.
     </para>
-    <para> 
-     See also <function>gzopen</function>,
-     <function>gzgetc</function>, and <function>fgets</function>.
+			<para> 
+     참고 <function>gzopen</function>,
+     <function>gzgetc</function>, <function>fgets</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzgetss">
-   <refnamediv>
-    <refname>gzgetss</refname>
-    <refpurpose>
-     Get line from gz-file pointer and strip HTML tags
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzgetss">
+		<refnamediv>
+			<refname>gzgetss</refname>
+			<refpurpose>
+     .gz 파일로부터 HTML 태그를 제외하고 한 라인을 읽는다,
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>gzgetss</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-      <paramdef>int <parameter>length</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>allowable_tags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Identical to <function>gzgets</function>, except that
-     <function>gzgetss</function> attempts to strip any HTML and PHP
-     tags from the text it reads.
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>gzgetss</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+					<paramdef>int <parameter>length</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>allowable_tags</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     <function>gzgets</function>와 동일하나, <function>gzgetss</function>은 읽은 문자에서 HTML과 PHP
+     태그를 제외한다.
     </para>
-    <para>
-     You can use the optional third parameter to specify tags which
+			<para>
+     세번째 옵션의 파라미터를 사용하여 명시한 태그를 제외하지 않을 수 있다.You can use the optional third parameter to specify tags which
      should not be stripped.
      <note>
-      <para>
-       <parameter>Allowable_tags</parameter> was added in PHP 3.0.13,
-       PHP4B3.
-      </para> 
-     </note>
+					<para>
+						<parameter>Allowable_tags</parameter>는 PHP 3.0.13,
+       PHP4B3에 포함되었다.
+      </para>
+				</note>
+			</para>
+			<para>
+     참고 <function>gzgets</function>,
+     <function>gzopen</function>, <function>strip_tags</function>.
     </para>
-    <para>
-     See also <function>gzgets</function>,
-     <function>gzopen</function>, and <function>strip_tags</function>.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzopen">
+		<refnamediv>
+			<refname>gzopen</refname>
+			<refpurpose>.gz파일을 연다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzopen</function>
+					</funcdef>
+					<paramdef>string <parameter>filename</parameter>
+					</paramdef>
+					<paramdef>string <parameter>mode</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>use_include_path</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     gzip (.gz)파일을 읽기 또는 쓰기위해 연다. mode 파라미터는 <function>fopen</function> ("rb" or "wb")와 같고, 또한 압축레벨 ("wb9") 또는 stategy를 포함한다: 'f'
+      for filtered data as in "wb6f", 'h' for Huffman only compression
+     as in "wb1h". (strategy parameter에 관한 보다 많은 정보를 원한다면 the description of deflateInit2 in zlib.h보라.)
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzopen">
-   <refnamediv>
-    <refname>gzopen</refname>
-    <refpurpose>Open gz-file</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzopen</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-      <paramdef>string <parameter>mode</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>use_include_path</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Opens a gzip (.gz) file for reading or writing. The mode
-     parameter is as in <function>fopen</function> ("rb" or "wb") but
-     can also include a compression level ("wb9") or a strategy: 'f'
-     for filtered data as in "wb6f", 'h' for Huffman only compression
-     as in "wb1h". (See the description of deflateInit2 in zlib.h for
-     more information about the strategy parameter.)
+			<para>
+				<function>Gzopen</function>은 gzip 포멧이 아닌 파일을 읽는데 사용될 수 있다.; 이 경우 <function>gzread</function>로 압축해제 없이 바로 파일로 부터 읽을 수 있다.
     </para>
-    <para>
-     <function>Gzopen</function> can be used to read a file which is
-     not in gzip format; in this case <function>gzread</function> will
-     directly read from the file without decompression.
+			<para>
+				<function>Gzopen</function>은 열고자 지정한 파일을 리턴 한다. 그리고는 읽고자 하는 모든것을 압축해제하고, 기록하고 압축할 수 있다.
+				    </para>
+			<para>
+     만일 열기에 실패하면 false를 리턴한다.
     </para>
-    <para>
-     <function>Gzopen</function> returns a file pointer to the file
-     opened, after that, everything you read from this file descriptor
-     will be transparently decompressed and what you write gets
-     compressed.
+			<para>
+    세번째 옵션의 파라미터에 "1"을 넣으면 <link linkend="ini.include-path">include_path</link>안의 파일을 검색 할수 있다.
     </para>
-    <para>
-     If the open fails, the function returns false.
-    </para>
-    <para>
-     You can use the optional third parameter and set it to "1", if
-     you want to search for the file in the <link
-     linkend="ini.include-path">include_path</link>, too.
-    </para>
-    <para>
-     <example>
-      <title><function>Gzopen</function> Example</title>
-      <programlisting role="php">
+			<para>
+				<example>
+					<title>
+						<function>Gzopen</function> Example</title>
+					<programlisting role="php">
 $fp = gzopen ("/tmp/file.gz", "r");
       </programlisting>
-     </example>
+				</example>
+			</para>
+			<para>
+    참고 <function>gzclose</function>.
     </para>
-    <para>
-     See also <function>gzclose</function>.
-    </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzpassthru">
-   <refnamediv>
-    <refname>gzpassthru</refname>
-    <refpurpose>
-     Output all remaining data on a gz-file pointer
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzpassthru">
+		<refnamediv>
+			<refname>gzpassthru</refname>
+			<refpurpose>
+     지정된 파일의 남아있는 모든 데이타를 출력한다.
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzpassthru</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Reads to EOF on the given gz-file pointer and writes the
-     (uncompressed) results to standard output.
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzpassthru</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     지정된 .gz파일의 EOF을 읽으면 standard output으로 결과(압축되지 않은) 결과를 출력한다.
     </para>
-    <para>
-     If an error occurs, returns false.
+			<para>
+     에러가 나면 false를 리턴한다.
     </para>
-    <para>
-     The file pointer must be valid, and must point to a file
-     successfully opened by <function>gzopen</function>.
+			<para>
+     파일의 지정은 정확해야하고, <function>gzopen</function>의해 성공적으로 열린 파일이어야 한다.
     </para>
-    <para>
-     The gz-file is closed when <function>gzpassthru</function> is
-     done reading it (leaving <parameter>zp</parameter> useless).
+			<para>
+     <function>gzpassthru</function>가 읽는것을 마치면 .gz파일은 닫힌다.(leaving <parameter>zp</parameter>는 불필요하다).
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzputs">
-   <refnamediv>
-    <refname>gzputs</refname>
-    <refpurpose>Write to a gz-file pointer</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzputs</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-      <paramdef>string <parameter>str</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>length</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>Gzputs</function> is an alias to
-     <function>gzwrite</function>, and is identical in every way.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzputs">
+		<refnamediv>
+			<refname>gzputs</refname>
+			<refpurpose>지정된 .gz 파일에 기록한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzputs</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+					<paramdef>string <parameter>str</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>length</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>Gzputs</function>은 <function>gzwrite</function>와 모든면에서 동일하다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzread">
-   <refnamediv>
-    <refname>gzread</refname>
-    <refpurpose>Binary-safe gz-file read</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>gzread</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-      <paramdef>int <parameter>length</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
-     <function>gzread</function> reads up to
-     <parameter>length</parameter> bytes from the gz-file pointer
-     referenced by <parameter>zp</parameter>. Reading stops when
-     <parameter>length</parameter> (uncompressed) bytes have been read
-     or EOF is reached, whichever comes first.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzread">
+		<refnamediv>
+			<refname>gzread</refname>
+			<refpurpose>.gz로부터 바이트값을 읽어들인다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>gzread</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+					<paramdef>int <parameter>length</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
+				<function>gzread</function>은 <parameter>zp</parameter>로부터 참조된 지정된 .gz 파일로부터 <parameter>length</parameter>만큼의 byte값을 읽어들인다. <parameter>length</parameter> (압축되지 않은)만큼의 byte를 읽거나 EOF에 다다르면 읽기를 멈춘다. (처음으로 돌아가는것 포함)
     </simpara>
-    <para>
-    <informalexample>
-      <programlisting role="php">
+			<para>
+				<informalexample>
+					<programlisting role="php">
 // get contents of a gz-file into a string
 $filename = "/usr/local/something.txt.gz";
 $zd = gzopen ($filename, "r");
 $contents = gzread ($zd, 10000);
 gzclose ($zd);
       </programlisting>
-     </informalexample>
-    </para>
-    <simpara>
-     See also <function>gzwrite</function>, <function>gzopen</function>,
+				</informalexample>
+			</para>
+			<simpara>
+    참고 <function>gzwrite</function>, <function>gzopen</function>,
      <function>gzgets</function>, <function>gzgetss</function>,
-     <function>gzfile</function>, and <function>gzpassthru</function>.
+     <function>gzfile</function>, <function>gzpassthru</function>.
     </simpara>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzrewind">
-   <refnamediv>
-    <refname>gzrewind</refname>
-    <refpurpose>Rewind the position of a gz-file pointer</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzrewind</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>    
-     Sets the file position indicator for zp to the beginning of the
-     file stream.
-    </para> 
-    <para> 
-     If an error occurs, returns 0.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzrewind">
+		<refnamediv>
+			<refname>gzrewind</refname>
+			<refpurpose>지정된 .gz파일을 리와인드한다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzrewind</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>    
+     zp를 지시자로 파일스트림의 시작위치로 파일 포지션을 둔다.
     </para>
-    <para> 
-     The file pointer must be valid, and must point to a file
-     successfully opened by <function>gzopen</function>.
+			<para> 
+     error가 발생하면 0을 반환한다.
     </para>
-    <para>
-     See also <function>gzseek</function> and
-     <function>gztell</function>.
+			<para> 
+     파일의 지어은 정확해야 하고, <function>gzopen</function>에 의해 성공적으로 열린 파일이어야 한다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzseek">
-   <refnamediv>
-    <refname>gzseek</refname>
-    <refpurpose>Seek on a gz-file pointer</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzseek</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-      <paramdef>int <parameter>offset</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Sets the file position indicator for the file referenced by zp to
-     offset bytes into the file stream. Equivalent to calling (in C)
-     <literal>gzseek( zp, offset, SEEK_SET )</literal>.
+			<para>
+    참고 <function>gzseek</function>, <function>gztell</function>.
     </para>
-    <para>
-     If the file is opened for reading, this function is emulated but
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzseek">
+		<refnamediv>
+			<refname>gzseek</refname>
+			<refpurpose>지정된 .gz 파일을 검색한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzseek</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+					<paramdef>int <parameter>offset</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     파일 스트림 내부에서 zp참조로 지정된 파일 포지션을 offset으로 이동한다. C에서 <literal>gzseek( zp, offset, SEEK_SET )</literal>의 호출과 동일하다.
+    </para>
+			<para>
+     만약 파일이 읽기속성으로 열린 경우, 이 함수는 에뮬레이트 될 수 있지만 매우 느릴수도 있다. 만일 쓰기 속성으로 열린경우에는, 오직 순차검색만을 지원한다.
+:gzseek는 새 시작위치까지 0의 연속으로 압축한다.(이상해서 원문을 포함합니다.) 원문:If the file is opened for reading, this function is emulated but
      can be extremely slow. If the file is opened for writing, only
      forward seeks are supported; gzseek then compresses a sequence of
      zeroes up to the new starting position.
     </para>
-    <para>
-     Upon success, returns 0; otherwise, returns -1. Note that seeking
-     past EOF is not considered an error.
+			<para>
+     성공할 경우 0을 반환하고; 그렇지 않은 경우 -1을 반환한다. EOF를 지나는 검색은 error을 고려하지 않는다.
     </para>
-    <para>
-     See also <function>gztell</function> and
-     <function>gzrewind</function>.
+			<para>
+     참고 <function>gztell</function>, <function>gzrewind</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gztell">
-   <refnamediv>
-    <refname>gztell</refname>
-    <refpurpose>Tell gz-file pointer read/write position</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gztell</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Returns the position of the file pointer referenced by
-     <parameter>zp</parameter>; i.e., its offset into the file
-     stream.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gztell">
+		<refnamediv>
+			<refname>gztell</refname>
+			<refpurpose>지정된 .gz 파일의 read/write position을 리턴한다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gztell</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     <parameter>zp</parameter>에의해 참조된 파일위치의 포인터를 반환한다; 즉, 파일스트림 내부의 offset
     </para>
-    <para>
-     If an error occurs, returns false.
+			<para>
+     만일 에러가 발생하면 false를 반환.
     </para>
-    <para>
-     The file pointer must be valid, and must point to a file
-     successfully opened by <function>gzopen</function>.
+			<para>
+     파일은 정확히 지정되어야 하고, <function>gzopen</function>에의해 성공적으로 열린 파일이어야 한다.
     </para>
-    <para> 
-     See also <function>gzopen</function>, <function>gzseek</function>
-     and <function>gzrewind</function>.
+			<para> 
+     참고 <function>gzopen</function>, <function>gzseek</function>, <function>gzrewind</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzwrite">
-   <refnamediv>
-    <refname>gzwrite</refname>
-    <refpurpose>Binary-safe gz-file write</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>gzwrite</function></funcdef>
-      <paramdef>int <parameter>zp</parameter></paramdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>length</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <simpara>
-     <function>Gzwrite</function> writes the contents of
-     <parameter>string</parameter> to the gz-file stream pointed to by
-     <parameter>zp</parameter>. If the <parameter>length</parameter>
-     argument is given, writing will stop after
-     <parameter>length</parameter> (uncompressed) bytes have been
-     written or the end of <parameter>string</parameter> is reached,
-     whichever comes first.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzwrite">
+		<refnamediv>
+			<refname>gzwrite</refname>
+			<refpurpose>지정된 string을 .gz파일 스트림에 기록한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>gzwrite</function>
+					</funcdef>
+					<paramdef>int <parameter>zp</parameter>
+					</paramdef>
+					<paramdef>string <parameter>string</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>length</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<simpara>
+				<function>Gzwrite</function>는 <parameter>zp</parameter>에 의해 지정된 .gz파일스트림에 <parameter>string</parameter>을 기록한다.
+				만일 <parameter>length</parameter>가 주어지면,  <parameter>length</parameter> (압축되지않은) 바이트마큼 쓰여지거나, <parameter>string</parameter>의 끝에 도달하거나, 혹은 초기화되거나하면 '쓰기'가 중지된다.
     </simpara>
-    <simpara>
-     Note that if the <parameter>length</parameter> argument is given,
-     then the <link
-     linkend="ini.magic-quotes-runtime">magic_quotes_runtime</link>
-     configuration option will be ignored and no slashes will be
-     stripped from <parameter>string</parameter>.
+			<simpara>
+     만일 <parameter>length</parameter>항목이 주어지면,
+     <link linkend="ini.magic-quotes-runtime">magic_quotes_runtime</link>
+     환경설정은 무시되어지고, <parameter>string</parameter>에서 '/'은 제거되지 않는다는것을 유의하라.
     </simpara>
-    <simpara>
-     See also <function>gzread</function>, <function>gzopen</function>,
-     and <function>gzputs</function>.
+			<simpara>
+     참고 <function>gzread</function>, <function>gzopen</function>, <function>gzputs</function>.
     </simpara>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.readgzfile">
-   <refnamediv>
-    <refname>readgzfile</refname>
-    <refpurpose>Output a gz-file</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>readgzfile</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>use_include_path</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Reads a file, decompresses it and writes it to standard
-     output.
+		</refsect1>
+	</refentry>
+	<refentry id="function.readgzfile">
+		<refnamediv>
+			<refname>readgzfile</refname>
+			<refpurpose>.gz파일을 출력한다</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>readgzfile</function>
+					</funcdef>
+					<paramdef>string <parameter>filename</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>use_include_path</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+     파일을 읽고, 압축해제를하고 standard output으로 출력한다.
     </para>
-    <para>
-     <function>Readgzfile</function> can be used to read a file which
-     is not in gzip format; in this case
-     <function>readgzfile</function> will directly read from the file
-     without decompression.
+			<para>
+				<function>Readgzfile</function>은 gzip format이 아니더라도 읽을 수 있다.; 이 경우 <function>readgzfile</function>은 바로 압축해제없이 파일을 읽어들이 수 있다.
     </para>
-    <para> 
-     Returns the number of (uncompressed) bytes read from the file. If
-     an error occurs, false is returned and unless the function was
-     called as <literal>@readgzfile</literal>, an error message is
-     printed.
+			<para> 
+     파일로부터 읽어들인 바이트수(압축되지 않은)를 리턴한다. 만일 에러가 발생하면, -<literal>@readgzfile</literal>라고 불리우는 경우가 아닌한- false를 반환하고, 에러메세지를 출력한다.
     </para>
-    <para> 
-     The file <parameter>filename</parameter> will be opened from the
-     filesystem and its contents written to standard output.
+			<para> 
+    <parameter>filename</parameter>은 파일시스템으로부터 열려지고, 그 내용은 standard output으로 출력된다.
     </para>
-    <para>
-     You can use the optional second parameter and set it to "1", if
-     you want to search for the file in the <link
-     linkend="ini.include-path">include_path</link>, too.
+			<para>
+    <link linkend="ini.include-path">include_path</link>안의 파일을 검색하고자 원한다면, 두번째 옵션의 파라미터를 "1"을 넣으면 된다.
     </para>
-    <para>
-     See also <function>gzpassthru</function>,
-     <function>gzfile</function>, and <function>gzopen</function>.
+			<para>
+     참고 <function>gzpassthru</function>,
+     <function>gzfile</function>, <function>gzopen</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzcompress">
-   <refnamediv>
-    <refname>gzcompress</refname>
-    <refpurpose>Gz-compress a string</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>gzcompress</function></funcdef>
-      <paramdef>string <parameter>data</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>level</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     This function returns a gzip-compressed version of the input
-     <parameter>data</parameter> or false on errors. The optional
-     parameter <parameter>level</parameter> can be given as 0 for no
-     compression up to 9 for maximum compression.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzcompress">
+		<refnamediv>
+			<refname>gzcompress</refname>
+			<refpurpose>.gz로 문자를 압축한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>gzcompress</function>
+					</funcdef>
+					<paramdef>string <parameter>data</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>level</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     이 함수는 입력된<parameter>data</parameter>의 gzip압축버젼을 리턴하거나 에러발생시 false를 반환한다. 옵션의 파라미터인 <parameter>level</parameter>은 압축률이 0인 0부터 최대압축률인 9까지 주어진다.
     </para>
-    <para>
-     See also <function>gzuncompress</function>.
+			<para>
+     참고 <function>gzuncompress</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.gzuncompress">
-   <refnamediv>
-    <refname>gzuncompress</refname>
-    <refpurpose>Uncompress a gz-compressed string</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>gzuncompress</function></funcdef>
-      <paramdef>string <parameter>data</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>length</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>			
-     This function takes <parameter>data</parameter> compressed by
-     <function>gzcompress</function> and returns the orignial
-     uncompressed data or false on error.  The function will return an
-     error if the uncompressed data is more than 256 times the lenght
-     of the compressed input <parameter>data</parameter> or more than
-     the optional parameter <parameter>length</parameter>.
+		</refsect1>
+	</refentry>
+	<refentry id="function.gzuncompress">
+		<refnamediv>
+			<refname>gzuncompress</refname>
+			<refpurpose>gz로 압축된 문자를 압축해제 한다.</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>Description</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>gzuncompress</function>
+					</funcdef>
+					<paramdef>string <parameter>data</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>length</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>			
+     이 함수는 <function>gzcompress</function>로 압축된 <parameter>data</parameter>를 취하여, 압축되지않은 원본데이터를 반환하거나 에러의 경우 false를 반환한다. 만일 압축해제된 데이타가 압축되어 입력된 <parameter>data</parameter>보다 256배 이상이거나 옵션의 파라미터의 <parameter>length</parameter>이상인 경우 에러를 반환한다.
     </para>
-    <para>
-     See also <function>gzcompress</function>.
+			<para>
+     참고 <function>gzcompress</function>.
     </para>
-   </refsect1>
-  </refentry>
-
- </reference>
-
+		</refsect1>
+	</refentry>
+</reference>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
