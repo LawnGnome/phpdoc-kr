@@ -1,27 +1,25 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.8 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.9 $ -->
+<!-- EN-Revision: 1.25 -->
  <chapter id="language.references">
-  <title>References Explained</title>
+  <title>참조 표현</title>
 
   <sect1 id="language.references.whatare">
-   <title>What References Are</title>
+   <title>참조란 무엇인가</title>
    <simpara>  
-    References in PHP are a means to access the same variable content 
-    by different names. They are not like C pointers, they are symbol
-    table aliases. Note that in PHP, variable name and variable content 
-    are different, so the same content can have different names.
-    The most close analogy is with Unix filenames and files -
-    variable names are directory entries, while variable contents is
-    the file itself. References can be thought of as hardlinking in
-    Unix filesystem.
+    PHP에서 참조란 다른 이름으로 같은 변수의 내용에 접근한다는 것을
+    의미한다. C 포인터와 비슷한 개념은 아니며, 심볼 테이블이라고 볼수 있다.
+    PHP에서 변수명과 변수의 내용은 다르다. 그래서 같은 내용이 다른 이름을
+    갖을수 있다. 유닉스 파일명과 파일에 가장 가까운 개념이다 - 변수명은
+    디렉토리 엔트리이고, 변수 내용은 파일 자체라고 볼수 있다. 참조는 유닉스
+    파일시스템의 하드 링크(hardlinking)와 유사하다.
    </simpara>
   </sect1>
 
   <sect1 id="language.references.whatdo">
-   <title>What References Do</title>
+   <title>참조는 무엇을 하는가</title>
    <para>
-    PHP references allow you to make two variables to refer to the
-    same content. Meaning, when you do:
+    PHP 참조는 두 변수가 같은 내용을 참조할수 있게 한다. 다음과 같은 일을 한다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -31,21 +29,20 @@ $a =& $b
 ]]>
      </programlisting>
     </informalexample>
-    it means that <varname>$a</varname> and <varname>$b</varname>
-    point to the same variable.
+    <varname>$a</varname>와 <varname>$b</varname>는 같은 변수를 가리킨다는 것을
+    의미이다.
     <note>
      <para>
-      <varname>$a</varname> and <varname>$b</varname> are completely
-      equal here, that's not <varname>$a</varname> is pointing to
-      <varname>$b</varname> or vice versa, that's
-      <varname>$a</varname> and <varname>$b</varname> pointing to the
-      same place.
+      여기서 <varname>$a</varname>와 <varname>$b</varname>는 완전히 같다.
+      <varname>$a</varname>는 <varname>$b</varname>를 가리키고, 그 반대일수도 있다.
+      <varname>$a</varname>와 <varname>$b</varname>는 같은 곳을 가리키고 있다.
+    
      </para>
     </note>
    </para>
    <para>
-   The same syntax can be used with functions, that return references,
-   and with <literal>new</literal> operator (in PHP 4.0.4 and later):
+   같은 문법은 함수에도 적용된다. 참조를 돌려받고, 
+   <literal>new</literal>연산자와도 함께 쓸수 있다 (PHP 4.0.4 이후 버전부터 유효):
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -59,26 +56,23 @@ $foo =& find_var ($bar);
     </para>
     <note>
      <para>
-     Not using the <literal>&amp;</literal> operator causes a copy of the
-     object to be made. If you use <literal>$this</literal> in the class it
-     will operate on the current instance of the class. The assignment without
-     <literal>&amp;</literal> will copy the instance (i.e. the object) and
-     <literal>$this</literal> will operate on the copy, which is not always
-     what is desired. Usually you want to have a single instance to work with,
-     due to performance and memory consumption issues.
+     <literal>&amp;</literal> 연산자를 사용하지않으면 생성된 객체의 복사본을 돌려받는다.
+     그 클래스에서 <literal>$this</literal>를 사용한다면 그것은 클래스의 현재 인스턴스에만
+     영향을 미친다. <literal>&amp;</literal>가 없는 지정은 인스턴스(즉, 객체)를 복사할것이고
+     <literal>$this</literal>는 복사본에만 영향을 미칠것이다. 이와 같은 것은
+     퍼포먼스와 메모리의 효율적인 사용을 위해 오직 하나의 인스턴스만 취급하기를 원할 경우에 사용된다.
      </para>
      <para>
-      While you can use the <literal>@</literal> operator to
-      <emphasis>mute</emphasis> any errors in the constructor when using it as
-      <literal>@new</literal>, this does not work when using the
-      <literal>&amp;new</literal> statement. This is a limitation of the Zend
-      Engine and will therefore result in a parser error.
+      <literal>@new</literal>처럼 생성자에서 발생하는 모든 에러 메시지를
+      <emphasis>보이지 않게</emphasis> 하기 위해서 <literal>@</literal>연산자를 사용할수 있지만,
+      <literal>&amp;new</literal>구문을 사용할때는 이 연산자는 작동하지 않는다.
+      이것은 젠드 엔진(Zend Engine)의 한계이고 이런 표현을 쓰면 파싱 에러가 발생한다.
      </para>
    </note>
    <para>
-    The second thing references do is to pass variables
-    by-reference. This is done by making a local variable in a function and
-    a variable in the calling scope reference to the same content. Example:
+    참조가 하는 두번째 일은 참조에 의해 변수를 전달하는 것이다. 이와 같은 것은 
+    함수에서 지역 변수를 만들거나 같은 내용을 참조하는 호출을 사용하는 변수를 
+    생성함으로써 가능해진다. 예를 들면:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -94,23 +88,22 @@ foo ($a);
 ]]>
      </programlisting>
     </informalexample>
-    will make <varname>$a</varname> to be 6. This happens because in
-    the function <varname>foo</varname> the variable
-    <varname>$var</varname> refers to the same content as
-    <varname>$a</varname>. See also more detailed explanations about <link
-    linkend="language.references.pass">passing by reference</link>.
+    위 코드는 <varname>$a</varname>를 6으로 만들것이다. 이렇게 되는 이유는
+    <varname>foo</varname>함수 안의 변수 <varname>$var</varname>가 
+    <varname>$a</varname>와 같은 내용을 가리키기 때문이다.
+    더 자세한 설명을 <link linkend="language.references.pass">참조에 의한 전달</link>
+    섹션에서 볼수 있다.
    </para>
    <simpara>
-    The third thing reference can do is <link
-    linkend="language.references.return">return by reference</link>.
+    참조가 하는 세번째 일은 <link linkend="language.references.return">참조에 의해 돌려받기</link>이다.
    </simpara>
   </sect1>
 
   <sect1 id="language.references.arent">
-   <title>What References Are Not</title>
+   <title>참조가 아닌것</title>
    <para>
-    As said before, references aren't pointers. That means, the
-    following construct won't do what you expect:
+    전에 설명했듯이, 참조는 포인터가 아니다. 이말의 의미는 다음
+    구문이 기대하던대로 작업을 수행하지 않을것이란 의미이다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -126,24 +119,22 @@ foo($bar);
     </informalexample>
    </para>
    <simpara>
-    What happens is that <varname>$var</varname> in
-    <varname>foo</varname> will be bound with
-    <varname>$bar</varname> in caller, but then it will be
-    re-bound with <varname>$GLOBALS["baz"]</varname>. There's no way
-    to bind <varname>$bar</varname> in the calling scope to something else
-    using the reference mechanism, since <varname>$bar</varname> is not
-    available in the function <varname>foo</varname> (it is represented by
-    <varname>$var</varname>, but <varname>$var</varname> has only
-    variable contents and not name-to-value binding in the calling
-    symbol table).
+    위 예제코드에서 <varname>foo</varname>안의 <varname>$var</varname>변수는 
+    호출자 안의 <varname>$bar</varname>와 연결될것이다. 그리고 이 변수는
+    <varname>$GLOBALS["baz"]</varname>과 다시 연결될것이다. 참조 메카니즘을
+    사용하여 다른 호출 영역안의 <varname>$bar</varname>를 연결할수 있는 방법이
+    존재하지는 않는다. 왜냐하면 <varname>$bar</varname>는 함수 <varname>foo</varname>에서
+    유효하지 않기 때문이다 (그것은 <varname>$var</varname>에 의해 표현되는 것이 아니고, 
+    <varname>$var</varname>는 오직 변수 내용만을 소유하고 호출 심볼 테이블 내에서
+    이름이 값으로 변환되어 연결되지는 않는다).
    </simpara>
   </sect1>
 
   <sect1 id="language.references.pass">
-   <title>Passing by Reference</title>
+   <title>참조에 의한 전달</title>
    <para>
-   You can pass variable to function by reference, so that function could modify
-   its arguments. The syntax is as follows:
+   참조에 의해 함수로 변수를 전달할수 있다. 이런 기법은 함수의 인수를 변경할수 있도록 한다.
+   문법은 다음과 같다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -160,26 +151,27 @@ foo ($a);
 ]]>
      </programlisting>
     </informalexample>
-  Note that there's no reference sign on function call - only on
-  function definition. Function definition alone is enough to
-  correctly pass the argument by reference. 
+  함수 호출에 대해 참조 표시를 할수 없다는 것에 주의해야 한다. 
+  - 함수선언에서만 참조표시를 할수 있다
+  함수 선언만으로도 충분히 참조에 의해 인수를 정확하게 전달할수 있다.
+
   </para>
   <para>
-  Following things can be passed by reference:
+  다음과 같은 것들은 참조에 의해 전달될수 있다:
    <itemizedlist>
     <listitem>
      <simpara>
-      Variable, i.e. <literal>foo($a)</literal>
+      변수, i.e. <literal>foo($a)</literal>
      </simpara>
     </listitem>
     <listitem>
      <simpara>
-      New statement, i.e. <literal>foo(new foobar())</literal>
+      New 구문, i.e. <literal>foo(new foobar())</literal>
      </simpara>
     </listitem>
     <listitem>
      <para>
-      Reference, returned from a function, i.e.:
+      참조, 함수에서 돌려받기, i.e.:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -194,16 +186,15 @@ foo(bar());
 ]]>
      </programlisting>
     </informalexample>
-    See also explanations about <link
-    linkend="language.references.return">returning by reference</link>. 
+    <link linkend="language.references.return">참조로 돌려받기</link>에서도
+    이 주제와 관련된 내용을 볼수 있다.
      </para>
     </listitem>
   </itemizedlist>
   </para>
   <para>
-  Any other expression should not be passed by reference, as the
-  result is undefined. For example, the following examples of passing
-  by reference are invalid:
+  결과가 정의되어 있지 않기 때문에, 어떤 표현식들은 참조에 의해 전달되어서는 안된다. 
+  예를 들어, 다음과 같은 참조에 의한 전달의 예제코드는 유효하지 않다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -221,16 +212,15 @@ foo(5) // Constant, not variable
 ]]>
      </programlisting>
     </informalexample>
-		These requirements are for PHP 4.0.4 and later.
+		이런 조건은 PHP 4.0.4 이후 버전에서만 요구된다.
   </para>
   </sect1>
 
   <sect1 id="language.references.return">
-   <title>Returning References</title>
+   <title>참조 돌려받기</title>
    <para>
-    Returning by-reference is useful when you want to use a function
-    to find which variable a reference should be bound to. When
-    returning references, use this syntax:
+    참조에 의한 돌려받기는 참조에 연결되어 있는 변수를 확인하기 위해
+    함수를 사용할 때 유용하다. 참조 돌려받기는 다음과 같은 문법을 사용한다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -247,27 +237,25 @@ $foo->x = 2;
 ]]>
      </programlisting>
     </informalexample>
-    In this example, the property of the object returned by the
-    <varname>find_var</varname> function would be set, not the
-    copy, as it would be without using reference syntax.
+    위 예제 코드는  함수 <varname>find_var</varname>에 의해 돌려받는
+    객체의 속성을 설정하지만, 참조 문법을 사용하지 않을 때와 같은
+    복사가 아니다.
    </para>
    <note>
     <simpara>
-     Unlike parameter passing, here you have to use
-     <literal>&amp;</literal> in both places - to indicate that you
-     return by-reference, not a copy as usual, and to indicate that
-     reference binding, rather than usual assignment, should be done
-     for <varname>$foo</varname>.
+     인자가 전달되는것과 달리, 여기서는 두 근데에서 <literal>&amp;</literal>을
+     사용해야 한다 - 보통의 복사가 아니라, 참조에 의해 돌려받는다는것을 가리킬때,
+     그리고 일반적인 지정이 아닌 참조 연결이라는 것을 가리킬때,
+     <varname>$foo</varname>변수에 대해 사용해야 한다.
     </simpara>
    </note>
   </sect1>
 
   <sect1 id="language.references.unset">
-   <title>Unsetting References</title>
+   <title>참조 해제</title>
    <para>
-    When you unset the reference, you just break the binding between
-    variable name and variable content. This does not mean that
-    variable content will be destroyed. For example:
+    참조 unset하면 변수 명과 변수 내용 사이의 연결만을 끊는다. 이 말의
+    의미는 변수 내용이 사라질것이라는 것을 의미하지 않는다. 예를 들면:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -279,30 +267,28 @@ unset ($a);
 ]]>
      </programlisting>
     </informalexample>
-    won't unset <varname>$b</varname>, just <varname>$a</varname>. 
+    위 예제 코드는 <varname>$a</varname>만 해제되고 <varname>$b</varname>를 
+    해제(unset)하지는 않을것이다.
    </para>
    <simpara>
-    Again, it might be useful to think about this as analogous to Unix
-    <command>unlink</command> call.
+    다시 말하면, 유닉스의 <command>unlink</command> 호출에 비유할수 있을것이다.
    </simpara>
   </sect1>
 
   <sect1 id="language.references.spot">
-   <title>Spotting References</title>
+   <title>참조로 볼수 있는것</title>
    <simpara>
-    Many syntax constructs in PHP are implemented via referencing
-    mechanisms, so everything told above about reference binding also
-    apply to these constructs. Some constructs, like passing and
-    returning by-reference, are mentioned above. Other constructs that
-    use references are:
+    PHP내의 많은 문법 구조가 참조 메카니즘에 의해 구현된다. 그래서 
+    위에서 설명한 모든 참조 연결이 이런 구조에 적용된다.  위에서
+    참조에 의한 전달과 참조에 의한 돌려주기 같은 몇몇 구조문을 설명했다.
+    다음과 같은 구조는 참조를 사용한다:
    </simpara>
 
    <sect2 id="references.global">
-    <title><literal>global</literal> References</title>
+    <title><literal>global</literal> 참조</title>
     <para>
-     When you declare variable as <command>global $var</command> you
-     are in fact creating reference to a global variable. That means,
-     this is the same as:
+     <command>global $var</command>처럼 변수를 선언하면 전역 변수에
+     대한 참조를 생성하게 된다. 즉, 다음과 같은 의미를 갖는다:
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -314,16 +300,15 @@ $var =& $GLOBALS["var"];
      </informalexample>
     </para>
     <simpara>
-     That means, for example, that unsetting <varname>$var</varname>
-     won't unset global variable.
+     이것은 <varname>$var</varname>를 해체하는 것이 전역 변수를 해제하지 않는다는
+     것을 의미한다.
     </simpara>
    </sect2>
 
    <sect2 id="references.this">
     <title><literal>$this</literal></title>
     <simpara>
-     In an object method, <varname>$this</varname> is always reference
-     to the caller object.
+     객체 메소드에서,<varname>$this</varname>는 호출 객체로의 참조를 하게 된다.
     </simpara>
    </sect2>
   </sect1>
