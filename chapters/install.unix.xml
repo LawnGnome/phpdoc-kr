@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
   <sect1 id="install.unix">
    <title>유닉스 시스템에 설치</title>
    <para>
-    이 섹션은 유닉스 시스템에 PHP의 일반적인 설정과 설치법을 안내합니다.
-    작업을 시작하기 전에 사용하는 플랫폼이나 웹서버에 특화한 섹션이 존재하는지
-    살펴보십시오.
+    이 섹션은 PHP를 유닉스 시스템에 설치하는 일반적인 설정과 방법을
+    안내합니다. 작업을 시작하기 전에 사용하는 플랫폼이나 웹 서버에 특화한
+    섹션이 존재하는지 살펴보십시오.
    </para>
    <para>
     필요한 사전 지식과 소프트웨어:
     <itemizedlist>
      <listitem>
       <simpara>
-       기본 유닉스 기술 ("make"를 다룰 수 있고, 컴파일한다면 C 컴파일러도)
+       기본 유닉스 기술 (컴파일할 때, "make"와 C 컴파일러를 실행 가능)
       </simpara>
      </listitem> 
      <listitem>

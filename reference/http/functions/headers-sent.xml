@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.14 Maintainer: progcom Status: ok -->
+<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
   <refentry id="function.headers-sent">
    <refnamediv>
     <refname>headers_sent</refname>
@@ -13,12 +13,12 @@
       <methodparam choice="opt"><type>int</type><parameter>&amp;line</parameter></methodparam>
      </methodsynopsis>
     <simpara>
-     <function>headers_sent</function>는 아무런 HTTP 헤더가 전송되지 않았다면
+     <function>headers_sent</function>는 어떠한 HTTP 헤더도 전송하지 않았다면
      &false;를 반환하고, 그 외의 경우에는 &true;를 반환합니다. 선택적인
      <parameter>file</parameter>과 <parameter>line</parameter> 인자를
      설정하면, <function>headers_sent</function>는
      <parameter>file</parameter>과 <parameter>line</parameter> 변수에 출력을
-     시작한 php 소스 파일 이름과 줄 번호를 넣습니다.
+     시작한 PHP 소스 파일 이름과 줄 번호를 넣습니다.
     </simpara>
     <simpara>
      헤더 블록이 한번 전송되면 더 이상 <function>header</function> 함수를
@@ -94,4 +94,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

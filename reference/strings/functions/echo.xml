@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
   <refentry id="function.echo">
    <refnamediv>
     <refname>echo</refname>
@@ -52,7 +52,11 @@ echo 'foo는 $foo'; // foo는 $foo
 
 // 다른 문자를 사용하지 않는다면, 바로 변수를 echo할 수 있습니다.
 echo $foo;          // foobar
-echo $foo, $bar;    // foobarbarbaz
+echo $foo,$bar;     // foobarbarbaz
+
+// 몇몇 사람들은 결합 echo보다 복수 인자 사용을 선호합니다.
+echo 'This ', 'string ', 'was ', 'made ', 'with multiple parameters.', chr(10);
+echo 'This ' . 'string ' . 'was ' . 'made ' . 'with concatenation.' . "\n";
 
 echo <<<END
 이는 $variable 인터폴레이션을 가지는 여러 줄을

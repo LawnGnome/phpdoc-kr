@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 <section id="info.constants">
  &reftitle.constants;
  &extension.constants.core;
@@ -104,7 +104,7 @@
        <entry>INFO_CONFIGURATION</entry>
        <entry>4</entry>
        <entry>
-        php 지시어의 현재 로컬과 마스터 값. <function>ini_get</function> 참고.
+        PHP 지시어의 현재 로컬과 마스터 값. <function>ini_get</function> 참고.
        </entry>
       </row>
       <row>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.26 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.27 Maintainer: progcom Status: ready -->
   <refentry id="function.setcookie">
    <refnamediv>
     <refname>setcookie</refname>
@@ -87,9 +87,9 @@
          <entry><parameter>expire</parameter></entry>
          <entry>
           쿠키 만료 시간. 에포치로부터의 초수를 나타내는 유닉스
-          타임스탬프입니다. 보통, <function>time</function> 함수에 만료를
-          원하는 시간을 더해서 설정합니다. 혹은 <function>mktime</function>을
-          사용할 수 있습니다.
+          타임스탬프입니다. 보통, <function>time</function> 함수에 원하는 만료
+          시간을 더해서 설정합니다. 혹은 <function>mktime</function>을 사용할
+          수 있습니다.
          </entry>
          <entry>
           <literal>time()+60*60*24*30</literal>은 쿠키가 30일 후에 만료하도록
@@ -298,9 +298,10 @@ one : cookieone
       <ulink url="&url.rfc;2965">RFC 2965</ulink>를 참고하십시오.
      </para>
      <para>
-      <parameter>expire</parameter> 인자가 유닉스 타임스탬프가 아닌, 날짜 형식
-      <literal>Wdy, DD-Mon-YYYY HH:MM:SS GMT</literal>인 점을 깨달을 것입니다.
-      이는 PHP가 내부적으로 변환을 하기 때문입니다.
+      참고 문서에 따르면 <parameter>expire</parameter> 인자는 유닉스
+      타임스탬프가 아닌, <literal>Wdy, DD-Mon-YYYY HH:MM:SS
+      GMT</literal> 날짜 형식이여야 합니다. 이는 PHP가 내부적으로 변환을 하기
+      때문입니다.
      </para>
     </note>
     <note>

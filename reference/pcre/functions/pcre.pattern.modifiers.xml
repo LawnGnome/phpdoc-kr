@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
   <refentry id="pcre.pattern.modifiers">
    <refnamediv>
     <refname>패턴 변경자</refname>
@@ -77,11 +76,11 @@
       이용하여 일반적인 치환을 합니다.
      </simpara>
      <para>
-      <function>preg_replace</function>만이 이 변경자를 사용합니다;
-      다른 PCRE 함수에서는 무시합니다.
+      <function>preg_replace</function>만 이 변경자를 사용합니다;
+      다른 PCRE 함수는 무시합니다.
       <note>
        <simpara>
-        이 변경자는 PHP3에서는 사용할 수 없습니다.
+        이 변경자는 PHP 3에서는 사용할 수 없습니다.
        </simpara>
       </note>
      </para>
@@ -183,4 +182,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-
