@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
+<!-- $Revision: 1.12 $ -->
 <!-- EN-Revision: 1.56 -->
  <chapter id="security">
   <title>보안</title>
@@ -84,16 +84,15 @@
    <sect2 id="security.cgi-bin.attacks">
     <title>가능한 공격</title>
     <simpara>
-     Using PHP as a <acronym>CGI</acronym> binary is an option for
-     setups that for some reason do not wish to integrate PHP as a
-     module into server software (like Apache), or will use PHP with
-     different kinds of CGI wrappers to create safe chroot and setuid
-     environments for scripts.  This setup usually involves installing
-     executable PHP binary to the web server cgi-bin directory.  CERT
-     advisory <ulink url="&url.cert;">CA-96.11</ulink> recommends
-     against placing any interpreters into cgi-bin.  Even if the PHP
-     binary can be used as a standalone interpreter, PHP is designed
-     to prevent the attacks this setup makes possible:
+     몇가지 이유로 인해 PHP를 서버 소프트웨어(아파치 등)의 모듈로
+     사용하지 않거나, 다른 종류의 CGI wrappers로 스크립트에 대해
+     안전한 chroot와 setuid 환경을 제공하기 위해 <acronym>CGI</acronym>
+     바이너리로 PHP를 사용하는 것을 선택할 수 있습니다.
+     이 설치는 보통 실행 가능한 PHP 바이너리를 웹서버 cgi-bin 디렉토리에
+     두는 것입니다. CERT 권고 <ulink url="&url.cert;">CA-96.11</ulink>는
+     어떠한 인터프리터도 cgi-bin에 두지 않을 것을 권장합니다. PHP 바이너리는
+     독립 인터프리터로 사용할 수 있지만, 이러한 방법의 설치가 가능하도록 하는
+     몇가지 공격을 방지하도록 설계되어 있습니다.
     </simpara>
     <itemizedlist>
      <listitem>
@@ -117,36 +116,32 @@
        role="url">http://my.host/cgi-bin/php/secret/doc.html</filename>
       </simpara>
       <simpara>
-       The path information part of the url after the PHP binary name,
-       <filename role="uri">/secret/doc.html</filename> is
-       conventionally used to specify the name of the file to be
-       opened and interpreted by the <acronym>CGI</acronym> program.
-       Usually some web server configuration directives (Apache:
-       Action) are used to redirect requests to documents like
-       <filename
-       role="url">http://my.host/secret/script.php</filename> to the
-       PHP interpreter.  With this setup, the web server first checks
-       the access permissions to the directory <filename
-       role="uri">/secret</filename>, and after that creates the
-       redirected request <filename
-       role="url">http://my.host/cgi-bin/php/secret/script.php</filename>.
-       Unfortunately, if the request is originally given in this form,
-       no access checks are made by web server for file <filename
-       role="uri">/secret/script.php</filename>, but only for the
-       <filename role="uri">/cgi-bin/php</filename> file.  This way
-       any user able to access <filename
-       role="uri">/cgi-bin/php</filename> is able to access any
-       protected document on the web server.
+       PHP 바이너리 이름 뒤의 URL의 경로 정보 부분,
+       <filename role="uri">/secret/doc.html</filename>는 일반적으로
+       <acronym>CGI</acronym> 프로그램에 의해 그 이름의 파일을
+       열고 해석하도록 사용합니다. 보통 몇몇 웹 서버 환경 설정
+       지시자(아파치: Action)는 PHP 인터프리터에 <filename
+       role="url">http://my.host/secret/script.php</filename> 등의
+       요청으로 리다이렉트하도록 합니다. 이러한 설치로는, 웹 서버는
+       우선 디렉토리 <filename role="uri">/secret</filename>에 대해
+       접근 권한을 확인하고, 리다이렉트된 요청 <filename
+       role="url">http://my.host/cgi-bin/php/secret/script.php</filename>을
+       생성합니다. 불행하게도, 이러한 형식으로 요청이 주어지면,
+       <filename role="uri">/secret/script.php</filename>에 대한 접근 확인은
+       이루어지지 않고, 단순히 <filename role="uri">/cgi-bin/php</filename>
+       파일만을 확인합니다. 이 방법으로 <filename
+       role="uri">/cgi-bin/php</filename>에 접근할 수 있는 어떠한 유저라도
+       웹 서버로 보호된 어떠한 문서라도 접근할 수 있습니다.
       </simpara>
       <simpara>
-       In PHP, compile-time configuration option <link
-       linkend="install.configure.enable-force-cgi-redirect">--enable-force-cgi-redirect</link>
-       and runtime configuration directives <link
-       linkend="ini.doc-root">doc_root</link> and <link
-       linkend="ini.user-dir">user_dir</link> can be used to prevent
-       this attack, if the server document tree has any directories
-       with access restrictions.  See below for full the explanation
-       of the different combinations.
+       PHP에서는, 서버 문서 트리에 접근 제한을 가진 어떠한 디렉토리가
+       존재한다면, 컴파일시의 환경설정 옵션 <link
+       linkend="install.configure.enable-force-cgi-redirect">--enable-force-cgi-redirect</link>,
+       실행시 환경설정 지시자 <link
+       linkend="ini.doc-root">doc_root</link>와 <link
+       linkend="ini.user-dir">user_dir</link>를 사용하여 이 공격을
+       방지할 수 있습니다. 여러가지 조합에 관한 자세한 설명은 아래쪽을
+       참고하십시오.
       </simpara>
      </listitem>
     </itemizedlist>
