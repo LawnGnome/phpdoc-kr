@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <sect1 id="security.general">
+  <chapter id="security.general">
    <title>일반적인 고려 사항</title>
    <simpara>
     완벽한 보안 시스템은 불가능에 가깝기에, 보안 대책의 지향점은 보통
@@ -37,7 +37,7 @@
     프로그램은 크기를 고려하지 않으며, 단지 IP 블럭에서 희생자를 찾을
     뿐입니다. 희생자가 되지 마십시오.
    </simpara>
-  </sect1>
+  </chapter>
 
 <!-- Keep this comment at the end of the file
 Local variables:
