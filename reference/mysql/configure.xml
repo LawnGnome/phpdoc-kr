@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
 <section id="mysql.installation">
  &reftitle.install;
  <para id="mysql.configure">
-  설정 옵션 <optoin role="configure">--with-mysql[=DIR]</option>을
+  설정 옵션 <option role="configure">--with-mysql[=DIR]</option>을
   사용하여 <literal>PHP</literal>가 MySQL 데이터베이스 접근을 활성화합니다.
  </para>
  <para>
   PHP 4에서는, 옵션 <option role="configure">--with-mysql</option>은 기본값으로
   활성화되어 있습니다. 이 기본 행동을 비활성화하기 위해서, 설정 옵션
-  <option role="configure">--without-mysql</optoin>을 사용할 수 있습니다.
+  <option role="configure">--without-mysql</option>을 사용할 수 있습니다.
   또한 PHP 4에서는, MySQL 설치 DIR 경로를 지정하지 않고 MySQL을 활성화하면,
   <literal>PHP</literal>는 번들된 MySQL 클라이언트 라이브러리를 사용합니다.
   윈도우즈에서는, DLL 없이, 단순히 PHP 4에 포함되어 있습니다. MySQL을
