@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
+<!-- $Revision: 1.11 $ -->
 <!-- EN-Revision: 1.14 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
@@ -44,7 +44,7 @@
   </sect1>
 
   <sect1 id="tutorial.firstpage">
-   <title>Your first PHP-enabled page</title>
+   <title>첫번째 PHP 실행 페이지</title>
    <para>
     다음에 쓰여진 내용으로 <filename>hello.php</filename>를 만들고,
     웹서버 루트 디렉토리(<varname>DOCUMENT_ROOT</varname>)에 놓읍시다.
@@ -162,7 +162,7 @@
   </sect1>
 
   <sect1 id="tutorial.useful">
-   <title>유용한 무언가</title>
+   <title>무언가 유용한 것</title>
    <para>
     무언가 조금 더 유용한 것을 해봅시다. 어떤 사람이 페이지를
     보는데 사용하는 브라우저의 종류를 확인해봅시다. 이를 위해서,
