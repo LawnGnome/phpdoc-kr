@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
+<!-- $Revision: 1.9 $ -->
 <!-- EN-Revision: 1.19 -->
 
 <appendix id="history">
@@ -242,8 +242,7 @@
   </para>
   <para>
     우리가 알기로는, PHP에 관련된 최초의 서적은
-    'PHP - tvorba interaktivn�ch internetov�ch aplikac�'
-- 1999년 4월에
+    'PHP - tvorba interaktivn��� internetov?likac���- 1999년 4월에
     체코에서 출판된 책이다, Jirka Kosek가 저자이다. 다음해에 Egon Schmid,
     Christian Cartus, and Richard Blume 가 저술한 독일 서적이 출판되었다.
     PHP에 관한 최초의 영문 서적은 그후 얼마 안되어서 Leon Atkinson에 의해
