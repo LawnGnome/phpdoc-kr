@@ -2,16 +2,16 @@
 <bookinfo id="bookinfo">
 	<authorgroup id="authors">
 		<author>
-			<firstname>Stig</firstname>
-			<surname>S&aelig;ther Bakken</surname>
+			<firstname>Stig S&aelig;ther</firstname>
+			<surname>Bakken</surname>
 		</author>
 		<author>
 			<firstname>Alexander</firstname>
 			<surname>Aulbach</surname>
 		</author>
 		<author>
-			<firstname>Egon</firstname>
-			<surname>Schmid</surname>
+			<firstname>Schmid</firstname>
+			<surname>Egon </surname>
 		</author>
 		<author>
 			<firstname>Jim</firstname>
@@ -41,12 +41,12 @@
 	<pubdate>&php.build-date;</pubdate>
 	<authorgroup id="editors">
 		<editor>
-			<firstname>Stig</firstname>
-			<surname>S&aelig;ther Bakken</surname>
+			<firstname>Stig S&aelig;ther </firstname>
+			<surname>Bakken</surname>
 		</editor>
 		<editor>
-			<firstname>Egon</firstname>
-			<surname>Schmid</surname>
+			<firstname>Schmid</firstname>
+			<surname>Egon </surname>
 		</editor>
 	</authorgroup>
 		<copyright>
