@@ -1,132 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/strings.xml, last change in rev 1.3 -->
-<!-- last change to 'sprintf' in en/ tree in rev 1.2 -->
-	<refentry id="function.sprintf">
-		<refnamediv>
-			<refname>sprintf</refname>
-			<refpurpose>포멧된 문자열을 반환한다.</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>string</type><methodname>sprintf</methodname>
-					<methodparam><type>string</type><parameter>format</parameter></methodparam>
-					<methodparam choice="opt"><type>mixed</type><parameter>
-							args
-						</parameter></methodparam>
-				</methodsynopsis>
-			<simpara>
-	포맷 문자인<parameter>format</parameter>에 따라서 생성된 문자열을 반환한다.
-     <parameter>format</parameter>.
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+  <refentry id="function.sprintf">
+   <refnamediv>
+    <refname>sprintf</refname>
+    <refpurpose>포맷된 문자열을 반환합니다.</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>string</type><methodname>sprintf</methodname>
+      <methodparam><type>string</type><parameter>format</parameter></methodparam>
+      <methodparam choice="opt"><type>mixed</type><parameter>args</parameter></methodparam>
+     </methodsynopsis>
+    <simpara>
+     포맷 문자열 <parameter>format</parameter>에 따라 생성한 문자열을
+     반환합니다.
     </simpara>
-			<simpara>
-	포맷 스트링은 0 혹은 다른 지시문이 올 수 있다:
-	직접 결과로 복사된는 일반적인 문자(<literal>%</literal>을 포함하여)와 
-	<emphasis>변환 특수 문자(conversion specifications)</emphasis>,
-	각각은 자신의 매개변수를 패치하는 결과를 나타낸다.
-	이는 <function>sprintf</function> 와 <function>printf</function> 두두에서도 마찬가지이다.
+    <simpara>
+     포맷 문자열은 0개 이상의 지시어를 조합합니다: 일반 문자는
+     (<literal>%</literal>을 제외하고) 결과에 그대로 복사하고, <emphasis>변환
+     특정어</emphasis>는 각각의 인자로 교체한 결과를 가집니다. 이는
+     <function>sprintf</function>와 <function>printf</function>에 모두
+     적용됩니다.
     </simpara>
-			<para>
-	각각 변환 특수문자는 퍼센트 기호(<literal>%</literal>) 로 구성되며, 
-	차례 차례로 다음의 요소가 하나 혹은 여러개 따라온다 :
+    <para>
+     각각의 변환 특정어는 퍼센트 기호(<literal>%</literal>)에 다음의 요소들이
+     붙어서 구성됩니다:
      <orderedlist>
-					<listitem>
-						<simpara>
-		
-        선택적인 <emphasis>패딩 지정자(padding specifier)</emphasis>는 결과로 문자열 오른쪽에 그 정해진
-		크기만큼 패딩을 가하는데 사용되며, 이는 공백 문자 일 수도 있고, <literal>0</literal>(0 문자)일 수 도 있다.
-		기본은 공백으로 패딩되며, 다른 패딩 문자가 작은 따옴표 (<literal>'</literal>)와 함께 앞에 붙어 지정되어 질 
-		수도 있다.
-		아래의 예를 보라.
+      <listitem>
+       <simpara>
+        선택적인 <emphasis>패딩 지정어</emphasis>는 적합한 문자열의 크기를
+        얻기 위한 패딩에 사용하는 문자를 지정합니다. 이는 스페이스 문자나
+        <literal>0</literal> (제로 문자)일 수 있습니다. 기본값은 스페이스로
+        채웁니다. 다른 패딩 문자는 작은 따옴표(<literal>'</literal>)를 앞에
+        붙여서 지정할 수 있습니다. 아래의 예제를 참고하십시오.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-		선택적인 <emphasis>정렬 지정자(alignment specifier)</emphasis>는 결과 문자열이 왼쪽 정렬될 것인지
-		오른쪽 정렬 될 것인지를 결정하며, 기본은 오른쪽 정렬이다; <literal>-</literal>문자는 왼쪽 정렬로 만든다.
+      </listitem>
+      <listitem>
+       <simpara>
+        선택적인 <emphasis>정렬 지정어</emphasis>는 결과를 왼쪽 정렬할지,
+        오른쪽 정렬할 지를 결정합니다. 기본값은 오른쪽 정렬입니다; 여기에
+        <literal>-</literal> 문자를 사용하면 왼쪽 정렬이 됩니다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-		선택적인 숫자 <emphasis>폭 지정자(width specifier)</emphasis>는
-		(최소) 얼마나 많은 문자들을 이 변환이 결과로 낼 것인가를 말해준다.
+      </listitem>
+      <listitem>
+       <simpara>
+        선택적인 수, <emphasis>너비 지정어</emphasis>는 얼마나 많은
+        문자(최소한)가 결과에 들어갈지를 결정합니다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-		선택적인 <emphasis>정밀도 지시자(precision specifier)</emphasis>는
-		얼마나 많은 십진 숫자가 소수점 이하의 수로서 표시될 것인가를 지정한다.
-		이 옵션은 double 형에서만 유효하다.(숫자를 포메팅 하는데 있어서 유용한
-		다른 함수로 <function>number_format</function>이 있다.)
+      </listitem>
+      <listitem>
+       <simpara>
+        선택적인 <emphasis>정밀도 지정어</emphasis>는 부동 소수점 실수에서
+        얼마나 많은 소수점 아래의 수를 표시할지를 결정합니다. 이 옵션은
+        <type>float</type>형 이외에는 영향을 주지 않습니다. (수를 포맷하는
+        다른 유용한 함수에는 <function>number_format</function>이 존재합니다.)
        </simpara>
-					</listitem>
-					<listitem>
-						<para>
-							<emphasis>형 지시자(type specifier)</emphasis>는 인수 데이타가 적용될 형식을 지정한다.
-		가능한 타입으로는 :
+      </listitem>
+      <listitem>
+       <para>
+        <emphasis>형 지정어</emphasis>는 인자 데이터를 어떤 형으로 취급할지
+        결정합니다. 가능한 형은:
         <simplelist>
-								<member>
-									<literal>%</literal> - 리터럴 퍼센트 문자. 어떤 인수도 필요하지 않다.
+         <member>
+          <literal>%</literal> - 퍼센트 문자. 인자는 필요하지 않습니다.
          </member>
-								<member>
-									<literal>b</literal> - 인수는 정수처럼 처리되며, 십진수로 표현된다.
+         <member>
+          <literal>b</literal> - 인자를 정수로 취급하고, 2진수로 표현합니다.
          </member>
-								<member>
-									<literal>c</literal> - 인수는 정수처럼 처리되며, 그 숫자의 ASCII코드에 해당하는 문자로 표현된다.
+         <member>
+          <literal>c</literal> - 인자를 정수로 취급하고, ASCII 값에 해당하는
+          문자로 표현합니다.
          </member>
-								<member>
-									<literal>d</literal> - 인수는 정수처럼 처리되며, 10진수로 표현된다.
+         <member>
+          <literal>d</literal> - 인자를 정수로 취급하고, (부호 있는) 10진수로
+          표현합니다.
          </member>
-								<member>
-									<literal>f</literal> -  인수는 더블형으로 처리되며, 수숫점을 가지는 실수 숫자로 표현된다.
+         <member>
+          <literal>u</literal> - 인자를 정수로 취급하고, 부호 없는 10진수로
+          표현합니다.
          </member>
-								<member>
-									<literal>o</literal> - 인수는 정수로 처리되며, 8진수 형태로 표현된다.
+         <member>
+          <literal>f</literal> - 인자를 <type>float</type>로 취급하고, 실수로
+          표현합니다.
          </member>
-								<member>
-									<literal>s</literal> - 인수는 문자열로 처리, 표현된다.
+         <member>
+          <literal>o</literal> - 인자를 정수로 취급하고, 8진수로 표현합니다.
          </member>
-								<member>
-									<literal>x</literal> - 인수는 정수로 처리되며, (소문자로 표시되는)16진수로 표현된다.
+         <member>
+          <literal>s</literal> - 인자를 문자열로 취급하고 표현합니다.
          </member>
-								<member>
-									<literal>X</literal> - 인수는 정수로 처리되며, (대문자로 표시되는)16진수로 표현된다.
+         <member>
+          <literal>x</literal> - 인자를 정수로 취급하고 16진수(소문자 표시)로
+          표현합니다.
          </member>
-							</simplelist>
-						</para>
-					</listitem>
-				</orderedlist>
-			</para>
-			<simpara>
-				<function>printf</function>, <function>sscanf</function>,
-	 <function>fscanf</function>, 그리고 <function>number_format</function>를 참고하라.
-    </simpara>
-		</refsect1>
-		<refsect1>
-			<title>예</title>
-			<para>
-				<example>
-					<title>
-						<function>sprintf</function>: 0으로 채워진 정수</title>
-					<programlisting role="php">
-$isodate = sprintf ("%04d-%02d-%02d", $year, $month, $day);
+         <member>
+          <literal>X</literal> - 인자를 정수로 취급하고, 16진수(대문자 표시)로
+          표현합니다.
+         </member>
+        </simplelist>
+       </para>
+      </listitem>
+     </orderedlist>
+    </para>
+    <para>
+     PHP 4.0.6부터 포맷 문자열은 인자 넘버링/교환을 지원합니다. 다음은
+     예제입니다:
+     <example>
+      <title>인자 교환</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$format = "There are %d monkeys in the %s";
+printf($format,$num,$location);
+?>
+]]>
       </programlisting>
-				</example>
-				<example>
-					<title>
-						<function>sprintf</function>: 통화의 포맷</title>
-					<programlisting role="php">
+     </example>
+     이는 "There are 5 monkeys in the tree"를 출력할 것입니다. 그러나,
+     국제화를 위해서 포맷 문자열을 별도의 파일로 작성하고, 이것을 다음과 같이
+     재작성했다고 생각해봅시다:
+     <example>
+      <title>인자 교환</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$format = "The %s contains %d monkeys";
+printf($format,$num,$location);
+?>
+]]>
+      </programlisting>
+     </example>
+     문제가 생겼습니다. 포맷 문자열에서의 순서와 코드에서 인자의 순서가
+     일치하지 않습니다. 여기서 코드를 수정하지 않고, 단순히 포맷 문자열에 어떤
+     인자를 가져올지를 지정할 수 있습니다. 포맷 문자열을 다음과 같이 작성하면
+     됩니다:
+     <example>
+      <title>인자 교환</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$format = "The %2\$s contains %1\$d monkeys";
+printf($format,$num,$location);
+?>
+]]>
+      </programlisting>
+     </example>
+     코드에 많은 인자를 추가하지 않고도 반복해서 출력할 수 있다는 추가적인
+     장점이 존재합니다. 예를 들면:
+     <example>
+      <title>인자 교환</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$format = "The %2\$s contains %1\$d monkeys.
+           That's a nice %2\$s full of %1\$d monkeys.";
+printf($format, $num, $location);
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <simpara>
+     참고: <function>printf</function>,
+     <function>sscanf</function>, <function>fscanf</function>, 
+     <function>vsprintf</function>,
+     <function>number_format</function>.
+    </simpara>
+   </refsect1>
+   <refsect1>
+    <title>예제</title>
+    <para>
+     <example>
+      <title><function>sprintf</function>: 제로로 채운 정수</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$isodate = sprintf("%04d-%02d-%02d", $year, $month, $day);
+?>
+]]>
+      </programlisting>
+     </example>
+     <example>
+      <title><function>sprintf</function>: 통화 표현하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
 $money1 = 68.75;
 $money2 = 54.35;
 $money = $money1 + $money2;
-// echo $money는  "123.1" 을 출력;
-$formatted = sprintf ("%01.2f", $money);
-// echo $formatted 는 output "123.10"을 출력
+// echo $money 는 "123.1"를 출력합니다;
+$formatted = sprintf("%01.2f", $money);
+// echo $formatted 는 "123.10"를 출력합니다.
+?>
+]]>
       </programlisting>
-				</example>
-			</para>
-		</refsect1>
-	</refentry>
+     </example>
+    </para>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
