@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.61 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.63 Maintainer: progcom Status: ready -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -227,3 +227,7 @@ supplemental files to mark section titles -->
 
 <!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0.0</literal>부터
 지원합니다.</simpara></note>'>
+
+<!-- Notes for tidy -->
+<!ENTITY note.tidy.ze2 '<note><simpara>이 함수는 Zend Engine 2(PHP &gt;= 5.0.0)에서만
+사용할 수 있습니다.</simpara></note>'>

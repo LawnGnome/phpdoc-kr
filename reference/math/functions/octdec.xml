@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
   <refentry id="function.octdec">
    <refnamediv>
     <refname>octdec</refname>
     <refpurpose>8진수를 10진수로 변환합니다.</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>int</type><methodname>octdec</methodname>
       <methodparam><type>string</type><parameter>octal_string</parameter></methodparam>
@@ -18,7 +17,8 @@
      10진수 2147483647에 해당합니다.
     </para>
     <para>
-     참고: <function>decoct</function>.
+     참고: <function>decoct</function>, <function>bindec</function>,
+     <function>hexdec</function>, <function>base_convert</function>.
     </para>
    </refsect1>
   </refentry>

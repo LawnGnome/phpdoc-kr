@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
   <refentry id="function.mt-srand">
    <refnamediv>
     <refname>mt_srand</refname>
@@ -10,10 +9,12 @@
     <title>설명</title>
      <methodsynopsis>
       <type>void</type><methodname>mt_srand</methodname>
-      <methodparam><type>int</type><parameter>seed</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>seed</parameter></methodparam>
      </methodsynopsis>
     <para>
      <parameter>seed</parameter>로 난수 생생기를 초기화합니다.
+     PHP 4.2.0부터, <parameter>seed</parameter>는 선택적으로 변경되었고,
+     생략할 경우에도 기본값으로 난수를 생성합니다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[

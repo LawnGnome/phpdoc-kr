@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
   <refentry id="function.exp">
    <refnamediv>
     <refname>exp</refname>
     <refpurpose><constant>e</constant>(자연로그 밑)의 승수를 계산합니다.</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>float</type><methodname>exp</methodname>
       <methodparam><type>float</type><parameter>arg</parameter></methodparam>
@@ -15,6 +14,13 @@
     <para>
      <constant>e</constant>의 <parameter>arg</parameter>승을 반환합니다.
     </para>
+
+    <note>
+     <para>
+      'e'는 자연로그의 밑으로, 약 2.718282입니다.
+     </para>
+    </note>
+
     <para>
      참고: <function>log</function>, <function>pow</function>.
     </para>
