@@ -1226,7 +1226,6 @@ imap_close($mbox);
   <refentry id="function.imap-open">
    <refnamediv>
     <refname>imap_open</refname>
-    <refpurpose>Open an IMAP stream to a mailbox</refpurpose>
     <refpurpose>메일박스에 IMAP 스트림(stream)을 연다</refpurpose>
    </refnamediv>
    <refsect1>
