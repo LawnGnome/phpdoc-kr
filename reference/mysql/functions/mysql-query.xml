@@ -4,7 +4,7 @@
 	<refentry id="function.mysql-query">
 		<refnamediv>
 			<refname>mysql_query</refname>
-			<refpurpose>Send a MySQL query</refpurpose>
+			<refpurpose>MySQL 쿼리를 전송</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
