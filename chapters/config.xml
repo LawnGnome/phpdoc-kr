@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.21 $ -->
+<!-- $Revision: 1.22 $ -->
 <!-- EN-Revision: 1.101 -->
  <chapter id="configuration">
   <title>환경 설정</title>
@@ -1080,11 +1080,10 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         FastCGI under IIS (on WINNT based OS) supports the ability to impersonate
-         security tokens of the calling client. This allows IIS to define the
-         security context that the request runs under. mod_fastcgi under Apache
-         does not currently support this feature (03/17/2002)
-         Set to 1 if running under IIS. Default is zero.
+         IIS(WINNT 기반 OS)에서 FastCGI는 클라이언트 호출에 대한 가상 보안 토큰을
+         지원합니다. 이 지시자는 IIS에게 요청에 대한 보안 문장을 정의하도록 허용합니다.
+         아파치의 mod_fastcgi에서는 현재(2002/03/17) 이 기능을 지원하지 않습니다.
+         IIS에서 실행할때는 1로 설정하십시오. 기본값은 0입니다.
         </para>
        </listitem>
       </varlistentry>
@@ -1093,16 +1092,16 @@ include_path=".;c:\php\includes"
    </sect2>
 
   <sect2 id="ini.sect.file_uploads">
-   <title>File Uploads</title>
+   <title>파일 업로드</title>
     <para>
      <table>
-      <title>File Uploads Configuration Options</title>
+      <title>파일 업로드 환경 설정 옵션</title>
       <tgroup cols="3">
        <thead>
         <row>
-         <entry>Name</entry>
-         <entry>Default</entry>
-         <entry>Changeable</entry>
+         <entry>이름</entry>
+         <entry>기본값</entry>
+         <entry>변경가능성</entry>
         </row>
        </thead>
        <tbody>
@@ -1129,7 +1128,6 @@ include_path=".;c:\php\includes"
     &ini.descriptions.title;
 
     <para>
-     Here is a short explanation of the configuration directives.
      <variablelist>
       <varlistentry id="ini.file-uploads">
        <term>
@@ -1138,12 +1136,10 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         Whether or not to allow HTTP
-         <link linkend="features.file-upload">file uploads</link>. See also 
-         the 
-         <link linkend="ini.upload-max-filesize">upload_max_filesize</link>,
-         <link linkend="ini.upload-tmp-dir">upload_tmp_dir</link>, and 
-         <link linkend="ini.post-max-size">post_max_size</link> directives.
+         HTTP <link linkend="features.file-upload">파일 업로드</link> 허용 여부를
+         결정합니다. <link linkend="ini.upload-max-filesize">upload_max_filesize</link>,
+         <link linkend="ini.upload-tmp-dir">upload_tmp_dir</link>, 
+         <link linkend="ini.post-max-size">post_max_size</link> 지시자를 참고하십시오.
         </para>
        </listitem>
       </varlistentry>
@@ -1155,9 +1151,9 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         The temporary directory used for storing files when doing
-         file upload. Must be writable by whatever user <literal>PHP</literal>
-         is running as. If not specified PHP will use the system's default.
+         파일 업로드 중의 저장을 위한 임시 디렉토리 설정입니다.
+         <literal>PHP</literal>가 실행되는 유저가 쓰기 권한을 가져야 합니다.
+         지정하지 않으면 시스템 기본값을 사용합니다.
         </para>
        </listitem>
       </varlistentry>
@@ -1169,7 +1165,7 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         The maximum size of an uploaded file.
+         업로드 파일의 최대 크기를 지정합니다.
         </para>
        </listitem>
       </varlistentry>
@@ -1178,16 +1174,16 @@ include_path=".;c:\php\includes"
    </sect2>
 
   <sect2 id="ini.sql-general">
-   <title>General SQL</title>
+   <title>SQL 일반</title>
     <para>
      <table>
-      <title>General SQL Configuration Options</title>
+      <title>SQL 일반 환경설정 옵션</title>
       <tgroup cols="3">
        <thead>
         <row>
-         <entry>Name</entry>
-         <entry>Default</entry>
-         <entry>Changeable</entry>
+         <entry>이름</entry>
+         <entry>기본값</entry>
+         <entry>변경가능성</entry>
         </row>
        </thead>
        <tbody>
@@ -1204,7 +1200,6 @@ include_path=".;c:\php\includes"
     &ini.descriptions.title;
 
     <para>
-     Here is a short explanation of the configuration directives.
      <variablelist>
       <varlistentry id="ini.sql.safe-mode">
        <term>
@@ -1221,7 +1216,7 @@ include_path=".;c:\php\includes"
    </sect2>
 
    <sect2 id="ini.sect.debugger">
-    <title>Debugger Configuration Directives</title>
+    <title>디버거 환경 설정 지시자</title>
     <variablelist>
 
      <varlistentry id="ini.debugger.host">
@@ -1231,7 +1226,7 @@ include_path=".;c:\php\includes"
       </term>
       <listitem>
        <para>
-        DNS name or IP address of host used by the debugger.
+        디버거가 사용하는 호스트의 DNS 이름이나 IP.
        </para>
       </listitem>
      </varlistentry>
@@ -1243,7 +1238,7 @@ include_path=".;c:\php\includes"
       </term>
       <listitem>
        <para>
-        Port number used by the debugger.
+        디버거가 사용하는 포트 번호.
        </para>
       </listitem>
      </varlistentry>
@@ -1255,7 +1250,7 @@ include_path=".;c:\php\includes"
       </term>
       <listitem>
        <para>
-        Whether the debugger is enabled.
+        디버거 활성화 여부.
        </para>
       </listitem>
      </varlistentry>
