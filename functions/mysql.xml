@@ -1,28 +1,25 @@
- <reference id="ref.mysql">
-  <title>MySQL functions</title>
+﻿ <reference id="ref.mysql">
+  <title>MySQL 함수</title>
   <titleabbrev>MySQL</titleabbrev>
   <partintro>
    <simpara>
-    These functions allow you to access MySQL database servers. In
-    order to have these functions available, you must compile php
-    with mysql support by using the
-    <option role="configure">--with-mysql</option> option. If you
-    use this option without specifying the path to mysql, php will
-    use the built-in mysql client libraries. Users who run other
-    applications that use mysql (for example, running php3 and php4
-    as concurrent apache modules, or auth-mysql) should always
-    specify the path to mysql:
+    아래 함수들은 MySQL 데이터베이스 서버에 접근할 수 있게 해준다.
+    이들 함수를 사용하려면 <option role="configure">--with-mysql</option>
+    옵션으로 MySQL과 함께 PHP를 컴파일해야 한다.
+    만일 위 옵션을 MySQL이 설치된 경로 없이 사용한다면
+    PHP는 내장된 클라이언트 라이브러리를 대신 사용할 것이다.
+    서로 다른 어플리케이션을 이용하는 사용자들이 MySQL을
+    사용하려 할 때(예를들어, PHP3와 PHP4가 동시에 apache 모듈로써 돌아가거나,
+    auth-mysql일 경우) MySQL 경로를 반드시 다음과 같이 설정해야 한다:
     <option role="configure">--with-mysql=/path/to/mysql</option>.
-    This will force php to use the client libraries installed by
-    mysql, avoiding any conflicts.
+    위 옵션은 php가 mysql에 의해 설치된 클라이언트 라이브러리를 사용하도록
+    하며, 어떠한 충돌도 피할 수 있게 해준다.
    </simpara>
    <simpara>
-    More information about MySQL can be found at <ulink
-    url="&url.mysql;">&url.mysql;</ulink>.
+    MySQL에 대한 더 상세한 정보는 <ulink url="&url.mysql;">&url.mysql;</ulink>에서 얻을 수 있다.
    </simpara>
    <simpara>
-    Documentation for MySQL can be found at <ulink
-    url="&url.mysql.docs;">&url.mysql.docs;</ulink>.
+    MySQL 문서는 <ulink url="&url.mysql.docs;">&url.mysql.docs;</ulink>에 있다.
    </simpara>
 
   </partintro>
@@ -30,11 +27,10 @@
   <refentry id="function.mysql-affected-rows">
    <refnamediv>
     <refname>mysql_affected_rows</refname> 
-    <refpurpose>Get number of affected rows in previous MySQL
-     operation</refpurpose>
+    <refpurpose>최근 MySQL 작업으로 처리된 줄(row) 개수를 얻음</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_affected_rows</function></funcdef>
@@ -46,20 +42,19 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     <function>mysql_affected_rows</function> returns the number of
-     rows affected by the last INSERT, UPDATE or DELETE query on the
-     server associated with the specified link identifier.  If the
-     link identifier isn't specified, the last opened link is assumed.
+     <function>mysql_affected_rows</function>는 link identifier로
+     접속되어 있는 서버에서 최근 실행된 INSERT, UPDATE, DELETE 질의로
+     처리된 줄의 개수를 돌려준다. 만약 link identifier 인자를
+     생략하면, 최근 열려진 link에서 정보를 얻는다.
     </para>
     <para>
-     If the last query was a DELETE query with no WHERE clause, all
-     of the records will have been deleted from the table but this
-     function will return zero.
+     마지막 질의가 WHERE 절이 없는 DELETE 질의라면 테이블의 모든 레코드가
+     삭제되겠지만 이 함수의 경우 0값을 돌려준다.
     </para>
     <para>
-     This command is not effective for SELECT statements, only on
-     statements which modify records. To retrieve the number of rows
-     returned from a SELECT, use <function>mysql_num_rows</function>.
+     이 함수는 SELECT 문에는 동작하지 않으며, 레코드가 수정되는 경우에만 동작한다.
+     SELECT 구문으로부터 돌려받은 줄의 개수를 얻으려면, <function>mysql_num_rows</function>를
+     쓰면 된다.
     </para>
    </refsect1>
   </refentry>
@@ -68,11 +63,11 @@
    <refnamediv>
     <refname>mysql_change_user</refname> 
     <refpurpose>
-     Change logged in user of the active connection
+     현재 접속에서 로그인된 사용자를 변경
     </refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_change_user</function></funcdef>
@@ -91,14 +86,13 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     <function>mysql_change_user</function> changes the logged in user
-     of the current active connection, or the connection given by the 
-     optional parameter link_identifier.  If a database is
-     specified, this will default or current database after the user
-     has been changed.  If the new user and password authorization fails, 
-     the current connected user stays active.</para>
-     <note><para>This function was introduced in PHP 3.0.13 and
-     requires MySQL 3.23.3 or higher.
+     <function>mysql_change_user</function>함수는 현재 사용중인 접속 또는
+     link identifier 인자로 주어진 접속에서 로그인된 사용자를 변경한다.
+     데이터베이스 이름이 지정되면, 사용자가 변경된 다음
+     이 데이터베이스가 기본값으로 되며, 그렇지 않을 경우 현재 데이터베이스가 사용된다.
+     변경할 사용자와 비밀번호 인증에 실패하게되면,
+     현재 접속된 사용자는 접속이 그대로 유지된다.</para>
+     <note><para>이 함수는 PHP 3.0.13 과 MySQL 3.23.3 이상에서만 동작한다.
     </para></note>
    </refsect1>
   </refentry>
@@ -106,10 +100,10 @@
   <refentry id="function.mysql-close">
    <refnamediv>
     <refname>mysql_close</refname>
-    <refpurpose>Close MySQL connection</refpurpose>
+    <refpurpose>MySQL 접속을 닫음</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_close</function></funcdef>
@@ -121,37 +115,36 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns: true on success, false on error.
+     반환값: 성공하면 TRUE값을 실패하면 FALSE값을 되돌림
     </para>
-    <para> <function>mysql_close</function> closes the connection to
-    the MySQL server that's associated with the specified link
-    identifier. If <parameter>link_identifier</parameter> isn't
-    specified, the last opened link is used.
+    <para> <function>mysql_close</function> link identifier와 관련된
+     MySQL 서버 접속을 닫는다. <parameter>link identifier</parameter>를
+     지정하지 않으면 마지막 열려진 link를 사용한다.
     </para>
     <para>
-     Using <function>mysql_close</function> isn't usually necessary,
-     as non-persistent open links are automatically closed at the end
-     of the script's execution.
+     <function>mysql_close</function>는 비영구적으로
+     열려진 링크에서는 일반적으로 스크립트(script) 실행 마지막 부분에서
+     자동으로 종료되기 때문에 사용할 필요가 없다.
     </para>
     <note>
      <para> 
-      <function>mysql_close</function> will not close persistent links
-      created by <function>mysql_pconnect</function>.
+      <function>mysql_close</function>은 <function>mysql_pconnect</function>로
+      생성된 영구적으로 접속된 링크에서는 종료가 안될 것이다.
      </para>
     </note>
     <example>
-     <title>MySQL close example</title>
+     <title>MySQL close 예제</title>
      <programlisting role="php">
 &lt;?php
     $link = mysql_connect ("kraemer", "marliesle", "secret")
-        or die ("Could not connect");
-    print ("Connected successfully");
+        or die ("접속할 수 없습니다");
+    print ("접속되었습니다");
     mysql_close ($link);
 ?>
      </programlisting>
     </example>
     <para> 
-     See also: <function>mysql_connect</function>, and
+     참조: <function>mysql_connect</function>, 
      <function>mysql_pconnect</function>.
     </para>
    </refsect1>
@@ -160,10 +153,10 @@
   <refentry id="function.mysql-connect">
    <refnamediv>
     <refname>mysql_connect</refname>
-    <refpurpose>Open a connection to a MySQL Server</refpurpose>
+    <refpurpose>MySQL 서버에 접속</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_connect</function></funcdef>
@@ -188,59 +181,54 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     Returns a positive MySQL link identifier on success, or an error
-     message on failure.
+     접속에 성공하면 MySQL link identifier를, 그렇지 않으면 에러 메시지를 반환한다.
     </para>
     <para>
-     <function>mysql_connect</function> establishes a connection
-     to a MySQL server.  The following defaults are assumed for
-     missing optional parameters: <parameter>host:port</parameter> =
-     'localhost:3306', <parameter>username</parameter> = name of the
-     user that owns the server process and 
-     <parameter>password</parameter> = empty password.
+     <function>mysql_connect</function>을 이용하여 MySQL 서버에 접속을 할 수 있다.
+     아래 나열된 기본값은 인자를 입력하지 않았을 때 대신 사용되는 값이다.
+     <parameter>host:port</parameter>는 'localhost:3306'로, <parameter>username</parameter>은
+     서버 프로세스(server process)의 소유자로, 그리고 <parameter>password</parameter>는
+     공백 비밀번호로 대체된다.
     </para>
     <para>
-     The hostname string can also include a port
-     number. eg. &quot;hostname:port&quot; or a path to a socket
-     eg. &quot;:/path/to/socket&quot; for the localhost.
+     hostname은 &quot;hostname:port&quot;와 같이 포트 번호를 포함할 수 있다.
+     또한 로컬호스트에서 &quot;:/path/to/socket&quot;와 같이
+     소켓도 사용할 수 있다.
      <note>
       <para>
-       Support for &quot;:port&quot; was added in PHP 3.0B4.
+        &quot;:port&quot;는 PHP 3.0B4에서 추가된 기능이다.
       </para>
       <para>
-       Support for &quot;:/path/to/socket&quot; was added in
-       PHP 3.0.10.
+       &quot;:/path/to/socket&quot;은 PHP 3.0.10에 추가된 기능이다.
       </para>
       <para>
-      You can suppress the error message on failure by prepending '@'
-      to the function name.
+      함수 이름 앞에 '@'를 붙임으로써 에러 메시지가 출력되지 않도록 할 수 있다.
       </para>
      </note>
     </para>
     <para>
-     If a second call is made to <function>mysql_connect</function>
-     with the same arguments, no new link will be established, but
-     instead, the link identifier of the already opened link will be
-     returned.
+     동일한 인수로 <function>mysql_connect</function>을 다시 호출하면,
+     새로운 link가 생성되지 않는 대신, 이미 열려진 link identifier 값을
+     돌려받게 된다.
     </para>
     <para>
-     The link to the server will be closed as soon as the execution of
-     the script ends, unless it's closed earlier by explicitly calling
-     <function>mysql_close</function>.
+     서버와의 링크는 스크립트 끝부분이 실행되는 즉시 종료가 되지만,
+     <function>mysql_close</function>을 사용하면 스크립트 끝부분이 아니더라도
+     종료가 가능하다.
     </para>  
     <example>
-     <title>MySQL connect example</title>
+     <title>MySQL 접속 예제</title>
      <programlisting role="php">
 &lt;?php
     $link = mysql_connect ("kraemer", "marliesle", "secret")
-        or die ("Could not connect");
-    print ("Connected successfully");
+        or die ("접속할 수 없습니다");
+    print ("접속되었습니다");
     mysql_close ($link);
 ?>
      </programlisting>
     </example>
-    <para> See also
-     <function>mysql_pconnect</function>, and
+    <para> 참조: 
+     <function>mysql_pconnect</function>, 
      <function>mysql_close</function>.
     </para>
    </refsect1>
@@ -249,10 +237,10 @@
   <refentry id="function.mysql-create-db">
    <refnamediv>
     <refname>mysql_create_db</refname>
-    <refpurpose>Create a MySQL database</refpurpose>
+    <refpurpose>MySQL 데이터베이스를 생성</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_create_db</function></funcdef>
@@ -265,30 +253,28 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     <function>mysql_create_db</function> attempts to create a new
-     database on the server associated with the specified link
-     identifier.
+     <function>mysql_create_db</function>는 link identifier와 관련된 서버에
+     새로운 데이터베이스를 생성하도록 한다.
     </para>
     <example>
-     <title>MySQL create database example</title>
+     <title>MySQL 데이터베이스 생성 예제</title>
      <programlisting role="php">
 &lt;?php
     $link = mysql_pconnect ("kron", "jutta", "geheim")
         or die ("Could not connect");
     if (mysql_create_db ("my_db")) {
-        print ("Database created successfully\n");
+        print ("데이터베이스를 생성하였습니다\n");
     } else {
-        printf ("Error creating database: %s\n", mysql_error ());
+        printf ("데이터베이스 생성 에러: %s\n", mysql_error ());
     }
 ?>
      </programlisting>
     </example>
     <para> 
-     For downwards compatibility <function>mysql_createdb</function>
-     can also be used.
+     하위 호환성을 가지는 <function>mysql_createdb</function>함수 역시 사용 가능하다.
     </para>
     <para> 
-     See also: <function>mysql_drop_db</function>.
+     참조: <function>mysql_drop_db</function>.
     </para>
    </refsect1>
   </refentry>
@@ -296,10 +282,10 @@
   <refentry id="function.mysql-data-seek">
    <refnamediv>
     <refname>mysql_data_seek</refname>
-    <refpurpose>Move internal result pointer</refpurpose>
+    <refpurpose>내부적인 결과 포인터를 이동</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_data_seek</function></funcdef>
@@ -308,37 +294,37 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     Returns: true on success, false on failure.
+     반환값: 성공하면 TRUE, 실패하면 FALSE.수
     </para>
     <para> 
-     <function>mysql_data_seek</function> moves the internal row
-     pointer of the MySQL result associated with the specified result
-     identifier to point to the specified row number.  The next call
-     to <function>mysql_fetch_row</function> would return that row.
+     <function>mysql_data_seek</function>함수는 MySQL 결과중
+     인자로 지정된 행번호를 이용하여 내부적인 행 포인터를
+     이동시켜준다.
+     <function>mysql_fetch_row</function>를 사용하여 행의 내용을 얻을 수 있다.
     </para>
     <para>
-     <parameter>Row_number</parameter> starts at 0.
+     <parameter>Row_number</parameter>는 0부터 시작된다.
     </para>
 
     <example>
-     <title>MySQL data seek example</title>
+     <title>MySQL 데이터 검색 예제</title>
      <programlisting role="php">
 &lt;?php
     $link = mysql_pconnect ("kron", "jutta", "geheim")
-        or die ("Could not connect");
+        or die ("접속할 수 없습니다");
 
     mysql_select_db ("samp_db")
-        or die ("Could not select database");
+        or die ("데이터베이스를 선택할 수 없습니다");
 
     $query = "SELECT last_name, first_name FROM friends";
     $result = mysql_query ($query)
-        or die ("Query failed");
+        or die ("질의 실패");
 
     # fetch rows in reverse order
 
     for ($i = mysql_num_rows ($result) - 1; $i >=0; $i--) {
         if (!mysql_data_seek ($result, $i)) {
-            printf ("Cannot seek to row %d\n", $i);
+            printf ("%d 번 행을 검색할 수 없습니다\n", $i);
             continue;
         }
 
@@ -358,10 +344,10 @@
   <refentry id="function.mysql-db-name">
    <refnamediv>
     <refname>mysql_db_name</refname>
-    <refpurpose>Get result data</refpurpose>
+    <refpurpose>데이터 결과를 얻음</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_db_name</function></funcdef>
@@ -375,22 +361,19 @@
      </funcprototype>
     </funcsynopsis>
     <para> 
-     <function>mysql_db_name</function> takes as its first parameter
-     the result pointer from a call to
-     <function>mysql_list_dbs</function>. The
-     <parameter>row</parameter> parameter is an index into the result
-     set.
+     <function>mysql_db_name</function>은 <function>mysql_list_dbs</function>를 실행한
+      결과를 첫번째 인자로 갖는다. <parameter>row</parameter> 인자는
+      첫번째 인자로부터 얻어진 결과값을 얻기위한 색인이다.
     </para>
 
     <para>
-     If an error occurs, FALSE is returned. Use
-     <function>mysql_errno</function> and
-     <function>mysql_error</function> to determine the nature of the
-     error.
+     만약 에러가 발생하면 false값을 돌려준다.
+     <function>mysql_errno</function>와 <function>mysql_error</function>를
+     사용하여 에러 메시지 처리를 할 수 있다.
     </para>
 
     <example>
-     <title><function>Mysql_db_name</function> example</title>
+     <title><function>Mysql_db_name</function> 예제</title>
      <programlisting role="php">
 &lt;?php 
 error_reporting(E_ALL);
@@ -409,8 +392,8 @@ while ($i < $cnt) {
     </example>
 
     <para>
-     For backward compatibility, <function>mysql_dbname</function> is
-     also accepted. This is deprecated, however.
+     하위 호환성이 있는 <function>mysql_dbname</function>를 사용할 수 있으나
+     현재 사용되지 않는다.
     </para>
 
    </refsect1>
@@ -419,10 +402,10 @@ while ($i < $cnt) {
   <refentry id="function.mysql-db-query">
    <refnamediv>
     <refname>mysql_db_query</refname>
-    <refpurpose>Send a MySQL query</refpurpose>
+    <refpurpose>MySQL 질의문을 전송</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_db_query</function></funcdef>
@@ -436,23 +419,21 @@ while ($i < $cnt) {
      </funcprototype>
     </funcsynopsis>
     <para> 
-     Returns: A positive MySQL result identifier to the query result,
-     or false on error.
+     반환값: MySQL 질의로 발생한 result identifier값을,
+     에러가 발생했을 경우 false를 돌려준다.
     </para>
     <para> 
-     <function>mysql_db_query</function> selects a database and
-     executes a query on it.  If the optional link identifier isn't
-     specified, the function will try to find an open link to the
-     MySQL server and if no such link is found it'll try to create one
-     as if <function>mysql_connect</function> was called with no
-     arguments
+     <function>mysql_db_query</function>는 데이터베이스를 선택하고,
+      동시에 질의문을 실행한다. 만약 link identifier가 지정되지 않는다면,
+      함수는 MySQL 서버에서 접속된 링크를 찾을 것이며, 찾지 못할 경우에는
+      인자없이 실행된 <function>mysql_connect</function>과 같이
+      링크를 생성하여 사용한다.
     </para>
     <para> 
-     See also <function>mysql_connect</function>.
+     참조: <function>mysql_connect</function>.
     </para>
     <para>
-     For downwards
-     compatibility <function>mysql</function> can also be used.
+     하위 호환성을 가지는 <function>mysql</function>함수 역시 사용 가능하다.
     </para>
    </refsect1>
   </refentry>
@@ -460,10 +441,10 @@ while ($i < $cnt) {
   <refentry id="function.mysql-drop-db">
    <refnamediv>
     <refname>mysql_drop_db</refname>
-    <refpurpose>Drop (delete) a MySQL database</refpurpose>
+    <refpurpose>MySQL 데이터베이스를 삭제</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_drop_db</function></funcdef>
@@ -476,7 +457,7 @@ while ($i < $cnt) {
      </funcprototype>
     </funcsynopsis>
     <para> 
-     Returns: true on success, false on failure.
+     반환값: 성공하면 true, 실패하면 false.
     </para>  
     <para> 
      <function>mysql_drop_db</function> attempts to drop (remove) an
@@ -484,8 +465,8 @@ while ($i < $cnt) {
      link identifier.
     </para>
     <para> 
-     See also: <function>mysql_create_db</function>. For downward
-     compatibility <function>mysql_dropdb</function> can also be used.
+     참조: <function>mysql_create_db</function>.
+     하위 호환성이 있는 <function>mysql_dropdb</function>함수 역시 사용 가능하다.
     </para>
    </refsect1>
   </refentry>
@@ -493,11 +474,10 @@ while ($i < $cnt) {
   <refentry id="function.mysql-errno">
    <refnamediv>
     <refname>mysql_errno</refname> 
-    <refpurpose>Returns the numerical value of the error message from previous
-     MySQL operation</refpurpose>
+    <refpurpose>최근 MySQL 작업으로 발생한 에러 번호를 반환</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>mysql_errno</function></funcdef>
@@ -509,18 +489,15 @@ while ($i < $cnt) {
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns the error number from the last mySQL function, or
-     <literal>0</literal> (zero) if no error occurred.
+     최근 실행된 MySQL 함수의 에러번호를, 에러가 없을 경우 
+     <literal>0</literal> 값을 반환한다.
     </para>
     <para>
-     Errors coming back from the mySQL database backend no longer
-     issue warnings. Instead, use <function>mysql_errno</function> to
-     retrieve the error code. Note that this function only returns the
-     error code from the most recently executed mySQL function (not
-     including <function>mysql_error</function> and
-     <function>mysql_errno</function>), so if you want to use it,
-     make sure you check the value before calling another mySQL
-     function.
+     한번 MySQL 데이터베이스로부터의 발생된 에러는 또다시 경고 메시지를 나타내지 않는다.
+     대신, <function>mysql_errno</function>를 사용하면 에러 코드(code)를 얻을 수 있다.
+     이 함수는 최근에 실행된 MySQL 함수(<function>mysql_error</function>과
+     <function>mysql_errno</function>를 제외한)로 발생된 에러 코드만 얻을 수 있다.
+     그러나 사용하기 위해서는 다른 MySQL 함수를 사용하기 이전에 사용해야 한다.
      <informalexample>
       <programlisting role="php">
 &lt;?php
@@ -543,11 +520,10 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
   <refentry id="function.mysql-error">
    <refnamediv>
     <refname>mysql_error</refname>
-    <refpurpose>Returns the text of the error message from previous
-     MySQL operation</refpurpose>
+    <refpurpose>최근 실행된 MySQL 작업으로 발생한 에러 메시지를 반환</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>string <function>mysql_error</function></funcdef>
@@ -559,17 +535,15 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns the error text from the last mySQL function, or
-     <literal>''</literal> (the empty string) if no error occurred.
+     MySQL 함수로 발생된 에러 메시지를 얻을 수 있으며,
+     에러가 발생하지 않았을 경우에는 <literal>''</literal> (공백문자)를 얻을 수 있다.
     </para>
     <para>
-     Errors coming back from the mySQL database backend no longer
-     issue warnings. Instead, use <function>mysql_error</function> to
-     retrieve the error text. Note that this function only returns the
-     error text from the most recently executed mySQL function (not
-     including <function>mysql_error</function> and
-     <function>mysql_errno</function>), so if you want to use it, make
-     sure you check the value before calling another mySQL function.
+     한번 MySQL 데이터베이스로부터의 발생된 에러는 또다시 경고 메시지를 나타내지 않는다.
+     대신, <function>mysql_error</function>를 사용하면 에러 메시지를 얻을 수 있다.
+     이 함수는 최근에 실행된 MySQL 함수(<function>mysql_error</function>과
+     <function>mysql_errno</function>를 제외한)로 발생된 에러 코드만 얻을 수 있다.
+     그러나 사용하기 위해서는 다른 MySQL 함수를 사용하기 이전에 사용해야 한다.
      <informalexample>
       <programlisting role="php">
 &lt;?php
@@ -584,7 +558,7 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
      </informalexample>
     </para>
     <para> 
-     See also: <function>mysql_errno</function>
+     참조: <function>mysql_errno</function>.
     </para>
    </refsect1>
   </refentry>
@@ -593,11 +567,11 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
    <refnamediv>
     <refname>mysql_fetch_array</refname> 
     <refpurpose>
-     Fetch a result row as an associative array, a numeric array, or both.
+     결과를 필드이름 색인 또는 숫자 색인으로 된 배열로 얻음
     </refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>array <function>mysql_fetch_array</function></funcdef>
@@ -610,19 +584,17 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
      </funcprototype>
     </funcsynopsis>
     <para> 
-     Returns an array that corresponds to the fetched row, or false
-     if there are no more rows.</para>
+     데이터베이스 테이블로부터 가져온 행에 대응되는 배열로 돌려주고,
+     더이상 가져올 행이 없을 경우 false를 반환한다.</para>
     <para>
-     <function>mysql_fetch_array</function> is an extended version of
-     <function>mysql_fetch_row</function>.  In addition to storing the
-     data in the numeric indices of the result array, it also stores
-     the data in associative indices, using the field names as keys.
+     <function>mysql_fetch_array</function>는 <function>mysql_fetch_row</function>에서
+     확장된 함수이다. 결과 배열에 자료가 저장되고 배열의 색인으로 번호가 사용된다.
+     또한, 배열의 색인으로 테이블의 필드 이름으로도 사용할 수 있다.
     </para>
     <para>
-     If two or more columns of the result have the same field names,
-     the last column will take precedence. To access the other column(s)
-     of the same name, you must the numeric index of the column or
-     make an alias for the column.
+     결과로 두개 이상의 동일한 필드 이름을 가진 열이 있다면,
+     마지막 열이 우선권을 가진다. 동일한 다른 열을 사용하기 위해서는
+     색인 번호를 이용하거나 질의 문장에서 열의 별명을 주어 이용하여야 한다.
      <informalexample>
       <programlisting>
 select t1.f1 as foo t2.f1 as bar from t1, t2
@@ -630,20 +602,16 @@ select t1.f1 as foo t2.f1 as bar from t1, t2
      </informalexample>
     </para>
     <para>
-     An important thing to note is that using
-     <function>mysql_fetch_array</function> is NOT significantly
-     slower than using <function>mysql_fetch_row</function>, while it
-     provides a significant added value.
+     <function>mysql_fetch_array</function>는 필드 이름으로 된 색인이 추가되지만,
+     <function>mysql_fetch_row</function> 보다 느려지지는 않는다.
     </para>
     <para>
-     The optional second argument <parameter>result_type</parameter>
-     in <function>mysql_fetch_array</function> is a constant and can
-     take the following values: MYSQL_ASSOC, MYSQL_NUM, and
-     MYSQL_BOTH. (This feature was added in PHP 3.0.7)
+     <function>mysql_fetch_array</function>에서 두번째 옵션 인자
+     <parameter>result_type</parameter>은 상수이고, MYSQL_ASSOC, MYSQL_NUM,
+     MYSQL_BOTH와 같은 값을 가질 수 있다(PHP 3.0.7에 추가되었음).
     </para>
     <para>
-     For further details, see also
-     <function>mysql_fetch_row</function> and <function>mysql_fetch_assoc</function>.
+     참조: <function>mysql_fetch_row</function>, <function>mysql_fetch_assoc</function>.
     </para>
     <example>
      <title><function>Mysql_fetch_array</function></title>
@@ -668,11 +636,11 @@ mysql_free_result ($result);
    <refnamediv>
     <refname>mysql_fetch_assoc</refname> 
     <refpurpose>
-     Fetch a result row as an associative array
+     결과를 필드이름 색인으로 된 배열로 얻음
     </refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>array <function>mysql_fetch_assoc</function></funcdef>
@@ -680,31 +648,28 @@ mysql_free_result ($result);
      </funcprototype>
     </funcsynopsis>
     <para> 
-     Returns an associative array that corresponds to the fetched row,
-     or false if there are no more rows.</para>
+     필드이름의 색인을 가진 배열로 돌려주고,
+     가져올 행이 없을 경우 false값을 반환한다.</para>
     <para>
-     <function>mysql_fetch_assoc</function> is equivalent to calling 
-     <function>mysql_fetch_array</function> with MYSQL_ASSOC for the
-     optional second parameter.  It only returns an associative array.
-     This is the way <function>mysql_fetch_array</function> originally
-     worked.  If you need the numeric indices as well as the
-     associative, use <function>mysql_fetch_array</function>.
+     <function>mysql_fetch_assoc</function>는
+     <function>mysql_fetch_array</function>의 두번째 인자로
+     MYSQL_ASSOC를 사용한 경우과 동일하게 작동한다.
+     이 방식은 <function>mysql_fetch_array</function>의 본래의 동작 방법이다.
+     만일 숫자 색인 방식과 필드이름 색인을 동시에 사용하려면,
+     <function>mysql_fetch_array</function>를 사용하면 된다.
     </para>
     <para>
-     If two or more columns of the result have the same field names,
-     the last column will take precedence. To access the other column(s)
-     of the same name, you must use <function>mysql_fetch_array</function> and
-     have it return the numeric indices as well.
+     결과로 두개 이상의 동일한 필드 이름을 가진 열(column)이 있다면,
+     마지막 열이 우선권을 가진다. 동일한 다른 열을 사용하기 위해서는
+     색인 번호도 추가된 <function>mysql_fetch_array</function>를
+     사용해야할 것이다.
     </para>
     <para>
-     An important thing to note is that using
-     <function>mysql_fetch_assoc</function> is NOT significantly
-     slower than using <function>mysql_fetch_row</function>, while it
-     provides a significant added value.
+     <function>mysql_fetch_assoc</function>는 필드이름으로 된 색인이 추가되지만,
+     <function>mysql_fetch_row</function> 보다 느려지지는 않는다.
     </para>
     <para>
-     For further details, see also
-     <function>mysql_fetch_row</function> and <function>mysql_fetch_array</function>.
+     참조: <function>mysql_fetch_row</function>, <function>mysql_fetch_array</function>.
     </para>
     <example>
      <title><function>Mysql_fetch_assoc</function></title>
@@ -727,11 +692,11 @@ mysql_free_result ($result);
    <refnamediv>
     <refname>mysql_fetch_field</refname>
     <refpurpose>
-     Get column information from a result and return as an object
+     결과로부터 열 정보를 얻어서 객체로 돌려줌
     </refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>object <function>mysql_fetch_field</function></funcdef>
@@ -744,94 +709,96 @@ mysql_free_result ($result);
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns an object containing field information.
+     필드 정보가 포함된 객체로 반환한다.
     </para>  
     <para>
-     <function>mysql_fetch_field</function> can be used in order to
-     obtain information about fields in a certain query result.  If
-     the field offset isn't specified, the next field that wasn't yet
-     retrieved by <function>mysql_fetch_field</function> is retrieved.
+     <function>mysql_fetch_field</function>는 특정 질의 결과로부터
+     필드 정보를 얻을 목적으로 사용할 수 있다. 만일 field_offset을 지정하지 않으면,
+     <function>mysql_fetch_field</function>에 의해 아직 얻지 못한 다음 필드 정보를
+     얻게 된다.
     </para>
-    <para>
-     The properties of the object are:
+			<para>
+     객체에 대한 특성은 다음과 같다.
      <itemizedlist>
-      <listitem>
-       <simpara>
-	name - column name
+					<listitem>
+						<simpara>
+	name - 열(column) 이름
        </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-	table - name of the table the column belongs to
+					</listitem>
+					<listitem>
+						<simpara>
+	table - 열이 속해있는 테이블 이름
        </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-	max_length - maximum length of the column
+					</listitem>
+					<listitem>
+						<simpara>
+	max_length - 열의 최대 길이
        </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-	not_null - 1 if the column cannot be null
+					</listitem>
+					<listitem>
+						<simpara>
+	not_null - 열 값이 null이 아니면 1
        </simpara>
-      </listitem> 
-      <listitem>
-       <simpara>
-	primary_key - 1 if the column is a primary key
+					</listitem>
+					<listitem>
+						<simpara>
+	primary_key - 열이 primary key이면 1
        </simpara>
-      </listitem> 
-      <listitem>
-       <simpara>
-	unique_key - 1 if the column is a unique key
+					</listitem>
+					<listitem>
+						<simpara>
+	unique_key - 열이 unique key이면 1
        </simpara>
-      </listitem> 
-      <listitem>
-       <simpara>
-	multiple_key - 1 if the column is a non-unique key
+					</listitem>
+					<listitem>
+						<simpara>
+	multiple_key - 열이 non-unique key이면 1
        </simpara>
-      </listitem> 
-      <listitem>
-       <simpara>
-	numeric - 1 if the column is numeric
+					</listitem>
+					<listitem>
+						<simpara>
+	numeric - 열이 숫자이면 1
        </simpara>
-      </listitem> 
-      <listitem>
-       <simpara>
-	blob - 1 if the column is a BLOB
+					</listitem>
+					<listitem>
+						<simpara>
+	blob - 열이 BLOB이면 1
        </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-	type - the type of the column
+					</listitem>
+					<listitem>
+						<simpara>
+	type - 열의 타입
        </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-	unsigned - 1 if the column is unsigned
+					</listitem>
+					<listitem>
+						<simpara>
+	unsigned - 열이 부호없음(unsigned)이면 1
        </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-	zerofill - 1 if the column is zero-filled
+					</listitem>
+					<listitem>
+						<simpara>
+	zerofill - 열이 0으로 채움(zero-filled)이면 1
        </simpara>
-      </listitem>
-     </itemizedlist>
-    </para>
-    <example>
-     <title><function>Mysql_fetch_field</function></title>
-     <programlisting role="php">
+					</listitem>
+				</itemizedlist>
+			</para>
+			<example>
+				<title>
+					<function>Mysql_fetch_field</function>
+				</title>
+				<programlisting role="php">
 &lt;?php 
 mysql_connect ($host, $user, $password)
-    or die ("Could not connect");
+    or die ("접속할 수 없습니다");
 $result = mysql_db_query ("database", "select * from table")
-    or die ("Query failed");
+    or die ("질의 실패");
 # get column metadata
 $i = 0;
 while ($i &lt; mysql_num_fields ($result)) {
     echo "Information for column $i:&lt;BR>\n";
     $meta = mysql_fetch_field ($result);
     if (!$meta) {
-        echo "No information available&lt;BR>\n";
+        echo "어떠한 정보도 없습니다.&lt;BR>\n";
     }
     echo "&lt;PRE>
 blob:         $meta->blob
@@ -852,89 +819,88 @@ zerofill:     $meta->zerofill
 mysql_free_result ($result);
 ?>
      </programlisting>
-    </example>
-    <para>
-     See also <function>mysql_field_seek</function>.
+			</example>
+			<para>
+     참조: <function>mysql_field_seek</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-fetch-lengths">
-   <refnamediv>
-    <refname>mysql_fetch_lengths</refname> 
-    <refpurpose>
-     Get the length of each output in a result
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-fetch-lengths">
+		<refnamediv>
+			<refname>mysql_fetch_lengths</refname>
+			<refpurpose>
+     결과로부터 각 출력의 길이를 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>mysql_fetch_lengths</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Returns: An array that corresponds to the lengths of each field
-     in the last row fetched by <function>mysql_fetch_row</function>,
-     or false on error.
-    </para>  
-    <para>
-     <function>mysql_fetch_lengths</function> stores the lengths of
-     each result column in the last row returned by
-     <function>mysql_fetch_row</function>,
-     <function>mysql_fetch_array</function>, and
-     <function>mysql_fetch_object</function> in an array, starting at
-     offset 0.
-    </para>  
-    <para> 
-     See also: <function>mysql_fetch_row</function>.
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>array <function>mysql_fetch_lengths</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+     반환값: 최근 <function>mysql_fetch_row</function>로 얻은
+     행(row)의 각 필드 길이를 배열로 얻거나, 에러 발생시에는 false값을
+     얻는다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-fetch-object">
-   <refnamediv>
-    <refname>mysql_fetch_object</refname>
-    <refpurpose>Fetch a result row as an object</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>mysql_fetch_object</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int
+			<para>
+				<function>mysql_fetch_lengths</function>는
+     최근 <function>mysql_fetch_row</function>,
+     <function>mysql_fetch_array</function>,
+     <function>mysql_fetch_object</function>로 얻은 행으로부터
+     각 열(column)의 길이를 색인값이 0으로 시작하는 배열로 저장하여 반환한다.
+    </para>
+			<para> 
+     참조: <function>mysql_fetch_row</function>.
+    </para>
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-fetch-object">
+		<refnamediv>
+			<refname>mysql_fetch_object</refname>
+			<refpurpose>행(row)의 결과를 객체로 얻음</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>object <function>mysql_fetch_object</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int
        <parameter>
-        <optional>result_type</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Returns an object with properties that correspond to the fetched
-     row, or false if there are no more rows.
+							<optional>result_type</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+     행(row)에 대응되는 객체로 돌려주고,
+     가져올 행이 없을 경우 false를 반환한다.
     </para>
-    <para> 
-     <function>mysql_fetch_object</function> is similar to
-     <function>mysql_fetch_array</function>, with one difference - an
-     object is returned, instead of an array.  Indirectly, that means
-     that you can only access the data by the field names, and not by
-     their offsets (numbers are illegal property names).
+			<para>
+				<function>mysql_fetch_object</function>는
+     <function>mysql_fetch_array</function>와 유사하나,
+     배열 대신 객체로 얻는다는 차이점이 있다.
+     다시말해, 오프셋(offset)에 의해서가 아닌 필드이름으로
+     데이터를 접근할 수 있다는 것이다.
     </para>
-    <para>
-     The optional argument <parameter>result_type</parameter> is a
-     constant and can take the following values: MYSQL_ASSOC,
-     MYSQL_NUM, and MYSQL_BOTH.
+			<para>
+     두번째 인자인 <parameter>result_type</parameter>에는
+     상수가 오며, MYSQL_ASSOC, MYSQL_NUM, MYSQL_BOTH 값을 가질 수 있다.
     </para>
-    <para>
-     Speed-wise, the function is identical to
-     <function>mysql_fetch_array</function>, and almost as quick as
-     <function>mysql_fetch_row</function> (the difference is
-     insignificant).
+			<para>
+     속도면에서, 이 함수는 <function>mysql_fetch_array</function>와 비슷하고,
+     <function>mysql_fetch_row</function>만큼이나 빠르다. 그러나 큰 차이는 없다.
      <example>
-      <title><function>mysql_fetch_object</function> example</title>
-      <programlisting role="php">
+					<title>
+						<function>mysql_fetch_object</function> 예제</title>
+					<programlisting role="php">
 &lt;?php 
 mysql_connect ($host, $user, $password);
 $result = mysql_db_query ("database", "select * from table");
@@ -945,123 +911,123 @@ while ($row = mysql_fetch_object ($result)) {
 mysql_free_result ($result);
 ?>
       </programlisting>
-     </example>
-    </para>
-    <para> 
+				</example>
+			</para>
+			<para> 
      See also: <function>mysql_fetch_array</function> and
      <function>mysql_fetch_row</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-fetch-row">
-   <refnamediv>
-    <refname>mysql_fetch_row</refname>
-    <refpurpose>Get a result row as an enumerated array</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>mysql_fetch_row</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Returns: An array that corresponds to the fetched row, or false
-     if there are no more rows.
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-fetch-row">
+		<refnamediv>
+			<refname>mysql_fetch_row</refname>
+			<refpurpose>결과를 숫자색인으로 된 배열로 얻음</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>array <function>mysql_fetch_row</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+     반환값: 행(row)에 대응되는 객체로 돌려주고, 가져올 값이 없을 경우 false를 반환한다.
     </para>
-    <para>
-     <function>mysql_fetch_row</function> fetches one row of data from
-     the result associated with the specified result identifier.  The
-     row is returned as an array.  Each result column is stored in an
-     array offset, starting at offset 0.
+			<para>
+				<function>mysql_fetch_row</function>는 특정 result identifier로부터
+     한 행의 데이터를 가져오며, 배열로 얻을 수 있다. 각 결과 열(column)은
+     0부터 시작하는 숫자색인으로 저장된다.
     </para>
-    <para>
-     Subsequent call to <function>mysql_fetch_row</function> would
-     return the next row in the result set, or false if there are no
-     more rows.
+			<para>
+     <function>mysql_fetch_row</function>를 실행하면, 다음 행 데이터를 돌려주며,
+     가져올 행이 없을 경우 false를 반환한다.
     </para>
-    <para>
-     See also: <function>mysql_fetch_array</function>,
+			<para>
+     참조: <function>mysql_fetch_array</function>,
      <function>mysql_fetch_object</function>,
      <function>mysql_data_seek</function>,
-     <function>mysql_fetch_lengths</function>, and
+     <function>mysql_fetch_lengths</function>,
      <function>mysql_result</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-field-flags">
-   <refnamediv>
-    <refname>mysql_field_flags</refname>
-    <refpurpose>
-     Get the flags associated with the specified field in a result
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-field-flags">
+		<refnamediv>
+			<refname>mysql_field_flags</refname>
+			<refpurpose>
+     결과로부터 특정 필드(field)의 상태정보(flag)를 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>mysql_field_flags</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field_offset</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     <function>mysql_field_flags</function> returns the field flags of
-     the specified field. The flags are reported as a single word
-     per flag separated by a single space, so that you can split the
-     returned value using <function>explode</function>.
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>mysql_field_flags</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>field_offset</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_field_flags</function>은 특정 필드의 상태정보를 반환한다.
+     상태정보는 한개의 공백으로 구분된 단일 단어로 출력되며,
+     이 값은 <function>explode</function>에 의해 나눠서 볼 수 있다.
     </para>
-    <para>The following flags are reported, if your version of MySQL
-     is current enough to support them: "not_null", "primary_key",
+			<para>
+     사용중인 MySQL 버전이 "not_null", "primary_key",
      "unique_key", "multiple_key", "blob", "unsigned", "zerofill",
-     "binary", "enum", "auto_increment", "timestamp".
+     "binary", "enum", "auto_increment", "timestamp"를 지원한다면,
+     필드 상태정보에 따라 위의 단어들이 출력될 것이다.
     </para>
-    <para> 
-     For downward compatibility <function>mysql_fieldflags</function>
-     can also be used.
+			<para> 
+     <function>mysql_fieldflags</function>와 하위 호환성이 있다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-field-name">
-   <refnamediv>
-    <refname>mysql_field_name</refname> 
-    <refpurpose>
-     Get the name of the specified field in a result
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-field-name">
+		<refnamediv>
+			<refname>mysql_field_name</refname>
+			<refpurpose>
+     결과로부터 특정 필드 이름을 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>mysql_field_name</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field_index</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_field_name</function> returns the name of the
-     specified field index. <parameter>result</parameter> must be a
-     valid result identifier and <parameter>field_index</parameter> is
-     the numerical offset of the field.
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>mysql_field_name</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>field_index</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_field_name</function>은 특정 필드 색인값을 얻는다.
+     <parameter>result</parameter>는 result identifier는 유효한 결과값이어야 하고,
+     <parameter>field_index</parameter>는 필드의 숫자 오프셋(offset)이어야 한다.
     </para>
-    <note>
-     <para>
-      <parameter>field_index</parameter> starts at 0.
+			<note>
+				<para>
+					<parameter>field_index</parameter>는 0부터 시작하는 값이다.
      </para>
-     <para>
-      e.g. The index of the third field would actually be 2, the index
-      of the fourth field would be 3 and so on.
+				<para>
+      예를들어, 세번째 필드의 색인은 2이고, 네번째 필드의 색인은 3이 된다.
      </para>
-    </note>
-    <para>
-     <example>
-      <title><function>mysql_field_name</function> example</title>
-      <programlisting role="php">
-// The users table consists of three fields: 
+			</note>
+			<para>
+				<example>
+					<title>
+						<function>mysql_field_name</function> example</title>
+					<programlisting role="php">
+// 테이블이 세개의 필드로 아래와 같이 세개의 필드로 이루어져 있을 때: 
 //   user_id
 //   username
 //   password.
@@ -1071,132 +1037,134 @@ $res = mysql_db_query("users", "select * from users", $link);
 echo mysql_field_name($res, 0) . "\n";
 echo mysql_field_name($res, 2);
       </programlisting>
-     </example>
-    </para>
-    <para>
-     The above example would produce the following output:
+				</example>
+			</para>
+			<para>
+     위의 예제는 아래와 같이 출력될 것이다:
      <informalexample>
-      <programlisting>
+					<programlisting>
 user_id
 password
       </programlisting>
-     </informalexample>
+				</informalexample>
+			</para>
+			<para>
+     <function>mysql_fieldname</function>와 하위 호환성이 있다.
     </para>
-    <para>
-     For downwards compatibility <function>mysql_fieldname</function>
-     can also be used.
-    </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-field-len">
-   <refnamediv>
-    <refname>mysql_field_len</refname> 
-    <refpurpose>
-     Returns the length of the specified field
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-field-len">
+		<refnamediv>
+			<refname>mysql_field_len</refname>
+			<refpurpose>
+     특정 필드의 길이를 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_field_len</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field_offset</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_field_len</function> returns the length of the
-     specified field.
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_field_len</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>field_offset</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_field_len</function>은 특정 필드의 길이를 얻는다.
     </para>
-    <para>
-     For downward compatibility <function>mysql_fieldlen</function>
-     can also be used.
+			<para>
+     <function>mysql_fieldlen</function>는 하위 호환성이 있다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-field-seek">
-   <refnamediv>
-    <refname>mysql_field_seek</refname>
-    <refpurpose>
-     Set result pointer to a specified field offset
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-field-seek">
+		<refnamediv>
+			<refname>mysql_field_seek</refname>
+			<refpurpose>
+     특정 필드의 오프셋(offset)으로 위치(pointer)를 이동
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_field_seek</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field_offset</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     Seeks to the specified field offset.  If the next call to
-     <function>mysql_fetch_field</function> doesn't include a field
-     offset, the field offset specified in
-     <function>mysql_field_seek</function> will be returned.
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_field_seek</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>field_offset</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+     특정 필드 오프셋을 검색하는데 사용된다.
+     <function>mysql_fetch_field</function>을 실행하면서 필드 오프셋을 설정하지 않으면,
+     <function>mysql_field_seek</function>이 돌려준 값으로 지정된다.
     </para>
-    <para>
-     See also: <function>mysql_fetch_field</function>.
+			<para>
+     참조: <function>mysql_fetch_field</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-field-table">
-   <refnamediv>
-    <refname>mysql_field_table</refname>
-    <refpurpose>
-     Get name of the table the specified field is in
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-field-table">
+		<refnamediv>
+			<refname>mysql_field_table</refname>
+			<refpurpose>
+     특정 필드가 속한 테이블 이름을 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>mysql_field_table</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field_offset</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Returns the name of the table that the specifed field is
-     in.
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>mysql_field_table</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>field_offset</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+     특정 필드가 속한 테이블 이름을 얻는다.
     </para>
-    <para>
-     For downward compatibility <function>mysql_fieldtable</function>
-     can also be used.
+			<para>
+     <function>mysql_fieldtable</function>과 하위 호환성이 있다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-field-type">
-   <refnamediv>
-    <refname>mysql_field_type</refname>
-    <refpurpose>
-     Get the type of the specified field in a result
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-field-type">
+		<refnamediv>
+			<refname>mysql_field_type</refname>
+			<refpurpose>
+     결과로부터 특정 필드의 타입정보(type)을 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>mysql_field_type</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field_offset</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_field_type</function> is similar to the
-     <function>mysql_field_name</function> function. The arguments are
-     identical, but the field type is returned instead. The field type
-     will be one of "int", "real", "string", "blob", and others as
-     detailed in the <ulink url="&url.mysql.docs;">MySQL
-     documentation</ulink>.
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>mysql_field_type</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>field_offset</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_field_type</function>는
+        <function>mysql_field_name</function> 함수와
+        사용자에게 돌려주는 값의 형태에서는 비슷하다.
+        그러나, 필드타입은 "int", "real", "string", "blob" 등과 같은
+        단어로 반환한다는 것이 다르다. 필드타입의 더 자세한 종류를 보려면
+        <ulink url="&url.mysql.docs;">MySQL 문서</ulink>를 보면 된다.
      <example>
-      <title>mysql field types</title>
-      <programlisting role="php">
+					<title>mysql field types</title>
+					<programlisting role="php">
 &lt;?php 
 
 mysql_connect ("localhost:3306");
@@ -1220,129 +1188,123 @@ mysql_close();
 
 ?>
       </programlisting>
-     </example>
+				</example>
+			</para>
+			<para> 
+     <function>mysql_fieldtype</function>과 하위 호환성이 있다.
     </para>
-    <para> 
-     For downward compatibility <function>mysql_fieldtype</function>
-     can also be used.
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-free-result">
+		<refnamediv>
+			<refname>mysql_free_result</refname>
+			<refpurpose>Free result memory</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_free_result</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_free_result</function>는
+<parameter>result</parameter>에 대한 메모리(memory)에 있는
+내용을 모두 제거한다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-free-result">
-   <refnamediv>
-    <refname>mysql_free_result</refname>
-    <refpurpose>Free result memory</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_free_result</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_free_result</function> will free all memory
-     associated with the result identifier <parameter>result</parameter>.
+			<para>
+				<function>mysql_free_result</function>는 결과로부터 얻은 질의 값이
+커서 많은 메모리를 사용할 염려가 있을 때 사용된다.
+그러나, 스크립트(script) 실행부 마지막에는 자동적으로 결과에 관련된 메모리는 지워진다.
     </para>
-    <para>
-     <function>mysql_free_result</function> only needs to be called if
-     you are concerned about how much memory is being used for queries
-     that return large result sets.  All associated result memory is
-     automatically freed at the end of the script's execution.
+			<para>
+     <function>mysql_freeresult</function>와는 하위 호환성이 있다.
     </para>
-    <para>
-     For downward compatibility <function>mysql_freeresult</function>
-     can also be used.
-    </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-insert-id">
-   <refnamediv>
-    <refname>mysql_insert_id</refname>
-    <refpurpose>
-     Get the id generated from the previous INSERT operation
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-insert-id">
+		<refnamediv>
+			<refname>mysql_insert_id</refname>
+			<refpurpose>
+     최근 INSERT 작업으로부터 생성된 identifier 값을 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_insert_id</function></funcdef>
-      <paramdef>int 
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_insert_id</function>
+					</funcdef>
+					<paramdef>int 
        <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_insert_id</function> returns the ID generated for
-     an AUTO_INCREMENT column by the previous INSERT query using the
-     given <parameter>link_identifier</parameter>.  If
-     <parameter>link_identifier</parameter> isn't specified, the last
-     opened link is assumed.
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_insert_id</function>는
+         <parameter>link_identifier</parameter>를 사용하면, INSERT 질의로 행(row)를 추가한 뒤
+         AUTO_INCREMENT로 생성된 컬럼에 추가된 값을 얻을 수 있다. 
+         <parameter>link_identifier</parameter>를 지정하지 않으면 마지막에 열려진 링크(link)를
+         사용한다.
     </para>
-    <para>
-     <function>mysql_insert_id</function> returns 0 if the previous
-     query does not generate an AUTO_INCREMENT value. If you need to
-     save the value for later, be sure to call mysql_insert_id()
-     immediately after the query that generates the value.
+			<para>
+		<function>mysql_insert_id</function>는 이전 질의가 AUTO_INCREMENT값으로
+     생성되지 않으면, 0을 반환한다.
+     마지막으로 저장된 값이 필요하다면, 질의로 값을 추가한 직후 mysql_insert_id()를 사용하면 된다.
     </para>
-    <note>
-     <para>
-      The value of the MySQL SQL function
-      <literal>LAST_INSERT_ID()</literal> always contains the most
-      recently generated AUTO_INCREMENT value, and is not reset
-      between queries.
+			<note>
+				<para>
+      <literal>LAST_INSERT_ID()</literal>는 
+AUTO_INCREMENT 값으로 생성된 가장 최근 값이 보관되며 질의 사이에는 없어지지 않는다.
     </para>
-    </note>
-    <warning>
-     <para>
-      <function>mysql_insert_id</function> converts the return type of
-      the native MySQL C API function
-      <literal>mysql_insert_id()</literal> to a type of
-      <literal>long</literal>.  If your AUTO_INCREMENT column has
-      a column type of BIGINT, the value returned by
-      <function>mysql_insert_id</function> will be incorrect.
-      Instead, use the internal MySQL SQL function
-      <literal>LAST_INSERT_ID()</literal>.
+			</note>
+			<warning>
+				<para>
+					<function>mysql_insert_id</function>는 MySQL C API 내장 함수인
+      <literal>mysql_insert_id()</literal>로부터 <literal>long</literal> 타입으로 변환한다.
+      만일, AUTO_INCREMENT 열(column)의 타입이 BIGINT라면,
+			<function>mysql_insert_id</function>은 부정확한 값을 반환할 것이다. 그대신, 내부 MySQL 함수인
+			<literal>LAST_INSERT_ID()</literal>를 사용하면 된다.
      </para>
-    </warning>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-list-dbs">
-   <refnamediv>
-    <refname>mysql_list_dbs</refname> 
-    <refpurpose>
-     List databases available on a MySQL server
+			</warning>
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-list-dbs">
+		<refnamediv>
+			<refname>mysql_list_dbs</refname>
+			<refpurpose>
+     MySQL 서버에 있는 데이터베이스 이름을 얻음
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_list_dbs</function></funcdef>
-      <paramdef>int 
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_list_dbs</function>
+					</funcdef>
+					<paramdef>int 
        <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_list_dbs</function> will return a result pointer
-     containing the databases available from the current mysql
-     daemon. Use the <function>mysql_tablename</function> function to
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+			<function>mysql_list_dbs</function>는 현재 MySQL 데몬(daemon)으로부터
+      사용가능한 데이터베이스를 포함한 결과 포인터로 반환할 것이다.
+			Use the <function>mysql_tablename</function> function to
      traverse this result pointer.
     </para>
-    <para>
-     <example>
-      <title><function>mysql_list_dbs</function> example</title>
-      <programlisting role="php">
+			<para>
+				<example>
+					<title>
+						<function>mysql_list_dbs</function> 예제</title>
+					<programlisting role="php">
 $link = mysql_connect('localhost', 'myname', 'secret');
 $db_list = mysql_list_dbs($link);
 
@@ -1350,187 +1312,183 @@ while ($row = mysql_fetch_object($db_list)) {
   echo $row->Database . "\n";
 }
       </programlisting>
-     </example>
-    </para>
-    <para>
-     The above example would produce the following output:
+				</example>
+			</para>
+			<para>
+			예제의 결과는 아래와 같다:
      <informalexample>
-      <programlisting>
+					<programlisting>
 database1
 database2
 database3
 ...
       </programlisting>
-     </informalexample>
-    </para>
-    <note>
-     <para>
-      The above code would just as easily work with
-      <function>mysql_fetch_row</function> or other similar functions.
+				</informalexample>
+			</para>
+			<note>
+				<para>
+      위 코드는 <function>mysql_fetch_row</function>나 이와 유사한 함수를 사용할 수도 있다.
      </para>
-    </note>
-    <para>
-     For downward compatibility <function>mysql_listdbs</function> can
-     also be used.
+			</note>
+			<para>
+			<function>mysql_listdbs</function>는 하위 호환성이 있다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-list-fields">
-   <refnamediv>
-    <refname>mysql_list_fields</refname>
-    <refpurpose>List MySQL result fields</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_list_fields</function></funcdef>
-      <paramdef>string <parameter>database_name</parameter></paramdef>
-      <paramdef>string <parameter>table_name</parameter></paramdef>
-      <paramdef>int 
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-list-fields">
+		<refnamediv>
+			<refname>mysql_list_fields</refname>
+			<refpurpose>MySQL 결과의 필드 리스트를 얻음</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_list_fields</function>
+					</funcdef>
+					<paramdef>string <parameter>database_name</parameter>
+					</paramdef>
+					<paramdef>string <parameter>table_name</parameter>
+					</paramdef>
+					<paramdef>int 
        <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_list_fields</function> retrieves information
-     about the given tablename. Arguments are the database name and
-     the table name. A result pointer is returned which can be used
-     with <function>mysql_field_flags</function>,
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_list_fields</function>는 주어진 테이블 이름으로부터 정보를 가져온다.
+     이 함수는 데이터베이스 이름과 테이블 이름을 인수(argument)로 갖는다.
+     그리고 이 함수는 <function>mysql_field_flags</function>,
      <function>mysql_field_len</function>,
-     <function>mysql_field_name</function>, and
-     <function>mysql_field_type</function>.
+     <function>mysql_field_name</function>,
+     <function>mysql_field_type</function> 등을 사용할 수 있도록
+     결과 포인터를 반환한다.
     </para>
-    <para>
-     A result identifier is a positive integer. The function returns
-     -1 if a error occurs. A string describing the error will be
-     placed in <literal>$phperrmsg</literal>, and unless the function
-     was called as <literal>@mysql()</literal> then this error string
-     will also be printed out.
+			<para>
+     결과 identifier는 양의 정수이며, 에러가 발생하면 -1 값이 반환된다.
+     에러 메시지는 <literal>$phperrmsg</literal>에 저장될 것이며,
+     <literal>@mysql()</literal>과 같이 호출하지 않는한 항상 화면에
+     에러 메시지가 출력될 것이다.
     </para>
-    <para>
-     <example>
-      <title><function>mysql_list_fields</function> example</title>
-      <programlisting role="php">
+			<para>
+				<example>
+					<title>
+						<function>mysql_list_fields</function> 예제</title>
+					<programlisting role="php">
 $link = mysql_connect('localhost', 'myname', 'secret');
 
 $fields = mysql_list_fields("database1", "table1", $link);
 $columns = mysql_num_fields($fields);
 
-for ($i = 0; $i < $columns; $i++) {
+for ($i = 0; $i &lt; $columns; $i++) {
   echo mysql_field_name($fields, $i) . "\n";;
 }
       </programlisting>
-     </example>
-    </para>
-    <para>
-     The above example would produce the following output:
+				</example>
+			</para>
+			<para>
+     위의 예제는 다음과 같이 출력될 것이다:
      <informalexample>
-      <programlisting>
+					<programlisting>
 field1
 field2
 field3
 ...
       </programlisting>
-     </informalexample>
+				</informalexample>
+			</para>
+			<para>
+     <function>mysql_listfields</function>는 하위 호환성이 있다.
     </para>
-    <para>
-     For downward compatibility <function>mysql_listfields</function>
-     can also be used.
-    </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-list-tables">
-   <refnamediv>
-    <refname>mysql_list_tables</refname>
-    <refpurpose>List tables in a MySQL database</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_list_tables</function></funcdef>
-      <paramdef>string <parameter>database</parameter></paramdef>
-      <paramdef>int 
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-list-tables">
+		<refnamediv>
+			<refname>mysql_list_tables</refname>
+			<refpurpose>MySQL 데이터베이스에 있는 테이블 목록을 반환</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_list_tables</function>
+					</funcdef>
+					<paramdef>string <parameter>database</parameter>
+					</paramdef>
+					<paramdef>int 
        <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     <function>mysql_list_tables</function> takes a database name and
-     returns a result pointer much like the
-     <function>mysql_db_query</function> function.  The
-     <function>mysql_tablename</function> function should be used to
-     extract the actual table names from the result pointer.
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_list_tables</function> 지정된 데이터베이스 이름으로
+결과값을 얻고 <function>mysql_db_query</function>등의 함수에 사용되는 결과 포인터를 반환한다.
+<function>mysql_tablename</function> 함수는 결과 포인터로부터 실제 테이블 이름을 추출하는데 사용한다.
     </para>
-    <para>
-     For downward compatibility <function>mysql_listtables</function>
-     can also be used.
+			<para>
+하위 호환성을 가지는 <function>mysql_listtables</function> 함수 역시 사용 가능하다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-num-fields">
-   <refnamediv>
-    <refname>mysql_num_fields</refname>
-    <refpurpose>Get number of fields in result</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_num_fields</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     <function>mysql_num_fields</function> returns the number of
-     fields in a result set.
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-num-fields">
+		<refnamediv>
+			<refname>mysql_num_fields</refname>
+			<refpurpose>결과로부터 필드 개수를 반환</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_num_fields</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_num_fields</function> 함수는 결과셋으로부터 필드 개수를 반환한다.
     </para>
-    <para> 
-     See also: 
+			<para> 
+     참조: 
      <function>mysql_db_query</function>,
      <function>mysql_query</function>,
      <function>mysql_fetch_field</function>,
      <function>mysql_num_rows</function>.</para>
-    <para>
-     For downward compatibility <function>mysql_numfields</function>
-     can also be used.
+			<para>
+하위 호환성을 가지는 <function>mysql_numfields</function> 함수 역시 사용 가능하다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-num-rows">
-   <refnamediv>
-    <refname>mysql_num_rows</refname>
-    <refpurpose>Get number of rows in result</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_num_rows</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_num_rows</function> returns the number of rows in
-     a result set. This command is only valid for SELECT statements. 
-     To retrieve the number of rows returned from a INSERT, UPDATE or 
-     DELETE, use <function>mysql_affected_rows</function>.
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-num-rows">
+		<refnamediv>
+			<refname>mysql_num_rows</refname>
+			<refpurpose>결과로부터 열 개수를 반환</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_num_rows</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_num_rows</function> 함수는 결과셋으로부터 열의 개수를 반환한다.
+이 함수는 SELECT절에서 반환된 결과셋만 사용이 가능하다.
+INSERT, UPDATE, DELETE로부터 열의 개수를 얻으려면 <function>mysql_affected_rows</function>를 사용하면 된다.
      <example>
-      <title>
-       <function>
-        mysql_num_rows example by crubel@trilizio.org
+					<title>
+						<function>
+        mysql_num_rows 예제 (crubel@trilizio.org 제공)
        </function>
-      </title>
-      <programlisting role="php">
+					</title>
+					<programlisting role="php">
 &lt;?php
 $conn = mysql_connect("hostaddress", "username", "password"); 
 mysql_select_db("database",$conn); // needed if you have m,ultiple db's
@@ -1539,313 +1497,293 @@ $NumMembers = mysql_num_rows($Resultfornummembers);
 echo "$NumMembers Members";
 ?>                          
       </programlisting>
-     </example>
-    </para>
-    <para>
-     See also:  
+				</example>
+			</para>
+			<para>
+     참조:  
      <function>mysql_db_query</function>, 
      <function>mysql_query</function> and, 
      <function>mysql_fetch_row</function>.
     </para>
-    <para>
-     For downward compatibility <function>mysql_numrows</function> can
-     also be used.
+			<para>
+하위 호환성을 가지는 <function>mysql_numrows</function> 함수 역시 사용 가능하다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-pconnect">
-   <refnamediv>
-    <refname>mysql_pconnect</refname> 
-    <refpurpose>
-     Open a persistent connection to a MySQL Server
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-pconnect">
+		<refnamediv>
+			<refname>mysql_pconnect</refname>
+			<refpurpose>
+			MySQL 서버와 영구적인 데이터베이스 접속
     </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_pconnect</function></funcdef>
-      <paramdef>string 
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_pconnect</function>
+					</funcdef>
+					<paramdef>string 
        <parameter>
-        <optional>hostname
- 	<optional>:port</optional>  
- 	<optional>:/path/to/socket</optional>
-        </optional>
-       </parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>username</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>password</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Returns: A positive MySQL persistent link identifier on success,
-     or false on error.
+							<optional>hostname
+ 	<optional>:port</optional>
+								<optional>:/path/to/socket</optional>
+							</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>username</optional>
+						</parameter>
+					</paramdef>
+					<paramdef>string 
+       <parameter>
+							<optional>password</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+			반환값: 접속에 성공하면 MySQL 영구적 link identifier를 반환하고, 실패하면 에러를 출력.
     </para>
-    <para>
-     <function>mysql_pconnect</function> establishes a connection
-     to a MySQL server.  The following defaults are assumed for
-     missing optional parameters: <parameter>host:port</parameter> =
-     'localhost:3306', <parameter>username</parameter> = name of the
-     user that owns the server process and
-     <parameter>password</parameter> = empty password.
+			<para>
+				<function>mysql_pconnect</function>는 MySQL 서버로부터 접속을 설정하는 함수이다.
+다음 기본 설정값은 옵션 파라미터를 설정하지 않으면 사용된다: <parameter>host:port</parameter> =
+     'localhost:3306', <parameter>username</parameter> = 서버 프로세서 소유자, 
+     <parameter>password</parameter> = 공백 비밀번호.
     </para>
-    <para>
-     The hostname string can also include a port
-     number. eg. &quot;hostname:port&quot; or a path to a socket
-     eg. &quot;:/path/to/socket&quot; for the localhost.
+			<para>
+호스트명은 포트 번호를 포함 가능하다. &quot;hostname:port&quot;나 &quot;:/path/to/socket&quot;와
+ 같이 로컬호스트의 소켓 경로 형태로 사용이 가능하다.
      <note>
-      <para>
-       Support for &quot;:port&quot; wass added in 3.0B4.
+					<para>
+&quot;:port&quot;는 3.0B4 버전부터 사용이 가능하다.
       </para>
-      <para>
-       Support for the &quot;:/path/to/socket&quot; was added in
-       3.0.10.
+					<para>
+&quot;:/path/to/socket&quot;는 3.0.10 버전부터 사용이 가능하다.
       </para>
-     </note>
-    </para>     
-    <para>
-     <function>mysql_pconnect</function> acts very much like
-     <function>mysql_connect</function> with two major differences.
+				</note>
+			</para>
+			<para>
+				<function>mysql_pconnect</function>은 <function>mysql_connect</function>과 크게 두가지 부분에서 다르다.
     </para>
-    <para> 
-     First, when connecting, the function would first try to find a
-     (persistent) link that's already open with the same host,
-     username and password.  If one is found, an identifier for it
-     will be returned instead of opening a new connection.
+			<para> 
+첫째, 접속할 때, 함수는 동일한 호스트와 사용자이름, 비밀번호로 이미 열려진 영구적 접속된 링크가 있는지 찾아본다.
+만일 찾게되면, 새로은 접속을 여는 대신 찾은 링크의 identifier를 반환한다.
     </para>
-    <para> 
-     Second, the connection to the SQL server will not be closed when
-     the execution of the script ends.  Instead, the link will remain
-     open for future use (<function>mysql_close</function> will not
-     close links established by <function>mysql_pconnect</function>).
+			<para> 
+둘째, SQL 서버로 접속은 스크립트 실행이 끝나도 계속 유지가 되며, 이후에도 사용이 가능하다.
+(주의: <function>mysql_pconnect</function>로 열려진 링크는 <function>mysql_close</function>함수로 닫지는 못한다.)
     </para>
-    <para> 
-     This type of links is therefore called 'persistent'.
+			<para> 
+그러므로, 이 형태의 링크를 '영구적(persistent)'으로 부른다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-query">
-   <refnamediv>
-    <refname>mysql_query</refname>
-    <refpurpose>Send a MySQL query</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_query</function></funcdef>
-      <paramdef>string <parameter>query</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     <function>mysql_query</function> sends a query to the currently
-     active database on the server that's associated with the
-     specified link identifier.  If
-     <parameter>link_identifier</parameter> isn't specified, the last
-     opened link is assumed.  If no link is open, the function tries
-     to establish a link as if <function>mysql_connect</function> was
-     called with no arguments, and use it.
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-query">
+		<refnamediv>
+			<refname>mysql_query</refname>
+			<refpurpose>Send a MySQL query</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_query</function>
+					</funcdef>
+					<paramdef>string <parameter>query</parameter>
+					</paramdef>
+					<paramdef>int 
+       <parameter>
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_query</function>는 현재 서버에서 동작중인 데이터베이스로부터
+ 특정 link identifier로 질의를 전송한다.
+만일, <parameter>link_identifier</parameter>를 설정하지 않으면 가장 최근에 열려진 link를 사용하게 된다.
+열려진 link가 없으면, 옵션 인자 없이 실행된 <function>mysql_connect</function>함수처럼
+link를 생성하여 사용한다.
     </para>
-    <note>
-     <para>
-      The query string should not end with a semicolon.
+			<note>
+				<para>
+질의에 쓰이는 문자열 마지막에 세미콜론(;)를 붙이면 안된다.
      </para>
-    </note>
-    <para>
-     <function>mysql_query</function> returns TRUE (non-zero) or FALSE
-     to indicate whether or not the query succeeded.  A return value
-     of TRUE means that the query was legal and could be executed by
-     the server.  It does not indicate anything about the number of
-     rows affected or returned. It is perfectly possible for a query
-     to succeed but affect no rows or return no rows.
+			</note>
+			<para>
+				<function>mysql_query</function>함수는 질의 성공 여부에 따라 TRUE(0이 아닌값) 또는 FALSE를 반환한다.
+서버로부터 실행된 질의가 실행되고 그 질의 내용에 문제가 없어야만, TRUE값을 반환한다.
+이 반환 값은 질의에 해당하는 열 개수 등과는 관련이 없다.
     </para>
-    <para>
-     The following query is syntactically invalid, so
-     <function>mysql_query</function> fails and returns FALSE:
+			<para>
+다음 질의는 틀린 문장이기 때문에 <function>mysql_query</function>는 실패하며, FALSE값을 반환한다:
      <example>
-      <title><function>mysql_query</function></title>
-      <programlisting role="php">
+					<title>
+						<function>mysql_query</function>
+					</title>
+					<programlisting role="php">
 &lt;?php
 $result = mysql_query ("SELECT * WHERE 1=1")
-    or die ("Invalid query");
+    or die ("잘못된 질의를 실행했습니다!!");
 ?>
       </programlisting>
-     </example>
-    </para>
-    <para>
-     The following query is semantically invalid if
-     <literal>my_col</literal> is not a column in the table
-     <literal>my_tbl</literal>, so <function>mysql_query</function>
-     fails and returns FALSE:
+				</example>
+			</para>
+			<para>
+     다음 질의는 문법은 맞지만 실제로 테이블 <literal>my_tbl</literal>에
+     행 <literal>my_col</literal>이 없기 때문에
+     <function>mysql_query</function>함수는 실패하며, FALSE값을 반환한다:
      <example>
-      <title><function>mysql_query</function></title>
-      <programlisting role="php">
+					<title>
+						<function>mysql_query</function>
+					</title>
+					<programlisting role="php">
 &lt;?php
 $result = mysql_query ("SELECT my_col FROM my_tbl")
-    or die ("Invalid query");
+    or die ("잘못된 질의를 실행했습니다!!");
 ?>
       </programlisting>
-     </example>
+				</example>
+			</para>
+			<para>
+				<function>mysql_query</function>는 질의로 참조되는 테이블에 대한 접근 권한이 없다면 실패하며, FALSE값을 반환한다.
     </para>
-    <para>
-     <function>mysql_query</function> will also fail and return FALSE
-     if you don't have permission to access the table(s) referenced by
-     the query.
+			<para>
+질의가 성공하면 <function>mysql_num_rows</function>함수를 사용하여 SELECT문으로 반환되는 행의 개수를 얻을 수 있으며,
+<function>mysql_affected_rows</function>함수를 사용하면, DELETE, INSERT, REPLACE, UPDATE로 적용된 행의 개수를 얻을 수 있다.
     </para>
-    <para>
-     Assuming the query succeeds, you can call
-     <function>mysql_num_rows</function> to find out how many rows
-     were returned for a SELECT statment or
-     <function>mysql_affected_rows</function> to find out how many
-     rows were affected by a DELETE, INSERT, REPLACE, or UPDATE
-     statement.
+			<para>
+SELECT문을 위해 <function>mysql_query</function>함수는 
+<function>mysql_result</function>함수에서 사용할 수 있는 새로운 result identifier를 반환한다.
+결과셋을 사용한 후, <function>mysql_free_result</function>함수를 사용하여 메모리에서 제거할 수 있다.
+그러나, 스크립트가 종료되는 시점에 자동적으로 메모리에서 제거가 된다.
     </para>
-    <para>
-     For SELECT statements, <function>mysql_query</function> returns a
-     new result identifier that you can pass to
-     <function>mysql_result</function>.  When you are done with the
-     result set, you can free the resources associated with it by
-     calling <function>mysql_free_result</function>.  Although, the
-     memory will automatically be freed at the end of the script's
-     execution.
-    </para>
-    <para>
-     See also: <function>mysql_affected_rows</function>,
+			<para>
+     참조: <function>mysql_affected_rows</function>,
      <function>mysql_db_query</function>,
      <function>mysql_free_result</function>,
      <function>mysql_result</function>,
-     <function>mysql_select_db</function>, and
+     <function>mysql_select_db</function>,
      <function>mysql_connect</function>.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-result">
-   <refnamediv>
-    <refname>mysql_result</refname>
-    <refpurpose>Get result data</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed <function>mysql_result</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>row</parameter></paramdef>
-      <paramdef>mixed 
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-result">
+		<refnamediv>
+			<refname>mysql_result</refname>
+			<refpurpose>결과 데이터를 반환</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>mixed <function>mysql_result</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>row</parameter>
+					</paramdef>
+					<paramdef>mixed 
        <parameter>
-        <optional>field</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para>
-     <function>mysql_result</function> returns the contents of one
-     cell from a MySQL result set.  The field argument can be the
-     field's offset, or the field's name, or the field's table dot
-     field's name (fieldname.tablename).  If the column name has been
-     aliased ('select foo as bar from...'), use the alias instead of
-     the column name.
+							<optional>field</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_result</function>함수는 MySQL 결과셋으로부터 한개의 셀(cell) 내용을 반환한다.
+field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이름 사이에 점(테이블이름.필드이름)으로 연결된 인자를 사용할 수 있다.
+만약, 열(column)이름이 별명('select foo as bar from...')으로 되어 있다면 열이름 대신 별명(alias)를 사용해야한다.
     </para>
-    <para>
-     When working on large result sets, you should consider using one
-     of the functions that fetch an entire row (specified below).  As
-     these functions return the contents of multiple cells in one
-     function call, they're MUCH quicker than
-     <function>mysql_result</function>.  Also, note that specifying a
-     numeric offset for the field argument is much quicker than
-     specifying a fieldname or tablename.fieldname argument.
+			<para>
+큰 결과셋으로 작업할 경우, 전체 행을 얻어오는 함수중 하나를 사용하는 것이 좋을 것이다.
+이 함수들은 한 번의 함수 호출로 다중 셀의 내용을 얻을 수 있는 장점이 있으며,
+<function>mysql_result</function>함수보다 더 빠르다.
+또한 필드 인자로 숫자 offset을 사용하면 필드이름 또는 테이블이름.필드이름 인자를 사용한 것보다 더 빠르다.
     </para>
-    <para>
-     Calls to <function>mysql_result</function> should not be mixed
-     with calls to other functions that deal with the result set.
+			<para>
+			<function>mysql_result</function>함수를 사용하면서 결과셋을 다른 함수에서 함께 사용할 수 없다.
     </para>
-    <para>
-     Recommended high-performance alternatives:
+			<para>
+성능 향상을 위해 
      <function>mysql_fetch_row</function>, 
-     <function>mysql_fetch_array</function>, and
-     <function>mysql_fetch_object</function>.
+     <function>mysql_fetch_array</function>, 
+     <function>mysql_fetch_object</function>함수를 사용하는 것이 좋다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-select-db">
-   <refnamediv>
-    <refname>mysql_select_db</refname>
-    <refpurpose>Select a MySQL database</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_select_db</function></funcdef>
-      <paramdef>string <parameter>database_name</parameter></paramdef>
-      <paramdef>int 
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-select-db">
+		<refnamediv>
+			<refname>mysql_select_db</refname>
+			<refpurpose>MySQL 데이터베이스를 선택</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>int <function>mysql_select_db</function>
+					</funcdef>
+					<paramdef>string <parameter>database_name</parameter>
+					</paramdef>
+					<paramdef>int 
        <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     Returns: true on success, false on error.
+							<optional>link_identifier</optional>
+						</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para> 
+			반환값: 성공하면 TRUE값, 실패하면 에러발생.
     </para>
-    <para> 
-     <function>mysql_select_db</function> sets the current active
-     database on the server that's associated with the specified link
-     identifier.  If no link identifier is specified, the last opened
-     link is assumed.  If no link is open, the function will try to
-     establish a link as if <function>mysql_connect</function> was
-     called, and use it.
+			<para>
+				<function>mysql_select_db</function>함수는 link identifier로 지정된 연결을 이용하여
+				사용가능한 데이터베이스를 선택한다.
+				link identifier를 지정하지 않으면 최근 열려진 link를 사용한다.
+				만약 열려진 link가 없다면, 
+				<function>mysql_connect</function>를 호출하면
+				<function>mysql_connect</function>함수가 호출되며 link를 생성하며, 이를 사용한다.
     </para>
-    <para>
-     Every subsequent call to <function>mysql_query</function> will be
-     made on the active database.
+			<para>
+     Every subsequent call to <function>mysql_query</function> will be made on the active database.
     </para>
-    <para> See also:
+			<para>참조:
      <function>mysql_connect</function>, 
-     <function>mysql_pconnect</function>, and
+     <function>mysql_pconnect</function>, 
      <function>mysql_query</function>.
     </para>
-    <para>
-     For downward compatibility <function>mysql_selectdb</function>
-     can also be used.
+			<para>
+     하위 호환성을 가지는 <function>mysql_selectdb</function>함수 역시 사용 가능하다.
     </para>
-   </refsect1>
-  </refentry>
-
-  <refentry id="function.mysql-tablename">
-   <refnamediv>
-    <refname>mysql_tablename</refname>
-    <refpurpose>Get table name of field</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>mysql_tablename</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>i</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-    <para> 
-     <function>mysql_tablename</function> takes a result pointer
-     returned by the <function>mysql_list_tables</function> function
-     as well as an integer index and returns the name of a table. The
-     <function>mysql_num_rows</function> function may be used to
-     determine the number of tables in the result pointer.
+		</refsect1>
+	</refentry>
+	<refentry id="function.mysql-tablename">
+		<refnamediv>
+			<refname>mysql_tablename</refname>
+			<refpurpose>필드의 테이블이름을 얻음</refpurpose>
+		</refnamediv>
+		<refsect1>
+			<title>설명</title>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>string <function>mysql_tablename</function>
+					</funcdef>
+					<paramdef>int <parameter>result</parameter>
+					</paramdef>
+					<paramdef>int <parameter>i</parameter>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+			<para>
+				<function>mysql_tablename</function>함수는 인자로 
+<function>mysql_list_tables</function>함수로 반환되는 결과 포인터와 동시에 
+테이블이름을 반환하고 정수형 인덱스를 가진다.
+<function>mysql_num_rows</function>함수는 결과 포인터에서 테이블 개수를 얻는데 사용된다.
      <example>
-      <title><function>Mysql_tablename</function> Example</title>
-      <programlisting role="php">
+					<title>
+						<function>Mysql_tablename</function> 예제</title>
+					<programlisting role="php">
 &lt;?php 
 mysql_connect ("localhost:3306");
 $result = mysql_list_tables ("wisconsin");
@@ -1857,13 +1795,11 @@ while ($i &lt; mysql_num_rows ($result)) {
 }
 ?>
       </programlisting>
-     </example>
-    </para>
-   </refsect1>
-  </refentry>
-
- </reference>
-
+				</example>
+			</para>
+		</refsect1>
+	</refentry>
+</reference>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
