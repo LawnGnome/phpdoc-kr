@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.6 -->
 <section id="array.constants">
  &reftitle.constants;
@@ -46,7 +46,7 @@
    <listitem>
     <simpara>
      <constant>SORT_ASC</constant>는
-     <function>array_multisort</function> 함수에서 순정렬을 위해 사용된다.
+     <function>array_multisort</function> 함수에서 오름차순 정렬에 사용된다.
     </simpara>
    </listitem>
   </varlistentry>
@@ -58,14 +58,14 @@
    <listitem>
     <simpara>
      <constant>SORT_DESC</constant>는
-     <function>array_multisort</function> 함수에서 역정렬을 위해 사용된다.
+     <function>array_multisort</function> 함수에서 내림차순 정렬에 사용된다.
     </simpara>
    </listitem>
   </varlistentry>
  </variablelist>
  </para>
 
- <para> 정렬 타입 플래그: 여러 정렬함수에 의해 사용됨.
+ <para> 정렬 형태 플래그: 여러 정렬함수에 의해 사용됨.
  <variablelist>
   <varlistentry>
    <term>
@@ -74,7 +74,7 @@
    </term>
    <listitem>
     <simpara>
-     <constant>SORT_REGULAR</constant>는 아이템들을 일반적인 방법으로 비교하는데
+     <constant>SORT_REGULAR</constant>는 아이템들을 통상적인 방법으로 비교하는데
      사용됨.
     </simpara>
    </listitem>
@@ -86,7 +86,7 @@
    </term>
    <listitem>
     <simpara>
-     <constant>SORT_NUMERIC</constant>는 아이템들을 숫자로 비교하는데 사용됨.
+     <constant>SORT_NUMERIC</constant>는 아이템들을 수치로서 비교하는데 사용됨.
     </simpara>
    </listitem>
   </varlistentry>
@@ -97,7 +97,7 @@
    </term>
    <listitem>
     <simpara>
-    <constant>SORT_STRING</constant>는 아이템들을 문자열로 비교하는데 사용됨.
+    <constant>SORT_STRING</constant>는 아이템들을 문자열로서 비교하는데 사용됨.
     </simpara>
    </listitem>
   </varlistentry>
