@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.21 $ -->
+<!-- $Revision: 1.22 $ -->
 <!-- EN-Revision: 1.34 -->
 
  <bookinfo id="bookinfo">
@@ -61,7 +61,7 @@
 
   <authorgroup id="translators">
    <collab>
-    <collabname>PHPDOCÊKorean Translators:</collabname>
+    <collabname>Korean Translators:</collabname>
    </collab>
    <collab>
     <collabname>Hwang WonHee</collabname>
