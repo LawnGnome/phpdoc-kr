@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
 <section id="mysql.configuration">
  &reftitle.runtime;
  &extension.runtime;
@@ -29,6 +29,11 @@
       <entry>mysql.max_links</entry>
       <entry>"-1"</entry>
       <entry>PHP_INI_SYSTEM</entry>
+     </row>
+     <row>
+      <entry>mysql.trace_mode</entry>
+      <entry>"Off"</entry>
+      <entry>PHP_INI_ALL</entry>
      </row>
      <row>
       <entry>mysql.default_port</entry>
@@ -106,7 +111,22 @@
     </para>
    </listitem>
   </varlistentry>
-   <varlistentry id="ini.mysql.default-port">
+
+  <varlistentry id="ini.mysql.trace-mode">
+   <term>
+    <parameter>mysql.trace_mode</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <para>
+     추적 모드. <literal>mysql.trace_mode</literal>를 활성화 하면,
+     테이블/인덱스 스캔, 해제되지 않은 결과 셋 등의 경고 메세지 및 SQL 오류
+     메세지가 표시됩니다. (PHP 4.3.0에서 추가)
+    </para>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry id="ini.mysql.default-port">
    <term>
     <parameter>mysql.default_port</parameter>
     <type>string</type>
@@ -115,10 +135,10 @@
     <para>
      다른 포트를 지정하지 않았을 때, 데이터베이스 서버 접속에
      사용하는 기본 TCP 포트. 기본값이 설정되지 않으면,
-     <literal>MYSQL_TCP_PORT</literal> 환경 변수,
+     <envar>MYSQL_TCP_PORT</envar> 환경 변수,
      <filename>/etc/services</filename>의 <literal>mysql_tcp</literal>, 컴파일
-     시의 <literal>MYSQL_PORT</literal> 상수를 순차적으로 확인합니다.
-     Win32에서는 <literal>MYSQL_PORT</literal> 상수만을 사용합니다.
+     시의 <constant>MYSQL_PORT</constant> 상수를 순차적으로 확인합니다.
+     Win32에서는 <constant>MYSQL_PORT</constant> 상수만을 사용합니다.
     </para>
    </listitem>
   </varlistentry>
