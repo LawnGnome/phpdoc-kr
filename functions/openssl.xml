@@ -2,6 +2,7 @@
   <title>OpenSSL functions</title>
   <titleabbrev>OpenSSL</titleabbrev>
   <partintro>
+   &warn.experimental;
   <para>
    This module uses the functions of <ulink
    url="&url.openssl;">OpenSSL</ulink> for generation and verification

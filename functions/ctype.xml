@@ -3,6 +3,7 @@
   <titleabbrev>ctype</titleabbrev>
 
   <partintro>
+   &warn.experimental;
    <para>
     These functions check whether a character or string
     falls into a certain character class according to the i
@@ -50,6 +51,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
      See also <function>setlocale</function>.
     </para>
@@ -69,6 +71,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -87,6 +90,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -105,6 +109,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -123,6 +128,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -141,6 +147,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -159,6 +166,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -180,6 +188,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -198,6 +207,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -216,6 +226,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
@@ -236,6 +247,7 @@
      <paramdef>string <parameter>c</parameter></paramdef>
      </funcprototype>
     </funcsynopsis>
+   &warn.experimental;
     <para>
     </para>
    </refsect1>
