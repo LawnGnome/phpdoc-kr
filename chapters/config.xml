@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.20 $ -->
+<!-- $Revision: 1.21 $ -->
 <!-- EN-Revision: 1.101 -->
  <chapter id="configuration">
   <title>환경 설정</title>
@@ -981,13 +981,13 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         PHP's "root directory" on the server. Only used if
-         non-empty. If PHP is configured with &safemode;, no files outside
-         this directory are served.
-         If PHP was not compiled with FORCE_REDIRECT, you SHOULD set doc_root
-         if you are running php as a CGI under any web server (other than IIS)
-         The alternative is to use the <link linkend="ini.cgi.force-redirect">
-         cgi.force_redirect</link> configuration below.
+         서버에서의 PHP "루트 디렉토리"입니다. 비어있지 않은
+         경우에 사용합니다. PHP를 &safemode;로 설정하면, 이 디렉토리
+         밖에 있는 파일을 사용할 수 없습니다.
+         IIS를 제외한 어떤 웹 서버에서라도 php를 CGI로 사용하면서,
+         FORCE_REDIRECT 설정 없이 컴파일 하였다면, doc_root를 꼭 설정해야
+         합니다. 아래의 <link linkend="ini.cgi.force-redirect">
+         cgi.force_redirect</link> 설정을 사용하는 대체방법도 있습니다.
         </para>
        </listitem>
       </varlistentry>
@@ -999,9 +999,9 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         The base name of the directory used on a user's home
-         directory for <literal>PHP</literal> files, for example
-         <literal>public_html</literal>.
+         <literal>PHP</literal> 파일을 사용하는 유저의 홈 디렉토리의
+         기본 이름입니다. 예를 들면, <literal>public_html</literal>이
+         있습니다.
         </para>
        </listitem>
       </varlistentry>
@@ -1013,9 +1013,9 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         In what directory PHP should look for dynamically loadable
-         extensions. See also: <link linkend="ini.enable-dl">enable_dl</link>,
-         and <function>dl</function>.
+         동적 로드 확장를 찾을 디렉토리를 설정합니다.
+         참고: <link linkend="ini.enable-dl">enable_dl</link>,
+         <function>dl</function>.
         </para>
        </listitem>
       </varlistentry>
@@ -1027,8 +1027,7 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         Which dynamically loadable extensions to load when PHP starts
-         up.
+         PHP가 시작할 때 설정한 동적 로드 확장을 읽어옵니다.
         </para>
        </listitem>
       </varlistentry>
@@ -1040,14 +1039,15 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         cgi.force_redirect is necessary to provide security running PHP as a
-         CGI under most web servers. Left undefined, PHP turns this on by
-         default. You can turn it off <emphasis>AT YOUR OWN RISK</emphasis>.
+         cgi.force_redirect는 대부분의 웹 서버에서 PHP를 CGI로 사용할 때
+         보안을 제공하기 위해 필요합니다. 미정의 상태라면, PHP는
+         기본값으로 on으로 인식합니다. <emphasis>자신의 책임하</emphasis>에
+         끌 수 있습니다.
         </para>
         <note>
          <para>
-          Windows Users: You CAN safely turn this off for IIS, in fact, you MUST.
-          To get OmniHTTPD or Xitami to work you MUST turn it off.
+          윈도우 유저: IIS에서는 이것을 꺼도 안전하며, 사실상 꺼야합니다.
+          OmniHTTPD나 Xitami로 작업한다면, 반드시 꺼야 합니다.
          </para>
         </note>
        </listitem>
@@ -1060,15 +1060,14 @@ include_path=".;c:\php\includes"
        </term>
        <listitem>
         <para>
-         If cgi.force_redirect is turned on, and you are not running under
-         Apache or Netscape (iPlanet) web servers, you MAY need to set an
-         environment variable name that PHP will look for to know it is OK
-         to continue execution.
+         cgi.force_redirect가 켜져있고, 아파치나 넷스케이프(iPlanet) 웹 서버를
+         사용하지 않는다면, 계속해서 실행하기 위한 OK를 알리기 위한 환경 변수
+         이름을 설정해야 할 수도 있습니다.
         </para>
         <note>
          <para>
-          Setting this variable MAY cause security issues,
-          KNOW WHAT YOU ARE DOING FIRST.
+          이 변수를 설정하는건 보안 문제가 될 수도 있습니다.
+          어떤 일을 하는지 우선적으로 알아보십시오.
          </para>
         </note>
        </listitem>
