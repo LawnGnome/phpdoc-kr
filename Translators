@@ -156,7 +156,7 @@ outcontrol/                                                       not trans..
 overload/                                                         not trans..
 ovrimos/                                                          not trans..
 pcntl/                                                            not trans..
-pcre/                                                             not trans..
+pcre/                              progcom                        ing.
 pdf/                                                              not trans..
 pfpro/                                                            not trans..
 pgsql/                             noribsd          fuzzy74       maintain
