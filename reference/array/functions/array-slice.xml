@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.6 -->
 <!-- splitted from ./en/functions/array.xml, last change in rev 1.2 -->
   <refentry id="function.array-slice">
@@ -8,7 +8,7 @@
     <refpurpose>배열의 일부를 추출한다</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>array</type><methodname>array_slice</methodname>
       <methodparam><type>array</type><parameter>array</parameter></methodparam>

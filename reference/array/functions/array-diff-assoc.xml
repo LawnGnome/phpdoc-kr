@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.2 -->
 <!-- splitted from ./en/functions/array.xml, last change in rev 1.14 -->
   <refentry id="function.array-diff-assoc">
@@ -8,7 +8,7 @@
     <refpurpose>인덱스 검사와 함께 배열간의 차이를 계산한다</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>array</type><methodname>array_diff_assoc</methodname>
       <methodparam><type>array</type><parameter>array1</parameter></methodparam>
