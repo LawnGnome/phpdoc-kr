@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.21 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
   <refentry id="function.header">
    <refnamediv>
     <refname>header</refname>
@@ -16,7 +16,7 @@
     <para>
      <function>header</function>은 raw <acronym>HTTP</acronym> 헤더를 전송하기
      위해 사용합니다. <acronym>HTTP</acronym> 헤더에 관한 자세한 정보는 <ulink
-     url="&spec.http1.1;">HTTP/1.1 규격</ulink>을 참고하십시오.
+      url="&url.rfc;2616">HTTP/1.1 규격</ulink>을 참고하십시오.
     </para>
     <para>
      선택적인 <parameter>replace</parameter> 인자는 이전의 동일한 헤더를
@@ -43,11 +43,11 @@ header('WWW-Authenticate: NTLM', false);
     </para>
     <para>
      두가지 특별한 헤더 호출이 존재합니다. 첫번째는 문자열
-     "<literal>HTTP/</literal>"(대소문자는 무관)으로 시작하는, HTTP 상태
-     코드를 출력하기 위해 사용하는 헤더입니다. 예를 들어, 아파치가 존재하지
+     "<literal>HTTP/</literal>"(대소문자 구별 없음)으로 시작하는, HTTP 상태
+     코드를 출력하기 위해 사용하는 헤더입니다. 예를 들어, 아파치에서 존재하지
      않는 파일들에 대한 요청을 (<literal>ErrorDocument</literal> 지시어를
-     사용하여) PHP 스크립트가 처리하게 했다면, 스크립트가 정확한 상태 코드를
-     출력하게 할 수 있습니다.
+     사용하여) PHP 스크립트로 처리하게 했다면, 스크립트가 정확한 상태 코드를
+     출력하도록 할 수 있습니다.
     </para>
     <para>
      <informalexample>
@@ -70,8 +70,8 @@ header("HTTP/1.0 404 Not Found");
     </note>
     <note>
      <para>
-      PHP 3에서, 이는 PHP를 아파치 모듈로 컴파일 했을 때만 작동했습니다. 같은
-      효과를 <literal>Status</literal> 헤더를 이용하여 얻을 수 있습니다.
+      PHP 3에서, 이 방법은 PHP를 아파치 모듈로 컴파일 했을 때만 작동했습니다.
+      <literal>Status</literal> 헤더를 이용하여 같은 효과를 얻을 수 있습니다.
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -85,7 +85,7 @@ header("Status: 404 Not Found");
     </note>
     <para>
      두번째 특별한 경우는 "Location:" 헤더입니다. 이 헤더만을 전송할 뿐이
-     아니라, 이전에 <literal>3xx</literal> 상태 코드를 설정하지 않는 한
+     아니라, 이전에 <literal>3xx</literal> 상태 코드를 설정하지 않았다면
      <literal>REDIERCT</literal> (302) 상태 코드를 브라우저에 반환합니다.
     </para>
     <para>
@@ -125,9 +125,9 @@ header("Location: http://".$_SERVER['HTTP_HOST']
      </para>
     </note>
     <para>
-     PHP 스크립트는 종종 서버와 클라이언트 브라우저 사이의 어떠한 프록시
-     캐쉬나 클라이언트 브라우저가 캐쉬를 해서는 안되는 동적인 내용을
-     생성합니다. 많은 프록시와 클라이언트에 캐쉬를 비활성화 시킬 수 있습니다:
+     PHP 스크립트는 종종 서버와 클라이언트 브라우저 사이에서 어떠한 프록시,
+     혹은 클라이언트 브라우가 캐쉬를 해서는 안되는 동적인 내용을 생성합니다.
+     이 함수로 여러 프록시와 클라이언트에서 캐쉬를 비활성화할 수 있습니다:
     </para>
     <para>
      <informalexample>
@@ -153,24 +153,25 @@ header("Pragma: no-cache");
     </para>
     <note>
      <para>
-      페이지가 위의 모든 헤더를 출력하지 않아도 캐쉬가 되지 않을 수 있습니다.
-      사용자가 브라우저의 기본 캐쉬 방침을 바꿀 수 있는 수많은 옵션이
-      존재합니다. 위의 헤더들을 전송해서, 어떠한 설정도 덮어씌워야 합니다.
-      그렇지 않으면 스크립트의 출력이 캐쉬될 수 있습니다.
+      페이지가 위의 모든 헤더를 출력하지 않아도 캐쉬가 되지 않을 수는
+      있습니다. 사용자 브라우저의 기본 캐쉬 방침을 바꿀 수 있는 수많은 옵션이
+      존재합니다. 위의 헤더들을 전송해서, 모든 설정을 덮어씌울 필요가
+      있습니다. 그렇지 않으면, 스크립트의 출력을 캐쉬할 수도 있습니다.
      </para>
      <para>
-      추가적으로, <function>session_cache_limiter</function>과
+      추가적으로, <function>session_cache_limiter</function>와
       <literal>session.cache_limiter</literal> 설정으로 세션을 사용할 때
       자동적으로 적합한 캐쉬 관련 헤더를 생성할 수 있습니다.
      </para>
     </note>
     <para>
      <function>header</function>는 보통의 HTML 태그, 파일의 빈 줄, PHP 생성을
-     포함하여 어떠한 출력도 전송되기 전에 호출해야 합니다.
+     포함한 모든 출력을 전송하기 전에 호출해야 합니다.
      <function>header</function> 호출이 이루어지기 전에
      <function>include</function>, <function>require</function>, 혹은 다른
-     파일 접근 함수를 이용할 때 공백이나 빈 줄을 출력해버리는건 매우 자주 있는
-     에러입니다. 같은 문제는 하나의 PHP/HTML 파일을 사용할 때도 존재합니다.
+     파일 접근 함수를 이용할 때, 공백이나 빈 줄을 출력하는 것은 매우 자주
+     발생하는 오류입니다. 이와 같은 문제는 하나의 PHP/HTML 파일을 사용할 때도
+     존재합니다.
     </para>
     <para>
      <informalexample>
@@ -197,10 +198,9 @@ header('Location: http://www.example.com/');
      </para>
     </note>
     <para>
-     사용자에게 생성한 PDF 파일 등의 전송한 데이터를 저장할지를 묻게 하고
-     싶다면, <ulink url="&url.rfc;2183">Content-Disposition</ulink> 헤더로
-     권장 파일 이름을 제공하고 브라우저가 저장 다이얼로그를 표시하게 할 수
-     있습니다.
+     사용자에게 생성한 PDF 파일 등의 전송한 데이터를 저장할지 묻도록 하려면,
+     <ulink url="&url.rfc;2183">Content-Disposition</ulink> 헤더로 권장하는
+     파일명을 제공하여 브라우저가 저장 다이얼로그를 표시하도록 할 수 있습니다.
     </para>
     <para>
      <informalexample>
@@ -230,7 +230,7 @@ readfile('original.pdf');
     </note>
     <note>
      <simpara>
-      <link linkend="ini.safe-mode">안전모드</link>에서는
+      <link linkend="ini.safe-mode">안전모드</link>에서
       <literal>WWW-Authenticate</literal> 헤더(HTTP 인증에 사용)를 설정하면
       스크립트의 uid가 <literal>realm</literal> 부분에 추가됩니다.
      </simpara>
