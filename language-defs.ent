@@ -1,12 +1,12 @@
-<!ENTITY PHPManual		"PHP ¸Å´º¾ó">
+<!ENTITY PHPManual		"PHP ë§¤ë‰´ì–¼">
 <!ENTITY Date			"Date:">
-<!ENTITY GettingStarted		"½ÃÀÛÇÏ±â">
-<!ENTITY LanguageReference	"¾ð¾î ·¹ÆÛ·±½º">
-<!ENTITY Features		"Æ¯Â¡">
-<!ENTITY FunctionReference	"ÇÔ¼ö ·¹ÆÛ·±½º">
+<!ENTITY GettingStarted		"ì‹œìž‘í•˜ê¸°">
+<!ENTITY LanguageReference	"ì–¸ì–´ ë ˆí¼ëŸ°ìŠ¤">
+<!ENTITY Features		"íŠ¹ì§•">
+<!ENTITY FunctionReference	"í•¨ìˆ˜ ë ˆí¼ëŸ°ìŠ¤">
 <!ENTITY Appendixes		"Appendixes">
 <!ENTITY PEAR             "PEAR: the PHP Extension and Application Repository">
 <!ENTITY FAQ             "FAQ: Frequently Asked Questions">
 <!ENTITY FAQabbrev              "FAQ">
-<!ENTITY FunctionIndex     "ÇÔ¼ö ÀÎµ¦½º">
+<!ENTITY FunctionIndex     "í•¨ìˆ˜ ì¸ë±ìŠ¤">
 
