@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.9 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.10 $ -->
+<!-- EN-Revision: 1.119 -->
  <chapter id="language.types">
-  <title>Types</title>
+  <title>타입</title>
 
   <sect1 id="language.types.intro">
-  <title>Introduction</title>
+  <title>소개</title>
   
   <simpara>
-   PHP supports eight primitive types.
+   PHP는 8가지의 기본 타입을 지원한다.
   </simpara>
   
   <para>
-   Four scalar types:
+   4가지 스칼라 타입:
 
    <itemizedlist>
 
@@ -41,7 +42,7 @@
 
    </itemizedlist>
 
-   Two compound types:
+   2가지 복합 타입:
 
    <itemizedlist>
 
@@ -59,7 +60,7 @@
 
    </itemizedlist>
 
-   And finally two special types:
+   그리고 최종적으로 다음의 2가지 타입:
 
    <itemizedlist>
 
@@ -77,8 +78,8 @@
 
    </itemizedlist>
 
-   This manual also introduces some 
-   <link linkend="language.pseudo-types">pseudo-types</link> 
+   이 매뉴얼에서는 몇가지의
+   <link linkend="language.pseudo-types">의사(pseudo) 타입</link>도 소개한다.
    for readability reasons:
 
    <itemizedlist>
@@ -102,28 +103,24 @@
     </listitem>
 
    </itemizedlist>
-   You may also find some references to the type "double". Consider
-   double the same as float, the two names exist only for historic
-   reasons. 
+   "double" 타입과 비슷한 타입을 볼수 있을것이다. double은 float과
+   같은 타입이다. 두개의 타입이 존재하는 이유는 역사적인 이유일뿐이다.
   </para>
   
   <simpara>
-   The type of a variable is usually not set by the programmer;
-   rather, it is decided at runtime by PHP depending on the context in
-   which that variable is used.
+   보통은 프로그래머가 변수의 타입을 결정할수 없다.
+   대신에, PHP가 변수가 사용되는 환경에 따라 실시간으로 결정하게 된다.
   </simpara>
   <note>
    <simpara>
-    If you want to check out the type and value of a certain <link
-     linkend="language.expressions">expression</link>, use
-    <function>var_dump</function>.
+    <link linkend="language.expressions">표현식</link>의 타입과 값을
+    확인하려한다면, <function>var_dump</function>을 사용한다.
    </simpara>
    <para>
-    If you simply want a human-readable representation of the type for
-    debugging, use <function>gettype</function>. To check for a certain type,
-    do <emphasis>not</emphasis> use <function>gettype</function>, but use the
-    <literal>is_<replaceable>type</replaceable></literal> functions. Some
-    examples:
+    디버깅을 위해 타입을 판독하려고 하면, <function>gettype</function>를 사용한다.
+    정확히 어떠 타입을 사용하는지 확인하려면 <function>gettype</function>함수를 사용하지
+    <emphasis>말고</emphasis>, <literal>is_<replaceable>type</replaceable></literal>함수를 
+    사용하도록 한다. 몇가지 예제 코드를 보자:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -152,38 +149,35 @@ if (is_string($bool)) {
    </para>
   </note>
   <simpara>
-   If you would like to force a variable to be converted to a certain
-   type, you may either <link
-   linkend="language.types.typecasting">cast</link> the variable or
-   use the <function>settype</function> function on it.
+   변수를 다른 타입으로 변경하려한다면 변수를 <link linkend="language.types.typecasting">캐스트</link>하거나
+   <function>settype</function>함수를 사용하면 된다. 
   </simpara>
   <simpara>
-   Note that a variable may be evaluated with different values in certain
-   situations, depending on what type it is at the time. For more
-   information, see the section on <link
-   linkend="language.types.type-juggling">Type Juggling</link>.
+   변수는 특수한 상황에서는 그 당시에 무슨 타입을 쓰는지에 따라
+   다른 값으로 변경될수 있다는 것에 주의 해야 한다. 자세한 정보는
+   <link linkend="language.types.type-juggling">타입 저글링</link>을 참고.
   </simpara>
  </sect1>
    
    <sect1 id="language.types.boolean">
-    <title>Booleans</title>
+    <title>불린</title>
     
     <simpara>
-     This is the easiest type. A <type>boolean</type> expresses a 
-     truth value. It can be either &true; or &false;. 
+     이 타입은 가장 쉬운 타입니다.<type>boolean</type>은 논리값을
+     표현한다. &true; 나 &false; 값이 될수 있다.
     </simpara>
 
     <note>
      <simpara>
-      The boolean type was introduced in PHP 4.
+      boolean 타입은 PHP 4부터 지원되었다.
      </simpara>
     </note>
 
     <sect2 id="language.types.boolean.syntax">
-     <title>Syntax</title>
+     <title>문법</title>
      <para>
-      To specify a boolean literal, use either the keyword &true; 
-      or &false;. Both are case-insensitive.
+      boolean 을 표현하기 위해서 키워드 &true; 나 &false;를 사용한다.
+      두 가지 모두 대소문자를 구별하지 않는다.
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -195,11 +189,10 @@ $foo = True; // assign the value TRUE to $foo
       </informalexample>
      </para>
      <para>
-      Usually you 
-      use some kind of <link linkend="language.operators">operator</link>
-      which returns a <type>boolean</type> value, and then pass it 
-      on to a <link linkend="control-structures">control
-      structure</link>.
+      보통은 <type>boolean</type>값을 돌려주는 몇 가지 
+      <link linkend="language.operators">연산자</link>를 사용해서
+      그 값을 <link linkend="control-structures">제어 구조</link>로 전달한다.
+
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -227,63 +220,59 @@ if ($show_separators) {
     </sect2>
 
     <sect2 id="language.types.boolean.casting">
-     <title>Converting to boolean</title>
+     <title>boolean으로 변환</title>
       <simpara>
-       To explicitly convert a value to <type>boolean</type>, use either
-       the <literal>(bool)</literal> or the <literal>(boolean)</literal> cast.
-       However, in most cases you do not need to use the cast, since a value
-       will be automatically converted if an operator, function or 
-       control structure requires a <type>boolean</type> argument.
+       명시적으로 <type>boolean</type> 값으로 변경하려면
+       <literal>(bool)</literal>이나 <literal>(boolean)</literal> 캐스트를 사용한다.
+       하지만, 대부분의 경우 이런 캐스트를 사용할 필요는 없다. 왜냐하면 그 값은
+       연산자나 함수 또는 제어구조가 <type>boolean</type>인자를 요구하면 자동으로
+       변환된다.
       </simpara>
       <simpara>
-       See also <link linkend="language.types.type-juggling">Type Juggling</link>.
+       <link linkend="language.types.type-juggling">타입 저글링</link>도 참고.
       </simpara>
       
       <para>
-       When converting to <type>boolean</type>, the following values 
-       are considered &false;:
+       <type>boolean</type>로 변경할때, 다음값은 &false;로 본다:
   
        <itemizedlist>
         <listitem>
-         <simpara>the <link linkend="language.types.boolean">boolean</link> 
-          &false; itself</simpara>
+         <simpara><link linkend="language.types.boolean">boolean</link> 
+          &false; 자체</simpara>
         </listitem>
         <listitem>
-         <simpara>the <link linkend="language.types.integer">integer</link
+         <simpara><link linkend="language.types.integer">integer</link
          > 0 (zero) </simpara>
         </listitem>
         <listitem>
-         <simpara>the <link linkend="language.types.float">float</link> 
+         <simpara><link linkend="language.types.float">float</link> 
          0.0 (zero) </simpara>
         </listitem>
         <listitem>
-         <simpara>the empty <link linkend="language.types.string"
-           >string</link>, and the <link linkend="language.types.string"
-           >string</link>
-           "0"</simpara>
+         <simpara>비어있는 <link linkend="language.types.string">문자열</link>과
+                  <link linkend="language.types.string">문자열</link> "0"</simpara>
         </listitem>
         <listitem>
-         <simpara>an <link linkend="language.types.array">array</link> 
-         with zero elements</simpara>
+         <simpara>아무 구성요소도 갖지 않는 <link linkend="language.types.array">배열</link>
+         </simpara>
         </listitem>
         <listitem>
-         <simpara>an <link linkend="language.types.object">object</link> 
-         with zero member variables</simpara>
+         <simpara>아무 멤버 변수도 갖지 않는 <link linkend="language.types.object">객체</link> 
+         </simpara>
         </listitem>
         <listitem>
-         <simpara>the special type <link linkend="language.types.null"
-           >NULL</link> (including unset variables)
+         <simpara>특별한 타입인 <link linkend="language.types.null">NULL</link> 
+                 (변수를 unset하는 것도 포함)
          </simpara>
         </listitem>
        </itemizedlist>
        
-       Every other value is considered &true; (including any 
-       <link linkend="language.types.resource">resource</link>).
+       이 외의 다른 모든 값은 &true;로 본다 
+       (모든 <link linkend="language.types.resource">자원</link>이 포함됨).
        <warning>
         <simpara>
-         <literal>-1</literal> is considered  
-         &true;, like any other non-zero (whether negative
-         or positive) number!
+         모든 0이 아닌 (양수이든 음수이든) &true;가 되는 것처럼
+         <literal>-1</literal>은 &true;로 본다, 
         </simpara>
        </warning>
        <informalexample>
@@ -306,32 +295,31 @@ echo gettype((bool) array());   // bool(false)
    </sect1>
 
    <sect1 id="language.types.integer">
-    <title>Integers</title>
+    <title>정수</title>
     
     <simpara>
-     An <type>integer</type> is a number of the set 
-     Z = {..., -2, -1, 0, 1, 2, ...}.
+     <type>integer</type>는 거대한 집합
+     Z = {..., -2, -1, 0, 1, 2, ...}이다.
     </simpara>
      
     <para>
-     See also:
      <link linkend="ref.gmp">Arbitrary length integer / GMP</link>,
-     <link linkend="language.types.float">Floating point numbers</link>, and
-     <link linkend="ref.bc">Arbitrary precision / BCMath</link>
+     <link linkend="language.types.float">부동 소수점수</link>,
+     <link linkend="ref.bc">Arbitrary precision / BCMath</link>를 참고
     </para>
 
     <sect2 id="language.types.integer.syntax">
-     <title>Syntax</title>
+     <title>문법</title>
      <simpara>
-      Integers can be specified in decimal (10-based), hexadecimal (16-based)
-      or octal (8-based) notation, optionally preceded by a sign (- or +).
+      정수는 10진수(10-based), 16진수(16-based), 8진수(8-based) 표기법으로 표현
+      될수 있다. 선택적으로 부호 (- 나 +)를 사용할수 있다.
      </simpara>
      <para>
-      If you use the octal notation, you must precede the number with a 
-      <literal>0</literal> (zero), to use hexadecimal notation precede
-      the number with <literal>0x</literal>.
+      8진수 표기법을 사용하면, <literal>0</literal> (zero)를 숫자의 앞에
+      붙여야 하며, 16진수 표기하려면 <literal>0x</literal>을 숫자 앞에
+      붙이도록 한다.
       <example>
-       <title>Integer literals</title>
+       <title>정수 리터럴</title>
        <programlisting role="php">
 <![CDATA[
 <?php
@@ -343,7 +331,7 @@ $a = 0x1A; # hexadecimal number (equivalent to 26 decimal)
 ]]>
        </programlisting>
       </example>
-      Formally the possible structure for integer literals is:
+      공식적으로 가능한 정수 리터럴의 구조는 다음과 같다:
       <informalexample>
        <programlisting>
 <![CDATA[
@@ -362,22 +350,20 @@ integer     : [+-]?decimal
 ]]>
        </programlisting>
       </informalexample>
-      The size of an integer is platform-dependent, although a 
-      maximum value of about two billion is the usual value 
-      (that's 32 bits signed). PHP does not support unsigned
-      integers.
+      약 20억을 최대값(부호가 있는 32비트)으로 사용할수 있을지라도, 
+      정수의 크기는 플랫폼에 따라 달라지게 된다. PHP는 
+      부호없는(unsigned) 정수 를 지원하지 않는다.
      </para>
     </sect2>
    
     <sect2 id="language.types.integer.overflow">
-     <title>Integer overflow</title>
+     <title>정수 오버플로우</title>
      <para>
-      If you specify a number beyond the bounds of the <type>integer</type>
-      type, it will be interpreted as a <type>float</type> instead. Also, if
-      you perform an operation that results in a number beyond the bounds of
-      the <type>integer</type> type, a <type>float</type> will be returned
-      instead.
-
+      <type>정수</type>타입의 범위를 넘는 수를 사용하려면 그 값은 대신
+      <type>float</type>타입으로 해석될 것이다. 또한, 
+      결과값이 <type>integer</type>타입의 범위를 초과하게 되는 작업을 수행되면, 
+      그 값은 대신 <type>float</type>으로 돌려줄것이다.
+     
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -404,24 +390,23 @@ var_dump($large_number);
       </informalexample>
       <warning>
        <simpara>
-        Unfortunately, there was a bug in PHP so that this
-        does not always work correctly when there are negative numbers
-        involved. For example: when you do <literal>-50000 *
-        $million</literal>, the result will be
-        <literal>-429496728</literal>. However, when both operands are
-        positive there is no problem.
+        불운하게도, PHP는 버그로 인해 음수와 연계될때 정확하게 동작하지 
+        않을수 있다. 예를 들면 <literal>-50000 * $million</literal>를 수행하면, 결과는
+        <literal>-429496728</literal>이 될것이다. 두 피연산자가 모두 양수이면
+        아무 문제가 없다.
+
        </simpara>
        <simpara>
-        This is solved in PHP 4.1.0.
+        이 문제는 PHP 4.1.0에서 해결되었다.
        </simpara>
       </warning>
      </para>
      <para>
-      There is no integer division operator in PHP.
-      <literal>1/2</literal> yields the <type>float</type>
-      <literal>0.5</literal>. You can cast the value to
-      an integer to always round it downwards, or you can
-      use the <function>round</function> function.
+      PHP에는 정수 나누기 연산자가 없다.
+      <literal>1/2</literal>는 <type>float</type> <literal>0.5</literal>가 된다.
+      반올림하기 위해 정수로 값을 캐스트하거나, <function>round</function>
+      함수를 쓸수 있다.
+
       <informalexample>
        <programlisting role="php">
 <![CDATA[
@@ -438,49 +423,44 @@ var_dump(round(25/7));  // float(4)
    
 
     <sect2 id="language.types.integer.casting">
-     <title>Converting to integer</title>
+     <title>정수로 변환하기</title>
       <simpara>
-       To explicitly convert a value to <type>integer</type>, use either
-       the <literal>(int)</literal> or the <literal>(integer)</literal> cast.
-       However, in most cases you do not need to use the cast, since a value
-       will be automatically converted if an operator, function or 
-       control structure requires an <type>integer</type> argument.
-       You can also convert a value to integer with the function
-       <function>intval</function>.
+       명시적으로 <type>integer</type>로 변환하려면 <literal>(int)</literal>나
+       <literal>(integer)</literal> 캐스트를 사용한다.
+       하지만, 대부분의 경우 이런 캐스트를 사용할 필요가 없다. 왜냐하면 연산자
+       나 함수 또는 제어 구조가 <type>integer</type> 인수를 요구한다면 자동으로
+       변환되기 때문이다. 또한 <function>intval</function>함수로 정수값으로 
+       변환할수 있다.
       </simpara>
       <simpara>
        See also <link linkend="language.types.type-juggling">type-juggling</link>.
       </simpara>
       
       <sect3 id="language.types.integer.casting.from-boolean">
-       <title>From <link linkend="language.types.boolean"
-           >booleans</link></title>
+       <title><link linkend="language.types.boolean">불린</link>에서</title>
        <simpara>
-        &false; will yield 
-        <literal>0</literal> (zero), and &true; 
-        will yield <literal>1</literal> (one).
+        &false;는 <literal>0</literal> (zero), 그리고
+        &true;는 <literal>1</literal> (one).
        </simpara>
       </sect3>
 
       <sect3 id="language.types.integer.casting.from-float">
-       <title>From <link linkend="language.types.float">floating point numbers</link></title> 
+       <title><link linkend="language.types.float">부동소수점수</link>에서</title> 
        <simpara>
-        When converting from float to integer, the number will
-        be rounded <emphasis>towards zero</emphasis>.
+        float에서 integer로 변환할때, 그 수는 <emphasis>0으로</emphasis> 깍일것이다.
        </simpara>
        
        <para>
-        If the float is beyond the boundaries of integer
-        (usually <literal>+/- 2.15e+9 = 2^31</literal>), 
-        the result is undefined, since the float hasn't
-        got enough precision to give an exact integer result.
-        No warning, not even a notice will be issued in this 
-        case!
+        float이 integer범위를 초과하면 (주로 <literal>+/- 2.15e+9 = 2^31</literal>), 
+        결과는 정의되지않는다. 왜냐하면 float은 정확한 정수값을 돌려주기에
+        충분한 정밀도를 갖지 않기 때문이다. 이 경우에는 warning이나 notice조차도
+        나타나지 않는다!
        </para>
        
        <warning><para>
-        Never cast an unknown fraction to <type>integer</type>, as this can
-        sometimes lead to unexpected results.
+        알려지지 않은 소수를 <type>integer</type>로 캐스트하지 말것, 
+        왜냐하면 이렇게 하는경우에 종종 기대하지 않는 결과를 유도할수
+        있기 때문이다.
         <informalexample>
          <programlisting role="php">
 <![CDATA[
@@ -490,32 +470,29 @@ echo (int) ( (0.1+0.7) * 10 ); // echoes 7!
 ]]>
          </programlisting>
         </informalexample>
+        자세한 정보는 <link linkend="warn.float-precision">부동-정밀도에 관한 경고</link>를
+        참고.
         
-        See for more information the <link 
-        linkend="warn.float-precision">warning 
-        about float-precision</link>.
        </para></warning>
       </sect3>
       
       <sect3 id="language.types.integer.casting.from-string">
-       <title>From strings</title>
+       <title>문자열로부터</title>
        <simpara>
-        See <link linkend="language.types.string.conversion">String 
-        conversion to numbers</link>
+        <link linkend="language.types.string.conversion">문자열을 숫자로 
+        변환하기</link>를 참고
        </simpara>
       </sect3>
       
       <sect3 id="language.types.integer.casting.from-other">
-       <title>From other types</title>
+       <title>다른 타입으로부터</title>
        <para>
         <caution>
          <simpara>
-          Behaviour of converting to integer is undefined for other
-          types. Currently, the behaviour is the same as if the value
-          was first <link linkend="language.types.boolean.casting"
-          >converted to boolean</link>. However, do
-          <emphasis>not</emphasis> rely on this behaviour, as it can
-          change without notice.
+          정수로의 변환은 다른 타입에 대해 정의되지 않는다. 현재까지는 값이 
+          <link linkend="language.types.boolean.casting">불린으로 변환</link>될때와 
+          동일하게 동작한다. 하지만, 경고 없이 변할수 있기 
+          때문에 이 동작에 연관짓지 <emphasis>말것</emphasis>
          </simpara>
         </caution>
        </para>
