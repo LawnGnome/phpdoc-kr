@@ -16,7 +16,7 @@
      <methodparam><type>string</type><parameter>needle</parameter></methodparam>
     </methodsynopsis>
     <para>
-     이 함수는 <parameter>needle</parameber>가 마지막으로 나오는 위치부터
+     이 함수는 <parameter>needle</parameter>가 마지막으로 나오는 위치부터
      <parameter>haystack</parameter>의 마지막까지의
      <parameter>haystack</parameter> 문자열 부분을 반환합니다.
     </para>
