@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.26 -->
 
 <!--
@@ -97,45 +97,40 @@
   </para>
   <note>
    <para>
-    The user-contributed notes are not moderated before they appear online, so
-    the quality of the writing or code examples, and even the veracity of the
-    contribution, cannot be guaranteed. (Not that there is any guarantee of
-    the quality or accuracy of the manual text itself.)
+    user-contributed notes가 온라인상에 보여지기 전에 조정되지 않기때문에,
+    거기에 쓰여지는 내용이나 코드 예제의 질, 심지어 그 내용이 정확한지에 대한
+    어떤 보장도 할수 없다. (매뉴얼 내용 자체의 질이나 정확도에 대해 모두 보장한
+    다는 것은 아니다)
    </para>
   </note>
   <note>
    <para>
-    For the purposes of license coverage the user-contributed notes are
-    considered part of the PHP manual, and are therefore covered by the
-    same license that covers this documentation (GPL at the moment). For
-    more details see the <link linkend="copyright">Manual's Copyright</link>
-    page.
+    라이센스 보호의 목적을 위해 user-contributed notes는 PHP 매뉴얼의 부속물로
+    본다. 따라서 이 문서를 보호하는 라이센스와 똑같이 보호된다(GPL).자세한 정보는
+    <link linkend="copyright">Manual's Copyright</link> 페이지를 참고한다.
    </para>
   </note>
  </sect1>
 
  <sect1 id="about.prototypes">
-   <title>How to read a function definition (prototype)</title>
+   <title>함수 선언(prototype)을 읽는 방법</title>
    <para>
-    Each function is documented for quick reference, knowing how 
-    to read and understand the manual will make using PHP 
-    much easier.  Rather than relying on examples or cut/paste, you want 
-    to know how to read function definitions (prototypes).  Let's begin:
+    각 함수는 퀵 레퍼런스를 위해 문서화되어있다. 매뉴얼을 읽고 이해하는 방법을
+    아는 것은 PHP 사용을 더욱 쉽게 해줄것이다. 예제코드나 cut/paster에 의지하기
+    보다는, 함수 선언(prototypes)을 읽는 방법을 알고 싶을 것이다. 시작하자:
    </para>
    <note>
     <title>
-     Prerequisite: Basic understanding of <link linkend="language.types">types</link>
+     필수 조건: <link linkend="language.types">타입</link>에 대한 기본적인 이해
     </title>
     <para>
-     Although PHP is a loosly typed language, it's important to have 
-     a basic understanding of <link linkend="language.types">types</link> as 
-     they have important meaning.
+     PHP가 느슨한 타입 언어임에도 불구하고, <link linkend="language.types">타입</link>의
+     기본적인 이해는 중요하다. 왜냐하면 타입은 중요한 의미를 내포하기 때문이다.
     </para>
    </note>
    <para>
-    Function definitions tell us what 
-    type of value is <link linkend="functions.returning-values">returned</link>, 
-    let's use the definition for <function>strlen</function> as our first example:
+    함수 선언은 어떤 타입의 값이 <link linkend="functions.returning-values">returned</link>되는지
+    알려준다. 첫번째 예제로써 <function>strlen</function>에 대한 선언을 보도록하자:
    </para>
    <para>
     <screen>
@@ -152,7 +147,7 @@ Returns the length of string.
    </para>
    <para>
     <table>
-     <title>Explanation of a function definition</title>
+     <title>함수 선언 해설</title>
       <tgroup cols="2">
        <thead>
         <row>
@@ -174,7 +169,7 @@ Returns the length of string.
           (PHP 3, PHP 4 >= 4.0.0)
          </entry>
          <entry>
-          strlen() has been around in both all of PHP 3 and PHP 4
+          strlen()는 PHP 3와 PHP 4 모두 사용가능하다
          </entry>
         </row>
         <row>
@@ -182,9 +177,8 @@ Returns the length of string.
           int
          </entry>
          <entry>
-          Type of value this function returns, which is an 
-          <type>integer</type> (i.e. The length of a string is measured in
-          numbers). 
+          이함수가 리턴하는 값의 타입은 <type>integer</type>이다.
+          (즉, 문자열의 길이가 숫자로 측정된다)
          </entry>
         </row>
         <row>
@@ -192,9 +186,9 @@ Returns the length of string.
           ( string str )
          </entry>
          <entry>
-          The first (and in this case the only) parameter/argument for the 
-          function strlen() is named <parameter>str</parameter>, and it's a 
-          <type>string</type>.
+          함수 strlen()에 대한 첫번째 (이경우에는 하나이다) 패러미터/인자는
+          <parameter>str</parameter>이라는 이름을 갖고,
+          <type>string</type>이다.
          </entry>
         </row>
        </tbody>
@@ -202,7 +196,7 @@ Returns the length of string.
      </table>
     </para>
     <para>
-     We could rewrite the above function definition in a generic way:
+     위 함수 선언을 일반적인 방법으로 다시 작성할수 있다:
     </para>
     <para>
      <screen role="html">
@@ -210,8 +204,8 @@ Returns the length of string.
      </screen>
     </para>
     <para>
-     Many functions take on multiple parameters, such as <function>in_array</function>.
-     It's prototype is as follows:
+     <function>in_array</function>와 같이, 많은 함수는 여러 패러미터를 갖는다. 
+     프로토타입은 다음과 같다:
     </para>
     <para>
      <screen role="html">    
@@ -219,192 +213,167 @@ Returns the length of string.
      </screen>
     </para>
     <para>
-     What does this mean?  in_array() returns a 
-     <link linkend="language.types.boolean">boolean</link> value, &true; on 
-     success (the <parameter>needle</parameter> was found in the 
-     <parameter>haystack</parameter>) or &false; on failure (the 
-     <parameter>needle</parameter> was not found in the 
-     <parameter>haystack</parameter>).  The first parameter is named 
-     <parameter>needle</parameter> and it can be many different 
-     <link linkend="language.types">types</link>, so we call it 
-     "<emphasis>mixed</emphasis>".  This mixed <parameter>needle</parameter> 
-     (what we're looking for) can either be a scalar value (string, integer, 
-     or <link linkend="language.types.float">float</link>), or an
-     <link linkend="language.types.array">array</link>.  
-     <parameter>haystack</parameter> (the array we're searching in) is the 
-     second parameter.  The third <emphasis>optional</emphasis> parameter is 
-     named <parameter>strict</parameter>.  All optional parameters are seen 
-     in <emphasis>[</emphasis> brackets <emphasis>]</emphasis>.  The manual 
-     states that the <parameter>strict</parameter> parameter defaults to 
-     boolean &false;.  See the manual page on each function for details on 
-     how they work.
+     이 선언은 무엇을 의미할까? in_array() <link linkend="language.types.boolean">boolean</link>값을 
+     리턴한다. 성공하면 &true; (<parameter>needle</parameter>이 <parameter>haystack</parameter>에서 발견됨)
+     실패하면 &false; (<parameter>needle</parameter>을 <parameter>haystack</parameter>에서 찾을수 없슴)
+     첫번째 패러미터는 <parameter>needle</parameter>이라는 이름을 갖고 있고
+     여러가지 다양한 <link linkend="language.types">타입</link>이 될수 있다.
+     따라서 이런 타입을 "<emphasis>mixed</emphasis>"라고 부른다. mixed <parameter>needle</parameter>(찾는것)는
+     스칼라 값( string, integer, 또는 <link linkend="language.types.float">float</link>)이나
+     <link linkend="language.types.array">array</link>가 될수 있다.
+     <parameter>haystack</parameter> (검색하는 배열)은 두번째 패러미터이다.
+     세번째 <emphasis>optional</emphasis> 패러미터는 <parameter>strict</parameter>라는
+     이름을 갖는다. 그외 추가적인 패러미터는 <emphasis>[</emphasis> brackets <emphasis>]</emphasis>안에
+     보여진다. 매뉴얼에서는 <parameter>strict</parameter> 패러미터가 기본값으로
+     boolean &false;라고 되어있다. 각 함수의 어떻게 동작하는지에 대한 자세한 설명은 매뉴얼 패이지를 
+     보도록 한다.
     </para>
  </sect1>
  
  <sect1 id="about.phpversions">
-  <title>PHP versions documented in this manual</title>
+  <title>PHP 버전에 대해서 이 매뉴얼에 문서화되어있다</title>
   <para>
-   This documentation contains information about PHP 4, with some added
-   migration and compatibility notes regarding PHP 3. Behaviour,
-   parameter, return value and other changes between different PHP
-   versions are documented in notes and inline text in the manual.
+   이 문서는 PHP 4에 관한 정보를 갖고 있다. PHP 3에서는 추가된 
+   마이그레이션이나 호환성에 대한 주의사항도 갖는다. 동작, 패러미터, 리턴값과
+   다른 PHP 버전사이의 차이점이 notes와 매뉴얼은 인라인 텍스트에 문서화된다.
   </para>
   <para>
-   You may find documentation pieces for the CVS version of PHP, which
-   always means the very latest development version available through
-   the CVS version handling system. If you are not a developer of PHP
-   itself, and you are not keen on using the very latest development
-   version of PHP, features marked with the "available in CVS" wording
-   are not accessible to you. Though these features will probably be
-   available in the next stable version of PHP. If you would like to
-   download the CVS version, see the <ulink url="&url.php.anoncvs;">anonymous
-   CVS access page</ulink>.
+   PHP의 CVS 버전에 대한 문서 부분을 찾을수 있을것이다. PHP의 CVS 버전은
+   CVS 버전 제어 시스템을 통해 받을수 있는 최종 개발 버전을 말한다.
+   PHP 자체의 개발자가 아니고, PHP의 최종 버전을 사용하려하지 않는다면,
+   "available in CVS"라고 표시되어있는 기능은 접근할수 없다. 이 기능들이
+   어쩌면 다음 안정 버전에서 사용가능할수도 있을것이다. CVS 버전을 내려받고자
+   한다면, <ulink url="&url.php.anoncvs;">anonymous CVS access page</ulink>를 참고.
   </para>
   <para>
-   You may also encounter documentation for a PHP version which is
-   not released (something like PHP 5.0.0 as the latest stable version
-   is 4.3.0). Most of the time, this is not an error in the documentation.
-   Explanation is often added for features not available in the current
-   PHP release, but will be available in a known future PHP version.
+   아직 릴리즈되지 않은 PHP 버전에 대한 문서 내용도 볼수 있다 (PHP 4.3.0이 최종
+   안정 버전이기 때문에 PHP 5.0.0같은 버전). 대부분, 이런 문서는 문서안의 에러가
+   아니다. 현재 PHP 릴리즈에 포함되지 않은 기능도 설명이 들어가있다.
+   그러나 PHP 차후버전에서 사용가능할것이다.
   </para>
  </sect1>
    
  <sect1 id="about.more">
-  <title>How to find more information about PHP</title>
+  <title>PHP에 관한 더 많은 정보를 찾는 방법</title>
   <para>
-   This manual does not attempt to provide instruction about general
-   programming practices. If you are a first-time, or even just a beginning,
-   programmer, you may find it difficult to learn how to program in PHP using
-   just this manual. You may want to seek out a text more oriented towards
-   beginners. You can find a list of PHP-related books at <ulink
-   url="&url.php.books;">&url.php.books;</ulink>.
+   이 매뉴얼은 일반적인 프로그래밍 연습을 위한 명령을 제공하지 않는다.
+   이제 방금 시작한, 초심자 프로그래머라면, 이 매뉴얼만으로 PHP를 프로그램하는
+   방법을 배우기 어렵다는 것을 알게 될것이다. 좀더 초심자 지향적인 텍스트를
+   찾아야 할것이다. <ulink url="&url.php.books;">&url.php.books;</ulink>에
+   PHP 관련 서적의 목록을 찾을수 있다.
   </para>
   <para>
-   There are a number of active mailing lists for discussion of all aspects of
-   programming with PHP. If you find yourself stuck on a problem for which you
-   can't find your own solution, you may be able to get help from someone on
-   these lists. You can find a list of the mailing lists at <ulink
-   url="&url.php.support;">&url.php.support;</ulink>, as well as links to the
-   mailing list archives and other online support resources. Furthermore, at
-   <ulink url="&url.php.links;">&url.php.links;</ulink> there is a list of
-   websites devoted to PHP articles, forums, and code galleries.
+   PHP 프로그래밍을 위한 모든 부문의 많은 수의 토론용 메일링 리스트가 활성화되어
+   있다. 해결책을 찾을수 없는 문제에 빠져있다면, 이런 메일링 리스트에서 다른사람들의
+   도움을 받을수도 있을것이다. <ulink url="&url.php.support;">&url.php.support;</ulink>에서
+   메일링 리스트의 목록을 볼수 있을 뿐만아니라, 메일링 리스트 아카이브(저장된 목록)와
+   다른 온라인 지원 리소스를 찾을수 있다. 그외에 
+   <ulink url="&url.php.links;">&url.php.links;</ulink>에서는 PHP 관련기사, 토론, 
+   코드를 제공하는 웹사이트의 목록을 볼수 있다.
   </para>
  </sect1>
 
  <sect1 id="about.howtohelp">
-  <title>How to help improve the documentation</title>
+  <title>문서화 향상을 위해 도울수 있는 방법</title>
   <para>
-   There are three ways you can help to improve this documentation.
+   독자가 이 문서화를 향상시키는데 도움을 줄수 있는 방법은 세가지가 있다.
   </para>
   <para>
-   If you find errors in this manual, in any language, please report them
-   using the bug system at <ulink url="&url.php.bugs;">&url.php.bugs;</ulink>.
-   Classify the bug as "Documentation Problem". You can also submit problems
-   related to specific manual formats here.
+   이 문서, 어떤 언어에서 잘못된 부분을 발견한다면,
+   <ulink url="&url.php.bugs;">&url.php.bugs;</ulink>에 있는 버그 시스템을
+   이용하여 그 부분을 보고하면 된다. 매뉴얼 포맷에 관련된 문제점도 보고될
+   수 있다.
   </para>
   <note>
    <para>
-    Please don't abuse the bug system by submitting requests for help. Use the
-    mailing lists or community sites mentioned earlier, instead.
+    도움 요청을 전송함으로써 버그 시스템을 남용하지 말도록 한다.
+    대신, 메일링 리스트나 이전에 언급한 커뮤니티 사이트를 사용하자.
    </para>
   </note>
   <para>
-   By contributing notes, you can provide additional examples, caveats, and
-   clarifications for other readers. But do not submit bug reports using the
-   annotation system please. You can read more about annotations in the <link
-   linkend="about.notes">'About user notes'</link> section of this
-   appendix.
+   기고 노트(contributing notes)를 통해서 추가적인 예제코드, 경고와 다른 독자를
+   위한 설명을 제공할수 있다. 그러나 제발 주석 시스템을 사용하여 버그 보고를
+   전송하지 않도록 한다. 이 부록의 <link linkend="about.notes">'About user notes'</link>
+   섹션에서 이 주석에 관해 더 많은 내용을 볼수 있다.
   </para>
   <para>
-   If you know English and some foreign language, you may also
-   help out in the translations. If you would like to start a new
-   translation, or help in a translation project, please read
-   <ulink url="&url.php.dochowto;">&url.php.dochowto;</ulink>.
+   영어와 그외의 외국어를 사용한다면, 번역에 관한 도움을 받을수 있다.
+   새로운 번역을 시작하려면, 또는 번역 포로젝트에 대한 도움을 받고자 한다면
+   <ulink url="&url.php.dochowto;">&url.php.dochowto;</ulink>을 읽도록 한다.
   </para>
  </sect1>
  
  <sect1 id="about.generate">
-  <title>How we generate the formats</title>
+  <title>포맷을 어떤 방법으로 만들었는가</title>
   <para>
-   This manual is written in <acronym>XML</acronym> using the <ulink
-   url="&url.docbook.xml;">DocBook XML DTD</ulink>, using <ulink
-   url="&url.dsssl;"><acronym>DSSSL</acronym></ulink> (Document
-   Style and Semantics Specification Language) for formatting, and
-   experimentally the <ulink url="&url.xslt;"><acronym>XSLT</acronym></ulink> 
-   (Extensible Stylesheet Language Transformations)
-   for maintenance and formatting.
+   이 매뉴얼은 <ulink url="&url.docbook.xml;">DocBook XML DTD</ulink>,
+   포맷을 위한 <ulink url="&url.dsssl;"><acronym>DSSSL</acronym></ulink>
+   (문서 스타일과 구문 사양 언어)을 사용하고,
+   유지관리와 형식화를 위해 실험적으로 
+   <ulink url="&url.xslt;"><acronym>XSLT</acronym></ulink>(확장 스타일시트 언어 변환)
+   를 사용하는 <acronym>XML</acronym>로 작성된다.
   </para>
   <para>
-   Using <acronym>XML</acronym> as a source format gives us
-   the ability to generate many output formats from the source
-   files, while only maintaining one source document for all formats.
-   The tools used for formatting <acronym>HTML</acronym> and
-   <acronym>TeX</acronym> versions are
-   <ulink url="&url.jade;">Jade</ulink>, written by <ulink
-   url="&url.jclark;">James Clark</ulink> and <ulink
-   url="&url.dbstyle;">The Modular DocBook Stylesheets</ulink>
-   written by <ulink url="&url.nwalsh;">Norman Walsh</ulink>.
-   We use <ulink url="&url.winhelp;">Microsoft HTML Help
-   Workshop</ulink> to generate the Windows HTML Help format
-   of the manual, and of course PHP itself to do some
-   additional conversions and formatting.
+   원본 포맷을 <acronym>XML</acronym>로 사용하면 원본 파일로부터
+   많은 출력 포맷을 생성할수 있고, 모든 포맷에 대해 하나의 원본 문서만을
+   유지관리할수 있다.
+   <acronym>HTML</acronym>과 <acronym>TeX</acronym>버전을 포맷팅하기 위한
+   툴은 <ulink url="&url.jclark;">James Clark</ulink>가 작성한
+   <ulink url="&url.jade;">Jade</ulink>와
+   <ulink url="&url.nwalsh;">Norman Walsh</ulink>가 작성한
+   <ulink url="&url.dbstyle;">The Modular DocBook Stylesheets</ulink>를 사용한다.
+   매뉴얼의 윈도우 HTML 도움말 포맷을 생성하기 위해
+   <ulink url="&url.winhelp;">Microsoft HTML Help Workshop</ulink>을 사용하며,
+   물론 PHP 자체에서도 몇가지 추가적인 변환과 포맷기능이 존재한다.
   </para>
   <para>
-   You can download the manual in various languages and
-   formats, including plain text, plain <acronym>HTML</acronym>,
-   <acronym>PDF</acronym>, PalmPilot DOC, PalmPilot iSilo and
-   Windows HTML Help, from
-   <ulink url="&url.php.docs;">&url.php.docs;</ulink>.
-   The manuals are updated automatically as the text is updated.
+   다양한 언어와 일반텍스트, 일반 <acronym>HTML</acronym>,
+   <acronym>PDF</acronym>, PalmPilot DOC, PalmPilot iSilo와 윈도우 HTML 도움말 같은
+   다양한 포맷으로 되어있는 매뉴얼을 <ulink url="&url.php.docs;">&url.php.docs;</ulink>에서
+   내려받을수 있다. 매뉴얼은 그 내용이 업데이트되면 자동적으로 업데이트된다.
   </para>
   <para>
-   You can find more information about downloading the
-   <acronym>XML</acronym> source code of this documentation
-   at <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>. The
-   documentation is stored in the <literal>phpdoc</literal> module.
+   <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>에서
+   이 문서의 <acronym>XML</acronym> 원본 코드를 다운받는 방법에 대한
+   더 많은 정보를 찾을수 있다. 매뉴얼은 <literal>phpdoc</literal> 모듈안에 저장된다.
   </para>
  </sect1>
 
  <sect1 id="about.translations">
-  <title>Translations</title>
+  <title>번역</title>
   <para>
-   The PHP manual is not only available in various formats,
-   it is also available in various languages. The text of the 
-   manual is first written in english, then teams of people across 
-   the world take care of translating it to their native language.
-   If a translation for a specified function or chapter has not yet
-   been made, the build system of the manual falls back to the 
-   english version of it.
+   PHP 매뉴얼은 다양한 포맷 뿐만 아니라, 다양한 언어로도 제공된다. 매뉴얼의
+   내용은 처음에 영어로 작성되었고, 전세계 팀원들이 그들 지역 언어로 번역을
+   하고 있다. 특정 함수나 챕터에 대한 번역이 아직 되어있지않다면, 매뉴얼의
+   빌드 시스템은 그부분의 영어 버전으로 연결한다.
   </para>
   <para>
-   Peoples involved in the translations start from the <acronym>XML</acronym>
-   source code available from <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>
-   and from it they translate to thier mother language. They do 
-   <emphasis>not use</emphasis> the <acronym>HTML</acronym>, the plain text, 
-   or the <acronym>PDF</acronym> version. It is the build system which takes 
-   care of the conversions from <acronym>XML</acronym> to human readable formats.
+   번역하는 사람은 <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>에 있는
+   <acronym>XML</acronym> 소스 코드에서 시작하여 그들의 모국어로 번역한다.
+   이 시스템은 <acronym>HTML</acronym>, 일반 텍스트나 <acronym>PDF</acronym>버전을
+   <emphasis>사용하지 않는다</emphasis>. 
+   이 빌드 시스템이 <acronym>XML</acronym>에서 읽기 쉬운 포맷으로의 변환을 담당한다.
   </para>
   <note>
    <para>
-    If you would like to help translating the documentation to your native 
-    language, please get in touch with the translation/documentation team
-    subscribing to the phpdoc mailinglist: send an empty mail to <ulink
-    url="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</ulink>.
-    The mailing list address is <literal>&email.php.doc;</literal>. State in the
-    message that you are interested in translating the manual to a language 
-    and someone will get back to you, helping you start a new language translation 
-    or reach the already active documentation team for your language.
+    독자의 지역 언어로 문서를 번역하는데 도움을 주고자 한다면,
+    phpdoc 메일링리스트를 구독하는 번역/문서 팀과 연락을 하도록 한다:
+    <ulink url="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</ulink>에
+    아무 내용없는 메일을 보낸다. 메일링 리스트의 주소는 <literal>&email.php.doc;</literal>이다.
+    다른 언어로 매뉴얼을 번역하는데 관심이 있다는 메시지를 넣는다면 누군가가 당신에게
+    답장을 보낼것이고, 새로운 언어 번역을 시작하고 거주지역 언어의 기존 문서팀에
+    접근하는데 도움을 줄것이다.
    </para>    
   </note>
   <para>
-   At the moment the manual is available, partly or not, in the following languages:
+   현재는 다음 언어로 부분적이든 아니든 매뉴얼을 제공중에 있다:
    Brazilian Portuguese, Chinese (Simplified), Chinese (Traditional), Czech, 
    Dutch, Finnish, French, German, Hebrew, Hungarian, Italian, Japanese, 
    Korean, Polish, Romanian, Russian, Slovak, Slovenian, Spanish, Swedish, and
    Turkish.
   </para>
   <para>
-   They all can be downloaded here: <ulink url="&url.php.docs;">&url.php.docs;</ulink>.
+   그들 모두 여기서 내려받을수 있다: <ulink url="&url.php.docs;">&url.php.docs;</ulink>.
   </para>
  </sect1>
 
