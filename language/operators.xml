@@ -1,27 +1,26 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.5 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.6 $ -->
+<!-- EN-Revision: 1.51 -->
  <chapter id="language.operators">
-  <title>Operators</title>
+  <title>연산자</title>
   <simpara>
   </simpara>
   
   <sect1 id="language.operators.precedence">
-   <title>Operator Precedence</title>
+   <title>연산자 우선순위</title>
    <para>
-    The precedence of an operator specifies how "tightly" it binds two
-    expressions together. For example, in the expression <literal>1 +
-    5 * 3</literal>, the answer is <literal>16</literal> and not
-    <literal>18</literal> because the multiplication ("*") operator
-    has a higher precedence than the addition ("+") operator.
-    Parentheses may be used to force precedence, if necessary. For
-    instance: <literal>(1 + 5) * 3</literal> evaluates to
-    <literal>18</literal>.
+    연산자 우선순위는 두개의 표현식을 연산자로 얼마나 더 단단하게 연결할
+    것인지를 명시한다 . 예를 들면, <literal>1 + 5 * 3</literal>의 결과는 
+    <literal>18</literal>이 아니라 <literal>16</literal>이 된다. 왜냐하면
+    곱셈 ("*") 연산자가 덧셈 ("+") 연산자보다 우선순위가 높기 때문이다.
+    필요한 경우, 괄호를 사용해서 우선순위를 높일수 있다. 예를 들면, 
+    <literal>(1 + 5) * 3</literal>의 결과는 <literal>18</literal>이 된다.
    </para>
    <para>
-    The following table lists the precedence of operators with the
-    lowest-precedence operators listed first.
+    다음 테이블은 낮은 우선순위를 갖는 연산자부터 연산자 우선순위 목록을
+    보였다.
     <table>
-     <title>Operator Precedence</title>
+     <title>연산자 우선순위</title>
      <tgroup cols="2">
       <thead>
        <row>
@@ -118,68 +117,65 @@
    </para>
    <note>
     <para>
-     Although <literal>!</literal> has a higher precedence than
-     <literal>=</literal>, PHP will still allow expressions
-     similar to the following: <literal>if (!$a = foo())</literal>,
-     in which case the output from <literal>foo()</literal> is
-     put into <varname>$a</varname>.
+     <literal>!</literal>이 <literal>=</literal>보다 높은 우선 순위를
+     갖지만, PHP는 여전히 다음과 같은 표현식을 허용한다:
+     <literal>if (!$a = foo())</literal> 즉, <varname>$a</varname>에 
+     입력되는 <literal>foo()</literal>의 결과에 대한 조건문
     </para>
    </note>
   </sect1>
 
   <sect1 id="language.operators.arithmetic">
-   <title>Arithmetic Operators</title>
+   <title>산술 연산자</title>
    <simpara>
-    Remember basic arithmetic from school? These work just
-    like those.
+    학교에서 배운 기본적인 산수를 기억는가? 이 연산자들은 그런 연산자
+    와 똑같이 동작한다.
    </simpara>
    <table>
-    <title>Arithmetic Operators</title>
+    <title>산술 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
-       <entry>Example</entry>
-       <entry>Name</entry>
-       <entry>Result</entry>
+       <entry>예</entry>
+       <entry>이름</entry>
+       <entry>결과</entry>
       </row>
      </thead>
      <tbody>
       <row>
        <entry>$a + $b</entry>
-       <entry>Addition</entry>
-       <entry>Sum of $a and $b.</entry>
+       <entry>덧셈</entry>
+       <entry>$a와 $b의 합</entry>
       </row>
       <row>
        <entry>$a - $b</entry>
-       <entry>Subtraction</entry>
-       <entry>Difference of $a and $b.</entry>
+       <entry>뺄셈</entry>
+       <entry>$a와 $b의 차</entry>
       </row>
       <row>
        <entry>$a * $b</entry>
-       <entry>Multiplication</entry>
-       <entry>Product of $a and $b.</entry>
+       <entry>곱셈</entry>
+       <entry>$a와 $b의 곱</entry>
       </row>
       <row>
        <entry>$a / $b</entry>
-       <entry>Division</entry>
-       <entry>Quotient of $a and $b.</entry>
+       <entry>나눗셈</entry>
+       <entry>$a를 $b로 나눈 몫</entry>
       </row>
       <row>
        <entry>$a % $b</entry>
-       <entry>Modulus</entry>
-       <entry>Remainder of $a divided by $b.</entry>
+       <entry>나머지</entry>
+       <entry>$a를 $b로 나눈 나머지</entry>
       </row>
      </tbody>
     </tgroup>
    </table>
    <simpara>
-    The division operator ("/") returns a float value anytime,
-    even if the two operands are integers (or strings that get
-    converted to integers).
+    두 피연산자가 정수(또는 정수로 변환되는 문자열)일지라도  
+    나눗셈 연산자 ("/")는 부동소수점 값을 돌려준다.
    </simpara>
    <simpara>
-    See also the manual page on 
-    <link linkend="ref.math">Math functions</link>. 
+    <link linkend="ref.math">수학 함수</link>의 매뉴얼 페이지를 참고.
    </simpara>
 
    <!--
@@ -195,17 +191,15 @@
   </sect1>
   
   <sect1 id="language.operators.assignment">
-   <title>Assignment Operators</title>
+   <title>지정 연산자</title>
    <simpara>
-    The basic assignment operator is "=". Your first inclination might
-    be to think of this as "equal to". Don't. It really means that the
-    the left operand gets set to the value of the expression on the
-    rights (that is, "gets set to").
+    기본적인 지정 연산자는 "="이다. 이 연산자를 "같다"라고 생각할수 있느나,
+    그렇지 않다. 이 연산자는 좌측 피연산자에 우측의 표현식 값을 지정한다.
+    (즉, "지정한다").
    </simpara>
    <para>
-    The value of an assignment expression is the value assigned. That
-    is, the value of "$a = 3" is 3. This allows you to do some tricky
-    things: 
+    지정 표현식의 값이 지정된다. 즉, "$a = 3"의 값은 3이다. 
+    이런 규칙으로 인해 몇가지의 교묘한(tricky) 일을 할수 있다.
     <informalexample>
      <programlisting role="php"> 
 <![CDATA[
@@ -215,10 +209,9 @@ $a = ($b = 4) + 5; // $a is equal to 9 now, and $b has been set to 4.
     </informalexample>
    </para>
    <para>
-    In addition to the basic assignment operator, there are "combined
-    operators" for all of the binary arithmetic and string operators
-    that allow you to use a value in an expression and then set its
-    value to the result of that expression. For example:
+    기본적인 지정 연산자 외에 이진 산술과 문자열 연산자와 같은 "복합 연산자"
+    가 지원된다. 이런 연산자는 표현식의 값을 사용하여 그 표현식의 결과를
+    그 값으로 사용할수 있다. 예를 들면:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -231,26 +224,23 @@ $b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
     </informalexample>
    </para>
    <para>
-    Note that the assignment copies the original variable to the new
-    one (assignment by value), so changes to one will not affect the
-    other. This may also have relevance if you need to copy something
-    like a large array inside a tight loop. PHP 4 supports assignment
-    by reference, using the <computeroutput>$var =
-    &amp;$othervar;</computeroutput> syntax, but this is not possible
-    in PHP 3. 'Assignment by reference' means that both variables end
-    up pointing at the same data, and nothing is copied anywhere. 
-    To learn more about references, please read <link 
-    linkend="language.references">References explained</link>.
+    지정은 원래 변수에 새로운 변수(값으로 지정된)를 복사한다. 
+    그래서 어떤 변수를 변경하는것은 다른 변수에 아무 영향을 주지 못한다.
+    견고한 루프안에 큰 배열같은 것을 복사한다면 이 주제와 밀접한 관련이 있다.
+    PHP 4는 <computeroutput>$var = &amp;$othervar;</computeroutput>같은 문법으로
+    참조에 의한 지정을 지원한다. 그러나 PHP 3에서는 지원되지 않는다.
+    '참조에 의한 지정'은 두 변수가 같은 데이터를 가리키도록 하고 아무것도 복사하지
+    않는다는 것을 의미한다. 참조에 관한 자세한 정보는 
+    <link linkend="language.references">참조 표현</link>을 참고.
    </para>
   </sect1>
 
   <sect1 id="language.operators.bitwise">
-   <title>Bitwise Operators</title>
+   <title>비트 연산자</title>
    <simpara>
-    Bitwise operators allow you to turn specific bits within an
-    integer on or off. If both the left- and right-hand parameters are
-    strings, the bitwise operator will operate on the characters in this
-    string.
+    비트 연산자는 특정 비트를 정수로 on이나 off로 전환하도록 한다.
+    좌측과 우측 인자가 문자열이면, 비트 연산자는 이 문자열안의 문자에 대해
+    계산하게 된다.
    </simpara>
    <para>
     <informalexample>
@@ -271,7 +261,7 @@ $b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
    </para>
 
    <table>
-    <title>Bitwise Operators</title>
+    <title>비트 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
@@ -327,13 +317,12 @@ $b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
   </sect1>
 
   <sect1 id="language.operators.comparison">
-   <title>Comparison Operators</title>
+   <title>비교 연산자</title>
    <simpara>
-    Comparison operators, as their name implies, allow you to compare
-    two values.
+    비교 연산자는 그 이름에서 알수 있듯이, 두 값을 비교한다.
    </simpara>
    <table>
-    <title>Comparison Operators</title>
+    <title>비교 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
@@ -352,8 +341,7 @@ $b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
        <entry>$a === $b</entry>
        <entry>Identical</entry>
        <entry>
-	&true; if $a is equal to $b, and they are of the same
-	type. (PHP 4 only)
+	&true; $a와 $b가 같으려면, 둘 모두 같은 타입이어야 함 (PHP 4에서만)
        </entry>
       </row>
       <row>
@@ -370,8 +358,7 @@ $b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
        <entry>$a !== $b</entry>
        <entry>Not identical</entry>
        <entry>
-	&true; if $a is not equal to $b, or they are not of the same
-	type. (PHP 4 only)
+	&true; $a가 $b와 같지 않다면, 둘 모두 같은 타입이 아니다 (PHP 4에서만)
        </entry>
       </row>
       <row>
@@ -398,8 +385,8 @@ $b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
     </tgroup>
    </table>
    <para>
-    Another conditional operator is the "?:" (or ternary) operator,
-    which operates as in C and many other languages.
+    다른 조건 연산자에는 C나 다른 많은 언어와 같은 동작을 하는 
+    "?:" (삼중) 연산자가 있다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -417,33 +404,30 @@ if (empty($_POST['action'])) {
 ]]>
      </programlisting>
     </informalexample> 
-    The expression <literal>(expr1) ? (expr2) : (expr3)</literal>
-    evaluates to <replaceable>expr2</replaceable> if
-    <replaceable>expr1</replaceable> evaluates to &true;, and
-    <replaceable>expr3</replaceable> if
-    <replaceable>expr1</replaceable> evaluates to &false;.
+    <literal>(expr1) ? (expr2) : (expr3)</literal>표현식은
+    <replaceable>expr1</replaceable>가 &true;이면
+    <replaceable>expr2</replaceable>이 적용되고,
+    <replaceable>expr1</replaceable>가 &false;이면
+    <replaceable>expr3</replaceable>으로 적용된다.
    </para>
    <para>
-    See also <function>strcasecmp</function>,
-    <function>strcmp</function>, and the manual section on
-    <link linkend="language.types">Types</link>.
+    <function>strcasecmp</function>, <function>strcmp</function>과
+    <link linkend="language.types">타입</link>에 관한 매뉴얼 섹션을
+    참고
    </para>
   </sect1>
 
   <sect1 id="language.operators.errorcontrol">
-   <title>Error Control Operators</title>
+   <title>에러 제어 연산자</title>
    <simpara>
-    PHP supports one error control operator: the at sign (@). When
-    prepended to an expression in PHP, any error messages that might
-    be generated by that expression will be ignored.
-   </simpara>
+    PHP는 에러 제어 연산자를 지원한다: 앳 부호 (@). PHP에서 표현식의
+    앞에 덧붙이면, 그 표현식에서 발생할수 있는 에러 메시지가 출력되지 않도록 한다.
    <simpara>
-    If the <link linkend="ini.track-errors">track_errors</link>
-    feature is enabled, any error message generated by the expression
-    will be saved in the variable
-    <link linkend="reserved.variables.phperrormsg">$php_errormsg</link>.
-    This variable will be overwritten on each error, so check early if you
-    want to use it.
+    <link linkend="ini.track-errors">track_errors</link> 기능은 활성화되어있으면,
+    표현식에서 발생하는 모든 에러는 
+    <link linkend="reserved.variables.phperrormsg">$php_errormsg</link>변수에
+    저장될것이다. 이 변수는 에러가 발생할 때마다 덮어씌어질것이고, 그래서
+    이 변수를 사용하려면 바로바로 확인해야 한다.
    </simpara>
    <para>
     <informalexample>
@@ -465,47 +449,42 @@ $value = @$cache[$key];
    </para>
    <note>
     <simpara>
-     The @-operator works only on
-     <link linkend="language.expressions">expressions</link>. A simple rule
-     of thumb is: if you can take the value of something, you can prepend
-     the @ operator to it. For instance, you can prepend it to variables,
-     function and <function>include</function> calls, constants, and
-     so forth. You cannot prepend it to function or class definitions,
-     or conditional structures such as <literal>if</literal> and
-     <literal>foreach</literal>, and so forth.
+     @-연산자는 <link linkend="language.expressions">표현식</link>에서만 동작한다.
+     단순한 규칙: 표현식의 값을 취할수 있으면, 그 표현식 앞에 @ 연산자를 덧붙일수 있다.
+     예를 들면, 변수, 함수, <function>include</function>호출, 상수 등의 앞에 
+     덧붙일수 있다. 그러나 함수나 클래스 선언부, <literal>if</literal>같은 조건문,
+     <literal>foreach</literal> 등에 이 부호를 덧붙일수는 없다.
     </simpara>
    </note>
    <simpara>
-    See also <function>error_reporting</function> and the manual section for
-    <link linkend="ref.errorfunc">Error Handling and Logging functions</link>.
+    <function>error_reporting</function>함수와
+    <link linkend="ref.errorfunc">Error Handling and Logging functions</link>에
+    관한 매뉴얼 섹션을 참고.
    </simpara>
    <note>
     <para>
-     The "@" error-control operator prefix will not disable messages
-     that are the result of parse errors.
+     "@" 에러-제어 연산자는 해석 에러로 인한 에러 메시지를 가릴수는 없을것이다.
     </para>
    </note>
    <warning>
     <para>
-     Currently the "@" error-control operator prefix will even disable
-     error reporting for critical errors that will terminate script
-     execution. Among other things, this means that if you use "@" to
-     suppress errors from a certain function and either it isn't
-     available or has been mistyped, the script will die right there
-     with no indication as to why.
+     현재 "@" 에러-제어 연산자는 스크립트 수행을 멈출수 있는 심각한 에러에
+     대한 에러 메시지들도 보이지 않게 할것이다. 이말의 의미는 어떤 함수에서
+     에러 메시지를 보이지 않게 하려하려고 "@"을 사용했고 그 함수가 가용하지
+     않거나 오타를 쓴것일지라도 이 스크립트는 에러 원인에 대한 메시지 없이 
+     그자리에서 즉시 멈추게 될것이다.
     </para>
    </warning>
   </sect1>
   
   <sect1 id="language.operators.execution">
-   <title>Execution Operators</title>
+   <title>실행 연산자</title>
    <para>
-    PHP supports one execution operator: backticks (``). Note that
-    these are not single-quotes! PHP will attempt to execute the
-    contents of the backticks as a shell command; the output will be
-    returned (i.e., it won't simply be dumped to output; it can be
-    assigned to a variable).  Use of the backtick operator is identical 
-    to <function>shell_exec</function>. 
+    PHP는 실행 연산자를 지원한다 (``). 이 연산자는 작은 따옴표가 아니라는
+    것에 주의하라! PHP는 백틱(``)안에 묶인 내용을 셀 명령으로서 실행하려
+    할 것이다; 출력이 돌려질것이다 (출력을 단순히 덤프하려 하지 않는다;
+    출력을 변수로 지정할 수 있다) 백틱 연산자는 <function>shell_exec</function> 
+    함수를 쓰는것과 동일한다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -517,27 +496,26 @@ echo "<pre>$output</pre>";
    </para>
    <note>
     <para>
-     The backtick operator is disabled when &safemode; is enabled
-     or <function>shell_exec</function> is disabled.
+     &safemode;가 활성화되었거나
+     <function>shell_exec</function>가 비활성화되어 있을때는
+     백틱 연산자는 비활성화된다.
     </para>
    </note>
    <para>
-    See also the manual section on <link linkend="ref.exec">Program
-    Execution functions</link>, <function>popen</function>
-    <function>proc_open</function>, and
-    <link linkend="features.commandline">Using PHP from the
-    commandline</link>.
+    <link linkend="ref.exec">Program Execution functions</link>, 
+    <function>popen</function> <function>proc_open</function>,
+    <link linkend="features.commandline">Using PHP from the commandline</link>에 관한
+    매뉴얼 섹션을 참고
    </para>
   </sect1>
 
   <sect1 id="language.operators.increment">
-   <title>Incrementing/Decrementing Operators</title>
+   <title>증가/감소 연산자</title>
    <para>
-    PHP supports C-style pre- and post-increment and decrement
-    operators.
+    PHP는 C-스타일의 전처리와 후처리 증가/감소 연산자를 지원한다.
    </para>
    <table>
-    <title>Increment/decrement Operators</title>
+    <title>증가/감소 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
@@ -571,7 +549,7 @@ echo "<pre>$output</pre>";
     </tgroup>
    </table>
    <para>
-    Here's a simple example script:
+    단순한 예제 스크립트:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -601,12 +579,12 @@ echo "Should be 4: " . $a . "<br />\n";
     </informalexample>
    </para>
    <para>
-    PHP follows Perl's convention when dealing with arithmetic operations
-    on character variables and not C's.  For example, in Perl 'Z'+1 turns
-    into 'AA', while in C 'Z'+1 turns into '[' ( ord('Z') == 90, ord('[') == 91 ).
-    Note that character variables can be incremented but not decremented.
+    PHP는 문자 변수에 관한 산술 연산을 할때 C 방식이 아니라 펄 방식을 따른다.
+    예를 들면, 펄에서 'Z'+1은 'AA'를 전환되는 반면, C에서 'Z'+1은
+    '[' ( ord('Z') == 90, ord('[') == 91 )으로 전환된다. 문자 변수는 증가될수는
+    있으나 감소될수는 없다는 것에 주의해야 한다.
     <example>
-     <title>Arithmetric Operations on Character Variables</title>
+     <title>문자 변수에 대한 산술 연산</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -633,10 +611,10 @@ AC
   </sect1>
 
   <sect1 id="language.operators.logical">
-   <title>Logical Operators</title>
+   <title>논리 연산자</title>
 
    <table>
-    <title>Logical Operators</title>
+    <title>논리 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
@@ -680,23 +658,19 @@ AC
     </tgroup>
    </table>
    <simpara>
-    The reason for the two different variations of "and" and "or"
-    operators is that they operate at different precedences. (See
-    <link linkend="language.operators.precedence">Operator
-    Precedence</link>.)
+    두개의 다른 "and"와 "or" 연산자를 쓰는 이유는 그들이 다른 
+    우선순위를 가지고 있기 때문이다. 
+    (<link linkend="language.operators.precedence">연산자 우선순위</link>를 참고)
    </simpara>
   </sect1>
 
   <sect1 id="language.operators.string">
-   <title>String Operators</title>
+   <title>문자열 연산자</title>
    <simpara>
-    There are two <type>string</type> operators. The first is the
-    concatenation operator ('.'), which returns the concatenation of its
-    right and left arguments. The second is the concatenating assignment
-    operator ('.='), which appends the argument on the right side to
-    the argument on the left side. Please read <link
-    linkend="language.operators.assignment">Assignment
-    Operators</link> for more information.
+    두개의 <type>문자열</type> 연산자가 지원된다. 첫번째것은 결합연산자 ('.')이고
+    좌측과 우측의 피연산자를 결합한 값을 돌려준다. 두번째것은 결합 지정 연산자('.=')이다.
+    이런 연산자는 좌측 인자로 우측 인자를 추가한다.
+    자세한 정보는 <link linkend="language.operators.assignment">지정 연산자</link>를 참고
    </simpara>
 
    <para>
@@ -713,18 +687,16 @@ $a .= "World!";     // now $a contains "Hello World!"
     </informalexample>
    </para>
    <para>
-    See also the manual sections on the 
-    <link linkend="language.types.string">String type</link> and 
-    <link linkend="ref.strings">String functions</link>.
+    <link linkend="language.types.string">String type</link>,
+    <link linkend="ref.strings">String functions</link>에 관한 매뉴얼 섹션을 참고
    </para>
   </sect1>
   
   <sect1 id="language.operators.array">
-   <title>Array Operators</title>
+   <title>배열 연산자</title>
    <simpara>
-    The only array operator in PHP is the <literal>+</literal> operator.
-    It appends the right handed array to the left handed, whereas 
-    duplicated keys are NOT overwritten.
+    PHP에서 배열 연산자는 <literal>+</literal>연산자만 지원된다. 이 연산자는
+    좌측 배열에 우측 배열을 추가한다. 그리고 중복된 키는 덮어 씌어지지 않는다.
    </simpara>
    <para>
     <informalexample>
@@ -739,7 +711,7 @@ var_dump($c);
 ]]>
      </programlisting>
     </informalexample>
-    When executed, this script will print the following:
+    위 스크립트가 수행되면, 다음과 같이 출력될것이다:
     <screen role="php">
 <![CDATA[
 array(3) {
@@ -755,9 +727,8 @@ array(3) {
     </screen>
    </para>
    <para>
-    See also the manual sections on the 
-    <link linkend="language.types.array">Array type</link> and 
-    <link linkend="ref.array">Array functions</link>.
+    <link linkend="language.types.array">Array type</link>과
+    <link linkend="ref.array">Array functions</link> 매뉴얼 섹션을 참고
    </para>
   </sect1>
  </chapter>
