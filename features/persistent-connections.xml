@@ -46,12 +46,11 @@
   </simpara>
 	<simpara>
 	마지막 방법은 PHP를 멀티쓰레드(multithreaded) 웹서버의 플러그-인의 
-	형태로 작동시키는 것인데, 현재 이방법은 이론적으로만 존재하고, 
-	실제로 만들어 진 것은 없다. ISAPI, WSAPI, NSAPI (Windows에서) 등의 
+	형태로 작동시키는 것이다. 현재 PHP4는 windows 환경에서 ISAPI 혹은 WSAPI, NSAPI의 방법을
 	방법을 사용하여 Netscape FastTrack, Microsoft's Internet Information Server (IIS), 
-	O'Reilly's WebSite Pro 등의 멀티쓰레드 웹서버에서 PHP를 플러그-인으로 
-	동작시키려는 작업이 현재 진행중이다. 이 경우 기본 동작은 위에서 언급한 
-	다중프로세스 모델과 동일하게 동작한다.
+	O'Reilly's WebSite Pro 등의 멀티쓰레드 웹서버에서 플러그-인으로 동작한다.
+     이 경우 기본 동작은 위에서 언급한 다중프로세스 모델과 동일하게 동작한다.
+     단, PHP3는 이와 같은 SAPI 형태를 지원하지 않는다.
   </simpara>
 	<simpara>
 	영구적인 접속이 실제로 어떠한 기능적인 향상도 주지 못한다면,
