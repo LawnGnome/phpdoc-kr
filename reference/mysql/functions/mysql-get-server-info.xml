@@ -1,25 +1,25 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Revision: 1.2 $ -->
 <!-- splitted from ./en/functions/mysql.xml, last change in rev 1.96 -->
   <refentry id="function.mysql-get-server-info">
    <refnamediv>
     <refname>mysql_get_server_info</refname>
-    <refpurpose>MySQL ¼­¹ö Á¤º¸¸¦ ¾ò´Â´Ù</refpurpose>
+    <refpurpose>MySQL ì„œë²„ ì •ë³´ë¥¼ ì–»ëŠ”ë‹¤</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>¼³¸í</title>
+    <title>ì„¤ëª…</title>
      <methodsynopsis>
       <type>string</type><methodname>mysql_get_server_info</methodname>
       <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>mysql_get_server_info</function>´Â <parameter>link_identifier</parameter> Á¢¼ÓÀ¸·Î
-	 »ç¿ëµÇ´Â ¼­¹ö ¹öÀüÀ» ¹ÝÈ¯ÇÑ´Ù. ¸¸¾à <parameter>link_identifier</parameter>°¡ »ý·«µÇ¸é,
-	 ÃÖ±Ù ¿ÀÇÂµÈ Á¢¼ÓÀÌ »ç¿ëµÉ °ÍÀÌ´Ù.
+     <function>mysql_get_server_info</function>ëŠ” <parameter>link_identifier</parameter> ì ‘ì†ìœ¼ë¡œ
+	 ì‚¬ìš©ë˜ëŠ” ì„œë²„ ë²„ì „ì„ ë°˜í™˜í•œë‹¤. ë§Œì•½ <parameter>link_identifier</parameter>ê°€ ìƒëžµë˜ë©´,
+	 ìµœê·¼ ì˜¤í”ˆëœ ì ‘ì†ì´ ì‚¬ìš©ë  ê²ƒì´ë‹¤.
     </para>
     <para>
      <example>
-      <title><function>mysql_get_server_info</function> ¿¹</title>
+      <title><function>mysql_get_server_info</function> ì˜ˆ</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -32,7 +32,7 @@ printf("MySQL server version: %s\n", mysql_get_server_info());
 ]]>
       </programlisting>
       <para>
-       À§ÀÇ ¿¹Á¦´Â ¾Æ·¡ÀÇ °á°ú¸¦ º¸¿©ÁÙ °ÍÀÌ´Ù:
+       ìœ„ì˜ ì˜ˆì œëŠ” ì•„ëž˜ì˜ ê²°ê³¼ë¥¼ ë³´ì—¬ì¤„ ê²ƒì´ë‹¤:
       </para>
       <screen>
 <![CDATA[
@@ -42,7 +42,7 @@ MySQL server version: 4.0.1-alpha
      </example>
     </para>
     <para>
-     ÂüÁ¶:  
+     ì°¸ì¡°:  
      <function>mysql_get_client_info</function>,
      <function>mysql_get_host_info</function>,
      <function>mysql_get_proto_info</function>.

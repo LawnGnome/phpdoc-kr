@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.2 $ -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- $Revision: 1.3 $ -->
 <!-- splitted from ./en/functions/mysql.xml, last change in rev 1.62 -->
   <refentry id="function.mysql-escape-string">
    <refnamediv>
     <refname>mysql_escape_string</refname>
     <refpurpose>
-     mysql_query¿¡¼­ ¹®ÀÚ¿­À» escape ÇÏ±âÀ§ÇØ »ç¿ë.
+     mysql_queryì—ì„œ ë¬¸ìžì—´ì„ escape í•˜ê¸°ìœ„í•´ ì‚¬ìš©.
     </refpurpose>
    </refnamediv>
    <refsect1>
-    <title>¼³¸í</title>
+    <title>ì„¤ëª…</title>
     <methodsynopsis>
      <type>string</type><methodname>mysql_escape_string</methodname>
      <methodparam><type>string</type><parameter>unescaped_string</parameter></methodparam>
     </methodsynopsis>
     <para>
-	 ÀÌ ÇÔ¼ö´Â <parameter>unescaped_string</parameter>À» <function>mysql_query</function>¿¡ ¾ÈÀüÇÏµµ·Ï  escape ÇÑ´Ù.
+	 ì´ í•¨ìˆ˜ëŠ” <parameter>unescaped_string</parameter>ì„ <function>mysql_query</function>ì— ì•ˆì „í•˜ë„ë¡  escape í•œë‹¤.
     </para>
     <note>
      <simpara>
-      <function>mysql_escape_string</function>Àº 
-	  <literal>%</literal>¿Í <literal>_</literal>¸¦ escapeÇÏÁö ¾Ê´Â´Ù.
+      <function>mysql_escape_string</function>ì€ 
+	  <literal>%</literal>ì™€ <literal>_</literal>ë¥¼ escapeí•˜ì§€ ì•ŠëŠ”ë‹¤.
      </simpara>
      <simpara>
-      ÀÌ ÇÔ¼ö´Â Á¢¼Ó ÇÚµé·¯¸¦ ÀÌ¿ëÇÏ¿© ÇöÀç ¹®ÀÚ¼ÂÀ» µû¶ó¼­ ¹®ÀÚ¸¦ escapeÇÏ´Â °Í¸¸ Á¦¿ÜÇÏ°í´Â <function>mysql_real_escape_string</function>¿Í ºñ½ÁÇÏ´Ù. <function>mysql_escape_string</function>´Â
-	  Á¢¼Ó ÇÚµé·¯¸¦ ÆÄ¶ó¹ÌÅÍ·Î °®Áö ¾ÊÀ¸¸ç, ÇöÀç ¹®ÀÚ¼Â¿¡ ´ëÇØ °í·ÁÇÏÁö ¾Ê´Â´Ù. 
+      ì´ í•¨ìˆ˜ëŠ” ì ‘ì† í•¸ë“¤ëŸ¬ë¥¼ ì´ìš©í•˜ì—¬ í˜„ìž¬ ë¬¸ìžì…‹ì„ ë”°ë¼ì„œ ë¬¸ìžë¥¼ escapeí•˜ëŠ” ê²ƒë§Œ ì œì™¸í•˜ê³ ëŠ” <function>mysql_real_escape_string</function>ì™€ ë¹„ìŠ·í•˜ë‹¤. <function>mysql_escape_string</function>ëŠ”
+	  ì ‘ì† í•¸ë“¤ëŸ¬ë¥¼ íŒŒë¼ë¯¸í„°ë¡œ ê°–ì§€ ì•Šìœ¼ë©°, í˜„ìž¬ ë¬¸ìžì…‹ì— ëŒ€í•´ ê³ ë ¤í•˜ì§€ ì•ŠëŠ”ë‹¤. 
      </simpara>
     </note>
     <para>
      <example>
-      <title><function>mysql_escape_string</function> ¿¹</title>
+      <title><function>mysql_escape_string</function> ì˜ˆ</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -40,7 +40,7 @@ printf("Escaped string: %s\n", $escaped_item);
 ]]>
       </programlisting>
       <para>
-       À§ÀÇ ¿¹Á¦´Â ¾Æ·¡ÀÇ °á°ú¸¦ º¸¿©ÁÙ °ÍÀÌ´Ù:
+       ìœ„ì˜ ì˜ˆì œëŠ” ì•„ëž˜ì˜ ê²°ê³¼ë¥¼ ë³´ì—¬ì¤„ ê²ƒì´ë‹¤:
       </para>
       <screen>
 <![CDATA[
@@ -50,7 +50,7 @@ Escaped string: Zak\'s Laptop
      </example>
     </para>
     <para>
-     ÂüÁ¶: 
+     ì°¸ì¡°: 
      <function>mysql_real_escape_string</function>,
      <function>addslashes</function>, 
      <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>.
