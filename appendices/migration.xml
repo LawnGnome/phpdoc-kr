@@ -1,91 +1,85 @@
-﻿<appendix id="migration">
- <title>Migrating from PHP/FI 2.0 to PHP 3.0</title>
-
- <sect1 id="migration-about">
-  <title>About the incompatbilities in 3.0</title>
-  <simpara>
-   PHP 3.0 is rewritten from the ground up.  It has a proper parser
-   that is much more robust and consistent than 2.0's.  3.0 is also
-   significantly faster, and uses less memory.  However, some of
-   these improvements have not been possible without compatibility
-   changes, both in syntax and functionality.</simpara>
-
-  <simpara>
-   In addition, PHP's developers have tried to clean up both PHP's
-   syntax and semantics in version 3.0, and this has also caused some
-   incompatibilities.  In the long run, we believe that these changes
-   are for the better.</simpara>
-
-  <simpara>
-   This chapter will try to guide you through the incompatibilities
-   you might run into when going from PHP/FI 2.0 to PHP 3.0 and help
-   you resolve them.  New features are not mentioned here unless
-   necessary.</simpara>
-
-  <simpara>
-   A conversion program that can automatically convert your old
-   PHP/FI 2.0 scripts exists.  It can be found in the <filename class="directory">convertor</filename> subdirectory of the PHP 3.0
-   distribution.  This program only catches the syntax changes though,
-   so you should read this chapter carefully anyway.</simpara></sect1>
-
- <sect1 id="migration-startendtags">
-  <title>Start/end tags</title>
-
-  <para>
-   The first thing you probably will notice is that PHP's start and end
-   tags have changed.  The old <literal>&lt;? &gt;</literal> form has been
-   replaced by three new possible forms:
+<appendix id="migration">
+	<title>PHP/FI 2.0 에서 PHP 3.0로 이주</title>
+	<sect1 id="migration-about">
+		<title>3.0의 비환성에 대해서</title>
+		<simpara>
+		PHP 3.0은 처음부터 다시 씌여졌다. 
+		그것은 2.0에 비해 훨씬더 튼튼하고 일관된 파서(명령해석)에 적합했다.
+		3.0은 이미 상당히 빨라지고, 더욱 적은 메모리를 사용한다. 하지만,  
+		이들의 향상은 더 이상 구문과 함수의 호환성을 가능하게 하지 못했다.
+		</simpara>
+		<simpara>
+		첨부하자면, PHP개발자들은 3.0에서 PHP의 구문과 의미체계 양쪽 다 정리를 시도했고
+		이것은 약간의 비호환성을 야기시켰다. 멀리보자면 우린 그것이 더 나은 것을 위한 변화들이었다고
+		믿는다.
+		</simpara>
+		<simpara>
+		이번 장은 당신에게 아마 PHP/FI 2.0서 PHP 3.0으로 갈때의 비호환성을 안내할 것이고, 
+		그것을 해결하려는 당신을 돕는다.
+		새로운 기능은 필요가 없다면 여기서 언급하지 않는다.
+		</simpara>
+		<simpara>
+		변환 프로그램은 자동으로 당신의 구 PHP/FI 2.0 스크립트를 변환시켜준다.
+		이것은 
+		PHP 3.0 배포본의 서브디렉토리 <filename class="directory">convertor</filename>에서 찾을 수 있다.
+		이 프로그램은 단지 구문을 찾아 바꾸는 것이기에 당신은 어쨌든 이번 장을 조심스레 읽어 나가야 할 것이다.
+		</simpara>
+	</sect1>
+	<sect1 id="migration-startendtags">
+		<title>시작/끝 태그 Start/end tags</title>
+		<para>
+		당신에게 아마 주의하는 첫번째 것은 PHP의 시작과 끝이 바뀌었다는 것이다.
+		예전의 <literal>&lt;? &gt;</literal>양식이 세가지 양식으로 바뀌었다:
    <example>
-    <title>Migration: old start/end tags</title>
-    <programlisting>
+				<title>이주: 예전 시작/끝 태그</title>
+				<programlisting>
 &lt;? echo "This is PHP/FI 2.0 code.\n"; &gt;
-</programlisting></example>
+</programlisting>
+			</example>
+2.0버전에는, PHP/FI 는 이와같은 변화를 지원하고 있었다.
+As of version 2.0, PHP/FI also supports this variation:
 
-   As of version 2.0, PHP/FI also supports this variation:
-
-   <example><title>Migration: first new start/end tags</title>
-    <programlisting>
+   <example>
+				<title>이주: 새로운 첫번째 시작/끝 태그</title>
+				<programlisting>
 &lt;? echo "This is PHP 3.0 code!\n"; ?&gt;
-</programlisting></example>
-
-   Notice that the end tag now consists of a question mark and a
-   greater-than character instead of just greater-than.  However, if
-   you plan on using XML on your server, you will get problems with
-   the first new variant, because PHP may try to execute the XML
-   markup in XML documents as PHP code.  Because of this, the
-   following variation was introduced:
-
-   <example><title>Migration: second new start/end tags</title>
-    <programlisting>
+</programlisting>
+			</example>
+이것은 끝쪽 태그가 하나의 비교문자대신에 물음표 마크와 비교문자로 이루졌다는 것을 알수 있다.
+아마 당신이 당신의 서버에 XML를 쓰기를 계획한다면 이 새로운 변화는 몇몇 문제점들을 가지고 있다.
+왜냐하면 PHP는 아마 XML문서상의 XML마크업을 PHP코드처럼 실행할 것이다.
+이것 때문에 다음과 같이 소개하는 것을 따른다:
+   <example>
+				<title>이주: 새로운 두번째 시작/끝 태그</title>
+				<programlisting>
 &lt;?php echo "This is PHP 3.0 code!\n"; ?&gt;
-</programlisting></example>
+</programlisting>
+			</example>
 
-   Some people have had problems with editors that don't understand
-   the processing instruction tags at all.  Microsoft FrontPage is one
-   such editor, and as a workaround for these, the following variation
-   was introduced as well:
-
-   <example><title>Migration: third new start/end tags</title>
-    <programlisting>
+몇몇 사람은 에디터들이 처리구문태그들을 인식하지 못하는 문제를 가지고 있었다.
+마이크로소프트 프론트페이지는 그러한 에디터들중 하나 였고, 
+다음과 같이 소개하는 변화를 따른다:
+   <example>
+				<title>이주: 새로운 세번째 시작/끝 태그</title>
+				<programlisting>
 &lt;script language="php"&gt;
 
   echo "This is PHP 3.0 code!\n";
 
 &lt;/script&gt;
-</programlisting></example></para></sect1>
-
-
- <sect1 id="migration-if-endif">
-  <title>if..endif syntax</title>
-
-  <para>
-   The `alternative' way to write if/elseif/else statements, using if();
-   elseif(); else; endif; cannot be efficiently implemented without
-   adding a large amount of complexity to the 3.0 parser.  Because of
-   this, the syntax has been changed:
+</programlisting>
+			</example>
+		</para>
+	</sect1>
+	<sect1 id="migration-if-endif">
+		<title>if..endif 구문</title>
+		<para>
+		'선택적인'방법 if/elseif/else표현을 쓸수 있고, if(); elseif(); else; endif();의 사용은
+		많은 양의 복잡함을 3.0 파서에 추가없이 효과적인 도구를 사용할 수 없다
+		그러하기 때문에 구문이 바뀌었다:
    <example>
-    <title>Migration: old if..endif syntax</title>
-    <programlisting>
+				<title>이주: 예전의 if..endif 구문</title>
+				<programlisting>
 if ($foo);
     echo "yep\n";
 elseif ($bar);
@@ -93,10 +87,11 @@ elseif ($bar);
 else;
     echo "nope\n";
 endif;
-</programlisting></example>
-   <example>
-    <title>Migration: new if..endif syntax</title>
-    <programlisting>
+</programlisting>
+			</example>
+			<example>
+				<title>이주: 새로운 if..endif 구문</title>
+				<programlisting>
 if ($foo):
     echo "yep\n";
 elseif ($bar):
@@ -104,48 +99,49 @@ elseif ($bar):
 else:
     echo "nope\n";
 endif;
-</programlisting></example>
-
-   Notice that the semicolons have been replaced by colons in all
-   statements but the one terminating the expression (endif).</para></sect1>
-
- <sect1 id="migration-while">
-  <title>while syntax</title>
-  <para>
-   Just like with if..endif, the syntax of while..endwhile has changed
-   as well:
-   <example><title>Migration: old while..endwhile syntax</title>
-   <programlisting>
+</programlisting>
+			</example>
+			세미콘론은 모든 표현에서 콜론으로 바뀌었으나 표현식에서 한번은 종결됨을 주목하라. (endif).
+</para>
+	</sect1>
+	<sect1 id="migration-while">
+		<title>while 구문</title>
+		<para>
+		if..endif와 같이 while..endwhile은 바뀌었다:
+   <example>
+				<title>이주: 예전의 while..endwhile 구문</title>
+				<programlisting>
 while ($more_to_come);
     ...
 endwhile;
-</programlisting></example>
-   <example><title>Migration: new while..endwhile syntax</title>
-   <programlisting>
+</programlisting>
+			</example>
+			<example>
+				<title>이주: 새로운 while..endwhile 구문</title>
+				<programlisting>
 while ($more_to_come):
     ...
 endwhile;
-</programlisting></example>
-  </para>
-  <warning>
-   <simpara>
-    If you use the old while..endwhile syntax in PHP 3.0, you will get
-    a never-ending loop.
+</programlisting>
+			</example>
+		</para>
+		<warning>
+			<simpara>
+			당신이 예전의 while..endwhile구문을 PHP 3.0에서 사용한다면 무한루프를 하게 될 것이다.
    </simpara>
-  </warning></sect1>
-
- <sect1 id="migration-expr">
-  <title>Expression types</title>
-  <simpara>
-   PHP/FI 2.0 used the left side of expressions to determine what type
-   the result should be.  PHP 3.0 takes both sides into account when
-   determining result types, and this may cause 2.0 scripts to behave
-   unexpectedly in 3.0.</simpara>
-  <simpara></simpara>
-
-  <para>
-   Consider this example:
-   <informalexample><programlisting>
+		</warning>
+	</sect1>
+	<sect1 id="migration-expr">
+		<title>표현식 타입</title>
+		<simpara>
+   PHP/FI 2.0은 왼쪽의 결과 타입을 한정하는 표현식을 사용했다 
+used the left side of expressions to determine what type
+PHP 3.0은 결과 타입을 결정할때 계정으로부터 양쪽을 받는다. 그리고  아마 2.0 스크립트인해 3.0에서는 뜻밖의 반응을 가지게 될 것이다.</simpara>
+		<simpara/>
+		<para>
+이 예제를 검토하라:
+   <informalexample>
+				<programlisting>
 $a[0]=5;
 $a[1]=7;
 
@@ -154,154 +150,141 @@ while ("" != $key) {
     echo "$keyn";
     next($a);
 }
-</programlisting></informalexample>
-
-   In PHP/FI 2.0, this would display both of $a's indices.  In PHP
-   3.0, it wouldn't display anything.  The reason is that in PHP 2.0,
-   because the left argument's type was string, a string comparison
-   was made, and indeed <literal>""</literal> does not equal
-   <literal>"0"</literal>, and the loop went through.  In PHP 3.0,
-   when a string is compared with an integer, an integer comparison is
-   made (the string is converted to an integer).  This results in
-   comparing <literal>atoi("")</literal> which is
-   <literal>0</literal>, and <literal>variablelist</literal> which is
-   also <literal>0</literal>, and since <literal>0==0</literal>, the
-   loop doesn't go through even once.
-
-  </para>
-  <para>
-   The fix for this is simple.  Replace the while statement with:
-   <informalexample><programlisting>
+</programlisting>
+			</informalexample>
+PHP/FI 2.0에서는 $a의 인덱스 안의 양쪽 모두 보여준다.
+PHP 3.0에서는 아무것도 보여주지 않는다. 
+그 이유는 PHP2.0에 있다
+왼쪽 인자의 타입이 문자열비교를 위해 만들어진 문자열이고, 실은 <literal>""</literal>과 "0"는 루프를 통하는 동안 같지 않다, 
+PHP 3.0에서는 문자열이 정수비교를 위해 만들어진 정수와 비교될때 (문자열은 정수로 변환된다),  
+<literal>atoi("")</literal> 비교의 결과는 0 과 <literal>variablelist</literal>, 0 과 <literal>0==0</literal> 이후, 
+루프는 한번도 통하지 못한다.
+</para>
+		<para>
+간단하게 while구문을 바꿈으로써 고쳤다:
+   <informalexample>
+				<programlisting>
 while ((string)$key != "") {
-</programlisting></informalexample></para></sect1>
-
-
- <sect1 id="migration-errors">
-  <title>Error messages have changed</title>
-  <simpara>
-   PHP 3.0's error messages are usually more accurate than 2.0's were,
-   but you no longer get to see the code fragment causing the error.
-   You will be supplied with a file name and a line number for the
-   error, though.
-  </simpara></sect1>
-
-
- <sect1 id="migration-booleval">
-  <title>Short-circuited boolean evaluation</title>
-  <simpara>
-   In PHP 3.0 boolean evaluation is short-circuited.  This means that
-   in an expression like <literal>(1 || test_me())</literal>, the
-   function <function>test_me</function> would not be executed since
-   nothing can change the result of the expression after the
-   <literal>1</literal>.</simpara>
-    
-  <simpara>
-   This is a minor compatibility issue, but may cause unexpected
-   side-effects.</simpara></sect1>
-
-
- <sect1 id="migration-truefalse">
-  <title>Function true/false return values</title>
-  <simpara>
-   Most internal functions have been rewritten so they return TRUE
-   when successful and FALSE when failing, as opposed to 0 and -1 in
-   PHP/FI 2.0, respectively.  The new behaviour allows for more
-   logical code, like <literal>$fp = fopen("/your/file") or
-    fail("darn!");</literal>.  Because PHP/FI 2.0 had no clear rules
-   for what functions should return when they failed, most such
-   scripts will probably have to be checked manually after using the
-   2.0 to 3.0 convertor.</simpara>
-  <para>
-   <example>
-    <title>Migration from 2.0: return values, old code</title>
-    <programlisting>
+</programlisting>
+			</informalexample>
+		</para>
+	</sect1>
+	<sect1 id="migration-errors">
+		<title>오류 메세지를 바꿨다.</title>
+		<simpara>
+		PHP3.0의 오류 메세지는 2.0보다 더 유용하게 정확해졌다. 그러나, 
+		당신은 에러로 인한 코드의 깨짐을 더 이상 받아 볼 수 있다.
+		다만 당신은 오류를 위한 파일명과 줄번호를 제공받을 것이다.
+  </simpara>
+	</sect1>
+	<sect1 id="migration-booleval">
+		<title>단락된 불린 평가
+		Short-circuited boolean evaluation</title>
+		<simpara>
+		PHP 3.0의 불린 평가는 단락되었다. 이 뜻은 <literal>(1 || test_me())</literal>같은 표현식에서 <function>test_me</function>함수는 <literal>1</literal>이후 표현식 결과에 바꾸지 않는 한 실행되지 않는다.
+</simpara>
+		<simpara>
+		이건 중요하지 않는 호환성 이슈이나, 다른 쪽에 예기치 못하게 영향을 줄 수 있다.
+		</simpara>
+	</sect1>
+	<sect1 id="migration-truefalse">
+		<title>함수 리턴값 true/false/title</title>
+		<simpara>
+		PHP/FI 2.0의 각각 반대되는 0과 -1처럼 대부분의 내장 함수들은 
+		true은 성공적일때 false는 실패했을때 리턴값을 주도록 다시 씌여졌다.
+		새로운 행동자는 <literal>$fp = fopen("/your/file") or fail("darn!");</literal>같은 더 많은 논리적 코드를 허락했다.
+		함수가 리턴값을 제대로 넘기지 못할때 PHP/FI 2.0은 더이상 깨끗한 규칙이 아니다.
+		대부분의 그러한 스크립트는 2.0에서 3.0의 변환이후 아마 수작업으로 점검해야 한다.
+		</simpara>
+		<para>
+			<example>
+				<title>2.0에서 이주: 리턴값, 예전의 코드</title>
+				<programlisting>
 $fp = fopen($file, "r");
 if ($fp == -1);
     echo("Could not open $file for reading&lt;br&gt;\n");
 endif;
 </programlisting>
-   </example>
-   <example>
-    <title>Migration from 2.0: return values, new code</title>
-    <programlisting>
+			</example>
+			<example>
+				<title>2.0에서 이주: 리턴값, 새로운 코드</title>
+				<programlisting>
 $fp = @fopen($file, "r") or print("Could not open $file for reading&lt;br&gt;\n");
 </programlisting>
-   </example></para></sect1>
-
-   
- <sect1 id="migration-other">
-  <title>Other incompatibilities</title>
-
-   <itemizedlist>
-    <listitem><simpara>
-      The PHP 3.0 Apache module no longer supports Apache versions
-      prior to 1.2.  Apache 1.2 or later is required.</simpara></listitem>
-
-    <listitem><simpara> <function>echo</function> no longer
-    supports a format string.  Use the
-    <function>printf</function> function instead.</simpara></listitem>
-
-    <listitem><simpara>
-      In PHP/FI 2.0, an implementation side-effect caused
-      <literal>$foo[0]</literal> to have the same effect as
-      <literal>$foo</literal>.  This is not true for PHP 3.0.</simpara></listitem>
-
-    <listitem><simpara>
-      Reading arrays with <literal>$array[]</literal> is no longer
-      supported</simpara>
-
-     <simpara>
-      That is, you cannot traverse an array by having a loop that does
-      <literal>$data = $array[]</literal>.  Use
-      <function>current</function> and <function>next</function>
-      instead.</simpara>
-     <simpara>
-      Also, <literal>$array1[] = $array2</literal> does not append the
-      values of <literal>$array2</literal> to <literal>$array1</literal>,
-      but appends <literal>$array2</literal> as the last entry of
-      <literal>$array1</literal>.  See also multidimensional array
-      support.</simpara></listitem>
-
-    <listitem>
-     <simpara> <literal>"+"</literal> is no longer overloaded as a
-     concatenation operator for strings, instead it converts it's
-     arguments to numbers and performs numeric addition. Use
-     <literal>"."</literal> instead.</simpara></listitem>
-   </itemizedlist>
-
-        <example>
-          <title>Migration from 2.0: concatenation for strings</title>
-          <programlisting>
+			</example>
+		</para>
+	</sect1>
+	<sect1 id="migration-other">
+		<title>그밖의 비호환성들</title>
+		<itemizedlist>
+			<listitem>
+				<simpara>
+				PHP 3.0 아파치 모듈은 더이상 아파치 1.2이전 버전을 지원하지 않는다.
+				 1.2나 그 이후를 요구한다.
+				</simpara>
+			</listitem>
+			<listitem>
+				<simpara>
+					<function>echo</function>는 더이상 양식화된 문자열을 지원하지 않는다.
+					 대신에 <function>printf</function>을 사용하라.</simpara>
+			</listitem>
+			<listitem>
+				<simpara>
+				PHP/FI 2.0에서는 <literal>$foo[0]</literal>과 <literal>$foo</literal>는
+				같은 효과를 다른 쪽에서 수행했었다. PHP 3.0에서 이것은 수행되지 않는다.
+				</simpara>
+			</listitem>
+			<listitem>
+				<simpara>
+				<literal>$array[]</literal>같은 배열 읽기는 더이상 지원하지 않는다.
+				</simpara>
+				<simpara>
+				그것은 더이상 당신이 루프를 이용한 <literal>$data = $array[]</literal>같은 
+				배열 넘기기를 할수 없다. 
+				대신 <function>current</function>과 <function>next</function>을 사용하라.
+				</simpara>
+				<simpara>
+				마찬가지로 <literal>$array1[] = $array2</literal>은 <literal>$array2</literal>와
+				<literal>$array1</literal>의 값과 같지 않지만, <literal>$array2</literal>는
+				<literal>$array1</literal>의 마지막 요소와 같다. 이것은 다차원 배열도 마찬가지로
+				지원한다.
+				</simpara>
+			</listitem>
+			<listitem>
+				<simpara>
+					<literal>"+"</literal>은 더이상 문자열의 연결자가 아니다, 대신 그것은 숫자 인자와
+					숫자의 덧셈으로 바뀌었다. 대신 <literal>"."</literal>를 사용하라.
+					</simpara>
+			</listitem>
+		</itemizedlist>
+		<example>
+			<title>2.0에서 이주: 문자열 연결</title>
+			<programlisting>
 echo "1" + "1";
 </programlisting>
-
-         <para> 
-          In PHP 2.0 this would echo 11, in PHP 3.0 it would echo 2. Instead
-          use:
-
-          <programlisting>
+			<para> 
+			PHP 2.0에서는 11로 출력되지만, 3.0에서는 2로 출력된다. 대체하자면:
+<programlisting>
 echo "1"."1";
 </programlisting>
-
-          <programlisting>
+<programlisting>
 $a = 1;
 $b = 1;
 echo $a + $b;
-</programlisting></para>
-
-         <para>  
-          This would echo 2 in both PHP 2.0 and 3.0.
+</programlisting>
+			</para>
+			<para>  
+          2.0과 3.0 모두다 2가 출력된다.
 
           <programlisting>
 $a = 1;
 $b = 1;
 echo $a.$b;
 </programlisting>
-          This will echo 11 in PHP 3.0.</para>
-	</example></sect1>
-
- </appendix>
-
+          3.0에서는 11이 출력된다.</para>
+		</example>
+	</sect1>
+</appendix>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
