@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.114 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.115 Maintainer: progcom Status: ready -->
  <chapter id="configuration">
   <title>실행 환경 설정</title>
 
@@ -691,7 +691,7 @@ include_path = ".;c:\php\lib"
        <listitem>
         <para>
          EGPCS(환경, GET, POST, 쿠키, 서버) 변수를 전역 변수로 등록할지를
-         결정합니다. 예를 들어, register_globals = on 이라면 url
+         결정합니다. 예를 들어, register_globals = on 이라면 URL
          <literal>http://www.example.com/test.php?id=3</literal> 요청에
          <varname>$id</varname>를 생성합니다. 또는,
          <varname>$_SERVER['DOCUMENT_ROOT']</varname>에서

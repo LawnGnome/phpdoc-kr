@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.28 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.32 Maintainer: progcom Status: ready -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
 
@@ -241,8 +241,8 @@ Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)
    </para>
    <para>
     <example>
-     <title><link linkend="control-structures">제어문</link>과
-     <link linkend="functions">함수</link> 사용하기 예제</title>
+     <title><link linkend="language.control-structures">제어문</link>과
+      <link linkend="language.functions">함수</link>를 사용하는 예제</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -288,7 +288,7 @@ Internet Explorer를 사용하고 있습니다.<br />
     사용하는 비슷한 예제도 쉽게 작성할 수 있습니다. 관련된 매뉴얼 페이지들은
     예제를 포함하고 있습니다. 어떻게 함수를 사용하는지를 모르겠다면, 매뉴얼의
     <link linkend="about.prototypes">함수 정의를 읽는 방법</link>과
-    <link linkend="functions">PHP 함수</link> 섹션을 읽어보십시오.
+    <link linkend="language.functions">PHP 함수</link> 섹션을 읽어보십시오.
    </para>
    <para>
     한걸음 더 나아가서, PHP 블록 안에서 어떻게 PHP 모드를 드나드는지
@@ -397,6 +397,94 @@ Joe씨 안녕하세요. 당신은 22세입니다.
     사용할 수 있습니다. 이는 GET, POST, COOKIE 데이터를 포함합니다.
     <function>import_request_variables</function> 함수를 참고하십시오.
    </para>
+  </sect1>
+
+  <sect1 id="tutorial.xforms">
+   <title>XForms 다루기</title>
+   <para>
+    <ulink url="&url.xforms;">XForms</ulink>는 전통적인 웹 폼에 다양성을
+    부여합니다. 다양한 플랫폼과 브라우저, 심지어 비전통적인 매체인 PDF
+    문서에서도 사용할 수 있습니다.
+   </para>
+   <para>
+    XForms의 첫번째 차이는 클라이언트에 폼을 전송하는 방법입니다. <ulink
+     url="&url.xforms.htmlauthors;">HTML 저작자를 위한 XForms</ulink>에
+    XForms를 작성하는 자세한 설명이 있습니다. 이 튜토리얼에서는 간단한
+    예제만을 살펴봅니다.
+   </para>
+   <example>
+    <title>간단한 XForms 검색폼</title>
+    <programlisting role="html">
+<![CDATA[
+<h:html xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.w3.org/2002/xforms">
+<h:head>
+    <h:title>검색</h:title>
+    <model>
+        <submission action="http://example.com/search"
+                    method="post" id="s"/>
+    </mode>
+</h:head>
+<h:body>
+    <h:p>
+        <input ref="q"><label>찾기</label></input>
+        <submit submission="s"></label>Go</label></submit>
+    </h:p>
+</h:body>
+</h:html>
+]]>
+    </programlisting>
+   </example>
+   <para>
+    위 폼은 (<parameter>q</parameter>로 이름 붙여진) 텍스트 입력 상자와 제출
+    버튼을 표시합니다. 제출 버튼을 클릭하면, 폼은 action에 지정한 페이지로
+    넘어갑니다.
+   </para>
+   <para>
+    여기서부터 웹 어플리케이션의 시점에서 차이가 납니다. 일반 HTML 폼에서는
+    데이터가 application/x-www-form-urlencoded로 전송되지만, XForms에서는 이
+    정보가 XML 형식의 데이터로 전송됩니다.
+   </para>
+   <para>
+    XML 데이터를 위해서 XForms를 선택한다면, 이 경우 브라우저가 생성한 XML
+    데이터는 $HTTP_RAW_POST_DATA에서 찾을 수 있고, 이를 선호하는 XSLT 엔진이나
+    문서 처리기로 넘길 수 있습니다.
+   </para>
+   <para>
+    형식화에 관심이 없고, 데이터를 전통적인 $_POST 변수로 읽고 싶다면,
+    <parameter>method</parameter> 속성을
+    <emphasis>urlencoded-post</emphasis>로 변경하여 클라이언트 브라우저가
+    application/x-www-form-urlencoded로 보내도록 할 수 있습니다.
+   </para>
+   <example>
+    <title>XForms가 $_POST를 만들도록 사용하기</title>
+    <programlisting role="html">
+<![CDATA[
+<h:html xmlns:h="http://www.w3.org/1999/xhtml"
+        xmlns="http://www.w3.org/2002/xforms">
+<h:head>
+    <h:title>검색</h:title>
+    <model>
+        <submission action="http://example.com/search"
+                    method="urlencoded-post" id="s"/>
+    </mode>
+</h:head>
+<h:body>
+    <h:p>
+        <input ref="q"><label>찾기</label></input>
+        <submit submission="s"></label>Go</label></submit>
+    </h:p>
+</h:body>
+</h:html>
+]]>
+    </programlisting>
+   </example>
+   <note>
+    <simpara>
+     이 글을 쓴 시점에서, 많은 브라우저가 XForms를 지원하지 않습니다. 위
+     예제가 실패한다면, 브라우저의 버전을 확인해 보십시오.
+    </simpara>
+   </note>
   </sect1>
   
   <sect1 id="tutorial.oldcode">

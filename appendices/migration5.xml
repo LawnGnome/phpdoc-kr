@@ -10,7 +10,7 @@
     코드를 가능한 그대로 사용할 수 있게 주의를 하였습니다. 그리하여, PHP 4의
     코드를 PHP 5로 옮기는 일은 매우 쉽습니다. 기존 PHP 4 코드의 대부분은
     아무런 변경 없이 실행할 수 있지만, <link
-     linkend="migration5.incompatiable">몇몇 차이점</link>에 대해서 알고, 실제
+     linkend="migration5.incompatible">몇몇 차이점</link>에 대해서 알고, 실제
     환경에 적용할 때는 미리 테스트를 해 보아야 합니다.
    </para>
   </section>
@@ -74,7 +74,6 @@
     <example>
      <title><function>strrpos</function>와 <function>strripos</function>가
       전체 문자열을 needle로 사용합니다.</title>
-    </simpara></listitem>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -519,7 +518,7 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    <itemizedlist>
     <listitem><simpara>
      mail.force_extra_paramaters - 지정한 인수를 센드메일 바이너리에 추가적인
-     인수로 전달하도록 강제합니다. 이 인수는 항상 <fuction>mail</function>의
+     인수로 전달하도록 강제합니다. 이 인수는 항상 <function>mail</function>의
      다섯번째 인수를 교체합니다. 안전 모드에서도 동작합니다.
    </simpara></listitem>
     <listitem><simpara>
