@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
-<!-- EN-Revision: 1.51 -->
+<!-- $Revision: 1.8 $ -->
+<!-- EN-Revision: 1.52 -->
  <chapter id="language.operators">
   <title>연산자</title>
   <simpara>
@@ -320,6 +320,8 @@ $b .= "There!"; // sets $b to "Hello There!", just like $b = $b . "There!";
    <title>비교 연산자</title>
    <simpara>
     비교 연산자는 그 이름에서 알수 있듯이, 두 값을 비교한다.
+    또 <link linkend="types.comparisons">타입 비교 테이블</link>을 보고,
+    다양한 타입을 비교하는 예제 코드를 볼수 있다.
    </simpara>
    <table>
     <title>비교 연산자</title>
