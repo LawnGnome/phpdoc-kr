@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.23 $ -->
-<!-- EN-Revision: 1.102 -->
+<!-- $Revision: 1.24 $ -->
+<!-- EN-Revision: 1.103 -->
  <chapter id="configuration">
   <title>환경 설정</title>
 
@@ -26,8 +26,7 @@
    <note>
     <para>
      아파치 웹 서버는 시작할 때 디렉토리를 루트로 변경하기 때문에,
-     루트에 <filename>php.ini</filename>가 존재할 경우, 루트 파일
-     시스템으로부터 읽혀집게 됩니다.
+     루트에 &php.ini;가 존재할 경우, 루트 파일 시스템에서 읽습니다.
     </para>
    </note>
    <para>

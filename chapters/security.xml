@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
-<!-- EN-Revision: 1.55 -->
+<!-- $Revision: 1.11 $ -->
+<!-- EN-Revision: 1.56 -->
  <chapter id="security">
   <title>보안</title>
 
@@ -57,8 +57,8 @@
     to the transaction log is severely weakened.
    </simpara>
    <simpara>
-    When testing, keep in mind that you will not be able to test all
-    possibilities for even the simplest of pages. The input you
+    테스트를 할 때, 가장 간단한 페이지라 할지라도 모든 가능성을 테스트할
+    수는 없다는 것을 명심하십시오. The input you
     may expect will be completely unrelated to the input given by
     a disgruntled employee, a cracker with months of time on their
     hands, or a housecat walking across the keyboard. This is why it's
@@ -98,23 +98,22 @@
     <itemizedlist>
      <listitem>
       <simpara>
-       Accessing system files: <filename
+       시스템 파일에의 접근: <filename
        role="url">http://my.host/cgi-bin/php?/etc/passwd</filename>
       </simpara>
       <simpara>
-       The query information in a url after the question mark (?)  is
-       passed as command line arguments to the interpreter by the CGI
-       interface.  Usually interpreters open and execute the file
-       specified as the first argument on the command line.
+       URL 후의 물음표(?)에 존재하는 질의 정보는 CGI 인터페이스에 의해
+       인터프리터에 명령줄 인자로 전해집니다. 보통 인터프리터는
+       명령줄의 첫 인자에 지정한 파일을 열고 실행합니다.
       </simpara>
       <simpara>
-       When invoked as a CGI binary, PHP refuses to interpret the
-       command line arguments.
+       CGI 바이너리로 호출할 때, PHP는 명령줄 인자를 해석하는 것을
+       거절합니다.
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       Accessing any web document on server: <filename
+       서버의 어떠한 웹 문서로의 접근: <filename
        role="url">http://my.host/cgi-bin/php/secret/doc.html</filename>
       </simpara>
       <simpara>
@@ -312,7 +311,7 @@ AddHandler php-script .php
     possible that a web spider could stumble across a database
     administrator's web page, and drop all of your databases. You can
     protect against this with Apache authorization, or you can design
-    your own access model using LDAP, .htaccess files, etc. and include
+    your own access model using LDAP, &htaccess; files, etc. and include
     that code as part of your PHP scripts.
    </simpara>
    <simpara>
@@ -1238,7 +1237,7 @@ exec ($evil_var);
    </para>
    <para>
     Another tactic is to configure web servers such as apache to
-    parse different filetypes through PHP, either with an .htaccess
+    parse different filetypes through PHP, either with an &htaccess;
     directive, or in the apache configuration file itself. You can
     then use misleading file extensions:
     <example>
