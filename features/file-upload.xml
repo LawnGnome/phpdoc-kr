@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.67 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.69 Maintainer: progcom Status: ready -->
  <chapter id="features.file-upload">
   <title>파일 업로드 다루기</title>
 
@@ -163,8 +163,7 @@
 <![CDATA[
 <?php
 // 4.1.0 이전의 PHP에서는, $_FILES 대신에 $HTTP_POST_FILES를
-// 사용해야 합니다. 4.0.3 이전의 PHP에서는, move_uploaded_file
-// 대신에 copy()와 is_uploaded_file()을 사용하십시오.
+// 사용해야 합니다.
 
 $uploaddir = '/var/www/uploads/';
 $uploadfile = $uploaddir . $_FILES['userfile']['name'];
@@ -316,6 +315,10 @@ print "</pre>";
    <simpara>
     많은 양의 디렉토리 목록 형식으로 인해, 확장 형식의 이름(공백을 포함하는 등의)을
     가지는 파일을 정상적으로 다룰 수 있는 보장은 없습니다.
+   </simpara>
+   <simpara>
+    하나의 폼 변수에 (입력 이름으로 foo[] 등을 사용하여) 보통의 입력 필드와
+    파일 업로드 필드를 섞어서는 안됩니다.
    </simpara>
   </sect1>
 
