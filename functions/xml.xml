@@ -26,7 +26,7 @@ libexpat.a: $(OBJS)
       additional path)로 configure 함으로 Apache에 빌드된 expat library를 자동적으로 사용할 수 있다.
      </para>
 				<para>
-      UNIX에서는, <option role="configure">--with-xml</option> 옵션을 포함하여<command>configure</command>를 실행한다. 컴파일러가 찾을 수 있는 어딘가에 <productname>expat</productname> library는 설치될 것이다. 만일 Apache 1.3.9 이후 버젼에서 PHP가 모듈로 설치되어 있다면, 아파치에 포함된 <productname>expat</productname> library를 자동적으로 사용할 수 있다. 만일 다른 expat이 설치되어 있다면 <envar>CPPFLAGS</envar>와 <envar>LDFLAGS</envar>를 configure 하기전에 설정할 필요가 있다.
+      UNIX에서는, <option role="configure">--with-xml</option> 옵션을 포함하여<command>configure</command>를 실행한다. 컴파일러가 찾을 수 있는 어딘가에 <productname>expat</productname> library는 설치될 것이다. 만일 Apache 1.3.9 이후 버젼에서 PHP가 모듈로 설치되어 있다면, 아파치에 포함된 <productname>expat</productname> library를 자동적으로 사용할 수 있다. 만일 expat이 컴파일러가 찾을 수 없는 곳에 설치되어 있다면 <envar>CPPFLAGS</envar>와 <envar>LDFLAGS</envar>를 configure 하기전에 설정할 필요가 있다.
      </para>
 				<para>
       PHP를 설치했다.  <emphasis>Tada!</emphasis>  That should be it (^^).
