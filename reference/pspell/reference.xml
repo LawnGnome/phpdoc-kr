@@ -12,6 +12,7 @@
     <ulink url="&url.pspell;">&url.pspell;</ulink> 에서 다운로드 할 수 있습니다. 그리고 PHP 컴파일시 <option role="configure">--with-pspell[=dir]</option> 옵션을 추가해야합니다.
    </simpara>
 	</partintro>
+
 &reference.pspell.functions;
 
 </reference>

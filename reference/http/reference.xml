@@ -7,6 +7,7 @@
 		   여기 설명되어질 함수들은 원격브라우저에 보내질 각종 출력들을 HTTP 프로토콜에 충실히 기반하여 다룰 수 있게 해준다.
           </simpara>
 	</partintro>
+
 &reference.http.functions;
 
 </reference>

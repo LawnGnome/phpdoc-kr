@@ -45,14 +45,6 @@ ob_end_flush();
    </para>
   </partintro>
 
-
- 
-
-
- 
- 
- 
-
 &reference.outcontrol.functions;
 
  </reference>

@@ -11,6 +11,7 @@
 		<link linkend="language.types">Types</link>섹션의 <link linkend="language.types.string">Strings</link>편을 참조하기 바란다.
    </para>
 	</partintro>
+
 &reference.strings.functions;
 
 </reference>

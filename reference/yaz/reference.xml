@@ -102,6 +102,7 @@ if (empty($term) || count($host) == 0) {
 			</para>
 		</section>
 	</partintro>
+
 &reference.yaz.functions;
 
 </reference>

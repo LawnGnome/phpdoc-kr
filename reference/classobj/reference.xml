@@ -147,6 +147,7 @@ Object leafy belongs to class spinach a subclass of Vegetable
 			</section>
 		</section>
 	</partintro>
+
 &reference.classobj.functions;
 
 </reference>

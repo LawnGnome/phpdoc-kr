@@ -362,41 +362,6 @@ mcrypt_generic_end ($td);
     discussion of this topic).
    </para>
   </partintro>
-  
-  
-  
-  
- 
-
-  
-
-  
-  
-  
-  
- 
- 
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
 &reference.mcrypt.functions;
 

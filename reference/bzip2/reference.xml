@@ -48,6 +48,7 @@ bzclose($bz);
 			</example>
 		</section>
 	</partintro>
+
 &reference.bzip2.functions;
 
 </reference>

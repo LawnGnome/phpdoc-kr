@@ -14,14 +14,7 @@
     <option role="configure">--enable-yp</option>(PHP 4)로 설정해야 합니다.
    </para>
 	</partintro>
-	<!-- Function doesn't exist 
-    
 
--->
-	<!-- Function doesn't exist 
-
-
--->
 &reference.nis.functions;
 
 </reference>

@@ -21,6 +21,7 @@ magic_quotes_sybase = On
 			</para>
 		</note>
 	</partintro>
+
 &reference.ibase.functions;
 
 </reference>

@@ -2,6 +2,7 @@
 <reference id="ref.network">
 	<title>네트워크 관련 함수</title>
 	<titleabbrev>네트워크</titleabbrev>
+
 &reference.network.functions;
 
 </reference>

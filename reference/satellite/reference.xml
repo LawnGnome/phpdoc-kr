@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
 
-	$Id: reference.xml,v 1.1 2002-04-15 01:32:23 hholzgra Exp $
+	$Id: reference.xml,v 1.2 2002-04-17 00:37:02 cortesi Exp $
 
 	Author: David Eriksson <david@2good.com> 
 
@@ -19,12 +19,6 @@
     where you store all IDL files you use.
    </para>
   </partintro>
-
-
-
-
-
-
 
 &reference.satellite.functions;
 

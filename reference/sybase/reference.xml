@@ -2,6 +2,7 @@
 <reference id="ref.sybase">
 	<title>Sybase functions</title>
 	<titleabbrev>Sybase</titleabbrev>
+
 &reference.sybase.functions;
 
 </reference>
