@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.25 $ -->
-<!-- EN-Revision: 1.106 -->
+<!-- $Revision: 1.26 $ -->
+<!-- EN-Revision: 1.109 -->
  <chapter id="configuration">
-  <title>환경 설정</title>
+  <title>실행시 환경 설정</title>
 
   <sect1 id="configuration.file">
    <title>환경 설정 파일</title>
@@ -107,13 +107,6 @@ include_path = ".;c:\php\lib"
          <constant>PHP_INI_ALL</constant>과 <constant>PHP_INI_PERDIR</constant>형
          지시자에만 사용할 수 있습니다.
          기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
-         <informalexample>
-          <programlisting role="ini">
-<![CDATA[
-php_value auto_prepend_file none
-]]>
-          </programlisting>
-         </informalexample>
         </para>
         <note>
          <simpara>
@@ -151,13 +144,6 @@ php_value auto_prepend_file none
          <systemitem role="directive">php_admin_value</systemitem>의 설정값은
          &htaccess;나 버추얼 호스트 설정으로 바꿀 수 없습니다.
          기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
-         <informalexample>
-          <programlisting role="ini">
-<![CDATA[
-php_admin_value open_basedir none
-]]>
-          </programlisting>
-         </informalexample>
         </para>
        </listitem>
       </varlistentry>
@@ -194,18 +180,18 @@ php_admin_value open_basedir none
 ]]>
       </programlisting>
      </example>
-    
-     <note>
-      <para>
-       PHP 상수는 PHP 외부에서는 존재하지 않습니다. 예를 들면,
-       &httpd.conf;에서는 <link linkend="ini.error-reporting">error_reporting</link>을
-       설정하기 위해서 <constant>E_ALL</constant>나 <constant>E_NOTICE</constant>
-       등의 PHP 상수를 사용할 수 없으며, 아무런 의미를 가지지 않기에
-       <emphasis>0</emphasis>으로 처리합니다. 대신 비트마스크 결합값을
-       사용하십시오. &php.ini;에서는 상수를 사용할 수 있습니다.
-      </para>
-     </note>
     </para>
+    
+    <caution>
+     <para>
+      PHP 상수는 PHP 외부에서는 존재하지 않습니다. 예를 들면,
+      &httpd.conf;에서는 <link linkend="ini.error-reporting">error_reporting</link>을
+      설정하기 위해서 <constant>E_ALL</constant>나 <constant>E_NOTICE</constant>
+      등의 PHP 상수를 사용할 수 없으며, 아무런 의미를 가지지 않기에
+      <emphasis>0</emphasis>으로 처리합니다. 대신 비트마스크 결합값을
+      사용하십시오. &php.ini;에서는 상수를 사용할 수 있습니다.
+     </para>
+    </caution>
    </sect2>
 
    <sect2 id="configuration.changes.other">
@@ -1265,8 +1251,14 @@ include_path=".;c:\php\includes"
 
    <sect2 id="ini.sect.debugger">
     <title>디버거 환경 설정 지시자</title>
-    <variablelist>
+    <caution>
+     <para>
+      PHP 3만 기본 디버거를 가지고 있습니다. 추가 정보는 <xref
+      linkend="debugger"/>를 참고하십시오.
+     </para>
+    </caution>
 
+    <variablelist>
      <varlistentry id="ini.debugger.host">
       <term>
        <parameter>debugger.host</parameter>
