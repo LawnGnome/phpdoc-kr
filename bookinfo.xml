@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.16 $ -->
+<!-- $Revision: 1.17 $ -->
 <!-- EN-Revision: 1.34 -->
 
  <bookinfo id="bookinfo">
@@ -60,18 +60,18 @@
   </authorgroup>
 
   <authorgroup id="translators">
-   <collab>
-    <collabname>Gwang-jong Lee</collabname>
-   </collab>
-   <collab>
-    <collabname>Tae-young Jin</collabname>
-   </collab>
-   <collab>
-    <collabname>Yun-young Lee</collabname>
-   </collab>    
-   <collab>
-    <collabname>Ryeonho Heo</collabname>
-   </collab>
+   <editor>
+    <firstname>Gwangjong</firstname><surname>Lee</surname>
+   </editor>
+   <editor>
+    <firstname>Tae-young</firstname><surname>Jin</surname>
+   </editor>
+   <editor>
+    <firstname>Yun-young</firstname><surname>Lee</surname>
+   </editor>
+   <editor>
+    <firstname>Ryeonho</firstname><surname>Heo</surname>
+   </editor>
   </authorgroup>
 
   <copyright>
@@ -86,7 +86,7 @@
   </copyright>
 
   <legalnotice id="copyright">
-   <title>Copyright</title>
+   <title>저작권</title>
    <simpara>
     Copyright &copy; 1997 - 2003 by the PHP Documentation Group.
     This material may be distributed only subject to the terms and
