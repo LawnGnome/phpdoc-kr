@@ -7,9 +7,9 @@
 <!ENTITY LanguageReference "언어 레퍼런스">
 <!ENTITY Features          "기능">
 <!ENTITY FunctionReference "함수 레퍼런스">
-<!ENTITY Appendixes        "Appendixes">
+<!ENTITY Appendixes        "부록">
 <!ENTITY PEAR              "PEAR: the PHP Extension and Application Repository">
-<!ENTITY FAQ               "FAQ: Frequently Asked Questions">
+<!ENTITY FAQ               "FAQ: 자주 물어보는 질문들">
 <!ENTITY FAQabbrev         "FAQ">
 <!ENTITY FunctionIndex     "함수 인덱스">
 <!ENTITY CHMEdition        "HTML Help Edition">
