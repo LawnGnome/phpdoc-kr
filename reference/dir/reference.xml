@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
  <reference id="ref.dir">
   <title>디렉토리 함수</title>
   <titleabbrev>디렉토리</titleabbrev>

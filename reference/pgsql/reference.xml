@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.18 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.20 Maintainer: progcom Status: ready -->
  <reference id="ref.pgsql">
   <title>PostgreSQL 함수</title>
   <titleabbrev>PostgreSQL</titleabbrev>
@@ -170,13 +170,12 @@
     수 있습니다.
    </para>
    <para>
-    버전 6.3 (1998/03/02)부터 PostgreSQL은 기본값으로 유닉스 도메인
-    소켓을 사용합니다. TCP 포트는 기본값으로 열리지 않습니다. 아래의
-    표는 이 새로운 접속 가능성을 나타냅니다. 이 소켓은
-    <filename>/tmp/.s.PGSQL.5432</filename>에서 발견할 수 있을 것입니다.
-    <command>postmaster</command>에 '-i' 플래그를 지정하여 이 옵션을
-    활성화 할 수 있습니다. 의미는 "유닉스 도메인 소켓과 함께 TCP/IP 소켓을
-    리슨합니다"입니다.
+    버전 6.3 (1998/03/02)부터 PostgreSQL은 기본값으로 유닉스 도메인 소켓을
+    사용합니다. 기본값으로 TCP 포트는 열지 않습니다. 아래의 표는 이 새로운
+    접속의 허용을 나타냅니다. 이 소켓은
+    <filename>/tmp/.s.PGSQL.5432</filename>에서 발견할 수 있습니다.
+    <command>postmaster</command>에 "유닉스 도메인 소켓과 함께 TCP/IP 소켓을
+    리슨하라"는 의미의 '-i' 플래그를 지정하여 이 옵션을 활성화 할 수 있습니다.
     <table>
      <title>Postmaster와 PHP</title>
      <tgroup cols="3">

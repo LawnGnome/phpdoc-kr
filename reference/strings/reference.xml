@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
  <reference id="ref.strings">
   <title>문자열 함수</title>
   <titleabbrev>문자열</titleabbrev>

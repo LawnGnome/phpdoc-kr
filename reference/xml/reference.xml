@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.14 Maintainer: progcom Status: working -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: working -->
  <reference id="ref.xml">
-  <title>XML 파서 함수</title>
+  <title>XML 처리 함수</title>
   <titleabbrev>XML</titleabbrev>
 
   <partintro>
@@ -329,16 +329,16 @@ $map_array = array(
 function startElement($parser, $name, $attrs)
 {
     global $map_array;
-    if ($htmltag == $map_array[$name]) {
-        echo "<$htmltag>";
+    if (isset($map_array[$name])) {
+        echo "<$map_array[$name]>";
     }
 }
 
 function endElement($parser, $name)
 {
     global $map_array;
-    if ($htmltag == $map_array[$name]) {
-        echo "</$htmltag>";
+    if (isset($map_array[$name])) {
+        echo "</$map_array[$name]>";
     }
 }
 

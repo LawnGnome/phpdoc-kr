@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
 <section id="info.configuration">
  &reftitle.runtime;
  &extension.runtime;
@@ -48,6 +48,11 @@
     <row>
      <entry>max_execution_time</entry>
      <entry>"30"</entry>
+     <entry>PHP_INI_ALL</entry>
+    </row>
+    <row>
+     <entry>max_input_time</entry>
+     <entry>"60"</entry>
      <entry>PHP_INI_ALL</entry>
     </row>
     <row>
@@ -167,14 +172,26 @@
       <literal>30</literal>입니다.
      </para>
      <para>
-      최대 실행 시간은 <function>sleep</function> 함수 등의 시스템 콜에는
-      영향을 받지 않습니다. 자세한 사항은
-      <function>set_time_limit</function>를 참고하십시오.
+      최대 실행 시간은 시스템 호출, 스트림 작업 등에는 영향을 받지 않습니다.
+      자세한 내용은 <function>set_time_limit</function>를 참고하십시오.
      </para>
      <para>
       &safemode;로 실행할 때는 이 설정을 <function>ini_set</function>으로
       변경할 수 없습니다. 안전 모드를 끄거나 &php.ini;에서 시간 제한을
       변경해야 합니다.
+     </para>
+    </listitem>
+   </varlistentry>
+
+   <varlistentry id="ini.max-input-time">
+    <term>
+     <parameter>max_input_time</parameter>
+     <type>integer</type>
+    </term>
+    <listitem>
+     <para>
+      스크립트가 POST, GET, 파일 업로드 등의 입력 데이터를 받아들이는 최대
+      시간을 초 단위로 설정합니다. 기본값은 <literal>60</literal>입니다.
      </para>
     </listitem>
    </varlistentry>
