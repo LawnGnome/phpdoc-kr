@@ -16,7 +16,7 @@
     <para>
      이 확장을 빌드하기 위해서 외부 라이브러리가 필요하지 않습니다. 그러나
      리눅스에서 PHP가 LFS(large files)를 지원하려면, 최근의 glibc를 사용하고,
-     PHPr에 다음 플래그를 지정하여 컴파일해야 합니다:
+     PHP에 다음 플래그를 지정하여 컴파일해야 합니다:
      <literal>-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64</literal>
     </para>
    </section>
