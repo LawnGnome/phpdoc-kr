@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.18 $ -->
+<!-- $Revision: 1.19 $ -->
 <!-- EN-Revision: 1.101 -->
  <chapter id="configuration">
   <title>환경 설정</title>
@@ -782,6 +782,7 @@ php_admin_value open_basedir none
          <function>include</function> 함수 호출과 동등하게 작동하며,
          <link linkend="ini.include-path">include_path</link>를
          사용합니다.
+        </para>
         <para>
          특수값 <systemitem class="constant">none</systemitem>은
          auto-prepending을 비활성화 합니다.
