@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.26 -->
 <chapter id="faq.using">
   <title>PHP 사용하기</title>
@@ -180,15 +180,15 @@ echo "myfunc($variable) = " . myfunc($variable);
    <qandaentry id="faq.using.header">
     <question>
      <para>
-      I need to access information in the request header directly. 
-      How can I do this?
+      요청 헤더값을 직접 확인하고 싶습니다.
+      어떻게 하면 되죠?
      </para>
     </question>
     <answer>
      <para>
-      The <function>getallheaders</function> function will do this if 
-      you are running PHP as an Apache module. So, the following bit
-      of code will show you all the request headers:
+      아파치 모듈로 PHP설치하셨다면 <function>getallheaders</function>함수로 
+      이와 같은 일을 할수 있습니다. 다음과 같은 코드로 요청 헤더의 모든값을
+      확인하실수 있습니다:
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -201,10 +201,9 @@ foreach ($headers as $name => $content) {
       </programlisting>
      </para>
      <para>
-      See also 
       <function>apache_lookup_uri</function>,
-      <function>apache_response_headers</function>, and
-      <function>fsockopen</function>
+      <function>apache_response_headers</function>,
+      <function>fsockopen</function>함수도 참고하세요.
      </para>
     </answer>
    </qandaentry>
@@ -212,22 +211,21 @@ foreach ($headers as $name => $content) {
    <qandaentry id="faq.using.authentication">
     <question>
      <para>
-      When I try to use authentication with IIS I get 'No Input file specified'.
+      IIS로 인증을 하려합니다. 그런데 'No Input file specified'과 
+      같은 메시지가 출력되는군요.
      </para>
     </question>
     <answer>
      <para>
-      The security model of IIS is at fault here. This is a problem
-      common to all CGI programs running under IIS. A workaround is
-      to create a plain HTML file (not parsed by PHP) as the entry page
-      into an authenticated directory. Then use a META tag to redirect
-      to the PHP page, or have a link to the PHP page. PHP will
-      then recognize the authentication correctly. With the ISAPI
-      module, this is not a problem. This should not effect other
-      NT web servers. For more information, see: 
-      <ulink url="&url.iis;">&url.iis;</ulink> and the manual
-      section on <link linkend="features.http-auth">HTTP Authentication
-      </link>.
+      IIS의 보안 모델은 여기서 결함이 있습니다. 이와같은 결함은 IIS하에서
+      실행되는 모든 CGI 프로그램에 있어서는 일반적인 현상입니다. 이와같은
+      에러를 피하는 방법으로는 일반 HTML 파일(PHP에 의해 파싱되지 않음)을
+      인증이 필요한 디렉토리 안에 엔트리 페이지로 만들어넣는것입니다. 그리고 나서 
+      PHP 페이지로 리디렉트(redirect)하는 META 태그를 사용하거나, PHP 페이지로
+      링크를 거십시오. 이와같은 현상은 다른 NT 웹서버와는 상관이 없습니다.
+      더 많은 정보를 위해서 아래 링크로 가세요:
+      <ulink url="&url.iis;">&url.iis;</ulink> 과 
+      <link linkend="features.http-auth">HTTP Authentication</link>의 매뉴얼 섹션.
      </para>
     </answer>
    </qandaentry>
@@ -235,28 +233,27 @@ foreach ($headers as $name => $content) {
    <qandaentry id="faq.using.netscape">
     <question>
      <para>
-      My PHP script works on IE and Lynx, but on Netscape some of
-      my output is missing. When I do a "View Source" I see the 
-      content in IE but not in Netscape.
+      PHP 스크립트는 IE와 Lynx에서는 동작을 합니다. 그러나 네스케이프에서는
+      출력의 일부가 사라져버립니다. "소스보기"를 하면 IE에서는 볼수 있지만
+      네스케이프에서는 볼수없습니다.
      </para>
     </question>
     <answer>
      <para>
-      Netscape is more strict regarding html tags (such as tables) then 
-      IE.  Running your html output through a html validator, such as 
-      <ulink url="&url.w3.validator;">validator.w3.org</ulink>, might 
-      be helpful.  For example, a missing &lt;/table&gt; might cause this.
+      네스케이프는 html 태그(테이블같은)에 관한한 IE보다 엄격합니다.
+      <ulink url="&url.w3.validator;">validator.w3.org</ulink>와 같은
+      html validator로 html 출력을 검증한다면 무엇이 문제인지 도움을 받을수 있습니다.
+      예를 들면, &lt;/table&gt; 태그가 빠지면 이와같은 문제가 발생할수 있습니다.
      </para>
      <para>
-      Also, both IE and Lynx ignore any NULs (<literal>\0</literal>) in 
-      the HTML stream, Netscape does not.  The best way to check for this is 
-      to compile the <link linkend="features.commandline">command line</link> version of 
-      PHP (also known as the CGI version) and run your script from the
-      command line.  In *nix, pipe it through <literal>od -c</literal> and look 
-      for any <literal>\0</literal> characters.  If you are on Windows you need 
-      to find an editor or some other program that lets you look at binary files.  
-      When Netscape sees a NUL in a file it will typically not output anything 
-      else on that line whereas both IE and Lynx will. 
+      또한 IE와 Lynx 모두 HTML 스트림(stream)에서 널문자(<literal>\0</literal>)를 무시
+      하지만, 네스케이프는 그렇지 않습니다. 이 널문자를 체크하기위한 최고의 방법은
+      PHP의 <link linkend="features.commandline">커맨드 라인(command line)</link>버전
+      (또는 CGI버전으로도 알려져있슴)으로 컴파일해서 그 커맨드라인에서 스크립트를 실행해
+      보는것입니다. *nix에서 스크립트를 <literal>od -c</literal>로 파이프(pipe)해서 
+      <literal>\0</literal>문자가 있는지 찾아보는것입니다. 윈도우상에서는 에디터나 바이너리
+      파일을 볼수 있는 다른 프로그램이 있어야 합니다. 네스케이프는 파일 안에서 널값을 
+      봤을때 표준적으로 그 라인안의 어떤것도 출력하지 않습니다. 반면에 IE와 Lynx는 출력해줍니다.
      </para>
     </answer>
    </qandaentry>
@@ -264,20 +261,19 @@ foreach ($headers as $name => $content) {
    <qandaentry id="faq.using.mixml">
     <question>
      <para>
-      How am I supposed to mix XML and PHP? It complains 
-      about my &lt;?xml tags!
+      어떻게 XML과 PHP를 섞어쓸수 있다고 생각할수 있습니까?
+      &lt;?xml태그에 불만을 터트린단 말입니다!
      </para>
     </question>
     <answer>
      <para>
-      In order to embed &lt;?xml straight into your PHP code, you'll have to turn off
-      short tags by having the PHP directive 
-      <link linkend="ini.short-open-tag">short_open_tags</link> set to 
-      <literal>0</literal>.  You cannot set this directive with <function>
-      ini_set</function>.  Regardless of <link linkend="ini.short-open-tag">
-      short_open_tags</link> being on or off, you can do something like:
-      <literal>&lt;?php echo '&lt;?xml'; ?&gt;</literal>.  The default
-      for this directive is on.
+      &lt;?xml태그를 PHP코드안에 직접 넣기 위해서는 
+      <link linkend="ini.short-open-tag">short_open_tags</link> PHP 디렉티브 값을
+      <literal>0</literal>으로 설정함으로써 짧은 태그(short tags)를 비활성화해야 합니다.
+      <function>ini_set</function>함수로 이 디렉티브를 설정할수 없습니다.
+      <link linkend="ini.short-open-tag">short_open_tags</link>가 on이든 off든 관계없이
+      다음처럼 할수도 있습니다: <literal>&lt;?php echo '&lt;?xml'; ?&gt;</literal>
+      이 디렉티브의 기본값(default)은 on입니다.
      </para>
     </answer>
    </qandaentry>
@@ -285,19 +281,18 @@ foreach ($headers as $name => $content) {
    <qandaentry id="faq.using.editor">
     <question>
      <para>
-      How can I use PHP with FrontPage or some other HTML editor
-      that insists on moving my code around?
+      이미 짜여진 코드를 옮기기 위해서 FrontPage나 다른 HTML 편집기를
+      어떻게 사용할수 있습니까?
      </para>
     </question>
     <answer>
      <para>
-      One of the easiest things to do is to enable using ASP tags in your
-      PHP code. This allows you to use the ASP-style &lt;% and %&gt; code
-      delimiters. Some of the popular HTML editors handle those more
-      intelligently (for now). To enable the ASP-style tags, you need
-      to set the <link linkend="ini.asp-tags">asp_tags</link>
-      &php.ini; variable, or use the 
-      appropriate Apache directive.
+      가장 쉬운 방법은 PHP코드안에서 ASP 태그 사용하기를 활성화시키는 것입니다.
+      이렇게 하면 &lt;%와 %&gt;의 ASP 스타일 코드 경계기호(delimiter)를 사용할
+      수 있게해줍니다. 몇몇 유명한 HTML 펴집기는 매우 지능적으로 이런 태그를
+      다루어줍니다(현재까지는). ASP 스타일 태그를 활성화시키려면 
+      &php.ini;의 <link linkend="ini.asp-tags">asp_tags</link>를 활성화시키거나,
+      적절한 아파치 디렉티브(directive)를 사용해야합니다.
      </para>
     </answer>
    </qandaentry>
@@ -305,20 +300,17 @@ foreach ($headers as $name => $content) {
    <qandaentry id="faq.using.variables">
     <question>
      <para>
-      Where can I find a complete list of variables are available to me 
-      in PHP?
+      PHP에서 가용한 모든 변수 목록을 어디서 볼수 있습니까?
      </para>
     </question>
     <answer>
      <para>
-      Read the manual page on <link linkend="language.variables.predefined">
-      predefined variables</link> as it includes a partial list of predefined
-      variables available to your script.  A complete list of available
-      variables (and much more information) can be seen by calling the 
-      <function>phpinfo</function> function.  Be sure to read the manual 
-      section on <link linkend="language.variables.external">variables from 
-      outside of PHP</link> as it describes common scenerios for 
-      external variables, like from a HTML form, a Cookie, and the URL.
+      <link linkend="language.variables.predefined">미리 정의된 변수</link>에
+      관한 매뉴얼 페이지를 보십시오. 이 페이지에서는 일부의 미리 정의된 변수 목록이
+      포함되어있습니다. 모든 변수 목록은 <function>phpinfo</function>함수를 호출함으로써
+      확인하실수 있습니다. <link linkend="language.variables.external">PHP밖에서 온 변수들</link>의
+      매뉴얼 섹션을 읽으십시오. 그페이지에서는 HTML폼, 쿠키, URL같은 외부변수에 관한 
+      일반적인 시나리오를 설명해줍니다.
      </para>
      
      &note.registerglobals;
@@ -329,20 +321,21 @@ foreach ($headers as $name => $content) {
    <qandaentry id="faq.using.freepdf">
     <question>
      <para>
-      How can I generate PDF files without using the non-free and 
-      commercial libraries <link linkend="ref.cpdf">ClibPDF</link> and 
-      <link linkend="ref.pdf">PDFLib</link>?  I'd like something that's 
-      free and doesn't require external PDF libraries.
+      유료이고 상용 라이브러리인 <link linkend="ref.cpdf">ClibPDF</link>와 
+      <link linkend="ref.pdf">PDFLib</link>를 사용하지 않고 어떻게 하면
+      PDF 파일을 만들수 있습니까? 무료이면서 외부의 PDF 라이브러리가 필요없는
+      것을 사용하고 싶습니다.
      </para>
     </question>
     <answer>
      <para>
-      There are a few alternatives written in PHP such as 
+      이와같은 상용라이브러리를 대체하기 위해 PHP로 쓰여진것이 있습니다.
+      다음과 같습니다.
       <ulink url="&url.pdf.ros;">&url.pdf.ros;</ulink>, 
       <ulink url="&url.pdf.fpdf;">&url.pdf.fpdf;</ulink>, 
       <ulink url="&url.pdf.pdf4php;">&url.pdf.pdf4php;</ulink>, and 
       <ulink url="&url.pdf.phppdflib;">&url.pdf.phppdflib;</ulink>.
-      There is also the <ulink url="&url.pdf.panda;">Panda</ulink> module.
+      이와 더불어 <ulink url="&url.pdf.panda;">Panda</ulink>모듈도 있습니다.
      </para>
     </answer>
    </qandaentry>
@@ -350,30 +343,27 @@ foreach ($headers as $name => $content) {
    <qandaentry id="faq.using.cgi-vars">
     <question>
      <para>
-      I'm trying to access one of the standard CGI
-      variables (such as $DOCUMENT_ROOT or $HTTP_REFERER) in a user-defined
-      function, and it can't seem to find it. What's wrong?
+      유저 정의 함수에서 표준적인 CGI변수($DOCUMENT_ROOT나 $HTTP_REFERER)중 하나에
+      접근하여하였습니다. 그런데 그 변수를 찾을수가 없는것처럼 보입니다. 무엇이 잘못된건가요?
      </para>
     </question>
     <answer>
      <para>
-      It's important to realize that the PHP directive <link
-      linkend="ini.register-globals">register_globals</link> also affects
-      server and environment variables.  When register_globals = off (the
-      default is off since PHP 4.2.0), <varname>$DOCUMENT_ROOT</varname>
-      will not exist. Instead, use <varname>$_SERVER['DOCUMENT_ROOT']
-      </varname>.  If register_globals = on then the variables
-      <varname>$DOCUMENT_ROOT</varname> and
-      <varname>$GLOBALS['DOCUMENT_ROOT']</varname> will also exist.
+      PHP 디렉티브 <link linkend="ini.register-globals">register_globals</link>은
+      서버와 환경변수에 모두 영향을 미친다는것을 반드시 이해해야 합니다.
+      register_globals = off (PHP 4.2.0버전 이래로 off가 디폴트)일때는
+      <varname>$DOCUMENT_ROOT</varname>변수는 존재하지 않을것입니다.
+      대신에 <varname>$_SERVER['DOCUMENT_ROOT']</varname>변수를 사용합니다.
+      register_globals = on 이라면 <varname>$DOCUMENT_ROOT</varname>변수와
+      <varname>$GLOBALS['DOCUMENT_ROOT']</varname>변수 모두 존재할것입니다.
+
      </para>
      <para>
-      If you're sure register_globals = on and wonder why
-      <varname>$DOCUMENT_ROOT</varname> isn't available inside functions,
-      it's because these are like any other variables and would 
-      require <literal>global $DOCUMENT_ROOT</literal> inside the
-      function.  See also the manual page on 
-      <link linkend="language.variables.scope">variable scope</link>.  It's
-      preferred to code with register_globals = off.
+      분명히 register_globals = on 인데, 함수 내에서 <varname>$DOCUMENT_ROOT</varname>
+      변수를 쓸수 없는 이유는 이 변수가 다른 변수와 같은 것이고 함수내에서는
+      <literal>global $DOCUMENT_ROOT</literal>와 같이 선언해야 합니다.
+      이와 더불어 <link linkend="language.variables.scope">변수 사용 범위</link>
+      매뉴얼 페이지를 참고하세요. register_globals = off으로 놓는것이 바람직합니다.
      </para>
      
      &note.superglobals;
