@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
-<!-- EN-Revision: 1.13 -->
+<!-- $Revision: 1.8 $ -->
+<!-- EN-Revision: 1.14 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
 
@@ -69,7 +69,7 @@
       URL은 보통 <literal>http://localhost/hello.php</literal>이나
       <literal>http://127.0.0.1/hello.php</literal>일 것입니다.
       URL은 웹 서버 설정에 따라 달리집니다만, 이 튜토리얼에서 다룰 내용은 아닙니다.
-      웹 서버 설정에 대해서는 웹 서버 설정 파일(아파치에서는 <filename>httpd.conf</filename>)의
+      웹 서버 설정에 대해서는 웹 서버 설정 파일(아파치에서는 &httpd.conf;)의
       <varname>DocumentRoot</varname>와 <varname>ServerName</varname> 부분을 참고하십시오.
       모든 것이 제대로 설치 되었다면 이 파일은 PHP에 의해 파싱되어 브라우저에
       다음과 같은 출력을 할 것입니다:
@@ -230,37 +230,36 @@ Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)
     모든 변수들을 확인할 수 있습니다.
    </para>
    <para>
-    You can put multiple PHP statements inside a PHP tag and create
-    little blocks of code that do more than just a single echo.
-    For example, if we wanted to check for Internet Explorer we
-    could do something like this:
+    PHP 태그 안쪽으로 하나의 echo뿐이 아닌 여러개의 PHP문을
+    넣어서 작은 코드 블럭을 만들 수 있습니다. 예를 들면,
+    Internet Explorer를 체크하고 싶다면 다음과 같이 할 수 있습니다:
    </para>
    <para>
     <example>
-     <title>Example using <link linkend="control-structures">control 
-     structures</link> and <link linkend="functions">functions</link></title>
+     <title><link linkend="control-structures">제어문</link>과
+     <link linkend="functions">함수</link> 사용하기 예제</title>
      <programlisting role="php">
 <![CDATA[
 <?php
 if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
-	echo "You are using Internet Explorer<br />";
+	echo "Internet Explorer를 사용하고 있습니다<br />";
 }
 ?>
 ]]>
      </programlisting>
      <para>
-      A sample output of this script may be:
+      이 스크립트의 출력 예제:
       <screen role="html">
 <![CDATA[
-You are using Internet Explorer<br />
+Internet Explorer를 사용하고 있습니다.<br />
 ]]>
       </screen>
      </para>
     </example>
    </para>
    <para>
-    Here we introduce a couple of new concepts. We have an 
-    <link linkend="control-structures.if">if</link> statement.
+    여기서 두가지 새로운 컨셉을 소개합니다. PHP에는
+    <link linkend="control-structures.if">if</link>문이 있습니다.
     If you are familiar with the basic syntax used by the C
     language this should look logical to you. If you don't know enough
     C or some other language where the syntax used above is used, you
