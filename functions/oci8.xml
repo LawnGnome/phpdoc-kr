@@ -287,6 +287,7 @@ OCILogoff($conn);
    <refnamediv>
     <refname>OCILogon</refname>
     <refpurpose>Establishes a connection to Oracle</refpurpose>
+    <refpurpose>오라클 접속을 구축한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -301,21 +302,25 @@ OCILogoff($conn);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCILogon</function> returns an connection identifier
-     needed for most other OCI calls.  The optional third parameter
-     can either contain the name of the local Oracle instance or the
-     name of the entry in tnsnames.ora to which you want to connect.
-     If the optional third parameter is not specified, PHP uses the
-     environment variables ORACLE_SID (Oracle instance) or TWO_TASK
-     (tnsnames.ora) to determine which database to connect to.
+     <function>OCILogon</function> 다른 OCI 함수 호출에 필요한 접속 변수를
+     넘겨준다. 세번째 인수는 로컬 오라클 인스턴스(local Oracle instance)이름,
+     또는 tnsnames.ora 설정파일에 설정된 엔트리(entry) 이름이 될 수 있다. 
+     세번째 인수를 생략할 경우, PHP는 접속할 데이터베이스를 결정하기 위해서 
+     환경변수 ORACLE_SID(Oracle instance) 또는 TWO_TASK(tnsnames.ora)를
+     이용한다.
     </para>
     <para>Connections are shared at the page level when using
+    <para>이 함수를 사용할때마다 각 접속은 페이지 레벨에서 분배되어진다.
      <function>OCILogon</function>.  This means that commits and
      rollbacks apply to all open transactions in the page, even if you
      have created multiple connections.
+     <function>OCILogon</function>.  이것은 각 페이지에서 열린 모든 
+     트랜잭션에 커밋(commits)과 롤백(rollbacks)이 적용되어진다는 것을
+     의미한다. 두개이상의 접속을 만들지라도. 
     </para>
     <para>
      This example demonstrates how the connections are shared.
+     아래 예제는 접속이 어떻게 분배되는가를 보여준다.
      <example>
       <title>OCILogon</title>
       <programlisting>
@@ -408,8 +413,9 @@ print "&lt;/PRE>&lt;/HTML>";
   <refentry id="function.ociplogon">
    <refnamediv>
     <refname>OCIPLogon</refname>
-    <refpurpose>Connect to an Oracle database and log on using a
-    persistant connection. Returns a new session.</refpurpose>
+    <refpurpose>오라클 데이터베이스에 접속하고 영속적 DB 접속
+    (persistant connection) 을 이용해서 로그온한다.
+    또다른 새로운 세션(session)을 넘겨준다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -424,13 +430,12 @@ print "&lt;/PRE>&lt;/HTML>";
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCIPLogon</function> creates a persistent connection to
-     an Oracle 8 database and logs on.  The optional third parameter
-     can either contain the name of the local Oracle instance or the
-     name of the entry in tnsnames.ora to which you want to connect.
-     If the optional third parameter is not specified, PHP uses the
-     environment variables ORACLE_SID (Oracle instance) or TWO_TASK
-     (tnsnames.ora) to determine which database to connect to.
+     <function>OCIPLogon</function> 오라클8 DB에 영속적인 접속을 형성하고,
+     로그온 한다. 세번째 인수는 로컬 오라클 인스턴스(local Oracle instanace)의
+     이름, 또는 tnsnames.ora설정파일의 엔트리(entry) 이름이 될수 있다.
+     세번째 인수가 생략되면, PHP는 접속할 오라클 데이터베이스를 결정하기 위해
+     환경변수 ORACLE_SID (Oracle instance)나 TWO_TASK(tnsnames.ora)를
+     이용한다.
     </para>
     <simpara>
      See also <function>OCILogon</function> and
@@ -444,6 +449,8 @@ print "&lt;/PRE>&lt;/HTML>";
     <refname>OCINLogon</refname>
     <refpurpose>Connect to an Oracle database and log on using a new
     connection. Returns a new session.</refpurpose>
+    <refpurpose>오라클 데이터베이스에 접속하고 새로운 접속을 이용해서
+    로그온한다. 새로운 세션(session)을 넘겨준다. </refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -458,13 +465,12 @@ print "&lt;/PRE>&lt;/HTML>";
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCINLogon</function> creates a new connection to an
-     Oracle 8 database and logs on.  The optional third parameter can
-     either contain the name of the local Oracle instance or the name
-     of the entry in tnsnames.ora to which you want to connect.  If
-     the optional third parameter is not specified, PHP uses the
-     environment variables ORACLE_SID (Oracle instance) or TWO_TASK
-     (tnsnames.ora) to determine which database to connect to.
+     <function>OCINLogon</function> 오라클8 DB에 새로운 접속을 형성하고,
+     로그온 한다. 세번째 인수는 로컬 오라클 인스턴스(local Oracle instanace)의
+     이름, 또는 tnsnames.ora설정파일의 엔트리(entry) 이름이 될수 있다.
+     세번째 인수가 생략되면, PHP는 접속할 오라클 데이터베이스를 결정하기 위해
+     환경변수 ORACLE_SID (Oracle instance)나 TWO_TASK(tnsnames.ora)를
+     이용한다.
     </para>
     <para>
      <function>OCINLogon</function> forces a new connection.  This
@@ -474,6 +480,13 @@ print "&lt;/PRE>&lt;/HTML>";
      if using <function>OCIPLogon</function>.  If you have multiple
      connections open using <function>OCINLogon</function>, all
      commits and rollbacks apply to the specified connection only.
+     <function>OCINLogon</function> 새로운 접속을 강제로 형성한다.
+     각 트랜잭션들을 분리할 필요가 있으면 사용해야 할것이다.
+     기본적으로, <function>OCILogon</function>함수를 사용하면 접속은
+     페이지 레벨에서 분배되어지고, <function>OCIPLogon</function>함수를
+     사용하면 웹서버 프로세스 레벨에서 분배되어진다.
+     <function>OCINLogon</function>함수로 두개 이상의 접속을 연다면,
+     모든 커밋(commits)과 롤백(rollbacks)은 특정 접속에만 적용되어진다.
     </para>
     <para>
      This example demonstrates how the connections are separated.
@@ -571,7 +584,7 @@ print "&lt;/PRE>&lt;/HTML>";
   <refentry id="function.ocilogoff">
    <refnamediv>
     <refname>OCILogOff</refname>
-    <refpurpose>Disconnects from Oracle</refpurpose>
+    <refpurpose>오라클로 부터 접속을 해제한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -582,7 +595,7 @@ print "&lt;/PRE>&lt;/HTML>";
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCILogOff</function> closes an Oracle connection.
+     <function>OCILogOff</function> 오라클 접속을 닫는다.
     </para>
    </refsect1>
   </refentry>
@@ -590,7 +603,7 @@ print "&lt;/PRE>&lt;/HTML>";
   <refentry id="function.ociexecute">
    <refnamediv>
     <refname>OCIExecute</refname>
-    <refpurpose>Execute a statement</refpurpose>
+    <refpurpose>SQL 구문(Statement)을 수행한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -604,12 +617,11 @@ print "&lt;/PRE>&lt;/HTML>";
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCIExecute</function> executes a previously parsed
-     statement. (see <function>OCIParse</function>. The optional
-     <parameter>mode</parameter> allows you to specify the
-     execution-mode (default is OCI_COMMIT_ON_SUCCESS). If you don't
-     want statements to be committed automaticly specify OCI_DEFAULT as
-     your mode.
+     <function>OCIExecute</function> 미리 해석된 구문(statement)를
+     실행한다. (<function>OCIParse</function>함수를 보라.) 선택적인
+     인수 <parameter>mode</parameter>는 execution-mode(디폴트는
+     OCI_COMMIT_ON_SUCCESS이다)를 지정할 수 있다. 각 구문이 자동적으로
+     커밋(commit)되지 않기를 원하면 OCI_DEFAULT로 설정하면 된다. 
     </para>
    </refsect1>
   </refentry>
@@ -617,7 +629,7 @@ print "&lt;/PRE>&lt;/HTML>";
   <refentry id="function.ocicommit">
    <refnamediv>
     <refname>OCICommit</refname>
-    <refpurpose>Commits outstanding transactions</refpurpose>
+    <refpurpose>미결정된 트랜잭션을 커밋시킨다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -630,6 +642,9 @@ print "&lt;/PRE>&lt;/HTML>";
     <para>
      <function>OCICommit</function> commits all outstanding statements
      for Oracle connection <parameter>connection</parameter>.
+     <function>OCICommit</function> 오라클 접속 파라미터
+     <parameter>connection</parameter>에 대해서
+     미결정된 모든 구문(outstanding statements)을 커밋한다. 
     </para>
    </refsect1>
   </refentry>
@@ -637,7 +652,7 @@ print "&lt;/PRE>&lt;/HTML>";
   <refentry id="function.ocirollback">
    <refnamediv>
     <refname>OCIRollback</refname>
-    <refpurpose>Rolls back outstanding transactions</refpurpose>
+    <refpurpose>미결정된 트랜잭션을 롤백한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -650,6 +665,9 @@ print "&lt;/PRE>&lt;/HTML>";
     <para>
      <function>OCIRollback</function> rolls back all outstanding
      statements for Oracle connection <parameter>connection</parameter>.
+     <function>OCIRollback</function> 오라클 접속 파라미터
+     <parameter>connection</parameter>에 대해서
+     미결정된 모든 구문(outstanding statements)을 롤백 처리한다.
     </para>
    </refsect1>
   </refentry>
@@ -658,7 +676,7 @@ print "&lt;/PRE>&lt;/HTML>";
    <refnamediv>
     <refname>OCINewDescriptor</refname>
     <refpurpose>
-     Initialize a new empty descriptor LOB/FILE (LOB is default)
+     LOB/FILE의 비어있는 새로운 descriptor를 초기화한다 (LOB 이 기본값이다)
     </refpurpose>
    </refnamediv>
    <refsect1>
