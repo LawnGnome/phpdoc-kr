@@ -1,4 +1,4 @@
-Recommend use translation.xml
+Recommend to use translation.xml
 =============================================================================
 CVS User  Name                 Contact email address
 =============================================================================
@@ -15,83 +15,18 @@ vizvil    Gwangjong Lee        vizvil@dreamwiz.com
 =============================================================================
 Filename                           Translator       maintainer    Status
 =============================================================================
-bookinfo.xml                       progcom          progcom       maintain
-preface.xml                        rhheo            progcom
-language-defs.ent                  progcom          progcom       maintain
-language-snippets.ent              progcom          progcom       maintain
-------- appendices ----------------------------------------------------------
-about.xml                          fuzzy74          fuzzy74       maintain
-aliases.xml                        fuzzy74          fuzzy74       maintain
-comparisons.xml                    fuzzy74          fuzzy74       maintain
-debugger.xml                       fuzzy74          fuzzy74       maintain
-history.xml                        fuzzy74          fuzzy74       maintain
-migration.xml                      fuzzy74          fuzzy74       maintain
-migration4.xml                     fuzzy74          fuzzy74       maintain
-phpdevel.xml
-reserved.constant.core.xml         fuzzy74          fuzzy74       maintain
-reserved.constant.standard.xml     fuzzy74          fuzzy74       maintain
-reserved.xml                       fuzzy74          fuzzy74       maintain
-resources.xml                      fuzzy74          fuzzy74       maintain
-tokens.xml                         fuzzy74          fuzzy74       maintain
-transports.xml                     fuzzy74          fuzzy74       maintain
-wrappers.xml                       fuzzy74          fuzzy74       maintain
-------- chapters ------------------------------------------------------------
-config.xml                         progcom          progcom       maintain
-intro.xml                          progcom          progcom       maintain
-tutorial.xml                       progcom          progcom       maintain
-------- faq -----------------------------------------------------------------
-build.xml                          fuzzy74          fuzzy74       maintain
-com.xml                            fuzzy74          fuzzy74       maintain
-databases.xml                      fuzzy74          fuzzy74       maintain
-general.xml                        fuzzy74          fuzzy74       maintain
-html.xml                           fuzzy74          fuzzy74       maintain
-installation.xml                   fuzzy74          fuzzy74       maintain
-languages.xml                      fuzzy74          fuzzy74       maintain
-mailinglist.xml                    fuzzy74          fuzzy74       maintain
-migration.xml                      fuzzy74          fuzzy74       maintain
-migration4.xml                     fuzzy74          fuzzy74       maintain
-misc.xml                           fuzzy74          fuzzy74       maintain
-obtaining.xml                      fuzzy74          fuzzy74       maintain
-using.xml                          fuzzy74          fuzzy74       maintain
-------- features ------------------------------------------------------------
-commandline.xml                    fuzzy74          fuzzy74       maintain
-connection-handling.xml            regina           fuzzy74       maintain
-cookies.xml                        progcom          progcom       maintain
-file-upload.xml                    progcom          progcom       maintain
-http-auth.xml                      progcom          progcom       maintain
-persistent-connections.xml         regina           fuzzy74       maintain
-remote-files.xml                   regina           fuzzy74       maintain
-safe-mode.xml                      fuzzy74          fuzzy74       maintain
--------- language -----------------------------------------------------------
-basic-syntax.xml                   fuzzy74          fuzzy74       maintain
-constants.xml                      fuzzy74          fuzzy74       maintain
-control-structures.xml             fuzzy74          fuzzy74       maintain
-expressions.xml                    fuzzy74          fuzzy74       maintain
-functions.xml                      fuzzy74          fuzzy74       maintain
-oop.xml                            fuzzy74          fuzzy74       maintain
-operators.xml                      fuzzy74          fuzzy74       maintain
-references.xml                     fuzzy74          fuzzy74       maintain
-types.xml                          fuzzy74          fuzzy74       maintain
-variables.xml                      fuzzy74          fuzzy74       maintain
 -------- reference ----------------------------------------------------------
-apache/                            progcom          progcom       maintain
 array/                             cycle98          fuzzy74       maintain
 aspell/                            suvia            fuzzy74       maintain
 bc/                                suvia            fuzzy74       maintain
 bzip2/                             pcraft           fuzzy74       maintain
 calendar/                          regina           fuzzy74       maintain
 classobj/                          corean           fuzzy74       maintain
-datetime/                          progcom          progcom       maintain
 filesystem/                        vizvil           vizvil        maintain
-http/                              noribsd          fuzzy74       maintain
-iconv/                             fuzzy74          fuzzy74       maintain
 imap/                              fuzzy74          fuzzy74       maintain
-math/                              progcom          progcom       maintain
 mysql/                             pcraft           fuzzy74       maintain
 network/                           vizvil           fuzzy74       maintain
 nis/                               vizvil           fuzzy74       maintain
-oci8/                              fuzzy74          fuzzy74       maintain
-pcre/                              progcom                        ing.
 pgsql/                             noribsd          fuzzy74       maintain
 pspell/                            suvia            fuzzy74       maintain
 sem/                               pcraft           fuzzy74       maintain
@@ -101,6 +36,3 @@ sybase/                            ftfuture         fuzzy74       maintain
 xml/                               karoora          fuzzy74       maintain
 yaz/                               karoora          fuzzy74       maintain
 zlib/                              karoora          fuzzy74       maintain
--------- security -----------------------------------------------------------
-index.xml                          progcom          progcom       maintain
------------------------------------------------------------------------------
