@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.58 Maintainer: progcom Status: partial -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.62 Maintainer: progcom Status: stopped -->
  <chapter id="security.index">
   <title>보안</title>
 
@@ -289,7 +289,7 @@ AddHandler php-script .php
     permissions (typically those of the "nobody" user). This has several
     impacts on security and authorization. For example, if you are using
     PHP to access a database, unless that database has built-in access
-    control, you will have to make the database accessable to the
+    control, you will have to make the database accessible to the
     "nobody" user. This means a malicious script could access and modify
     the database, even without a username and password. It's entirely
     possible that a web spider could stumble across a database
@@ -709,7 +709,7 @@ union select '1', concat(uname||'-'||passwd) as name, '1971-01-01', '0' from use
      also threatened by chopping and appending an entirely new query to it. But
      the attacker might fiddle with the <literal>SET</literal> clause. In this
      case some schema information must be possessed to manipulate the query
-     successfully. This can be acquired by examing the form variable names, or
+     successfully. This can be acquired by examining the form variable names, or
      just simply brute forcing. There are not so many naming convention for
      fields storing passwords or usernames.
      <example>
@@ -920,7 +920,7 @@ $query = sprintf("SELECT id, name FROM products ORDER BY name LIMIT 20 OFFSET %d
      <title>Exploiting common debugging variables</title>
      <programlisting role="php">
 <![CDATA[
-<form method="post" action="attacktarget?errors=Y&amp;showerrors=1"&debug=1">
+<form method="post" action="attacktarget?errors=Y&amp;showerrors=1&amp;debug=1">
 <input type="hidden" name="errors" value="Y">
 <input type="hidden" name="showerrors" value="1">
 <input type="hidden" name="debug" value="1">
