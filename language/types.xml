@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
+<!-- $Revision: 1.13 $ -->
 <!-- EN-Revision: 1.119 -->
  <chapter id="language.types">
   <title>타입</title>
@@ -1987,12 +1987,12 @@ echo $obj->scalar;  // outputs 'ciao'
     </note>
 
    <sect2 id="language.types.resource.casting">
-    <title>Converting to resource</title>
+    <title>resource로 변환하기</title>
     
     <para>
-     As resource types hold special handlers to opened
-     files, database connections, image canvas areas and
-     the like, you cannot convert any value to a resource.
+     resource 타입은 파일이나 데이터베이스 접속, 이미지 캔버스 영역 등을
+     열기위한 특별한 핸들러를 보유하기 때문에, 어떤값도 resource로
+     변환될수 없다.
     </para>
    </sect2>
 
@@ -2000,22 +2000,16 @@ echo $obj->scalar;  // outputs 'ciao'
      <title>Freeing resources</title>
     
     <para>
-     Due to the reference-counting system introduced
-     with PHP4's Zend-engine, it is automatically detected
-     when a resource is no longer referred to (just
-     like Java). When this is
-     the case, all resources that were in use for this 
-     resource are made free by the garbage collector.
-     For this reason, it is rarely ever necessary to
-     free the memory manually by using some free_result
-     function.
+     PHP 4의 젠드 엔진에서 참조-카운팅(reference-counting) 시스템이 추가되어서,
+     resource가 더이상 참조되지 않을때가 자동적으로 탐지된다(자바처럼).
+     이 경우에, 이 자원을 위해 사용중인 모든 자원은 가비지 컬렉터에 
+     의해 자동으로 해제된다. 이런 이유로, free_result같은 함수를
+     사용하여 수동으로 메모리를 해제할 필요는 어의 없다.
      <note>
       <simpara>
-       Persistent database links are special, they 
-       are <emphasis>not</emphasis> destroyed by the 
-       garbage collector. See also the section about <link 
-       linkend="features.persistent-connections">persistent 
-       connections</link>.
+       영구적인 데이터베이스 접속은 특별하다. 그것은 가비지 컬렉터에 의해
+       파괴되지 <emphasis>않는다</emphasis>.
+       <link linkend="features.persistent-connections">영구적인 접속</link>를 참고.
       </simpara>
      </note>
     </para>
@@ -2027,41 +2021,40 @@ echo $obj->scalar;  // outputs 'ciao'
    <title>NULL</title>
     
    <para>
-    The special &null; value represents 
-    that a variable has no value. &null; is the only possible value of type
-    <type>NULL</type>.
+    특별한 값인 &null;은 아무 값을 갖지 않는 변수를 표현한다.
+    &null;은 유일한 <type>NULL</type>타입의 값이다.
    </para>
     <note>
      <simpara>
-      The null type was introduced in PHP 4
+      null 타입은 PHP 4에서 소개되었다
      </simpara>
     </note>
     <para>
-     A variable is considered to be &null; if
+     다음과 같은 경우에 변수는 &null;로 취급된다
      <itemizedlist>
       <listitem>
        <para>
-        it has been assigned the constant &null;.
+        상수를 &null;로 할당했을 때.
        </para>
       </listitem>
       <listitem>
        <para>
-        it has not been set to any value yet.
+        아직 아무 값도 할당하지 않았을 때.
        </para>
       </listitem>
       <listitem>
        <para>
-        it has been <function>unset</function>.
+        <function>unset</function>을 사용했을 때.
        </para>
       </listitem>
      </itemizedlist>
     </para>
     
    <sect2 id="language.types.null.syntax">
-    <title>Syntax</title>
+    <title>문법</title>
     <para>
-     There is only one value of type &null;, and that is 
-     the case-insensitive keyword &null;.
+     타입은 유일한 값 &null;을 갖는다. 
+     &null;은 대소문자를 구별하지 않는다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -2073,46 +2066,44 @@ $var = NULL;
      </informalexample>
     </para>
     <para>
-     See also <function>is_null</function> and <function>unset</function>.
+     <function>is_null</function>과 <function>unset</function>을 참고
     </para>
    </sect2>
   </sect1>
  
   <sect1 id="language.pseudo-types">
-   <title>Pseudo-types used in this documentation</title> 
+   <title>이 문서에서 사용되는 의사 타입</title> 
 
    <sect2 id="language.types.mixed">
     <title>mixed</title>
     <para>
-     <literal>mixed</literal> indicates that a parameter may accept multiple (but not
-     necesseraly all) types.
+     <literal>mixed</literal>는 인자가 여러 타입을 허용한다는 것을 가리킨다
+     (모든 타입일필요는 없다)
     </para>
     <para>
-     <function>gettype</function> for example will accept all PHP types,
-     while <function>str_replace</function> will accept strings and arrays.
+     <function>gettype</function>은 모든 PHP 타입을 다루고,
+     반면에 <function>str_replace</function>은 문자열과 배열만을 다룬다.
     </para>
    </sect2>
   
    <sect2 id="language.types.number">
     <title>number</title>
     <para>
-     <literal>number</literal> indicates that a parameter can be either
-     <type>integer</type> or <type>float</type>.
+     <literal>number</literal>는 인자가 
+     <type>integer</type>나 <type>float</type>일수 있음을 가리킨다.
     </para>
    </sect2>
 
    <sect2 id="language.types.callback">
     <title>callback</title>
     <para>
-     Some functions like <function>call_user_func</function> 
-     or <function>usort</function> accept user defined 
-     callback functions as a parameter. Callback functions can not only
-     be simple functions but also object methods including static class
-     methods. 
+     <function>call_user_func</function>나 <function>usort</function>와 같은
+     함수는 인자로 사용자선언 콜백 함수를 취급한다. 콜백 함수는 단순한 함수
+     뿐만 아니라 정적 클래스 메소드를 포함하는 객체 메소드가 될수 있다.
     </para>
     <para>
-     A PHP function is simply passed by its name as a string. You can
-     pass any builtin or user defined function with the exception of 
+     PHP 함수는 단순히 그 이름을 문자열로 전달한다. 다음 함수를 제외하고
+     내장 함수나 유저 선언 함수를 전달할수 있다.
      <function>array</function>, 
      <function>echo</function>, 
      <function>empty</function>, 
@@ -2120,24 +2111,22 @@ $var = NULL;
      <function>exit</function>, 
      <function>isset</function>, 
      <function>list</function>, 
-     <function>print</function> and 
+     <function>print</function>,
      <function>unset</function>.
     </para>
     <para>
-     A method of an instantiated object is passed as an array containing
-     an object as the element with index 0 and a method name as the 
-     element with index 1.
+     인스턴스화된 객체의 메소드는 인덱스 0의 요소인 객체와 
+     인덱스 1의 요소인 메소드명을 포함하는 배열로 전달된다.
     </para>
     <para>
-     Static class methods can also be passed without instantiating an
-     object of that class by passing the class name instead of an 
-     object as the element with index 0.
+     정적 클래스 메소드는 인덱스 0의 요소인 객체 대신 클래스명을
+     전달함으로써 그 클래스의 객체를 인스턴스화하지 않고도 전달될수 있다.
     </para>
 
     <para>
      <example>
       <title>
-       Callback function examples
+       콜백 함수 예제코드
       </title>
       <programlisting role="php">
 <![CDATA[
@@ -2174,25 +2163,21 @@ call_user_func(array($foo, "bar")); // object method call
   </sect1>
 
   <sect1 id="language.types.type-juggling">
-   <title>Type Juggling</title>
+   <title>타입 저글링</title>
 
    <simpara>
-    PHP does not require (or support) explicit type definition in
-    variable declaration; a variable's type is determined by the
-    context in which that variable is used. That is to say, if you
-    assign a string value to variable <parameter>$var</parameter>,
-    <parameter>$var</parameter> becomes a string. If you then assign an
-    integer value to <parameter>$var</parameter>, it becomes an
-    integer.
+    PHP는 변수 선언부의 명시적인 타입 정의를 요구하지않는다(지원하지않는다)
+    변수의 타입은 변수가 사용되는 환경에서 결정된다. 즉, 문자열 값을 
+    변수 <parameter>$var</parameter>에 지정하면,<parameter>$var</parameter>는 문자열이 된다.
+    integer값이 <parameter>$var</parameter>에 지정되면, integer가 된다.
    </simpara>
    <para>
-    An example of PHP's automatic type conversion is the addition
-    operator '+'. If any of the operands is a float, then all
-    operands are evaluated as floats, and the result will be a
-    float. Otherwise, the operands will be interpreted as integers,
-    and the result will also be an integer. Note that this does NOT
-    change the types of the operands themselves; the only change is in
-    how the operands are evaluated.
+    PHP의 자동적인 타입 변환의 예로는 덧셈 연산자 '+'를 들수 있다.
+    피연산자 중 어느 하나가 float이라면, 모든 피연산자는 float으로 취급된다.
+    그렇지 않으면, 피연산자는 정수로 해석될것이고, 결과값도 정수가 될것이다.
+    이런일이 피연산자 자신의 타입을 바꾸지 않는다는 것에 주의하라;
+    피연산자가 어떻게 평가되느냐에 따라서만 변환이 이루어진다.
+
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -2227,24 +2212,24 @@ examples:
     </informalexample>
    </para>
    <simpara>
-    If the last two examples above seem odd, see <link
-    linkend="language.types.string.conversion">String
-    conversion to numbers</link>.
+    위 예제코드중 마지막 두가지가 이상해 보인다면,
+    <link linkend="language.types.string.conversion">문자열을 수로 변환</link>을
+    참고.
    </simpara>
    <simpara>
-    If you wish to force a variable to be evaluated as a certain type,
-    see the section on <link linkend="language.types.typecasting">Type
-    casting</link>. If you wish to change the type of a variable, see
-    <function>settype</function>.
+    어떤 변수를 특정 타입으로 취급하고자 한다면,
+    <link linkend="language.types.typecasting">타입 캐스트</link> 매뉴얼
+    섹션을 참고할것. 변수의 타입을 변환하려고 하면,
+    <function>settype</function>를 볼것.
+
    </simpara>
    <para>
-    If you would like to test any of the examples in this section, you
-    can use the <function>var_dump</function> function.
+    이 섹션에서 다른 에제를 테스트하기 위해
+    <function>var_dump</function> 함수를 사용할수 있다.
    </para>
    <note>
     <para>
-     The behaviour of an automatic conversion to array is currently
-     undefined.
+     배열의 자동적인 변환 방식은 현재까지 정의되지 않았다.
     </para>
     <para>
      <informalexample>
@@ -2259,19 +2244,16 @@ $a[0] = "f";  // What about string offsets? What happens?
      </informalexample>
     </para>
     <para>
-     Since PHP (for historical reasons) supports indexing into strings
-     via offsets using the same syntax as array indexing, the example
-     above leads to a problem: should $a become an array with its first
-     element being "f", or should "f" become the first character of the
-     string $a?
+     PHP는 배열 인덱싱과 같은 문법을 사용하여 오프셋을 통하여 문자열 안의
+     인덱싱을 지원하기 때문에(역사적인이유로), 위 예제코드는 문제가 될
+     소지가 있다: $a는 그 첫번째 요소가 "f"를 갖는 배열이 되는가?
+     "f"가 문자열 $a 문자열의 첫번째 문자가 되는가?
     </para>
     <para>
-     The current versions of PHP interpret the second assignment as
-     a string offset identification, so $a becomes "f", the result
-     of this automatic conversion however should be considered
-     undefined. PHP 4 introduced the new curly bracket syntax to access
-     characters in string, use this syntax instead of the one presented
-     above: 
+     현재 버전 PHP는 두번째 할당문을 문자열 오프셋 인식으로 해석한다.
+     그래서 $a는 "f"가 되고, 자동 변환의 결과는 정의되지 않은것으로 여겨진다.
+     PHP 4는 스트링 내의 문자에 접근하기 위한 중괄호 문법을 새로이 제공한다.
+     위에서 제시한것 대신 이문법을 사용하도록 한다
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -2282,18 +2264,18 @@ $a{1} = "f";   // $a is now "afc"
 ]]>
       </programlisting>
      </informalexample>
-     See the section titled <link linkend="language.types.string.substr">String
-     access by character</link> for more informaton.
+     자세한 정보는 
+     <link linkend="language.types.string.substr">문자열의 문자 접근하기</link>섹션을
+     참고.
     </para>
    </note>
 
    <sect2 id="language.types.typecasting">
-    <title>Type Casting</title>
+    <title>타입 캐스트</title>
 
     <para>
-     Type casting in PHP works much as it does in C: the name of the
-     desired type is written in parentheses before the variable which
-     is to be cast.
+     PHP에서 타입 캐스느는 C에서 동작하는 것과 유사하게 동작한다. 원하는 타입의
+     이름을 변수 앞 괄호안에 사용하여 캐스트될수 있다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -2306,7 +2288,7 @@ $bar = (boolean) $foo;   // $bar is a boolean
      </informalexample>
     </para>
     <para>
-     The casts allowed are:
+     허용되는 캐스트는 다음과 같다:
      <itemizedlist>
       <listitem>
        <simpara>(int), (integer) - cast to integer</simpara>
@@ -2329,8 +2311,8 @@ $bar = (boolean) $foo;   // $bar is a boolean
      </itemizedlist>
     </para>
     <para>
-     Note that tabs and spaces are allowed inside the parentheses, so
-     the following are functionally equivalent:
+     탭과 빈칸이 괄호안에서 허용된다는것에 주의한다.
+     그래서 다음 예는 기능적으로 동일하다:
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -2344,8 +2326,8 @@ $foo = ( int ) $bar;
     </para>
     <note>
      <para>
-      Instead of casting a variable to string, you can also enclose
-      the variable in double quotes.
+      변수를 문자열로 캐스트하는 대신에, 큰 따옴표 안에 변수를
+      넣어줄수도 있다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -2366,37 +2348,30 @@ if ($fst === $str) {
     </note>
      
     <para>
-     It may not be obvious exactly what will happen when casting
-     between certain types. For more info, see these sections:
+     특정 타입간의 캐스트가 될때 무슨일이 일어날지 
+     여기서 명확하지 않으면 자세한 정보를 보기 위해 아래 섹션을 참고.
     
      <itemizedlist>
       <listitem>
-       <simpara><link linkend="language.types.boolean.casting">Converting to 
-        boolean</link></simpara>
+       <simpara><link linkend="language.types.boolean.casting">boolean으로 변환하기</link></simpara>
       </listitem>
       <listitem>
-       <simpara><link linkend="language.types.integer.casting">Converting to 
-        integer</link></simpara>
+       <simpara><link linkend="language.types.integer.casting">정수로 변환하기</link></simpara>
       </listitem>
       <listitem>
-       <simpara><link linkend="language.types.float.casting">Converting to 
-        float</link></simpara>
+       <simpara><link linkend="language.types.float.casting">float으로 변환하기</link></simpara>
       </listitem>
       <listitem>
-       <simpara><link linkend="language.types.string.casting">Converting to 
-        string</link></simpara>
+       <simpara><link linkend="language.types.string.casting">문자열로 변환하기</link></simpara>
       </listitem>
       <listitem>
-       <simpara><link linkend="language.types.array.casting">Converting to 
-        array</link></simpara>
+       <simpara><link linkend="language.types.array.casting">배열로 변환하기</link></simpara>
       </listitem>
       <listitem>
-       <simpara><link linkend="language.types.object.casting">Converting to 
-        object</link></simpara>
+       <simpara><link linkend="language.types.object.casting">객체로 변환하기</link></simpara>
       </listitem>
       <listitem>
-       <simpara><link linkend="language.types.resource.casting">Converting to 
-        resource</link></simpara>
+       <simpara><link linkend="language.types.resource.casting">resource로 변환하기</link></simpara>
       </listitem>
       <!-- don't exist yet
       <listitem>
