@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/strings.xml, last change in rev 1.3 -->
-<!-- last change to 'stripcslashes' in en/ tree in rev 1.2 -->
-	<refentry id="function.stripcslashes">
-		<refnamediv>
-			<refname>stripcslashes</refname>
-			<refpurpose>
-				<function>addcslashes</function>로 quote 된 문자열을 un-quote 한다.
-			</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>string</type><methodname>stripcslashes</methodname>
-					<methodparam><type>string</type><parameter>str</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-	백슬래쉬가 제거된 문자열을 반환한다.
-	C 형식의 <literal>\n</literal>, <literal>\r</literal> ... 8진수 그리고 16진수 표현도 인식한다.
-     <note>
-					<simpara>
-       PHP4b3-dev 에서 추가되었다.
-      </simpara>
-				</note>
-			</para>
-			<simpara>
-				<function>addcslashes</function>를 참고하라.
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- CREDITS: cycle98 -->
+  <refentry id="function.stripcslashes">
+   <refnamediv>
+    <refname>stripcslashes</refname>
+    <refpurpose>
+     <function>addcslashes</function>로 처리한 문자열을 되돌립니다.
+    </refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>string</type><methodname>stripcslashes</methodname>
+      <methodparam><type>string</type><parameter>str</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     백슬래쉬를 제거한 문자열을 반환합니다. C 형식의 <literal>\n</literal>,
+     <literal>\r</literal> ..., 8진과 16진 표현도 인식합니다.
+    </para>
+    <simpara>
+     참고: <function>addcslashes</function>.
     </simpara>
-		</refsect1>
-	</refentry>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
