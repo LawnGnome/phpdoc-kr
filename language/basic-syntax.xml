@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.34 -->
  <chapter id="language.basic-syntax">
   <title>기본 문법</title>
@@ -53,10 +53,10 @@
    <para>
     PHP가 파일을 해석할때 PHP코드로 해석하라고 하는 특별한 코드와 만나지
     않는다면 단순히 그 파일의 텍스트를 넘겨줄 뿐이다. 해석기(parser)는
-    PHP 닫음 태그가 있는곳까지 발견된 코드 모두를 수행한다. PHP 닫기 태그
+    PHP 닫기 태그가 있는곳까지 발견된 코드 모두를 수행한다. PHP 닫기 태그
     를 만나면 다시 텍스트를 그냥 넘겨주기 시작하는것이다. 이런 메카니즘은
-    HTML안에 PHP코드를 내장시킬수 있게 해준다: PHP태그 밖의 모든것은 완전히
-    단독으로 존재하는것이고, 반면에 PHP태그 안쪽은 코드로서 해석이 된다.
+    HTML안에 PHP코드를 내장시킬수 있게 해준다: PHP 태그 밖의 모든것은 완전히
+    단독으로 존재하는것이고, 반면에 PHP 태그 안쪽은 코드로서 해석이 된다.
    </para>
 
    <para>
@@ -102,7 +102,7 @@
 
    <para>
     두번째 방법은 항상 유효하지 않다. 이 짧은 형은 활성화시켰을때만 유효하다.
-    <function>short_tags</function>함수 (PHP 3에서만)로,
+    <function>short_tags</function> 함수 (PHP 3에서만)로,
     PHP 설정 파일 안의 <link linkend="ini.short-open-tag">short_open_tag</link>
     설정 값을 활성화시키거나, <command>configure</command>명령 시에
     --enable-short-tags옵션을 줘서 PHP를 컴파일함으로써 가용하게 할수있다.
@@ -110,9 +110,9 @@
 
    <para>
     네번째 방법은 <link linkend="ini.asp-tags">asp_tags</link>설정값을
-    활성화시킴으로써 ASP스타일 태그형태를 쓸수 있을때만 유효하다.
+    활성화시킴으로써 ASP 스타일 태그형태를 쓸수 있을때만 유효하다.
     <note>
-     <para>3.0.4부터 ASP스타일 태그에 대한 지원이 추가되었다</para>
+     <para>3.0.4부터 ASP 스타일 태그에 대한 지원이 추가되었다</para>
     </note>
    </para>
 
@@ -155,7 +155,7 @@ if ($expression) {
      </programlisting>
     </example>
     이런 구조는 기대하던대로 작동한다. 왜냐하면 PHP는 ?&gt;닫기 태그에
-    맞닥뜨리고나서 열기태그를 만나기 전까지의 무엇이든 단순히
+    맞닥뜨리고나서 열기 태그를 만나기 전까지의 무엇이든 단순히
     출력만 하기 때문이다. 이 예제는 PHP 파싱 모드를 줄임으로써
     <function>echo</function>나 <function>print</function> 또는 비슷한
     함수들이 모든 텍스트를 출력하는것보다 효율적으로 거대한 텍스트 블록
@@ -192,7 +192,7 @@ if ($expression) {
    <title>주석</title>
    
    <para>
-    PHP는 'C', 'C++', Unix 셀스타일(shell-style)의 주석(comment)형태를 
+    PHP는 'C', 'C++', Unix 셀 스타일(shell-style)의 주석(comment)형태를 
     지원한다. 예를 들면:
 
     <informalexample>
@@ -226,8 +226,8 @@ if ($expression) {
    </para>
 
    <simpara>
-    'C' 스타일 주석을 중복 내포하지 않도록 주의해야 한다. 이와같은 실수는
-    거대한 블록을 주석처리할때 일어날수 있다.
+    'C' 스타일 주석을 중복 내포하지 않도록 주의해야 한다. 이와 같은 실수는
+    거대한 블록을 주석처리할 때 일어날수 있다.
    </simpara>
 
    <para>
