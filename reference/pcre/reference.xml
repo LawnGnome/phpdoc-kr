@@ -29,6 +29,8 @@
      <para>
       PCRE의 몇몇 제한에 주의를 해야합니다. 자세한 정보는 <ulink
        url="&url.pcre.man;">&url.pcre.man;</ulink>을 참고하십시오.
+     </para>
+    </warning>
    </section>
    
    <section id="pcre.requirements">
