@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
   <refentry id="function.isset">
    <refnamediv>
     <refname>isset</refname>
-    <refpurpose>변수를 선언했는지 확인합니다.</refpurpose>
+    <refpurpose>존재하는 변수인지 확인합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -41,9 +41,9 @@
 
 $var = '';
 
-// 이는 &true;이며 텍스트를 출력합니다.
+// TRUE이기에 텍스트를 출력합니다.
 if (isset($var)) {
-    echo "이 변수는 선언되었기에 출력을 합니다.";
+    echo "이 변수는 존재하기에 출력합니다.";
 }
 
 // 다음 예제는 isset()의 반환값을

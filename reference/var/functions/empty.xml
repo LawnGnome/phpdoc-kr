@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.empty">
    <refnamediv>
     <refname>empty</refname>
@@ -13,11 +12,11 @@
       <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <parameter>var</parameter>가 비어있지 않거나 제로가 아니라면
-     <function>empty</function>은 &false;를 반환합니다. 결과적으로,
-     <literal>""</literal>, <literal>0</literal>, <literal>"0"</literal>,
-     &null;, &false;, <literal>array()</literal>, <literal>var $var</literal>,
-     비어있는 속성의 객체를 비어있는 것으로 판단합니다.
+     <function>empty</function>는 <parameter>var</parameter>가 비어있지 않고
+     제로가 아닌 값이라면 &false;를 반환합니다. 즉, <literal>""</literal>,
+     <literal>0</literal>, <literal>"0"</literal>, &null;, &false;,
+     <literal>array()</literal>, <literal>var $var</literal>,
+     비어있는 프로퍼티의 객체를 비어있는 것으로 판단합니다.
      <parameter>var</parameter>가 비어있다면 &true;를 반환합니다.
     </para>
     <para>

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.69 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.73 Maintainer: progcom Status: ready -->
  <chapter id="features.file-upload">
   <title>파일 업로드 다루기</title>
 
@@ -55,11 +55,11 @@
     그렇지 않으면 파일 업로드는 작동하지 않습니다.
     <warning>
      <para>
-      MAX_FILE_SIZE는 브라우저에 대한 권고입니다. 이 최대값은 간단히 피할 수
-      있습니다. 브라우저는 항상 원하는 대로 작동하지 않습니다! 그러나, PHP
-      설정의 최대 크기는 속일 수 없습니다. 그럼에도 불구하고, MAX_FILE_SIZE를
-      추가하면 사용자가 너무 큰 파일로 인해 오류가 발생하는 것을
-      발견하기까지의 전송 시간을 절약할 수 있습니다.
+      MAX_FILE_SIZE는 PHP가 확인하기도 하지만, 브라우저에 대한 권고입니다.
+      이 값을 변경하는건 매우 간단하기에, 크기가 큰 파일을 막기 위해서는 이
+      기능에 의존해서는 안됩니다. 대신, 최대 크기에 관한 PHP 설정은 속일 수
+      없습니다. 그러나 MAX_FILE_SIZE 폼 변수는 사용자가 파일이 너무 크다는
+      것을 파악하기 위해서 실제 전송을 하는 동안 기다릴 필요를 없애줍니다.
      </para>
     </warning>
    </para>
@@ -284,7 +284,7 @@ print "</pre>";
    </simpara>
    <simpara>
     <link linkend="ini.max-execution-time">max_execution_time</link>을
-    너무 작게 설정하면, 스크립트 실행 시간이 이 값에 도달합니다.
+    너무 작게 설정하면, 스크립트 실행 시간이 이 값을 초과합니다.
     <literal>max_execution_time</literal>을 충분히 크게 설정했는지
     확인하십시오.
    </simpara>
@@ -297,7 +297,13 @@ print "</pre>";
      외부 실행에 소모하는 시간은 스크립트 최대 실행 시간을 측정할 때 포함하지
      않습니다.
     </simpara>
-   </note>    
+   </note>
+   <simpara>
+    <link linkend="ini.max-input-time">max_input_time</link>은 스크립트가
+    입력을 받아들이는 최대 시간을 초 단위로 지정합니다; 이는 파일 업로드를
+    포함합니다. 커다란 파일이나 여러 개의 파일을 전송하거나, 사용자가 느린
+    회선을 사용한다면 기본값인 <literal>60</literal>초를 초과할 수 있습니다.
+   </simpara>
    <simpara>
     <link linkend="ini.post-max-size">post_max_size</link>을 너무 작게
     설정하면, 큰 파일은 업로드할 수 없습니다.

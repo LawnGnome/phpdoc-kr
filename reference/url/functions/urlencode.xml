@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ok -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry id="function.urlencode">
    <refnamediv>
     <refname>urlencode</refname>
@@ -20,8 +19,8 @@
      <literal>application/x-www-form-urlencoded</literal> 매체형과 같은
      방식의 인코드입니다. 역사적인 이유로 공백을 플러스(+) 사인으로
      인코드 하는 점이 RFC1738 인코딩(<function>rawurlencode</function> 참고)과
-     다릅니다. 이 함수는 다음 페이지로 변수를 넘기는 간단한 방법인 URL의 쿼리
-     부분을 인코딩 할 때 편리합니다.
+     다릅니다. 이 함수는 URL의 쿼리 부분에 사용하는 문자열을 인코딩할 때
+     편리합니다. 다음과 같이 다음 페이지로 변수를 전달합니다:
      <example>
       <title><function>urlencode</function> 예제</title>
       <programlisting role="php">

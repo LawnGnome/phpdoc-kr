@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
   <refentry id="function.date">
    <refnamediv>
     <refname>date</refname>
@@ -63,6 +63,11 @@
          <entry><literal>B</literal></entry>
          <entry>스왓치 인터넷 시간</entry>
          <entry><literal>000</literal>부터 <literal>999</literal></entry>
+        </row>
+        <row>
+         <entry><literal>c</literal></entry>
+         <entry>ISO 8601 날짜 (PHP 5에서 추가)</entry>
+         <entry>2004-02-12T15:19:21+00:00</entry>
         </row>
         <row>
          <entry><literal>d</literal></entry>

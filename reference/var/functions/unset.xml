@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
   <refentry id="function.unset">
    <refnamediv>
     <refname>unset</refname>
@@ -11,7 +11,7 @@
       <type>void</type><methodname>unset</methodname>
       <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
       <methodparam choice="opt"><type>mixed</type><parameter>var</parameter></methodparam>
-      <methodparam choice="opt"><parameter>...</parameter></methodparam>
+      <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
      </methodsynopsis>
 
     <para>

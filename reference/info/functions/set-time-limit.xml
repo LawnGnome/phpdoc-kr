@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
 <!-- CREDITS: myprogram -->
   <refentry id="function.set-time-limit">
    <refnamediv>
@@ -36,11 +36,15 @@
       <function>set_time_limit</function> 함수와 설정 지시어 <link
        linkend="ini.max-execution-time">max_execution_time</link>는 스크립트
       자신의 실행 시간에만 영향을 받습니다. <function>system</function>을
-      사용하는 시스템 콜이나, <function>sleep</function> 함수, 데이터베이스
-      쿼리 등, 스크립트 밖에서 발생하는 행동은 스크립트 실행 시간을 측정하는
-      데에 포함하지 않습니다.
+      사용하는 시스템 콜이나, 스트림 작동, 데이터베이스 쿼리 등의 스크립트
+      밖에서 발생하는 행동은 스크립트 실행 시간을 측정할 때 포함하지 않습니다.
      </para>
     </note>
+    <simpara>
+     참고: ini 지시어 <link
+      linkend="ini.max-execution-time">max_execution_time</link>과 <link
+      linkend="ini.max-input-time">max_input_time</link>.
+    </simpara>
    </refsect1>
   </refentry>
 

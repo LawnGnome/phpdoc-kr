@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
 <!-- CREDITS: myprogram -->
   <refentry id="function.ini-restore">
    <refnamediv>
     <refname>ini_restore</refname>
-    <refpurpose>설정 옵션값을 복구합니다.</refpurpose>
+    <refpurpose>설정 옵션의 값을 복구합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
      <methodsynopsis>
-      <type>string</type><methodname>ini_restore</methodname>
+      <type>void</type><methodname>ini_restore</methodname>
       <methodparam><type>string</type><parameter>varname</parameter></methodparam>
      </methodsynopsis>
     <para>

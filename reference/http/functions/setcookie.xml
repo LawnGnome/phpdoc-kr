@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.27 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.28 Maintainer: progcom Status: ready -->
   <refentry id="function.setcookie">
    <refnamediv>
     <refname>setcookie</refname>
@@ -216,9 +216,11 @@ setcookie("TestCookie", $value,time()+3600, "/~rasmus/", ".example.com", 1);
      </example>
     </para>
     <para>
-     쿠키 값은 쿠키를 전송할때 자동적으로 url 인코드 되고, 받을때 자동적으로
-     디코드해서 쿠키 이름과 같은 이름의 변수로 연결되는 점에 주의하십시오.
-     스크립트 안의 쿠키에 대한 내용을 보려면, 다음 예제 중 하나를 사용하십시오:
+     쿠키 값은 쿠키를 전송할때 자동적으로 URL 인코드하고, 받을때 자동적으로
+     디코드해서 쿠키 이름과 같은 이름을 가지는 변수로 연결되는 점에
+     주의하십시오. 이 작동을 피하고 싶다면, PHP 5에서
+     <function>setrawcookie</function>를 사용할 수 있습니다. 스크립트 안에서
+     쿠키의 내용을 보려면, 다음 예제 중 하나를 사용하십시오:
     </para>
     <para>
      <informalexample>
@@ -229,7 +231,7 @@ setcookie("TestCookie", $value,time()+3600, "/~rasmus/", ".example.com", 1);
 echo $_COOKIE["TestCookie"];
 echo $HTTP_COOKIE_VARS["TestCookie"];
 
-// 보든 쿠키를 보는 디버그/테스트 방법
+// 모든 쿠키를 보는 디버그/테스트 방법
 print_r($_COOKIE);
 ?>
 ]]>
@@ -316,6 +318,7 @@ one : cookieone
     </note>
     <para>
      참고: <function>header</function>,
+     <function>setrawcookie</function>,
      <link linkend="features.cookies">쿠키 섹션</link>.
     </para>
    </refsect1>
