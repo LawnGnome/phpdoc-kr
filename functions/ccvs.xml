@@ -1,3 +1,4 @@
+<!-- edited by Jeongha Kwon(SuViA) -->
 <!-- 
 CCVS Documentation by Brendan W. McAdams <brendan@plexmedia.com>
 Copyright (c) 2000 by the PHP Group
@@ -6,73 +7,47 @@ Copyright (c) 2000 by the PHP Group
 documentation for the php3 version of this module, which helped us
 start this document.  
 -->
- 
- <reference id="ref.ccvs">
-  <title>CCVS API Functions</title>
-  <titleabbrev>CCVS</titleabbrev>
-
-  <partintro>
-   <simpara>
-    These functions interface the CCVS API, allowing you to directly
-    work with CCVS from your PHP scripts.  CCVS is <ulink
-    url="&url.redhat;">RedHat's</ulink> solution to the "middle-man"
-    in credit card processing.  It lets you directly address the
-    credit card clearing houses via your *nix box and a modem.  Using
-    the CCVS module for PHP, you can process credit cards directly
-    through CCVS via your PHP Scripts.  The following references will
-    outline the process.
+<reference id="ref.ccvs">
+	<title>CCVS API 함수</title>
+	<titleabbrev>CCVS</titleabbrev>
+	<partintro>
+		<simpara>
+    이 함수는 PHP스크립트에서 CCVS와 직접 연결을 허락하는 CCVS API 인터페이스입니다. CCVS는 <ulink url="&url.redhat;">RedHat의</ulink> "중개상인"을 위한 카드결재 처리 솔루션입니다.  이것은 가정에서 *nix box나 모뎀을 통해 신용카드를 사용할수 있게 합니다. CCVS 모듈을 사용하면 PHP스크립트를 사용해서 CCVS를 통해 직접 신용카드를 처리할수 있습니다. 다음은 그것에 대한 간단한 설명입니다.
    </simpara>
-   <simpara>
-    To enable CCVS Support in PHP, first verify your CCVS installation
-    directory.  You will then need to configure PHP with the <option
-    role="configure">--with-ccvs</option> option. If you use this
-    option without specifying the path to your CCVS installation, PHP
-    Will attempt to look in the default CCVS Install location
-    (/usr/local/ccvs). If CCVS is in a non-standard location, run
-    configure with: <option
-    role="configure">--with-ccvs=$ccvs_path</option>, where $ccvs_path
-    is the path to your CCVS installation.  Please note that CCVS
-    support requires that $ccvs_path/lib and $ccvs_path/include exist,
-    and include cv_api.h under the include directory and libccvs.a
-    under the lib directory.
+		<simpara>
+     PHP에서 CCVS를 지원하게 할려면 CCVS가 제대로 설치 되었는지 확인해야 합니다.  그리고 PHP를 <option role="configure">--with-ccvs</option> 옵션을 사용해서 컴파일 설정을 해야합니다. 만약 CCVS설치 경로를 지정하지 않고 이 옵션을 사용하면  PHP는 CCVS 기본설치 경로(/usr/local/ccvs)를 확인합니다. 만약 CCVS를 다른 경로에 설치 하셨다면, <option role="configure">--with-ccvs=$ccvs_path</option>옵션을 사용해서 컴파일 설정을 하셔야합니다. $ccvs_path는 CCVS가 설치된 경로입니다.  CCVS를 지원하기 위해서는 $ccvs_path/lib와 $ccvs_path/include 경로가 존재해야 하고 iclude 디렉토리에는 cv_api.h가, lib 디렉토리에는 libccvs.a가 있어야 됩니다.
    </simpara>
-   <simpara>
-    Additionally, a ccvsd process will need to be running for the
-    configurations you intend to use in your PHP scripts. You will
-    also need to make sure the PHP Processes are running under the
-    same user as your CCVS was installed as (e.g. if you installed
-    CCVS as user 'ccvs', your PHP processes must run as 'ccvs' as
-    well.)
+		<simpara>
+    또한, ccvsd  프로세스는 PHP 스크립트를 사용할 수 있게 설정이 된 상태에서 실행을 해야합니다.. 그리고 PHP 프로세스와 CCVS프로세스가 같은 사용자의 ID로 실행이 되어야 합니다. (예를 들어, CCVS를 'ccvs'사용자로 설치를 했으면, PHP 프로세스는 'ccvs' 사용자로 실행이 되어야 합니다.
    </simpara>
-   <simpara>
-    Additional information about CCVS can be found at <ulink
-    url="&url.redhat.ccvs;">&url.redhat.ccvs;</ulink>.
+		<simpara>
+    CCVS에 대한 추가 정보는<ulink url="&url.redhat.ccvs;">&url.redhat.ccvs;</ulink>에서 찾을 수 있습니다.
    </simpara>
-   <simpara>
-    This documentation section is being worked on.  Until then, RedHat
-    maintains slightly outdated but still useful documentation at
-    <ulink url="&url.redhat.support;">&url.redhat.support;</ulink>.
+		<simpara>
+    이 문서는 작업중입니다. RedHat의 자료는 조금 오래되었지만
+    <ulink url="&url.redhat.support;">&url.redhat.support;</ulink>에 유용한 정보가 있습니다.
    </simpara>
-  </partintro>
-
-  <refentry>
-   <refnamediv>
-    <refname></refname>
-    <refpurpose></refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title></title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef> <function></function></funcdef>
-      <paramdef> <parameter></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
-   </refsect1>
-  </refentry>
-
- </reference>
-
+	</partintro>
+	<refentry>
+		<refnamediv>
+			<refname/>
+			<refpurpose/>
+		</refnamediv>
+		<refsect1>
+			<title/>
+			<funcsynopsis>
+				<funcprototype>
+					<funcdef>
+						<function/>
+					</funcdef>
+					<paramdef>
+						<parameter/>
+					</paramdef>
+				</funcprototype>
+			</funcsynopsis>
+		</refsect1>
+	</refentry>
+</reference>
 <!-- Keep this comment at the end of the file
 Local variables:
 mode: sgml
