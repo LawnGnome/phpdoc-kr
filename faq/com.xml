@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.1 $ -->
+<!-- EN-Revision: 1.10 -->
+ <chapter id="faq.com">
+  <title>PHP와 COM</title>
+  <titleabbrev>PHP와 COM</titleabbrev>
+
+   <para>
+    PHP는 Win32 플랫폼의 COM과 DCOM 객체(object)에 접근할수 있습니다.
+   </para>
+
+  <qandaset>
+   <qandaentry id="faq.com.q1">
+    <question>
+     <para>
+      어떤것을 계산하는 DLL을 빌드했습니다. PHP상에서 이 DLL을 실행시킬수 있는 방법
+      이 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      간단한 DLL이라도 PHP에서 실행할 방법은 아직 없습니다. 접근가능한 COM서버를 
+      포함하는 DLL이고, IDispatch 인터페이스로 구현되어있다면 가능할수도 있습니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q2">
+    <question>
+     <para>
+      'Unsupported variant type: xxxx (0xxxxx)'은 무엇을 의미합니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      몇가지의 VARIANT 타입과 그 타입간의 조합이 가능합니다. 그들 대부분은 거의 
+      지원이 되고있지만 일부가 아직 구현되어있지 않습니다. 배열은 완전히 지원되지 
+      않습니다. 오직 1차원 배열만이 PHP와 COM사이에서 전달이 가능합니다. 지원되지 
+      않는 다른 타입을 발견했다면 그 타입을 버그 레포트로 알려주기랍니다
+      (아직 보고되지 않는것들이라면) 그리고 더 자세한 정보도 함께 제공해주십시오.
+     </para>
+    </answer>
+   </qandaentry>
+  
+   <qandaentry id="faq.com.q3">
+    <question>
+     <para>
+      PHP에서 비주얼한 객체(visual object)를 조작할수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      가능합니다. 하지만 PHP는 대부분 웹서버의 환경에서 웹 스크립트 언어로서 
+      이용되고 있습니다. 따라서 서버가 비주얼 객체를 보여주지는 않을것입니다. 
+      응용프로그램 스크립트를 위한 PHP(PHP-GTK같은)를 사용한다면 COM을 통해서 
+      비주얼 객체(visual object)에 접근하고 조작하는데 아무 제한이 없습니다.
+     </para>
+    </answer>
+   </qandaentry>
+  
+   <qandaentry id="faq.com.q4">
+    <question>
+     <para>
+      세션안에 COM 객체를 저장할 수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      그건 안됩니다. COM 인스턴스(instance)는 리소스로 취급되므로 오직 단일 스크립트의 
+      컨텍스트(context)에서만 가용한것입니다.
+     </para>
+    </answer>
+   </qandaentry>
+  
+   <qandaentry id="faq.com.q5">
+    <question>
+     <para>
+      COM 에러를 어떻게 추적할 수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      현재 PHP 자체에서 제공되는 방법(@, track_errors, ..)으로는 COM 에러를 추적하기는 불가능합니다.
+      하지만 이것을 구현할 방법을 강구중입니다.
+     </para>
+    </answer>
+   </qandaentry>
+  
+   <qandaentry id="faq.com.q6">
+    <question>
+     <para>
+      펄에서 쓰던 방법으로 PHP 스크립트에서 DLL 파일을 만들수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      만들수 없습니다. 재수없게도 PHP를 위해 그런 툴이 존재하지 않습니다. 
+     </para>
+    </answer>
+   </qandaentry>
+  
+   <qandaentry id="faq.com.q7">
+    <question>
+     <para>
+      'Unable to obtain IDispatch interface for CLSID {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}'의
+      의미는 무엇입니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      이 에러는  다음과 같은 원인일수 있습니다.
+      <itemizedlist>
+       <listitem>
+         <simpara>
+         CLSID가 잘못되었다
+         </simpara>
+        </listitem>
+       <listitem>
+         <simpara>
+         필요한 DLL이 존재하지 않는다
+         </simpara>
+        </listitem>
+       <listitem>
+         <simpara>
+         필요한 컴포넌트가 IDispatch 인터페이스로 구현되지 않았다
+         </simpara>
+        </listitem>
+       </itemizedlist>
+     </para>
+    </answer>
+   </qandaentry>
+    
+   <qandaentry id="faq.com.q8">
+    <question>
+     <para>
+      다른 서버(remote server)에서 COM 객체(object)를 어떻게 실행할수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      로컬 객체를 실행시키는것과 완전히 똑같습니다. 단지 COM 생성자(constructor)의 두번째 인자(parameter)에
+      다른 서버의 IP를 넘겨주면 됩니다.
+     </para>
+     <para>
+      &php.ini;파일 내에서 <literal>com.allow_dcom=true</literal>값을 설정해야 한다는것을 잊지마십시오
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q9">
+    <question>
+     <para>
+      'DCOM is disabled in C:\path...\scriptname.php on line 6'라는 메시지를 봤습니다.
+      어떻게 해야 하나요?
+     </para>
+    </question>
+    <answer>
+     <para>
+      &php.ini;파일 내에서 <literal>com.allow_dcom=true</literal>로 설정합니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q10">
+    <question>
+     <para>
+      PHP에서 ActiveX 객체(object)를 부르거나/변경할수 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      이것은 PHP에서 할일이 아닙니다. HTML 문서에서 ActiveX 객체가 포함되있으면 클라이언트 단에서 
+      그 코드를 처리하는 것입니다. PHP 스크립트와는 전혀 관련이 없고 따라서 서버단과는 직접적인 관련이
+      없습니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q11">
+    <question>
+     <para>
+      특정 컴포넌트에서 실행중인 인스턴스(instance)에 접근 가능합니까? 
+     </para>
+    </question>
+    <answer>
+     <para>
+      모니커(monikers)의 도움으로 가능합니다. 하나의 워드 인스턴스로 다방향 레퍼런스를 얻고 싶다면
+      다음처럼 그 인스턴스를 만들 수 있습니다.
+     </para>
+     <programlisting role="php">
+      $word = new COM("C:\docs\word.doc");
+     </programlisting>
+     <para>
+      위처럼 하면 실행중인 인스턴스가 없을 때에는 새로운 인스턴스를 만들수 있고,
+      실행중인 인스턴스가 이미 존재하면 그 핸들을 넘겨주게 됩니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q12">
+    <question>
+     <para>
+      COM 객체로부터 받은 이벤트를 제어할 방법이 있습니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      PHP 4.3.0을 실행하면, 아래 예제에서 볼수 있듯이 이벤트를 싱크(sink), 연결(bind)
+      할 수 있도록 정의할 수 있습니다. <function>com_print_typeinfo</function>함수를 실행함으로써
+      이벤트 싱크(sink) 클래스에 대한 코드를 만들수 있습니다.
+      <example>
+       <title>COM event sink example</title>
+       <programlisting role="php">
+<![CDATA[
+<?php
+class IEEventSinker {
+  var $terminated = false;
+
+  function ProgressChange($progress, $progressmax) {
+    echo "Download progress: $progress / $progressmax\n";
+  }
+
+  function DocumentComplete(&$dom, $url) {
+    echo "Document $url complete\n";
+  }
+
+  function OnQuit() {
+    echo "Quit!\n";
+    $this->terminated = true;
+  }
+}
+$ie = new COM("InternetExplorer.Application");
+$sink =& new IEEventSinker();
+com_event_sink($ie, $sink, "DWebBrowserEvents2");
+$ie->Visible = true;
+$ie->Navigate("http://www.php.net");
+while(!$sink->terminated) {
+  com_message_pump(4000);
+}
+$ie = null;
+?>
+]]>
+       </programlisting>
+      </example>
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q13">
+    <question>
+     <para>
+      하나 이상의 인터페이스를 갖는 COM 객체의 메소드(method)를 불러
+      들이려고 하는데 문제에 봉착했습니다. 어떻게 해야 합니까?
+     </para>
+    </question>
+    <answer>
+     <para>
+      답은 불만스럽겠지만 간단합니다. 확실치는 않지만 당신은 아무것도 할수없습니다.
+      어떤사람은 이 문제와 관련된 정보를 가지고 있습니다. 
+      <ulink url="mailto:&email.harald;">저</ulink>에게 알려주시라 :)
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q14">
+    <question>
+     <para>
+      그래서 PHP와 COM이 작동하는군요. COM+는 어떤가요?
+     </para>
+    </question>
+    <answer>
+     <para>
+      MTS와 MTMQ를 통해서 컴포넌트를 관리하는 프레임워크가 추가되면서 COM에서 COM+로 발전된것입니다.
+      그런데 PHP는 그런 컴포넌트를 지원하지 않습니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.com.q15">
+    <question>
+     <para>
+      PHP가 COM 객체를 다룰수있다면, PHP로 컴포넌트 자원을 관리하는 MTS를 쓸수있지 않을까요?
+     </para>
+    </question>
+    <answer>
+     <para>
+      PHP자체로는 아직 트랜젝션(transaction)을 관리할수 없습니다.
+      따라서 에러가 발생하더라도 롤백(rollback)으로 초기화되지않습니다.
+      트랜젝션을 지원하는 컴포넌트를 사용한다면 트랜젝션 관리를 구현해서 써야합니다.
+     </para>
+    </answer>
+   </qandaentry>
+ 
+  </qandaset>
+ </chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
