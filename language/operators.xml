@@ -1,0 +1,544 @@
+<chapter id="language.operators">
+	<title>연산자 (Operators)</title>
+	<simpara/>
+	<sect1 id="language.operators.arithmetic">
+		<title>산술 연산자 (Arithmetic Operators)</title>
+		<simpara>
+    학교에서 배운 산술 연산(가감승제)을 기억하는가? 이 산술 연산자는 그것처럼 동작한다.
+   </simpara>
+		<table>
+			<title>Arithmetic Operators</title>
+			<tgroup cols="3">
+				<thead>
+					<row>
+						<entry>Example</entry>
+						<entry>Name</entry>
+						<entry>Result</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>$a + $b</entry>
+						<entry>덧셈(Addition)</entry>
+						<entry>$a와 $b의 합.</entry>
+					</row>
+					<row>
+						<entry>$a - $b</entry>
+						<entry>뺄셈(Subtraction)</entry>
+						<entry>$a에서 $b를 뺀 값.</entry>
+					</row>
+					<row>
+						<entry>$a * $b</entry>
+						<entry>곱셈(Multiplication)</entry>
+						<entry>$a와 $b의 곱.</entry>
+					</row>
+					<row>
+						<entry>$a / $b</entry>
+						<entry>나눗셈(Division)</entry>
+						<entry>$a에서 $b를 나눈 값(혹 은 몫).</entry>
+					</row>
+					<row>
+						<entry>$a % $b</entry>
+						<entry>나머지(Modulus)</entry>
+						<entry>$a에서 $b를 나눈 나머지.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		<simpara>
+    The division operator ("/") returns an integer value (the result
+    of an integer division) if the two operands are integers (or
+    strings that get converted to integers) and the quotient is an
+    integer. If either operand is a floating-point value, or the
+    operation results in a non-integer value, a floating-point value
+    is returned.
+   </simpara>
+	</sect1>
+	<sect1 id="language.operators.assignment">
+		<title>대입 연산자 (Assignment Operators)</title>
+		<simpara>
+	기본 대입 연산자는 "="이다. 
+	이 연산자를 처음 보았을 때는 "같다"라는 연산자로 생각하기 쉽지만 전혀 아니다. 
+	이것의 의미는 오른쪽의 표현식을 계산하여 그 값을 왼쪽에 있는 
+	피연산자의 값으로 설정한다는 의미이다. (이것을 "gets set to"라고 한다.) 
+   </simpara>
+		<para>
+	대입 연산자의 값은 왼쪽으로 대입된 값이다. 
+	즉, "$a = 3"의 값은 3이 된다. 이것은 여러분에게 약간의 트릭이 가능하도록한다.
+    <informalexample>
+				<programlisting role="php"> 
+$a = ($b = 4) + 5; // $a는 9, $b는 4의 값을 가진다.
+     </programlisting>
+			</informalexample>
+		</para>
+		<para>
+	기본적인 대입 연산자 외에 모든 Bit 단위 연산자, 산술 연산자와 결합한 
+	복합 대입 연산자도 있다. 결합된 연산자는 표현식에서 해당 연산으로 사용되고, 
+	그 연산 값을 왼쪽에 있는 피연산자에 대입한다. 예를 들어 :
+    <informalexample>
+				<programlisting role="php">
+$a = 3;
+$a += 5; // $a는 8이다. $a = $a + 5; 와 동일하다.
+$b = "Hello ";
+$b .= "There!"; // $b는 "Hello There!"가 된다. $b = $b . "There!";와 같다.
+     </programlisting>
+			</informalexample>
+		</para>
+		<para>
+
+    Note that the assignment copies the original variable to the new
+    one (assignment by value), so changes to one will not affect the
+    other. This may also have relevance if you need to copy something
+    like a large array inside a tight loop. PHP 4 supports assignment
+    by reference, using the <computeroutput>$var =
+    &amp;$othervar;</computeroutput> syntax, but this is not possible
+    in PHP 3. 'Assignment by reference' means that both variables end
+    up pointing at the same data, and nothing is copied anywhere. 
+    To learn more about references, please read <link linkend="language.references">References explained</link>.
+   </para>
+	</sect1>
+	<sect1 id="language.operators.bitwise">
+		<title>Bit 단위 연산자 (Bitwise Operators)</title>
+		<simpara>
+    비트 단위 연산자는 정수의 개별 비트의 값을 on, off 할 수 있다.
+   </simpara>
+		<table>
+			<title>Bitwise Operators</title>
+			<tgroup cols="3">
+				<thead>
+					<row>
+						<entry>Example</entry>
+						<entry>Name</entry>
+						<entry>Result</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>$a &amp; $b</entry>
+						<entry>And</entry>
+						<entry>$a와 $b가 모두 1인 비트만 1이 된다.</entry>
+					</row>
+					<row>
+						<entry>$a | $b</entry>
+						<entry>Or</entry>
+						<entry>$a와 $b중 하나라도 1인 비트는 1이 된다.</entry>
+					</row>
+					<row>
+						<entry>$a ^ $b</entry>
+						<entry>Xor</entry>
+						<entry>$a와 $b중 하나는 1이고, 다른 하나는 0인 비트만 1이되고, 나머지는 0이 된다.</entry>
+					</row>
+					<row>
+						<entry>~ $a</entry>
+						<entry>Not</entry>
+						<entry>$a에서 1인 비트는 0으로, 0인 비트는 1로 된다.</entry>
+					</row>
+					<row>
+						<entry>$a &lt;&lt; $b</entry>
+						<entry>Shift left</entry>
+						<entry>$a의 비트들을 $b step 만큼 왼쪽으로 shift 한다. (한 step은 2를 한 번 곱하는 만큼의 효과가 있다.)</entry>
+					</row>
+					<row>
+						<entry>$a &gt;&gt; $b</entry>
+						<entry>Shift right</entry>
+						<entry>$a의 비트들을 $b step 만큼 오른으로 shift 한다. (한 step은 2를 한 번 나누는 만큼의 효과가 있다.)</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+	</sect1>
+	<sect1 id="language.operators.comparison">
+		<title>비교 연산자 (Comparison Operators)</title>
+		<simpara>
+    비교 연산자는 이름에서 알 수 있듯이 두 개의 값을 비교하는 연산자이다.
+   </simpara>
+		<table>
+			<title>Comparison Operators</title>
+			<tgroup cols="3">
+				<thead>
+					<row>
+						<entry>Example</entry>
+						<entry>Name</entry>
+						<entry>Result</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>$a == $b</entry>
+						<entry>Equal</entry>
+						<entry>$a와 $b가 같으면 true.</entry>
+					</row>
+					<row>
+						<entry>$a === $b</entry>
+						<entry>Identical</entry>
+						<entry>$a와 $b가 같으면 true. $a와 $b의 type까지 동일해야 한다. (PHP4 only)</entry>
+					</row>
+					<row>
+						<entry>$a != $b</entry>
+						<entry>Not equal</entry>
+						<entry>$a와 $b가 다르면 true.</entry>
+					</row>
+					<row>
+						<entry>$a !== $b</entry>
+						<entry>Not identical</entry>
+						<entry>$a와 $b가 다르면 같으면 true. $a와 $b의 type만 달라도 true. (PHP4 only)
+	True if $a is not equal to $b, or they are not of the same
+	type. (PHP 4 only)
+       </entry>
+					</row>
+					<row>
+						<entry>$a &lt; $b</entry>
+						<entry>Less than</entry>
+						<entry>$a가 $b보다 작으면 true.</entry>
+					</row>
+					<row>
+						<entry>$a &gt; $b</entry>
+						<entry>Greater than</entry>
+						<entry>$a가 $b보다 크면 true.</entry>
+					</row>
+					<row>
+						<entry>$a &lt;= $b</entry>
+						<entry>Less than or equal to </entry>
+						<entry>$a가 $b보다 작거나 같으면 true.</entry>
+					</row>
+					<row>
+						<entry>$a &gt;= $b</entry>
+						<entry>Greater than or equal to </entry>
+						<entry>$a가 $b보다 크거나 같으면 true.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		<para>
+	또 다른 조건 연산자로 C나 다른 언어에 있는 "?:" 연산자가 있다. 
+    <informalexample>
+				<programlisting>
+(expr1) ? (expr2) : (expr3);
+     </programlisting>
+			</informalexample> 
+	이 표현식은 <replaceable>expr1</replaceable>의 결과가 참이면 
+	<replaceable>expr2</replaceable>를 반환하고, 거짓이면 <replaceable>expr3</replaceable>를 반환한다.
+   </para>
+	</sect1>
+	<sect1 id="language.operators.errorcontrol">
+		<title>오류 제어 연산자 (Error control Operators)</title>
+		<simpara>
+	PHP는 @(at 표시)이라는 한 개의 오류 제어 연산자를 제공한다. 
+	PHP의 표현식 앞에 이 표시가 붙으면, 해당 표현식에서 발생한 모든 에러 메시지가 무시된다.
+   </simpara>
+		<simpara>
+	만약 <link linkend="ini.track-errors">track_errors</link> 기능이 활성화 되어 있다면, 
+	해당 표현식에서 발생한 모든 에러 메시지는 $php_errormsg 라는 전역 변수에 저장될 것이다. 
+	이 변수의 값은 매번 에러가 발생할 때마다 새로 설정된다. 
+	따라서 만약 여러분이 이 변수를 사용하려면 에러가 발생한 직후에 최대한 빨리 사용하여야 한다.
+   </simpara>
+		<para>
+			<informalexample>
+				<programlisting role="php">
+&lt;?php
+/* Intentional SQL error (extra quote): */
+$res = @mysql_query ("select name, code from 'namelist") or
+    die ("Query failed: error was '$php_errormsg'");
+?&gt;
+     </programlisting>
+			</informalexample>
+		</para>
+		<simpara>
+    See also <function>error_reporting</function>.
+   </simpara>
+		<warning>
+			<para>
+     Currently the "@" error-control operator prefix will even disable
+     error reporting for critical errors that will terminate script
+     execution. Among other things, this means that if you use "@" to
+     suppress errors from a certain function and either it isn't
+     available or has been mistyped, the script will die right there
+     with no indication as to why.
+    </para>
+		</warning>
+	</sect1>
+	<sect1 id="language.operators.execution">
+		<title>실행 연산자 (Execution Operators)</title>
+		<para>
+	PHP는 한 개의 실행 연산자를 제공한다. (``) 일반 작은 따옴표가 아님을 주의하자! 
+	PHP는 이 사이에 있는 명령을 shell 명령어로 실행하고 그 결과를 반환한다. 
+	(실행 결과를 단순히 출력하는 것이 아니고, 변환하여 변수에 저장할 수도 있다.)
+    <informalexample>
+				<programlisting role="php">
+$output = `ls -al`;
+echo "&lt;pre&gt;$output&lt;/pre&gt;";
+     </programlisting>
+			</informalexample>
+		</para>
+		<para>
+    See also <function>system</function>,
+    <function>passthru</function>, <function>exec</function>,
+    <function>popen</function>, and
+    <function>escapeshellcmd</function>.
+   </para>
+	</sect1>
+	<sect1 id="language.operators.increment">
+		<title>증가/감소 연산자 (Incrementing/Decrementing Operators)</title>
+		<para>
+    PHP는 C 형태의 앞, 뒤에 붙는 증가나 감소 연산자를 제공한다.
+   </para>
+		<table>
+			<title>Increment/decrement Operators</title>
+			<tgroup cols="3">
+				<thead>
+					<row>
+						<entry>Example</entry>
+						<entry>Name</entry>
+						<entry>Effect</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>++$a</entry>
+						<entry>Pre-increment</entry>
+						<entry>$a 를 1 증가시킨 후, $a를 반환한다</entry>
+					</row>
+					<row>
+						<entry>$a++</entry>
+						<entry>Post-increment</entry>
+						<entry>$a를 반환한 후,$a 를 1 증가시킨다.</entry>
+					</row>
+					<row>
+						<entry>--$a</entry>
+						<entry>Pre-decrement</entry>
+						<entry>$a 를 1 감소시킨 후, $a를 반환한다.</entry>
+					</row>
+					<row>
+						<entry>$a--</entry>
+						<entry>Post-decrement</entry>
+						<entry>$a를 반환한 후,$a 를 1 감소시킨다.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		<para>
+    $a를 반환한 후,$a 를 1 증가시킨다.:
+    <informalexample>
+				<programlisting role="php">
+&lt;?php
+echo "&lt;h3&gt;Postincrement&lt;/h3&gt;";
+$a = 5;
+echo "Should be 5: " . $a++ . "&lt;br&gt;\n";
+echo "Should be 6: " . $a . "&lt;br&gt;\n";
+
+echo "&lt;h3&gt;Preincrement&lt;/h3&gt;";
+$a = 5;
+echo "Should be 6: " . ++$a . "&lt;br&gt;\n";
+echo "Should be 6: " . $a . "&lt;br&gt;\n";
+
+echo "&lt;h3&gt;Postdecrement&lt;/h3&gt;";
+$a = 5;
+echo "Should be 5: " . $a-- . "&lt;br&gt;\n";
+echo "Should be 4: " . $a . "&lt;br&gt;\n";
+
+echo "&lt;h3&gt;Predecrement&lt;/h3&gt;";
+$a = 5;
+echo "Should be 4: " . --$a . "&lt;br&gt;\n";
+echo "Should be 4: " . $a . "&lt;br&gt;\n";
+?&gt;
+     </programlisting>
+			</informalexample>
+		</para>
+	</sect1>
+	<sect1 id="language.operators.logical">
+		<title>Logical Operators</title>
+		<table>
+			<title>Logical Operators</title>
+			<tgroup cols="3">
+				<thead>
+					<row>
+						<entry>Example</entry>
+						<entry>Name</entry>
+						<entry>Result</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>$a and $b</entry>
+						<entry>And</entry>
+						<entry>$a와 $b가 모두 true 이면 true.</entry>
+					</row>
+					<row>
+						<entry>$a or $b</entry>
+						<entry>Or</entry>
+						<entry>$a와 $b중 하나라도 true이면 true.</entry>
+					</row>
+					<row>
+						<entry>$a xor $b</entry>
+						<entry>Xor</entry>
+						<entry>$a와 $b중 하나만 true이어야 true</entry>
+					</row>
+					<row>
+						<entry>! $a</entry>
+						<entry>Not</entry>
+						<entry>$a가 true가 아니면 true</entry>
+					</row>
+					<row>
+						<entry>$a &amp;&amp; $b</entry>
+						<entry>And</entry>
+						<entry>$a와 $b가 모두 true 이면 true.</entry>
+					</row>
+					<row>
+						<entry>$a || $b</entry>
+						<entry>Or</entry>
+						<entry>$a와 $b중 하나라도 true이면 true.</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+		<simpara>
+	"and"와 "or" 연산자가 두가지의 다른 형태를 가지고 있는 이유는 
+	이 연산자들이 서로 다른 우선순위를 가지고 있기 때문이다. 
+	(아래 <link linkend="language.operators.precedence">Operator Precedence</link>를 보라.)
+   </simpara>
+	</sect1>
+	<sect1 id="language.operators.precedence">
+		<title>연산자 우선 순위 (Operator Precedence)</title>
+		<para>
+	연산자들의 우선순위는 두 개의 표현식중 어느것이 더 단단히 묶여 있는가를 명기한다. 
+	예를들어 <literal>1 + 5 * 3</literal>은 <literal>16</literal>을 반환하지 <literal>18</literal>을 반환하지 않는다. 
+	왜냐하면 곱하기("*")연산자가 더하기("+")연산자보다 우선순위가 높기 때문이다.
+	필요하면 괄호를 사용하여 우선순위를 강제적으로 설정할 수 있다. 
+	예를들어 <literal>(1 + 5) * 3</literal>의 결과는 <literal>18</literal>이 된다.
+   </para>
+		<para>
+	다음 표는 연산자의 우선순위를 나타낸다 가장 위에 있는 연산자의 우선순위가 가장 낮다.
+    <table>
+				<title>Operator Precedence</title>
+				<tgroup cols="2">
+					<thead>
+						<row>
+							<entry>Associativity</entry>
+							<entry>Operators</entry>
+						</row>
+					</thead>
+					<tbody>
+						<row>
+							<entry>left</entry>
+							<entry>,</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>or</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>xor</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>and</entry>
+						</row>
+						<row>
+							<entry>right</entry>
+							<entry>print</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>
+         = += -= *= /= .= %= &amp;= |= ^= ~= &lt;&lt;= &gt;&gt;=
+        </entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>? :</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>||</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>&amp;&amp;</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>|</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>^</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>&amp;</entry>
+						</row>
+						<row>
+							<entry>non-associative</entry>
+							<entry>== != === !==</entry>
+						</row>
+						<row>
+							<entry>non-associative</entry>
+							<entry>&lt; &lt;= &gt; &gt;=</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>&lt;&lt; &gt;&gt;</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>+ - .</entry>
+						</row>
+						<row>
+							<entry>left</entry>
+							<entry>* / %</entry>
+						</row>
+						<row>
+							<entry>right</entry>
+							<entry>! ~ ++ -- (int) (double) (string) (array) (object) @</entry>
+						</row>
+						<row>
+							<entry>right</entry>
+							<entry>[</entry>
+						</row>
+						<row>
+							<entry>non-associative</entry>
+							<entry>new</entry>
+						</row>
+					</tbody>
+				</tgroup>
+			</table>
+		</para>
+	</sect1>
+	<sect1 id="language.operators.string">
+		<title>문자열 연산자 (String Operators)</title>
+		<simpara>
+	문자열 연산자는 두개가 있다. 
+	첫 번째는 왼쪽과 오른쪽의 두 문자열을 연결하는 연결(concatenation) 연산자 (".") 가 있다. 
+	두 번째는 연결 대입 연산자 (".=") 가 있다. 이에 대해서는 
+	<link linkend="language.operators.assignment">대입연산자(Assugnment Operator)</link> 부분을 읽어보자.
+   </simpara>
+		<para>
+			<informalexample>
+				<programlisting role="php">
+$a = "Hello ";
+$b = $a . "World!"; // now $b contains "Hello World!"
+
+$a = "Hello ";
+$a .= "World!";     // now $a contains "Hello World!"
+     </programlisting>
+			</informalexample>
+		</para>
+	</sect1>
+</chapter>
+<!-- Keep this comment at the end of the file
+ Local variables:
+ mode: sgml
+ sgml-omittag:t
+ sgml-shorttag:t
+ sgml-minimize-attributes:nil
+ sgml-always-quote-attributes:t
+ sgml-indent-step:1
+ sgml-indent-data:t
+ sgml-parent-document:nil
+ sgml-default-dtd-file:"../../manual.ced"
+ sgml-exposed-tags:nil
+ sgml-local-catalogs:nil
+ sgml-local-ecat-files:nil
+ End:
+ -->
