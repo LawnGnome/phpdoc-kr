@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.13 $ -->
+<!-- $Revision: 1.14 $ -->
 <!-- EN-Revision: 1.96 -->
  <chapter id="configuration">
   <title>환경 설정</title>
@@ -666,36 +666,35 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Tells whether or not to register the EGPCS (Environment, GET,
-         POST, Cookie, Server) variables as global variables. For example;
-         if register_globals = on, the url 
-         <literal>http://www.example.com/test.php?id=3</literal> will produce
-         <varname>$id</varname>. Or, <varname>$DOCUMENT_ROOT</varname> from
-         <varname>$_SERVER['DOCUMENT_ROOT']</varname>. You may want to turn
-         this off if you don't want to clutter your scripts' global scope with
-         user data.  As of PHP <ulink url="&url.php.release4.2.0;">4.2.0</ulink>,
-         this directive defaults to <emphasis>off</emphasis>.  It's preferred to
-         go through PHP <link linkend="reserved.variables">Predefined Variables
-         </link> instead, such as the 
-         <link linkend="language.variables.superglobals">superglobals</link>:
+         EGPCS(환경, GET, POST, 쿠키, 서버) 변수를 전역 변수로 등록할지를
+         결정합니다. 예를 들어, register_globals = on 이라면 url
+         <literal>http://www.example.com/test.php?id=3</literal> 요청에
+         <varname>$id</varname>를 생성합니다. 또는,
+         <varname>$_SERVER['DOCUMENT_ROOT']</varname>에서
+         <varname>$DOCUMENT_ROOT</varname>를 등록합니다. 스크립트의
+         전역 위치에 유저 데이터로 채워지는것을 원하지 않는다면, 이 옵션을
+         끄십시오. PHP <ulink url="&url.php.release4.2.0;">4.2.0</ulink>부터는
+         이 지시자의 기본값은 <emphasis>off</emphasis>입니다.
+         <link linkend="language.variables.superglobals">자동전역</link>:
          <varname>$_ENV</varname>, <varname>$_GET</varname>,
-         <varname>$_POST</varname>, <varname>$_COOKIE</varname>, and
-         <varname>$_SERVER</varname>. Please read the security chapter on
-         <link linkend="security.registerglobals">Using register_globals</link>
-         for related information.
+         <varname>$_POST</varname>, <varname>$_COOKIE</varname>,
+         <varname>$_SERVER</varname> 등의 PHP <link linkend="reserved.variables">예약
+         정의 변수</link>를 사용하는 것을 권장합니다. 보안 챕터의
+         <link linkend="security.registerglobals">register_globals 사용</link>에 대한
+         관련 정보를 읽어보십시오.
         </para>
         <para>
-         Please note that <systemitem role="directive">register_globals</systemitem>
-         cannot be set at runtime (<function>ini_set</function>). Although, you can
-         use &htaccess; if your host allows it as described
-         above. An example &htaccess; entry:
-         <userinput>php_flag register_globals on</userinput>.
+         <systemitem role="directive">register_globals</systemitem>는 실행시에
+         설정(<function>ini_set</function>)할 수 없는 점에 주의하십시오. 그러나,
+         호스트가 &htaccess;를 허용한다면, 그것을 이용할 수 있습니다. 예제
+         &htaccess; 엔트리:
+         <userinput>php_flag register_globals on</userinput>
         </para>
         <note>
          <para>
-          <systemitem role="directive">register_globals</systemitem> is affected 
-          by the <link linkend="ini.variables-order">variables_order</link> 
-          directive.
+          <systemitem role="directive">register_globals</systemitem>는
+          <link linkend="ini.variables-order">variables_order</link> 지시자의
+          영향을 받습니다.
          </para>
         </note>
        </listitem>
