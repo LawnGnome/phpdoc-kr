@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
+<!-- $Revision: 1.9 $ -->
 <!-- EN-Revision: 1.43 -->
  <chapter id="language.oop">
   <title>클래스와 객체</title>
 
   <sect1 id="keyword.class">
-   <title><literal>클래스</literal></title>
+   <title><literal>class</literal></title>
    <para>
-    클래스는 특정 변수들과 그리고 이 변수들을 써서 동작하는 함수의 집합체이다.
-    다음과 같은 문법을 사용하여 선언한다:
+    클래스(class)는 특정 변수들 그리고 이 변수들과 같이 동작하는 함수의 집합체이다.
+    다음 예제코드처럼 클래스를 선언할수 있다:
    </para>
    <para>
     <informalexample>
@@ -45,14 +45,14 @@ class Cart
    </para>
  
    <para>
-    위 코드는 카트(cart)를 위한 품목의 연관 배열과 cart에 아이템을 추가하거나
-    제거하는 두 개의 함수로 구성된 Cart라는 이름을 갖는 클래스를 선언하고 있다.
+    위 코드에서 Cart라는 이름을 갖는 클래스는 카트(cart)를 위한 품목의 연관 배열,
+    그리고 카트에 아이템을 추가하거나 제거하는 두 개의 함수로 구성되어있다. 
    </para>
 
    <warning>
     <simpara>
      클래스 선언부를 여러 파일이나 여러 PHP블록으로 분리할수 <emphasis>없다</emphasis>
-     다음 코드는 동작하지 않을것이다:
+     다음 코드는 작동하지 않을것이다:
     </simpara>
     <para>
      <informalexample>
@@ -74,13 +74,13 @@ class test {
    </warning>
 
    <simpara>
-    PHP 4에서는 다음과 같은 주의사항을 숙지해야 한다.
+    PHP 4에서는 다음 사항에 주의해야 한다.
    </simpara>
     
    <caution>
     <simpara>
-     Zend에서는 <literal>stdClass</literal>같은 명칭을 내부적으로
-     사용하며 이 명칭은 예약되어있다. 따라서 PHP에서는 <literal>stdClass</literal>라는
+     Zend에서는 <literal>stdClass</literal>같은 명칭을 내부적으로 사용하며 
+     이 명칭은 예약되어있다. 따라서 PHP에서 <literal>stdClass</literal>라는
      클래스명을 만들수 없다.
     </simpara>
    </caution>
@@ -90,7 +90,7 @@ class test {
       <literal>__sleep</literal>과 <literal>__wakeup</literal>함수는
       PHP 클래스에서 중요한 역할을 수행한다. 이들과 결합된 매직 기능을 원
       하지 않는다면 이런 이름을 클래스내에서 사용할수 없다. 
-      아래 글에서 자세하게 설명할것이다.
+      다음 글에서 자세하게 설명할것이다.
     </simpara>
    </caution>
     
@@ -104,9 +104,9 @@ class test {
 
    <simpara>
     PHP 4에서 <literal>var</literal>로 변수를 선언할때는 상수로만 초기화될수
-    있다. 상수가 아닌 값으로 초기화하려면, 클래스로부터 객체가 생성될때 자동적
+    있다. 상수가 아닌 값으로 초기화하려면, 클래스로부터 객체를 생성할때 자동적
     으로 호출되는 함수에서 초기화할 필요가 있다. 이런 함수를 생성자(constructor)
-    라고 부른다. (아래글을 보라)
+    라고 부른다. (다음글을 보세요)
    </simpara>
    <informalexample>
     <programlisting role="php">
@@ -142,8 +142,8 @@ class Cart
    </informalexample>
 
    <para>
-    클래스는 타입이다. 즉, 실제 변수를 위한 청사진이다. <literal>new</literal>
-    연산자를 사용하여 원하는 타입의 변수를 생성해야 한다.
+    class는 타입이다. 즉, 실제 변수를 위한 청사진이다. <literal>new</literal>
+    연산자를 사용하여 원하는 이런 타입의 변수를 생성할 수 있다.
    </para>
  
    <informalexample>
@@ -170,11 +170,11 @@ $another_cart->add_item("0815", 3);
    <para>
     <varname>$cart</varname>와 <varname>$another_cart</varname> 둘다 
     add_item(), remove_item() 함수와 items변수를 갖는다. 이들 모두 서로
-    다른 함수와 변수이다. 이런 객체는 파일시스템의 디렉토리에 비유될수 있다.
+    다른 함수와 변수들이다. 이런 객체는 파일시스템의 디렉토리에 비유될수 있다.
     파일시스템에서는 서로 다른 디렉토리에 있으면 두개의 다른 README.TXT파일을 
     저장할수 있다. 이 파일 각각에 접근하기 위해서는 최상위 디렉토리에서
     각 파일로의 경로를 지정해 줘야 하듯이, 이런 각 함수를 호출하고자 한다면 
-    각 함수의 완벽한 이름을 지정해야 한다: PHP에서 최상위 디렉토리는 전역 
+    각 함수의 완전한 이름을 지정해야 한다: PHP에서 최상위 디렉토리는 전역 
     네임스페이스를 갖고, 경로 구분자로 <literal>-&gt;</literal>를 사용할수 있다. 
     따라서, <varname>$cart-&gt;items</varname>과 <varname>$another_cart-&gt;items</varname>
     은 서로 다른 변수를 지칭하는 것이다.
@@ -285,7 +285,7 @@ $ncart->add_item("10", 1);  // (기존 cart에서 상속한 함수 사용)
    </para>
    <note>
     <para>
-     클래스는 그것이 사용되기 전에 선언되어야 한다! 
+     클래스는 그것이 사용되기 전에 이미 선언되어 있어야 한다! 
      <literal>Cart</literal>클래스를 상속하는 <literal>Named_Cart</literal>클래스가
      필요하면 우선 <literal>Cart</literal>클래스를 먼저 선언해야 할것이다.
      <literal>Named_Cart</literal>클래스에 기반한 다른 클래스 <literal>Yellow_named_cart</literal>
@@ -296,21 +296,21 @@ $ncart->add_item("10", 1);  // (기존 cart에서 상속한 함수 사용)
   </sect1>
 
   <sect1 id="language.oop.constructor">
-   <title><literal>Constructors</literal></title>
+   <title><literal>생성자</literal></title>
 
    <caution>
     <simpara>
      PHP 3와 PHP 4에서 생성자(constructor)는 서로 다르게 동작한다.
-     PHP 4의 문법이 강력히 선호된다.
+     PHP 4의 문법이 강력히 추천하는 바이다.
     </simpara>
    </caution>
 
    <para>
     생성자는 <literal>new</literal>를 사용하여 클래스의 새 인스턴스를
-    생성할때 자동으로 호출되는 클래스 내의 함수이다. PHP 3에서는 클래스의
-    이름과 동일한 함수가 생성자가 된다. PHP 4에서는 클래스가 선언될때의
-    클래스명과 동일한 이름을 갖는 함수가 생성자가 된다. - 차이는 
-    미묘하지만 매우 중요하다 (아래 글을 볼것).
+    생성할때 자동으로 호출되는 클래스 내의 함수를 말한다. PHP 3에서는
+    클래스의 이름과 동일한 함수가 생성자가 된다. PHP 4에서는 클래스가
+    선언될때의 클래스명과 동일한 이름을 갖는 함수가 생성자가 된다. - 
+    차이는 미묘하지만 매우 중요하다 (다음 글을 보세요).
    </para>
  
    <informalexample>
@@ -336,7 +336,7 @@ class Auto_Cart extends Cart
     아이템 하나를 갖는 카트로 초기화하는 생성자를 만든다.
     생성자는 인자를 취할수 있고 이런 인자로 인해 생성자를 더 유용하게
     만들어주지만 없을수도 있다. 인자가 없는 클래스를 사용하려면 
-    생성자의 모든 인자는 기본값을 제공함으로써 선택적일수 있다.
+    생성자의 모든 인자는 기본값을 제공해 줄수 있다.
    </para>
  
    <informalexample>
@@ -373,7 +373,7 @@ $different_cart = new Constructor_Cart("20", 17);
    <caution>
     <simpara>
      PHP 3에서 파생 클래스와 생성자는 많은 제약을 갖는다.
-     다음 예제 코드는 이런 제약을 이해하기 위해 주의깊게 봐야할것이다.
+     다음 예제 코드는 이런 제약을 이해하기 위해 주의깊게 살펴봐야할것이다.
     </simpara> 
    </caution>
    
@@ -405,13 +405,13 @@ $b = new B;
    </informalexample>
 
    <para>
-    위 예제 코드는 PHP 3에서 어떤 생성자도 호출되지 않는다. PHP 3의
+    위 예제 코드는 PHP 3에서는 어떤 생성자도 호출되지 않는다. PHP 3의
     규칙은 : '생성자는 클래스와 같은 이름을 갖는 함수이다'. 클래스명 
     이 B이고 이 클래스에서는 B()함수가 없으므로 아무일도 일어나지 않는다.
    </para>
    
    <para>
-    PHP 4에서는 다른 규칙이 적용되어서 이런 규칙이 고쳐졌다: 클래스가
+    PHP 4에서는 다른 규칙이 적용되어서 이런 규칙의 문제가 해결되었다: 클래스가
     생성자를 갖지 않을때, 원래 클래스에서 생성자가 존재하면 그 생성자가 
     호출된다. 위 예제 코드는 PHP 4에서 'I am the constructor of A.&lt;br>'
     를 출력할것이다.
@@ -458,30 +458,30 @@ $b = new B;
    </para>
    
    <para>
-    이런 규칙은 PHP 4에서 다음과 같이 고쳐졌다: '생성자는 그것이 선언
-    된 클래스와 같은 이름을 갖는 함수이다'. 따라서 PHP 4는 클래스 B
-    가 생성자를 갖지 않으므로 원래 클래스의 생성자가 호출되어서
-    'I am the constructor of A.&lt;br>'를 출력한다.
+    위 규칙의 문제점을 PHP 4에서는 다음과 같은 규칙으로 해결했다 : 
+    '생성자는 그것이 선언된 클래스와 같은 이름을 갖는 함수이다'. 
+    따라서 PHP 4는 클래스 B가 생성자를 갖지 않으므로 원래 클래스의
+    생성자가 호출되어서 'I am the constructor of A.&lt;br>'를 출력한다.
    </para>
    
    <caution>
     <simpara>
      PHP 3와 PHP 4 모두 파생 클래스의 생성자에서 자동으로 원래
-     클래스의 생성자를 호출하지 않는다. 적절한 상단의 생성자 호출을 
+     클래스의 생성자를 호출하지 않는다. 적절하게 상단에 생성자 호출을 
      전달할 책임은 당신에게 달려있다.
     </simpara>
    </caution>
    
    <note>
     <simpara>
-     PHP 3나 PHP 4에서는 소멸자(destructor)를 지원하지 않는다. 대신 이런
+     PHP 3나 PHP 4에서는 소멸자(destructor)를 지원하지 않는다. 대신에 이런
      소멸자의 기능을 수행하기 위해 <function>register_shutdown_function</function>
      함수를 사용할수 있다.
     </simpara>
    </note>
    
    <para>
-    소멸자는 객체가 파괴될때, <function>unset</function>함수로, 
+    소멸자는 객체가 파괴될때, <function>unset</function>함수나, 
     단순히 현재 영역을 벗어남으로써 자동으로 호출되는 함수이다.
     PHP에서는 소멸자가 없다.
    </para>
@@ -576,14 +576,14 @@ $b->example();
 
   <para>
    원래 클래스의 변수와 함수를 참조하는 코드를 짜야할 필요가 생길수 있다.
-   파생 클래스가 세밀하게 고안되었거나 원래 클래스의 코드에서 특수화되어
+   파생 클래스가 세분화되어 고안되었거나 원래 클래스의 코드에서 특수화되어
    있는경우에는 더욱 그럴 필요성이 생긴다.
   </para>
   
   <para>
    코드에서 원래 클래스명을 사용하는 대신에, 특별한 이름 <literal>parent</literal>
    을 사용해야 한다. 이 용어는 현재 클래스의 <literal>extends</literal>선언
-   안에 주어진 원래 클래스에 대한 참조한다는 의미를 갖는다. 이렇게 씀으로써
+   안에 주어진 원래 클래스를 참조한다는 의미를 갖는다. 이렇게 씀으로써
    여러 곳에서 원래 클래스명을 쓰는것을 피할수 있다. 구현중에 상속이 세번
    바뀌게 되면, 단순히 현재 클래스의 <literal>extends</literal>선언을
    바꾸기만 하면 된다.
