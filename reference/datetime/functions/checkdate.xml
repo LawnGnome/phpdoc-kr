@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.checkdate">
    <refnamediv>
     <refname>checkdate</refname>
@@ -14,28 +14,50 @@
       <methodparam><type>int</type><parameter>year</parameter></methodparam>
      </methodsynopsis>
     <para>
-     주어진 날짜가 유효하면 &true;를, 유효하지 않으면 &false;를 반환합니다.
-     각 인자가 구성하는 날짜의 유효성을 확인합니다. 다음과 같은 날짜가
+     주어진 날짜가 유효하면 &true;를, 유효하지 않으면 &false;를 반환합니다. 각
+     인자가 구성하는 날짜의 유효성을 확인합니다. 다음과 같은 날짜가
      유효합니다.
      <itemizedlist>
       <listitem>
        <simpara>
-        year 는 1 이상 32767 이하
+        year는 1 이상 32767 이하
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        month 는 1 이상 12 이하
+        month는 1 이상 12 이하
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        <parameter>Day</parameter>는 주어진 <parameter>month</parameter>에 대해
-        허용된 일수입니다. 윤년 (Leaf <parameter>year</parameter>)도
+        <parameter>Day</parameter>는 주어진 <parameter>month</parameter>가
+        허용하는 일수입니다. 윤년 (Leaf <parameter>year</parameter>)도
         고려합니다.
        </simpara>
       </listitem>
      </itemizedlist>
+    </para>
+    <para>
+     <example>
+      <title><function>checkdate</function> 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+var_dump(checkdate(12, 31, 2000));
+var_dump(checkdate(2, 29, 2001));
+?>
+]]>
+      </programlisting>
+      <para>
+       위 예제의 출력:
+      </para>
+      <screen>
+<![CDATA[
+bool(true);
+bool(false);
+]]>
+      </screen>
+     </example>
     </para>
     <para>
      참고: <function>mktime</function>, <function>strtotime</function>.
