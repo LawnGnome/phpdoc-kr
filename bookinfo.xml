@@ -1,32 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
-
+<!-- $Revision: 1.13 $ -->
  <bookinfo id="bookinfo">
   <authorgroup id="authors">
+
    <author>
     <firstname>Stig</firstname><surname>S&aelig;ther Bakken</surname>
+    <!-- email: ssb%40php.net -->
    </author>
+
    <author>
     <firstname>Alexander</firstname><surname>Aulbach</surname>
+    <!-- email: ssilk%40ssilk.de  [no cvs user listed at master.php.net!] -->
    </author>
+
    <author>
     <firstname>Egon</firstname><surname>Schmid</surname>
+    <!-- email: eschmid%40php.net -->
    </author>
+
    <author>
     <firstname>Jim</firstname><surname>Winstead</surname>
+    <!-- email: jimw%40php.net -->
    </author>
+
    <author>
     <firstname>Lars Torben</firstname><surname>Wilson</surname>
+    <!-- email: torben%40php.net -->
    </author>
+
    <author>
     <firstname>Rasmus</firstname><surname>Lerdorf</surname>
+    <!-- email: rasmus%40php.net -->
    </author>
+
    <author>
     <firstname>Andrei</firstname><surname>Zmievski</surname>
+    <!-- email: andrei%40php.net -->
    </author>
+
    <author>
     <firstname>Jouni</firstname><surname>Ahto</surname>
+    <!-- email: jah%40php.net -->
    </author>
+
   </authorgroup>
 
   <pubdate>&php.build-date;</pubdate>
@@ -69,9 +85,8 @@
   <legalnotice id="copyright">
    <title>저작권</title>
    <simpara>
-    This manual is &copy; Copyright 1997, 1998, 1999, 2000, 2001, 2002, 2003 by
-    the PHP Documentation Group.  The members of this group are listed
-    on the front page of this manual.
+    This manual is &copy; Copyright 1997 - 2003 by the PHP Documentation Group.
+    The members of this group are listed on the front page of this manual.
    </simpara>
    <simpara>
     This manual can be redistributed under the terms of the GNU
@@ -87,6 +102,7 @@
     <ulink url="&url.opl;">&url.opl;</ulink>).
    </simpara>
   </legalnotice>
+
  </bookinfo>
 
 <!-- Keep this comment at the end of the file
