@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.6 -->
  <reference id="ref.math">
   <title>수학 함수</title>
-  <titleabbrev>Math</titleabbrev>
+  <titleabbrev>수학</titleabbrev>
   
   <partintro>
    <section id="math.intro">
