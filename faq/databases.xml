@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.1 $ -->
+<!-- EN-Revision: 1.18 -->
+ <chapter id="faq.databases">
+  <title>데이터베이스와 관련된 문제</title>
+  <titleabbrev>데이터베이스와 관련된 문제</titleabbrev>
+
+  <para>
+   이 섹션은 PHP와 데이터베이스의 연동에 관련되어 자주 묻는 
+   질문들을 다룹니다.
+   네, PHP는 오늘날 거의 모든 데이터베이스와 연동이 가능합니다.
+  </para>
+
+  <qandaset>
+   <qandaentry id="faq.databases.mssql">
+    <question>
+     <para>
+      PHP로 Microsoft SQL 서버로 접근이 가능하다고 들었습니다. 어떻게요?
+     </para>
+    </question>
+    <answer>
+     <para>
+      윈도우 머신상에서, 인클루드 ODBC 지원(included ODBC support)과 
+      ODBC 드라이버(correct ODBC driver)를 사용할수 있습니다.
+     </para>
+     <para>
+      유닉스 머신에서, 사이베이스-CT(Sybase-CT)드라이버를 사용할수있습니다.
+      왜냐하면 둘은 프로토콜이 호환되기 때문입니다. 사이베이스는
+      <ulink url="&url.sybase.ctlib;">리눅스 시스템에 필요한 무료버전</ulink>
+      을 만들었습니다. 다른 유닉스 운영체제에서는 적합 라이브러리(correct library)
+      로 사이베이스와 연동해야 합니다. 또한 다음 FAQ를 보세요.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.databases.access">
+    <question>
+     <para>MS 액세스 데이터베이스(Microsoft Access database)에 접속할수있습니까?</para>
+    </question>
+    <answer>
+     <para>
+      네, 윈도우 9x/Me나 NT/2000 상에서 운영하고 있다면 그리고 그 운영체제에서
+      ODBC를 사용할수 있고 MS 액세스 데이터베이스를 위한 ODBC 드라이버를 
+      사용할수 있다면 필요한 모든 툴은 이미 보유한 것입니다. 
+     </para>
+     <para>
+      유닉스에서 PHP를 사용하고 있고 윈도우 박스의 MS 액세스와 연동하기를 원한다면
+      유닉스 ODBC 드라이버가 필요합니다.
+      <ulink url="&url.openlink;">OpenLink Software</ulink>에 이를 수행할수 있는
+      유닉스 기반(Unix-based) ODBC 드라이버가 있습니다. 그곳에는 시험판(evalution)을
+      다운로드 할수 있는 안내용 프로그램(pilot program)이 있고, 그리고 675달러이상하는
+      상업용 버전도 있습니다.
+     </para>
+     <para>
+      다른 방법은 윈도우 ODBC 드라이버까지 포함되있고 데이터도 저장할수 있는 
+      SQL 서버를 사용하는것입니다. 그 데이터는 MS 액세스에서 접근할수 있고(ODBC로),
+      PHP로(내장 드라이버)로 접근할수 있습니다. 또는 액세스와 PHP 모두에게 가용한
+      파일 형식을 이용하는것입니다. 즉 일반 파일(flat files)이나 dBase 형식으로요.
+      이에 관련된 글을 OpenLink software의 Tim Hayes가 쓴글을 참고하세요:
+      <programlisting>
+      Using another database as an intermediary is not a good idea, when you can
+      use ODBC from PHP straight to your database - i.e. with OpenLink's drivers. If
+      you do need to use an intermediary file format, OpenLink have now released
+      Virtuoso (a virtual database engine) for NT, Linux and other unix platforms.
+      Please visit our <ulink url="&url.openlink;">website</ulink> for a free download.
+      </programlisting>
+     </para>
+     <para>
+      다른 방법은 MySQL을 사용하고, 윈도우상에서 MyODBC드라이버를 사용하여 데이터베이스를
+      일치(synchronizing)시키는 것입니다. Steve Lawrence의 글을 참고하세요:
+     </para>
+     <para>
+      <itemizedlist>
+       <listitem>
+        <simpara>
+         MySQL의 지시에 따라 사용중인 플래폼에 MySQL을 설치합니다.
+         <ulink url="&url.mysql;">www.mysql.com</ulink>(미러에서 받을수있슴!)에서 받을수 있습니다.
+         데이터베이스를 설치할때 외에는 특별한 설정이 필요치않습니다. 계정을 설정하고,
+         host 필드에는 %로 놓거나 MySQL을 접속하고자하는 윈도우 컴퓨터의 호스트명을 넣습니다.
+         서버명, 계정, 비밀번호를 넣습니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         MySQL사이트에서 윈도우드라이버용 MyODBC를 다운받습니다.
+         최종버전은 dbc-2_50_19-win95.zip입니다(NT도 사용할수 있을뿐만아니라 소스도 있습니다)
+         윈도우 머신에 그것을 설치합니다. 이 프로그램에 포함되어있는 유틸로 동작을 테스트할수있습니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         ODBC 관리자 유저나 시스템 dsn을 만듭니다. 제어판에 위치합니다.
+         dsn 이름을 만들고 스텝1에서 설정한 MySQL데이터베이스에 대한 
+         호스트명, 유저명, 패스워드, 포트등을 넣습니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         전체 설치(full install)로 액세스를 설치합니다. 이렇게 하면 적절한 추가항목(add-ins)도
+         같이 설치가 됩니다. 최소한 ODBC 지원과 링크드 테이블 매니저(linked table manager)가
+         필요합니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         이제부터 중요한 부분입니다! 
+         새 액세스 데이터베이스를 만듭니다. 그 테이블에서 오른쪽 클릭하고 
+         링크 테이블(Link Tables)를 선택하거나, 파일 메뉴 옵션에서 
+         Get External Data를 선택한후에 링크 테이블(Link Tables)을
+         선택하세요. 파일 브라우저 박스가 나올때 files of type: ODBC 를
+         선택하세요. 시스템 dsn과 스텝 3에서 만든 dsn의 이름을 선택하세요. 
+         연결된 테이블을 선택하고, OK를 클릭하세요
+         이젠 테이블을 열수 있고 MySQL서버에 데이터를 넣거나/지우거나/수정 할수 있습니다.
+         질의(query)를 수행할수도 있고 MySQL에 테이블을 임포트(import)/익스포트(export)할수 있습니다.
+         폼이나 레포트도 만들수있고 기타등등...
+        </simpara>
+       </listitem>
+      </itemizedlist>
+     </para>
+     <para>
+      팁과 트릭:
+      <itemizedlist>
+       <listitem>
+        <simpara>
+         액세스에서 테이블을 만들수 있고 MySQL로 그 테이블을 익스포트(export)할수 있고,
+         거기에 링크를 걸수 있습니다. 이렇게 하면 테이블을 빨리 만들어냅니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         액세스에서 테이블을 만들때, 액세스에서 테이블에 쓸수있는
+         권한을 부여하기 위해 정의한 프라이머리 키(primary key)가
+         있어야 합니다. 액세스에 링크를 걸기전에 MySQL에 프라이머리 키를
+         만들었는지 확인합니다.
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>
+         MySQL에서 테이블을 변경한다면, 액세스로 다시 링크를 걸어야 합니다.
+         tools&gt;add-ins&gt;linked table manager로 가서 ODBC DSN을 보고,
+         거기에서 다시 링크할 테이블을 선택합니다. 거기서 dsn의 원본을 옮길수
+         있습니다. OK하기 전에 새 위치(new location) 항상 확인 체크박스를 
+         클릭하면 됩니다.
+        </simpara>
+       </listitem>
+      </itemizedlist>
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.databases.upgraded">
+    <question>
+     <para>
+      I upgraded to PHP 4, and now mysql keeps telling me
+      "Warning: MySQL: Unable to save result set in ...". What's up?
+      PHP 4로 업그레이드했습니다. 그런데 mysql이 다음과같은 메시지를 보여줍니다.
+      "Warning: MySQL: Unable to save result set in ...". 뭐죠?
+     </para>
+    </question>
+    <answer>
+     <para>
+      대부분 PHP 4는 MySQL에대한 경로를 지정하지 않으면 
+      '--with-mysql' 옵션으로 컴파일됩니다. 이것은 PHP가 내장(built-in) MySQL 클라이언트
+      라이브러리(MySQL client library)를 사용한다는 것입니다. 시스템이 응용프로그램을
+      실행할때 아파치 모듈로서의 PHP3나 auth-mysql과 같이 다른 버전의 MySQL클라이언트를 
+      사용하면, 다른 버전의 클라이언트 사이에는 충돌이 발생합니다.
+     </para>
+     <para>
+      PHP 4를 다시 컴파일하세요. 그리고 플래그값으로 MySQL경로를 넣으세요.
+      '<link linkend="mysql.configure">--with-mysql=/your/path/to/mysql</link>' 
+      보통 이렇게 하면 해결됩니다.
+     </para>
+    </answer>
+   </qandaentry>
+   
+   <qandaentry id="faq.databases.shared-mysql">
+    <question>
+     <para>
+      공유 MySQL 지원(shared MySQL support)을 설치한후에, 아파치가 libphp4.so를 로드할때마다
+      코어 덤프가 일어납니다. 이것을 고칠수 있나요?
+     </para>
+    </question>
+    <answer>
+     <para>
+      MySQL libs가 pthreads로 링크되어있다면 이런 현상이 발생합니다.
+      ldd로 점검해보세요. 그렇다면 MySQL 타볼(tarball)를 가져와서 소스로 컴파일하거나
+      소스 RPM에서 재컴파일해서 spec 파일에서 thread 클라이언트 코드로 변경하는
+      곳을 제거하세요. 이 방법 모두 이런 현상을 고칠수 있습니다. 그리고나서
+      새로운 MySQL libs와 함께 PHP를 재컴파일하세요.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry id="faq.databases.mysqlresource">
+    <question>
+     <para>
+      왜 다음과 같은 에러가 발생합니까:
+      "Warning: 0 is not a MySQL result index in &lt;file&gt; 
+      on line &lt;x&gt;" 또는 "Warning: Supplied argument is not 
+      a valid MySQL result resource in &lt;file&gt; on line &lt;x&gt;?
+     </para>
+    </question>
+    <answer>
+     <para>
+      0으로 되어있는 결과 식별자(result identifier)를 사용하려 하고 있습니다.
+      0이라는것은 어떤 이유로 질의가 실패했다는것을 말합니다. 질의를 보내고
+      돌아온 결과 식별자를 사용하기 전에 에러를 점검할 필요가 있습니다.
+      다음과 비슷한 방법이면 됩니다.
+      <programlisting role="php">
+$result = mysql_query("SELECT * FROM tables_priv");
+if (!$result) {
+    echo mysql_error();
+    exit;
+}
+      </programlisting>
+      or
+      <programlisting role="php">
+$result = mysql_query("SELECT * FROM tables_priv")
+    or die("Bad query: ".mysql_error());
+      </programlisting>
+     </para>
+    </answer>
+   </qandaentry>
+  </qandaset>
+ </chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
