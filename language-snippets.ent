@@ -148,7 +148,7 @@ linkend="features.safe-mode">안전 모드</link>가 활성화 되었을 때, PH
 <!ENTITY no.config '<para>이 확장 모듈은 &php.ini; 설정이 존재하지 않습니다.</para>'>
 <!ENTITY no.resource '<para>이 확장 모듈은 리소스형을 정의하지 않습니다.</para>'>
 <!ENTITY no.constants '<para>이 확장 모듈은 상수를 정의하지 않습니다.</para>'>
-<!ENTITY no.requirement '<para>이 확장 모듈의 빌드에는 외부 라이브러리가 필요하지 않습니다.</para>'>
+<!ENTITY no.requirement '<para>이 확장 모듈을 빌드할 때 외부 라이브러리가 필요하지 않습니다.</para>'>
 <!ENTITY no.install '<para>이 함수들은 설치하지 않아도 사용할 수 있습니다;
 PHP 코어의 일부입니다.</para>'>
 
