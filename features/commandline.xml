@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.23 -->
 <chapter id="features.commandline">
  <title>커맨드 라인에서 PHP 사용하기</title>
@@ -56,8 +56,7 @@
  </para>
  <para>
   <note>
-   <title>What SAPI do I have?</title>
-   <title>현재 SAPI는 무엇인가?</title>
+   <title>현재 사용중인 SAPI는 무엇인가?</title>
    <para>
     셀에서, <literal>php -v</literal>를 쳐넣으면 <literal>php</literal>가 
     CGI인지 CLI인지 알수 있을것이다. <function>php_sapi_name</function>과
