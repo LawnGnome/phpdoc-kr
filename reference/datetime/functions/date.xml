@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/datetime.xml, last change in rev 1.1 -->
-<!-- last change to 'date' in en/ tree in rev 1.2 -->
+<!-- $Revision: 1.2 $ -->
+<!-- splitted from ./en/functions/datetime.xml, last change in rev 1.2 -->
   <refentry id="function.date">
    <refnamediv>
     <refname>date</refname>
-    <refpurpose>Format a local time/date</refpurpose>
+    <refpurpose>로컬 시간/날짜를 형식화한다.</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>string</type><methodname>date</methodname>
       <methodparam><type>string</type><parameter>format</parameter></methodparam>
@@ -16,202 +16,274 @@
        </parameter></methodparam>
      </methodsynopsis>
     <para>
-     Returns a string formatted according to the given format string
-     using the given <parameter>timestamp</parameter> or the current
-     local time if no timestamp is given.
+     주어진 정수형 <parameter>timestamp</parameter>나 <parameter>timestamp</parameter>가
+     주어지지 않았다면 현재 로컬 시간으로 주어진 <parameter>format</parameter> 문자열에
+     따라 형식화된 문자열을 반환한다.
+     <note>
+      <para>
+       전형적인 timestamp의 유효 범위는 1901년 12월 13일 금요일
+       20:45:54 GMT부터 2038년 1월 19일 화요일 03:14:07 GMT이다.
+       (이것은 부호 있는 32비트 정수형의 최소와 최대값에 대응한다.
+       윈도우즈에서는 이 값은 1970-01-01부터 2038-01-19로 제한된다)
+      </para>
+      <para>
+       날짜 표시의 문자열로부터 timestamp를 를 생성하기 위해서,
+       <function>strtotime</function>을 사용할 수 있다. 또, 몇몇
+       데이터베이스는 그들의 날짜 형식으로부터 timestamp로 변환하는
+       함수를 가지고 있다. (MySQL의 UNIX_TIMESTAMP 함수와 같은)
+      </para>
+     </note>
     </para>
     <para>
-     The following characters are recognized in the format string:
+     다음에 주어진 문자는 format 문자열로 인식한다:
      <itemizedlist>
       <listitem>
        <simpara>
-        a - "am" or "pm"
+        a - "am"이나 "pm"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        A - "AM" or "PM"
+        A - "AM"이나 "PM"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        B - Swatch Internet time
+        B - 스왓치 인터넷 시간
+       (역자 주: 하루를 1000으로 나눈 단위)
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        d - day of the month, 2 digits with leading zeros; i.e. "01"
-        to "31"
+        d - 일, 앞에 0이 붙은 2자리; 즉, "01"부터 "31"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        D - day of the week, textual, 3 letters; i.e. "Fri"
+        D - 요일, 3글자 문자; 예를 들면, "Fri"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        F - month, textual, long; i.e. "January"
+        F - 월, 긴 형태의 문자; 예를 들면, "January"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        g - hour, 12-hour format without leading zeros; i.e. "1" to
+        g - 시, 0이 붙지 않는 12시간 형식; 즉, "1"부터
         "12"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        G - hour, 24-hour format without leading zeros; i.e. "0" to
-        "23"
+        G - 시, 0이 붙지 않는 24시간 형식; 즉, "0"부터 "23"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        h - hour, 12-hour format; i.e. "01" to "12"
+        h - 시, 12시간 형식; 즉, "01"부터 "12"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        H - hour, 24-hour format; i.e. "00" to "23"
+        H - 시, 24시간 형식; 즉, "00"부터 "23"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        i - minutes; i.e. "00" to "59"
+        i - 분; 즉, "00" to "59"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        I (capital i) - "1" if Daylight Savings Time, "0" otherwise.
+        I (대문자 i) - 일광 절약 시간이라면 "1", 아니라면 "0".
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        j - day of the month without leading zeros; i.e. "1" to "31"
+        j - 앞에 0이 없는 일; 즉, "1"부터 "31"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        l (lowercase 'L') - day of the week, textual, long;
-        i.e. "Friday"
+        l (소문자 'L') - 요일, 긴 형태의 문자; 예를 들면,
+        "Friday"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        L - boolean for whether it is a leap year; i.e. "0" or "1"
+        L - 윤년인지 아닌지를 확인하는 boolean; 즉, "0"나 "1"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        m - month; i.e. "01" to "12"
+        m - 월; 즉, "01"부터 "12"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        M - month, textual, 3 letters; i.e. "Jan"
+        M - 월, 3글자 문자; 예를 들면, "Jan"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        n - month without leading zeros; i.e. "1" to "12"
+        n - 0이 붙지 않는 월; 즉, "1"부터 "12"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        r - RFC 822 formatted date; i.e. "Thu, 21 Dec 2000 16:01:07 +0200"
+        O - 그리니치 시간과의 차이; 예를 들면, "+0200"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        s - seconds; i.e. "00" to "59"
+        r - RFC 822 형식 날짜; 예를 들면, "Thu, 21 Dec 2000 16:01:07 +0200"
+        (PHP 4.0.4에서 추가)
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        S - English ordinal suffix, textual, 2 characters; i.e. "th",
-        "nd"
+        s - 초; 즉, "00"부터 "59"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        t - number of days in the given month; i.e. "28" to "31"
+        S - 날짜를 위한 영어의 서수 접미사, 2문자;
+        즉, "st", "nd", "rd" 또는 "th"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        T - Timezone setting of this machine; i.e. "MDT"
+        t - 주어진 월의 일수; 즉, "28"부터 "31"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        U - seconds since the epoch
+        T - 이 기계의 표준 시간대 설정; 예를 들면, "EST" 또는 "MDT"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        w - day of the week, numeric, i.e. "0" (Sunday) to "6"
-        (Saturday)
+        U - 유닉스 Epoch(1970년 1월 1일 00:00:00 GMT)로부터의 초
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        Y - year, 4 digits; i.e. "1999"
+        w - 요일, 숫자형; 즉, "0"(일요일)부터 "6"(토요일)
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        y - year, 2 digits; i.e. "99"
+        W - ISO-8601 연도의 주차, 주는 월요일에 시작함 (PHP 4.1.0에서 추가)
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        z - day of the year; i.e. "0" to "365"
+        Y - 연도, 4자리; 예를 들면, "1999"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	Z - timezone offset in seconds (i.e. "-43200" to "43200"). The
-	offset for timezones west of UTC is always negative, and for
-	those east of UTC is always positive.
+        y - 연도, 2자리; 예를 들면, "99"
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        z - 그 연도의 일차; 즉, "0"부터 "365"
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        Z - 표준 시간대의 오프셋 초. (즉, "-43200"부터 "43200")
+        UTC로부터 서쪽의 오프셋은 항상 음수이고, UTC로부터 동쪽의
+        오프셋은 항상 양수이다.
        </simpara>
       </listitem>
      </itemizedlist>
-     Unrecognized characters in the format string will be printed
-     as-is.  The "Z" format will always return "0" when using
-     <function>gmdate</function>.
+     format 문자열로 인식되지 않는 문자는 그대로 출력한다. "Z" 형식은
+     <function>gmdate</function>를 이용할때는 항상 "0"을 반환한다.
+    </para>
+    <para>
      <example>
-      <title><function>date</function> example</title>
+      <title><function>date</function> 예제</title>
       <programlisting role="php">
-print (date ("l dS of F Y h:i:s A"));
-print ("July 1, 2000 is on a " . date ("l", mktime(0,0,0,7,1,2000)));
+<![CDATA[
+echo date ("l dS of F Y h:i:s A");
+echo "2000년 7월 1일은 " . date ("l", mktime(0,0,0,7,1,2000));
+]]>
       </programlisting>
      </example>
     </para>
     <para>
-     It is possible to use <function>date</function> and
-     <function>mktime</function> together to find dates in the future
-     or the past.
+     format 문자열로 인식하는 문자 바로 앞에 백슬래쉬를 붙여서 이스케이프를
+     함으로써, 전개하는 것 막을 수 있다. 백슬래쉬가 붙은 문자가 이미 특별한
+     의미를 가지고 있다면, 백슬래쉬를 이스케이프 할 필요가 있을것이다.
+     <example>
+      <title><function>date</function>에서 문자를 이스케이프 하기.</title>
+      <programlisting role="php">
+<![CDATA[
+echo date("l \\t\h\e jS"); // 'Saturday the 8th'와 같이 출력한다
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <para>
+     <function>date</function>와 <function>mktime</function>을 함께
+     사용함으로써 미래나 과거의 시간을 얻을 수 있다.
      <example>
       <title>
-       <function>date</function> and <function>mktime</function>
-       example
+       <function>date</function>와 <function>mktime</function>
+       예제
       </title>
-      <programlisting>
+      <programlisting role="php">
+<![CDATA[
 $tomorrow  = mktime (0,0,0,date("m")  ,date("d")+1,date("Y"));
 $lastmonth = mktime (0,0,0,date("m")-1,date("d"),  date("Y"));
 $nextyear  = mktime (0,0,0,date("m"),  date("d"),  date("Y")+1);
+]]>
+      </programlisting>
+     </example>
+     <note>
+      <para>
+       이것은 일광 절약 시간 때문에, 단순히 timestamp에 하루나 한달의 초를
+       더하는 것보다 신뢰할 수 있다.
+      </para>
+     </note>
+    </para>
+    <para>
+     <function>date</function> 형식화의 몇몇 예제. 모든 다른 문자들도
+     이스케이프 해야함에 주의하라. 현재 특별한 의미를 가진 어떤 것이
+     바람직하지 못한 결과를 가져올 수 있고, 앞으로의 PHP 버전에서는
+     다른 문자들도 지정될 수가 있다. 이스케이프 할 때는, \n이 줄바꿈으로
+     인식 되는 것과 같은 예을 피하기 위해서는 작은 따옴표를 사용해야만 한다.
+     <example>
+      <title>
+       <function>date</function> 형식화
+      </title>
+      <programlisting role="php">
+<![CDATA[
+/* Today is March 10th, 2001, 5:16:18 pm */
+$today = date("F j, Y, g:i a");                 // March 10, 2001, 5:16 pm
+$today = date("m.d.y");                         // 03.10.01
+$today = date("j, n, Y");                       // 10, 3, 2001
+$today = date("Ymd");                           // 20010310
+$today = date('h-i-s, j-m-y, it is w Day z ');  // 05-16-17, 10-03-01, 1631 1618 6 Fripm01
+$today = date('\i\t \i\s \t\h\e jS \d\a\y.');   // It is the 10th day.
+$today = date("D M j G:i:s T Y");               // Sat Mar 10 15:16:08 MST 2001
+$today = date('H:m:s \m \i\s\ \m\o\n\t\h');     // 17:03:17 m is month
+$today = date("H:i:s");                         // 17:16:17
+]]>
       </programlisting>
      </example>
     </para>
     <para>
-     To format dates in other languages, you should use the
-     <function>setlocale</function> and <function>strftime</function>
-     functions.
+     다른 언어로 날짜를 형식화 하기 위해서는, <function>setlocale</function>과
+     <function>strftime</function> 함수를 이용해야만 한다.
     </para>
     <para>
-     See also <function>gmdate</function> and
-     <function>mktime</function>.
+     <function>getlastmod</function>, <function>gmdate</function>,
+     <function>mktime</function>, <function>strftime</function>
+     그리고 <function>time</function>도 참고하라.
     </para>
    </refsect1>
   </refentry>

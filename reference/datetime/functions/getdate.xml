@@ -1,74 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/datetime.xml, last change in rev 1.1 -->
-<!-- last change to 'getdate' in en/ tree in rev 1.2 -->
+<!-- $Revision: 1.2 $ -->
+<!-- splitted from ./en/functions/datetime.xml, last change in rev 1.2 -->
   <refentry id="function.getdate">
    <refnamediv>
     <refname>getdate</refname>
-    <refpurpose>Get date/time information</refpurpose>
+    <refpurpose>날짜/시간 정보를 가져온다.</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>array</type><methodname>getdate</methodname>
       <methodparam choice="opt"><type>int</type><parameter>timestamp</parameter></methodparam>
      </methodsynopsis>
     <para>
-     Returns an associative array containing the date information of
-     the <parameter>timestamp</parameter>, or the current local time if
-     no timestamp is given, as the following array
-     elements:
+     <parameter>timestamp</parameter>나 timestamp가 주어지지 않는다면
+     현재 로컬 시간의 날짜 정보를 포함하는 다음의 배열 요소를 가지는
+     연합 배열을 반환한다.
      <itemizedlist>
       <listitem>
        <simpara>
-	"seconds" - seconds
+        "seconds" - 초
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"minutes" - minutes
+        "minutes" - 분
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"hours" - hours
+        "hours" - 시
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"mday" - day of the month
+        "mday" - 일
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"wday" - day of the week, numeric
+        "wday" - 요일, 숫자형 : 일요일의 0부터 토요일의 6까지
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"mon" - month, numeric
+        "mon" - 월, 숫자형
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"year" - year, numeric
+        "year" - 연도, 숫자형
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"yday" - day of the year, numeric; i.e. "299"
+        "yday" - 연도의 일차; 예를 들면, "299"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"weekday" - day of the week, textual, full; i.e. "Friday"
+        "weekday" - 요일, 완전한 문자; 예를 들면, "Friday"
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-	"month" - month, textual, full; i.e. "January"
+        "month" - 월, 완전한 문자; 예를 들면, "January"
        </simpara>
       </listitem>
      </itemizedlist>
+     <example>
+      <title>
+       <function>getdate</function> 예제
+      </title>
+      <programlisting role="php">
+<![CDATA[
+$today = getdate();
+$month = $today['month'];
+$mday = $today['mday'];
+$year = $today['year'];
+echo "$month $mday, $year";
+]]>
+      </programlisting>
+     </example>
     </para>
    </refsect1>
   </refentry>

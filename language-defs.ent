@@ -1,12 +1,16 @@
-<!ENTITY PHPManual		"PHP 매뉴얼">
-<!ENTITY Date			"Date:">
-<!ENTITY GettingStarted		"시작하기">
-<!ENTITY LanguageReference	"언어 레퍼런스">
-<!ENTITY Features		"특징">
-<!ENTITY FunctionReference	"함수 레퍼런스">
-<!ENTITY Appendixes		"Appendixes">
-<!ENTITY PEAR             "PEAR: the PHP Extension and Application Repository">
-<!ENTITY FAQ             "FAQ: Frequently Asked Questions">
-<!ENTITY FAQabbrev              "FAQ">
-<!ENTITY FunctionIndex     "함수 인덱스">
+<!-- $Revision$ -->
 
+<!ENTITY PHPManual         "PHP Manual">
+<!ENTITY Date              "Date:">
+<!ENTITY GettingStarted    "Getting Started">
+<!ENTITY Installation      "Installation">
+<!ENTITY LanguageReference "Language Reference">
+<!ENTITY Features          "Features">
+<!ENTITY FunctionReference "Function Reference">
+<!ENTITY Appendixes        "Appendixes">
+<!ENTITY PEAR              "PEAR: the PHP Extension and Application Repository">
+<!ENTITY FAQ               "FAQ: Frequently Asked Questions">
+<!ENTITY FAQabbrev         "FAQ">
+<!ENTITY FunctionIndex     "Function Index">
+<!ENTITY CHMEdition        "HTML Help Edition">
+<!ENTITY ReservedConstants "Predefined Constants">
