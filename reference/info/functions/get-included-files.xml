@@ -21,8 +21,9 @@
     <para>
      호출한 스크립트 파일은 "포함한 파일"로 처리하기에,
      <function>include</function> 등으로 참조한 파일과 같이 나옵니다.
+    </para>
     <para>
-     여러번 include나 require한 파일은 반환 배열에 한번만 나옵니다.
+     여러번 include나 require한 파일은 반환하는 배열에 한번만 나옵니다.
     </para>
     <note>
      <para>
