@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.5 -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
@@ -54,18 +54,17 @@
      </listitem>
      <listitem>
       <simpara>
-     Though binary zero characters are supported in  the  subject  string,
-     they are not allowed in a pattern string because it is passed as a
-     normal C string, terminated  by zero. The escape sequence "\\x00" can
-     be used in the pattern to represent a binary zero.
+     바이너리 제로 문자는 목표 문자열에서는 지원하지만, 패턴 문자열에서는
+     허용되지 않습니다. 패턴은 제로로 종료되는 일반의 C 문자열로 넘어가기
+     때문입니다. 패턴에서 바이너리 제로를 표현하기 위해 이스케이프 시퀀스
+     "\\x00"를 사용할 수 있습니다.
       </simpara>
       </listitem>
       <listitem>
       <simpara>
-     The following Perl escape sequences  are  not  supported:
-     \l,  \u,  \L,  \U,  \E, \Q. In fact these are implemented by
-     Perl's general string-handling and are not part of its  pat-
-     tern matching engine.
+     다음의 펄 이스케이프 시퀀스는 지원하지 않습니다:
+     \l,  \u,  \L,  \U,  \E, \Q. 사실, 이것들은 펄의 일반 문자열
+     핸들링이며, 패턴 매칭 엔진의 부분이 아닙니다.
       </simpara>
       </listitem>
       <listitem>
@@ -76,8 +75,7 @@
       </listitem>
       <listitem>
       <simpara>
-     Fairly obviously, PCRE does not support the (?{code})
-     construction.
+     당연하게도, PCRE는 (?{code}) 구조를 지원하지 않습니다.
       </simpara>
       </listitem>
       <listitem>
@@ -104,8 +102,7 @@
       </listitem>
       <listitem>
       <para>
-     PCRE  provides  some  extensions  to  the  Perl  regular
-     expression facilities:
+     PCRE는 펄 정규표현식 기능의 몇가지 확장을 지원합니다:
         <orderedlist>
          <listitem>
           <simpara>
@@ -144,29 +141,26 @@
    </refsect1>
 
    <refsect1 id="regexp.reference">
-    <title>Regular Expression Details</title>
+    <title>정규 표현식 상세</title>
      <refsect2 id="regexp.introduction">
-      <title>Introduction</title>
+      <title>소개</title>
       <para>
-     The syntax and semantics of  the  regular  expressions  sup-
-     ported  by PCRE are described below. Regular expressions are
-     also described in the Perl documentation and in a number  of
-     other  books,  some  of which have copious examples. Jeffrey
-     Friedl's  "Mastering  Regular  Expressions",  published   by
-     O'Reilly  (ISBN 1-56592-257-3), covers them in great detail.
-     The description here is intended as reference documentation.
+     아래의 설명은 PCRE가 지원하는 정규 표현식의 문법과 의미입니다.
+     정규 표현식은 펄 문서와 많은 책들에 설명이 있으며, 몇몇은 풍부한
+     예제가 존재합니다. O'Reilly에서 출판한 Jeffrey Friedl의
+     "Mastering  Regular  Expressions"(ISBN 1-56592-257-3)는
+     예제들을 매우 자세하게 다루고 있습니다. 여기의 설명은 레퍼런스
+     문서에 따릅니다.
 
-     A regular expression is a pattern that is matched against  a
-     subject string from left to right. Most characters stand for
-     themselves in a pattern, and match the corresponding charac-
-     ters in the subject. As a trivial example, the pattern
+     정규 표현식은 주어진 문자열에 대하여 왼쪽에서 오른쪽으로 매치하는
+     패턴입니다. 문자는 패턴에 준비되고, 표적에서 대응하는 문자에
+     매치합니다. 간단한 예제로, 패턴 
        <literal>The quick brown fox</literal>
-     matches a portion of a subject string that is  identical  to
-     itself.  
+     은 표적 문자열의 동일한 부분에 매치합니다.
     </para>
     </refsect2>
     <refsect2 id="regexp.reference.meta">
-     <title>Meta-characters</title>
+     <title>메타 문자</title>
      <para>     
      The  power  of  regular  expressions comes from the
      ability to include alternatives and repetitions in the  pat-

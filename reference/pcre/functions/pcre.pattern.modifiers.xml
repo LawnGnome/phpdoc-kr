@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.5 -->
   <refentry id="pcre.pattern.modifiers">
    <refnamediv>
@@ -104,13 +104,12 @@
     <term><emphasis>D</emphasis> (PCRE_DOLLAR_ENDONLY)</term>
     <listitem>
      <simpara>
-      If this modifier is set, a dollar metacharacter in the pattern
-      matches only at the end of the subject string. Without this
-      modifier, a dollar also matches immediately before the final
-      character if it is a newline (but not before any other
-      newlines).  This modifier is ignored if <emphasis>m</emphasis>
-      modifier is set. There is no equivalent to this modifier in
-      Perl.
+      이 변경자가 설정되면, 패턴의 달러($) 메타문자는 주어진 문자열의
+      마지막에만 대응합니다. 이 변경자 없이는, 달러는 마지막 문자가
+      뉴라인일 경우에는 바로 직전의 문자에도 매칭합니다. (마지막이
+      아닌 뉴라인은 제외합니다) 이 변경자는 <emphasis>m</emphasis>
+      변경자가 지정되었을때는 무시됩니다. 펄에는 이 변경자가
+      존재하지 않습니다. 
      </simpara>
     </listitem>
        </varlistentry>
@@ -142,14 +141,12 @@
     <term><emphasis>X</emphasis> (PCRE_EXTRA)</term>
     <listitem>
      <simpara>
-      This modifier turns on additional functionality of PCRE that
-      is incompatible with Perl. Any backslash in a pattern that
-      is followed by a letter that has no special meaning causes
-      an error, thus reserving these combinations for future
-      expansion. By default, as in Perl, a backslash followed by a
-      letter with no special meaning is treated as a literal.
-      There are at present no other features controlled by this
-      modifier.
+      이 변경자는 펄과 호환되지 않는 PCRE의 추가 기능을 사용하게
+      합니다. 패턴의 문자와 결합된 백슬래쉬가 특별한 의미를
+      지니지 않을 경우에 에러를 발생시켜서, 차후에 추가 기능을
+      위해 예약해둡니다. 기본적으로 펄은, 문자와 결합된 백슬래쉬가
+      특별한 의미를 지니지 않을 경우에는 글자로 취급합니다.
+      이 변경자는 다른 기능을 제어하지 않습니다.
      </simpara>
     </listitem>
        </varlistentry>
@@ -157,10 +154,9 @@
     <term><emphasis>u</emphasis> (PCRE_UTF8)</term>
     <listitem>
      <simpara>
-      This modifier turns on additional functionality of PCRE that
-      is incompatible with Perl. Pattern strings are treated as
-      UTF-8. This modifier is available from PHP 4.1.0 or greater
-      on Unix and from PHP 4.2.3 on win32.
+      이 변경자는 펄과 호환되지 않는 PCRE의 추가 기능을 사용하게
+      합니다. 패턴 문자열을 UTF-8으로 취급합니다. 유닉스에서는
+      PHP 4.1.0부터, win32에서는 PHP 4.2.3부터 사용할 수 있습니다.
      </simpara>
     </listitem>
        </varlistentry>
