@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
+<!-- $Revision: 1.10 $ -->
 <!-- EN-Revision: 1.63 -->
  <chapter id="features.file-upload">
   <title>파일 업로드 다루기</title>
@@ -309,31 +309,30 @@ print "</pre>";
     httpd는 파일 업로드 기능을 지원하지 않습니다.
    </simpara>
    <simpara>
-    Due to the large amount of directory listing styles we cannot guarantee
-    that files with exotic names (like containing spaces) are handled properly.
+    많은 양의 디렉토리 목록 형식으로 인해, 확장 형식의 이름(공백을 포함하는 등의)을
+    가지는 파일을 정상적으로 다룰 수 있는 보장은 없습니다.
    </simpara>
   </sect1>
   
   <sect1 id="features.file-upload.multiple">
-   <title>복수 파일 업로드하기</title>
+   <title>복수 파일 전송하기</title>
    <simpara>
     복수 파일은 <literal>input</literal>에서 다른
     <literal>name</literal>을 사용해서 업로드 할 수 있습니다.
    </simpara>
    <simpara>
-    It is also possible to upload multiple files simultaneously and
-    have the information organized automatically in arrays for you. To
-    do so, you need to use the same array submission syntax in the
-    HTML form as you do with multiple selects and checkboxes:
+    동시에 복수 파일을 업로드하고 배열로 조직화한 정보를 얻을 수 있습니다.
+    이를 위해서는, HTML 폼에 복수 선택이나 체크박스와 동일한 방식으로
+    동일한 이름의 배열형 구문을 갖추면 됩니다:
    </simpara>
    <note>
     <para>
-     Support for multiple file uploads was added in version 3.0.10.
+     복수 파일 업로드 지원은 버전 3.0.10에서 추가되었습니다.
     </para>
    </note>
    <para>
     <example>
-     <title>Uploading multiple files</title>
+     <title>복수 파일 전송하기</title>
      <programlisting role="html">
 <![CDATA[
 <form action="file-upload.php" method="POST" enctype="multipart/form-data">
@@ -347,62 +346,57 @@ print "</pre>";
     </example>
    </para>
    <simpara>
-    When the above form is submitted, the arrays
-    <varname>$_FILES['userfile']</varname>,
-    <varname>$_FILES['userfile']['name']</varname>, and
-    <varname>$_FILES['userfile']['size']</varname> will be
-    initialized (as well as in $HTTP_POST_FILES for PHP version
-    prior 4.1.0).
-    When
-    <literal>register_globals</literal> is on, globals for uploaded
-    files are also initialized. Each of these will be a numerically
-    indexed array of the appropriate values for the submitted files.
+    위 폼이 전송되면, 배열 <varname>$_FILES['userfile']</varname>,
+    <varname>$_FILES['userfile']['name']</varname>, 
+    <varname>$_FILES['userfile']['size']</varname>가 초기화됩니다.
+    (버전 4.1.0 이전에는 $HTTP_POST_FILES)
+    <literal>register_globals</literal>가 on이라면, 전송된 파일들에
+    대한 전역 변수도 초기화됩니다. 이 각각에 대해서 전송된 파일에 따른
+    숫자로 정렬된 배열을 가지게 됩니다.
    </simpara>
    <simpara>
-    For instance, assume that the filenames
-    <filename>/home/test/review.html</filename> and
-    <filename>/home/test/xwp.out</filename> are submitted.  In this
-    case, <varname>$_FILES['userfile']['name'][0]</varname>
-    would contain the value <filename>review.html</filename>, and
-    <varname>$_FILES['userfile']['name'][1]</varname> would
-    contain the value <filename>xwp.out</filename>. Similarly,
-    <varname>$_FILES['userfile']['size'][0]</varname> would
-    contain <filename>review.html</filename>'s filesize, and so forth.
+    예를 들어, <filename>/home/test/review.html</filename>와
+    <filename>/home/test/xwp.out</filename>가 전송되었다고 합시다.
+    이 경우에, <varname>$_FILES['userfile']['name'][0]</varname>의 값은
+    <filename>review.html</filename>이고,
+    <varname>$_FILES['userfile']['name'][1]</varname>의 값은
+    <filename>xwp.out</filename>가 됩니다. 동일하게,
+    <varname>$_FILES['userfile']['size'][0]</varname>는
+    <filename>review.html</filename>의 크기를 가지게 되며,
+    나머지도 마찬가지입니다.
    </simpara>
    <simpara>
     <varname>$_FILES['userfile']['name'][0]</varname>,
     <varname>$_FILES['userfile']['tmp_name'][0]</varname>,
-    <varname>$_FILES['userfile']['size'][0]</varname>, and
-    <varname>$_FILES['userfile']['type'][0]</varname> are
-    also set.
+    <varname>$_FILES['userfile']['size'][0]</varname>,
+    <varname>$_FILES['userfile']['type'][0]</varname>이
+    설정됩니다.
    </simpara>
   </sect1>
 
   <sect1 id="features.file-upload.put-method">
    <title>PUT 방식 지원</title>
    <simpara>
-    PUT method support has changed between PHP 3 and PHP 4.
-    In PHP 4, one should use the standard input stream to read
-    the contents of an HTTP PUT.
+    PUT 방식 지원은 PHP 3와 PHP 4에서 차이가 있습니다.
+    PHP 4에서는, 표준 입력 스트림으로 HTTP PUT의 내용을 읽어야 합니다.
    </simpara>
    <para>
     <example>
-     <title>Saving HTTP PUT files with PHP 4</title>
+     <title>PHP 4로 HTTP PUT 파일을 저장하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
-/* PUT data comes in on the stdin stream */
+/* PUT 데이터는 stdin 스트림으로 들어옵니다. */
 $putdata = fopen("php://stdin","r");
 
-/* Open a file for writting */
+/* 쓰기 위한 파일을 엽니다. */
 $fp = fopen("myputfile.ext","w");
 
-/* Read the data 1kb at a time
-   and write to the file */
+/* 한번에 1kb씩 읽어서 파일에 씁니다. */
 while ($data = fread($putdata,1024))
   fwrite($fp,$data);
 
-/* Close the streams */
+/* 스트림을 닫습니다. */
 fclose($fp);
 fclose($putdata);
 ?>
@@ -412,13 +406,13 @@ fclose($putdata);
    </para>
    <note>
     <para>
-     All documentation below applies to PHP 3 only.
+     아래의 문서는 PHP 3에만 해당합니다.
     </para>
    </note>
    <para>
-    PHP provides support for the HTTP PUT method used by clients such
-    as Netscape Composer and W3C Amaya.  PUT requests are much simpler
-    than a file upload and they look something like this:
+    PHP는 Netscape Composer나 W3C Amaya 등의 클라이언트에서 사용하는
+    HTTP PUT 방식에 대한 지원을 제공합니다. PUT 요청은 파일 업로드보다
+    단순하고 다음과 같은 식으로 이루어집니다.
     <informalexample>
      <programlisting>
 PUT /path/filename.html HTTP/1.1
@@ -426,16 +420,14 @@ PUT /path/filename.html HTTP/1.1
     </informalexample>
    </para>
    <para>
-    This would normally mean that the remote client would like to save
-    the content that follows as: /path/filename.html in your web tree.
-    It is obviously not a good idea for Apache or PHP to automatically
-    let everybody overwrite any files in your web tree.  So, to handle
-    such a request you have to first tell your web server that you
-    want a certain PHP script to handle the request.  In Apache you do
-    this with the <emphasis>Script</emphasis> directive.  It can be
-    placed almost anywhere in your Apache configuration file.  A
-    common place is inside a &lt;Directory&gt; block or perhaps inside
-    a &lt;Virtualhost&gt; block.  A line like this would do the trick:
+    일반적으로 원격 클라이언트가 웹 트리의 /path/filename.html에 내용을
+    저장하는걸 의미합니다. 아파치나 PHP가 웹 트리의 모든 파일에 누구나
+    자동적으로 덮어쓰게 하는 것은 좋은 생각이 아닙니다. 그래서, 웹 서버에
+    이러한 요청이 들어왔을때, PHP 스크립트를 통해서 다루도록 할 수 있습니다.
+    아파치에서는 <emphasis>Script</emphasis> 지시자를 통해 지정할 수
+    있습니다. 아파치 환경 설정 파일의 거의 모든 곳에서 지정할 수 있습니다.
+    일반적으로는 &lt;Directory&gt; 블록이나 &lt;Virtualhost&gt; 블록의
+    내부에 위치하게 됩니다. 다음 줄을 추가하면 됩니다:
     <informalexample>
      <programlisting>
 Script PUT /put.php
@@ -443,13 +435,12 @@ Script PUT /put.php
     </informalexample>
    </para>
    <simpara>
-    This tells Apache to send all PUT requests for URIs that match the
-    context in which you put this line to the put.php script.  This
-    assumes, of course, that you have PHP enabled for the .php
-    extension and PHP is active.
+    이는 아파치가 이 줄이 들어가 있는 URI에 해당하는 모든 PUT 요청을
+    put.php 스크립트에 전달하게 합니다. 물론, .php 확장자에 대해 PHP가
+    사용 가능한 상태여야 합니다.
    </simpara>
    <simpara>
-    Inside your put.php file you would then do something like this:
+    put.php 파일 안에서는 다음과 같은 작업을 해야 합니다:
    </simpara>
    <para>
     <informalexample><programlisting role="php">
@@ -459,21 +450,18 @@ Script PUT /put.php
     </programlisting></informalexample>
    </para>
    <simpara>
-    This would copy the file to the location requested by the remote
-    client.  You would probably want to perform some checks and/or
-    authenticate the user before performing this file copy.  The only
-    trick here is that when PHP sees a PUT-method request it stores
-    the uploaded file in a temporary file just like those handled but
-    the <link
-    linkend="features.file-upload.post-method">POST-method</link>.
-    When the request ends, this temporary file is deleted.  So, your
-    PUT handling PHP script has to copy that file somewhere.  The
-    filename of this temporary file is in the $PHP_PUT_FILENAME
-    variable, and you can see the suggested destination filename in
-    the $REQUEST_URI (may vary on non-Apache web servers).  This
-    destination filename is the one that the remote client specified.
-    You do not have to listen to this client.  You could, for example,
-    copy all uploaded files to a special uploads directory.
+    파일을 원격 클라이언트에서 요청한 위치로 복사합니다. 파일 복사가
+    이루어지기 전에 몇가지 체크나 사용자 인증을 할 수 있습니다.
+    여기서 보여진 것은 PHP가 PUT 방식 요청을 <link
+    linkend="features.file-upload.post-method">POST 방식</link>에서
+    다룬 것과 같이 임시 파일로 저장하는 것입니다. 요청이 종료되었을 때,
+    임시 파일은 지워집니다. 그래서, PUT을 다루는 PHP 스크립트는 파일을
+    어딘가로 복사해야합니다. 임시 파일의 파일 이름은 $PHP_PUT_FILENAME
+    변수에 들어있고, 대상 파일 이름의 지정은 $REQUEST_URI에서 확인할 수
+    있습니다. (아파치가 아닌 경우 다를 수 있습니다) 대상 파일 이름은
+    원격 클라이언트에서 지정됩니다. 이 클라이언트로부터 지정을 무시해도
+    됩니다. 예를 들면, 모든 전송 파일을 특별한 업로드 디렉토리로 복사할
+    수도 있습니다.
    </simpara>
   </sect1>
 
