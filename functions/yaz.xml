@@ -109,14 +109,10 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_addinfo</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_addinfo</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      부가적인 target (마지막 요청한)에 관한 정보를 리턴한다. 만일 마지막 작업이 성공적으로 이루어지거나 target이 제공하는 추가정보가 없는 경우 공백문자(A empty string)를 리턴한다.
     </para>
@@ -129,14 +125,10 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_close</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_close</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      target과의 연결을 닫는다. application은 주어진 ID로 target에 조회할 수 없다.
     </para>
@@ -151,14 +143,10 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_connect</function>
-					</funcdef>
-					<paramdef>string <parameter>zurl</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_connect</methodname>
+					<methodparam><type>string</type><parameter>zurl</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>yaz_connect</function>은 Z39.50 target과의 연결을 준비한다. zurl 변수는 host[:port][/database]형태를 취한다. 
 				만일 port가 주어지지 않으면 "210"이 사용되고, database가 주어지지 않으면 "Default"를 사용한다. non-blocking함수이고, socket을 만들려고 시도하지 않는다. 
@@ -173,14 +161,10 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_errno</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_errno</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      target (last request)에 관한 error을 리턴한다. target이 진단코드(diagnostic code)를 리턴한 경우 양의 값을; 성공하여 에러가 없는 경우는 "0"의 값을; 요청에 대한 에러를 나타내지 못하는 경우 음의 값을 리턴한다.
     </para>
@@ -196,14 +180,10 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_error</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_error</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      target (마지막 요청한)의 error 메세지를 리턴한다. 마지막 행한 작업이 성공적인 경우 공백문자(empty string)을 리턴한다.
     </para>
@@ -219,14 +199,10 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_hits</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_hits</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>yaz_hits</function> 마지막 검색에 대한 히트수를 리턴한다.
     </para>
@@ -241,18 +217,12 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_range</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-					<paramdef>int <parameter>start</parameter>
-					</paramdef>
-					<paramdef>int <parameter>number</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_range</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+					<methodparam><type>int</type><parameter>start</parameter></methodparam>
+					<methodparam><type>int</type><parameter>number</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는 <function>yaz_search</function>와 조합하여 시작위치(start)와 검색내용 중 나열할 최대값(number)을 나타내는데 이용된다. start의 디폴트 값은 "1"이고, number의 디폴트 값은 "10"이다.( 단지 <function>yaz_search</function>만이 있는경우)
         </para>
@@ -268,18 +238,12 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_record</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-					<paramdef>int <parameter>pos</parameter>
-					</paramdef>
-					<paramdef>string <parameter>type</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_record</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+					<methodparam><type>int</type><parameter>pos</parameter></methodparam>
+					<methodparam><type>string</type><parameter>type</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      주어진 포지션에 레코드가 없는경우 공백문자를 반환하고, 있는경우 레코드를 반환한다.
     </para>
@@ -295,18 +259,12 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_search</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-					<paramdef>string <parameter>type</parameter>
-					</paramdef>
-					<paramdef>string <parameter>query</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_search</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+					<methodparam><type>string</type><parameter>type</parameter></methodparam>
+					<methodparam><type>string</type><parameter>query</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>yaz_search</function>은 주어진 ID로 target에 검색을 준비한다. type은 쿼리 타입을 나타낸다.-세번째 변수로 지정된 Type-1 query (RPN)인 경우 단지 "rpn"만을 지원한다. <function>yaz_connect</function>처럼 non-blocking 이고 <function>yaz_wait</function>이 호출된 이후에 검색을 준비한다.
     </para>
@@ -415,16 +373,11 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_syntax</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-					<paramdef>string <parameter>syntax</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_syntax</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+					<methodparam><type>string</type><parameter>syntax</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      The syntax may be specified in a raw dot-notation (like
      <literal>1.2.840.10003.5.10</literal>) or as one of the known
@@ -442,16 +395,11 @@ if (empty($term) || count($host) == 0) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>yaz_wait</function>
-					</funcdef>
-					<paramdef>int <parameter>id</parameter>
-					</paramdef>
-					<paramdef>string <parameter>syntax</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>yaz_wait</methodname>
+					<methodparam><type>int</type><parameter>id</parameter></methodparam>
+					<methodparam><type>string</type><parameter>syntax</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      This function carries out networked (blocked) activity for
      outstanding requests which have been prepared by the functions
@@ -480,3 +428,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

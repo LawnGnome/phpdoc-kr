@@ -83,16 +83,12 @@ $string = ereg_replace ("\n", "", $string);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>ereg</function></funcdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-      <paramdef>array 
-       <parameter><optional>regs</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>ereg</methodname>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+      <methodparam choice="opt"><type>array</type><parameter>regs</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Searches a <parameter>string</parameter> for matches to the regular
      expression given in <parameter>pattern</parameter>.
@@ -152,14 +148,12 @@ if (ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $date, $regs)) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>ereg_replace</function></funcdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-      <paramdef>string <parameter>replacement</parameter></paramdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>ereg_replace</methodname>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+      <methodparam><type>string</type><parameter>replacement</parameter></methodparam>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      This function scans <parameter>string</parameter> for matches to
      <parameter>pattern</parameter>, then replaces the matched text
@@ -237,16 +231,12 @@ echo $string;   /* Output: 'This string has 4 words.' */
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>eregi</function></funcdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-      <paramdef>array 
-       <parameter><optional>regs</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>eregi</methodname>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+      <methodparam choice="opt"><type>array</type><parameter>regs</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This function is identical to <function>ereg</function> except
      that this ignores case distinction when matching alphabetic
@@ -267,14 +257,12 @@ echo $string;   /* Output: 'This string has 4 words.' */
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>eregi_replace</function></funcdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-      <paramdef>string <parameter>replacement</parameter></paramdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>eregi_replace</methodname>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+      <methodparam><type>string</type><parameter>replacement</parameter></methodparam>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This function is identical to <function>ereg_replace</function>
      except that this ignores case distinction when matching
@@ -294,16 +282,12 @@ echo $string;   /* Output: 'This string has 4 words.' */
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>split</function></funcdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>limit</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>split</methodname>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>limit</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns an array of strings, each of which is a substring of
      <parameter>string</parameter> formed by splitting it on
@@ -383,16 +367,12 @@ echo "Month: $month; Day: $day; Year: $year&lt;br&gt;\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>split</function></funcdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>limit</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>split</methodname>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>limit</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This function is identical to <function>split</function> except
      that this ignores case distinction when matching alphabetic
@@ -414,12 +394,10 @@ echo "Month: $month; Day: $day; Year: $year&lt;br&gt;\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>sql_regcase</function></funcdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>sql_regcase</methodname>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns a valid regular expression which will match
      <parameter>string</parameter>, ignoring case. This expression is
@@ -462,3 +440,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

@@ -10,14 +10,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_close</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_close</methodname>
+      <methodparam choice="opt"><type>int</type><parameter>link_identifier</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns: &true; on success, &false; on error.
     </para>
@@ -50,20 +46,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_connect</function></funcdef>
-      <paramdef>string 
-       <parameter><optional>servername</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>username</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>password</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_connect</methodname>
+      <methodparam choice="opt"><type>string</type><parameter>servername</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>username</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>password</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns: A positive MS SQL link identifier on success, or &false;
      on error.
@@ -98,13 +86,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_data_seek</function></funcdef>
-      <paramdef>int <parameter>result_identifier</parameter></paramdef>
-      <paramdef>int <parameter>row_number</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_data_seek</methodname>
+      <methodparam><type>int</type><parameter>result_identifier</parameter></methodparam>
+      <methodparam><type>int</type><parameter>row_number</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns: &true; on success, &false; on failure.
     </para>
@@ -127,12 +113,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_fetch_array</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_fetch_array</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns: An array that corresponds to the fetched row, or &false;
      if there are no more rows.
@@ -163,15 +147,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>mssql_fetch_field</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>field_offset</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>mssql_fetch_field</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>field_offset</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns an object containing field information.  
     </para>
@@ -220,12 +200,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_fetch_object</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_fetch_object</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns: An object with properties that correspond to the fetched
      row, or &false; if there are no more rows.
@@ -257,12 +235,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>mssql_fetch_row</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>mssql_fetch_row</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns: An array that corresponds to the fetched row, or &false;
      if there are no more rows.
@@ -295,15 +271,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_field_length</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>offset</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_field_length</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>offset</parameter></methodparam>
+     </methodsynopsis>
    </refsect1>
   </refentry>
 
@@ -314,15 +286,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_field_name</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>offset</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_field_name</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>offset</parameter></methodparam>
+     </methodsynopsis>
    </refsect1>
   </refentry>
 
@@ -333,13 +301,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_field_seek</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>field_offset</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_field_seek</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Seeks to the specified field offset.  If the next call to
      <function>mssql_fetch_field</function> won't include a field
@@ -357,15 +323,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>mssql_field_type</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>offset</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>mssql_field_type</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>offset</parameter></methodparam>
+     </methodsynopsis>
    </refsect1>
   </refentry>
 
@@ -376,12 +338,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_free_result</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_free_result</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>mssql_free_result</function> only needs to be called
      if you are worried about using too much memory while your script
@@ -403,14 +363,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string 
-       <function>mssql_get_last_message</function>
-      </funcdef>
-      <paramdef>void <parameter></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>mssql_get_last_message</methodname>
+      <methodparam><type>void</type><parameter/></methodparam>
+     </methodsynopsis>
    </refsect1>
   </refentry>
 
@@ -421,14 +377,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void 
-       <function>mssql_min_error_severity</function>
-      </funcdef>
-      <paramdef>int <parameter>severity</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>mssql_min_error_severity</methodname>
+      <methodparam><type>int</type><parameter>severity</parameter></methodparam>
+     </methodsynopsis>
    </refsect1>
   </refentry>
 
@@ -439,14 +391,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void 
-       <function>mssql_min_message_severity</function>
-      </funcdef>
-      <paramdef>int <parameter>severity</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>mssql_min_message_severity</methodname>
+      <methodparam><type>int</type><parameter>severity</parameter></methodparam>
+     </methodsynopsis>
    </refsect1>
   </refentry>
 
@@ -457,12 +405,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_num_fields</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_num_fields</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>mssql_num_fields</function> returns the number of
      fields in a result set.
@@ -483,12 +429,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_num_rows</function></funcdef>
-      <paramdef>string <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_num_rows</methodname>
+      <methodparam><type>string</type><parameter>result</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>mssql_num_rows</function> returns the number of rows in
      a result set.
@@ -508,20 +452,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_pconnect</function></funcdef>
-      <paramdef>string 
-       <parameter><optional>servername</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>username</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>password</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_pconnect</methodname>
+      <methodparam choice="opt"><type>string</type><parameter>servername</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>username</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>password</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns: A positive MS SQL persistent link identifier on success,
      or &false; on error.
@@ -555,15 +491,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_query</function></funcdef>
-      <paramdef>string <parameter>query</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_query</methodname>
+      <methodparam><type>string</type><parameter>query</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>link_identifier</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns: A positive MS SQL result identifier on success, or &false;
      on error.
@@ -591,14 +523,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_result</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>i</parameter></paramdef>
-      <paramdef>mixed <parameter>field</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_result</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam><type>int</type><parameter>i</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>field</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>mssql_result</function> returns the contents of one
      cell from a MS SQL result set.  The field argument can be the
@@ -632,15 +562,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mssql_select_db</function></funcdef>
-      <paramdef>string <parameter>database_name</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>link_identifier</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mssql_select_db</methodname>
+      <methodparam><type>string</type><parameter>database_name</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>link_identifier</parameter></methodparam>
+     </methodsynopsis>
     <para> Returns: &true; on success, &false; on error
     </para>
     <para> 
@@ -682,3 +608,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

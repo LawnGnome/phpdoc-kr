@@ -9,16 +9,12 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_affected_rows</function>
-					</funcdef>
-					<paramdef>int <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_affected_rows</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
     가장 최근 쿼리에서 적용된 데이타(줄)수를 반환합니다.
     </para>
@@ -45,14 +41,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>sybase_close</function>
-					</funcdef>
-					<paramdef>int <parameter>link_identifier</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>sybase_close</methodname>
+					<methodparam><type>int</type><parameter>link_identifier</parameter></methodparam>
+				</methodsynopsis>
 			<para>
    연결에 성공하면 '&true;'를 실패하면 'error'를 반환한다.
     </para>
@@ -82,22 +74,15 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_connect</function>
-					</funcdef>
-					<paramdef>string <parameter>servername</parameter>
-					</paramdef>
-					<paramdef>string <parameter>username</parameter>
-					</paramdef>
-					<paramdef>string <parameter>password</parameter>
-					</paramdef>
-					<paramdef>string <parameter>
-							<optional>charset</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_connect</methodname>
+					<methodparam><type>string</type><parameter>servername</parameter></methodparam>
+					<methodparam><type>string</type><parameter>username</parameter></methodparam>
+					<methodparam><type>string</type><parameter>password</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							charset
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
    수행이 성공적으로 이루어지면 양수의 Sybase link identifier(식별자)가 반환되며, 에러가 발생하면 &false;가 반환된다.
     </para>
@@ -124,16 +109,11 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>sybase_data_seek</function>
-					</funcdef>
-					<paramdef>int <parameter>result_identifier</parameter>
-					</paramdef>
-					<paramdef>int <parameter>row_number</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>sybase_data_seek</methodname>
+					<methodparam><type>int</type><parameter>result_identifier</parameter></methodparam>
+					<methodparam><type>int</type><parameter>row_number</parameter></methodparam>
+				</methodsynopsis>
 			<para> 			
 			수행 성공시 '&true;', 실패시 '&false;'를 반환한다.
     </para>
@@ -153,14 +133,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>sybase_fetch_array</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>sybase_fetch_array</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      결과값으로는 추출된 데이타가 배열로 반환되며, 추출된 데이타가 없을 경우에는
     '&false;'이 반환된다.
@@ -186,19 +162,13 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>object <function>sybase_fetch_field</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>field_offset</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>object</type><methodname>sybase_fetch_field</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							field_offset
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
     field 값에 대한 정보를 가진 객체를 반환한다.
     </para>
@@ -248,14 +218,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_fetch_object</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_fetch_object</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      성공적으로 수행되면 추출된 행에 관한 속성을 가진 객체를 반환하고, 추출된 행이 없으면 &false;를 반환한다.
     </para>
@@ -278,14 +244,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>sybase_fetch_row</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>sybase_fetch_row</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para>   
     성공적으로 수행되면 추출된 데이타의 배열이 반환되고, 추출된 데이타가 없다면 '&false;'가 반환된다.
     </para>
@@ -312,16 +274,11 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_field_seek</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field_offset</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_field_seek</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      Seeks to the specified field offset.  If the next call to
      <function>sybase_fetch_field</function> won't include a field
@@ -341,14 +298,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>sybase_free_result</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>sybase_free_result</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      <function>sybase_free_result</function>함수는 스크립트가 작동하는 동안에 너무 많은 메모리가 사용될 것이 걱정될 경우에만 사용되어진다.
      스크립트가 끝날 경우에는 모든 결과값이 저잗되었던 메모리는 해제되기는 하지만,
@@ -363,14 +316,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>sybase_get_last_message</function>
-					</funcdef>
-					<paramdef>void <parameter/>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>sybase_get_last_message</methodname>
+					<methodparam><type>void</type><parameter/></methodparam>
+				</methodsynopsis>
 			<para>
     <function>sybase_get_last_message</function> 함수는 서버로부터 최종적으로 보고된 메세지를 반환한다.
     </para>
@@ -383,14 +332,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>void <function>sybase_min_client_severity</function>
-					</funcdef>
-					<paramdef>int <parameter>severity</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>void</type><methodname>sybase_min_client_severity</methodname>
+					<methodparam><type>int</type><parameter>severity</parameter></methodparam>
+				</methodsynopsis>
 			<para>
       <function>sybase_min_client_severity</function>함수는 최저 클라이언트 가혹 레벨을 정한다.
      <note>
@@ -411,14 +356,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>void <function>sybase_min_error_severity</function>
-					</funcdef>
-					<paramdef>int <parameter>severity</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>void</type><methodname>sybase_min_error_severity</methodname>
+					<methodparam><type>int</type><parameter>severity</parameter></methodparam>
+				</methodsynopsis>
 			<para>
     <function>sybase_min_error_severity</function>함수는 최저 에러 가혹 레벨을 정한다.
     </para>
@@ -434,14 +375,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>void <function>sybase_min_message_severity</function>
-					</funcdef>
-					<paramdef>int <parameter>severity</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>void</type><methodname>sybase_min_message_severity</methodname>
+					<methodparam><type>int</type><parameter>severity</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>sybase_min_message_severity</function>함수는 최저 메시지 가혹 레벨을 정한다.
     </para>
@@ -457,14 +394,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>void <function>sybase_min_server_severity</function>
-					</funcdef>
-					<paramdef>int <parameter>severity</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>void</type><methodname>sybase_min_server_severity</methodname>
+					<methodparam><type>int</type><parameter>severity</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>sybase_min_server_severity</function> 함수는 최저 서버 가혹 레벨을 정한다.
      <note>
@@ -485,14 +418,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_num_fields</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_num_fields</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 	sybase_num_fields()함수는 결과 셋에서 필드 수를 구해 반환한다.
     </para>
@@ -512,14 +441,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_num_rows</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_num_rows</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      sybase_num_rows()함수는 결과셋의 데이타(열)수를 반환한다.
     </para>
@@ -538,22 +463,15 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_pconnect</function>
-					</funcdef>
-					<paramdef>string <parameter>servername</parameter>
-					</paramdef>
-					<paramdef>string <parameter>username</parameter>
-					</paramdef>
-					<paramdef>string <parameter>password</parameter>
-					</paramdef>
-					<paramdef>string <parameter>
-							<optional>charset</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_pconnect</methodname>
+					<methodparam><type>string</type><parameter>servername</parameter></methodparam>
+					<methodparam><type>string</type><parameter>username</parameter></methodparam>
+					<methodparam><type>string</type><parameter>password</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							charset
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
 	성공적으로 수행시 양수의 Sybase persistent link identifier(사이베이스 영속 연결 식별자)를 반환하고, 에러가 났을경우 &false;를 반환한다.
 			</para>
@@ -581,16 +499,11 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>sybase_query</function>
-					</funcdef>
-					<paramdef>string <parameter>query</parameter>
-					</paramdef>
-					<paramdef>int <parameter>link_identifier</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>sybase_query</methodname>
+					<methodparam><type>string</type><parameter>query</parameter></methodparam>
+					<methodparam><type>int</type><parameter>link_identifier</parameter></methodparam>
+				</methodsynopsis>
 			<para>
    성공적으로 수행되면 양수의 Sybase result identifier(사이베이스 결과 식별자)가 반환되고, 에러가 발생하면 &false;가 반환된다.
     </para>
@@ -614,18 +527,12 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>sybase_result</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>row</parameter>
-					</paramdef>
-					<paramdef>mixed <parameter>field</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>sybase_result</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>row</parameter></methodparam>
+					<methodparam><type>mixed</type><parameter>field</parameter></methodparam>
+				</methodsynopsis>
 			<para>     
     result 인수에 의한 특정 결과 셋에서 row 와 field 인수의 의해 정해진 특정한 하나의 셀의 내용을 반환한다.
     </para>
@@ -654,16 +561,11 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>sybase_select_db</function>
-					</funcdef>
-					<paramdef>string <parameter>database_name</parameter>
-					</paramdef>
-					<paramdef>int <parameter>link_identifier</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>sybase_select_db</methodname>
+					<methodparam><type>string</type><parameter>database_name</parameter></methodparam>
+					<methodparam><type>int</type><parameter>link_identifier</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 			성공적으로 수행시 &true;를 반환하고, 에러 발생시 &false;를 반환한다.
     </para>
@@ -699,3 +601,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

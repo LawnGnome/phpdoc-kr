@@ -55,14 +55,10 @@ bzclose($bz);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>bzclose</function>
-					</funcdef>
-					<paramdef>int <parameter>bz</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>bzclose</methodname>
+					<methodparam><type>int</type><parameter>bz</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>bz</parameter>포인터에 의해 참조된 bzip2 파일을 닫는다.
     </para>
@@ -84,24 +80,16 @@ bzclose($bz);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bzcompress</function>
-					</funcdef>
-					<paramdef>string <parameter>source</parameter>
-					</paramdef>
-					<paramdef>int
-       <parameter>
-							<optional>blocksize</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>workfactor</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bzcompress</methodname>
+					<methodparam><type>string</type><parameter>source</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							blocksize
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							workfactor
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>bzcompress</function>는 <parameter>source</parameter> 문자열을 압축하여 이를 bzip2 인코딩 데이터로 반환한다.
                </para>
@@ -136,19 +124,13 @@ $bzstr = bzcompress($str, 9);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bzdecompress</function>
-					</funcdef>
-					<paramdef>string <parameter>source</parameter>
-					</paramdef>
-					<paramdef>int
-       <parameter>
-							<optional>small</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bzdecompress</methodname>
+					<methodparam><type>string</type><parameter>source</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							small
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>bzdecompress</function> 함수는 <parameter>source</parameter> 인자로 지정된 bzip2 인코딩 데이터를 압축을 풀어 그 문자열을 반환한다.
 				<parameter>small</parameter> 선택인자가 &true; 값이면 압축 해제 알고리즘은 최소한의 메모리를 사용할 것이다(참고로, 최대 메모리 요구량은 2300K 이하이다).
@@ -176,14 +158,10 @@ $str = $bzdecompress($bzstr);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>bzerrno</function>
-					</funcdef>
-					<paramdef>int <parameter>bz</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>bzerrno</methodname>
+					<methodparam><type>int</type><parameter>bz</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>bz</parameter> 파일 포인터로 반환된 bzip2 에러 코드를 반환한다.
                </para>
@@ -199,14 +177,10 @@ $str = $bzdecompress($bzstr);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>bzerror</function>
-					</funcdef>
-					<paramdef>int <parameter>bz</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>bzerror</methodname>
+					<methodparam><type>int</type><parameter>bz</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>bz</parameter> 파일 포인터에 의해 반환된 bzip2의 에러를 에러 코드와 에러 문자열이 포함된 배열로 반환한다.
     </para>
@@ -234,14 +208,10 @@ echo $error["errstr"];
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bzerrstr</function>
-					</funcdef>
-					<paramdef>int <parameter>bz</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bzerrstr</methodname>
+					<methodparam><type>int</type><parameter>bz</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>bz</parameter> 인자로 지정된 파일 포인터에 의해 반환된 bzip2 에러 문자열을 반환한다.
     </para>
@@ -257,14 +227,10 @@ echo $error["errstr"];
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>bzflush</function>
-					</funcdef>
-					<paramdef>int <parameter>bz</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>bzflush</methodname>
+					<methodparam><type>int</type><parameter>bz</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>bz</parameter> 인자로 지정된 파일 포인터에 버퍼에 저장된 bzip2 데이터를 강제로 기록한다.
     </para>
@@ -283,16 +249,11 @@ echo $error["errstr"];
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>bzopen</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>string <parameter>mode</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>bzopen</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>string</type><parameter>mode</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      bzip2 (.bz2) 파일을 읽거나 또는 쓰기위해 개방한다.
      <parameter>filename</parameter> 인자는 개방할 파일 이름을 지정한다.
@@ -322,19 +283,13 @@ $bz = bzopen("/tmp/foo.bz2", "r");
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bzread</function>
-					</funcdef>
-					<paramdef>int <parameter>bz</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>length</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bzread</methodname>
+					<methodparam><type>int</type><parameter>bz</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							length
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>bzread</function> 함수는 <parameter>bz</parameter>에 의해 참조된 bzip2 파일 포인터로부터 <parameter>length</parameter> 바이트만큼 읽는다.
 				<parameter>length</parameter> 바이트(압축되지 않은 상태일 때의 바이트수)가 모두 읽혀지거나 EOF에 이르렀을 때 읽기를 중단할 것이다.
@@ -363,21 +318,14 @@ echo $str;
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>bzwrite</function>
-					</funcdef>
-					<paramdef>int <parameter>bz</parameter>
-					</paramdef>
-					<paramdef>string <parameter>data</parameter>
-					</paramdef>
-					<paramdef>int
-       <parameter>
-							<optional>length</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>bzwrite</methodname>
+					<methodparam><type>int</type><parameter>bz</parameter></methodparam>
+					<methodparam><type>string</type><parameter>data</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							length
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>bzwrite</function> 함수는 <parameter>data</parameter> 인자로 지정된 문자열을 
 				<parameter>bz</parameter>에 지정된 bzip2 파일 스트림 포인터로 기록한다.
@@ -417,3 +365,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

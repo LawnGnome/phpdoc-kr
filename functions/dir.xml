@@ -10,12 +10,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>chdir</function></funcdef>
-      <paramdef>string <parameter>directory</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>chdir</methodname>
+      <methodparam><type>string</type><parameter>directory</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Changes PHP's current directory to
      <parameter>directory</parameter>.  Returns &false; if unable to
@@ -31,12 +29,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>new <function>dir</function></funcdef>
-      <paramdef>string <parameter>directory</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>new</type><methodname>dir</methodname>
+      <methodparam><type>string</type><parameter>directory</parameter></methodparam>
+     </methodsynopsis>
     <para>
      A pseudo-object oriented mechanism for reading a directory.  The
      given <parameter>directory</parameter> is opened.  Two properties
@@ -69,12 +65,10 @@ $d->close();
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void <function>closedir</function></funcdef>
-      <paramdef>int <parameter>dir_handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>closedir</methodname>
+      <methodparam><type>int</type><parameter>dir_handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Closes the directory stream indicated by
      <parameter>dir_handle</parameter>. The stream must have previously
@@ -90,12 +84,10 @@ $d->close();
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>getcwd</function></funcdef>
+     <methodsynopsis>
+      <type>string</type><methodname>getcwd</methodname>
       <void/>
-     </funcprototype>
-    </funcsynopsis>
+     </methodsynopsis>
     <para>
      Returns the current working directory.
     </para>
@@ -109,12 +101,10 @@ $d->close();
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>opendir</function></funcdef>
-      <paramdef>string <parameter>path</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>opendir</methodname>
+      <methodparam><type>string</type><parameter>path</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      Returns a directory handle to be used in subsequent
      <function>closedir</function>, <function>readdir</function>, and
@@ -130,12 +120,10 @@ $d->close();
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>readdir</function></funcdef>
-      <paramdef>int <parameter>dir_handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>readdir</methodname>
+      <methodparam><type>int</type><parameter>dir_handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns the filename of the next file from the directory. The
      filenames are not returned in any particular order.
@@ -186,12 +174,10 @@ closedir($handle);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void <function>rewinddir</function></funcdef>
-      <paramdef>int <parameter>dir_handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>rewinddir</methodname>
+      <methodparam><type>int</type><parameter>dir_handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Resets the directory stream indicated by
      <parameter>dir_handle</parameter> to the beginning of the
@@ -220,3 +206,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

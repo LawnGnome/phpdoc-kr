@@ -36,16 +36,10 @@ start this document.
 		</refnamediv>
 		<refsect1>
 			<title/>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>
-						<function/>
-					</funcdef>
-					<paramdef>
-						<parameter/>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type></type><methodname/>
+					<methodparam><type></type><parameter/></methodparam>
+				</methodsynopsis>
 		</refsect1>
 	</refentry>
 </reference>
@@ -66,3 +60,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

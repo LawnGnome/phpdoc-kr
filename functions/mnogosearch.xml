@@ -54,17 +54,13 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_alloc_agent</function></funcdef>
-      <paramdef>string <parameter>dbaddr</parameter></paramdef>
-      <paramdef>string
-       <parameter>
-        <optional>dbmode</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_alloc_agent</methodname>
+      <methodparam><type>string</type><parameter>dbaddr</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>
+        dbmode
+       </parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_alloc_agent</function> returns mnogosearch agent
      identifier on success, &false; on error. This function creates a
@@ -105,14 +101,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_set_agent_param</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-      <paramdef>int <parameter>var</parameter></paramdef>
-      <paramdef>string <parameter>val</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_set_agent_param</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+      <methodparam><type>int</type><parameter>var</parameter></methodparam>
+      <methodparam><type>string</type><parameter>val</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_set_agent_param</function> returns &true; on success,
      &false; on error.  Defines mnoGoSearch session parameters.
@@ -286,14 +280,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_add_search_limit</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-      <paramdef>int <parameter>var</parameter></paramdef>
-      <paramdef>string <parameter>val</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_add_search_limit</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+      <methodparam><type>int</type><parameter>var</parameter></methodparam>
+      <methodparam><type>string</type><parameter>val</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_add_search_limit</function> returns &true; on
      success, &false; on error. Adds search restrictions.
@@ -373,12 +365,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_clear_search_limits</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_clear_search_limits</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_clear_search_limits</function> resets defined search limitations and returns &true;.
     </para>
@@ -392,13 +382,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_find</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-      <paramdef>string <parameter>query</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_find</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+      <methodparam><type>string</type><parameter>query</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_find</function> returns result link identifier on success,
       &false; on error.
@@ -454,13 +442,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>udm_get_res_param</function></funcdef>
-      <paramdef>int <parameter>res</parameter></paramdef>
-      <paramdef>int <parameter>param</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>udm_get_res_param</methodname>
+      <methodparam><type>int</type><parameter>res</parameter></methodparam>
+      <methodparam><type>int</type><parameter>param</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_get_res_param</function> returns result parameter
      value on success, &false; on error.
@@ -516,14 +502,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>udm_get_res_field</function></funcdef>
-      <paramdef>int <parameter>res</parameter></paramdef>
-      <paramdef>int <parameter>row</parameter></paramdef>
-	  <paramdef>int <parameter>field</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>udm_get_res_field</methodname>
+      <methodparam><type>int</type><parameter>res</parameter></methodparam>
+      <methodparam><type>int</type><parameter>row</parameter></methodparam>
+	  <methodparam><type>int</type><parameter>field</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_get_res_field</function> returns result field value on success, &false; on error.
     </para>
@@ -611,16 +595,14 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_load_ispell_data</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-      <paramdef>int <parameter>var</parameter></paramdef>
-      <paramdef>string <parameter>val1</parameter></paramdef>
-      <paramdef>string <parameter>val2</parameter></paramdef>
-      <paramdef>int <parameter>flag</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_load_ispell_data</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+      <methodparam><type>int</type><parameter>var</parameter></methodparam>
+      <methodparam><type>string</type><parameter>val1</parameter></methodparam>
+      <methodparam><type>string</type><parameter>val2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>flag</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_load_ispell_data</function> loads ispell data. Returns &true; on success, &false; on error.</para>
     <para>
@@ -724,12 +706,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_free_ispell_data</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_free_ispell_data</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_free_ispell_data</function> always returns &true;.
     </para>
@@ -751,12 +731,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_free_res</function></funcdef>
-      <paramdef>int <parameter>res</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_free_res</methodname>
+      <methodparam><type>int</type><parameter>res</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_free_res</function> returns &true; on success, &false; on error.
     </para>
@@ -777,12 +755,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_free_agent</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_free_agent</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_free_agent</function> returns &true; on success, &false; on error.
     </para>
@@ -803,12 +779,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>udm_errno</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>udm_errno</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_errno</function> returns mnoGoSearch error number,
      zero if no error.
@@ -830,12 +804,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>udm_error</function></funcdef>
-      <paramdef>int <parameter>agent</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>udm_error</methodname>
+      <methodparam><type>int</type><parameter>agent</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>udm_error</function> returns mnoGoSearch error message,
      empty string if no error.
@@ -868,3 +840,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

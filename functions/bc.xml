@@ -24,21 +24,14 @@
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcadd</function>
-					</funcdef>
-					<paramdef>string <parameter>left operand</parameter>
-					</paramdef>
-					<paramdef>string <parameter>right operand</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>scale</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcadd</methodname>
+					<methodparam><type>string</type><parameter>left operand</parameter></methodparam>
+					<methodparam><type>string</type><parameter>right operand</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							scale
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>left operand</parameter>와
      <parameter>right operand</parameter>를 더해서 합을 문자열로 반환합니다.
@@ -56,21 +49,14 @@
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>bccomp</function>
-					</funcdef>
-					<paramdef>string <parameter>left operand</parameter>
-					</paramdef>
-					<paramdef>string <parameter>right operand</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>scale</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>bccomp</methodname>
+					<methodparam><type>string</type><parameter>left operand</parameter></methodparam>
+					<methodparam><type>string</type><parameter>right operand</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							scale
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>left operand</parameter>와
      <parameter>right operand</parameter>를 비교해서 정수형의 값을 반환합니다.
@@ -88,21 +74,14 @@
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcdiv</function>
-					</funcdef>
-					<paramdef>string <parameter>left operand</parameter>
-					</paramdef>
-					<paramdef>string <parameter>right operand</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>scale</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcdiv</methodname>
+					<methodparam><type>string</type><parameter>left operand</parameter></methodparam>
+					<methodparam><type>string</type><parameter>right operand</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							scale
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>left operand</parameter>를
      <parameter>right operand</parameter>로 나눈 결과를 반환합니다. 
@@ -122,16 +101,11 @@
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcmod</function>
-					</funcdef>
-					<paramdef>string <parameter>left operand</parameter>
-					</paramdef>
-					<paramdef>string <parameter>modulus</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcmod</methodname>
+					<methodparam><type>string</type><parameter>left operand</parameter></methodparam>
+					<methodparam><type>string</type><parameter>modulus</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>left operand</parameter>를 
      <parameter>modulus</parameter>로 나눈 나머지를 구합니다.
@@ -148,21 +122,14 @@
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcmul</function>
-					</funcdef>
-					<paramdef>string <parameter>left operand</parameter>
-					</paramdef>
-					<paramdef>string <parameter>right operand</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>scale</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcmul</methodname>
+					<methodparam><type>string</type><parameter>left operand</parameter></methodparam>
+					<methodparam><type>string</type><parameter>right operand</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							scale
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>left operand</parameter>와
      <parameter>right operand</parameter>를 곱해서 결과를 반환합니다.
@@ -181,21 +148,14 @@ arbitrary precision number를 제곱하기</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcpow</function>
-					</funcdef>
-					<paramdef>string <parameter>x</parameter>
-					</paramdef>
-					<paramdef>string <parameter>y</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>scale</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcpow</methodname>
+					<methodparam><type>string</type><parameter>x</parameter></methodparam>
+					<methodparam><type>string</type><parameter>y</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							scale
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>x</parameter>의
      <parameter>y</parameter>승을 구합니다.  선택사항인 
@@ -215,14 +175,10 @@ arbitrary precision number를 제곱하기</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcscale</function>
-					</funcdef>
-					<paramdef>int <parameter>scale</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcscale</methodname>
+					<methodparam><type>int</type><parameter>scale</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는 scale 파라미터를 지정하지 않은 이후의 모든 bc 수학함수에 대해
      기본 scale 파라미터를 지정합니다.
@@ -238,19 +194,13 @@ arbitrary precision number를 제곱하기</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcsqrt</function>
-					</funcdef>
-					<paramdef>string <parameter>operand</parameter>
-					</paramdef>
-					<paramdef>int
-       <parameter>
-							<optional>scale</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcsqrt</methodname>
+					<methodparam><type>string</type><parameter>operand</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							scale
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>operand</parameter>의 제곱근을 반환합니다.
 				 선택사항인 <parameter>scale</parameter> 는 결과값의 소수 자리수를 지정합니다.
@@ -269,21 +219,14 @@ arbitrary precision number를 제곱하기</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>bcsub</function>
-					</funcdef>
-					<paramdef>string <parameter>left operand</parameter>
-					</paramdef>
-					<paramdef>string <parameter>right operand</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>scale</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>bcsub</methodname>
+					<methodparam><type>string</type><parameter>left operand</parameter></methodparam>
+					<methodparam><type>string</type><parameter>right operand</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							scale
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>left operand</parameter>에서
      <parameter>right operand</parameter>를 빼서 결과를 문자열로 반환합니다.
@@ -312,3 +255,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

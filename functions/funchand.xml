@@ -19,22 +19,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed 
-       <function>call_user_func</function>
-      </funcdef>
-      <paramdef>string 
-       <parameter>function_name</parameter>
-      </paramdef>
-      <paramdef>mixed 
-       <parameter><optional>parameter</optional></parameter>
-      </paramdef>
-      <paramdef>mixed 
-       <parameter><optional>...</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>mixed</type><methodname>call_user_func</methodname>
+      <methodparam><type>string</type><parameter>function_name</parameter></methodparam>
+      <methodparam choice="opt"><type>mixed</type><parameter>parameter</parameter></methodparam>
+      <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Call a user defined function given by the
      <parameter>function_name</parameter> parameter.  Take the
@@ -59,13 +49,11 @@ call_user_func ('barber', "shave");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>create_function</function></funcdef>
-      <paramdef>string <parameter>args</parameter></paramdef>
-      <paramdef>string <parameter>code</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>create_function</methodname>
+      <methodparam><type>string</type><parameter>args</parameter></methodparam>
+      <methodparam><type>string</type><parameter>code</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Creates an anonymous function from the parameters passed, and
      returns a unique name for it. Usually the
@@ -205,12 +193,10 @@ print_r($sv);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed <function>func_get_arg</function></funcdef>
-      <paramdef>int <parameter>arg_num</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>mixed</type><methodname>func_get_arg</methodname>
+      <methodparam><type>int</type><parameter>arg_num</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Returns the argument which is at the
      <parameter>arg_num</parameter>'th offset into a user-defined
@@ -263,12 +249,10 @@ foo (1, 2, 3);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>func_get_args</function></funcdef>
-      <paramdef>void <parameter></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>func_get_args</methodname>
+      <methodparam><type>void</type><parameter/></methodparam>
+     </methodsynopsis>
     <simpara>
      Returns an array in which each element is the corresponding
      member of the current user-defined function's argument
@@ -319,12 +303,10 @@ foo (1, 2, 3);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>func_num_args</function></funcdef>
-      <paramdef>void <parameter></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>func_num_args</methodname>
+      <methodparam><type>void</type><parameter/></methodparam>
+     </methodsynopsis>
     <simpara>
      Returns the number of arguments passed into the current
      user-defined function. <function>func_num_args</function> will
@@ -368,12 +350,10 @@ foo (1, 2, 3);    // Prints 'Number of arguments: 3'
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>function_exists</function></funcdef>
-      <paramdef>string <parameter>function_name</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>function_exists</methodname>
+      <methodparam><type>string</type><parameter>function_name</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Checks the list of defined functions for
      <parameter>function_name</parameter>.    Returns &true; if the given
@@ -405,14 +385,10 @@ if (function_exists('imap_open')) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int 
-       <function>register_shutdown_function</function>
-      </funcdef>
-      <paramdef>string <parameter>func</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>register_shutdown_function</methodname>
+      <methodparam><type>string</type><parameter>func</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Registers the function named by <parameter>func</parameter> to be
      executed when script processing is complete.</simpara>
@@ -446,3 +422,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

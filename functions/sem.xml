@@ -58,18 +58,12 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>sem_get</function></funcdef>
-      <paramdef>int <parameter>key</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>max_acquire</optional></parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>perm</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>sem_get</methodname>
+      <methodparam><type>int</type><parameter>key</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>max_acquire</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>perm</parameter></methodparam>
+     </methodsynopsis>
     <para>
      반환값: 성공하면 실제적인 세마포어 identifier가, 실패하면 에러가 발생한다.
     </para>
@@ -104,12 +98,10 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>sem_acquire</function></funcdef>
-      <paramdef>int <parameter>sem_identifier</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>sem_acquire</methodname>
+      <methodparam><type>int</type><parameter>sem_identifier</parameter></methodparam>
+     </methodsynopsis>
     <para>
      반환값: 성공하면 &true;, 실패하면 에러를 출력한다.
     </para>
@@ -134,12 +126,10 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>sem_release</function></funcdef>
-      <paramdef>int <parameter>sem_identifier</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>sem_release</methodname>
+      <methodparam><type>int</type><parameter>sem_identifier</parameter></methodparam>
+     </methodsynopsis>
     <para>
      반환값: 성공하면 &true;, 실패하면 에러 출력.
     </para>
@@ -168,18 +158,12 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>shm_attach</function></funcdef>
-      <paramdef>int <parameter>key</parameter></paramdef> 
-      <paramdef>int
-       <parameter><optional>memsize</optional></parameter>
-      </paramdef>
-      <paramdef>int
-       <parameter><optional>perm</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>shm_attach</methodname>
+      <methodparam><type>int</type><parameter>key</parameter></methodparam> 
+      <methodparam choice="opt"><type>int</type><parameter>memsize</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>perm</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>shm_attach</function>함수는 주어진 키와 함께 System V 공유 메모리를 접근하기위해 사용되는 id를 반환한다.
      첫 호출은 mem_size(기본값: <link linkend="configuration.file">설정 파일</link>에서의
@@ -206,12 +190,10 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>shm_detach</function></funcdef>
-      <paramdef>int <parameter>shm_identifier</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>shm_detach</methodname>
+      <methodparam><type>int</type><parameter>shm_identifier</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>shm_detach</function>함수는 
      <function>shm_attach</function>에 의해 생성되는
@@ -229,12 +211,10 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>shm_remove</function></funcdef>
-      <paramdef>int <parameter>shm_identifier</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>shm_remove</methodname>
+      <methodparam><type>int</type><parameter>shm_identifier</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Unix 시스템에서 공유 메모리를 제거하며, 모든 데이터가 제거된다.
     </para>
@@ -253,14 +233,12 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>shm_put_var</function></funcdef>
-      <paramdef>int <parameter>shm_identifier</parameter></paramdef>
-      <paramdef>int <parameter>variable_key</parameter></paramdef>
-      <paramdef>mixed <parameter>variable</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>shm_put_var</methodname>
+      <methodparam><type>int</type><parameter>shm_identifier</parameter></methodparam>
+      <methodparam><type>int</type><parameter>variable_key</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>variable</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <parameter>variable_key</parameter> 인자로 주어진
      <parameter>variable</parameter> 인자를 삽입하거나 경신한다.
@@ -281,13 +259,11 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed <function>shm_get_var</function></funcdef>
-      <paramdef>int <parameter>id</parameter></paramdef>
-      <paramdef>int <parameter>variable_key</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>mixed</type><methodname>shm_get_var</methodname>
+      <methodparam><type>int</type><parameter>id</parameter></methodparam>
+      <methodparam><type>int</type><parameter>variable_key</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>shm_get_var</function>함수는 <parameter>variable_key</parameter> 인자로 주어진 변수를 반환한다.
      공유메모리에서의 변수는 여전히 존재한다.
@@ -307,13 +283,11 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>shm_remove_var</function></funcdef>
-      <paramdef>int <parameter>id</parameter></paramdef>
-      <paramdef>int <parameter>variable_key</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>shm_remove_var</methodname>
+      <methodparam><type>int</type><parameter>id</parameter></methodparam>
+      <methodparam><type>int</type><parameter>variable_key</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <parameter>variable_key</parameter>로 주어진 변수를 제거하고 점유된 메모리에서 제거한다.
     </para>
@@ -344,3 +318,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

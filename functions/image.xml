@@ -40,15 +40,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>getimagesize</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-      <paramdef>array 
-       <parameter><optional>imageinfo</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>getimagesize</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+      <methodparam choice="opt"><type>array</type><parameter>imageinfo</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>GetImageSize</function> function will determine the
      size of any <acronym>GIF</acronym>, <acronym>JPG</acronym>,
@@ -111,19 +107,17 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagearc</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>cx</parameter></paramdef>
-      <paramdef>int <parameter>cy</parameter></paramdef>
-      <paramdef>int <parameter>w</parameter></paramdef>
-      <paramdef>int <parameter>h</parameter></paramdef>
-      <paramdef>int <parameter>s</parameter></paramdef>
-      <paramdef>int <parameter>e</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagearc</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>cx</parameter></methodparam>
+      <methodparam><type>int</type><parameter>cy</parameter></methodparam>
+      <methodparam><type>int</type><parameter>w</parameter></methodparam>
+      <methodparam><type>int</type><parameter>h</parameter></methodparam>
+      <methodparam><type>int</type><parameter>s</parameter></methodparam>
+      <methodparam><type>int</type><parameter>e</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageArc</function> draws a partial ellipse centered at
      <parameter>cx</parameter>, <parameter>cy</parameter> (top left is
@@ -143,17 +137,15 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagechar</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>string <parameter>c</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagechar</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>string</type><parameter>c</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageChar</function> draws the first character of
      <parameter>c</parameter> in the image identified by
@@ -176,17 +168,15 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecharup</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>string <parameter>c</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecharup</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>string</type><parameter>c</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>ImageCharUp</function> draws the character
      <parameter>c</parameter> vertically in the image identified by
@@ -208,15 +198,13 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecolorallocate</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>red</parameter></paramdef>
-      <paramdef>int <parameter>green</parameter></paramdef>
-      <paramdef>int <parameter>blue</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolorallocate</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>red</parameter></methodparam>
+      <methodparam><type>int</type><parameter>green</parameter></methodparam>
+      <methodparam><type>int</type><parameter>blue</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageColorAllocate</function> returns a color
      identifier representing the color composed of the given
@@ -244,19 +232,11 @@ $black = ImageColorAllocate ($im, 0, 0, 0);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int 
-       <function>imagecolordeallocate</function>
-      </funcdef>
-      <paramdef>int 
-       <parameter>im</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>index</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolordeallocate</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>index</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>ImageColorDeAllocate</function> function
      de-allocates a color previously allocated with the
@@ -278,14 +258,12 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecolorat</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolorat</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns the index of the color of the pixel at the
      specified location in the image.
@@ -306,15 +284,13 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecolorclosest</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>red</parameter></paramdef>
-      <paramdef>int <parameter>green</parameter></paramdef>
-      <paramdef>int <parameter>blue</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolorclosest</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>red</parameter></methodparam>
+      <methodparam><type>int</type><parameter>green</parameter></methodparam>
+      <methodparam><type>int</type><parameter>blue</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns the index of the color in the palette of the image which
      is "closest" to the specified <acronym>RGB</acronym> value.
@@ -337,15 +313,13 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecolorexact</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>red</parameter></paramdef>
-      <paramdef>int <parameter>green</parameter></paramdef>
-      <paramdef>int <parameter>blue</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolorexact</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>red</parameter></methodparam>
+      <methodparam><type>int</type><parameter>green</parameter></methodparam>
+      <methodparam><type>int</type><parameter>blue</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns the index of the specified color in the palette of the
      image.
@@ -370,15 +344,13 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecolorresolve</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>red</parameter></paramdef>
-      <paramdef>int <parameter>green</parameter></paramdef>
-      <paramdef>int <parameter>blue</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolorresolve</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>red</parameter></methodparam>
+      <methodparam><type>int</type><parameter>green</parameter></methodparam>
+      <methodparam><type>int</type><parameter>blue</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This function is guaranteed to return a color index for a
      requested color, either the exact color or the closest possible
@@ -399,22 +371,12 @@ ImageColorDeAllocate($im, $white);
     </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int 
-       <function>imagegammacorrect</function>
-      </funcdef>
-      <paramdef>int 
-       <parameter>im</parameter>
-      </paramdef>
-      <paramdef>double 
-       <parameter>inputgamma</parameter>
-      </paramdef>
-      <paramdef>double 
-       <parameter>outputgamma</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagegammacorrect</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>double</type><parameter>inputgamma</parameter></methodparam>
+      <methodparam><type>double</type><parameter>outputgamma</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>ImageGammaCorrect</function> function applies gamma
      correction to a gd image stream (<parameter>im</parameter>) given
@@ -434,16 +396,14 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>imagecolorset</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>index</parameter></paramdef>
-      <paramdef>int <parameter>red</parameter></paramdef>
-      <paramdef>int <parameter>green</parameter></paramdef>
-      <paramdef>int <parameter>blue</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>imagecolorset</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>index</parameter></methodparam>
+      <methodparam><type>int</type><parameter>red</parameter></methodparam>
+      <methodparam><type>int</type><parameter>green</parameter></methodparam>
+      <methodparam><type>int</type><parameter>blue</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This sets the specified index in the palette to the specified
      color. This is useful for creating flood-fill-like effects in
@@ -463,13 +423,11 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imagecolorsforindex</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>index</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imagecolorsforindex</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>index</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This returns an associative array with red, green, and blue keys
      that contain the appropriate values for the specified color
@@ -491,12 +449,10 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecolorstotal</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolorstotal</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This returns the number of colors in the specified image's
      palette.
@@ -515,15 +471,11 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecolortransparent</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>col</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecolortransparent</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageColorTransparent</function> sets the transparent
      color in the <parameter>im</parameter> image to
@@ -548,37 +500,17 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int 
-       <function>ImageCopy</function>
-      </funcdef>
-      <paramdef>int 
-       <parameter>dst_im</parameter>
-      </paramdef>
-      <paramdef>int
-       <parameter>src_im</parameter>
-      </paramdef>
-      <paramdef>int
-       <parameter>dst_x</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>dst_y</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>src_x</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>src_y</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>src_w</parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>src_h</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>ImageCopy</methodname>
+      <methodparam><type>int</type><parameter>dst_im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>src_im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>dst_x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>dst_y</parameter></methodparam>
+      <methodparam><type>int</type><parameter>src_x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>src_y</parameter></methodparam>
+      <methodparam><type>int</type><parameter>src_w</parameter></methodparam>
+      <methodparam><type>int</type><parameter>src_h</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Copy a part of <parameter>src_im</parameter> onto
      <parameter>dst_im</parameter> starting at the x,y coordinates
@@ -598,21 +530,19 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecopyresized</function></funcdef>
-      <paramdef>int <parameter>dst_im</parameter></paramdef>
-      <paramdef>int <parameter>src_im</parameter></paramdef>
-      <paramdef>int <parameter>dstX</parameter></paramdef>
-      <paramdef>int <parameter>dstY</parameter></paramdef>
-      <paramdef>int <parameter>srcX</parameter></paramdef>
-      <paramdef>int <parameter>srcY</parameter></paramdef>
-      <paramdef>int <parameter>dstW</parameter></paramdef>
-      <paramdef>int <parameter>dstH</parameter></paramdef>
-      <paramdef>int <parameter>srcW</parameter></paramdef>
-      <paramdef>int <parameter>srcH</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecopyresized</methodname>
+      <methodparam><type>int</type><parameter>dst_im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>src_im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>dstX</parameter></methodparam>
+      <methodparam><type>int</type><parameter>dstY</parameter></methodparam>
+      <methodparam><type>int</type><parameter>srcX</parameter></methodparam>
+      <methodparam><type>int</type><parameter>srcY</parameter></methodparam>
+      <methodparam><type>int</type><parameter>dstW</parameter></methodparam>
+      <methodparam><type>int</type><parameter>dstH</parameter></methodparam>
+      <methodparam><type>int</type><parameter>srcW</parameter></methodparam>
+      <methodparam><type>int</type><parameter>srcH</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageCopyResized</function> copies a rectangular
      portion of one image to another image.
@@ -636,13 +566,11 @@ ImageColorDeAllocate($im, $white);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecreate</function></funcdef>
-      <paramdef>int <parameter>x_size</parameter></paramdef>
-      <paramdef>int <parameter>y_size</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecreate</methodname>
+      <methodparam><type>int</type><parameter>x_size</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y_size</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>ImageCreate</function> returns an image identifier
      representing a blank image of size <parameter>x_size</parameter>
@@ -674,12 +602,10 @@ ImagePng ($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecreatefromgif</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecreatefromgif</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageCreateFromGif</function> returns an image identifier
      representing the image obtained from the given filename.
@@ -727,12 +653,10 @@ function LoadGif ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecreatefromjpeg</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecreatefromjpeg</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageCreateFromJPEG</function> returns an image identifier
      representing the image obtained from the given filename.
@@ -773,12 +697,10 @@ function LoadJpeg ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecreatefrompng</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecreatefrompng</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageCreateFromPNG</function> returns an image identifier
      representing the image obtained from the given filename.
@@ -819,12 +741,10 @@ function LoadPNG ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecreatefromwbmp</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecreatefromwbmp</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageCreateFromWBMP</function> returns an image identifier
      representing the image obtained from the given filename.
@@ -865,12 +785,10 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagecreatefromstring</function></funcdef>
-      <paramdef>string <parameter>image</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagecreatefromstring</methodname>
+      <methodparam><type>string</type><parameter>image</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageCreateFromString</function> returns an image identifier
      representing the image obtained from the given string.
@@ -885,17 +803,15 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagedashedline</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x1</parameter></paramdef>
-      <paramdef>int <parameter>y1</parameter></paramdef>
-      <paramdef>int <parameter>x2</parameter></paramdef>
-      <paramdef>int <parameter>y2</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagedashedline</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageDashedLine</function> draws a dashed line from
      <parameter>x1</parameter>, <parameter>y1</parameter> to
@@ -916,12 +832,10 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagedestroy</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagedestroy</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageDestroy</function> frees any memory associated
      with image <parameter>im</parameter>.  <parameter>Im</parameter>
@@ -938,15 +852,13 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagefill</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagefill</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageFill</function> performs a flood fill starting at
      coordinate <parameter>x</parameter>, <parameter>y</parameter>
@@ -963,15 +875,13 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagefilledpolygon</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>array <parameter>points</parameter></paramdef>
-      <paramdef>int <parameter>num_points</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagefilledpolygon</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>array</type><parameter>points</parameter></methodparam>
+      <methodparam><type>int</type><parameter>num_points</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>ImageFilledPolygon</function> creates a filled polygon
      in image <parameter>im</parameter>.
@@ -990,17 +900,15 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagefilledrectangle</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x1</parameter></paramdef>
-      <paramdef>int <parameter>y1</parameter></paramdef>
-      <paramdef>int <parameter>x2</parameter></paramdef>
-      <paramdef>int <parameter>y2</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagefilledrectangle</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>ImageFilledRectangle</function> creates a filled
      rectangle of color <function>col</function> in image
@@ -1020,16 +928,14 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagefilltoborder</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>int <parameter>border</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagefilltoborder</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>int</type><parameter>border</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageFillToBorder</function> performs a flood fill
      whose border color is defined by <parameter>border</parameter>.
@@ -1047,12 +953,10 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagefontheight</function></funcdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagefontheight</methodname>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns the pixel height of a character in the specified font.
     </para>
@@ -1070,12 +974,10 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagefontwidth</function></funcdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagefontwidth</methodname>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      Returns the pixel width of a character in font.
     </para>
@@ -1093,15 +995,11 @@ function LoadWBMP ($imgname) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagegif</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>filename</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagegif</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageGIF</function> creates the <acronym>GIF</acronym>
      file in filename from the image <parameter>im</parameter>. The
@@ -1191,15 +1089,11 @@ elseif (ImageTypes() &amp; IMG_JPG) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int 
-       <function>imagepng</function>
-      </funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>string <parameter><optional>filename</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagepng</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>ImagePNG</function> outputs a GD image stream
      (<parameter>im</parameter>) in PNG format to standard output
@@ -1228,18 +1122,12 @@ ImagePng($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagejpeg</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>filename</optional></parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter><optional>quality</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagejpeg</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>filename</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>quality</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageJPEG</function> creates the
      <acronym>JPEG</acronym> file in filename from the image
@@ -1274,15 +1162,11 @@ ImagePng($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imageWBMP</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>filename</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imageWBMP</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageWBMP</function> creates the
      <acronym>WBMP</acronym> file in filename from the image
@@ -1316,15 +1200,11 @@ ImagePng($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imageinterlace</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>interlace</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imageinterlace</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>interlace</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageInterlace</function> turns the interlace bit on or off.
      If interlace is 1 the im image will be interlaced, and if interlace
@@ -1344,17 +1224,15 @@ ImagePng($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imageline</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x1</parameter></paramdef>
-      <paramdef>int <parameter>y1</parameter></paramdef>
-      <paramdef>int <parameter>x2</parameter></paramdef>
-      <paramdef>int <parameter>y2</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imageline</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageLine</function> draws a line from
      <parameter>x1</parameter>, <parameter>y1</parameter> to
@@ -1375,12 +1253,10 @@ ImagePng($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imageloadfont</function></funcdef>
-      <paramdef>string <parameter>file</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imageloadfont</methodname>
+      <methodparam><type>string</type><parameter>file</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageLoadFont</function> loads a user-defined bitmap
      font and returns an identifier for the font (that is always
@@ -1451,15 +1327,13 @@ ImagePng($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagepolygon</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>array <parameter>points</parameter></paramdef>
-      <paramdef>int <parameter>num_points</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagepolygon</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>array</type><parameter>points</parameter></methodparam>
+      <methodparam><type>int</type><parameter>num_points</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>ImagePolygon</function> creates a polygon in image id.
      <parameter>Points</parameter> is a PHP array containing the
@@ -1483,17 +1357,15 @@ ImagePng($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imagepsbbox</function></funcdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-      <paramdef>int <parameter>size</parameter></paramdef>
-      <paramdef>int <parameter><optional>space</optional></parameter></paramdef>
-      <paramdef>int <parameter><optional>tightness</optional></parameter></paramdef>
-      <paramdef>float <parameter><optional>angle</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imagepsbbox</methodname>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+      <methodparam><type>int</type><parameter>size</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>space</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>tightness</parameter></methodparam>
+      <methodparam choice="opt"><type>float</type><parameter>angle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <parameter>Size</parameter> is expressed in pixels.
     </para>
@@ -1571,12 +1443,10 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagepscopyfont</function></funcdef>
-      <paramdef>int <parameter>fontindex</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagepscopyfont</methodname>
+      <methodparam><type>int</type><parameter>fontindex</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Use this function if you need make further modifications to the
      font, for example extending/condensing, slanting it or changing
@@ -1613,13 +1483,11 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagepsencodefont</function></funcdef>
-      <paramdef>int <parameter>font_index</parameter></paramdef>
-      <paramdef>string <parameter>encodingfile</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagepsencodefont</methodname>
+      <methodparam><type>int</type><parameter>font_index</parameter></methodparam>
+      <methodparam><type>string</type><parameter>encodingfile</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Loads a character encoding vector from from a file and changes
      the fonts encoding vector to it. As a PostScript fonts default
@@ -1646,12 +1514,10 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void <function>imagepsfreefont</function></funcdef>
-      <paramdef>int <parameter>fontindex</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>imagepsfreefont</methodname>
+      <methodparam><type>int</type><parameter>fontindex</parameter></methodparam>
+     </methodsynopsis>
     <para>
      See also <function>ImagePSLoadFont</function>.
     </para>
@@ -1665,12 +1531,10 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagepsloadfont</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagepsloadfont</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      In the case everything went right, a valid font index will be
      returned and can be used for further purposes. Otherwise the
@@ -1692,19 +1556,11 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool
-       <function>imagepsextendfont</function>
-      </funcdef>
-      <paramdef>int 
-       <parameter>font_index</parameter>
-      </paramdef>
-      <paramdef>double 
-       <parameter>extend</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>imagepsextendfont</methodname>
+      <methodparam><type>int</type><parameter>font_index</parameter></methodparam>
+      <methodparam><type>double</type><parameter>extend</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Extend or condense a font (<parameter>font_index</parameter>), if
      the value of the <parameter>extend</parameter> parameter is less
@@ -1722,19 +1578,11 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool 
-       <function>imagepsslantfont</function>
-      </funcdef>
-      <paramdef>int 
-       <parameter>font_index</parameter>
-      </paramdef>
-      <paramdef>double 
-       <parameter>slant</parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>imagepsslantfont</methodname>
+      <methodparam><type>int</type><parameter>font_index</parameter></methodparam>
+      <methodparam><type>double</type><parameter>slant</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Slant a font given by the <parameter>font_index</parameter>
      parameter with a slant of the value of the
@@ -1752,39 +1600,29 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imagepstext</function></funcdef>
-      <paramdef>int <parameter>image</parameter></paramdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-      <paramdef>int <parameter>size</parameter></paramdef>
-      <paramdef>int <parameter>foreground</parameter></paramdef>
-      <paramdef>int <parameter>background</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>space</optional>
-       </parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>tightness</optional>
-       </parameter>
-      </paramdef>
-      <paramdef>float 
-       <parameter>
-        <optional>angle</optional>
-       </parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>antialias_steps</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imagepstext</methodname>
+      <methodparam><type>int</type><parameter>image</parameter></methodparam>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+      <methodparam><type>int</type><parameter>size</parameter></methodparam>
+      <methodparam><type>int</type><parameter>foreground</parameter></methodparam>
+      <methodparam><type>int</type><parameter>background</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        space
+       </parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        tightness
+       </parameter></methodparam>
+      <methodparam choice="opt"><type>float</type><parameter>
+        angle
+       </parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        antialias_steps
+       </parameter></methodparam>
+     </methodsynopsis>
     <para>
      <parameter>Size</parameter> is expressed in pixels.
     </para>
@@ -1874,17 +1712,15 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagerectangle</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x1</parameter></paramdef>
-      <paramdef>int <parameter>y1</parameter></paramdef>
-      <paramdef>int <parameter>x2</parameter></paramdef>
-      <paramdef>int <parameter>y2</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagerectangle</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y1</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y2</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageRectangle</function> creates a rectangle of color
      col in image im starting at upper left coordinate x1, y1 and
@@ -1901,15 +1737,13 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagesetpixel</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagesetpixel</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>ImageSetPixel</function> draws a pixel at
      <parameter>x</parameter>, <parameter>y</parameter> (top left is
@@ -1930,17 +1764,15 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagestring</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>string <parameter>s</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagestring</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>string</type><parameter>s</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageString</function> draws the string
      <parameter>s</parameter> in the image identified by
@@ -1962,17 +1794,15 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagestringup</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>font</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>string <parameter>s</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagestringup</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>font</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>string</type><parameter>s</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <para>    
      <function>ImageStringUp</function> draws the string
      <parameter>s</parameter> vertically in the image identified by
@@ -1994,12 +1824,10 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagesx</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagesx</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>ImageSX</function> returns the width of the image
      identified by <parameter>im</parameter>.
@@ -2018,12 +1846,10 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagesy</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imagesy</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageSY</function> returns the height of the image
      identified by <parameter>im</parameter>.
@@ -2044,15 +1870,13 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imagettfbbox</function></funcdef>
-      <paramdef>int <parameter>size</parameter></paramdef>
-      <paramdef>int <parameter>angle</parameter></paramdef>
-      <paramdef>string <parameter>fontfile</parameter></paramdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imagettfbbox</methodname>
+      <methodparam><type>int</type><parameter>size</parameter></methodparam>
+      <methodparam><type>int</type><parameter>angle</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fontfile</parameter></methodparam>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This function calculates and returns the bounding box in pixels
      for a TrueType text.
@@ -2159,19 +1983,17 @@ permits to find a solution.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imagettftext</function></funcdef>
-      <paramdef>int <parameter>im</parameter></paramdef>
-      <paramdef>int <parameter>size</parameter></paramdef>
-      <paramdef>int <parameter>angle</parameter></paramdef>
-      <paramdef>int <parameter>x</parameter></paramdef>
-      <paramdef>int <parameter>y</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-      <paramdef>string <parameter>fontfile</parameter></paramdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imagettftext</methodname>
+      <methodparam><type>int</type><parameter>im</parameter></methodparam>
+      <methodparam><type>int</type><parameter>size</parameter></methodparam>
+      <methodparam><type>int</type><parameter>angle</parameter></methodparam>
+      <methodparam><type>int</type><parameter>x</parameter></methodparam>
+      <methodparam><type>int</type><parameter>y</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fontfile</parameter></methodparam>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>ImageTTFText</function> draws the string
      <parameter>text</parameter> in the image identified by
@@ -2254,12 +2076,10 @@ ImageDestroy ($im);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imagetypes</function></funcdef>
+     <methodsynopsis>
+      <type>int</type><methodname>imagetypes</methodname>
       <void/>
-     </funcprototype>
-    </funcsynopsis>
+     </methodsynopsis>
     <para>
      This function returns a bit-field corresponding to the image
      formats supported by the version of GD linked into PHP.  The
@@ -2286,12 +2106,10 @@ if (ImageTypes() &amp; IMG_PNG) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>read_exif_data</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>read_exif_data</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>read_exif_data</function> function reads the
 	 EXIF headers from a JPEG image file.  It returns an associative
@@ -2367,3 +2185,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

@@ -30,44 +30,28 @@ magic_quotes_sybase = On
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_connect</function>
-					</funcdef>
-					<paramdef>string <parameter>database</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>username</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>password</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>charset</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>buffers</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>dialect</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>role</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_connect</methodname>
+					<methodparam><type>string</type><parameter>database</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							username
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							password
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							charset
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							buffers
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							dialect
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							role
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      InterBase server와의 연결을 설정한다.
      <parameter>database</parameter>인수는 서버에 위치한 데이터베이스의 유효한 파일경로를 가진다.(역주:현재 win32용 ODBC드라이버가 존재한다. 이것은 Iterbase 5.x용이지만 별 에러업ㅅ이 잘 작동한다.)
@@ -127,44 +111,28 @@ magic_quotes_sybase = On
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_pconnect</function>
-					</funcdef>
-					<paramdef>string <parameter>database</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>username</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>password</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>charset</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>buffers</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>dialect</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>role</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_pconnect</methodname>
+					<methodparam><type>string</type><parameter>database</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							username
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							password
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							charset
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							buffers
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							dialect
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							role
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>ibase_pconnect</function>의 동작은 <function>ibase_connect</function>와 유사하나 두 가지의 중요한 차이가 있다.
      첫째로, 연결될때, 이 함수는 첫째로 이미 동일한 인자들로 열린 (persistent) link를 찾을 것이다. 
@@ -201,17 +169,12 @@ magic_quotes_sybase = On
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_close</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>connection_id</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_close</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							connection_id
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>ibase_connect</function>로 부터 리턴된 연결 식별자가 나타내는 InterBase database의 연결을 닫는다.
      만일 연결 식별자가 생략된 경우에는 가장 나중에 열린 연결로 간주한다. 링크의 기본 transaction을 실행하고, 
@@ -226,25 +189,16 @@ magic_quotes_sybase = On
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_query</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string
-       <parameter>query</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>bind_args</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_query</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+					<methodparam><type>string</type><parameter>query</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							bind_args
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
      InterBase database의 쿼리를 실행하고, <function>ibase_fetch_row</function>,
      <function>ibase_fetch_object</function>,
@@ -269,15 +223,10 @@ magic_quotes_sybase = On
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>ibase_fetch_row</function>
-					</funcdef>
-					<paramdef>int
-       <parameter>result_identifier</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>ibase_fetch_row</methodname>
+					<methodparam><type>int</type><parameter>result_identifier</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>ibase_query</function>를 사용하여 얻어진 결과 식별자에 의해 기록된 다음 열을 가지고 온다.
     </simpara>
@@ -290,15 +239,10 @@ magic_quotes_sybase = On
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>object <function>ibase_fetch_object</function>
-					</funcdef>
-					<paramdef>int
-       <parameter>result_id</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>object</type><methodname>ibase_fetch_object</methodname>
+					<methodparam><type>int</type><parameter>result_id</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>ibase_query</function> 또는 <function>ibase_execute</function>에 의해 얻어진 <parameter>result_id</parameter>로 부터의 pseudo-object의 열을 가지고 온다.
      <informalexample>
@@ -329,16 +273,11 @@ magic_quotes_sybase = On
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>ibase_field_info</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field number</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>ibase_field_info</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field number</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      select쿼리의 실행후 필드의 정보를 배열로 리턴한다. 배열은 name, alias, relation, length, type이다.
      <informalexample>
@@ -367,15 +306,10 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_free_result</function>
-					</funcdef>
-					<paramdef>int
-       <parameter>result_identifier</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_free_result</methodname>
+					<methodparam><type>int</type><parameter>result_identifier</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>ibase_query</function>에 의해 생성된 결과 셋을 해제한다.
     </simpara>
@@ -391,19 +325,13 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_prepare</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string <parameter>query</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_prepare</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+					<methodparam><type>string</type><parameter>query</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
      Prepare a query for later binding of parameter placeholders and
      execution (via <function>ibase_execute</function>).
@@ -417,20 +345,13 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_execute</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>query</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>bind_args</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_execute</methodname>
+					<methodparam><type>int</type><parameter>query</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							bind_args
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>ibase_prepare</function>함수에 의해 준비된 쿼리를 실행한다.
      만일 몇몇의 인자가 바뀌는 같은 쿼리문을 반복해서 실행할때, 이 함수는 <function>ibase_query</function>보다 유용하다.
@@ -461,22 +382,15 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_trans</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>trans_args</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_trans</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							trans_args
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      transaction을 시작.
     </para>
@@ -489,19 +403,13 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_commit</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int <parameter>trans_number</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_commit</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+					<methodparam><type>int</type><parameter>trans_number</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>ibase_trans</function>로 생성된 <parameter>trans_number</parameter>의 transaction을 실행
     </para>
@@ -514,19 +422,13 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_rollback</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int <parameter>trans_number</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_rollback</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+					<methodparam><type>int</type><parameter>trans_number</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>ibase_trans</function>에 의해 생성된 <parameter>trans_number</parameter>의 transaction을 되돌린다.
     </para>
@@ -541,15 +443,10 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_free_query</function>
-					</funcdef>
-					<paramdef>int
-       <parameter>query</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_free_query</methodname>
+					<methodparam><type>int</type><parameter>query</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>ibase_prepare</function>에의해 준비된 쿼리를 해제한다.
     </simpara>
@@ -564,20 +461,13 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_timefmt</function>
-					</funcdef>
-					<paramdef>string
-       <parameter>format</parameter>
-					</paramdef>
-					<paramdef>int
-       <parameter>
-							<optional>columntype</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_timefmt</methodname>
+					<methodparam><type>string</type><parameter>format</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							columntype
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      쿼리로 부터 리턴된 날짜와 시간타입의 포맷을 지정한다. 내부적으로, 컬럼은 c-function의 strftime()에 의한 포맷이어서,
      그 문서는 문자 포멧으로 간주되어 제공된다.
@@ -617,14 +507,10 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ibase_num_fields</function>
-					</funcdef>
-					<paramdef>int <parameter>result_id</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ibase_num_fields</methodname>
+					<methodparam><type>int</type><parameter>result_id</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      결가 셋의 필드의 수를 정수의 형으로 리턴한다.
      <informalexample>
@@ -666,14 +552,10 @@ for ($i=0 ; $i &lt; $coln ; $i++) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>ibase_errmsg</function>
-					</funcdef>
-					<paramdef>void <parameter/>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>ibase_errmsg</methodname>
+					<methodparam><type>void</type><parameter/></methodparam>
+				</methodsynopsis>
 			<simpara>
      error message를 포함한 문자를 반환한다.
     </simpara>
@@ -697,3 +579,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

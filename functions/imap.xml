@@ -91,17 +91,13 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_append</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>mbox</parameter></paramdef>
-      <paramdef>string <parameter>message</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_append</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mbox</parameter></methodparam>
+      <methodparam><type>string</type><parameter>message</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      성공하면 &true;를 에러가 발생하면 &false;를 리턴한다.
     </para>  
@@ -149,12 +145,10 @@ imap_close($stream);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_base64</function></funcdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_base64</methodname>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>imap_base64</function>함수는 BASE-64로 엔코딩되어 있는
      텍스트를 디코딩해준다
@@ -176,14 +170,12 @@ imap_close($stream);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_body</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>msg_number</parameter></paramdef>
-      <paramdef>int <parameter><optional>flags</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_body</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>msg_number</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>imap_body</function> returns the body of the message,
      numbered <parameter> msg_number</parameter> in the current
@@ -230,12 +222,10 @@ imap_close($stream);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>imap_check</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>imap_check</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     </methodsynopsis>
     <para>
      현재 메일 박스에 대한 정보를 리턴한다. 실패하면 &false;를 리턴한다.
     </para>  
@@ -282,15 +272,11 @@ imap_close($stream);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_close</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_close</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      imap 스트림을 닫는다.
      선택적 인수 <parameter>flag</parameter>를 CL_EXPUNGE로 세팅하면,
@@ -307,13 +293,11 @@ imap_close($stream);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_createmailbox</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>mbox</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_createmailbox</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mbox</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      <function>imap_createmailbox</function>는
      <parameter>mbox</parameter>인수에 주어진 이름으로 새 메일 박스를 만든다.
@@ -391,16 +375,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_delete</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>msg_number</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_delete</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>msg_number</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      &true;를 리턴한다.
     </para> 
@@ -443,13 +423,11 @@ imap_close ($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_deletemailbox</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>mbox</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_deletemailbox</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mbox</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>imap_deletemailbox</function>함수는 특정 메일 박스를
      지운다 (<parameter>mbox</parameter> 이름의 형식을 알려면
@@ -474,12 +452,10 @@ imap_close ($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_expunge</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_expunge</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      <function>imap_expunge</function>함수는 <function>imap_delete</function>, 
      <function>imap_mail_move</function> 또는  
@@ -501,17 +477,13 @@ imap_close ($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_fetchbody</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>msg_number</parameter></paramdef>
-      <paramdef>string <parameter>part_number</parameter></paramdef>
-      <paramdef>flags 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_fetchbody</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>msg_number</parameter></methodparam>
+      <methodparam><type>string</type><parameter>part_number</parameter></methodparam>
+      <methodparam choice="opt"><type>flags</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 지정된 메시지의 본문중에서 특정 섹션을 텍스트 문자열로 페치하고,
      그 텍스트 문자열을 가져온다.
@@ -554,18 +526,12 @@ imap_close ($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object
-       <function>imap_fetchstructure</function>
-      </funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>msg_number</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>imap_fetchstructure</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>msg_number</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 주어진 메시지의 구조화된 모든 정보를 페치한다.
      선택적 인수<parameter>flags</parameter>는 오직 하나의 옵션만 있다.
@@ -719,24 +685,15 @@ imap_close ($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
+     <methodsynopsis>
 
-     <funcdef>object <function>imap_headerinfo</function></funcdef>
-     <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     <paramdef>int <parameter>msg_number</parameter></paramdef>
-     <paramdef>int 
-      <parameter><optional>fromlength</optional></parameter>
-     </paramdef>
-     <paramdef>int 
-      <parameter><optional>subjectlength</optional></parameter>
-     </paramdef>
-     <paramdef>string 
-      <parameter><optional>defaulthost</optional></parameter>
-     </paramdef>
-     </funcprototype>
-
-    </funcsynopsis>
+     <type>object</type><methodname>imap_headerinfo</methodname>
+     <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     <methodparam><type>int</type><parameter>msg_number</parameter></methodparam>
+     <methodparam choice="opt"><type>int</type><parameter>fromlength</parameter></methodparam>
+     <methodparam choice="opt"><type>int</type><parameter>subjectlength</parameter></methodparam>
+     <methodparam choice="opt"><type>string</type><parameter>defaulthost</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 다양한 머릿글 구성요소의 객체를 가져온다.
     </para>
@@ -838,24 +795,15 @@ fetchsubject (subject line formatted to fit <parameter>subjectlength</parameter>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
+     <methodsynopsis>
 
-     <funcdef>object <function>imap_header</function></funcdef>
-     <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     <paramdef>int <parameter>msg_number</parameter></paramdef>
-     <paramdef>int 
-      <parameter><optional>fromlength</optional></parameter>
-     </paramdef>
-     <paramdef>int 
-      <parameter><optional>subjectlength</optional></parameter>
-     </paramdef>
-     <paramdef>string 
-      <parameter><optional>defaulthost</optional></parameter>
-     </paramdef>
-     </funcprototype>
-
-    </funcsynopsis>
+     <type>object</type><methodname>imap_header</methodname>
+     <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     <methodparam><type>int</type><parameter>msg_number</parameter></methodparam>
+     <methodparam choice="opt"><type>int</type><parameter>fromlength</parameter></methodparam>
+     <methodparam choice="opt"><type>int</type><parameter>subjectlength</parameter></methodparam>
+     <methodparam choice="opt"><type>string</type><parameter>defaulthost</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This is an alias to <function>imap_headerinfo</function>
      and is identical to this in any way.
@@ -870,15 +818,11 @@ fetchsubject (subject line formatted to fit <parameter>subjectlength</parameter>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>imap_rfc822_parse_headers</function></funcdef>
-      <paramdef>string <parameter>headers</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>defaulthost</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>imap_rfc822_parse_headers</methodname>
+      <methodparam><type>string</type><parameter>headers</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>defaulthost</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이함수는 다양한 헤더 구성요소의 객체를 돌려준다.
      <function>imap_header</function>함수와 비슷하지만,
@@ -896,12 +840,10 @@ fetchsubject (subject line formatted to fit <parameter>subjectlength</parameter>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_headers</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_headers</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns an array of string formatted with header info. One
      element per mail message.
@@ -918,14 +860,12 @@ fetchsubject (subject line formatted to fit <parameter>subjectlength</parameter>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_listmailbox</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>ref</parameter></paramdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_listmailbox</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ref</parameter></methodparam>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Returns an array containing the names of the mailboxes.
      See <function>imap_getmailboxes</function> for a description
@@ -966,14 +906,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_getmailboxes</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>ref</parameter></paramdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_getmailboxes</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ref</parameter></methodparam>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+     </methodsynopsis>
     <para>
      메일박스 정보를 포함하는 객체의 배열을 돌려준다. 각 객체는
      다음 속성을 갖는다.
@@ -1068,14 +1006,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_listsubscribed</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>ref</parameter></paramdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_listsubscribed</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ref</parameter></methodparam>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+     </methodsynopsis>
     <para>
      subscribed된 모든 메일박스의 배열을 돌려준다. 이함수는 거의
      <function>imap_listmailbox</function>함수와 동일하다.
@@ -1091,14 +1027,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_getsubscribed</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>ref</parameter></paramdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_getsubscribed</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ref</parameter></methodparam>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>imap_getmailboxes</function>함수와 동일하다.
      단 유저가 subscribed한 메일박스만 돌려줄 뿐이다.
@@ -1113,17 +1047,13 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_mail_copy</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>msglist</parameter></paramdef>
-      <paramdef>string <parameter>mbox</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_mail_copy</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>msglist</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mbox</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      성공하면 &true;를 에러가 발생하면 &false;를 돌려준다.
     </para>  
@@ -1159,17 +1089,13 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_mail_move</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>msglist</parameter></paramdef>
-      <paramdef>string <parameter>mbox</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_mail_move</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>msglist</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mbox</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <parameter>msglist</parameter>인수에 의해 지정된 메일 메시지를
      특정 메일 박스에 이동시킨다.<parameter>msglist</parameter>인수는
@@ -1201,12 +1127,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_num_msg</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_num_msg</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     </methodsynopsis>
     <para>
      현재 메일박스의 메시지 갯수를 돌려준다.
     </para>
@@ -1220,12 +1144,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_num_recent</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_num_recent</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     </methodsynopsis>
     <para>
      현재 메일박스의 새로운 메시지 갯수를 돌려준다.
     </para>
@@ -1239,17 +1161,13 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_open</function></funcdef>
-      <paramdef>string <parameter>mailbox</parameter></paramdef>
-      <paramdef>string <parameter>username</parameter></paramdef>
-      <paramdef>string <parameter>password</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_open</methodname>
+      <methodparam><type>string</type><parameter>mailbox</parameter></methodparam>
+      <methodparam><type>string</type><parameter>username</parameter></methodparam>
+      <methodparam><type>string</type><parameter>password</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      성공하면 IMAP 스트림(stream)을 돌려주고 에러가 발생하면 &false;를 넘겨준다.
      이 함수는 POP3나 NNTP서버의 스트림(stream)을 열 때에도 사용된다.
@@ -1358,12 +1276,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_ping</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_ping</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      Returns &true; if the stream is still alive, &false; otherwise.
      스트림(stream)이 아직 살아있다면 &true;를 리턴하고, 그외에는 &false;를 리턴한다
@@ -1387,14 +1303,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_renamemailbox</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>old_mbox</parameter></paramdef>
-      <paramdef>string <parameter>new_mbox</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_renamemailbox</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>old_mbox</parameter></methodparam>
+      <methodparam><type>string</type><parameter>new_mbox</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      이 함수는 메일박스의 이름을 바꾼다(<parameter>mbox</parameter>이름의
      형식은 <function>imap_open</function>함수를 보면 알수 있다)
@@ -1418,16 +1332,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_reopen</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>mailbox</parameter></paramdef>
-      <paramdef>string
-       <parameter><optional>flags</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_reopen</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mailbox</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      이 함수는 IMAP 또는 NNTP 서버에서 새로운 메일박스에 특정 스트림(stream)을
      다시 연다.
@@ -1474,13 +1384,11 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_subscribe</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>mbox</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_subscribe</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mbox</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      새로운 메일박스를 Subscribe한다.
     </para>
@@ -1499,13 +1407,11 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_undelete</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>msg_number</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_undelete</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>msg_number</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      이함수는 특정 메시지의 지움 플래그(deletion flag)를 제거한다.
      여기서 특정 메시지는 <function>imap_delete</function>함수나
@@ -1524,13 +1430,11 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_unsubscribe</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>mbox</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_unsubscribe</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mbox</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      특정 메일박스에서 Unsubscribe한다.
     </para>
@@ -1547,12 +1451,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_qprint</function></funcdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_qprint</methodname>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      quoted-printable 문자열을 8비트 문자열로 변환한다 .
      (<ulink url="&url.rfc;rfc2045.html">RFC2045</ulink>, section 6.7에 따라)
@@ -1575,12 +1477,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_8bit</function></funcdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_8bit</methodname>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      8비트 문자열을 quoted-printable 문자열로 변환한다.
      (<ulink url="&url.rfc;rfc2045.html">RFC2045</ulink>, section 6.7에 따라)
@@ -1603,12 +1503,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_binary</function></funcdef>
-      <paramdef>string <parameter>string</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_binary</methodname>
+      <methodparam><type>string</type><parameter>string</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      8비트 문자열을 base64문자열로 변환한다.
      (<ulink url="&url.rfc;rfc2045.html">RFC2045</ulink>, Section 6.8에 따라)
@@ -1631,15 +1529,13 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_scanmailbox</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>ref</parameter></paramdef>
-      <paramdef>string <parameter>pattern</parameter></paramdef>   
-      <paramdef>string <parameter>content</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_scanmailbox</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ref</parameter></methodparam>
+      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>   
+      <methodparam><type>string</type><parameter>content</parameter></methodparam>
+     </methodsynopsis>
     <para>
      메일박스의 텍스트중에서 <parameter>string</parameter>의 문자열을
      갖는 메일박스 이름을 포함하는 배열을 돌려준다.
@@ -1657,12 +1553,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>imap_mailboxmsginfo</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>imap_mailboxmsginfo</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+     </methodsynopsis>
     <para>
      현재 메일박스에 관한 정보를 돌려준다. 실패하면 &false;를 리턴한다.
     </para> 
@@ -1756,16 +1650,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string 
-       <function>imap_rfc822_write_address</function>
-      </funcdef>
-      <paramdef>string <parameter>mailbox</parameter></paramdef>
-      <paramdef>string <parameter>host</parameter></paramdef>
-      <paramdef>string <parameter>personal</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_rfc822_write_address</methodname>
+      <methodparam><type>string</type><parameter>mailbox</parameter></methodparam>
+      <methodparam><type>string</type><parameter>host</parameter></methodparam>
+      <methodparam><type>string</type><parameter>personal</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <ulink url="&url.rfc;rfc822.html">RFC822</ulink>문서에 정의된대로
      주어진 메일박스, 호스트, 개인 정보로 적절하게 형식화된 이메일 주소를
@@ -1789,15 +1679,11 @@ print imap_rfc822_write_address("hartmut","cvs.php.net","Hartmut Holzgraefe")."\
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array
-       <function>imap_rfc822_parse_adrlist</function>
-      </funcdef>
-      <paramdef>string <parameter>address</parameter></paramdef>
-      <paramdef>string <parameter>default_host</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_rfc822_parse_adrlist</methodname>
+      <methodparam><type>string</type><parameter>address</parameter></methodparam>
+      <methodparam><type>string</type><parameter>default_host</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 <ulink url="&url.rfc;rfc822.html">RFC822</ulink>문서에 정의된대로
      각 주소에 대해 주소 문자열을 해석하고 객체의 문자열을 돌려준다.
@@ -1855,15 +1741,13 @@ while(list($key,$val)=each($address_array)){
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_setflag_full</function></funcdef>
-      <paramdef>int <parameter>stream</parameter></paramdef>
-      <paramdef>string <parameter>sequence</parameter></paramdef>
-      <paramdef>string <parameter>flag</parameter></paramdef>
-      <paramdef>string <parameter>options</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_setflag_full</methodname>
+      <methodparam><type>int</type><parameter>stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>sequence</parameter></methodparam>
+      <methodparam><type>string</type><parameter>flag</parameter></methodparam>
+      <methodparam><type>string</type><parameter>options</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 지정된 일련번호의 메시지에서 지정된 플래그(flag)에 
      플래그 셋(flags set)을 추가한다.
@@ -1907,17 +1791,13 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string 
-       <function>imap_clearflag_full</function>
-      </funcdef>
-      <paramdef>int <parameter>stream</parameter></paramdef>
-      <paramdef>string <parameter>sequence</parameter></paramdef>
-      <paramdef>string <parameter>flag</parameter></paramdef>
-      <paramdef>string <parameter>options</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_clearflag_full</methodname>
+      <methodparam><type>int</type><parameter>stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>sequence</parameter></methodparam>
+      <methodparam><type>string</type><parameter>flag</parameter></methodparam>
+      <methodparam><type>string</type><parameter>options</parameter></methodparam>
+     </methodsynopsis>
     <para>
      This function causes a store to delete the specified flag to the
      flags set for the messages in the specified sequence.
@@ -1946,15 +1826,13 @@ ST_UID          The sequence argument contains UIDs instead of
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_sort</function></funcdef>
-      <paramdef>int <parameter>stream</parameter></paramdef>
-      <paramdef>int <parameter>criteria</parameter></paramdef>
-      <paramdef>int <parameter>reverse</parameter></paramdef>
-      <paramdef>int <parameter>options</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_sort</methodname>
+      <methodparam><type>int</type><parameter>stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>criteria</parameter></methodparam>
+      <methodparam><type>int</type><parameter>reverse</parameter></methodparam>
+      <methodparam><type>int</type><parameter>options</parameter></methodparam>
+     </methodsynopsis>
     <para>
      주어진 인수로 정렬된 메시지 번호의 배열을 돌려준다.
     </para>
@@ -1995,14 +1873,12 @@ SE_NOPREFETCH   Don't prefetch searched messages.
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_fetchheader</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>msgno</parameter></paramdef>
-      <paramdef>int <parameter>flags</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_fetchheader</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>msgno</parameter></methodparam>
+      <methodparam><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 지정된 메시지에서 전체의(complete), 필터링되지않은(unfiltered)
      <ulink url="&url.rfc;rfc822.html">RFC822</ulink>형식의 헤더를
@@ -2036,13 +1912,11 @@ FT_PREFETCHTEXT The RFC822.TEXT should be pre-fetched at the
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_uid</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>msgno</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_uid</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>msgno</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 주어진 메시지 일련번호(sequence number)에 대한 UID를 돌려준다.
      UID는 메일박스의 내용이 변화될 때마다 바뀌는 메시지 일련번호에 반하여
@@ -2062,13 +1936,11 @@ FT_PREFETCHTEXT The RFC822.TEXT should be pre-fetched at the
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>imap_msgno</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>int <parameter>uid</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>imap_msgno</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>int</type><parameter>uid</parameter></methodparam>
+     </methodsynopsis>
     <para>
     이 함수는 주어진 UID값에 대해 메시지 일련번호(sequence number)을 넘겨준다
     <function>imap_uid</function>함수의 반대이다.
@@ -2085,14 +1957,12 @@ FT_PREFETCHTEXT The RFC822.TEXT should be pre-fetched at the
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_search</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>criteria</parameter></paramdef>
-      <paramdef>int <parameter>flags</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_search</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>criteria</parameter></methodparam>
+      <methodparam><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 주어진 imap 스트림(stream)안의 현재 열려있는 메일박스에서
      검색을 수행한다. <parameter>criteria</parameter>인수는 문자열이다.
@@ -2249,12 +2119,10 @@ FT_PREFETCHTEXT The RFC822.TEXT should be pre-fetched at the
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_last_error</function></funcdef>
-      <paramdef>void </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_last_error</methodname>
+      <void/>
+     </methodsynopsis>
     <para>
      이 함수는 현재 페이지에서 발생한 가장 나중의 IMAP 에러 메시지를
      텍스트로 돌려준다; 에러 스택(error stack)은 건들지 않는다;
@@ -2275,12 +2143,10 @@ FT_PREFETCHTEXT The RFC822.TEXT should be pre-fetched at the
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_errors</function></funcdef>
-      <paramdef>void </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_errors</methodname>
+      <void/>
+     </methodsynopsis>
     <para>
      이 함수는 가장 나중의 <function>imap_errors</function>함수의 호출
      이후, 또는 페이지의 시작때부터 발생한 모든 IMAP 에러 메시지들의 
@@ -2302,12 +2168,10 @@ FT_PREFETCHTEXT The RFC822.TEXT should be pre-fetched at the
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_alerts</function></funcdef>
-      <paramdef>void </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_alerts</methodname>
+      <void/>
+     </methodsynopsis>
     <para>
      이 함수는 가장 나중의 <function>imap_alerts</function>함수의 호출
      이후, 또는 페이지의 시작때부터 발생한 모든 IMAP 경고 메시지들의
@@ -2328,14 +2192,12 @@ FT_PREFETCHTEXT The RFC822.TEXT should be pre-fetched at the
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>imap_status</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>mailbox</parameter></paramdef>
-      <paramdef>int <parameter>options</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>imap_status</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mailbox</parameter></methodparam>
+      <methodparam><type>int</type><parameter>options</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 상태 정보를 포함하는 객체를 돌려준다.
      유효한 플래그(flags)는 다음과 같다:
@@ -2414,12 +2276,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_utf7_decode</function></funcdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_utf7_decode</methodname>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+     </methodsynopsis>
     <para>  
      modified UTF-7형식의 <parameter>text</parameter>를 
      8비트 데이터로 디코딩한다.
@@ -2446,12 +2306,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_utf7_encode</function></funcdef>
-      <paramdef>string <parameter>data</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_utf7_encode</methodname>
+      <methodparam><type>string</type><parameter>data</parameter></methodparam>
+     </methodsynopsis>
     <para>
      8비트 <parameter>data</parameter>를 modified UTF-7텍스트로
      변경한다. 이 함수는 출력가능한 아스키(ASCII)코드 범위를 벗어난
@@ -2477,12 +2335,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_utf8</function></funcdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_utf8</methodname>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+     </methodsynopsis>
     <para>
      주어진 <parameter>text</parameter>값을 UTF8로 변환한다
      (<ulink url="&url.rfc;rfc2044.html">RFC2044</ulink>문서에 정의된대로).
@@ -2499,14 +2355,12 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_fetch_overview</function></funcdef>
-      <paramdef>int <parameter>imap_stream</parameter></paramdef>
-      <paramdef>string <parameter>sequence</parameter></paramdef>
-      <paramdef>int <parameter><optional>flags</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_fetch_overview</methodname>
+      <methodparam><type>int</type><parameter>imap_stream</parameter></methodparam>
+      <methodparam><type>string</type><parameter>sequence</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 주어진 <parameter>sequence</parameter>일련번호에 대한 헤더를
      페치하고, 전체 정보를 돌려준다. <parameter>sequence</parameter>값은
@@ -2620,12 +2474,10 @@ imap_close($mbox);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>imap_header_decode</function></funcdef>
-      <paramdef>string <parameter>text</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>imap_header_decode</methodname>
+      <methodparam><type>string</type><parameter>text</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>imap_mime_header_decode</function>함수는 ASCII 텍스트가
      아닌 MIME 메시지 헤더 확장(MIME message header extensions)을 디코드한다.
@@ -2667,13 +2519,11 @@ for($i=0;$i&lt;count($elements);$i++) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_mail_compose</function></funcdef>
-      <paramdef>array <parameter>envelope</parameter></paramdef>
-      <paramdef>array <parameter>body</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_mail_compose</methodname>
+      <methodparam><type>array</type><parameter>envelope</parameter></methodparam>
+      <methodparam><type>array</type><parameter>body</parameter></methodparam>
+     </methodsynopsis>
     <para>
     </para>
     <para>
@@ -2727,26 +2577,16 @@ echo nl2br(imap_mail_compose($envelope,$body));
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>imap_mail</function></funcdef>
-      <paramdef>string <parameter>to</parameter></paramdef>
-      <paramdef>string <parameter>subject</parameter></paramdef>
-      <paramdef>string <parameter>message</parameter></paramdef>
-      <paramdef>string 
-       <parameter><optional>additional_headers</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>cc</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>bcc</optional></parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter><optional>rpath</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>imap_mail</methodname>
+      <methodparam><type>string</type><parameter>to</parameter></methodparam>
+      <methodparam><type>string</type><parameter>subject</parameter></methodparam>
+      <methodparam><type>string</type><parameter>message</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>additional_headers</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>cc</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>bcc</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>rpath</parameter></methodparam>
+     </methodsynopsis>
     <para>
      이 함수는 현재 PHP 3에서만 유효하다.
     </para>
@@ -2772,3 +2612,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
+<!-- $Revision: 1.12 $ -->
 <reference id="ref.filesystem">
 	<title>Filesystem functions</title>
 	<titleabbrev>Filesystem</titleabbrev>
@@ -12,18 +12,13 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>basename</function>
-					</funcdef>
-					<paramdef>string <parameter>path</parameter>
-					</paramdef>
-					<paramdef>string <parameter>
-							<optional>suffix</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>basename</methodname>
+					<methodparam><type>string</type><parameter>path</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							suffix
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는 경로가 포함된 파일이름이 주어졌을때 파일의 이름부분만 반환합니다. 만약 파일이름에 suffix (두번째 인자)가 붙어 있으면 이 역시 잘라집니다
     </para>
@@ -54,16 +49,11 @@ $file = basename ($path,".php"); // $file 은 "index" 로 설정된다
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>chgrp</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>mixed <parameter>group</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>chgrp</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>mixed</type><parameter>group</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 파일의 그룹을 <parameter>filename</parameter>에서 <parameter>group</parameter>으로 바꾸고자 할때 수퍼유저만이 파일의 그룹을 임으로 변경할 수 있고 그 외의 사용자들은 멤버로 있을때만 어떤 파일의 그룹을 변경할 수 있습니다. 
     </para>
@@ -87,16 +77,11 @@ $file = basename ($path,".php"); // $file 은 "index" 로 설정된다
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>chmod</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>int <parameter>mode</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>chmod</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>int</type><parameter>mode</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>filename</parameter>에 정의된 파일의 모드를 주어진 <parameter>mode</parameter>로 변경하고자 할때 사용합니다.
     </para>
@@ -129,16 +114,11 @@ chmod ("/somedir/somefile", 0755);  // 8진수 : 정확한 모드 값
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>chown</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>mixed <parameter>user</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>chown</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>mixed</type><parameter>user</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      어떤 파일의 소유자를 변경하고자 할때 수퍼유저만이 파일의 소유자를 바꿀 수 있습니다.
     </para>
@@ -162,13 +142,10 @@ chmod ("/somedir/somefile", 0755);  // 8진수 : 정확한 모드 값
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>void <function>clearstatcache</function>
-					</funcdef>
+				<methodsynopsis>
+					<type>void</type><methodname>clearstatcache</methodname>
 					<void/>
-				</funcprototype>
-			</funcsynopsis>
+				</methodsynopsis>
 			<para>
 대부분의 운영체제에서<systemitem>stat</systemitem>나<systemitem>lstat</systemitem>등의 시스템호출을 사용해서 일을하는 것은 꽤 자원을 많이 소모합니다. 그렇기 때문에 최종적으로 사용된 상태를 나타내는 함수(아래에 나열된)의 결과는 다음번에 같은 파일이름을 사용하여 그런 호출을 할 경우를 위하여 저장이 됩니다. 만약에 파일이 여러번 체크가 되었고 파일이 바뀌거나 파일이 없어졌을 경우등에 상태를 강제로 다시 체크하고자 한다면 이 함수를 사용하여 저장되어있는 최종결과를 메모리에서 삭제할 수 있습니다.
     </para>
@@ -204,16 +181,11 @@ chmod ("/somedir/somefile", 0755);  // 8진수 : 정확한 모드 값
 		</refnamediv>
 		<refsect1>
 			<title>Description설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>copy</function>
-					</funcdef>
-					<paramdef>string <parameter>source</parameter>
-					</paramdef>
-					<paramdef>string <parameter>dest</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>copy</methodname>
+					<methodparam><type>string</type><parameter>source</parameter></methodparam>
+					<methodparam><type>string</type><parameter>dest</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 파일의 복사본을 만듭니다. 복사가 되면 &true;, 그렇지 않으면 &false;를 반환합니다.
      <example>
@@ -238,14 +210,10 @@ if (!copy($file, $file.'.bak')) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>void <function>delete</function>
-					</funcdef>
-					<paramdef>string <parameter>file</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>void</type><methodname>delete</methodname>
+					<methodparam><type>string</type><parameter>file</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이것은 <function>unlink</function>나 <function>unset</function>의 함수를 잘못된 장소에서 사람들이 찾을까봐 목록에 끼워넣은 것입니다.
     </para>
@@ -262,14 +230,10 @@ if (!copy($file, $file.'.bak')) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>dirname</function>
-					</funcdef>
-					<paramdef>string <parameter>path</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>dirname</methodname>
+					<methodparam><type>string</type><parameter>path</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 어떤 파일을 지정하는 경로가 주어졌을때 디렉토리의 이름을 반환합니다</para>
 			<para>
@@ -297,14 +261,10 @@ $file = dirname ($path); // $file 은 "/etc" 로 설정됩니다.
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>float <function>diskfreespace</function>
-					</funcdef>
-					<paramdef>string <parameter>directory</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>float</type><methodname>diskfreespace</methodname>
+					<methodparam><type>string</type><parameter>directory</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 디렉토리를 포함한 문자열이 주어졌을때 파일시스템이나 디스크파티션의 사용가능한 공간을 바이트로 반환합니다.
     </para>
@@ -326,14 +286,10 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fclose</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fclose</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 파일은 fp가 닫힐때 지정됩니다.
     </para>
@@ -352,14 +308,10 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>feof</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>feof</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 파일 포인터가 파일의 끝에 있거나 에러가 발생하면 &true;, 그렇지 않으면 &false;를 반환합니다.
     </para>
@@ -374,14 +326,10 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fflush</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fflush</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는모든 버퍼에 저장되어있던 출력을 파일핸들에 의해 지정된 자원에 강제로 쓰기합니다.
      <parameter>fp</parameter>.
@@ -398,14 +346,10 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>fgetc</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>fgetc</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 fp에 의해 가리켜진 파일로부터 한개의 문자를 포함한 문자열을 반환합니다.  &false; 나 EOF를 반환합니다.
     </para>
@@ -426,21 +370,14 @@ fp에 의해 가리켜진 파일로부터 한개의 문자를 포함한 문자�
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>fgetcsv</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>length</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>delimiter</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>fgetcsv</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>length</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							delimiter
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>fgetcsv</function>가 <acronym>CSV</acronym>형식으로 필드를 읽어와서 변환하고 읽은 필드를 포함하는 배열로 반환하는 것을 제외하고는 <function>fgets</function>와 비슷합니다. 세번째 매개변수로 특정한 구분문자를 지정하지 않는다면 필드의 구분문자는 콤마가 됩니다. 
     </simpara>
@@ -483,16 +420,11 @@ fclose ($fp);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>fgets</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>length</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>fgets</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>length</parameter></methodparam>
+				</methodsynopsis>
 			<para>
     리턴값을 포함한 새로운 문자열이거나 파일의 끝중에서 먼저 도달되는 것에서 1 바이트를 읽어들인후 length만큼 증가되는 문자열 - fp에 의해 가리켜진 파일로부터 1 바이트를 읽습니다. length일때 끝을 읽습니다. - 을 반환합니다. 
     </para>
@@ -538,21 +470,14 @@ fclose ($fd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>fgetss</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>length</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>allowable_tags</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>fgetss</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>length</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							allowable_tags
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 fgetss가 읽어들인 텍스트에서 HTML과 PHP 태그를 없애는 것을 제외하고는 <function>fgets</function>와 같습니다.
     </para>
@@ -578,19 +503,13 @@ fgetss가 읽어들인 텍스트에서 HTML과 PHP 태그를 없애는 것을 �
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>file</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>use_include_path</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>file</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							use_include_path
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>file</function>이 파일을 배열로 반환하는 것을 제외하고는 <function>readfile</function>과 같습니다.  새로운 라인이 연결되는 것을 포함해서 배열의 매 요소는 파일의 라인과 비슷합니다.
     </para>
@@ -623,14 +542,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>file_exists</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>file_exists</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
      Returns &true; if the file specified by
      <parameter>filename</parameter>에 의해 지정된 파일이 있으면 &true;, 없으면 &false;를 반환합니다.
@@ -651,14 +566,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fileatime</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fileatime</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<simpara> 
     파일에 최종 접근 시간을 반환하며 에러가 발생할 경우에는 &false;를 반환합니다. 반환되는 시간은 유닉스형식입니다.
     </simpara>
@@ -678,14 +589,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>filectime</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>filectime</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      파일이 마지막으로 변경된 시간을 반환합니다. 에러가 발생하면 &false;를 반환합니다. 반환되는 시간은 유닉스 형식입니다. 
     </para>
@@ -707,14 +614,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>filegroup</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>filegroup</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>    
       파일의 소유자나 그룹의 ID를 반환합니다. 에러가 발생하면 &false;를 반환합니다. 그룹 ID는 숫자형식으로 반환이 됩니다. 그룹의 이름으로 바꾸기 위해서 <function>posix_getgrgid</function>함수가 사용됩니다. 
     </para>
@@ -735,14 +638,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fileinode</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fileinode</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
       파일의 아이노드 숫자를 반환하거나 에러일 경우에는 &false;를 반환합니다.
      </para>
@@ -763,14 +662,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>filemtime</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>filemtime</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      파일이 마지막으로 수정이 된 시간을 반환하거나 실패할 경우에는 &false;를 반환합니다. 반환되는 시간은 유닉스 형식입니다
     </para>
@@ -788,14 +683,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fileowner</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fileowner</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>    
      파일 소유자의 ID를 숫자형식으로 반환하거나 실패할 경우에는 &false;를 반환합니다. ID를 사용자의 이름으로 바꾸기 위해서 <function>posix_getpwuid</function>를 사용합니다.
     </para>
@@ -817,14 +708,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fileperms</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fileperms</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>파일의 권한을 반환하거나 실패할 경우에는 &false;를 반환합니다.
     </para>
 			<para>이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶을때는 
@@ -838,14 +725,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>filesize</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>filesize</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para> 파일의 크기나 &false;를 반환합니다.
     </para>
 			<para>이 함수의 실행결과는 캐시가 됩니다. 
@@ -861,14 +744,10 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>filetype</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>filetype</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>반환되는 파일의 형식은  fifo, char,
      dir, block, link, file, 그리고 unknown 입니다.</para>
 			<para>에러가 발생하면 &false;를 반환합니다.
@@ -887,21 +766,14 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>flock</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>operation</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>wouldblock</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>flock</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>operation</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							wouldblock
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>PHP는 파일에 대한 접근을 막는데 간단한 방법을 제공합니다. 
 			이것은 모든 접근하는 프로그램이 파일을 잠그는데 같은 방법을 사용해야 하며 
 			그렇지 않으면 동작하지 않습니다.
@@ -968,21 +840,14 @@ $fcontents = join ('', file ('http://www.php.net'));
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fopen</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>string <parameter>mode</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>use_include_path</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fopen</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>string</type><parameter>mode</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							use_include_path
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
      만약<parameter>filename</parameter>이 "http://"로 시작하면 
 	(sensitive 하지 않은 경우에), HTTP 1.0 연결이 지정된 서버를 열어줍니다.그리고 파일 포인터는 
@@ -1101,14 +966,10 @@ $fp = fopen ("c:\\data\\info.txt", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fpassthru</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fpassthru</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
      주어진 파일포인터를 끝까지 읽고 일반 출력으로 결과를 씁니다.
     </simpara>
@@ -1140,21 +1001,14 @@ $fp = fopen ("c:\\data\\info.txt", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fputs</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>string <parameter>str</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>length</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fputs</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>string</type><parameter>str</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							length
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>fputs</function>는 <function>fwrite</function>로 언제나 앨리어스 됩니다.  
 		<parameter>length</parameter>매개변수는 선택이 가능하고 전체 문자열이 나열되지 않으면 쓰여진다는 것을 주의하세요.
@@ -1168,16 +1022,11 @@ $fp = fopen ("c:\\data\\info.txt", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>fread</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>length</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>fread</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>length</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>fread</function>는  <parameter>fp</parameter>에 의해 참조가 되는 
      파일 포인터로부터 <parameter>length</parameter>를 바이트로 증가시키며 읽습니다.
@@ -1211,21 +1060,14 @@ fclose ($fd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>mixed <function>fscanf</function>
-					</funcdef>
-					<paramdef>int <parameter>handle</parameter>
-					</paramdef>
-					<paramdef>string <parameter>format</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>var1</optional>
-						</parameter>...
-      </paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>mixed</type><methodname>fscanf</methodname>
+					<methodparam><type>int</type><parameter>handle</parameter></methodparam>
+					<methodparam><type>string</type><parameter>format</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							var1
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>fscanf</function>는 <function>sscanf</function>과 비슷하지만, 
      내용을 파일로부터 가져온다는 것이 다릅니다.
@@ -1270,21 +1112,14 @@ luigi   florist it
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fseek</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>offset</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>whence</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fseek</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>offset</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							whence
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>fp</parameter>에 의해 참조되는 파일을 파일 위치 측정자로 설정합니다.
     파일의 시작위치에서부터 바이트단위로 측정되는 새로운위치는
@@ -1327,14 +1162,10 @@ luigi   florist it
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>fstat</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>fstat</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      파일 포인터 fp에 의해서 열려진 파일의 정보를 모읍니다.Gathers the statistics of the file opened by the file
      이 함수는 filename대신에 오픈 파일 포인터위에서 동작한다는 것을 제외하고는 <function>stat</function>과 비슷합니다.
@@ -1394,14 +1225,10 @@ luigi   florist it
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ftell</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ftell</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      fp에 의해 참조되는 파일의 위치를 반환합니다. 다시 말해서 상쇄된 결과가 파일 스트림안으로 들어갑니다    </para>
 			<para>
@@ -1426,16 +1253,11 @@ luigi   florist it
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ftruncate</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>size</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ftruncate</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>size</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      파일포인터와 fp를 가져옵니다. 그리고 파일을 길이, 크기로 잘라냅니다. 
      이 함수는 성공하면 &true;, 실패하면 &false;를 반환합니다
@@ -1449,21 +1271,14 @@ luigi   florist it
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fwrite</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>string <parameter>string</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>length</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fwrite</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>string</type><parameter>string</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							length
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>fwrite</function>는  <parameter>fp</parameter>에 의해 지정이 되는 
 				파일 스트림에 <parameter>string</parameter>의 내용을 기록합니다.
@@ -1492,16 +1307,11 @@ luigi   florist it
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>set_file_buffer</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>buffer</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>set_file_buffer</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>buffer</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
      출력시에 사용되는<function>fwrite</function>는 보통 8K로 버퍼링 됩니다.
     이것은 하나의 파일에 같은 출력 스트림에 쓰려고 하는 두개의 프로세스가 존재한다면, 각각은 8K의 데이터를 버퍼에 저장한후 다른 하나가 쓸 수 있도록 잠시 멈춘다는 의미입니다. <function>set_file_buffer</function>는 <parameter>fp</parameter>가 주어진 파일 포인터 상에 <parameter>buffer</parameter>바이트 버퍼링 쓰기작업을 수행할 수 있도록 설정합니다
@@ -1538,14 +1348,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_dir</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_dir</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename이 존재하고 디렉토리이면 &true;를 반환합니다.
     </para>
@@ -1565,14 +1371,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_executable</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_executable</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename이 존재하고, 실행가능한 것이면 &true;를 반환합니다
     </para>
@@ -1594,14 +1396,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_file</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_file</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename이 존재하고, 정상적인 보통의 파일이라면(regular) &true;를 반환
     </para>
@@ -1624,14 +1422,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_link</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_link</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename이 존재하고 심볼릭링크된 파일이라면 &true;
     </para>
@@ -1658,14 +1452,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_readable</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_readable</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename이 존재하고 읽기 가능한 것이면 &true;를 반환합니다
     </para>
@@ -1689,14 +1479,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_writable</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_writable</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename이 존재하고 쓰기가능한 것이면 &true;를 반환합니다. 
      filename의 인수는 디렉토리가 쓰기가능한 것일때 
@@ -1722,14 +1508,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_uploaded_file</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_uploaded_file</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는 PHP  3 에서는 3.0.16 이후, PHP 4 에서는 4.0.2 이후 버전부터 사용이 가능합니다..
     </para>
@@ -1757,16 +1539,11 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>link</function>
-					</funcdef>
-					<paramdef>string <parameter>target</parameter>
-					</paramdef>
-					<paramdef>string <parameter>link</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>link</methodname>
+					<methodparam><type>string</type><parameter>target</parameter></methodparam>
+					<methodparam><type>string</type><parameter>link</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>link</function> hard link를 만듭니다.</para>
 			<para>
@@ -1787,14 +1564,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>linkinfo</function>
-					</funcdef>
-					<paramdef>string <parameter>path</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>linkinfo</methodname>
+					<methodparam><type>string</type><parameter>path</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>linkinfo</function>는 마지막 시스템 호출에 의해서 반환이 되는 유닉스 C stat 구조체입니다.
       이 함수는 링크(<parameter>path</parameter>에 의해 지정된)가 실제로 있는지 검증하는데 사용이 되곤 합니다.
@@ -1818,16 +1591,11 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mkdir</function>
-					</funcdef>
-					<paramdef>string <parameter>pathname</parameter>
-					</paramdef>
-					<paramdef>int <parameter>mode</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mkdir</methodname>
+					<methodparam><type>string</type><parameter>pathname</parameter></methodparam>
+					<methodparam><type>int</type><parameter>mode</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      pathname에 명기된 이름으로 디렉토리 만들기
     </para>
@@ -1854,16 +1622,11 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>move_uploaded_file</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>string <parameter>destination</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>move_uploaded_file</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>string</type><parameter>destination</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는 PHP 3 에서는 3.0.16 이후, PHP 4 에서는 4.0.2 이후 버전부터 사용할 수 있습니다.
     </para>
@@ -1897,14 +1660,10 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pclose</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pclose</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>popen</function>에 의해 열려진 파일 포인터를 파이프로 닫기.
     </para>
@@ -1926,16 +1685,11 @@ if($fp){
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>popen</function>
-					</funcdef>
-					<paramdef>string <parameter>command</parameter>
-					</paramdef>
-					<paramdef>string <parameter>mode</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>popen</methodname>
+					<methodparam><type>string</type><parameter>command</parameter></methodparam>
+					<methodparam><type>string</type><parameter>mode</parameter></methodparam>
+				</methodsynopsis>
 			<para>파이프를 주어진 명령으로 명령을 포크함으로 실행되는 프로세스로 열어줍니다.
     </para>
 			<para>
@@ -1965,19 +1719,13 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>readfile</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>use_include_path</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>readfile</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							use_include_path
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      파일을 읽어서 일반출력으로 내보냅니다.
     </para>
@@ -2014,14 +1762,10 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>readlink</function>
-					</funcdef>
-					<paramdef>string <parameter>path</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>readlink</methodname>
+					<methodparam><type>string</type><parameter>path</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>readlink</function>는 C에서의 readlink 함수와 같은 일을 수행합니다. symbolic link의 경로를 반환하거나 실패시 0 을 반환합니다.
     </para>
@@ -2042,16 +1786,11 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>rename</function>
-					</funcdef>
-					<paramdef>string <parameter>oldname</parameter>
-					</paramdef>
-					<paramdef>string <parameter>newname</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>rename</methodname>
+					<methodparam><type>string</type><parameter>oldname</parameter></methodparam>
+					<methodparam><type>string</type><parameter>newname</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>oldname</parameter>을 <parameter>newname</parameter>으로 다시 이름 붙이고자 할 때.
     </para>
@@ -2067,14 +1806,10 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>rewind</function>
-					</funcdef>
-					<paramdef>int <parameter>fp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>rewind</methodname>
+					<methodparam><type>int</type><parameter>fp</parameter></methodparam>
+				</methodsynopsis>
 			<para>    
      fp의 파일 위치 측정자를 파일 스트림의 시작부분에 위치하도록 설정합니다.</para>
 			<para>에러가 발생하면 0을 반환합니다.</para>
@@ -2092,14 +1827,10 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>rmdir</function>
-					</funcdef>
-					<paramdef>string <parameter>dirname</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>rmdir</methodname>
+					<methodparam><type>string</type><parameter>dirname</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      pathname에 의해 이름이 붙은 디렉토리를 제거하려고 할때 디렉토리는 비어 있어야 하고 관련 퍼미션은 이것이 실행될 수 있도록 허가 되어 있어야 합니다 .
     </para>
@@ -2118,14 +1849,10 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>stat</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>stat</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename에 의해 이름이 붙은 파일에 대한 통계자료 모으기.</para>
 			<para>
@@ -2185,14 +1912,10 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>lstat</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>lstat</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      Gathers the statistics of the file or symbolic link named by
      filename에 의해 이름이 붙은 파일이나 심볼릭 링크에 관한 통계자료를 모읍니다. 이 함수는 <parameter>filename</parameter>매개변수가 심볼릭 링크면 심볼릭 링크가 가리키는 파일의 상태가 아니라 심볼릭 링크의 상태가 반환되는 것을 제외하면 <function>stat</function>함수와 같습니다.
@@ -2252,14 +1975,10 @@ $fp = popen ("/bin/ls", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>realpath</function>
-					</funcdef>
-					<paramdef>string <parameter>path</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>realpath</methodname>
+					<methodparam><type>string</type><parameter>path</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>realpath</function>는 <parameter>path</parameter>로 입력된 경로에서 모든 심볼릭 링크와 '/./', '/../'로 참조된 경로 그리고 그 외의 '/' 을 확장해서 표준화된 절대 경로명을 반환합니다. 이렇게 해서 나온 경로명은 심볼릭 일크와  '/./' 또는 '/../' 등을 포함하고 있지 않습니다. </para>
 			<para>
@@ -2280,16 +1999,11 @@ $real_path = realpath ("../../index.php");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>symlink</function>
-					</funcdef>
-					<paramdef>string <parameter>target</parameter>
-					</paramdef>
-					<paramdef>string <parameter>link</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>symlink</methodname>
+					<methodparam><type>string</type><parameter>target</parameter></methodparam>
+					<methodparam><type>string</type><parameter>link</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>symlink</function>는 특정한 이름의  <parameter>link</parameter>로 있는 <parameter>target</parameter>에서 심볼릭 링크를 만듭니다.
     </para>
@@ -2310,16 +2024,11 @@ $real_path = realpath ("../../index.php");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>tempnam</function>
-					</funcdef>
-					<paramdef>string <parameter>dir</parameter>
-					</paramdef>
-					<paramdef>string <parameter>prefix</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>tempnam</methodname>
+					<methodparam><type>string</type><parameter>dir</parameter></methodparam>
+					<methodparam><type>string</type><parameter>prefix</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      특정 디렉토리에서 유일한 임시 파일이름을 만듭니다.
      디렉토리가 존재하지 않으면 <function>tempnam</function>은 시스템의 임시 디렉토리안에 파일 이름을 만듭니다.
@@ -2355,13 +2064,10 @@ $tmpfname = tempnam ("/tmp", "FOO");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>tmpfile</function>
-					</funcdef>
-					<paramdef>void</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>tmpfile</methodname>
+					<void/>
+				</methodsynopsis>
 			<para>
      Creates a temporary file with an unique name in write mode,
      returning a file handle similar to the one returned by
@@ -2383,19 +2089,13 @@ $tmpfname = tempnam ("/tmp", "FOO");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>touch</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>int 
-        <parameter>
-							<optional>time</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>touch</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							time
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      filename 에 의해 이름붙여진 file의 수정시간을 주어진 시간으로 설정하려고 할때 사용합니다. 시간을 옵션으로 설정하지 않으면 현재 시간을 사용합니다.
     </para>
@@ -2425,14 +2125,10 @@ if (touch ($FileName)) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>umask</function>
-					</funcdef>
-					<paramdef>int <parameter>mask</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>umask</methodname>
+					<methodparam><type>int</type><parameter>mask</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>umask</function>는 PHP의 umask를 mask &amp; 0777로 바꾸고 이전의 umask를 반환합니다. PHP가 서버 모듈로 사용될 때 umask는 매 요청(request)가 끝날때 마다 저장이 됩니다.
     </para>
@@ -2453,14 +2149,10 @@ if (touch ($FileName)) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>unlink</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>unlink</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>filename</parameter>을 삭제합니다. Unix C의 unlink() 함수와 비슷합니다.
     </para>
@@ -2495,3 +2187,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

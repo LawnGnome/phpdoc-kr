@@ -11,19 +11,13 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>checkdnsrr</function>
-					</funcdef>
-					<paramdef>string <parameter>host</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>type</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>checkdnsrr</methodname>
+					<methodparam><type>string</type><parameter>host</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							type
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<parameter>host</parameter>에 대응이 되는 <parameter>type</parameter>의 레코드를 DNS에서 찾습니다. 
 	어떠한 레코드라도 발견이 되면 &true;를 반환합니다. 그리고 레코드가 발견되지 않거나 에러가 발생하면 &false;를 반환합니다. 
@@ -50,13 +44,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>closelog</function>
-					</funcdef>
+				<methodsynopsis>
+					<type>int</type><methodname>closelog</methodname>
 					<void/>
-				</funcprototype>
-			</funcsynopsis>
+				</methodsynopsis>
 			<para>
 				<function>closelog</function>는  정보서술자가 시스템 로그에 기록해 오던 것을 닫습니다.
      <function>closelog</function>를 사용하는 것은 선택사항입니다. 
@@ -75,13 +66,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>debugger_off</function>
-					</funcdef>
+				<methodsynopsis>
+					<type>int</type><methodname>debugger_off</methodname>
 					<void/>
-				</funcprototype>
-			</funcsynopsis>
+				</methodsynopsis>
 			<para>
      PHP 내부 디버거 사용을 멈춥니다. 디버거는 계속해서 향상중입니다.
     </para>
@@ -94,14 +82,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>debugger_on</function>
-					</funcdef>
-					<paramdef>string <parameter>address</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>debugger_on</methodname>
+					<methodparam><type>string</type><parameter>address</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>address</parameter>로 연결해서 PHP 내부 디버거를 사용합니다. 디버거는 계속해서 향상중입니다.
     </para>
@@ -114,13 +98,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>void <function>define_syslog_varaibles</function>
-					</funcdef>
-					<paramdef>void</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>void</type><methodname>define_syslog_varaibles</methodname>
+					<void/>
+				</methodsynopsis>
 			<para>
      syslog 함수에 사용되던 모든 상수들을 초기화합니다.
     </para>
@@ -140,33 +121,21 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>fsockopen</function>
-					</funcdef>
-					<paramdef>
-        string <parameter>
-							<optional>udp://</optional>hostname</parameter>
-					</paramdef>
-					<paramdef>int <parameter>port</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>errno</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>errstr</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>double
-       <parameter>
-							<optional>timeout</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>fsockopen</methodname>
+					<methodparam choice="opt"><type>string</type><parameter>
+							udp://hostname</parameter></methodparam>
+					<methodparam><type>int</type><parameter>port</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							errno
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							errstr
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>double</type><parameter>
+							timeout
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      인터넷 (TCP 또는 UDP를 사용하는AF_INET) 또는 유닉스(AF_UNIX)도메인에서 
 	스트림 연결을 시작합니다. 
@@ -256,14 +225,10 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gethostbyaddr</function>
-					</funcdef>
-					<paramdef>string <parameter>ip_address</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gethostbyaddr</methodname>
+					<methodparam><type>string</type><parameter>ip_address</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      Returns the host name of the Internet host specified by
      <parameter>ip_address</parameter>에 정의된 인터넷 호스트의 호스트 이름을 반환합니다.
@@ -283,14 +248,10 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gethostbyname</function>
-					</funcdef>
-					<paramdef>string <parameter>hostname</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gethostbyname</methodname>
+					<methodparam><type>string</type><parameter>hostname</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>hostname</parameter>에 정의된 인터넷 호스트의 IP 어드레스를 반환합니다.
     </para>
@@ -308,14 +269,10 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>gethostbynamel</function>
-					</funcdef>
-					<paramdef>string <parameter>hostname</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>gethostbynamel</methodname>
+					<methodparam><type>string</type><parameter>hostname</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>hostname</parameter>분석에 정의된 인터넷 호스트의 IP 어드레스의 목록을 반환합니다.
     </para>
@@ -336,21 +293,14 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>getmxrr</function>
-					</funcdef>
-					<paramdef>string <parameter>hostname</parameter>
-					</paramdef>
-					<paramdef>array <parameter>mxhosts</parameter>
-					</paramdef>
-					<paramdef>array 
-       <parameter>
-							<optional>weight</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>getmxrr</methodname>
+					<methodparam><type>string</type><parameter>hostname</parameter></methodparam>
+					<methodparam><type>array</type><parameter>mxhosts</parameter></methodparam>
+					<methodparam choice="opt"><type>array</type><parameter>
+							weight
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
      Searches DNS for MX records corresponding to
      <parameter>hostname</parameter>에 대응이 되는 MX 레코드를 찾기위해 DNS를 찾습니다. 
@@ -379,14 +329,10 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>getprotobyname</function>
-					</funcdef>
-					<paramdef>string <parameter>name</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>getprotobyname</methodname>
+					<methodparam><type>string</type><parameter>name</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>getprotobyname</function>은 /etc/protocols 각 프로토콜 <parameter>name</parameter>
 				과 조합이 된 프로토콜의 번호를 반환합니다.
@@ -405,14 +351,10 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>getprotobynumber</function>
-					</funcdef>
-					<paramdef>int <parameter>number</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>getprotobynumber</methodname>
+					<methodparam><type>int</type><parameter>number</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>getprotobynumber</function> 은 /etc/protocols 각 프로토콜 <parameter>number</parameter>
 				와 조합이 된 프로토콜의 이름을 반환합니다.
@@ -431,16 +373,11 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>getservbyname</function>
-					</funcdef>
-					<paramdef>string <parameter>service</parameter>
-					</paramdef>
-					<paramdef>string <parameter>protocol</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>getservbyname</methodname>
+					<methodparam><type>string</type><parameter>service</parameter></methodparam>
+					<methodparam><type>string</type><parameter>protocol</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>getservbyname</function>은 <filename>/etc/services</filename>
 	에 정의된 <parameter>protocol</parameter>의 <parameter>service</parameter>에 
@@ -461,16 +398,11 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>getservbyport</function>
-					</funcdef>
-					<paramdef>int <parameter>port</parameter>
-					</paramdef>
-					<paramdef>string <parameter>protocol</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>getservbyport</methodname>
+					<methodparam><type>int</type><parameter>port</parameter></methodparam>
+					<methodparam><type>string</type><parameter>protocol</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>getservbyport</function>는 /etc/services의 각 <parameter>protocol</parameter>
 	에 정의된  <parameter>port</parameter>와 조합이 되는 인터넷 서비스를 반환합니다.
@@ -490,14 +422,10 @@ if (!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>ip2long</function>
-					</funcdef>
-					<paramdef>string <parameter>ip_address</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>ip2long</methodname>
+					<methodparam><type>string</type><parameter>ip_address</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>ip2long</function> 함수는  보통의(점이 찍혀 있는 문자열) 인터넷 표시 형식에서 IPv4 인터넷 네트워크 주소를 생성합니다.
      <example>
@@ -527,14 +455,10 @@ echo $out;
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>long2ip</function>
-					</funcdef>
-					<paramdef>int <parameter>proper_address</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>long2ip</methodname>
+					<methodparam><type>int</type><parameter>proper_address</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>long2ip</function>는 고유의 주소 표시 형식을 점이 찍혀 있는 인터넷 주소 
 	표시형식(예를 들면 : aaa.bbb.ccc.ddd)으로 바꾸어줍니다.
@@ -551,18 +475,12 @@ echo $out;
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>openlog</function>
-					</funcdef>
-					<paramdef>string <parameter>ident</parameter>
-					</paramdef>
-					<paramdef>int <parameter>option</parameter>
-					</paramdef>
-					<paramdef>int <parameter>facility</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>openlog</methodname>
+					<methodparam><type>string</type><parameter>ident</parameter></methodparam>
+					<methodparam><type>int</type><parameter>option</parameter></methodparam>
+					<methodparam><type>int</type><parameter>facility</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>openlog</function>는 프로그램에 사용하는 시스템 로그 기록자에 연결을 열어줍니다. opens a connection to the system
      logger for a program.  문자열 <parameter>ident</parameter>는 각각의 메시지에 추가됩니다.
@@ -702,31 +620,20 @@ echo $out;
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pfsockopen</function>
-					</funcdef>
-					<paramdef>string <parameter>hostname</parameter>
-					</paramdef>
-					<paramdef>int <parameter>port</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>errno</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>errstr</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int
-       <parameter>
-							<optional>timeout</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pfsockopen</methodname>
+					<methodparam><type>string</type><parameter>hostname</parameter></methodparam>
+					<methodparam><type>int</type><parameter>port</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							errno
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							errstr
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							timeout
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는 스크립트가 끝난뒤에도 연결이 닫히지 않는 차이점을 제외하고 <function>fsockopen</function>과 정확히 똑같습니다.  
 	이것은 <function>fsockopen</function>의 지속적인 연결 버전입니다.
@@ -742,15 +649,10 @@ echo $out;
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>socket_get_status</function>
-					</funcdef>
-					<paramdef>resource 
-       <parameter>socket_get_status</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>socket_get_status</methodname>
+					<methodparam><type>resource</type><parameter>socket_get_status</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      존재하는 소켓의 자원에 대한 정보를 반환합니다. 
 	일반적으로 결과 배열안에 네개의 항목을 반환합니다.
@@ -794,16 +696,11 @@ echo $out;
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>socket_set_blocking</function>
-					</funcdef>
-					<paramdef>int <parameter>socket descriptor</parameter>
-					</paramdef>
-					<paramdef>int <parameter>mode</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>socket_set_blocking</methodname>
+					<methodparam><type>int</type><parameter>socket descriptor</parameter></methodparam>
+					<methodparam><type>int</type><parameter>mode</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>mode</parameter>가 &false;이면, 소켓 서술자는 모드를 non-blocking 모드로 전환할 것입니다.the given socket
      그리고 &true;일 경우 서술자는 blocking 모드로 전환할 것입니다. 
@@ -828,18 +725,12 @@ echo $out;
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>socket_set_timeout</function>
-					</funcdef>
-					<paramdef>int <parameter>socket descriptor</parameter>
-					</paramdef>
-					<paramdef>int <parameter>seconds</parameter>
-					</paramdef>
-					<paramdef>int <parameter>microseconds</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>socket_set_timeout</methodname>
+					<methodparam><type>int</type><parameter>socket descriptor</parameter></methodparam>
+					<methodparam><type>int</type><parameter>seconds</parameter></methodparam>
+					<methodparam><type>int</type><parameter>microseconds</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<parameter>seconds</parameter>와  <parameter>microseconds</parameter>의 합을 사용해서
 	<parameter>socket descriptor</parameter>의 시간초과 값을 설정합니다.
@@ -880,16 +771,11 @@ if(!$fp) {
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>syslog</function>
-					</funcdef>
-					<paramdef>int <parameter>priority</parameter>
-					</paramdef>
-					<paramdef>string <parameter>message</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>syslog</methodname>
+					<methodparam><type>int</type><parameter>priority</parameter></methodparam>
+					<methodparam><type>string</type><parameter>message</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>syslog</function>는 시스템 기록자에 의해 배분이 될 로그 메시지를 생성합니다.
      <parameter>priority</parameter>는 다음 장에서 주어진 값에 대한 난이도와 수준의 조합입니다.
@@ -1011,3 +897,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

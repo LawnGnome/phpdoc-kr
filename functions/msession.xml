@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
  <reference id="ref.msession">
   <title>Mohawk Software session handler functions</title>
   <titleabbrev>Msession functions</titleabbrev>
@@ -18,13 +18,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>msession_connect</function></funcdef>
-     <paramdef>string <parameter>host</parameter></paramdef>
-     <paramdef>string <parameter>port</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>msession_connect</methodname>
+     <methodparam><type>string</type><parameter>host</parameter></methodparam>
+     <methodparam><type>string</type><parameter>port</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -38,12 +36,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void <function>msession_disconnect</function></funcdef>
+     <methodsynopsis>
+      <type>void</type><methodname>msession_disconnect</methodname>
 			<void/>
-     </funcprototype>
-    </funcsynopsis>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -57,12 +53,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>msession_count</function></funcdef>
+     <methodsynopsis>
+      <type>int</type><methodname>msession_count</methodname>
 			<void/>
-     </funcprototype>
-    </funcsynopsis>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -76,12 +70,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>msession_create</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>msession_create</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -95,12 +87,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>msession_destroy</function></funcdef>
-     <paramdef>string <parameter>name</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>msession_destroy</methodname>
+     <methodparam><type>string</type><parameter>name</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -114,12 +104,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>msession_lock</function></funcdef>
-     <paramdef>string <parameter>name</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>msession_lock</methodname>
+     <methodparam><type>string</type><parameter>name</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -133,13 +121,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>msession_unlock</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>int <parameter>key</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>msession_unlock</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam><type>int</type><parameter>key</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -153,14 +139,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>msession_set</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>string <parameter>name</parameter></paramdef>
-     <paramdef>string <parameter>value</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>msession_set</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam><type>string</type><parameter>name</parameter></methodparam>
+     <methodparam><type>string</type><parameter>value</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -174,14 +158,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>msession_get</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>string <parameter>name</parameter></paramdef>
-     <paramdef>string <parameter>value</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>msession_get</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam><type>string</type><parameter>name</parameter></methodparam>
+     <methodparam><type>string</type><parameter>value</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -195,12 +177,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>msession_uniq</function></funcdef>
-     <paramdef>int <parameter>param</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>msession_uniq</methodname>
+     <methodparam><type>int</type><parameter>param</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -214,12 +194,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>msession_randstr</function></funcdef>
-     <paramdef>int <parameter>param</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>msession_randstr</methodname>
+     <methodparam><type>int</type><parameter>param</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -233,13 +211,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>msession_find</function></funcdef>
-     <paramdef>string <parameter>name</parameter></paramdef>
-     <paramdef>string <parameter>value</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>msession_find</methodname>
+     <methodparam><type>string</type><parameter>name</parameter></methodparam>
+     <methodparam><type>string</type><parameter>value</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -253,12 +229,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>msession_list</function></funcdef>
+     <methodsynopsis>
+      <type>array</type><methodname>msession_list</methodname>
 			<void/>
-     </funcprototype>
-    </funcsynopsis>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -272,12 +246,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>msession_get_array</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>msession_get_array</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -291,13 +263,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>msession_set_array</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>array <parameter>tuples</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>msession_set_array</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam><type>array</type><parameter>tuples</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -311,12 +281,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>msession_listvar</function></funcdef>
-     <paramdef>string <parameter>name</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>msession_listvar</methodname>
+     <methodparam><type>string</type><parameter>name</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -330,15 +298,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>msession_timeout</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>int
-      <parameter><optional>param</optional></parameter>
-     </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>msession_timeout</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam choice="opt"><type>int</type><parameter>param</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -352,13 +316,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>msession_inc</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>string <parameter>name</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>msession_inc</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam><type>string</type><parameter>name</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -372,12 +334,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>msession_getdata</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>msession_getdata</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -391,13 +351,11 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>msession_setdata</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>string <parameter>value</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>msession_setdata</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam><type>string</type><parameter>value</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -411,16 +369,12 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>msession_plugin</function></funcdef>
-     <paramdef>string <parameter>session</parameter></paramdef>
-     <paramdef>string <parameter>val</parameter></paramdef>
-     <paramdef>string
-      <parameter><optional>param</optional></parameter>
-     </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>msession_plugin</methodname>
+     <methodparam><type>string</type><parameter>session</parameter></methodparam>
+     <methodparam><type>string</type><parameter>val</parameter></methodparam>
+     <methodparam choice="opt"><type>string</type><parameter>param</parameter></methodparam>
+     </methodsynopsis>
     <para>
 		 undocumented
     </para>
@@ -446,4 +400,5 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+
 

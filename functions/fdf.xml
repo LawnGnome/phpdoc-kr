@@ -102,12 +102,10 @@ fdf_close($fdf);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>fdf_open</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>fdf_open</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_open</function> function opens
      a file with form data. This file must contain the data as returned
@@ -148,12 +146,10 @@ fdf_close($fdf);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_close</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_close</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_close</function> function closes the FDF document.</para>
 
@@ -170,12 +166,10 @@ fdf_close($fdf);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>fdf_create</function></funcdef>
-      <paramdef>void <parameter></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>fdf_create</methodname>
+      <methodparam><type>void</type><parameter/></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_create</function> creates a new
      FDF document. This function is needed if one would like to
@@ -214,12 +208,10 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>fdf_save</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>fdf_save</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_save</function> function saves
      a FDF document.
@@ -243,13 +235,11 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>fdf_get_value</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>fieldname</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>fdf_get_value</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fieldname</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_get_value</function> function returns the
      value of a field.</para>
@@ -267,15 +257,13 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_value</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>fieldname</parameter></paramdef>
-      <paramdef>string <parameter>value</parameter></paramdef>
-      <paramdef>int <parameter>isName</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_value</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fieldname</parameter></methodparam>
+      <methodparam><type>string</type><parameter>value</parameter></methodparam>
+      <methodparam><type>int</type><parameter>isName</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_value</function> function sets the
      value of a field. The last parameter determines if the field value
@@ -295,13 +283,11 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>fdf_next_field_name</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>fieldname</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>fdf_next_field_name</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fieldname</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_next_field_name</function> function returns the
      name of the field after the field in
@@ -322,16 +308,14 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_ap</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>field_name</parameter></paramdef>
-      <paramdef>int <parameter>face</parameter></paramdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-      <paramdef>int <parameter>page_number</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_ap</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>field_name</parameter></methodparam>
+      <methodparam><type>int</type><parameter>face</parameter></methodparam>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+      <methodparam><type>int</type><parameter>page_number</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_ap</function> function sets the
      appearance of a field (i.e. the value of the /AP key).
@@ -348,13 +332,11 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_status</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>status</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_status</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>status</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_status</function> sets the value
      of the /STATUS key.</para>
@@ -372,12 +354,10 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>fdf_get_status</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>fdf_get_status</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_get_status</function> returns the value
      of the /STATUS key.</para>
@@ -395,13 +375,11 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_file</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_file</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_file</function> sets the value
      of the /F key. The /F key is just a reference to a PDF form
@@ -422,12 +400,10 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>fdf_get_file</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>fdf_get_file</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_file</function> returns the value
      of the /F key.</para>
@@ -445,15 +421,13 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_flags</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>fieldname</parameter></paramdef>
-      <paramdef>int <parameter>whichFlags</parameter></paramdef>
-      <paramdef>int <parameter>newFlags</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_flags</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fieldname</parameter></methodparam>
+      <methodparam><type>int</type><parameter>whichFlags</parameter></methodparam>
+      <methodparam><type>int</type><parameter>newFlags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_flags</function> sets certain flags
      of the given field <parameter>fieldname</parameter>.
@@ -471,16 +445,14 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_opt</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>fieldname</parameter></paramdef>
-      <paramdef>int <parameter>element</parameter></paramdef>
-      <paramdef>string <parameter>str1</parameter></paramdef>
-      <paramdef>string <parameter>str2</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_opt</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fieldname</parameter></methodparam>
+      <methodparam><type>int</type><parameter>element</parameter></methodparam>
+      <methodparam><type>string</type><parameter>str1</parameter></methodparam>
+      <methodparam><type>string</type><parameter>str2</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_opt</function> sets options 
      of the given field <parameter>fieldname</parameter>.
@@ -498,16 +470,14 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_submit_form_action</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>fieldname</parameter></paramdef>
-      <paramdef>int <parameter>trigger</parameter></paramdef>
-      <paramdef>string <parameter>script</parameter></paramdef>
-      <paramdef>int <parameter>flags</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_submit_form_action</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fieldname</parameter></methodparam>
+      <methodparam><type>int</type><parameter>trigger</parameter></methodparam>
+      <methodparam><type>string</type><parameter>script</parameter></methodparam>
+      <methodparam><type>int</type><parameter>flags</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_submit_form_action</function> sets a submit form
      action for the given field <parameter>fieldname</parameter>.
@@ -525,15 +495,13 @@ unlink("outtest.fdf");
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>boolean <function>fdf_set_javascript_action</function></funcdef>
-      <paramdef>int <parameter>fdf_document</parameter></paramdef>
-      <paramdef>string <parameter>fieldname</parameter></paramdef>
-      <paramdef>int <parameter>trigger</parameter></paramdef>
-      <paramdef>string <parameter>script</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>boolean</type><methodname>fdf_set_javascript_action</methodname>
+      <methodparam><type>int</type><parameter>fdf_document</parameter></methodparam>
+      <methodparam><type>string</type><parameter>fieldname</parameter></methodparam>
+      <methodparam><type>int</type><parameter>trigger</parameter></methodparam>
+      <methodparam><type>string</type><parameter>script</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The <function>fdf_set_javascript_action</function> sets a javascript
      action for the given field <parameter>fieldname</parameter>.
@@ -562,3 +530,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
  -->
+

@@ -71,15 +71,11 @@ print $packet;
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string
-      <function>wddx_serialize_value</function></funcdef>
-      <paramdef>mixed <parameter>var</parameter></paramdef>
-      <paramdef>string
-      <parameter><optional>comment</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>wddx_serialize_value</methodname>
+      <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>comment</parameter></methodparam>
+     </methodsynopsis>
   
     <para>
      <function>wddx_serialize_value</function> is used to create a
@@ -98,15 +94,11 @@ print $packet;
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>wddx_serialize_vars</function></funcdef>
-      <paramdef>mixed <parameter>var_name</parameter></paramdef>
-      <paramdef>mixed 
-       <parameter><optional>...</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>wddx_serialize_vars</methodname>
+      <methodparam><type>mixed</type><parameter>var_name</parameter></methodparam>
+      <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
+     </methodsynopsis>
   
     <para>
      <function>wddx_serialize_vars</function> is used to create a WDDX
@@ -154,13 +146,10 @@ print wddx_serialize_vars("a", "b", $clvars);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>wddx_packet_start</function></funcdef>
-      <paramdef>string
-      <parameter><optional>comment</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>wddx_packet_start</methodname>
+      <methodparam choice="opt"><type>string</type><parameter>comment</parameter></methodparam>
+     </methodsynopsis>
   
     <para>
      Use <function>wddx_packet_start</function> to start a new WDDX
@@ -179,12 +168,10 @@ print wddx_serialize_vars("a", "b", $clvars);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>wddx_packet_end</function></funcdef>
-      <paramdef>int <parameter>packet_id</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>wddx_packet_end</methodname>
+      <methodparam><type>int</type><parameter>packet_id</parameter></methodparam>
+     </methodsynopsis>
   
     <para>
      <function>wddx_packet_end</function> ends the WDDX packet
@@ -201,16 +188,12 @@ print wddx_serialize_vars("a", "b", $clvars);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef><function>wddx_add_vars</function></funcdef>
-      <paramdef>int <parameter>packet_id</parameter></paramdef>
-      <paramdef>mixed <parameter>name_var</parameter></paramdef>
-      <paramdef>mixed 
-       <parameter><optional>...</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <methodname>wddx_add_vars</methodname>
+      <methodparam><type>int</type><parameter>packet_id</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>name_var</parameter></methodparam>
+      <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
+     </methodsynopsis>
   
     <para>
      <function>wddx_add_vars</function> is used to serialize passed
@@ -229,12 +212,10 @@ print wddx_serialize_vars("a", "b", $clvars);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed <function>wddx_deserialize</function></funcdef>
-      <paramdef>string <parameter>packet</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>mixed</type><methodname>wddx_deserialize</methodname>
+      <methodparam><type>string</type><parameter>packet</parameter></methodparam>
+     </methodsynopsis>
   
     <para>
      <function>wddx_deserialized</function> takes a
@@ -263,3 +244,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

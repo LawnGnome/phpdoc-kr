@@ -180,12 +180,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>xmldoc</function></funcdef>
-      <paramdef>string <parameter>str</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>xmldoc</methodname>
+      <methodparam><type>string</type><parameter>str</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The function parses the XML document in
      <parameter>str</parameter> and returns an object of class "Dom
@@ -202,12 +200,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>xmldocfile</function></funcdef>
-      <paramdef>string <parameter>filename</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>xmldocfile</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The function parses the XML document in the file named
      <parameter>filename</parameter> and returns an object of class
@@ -229,12 +225,10 @@
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>xmltree</function></funcdef>
-      <paramdef>string <parameter>str</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>xmltree</methodname>
+      <methodparam><type>string</type><parameter>str</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The function parses the XML document in
      <parameter>str</parameter> and returns a tree PHP objects as the
@@ -277,3 +271,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

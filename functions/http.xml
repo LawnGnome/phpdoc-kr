@@ -14,14 +14,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>함수 설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>header</function>
-					</funcdef>
-					<paramdef>string <parameter>string</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>header</methodname>
+					<methodparam><type>string</type><parameter>string</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>header</function> 함수는 <acronym>HTML</acronym> 파일 상단에 <acronym>HTTP</acronym> 헤더 문자열을 전송한다. 
 				HTTP 헤더에 대한 자세한 정보는 <ulink url="&spec.http1.1;">HTTP 1.1 Specification</ulink> 를 참조하기 바란다.
@@ -87,15 +83,10 @@
 		</refnamediv>
 		<refsect1>
 			<title>함수 설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>boolean <function>headers_sent</function>
-					</funcdef>
-					<paramdef>
-						<parameter>void</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>boolean</type><methodname>headers_sent</methodname>
+					<methodparam><type></type><parameter>void</parameter></methodparam>
+				</methodsynopsis>
 			<para>
                  이 함수는 HTTP 헤더가 이미 전송되어진 경우 참(&true;)을, 반대의 경우 거짓(&false;)을 돌려준다.    
                </para>
@@ -111,39 +102,25 @@
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>setcookie</function>
-					</funcdef>
-					<paramdef>string <parameter>name</parameter>
-					</paramdef>
-					<paramdef>string 
-                              <parameter>
-							<optional>value</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-                              <parameter>
-							<optional>expire</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-                              <parameter>
-							<optional>path</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-                              <parameter>
-							<optional>domain</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-                               <parameter>
-							<optional>secure</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>setcookie</methodname>
+					<methodparam><type>string</type><parameter>name</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							value
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							expire
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							path
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							domain
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							secure
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>setcookie</function> 함수는 쿠키를 설정하기 위해 쓰인다. 쿠키는 다른 어떠한 헤더보다도 <emphasis>먼저</emphasis> 전송되어야 한다. 
 				(이것은 PHP와는 상관없는 쿠키 자체의 제약이다) 즉, 이 함수를 쓰기 위해서는 <literal>&lt;html></literal> 이나 <literal>&lt;head></literal> 내부에 오는 
@@ -258,3 +235,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

@@ -32,16 +32,12 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_affected_rows</function></funcdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_affected_rows</methodname>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>mysql_affected_rows</function>는 link identifier로
      접속되어 있는 서버에서 최근 실행된 INSERT, UPDATE, DELETE 질의로
@@ -69,23 +65,17 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_change_user</function></funcdef>
-      <paramdef>string <parameter>user</parameter></paramdef>
-      <paramdef>string <parameter>password</parameter></paramdef>
-      <paramdef>string 
-       <parameter>
-        <optional>database</optional>
-       </parameter>
-      </paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_change_user</methodname>
+      <methodparam><type>string</type><parameter>user</parameter></methodparam>
+      <methodparam><type>string</type><parameter>password</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>
+        database
+       </parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>mysql_change_user</function> 함수는 현재 사용중인 접속 또는
      link identifier 인자로 주어진 접속에서 로그인된 사용자를 변경한다.
@@ -105,16 +95,12 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_close</function></funcdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>                   
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_close</methodname>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier                   
+       </parameter></methodparam>
+     </methodsynopsis>
     <para>
      반환값: 성공하면 &true;값을 실패하면 &false;값을 반환
     </para>
@@ -158,26 +144,18 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_connect</function></funcdef>
-      <paramdef>string 
-       <parameter>
-        <optional>server</optional>
-       </parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter>
-        <optional>username</optional>
-       </parameter>
-      </paramdef>
-      <paramdef>string 
-       <parameter>
-        <optional>password</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_connect</methodname>
+      <methodparam choice="opt"><type>string</type><parameter>
+        server
+       </parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>
+        username
+       </parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>
+        password
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      접속에 성공하면 MySQL link identifier를, 그렇지 않으면 에러 메시지를 반환한다.
     </para>
@@ -239,17 +217,13 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_create_db</function></funcdef>
-      <paramdef>string <parameter>database name</parameter></paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_create_db</methodname>
+      <methodparam><type>string</type><parameter>database name</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>mysql_create_db</function>는 link identifier로 연결된 서버에
      새로운 데이터베이스를 생성하도록 한다.
@@ -284,13 +258,11 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_data_seek</function></funcdef>
-      <paramdef>int <parameter>result_identifier</parameter></paramdef>
-      <paramdef>int <parameter>row_number</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_data_seek</methodname>
+      <methodparam><type>int</type><parameter>result_identifier</parameter></methodparam>
+      <methodparam><type>int</type><parameter>row_number</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      반환값: 성공하면 &true;, 실패하면 &false; 반환.
     </para>
@@ -346,18 +318,14 @@
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_db_name</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int <parameter>row</parameter></paramdef>
-      <paramdef>mixed 
-       <parameter>
-        <optional>field</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_db_name</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam><type>int</type><parameter>row</parameter></methodparam>
+      <methodparam choice="opt"><type>mixed</type><parameter>
+        field
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      <function>mysql_db_name</function>은 <function>mysql_list_dbs</function>를 실행한
       결과를 첫번째 인자로 갖는다. <parameter>row</parameter> 인자는
@@ -404,18 +372,14 @@ while ($i &lt; $cnt) {
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_db_query</function></funcdef>
-      <paramdef>string <parameter>database</parameter></paramdef>
-      <paramdef>string <parameter>query</parameter></paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_db_query</methodname>
+      <methodparam><type>string</type><parameter>database</parameter></methodparam>
+      <methodparam><type>string</type><parameter>query</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      반환값: MySQL 질의로 발생한 result identifier값을,
      에러가 발생했을 경우 &false;를 반환.
@@ -443,17 +407,13 @@ while ($i &lt; $cnt) {
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_drop_db</function></funcdef>
-      <paramdef>string <parameter>database_name</parameter></paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_drop_db</methodname>
+      <methodparam><type>string</type><parameter>database_name</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      반환값: 성공하면 &true;, 실패하면 &false;.
     </para>  
@@ -476,16 +436,12 @@ while ($i &lt; $cnt) {
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>mysql_errno</function></funcdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>mysql_errno</methodname>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier
+       </parameter></methodparam>
+     </methodsynopsis>
     <para>
      최근 실행된 MySQL 함수의 에러번호를, 에러가 없을 경우 
      <literal>0</literal>값을 반환한다.
@@ -522,16 +478,12 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>mysql_error</function></funcdef>
-      <paramdef>int 
-       <parameter>
-        <optional>link_identifier</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>mysql_error</methodname>
+      <methodparam choice="opt"><type>int</type><parameter>
+        link_identifier
+       </parameter></methodparam>
+     </methodsynopsis>
     <para>
      MySQL 함수로 발생된 에러 메시지를 얻을 수 있으며,
      에러가 발생하지 않았을 경우에는 <literal>''</literal> (공백문자)를 얻을 수 있다.
@@ -570,17 +522,13 @@ echo mysql_errno().": ".mysql_error()."&lt;BR>";
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>mysql_fetch_array</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int
-       <parameter>
-        <optional>result_type</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>mysql_fetch_array</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        result_type
+       </parameter></methodparam>
+     </methodsynopsis>
     <para> 
      데이터베이스 테이블로부터 가져온 행에 대응되는 배열로 돌려주고,
      더이상 가져올 행이 없을 경우 &false;를 반환한다.</para>
@@ -639,12 +587,10 @@ mysql_free_result ($result);
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>mysql_fetch_assoc</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>mysql_fetch_assoc</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+     </methodsynopsis>
     <para> 
      필드이름의 색인을 가진 배열로 돌려주고,
      가져올 행이 없을 경우 &false;값을 반환한다.</para>
@@ -695,17 +641,13 @@ mysql_free_result ($result);
    </refnamediv>
    <refsect1>
     <title>설명</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>object <function>mysql_fetch_field</function></funcdef>
-      <paramdef>int <parameter>result</parameter></paramdef>
-      <paramdef>int 
-       <parameter>
-        <optional>field_offset</optional>
-       </parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>object</type><methodname>mysql_fetch_field</methodname>
+      <methodparam><type>int</type><parameter>result</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+        field_offset
+       </parameter></methodparam>
+     </methodsynopsis>
     <para>
      필드 정보가 포함된 객체로 반환한다.
     </para>  
@@ -832,14 +774,10 @@ mysql_free_result ($result);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>mysql_fetch_lengths</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>mysql_fetch_lengths</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      반환값: 최근 <function>mysql_fetch_row</function>로 얻은
      행(row)의 각 필드 길이를 배열로 얻거나, 에러 발생시에는 &false;값을
@@ -864,19 +802,13 @@ mysql_free_result ($result);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>object <function>mysql_fetch_object</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int
-       <parameter>
-							<optional>result_type</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>object</type><methodname>mysql_fetch_object</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							result_type
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      행(row)에 대응되는 객체로 돌려주고, 가져올 행이 없을 경우 &false;를 반환한다.
     </para>
@@ -923,14 +855,10 @@ mysql_free_result ($result);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>mysql_fetch_row</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>mysql_fetch_row</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      반환값: 행(row)에 대응되는 객체로 돌려주고, 가져올 값이 없을 경우 &false;를 반환한다.
     </para>
@@ -961,16 +889,11 @@ mysql_free_result ($result);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>mysql_field_flags</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field_offset</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>mysql_field_flags</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_field_flags</function>은 특정 필드의 상태정보를 반환한다.
      상태정보는 한개의 공백으로 구분된 단일 단어로 출력되며,
@@ -996,16 +919,11 @@ mysql_free_result ($result);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>mysql_field_name</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field_index</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>mysql_field_name</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field_index</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_field_name</function>은 특정 필드 색인값을 얻는다.
      <parameter>result</parameter>는 result identifier는 유효한 결과값이어야 하고,
@@ -1059,16 +977,11 @@ password
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_field_len</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field_offset</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_field_len</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_field_len</function>은 특정 필드의 길이를 얻는다.
     </para>
@@ -1086,16 +999,11 @@ password
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_field_seek</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field_offset</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_field_seek</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      특정 필드 오프셋을 검색하는데 사용된다.
      <function>mysql_fetch_field</function>을 실행하면서 필드 오프셋을 설정하지 않으면,
@@ -1115,16 +1023,11 @@ password
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>mysql_field_table</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field_offset</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>mysql_field_table</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      특정 필드가 속한 테이블 이름을 얻는다.
     </para>
@@ -1142,16 +1045,11 @@ password
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>mysql_field_type</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>field_offset</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>mysql_field_type</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_field_type</function>는
         <function>mysql_field_name</function> 함수와
@@ -1199,14 +1097,10 @@ mysql_close();
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_free_result</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_free_result</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_free_result</function>는
 <parameter>result</parameter>에 대한 메모리(memory)에 있는
@@ -1231,17 +1125,12 @@ mysql_close();
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_insert_id</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_insert_id</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_insert_id</function>는
          <parameter>link_identifier</parameter>를 사용하면, INSERT 질의로 행(row)를 추가한 뒤
@@ -1280,17 +1169,12 @@ AUTO_INCREMENT 값으로 생성된 가장 최근 값이 보관되며, 질의할 
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_list_dbs</function>
-					</funcdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_list_dbs</methodname>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 			<function>mysql_list_dbs</function>는 현재 MySQL 데몬(daemon)으로부터
       사용가능한 데이터베이스를 포함한 결과 포인터로 반환할 것이다.
@@ -1338,21 +1222,14 @@ database3
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_list_fields</function>
-					</funcdef>
-					<paramdef>string <parameter>database_name</parameter>
-					</paramdef>
-					<paramdef>string <parameter>table_name</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_list_fields</methodname>
+					<methodparam><type>string</type><parameter>database_name</parameter></methodparam>
+					<methodparam><type>string</type><parameter>table_name</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_list_fields</function>는 주어진 테이블 이름으로부터 정보를 가져온다.
      이 함수는 데이터베이스 이름과 테이블 이름을 인수(argument)로 갖는다.
@@ -1407,19 +1284,13 @@ field3
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_list_tables</function>
-					</funcdef>
-					<paramdef>string <parameter>database</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_list_tables</methodname>
+					<methodparam><type>string</type><parameter>database</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_list_tables</function> 지정된 데이터베이스 이름으로
 결과값을 얻고 <function>mysql_db_query</function>등의 함수에 사용되는 결과 포인터를 반환한다.
@@ -1437,14 +1308,10 @@ field3
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_num_fields</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_num_fields</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_num_fields</function> 함수는 결과셋으로부터 필드 개수를 반환한다.
     </para>
@@ -1466,14 +1333,10 @@ field3
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_num_rows</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_num_rows</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_num_rows</function> 함수는 결과셋으로부터 열의 개수를 반환한다.
 이 함수는 SELECT절에서 반환된 결과셋만 사용이 가능하다.
@@ -1515,27 +1378,18 @@ echo "$NumMembers Members";
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_pconnect</function>
-					</funcdef>
-					<paramdef>string 
-       <parameter>
-							<optional>hostname</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>username</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>password</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_pconnect</methodname>
+					<methodparam choice="opt"><type>string</type><parameter>
+							hostname
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							username
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							password
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
 			반환값: 접속에 성공하면 MySQL 영구적 link identifier를 반환, 실패하면 에러를 출력.
     </para>
@@ -1580,19 +1434,13 @@ echo "$NumMembers Members";
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_query</function>
-					</funcdef>
-					<paramdef>string <parameter>query</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_query</methodname>
+					<methodparam><type>string</type><parameter>query</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_query</function>는 현재 서버에서 동작중인 데이터베이스로부터
  특정 link identifier로 질의를 전송한다.
@@ -1670,21 +1518,14 @@ SELECT문을 위해 <function>mysql_query</function> 함수는
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>mixed <function>mysql_result</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>row</parameter>
-					</paramdef>
-					<paramdef>mixed 
-       <parameter>
-							<optional>field</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>mixed</type><methodname>mysql_result</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>row</parameter></methodparam>
+					<methodparam choice="opt"><type>mixed</type><parameter>
+							field
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_result</function> 함수는 MySQL 결과셋으로부터 한개의 셀(cell) 내용을 반환한다.
 field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이름 사이에 점(테이블이름.필드이름)으로 연결된 인자를 사용할 수 있다.
@@ -1714,19 +1555,13 @@ field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이�
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>mysql_select_db</function>
-					</funcdef>
-					<paramdef>string <parameter>database_name</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>link_identifier</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>mysql_select_db</methodname>
+					<methodparam><type>string</type><parameter>database_name</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							link_identifier
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
 			반환값: 성공하면 &true;값, 실패하면 에러발생.
     </para>
@@ -1758,16 +1593,11 @@ field 인로는 필드 offset 또는 필드이름, 테이블이름과 필드이�
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>mysql_tablename</function>
-					</funcdef>
-					<paramdef>int <parameter>result</parameter>
-					</paramdef>
-					<paramdef>int <parameter>i</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>mysql_tablename</methodname>
+					<methodparam><type>int</type><parameter>result</parameter></methodparam>
+					<methodparam><type>int</type><parameter>i</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>mysql_tablename</function> 함수는 인자로 
 <function>mysql_list_tables</function> 함수로 반환되는 결과 포인터와 동시에 
@@ -1810,3 +1640,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

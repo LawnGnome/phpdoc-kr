@@ -164,12 +164,10 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>accept_connect</function></funcdef>
-      <paramdef>int <parameter>socket</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>accept_connect</methodname>
+      <methodparam><type>int</type><parameter>socket</parameter></methodparam>
+     </methodsynopsis>
     <para>
      After the socket <parameter>socket</parameter> has been created
      using <function>socket</function>, bound to a name with
@@ -218,16 +216,12 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>bind</function></funcdef>
-      <paramdef>int <parameter>socket</parameter></paramdef>
-      <paramdef>string <parameter>address</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>port</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>bind</methodname>
+      <methodparam><type>int</type><parameter>socket</parameter></methodparam>
+      <methodparam><type>string</type><parameter>address</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>port</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>bind</function> binds the name given in
      <parameter>address</parameter> to the socket described by
@@ -272,12 +266,10 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>close</function></funcdef>
-      <paramdef>int <parameter>socket</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>close</methodname>
+      <methodparam><type>int</type><parameter>socket</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>close</function> closes the file (or socket) descriptor
      given by <parameter>socket</parameter>.
@@ -310,16 +302,12 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>connect</function></funcdef>
-      <paramdef>int <parameter>socket</parameter></paramdef>
-      <paramdef>string <parameter>address</parameter></paramdef>
-      <paramdef>int 
-       <parameter><optional>port</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>connect</methodname>
+      <methodparam><type>int</type><parameter>socket</parameter></methodparam>
+      <methodparam><type>string</type><parameter>address</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>port</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Initiates a connection using the socket descriptor
      <parameter>socket</parameter>, which must be a valid socket
@@ -362,13 +350,11 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>listen</function></funcdef>
-      <paramdef>int <parameter>socket</parameter></paramdef>
-      <paramdef>int <parameter>backlog</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>listen</methodname>
+      <methodparam><type>int</type><parameter>socket</parameter></methodparam>
+      <methodparam><type>int</type><parameter>backlog</parameter></methodparam>
+     </methodsynopsis>
     <para>
      After the socket <parameter>socket</parameter> has been created
      using <function>socket</function> and bound to a name with
@@ -406,14 +392,12 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>read</function></funcdef>
-      <paramdef>int <parameter>socket_des</parameter></paramdef>
-      <paramdef>string <parameter>&amp;buffer</parameter></paramdef>
-      <paramdef>int <parameter>length</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>read</methodname>
+      <methodparam><type>int</type><parameter>socket_des</parameter></methodparam>
+      <methodparam><type>string</type><parameter>&amp;buffer</parameter></methodparam>
+      <methodparam><type>int</type><parameter>length</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The function <function>read</function> reads from socket 
      <parameter>socket_des</parameter>created by the
@@ -442,14 +426,12 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>socket</function></funcdef>
-      <paramdef>int <parameter>domain</parameter></paramdef>
-      <paramdef>int <parameter>type</parameter></paramdef>
-      <paramdef>int <parameter>protocol</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>socket</methodname>
+      <methodparam><type>int</type><parameter>domain</parameter></methodparam>
+      <methodparam><type>int</type><parameter>type</parameter></methodparam>
+      <methodparam><type>int</type><parameter>protocol</parameter></methodparam>
+     </methodsynopsis>
     <para>
      Creates a communication endpoint (a socket), and returns a
      descriptor to the socket.
@@ -500,12 +482,10 @@ echo "OK.\n\n";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>strerror</function></funcdef>
-      <paramdef>int <parameter>errno</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>strerror</methodname>
+      <methodparam><type>int</type><parameter>errno</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>strerror</function> takes as its
      <parameter>errno</parameter> parameter the return value of one of
@@ -558,14 +538,12 @@ if (($ret = bind ($socket, '127.0.0.1', 80)) &lt; 0) {
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>write</function></funcdef>
-      <paramdef>int <parameter>socket_des</parameter></paramdef>
-      <paramdef>string <parameter>&amp;buffer</parameter></paramdef>
-      <paramdef>int <parameter>length</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>write</methodname>
+      <methodparam><type>int</type><parameter>socket_des</parameter></methodparam>
+      <methodparam><type>string</type><parameter>&amp;buffer</parameter></methodparam>
+      <methodparam><type>int</type><parameter>length</parameter></methodparam>
+     </methodsynopsis>
     <para>
      The function <function>write</function> writes to the socket 
      <parameter>socket_des</parameter> from
@@ -605,3 +583,4 @@ sgml-local-ecat-files:nil
 End:
 -->
  
+

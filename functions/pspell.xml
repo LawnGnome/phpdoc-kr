@@ -19,16 +19,11 @@
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_add_to_personal</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>string <parameter>word</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_add_to_personal</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>string</type><parameter>word</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_add_to_personal</function> 함수는 사용자 단어목록에 단어를 추가합니다.
 				 만약 사전을 열때<function>pspell_new_config</function> 함수와 <function>pspell_config_personal</function> 함수를 사용하면
@@ -61,16 +56,11 @@ pspell_save_wordlist ($pspell_link);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_add_to_session</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>string <parameter>word</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_add_to_session</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>string</type><parameter>word</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_add_to_session</function> 함수는 현재 세션의 단어목록에 단어를 추가합니다.
 				 이것은 <function>pspell_add_to_personal</function>함수와 매우 비슷합니다</simpara>
@@ -83,16 +73,11 @@ pspell_save_wordlist ($pspell_link);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>boolean <function>pspell_check</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>string <parameter>word</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>boolean</type><methodname>pspell_check</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>string</type><parameter>word</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_check</function> 함수는 단어의 철자를 검사하고 올바를 경우 &true;, 틀릴경우 &false;를
 				 반환합니다.
@@ -122,14 +107,10 @@ if (pspell_check ($pspell_link, "testt")) {
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_clear_session</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_clear_session</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_clear_session</function>함수는 현재 연결된 세션을 제거합니다.
 				 현재 단어목록은 비워집니다. 
@@ -161,29 +142,19 @@ pspell_save_wordlist ($pspell_link);	//"Vlad" will not be saved
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_config_create</function>
-					</funcdef>
-					<paramdef>string <parameter>language</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>spelling</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>jargon</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>encoding</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_create</methodname>
+					<methodparam><type>string</type><parameter>language</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							spelling
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							jargon
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							encoding
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_config_create</function> 함수는 
 	 <function>pspell_new</function>함수와 매우비슷한 문법입니다.
@@ -255,16 +226,11 @@ $pspell_link = pspell_new_personal (pspell_config);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_config_ignore</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>int <parameter>n</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_ignore</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>int</type><parameter>n</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_config_ignore</function> 함수는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
 				 합니다. 이 함수는 문자길이가 n보다 작은 단어는 검사하지 않고 무시합니다.
@@ -291,16 +257,11 @@ pspell_check($pspell_link, "abcd");	//will not result in an error
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_config_mode</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>int <parameter>mode</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_mode</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>int</type><parameter>mode</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_config_mode</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
 				 합니다. 이 함수는  <function>pspell_suggest</function>함수에 의해 반환되는 추천 단어의 수를 결정합니다.
@@ -348,16 +309,11 @@ pspell_check($pspell_link, "thecat");
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_config_personal</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>string <parameter>file</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_personal</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>string</type><parameter>file</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_config_personal</function>는<function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
 				사용자 단어목록은 읽혀지고 <function>pspell_new_config</function>함수를 호출한 후에 표준 단어목록에
@@ -388,16 +344,11 @@ pspell_check ($pspell_link, "thecat");
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_config_repl</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>string <parameter>file</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_repl</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>string</type><parameter>file</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_config_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야 합니다.
 				 교정내용은 단어검사기의 질적 성능을 향상시킵니다. 단어의 철자가 틀리고 목록에서 적당한
@@ -429,16 +380,11 @@ pspell_check ($pspell_link, "thecat");
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_config_runtogether</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>boolean <parameter>flag</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_runtogether</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>boolean</type><parameter>flag</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_config_runtogether</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에
 				 설정되어야 합니다. 이 함수는 연결된 단어를 정당한 합성어로 고려할지를 결정합니다.
@@ -468,16 +414,11 @@ pspell_check ($pspell_link, "thecat");
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_config_save_repl</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>boolean <parameter>flag</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_config_save_repl</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>boolean</type><parameter>flag</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_config_save_repl</function>함수는 <function>pspell_new_config</function>함수를 호출하기 전에 설정되어야
 				 합니다. 이 함수는<function>pspell_save_wordlist</function>함수가 교정내용목록을 단어목록과 같이
@@ -494,34 +435,22 @@ pspell_check ($pspell_link, "thecat");
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_new</function>
-					</funcdef>
-					<paramdef>string <parameter>language</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>spelling</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>jargon</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>encoding</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>mode</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_new</methodname>
+					<methodparam><type>string</type><parameter>language</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							spelling
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							jargon
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							encoding
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							mode
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_new</function>함수는 새 사전을 열고 다른 pspell함수에서 사용할수 있도록
 				사전 연결 identifier를 반환합니다.
@@ -598,14 +527,10 @@ $pspell_link = pspell_new ("en", "", "", "",
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_new_config</function>
-					</funcdef>
-					<paramdef>int <parameter>config</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_new_config</methodname>
+					<methodparam><type>int</type><parameter>config</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_new_config</function>함수는 <function>pspell_config_create</function>함수에 의해서 생성되고,
 				<function>pspell_config_*</function>함수로 수정된 설정을 사용해서 새 사전을 엽니다. 이 방법은
@@ -637,36 +562,23 @@ $pspell_link = pspell_new_personal (pspell_config);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_new_personal</function>
-					</funcdef>
-					<paramdef>string <parameter>personal</parameter>
-					</paramdef>
-					<paramdef>string <parameter>language</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>spelling</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>jargon</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>encoding</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>mode</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_new_personal</methodname>
+					<methodparam><type>string</type><parameter>personal</parameter></methodparam>
+					<methodparam><type>string</type><parameter>language</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							spelling
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							jargon
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							encoding
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							mode
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_new_personal</function>함수는 사용자 단어목록으로 새 사전을 열고 다른 pspell 함수에서
 				 사용하기위한 사전열기 identifier를 반환합니다. 원할경우, 단어목록은
@@ -755,14 +667,10 @@ $pspell_link = pspell_new_personal ("/var/dictionaries/custom.pws",
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_save_wordlist</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_save_wordlist</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_save_wordlist</function>함수는 현재 세션의 사용자 단어목록을 저장합니다.
 				 사전은 <function>pspell_new_personal</function>함수를 사용해서 열고, 저장된 
@@ -794,18 +702,12 @@ pspell_save_wordlist ($pspell_link);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>pspell_store_replacement</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>string <parameter>misspelled</parameter>
-					</paramdef>
-					<paramdef>string <parameter>correct</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>pspell_store_replacement</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>string</type><parameter>misspelled</parameter></methodparam>
+					<methodparam><type>string</type><parameter>correct</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_store_replacement</function>함수는 단어의 교정목록을 저장합니다.
 				 나중에 <function>pspell_suggest</function>함수를 사용해서  교정내용을 반환할 수 있습니다.
@@ -841,16 +743,11 @@ pspell_save_wordlist ($pspell_link);
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>pspell_suggest</function>
-					</funcdef>
-					<paramdef>int <parameter>dictionary_link</parameter>
-					</paramdef>
-					<paramdef>string <parameter>word</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>pspell_suggest</methodname>
+					<methodparam><type>int</type><parameter>dictionary_link</parameter></methodparam>
+					<methodparam><type>string</type><parameter>word</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>pspell_suggest</function>함수는 주어진 단어에 대한 가능한 철자를 배열형으로 반환합니다. 
     </simpara>
@@ -892,3 +789,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

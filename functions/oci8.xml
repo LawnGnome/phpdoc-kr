@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
+<!-- $Revision: 1.13 $ -->
  <reference id="ref.oci8">
   <title>오라클 8 함수</title>
   <titleabbrev>OCI8</titleabbrev>
@@ -162,16 +162,13 @@ $sth = OCIParse ( $dbh, "begin sp_newaddress( :address_id, '$firstname',
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIDefineByName</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>string <parameter>Column-Name</parameter></paramdef>
-      <paramdef>mixed <parameter>variable</parameter></paramdef>
-      <paramdef>int <parameter><optional>type</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIDefineByName</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>string</type><parameter>Column-Name</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>variable</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>type</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIDefineByName</function>함수는 
      페치(fetch)한 컬럼을 사용자정의 PHP변수 에 할당한다.  
@@ -227,17 +224,15 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIBindByName</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>string <parameter>ph_name</parameter></paramdef>
-      <paramdef>mixed &amp;<parameter>variable</parameter></paramdef>
-      <paramdef>int <parameter>length</parameter></paramdef>
-      <paramdef>int <parameter>
-       <optional>type</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIBindByName</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ph_name</parameter></methodparam>
+      <methodparam><type>mixed &amp;</type><parameter>variable</parameter></methodparam>
+      <methodparam><type>int</type><parameter>length</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>
+       type</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIBindByName</function>함수는 PHP 변수 
      <parameter>variable</parameter>에 오라클 위치보유자(Oracle placeholder)인
@@ -338,16 +333,12 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCILogon</function></funcdef>
-      <paramdef>string <parameter>username</parameter></paramdef>
-      <paramdef>string <parameter>password</parameter></paramdef>
-      <paramdef>string
-       <parameter><optional>db</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCILogon</methodname>
+      <methodparam><type>string</type><parameter>username</parameter></methodparam>
+      <methodparam><type>string</type><parameter>password</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>db</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCILogon</function>함수는 다른 OCI 함수 호출에 필요한 접속 변수를
      넘겨준다. 세번째 인수는 로컬 오라클 인스턴스명이나
@@ -466,16 +457,12 @@ print "</PRE></HTML>";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIPLogon</function></funcdef>
-      <paramdef>string <parameter>username</parameter></paramdef>
-      <paramdef>string <parameter>password</parameter></paramdef>
-      <paramdef>string
-       <parameter><optional>db</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIPLogon</methodname>
+      <methodparam><type>string</type><parameter>username</parameter></methodparam>
+      <methodparam><type>string</type><parameter>password</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>db</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIPLogon</function> 오라클8 DB에 영속적인 접속을 형성하고,
      로그온 한다. 세번째 인수는 로컬 오라클 인스턴스(local Oracle instanace)의
@@ -499,16 +486,12 @@ print "</PRE></HTML>";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCINLogon</function></funcdef>
-      <paramdef>string <parameter>username</parameter></paramdef>
-      <paramdef>string <parameter>password</parameter></paramdef>
-      <paramdef>string
-       <parameter><optional>db</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCINLogon</methodname>
+      <methodparam><type>string</type><parameter>username</parameter></methodparam>
+      <methodparam><type>string</type><parameter>password</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>db</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCINLogon</function> 오라클8 DB에 새로운 접속을 형성하고,
      로그온 한다. 세번째 인수는 로컬 오라클 인스턴스명이나
@@ -630,12 +613,10 @@ print "</PRE></HTML>";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCILogOff</function></funcdef>
-      <paramdef>int <parameter>connection</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCILogOff</methodname>
+      <methodparam><type>int</type><parameter>connection</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCILogOff</function> 오라클 접속을 해제한다.
     </para>
@@ -649,15 +630,11 @@ print "</PRE></HTML>";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIExecute</function></funcdef>
-      <paramdef>int <parameter>statement</parameter></paramdef>
-      <paramdef>int
-       <parameter><optional>mode</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIExecute</methodname>
+      <methodparam><type>int</type><parameter>statement</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>mode</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIExecute</function>함수는 미리 해석된 구문(statement)을
      실행한다. (<function>OCIParse</function>함수를 보라.) 선택적인
@@ -675,12 +652,10 @@ print "</PRE></HTML>";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCICommit</function></funcdef>
-      <paramdef>int <parameter>connection</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCICommit</methodname>
+      <methodparam><type>int</type><parameter>connection</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCICommit</function>함수는 오라클 접속 인수인
      <parameter>connection</parameter>에 대해서
@@ -696,12 +671,10 @@ print "</PRE></HTML>";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIRollback</function></funcdef>
-      <paramdef>int <parameter>connection</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIRollback</methodname>
+      <methodparam><type>int</type><parameter>connection</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIRollback</function>함수는 오라클 접속 인수
      <parameter>connection</parameter>에 대해서
@@ -719,15 +692,11 @@ print "</PRE></HTML>";
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCINewDescriptor</function></funcdef>
-      <paramdef>int <parameter>connection</parameter></paramdef>
-      <paramdef>int
-       <parameter><optional>type</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCINewDescriptor</methodname>
+      <methodparam><type>int</type><parameter>connection</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>type</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCINewDescriptor</function>함수는 descpriptor나 
      LOB locator를 위한 저장공간을 할당한다.
@@ -850,12 +819,10 @@ Upload file: <input type="file" name="lob_upload"><br>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIRowCount</function></funcdef>
-      <paramdef>int <parameter>statement</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIRowCount</methodname>
+      <methodparam><type>int</type><parameter>statement</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIRowCount</function>함수는 update같은 구문에 의해 적용되어진
      열의 갯수를 리턴한다. 이 함수는 select 가 리턴할 열의 갯수를
@@ -899,12 +866,10 @@ Upload file: <input type="file" name="lob_upload"><br>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCINumCols</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCINumCols</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCINumCols</function>함수는 구문에서 컬럼의 갯수를 리턴한다.
     </para>
@@ -945,13 +910,11 @@ Upload file: <input type="file" name="lob_upload"><br>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed <function>OCIResult</function></funcdef>
-      <paramdef>int <parameter>statement</parameter></paramdef>
-      <paramdef>mixed <parameter>column</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>mixed</type><methodname>OCIResult</methodname>
+      <methodparam><type>int</type><parameter>statement</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>column</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIResult</function>함수는 현재 열의 컬럼
      <parameter>column</parameter>에 대한 데이터를 리턴한다
@@ -969,12 +932,10 @@ Upload file: <input type="file" name="lob_upload"><br>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIFetch</function></funcdef>
-      <paramdef>int <parameter>statement</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIFetch</methodname>
+      <methodparam><type>int</type><parameter>statement</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIFetch</function>함수는 다음 열(SELECT 구문을 위해)을 
      내부 결과 버퍼(internal result-buffer)에 페치한다.
@@ -989,16 +950,12 @@ Upload file: <input type="file" name="lob_upload"><br>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIFetchInto</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>array &amp;<parameter>result</parameter></paramdef>
-      <paramdef>int
-       <parameter><optional>mode</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIFetchInto</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>array &amp;</type><parameter>result</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>mode</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIFetchInto</function>함수는 다음열(SELECT 구문을 위해)을 
      <parameter>result</parameter>배열에 페치한다.
@@ -1037,13 +994,11 @@ Upload file: <input type="file" name="lob_upload"><br>
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIFetchStatement</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>array &amp;<parameter>variable</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIFetchStatement</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>array &amp;</type><parameter>variable</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIFetchStatement</function>함수는 사용자 정의 배열로
      결과값의 모든 열을 페치한다.
@@ -1103,13 +1058,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIColumnIsNULL</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>mixed <parameter>column</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIColumnIsNULL</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>column</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIColumnIsNULL</function>함수는
      구문 <parameter>stmt</parameter>의 결과값에서
@@ -1128,13 +1081,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCIColumnName</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCIColumnName</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      <function>OCIColumnName</function> 함수는 컬럼 숫자(1-based)에
      부합되는 컬럼 이름을 리턴한다.
@@ -1190,13 +1141,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIColumnSize</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>mixed <parameter>column</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIColumnSize</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>column</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIColumnSize</function>함수는 오라클에 의해 주어진
      컬럼의 사이즈를 리턴한다.  <parameter>col</parameter> 인수에는
@@ -1254,13 +1203,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed <function>OCIColumnType</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>mixed</type><methodname>OCIColumnType</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      <function>OCIColumnType</function>함수는 컬럼 숫자(1-based)에 부합되는
      컬럼의 데이터 타입을 리턴한다.
@@ -1316,12 +1263,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCIServerVersion</function></funcdef>
-      <paramdef>int <parameter>conn</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCIServerVersion</methodname>
+      <methodparam><type>int</type><parameter>conn</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <example>
       <title>OCIServerVersion</title>
@@ -1346,12 +1291,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCIStatementType</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCIStatementType</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIStatementType</function> 함수는 다음중 하나를 리턴한다:
      <orderedlist>
@@ -1400,12 +1343,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCINewCursor</function></funcdef>
-      <paramdef>int <parameter>conn</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCINewCursor</methodname>
+      <methodparam><type>int</type><parameter>conn</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCINewCursor</function>함수는 특정 접속점에 관한
      새로운 구문 핸들을 할당한다.
@@ -1491,12 +1432,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIFreeStatement</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIFreeStatement</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIFreeStatement</function>함수는 자원 해제에 성공하면 &true;를
      리턴하고, 실패하면 &false;를 리턴한다.
@@ -1513,12 +1452,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIFreeCursor</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIFreeCursor</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIFreeCursor</function> 함수는 자원 해제에 성공하면 &true;를,
      실패하면 &false;를 리턴한다.
@@ -1533,12 +1470,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIFreeDesc</function></funcdef>
-      <paramdef>object <parameter>lob</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIFreeDesc</methodname>
+      <methodparam><type>object</type><parameter>lob</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>OCIFreeDesc</function>함수는 성공하면 &true;를,
      실패하면 &false;를 리턴한다.
@@ -1553,13 +1488,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIParse</function></funcdef>
-      <paramdef>int <parameter>conn</parameter></paramdef>
-      <paramdef>strint <parameter>query</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIParse</methodname>
+      <methodparam><type>int</type><parameter>conn</parameter></methodparam>
+      <methodparam><type>strint</type><parameter>query</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      <function>OCIParse</function> 함수는 <parameter>conn</parameter>인수를
      사용하는  <parameter>query</parameter>를 해석한다.
@@ -1579,14 +1512,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>array <function>OCIError</function></funcdef>
-      <paramdef>int 
-       <parameter><optional>stmt|conn|global</optional></parameter>
-      </paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>array</type><methodname>OCIError</methodname>
+      <methodparam choice="opt"><type>int</type><parameter>stmt|conn|global</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      <function>OCIError</function>함수는 마지막 에러를 리턴한다.
      선택적 인수<parameter>stmt|conn|global</parameter>가 제공되지않으면,
@@ -1610,12 +1539,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void <function>OCIInternalDebug</function></funcdef>
-      <paramdef>int <parameter>onoff</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>OCIInternalDebug</methodname>
+      <methodparam><type>int</type><parameter>onoff</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      <function>OCIInternalDebug</function>함수는 내부 디버그 출력을
      활성화 시킨다. 
@@ -1632,12 +1559,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCICancel</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCICancel</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      커서로부터 더이상 데이터를 읽기를 원치않으면,
      <function>OCICancel</function>함수를 쓰라.
@@ -1652,13 +1577,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCISetPrefetch</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>int <parameter>rows</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCISetPrefetch</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>int</type><parameter>rows</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      사용할 열의 갯수를 설정한다. 기본값은 1열이다.
     </simpara>
@@ -1672,15 +1595,13 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void <function>OCIWriteLobToFile</function></funcdef>
-      <paramdef>object <parameter>lob</parameter></paramdef>
-      <paramdef>string <parameter><optional>filename</optional></parameter></paramdef>
-      <paramdef>int <parameter><optional>start</optional></parameter></paramdef>
-      <paramdef>int <parameter><optional>lenght</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>OCIWriteLobToFile</methodname>
+      <methodparam><type>object</type><parameter>lob</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>filename</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>start</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>lenght</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1694,12 +1615,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCISaveLobFile</function></funcdef>
-      <paramdef>object <parameter>lob</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCISaveLobFile</methodname>
+      <methodparam><type>object</type><parameter>lob</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1713,12 +1632,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCISaveLob</function></funcdef>
-      <paramdef>object <parameter>lob</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCISaveLob</methodname>
+      <methodparam><type>object</type><parameter>lob</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1732,12 +1649,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCILoadLob</function></funcdef>
-      <paramdef>object <parameter>lob</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCILoadLob</methodname>
+      <methodparam><type>object</type><parameter>lob</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1751,13 +1666,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIColumnScale</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIColumnScale</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1771,13 +1684,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>OCIColumnPrecision</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>OCIColumnPrecision</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1791,13 +1702,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>mixed <function>OCIColumnTypeRaw</function></funcdef>
-      <paramdef>int <parameter>stmt</parameter></paramdef>
-      <paramdef>int <parameter>col</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>mixed</type><methodname>OCIColumnTypeRaw</methodname>
+      <methodparam><type>int</type><parameter>stmt</parameter></methodparam>
+      <methodparam><type>int</type><parameter>col</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1811,14 +1720,12 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCINewCollection</function></funcdef>
-      <paramdef>int <parameter>conn</parameter></paramdef>
-      <paramdef>string <parameter>tdo</parameter></paramdef>
-      <paramdef>string <parameter><optional>shema</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCINewCollection</methodname>
+      <methodparam><type>int</type><parameter>conn</parameter></methodparam>
+      <methodparam><type>string</type><parameter>tdo</parameter></methodparam>
+      <methodparam choice="opt"><type>string</type><parameter>shema</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1832,12 +1739,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCIFreeCollection</function></funcdef>
-      <paramdef>object <parameter>lob</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCIFreeCollection</methodname>
+      <methodparam><type>object</type><parameter>lob</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1851,13 +1756,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCICollAssign</function></funcdef>
-      <paramdef>object <parameter>collection</parameter></paramdef>
-      <paramdef>object <parameter>object</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCICollAssign</methodname>
+      <methodparam><type>object</type><parameter>collection</parameter></methodparam>
+      <methodparam><type>object</type><parameter>object</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1871,13 +1774,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCICollAppend</function></funcdef>
-      <paramdef>object <parameter>collection</parameter></paramdef>
-      <paramdef>object <parameter>object</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCICollAppend</methodname>
+      <methodparam><type>object</type><parameter>collection</parameter></methodparam>
+      <methodparam><type>object</type><parameter>object</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1891,14 +1792,12 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCICollAssignElem</function></funcdef>
-      <paramdef>object <parameter>collection</parameter></paramdef>
-      <paramdef>string <parameter>ndx</parameter></paramdef>
-      <paramdef>string <parameter>val</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCICollAssignElem</methodname>
+      <methodparam><type>object</type><parameter>collection</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ndx</parameter></methodparam>
+      <methodparam><type>string</type><parameter>val</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1912,13 +1811,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCICollGetElem</function></funcdef>
-      <paramdef>object <parameter>collection</parameter></paramdef>
-      <paramdef>string <parameter>ndx</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCICollGetElem</methodname>
+      <methodparam><type>object</type><parameter>collection</parameter></methodparam>
+      <methodparam><type>string</type><parameter>ndx</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1932,12 +1829,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCICollMax</function></funcdef>
-      <paramdef>object <parameter>collection</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCICollMax</methodname>
+      <methodparam><type>object</type><parameter>collection</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1951,12 +1846,10 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCICollSize</function></funcdef>
-      <paramdef>object <parameter>collection</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCICollSize</methodname>
+      <methodparam><type>object</type><parameter>collection</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -1970,13 +1863,11 @@ OCILogoff($conn);
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>OCICollTrim</function></funcdef>
-      <paramdef>object <parameter>collection</parameter></paramdef>
-      <paramdef>int <parameter>num</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>OCICollTrim</methodname>
+      <methodparam><type>object</type><parameter>collection</parameter></methodparam>
+      <methodparam><type>int</type><parameter>num</parameter></methodparam>
+     </methodsynopsis>
     <simpara>
      Coming soon.
     </simpara>
@@ -2005,3 +1896,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+

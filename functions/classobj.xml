@@ -157,29 +157,17 @@ Object leafy belongs to class spinach a subclass of Vegetable
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>mixed 
-       <function>call_user_method</function>
-					</funcdef>
-					<paramdef>string 
-       <parameter>method_name</parameter>
-					</paramdef>
-					<paramdef>object 
-       <parameter>obj</parameter>
-					</paramdef>
-					<paramdef>mixed 
-       <parameter>
-							<optional>parameter</optional>
-						</parameter>
-					</paramdef>
-					<paramdef>mixed 
-       <parameter>
-							<optional>...</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>mixed</type><methodname>call_user_method</methodname>
+					<methodparam><type>string</type><parameter>method_name</parameter></methodparam>
+					<methodparam><type>object</type><parameter>obj</parameter></methodparam>
+					<methodparam choice="opt"><type>mixed</type><parameter>
+							parameter
+						</parameter></methodparam>
+					<methodparam choice="opt"><type>mixed</type><parameter>
+							...
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 사용자가 정의한 <parameter>obj</parameter> 객체의 <parameter>method_name</parameter> 메소드를 호출합니다. 사용방법은 아래와 같습니다.
 클래스를 정의한 후에 객체를 생성하고 <function>call_user_method</function> 함수를 호출하여 <varname>print_info</varname> 메소드를 간접 호출합니다.
@@ -224,14 +212,10 @@ call_user_method (&quot;print_info&quot;, $cntry, &quot;\t&quot;);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>class_exists</function>
-					</funcdef>
-					<paramdef>string <parameter>class_name</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>class_exists</methodname>
+					<methodparam><type>string</type><parameter>class_name</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 인수로 주어진 <parameter>class_name</parameter> 클래스가 정의 되어 있으면 참(&true;)을 반환하고, 그렇지 않으면 거짓(&false;)을 반환합니다.
     </para>
@@ -244,14 +228,10 @@ call_user_method (&quot;print_info&quot;, $cntry, &quot;\t&quot;);
 		</refnamediv>
 		<refsect1>
 			<title>설 명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>get_class</function>
-					</funcdef>
-					<paramdef>object <parameter>obj</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>get_class</methodname>
+					<methodparam><type>object</type><parameter>obj</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 객체 <parameter>obj</parameter>가 속한 클래스 이름을 반환합니다.
     </para>
@@ -268,14 +248,10 @@ call_user_method (&quot;print_info&quot;, $cntry, &quot;\t&quot;);
 		</refnamediv>
 		<refsect1>
 			<title>설 명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>get_class_methods</function>
-					</funcdef>
-					<paramdef>string <parameter>class_name</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>get_class_methods</methodname>
+					<methodparam><type>string</type><parameter>class_name</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 인수로 주어진 <parameter>class_name</parameter>클래스의 멤버함수(메소드) 이름을 배열로 반환합니다.
     </para>
@@ -293,14 +269,10 @@ call_user_method (&quot;print_info&quot;, $cntry, &quot;\t&quot;);
 		</refnamediv>
 		<refsect1>
 			<title>설 명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>get_class_vars</function>
-					</funcdef>
-					<paramdef>string <parameter>class_name</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>get_class_vars</methodname>
+					<methodparam><type>string</type><parameter>class_name</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 클래스의 기본속성(멤버변수)들을 배열로 반환합니다.
     </para>
@@ -316,13 +288,10 @@ call_user_method (&quot;print_info&quot;, $cntry, &quot;\t&quot;);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>get_declared_classes</function>
-					</funcdef>
-					<paramdef>void</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>get_declared_classes</methodname>
+					<void/>
+				</methodsynopsis>
 			<para>
 정의된 클래스들의 이름을 배열로 반환합니다
     </para>
@@ -341,14 +310,10 @@ PHP 4.0.1pl2에서는 배열의 첫부분에 세개의 클래스들이 들어가
 		</refnamediv>
 		<refsect1>
 			<title>설 명 </title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>get_object_vars</function>
-					</funcdef>
-					<paramdef>object <parameter>obj</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>get_object_vars</methodname>
+					<methodparam><type>object</type><parameter>obj</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 인자로 주어진 객체 <parameter>obj</parameter>의 객체속성(멤버변수)들을 associative 배열로 반환합니다. 
 만약 객체 <parameter>obj</parameter>가 선언되어진 클래스의 변수들에 할당된 값들이 없는 경우는 반환되는 배열에서 이러한 객체속성(멤버변수)들은 제외됩니다.
@@ -412,14 +377,10 @@ print_r(get_object_vars($p1));
 		</refnamediv>
 		<refsect1>
 			<title>설 명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>get_parent_class</function>
-					</funcdef>
-					<paramdef>object <parameter>obj</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>get_parent_class</methodname>
+					<methodparam><type>object</type><parameter>obj</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 객체 <parameter>obj</parameter>가 속한 클래스의 상위(아버지) 클래스의 이름을 반환합니다.
     </para>
@@ -438,16 +399,11 @@ print_r(get_object_vars($p1));
 		</refnamediv>
 		<refsect1>
 			<title>설 명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>is_subclass_of</function>
-					</funcdef>
-					<paramdef>object <parameter>obj</parameter>
-					</paramdef>
-					<paramdef>string <parameter>superclass</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>is_subclass_of</methodname>
+					<methodparam><type>object</type><parameter>obj</parameter></methodparam>
+					<methodparam><type>string</type><parameter>superclass</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 객체 <parameter>obj</parameter>가 상위클래스(<parameter>superclass</parameter>)의 하위클래스에 속하면 참(&true;)을 , 그렇지 않으면 거짓(&false;)를 반환합니다.
     </para>
@@ -463,16 +419,11 @@ print_r(get_object_vars($p1));
 		</refnamediv>
 		<refsect1>
 			<title>설 명</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>bool <function>method_exists</function>
-					</funcdef>
-					<paramdef>object <parameter>object</parameter>
-					</paramdef>
-					<paramdef>string <parameter>method_name</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>bool</type><methodname>method_exists</methodname>
+					<methodparam><type>object</type><parameter>object</parameter></methodparam>
+					<methodparam><type>string</type><parameter>method_name</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 이 함수는 객체 <parameter>object</parameter>에 메소드 <parameter>method_name</parameter>이 존재하면 참(&true;)을 반환하고, 그렇지 않으면 거짓(&false;)을 반환합니다.
     </para>
@@ -496,3 +447,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

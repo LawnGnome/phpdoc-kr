@@ -144,12 +144,10 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>void <function>dba_close</function></funcdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>void</type><methodname>dba_close</methodname>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_close</function> closes the established database
      and frees all resources specified by
@@ -176,13 +174,11 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>dba_delete</function></funcdef>
-      <paramdef>string <parameter>key</parameter></paramdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>dba_delete</methodname>
+      <methodparam><type>string</type><parameter>key</parameter></methodparam>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_delete</function> deletes the entry specified by
      <parameter>key</parameter> from the database specified with
@@ -215,13 +211,11 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>dba_exists</function></funcdef>
-      <paramdef>string <parameter>key</parameter></paramdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>dba_exists</methodname>
+      <methodparam><type>string</type><parameter>key</parameter></methodparam>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_exists</function> checks whether the specified
      <parameter>key</parameter> exists in the database specified by
@@ -253,13 +247,11 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>dba_fetch</function></funcdef>
-      <paramdef>string <parameter>key</parameter></paramdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>dba_fetch</methodname>
+      <methodparam><type>string</type><parameter>key</parameter></methodparam>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_fetch</function> fetches the data specified by
      <parameter>key</parameter> from the database specified with
@@ -292,12 +284,10 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>dba_firstkey</function></funcdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>dba_firstkey</methodname>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_firstkey</function> returns the first key of the
      database specified by <parameter>handle</parameter> and resets
@@ -326,14 +316,12 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>dba_insert</function></funcdef>
-      <paramdef>string <parameter>key</parameter></paramdef>
-      <paramdef>string <parameter>value</parameter></paramdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>dba_insert</methodname>
+      <methodparam><type>string</type><parameter>key</parameter></methodparam>
+      <methodparam><type>string</type><parameter>value</parameter></methodparam>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_insert</function> inserts the entry described with
      <parameter>key</parameter> and <parameter>value</parameter> into the
@@ -371,12 +359,10 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>string <function>dba_nextkey</function></funcdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>string</type><methodname>dba_nextkey</methodname>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_nextkey</function> returns the next key of the database
      specified by <parameter>handle</parameter> and increments the internal
@@ -404,15 +390,13 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>dba_popen</function></funcdef>
-      <paramdef>string <parameter>path</parameter></paramdef>
-      <paramdef>string <parameter>mode</parameter></paramdef>
-      <paramdef>string <parameter>handler</parameter></paramdef>
-      <paramdef><parameter><optional>...</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>dba_popen</methodname>
+      <methodparam><type>string</type><parameter>path</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mode</parameter></methodparam>
+      <methodparam><type>string</type><parameter>handler</parameter></methodparam>
+      <methodparam choice="opt"><parameter>...</parameter></methodparam>
+     </methodsynopsis>
 
     <para>
      <function>dba_popen</function> establishes a persistent database instance
@@ -453,15 +437,13 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>int <function>dba_open</function></funcdef>
-      <paramdef>string <parameter>path</parameter></paramdef>
-      <paramdef>string <parameter>mode</parameter></paramdef>
-      <paramdef>string <parameter>handler</parameter></paramdef>
-      <paramdef><parameter><optional>...</optional></parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>int</type><methodname>dba_open</methodname>
+      <methodparam><type>string</type><parameter>path</parameter></methodparam>
+      <methodparam><type>string</type><parameter>mode</parameter></methodparam>
+      <methodparam><type>string</type><parameter>handler</parameter></methodparam>
+      <methodparam choice="opt"><parameter>...</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_open</function> establishes a database instance for
      <parameter>path</parameter> with <parameter>mode</parameter> using
@@ -501,12 +483,10 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>dba_optimize</function></funcdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>dba_optimize</methodname>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_optimize</function> optimizes the underlying database
      specified by <parameter>handle</parameter>.
@@ -533,14 +513,12 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>dba_replace</function></funcdef>
-      <paramdef>string <parameter>key</parameter></paramdef>
-      <paramdef>string <parameter>value</parameter></paramdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>dba_replace</methodname>
+      <methodparam><type>string</type><parameter>key</parameter></methodparam>
+      <methodparam><type>string</type><parameter>value</parameter></methodparam>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_replace</function> replaces or inserts the entry described
      with <parameter>key</parameter> and <parameter>value</parameter> into the
@@ -575,12 +553,10 @@ for ($i = 0; $i &lt; count($handle_later); $i++)
    </refnamediv>
    <refsect1>
     <title>Description</title>
-    <funcsynopsis>
-     <funcprototype>
-      <funcdef>bool <function>dba_sync</function></funcdef>
-      <paramdef>int <parameter>handle</parameter></paramdef>
-     </funcprototype>
-    </funcsynopsis>
+     <methodsynopsis>
+      <type>bool</type><methodname>dba_sync</methodname>
+      <methodparam><type>int</type><parameter>handle</parameter></methodparam>
+     </methodsynopsis>
     <para>
      <function>dba_sync</function> synchronizes the database specified by
      <parameter>handle</parameter>. This will probably trigger a physical write
@@ -619,3 +595,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+

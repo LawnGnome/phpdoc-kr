@@ -72,14 +72,10 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzclose</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzclose</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      zp에의해 지정된 .gz 파일이 닫혀진다.
     </para>
@@ -98,14 +94,10 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzeof</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzeof</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      지정된 .gz 파일의 끝이거나 에러가 일어나면 &true;를 반환하고; 그렇지 않은 경우 &false;를 반환한다.
     </para>
@@ -121,19 +113,13 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>array <function>gzfile</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>use_include_path</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>array</type><methodname>gzfile</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							use_include_path
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      <function>readgzfile</function>와 동일하나, <function>gzfile</function>은 파일을 배열로 반환한다.
     </para>
@@ -153,14 +139,10 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gzgetc</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gzgetc</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      zp에 의해 지정된 파일로부터 문자열에 포함된 단문자(압축되지 않은)를  반환한다. EOF의 경우 &false;를 반환한다(마치 <function>gzeof</function>처럼).
     </para>
@@ -180,16 +162,11 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gzgets</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>length</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gzgets</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>length</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      fp에 의해 지정된 파일로부터 length - 1 bytes의 문장을 리턴한다. length - 1 bytes를 읽거나, 새로운 라인을 만나거나, EOF의 경우 (혹 처음으로 돌아가든지), 읽는것을 그만둔다.
     </para>
@@ -214,21 +191,14 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gzgetss</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>length</parameter>
-					</paramdef>
-					<paramdef>string 
-       <parameter>
-							<optional>allowable_tags</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gzgetss</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>length</parameter></methodparam>
+					<methodparam choice="opt"><type>string</type><parameter>
+							allowable_tags
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      <function>gzgets</function>와 동일하나, <function>gzgetss</function>은 읽은 문자에서 HTML과 PHP
      태그를 제외한다.
@@ -256,21 +226,14 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzopen</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>string <parameter>mode</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>use_include_path</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzopen</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam><type>string</type><parameter>mode</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							use_include_path
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      gzip (.gz)파일을 읽기 또는 쓰기위해 연다. mode 파라미터는 <function>fopen</function> ("rb" or "wb")와 같고, 또한 압축레벨 ("wb9") 또는 stategy를 포함한다: 'f'
       for filtered data as in "wb6f", 'h' for Huffman only compression
@@ -311,14 +274,10 @@ $fp = gzopen ("/tmp/file.gz", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzpassthru</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzpassthru</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      지정된 .gz파일의 EOF을 읽으면 standard output으로 결과(압축되지 않은) 결과를 출력한다.
     </para>
@@ -340,21 +299,14 @@ $fp = gzopen ("/tmp/file.gz", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzputs</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-					<paramdef>string <parameter>str</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>length</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzputs</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+					<methodparam><type>string</type><parameter>str</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							length
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
 				<function>gzputs</function>은 <function>gzwrite</function>와 모든면에서 동일하다.
     </para>
@@ -367,16 +319,11 @@ $fp = gzopen ("/tmp/file.gz", "r");
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gzread</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>length</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gzread</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>length</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>gzread</function>은 <parameter>zp</parameter>로부터 참조된 지정된 .gz 파일로부터 <parameter>length</parameter>만큼의 byte값을 읽어들인다. <parameter>length</parameter> (압축되지 않은)만큼의 byte를 읽거나 EOF에 다다르면 읽기를 멈춘다. (처음으로 돌아가는것 포함)
     </simpara>
@@ -405,14 +352,10 @@ gzclose ($zd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzrewind</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzrewind</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+				</methodsynopsis>
 			<para>    
      zp를 지시자로 파일스트림의 시작위치로 파일 포지션을 둔다.
     </para>
@@ -434,16 +377,11 @@ gzclose ($zd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzseek</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-					<paramdef>int <parameter>offset</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzseek</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+					<methodparam><type>int</type><parameter>offset</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      파일 스트림 내부에서 zp참조로 지정된 파일 포지션을 offset으로 이동한다. C에서 <literal>gzseek( zp, offset, SEEK_SET )</literal>의 호출과 동일하다.
     </para>
@@ -469,14 +407,10 @@ gzclose ($zd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gztell</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gztell</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      <parameter>zp</parameter>에의해 참조된 파일위치의 포인터를 반환한다; 즉, 파일스트림 내부의 offset
     </para>
@@ -498,21 +432,14 @@ gzclose ($zd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>gzwrite</function>
-					</funcdef>
-					<paramdef>int <parameter>zp</parameter>
-					</paramdef>
-					<paramdef>string <parameter>string</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>length</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>gzwrite</methodname>
+					<methodparam><type>int</type><parameter>zp</parameter></methodparam>
+					<methodparam><type>string</type><parameter>string</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							length
+						</parameter></methodparam>
+				</methodsynopsis>
 			<simpara>
 				<function>gzwrite</function>는 <parameter>zp</parameter>에 의해 지정된 .gz파일스트림에 <parameter>string</parameter>을 기록한다.
 				만일 <parameter>length</parameter>가 주어지면,  <parameter>length</parameter> (압축되지않은) 바이트마큼 쓰여지거나, <parameter>string</parameter>의 끝에 도달하거나, 혹은 초기화되거나하면 '쓰기'가 중지된다.
@@ -534,19 +461,13 @@ gzclose ($zd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>int <function>readgzfile</function>
-					</funcdef>
-					<paramdef>string <parameter>filename</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>use_include_path</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>int</type><methodname>readgzfile</methodname>
+					<methodparam><type>string</type><parameter>filename</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							use_include_path
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para> 
      파일을 읽고, 압축해제를하고 standard output으로 출력한다.
     </para>
@@ -575,19 +496,13 @@ gzclose ($zd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gzcompress</function>
-					</funcdef>
-					<paramdef>string <parameter>data</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>level</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gzcompress</methodname>
+					<methodparam><type>string</type><parameter>data</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							level
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>
      이 함수는 입력된<parameter>data</parameter>의 gzip압축버젼을 리턴하거나 에러발생시 &false;를 반환한다. 옵션의 파라미터인 <parameter>level</parameter>은 압축률이 0인 0부터 최대압축률인 9까지 주어진다.
     </para>
@@ -603,19 +518,13 @@ gzclose ($zd);
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
-			<funcsynopsis>
-				<funcprototype>
-					<funcdef>string <function>gzuncompress</function>
-					</funcdef>
-					<paramdef>string <parameter>data</parameter>
-					</paramdef>
-					<paramdef>int 
-       <parameter>
-							<optional>length</optional>
-						</parameter>
-					</paramdef>
-				</funcprototype>
-			</funcsynopsis>
+				<methodsynopsis>
+					<type>string</type><methodname>gzuncompress</methodname>
+					<methodparam><type>string</type><parameter>data</parameter></methodparam>
+					<methodparam choice="opt"><type>int</type><parameter>
+							length
+						</parameter></methodparam>
+				</methodsynopsis>
 			<para>			
      이 함수는 <function>gzcompress</function>로 압축된 <parameter>data</parameter>를 취하여, 압축되지않은 원본데이터를 반환하거나 에러의 경우 &false;를 반환한다. 만일 압축해제된 데이타가 압축되어 입력된 <parameter>data</parameter>보다 256배 이상이거나 옵션의 파라미터의 <parameter>length</parameter>이상인 경우 에러를 반환한다.
     </para>
@@ -642,3 +551,4 @@ sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
 -->
+
