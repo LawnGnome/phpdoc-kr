@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
   <refentry id="function.str-replace">
    <refnamediv>
     <refname>str_replace</refname>
@@ -19,9 +19,9 @@
     <para>
      <parameter>subject</parameter>에서 발견한 모든
      <parameter>search</parameter>를 주어진 <parameter>replace</parameter>
-     값으로 치환한 문자열이나 배열을 반환합니다. 복잡한 치환 규칙이 필요하지
-     않다면, <function>ereg_replace</function>나
-     <function>preg_replace</function> 대신 이 함수를 사용하십시오.
+     값으로 치환한 문자열이나 배열을 반환합니다. (정규표현식처럼) 복잡한 치환
+     규칙이 필요하지 않다면, 항상 <function>ereg_replace</function>나
+     <function>preg_replace</function> 대신 이 함수를 사용해야 합니다.
     </para>
     <para>
      PHP 4.0.5부터, <function>str_replace</function>의 모든 인자를

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.strip-tags">
    <refnamediv>
     <refname>strip_tags</refname>
@@ -14,18 +14,23 @@
      </methodsynopsis>
     <para>
      주어진 <parameter>str</parameter>에서 모든 HTML과 PHP 태그를 제거한
-     문자열을 반환합니다. 완전하지 않거나 여분의 태그가 있을 경우 오류가
-     발생합니다. 이 함수는 <function>fgetss</function> 함수와 동일한 태그 제거
-     상태 머신을 사용합니다.
+     문자열을 반환합니다. 이 함수는 <function>fgetss</function> 함수와 동일한
+     태그 제거 방식을 사용합니다.
     </para>
     <para>
      선택적인 두번째 인자로 제거하지 않을 태그를 지정할 수 있습니다.
      <note>
       <para>
        <parameter>allowable_tags</parameter>은 PHP 3.0.13과 PHP 4.0b3에서
-       추가되었습니다.
+       추가되었습니다. PHP 4.3부터 HTML 주석도 제거합니다.
       </para> 
      </note>
+     <warning>
+      <para>
+       <function>strip_tags</function>는 HTML의 유효성을 검사하지 않기 때문에,
+       부분적이거나 깨진 태그는 예상 외의 텍스트/데이터를 제거할 수 있습니다.
+      </para>
+     </warning>
     </para>
     <para>
      <example>
@@ -33,10 +38,37 @@
       <programlisting role="php">
 <![CDATA[
 <?php
-$string = strip_tags($string, '<a><b><i><u>');
+$text = '
+<p>테스트 문단.</p>
+<!-- 주석 -->
+다른 텍스트';
+
+echo strip_tags($text);
+
+echo "\n\n--------\n";
+
+// <p>를 허용.
+echo strip_tags($text, '<p>');
 ?>
 ]]>
       </programlisting>
+      <para>
+       위 예제의 출력은:
+      </para>
+      <screen>
+<![CDATA[
+테스트 문단.
+
+다른 텍스트
+
+--------
+
+<p>테스트 문단.</p>
+
+다른 텍스트
+]]>
+
+      </screen>
      </example>
     </para>
     <warning>

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.sprintf">
    <refnamediv>
     <refname>sprintf</refname>

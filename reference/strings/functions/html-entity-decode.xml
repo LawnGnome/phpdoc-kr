@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
   <refentry id="function.html-entity-decode">
    <refnamediv>
     <refname>html_entity_decode</refname>
@@ -52,8 +52,7 @@
     </para>
     <para>
      세번째에 위치하는 선택적인 <parameter>charset</parameter>의 기본값은
-     ISO-8859-1 문자셋입니다. 이는 변환에 사용할 문자셋을 정의합니다. 세번째
-     인자는 PHP 4.1.0부터 지원합니다.
+     ISO-8859-1 문자셋입니다. 이는 변환에 사용할 문자셋을 정의합니다.
     </para>
     &reference.strings.charsets;    
     <para>
@@ -104,7 +103,7 @@ echo $c; // I'll "walk" the <b>dog</b> now
      참고: <function>htmlentities</function>,
      <function>htmlspecialchars</function>,
      <function>get_html_translation_table</function>, 
-     <function>htmlspecialchars</function>, <function>urldecode</function>.
+     <function>urldecode</function>.
     </para>
    </refsect1>
   </refentry>
