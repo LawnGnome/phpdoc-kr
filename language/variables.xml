@@ -195,7 +195,7 @@ $bar = &amp;test();    // Invalid.
 						</listitem>
 					</varlistentry>
 					<varlistentry>
-						<term>HTTP_ENCODING</term>
+						<term>HTTP_ACCEPT_ENCODING</term>
 						<listitem>
 							<simpara>
          현재의 요구(request)에 포함된 <literal>Accept-Encoding:</literal> 헤더의 내용 (존재하는 경우만).
