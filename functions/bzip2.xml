@@ -1,4 +1,4 @@
-﻿<reference id="ref.bzip2">
+<reference id="ref.bzip2">
 	<title>Bzip2 압축 함수</title>
 	<titleabbrev>Bzip2</titleabbrev>
 	<partintro>
