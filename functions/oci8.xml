@@ -675,7 +675,7 @@ print "&lt;/PRE>&lt;/HTML>";
     <para>
      <function>OCINewDescriptor</function>함수는 hold descpriptor나 
      LOB locator를 위한 저장공간을 할당한다.
-     유효한 <parameter>type</paremeter>값은 OCI_D_FILE, OCI_D_LOB,
+     유효한 <parameter>type</parameter>값은 OCI_D_FILE, OCI_D_LOB,
      OCI_D_ROWID 이다.
      LOB descriptor를 위해 load, save, savefile 메쏘드가 
      descriptor에 연결되어 있다.  BFILE를 위해서는 load 메쏘드만이 존재한다.
