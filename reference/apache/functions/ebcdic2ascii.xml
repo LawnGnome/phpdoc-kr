@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- splitted from ./en/functions/apache.xml, last change in rev 1.10 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.2 -->
   <refentry id="function.ebcdic2ascii">
    <refnamediv>
     <refname>ebcdic2ascii</refname>
@@ -14,12 +14,12 @@
      </methodsynopsis>
     <para>
      <function>ebcdic2ascii</function>는 EBCDIC 기반
-     운영체계(OS/390, BS2000)에서만 사용 가능한 아파치 특정 함수이다.
-     EBCDIC로 인코드된 문자열 <parameter>ebcdic_str</parameter>을 동등한
-     ASCII 표현으로 변환하고 그 결과를 반환한다. (binary safe)
+     운영체계(OS/390, BS2000)에서만 사용할 수 있는 아파치 전용 함수입니다.
+     EBCDIC로 인코드된 문자열 <parameter>ebcdic_str</parameter>을
+     ASCII 표현으로 변환하고 그 결과를 반환합니다. (binary safe)
     </para>
     <para>
-     역함수 <function>ascii2ebcdic</function>도 참조하라.
+     참조: 역함수 <function>ascii2ebcdic</function>.
     </para>
    </refsect1>
   </refentry>

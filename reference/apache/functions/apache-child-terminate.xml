@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- splitted from ./en/functions/apache.xml, last change in rev 1.20 -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.5 -->
   <refentry id="function.apache-child-terminate">
    <refnamediv>
     <refname>apache_child_terminate</refname>
-    <refpurpose>이 요청 후에 아파치 프로세스를 종료시킨다.</refpurpose>
+    <refpurpose>이 요청 후에 아파치 프로세스를 종료한다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -13,24 +13,24 @@
       <void/>
      </methodsynopsis>
     <para>
-     <function>apache_child_terminate</function>는 우선 PHP 코드의 실행이
-     완결되었을 때 (프로세스를) 종료시키기 위해, 현재 PHP 요청을 실행하고
-     있는 아파치 프로세스를 기록할 것이다. 일반적으로 메모리는 내부적으로
-     해제될 것이지만 운영체계로 되돌려지지 않으므로, 많은 메모리를
-     소비하는 스크립트가 실행된 후에 프로세스를 종료시키기 위해서 사용한다.
+     <function>apache_child_terminate</function>는 PHP 코드의 실행이 끝났을
+     때 프로세스를 종료시키기 위하여 현재 PHP 요청을 실행하는 아파치 프로세스를
+     등록합니다. 보통 메모리는 내부적으로 사용할 수 있게 해제되지만, 운영 체계에
+     반환되지 않기 때문에 많은 메모리를 소모하는 스크립트를 실행한 후에
+     프로세스를 종료시키기 위해서 사용됩니다.
     </para>
     <note>
      <simpara>
-      이 기능의 유효성은 &php.ini;의 <option>apache.child_terminate</option>에
-      의해 조정되어질 수 있다. 기본값은 <literal>off</literal>이다.
+      이 기능은 &php.ini;에서 지시어 <option>apache.child_terminate</option>를
+      통해서 유효화 할 수 있습니다. 기본값은 <literal>off</literal>입니다.
      </simpara>
      <simpara>
-      이 기능은 win32 버전과 같은 아파치의 멀티쓰레드(multithread) 버전에서도
-      사용할 수 없다.
+      이 기능은 아파치의 win32 버전 같은 멀티쓰레드(multithread) 버전에서는
+      사용할 수 없습니다.
      </simpara>
     </note>
     <para>
-     <function>exit</function>도 참조하라.
+     참고: <function>exit</function>.
     </para>
    </refsect1>
   </refentry>

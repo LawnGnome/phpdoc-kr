@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.3 -->
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.4 -->
   <refentry id='function.is-finite'>
    <refnamediv>
     <refname>is_finite</refname>
-    <refpurpose>
-    </refpurpose>
+    <refpurpose>값이 허용된 범위의 수인지 확인합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
