@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/strings.xml, last change in rev 1.3 -->
-<!-- last change to 'strnatcasecmp' in en/ tree in rev 1.38 -->
-	<refentry id="function.strnatcasecmp">
-		<refnamediv>
-			<refname>strnatcasecmp</refname>
-			<refpurpose>
-	대소문자 구별 없이  "natural order" 알고리즘으로 문자열을 비교한다.
-	</refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>int</type><methodname>strnatcasecmp</methodname>
-					<methodparam><type>string</type><parameter>str1</parameter></methodparam>
-					<methodparam><type>string</type><parameter>str2</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-	이 함수는 으로 사람이 하는것과 같은 알파벳과 숫자를 정렬하는 방법의 비교 알고리즘을 수행한다.
-	이 함수의 작용은 	<function>strnatcmp</function> 와 비슷하며,
-	대소문자를 구분하지 않는다는 데에서 차이가 난다.
-	더 많은 정보를 위해 Martin Pool 의 <ulink url="&url.strnatcmp;">Natural Order String Comparison</ulink>
-	을 참고하라.
-	</para>
-			<simpara>
-	문자열 비교 함수와 비슷하게 이 함수는, 
-	<parameter>str1</parameter>이 <parameter>str2</parameter>보다 작다면 &lt; 0 을 반환하고;
-	<parameter>str1</parameter>이 <parameter>str2</parameter>보다 크다면 &gt; 0 을 반환한다.
-	그리고 이들이 같다면 0을 반환한다.
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
+<!-- CREDITS: cycle98 -->
+  <refentry id="function.strnatcasecmp">
+   <refnamediv>
+    <refname>strnatcasecmp</refname>
+    <refpurpose>
+     "natural order" 알고리즘을 이용한 대소문자를 구별하지 않는 문자열 비교.
+    </refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>int</type><methodname>strnatcasecmp</methodname>
+      <methodparam><type>string</type><parameter>str1</parameter></methodparam>
+      <methodparam><type>string</type><parameter>str2</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     사람이 하는 것과 동일한 방법으로 알파벳과 숫자 문자열의 순서를 비교하는
+     알고리즘을 수행합니다. 이 작동은 대소문자를 구별하지 않는 점을 제외하면,
+     <function>strnatcmp</function>와 동일합니다. 자세한 정보는 Martin Pool의
+     <ulink url="&url.strnatcmp;">Natural Order String Comparison</ulink>
+     페이지를 참고하십시오.
+    </para>
+    <simpara>
+     다른 문자열 비교 함수와 동일하게, <parameter>str1</parameter>이
+     <parameter>str2</parameter>보다 작다면 &lt; 0을,
+     <parameter>str1</parameter>이 <parameter>str2</parameter>보다 크다면 &gt;
+     0을, 같다면 0을 반환합니다.
     </simpara>
-			<simpara>
-				<function>ereg</function>,
+    <simpara>
+     참고: <function>ereg</function>,
      <function>strcasecmp</function>, <function>substr</function>,
      <function>stristr</function>, <function>strcmp</function>,
      <function>strncmp</function>, <function>strncasecmp</function>,
-     <function>strnatcmp</function>, 그리고 <function>strstr</function>을 참고하라.
+     <function>strnatcmp</function>, <function>strstr</function>.
     </simpara>
-		</refsect1>
-	</refentry>
+   </refsect1>
+  </refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
