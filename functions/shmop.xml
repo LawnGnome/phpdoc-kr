@@ -1,26 +1,25 @@
- <reference id="ref.shmop">
-  <title>Shared Memory Functions</title>
+﻿ <reference id="ref.shmop">
+  <title>공유 메모리 함수</title>
   <titleabbrev>shmop</titleabbrev>
   
   <partintro>
    <para>
-    Shmop is an easy to use set of functions that allows php to read,
-    write, create and delete UNIX shared memory segments. The functions
-    will not work on windows, as it does not support shared memory. To
-    use shmop you will need to compile php with the --enable-shmop parameter
-    in your configure line.
+    Shmop는 Unix 공유 메모리 세그먼트를 php에서 읽고, 기록하고,
+    생성하고, 삭제하기 쉽도록 하는 함수 모음이다.
+    이 함수는 윈도우즈에서는 공유 메모리를 지원하지 않기 때문에 동작하지 않는다.
+    shmop를 사용하기 위해서는 --enable-shmop 인자로 php를 컴파일해야한다.
    </para>
    <note>
     <simpara>
-     The functions explained in the chapter begin all with
-     <function>shm_</function> in PHP 4.0.3, but in PHP 4.0.4 and later
-     versions these names are changed to begin with
-     <function>shmop_</function>.
+     이번 장에서는 PHP 4.0.3의 <function>shm_</function> 단어로
+     시작되는 함수를 설명할 것이다.
+     그러나 PHP 4.0.4 이후 버전의 경우 <function>shmop_</function>로
+     이름만 바뀌었다.
     </simpara>
    </note>
    <para>
     <example>
-     <title>Shared Memory Operations Overview</title> 
+     <title>공유 메모리 작동의 개관</title> 
      <programlisting role="php">
 &lt;?php
    
@@ -62,7 +61,7 @@ shmop_close($shm_id);
   <refentry id="function.shmop_open">
    <refnamediv>
     <refname>shmop_open</refname>
-    <refpurpose>Create or open shared memory block</refpurpose>
+    <refpurpose>공유 메모리 블럭을 열거나 생성</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -76,36 +75,35 @@ shmop_close($shm_id);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>shmop_open</function> can create or open a shared memory block.
+     <function>shmop_open</function>은 공유 메모리 블럭을 생성하거나 여는데 쓰인다.
     </para>
     <para>
-     <function>shmop_open</function> takes 4 parameters: key, which is the
-     system's id for the shared memory block, this parameter can be passed
-     as a decimal or hex. The second parameter are the flags that you can use:
+     <function>shmop_open</function>은 4가지 인자가 쓰인다:
+     첫번째 인자인 공유 메모리 블럭의 시스템의 id를 위한 key. 이 인자는 10진수 또는 16진수로 지정된다.
+     두번째 인자는 flags로 다음과 같이 쓰인다:
      <itemizedlist>
       <listitem>
        <simpara>
-        "a" for access (sets IPC_EXCL)
-        use this flag when you need to open an existing shared memory segment
+        "a" : 접근 (IPC_EXCL 상수로 설정)
+        존재하고 있는 공유 메모리 세그먼트를 여는데 이 flag를 사용.
        </simpara>
       </listitem>
       <listitem>
        <simpara>
-        "c" for create (sets IPC_CREATE)
-        use this flag when you need to create a new shared memory segment.
+        "c" : 생성 (IPC_CREATE 상수로 설정)
+        새로운 공유 메모리 세그먼트를 생성하려할 때 이 flag를 사용.
        </simpara>
       </listitem>
      </itemizedlist>
-     The third parameter is the mode, which are the permissions that you
-     wish to assign to your memory segment, those are the same as permission
-     for a file. Permissions need to be passed in octal form ex. 0644.
-     The last parameter is size of the shared memory block you wish to create
-     in bytes.
+     세번째 인자는 메모리 세그컨트를 할당하기를 원하는
+     파일의 퍼미션과 동일한 방식의 퍼미션 모드이다.
+     퍼미션은 0644와 같이 8진수로 지정되어야 한다.
+     마지막 인자는 바이트 단위의 생성할 공유 메모리 블럭 크기이다.
      <note><simpara>
-      Note: the 3rd and 4th should be entered as 0 if you are opening an
-      existing memory segment. On success <function>shmop_open</function> will
-      return an id that you can use to access the shared memory segment 
-      you've created.
+      주의: 세번째와 네번째 인자는 존재하고 있는
+      메모리 세그먼트를 열때는 0을 지정해야만 한다.
+      <function>shmop_open</function>함수가 성공하면
+      생성된 공유 메모리 세그먼트를 접근하기 위해 사용될 id를 반환할 것이다.
      </simpara></note>
     </para> 
     <para>
@@ -119,7 +117,7 @@ $shm_id = shmop_open(0x0fff, "c", 0644, 100);
      </example>
     </para>
     <para>
-     This example opened a shared memory block with a system id of 0x0fff.
+     위의 예제는 시스템 id 0x0fff를 가진 공유 메모리 블럭을 열도록 한다.
     </para>
    </refsect1>
   </refentry>  
@@ -127,10 +125,10 @@ $shm_id = shmop_open(0x0fff, "c", 0644, 100);
   <refentry id="function.shmop_read">
    <refnamediv>
     <refname>shmop_read</refname>
-    <refpurpose>Read data from shared memory block</refpurpose>
+    <refpurpose>공유 메모리 블럭으로부터 데이터를 판독</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>string <function>shmop_read</function></funcdef>
@@ -140,16 +138,16 @@ $shm_id = shmop_open(0x0fff, "c", 0644, 100);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>shmop_read</function> will read a string from shared memory block.
+     <function>shmop_read</function>함수는 공유 메모리 블럭으로부터 문자열을 읽는다.
     </para>
     <para>
-     <function>shmop_read</function> takes 3 parameters: shmid, which is the shared
-     memory block identifier created by <function>shmop_open</function>, offset from
-     which to start reading and count on the number of bytes to read.
+     <function>shmop_read</function>함수는 3개의 인자를 가진다:
+     <function>shmop_open</function>에 의해 생성된 공유 메모리 블럭 identifier인 shmid,
+     읽기 시작할 offset, 읽어낼 바이트 수를 나타내는 count.
     </para> 
     <para>
      <example>
-      <title>Reading shared memory block</title>
+      <title>공유 메모리 블럭 판독</title>
       <programlisting role="php">
 &lt;?php
 $shm_data = shmop_read($shm_id, 0, 50);
@@ -158,8 +156,7 @@ $shm_data = shmop_read($shm_id, 0, 50);
      </example>
     </para>
     <para>
-     This example will read 50 bytes from shared memory block and place the data
-     inside <literal>$shm_data</literal>.
+     위의 예제는 공유 메모리 블럭에서 50 바이트를 읽어 <literal>$shm_data</literal> 변수에 기록할 것이다.
     </para>
    </refsect1>
   </refentry>
@@ -167,10 +164,10 @@ $shm_data = shmop_read($shm_id, 0, 50);
   <refentry id="function.shmop_write">
    <refnamediv>
     <refname>shmop_write</refname>
-     <refpurpose>Write data into shared memory block</refpurpose>
+     <refpurpose>공유 메모리 블럭에 자료 기록</refpurpose>
     </refnamediv>
     <refsect1>
-     <title>Description</title>
+     <title>설명</title>
      <funcsynopsis>
       <funcprototype>
        <funcdef>int <function>shmop_write</function></funcdef>
@@ -180,17 +177,17 @@ $shm_data = shmop_read($shm_id, 0, 50);
       </funcprototype>
      </funcsynopsis>
      <para>
-      <function>shmop_write</function> will write a string into shared memory block.
+      <function>shmop_write</function>함수는 공유 메모리 블럭으로 문자열을 기록할 것이다.
      </para>
      <para>
-      <function>shmop_write</function> takes 3 parameters: shmid, which is the
-      shared memory block identifier created by <function>shmop_open</function>,
-      data, a string that you want to write into shared memory block and offset,
-      which specifies where to start writing data inside the shared memory segment.
+      <function>shmop_write</function>함수는 3개의 인자를 가진다:
+      <function>shmop_open</function>에 의해 생성된 공유 메모리 블럭 identifier인 shmid,
+      공유 메모리 블럭에 기록하기를 원하는 문자열인 data, 공유 메모리 세그먼트 내부에 기록을 시작할 
+      데이터의 위치를 지정한 offset.
      </para> 
      <para>
       <example>
-      <title>Writing to shared memory block</title>
+      <title>공유 메모리 블럭으로 기록</title>
       <programlisting role="php">
 &lt;?php
 $shm_bytes_written = shmop_write($shm_id, $my_string, 0);
@@ -199,9 +196,8 @@ $shm_bytes_written = shmop_write($shm_id, $my_string, 0);
      </example>
     </para>
     <para>
-     This example will write data inside <literal>$my_string</literal> into
-     shared memory block, <literal>$shm_bytes_written</literal> will contain
-     the number of bytes written.
+     위의 예제는 <literal>$my_string</literal>을 공유 메모리 블럭에 기록하고,
+     기록된 바이트 수를 <literal>$shm_bytes_written</literal>에 반환한다.
     </para>
    </refsect1>
   </refentry>
@@ -209,10 +205,10 @@ $shm_bytes_written = shmop_write($shm_id, $my_string, 0);
   <refentry id="function.size">
   <refnamediv>
    <refname>shmop_size</refname>
-   <refpurpose>Get size of shared memory block</refpurpose>
+   <refpurpose>공유 메모리 블럭의 크기를 얻음</refpurpose>
   </refnamediv>
   <refsect1>
-   <title>Description</title>
+   <title>설명</title>
    <funcsynopsis>
     <funcprototype>
      <funcdef>int <function>shmop_size</function></funcdef>
@@ -220,18 +216,16 @@ $shm_bytes_written = shmop_write($shm_id, $my_string, 0);
     </funcprototype>
     </funcsynopsis>
     <para>
-     <function>shmop_size</function> is used to get the size, in bytes of the
-     shared memory block.
+     <function>shmop_size</function>는 공유 메모리 블럭 크기를 바이트 단위로 얻는데 사용된다.
     </para>
     <para>
-     <function>shmop_size</function> takes the shmid, which is the shared memory
-     block identifier created by <function>shmop_open</function>, the function
-     will return and int, which represents the number of bytes the shared memory
-     block occupies.
+     <function>shmop_size</function>는 <function>shmop_open</function>으로 생성된
+     공유 메모리 블럭 identifier인 shmid 인자를 지정하면,
+     공유 메모리 블럭이 차지하고 있는 바이트 수를 정수형으로 반환한다.
     </para> 
     <para>
      <example>
-      <title>Getting the size of the shared memory block</title>
+      <title>공유 메모리 블럭 크기 얻기</title>
       <programlisting role="php">
 &lt;?php
 $shm_size = shmop_size($shm_id);
@@ -240,8 +234,8 @@ $shm_size = shmop_size($shm_id);
      </example>
     </para>
     <para>
-     This example will put the size of shared memory block identified by
-     <literal>$shm_id</literal> into <literal>$shm_size</literal>.
+     위의 예제는 <literal>$shm_id</literal>에 의해 지정된 공유 메모리 블럭의 크기를 
+     <literal>$shm_size</literal>에 할당한다.
     </para>
    </refsect1>
   </refentry>
@@ -249,10 +243,10 @@ $shm_size = shmop_size($shm_id);
   <refentry id="function.shmop_delete">
    <refnamediv>
     <refname>shmop_delete</refname>
-    <refpurpose>Delete shared memory block</refpurpose>
+    <refpurpose>공유 메모리 블럭을 삭제</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>shmop_delete</function></funcdef>
@@ -260,16 +254,16 @@ $shm_size = shmop_size($shm_id);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>shmop_delete</function> is used to delete a shared memory block.
+     <function>shmop_delete</function>는 공유 메모리 블럭을 삭제하는데 사용된다.
     </para>
     <para>
-     <function>shmop_delete</function> takes the shmid, which is the shared memory
-     block identifier created by <function>shmop_open</function>. On success 1 is
-     returned, on failure 0 is returned.
+     <function>shmop_delete</function>함수는 <function>shmop_open</function>으로 생성된
+     공유 메모리 블럭 identifier인 shmid를 인자로 가진다.
+     성공하면 1을 반환하고 실패하면 0을 반환한다.
     </para> 
     <para>
      <example>
-      <title>Deleting shared memory block</title>
+      <title>공유 메모리 블럭 삭제</title>
       <programlisting role="php">
 &lt;?php
 shmop_delete($shm_id);
@@ -278,8 +272,7 @@ shmop_delete($shm_id);
      </example>
     </para>
     <para>
-     This example will delete shared memory block identified by
-     <literal>$shm_id</literal>.
+     위 예제는 <literal>$shm_id</literal> 인자로 지정된 공유 메모리 블럭을 삭제한다.
     </para>
    </refsect1>
   </refentry>
@@ -287,10 +280,10 @@ shmop_delete($shm_id);
   <refentry id="function.shmop_close">
    <refnamediv>
     <refname>shmop_close</refname>
-    <refpurpose>Close shared memory block</refpurpose>
+    <refpurpose>공유 메모리 블럭을 닫음</refpurpose>
    </refnamediv>
    <refsect1>
-    <title>Description</title>
+    <title>설명</title>
     <funcsynopsis>
      <funcprototype>
       <funcdef>int <function>shmop_close</function></funcdef>
@@ -298,15 +291,15 @@ shmop_delete($shm_id);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>shmop_close</function> is used to close a shared memory block.
+     <function>shmop_close</function>는 공유 메모리 블럭을 닫는데 사용된다.
     </para>
     <para>
-     <function>shmop_close</function> takes the shmid, which is the shared memory
-     block identifier created by <function>shmop_open</function>.
+     <function>shmop_close</function>는 <function>shmop_open</function>으로 생성된
+     공유 메모리 블럭 identifier인 shmid를 인자로 가진다.
     </para> 
     <para>
      <example>
-      <title>Closing shared memory block</title>
+      <title>공유 메모리 블럭 닫기</title>
       <programlisting role="php">
 &lt;?php
 shmop_close($shm_id);
@@ -315,7 +308,7 @@ shmop_close($shm_id);
      </example>
     </para>
     <para>
-     This example will close shared memory block identified by <literal>$shm_id</literal>.
+     위의 예제는 <literal>$shm_id</literal> 인자로 지정된 공유 메모리 블럭을 닫는다.
     </para>
    </refsect1>
   </refentry>
