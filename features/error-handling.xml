@@ -125,7 +125,9 @@
 	<para>
 	모든 <link linkend="language.expressions">PHP 표현식(expression)</link>은 "@"를 앞에 붙이고 호출되면 
 	error reporting을 하지 않는다. 만약 <link linkend="ini.track-errors">track_errors</link> 옵션이 Enabled로 
-	되어 있고 해당 문장에서 에러가 발생했다면, $php_errormsg라는 전역변수에 에러 메시지가 담겨 있게 된다.
+	되어 있고 해당 문장에서 에러가 발생했다면, <literal>$php_errormsg</literal> 라는 전역변수에 에러 메시지가 담겨 있게 된다.
+     그러나 <link linkend="language.operators.errorcontrol">@ error-control operator</link>라도 
+     문법 에러의 경우에는 에러 메세지를 disable로 하지 못한다.
   </para>
 	<warning>
 		<para>
