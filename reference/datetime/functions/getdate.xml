@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
+<!-- EN-Revision: 1.8 -->
 <!-- splitted from ./en/functions/datetime.xml, last change in rev 1.2 -->
   <refentry id="function.getdate">
    <refnamediv>
     <refname>getdate</refname>
-    <refpurpose>날짜/시간 정보를 가져온다.</refpurpose>
+    <refpurpose>날짜/시간 정보를 가져온다</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -13,75 +14,125 @@
       <methodparam choice="opt"><type>int</type><parameter>timestamp</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <parameter>timestamp</parameter>나 timestamp가 주어지지 않는다면
-     현재 로컬 시간의 날짜 정보를 포함하는 다음의 배열 요소를 가지는
-     연관 배열을 반환한다.
-     <itemizedlist>
-      <listitem>
-       <simpara>
-        "seconds" - 초
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "minutes" - 분
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "hours" - 시
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "mday" - 일
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "wday" - 요일, 숫자형 : 일요일의 0부터 토요일의 6까지
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "mon" - 월, 숫자형
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "year" - 연도, 숫자형
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "yday" - 연도의 일차; 예를 들면, "299"
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "weekday" - 요일, 완전한 문자; 예를 들면, "Friday"
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        "month" - 월, 완전한 문자; 예를 들면, "January"
-       </simpara>
-      </listitem>
-     </itemizedlist>
+     <parameter>timestamp</parameter>의 날짜 정보를 포함하는 연관 
+     배열이나, <parameter>timestamp</parameter>가 주어지지 않는다면
+     현재 로컬 시간를 반환한다. 다음과 같은 배열 원소로 반환된다.
+    </para>
+    <para>
+     <table>
+      <title>반환되는 연관 배열의 키 원소들</title>
+      <tgroup cols="3">
+       <thead>
+        <row>
+         <entry>키</entry>
+         <entry>설명</entry>
+         <entry>Example returned values</entry>
+        </row>
+       </thead>
+       <tbody>
+        <row>
+         <entry><literal>"seconds"</literal></entry>
+         <entry>초의 숫자 표현</entry>
+         <entry><literal>0</literal> 부터 <literal>59</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"minutes"</literal></entry>
+         <entry>분의 숫자 표현</entry>
+         <entry><literal>0</literal> 부터 <literal>59</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"hours"</literal></entry>
+         <entry>시간의 숫자 표현</entry>
+         <entry><literal>0</literal> 부터 <literal>23</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"mday"</literal></entry>
+         <entry>일의 숫자 표현</entry>
+         <entry><literal>1</literal> 부터 <literal>31</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"wday"</literal></entry>
+         <entry>요일의 숫자 표현</entry>
+         <entry><literal>0</literal> (일요일) 부터 <literal>6</literal> (토요일)</entry>
+        </row>
+        <row>
+         <entry><literal>"mon"</literal></entry>
+         <entry>월의 숫자 표현</entry>
+         <entry><literal>1</literal> 부터 <literal>12</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"year"</literal></entry>
+         <entry>연도의 숫자표현, 4 자리</entry>
+         <entry>Examples: <literal>1999</literal> 또는 <literal>2003</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"yday"</literal></entry>
+         <entry>연도의 일차</entry>
+         <entry><literal>0</literal> 부터 <literal>366</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"weekday"</literal></entry>
+         <entry>요일, 완전한 문자</entry>
+         <entry><literal>Sunday</literal> 부터 <literal>Saturday</literal></entry>
+        </row>
+        <row>
+         <entry><literal>"month"</literal></entry>
+         <entry>월, 완전한 문자, January 나 March</entry>
+         <entry><literal>January</literal> 부터 <literal>December</literal></entry>
+        </row>
+        <row>
+         <entry><literal>0</literal></entry>
+         <entry>유닉스 Epoch (January 1 1970 00:00:00 GMT)로부터의 초,
+         <function>time</function>에 의해 반환되는 값과 유사하고, 
+         <function>date</function>에 의해서 사용된다. </entry>
+         <entry>시스템 의존적이다, 일반적으로 <literal>-2147483648</literal> 부터
+          <literal>2147483647</literal>.
+</entry>
+        </row>
+       </tbody>
+      </tgroup>
+     </table>
+    </para>
+    <para>
      <example>
       <title>
-       <function>getdate</function> 예제
+       <function>getdate</function> 예제코드
       </title>
       <programlisting role="php">
 <![CDATA[
-$today = getdate();
-$month = $today['month'];
-$mday = $today['mday'];
-$year = $today['year'];
-echo "$month $mday, $year";
+<?php
+$today = getdate(); 
+print_r($today);
+?>
 ]]>
       </programlisting>
+      <para>
+       출력은 다음과 같을것이다:
+      </para>
+      <screen>
+<![CDATA[
+Array
+(
+    [seconds] => 40
+    [minutes] => 58
+    [hours]   => 21
+    [mday]    => 17
+    [wday]    => 2
+    [mon]     => 6
+    [year]    => 2003
+    [yday]    => 167
+    [weekday] => Tuesday
+    [month]   => June
+    [0]       => 1055901520
+)
+]]>
+      </screen>
      </example>
+    </para>
+    <para>
+     <function>date</function>,
+     <function>time</function>,
+     <function>setlocale</function> 참고.
     </para>
    </refsect1>
   </refentry>
