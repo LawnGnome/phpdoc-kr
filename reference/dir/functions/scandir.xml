@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+  <refentry id="function.scandir">
+   <refnamediv>
+    <refname>scandir</refname>
+    <refpurpose>
+     지정 경로 안의 파일과 디렉토리 목록
+    </refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>array</type><methodname>scandir</methodname>
+      <methodparam><type>string</type><parameter>directory</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>sorting_order</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     <parameter>directory</parameter>에서 파일과 디렉토리의
+     <type>array</type>를 반환합니다. <parameter>directory</parameter>가
+     디렉토리가 아닐 경우, 불린 &false;를 반환하고, 에러 레벨
+     <constant>E_WARNING</constant>를 생생합니다.
+    </para>
+    <para>
+     기본값으로, 정렬 순서는 알파벳 오름 차순입니다. 선택적인
+     <parameter>sorting_order</parameter>를 사용하면(1로 설정), 정렬 순서는
+     알파벳 내림 차순입니다.
+    </para>
+    <para>
+     <example>
+      <title>간단한 <function>scandir</function> 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$dir    = '/tmp';
+$files1 = scandir($dir);
+$files2 = scandir($dir, 1);
+
+print_r($files1);
+print_r($files2);
+?>
+]]>
+      </programlisting>
+      <para>
+       출력 예는:
+      </para>
+      <screen>
+<![CDATA[
+Array
+(
+    [0] => .
+    [1] => ..
+    [2] => bar.php
+    [3] => foo.txt
+    [4] => somedir
+)
+Array
+(
+    [0] => somedir
+    [1] => foo.txt
+    [2] => bar.php
+    [3] => ..
+    [4] => .
+)
+]]>
+      </screen>
+     </example>
+    </para>
+    <para>
+     <example>
+      <title><function>scandir</function>과 동일한 PHP 4 방법</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$dir = "/tmp";
+$dh  = opendir($dir);
+while (false !== ($filename = readdir($dh))) {
+    $files[] = $filename;
+}
+
+sort($files);
+
+print_r($files);
+
+rsort($files);
+
+print_r($files);
+
+?>
+]]>
+      </programlisting>
+      <para>
+       출력 예는:
+      </para>
+      <screen>
+<![CDATA[
+Array
+(
+    [0] => .
+    [1] => ..
+    [2] => bar.php
+    [3] => foo.txt
+    [4] => somedir
+)
+Array
+(
+    [0] => somedir
+    [1] => foo.txt
+    [2] => bar.php
+    [3] => ..
+    [4] => .
+)
+]]>
+      </screen>
+     </example>
+    </para>
+    <para>
+     참고: <function>opendir</function>,
+     <function>readdir</function>,
+     <function>glob</function>, 
+     <function>is_dir</function>,
+     <function>sort</function>.
+    </para>
+   </refsect1>
+  </refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
