@@ -1,5 +1,5 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.56 -->
+<!-- EN-Revision: 1.57 -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -186,7 +186,7 @@ PHP에 포함되어 있거나, 실행시에 동적으로 읽혀졌을때만
 필드 이름은 <emphasis>대소문자를 구별</emphasis>합니다.</simpara></note>'>
 
 <!-- Sybase Notes -->
-<!ENTITY sybase.ct '<note><simpara>이 함수는 Sybase를 CT 라이브러리 인터페이스를
+<!ENTITY sybase.ct.only '<note><simpara>이 함수는 Sybase를 CT 라이브러리 인터페이스를
 이용할 때만 사용할 수 있으며, DB 라이브러리로는 사용할 수 없습니다.</simpara></note>'>
 
 <!-- Some MySQL Notes -->

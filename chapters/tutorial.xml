@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.17 $ -->
-<!-- EN-Revision: 1.22 -->
+<!-- $Revision: 1.18 $ -->
+<!-- EN-Revision: 1.23 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
 
@@ -40,8 +40,8 @@
     몇번의 마우스 클릭으로 모두 설치할 수 있는 <ulink url="&url.installkits;">locate
     a pre-configured package</ulink>를 사용할 수도 있습니다.
     리눅스와 Windows를 포함하여 어떤 OS에서라도 PHP를 지원하게 웹서버를
-    설치하는 것은 간단합니다. 리눅스에서라면 <ulink url="&url.rpmfind;">rpmfind</ulink>로
-    RPM들의 위치를 쉽게 찾을 수 있을 것입니다.
+    설치하는 것은 간단합니다. 리눅스에서라면 <ulink url="&url.rpmfind;">rpmfind</ulink>와
+    <ulink url="&url.rpmfind.pbone;">PBone</ulink>이 RPM을 찾을 때 도움을 줄 것입니다.
    </para>
   </sect1>
 
