@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.23 -->
 <chapter id="features.commandline">
  <title>커맨드 라인에서 PHP 사용하기</title>
@@ -7,35 +7,35 @@
  <para>
   버전 4.3.0부터 <literal>PHP</literal>는 <emphasis>Command Line Interface</emphasis>를 
   의미하는 <literal>CLI</literal>라는 이름의 새로운 <literal>SAPI</literal> 타입
-  (Server Application Programming Interface)을 지원한다.
-  <literal>SAPI</literal>는 이름에서 내포하듯이, 핵심 용도는 셀(또는 데스크탑) 응용프로그램을
+  (Server Application Programming Interface)을 지원한다.  <literal>SAPI</literal>는 
+  이름에서 내포하듯이, 핵심 용도는 셀(또는 데스크탑) 응용프로그램을
   <literal>PHP</literal>로 개발하는것에 맞춰져있다. 이 장에서 설명하는
   <literal>CLI SAPI</literal>와 <literal>SAPI</literal>사이에는 많은 차이가 있다.
-  <literal>CLI</literal>와 <literal>CGI</literal>는 같은 동작을 많은 부분 하지만,
-  다른 SAPI들이라는 것은 언급할 필요가 있다.
+  <literal>CLI</literal>와 <literal>CGI</literal>는 많은 부분에 있어서 같은 동작을 
+  하지만, 서로 다른 SAPI들이라는 것이다.
  </para>
  <para>
   <literal>CLI SAPI</literal>는 <literal>PHP 4.2.0</literal>에서 처음으로
   릴리즈되었다. 그러나 아직 실험적이었고 <literal>./configure</literal>를
-  실행할때 <literal>--enable-cli</literal>을 명시적으로 활성화시켜야 했다.
+  실행할때 <literal>--enable-cli</literal>을 명시해 주어야 했다.
   PHP 4.3.0 이후부터 <literal>CLI SAPI</literal>는 더이상 실험적이기 않고
   기본값으로 <literal>--enable-cli</literal>이 활성화되어있다.
-  <literal>--disable-cli</literal>로 비활성화시킬수 있다.
+  그리고 <literal>--disable-cli</literal>로 비활성화시킬수 있다.
  </para>
  <para>
-  PHP 4.3.0부터, CLI/CGI 바이너리의 이름, 위치, 존재여부는 PHP가 시스템에
-  어떻게 설치되느냐에 따라 달라질것이다. 기본값으로 
-  <literal>make</literal>를 수행할때, CGI와 CLI모두 빌드되고 각각
-  <literal>sapi/cgi/php</literal>와 <literal>sapi/cli/php</literal>에 위치하게 된다.
-  둘다 <literal>php</literal> 라는 이름이 붙는다는것에 주의해야 할것이다.
-  configure 줄에 따라 <literal>make install</literal>동안에 무슨일이 일어날까.
-  configure 동아에 모듈로 SAPI 선택했다면, 즉 apxs를 사용하거나, 또는
-  <literal> --disable-cgi</literal> 옵션을 사용하면 CLI는 
-  <literal>make install</literal>동안에 <literal>{PREFIX}/bin/php</literal>에 복사된다.
-  예를 들면, <literal>--with--apxs</literal>가 configure 줄에 포함되면
-  <literal>make install</literal>동안에 CLI는 <literal>{PREFIX}/bin/php</literal>에
-  복사된다. CGI 바이너리 설치를 오버라이드하고 싶다면
-  <literal>make install</literal>이후에 <literal>make install-cli</literal>를 사용한다.
+  PHP 4.3.0부터, CLI/CGI 바이너리의 이름과 위치, 존재여부는 PHP가 시스템에
+  어떻게 설치되느냐에 따라 달라질 것이다. 기본값으로 <literal>make</literal>를 
+  수행할때, CGI와 CLI 모두 빌드되고 각각 <literal>sapi/cgi/php</literal>와 
+  <literal>sapi/cli/php</literal>에 위치하게 된다.
+  둘 다 <literal>php</literal>라는 이름이 붙는다는것에 주의해야 할것이다.
+  configure 줄에 따라 <literal>make install</literal> 시에 무슨일이 일어날까.
+  configure 시에 모듈로 SAPI를 선택했다면, 즉 apxs를 사용하거나, 또는
+  <literal>--disable-cgi</literal> 옵션을 사용하면 CLI는 
+  <literal>make install</literal>시에 <literal>{PREFIX}/bin/php</literal>에 복사된다.
+  예를 들면, <literal>--with-apxs</literal>가 configure 줄에 포함되면
+  <literal>make install</literal>시에 CLI는 <literal>{PREFIX}/bin/php</literal>에
+  복사된다. CGI 바이너리 설치를 오버라이드하고 싶다면 <literal>make install</literal>
+  이후에 <literal>make install-cli</literal>를 사용한다.
   차선책으로 configure 줄에 <literal>--disable-cgi</literal>를 설정할수 있다.
  </para>
  <para>
@@ -43,16 +43,17 @@
    <para>
     <literal>--enable-cli</literal>와 <literal>--enable-cgi</literal>는 모두
     기본값으로 되어있기 때문에, 단순히 configure줄에 <literal>--enable-cli</literal>를
-    넣는것이 <literal>make install</literal>동안에 <literal>{PREFIX}/bin/php</literal> 에
-    CLI를 복사할것이라는 의미하지 않는다.
+    넣는것이 <literal>make install</literal>시에 <literal>{PREFIX}/bin/php</literal> 에
+    CLI를 복사할것이라는 것을 의미하지 않는다.
    </para>
   </note>
  </para>
  <para>
   PHP 4.2.0 과 PHP 4.2.3 사이의 윈도우 패키지는 CLI를 <filename>php-cli.exe</filename>로 
-  제공한다. CGI <filename>php.exe</filename>와 같은 폴더에 존재한다. PHP 4.3.0부터의 윈도우
-  패키지는 CLI를 <literal>cli</literal>라는 다른 폴더에 <filename>php.exe</filename>파일로
-  제공한다. 그래서 <literal>cli/php.exe</literal>가 된다.
+  제공한다. CGI인 <filename>php.exe</filename>와 같은 폴더에 존재한다. 
+  PHP 4.3.0부터의 윈도우 패키지는 CLI를 <literal>cli</literal>라는 다른 폴더에 
+  <filename>php.exe</filename>파일로 제공한다. 그래서 <literal>cli/php.exe</literal>가 
+  된다.
  </para>
  <para>
   <note>
@@ -78,17 +79,17 @@
   <itemizedlist>
    <listitem>
     <para>
-     <literal>CGI SAPI</literal>와는 달리, 출력에 헤더가 쓰이지 않는다.
+     <literal>CGI SAPI</literal>와는 달리, 출력에 헤더를 쓰지 않는다.
     </para>
     <para>
      <literal>CGI SAPI</literal>가 HTTP 헤더를 제거하는 방법을 제공하지만,
-     <literal>CLI SAPI</literal>에서는 헤더를 활성화시킬수 있는 비슷한 스위치(switch)가
+     <literal>CLI SAPI</literal>에서는 헤더를 활성화시킬수 있는 스위치(switch)가
      존재하지 않는다.
     </para>
     <para>
      CLI는 기본적으로 정숙모드(quiet mode)로 시작된다. 그러나 
-     구버전의 CGI 스크립트에서 사용할수 있게 하는 호환성을 위해 
-     <literal>-q</literal> 스위치를 유지하고 있다.
+     구버전의 CGI 스크립트과의 호환성을 위해 <literal>-q</literal> 스위치를 
+     유지하고 있다.
     </para>
     <para>
      작업 디렉토리가 스크립트의 디렉토리로 변경되지 않는다
@@ -100,16 +101,16 @@
    </listitem>
    <listitem>
     <para>
-     셀 환경에 맞지 않는 것들때문에 <literal>CLI SAPI</literal>에 의해 
-     오버로드되는 &php.ini; 디렉티브가 몇가지 존재한다.
+     셀 환경에 맞지 않는 것들 때문에 <literal>CLI SAPI</literal>에 의해 
+     오버로드되는 &php.ini; 지시자(directive)가 몇가지 존재한다.
     </para>
     <para>
      <table>
-      <title>&php.ini; 디렉티브 오버로드</title>
+      <title>&php.ini; 지시자(directive) 오버로드</title>
       <tgroup cols="3">
        <thead>
         <row>
-         <entry>디렉티브</entry>
+         <entry>지시자(directive)</entry>
          <entry><literal>CLI SAPI</literal> 기본값</entry>
          <entry>주석</entry>
         </row>
@@ -121,7 +122,7 @@
          <entry>
           셀에서 에러메시지를 읽을때 의미없는 <literal>HTML</literal>태그로
           뒤범벅이 되면 에러메시지를 읽기가 매우 어려울수 있다.
-          따라서 이 디렉티브의 기본값은 &false;다.
+          따라서 이 지시자(directive)의 기본값은 &false;다.
          </entry>
         </row>
         <row>
@@ -151,17 +152,18 @@
          <para>
           이 설정은 &true;이기 때문에 <literal>CLI SAPI</literal>에서는 항상
           <emphasis>argc</emphasis> (응용프로그램에 전달되는 인자의 수) 와
-          <emphasis>argv</emphasis> (응용프로그램에 전단되는 인자의 배열)를
-          접근할수 있을것이다.
+          <emphasis>argv</emphasis> (응용프로그램에 전단되는 인자의 배열)을
+          사용할수 있을것이다.
          </para>
          <para>
           PHP 4.3.0에서부터, <literal>CLI SAPI</literal>는 <literal>PHP</literal>변수 
-          <varname>$argc</varname>와 <varname>$argv</varname>가 등록되고 적절한 값으로 채워지게 된다.
-          이 변수의 생성은 <literal>CGI</literal>와 <literal>MODULE</literal> 버전에서와 같이
-          <link linkend="ini.register-globals">register_globals</link>가 <emphasis>on</emphasis>되어
-          있어야 한다. 버전이나 register_globals의 설정에 관계없이,
-          <link linkend="reserved.variables.server">$_SERVER</link>나 
-          <varname>$HTTP_SERVER_VARS</varname>로 그 값을 접근할수 있다.
+          <varname>$argc</varname>와 <varname>$argv</varname>가 등록되고 적절한 값으로 
+          채워지게 된다. 이 변수의 생성은 <literal>CGI</literal>와 
+          <literal>MODULE</literal> 버전과 같이
+          <link linkend="ini.register-globals">register_globals</link>가 
+          <emphasis>on</emphasis>되어 있어야 한다. 버전이나 register_globals의 
+          설정에 관계없이, <link linkend="reserved.variables.server">$_SERVER</link>나 
+          <varname>$HTTP_SERVER_VARS</varname>로 그 값에 접근할수 있다.
           Example: <varname>$_SERVER['argv']</varname>
          </para>
          </entry>
@@ -172,10 +174,10 @@
     </para>
     <note>
      <para>
-      이 디렉티브는 설정 파일 &php.ini;나 사용자 설정으로부터 온 다른 값으로
+      이 지시자(directive)는 설정 파일 &php.ini;나 사용자 설정으로부터 온 다른 값으로
       초기화될수 없다. 모든 설정 파일이 해석되고 난 후에 기본값이 적용되기 때문에
       이 것은 제한이 된다. 하지만, 각 값은 런타임동안에 변경될수 있다.
-      (위 디렉티브 중 환경과 맞지 않는것
+      (위 지시자(directive) 중 환경과 맞지 않는것
       e.g. <link linkend="ini.register-argc-argv">register_argc_argv</link>).
      </para>
     </note>
@@ -567,7 +569,7 @@ $ php -c /custom/directory/custom-file.ini my_script.php
       <entry>-d</entry>
       <entry>
        <para>
-        이 옵션은 &php.ini;에서 허용된 설정 디렉티브에 대해서 사용자정의 값을
+        이 옵션은 &php.ini;에서 허용된 설정 지시자(directive)에 대해서 사용자정의 값을
         설정하도록 해줌. 문법은 다음과 같다:
         <screen>
 <![CDATA[
