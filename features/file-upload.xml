@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
-<!-- EN-Revision: 1.63 -->
+<!-- $Revision: 1.11 $ -->
+<!-- EN-Revision: 1.64 -->
  <chapter id="features.file-upload">
   <title>파일 업로드 다루기</title>
 
@@ -197,6 +197,10 @@ print "</pre>";
     따라 처리하게 할 수 있습니다.
     어떠한 로직이던, 임시 디렉토리에서 파일을 지우거나 다른 곳으로
     이동시켜야 합니다.
+   </simpara>
+   <simpara>
+    폼에서 어떠한 파일도 선택되지 않았다면, PHP는 $_FILES['userfile']['size']를
+    0으로, $_FILES['userfile']['tmp_name']을 none으로 반환합니다.
    </simpara>
    <simpara>
     요청의 마지막에 이동되거나 이동이 변경되지 않은 임시 디렉토리의

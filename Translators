@@ -15,7 +15,7 @@ vizvil    Gwangjong Lee        vizvil@dreamwiz.com
 Filename                           Translator       maintainer    Status
 =============================================================================
 bookinfo.xml                       progcom          progcom       maintain
-preface.xml                        rhheo
+preface.xml                        rhheo            progcom
 language-defs.ent                  progcom          progcom       maintain
 language-snippets.ent              progcom          progcom       maintain
 ------- appendices ----------------------------------------------------------

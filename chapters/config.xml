@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.28 $ -->
-<!-- EN-Revision: 1.110 -->
+<!-- $Revision: 1.29 $ -->
+<!-- EN-Revision: 1.111 -->
  <chapter id="configuration">
   <title>실행 환경 설정</title>
 
@@ -927,6 +927,11 @@ include_path = ".;c:\php\lib"
          <entry>PHP_INI_SYSTEM</entry>
         </row>
         <row>
+         <entry>cgi.fix_pathinfo</entry>
+         <entry>"0"</entry>
+         <entry>PHP_INI_SYSTEM</entry>
+        </row>
+        <row>
          <entry>cgi.force_redirect</entry>
          <entry>"1"</entry>
          <entry>PHP_INI_SYSTEM</entry>
@@ -1050,6 +1055,24 @@ include_path=".;c:\php\includes"
        <listitem>
         <para>
          PHP가 시작할 때 설정한 동적 로드 확장을 읽어옵니다.
+        </para>
+       </listitem>
+      </varlistentry>
+
+      <varlistentry id="ini.cgi.fix_pathinfo">
+       <term>
+        <parameter>cgi.fix_pathinfo</parameter>
+        <type>boolean</type>
+       </term>
+       <listitem>
+        <para>
+         CGI를 위한 <emphasis>실제</emphasis> PATH_INFO/PATH_TRANSLATED 지원을
+         제공합니다. PHP의 이전 작동은 PATH_TRANSLATED를 SCRIPT_FILENAME으로
+         설정했고, and to not grok what PATH_INFO is. PATH_INFO에 관한 정보는,
+         cgi 규격을 참고하십시오. 1로 설정하면 PHP CGI가 규격에 맞게 경로를
+         수정합니다. 0으로 설정하면 PHP는 이전과 같이 작동합니다. 기본값은
+         0입니다. PATH_TRANSLATED 대신 SCRIPT_FILENAME을 사용하도록 스크립트를
+         수정할 필요가 있습니다.
         </para>
        </listitem>
       </varlistentry>
