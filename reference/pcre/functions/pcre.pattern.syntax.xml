@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.5 -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
@@ -69,8 +69,8 @@
       </listitem>
       <listitem>
       <simpara>
-     The Perl \G assertion is  not  supported  as  it  is  not
-     relevant to single pattern matches.
+     펄의 \G는 싱글 패턴 매치에 적절하지 않기 때문에
+     지원하지 않습니다.
       </simpara>
       </listitem>
       <listitem>
@@ -325,8 +325,7 @@
         </listitem>
        </varlistentry>
       </variablelist>
-     The following sections describe the use of each of the
-     meta-characters.
+     다음 섹션은 각 메타 문자의 사용을 설명합니다.
     </para>
     </refsect2>
    <refsect2 id="regexp.reference.backslash">
@@ -369,7 +368,7 @@
         <term><emphasis>\a</emphasis></term>
            <listitem>
          <simpara>
-          alarm, that is, the BEL character (hex 07)
+          알람, BEL 문자(hex 07)
          </simpara>
         </listitem>
        </varlistentry>
@@ -377,7 +376,7 @@
         <term><emphasis>\cx</emphasis></term>
            <listitem>
          <simpara>
-           "control-x", where x is any character
+           "control-x", x는 임의의 문자
          </simpara>
         </listitem>
        </varlistentry>
@@ -385,7 +384,7 @@
         <term><emphasis>\e</emphasis></term>
            <listitem>
          <simpara>
-          escape (hex 1B)
+          이스케이프 (hex 1B)
          </simpara>
         </listitem>
        </varlistentry>
@@ -393,7 +392,7 @@
         <term><emphasis>\f</emphasis></term>
            <listitem>
          <simpara>
-          formfeed (hex 0C)
+          폼피드 (hex 0C)
          </simpara>
         </listitem>
        </varlistentry>
@@ -401,7 +400,7 @@
         <term><emphasis>\n</emphasis></term>
            <listitem>
          <simpara>
-          newline (hex 0A)
+          뉴라인 (hex 0A)
          </simpara>
         </listitem>
        </varlistentry>
@@ -409,7 +408,7 @@
         <term><emphasis>\r</emphasis></term>
            <listitem>
          <simpara>
-          carriage return (hex 0D)
+          캐리지 리턴 (hex 0D)
          </simpara>
         </listitem>
        </varlistentry>
@@ -417,7 +416,7 @@
         <term><emphasis>\t</emphasis></term>
            <listitem>
          <simpara>
-          tab (hex 09)
+          탭 (hex 09)
          </simpara>
         </listitem>
        </varlistentry>
@@ -425,7 +424,7 @@
         <term><emphasis>\xhh</emphasis></term>
            <listitem>
          <simpara>
-           character with hex code hh
+           hex code hh 문자
          </simpara>
         </listitem>
        </varlistentry>
@@ -433,7 +432,7 @@
         <term><emphasis>\ddd</emphasis></term>
            <listitem>
          <simpara>
-          character with octal code ddd, or backreference
+          octal code ddd 문자, 혹은 역참조
          </simpara>
         </listitem>
        </varlistentry>
@@ -484,7 +483,7 @@
         <term><emphasis>\040</emphasis></term>
            <listitem>
          <simpara>
-          is another way of writing a space
+          스페이스의 다른 표현 방법
          </simpara>
         </listitem>
        </varlistentry>
@@ -492,8 +491,7 @@
         <term><emphasis>\40</emphasis></term>
            <listitem>
          <simpara>
-          is the same, provided there are fewer than 40
-          previous capturing subpatterns
+          40개 미만의 서브 패턴을 검출하였을때, 동일한 의미
          </simpara>
         </listitem>
        </varlistentry>
@@ -501,7 +499,7 @@
         <term><emphasis>\7</emphasis></term>
            <listitem>
          <simpara>
-          is always a back reference
+          항상 역참조
          </simpara>
         </listitem>
        </varlistentry>
@@ -509,8 +507,7 @@
         <term><emphasis>\11</emphasis></term>
            <listitem>
          <simpara>
-          might be a back reference, or another way of
-          writing a tab
+          역참조, 혹은 탭의 다른 표현 방법
          </simpara>
         </listitem>
        </varlistentry>
@@ -518,7 +515,7 @@
         <term><emphasis>\011</emphasis></term>
            <listitem>
          <simpara>
-          is always a tab
+          항상 탭
          </simpara>
         </listitem>
        </varlistentry>
@@ -526,7 +523,7 @@
         <term><emphasis>\0113</emphasis></term>
            <listitem>
          <simpara>
-          is a tab followed by the character "3"
+          문자 "3"이 따라오는 탭
          </simpara>
         </listitem>
        </varlistentry>
@@ -534,8 +531,7 @@
         <term><emphasis>\113</emphasis></term>
            <listitem>
          <simpara>
-          is the character with octal code 113 (since there
-          can be no more than 99 back references)
+          octal code 113 문자 (역참조는 99까지입니다)
          </simpara>
         </listitem>
        </varlistentry>
@@ -551,17 +547,16 @@
         <term><emphasis>\81</emphasis></term>
            <listitem>
          <simpara>
-          is either a back reference, or a binary zero
-          followed by the two characters "8" and "1"
+          역참조이거나 "8"과 "1"의 두 문자가
+          따라오는 바이너리 제로
          </simpara>
         </listitem>
        </varlistentry>
      </variablelist>
     </para>
     <para>
-     Note that octal values of 100 or greater must not be intro-
-     duced by a leading zero, because no more than three octal
-     digits are ever read.
+     100이상의 8진 값은 앞에 제로가 붙지 않아야만 합니다.
+     세자리를 넘어가는 8진 값은 읽지 않습니다.
     </para>
     <para>
      All the sequences that define a single byte value can  be
@@ -580,7 +575,7 @@
         <term><emphasis>\d</emphasis></term>
            <listitem>
          <simpara>
-          any decimal digit
+          임의의 10진 숫자
          </simpara>
         </listitem>
        </varlistentry>
@@ -588,7 +583,7 @@
         <term><emphasis>\D</emphasis></term>
            <listitem>
          <simpara>
-          any character that is not a decimal digit
+          10진 숫자가 아닌 임의의 문자
          </simpara>
         </listitem>
        </varlistentry>
@@ -596,7 +591,7 @@
         <term><emphasis>\s</emphasis></term>
            <listitem>
          <simpara>
-          any whitespace character
+          임의의 공백 문자
          </simpara>
         </listitem>
        </varlistentry>
@@ -604,7 +599,7 @@
         <term><emphasis>\S</emphasis></term>
            <listitem>
          <simpara>
-          any character that is not a whitespace character
+          공백이 아닌 임의의 문자
          </simpara>
         </listitem>
        </varlistentry>
@@ -612,7 +607,7 @@
         <term><emphasis>\w</emphasis></term>
            <listitem>
          <simpara>
-          any "word" character
+          임의의 "word" 문자
          </simpara>
         </listitem>
        </varlistentry>
@@ -620,7 +615,7 @@
         <term><emphasis>\W</emphasis></term>
            <listitem>
          <simpara>
-          any "non-word" character
+          임의의 "non-word" 문자
          </simpara>
         </listitem>
        </varlistentry>

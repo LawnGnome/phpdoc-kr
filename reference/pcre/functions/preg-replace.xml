@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.1 $ -->
+<!-- EN-Revision: 1.9 -->
+  <refentry id="function.preg-replace">
+   <refnamediv>
+    <refname>preg_replace</refname>
+    <refpurpose>정규 표현식 검색과 치환을 수행합니다.</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>mixed</type><methodname>preg_replace</methodname>
+      <methodparam><type>mixed</type><parameter>pattern</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>replacement</parameter></methodparam>
+      <methodparam><type>mixed</type><parameter>subject</parameter></methodparam>
+      <methodparam choice="opt"><type>int</type><parameter>limit</parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     <parameter>subject</parameter>를 검색하여
+     매치된 <parameter>pattern</parameter>을
+     <parameter>replacement</parameter>로 치환합니다.
+     <parameter>limit</parameter>가 지정되면,
+     <parameter>limit</parameter>회의 매치만을 치환합니다;
+     <parameter>limit</parameter>가 -1라면, 모든 매치를 치환합니다.
+    </para>
+    <para>
+     <parameter>Replacement</parameter>는
+     <literal>\\<replaceable>n</replaceable></literal>나 (PHP 4.0.4부터)
+     <literal><replaceable>$n</replaceable></literal> 형태의 참조를 포함할
+     수 있습니다. 그러한 모든 참조는 <replaceable>n</replaceable>번째로
+     잡힌 괄호 패턴으로 대체됩니다. <replaceable>n</replaceable>은 0에서
+     99까지 가능하고, <literal>\\0</literal>나 <literal>$0</literal>는
+     전체 패턴에 매치된 텍스트를 의미합니다. 괄호를 여는것은 서브패턴을 포함하여
+     왼쪽에서 오른쪽(1로부터 시작)으로 카운트합니다.
+    </para>
+    <para>
+     역참조 바로 뒤에 다른 숫자가 따라오는 패턴을 사용할 때는(즉, 매치된
+     패턴 바로 뒤에 수 문자가 위치), <literal>\\1</literal> 식의 역참조를
+     사용할 수 없습니다. 예를 들면, <literal>\\11</literal>은
+     <function>preg_replace</function>에서 문자 <literal>1</literal>이 따라오는
+     역참조 <literal>\\1</literal>인지, 역참조 <literal>\\1</literal>인지를
+     구분할 수 없습니다. 이 경우, 해결책은 <literal>\${1}1</literal>를 사용합니다.
+     이는 독립된 역참조 <literal>$1</literal>를 작성하고, <literal>1</literal>을
+     문자로 남겨놓습니다.
+    </para>
+    <para>
+     <example>
+      <title>숫자에 대해 역참조 사용하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$string = "April 15, 2003";
+$pattern = "/(\w+) (\d+), (\d+)/i";
+$replacement = "\${1}1,\$3";
+print preg_replace($pattern, $replacement, $string);
+
+/* 출력
+   ====
+
+April1,2003
+
+ */
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <para>
+     매치가 발견되면, 변환된 <parameter>subject</parameter>를 반환하고,
+     그렇지 않으면 변경되지 않은 <parameter>subject</parameter>를 반환합니다.
+    </para>
+    <para>
+     <parameter>limit</parameter>를 제외한 <function>preg_replace</function>의
+     모든 인자는 배열로 할 수 있습니다. <parameter>pattern</parameter>과
+     <parameter>replacement</parameter>에 배열을 사용할 때, 배열에 나타나는
+     순서대로 키를 생성합니다. 똑같은 숫자 인덱스 순서를 가질 <emphasis>필요가
+     없습니다</emphasis>. 어떤 <parameter>pattern</parameter>를
+     어떤 <parameter>replacement</parameter>로 교체할건지를 정하기 위해서는,
+     <function>preg_replace</function>를 호출하기 전에 각각의 배열에
+     <function>ksort</function>를 실행해야만 합니다.
+    </para>
+    <para>
+     <example>
+      <title>정렬을 통해 <function>preg_replace</function> 사용하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$string = "The quick brown fox jumped over the lazy dog.";
+
+$patterns[0] = "/quick/";
+$patterns[1] = "/brown/";
+$patterns[2] = "/fox/";
+
+$replacements[2] = "bear";
+$replacements[1] = "black";
+$replacements[0] = "slow";
+
+print preg_replace($patterns, $replacements, $string);
+
+/* 출력
+   ====
+
+The bear black slow jumped over the lazy dog.
+
+*/
+
+/* patternk과 replacements를 ksort 해서,
+   원하던 결과를 얻습니다. */
+
+ksort($patterns);
+ksort($replacements);
+
+print preg_replace($patterns, $replacements, $string);
+
+/* 출력
+   ====
+
+The slow black bear jumped over the lazy dog.
+
+*/
+
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <para>
+     <parameter>subject</parameter>가 배열이면,
+     <parameter>subject</parameter>의 모든 엔트리에 검색과 교체를
+     실행하고, 배열을 반환합니다.
+    </para>
+    <para>
+     <parameter>pattern</parameter>과 <parameter>replacement</parameter>가
+     배열이면, <function>preg_replace</function>는 각각의 배열에서 값을 가져와서
+     <parameter>subject</parameter>를 검색하고 치환하는데에 이용합니다.
+     <parameter>replacement</parameter>가 <parameter>pattern</parameter>보다
+     적으면, 대응하는 치환값으로 빈 문자열을 사용합니다. <parameter>pattern
+     </parameter>이 배열이고 <parameter>replacement</parameter>가 문자열이면,
+     치환 문자열을 모든 <parameter>pattern</parameter>값에 사용합니다.
+     물론, 이 경우들의 반대는 말이 안됩니다.
+    </para>
+    <para>
+     <literal>/e</literal> 변경자는 <function>preg_replace</function>가
+     <parameter>replacement</parameter> 인자를 참조 치환을 한 후에 PHP
+     코드로 취급합니다. 팁: <parameter>replacement</parameter>가
+     정상적인 PHP 코드 문자열을 가지게 하십시오. 그렇지 않으면, PHP는
+     <function>preg_replace</function>를 포함하는 줄에서 파싱 에러를
+     출력합니다.
+    </para>
+    <para>
+     <example>
+      <title>여러 값을 치환하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$patterns = array ("/(19|20)(\d{2})-(\d{1,2})-(\d{1,2})/",
+                   "/^\s*{(\w+)}\s*=/");
+$replace = array ("\\3/\\4/\\1\\2", "$\\1 =");
+print preg_replace ($patterns, $replace, "{startDate} = 1999-5-27");
+?>
+]]>
+      </programlisting>
+      <para>
+       이 예제의 결과:
+      </para>
+      <screen>
+<![CDATA[
+$startDate = 5/27/1999
+]]>
+      </screen>
+     </example>
+    </para>
+    <para>
+     <example>
+      <title>/e 변경자 사용하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+preg_replace ("/(<\/?)(\w+)([^>]*>)/e", 
+              "'\\1'.strtoupper('\\2').'\\3'", 
+              $html_body);
+?>
+]]>
+      </programlisting>
+      <para>
+       입력된 텍스트의 모든 HTML 태그를 대문자로 변경합니다.
+      </para>
+     </example>
+    </para>
+    <para>
+     <example>
+      <title>HTML을 텍스트로 변환하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+// $document는 HTML 문서를 포함합니다.
+// 이는 HTML 태그, 자바스크립트 섹션, 공백을
+// 제거합니다. 또한, 몇몇 일반적인 HTML 엔티티를
+// 동일한 텍스트로 변환합니다.
+
+$search = array ("'<script[^>]*?>.*?</script>'si",  // 자바 스크립트 제거
+                 "'<[\/\!]*?[^<>]*?>'si",           // html 태그 제거
+                 "'([\r\n])[\s]+'",                 // 공백 제거
+                 "'&(quot|#34);'i",                 // html 엔티티 치환
+                 "'&(amp|#38);'i",
+                 "'&(lt|#60);'i",
+                 "'&(gt|#62);'i",
+                 "'&(nbsp|#160);'i",
+                 "'&(iexcl|#161);'i",
+                 "'&(cent|#162);'i",
+                 "'&(pound|#163);'i",
+                 "'&(copy|#169);'i",
+                 "'&#(\d+);'e");                    // php로 실행
+
+$replace = array ("",
+                  "",
+                  "\\1",
+                  "\"",
+                  "&",
+                  "<",
+                  ">",
+                  " ",
+                  chr(161),
+                  chr(162),
+                  chr(163),
+                  chr(169),
+                  "chr(\\1)");
+
+$text = preg_replace ($search, $replace, $document);
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <note>
+     <para>
+      <parameter>limit</parameter> 인자는 PHP 4.0.1pl2 이후에 추가되었습니다.
+     </para>
+    </note>
+    <para>
+     참고: <function>preg_match</function>,
+     <function>preg_match_all</function>,
+     <function>preg_split</function>.
+    </para>
+   </refsect1>
+  </refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
