@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.print-r">
    <refnamediv>
     <refname>print_r</refname>
@@ -25,9 +25,12 @@
      <type>float</type>이 주어지면, 값을 그대로 출력합니다.
      <type>array</type>가 주어지면, 키와 요소를 알아볼 수 있는 형태로
      표현합니다. <type>object</type>에 대해서도 비슷하게 표현합니다.
+     <function>var_dump</function>와는 달리, <function>print_r</function>과
+     <function>var_export</function>는 PHP 5에서 protected 및 private 속성도
+     보여줍니다.
     </simpara>
     <simpara>
-     <function>print_r</function>은 배열 포인터를 마지막으로 이동시킵니다.
+     <function>print_r</function>은 배열 포인터를 마지막으로 이동합니다.
      처음으로 되돌리려면 <function>reset</function>을 사용하십시오.
     </simpara>
     <para>

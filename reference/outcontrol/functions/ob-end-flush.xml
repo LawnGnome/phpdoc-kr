@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.ob-end-flush">
    <refnamediv>
     <refname>ob_end_flush</refname> 
@@ -23,6 +23,12 @@
      실패의 원인으로는 활성화된 버퍼 없이 함수를 호출했거나, 어떠한 이유로
      버퍼를 삭제할 수 없는 경우(특수 버퍼의 경우)입니다.
     </para>
+    <note>
+     <simpara>
+      이 함수는 <function>ob_get_flush</function>가 버퍼를 문자열로 반환하는
+      점을 제외하면, <function>ob_get_flush</function>와 동일합니다.
+     </simpara>
+    </note>
     <para>
      다음 예제는 모든 출력 버퍼를 전송 및 종료하는 간단한 방법을 보여줍니다:
     </para>
@@ -40,15 +46,16 @@
     </para>
     <note>
      <simpara>
-      함수가 실패하면 E_NOTICE를 생성합니다.
+      함수가 실패하면 E_NOTICE를 발생합니다.
      </simpara>
      <simpara>
-      불린 리컨 값은 PHP 4.2.0에서 추가되었습니다.
+      불린 반환값은 PHP 4.2.0에서 추가되었습니다.
      </simpara>
     </note>
     <para>
      참고: <function>ob_start</function>,
      <function>ob_get_contents</function>,
+     <function>ob_get_flush</function>,
      <function>ob_flush</function>,
      <function>ob_end_clean</function>.
     </para>
