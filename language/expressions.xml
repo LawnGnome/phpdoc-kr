@@ -1,31 +1,30 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.7 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.8 $ -->
+<!-- EN-Revision: 1.20 -->
  <chapter id="language.expressions">
-   <title>Expressions</title>
+   <title>표현식</title>
 
    <simpara>
-    Expressions are the most important building stones of PHP.  In PHP,
-    almost anything you write is an expression.  The simplest yet
-    most accurate way to define an expression is "anything that has a
-    value".</simpara>
+    표현식은 PHP에서 가장 중요한 구성요소다. PHP에서 쓰는 거의 대부분이
+    표현식이다. 표현식을 정의한 가장 단순하고 가장 정확한 말은
+    "모든것이 값을 갖는다"는 것이다.
+   </simpara>
 
    <simpara>
-    The most basic forms of expressions are constants and variables.
-    When you type "$a = 5", you're assigning '5' into $a.  '5', obviously,
-    has the value 5, or in other words '5' is an expression with the
-    value of 5 (in this case, '5' is an integer constant).</simpara>
+    표현식의 가장 기본적인 형태가 상수와 변수이다. "$a = 5"라고 쓰면, 
+    $a에 '5'를 지정하는것이다.'5'는 확실히 5란 값을 갖는다. 다르게 표현하면
+    '5'는 5란 값을 갖는 표현식이 된다 (이경우에, '5'는 정수형 상수이다)
+   </simpara>
 
    <simpara>
-    After this assignment, you'd expect $a's value to be 5 as
-    well, so if you wrote $b = $a, you'd expect it to behave just as
-    if you wrote $b = 5.  In other words, $a is an expression with the
-    value of 5 as well.  If everything works right, this is exactly
-    what will happen.</simpara>
+    이렇게 지정하고 나면 $a의 값은 5가 될것이란 것도 기대할수 있을것이다.
+    그래서 $b = $a라고 쓴다면, $b = 5를 쓴것과 같이 동작할것이라고 기대할수
+    있을것이다. 다른말로, $a는 또한 5란 값을 갖는 표현식이다. 모든것이
+    제대로 작동한다면, 기대하던대로 될것이다.
+   </simpara>
 
    <para>
-    Slightly more complex examples for expressions are functions.  For
-    instance, consider the following function:
-
+    표현식의 약간 더 복잡한 예가 함수이다. 다음 함수를 예로 들어보자.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -40,96 +39,79 @@ function foo ()
     </informalexample></para>
 
    <simpara>
-    Assuming you're familiar with the concept of functions (if you're
-    not, take a look at the chapter about functions), you'd assume
-    that typing <literal>$c = foo()</literal> is essentially just like
-    writing <literal>$c = 5</literal>, and you're right.  Functions
-    are expressions with the value of their return value.  Since foo()
-    returns 5, the value of the expression 'foo()' is 5.  Usually
-    functions don't just return a static value but compute something.</simpara>
+    함수의 개념에 익숙하다면 (그렇지 않으면, 함수에 관한 장을 보시오)
+    <literal>$c = foo()</literal>로 쓰는것이 <literal>$c = 5</literal>와
+    같을것이라고 생각할것이다. 옳은 생각이다. 함수는 리턴값의 값을 갖는
+    표현식이다. foo()가 5를 리턴하기 때문에 'foo()'표현식의 값은 5가 된다.
+    함수는 대체로 정적인 값보다는 계산값을 리턴한다.
+   </simpara>
 
    <simpara>
-    Of course, values in PHP don't have to be integers, and very often
-    they aren't.  PHP supports three scalar value types: integer values,
-    floating point values and string values (scalar values are values that
-    you can't 'break' into smaller pieces, unlike arrays, for instance).
-    PHP also supports two composite (non-scalar) types: arrays and
-    objects.  Each of these value types can be assigned into variables or
-    returned from functions.</simpara>
+    물론, PHP에서 값은 정수가 되어야 하는것은 아니다.
+    PHP에서는 3가지 스칼라 값 형을 지원한다: 정수값, 부동소수점값, 문자열값
+    (스칼라값은 배열같이 더작게 쪼갤수없는 값을 말한다). PHP는 두가지 조합형
+    (스칼라값이 아닌)을 지원한다: 배열과 객체. 이 두가지 값형은 변수나 함수에서
+    넘기는 값으로 지정될수 있다.
+   </simpara>
 
    <simpara>
-    So far, users of PHP/FI 2 shouldn't feel any change.  However, PHP
-    takes expressions much further, in the same way many other
-    languages do.  PHP is an expression-oriented language, in the
-    sense that almost everything is an expression.  Consider the
-    example we've already dealt with, '$a = 5'.  It's easy to see that
-    there are two values involved here, the value of the integer
-    constant '5', and the value of $a which is being updated to 5 as
-    well.  But the truth is that there's one additional value involved
-    here, and that's the value of the assignment itself.  The
-    assignment itself evaluates to the assigned value, in this case 5.
-    In practice, it means that '$a = 5', regardless of what it does,
-    is an expression with the value 5.  Thus, writing something like
-    '$b = ($a = 5)' is like writing '$a = 5; $b = 5;' (a semicolon
-    marks the end of a statement).  Since assignments are parsed in a
-    right to left order, you can also write '$b = $a = 5'.</simpara>
+    여기서 PHP/FI 2 사용자들은 달라진것이 없다는것을 알게되었을것이다. 하지만,
+    PHP는 다른 언어들처럼 더 많은 표현식을 쓸수 있다. PHP는 거의 모든것이
+    표현식이라는 관점에 입각하면 표현식-지향 언어이다. 전술했던 예제 '$a = 5'를 보자.
+    이 식과 연관된 값은 '5'라는 정수상수 두개라는것과 $a는 5로 수정이 된다는 것을 
+    알수 있다. 그러나 진실은 여기에 연관되어있는 것이 하나의 추가값이라는것이고,
+    이 추가된 값이 지정되어지는 값 자체라는 것이다.
+    지정 자체는 지정값 5만 적용된다. 실제로, '$a = 5'라는 식은 그것이 무엇을
+    하든 5라는 값을 갖는 표현식이라는 것이다. 따라서, '$b = ($a = 5)'라는 식은
+    '$a = 5; $b = 5'를 쓰는것과 같다 (세미콜른은 구문의 끝을 표시한다).
+    지정연산은 오른쪽에서 왼쪽방향을 해석되므로 '$b = $a = 5'라고 쓸수 있다.
+   </simpara>
 
    <simpara>
-    Another good example of expression orientation is pre- and
-    post-increment and decrement.  Users of PHP/FI 2 and many other
-    languages may be familiar with the notation of variable++ and
-    variable--.  These are increment and decrement operators.  In
-    PHP/FI 2, the statement '$a++' has no value (is not an
-    expression), and thus you can't assign it or use it in any way.
-    PHP enhances the increment/decrement capabilities by making
-    these expressions as well, like in C.  In PHP, like in C, there
-    are two types of increment - pre-increment and post-increment.
-    Both pre-increment and post-increment essentially increment the
-    variable, and the effect on the variable is idential.  The
-    difference is with the value of the increment expression.
-    Pre-increment, which is written '++$variable', evaluates to the
-    incremented value (PHP increments the variable before reading its
-    value, thus the name 'pre-increment').  Post-increment, which is
-    written '$variable++' evaluates to the original value of
-    $variable, before it was incremented (PHP increments the variable
-    after reading its value, thus the name 'post-increment').</simpara>
+    표현식-지향의 또다른 좋은 예는 전처리(pre)/후처리(post)되는 증가와 감소 연산이다.
+    PHP/FI 2 사용자와 다른 언어사용자는 변수++과 변수--의 부호표시에 익숙할것이다.
+    이런 부호표시는 증가와 감소 연산자이다. PHP/FI 2에서 '$a++'문은 값을 갖지않는다
+    (즉, 표현식이 아니다), 그래서 어떤수단으로도 특정값을 지정하거나 사용할수 없다.
+    PHP는 C처럼 이런 표현식을 사용할수 있어서 증가/감소 연산 능력을 확장시켰다.
+    PHP는 C처럼 두가지 연산형이 존재한다 - 전처리-증가 와 후처리-증가.
+    전처리 증가와 후처리 증가 모두 변수를 증가시키고 변수에 적용시킨다.
+    차이점은 증가 표현식에 값이 있는지에 달려있다. 전처리-증가, 즉 '++$변수'
+    는 값을 증가시켜 적용시킨다 (PHP는 처음 값을 읽기 전에 값을 증가시킨다, 따라서
+    이름이 '전처리-증가'가 되는것이다) 후처리-연산, '$변수++'는 값을 
+    증가시키기 전의 $변수의 처음값이 적용된다. (PHP는 그 값을 읽은 후에 그 값을 
+    증가시킨다, 그래서 '후처리-증가'가 되는것이다)
+   </simpara>
 
    <simpara>
-    A very common type of expressions are comparison expressions.
-    These expressions evaluate to either 0 or 1, meaning &false; or &true;
-    (respectively).  PHP supports &gt; (bigger than), &gt;= (bigger than
-    or equal to), == (equal), != (not equal), &lt; (smaller than) and &lt;=
-    (smaller than or equal to).  These expressions are most commonly used
-    inside conditional execution, such as <literal>if</literal>
-    statements.</simpara>
+    표현식 중 가장 흔한 형태가 비교 연산 표현식이다. 이런 표현식은 0 이나 1 
+    (각각 &false; 나 &true;)로 평가된다. PHP는 &gt; (더크다), &gt;= (크거나 같다), 
+    == (같다), != (같지 않다), &lt; (더작다) and &lt;= (작거나 같다)와 같은 연산자
+    를 지원한다. 이런 연산자는 <literal>if</literal>와 같은 조건절 수행시에 가장 
+    많이 쓰인다.
+   </simpara>
 
    <simpara>
-    The last example of expressions we'll deal with here is combined
-    operator-assignment expressions.  You already know that if you
-    want to increment $a by 1, you can simply write '$a++' or '++$a'.
-    But what if you want to add more than one to it, for instance 3?
-    You could write '$a++' multiple times, but this is obviously not a
-    very efficient or comfortable way.  A much more common practice is
-    to write '$a = $a + 3'.  '$a + 3' evaluates to the value of $a
-    plus 3, and is assigned back into $a, which results in
-    incrementing $a by 3.  In PHP, as in several other languages
-    like C, you can write this in a shorter way, which with time would
-    become clearer and quicker to understand as well.  Adding 3 to the
-    current value of $a can be written '$a += 3'.  This means exactly
-    "take the value of $a, add 3 to it, and assign it back into $a".
-    In addition to being shorter and clearer, this also results in
-    faster execution.  The value of '$a += 3', like the value of a
-    regular assignment, is the assigned value.  Notice that it is NOT
-    3, but the combined value of $a plus 3 (this is the value that's
-    assigned into $a).  Any two-place operator can be used in this
-    operator-assignment mode, for example '$a -= 5' (subtract 5 from
-    the value of $a), '$b *= 7' (multiply the value of $b by 7), etc.
+    이 장에서 취급할 제일 마지막 표현식의 예는 조합된 연산자-지정 표현식이다.
+    $a를 1만큼 증가시키고자 한다면 단순히 '$a++'이나 '++$a'로 쓸수 있다는것을
+    이미 알고 있을것이다. 그러나 하나 이상의 값을 증가시키고자 한다면, 예를 들어
+    3을 증가시키고자 한다면 어떻게 해야 할까? '$a++'을 여러번 쓸수도 있다.
+    그러나 이런 식으로 쓰는것은 효과적이거나 편한 방법이 아니라는것을 쉽게 알수 있다.
+    좀더 평범하게 표현하면 '$a = $a + 3'이다. '$a + 3'은 $a에 3을 더한 값이 계산
+    되고 $a로 그 값이 지정된다. 그래서 $a에 3을 증가시킨 결과가 된다.
+    PHP에서는 C와 같은 다른 언어처럼 더 짧은 형태로 쓸수있다. 그래서, 좀더 
+    이해하기 쉽고 좀더 빨리 이해할수있다. $a의 현재 값에 3을 더하는 것은 
+    '$a += 3'으로 쓸수 있다. 이 표현식의 의미는 정확히 '$a값을 취해 그 값에 3을 더하고
+    다시 $a에 계산된값을 지정하라'이다. 좀더 짧고 명확뿐만 아니라, 좀더 빠른 수행이
+    이루어진다. 일반적인 표현식의 값처럼 '$a += 3'의 값은 지정값이다. 3이 아니라,
+    $a에 3을 더한 값이라는 것에 주의하라 (이값은 $a에 지정되는 값이다)
+    어떠한 두개연속의 연산자도 이런 연산자-지정 방식으로 사용될수 있다.
+    예를 들면, '$a -= 5' ($a의 값에서 5를 뺀것), '$b *= 7' ($b의 값에
+    7을 곱한것) 등등이 쓰일수 있다.
    </simpara>
 
    <para>
-    There is one more expression that may seem odd if you haven't seen
-    it in other languages, the ternary conditional operator:
-
+    다른 언어에서 본적이 없다면 이상하게 보이는 표현식이 있다.
+    3중 조건적 연산자이다:
     <informalexample><programlisting>
 <![CDATA[
 <?php
@@ -137,16 +119,14 @@ $first ? $second : $third
 ?>
 ]]>
     </programlisting></informalexample>
-
-    If the value of the first subexpression is &true; (non-zero), then
-    the second subexpression is evaluated, and that is the result of
-    the conditional expression. Otherwise, the third subexpression is
-    evaluated, and that is the value.
+    first 하위 표현식의 값이 &true; (non-zero)이면 second 하위 표현식이
+    적용되고, 이것이 조건적 표현식의 결과가 된다. 이 경우가 아니면,
+    third 하위 표현식이 적용되고, 그 값이 된다.
    </para>
 
    <para>
-    The following example should help you understand pre- and
-    post-increment and expressions in general a bit better:
+    다음 예제 코드는 좀더 일반적으로 사용된 전처리/후처리-증가와 표현식을
+    이해하는데 도움이 될것이다.
 
     <informalexample>
      <programlisting role="php">
@@ -156,22 +136,21 @@ function double($i)
 {
     return $i*2;
 }
-$b = $a = 5;        /* assign the value five into the variable $a and $b */
-$c = $a++;          /* post-increment, assign original value of $a 
-                       (5) to $c */
-$e = $d = ++$b;     /* pre-increment, assign the incremented value of 
-                       $b (6) to $d and $e */
+$b = $a = 5;        /* $a와 $b에 5라는 값을 지정함 */
+$c = $a++;          /* 후처리-증가, $a 의 원래값을 적용함
+                       $c는 (5)가 됨 */
+$e = $d = ++$b;     /* 전처리-증가, $b가 증가된 값이 적용됨
+                       $d와 $e는 (6)이 됨 */
 
-/* at this point, both $d and $e are equal to 6 */
+/* 여기서, $d와 $e는 6과 같다 */
 
-$f = double($d++);  /* assign twice the value of $d <emphasis>before</emphasis> 
-                       the increment, 2*6 = 12 to $f */
-$g = double(++$e);  /* assign twice the value of $e <emphasis>after</emphasis>
-                       the increment, 2*7 = 14 to $g */
-$h = $g += 10;      /* first, $g is incremented by 10 and ends with the 
-                       value of 24. the value of the assignment (24) is 
-                       then assigned into $h, and $h ends with the value 
-                       of 24 as well. */
+$f = double($d++);  /* 증가되기 <emphasis>전의</emphasis> $d값의 두배가 적용됨
+                       $f는  2*6 = 12가 됨 */
+$g = double(++$e);  /* 증가된 <emphasis>후의</emphasis> $e값의 두배가 적용됨
+                       $g는  2*7 = 14가 됨 */
+$h = $g += 10;      /* 우선, $g는 10만큼 증가되어 24가 됨.
+                       지정된 값 (24)가 $h로 지정된다.
+                       $h도 24값으로 지정된다 */
 ?>
 ]]>
      </programlisting>
@@ -179,36 +158,33 @@ $h = $g += 10;      /* first, $g is incremented by 10 and ends with the
    </para>
 
    <simpara>
-    In the beginning of the chapter we said that we'll be describing
-    the various statement types, and as promised, expressions can be
-    statements.  However, not every expression is a statement.  In
-    this case, a statement has the form of 'expr' ';' that is, an
-    expression followed by a semicolon.  In '$b=$a=5;', $a=5 is a
-    valid expression, but it's not a statement by itself.  '$b=$a=5;'
-    however is a valid statement.</simpara>
+    이 장의 시작부분에서 다양한 구문형들을 설명할것이라고 했다. 약속대로,
+    표현식은 구문이 될수 있다. 그러나 모든 표현식이 구문이 될수는 없다.
+    이런 경우는 구문이 'expr' ';'의 형태를 갖는다. 즉, 세미콜른이 표현식
+    뒤에 온다. '$b=$a=5;'에서 $a=5는 유효한 표현식이다. 그러나 그자체가
+    구문이 되지는 않는다. 하지만, '$b=$a=5;'는 유효한 구문이다
+   </simpara>
 
    <simpara>
-    One last thing worth mentioning is the truth value of expressions.
-    In many events, mainly in conditional execution and loops, you're
-    not interested in the specific value of the expression, but only
-    care about whether it means &true; or &false;.
+    마지막으로 언급할 만큼 가치있는것이 표현식의 진리값이다.
+    많은 사건중, 주로 조건적 수행과 루프에서, 표현식의 특정 값에
+    흥미있지는 않을것이다. 그러나 그 값이 &true;인지 &false;인지는
+    중요하다.
     
     <!-- (PHP doesn't have a
     dedicated boolean type) : WRONG, php does. -->
     
-    The constants &true; and &false; (case-insensitive) are the two 
-    possible boolean values. When necessary, an expression is 
-    automatically converted to boolean. See the 
-    <link linkend="language.types.typecasting">section about
-    type-casting</link> for details about how.
+    상수 &true;와 &false; (대소문자를 구별하지 않음)는 두가지 논리값이다.
+    필요하면, 표현식은 자동적으로 논리값으로 변환된다. 더자세한 정보는
+    <link linkend="language.types.typecasting">형-캐스팅에 관한 섹션</link>을 참고할것.
    </simpara>
    <simpara>
-    PHP provides a full and powerful implementation of expressions, and
-    documenting it entirely goes beyond the scope of this manual. The
-    above examples should give you a good idea about what expressions
-    are and how you can construct useful expressions. Throughout the
-    rest of this manual we'll write <replaceable>expr</replaceable>
-    to indicate any valid PHP expression.</simpara>
+    PHP는 표현식의 완벽하고 파워풀한 구현방법을 제공한다. 그런 방법을
+    완전히 문서화하는 것은 이 매뉴얼의 범위를 넘는다. 위 예제 코드들은
+    표현식이 무엇인지에 대한것과 유용한 표현식을 구축할수 있는 방법에 대한
+    아이디어를 줄것이다. 이후 매뉴얼에서는 유효한 PHP 표현식을
+    <replaceable>expr</replaceable>라고 쓰겠다.
+   </simpara>
 
   </chapter>
  
