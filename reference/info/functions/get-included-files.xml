@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.get-included-files">
    <refnamediv>
     <refname>get_included_files</refname>
@@ -19,6 +19,9 @@
      사용하여 포함한 파일명을 배열로 반환합니다.
     </para>
     <para>
+     호출한 스크립트 파일은 "포함한 파일"로 처리하기에,
+     <function>include</function> 등으로 참조한 파일과 같이 나옵니다.
+    <para>
      여러번 include나 require한 파일은 반환 배열에 한번만 나옵니다.
     </para>
     <note>
@@ -29,15 +32,16 @@
     </note>
     <para>
      <example>
-      <title><function>get_included_files</function> 예제</title>
+      <title><function>get_included_files</function> 예제
+       (<filename>abc.php</filename>)</title>
       <programlisting role="php">
 <![CDATA[
 <?php
 
-include("test1.php");
-include_once("test2.php");
-require("test3.php");
-require_once("test4.php");
+include 'test1.php';
+include_once 'test2.php';
+require 'test3.php';
+require_once 'test4.php';
 
 $included_files = get_included_files();
 
@@ -53,6 +57,7 @@ foreach ($included_files as $filename) {
       </para>
       <screen>
 <![CDATA[
+abc.php
 test1.php
 test2.php
 test3.php

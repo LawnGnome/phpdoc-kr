@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="function.ob-gzhandler">
    <refnamediv>
     <refname>ob_gzhandler</refname>
@@ -26,7 +26,7 @@
      <function>ob_gzhandler</function>가 실제로 압축 데이터를 전송하기 전에,
      브라우저가 어떠한 내용 인코딩 형태("gzip", "deflate", 그 외에는 none)를
      받아들이는지 확인하여, 그에 따라서 출력합니다. 웹 페이지 압축을
-     허용한다는 올바른 헤더를 전송하는 모든 브라우저를 지원합니다.
+     허용하는 올바른 헤더를 전송하는 모든 브라우저를 지원합니다.
     </para>
     <para>
      <example>
@@ -53,10 +53,10 @@ ob_start("ob_gzhandler");
     </para>
     <note>
      <para>
-      <function>ob_gzhandler</function>과 <link
-       linkend="ini.zlib.output-compression">ini.zlib.output_compression</link>를
+      <function>ob_gzhandler</function>와 <link
+       linkend="ini.zlib.output-compression">ini.zlib.output_compression</link>을
       둘 다 사용할 수는 없습니다. <function>ob_gzhandler</function>보다 <link
-       linkend="ini.zlib.output-compression">ini.zlib.output_compression</link>를
+       linkend="ini.zlib.output-compression">ini.zlib.output_compression</link>을
       권장합니다.
      </para>
     </note>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
   <refentry id="function.str-split">
    <refnamediv>
     <refname>str_split</refname>
@@ -97,7 +97,8 @@ $arr1 = preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY);
      </example>
     </para>
     <para>
-     참고: <function>preg_split</function>,
+     참고: <function>chuck_split</function>,
+     <function>preg_split</function>,
      <function>split</function>,
      <function>count_chars</function>,
      <function>str_word_count</function>,

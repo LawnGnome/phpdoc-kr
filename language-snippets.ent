@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.63 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.65 Maintainer: progcom Status: ready -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -228,8 +228,15 @@ supplemental files to mark section titles -->
 지원합니다.</simpara></note>'>
 
 <!-- Notes for tidy -->
-<!ENTITY note.tidy.ze2 '<note><simpara>이 함수는 Zend Engine 2(PHP &gt;= 5.0.0)에서만
-사용할 수 있습니다.</simpara></note>'>
+<!ENTITY note.tidy.ze2 '<note><simpara>이 함수는 Zend Engine 2(PHP &gt;=
+5.0.0)에서만 사용할 수 있습니다.</simpara></note>'>
+
+<!ENTITY note.tidy1.only '<note><simpara>이 함수는 Tidy 1.0에서만 사용할 수
+있습니다. Tidy 2.0에서 제거되었습니다.</simpara></note>'>
+
+<!ENTITY note.tidy2.only '<note><simpara>선택적인 인자
+<literal>config_options</literal>와 <literal>encoding</literal>은 Tidy 2.0에서
+추가되었습니다.</simpara></note>'>
 
 <!-- Korean translation entity -->
 <!ENTITY ko.reference.ini.constants 'PHP_INI_* 상수에 대한 자세한 내용 및 정의는

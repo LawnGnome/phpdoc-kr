@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry id="function.preg-replace-callback">
    <refnamediv>
     <refname>preg_replace_callback</refname>
-    <refpurpose>callback을 이용한 정규 표현식 검색과 치환을 수행합니다.</refpurpose>
+    <refpurpose>콜백을 이용한 정규 표현식 검색과 치환을 수행합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
@@ -33,7 +32,8 @@
   $text.= "Last christmas was 12/24/2001\n";
 
   // 콜백 함수
-  function next_year($matches) {
+  function next_year($matches)
+  {
     // 보통: $matches[0]는 전채 매치입니다.
     // $matches[1]은 첫번째 '(...)'에 들어있는
     // 서브 패턴 매치로 이어집니다.
@@ -115,4 +115,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry id="function.chunk-split">
    <refnamediv>
     <refname>chunk_split</refname>
@@ -33,7 +32,8 @@ $new_string = chunk_split(base64_encode($data));
      </example>
     </para>
     <simpara>
-     참고: <function>explode</function>, <function>split</function>, 
+     참고: <function>str_split</function>,
+     <function>explode</function>, <function>split</function>, 
      <function>wordwrap</function>,
      <ulink url="&url.rfc;2045">RFC 2045</ulink>.
     </simpara>
@@ -60,4 +60,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-
