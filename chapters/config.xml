@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.16 $ -->
-<!-- EN-Revision: 1.99 -->
+<!-- $Revision: 1.17 $ -->
+<!-- EN-Revision: 1.100 -->
  <chapter id="configuration">
   <title>환경 설정</title>
 
@@ -260,7 +260,12 @@ php_admin_value open_basedir none
   </sect1>
 
   <sect1 id="configuration.directives">
-   <title>환경 설정 지시자</title>
+   <title>기타 환경 설정 지시자</title>
+   <para>
+    아래는 모든 PHP 지시자 목록이 아닙니다. 지시자 목록은 적합한 위치에
+    존재합니다. 예를 들어, 세션 지시자에 대한 정보는
+    <link linkend="ref.session">세션 챕터</link>에 위치합니다.
+   </para>
 
   <sect2 id="ini.sect.httpd-options">
    <title>Httpd 옵션</title>
@@ -767,13 +772,13 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Specifies the name of a file that is automatically parsed
-         before the main file.  The file is included as if it was
-         called with the <function>include</function> function, so
-         <link linkend="ini.include-path">include_path</link> is used.</para>
+         메인 파일 앞에 자동적으로 붙는 파일의 이름을 정합니다.
+         <function>include</function> 함수 호출과 동등하게 작동하며,
+         <link linkend="ini.include-path">include_path</link>를
+         사용합니다.
         <para>
-         The special value <systemitem class="constant">none</systemitem> 
-         disables auto-prepending.
+         특수값 <systemitem class="constant">none</systemitem>은
+         auto-prepending을 비활성화 합니다.
         </para>
        </listitem>
       </varlistentry>
@@ -785,17 +790,18 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Specifies the name of a file that is automatically parsed
-         after the main file.  The file is included as if it was
-         called with the <function>include</function> function, so
-         <link linkend="ini.include-path">include_path</link> is used.</para>
+         메인 파일 뒤에 자동적으로 붙는 파일의 이름을 정합니다.
+         <function>include</function> 함수 호출과 동등하게 작동하며,
+         <link linkend="ini.include-path">include_path</link>를
+         사용합니다.
         <para>
-         The special value <systemitem class="constant">none</systemitem> 
-         disables auto-appending.
+         특수값 <systemitem class="constant">none</systemitem>은
+         auto-appending을 비활성화 합니다.
          <note>
           <simpara>
-           If the script is terminated with <function>exit</function>,
-           auto-append will <emphasis>not</emphasis> occur.</simpara>
+           스크립트가 <function>exit</function>로 종료되면,
+           auto-append는 작동하지 <emphasis>않습니다</emphasis>.
+          </simpara>
          </note>
         </para>
        </listitem>
@@ -819,9 +825,9 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         As of 4.0b4, PHP always outputs a character encoding by default in
-         the Content-type: header. To disable sending of the charset, simply
-         set it to be empty.
+         4.0b4부터, PHP는 기본값으로 항상 Content-type: 헤더로 문자 인코딩을
+         출력합니다. 문자셋의 전송을 하지 않기 위해서는, 간단히 이 설정을
+         비워두십시오.
         </para>
        </listitem>
       </varlistentry>
