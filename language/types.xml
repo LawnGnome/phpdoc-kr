@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.123 Maintainer: fuzzy74 Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.136 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter id="language.types">
-  <title>타입</title>
+  <title>변수형</title>
 
   <sect1 id="language.types.intro">
   <title>소개</title>
   
   <simpara>
-   PHP는 8가지의 기본 타입을 지원한다.
+   PHP는 8가지의 기본 변수형을 지원한다.
   </simpara>
   
   <para>
-   4가지 스칼라 타입:
+   4가지 스칼라형:
 
    <itemizedlist>
 
@@ -192,7 +193,7 @@ $foo = True; // assign the value TRUE to $foo
      <para>
       보통은 <type>boolean</type>값을 돌려주는 몇 가지 
       <link linkend="language.operators">연산자</link>를 사용해서
-      그 값을 <link linkend="control-structures">제어 구조</link>로 전달한다.
+      그 값을 <link linkend="language.control-structures">제어 구조</link>로 전달한다.
 
       <informalexample>
        <programlisting role="php">
@@ -336,7 +337,6 @@ $a = 0x1A; # hexadecimal number (equivalent to 26 decimal)
       <informalexample>
        <programlisting>
 <![CDATA[
-<?php
 decimal     : [1-9][0-9]*
             | 0
 
@@ -347,7 +347,6 @@ octal       : 0[0-7]+
 integer     : [+-]?decimal
             | [+-]?hexadecimal
             | [+-]?octal
-?>
 ]]>
        </programlisting>
       </informalexample>
@@ -927,35 +926,35 @@ echo "This square is $square->{width}00 centimeters broad.";
       <programlisting role="php">
 <![CDATA[
 <?php
-// Let's show all errors
+// 모든 에러를 보여줍니다.
 error_reporting(E_ALL);
 
 $great = 'fantastic';
 
-// Won't work, outputs: This is { fantastic}
+// 작동하지 않습니다, 출력: This is { fantastic}
 echo "This is { $great}";
 
-// Works, outputs: This is fantastic
+// 작동합니다, 출력: This is fantastic
 echo "This is {$great}";
 echo "This is ${great}";
 
-// Works
+// 작동합니다.
 echo "This square is {$square->width}00 centimeters broad."; 
 
-// Works
+// 작동합니다.
 echo "This works: {$arr[4][3]}";
 
-// This is wrong for the same reason as $foo[bar] is wrong 
-// outside a string.  In otherwords, it will still work but
-// because PHP first looks for a constant named foo, it will
-// throw an error of level E_NOTICE (undefined constant).
+// $foo[bar]가 문자열 밖에서 유효하지 않은 것과 마찬가지로,
+// 잘못되었습니다. 즉, 이는 작동하지만 PHP는 먼저 상수 이름
+// foo를 찾고, E_NOTICE 레벨의 오류(정의되지 않은 상수)를
+// 발생합니다.
 echo "This is wrong: {$arr[foo][3]}"; 
 
-// Works.  When using multi-dimensional arrays, always use
-// braces around arrays when inside of strings
+// 작동합니다. 문자열 안에서 다차원 배열을 사용할 때는,
+// 항상 배열 주위를 중괄호로 감싸주십시오.
 echo "This works: {$arr['foo'][3]}";
 
-// Works.
+// 작동합니다.
 echo "This works: " . $arr['foo'][3];
 
 echo "You can even write {$obj->values[3]->name}";
@@ -975,15 +974,15 @@ echo "I'd like to have another {${ strrev('reeb') }}, hips";
     </sect3>
     
     <sect3 id="language.types.string.substr">
-     <title>문자열 내의 문자에 접근하기</title>
+     <title>문자열의 문자에 접근 및 변경</title>
      <para>
-      문자열 내의 문자들 중 원하는 문자를 중괄호안에
-      제로-베이스 오프셋을 표기하여 접근할수 있다.
+      문자열 내의 문자들 중 원하는 문자를 중괄호안에 0을 기준으로 한 위치를
+      표기하여 접근하고, 변경할 수 있습니다.
      </para>
      <note>
       <simpara>
-       하위버전의 호환성을 위해, 같은 목적으로 배열-중괄호를 사용할수 있다.
-       하지만, 이 문법은 PHP 4에서 사용할수 없다.
+       하위 버전과의 호환을 위해, 같은 목적으로 대괄호를 사용할 수
+       있습니다. 하지만, 이 문법은 PHP 4에서 배제되었습니다.
       </simpara>
      </note>
      <para>
@@ -1002,6 +1001,11 @@ $third = $str{2};
 // Get the last character of a string.
 $str = 'This is still a test.';
 $last = $str{strlen($str)-1}; 
+
+// 문자열의 마지막 문자를 변경.
+$str = 'Look at the sea';
+$str{strlen($str)-1} = 'e';
+
 ?>
 ]]>
        </programlisting>
@@ -1424,7 +1428,7 @@ unset($a[2]);
 */
 
 $b = array_values($a);
-// Now b is array(1 => 'one', 2 =>'three')
+// Now b is array(0 => 'one', 1 =>'three')
 ?>
 ]]>
       </programlisting>
@@ -1674,6 +1678,15 @@ $error_descriptions[8] = "This is just an informal notice";
     </para>
    </sect2>
 
+   <sect2 id="language.types.array.comparing">
+    <title>비교하기</title>
+    <para>
+     <function>array_diff</function>와 <link
+      linkend="language.operators.array">배열 연산자</link>를 사용하여 배열을
+     비교할 수 있습니다.
+    </para>
+   </sect2>
+
    <sect2 id="language.types.array.examples">
     <title>예제 코드</title>
     <para>
@@ -1764,16 +1777,20 @@ $colors = array('red', 'blue', 'green', 'yellow');
 foreach ($colors as $color) {
     echo "Do you like $color?\n";
 }
-
-/* output:
+?>
+]]>
+     </programlisting>
+     <para>
+      출력은:
+     </para>
+     <screen>
+<![CDATA[
 Do you like red?
 Do you like blue?
 Do you like green?
 Do you like yellow?
-*/
-?>
 ]]>
-     </programlisting>
+     </screen>
     </example>
     
     <para>
@@ -1799,8 +1816,14 @@ foreach ($colors as $key => $color) {
     $colors[$key] = strtoupper($color);
 }
 print_r($colors);
-
-/* output:
+?>
+]]>
+      </programlisting>
+      <para>
+       출력은:
+      </para>
+      <screen>
+<![CDATA[
 Array
 (
     [0] => RED
@@ -1808,10 +1831,8 @@ Array
     [2] => GREEN
     [3] => YELLOW
 )
-*/
-?>
 ]]>
-      </programlisting>
+      </screen>
      </example>
     </para>
     <para>
@@ -1823,23 +1844,29 @@ Array
 <?php
 $firstquarter  = array(1 => 'January', 'February', 'March');
 print_r($firstquarter);
-
-/* output:
+?>
+]]>
+      </programlisting>
+      <para>
+       출력은:
+      </para>
+      <screen>
+<![CDATA[
 Array 
 (
     [1] => 'January'
     [2] => 'February'
     [3] => 'March'
 )
-*/
 ]]>   
-      </programlisting>
+      </screen>
      </example>
     </para>
     <example>
      <title>배열 채우기</title>
      <programlisting role="php">
 <![CDATA[
+<?php
 // fill an array with all items from a directory
 $handle = opendir('.');
 while (false !== ($file = readdir($handle))) {
@@ -1884,7 +1911,7 @@ $fruits = array ( "fruits"  => array ( "a" => "orange",
                                        3,
                                        4,
                                        5,
-                                       6,
+                                       6
                                      ),
                   "holes"   => array (      "first",
                                        5 => "second",
@@ -2013,7 +2040,7 @@ echo $obj->scalar;  // outputs 'ciao'
      <title>Freeing resources</title>
     
     <para>
-     PHP 4의 젠드 엔진에서 참조-카운팅(reference-counting) 시스템이 추가되어서,
+     PHP 4의 젠드 엔진에서 참조-카운팅(reference-counting) 시스템이 추가되어,
      resource가 더이상 참조되지 않을때가 자동적으로 탐지된다(자바처럼).
      이 경우에, 이 자원을 위해 사용중인 모든 자원은 가비지 컬렉터에 
      의해 자동으로 해제된다. 이런 이유로, free_result같은 함수를
@@ -2091,7 +2118,7 @@ $var = NULL;
     <title>mixed</title>
     <para>
      <literal>mixed</literal>는 인자가 여러 타입을 허용한다는 것을 가리킨다
-     (모든 타입일필요는 없다)
+     (모든 변수형일 필요는 없다)
     </para>
     <para>
      <function>gettype</function>은 모든 PHP 타입을 다루고,
@@ -2278,7 +2305,7 @@ $a{1} = "f";   // $a is now "afc"
       </programlisting>
      </informalexample>
      자세한 정보는 
-     <link linkend="language.types.string.substr">문자열의 문자 접근하기</link>섹션을
+     <link linkend="language.types.string.substr">문자열의 문자 접근과 변경</link>섹션을
      참고.
     </para>
    </note>

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.15 $ -->
-<!-- EN-Revision: 1.78 Maintainer: fuzzy74 Status: ready -->
- <chapter id="control-structures">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.89 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+ <chapter id="language.control-structures">
   <title>제어 구조</title>
 
   <simpara>
@@ -45,7 +45,7 @@ if (expr)
 <![CDATA[
 <?php
 if ($a > $b)
-    print "a는 b보다 크다";
+    echo "a는 b보다 크다";
 ?>
 ]]>
      </programlisting>
@@ -64,7 +64,7 @@ if ($a > $b)
 <![CDATA[
 <?php
 if ($a > $b) {
-    print "a는 b보다 크다";
+    echo "a는 b보다 크다";
     $b = $a;
 }
 ?>
@@ -95,9 +95,9 @@ if ($a > $b) {
 <![CDATA[
 <?php
 if ($a > $b) {
-    print "a는 b보다 크다";
+    echo "a는 b보다 크다";
 } else {
-    print "a는 b보다 크지 않다";
+    echo "a는 b보다 크지 않다";
 }
 ?>
 ]]>
@@ -128,11 +128,11 @@ if ($a > $b) {
 <![CDATA[
 <?php
 if ($a > $b) {
-    print "a는 b보다 크다";
+    echo "a는 b보다 크다";
 } elseif ($a == $b) {
-    print "a는 b와 같다";
+    echo "a는 b와 같다";
 } else {
-    print "a는 b보다 작다";
+    echo "a는 b보다 작다";
 }
 ?>
 ]]>
@@ -187,13 +187,13 @@ A는 5와 같다
 <![CDATA[
 <?php
 if ($a == 5):
-    print "a는 5와 같다";
-    print "...";
+    echo "a는 5와 같다";
+    echo "...";
 elseif ($a == 6):
-    print "a는 6과 같다";
-    print "!!!";
+    echo "a는 6과 같다";
+    echo "!!!";
 else:
-    print "a는 5도 아니고 6도 아니다";
+    echo "a는 5도 아니고 6도 아니다";
 endif;
 ?>
 ]]>
@@ -252,16 +252,16 @@ while (expr): statement ... endwhile;
 
 $i = 1;
 while ($i <= 10) {
-    print $i++;  /* the printed value would be
-                    $i before the increment
-                    (post-increment) */
+    echo $i++;  /* 출력하는 값은 증가하기
+                   전의 $i입니다.
+                   (post-increment) */
 }
 
 /* example 2 */
 
 $i = 1;
 while ($i <= 10):
-    print $i;
+    echo $i;
     $i++;
 endwhile;
 ?>
@@ -291,7 +291,7 @@ endwhile;
 <?php
 $i = 0;
 do {
-   print $i;
+   echo $i;
 } while ($i > 0);
 ?>
 ]]>
@@ -304,8 +304,9 @@ do {
    </simpara>
    <para>
     고급 C 유저는 <literal>do..while</literal>루프의 다른 사용법에 익숙할것이다.
-    즉, <literal>do..while</literal>(0)으로 감싸고, <link linkend="control-structures.break"><literal>break</literal></link>절을
-    사용해서 코드 블록의 중간에서 수행을 멈출수 있도록 해준다.
+    즉, <literal>do..while</literal> (0)로 감싸고, <link
+     linkend="control-structures.break"><literal>break</literal></link>절을
+    사용하여 코드 블록의 중간에서 수행을 멈출수 있습니다.
     다음 코드 예는 이런 경우를 보여준다:
     <informalexample>
      <programlisting role="php">
@@ -313,18 +314,18 @@ do {
 <?php
 do {
     if ($i < 5) {
-        print "i는 충분히 크지 않다";
+        echo "i는 충분히 크지 않다";
         break;
     }
     $i *= $factor;
     if ($i < $minimum_limit) {
         break;
     }
-    print "i is ok";
+    echo "i is ok";
 
     /* process i */
 
-} while(0);
+} while (0);
 ?>
 ]]>
      </programlisting>
@@ -377,42 +378,42 @@ for (expr1; expr2; expr3) statement
      <programlisting role="php">
 <![CDATA[
 <?php
-/* example 1 */
+/* 예제 1 */
 
 for ($i = 1; $i <= 10; $i++) {
-    print $i;
+    echo $i;
 }
 
-/* example 2 */
+/* 예제 2 */
 
 for ($i = 1; ; $i++) {
     if ($i > 10) {
         break;
     }
-    print $i;
+    echo $i;
 }
 
-/* example 3 */
+/* 예제 3 */
 
 $i = 1;
-for (;;) {
+for (; ; ) {
     if ($i > 10) {
         break;
     }
-    print $i;
+    echo $i;
     $i++;
 }
 
-/* example 4 */
+/* 예제 4 */
 
-for ($i = 1; $i <= 10; print $i, $i++);
+for ($i = 1; $i <= 10; echo $i, $i++);
 ?>
 ]]>
      </programlisting>
     </informalexample>
    </para>
    <simpara>
-    물론, 첫번째 예제(또는 네번째) 코드가 가장 좋은 방법이다. 그러나 
+    물론, 첫번째 예제(혹은 네번째) 코드가 가장 좋은 방법이다. 그러나 
     <literal>for</literal>루프에서 빈 표현식을 사용해야 하는 경우도 부딪히게
     될것이다.
    </simpara>
@@ -503,11 +504,11 @@ foreach (array_expression as $key => $value) statement
 $arr = array("one", "two", "three");
 reset ($arr);
 while (list(, $value) = each ($arr)) {
-    echo "Value: $value<br>\n";
+    echo "Value: $value<br />\n";
 }
 
 foreach ($arr as $value) {
-    echo "Value: $value<br>\n";
+    echo "Value: $value<br />\n";
 }
 ?>
 ]]>
@@ -518,13 +519,14 @@ foreach ($arr as $value) {
      <programlisting role="php">
 <![CDATA[
 <?php
+$arr = array("one", "two", "three");
 reset ($arr);
 while (list($key, $value) = each ($arr)) {
-    echo "Key: $key; Value: $value<br>\n";
+    echo "Key: $key; Value: $value<br />\n";
 }
 
 foreach ($arr as $key => $value) {
-    echo "Key: $key; Value: $value<br>\n";
+    echo "Key: $key; Value: $value<br />\n";
 }
 ?>
 ]]>
@@ -537,28 +539,28 @@ foreach ($arr as $key => $value) {
      <programlisting role="php">
 <![CDATA[
 <?php
-/* foreach example 1: value only */
+/* foreach 예제 1: 값만 */
 
-$a = array (1, 2, 3, 17);
+$a = array(1, 2, 3, 17);
 
 foreach ($a as $v) {
-   print "Current value of \$a: $v.\n";
+   echo "\$a의 현재 값: $v.\n";
 }
 
-/* foreach example 2: value (with key printed for illustration) */
+/* foreach 예제 2: 값 (키는 가상으로 출력) */
 
-$a = array (1, 2, 3, 17);
+$a = array(1, 2, 3, 17);
 
-$i = 0; /* for illustrative purposes only */
+$i = 0; /* 가상 목적으로만 사용 */
 
 foreach ($a as $v) {
-    print "\$a[$i] => $v.\n";
+    echo "\$a[$i] => $v.\n";
     $i++;
 }
 
-/* foreach example 3: key and value */
+/* foreach 예제 3: 키와 값 */
 
-$a = array (
+$a = array(
     "one" => 1,
     "two" => 2,
     "three" => 3,
@@ -566,10 +568,10 @@ $a = array (
 );
 
 foreach ($a as $k => $v) {
-    print "\$a[$k] => $v.\n";
+    echo "\$a[$k] => $v.\n";
 }
 
-/* foreach example 4: multi-dimensional arrays */
+/* foreach 예제 4: 다차원 배열 */
 
 $a[0][0] = "a";
 $a[0][1] = "b";
@@ -578,14 +580,14 @@ $a[1][1] = "z";
 
 foreach ($a as $v1) {
     foreach ($v1 as $v2) {
-        print "$v2\n";
+        echo "$v2\n";
     }
 }
 
-/* foreach example 5: dynamic arrays */
+/* foreach 예제 5: 동적 배열 */
 
 foreach (array(1, 2, 3, 4, 5) as $v) {
-    print "$v\n";
+    echo "$v\n";
 }
 ?>
 ]]>
@@ -610,25 +612,25 @@ foreach (array(1, 2, 3, 4, 5) as $v) {
      <programlisting role="php">
 <![CDATA[
 <?php
-$arr = array ('one', 'two', 'three', 'four', 'stop', 'five');
+$arr = array('one', 'two', 'three', 'four', 'stop', 'five');
 while (list (, $val) = each ($arr)) {
     if ($val == 'stop') {
-        break;    /* You could also write 'break 1;' here. */
+        break;    /* 여기서는 'break 1;'으로 슬 수 있습니다. */
     }
-    echo "$val<br>\n";
+    echo "$val<br />\n";
 }
 
-/* Using the optional argument. */
+/* 옵션 인자 사용하기. */
 
 $i = 0;
 while (++$i) {
     switch ($i) {
     case 5:
-        echo "At 5<br>\n";
-        break 1;  /* Exit only the switch. */
+        echo "At 5<br />\n";
+        break 1;  /* switch만 빠져나갑니다. */
     case 10:
-        echo "At 10; quitting<br>\n";
-        break 2;  /* Exit the switch and the while. */
+        echo "At 10; quitting<br />\n";
+        break 2;  /* switch와 while을 빠져나갑니다. */
     default:
         break;
     }
@@ -670,20 +672,63 @@ while (list ($key, $value) = each ($arr)) {
 
 $i = 0;
 while ($i++ < 5) {
-    echo "Outer<br>\n";
+    echo "Outer<br />\n";
     while (1) {
-        echo "&nbsp;&nbsp;Middle<br>\n";
+        echo "&nbsp;&nbsp;Middle<br />\n";
         while (1) {
-            echo "&nbsp;&nbsp;Inner<br>\n";
+            echo "&nbsp;&nbsp;Inner<br/ >\n";
             continue 3;
         }
-        echo "This never gets output.<br>\n";
+        echo "This never gets output.<br />\n";
     }
-    echo "Neither does this.<br>\n";
+    echo "Neither does this.<br />\n";
 }
 ?>
 ]]>
      </programlisting>
+     </informalexample>
+    </para>
+    <para>
+     <literal>continue</literal> 뒤의 세미콜론을 빼먹으면 혼란스러울 것입니다.
+     여기에 해서는 안되는 일의 예제입니다:
+    </para>
+    <para>
+     <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?php
+  for ($i = 0; $i < 5; ++$i) {
+      if ($i == 2)
+          continue
+      print "$i\n";
+  }
+?>
+]]>
+      </programlisting>
+      <para>
+       기대했던 결과는:
+      </para>
+      <screen>
+<![CDATA[
+0
+1
+3
+4
+]]>
+      </screen>
+      <para>
+       하지만 스크립트의 출력은:
+      </para>
+      <screen>
+<![CDATA[
+2
+]]>
+      </screen>
+      <para>
+       <function>print</function> 호출의 반환값은
+       <literal>int(1)</literal>이기 때문에, 위에서 언급한 부수적인 수 인자로
+       보여집니다.
+      </para>
      </informalexample>
     </para>
   </sect1>
@@ -706,31 +751,31 @@ while ($i++ < 5) {
     </simpara>
    </note>
    <para>
-    다음 예제 코드들은 같은 일을 서로 다르게 표현한 것이다. 하나는
-    <literal>if</literal>문을 연속적으로 사용한것이고, 다른 것은
-    <literal>switch</literal>문을 사용하고 있다:
+    다음 예제 코드들은 같은 일을 서로 다르게 표현한 것입니다. 하나는
+    <literal>if</literal>와 <literal>elseif</literal>문을 사용한 것이고, 다른
+    하나는 <literal>switch</literal>문을 사용했습니다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
 if ($i == 0) {
-    print "i equals 0";
+    echo "i는 0";
 } elseif ($i == 1) {
-    print "i equals 1";
+    echo "i는 1";
 } elseif ($i == 2) {
-    print "i equals 2";
+    echo "i는 2";
 }
 
 switch ($i) {
-    case 0:
-        print "i equals 0";
-        break;
-    case 1:
-        print "i equals 1";
-        break;
-    case 2:
-        print "i equals 2";
-        break;
+case 0:
+    echo "i는 0";
+    break;
+case 1:
+    echo "i는 1";
+    break;
+case 2:
+    echo "i는 2";
+    break;
 }
 ?>
 ]]>
@@ -752,12 +797,12 @@ switch ($i) {
 <![CDATA[
 <?php
 switch ($i) {
-    case 0:
-        print "i는 0과 같다";
-    case 1:
-        print "i는 1과 같다";
-    case 2:
-        print "i는 2와 같다";
+case 0:
+    echo "i는 0과 같다";
+case 1:
+    echo "i는 1과 같다";
+case 2:
+    echo "i는 2와 같다";
 }
 ?>
 ]]>
@@ -765,10 +810,10 @@ switch ($i) {
     </informalexample>
    </para>
    <simpara>
-    이 예제 코드에서, $i가 0과 같으면, PHP는 모든 print구문을 수행할것이다!
-    $i가 1이면 밑의 두 print구문을 수행한다. $i가 2일때만 원하는 동작
-    ('i는 2와 같다')을 보게 될것이다. 따라서 <literal>break</literal>문을 
-    반드시 빠뜨려서는 안된다. (어떤 경우에는 일부러 빠뜨릴수 있을지 모르지만)
+    여기에서, $i가 0이라면 PHP는 모든 echo문을 수행합니다! $i가 1이면 밑의 두
+    echo문을 수행합니다. $i가 2일때만 원하는 동작 ('i는 2와 같다'를 표시)을
+    합니다. 따라서 <literal>break</literal>문을 잊어서는 안됩니다. (어떤
+    경우에는 일부러 빠뜨릴수 있을지 모르지만)
    </simpara>
    <simpara>
     <literal>switch</literal>구문에서, 조건문은 오직 한번만 평가되고
@@ -785,13 +830,13 @@ switch ($i) {
 <![CDATA[
 <?php
 switch ($i) {
-    case 0:
-    case 1:
-    case 2:
-        print "i is less than 3 but not negative";
-        break;
-    case 3:
-        print "i is 3";
+case 0:
+case 1:
+case 2:
+    echo "i는 3보다 작지만 음수는 아닙니다.";
+    break;
+case 3:
+    echo "i는 3";
 }
 ?>
 ]]>
@@ -807,17 +852,17 @@ switch ($i) {
 <![CDATA[
 <?php
 switch ($i) {
-    case 0:
-        print "i는 0과 같다";
-        break;
-    case 1:
-        print "i는 1과 같다";
-        break;
-    case 2:
-        print "i는 2와 같다";
-        break;
-    default:
-        print "i는 0, 1, 2 어느것도 아니다";
+case 0:
+    echo "i는 0과 같다";
+    break;
+case 1:
+    echo "i는 1과 같다";
+    break;
+case 2:
+    echo "i는 2와 같다";
+    break;
+default:
+    echo "i는 0, 1, 2 어느것도 아니다";
 }
 ?>
 ]]>
@@ -837,17 +882,17 @@ switch ($i) {
 <![CDATA[
 <?php
 switch ($i):
-    case 0:
-        print "i equals 0";
-        break;
-    case 1:
-        print "i equals 1";
-        break;
-    case 2:
-        print "i equals 2";
-        break;
-    default:
-        print "i is not equal to 0, 1 or 2";
+case 0:
+    echo "i equals 0";
+    break;
+case 1:
+    echo "i equals 1";
+    break;
+case 2:
+    echo "i equals 2";
+    break;
+default:
+    echo "i is not equal to 0, 1 or 2";
 endswitch;
 ?>
 ]]>
@@ -886,19 +931,19 @@ declare (directive) statement
     <literal>declare</literal> 구문은 전역 유효영역 안에서 사용할수 있다.
     그래서 모든 코드가 그 디렉티브에 영향을 받는다. 
     <informalexample>
-     <programlisting>
+     <programlisting role="php">
 <![CDATA[
 <?php
-// these are the same:
+// 이들은 동일합니다:
 
-// you can use this:
+// 이를 사용할 수 있습니다:
 declare(ticks=1) {
-    // entire script here
+    // 여기에 전체 스크립트
 }
 
-// or you can use this:
+// 또는 이렇게 사용할 수 있습니다:
 declare(ticks=1);
-// entire script here
+// 여기에 전체 스크립트
 ?>
 ]]>
      </programlisting>
@@ -925,7 +970,7 @@ declare(ticks=1);
 <![CDATA[
 <?php
 // 호출될대의 시간을 기록하는 함수
-function profile ($dump = FALSE)
+function profile($dump = FALSE)
 {
     static $profile;
 
@@ -943,17 +988,17 @@ function profile ($dump = FALSE)
 register_tick_function("profile");
 
 // declare 블록 전에 함수를 초기화
-profile ();
+profile();
 
 // 코드 블록의 실행하고, 두번째 구문에 틱을 부여함
-declare (ticks=2) {
+declare(ticks=2) {
     for ($x = 1; $x < 50; ++$x) {
-        echo similar_text (md5($x), md5($x*$x)), "<br />;";
+        echo similar_text(md5($x), md5($x*$x)), "<br />;";
     }
 }
 
 // 분석표에 저장된 데이터를 출력
-print_r (profile (TRUE));
+print_r(profile (TRUE));
 ?>
 ]]>
      </programlisting>
@@ -1002,9 +1047,10 @@ print_r (profile (TRUE));
    <para>
     <note>
      <simpara>
-      <function>return</function>은 언어 구조이지 함수가 아니라는것에 주의해야 한다.
-      사실 이 인자에 괄호를 치는 것은 요구되지 <emphasis>않는다</emphasis>
-      어느방법을 쓰든 별 상관이 없지만, 보통 괄호를 치지않는다.
+      <function>return</function>은 언어 구조로, 함수가 아닌 점에
+      주의하십시오. 인자를 괄호로 감싸는 것은 인자가 <emphasis>표현을 포함하고
+       있을 경우에만</emphasis> 필요합니다. 변수를 반환할 때는 괄호 없이 쓰는
+      것이 일반적입니다.
      </simpara>
     </note>
    </para>
@@ -1096,6 +1142,19 @@ require ('somefile.txt');
      <function>include</function>는 이와같이 동작하지 않으므로 파일이 없더라도 스크립트는
      계속 실행될것이다. 또한 적절한 <link linkend="ini.include-path">include_path</link>설정인지
      확인해야 한다.
+     require한 파일 안에서의 처리 오류는 수행을 멈추지 않는 점에 주의하십시오.
+   </simpara>
+   <simpara>
+    파일을 포함할 경우 가장 먼저 현재 작업 디렉토리에 상대 경로로
+    include_path를 찾고, 다음으로 현재 스크립트의 디렉토리에 상대 경로로
+    include_path를 찾습니다. 예를 들어, include_path가
+    <literal>.</literal>이고, 현재 작업 디렉토리 <filename
+     class="directory">/www/</filename>에서
+    <filename>include/a.php</filename>를 포함하였고, 그 파일 안에
+    <literal>include "b.php"</literal>이 존재하면,
+    <filename>b.php</filename>는 우선 <filename
+     class="directory">/www/</filename>에서 찾고, 다음으로 <filename
+     class="directory">/www/inclde/</filename>에서 찾습니다.
    </simpara>
    <simpara>
      파일이 인클루드 되면, 그 코드를 포함하는 코드는 인클루드가 발생한 줄의
@@ -1246,10 +1305,15 @@ if ($condition) {
     </example>
    </para>
    <simpara>
-    리턴 핸들링: 인클루드된 파일에서 처리를 종료시키고 그것을 호출한 스크립트로 
-    리턴하기 위해 인클루드된 파일 안에서 <function>return</function> 문을 수행할수 있다
-    또한, 인클루드된 파일에서 값을 리턴하는것이 가능하다. 일반 함수로서 인클루드 호출의
-    값을 취할수 있다.
+    반환 다루기: include한 파일 안에서 그 파일의 수행을 종료하고, 호출한
+    스크립트로 돌아가기 위해서 <function>return</function>문을 실행할 수
+    있습니다. 또한, 값을 반환하는 일도 가능합니다. include 호출을 일반 함수를
+    사용한 것처럼 값을 받을 수 있습니다. 그러나, 원격 파일을 포함하였을 때, 그
+    파일의 출력이 (다른 로컬 파일처럼) <link
+     linkend="language.basic-syntax.phpmode">유효한 PHP 시작과 끝
+     태그</link>를 가지지 않는다면 이 값을 받을 수 없습니다. 이 태그들 안에
+    필요한 값을 정의하면, include한 파일의 어떤 위치에서라도 사용할 수
+    있습니다.
    </simpara>
    <para>
     <note>
@@ -1346,9 +1410,11 @@ echo $bar; // prints 1
     <note>
      <para>
       <function>require_once</function>와 <function>include_once</function>은
-      민감한 운영체제(윈도우 같은)에서는 기대하던대로 동작하지 않을지 모른다.
+      대소문자를 구별하지 않는 운영체제(윈도우 같은)에서는 기대하던대로
+      동작하지 않을지 모른다.
       <example>
-       <title><function>require_once</function>는 대소문자를 구별</title>
+       <title><function>require_once</function>는 윈도우에서 대소문자를
+        구별하지 못합니다.</title>
        <programlisting role="php">
 <![CDATA[
 <?php
@@ -1363,7 +1429,7 @@ require_once("A.php"); // this will include a.php again on Windows!
    </para>
    &warn.no-win32-fopen-wrapper;
    <para>
-    다음 함수를 참고할것: <function>require</function>,
+    참고: <function>require</function>,
     <function>include</function>, <function>include_once</function>,
     <function>get_required_files</function>,
     <function>get_included_files</function>, <function>readfile</function>,
@@ -1400,9 +1466,10 @@ require_once("A.php"); // this will include a.php again on Windows!
    <note>
      <para>
       <function>include_once</function>와 <function>require_once</function>는
-      민감한 운영체제(윈도우같은)에서 기대와 다르게 작동할수도 있다.
+      대소문자를 구별하지 않는 운영체제(윈도우같은)에서 기대와 다르게 작동할수도 있다.
       <example>
-       <title><function>include_once</function>는 대소문자를 구별함</title>
+       <title><function>include_once</function>는 윈도우에서 대소문자를
+        구별하지 못합니다.</title>
        <programlisting role="php">
 <![CDATA[
 <?php
@@ -1417,11 +1484,11 @@ include_once("A.php"); // this will include a.php again on Windows!
    </para>
    &warn.no-win32-fopen-wrapper;
    <para>
-    <function>include</function>,
+    참고: <function>include</function>,
     <function>require</function>, <function>require_once</function>,
     <function>get_required_files</function>,
     <function>get_included_files</function>, <function>readfile</function>,
-    <function>virtual</function>도 참고할것
+    <function>virtual</function>.
    </para>
   </sect1>
 

@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
-<!-- EN-Revision: 1.40 Maintainer: fuzzy74 Status: ready -->
- <chapter id="functions">
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 1.45 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+ <chapter id="language.functions">
   <title>함수</title>
 
   <sect1 id="functions.user-defined">
@@ -12,13 +12,13 @@
    </para>
    <para>
     <example>
-     <title>함수 선언방법을 설명하기 위한 의사(Psuedo)코드</title>
+     <title>함수 사용을 설명하기 위한 가상 코드</title>
      <programlisting role="php">
 <![CDATA[
 <?php
-function foo ($arg_1, $arg_2, ..., $arg_n)
+function foo ($arg_1, $arg_2, /* ..., */ $arg_n)
 {
-    echo "Example function.\n";
+    echo "예제 함수.\n";
     return $retval;
 }
 ?>
@@ -95,18 +95,18 @@ function foo()
 {
   function bar() 
   {
-    echo "I don't exist until foo() is called.\n";
+    echo "foo()를 호출하기 전까지는 존재하지 않습니다.\n";
   }
 }
 
-/* We can't call bar() yet
-   since it doesn't exist. */
+/* bar()를 호출할 수 없습니다.
+   아직 존재하지 않습니다. */
 
 foo();
 
-/* Now we can call bar(),
-   foo()'s processesing has
-   made it accessable. */
+/* 이제 bar()를  호출할 수
+   있습니다. foo()를 실행하여
+   접근할 수 있게 되었습니다. */
 
 bar();
 
@@ -424,30 +424,29 @@ $newref =& returns_reference();
      <programlisting role="php">
 <![CDATA[
 <?php
-function foo()
-{
-    echo "In foo()<br>\n";
+function foo() {
+    echo "foo() 안입니다.<br />\n";
 }
 
 function bar($arg = '')
 {
-    echo "In bar(); argument was '$arg'.<br>\n";
+    echo "bar() 안입니다; 인수는 '$arg'입니다.<br />\n";
 }
 
-// This is a wrapper function around echo
+// echo를 감싸는 래퍼 함수입니다.
 function echoit($string)
 {
     echo $string;
 }
 
 $func = 'foo';
-$func();        // This calls foo()
+$func();        // foo()를 호출합니다.
 
 $func = 'bar';
-$func('test');  // This calls bar()
+$func('test');  // bar()를 호출합니다.
 
 $func = 'echoit';
-$func('test');  // This calls echoit()
+$func('test');  // echoit()을 호출합니다.
 ?>
 ]]>
      </programlisting>
@@ -462,10 +461,10 @@ $func('test');  // This calls echoit()
 <?php
 class Foo
 {
-    function Var()
+    function Variable()
     {
         $name = 'Bar';
-        $this->$name(); // This calls the Bar() method
+        $this->$name(); // Bar() 메쏘드를 호출합니다.
     }
     
     function Bar()
@@ -475,8 +474,8 @@ class Foo
 }
 
 $foo = new Foo();
-$funcname = "Var";
-$foo->$funcname();  // This calls $foo->Var()
+$funcname = "Variable";
+$foo->$funcname();  // $foo->Var()를 호출합니다.
 
 ?>
 ]]>
