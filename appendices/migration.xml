@@ -1,4 +1,4 @@
-<appendix id="migration">
+﻿<appendix id="migration">
  <title>Migrating from PHP/FI 2.0 to PHP 3.0</title>
 
  <sect1 id="migration-about">
