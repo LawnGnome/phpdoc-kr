@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
+<section id="outcontrol.configuration">
+ &reftitle.runtime;
+ &extension.runtime;
+ <para>
+  <table>
+   <title>출력 제어 설정 옵션</title>
+   <tgroup cols="3">
+    <thead>
+     <row>
+      <entry>이름</entry>
+      <entry>기본값</entry>
+      <entry>변경가능성</entry>
+     </row>
+    </thead>
+    <tbody>
+    <row>
+     <entry>output_buffering</entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_PERDIR|PHP_INI_SYSTEM</entry>
+    </row>
+    <row>
+     <entry>output_handler</entry>
+     <entry>NULL</entry>
+     <entry>PHP_INI_PERDIR|PHP_INI_SYSTEM</entry>
+    </row>
+    <row>
+     <entry>implicit_flush</entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_PERDIR|PHP_INI_SYSTEM</entry>
+    </row>
+    </tbody>
+   </tgroup>
+  </table>
+  &ko.reference.ini.constants;
+ </para>
+ 
+ &ini.descriptions.title;
+ 
+ <para>
+ <variablelist>
+  <varlistentry id="ini.output-buffering">
+   <term>
+    <parameter>output_buffering</parameter>
+    <type>boolean</type>/<type>integer</type>
+   </term>
+   <listitem>
+    <para>
+     이 지시어를 'On'으로 설정하여 모든 파일에 출력 버퍼링을 활성화 할 수
+     있습니다. 버퍼의 크기를 제한하려면 이 지시어의 값으로 'On' 대신 최대
+     바이트 수를 사용하십시오. (예. output_buffering=4096)
+    </para>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry id="ini.output-handler">
+   <term>
+    <parameter>output_handler</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <para>
+     스크립트의 모든 출력을 어떤 함수를 통하게 할 수 있습니다. 예를 들면,
+     output_handler를 <function>mb_output_handler</function>로 설정하면, 문자
+     인코딩을 지정한 인코딩으로 변경할 수 있습니다. 출력 핸들러 설정은
+     자동적으로 출력 버퍼링을 켭니다.
+    </para>
+    <note>
+     <para>
+      <function>mb_output_hadler</function>와
+      <function>ob_iconv_handler</function>를 동시에 사용할 수 없고,
+      <function>ob_gzhandler</function>와 <link
+       linkend="ini.zlib.output-compression">zlib.output_compression</link>도
+      동시에 사용할 수 없습니다.
+     </para>
+    </note>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry id="ini.implicit-flush">
+   <term>
+    <parameter>implicit_flush</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <para>
+     기본값으로 &false;입니다. &true;로 변경하면 PHP가 모든 출력 블럭 뒤에
+     바로 전송하도록 출력 레이어를 설정합니다. 이는 <literal>PHP</literal>
+     함수 <function>flush</function>를 모든 <function>printf</function>,
+     <function>echo</function>, <literal>HTML</literal> 블럭 뒤에 호출하는
+     것과 동일합니다.
+    </para>
+    <para>
+     <literal>PHP</literal>를 웹 환경에서 사용할 때, 이 옵션을 켜는 것은
+     심각한 성능 저하를 일으킵니다. 일반적으로 디버깅 목적으로만 사용할 것을
+     권장합니다. <literal>CLI SAPI</literal>에서는 기본값으로 &true;입니다.
+    </para>
+    <para>
+     참고: <function>ob_implicit_flush</function>.
+    </para>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+ </para>
+</section>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

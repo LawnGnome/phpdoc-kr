@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+  <refentry id="function.ob-start">
+   <refnamediv>
+    <refname>ob_start</refname> 
+    <refpurpose>출력 버퍼링을 켭니다.</refpurpose>
+   </refnamediv>
+   <refsect1>
+    <title>설명</title>
+     <methodsynopsis>
+      <type>bool</type><methodname>ob_start</methodname>
+      <methodparam choice="opt"><type>callback</type><parameter>
+        output_callback
+       </parameter></methodparam>
+     </methodsynopsis>
+    <para>
+     출력 버퍼링을 켭니다. 출력 버퍼링을 활성화하면, (헤더를 제외한)
+     스크립트의 모든 출력을 내부 버퍼에 저장하고, 실제로 전송하지 않습니다.
+    </para>
+    <para>
+     이 내부 버퍼의 내용은 <function>ob_get_contents</function>를 사용하여
+     문자열 변수로 복사할 수 있습니다. 내부 버퍼에 저장한 내용을 출력하려면,
+     <function>ob_end_flush</function>를 사용하십시오. 반대로
+     <function>ob_end_clean</function>은 버퍼 내용을 버립니다.
+    </para>
+    <para>
+     선택적인 <parameter>output_callback</parameter> 함수를 지정할 수
+     있습니다. 이 함수는 문자열을 인자로 받고, 문자열을 반환해야 합니다. 이
+     함수는 <function>ob_end_flush</function>를 호출하거나, 요청이 끝날 때
+     출력 버퍼가 브라우저로 전송할 때 호출됩니다.
+     <parameter>output_callback</parameter>은 출력 버퍼의 모든 내용을 인자로
+     받아서 브라우저로 전송할 새 출력 버퍼를 결과로 반환할 것이 기대됩니다.
+     <parameter>output_callback</parameter>가 호출할 수 있는 함수가 아니라면,
+     이 함수는 &false;를 반환합니다.
+    </para>
+    <note>
+     <para>
+      PHP 4.0.4에서, <function>ob_gzhandler</function>가 웹 페이지 압축을
+      지원하는 웹 브라우저에 gz-인코드 데이터를 전송하기 위한 방법으로
+      생겼습니다. <function>ob_gzhandler</function>는 브라우저가 허용하는 내용
+      인코딩 형태를 확인하고 그에 따라 출력합니다.
+     </para>
+    </note>
+    <note>
+     <para>
+      PHP 4.3.2 이전에는 실행할 수 없는
+      <parameter>output_callback</parameter>을 지정해도 &false;를 반환하지
+      않았습니다.
+     </para>
+    </note>
+    <para>
+     출력 버퍼는 쌓여질 수 있기에, 다른 <function>ob_start</function>가 활성화
+     중이라도 <function>ob_start</function>를 호출할 수 있습니다. 단지 정확한
+     횟수의 <function>ob_end_flush</function>를 호출하도록 하십시오. 다중 출력
+     콜백 함수를 활성화하면, 출력은 감싸진 순서대로 빠져나가면서 변경됩니다.
+    </para>
+    <para>
+     <function>ob_end_clean</function>,
+     <function>ob_end_flush</function>, <function>ob_clean</function>,
+     <function>ob_flush</function>, <function>ob_start</function>는 콜백
+     함수에서 호출할 수 없습니다. 이들을 콜백 함수에서 호출할 시의 행동은
+     정의되어 있지 않습니다. 버퍼의 내용을 지우려면 콜백 함수에서 ""(빈
+     문자열)을 반환하십시오.
+    </para>
+    <para>
+     <example>
+      <title>사용자 정의 콜백 함수 예제</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+
+function callback($buffer) {
+  // 모든 apples를 oranges로 치환합니다.
+  return (str_replace("apples", "oranges", $buffer));
+}
+
+ob_start("callback");
+
+?>
+
+<html>
+<body>
+<p>It's like comparing apples to oranges.
+</body>
+</html>
+
+<?php
+
+ob_end_flush();
+
+?>
+]]>
+      </programlisting>
+      <para>
+       출력은:
+      </para>
+      <screen>
+<![CDATA[
+<html>
+<body>
+<p>It's like comparing oranges to oranges.
+</body>
+</html>
+]]>
+      </screen>
+     </example>
+    </para>
+    <para>
+     참고: <function>ob_get_contents</function>,
+     <function>ob_end_flush</function>,
+     <function>ob_end_clean</function>,
+     <function>ob_implicit_flush</function>,
+     <function>ob_gzhandler</function>.
+    </para>
+   </refsect1>
+  </refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
