@@ -1,17 +1,17 @@
 <!-- $Revision$ -->
-<!-- EN-Revision: 1.53 -->
+<!-- EN-Revision: 1.54 -->
 
-<!ENTITY warn.experimental '<warning><simpara>This extension is
-<emphasis>EXPERIMENTAL</emphasis>. The behaviour of this extension --
-including the names of its functions and anything else documented
-about this extension -- may change without notice in a future release of PHP. 
-Use this extension at your own risk.</simpara></warning>'>
+<!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
+<emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
+이 확장 모듈에 대한 모든 문서 자료에 대해서 -- 은 이후의 PHP 릴리즈에서
+예고 없이 변경될 수 있습니다. 이 확장 모듈의 사용은 사용자의 책임하에
+이루어집니다.</simpara></warning>'>
 
-<!ENTITY warn.experimental.func '<warning><simpara>This function is
-<emphasis>EXPERIMENTAL</emphasis>. The behaviour of this function, the
-name of this function, and anything else documented about this
-function may change without notice in a future release of PHP. 
-Use this function at your own risk.</simpara></warning>'>
+<!ENTITY warn.experimental.func '<warning><simpara>이 함수는
+<emphasis>실험적</emphasis>입니다. 이 함수의 작동, 함수의 이름,
+그리고 이 함수에 대해 모든 문서는 이후의 PHP 릴리즈에서 예고 없이
+변경될 수 있습니다. 이 함수의 사용에 관한 것은 사용자
+책임입니다.</simpara></warning>'>
 
 <!ENTITY warn.undocumented.func '<warning><simpara>이 함수는 현재
 문서화 되어있지 않습니다; 인자 목록만을 제공합니다.</simpara></warning>'>
@@ -204,5 +204,5 @@ supplemental files to mark section titles -->
 지정할 때는 IP를 대괄호로 감싸줘야합니다. 예를 들면, 
 <literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
 
-<!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0</literal>부터
+<!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0.0</literal>부터
 지원합니다.</simpara></note>'>
