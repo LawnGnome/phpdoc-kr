@@ -328,10 +328,6 @@ Paul Mckay.
   php 혹은 웹서버까지도 새로 컴파일하여 만들 필요가 있다.
   만일 컴파일작업에 익숙치 않다면, 기존에 만들어진 패키지중에 
   여러분이 원하는 기능을 포함하고 있는 패키지가 있는가 찾아보는 것이 좋을 것이다.
-
-   <ulink url="&url.lightyear;">Lightyear Design</ulink>는 
-  PHP를 OS X용으로 미리 컴파일한 패키지를 
- <ulink url="&url.tenon;">Tenon Intersystems</ulink>에서 제공하고 있다.
   </simpara>
 		</sect2>
 		<sect2 id="install.macosx.compile">
@@ -2630,9 +2626,7 @@ Paul Mckay.
 									<simpara>
           PWS와 IIS에서 browscap.ini는 다음의 위치에 있다. Windows 9x/Me는 
           'c:\windows\system\inetsrv\browscap.ini', 
-          NT/2000 서버에서는 'c:\winnt\system32\inetsrv\browscap.ini'에 있다. 
-          PHP에서 browscap기능을 사용하는 방법에 대한 추가적인 설명은 이 
-          <ulink url="&url.browscap;">mirror</ulink>에서 "source" 버튼을 선택하여 보도록 한다
+          NT/2000 서버에서는 'c:\winnt\system32\inetsrv\browscap.ini'에 있다.
                                              </simpara>
 								</listitem>
 							</itemizedlist>
