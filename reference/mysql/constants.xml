@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
 <section id="mysql.constants">
  &reftitle.constants;
  &extension.constants;
@@ -20,7 +19,7 @@
      <tbody>
       <row>
        <entry>MYSQL_CLIENT_COMPRESS</entry>
-       <entry>압축 프로토콜을 사용합니다</entry>
+       <entry>압축 프로토콜을 사용합니다.</entry>
       </row>
       <row>
        <entry>MYSQL_CLIENT_IGNORE_SPACE</entry>
@@ -95,4 +94,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

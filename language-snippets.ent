@@ -9,7 +9,7 @@
 <!ENTITY warn.experimental.func '<warning><simpara>이 함수는
 <emphasis>실험적</emphasis>입니다. 이 함수의 작동, 함수의 이름,
 그리고 이 함수에 대해 모든 문서는 이후의 PHP 릴리즈에서 예고 없이
-변경될 수 있습니다. 이 함수의 사용에 관한 것은 사용자
+변경할 수 있습니다. 이 함수의 사용에 관한 것은 사용자
 책임입니다.</simpara></warning>'>
 
 <!ENTITY warn.undocumented.func '<warning><simpara>이 함수는 현재
@@ -68,10 +68,9 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 &link.superglobals;와 같은 다른 방법을 이용하기를 권장합니다.</para></note>'>
 	
 <!ENTITY note.superglobals '<note><title>자동 전역: 사용상 주의
-</title><para>PHP 4.1.0뷰터, Since PHP 4.1.0, <varname>$_GET</varname>,
-<varname>$_POST</varname>, <varname>$_SERVER</varname> 등의 자동 전역 배열이
-사용 가능합니다. 더 많은 정보를 위해서, &link.superglobals; 매뉴얼 섹션을
-읽어보십시오.</para></note>'>
+</title><para>PHP 4.1.0부터, <varname>$_GET</varname>, <varname>$_POST</varname>,
+<varname>$_SERVER</varname> 등의 자동 전역 배열을 사용할 수 있습니다. 더 자세한
+내용은 매뉴얼 &link.superglobals; 섹션을 읽어보십시오.</para></note>'>
 
 <!ENTITY avail.register-long-arrays 'PHP 5.0.0부터, 긴 형태의 PHP
 <link linkend="language.variables.predefined">예약 변수</link> 배열을
@@ -81,12 +80,12 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 <!ENTITY note.magicquotes.gpc '<note><title>directive 주의: magic_quotes_gpc
 </title><para>PHP 설정 <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>의
 기본값은 <literal>on</literal>입니다. 이것은 모든 GET, POST, COOKIE 데이터에 대해
-<function>addslashes</function>를 실행합니다. 그것들을 제거하기 위해서
+<function>addslashes</function>를 실행합니다. 이를 제거하기 위해서
 <function>stripslashes</function>를 사용할 수 있습니다.</para></note>'>
 
 <!ENTITY note.config.t1lib '<note><simpara>이 함수는
 <option role="configure">--enable-t1lib</option>를 사용하여 PHP를
-컴파일 했을 때만 사용할 수 있습니다.</simpara></note>'>
+컴파일 했을 경우에만 사용할 수 있습니다.</simpara></note>'>
 
 <!-- Various notes -->
 <!ENTITY note.randomseed '<note><simpara>PHP 4.2.0부터 
@@ -103,7 +102,7 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 <!ENTITY note.line-endings '<note><simpara><literal>PHP</literal>가
 매킨토시 컴퓨터에서 제작되거나 존재하는 파일을 읽을때 라인 끝을
 감지하지 못하는 문제가 있다면, <link linkend="ini.auto-detect-line-endings"
->auto_detect_line_endings</link> 실행 환경 설정 옵션을 활성화 할
+>auto_detect_line_endings</link> 실행 설정 옵션을 활성화 할
 수 있습니다.</simpara></note>'>
 
 <!ENTITY note.no-windows '<note><simpara>이 함수는 윈도우 플랫폼에서는
@@ -120,12 +119,12 @@ PHP 4.2.0부터는 PHP 설정 <link linkend="ini.register-globals">register_glob
 <!ENTITY note.sm.disabled '<note><simpara>&sm.disabled;</simpara></note>'>
 
 <!ENTITY note.sm.uidcheck '<note><simpara><link linkend="features.safe-mode">안전
-모드</link>일때, PHP는 조작하려는 파일이나 디렉토리가 같은 UID (owner)인지 확인한
+모드</link>일때, PHP는 조작하려는 파일이나 디렉토리가 같은 UID(owner)인지 확인한
 후에 실행합니다.</simpara></note>'>
 
 <!ENTITY note.sm.uidcheck.dir '<note><simpara><link 
-linkend="features.safe-mode">안전 모드</link>가 활성화 되었을 때, PHP는
-작업하려고 하는 디렉토리가 실행되어지는 스크립트와 같은 UID(owner)를 가지고
+linkend="features.safe-mode">안전 모드</link>를 활성화했을 경우, PHP는
+작업하려는 디렉토리가 실행중인 스크립트와 같은 UID(owner)를 가지고
 있는지 확인합니다.</simpara></note>'>
 
 <!ENTITY note.language-construct '<note><simpara>이것은 함수가 아닌
