@@ -10,7 +10,7 @@
 			</listitem>
 			<listitem>
 				<simpara>
-					<link linkend="language.types.double">실수형(floating-point numbers)</link>
+					<link linkend="language.types.float">실수형(floating-point numbers)</link>
 				</simpara>
 			</listitem>
 			<listitem>
@@ -59,7 +59,7 @@ $a = 0x12; # 16진수 (십진수 18과 같음)
 	보통 최대값이 약 20억(32 bits signed)인 경우가 많다.
    </para>
 	</sect1>
-	<sect1 id="language.types.double">
+	<sect1 id="language.types.float">
 		<title>실수형 (Floating point numbers)</title>
 		<para>
 	실수형("doubles")은 다음과 같은 형태의 문장으로 지정할 수 있다.
