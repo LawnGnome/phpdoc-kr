@@ -123,7 +123,7 @@
       호출된 파일은 <function>include</function> 함수를 통해서 포함되므로 
       <link linkend="ini.include-path">include_path</link> 지시자가 적용된다.</para>
 							<para>
-	 <systemitem class="constant">none</systemitem> 값을 주게 되면 auto-appending이 disable된다.
+								<systemitem class="constant">none</systemitem> 값을 주게 되면 auto-appending이 disable된다.
 							<note>
 									<simpara>
          만약 스크립트가 <function>exit</function>로 종료되게 되면 auto-append는 일어나지 않는다. </simpara>
@@ -142,7 +142,7 @@
       호출된 파일은 <function>include</function> 함수를 통해서 포함되므로 
       <link linkend="ini.include-path">include_path</link> 지시자가 적용된다.</para>
 							<para>
-	 <systemitem class="constant">none</systemitem> 값을 주게 되면 auto-prepending이 disable된다.</para>
+								<systemitem class="constant">none</systemitem> 값을 주게 되면 auto-prepending이 disable된다.</para>
 						</listitem>
 					</varlistentry>
 					<varlistentry id="ini.cgi-ext">
@@ -262,7 +262,7 @@
       따라서 이 제한을 피하기 위해 symbolic link를 사용하는 것을 방지할 수 있다.
 	</para>
 							<para>
-	 <systemitem class="constant">.</systemitem>.이라는 값을 주면 스크립트 파일이 있는 디렉토리가 base-directory로 지정된다.
+								<systemitem class="constant">.</systemitem>.이라는 값을 주면 스크립트 파일이 있는 디렉토리가 base-directory로 지정된다.
 	</para>
 							<para>
         Windows에서는 세미콜론(;)으로, 다른 OS에서는 콜론(:)으로 구분한다. 
@@ -310,7 +310,7 @@
 						</term>
 						<listitem>
 							<para>
-        <function>require</function>와 <function>include</function>, <function>fopen_with_path</function> 
+								<function>require</function>와 <function>include</function>, <function>fopen_with_path</function> 
       함수들이 사용하는 파일을 찾을 위치(path)를 지정한다. 
       string의 형식은 시스템 환경변수 <envar>PATH</envar>의 설정과 비슷하다. 
       UNIX에서는 콜론으로 나뉘어진 디렉토리들의 리스트이고, Windows에서는 세미콜론을 사용한다. 
@@ -433,18 +433,19 @@ include_path=".;c:\www\phplib"
 						</term>
 						<listitem>
 							<para>
-         Tells whether or not to register the EGPCS (Environment, GET,
-         POST, Cookie, Server) variables as global variables. You may
-         want to turn this off if you don't want to clutter your
-         scripts' global scope with user data.  This makes the most
-         sense when coupled with <link linkend="ini.track-vars">track_vars</link> - in which case
-         you can access all of the EGPCS variables through the
+         EGPCS (Environment, GET, POST, Cookie, Server) 변수들을 전역 변수로 설정할 것인가를 정한다.
+         사용자의 데이타를 스크립트의 전역 변수 영역에 난잡하게 쌓아놓기를 원하지 않는다면 
+         이 설정은 꺼놓는 것이 좋다.
+         이 설정은 <link linkend="ini.track-vars">track_vars</link> 설정를 
+         고려해서 사용하면 매우 유용하게 사용할 수 있다.
+         <link linkend="ini.track-vars">track_vars</link>설정을 켜 놓으면
+         사용자의 EGPCS 변수들은 모두 
          <varname>$HTTP_ENV_VARS</varname>,
          <varname>$HTTP_GET_VARS</varname>,
          <varname>$HTTP_POST_VARS</varname>,
-         <varname>$HTTP_COOKIE_VARS</varname>, and
-         <varname>$HTTP_SERVER_VARS</varname>
-         arrays in the global scope.
+         <varname>$HTTP_COOKIE_VARS</varname>, 
+         <varname>$HTTP_SERVER_VARS</varname> 
+         배열을 통해 전역 영역(global scope)에서 접근가능하게 된다.
         </para>
 						</listitem>
 					</varlistentry>
@@ -573,7 +574,7 @@ include_path=".;c:\www\phplib"
 					</term>
 					<listitem>
 						<para>
-       <command>sendmail</command>  프로그램을 찾을 Path. 
+							<command>sendmail</command>  프로그램을 찾을 Path. 
      보통은 <filename>/usr/sbin/sendmail</filename>이나 <filename>/usr/lib/sendmail</filename>에 있다. 
      <command>configure</command> 프로그램이 sendmail의 위치를 찾아 이것을 기본값으로 설정해 주지만, 
      그것이 잘되지 않았거나 오류가 있을 때, 여러분은 여기서 직접 지정해 줄 수 있다. </para>
@@ -851,10 +852,10 @@ include_path=".;c:\www\phplib"
 					</term>
 					<listitem>
 						<para>
-	Name of BS2000 PLAM library containing the loadable SESAM
-	driver modules.  Required for using SESAM functions. The
-	BS2000 PLAM library must be set ACCESS=READ,SHARE=YES
-	because it must be readable by the apache server's user id.
+     SESAM 드라이버 모듈을 포함하고 있는 BS2000 PLAM 라이브러리의 이름
+     SESAM 함수를 사용하려면 꼭 지정해 주어야 한다. 
+     그리고, BS2000 PLAM 라이브러리는 아파치 서버의 사용자 ID로 읽을 수 있도록
+     ACCESS=READ,SHARE=YES로 설정해야 한다.
        </para>
 					</listitem>
 				</varlistentry>
@@ -865,14 +866,13 @@ include_path=".;c:\www\phplib"
 					</term>
 					<listitem>
 						<para>
-        Name of SESAM application configuration file.  Required for
-	using SESAM functions.  The BS2000 file must be readable by
-	the apache server's user id.
+        SESAM 어플리케이션 설정 파일의 이름.
+        SESAM 함수를 사용하려면 꼭 지정해 주어야 한다. 
+        BS2000 파일은 아파치 서버의 사용자 ID로 읽을 수 있어야 한다.
        </para>
 						<para>
-        The application configuration file will usually contain a
-	configuration like (see SESAM
-	reference manual):
+        SESAM 어플리케이션 설정 파일은 보통 다음과 같은 내용으로 설정되어 있다.
+        (SESAM reference manual을 살펴보라) :
         <informalexample>
 								<programlisting role="bs2000">
 CNF=B
@@ -889,14 +889,13 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	Name of SESAM message catalog file.  In most cases, this
-	directive is not neccessary. Only if the SESAM message file
-	is not installed in the system's BS2000 message file table,
-	it can be set with this directive.
+     SESAM message catalog 파일의 이름. 대부분의 경우 이 지시자는 필요 없다.
+     단지 SESAM message 파일이 BS2000 message 파일 테이블에 설정되어 있지 않은 경우에
+     이 지시자를 사용하여 설정한다.
        </para>
 						<para>
-	The message catalog must be set ACCESS=READ,SHARE=YES because
-	it must be readable by the apache server's user id.
+     message catalog는 아파치 서버의 사용자 ID로 읽을 수 있도록
+     ACCESS=READ,SHARE=YES로 설정해야 한다.
        </para>
 					</listitem>
 				</varlistentry>
@@ -1085,7 +1084,8 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-        <function>ifx_connect</function>나 <function>ifx_pconnect</function> 함수에 호스트가 지정되지 않았을 경우 사용할 기본 호스트. 
+							<function>ifx_connect</function>나 <function>ifx_pconnect</function>
+							함수에 호스트가 지정되지 않았을 경우 사용할 기본 호스트. 
        </para>
 					</listitem>
 				</varlistentry>
@@ -1096,7 +1096,8 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-        <function>ifx_connect</function>나 <function>ifx_pconnect</function> 함수에 user id가 지정되지 않았을 경우 사용할 기본 user id. 
+							<function>ifx_connect</function>나 <function>ifx_pconnect</function> 
+							함수에 user id가 지정되지 않았을 경우 사용할 기본 user id. 
        </para>
 					</listitem>
 				</varlistentry>
@@ -1107,7 +1108,8 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-        <function>ifx_connect</function>나 <function>ifx_pconnect</function> 함수에 password가 지정되지 않았을 경우 사용할 기본 password. 
+							<function>ifx_connect</function>나 <function>ifx_pconnect</function> 
+							함수에 password가 지정되지 않았을 경우 사용할 기본 password. 
        </para>
 					</listitem>
 				</varlistentry>
@@ -1118,10 +1120,9 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-        Set to true if you want to return blob columns
-        in a file, false if you want them in memory. You can
-        override the setting at runtime 
-        with <function>ifx_blobinfile_mode</function>.
+        blob 칼럼을 파일에서 반환하려 한다면 true를,
+        메모리에서 반환하려면 false를 설정한다.
+        이 설정은 <function>ifx_blobinfile_mode</function> 함수를 사용하여 실행중에 변경할 수 있다.
        </para>
 					</listitem>
 				</varlistentry>
@@ -1220,7 +1221,7 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	<function>odbc_connect</function>나 <function>odbc_pconnect</function>에서 
+							<function>odbc_connect</function>나 <function>odbc_pconnect</function>에서 
      ODBC data source 가 지정되지 않았을 때 사용할 값를 지정한다
        </para>
 					</listitem>
@@ -1232,7 +1233,7 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	<function>odbc_connect</function>나 <function>odbc_pconnect</function>에서 
+							<function>odbc_connect</function>나 <function>odbc_pconnect</function>에서 
      User name이 지정되지 않았을 때 사용할 값를 지정한다
        </para>
 					</listitem>
@@ -1244,7 +1245,7 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	<function>odbc_connect</function>나 <function>odbc_pconnect</function>에서 
+							<function>odbc_connect</function>나 <function>odbc_pconnect</function>에서 
      Password가 지정되지 않았을 때 사용할 값를 지정한다
        </para>
 					</listitem>
