@@ -1,50 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry id="function.md5">
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+  <refentry id="function.md5-file">
    <refnamediv>
-    <refname>md5</refname>
-    <refpurpose>문자열의 md5 해쉬를 계산합니다.</refpurpose>
+    <refname>md5_file</refname>
+    <refpurpose>주어진 파일명의 md5 해쉬를 계산합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
      <methodsynopsis>
-      <type>string</type><methodname>md5</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
+      <type>string</type><methodname>md5_file</methodname>
+      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
       <methodparam choice='opt'><type>bool</type><parameter>raw_output</parameter></methodparam>
      </methodsynopsis>
     <para>
      <ulink url="&url.rfc;1321">RSA Data Security, Inc. MD5 Message-Digest
-      Algorithm</ulink>을 사용하여 <parameter>str</parameter>의 MD5 해쉬를
-     계산하여 반환합니다. 해쉬는 16진수의 32문자입니다. 선택적인
+      Algorithm</ulink>를 사용하여 지정한 <parameter>filename</parameter>의
+     MD5 해쉬를 계산하여 반환합니다. 해쉬는 16진수의 32문자입니다. 선택적인
      <parameter>raw_output</parameter>를 &true;로 설정하면, md5 다이제스트는
-     16의 길이를 가지는 순수 바이너리 형식으로 반환합니다.
+     16의 길이를 가지는 순수 바이너리 형식을 반환합니다.
     </para>
     <note>
      <simpara>
       선택적인 <parameter>raw_output</parameter> 인자는 PHP 5.0.0에서
-      추가되었고, 기본값으로 &false;입니다.
+      추가되었으며, 기본값으로 &false;입니다.
      </simpara>
     </note>
     <para>
-     <example>
-      <title><function>md5</function> 예제</title>
-      <programlisting role="php">
-<![CDATA[
-<?php
-$str = 'apple';
-
-if (md5($str) === '1f3870be274f6c49b3e31a0c6728957f') {
-    echo "Would you like a green or red apple?";
-    exit;
-}
-?>
-]]>
-      </programlisting>
-     </example>
+     이 함수는 명령줄 유틸리티 md5sum과 동일한 목적을 가집니다.
     </para>
     <para>
-     참고: <function>crc32</function>, <function>md5_file</function>, 
-     <function>sha1</function>.
+     참고: <function>md5</function>, <function>crc32</function>,
+     <function>sha1_file</function>.
     </para>
    </refsect1>
   </refentry>

@@ -36,6 +36,8 @@
   <file name="reference/pcre/functions/pcre.pattern.syntax.xml" person="progcom" type="working" revision="1.6"/>
   <file name="reference/xml/reference.xml" person="progcom" type="working" revision="1.12" date="2003.11.23."/>
   <file name="security/index.xml" person="progcom" type="stopped" revision="1.62" date="2003.11.21."/>
+  <file name="reference/strings/functions/levenshtein.xml" person="progcom" type="cannot" revision="1.2" date="2003.12.23."/>
+  <file name="reference/strings/functions/localeconv.xml" person="progcom" type="stopped" revision="1.4" date="2003.12.23."/>
  </work-in-progress>
 
 </translation>

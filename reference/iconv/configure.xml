@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
 <section id="iconv.installation">
  &reftitle.install;
  <para>
@@ -10,11 +10,10 @@
  <note>
   <title>Win32 사용자 주의</title>
   <simpara>
-   이 모듈을 윈도우즈 환경에서 사용하려면, PHP/Win32 바이너리 패키지 DLL
-   폴더의 <filename>iconv-1.3dll</filename>을 윈도우즈 머신의 SYSTEM32
-   폴더(예: <filename>C:\WINNT\SYSTEM32</filename>이나
-   <filename>C:\WINDOWS\SYSTEM32</filename>)로 복사해야만 합니다. PHP
-   4.2.1부터 파일 이름이 <filename>iconv.dll</filename>으로 변경되었습니다.
+   윈도우 환경에서 이 모듈을 사용하려면, PHP/Win32 바이너리 패키지에 포함되어
+   있는 <emphasis>iconv.dll</emphasis>, 혹은
+   <emphasis>iconv-1.3.dll</emphasis>(4.2.1 이전) DLL 파일을 PATH 환경 변수에
+   지정한 디렉토리나 윈도우의 시스템 디렉토리로 복사해야 합니다.
   </simpara>
  </note>
 </section>

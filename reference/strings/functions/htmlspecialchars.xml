@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
  	<refentry id="function.htmlspecialchars">
    <refnamediv>
@@ -90,6 +90,7 @@ echo $new; // &lt;a href=&#039;test&#039;&gt;TEST&lt;/a&gt;
     &reference.strings.charsets;
     <para>
      참고: <function>get_html_translation_table</function>,
+     <function>strip_tags</function>,
      <function>htmlentities</function>, <function>nl2br</function>.
     </para>
    </refsect1>
