@@ -1,12 +1,16 @@
 =============================================================================
 CVS User  Name                 Contact email address
 =============================================================================
-fuzzy74   Taeyoung Jin         fuzzy74@hitel.net
-progcom   Yun-young Lee        progcom@yahoo.com
-rhheo     Ryeonho Heo          rhheo@funit.net
-regina    WonHee Hwang         regina@morosolution.com
-vizvil    Gwangjong Lee        vizvil@dreamwiz.com
+fuzzy74   Tae-young Jin        fuzzy74@hitel.net     maintainer
+progcom   Yun-young Lee        progcom@yahoo.com     maintainer
 
+corean    Younsoo Kim          corean@yahoo.com
+cycle98   SeungHwan Lee
+jeroen    Jae-yeon Hur         the-nautilus@hanmail.net
+regina    WonHee Hwang         regina@morosolution.com
+rhheo     Ryeonho Heo          rhheo@funit.net
+vizvil    Gwangjong Lee        vizvil@dreamwiz.com
+(Alpabetically order)
 =============================================================================
 Filename                           Translator       maintainer    Status
 =============================================================================
@@ -73,119 +77,119 @@ types.xml                          fuzzy74          fuzzy74       maintain
 variables.xml                      fuzzy74          fuzzy74       maintain
 -------- reference ----------------------------------------------------------
 apache/                            progcom          progcom       maintain
-array/                             hholzgra,fuzzy74 fuzzy74       maintain
-aspell/
-bc/
-bzip2/
-calendar/
-ccvs/
-classobj/                          hholzgra         fuzzy74       maintain
-com/
-cpdf/
-crack/
-ctype/
-curl/
-cybercash/
-cyrus/
-datetime/
-dba/
-dbase/
-dbm/
-dbplus/
-dbx/
-dio/
-dir/
-domxml/
-dotnet/
-errorfunc/
-exec/
-fbsql/
-fdf/
-filepro/
-filesystem/                        vizvil           vizvil       maintain
-fribidi/
-ftp/
-funchand/
-gettext/
-gmp/
-http/
-hw/
-hwapi/
-ibase/
-icap/
-iconv/
-ifx/
-iisfunc/
-image/
+array/                             cycle98          fuzzy74       maintain
+aspell/                            suvia            fuzzy74       maintain
+bc/                                suvia            fuzzy74       maintain
+bzip2/                             pcraft           fuzzy74       maintain
+calendar/                          regina           fuzzy74       maintain
+ccvs/                                                             not trans..
+classobj/                          corean           fuzzy74       maintain
+com/                                                              not trans..
+cpdf/                                                             not trans..
+crack/                                                            not trans..
+ctype/                                                            not trans..
+curl/                                                             not trans..
+cybercash/                                                        not trans..
+cyrus/                                                            not trans..
+datetime/                          progcom          progcom       maintain
+dba/                                                              not trans..
+dbase/                                                            not trans..
+dbm/                                                              not trans..
+dbplus/                                                           not trans..
+dbx/                                                              not trans..
+dio/                                                              not trans..
+dir/                                                              not trans..
+domxml/                                                           not trans..
+dotnet/                                                           not trans..
+errorfunc/                                                        not trans..
+exec/                                                             not trans..
+fbsql/                                                            not trans..
+fdf/                                                              not trans..
+filepro/                                                          not trans..
+filesystem/                        vizvil           vizvil        maintain
+fribidi/                                                          not trans..
+ftp/                                                              not trans..
+funchand/                                                         not trans..
+gettext/                                                          not trans..
+gmp/                                                              not trans..
+http/                              noribsd          fuzzy74       maintain
+hw/                                                               not trans..
+hwapi/                                                            not trans..
+ibase/                                                            not trans..
+icap/                                                             not trans..
+iconv/                             fuzzy74          fuzzy74       maintain
+ifx/                                                              not trans..
+iisfunc/                                                          not trans..
+image/                                                            not trans..
 imap/                              fuzzy74          fuzzy74       maintain
-info/
-ingres-ii/
-ircg/
-java/
-ldap/
-mail/
-mailparse/
+info/                                                             not trans..
+ingres-ii/                                                        not trans..
+ircg/                                                             not trans..
+java/                                                             not trans..
+ldap/                                                             not trans..
+mail/                                                             not trans..
+mailparse/                                                        not trans..
 math/                              progcom          progcom       maintain
-mbstring/
-mcal/
-mcrypt/
-mcve/
-mhash/
-mime_magic/
-ming/
-misc/
-mnogosearch/
-msession/
-msql/
-mssql/
-muscat/
-mysql/
-ncurses/
-network/
-nis/
-notes/
-objaggregation/
+mbstring/                                                         not trans..
+mcal/                                                             not trans..
+mcrypt/                                                           not trans..
+mcve/                                                             not trans..
+mhash/                                                            not trans..
+mime_magic/                                                       not trans..
+ming/                                                             not trans..
+misc/                                                             not trans..
+mnogosearch/                                                      not trans..
+msession/                                                         not trans..
+msql/                                                             not trans..
+mssql/                                                            not trans..
+muscat/                                                           not trans..
+mysql/                             pcraft           fuzzy74       maintain
+ncurses/                                                          not trans..
+network/                           vizvil           fuzzy74       maintain
+nis/                               vizvil           fuzzy74       maintain
+notes/                                                            not trans..
+objaggregation/                                                   not trans..
 oci8/                              fuzzy74          fuzzy74       maintain
-openssl/
-oracle/
-outcontrol/
-overload/
-ovrimos/
-pcntl/
-pcre/
-pdf/
-pfpro/
-pgsql/
-posix/
-printer/
-pspell/
-qtdom/
-readline/
-recode/
-regex/
-sem/
-sesam/
-session/
-shmop/
-snmp/
-sockets/
-stream/
-strings/
-swf/
-sybase/
-tokenizer/
-uodbc/
-url/
-var/
-vpopmail/
-w32api/
-wddx/
-xml/
-xmlrpc/
-xslt/
-yaz/
-zip/
-zlib/
+openssl/                                                          not trans..
+oracle/                                                           not trans..
+outcontrol/                                                       not trans..
+overload/                                                         not trans..
+ovrimos/                                                          not trans..
+pcntl/                                                            not trans..
+pcre/                                                             not trans..
+pdf/                                                              not trans..
+pfpro/                                                            not trans..
+pgsql/                             noribsd          fuzzy74       maintain
+posix/                                                            not trans..
+printer/                                                          not trans..
+pspell/                            suvia            fuzzy74       maintain
+qtdom/                                                            not trans..
+readline/                                                         not trans..
+recode/                                                           not trans..
+regex/                                                            not trans..
+sem/                               pcraft           fuzzy74       maintain
+sesam/                                                            not trans..
+session/                                                          not trans..
+shmop/                             pcraft           fuzzy74       maintain
+snmp/                                                             not trans..
+sockets/                                                          not trans..
+stream/                                                           not trans..
+strings/                           cycle98          fuzzy74       maintain
+swf/                                                              not trans..
+sybase/                            ftfuture         fuzzy74       maintain
+tokenizer/                                                        not trans..
+uodbc/                                                            not trans..
+url/                                                              not trans..
+var/                                                              not trans..
+vpopmail/                                                         not trans..
+w32api/                                                           not trans..
+wddx/                                                             not trans..
+xml/                               karoora          fuzzy74       maintain
+xmlrpc/                                                           not trans..
+xslt/                                                             not trans..
+yaz/                               karoora          fuzzy74       maintain
+zip/                                                              not trans..
+zlib/                              karoora          fuzzy74       maintain
 -------- security -----------------------------------------------------------
 index.xml                          progcom          progcom       maintain
 -----------------------------------------------------------------------------
