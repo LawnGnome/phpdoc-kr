@@ -7,12 +7,12 @@ progcom   Yun-young Lee        progcom@yahoo.com
 rhheo     Ryeonho Heo          rhheo@funit.net
 
 =============================================================================
-Filename                           Translator
+Filename                           Translator              Status
 =============================================================================
-bookinfo.xml                       progcom
+bookinfo.xml                       progcom                 Maintain
 preface.xml                        rhheo
-language-defs.ent                  progcom
-language-snippets.ent              progcom
+language-defs.ent                  progcom                 Maintain
+language-snippets.ent              progcom                 Maintain
 ------- appendices ----------------------------------------------------------
 about.xml
 aliases.xml
@@ -28,10 +28,10 @@ resources.xml
 tokens.xml
 wrappers.xml
 ------- chapters ------------------------------------------------------------
-config.xml                         progcom
+config.xml                         progcom                 Maintain
 install.*.xml
-intro.xml                          progcom
-security.xml                       progcom
+intro.xml                          progcom                 Maintain
+security.xml                       progcom                 Assign
 streams.common.xml
 streams.constants.xml
 streams.dir.xml
@@ -39,7 +39,7 @@ streams.file.xml
 streams.socket.xml
 streams.structs.xml
 streams.xml
-tutorial.xml                       progcom
+tutorial.xml                       progcom                 Maintain
 ------- faq -----------------------------------------------------------------
 build.xml
 com.xml
@@ -128,7 +128,7 @@ java/
 ldap/
 mail/
 mailparse/
-math/                              progcom
+math/                              progcom                 Maintain
 mbstring/
 mcal/
 mcrypt/
