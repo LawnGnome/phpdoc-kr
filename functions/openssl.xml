@@ -49,7 +49,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns a positive key identifier on success, or false on error.
+     Returns a positive key identifier on success, or &false; on error.
     </para>
     <para>
      <function>openssl_get_privatekey</function> parses the PEM
@@ -75,7 +75,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns a positive key identifier on success, or false on error.
+     Returns a positive key identifier on success, or &false; on error.
     </para>
     <para>
      <function>openssl_get_publickey</function> extracts the
@@ -103,7 +103,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true on success, or false on error. If successful the opened
+     Returns &true; on success, or &false; on error. If successful the opened
      data is returned in <parameter>open_data</parameter>.
     </para>
     <para>
@@ -161,7 +161,7 @@ openssl_free_key($pkeyid);
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns the length of the sealed data on success, or false on error.
+     Returns the length of the sealed data on success, or &false; on error.
      If successful the sealed data is returned in
      <parameter>sealed_data</parameter>, and the envelope keys in
      <parameter>env_keys</parameter>.
@@ -227,7 +227,7 @@ openssl_free_key($pk2);
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true on success, or false on failure.
+     Returns &true; on success, or &false; on failure.
      If successful the signature is returned in
      <parameter>signature</parameter>. 
     </para>

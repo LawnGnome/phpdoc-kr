@@ -276,7 +276,7 @@ hash_next_index_insert(arr.value.ht,&amp;entry,sizeof(pval),NULL);
 
 To prevent that overhead,
 당신은 pval ** 에서 hash 추가 함수에 공급할수 있고, 그건 hash안에서 추가된 요소의pval * 주소로 수정될 수 있다.
-만약 그 값이 NULL (모든 예제가 아닌 것처럼)이면, 그 인자는 무시된다.
+만약 그 값이 &null; (모든 예제가 아닌 것처럼)이면, 그 인자는 무시된다.
 </para>
 			<simpara>
 PHP 2.0에서 hash_next_index_insert() "$foo[] = bar;"같은 동일한 로직으로 사용되었다.</simpara>
@@ -333,7 +333,7 @@ RETURN_* 매크로들 모두 반환값과 함수에서 반환되는 되는 것�
 						<simpara>RETURN_LONG(l)</simpara>
 					</listitem>
 					<listitem>
-						<simpara>RETURN_STRING(s,dup)   If dup is true, duplicates the string</simpara>
+						<simpara>RETURN_STRING(s,dup)   If dup is &true;, duplicates the string</simpara>
 					</listitem>
 					<listitem>
 						<simpara>RETURN_STRINGL(s,l,dup)   Return string (s) specifying length (l).</simpara>
@@ -356,7 +356,7 @@ RETVAL_*  매크로는 리턴값을 설정할 수 있으나, 반환은 되지 �
 						<simpara>RETVAL_LONG(l)</simpara>
 					</listitem>
 					<listitem>
-						<simpara>RETVAL_STRING(s,dup)   If dup is true, duplicates the string</simpara>
+						<simpara>RETVAL_STRING(s,dup)   If dup is &true;, duplicates the string</simpara>
 					</listitem>
 					<listitem>
 						<simpara>RETVAL_STRINGL(s,l,dup)   Return string (s) specifying length (l).</simpara>
@@ -732,8 +732,8 @@ persistence 모듈의 일반적인 idea는 다음과 같다:
 			<title>pval *object</title>
 			<simpara>
     This is a pointer to an object on which the function is invoked.
-    This should be NULL if a global function is called.  If it's not
-    NULL (i.e.  it points to an object), the function_table argument is
+    This should be &null; if a global function is called.  If it's not
+    &null; (i.e.  it points to an object), the function_table argument is
     ignored, and instead taken from the object's hash.  The object *may*
     be modified by the function that is invoked on it (that function
     will have access to it via $this).  If for some reason you don't

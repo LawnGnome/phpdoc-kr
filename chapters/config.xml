@@ -1120,8 +1120,8 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-        blob 칼럼을 파일에서 반환하려 한다면 true를,
-        메모리에서 반환하려면 false를 설정한다.
+        blob 칼럼을 파일에서 반환하려 한다면 &true;를,
+        메모리에서 반환하려면 &false;를 설정한다.
         이 설정은 <function>ifx_blobinfile_mode</function> 함수를 사용하여 실행중에 변경할 수 있다.
        </para>
 					</listitem>
@@ -1133,8 +1133,8 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	select 문에서 TEXT 컬럼의 내용을 일반적인 문자열로 반환하고 싶다면 True, 
-	blob id 파라메터를 사용하고 싶다면 False를 설정한다. 
+	select 문에서 TEXT 컬럼의 내용을 일반적인 문자열로 반환하고 싶다면 &true;, 
+	blob id 파라메터를 사용하고 싶다면 &false;를 설정한다. 
 	이 설정은 <function>ifx_textasvarchar</function>함수를 사용하여 실행 중 변경할 수 있다. 
        </para>
 					</listitem>
@@ -1146,8 +1146,8 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	select 문에서 BYTE 컬럼의 내용을 일반적인 문자열로 반환하고 싶다면 True, 
-	blob id 파라메터를 사용하고 싶다면 False를 설정한다. 
+	select 문에서 BYTE 컬럼의 내용을 일반적인 문자열로 반환하고 싶다면 &true;, 
+	blob id 파라메터를 사용하고 싶다면 &false;를 설정한다. 
 	이 설정은 <function>ifx_textasvarchar</function>함수를 사용하여 실행 중 변경할 수 있다. 
        </para>
 					</listitem>
@@ -1159,7 +1159,7 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	데이터를 가져올 때 CHAR 컬럼의 뒤쪽 공백을 자동으로 잘라내려면 True를 설정한다
+	데이터를 가져올 때 CHAR 컬럼의 뒤쪽 공백을 자동으로 잘라내려면 &true;를 설정한다
        </para>
 					</listitem>
 				</varlistentry>
@@ -1170,8 +1170,8 @@ NOTYPE</programlisting>
 					</term>
 					<listitem>
 						<para>
-	NULL 컬럼에 대하여 "NULL"이라는 문자열을 반환하려면 True, 
-	공백 문자열("")을 반환하려면 False를 설정한다. 
+	&null; 컬럼에 대하여 "&null;"이라는 문자열을 반환하려면 &true;, 
+	공백 문자열("")을 반환하려면 &false;를 설정한다. 
 	이 설정은 <function>ifx_nullformat</function>함수를 사용하여 실행 중 변경할 수 있다. 
        </para>
 					</listitem>

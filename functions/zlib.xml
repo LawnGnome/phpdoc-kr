@@ -83,7 +83,7 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
      zp에의해 지정된 .gz 파일이 닫혀진다.
     </para>
 			<para>
-     성공시 true를 실패시 failure를 반환한다.
+     성공시 &true;를 실패시 failure를 반환한다.
     </para>
 			<para>
      .gz파일의 지정은 정확해야 하고, <function>gzopen</function>에 의해 성공적으로 열린 파일을 지정해야 한다.
@@ -106,7 +106,7 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     지정된 .gz 파일의 끝이거나 에러가 일어나면 true를 반환하고; 그렇지 않은 경우 false를 반환한다.
+     지정된 .gz 파일의 끝이거나 에러가 일어나면 &true;를 반환하고; 그렇지 않은 경우 &false;를 반환한다.
     </para>
 			<para>
      .gz 파일지정은 정확해야 하고, <function>gzopen</function>에 의해 성공적으로 열린 파일을 지정해야 한다.
@@ -161,7 +161,7 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     zp에 의해 지정된 파일로부터 문자열에 포함된 단문자(압축되지 않은)를  반환한다. EOF의 경우 FALSE를 반환한다(마치 <function>gzeof</function>처럼).
+     zp에 의해 지정된 파일로부터 문자열에 포함된 단문자(압축되지 않은)를  반환한다. EOF의 경우 &false;를 반환한다(마치 <function>gzeof</function>처럼).
     </para>
 			<para>
      .gz 파일의 지정은 정확해야 하고 ,<function>gzopen</function>에 의해 성공적으로 열린 파일이어야 한다.
@@ -193,7 +193,7 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
      fp에 의해 지정된 파일로부터 length - 1 bytes의 문장을 리턴한다. length - 1 bytes를 읽거나, 새로운 라인을 만나거나, EOF의 경우 (혹 처음으로 돌아가든지), 읽는것을 그만둔다.
     </para>
 			<para> 
-     에러가 일어난 경우 false를 반환한다.
+     에러가 일어난 경우 &false;를 반환한다.
     </para>
 			<para> 
      파일의 지정은 정확해야 하고, <function>gzopen</function>에 의해 성공적으로 열린 파일이어야 한다.
@@ -282,7 +282,7 @@ print "&lt;/pre>\n&lt;/h1>&lt;/body>\n&lt;/html>\n";
 				<function>gzopen</function>은 열고자 지정한 파일을 리턴 한다. 그리고는 읽고자 하는 모든것을 압축해제하고, 기록하고 압축할 수 있다.
 				    </para>
 			<para>
-     만일 열기에 실패하면 false를 리턴한다.
+     만일 열기에 실패하면 &false;를 리턴한다.
     </para>
 			<para>
     세번째 옵션의 파라미터에 "1"을 넣으면 <link linkend="ini.include-path">include_path</link>안의 파일을 검색 할수 있다.
@@ -322,7 +322,7 @@ $fp = gzopen ("/tmp/file.gz", "r");
      지정된 .gz파일의 EOF을 읽으면 standard output으로 결과(압축되지 않은) 결과를 출력한다.
     </para>
 			<para>
-     에러가 나면 false를 리턴한다.
+     에러가 나면 &false;를 리턴한다.
     </para>
 			<para>
      파일의 지정은 정확해야하고, <function>gzopen</function>의해 성공적으로 열린 파일이어야 한다.
@@ -480,7 +480,7 @@ gzclose ($zd);
      <parameter>zp</parameter>에의해 참조된 파일위치의 포인터를 반환한다; 즉, 파일스트림 내부의 offset
     </para>
 			<para>
-     만일 에러가 발생하면 false를 반환.
+     만일 에러가 발생하면 &false;를 반환.
     </para>
 			<para>
      파일은 정확히 지정되어야 하고, <function>gzopen</function>에의해 성공적으로 열린 파일이어야 한다.
@@ -553,7 +553,7 @@ gzclose ($zd);
 				<function>readgzfile</function>은 gzip format이 아니더라도 읽을 수 있다.; 이 경우 <function>readgzfile</function>은 바로 압축해제없이 파일을 읽어들이 수 있다.
     </para>
 			<para> 
-     파일로부터 읽어들인 바이트수(압축되지 않은)를 리턴한다. 만일 에러가 발생하면, -<literal>@readgzfile</literal>라고 불리우는 경우가 아닌한- false를 반환하고, 에러메세지를 출력한다.
+     파일로부터 읽어들인 바이트수(압축되지 않은)를 리턴한다. 만일 에러가 발생하면, -<literal>@readgzfile</literal>라고 불리우는 경우가 아닌한- &false;를 반환하고, 에러메세지를 출력한다.
     </para>
 			<para> 
     <parameter>filename</parameter>은 파일시스템으로부터 열려지고, 그 내용은 standard output으로 출력된다.
@@ -588,7 +588,7 @@ gzclose ($zd);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     이 함수는 입력된<parameter>data</parameter>의 gzip압축버젼을 리턴하거나 에러발생시 false를 반환한다. 옵션의 파라미터인 <parameter>level</parameter>은 압축률이 0인 0부터 최대압축률인 9까지 주어진다.
+     이 함수는 입력된<parameter>data</parameter>의 gzip압축버젼을 리턴하거나 에러발생시 &false;를 반환한다. 옵션의 파라미터인 <parameter>level</parameter>은 압축률이 0인 0부터 최대압축률인 9까지 주어진다.
     </para>
 			<para>
      참고 <function>gzuncompress</function>.
@@ -616,7 +616,7 @@ gzclose ($zd);
 				</funcprototype>
 			</funcsynopsis>
 			<para>			
-     이 함수는 <function>gzcompress</function>로 압축된 <parameter>data</parameter>를 취하여, 압축되지않은 원본데이터를 반환하거나 에러의 경우 false를 반환한다. 만일 압축해제된 데이타가 압축되어 입력된 <parameter>data</parameter>보다 256배 이상이거나 옵션의 파라미터의 <parameter>length</parameter>이상인 경우 에러를 반환한다.
+     이 함수는 <function>gzcompress</function>로 압축된 <parameter>data</parameter>를 취하여, 압축되지않은 원본데이터를 반환하거나 에러의 경우 &false;를 반환한다. 만일 압축해제된 데이타가 압축되어 입력된 <parameter>data</parameter>보다 256배 이상이거나 옵션의 파라미터의 <parameter>length</parameter>이상인 경우 에러를 반환한다.
     </para>
 			<para>
      참고 <function>gzcompress</function>.

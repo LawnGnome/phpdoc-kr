@@ -256,7 +256,7 @@ if (empty($term) || count($host) == 0) {
      이 함수는 <function>yaz_search</function>와 조합하여 시작위치(start)와 검색내용 중 나열할 최대값(number)을 나타내는데 이용된다. start의 디폴트 값은 "1"이고, number의 디폴트 값은 "10"이다.( 단지 <function>yaz_search</function>만이 있는경우)
         </para>
 			<para>
-    성공하면 true를 : 에러가 난 경우는 false 를 반환한다. 
+    성공하면 &true;를 : 에러가 난 경우는 &false; 를 반환한다. 
     </para>
 		</refsect1>
 	</refentry>

@@ -25,7 +25,7 @@
 			</funcsynopsis>
 			<simpara>
 				<parameter>host</parameter>에 대응이 되는 <parameter>type</parameter>의 레코드를 DNS에서 찾습니다. 
-	어떠한 레코드라도 발견이 되면 true를 반환합니다. 그리고 레코드가 발견되지 않거나 에러가 발생하면 false를 반환합니다. 
+	어떠한 레코드라도 발견이 되면 &true;를 반환합니다. 그리고 레코드가 발견되지 않거나 에러가 발생하면 &false;를 반환합니다. 
 	</simpara>
 			<simpara>
 				<parameter>type</parameter>은  A, MX, NS, SOA, PTR, CNAME 중에 있거나 다른 것이 올수도 있습니다.
@@ -186,10 +186,10 @@
 	와 사용할 수 있는 파일 포인터를 반환합니다.
     </para>
 			<para>
-     호출에 실패하면 false를 반환하고 임의항목인 <parameter>errno</parameter>와
+     호출에 실패하면 &false;를 반환하고 임의항목인 <parameter>errno</parameter>와
 	<parameter>errstr</parameter>인수가 있다면 시스템 차원의 <literal>connect()</literal>호출
 	에서 발생한 실제의 시스템 차원의 에러를 측정하기 위해 설정될 수 있습니다.
-	반환되는 errno 가 0  이고 함수가 false를 반환했다면 <literal>connect()</literal>호출 
+	반환되는 errno 가 0  이고 함수가 &false;를 반환했다면 <literal>connect()</literal>호출 
 	이전에 에러가 발생했다는 것을 알 수 있습니다.
 	이것은 소켓을 초기화하면서 발생한 문제일 가능성이 높습니다.
 	주의할 것은 <parameter>errno</parameter>와 <parameter>errstr</parameter>인수는
@@ -353,8 +353,8 @@ if (!$fp) {
 			<simpara>
      Searches DNS for MX records corresponding to
      <parameter>hostname</parameter>에 대응이 되는 MX 레코드를 찾기위해 DNS를 찾습니다. 
-	아무 레코드라도 발견이 되면 true를 반환합니다.
-	레코드가 없거나 에러가 발생되면 false를 반환합니다.
+	아무 레코드라도 발견이 되면 &true;를 반환합니다.
+	레코드가 없거나 에러가 발생되면 &false;를 반환합니다.
     </simpara>
 			<simpara>
      찾아낸 MX 레코드의 목록은 <parameter>mxhosts</parameter> 배열에 위치합니다.
@@ -571,7 +571,7 @@ echo $out;
      <parameter>facility</parameter>의 인수는 어떤 형식의 프로그램이 로그 메시지를 남기는 지 정의하는데 사용됩니다.
 	이것은 당신이 정의(기계의 syslog 설정)할 때 서로 다른 설비에서 들어오는 메시지 중 어떤 메시지를 핸들할지 정의할 수 있도록 합니다.
      <function>openlog</function>의 사용은 선택적입니다. 
-	이것은 <parameter>ident</parameter>가 기본적으로 false일 경우 필요하다면 자동으로 <function>syslog</function>에 의해 호출됩니다.
+	이것은 <parameter>ident</parameter>가 기본적으로 &false;일 경우 필요하다면 자동으로 <function>syslog</function>에 의해 호출됩니다.
     </para>
 			<para>
 				<table>
@@ -804,8 +804,8 @@ echo $out;
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<parameter>mode</parameter>가 false이면, 소켓 서술자는 모드를 non-blocking 모드로 전환할 것입니다.the given socket
-     그리고 true일 경우 서술자는 blocking 모드로 전환할 것입니다. 
+				<parameter>mode</parameter>가 &false;이면, 소켓 서술자는 모드를 non-blocking 모드로 전환할 것입니다.the given socket
+     그리고 &true;일 경우 서술자는 blocking 모드로 전환할 것입니다. 
      이것의 효과는 소켓에서 읽어들인 <function>fgets</function>와 비슷합니다.
 	non-blocking 모드에서 <function>fgets</function>호출은 
 	항상 소켓에서 사용가능하게 되기를 	대기하고 있는 데이타를 

@@ -93,7 +93,7 @@ pspell_save_wordlist ($pspell_link);
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>pspell_check</function> 함수는 단어의 철자를 검사하고 올바를 경우 true, 틀릴경우 false를
+				<function>pspell_check</function> 함수는 단어의 철자를 검사하고 올바를 경우 &true;, 틀릴경우 &false;를
 				 반환합니다.
     </simpara>
 			<para>

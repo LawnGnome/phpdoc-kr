@@ -70,7 +70,7 @@ $escaped = addcslashes ($not_escaped, "\0..\37!@\177..\377");
 			</funcsynopsis>
 			<para>
 			데이터 베이스 쿼리와 같이 인용된 부분 앞에 백슬래쉬를 붙여 반환한다.
-			이런 문자에는 작은따옴표 (<literal>'</literal>), 큰따옴표(<literal>"</literal>),백슬래쉬(<literal>\</literal>), 그리고 NULL(null byte)이 있다.
+			이런 문자에는 작은따옴표 (<literal>'</literal>), 큰따옴표(<literal>"</literal>),백슬래쉬(<literal>\</literal>), 그리고 &null;(null byte)이 있다.
     </para>
 			<para>
 				<function>stripslashes</function>, 
@@ -1988,7 +1988,7 @@ if (!strcasecmp ($var1, $var2)) {
 	대소문자를 구별하지 않고 검사된다.
     </para>
 			<para>
-     만약<parameter>needle</parameter> 이 발견되지 않으면 false 를 반환한다.
+     만약<parameter>needle</parameter> 이 발견되지 않으면 &false; 를 반환한다.
     </para>
 			<para>
      만약 <parameter>needle</parameter>이 문자열이 아니면, 이는 숫자로 변환되고

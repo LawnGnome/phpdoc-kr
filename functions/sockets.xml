@@ -289,7 +289,7 @@ echo "OK.\n\n";
      <function>accept_connect</function>.
     </para>
     <para>
-     Returns true on success, or false if an error occurs (i.e.,
+     Returns &true; on success, or &false; if an error occurs (i.e.,
      <parameter>socket</parameter> is invalid).
     </para>
     <para>

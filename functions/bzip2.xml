@@ -66,7 +66,7 @@ bzclose($bz);
 				<parameter>bz</parameter>포인터에 의해 참조된 bzip2 파일을 닫는다.
     </para>
 			<para>
-     성공하면 true, 실패하면 false를 반환.
+     성공하면 &true;, 실패하면 &false;를 반환.
     </para>
 			<para>
      파일 포인터는 <function>bzopen</function>에 의해 성공적으로 개방된 포인터라야하며, 유효한 값이어야 한다.
@@ -150,7 +150,7 @@ $bzstr = bzcompress($str, 9);
 			</funcsynopsis>
 			<para>
 				<function>bzdecompress</function> 함수는 <parameter>source</parameter> 인자로 지정된 bzip2 인코딩 데이터를 압축을 풀어 그 문자열을 반환한다.
-				<parameter>small</parameter> 선택인자가 true 값이면 압축 해제 알고리즘은 최소한의 메모리를 사용할 것이다(참고로, 최대 메모리 요구량은 2300K 이하이다).
+				<parameter>small</parameter> 선택인자가 &true; 값이면 압축 해제 알고리즘은 최소한의 메모리를 사용할 것이다(참고로, 최대 메모리 요구량은 2300K 이하이다).
 				그러나, 속도는 반으로 감소하게 된다. 더 많은 정보를 얻으려면 <ulink url="&url.bzip2;">bzip2 문서</ulink>를 참조하라.
                </para>
 			<para>
@@ -268,7 +268,7 @@ echo $error["errstr"];
 				<parameter>bz</parameter> 인자로 지정된 파일 포인터에 버퍼에 저장된 bzip2 데이터를 강제로 기록한다.
     </para>
 			<para>
-     성공하면 true, 실패하면 false를 반환.
+     성공하면 &true;, 실패하면 &false;를 반환.
     </para>
 			<para>
      참조: <function>bzread</function>, <function>bzwrite</function>.
@@ -298,7 +298,7 @@ echo $error["errstr"];
      <parameter>mode</parameter> 인자는 <function>fopen</function> 함수와 비슷하게 사용된다(`r'은 읽기모드, `w'는 쓰기모드, 등등).
     </para>
 			<para>
-     파일을 개방하는 데 실패하면 false를 그렇지 않다면 개방된 파일의 새로운 포인터를 반환한다.
+     파일을 개방하는 데 실패하면 &false;를 그렇지 않다면 개방된 파일의 새로운 포인터를 반환한다.
     </para>
 			<para>
 				<example>

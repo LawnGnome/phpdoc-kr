@@ -544,7 +544,7 @@ $result = array_merge_recursive ($ar1, $ar2);
      SORT_REGULAR after before each new array argument.
     </para>
 			<para>
-     Returns true on success, false on failure.
+     Returns &true; on success, &false; on failure.
     </para>
 			<para>
 				<example>
@@ -1551,11 +1551,11 @@ $result = count ($a);
      array element that's currently being pointed by the internal
      pointer.  It does not move the pointer in any way.  If the
      internal pointer points beyond the end of the elements list,
-     <function>current</function> returns false.
+     <function>current</function> returns &false;.
      <warning>
 					<para> 
        If the array contains empty elements (0 or "", the empty
-       string) then this function will return false for these elements
+       string) then this function will return &false; for these elements
        as well.  This makes it impossible to determine if you are
        really at the end of the list in such an array using
        <function>current</function>.  To properly traverse an array
@@ -1600,7 +1600,7 @@ $result = count ($a);
     </para>
 			<para>
      If the internal pointer for the array points past the end of the
-     array contents, <function>each</function> returns false.
+     array contents, <function>each</function> returns &false;.
     </para>
 			<para>
 				<example>
@@ -1857,7 +1857,7 @@ blue, large, sphere, medium
 	<refentry id="function.in-array">
 		<refnamediv>
 			<refname>in_array</refname>
-			<refpurpose>Return true if a value exists in an array</refpurpose>
+			<refpurpose>Return &true; if a value exists in an array</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
@@ -1872,8 +1872,8 @@ blue, large, sphere, medium
 			</funcsynopsis>
 			<para>
      Searches <parameter>haystack</parameter> for
-     <parameter>needle</parameter> and returns true if it is found in
-     the array, false otherwise.
+     <parameter>needle</parameter> and returns &true; if it is found in
+     the array, &false; otherwise.
     </para>
 			<para>
 				<example>
@@ -2227,7 +2227,7 @@ Array
 			</funcsynopsis>
 			<para>
      Returns the array element in the next place that's pointed by the
-     internal array pointer, or false if there are no more elements.
+     internal array pointer, or &false; if there are no more elements.
     </para>
 			<para>
 				<function>Next</function> behaves like
@@ -2236,11 +2236,11 @@ Array
      element.  That means it returns the next array element and
      advances the internal array pointer by one.  If advancing the
      internal array pointer results in going beyond the end of the
-     element list, <function>next</function> returns false.
+     element list, <function>next</function> returns &false;.
      <warning>
 					<para>
        If the array contains empty elements, or elements that have a key
-       value of 0 then this function will return false for these elements 
+       value of 0 then this function will return &false; for these elements 
        as well.  To properly traverse an array which may contain empty 
        elements or elements with key values of 0 see the
        <function>each</function> function.
@@ -2296,12 +2296,12 @@ Array
 			</funcsynopsis>
 			<para>
      Returns the array element in the previous place that's pointed by
-     the internal array pointer, or false if there are no more
+     the internal array pointer, or &false; if there are no more
      elements.
      <warning>
 					<para>
        If the array contains empty elements then this function will
-       return false for these elements as well.  To properly traverse
+       return &false; for these elements as well.  To properly traverse
        an array which may contain empty elements see the
        <function>each</function> function.
       </para>

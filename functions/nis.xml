@@ -29,7 +29,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>yp_get_default_domain</function>는 노드의 기본값을 반환하거나 FALSE를 반환합니다.
+				<function>yp_get_default_domain</function>는 노드의 기본값을 반환하거나 &false;를 반환합니다.
 	계속적인 NIS 호출을 위한 도메인의 매개변수로 사용될 수 있습니다.
     </para>
 			<para> 
@@ -74,7 +74,7 @@ echo "기본 NIS 도메인은: " . $domain;
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>yp_order</function>는 맵(map)의 순서번호를 반환하거나 FALSE를 반환합니다.
+				<function>yp_order</function>는 맵(map)의 순서번호를 반환하거나 &false;를 반환합니다.
     </para>
 			<para>
 				<example>
@@ -158,7 +158,7 @@ echo "이 맵(map)의 마스터는: " . $master;
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-				<function>yp_match</function>지정된 맵(map)의 범위외에서 통과된 키와 조합된 값이나 FALSE를 반환합니다. 
+				<function>yp_match</function>지정된 맵(map)의 범위외에서 통과된 키와 조합된 값이나 &false;를 반환합니다. 
 				이 키 값은 정확한 것이어야 합니다.
 </para>
 			<para>
@@ -206,7 +206,7 @@ echo "매치(Match)된 목록 : " . $entry;
 			</funcsynopsis>
 			<para>
 				<function>yp_first</function>는 이름 붙여진 도메인의 이름 붙여진 맵(map)의 첫 번째
-	key-value 쌍을 반환하고, 그렇지 않은 경우에는 FALSE를 반환합니다.
+	key-value 쌍을 반환하고, 그렇지 않은 경우에는 &false;를 반환합니다.
     </para>
 			<para>
 				<example>
@@ -251,7 +251,7 @@ echo "매치(Match)된 목록 : " . $entry;
 			</funcsynopsis>
 			<para>
 				<function>yp_next</function>키가 지정된 후에 이름 붙여진 맵(map)에서 다음의 key-value쌍을
-	반환하거나 FALSE를 반환합니다.
+	반환하거나 &false;를 반환합니다.
     </para>
 			<para>
 				<example>

@@ -107,8 +107,8 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-	올바른 접속지시자(a valid connection index)가 아니라면 거짓(false)를
-	돌려주고, 반대의 경우 참(true)을 돌려준다. 인수로 주어진 접속지시자에
+	올바른 접속지시자(a valid connection index)가 아니라면 거짓(&false;)를
+	돌려주고, 반대의 경우 참(&true;)을 돌려준다. 인수로 주어진 접속지시자에
 	해당하는 PostgreSQL로의 접속을 끊는다.
      </para>
 			<note>
@@ -174,7 +174,7 @@ echo $cmdtuples . " &lt;- 영향을 받은 튜플입니다.";
 			</funcsynopsis>
 			<para>
 			접속에 성공하면 접속지시자(a connection index)를 돌려주고,
-			실패하면 거짓(false)을 돌려준다. 이 함수의 목적은 PostgreSQL에
+			실패하면 거짓(&false;)을 돌려준다. 이 함수의 목적은 PostgreSQL에
 			접속하는 것이다. 인수들은 인용부호안에 표기해야 한다.
       <example>
 					<title>Using pg_connect arguments</title>
@@ -227,7 +227,7 @@ $dbconn3 = pg_Connect ("user=lamb password=baaaa dbname=mary ");
 			</funcsynopsis>
 			<para>
 			인수로 주어진 접속지시자 (connection index)에 해당하는 데이터베이스
-			이름을 돌려준다. 올바른 접속지시자가 아니면 거짓(false)을 돌려준다.
+			이름을 돌려준다. 올바른 접속지시자가 아니면 거짓(&false;)을 돌려준다.
     </para>
 		</refsect1>
 	</refentry>
@@ -253,7 +253,7 @@ $dbconn3 = pg_Connect ("user=lamb password=baaaa dbname=mary ");
 				<function>pg_end_copy</function> syncs PostgreSQL frontend with
      the backend after doing a copy operation. It must be issued or
      the backend may get "out of sync" with the frontend. Returns
-     TRUE if successfull, FALSE otherwise.
+     &true; if successfull, &false; otherwise.
     </para>
 			<para>
      For further details and an example, see also
@@ -278,7 +278,7 @@ $dbconn3 = pg_Connect ("user=lamb password=baaaa dbname=mary ");
 			</funcsynopsis>
 			<para>
 			실행에 성공한 경우 데이터베이스에서 생성된 에러메시지 문자열을
-			돌려주며, 실패한 경우 거짓(false)을 돌려준다. <function>pg_errormessage</function> 함수는
+			돌려주며, 실패한 경우 거짓(&false;)을 돌려준다. <function>pg_errormessage</function> 함수는
 			PHP가 직접 생성해낸 에러메시지처럼 (그 에러가 발생한 라인번호같은) 자세한 정보는 출력하지
 			않지만, (인수로 주어진 접속지시자에 해당하는) 백엔드서버에서 생성된 가장 마지막 에러메시지
 			문자열을 돌려준다.
@@ -305,7 +305,7 @@ $dbconn3 = pg_Connect ("user=lamb password=baaaa dbname=mary ");
 			<para>
 	쿼리가 성공적으로 실행되었을 경우 결과지시자(a result index)를 돌려준다. 
 	쿼리의 실행이 실패하였거나 올바르지 않은 접속지시자(not a valid connection index)가
-	인수로 주어졌을 경우 거짓(false)을 돌려준다. 에러메시지는 <function>pg_errormessage</function> 함수에
+	인수로 주어졌을 경우 거짓(&false;)을 돌려준다. 에러메시지는 <function>pg_errormessage</function> 함수에
 	올바른 접속지시자를 인수로 넣어 가져올 수 있다. <function>pg_exec</function> 함수는 인수로 주어진 
 	접속지시자에 해당하는 접속을 통해 PostgreSQL에 실행시킬 SQL구문을 전달한다. 이때 쓰이는 접속지시자는
 	<function>pg_connect</function> 함수를 통해 돌려보내진 올바른 접속지시자여야 한다. 참고로 
@@ -345,7 +345,7 @@ $dbconn3 = pg_Connect ("user=lamb password=baaaa dbname=mary ");
 			</funcsynopsis>
 			<para> 
 			이 함수는 데이터베이스에서 가져온 행을 배열로 돌려주며,
-			만약 더이상 가져올 행이 없는 경우 거짓(false)을 돌려준다.
+			만약 더이상 가져올 행이 없는 경우 거짓(&false;)을 돌려준다.
        </para>
 			<para>
 				<function>pg_fetch_array</function> 함수는 <function>pg_fetch_row</function> 함수의
@@ -419,7 +419,7 @@ echo $arr["author"] . " &lt;- array\n";
 			</funcsynopsis>
 			<para> 
 			데이터베이스의 행을 그 행이 가진 프로퍼티와 함께 오브젝트의 형태로 돌려주며,
-			더이상 가져올 행이 없을 경우 거짓(false)을 돌려준다.
+			더이상 가져올 행이 없을 경우 거짓(&false;)을 돌려준다.
         </para>
 			<para>
 				<function>pg_fetch_object</function> 함수는 <function>pg_fetch_array</function> 함수와
@@ -506,7 +506,7 @@ pg_close ($db_conn);
 				</funcprototype>
 			</funcsynopsis>
 			<para> 
-			데이터베이스로부터 가져온 행을 배열형태로 돌려주며, 더이상 가져올 행이 없을 경우 거짓(false)을 돌려준다.
+			데이터베이스로부터 가져온 행을 배열형태로 돌려주며, 더이상 가져올 행이 없을 경우 거짓(&false;)을 돌려준다.
       </para>
 			<para>
 				<function>pg_fetch_row</function> 함수는 인수로 주어진 결과지시자(result identifier)가
@@ -555,7 +555,7 @@ for ($i=0; $i&lt;$num; $i++) {
 	<refentry id="function.pg-fieldisnull">
 		<refnamediv>
 			<refname>pg_fieldisnull</refname>
-			<refpurpose>필드가 NULL인지 검사한다.</refpurpose>
+			<refpurpose>필드가 &null;인지 검사한다.</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>Description</title>
@@ -572,8 +572,8 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-			필드가 NULL인지 아닌지 검사한다. 인수로 주어진 행에 해당하는 필드가 NULL이 아니면
-			0을 돌려주고 NULL인 경우 1을 돌려준다. 필드는 숫자와 필드이름 두가지로 정의될 수 있다.
+			필드가 &null;인지 아닌지 검사한다. 인수로 주어진 행에 해당하는 필드가 &null;이 아니면
+			0을 돌려주고 &null;인 경우 1을 돌려준다. 필드는 숫자와 필드이름 두가지로 정의될 수 있다.
 			행의 번호는 0부터 매겨진다.
       </para>
 		</refsect1>
@@ -677,7 +677,7 @@ for ($i=0; $i&lt;$num; $i++) {
      storage size (in bytes) of the field number in the given
      PostgreSQL result. Field numbering starts at 0. A field size of
      -1 indicates a variable length field. This function will return
-     false on error.
+     &false; on error.
     </para>
 		</refsect1>
 	</refentry>
@@ -856,7 +856,7 @@ for ($i=0; $i&lt;$num; $i++) {
      The <parameter>oid</parameter> argument specifies the object id
      of the large object to export and the
      <parameter>filename</parameter> argument specifies the pathname
-     of the file. Returns FALSE if an error occurred, TRUE
+     of the file. Returns &false; if an error occurred, &true;
      otherwise. Remember that handling large objects in PostgreSQL
      must happen inside a transaction.
     </para>
@@ -886,7 +886,7 @@ for ($i=0; $i&lt;$num; $i++) {
 			<para>
      The <parameter>filename</parameter> argument specifies the
      pathname of the file to be imported as a large object. Returns
-     FALSE if an error occurred, object id of the just created large
+     &false; if an error occurred, object id of the just created large
      object otherwise. Remember that handling large objects in
      PostgreSQL must happen inside a transaction.
     </para>
@@ -1015,7 +1015,7 @@ for ($i=0; $i&lt;$num; $i++) {
 			<para>
 				<function>pg_lowrite</function> writes at most to a large object
      from a variable <parameter>buf</parameter> and returns the number
-     of bytes actually written, or false in the case of an error.
+     of bytes actually written, or &false; in the case of an error.
      <parameter>fd</parameter> is a file descriptor for the large
      object from <function>pg_loopen</function>.
     </para>
@@ -1105,7 +1105,7 @@ for ($i=0; $i&lt;$num; $i++) {
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     Returns a connection index on success, or false if the connection
+     Returns a connection index on success, or &false; if the connection
      could not be made.  Opens a connection to a PostgreSQL database.
      The arguments should be within a quoted string.
      The arguments available include <parameter>dbname</parameter>
@@ -1178,7 +1178,7 @@ for ($i=0; $i&lt;$num; $i++) {
      to the PostgreSQL backend server. This is useful for example for
      very high-speed inserting of data into a table, initiated by
      starting a PostgreSQL copy-operation. That final NULL-character
-     is added automatically. Returns TRUE if successfull, FALSE
+     is added automatically. Returns &true; if successfull, &false;
      otherwise.
     </para>
 			<note>
@@ -1379,8 +1379,8 @@ for ($i=0; $i&lt;$num; $i++) {
      trace and defaults to the last one opened.
     </para>
 			<para>
-     Returns TRUE if <parameter>filename</parameter> could be opened
-     for logging, FALSE otherwise.
+     Returns &true; if <parameter>filename</parameter> could be opened
+     for logging, &false; otherwise.
     </para>
 			<para>
      See also <function>fopen</function> and
@@ -1436,7 +1436,7 @@ for ($i=0; $i&lt;$num; $i++) {
      traced and defaults to the last one opened.
     </para>
 			<para>
-     Returns always TRUE.
+     Returns always &true;.
     </para>
 			<para>
      See also <function>pg_trace</function>.

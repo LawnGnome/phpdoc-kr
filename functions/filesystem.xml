@@ -61,7 +61,7 @@ $file = basename ($path); // $file 은 "index.php3" 로 설정됩니다.
 파일의 그룹을 <parameter>filename</parameter>에서 <parameter>group</parameter>으로 바꾸고자 할때 수퍼유저만이 파일의 그룹을 임으로 변경할 수 있고 그 외의 사용자들은 멤버로 있을때만 어떤 파일의 그룹을 변경할 수 있습니다. 
     </para>
 			<para>
-성공하면 true, 실패하면 false를 반환합니다.
+성공하면 &true;, 실패하면 &false;를 반환합니다.
     </para>
 			<para>
  참조: <function>chown</function> 그리고 <function>chmod</function>.
@@ -104,7 +104,7 @@ chmod ("/somedir/somefile", 0755);  // 8진수 : 정확한 모드 값
 				</informalexample>
 			</para>
 			<para>
-성공하면 true, 실패하면 false를 반환합니다.    </para>
+성공하면 &true;, 실패하면 &false;를 반환합니다.    </para>
 			<para>
      참조: <function>chown</function> 그리고 <function>chgrp</function>.
     </para>
@@ -136,7 +136,7 @@ chmod ("/somedir/somefile", 0755);  // 8진수 : 정확한 모드 값
      어떤 파일의 소유자를 변경하고자 할때 수퍼유저만이 파일의 소유자를 바꿀 수 있습니다.
     </para>
 			<para>
-     성공하면 true, 그렇지 않으면 false를 반환합니다.
+     성공하면 &true;, 그렇지 않으면 &false;를 반환합니다.
     </para>
 			<para>
     참조: <function>chown</function> 그리고 <function>chmod</function>.
@@ -208,7 +208,7 @@ chmod ("/somedir/somefile", 0755);  // 8진수 : 정확한 모드 값
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-파일의 복사본을 만듭니다. 복사가 되면 true, 그렇지 않으면 false를 반환합니다.
+파일의 복사본을 만듭니다. 복사가 되면 &true;, 그렇지 않으면 &false;를 반환합니다.
      <example>
 					<title>
 						<function>copy</function>예문</title>
@@ -331,7 +331,7 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
      이 파일은 fp가 닫힐때 지정됩니다.
     </para>
 			<para>
-     성공하면 true, 실패하면 false를 반환합니다.
+     성공하면 &true;, 실패하면 &false;를 반환합니다.
     </para>
 			<para>
 파일포인터는 반드시 유효한 것이어야 하고,<function>fopen</function> 이나 <function>fsockopen</function>등에의해 성공적으로 열려진 파일을 지정해야 합니다.
@@ -354,7 +354,7 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-파일 포인터가 파일의 끝에 있거나 에러가 발생하면 true, 그렇지 않으면 false를 반환합니다.
+파일 포인터가 파일의 끝에 있거나 에러가 발생하면 &true;, 그렇지 않으면 &false;를 반환합니다.
     </para>
 			<para>파일포인터는 반드시 유효한 것이어야하고,<function>fopen</function> 이나 <function>popen</function> 또는  <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 지정해야 합니다. 
 	</para>
@@ -378,7 +378,7 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 			<para>
      이 함수는모든 버퍼에 저장되어있던 출력을 파일핸들에 의해 지정된 자원에 강제로 쓰기합니다.
      <parameter>fp</parameter>.
-성공하면 true, 실패하면 false를 반환.
+성공하면 &true;, 실패하면 &false;를 반환.
     </para>
 			<para>이 파일포인터는 반드시 유효한 것이어야 하고,<function>fopen</function>이나 <function>popen</function>또는 <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 가리켜야 합니다.
 	</para>
@@ -400,7 +400,7 @@ $df = diskfreespace("/"); // $df 는 "/"에서 사용가능한 공간의 바이�
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-fp에 의해 가리켜진 파일로부터 한개의 문자를 포함한 문자열을 반환합니다.  FALSE 나 EOF를 반환합니다.
+fp에 의해 가리켜진 파일로부터 한개의 문자를 포함한 문자열을 반환합니다.  &false; 나 EOF를 반환합니다.
     </para>
 			<para>이 파일포인터는 반드시 유효한 것이어야 하고,<function>fopen</function>이나 <function>popen</function> 또는 <function>fsockopen</function>에 의해 성공적으로 열려진 파일을 가리켜야 합니다.
 	</para>		<para> 
@@ -443,10 +443,10 @@ fp에 의해 가리켜진 파일로부터 한개의 문자를 포함한 문자�
      CSV 파일에서 가장 긴 라인보다 더 길어야 합니다.(마지막 문자 찾기가 허용되었을 때)
     </simpara>
 			<simpara>
-				<function>fgetcsv</function>는 파일의 끝이거나 실패시 false를 반환합니다. 
+				<function>fgetcsv</function>는 파일의 끝이거나 실패시 &false;를 반환합니다. 
     </simpara>
 			<simpara>
-     주의-- CSV 파일에서 비어있는 라인은 null 필드를 배열로 만들어서 반환하고 에러로 처리되지 않습니다.
+     주의-- CSV 파일에서 비어있는 라인은 &null; 필드를 배열로 만들어서 반환하고 에러로 처리되지 않습니다.
     </simpara>
 			<example>
 				<title>
@@ -489,7 +489,7 @@ fclose ($fp);
     리턴값을 포함한 새로운 문자열이거나 파일의 끝중에서 먼저 도달되는 것에서 1 바이트를 읽어들인후 length만큼 증가되는 문자열 - fp에 의해 가리켜진 파일로부터 1 바이트를 읽습니다. length일때 끝을 읽습니다. - 을 반환합니다. 
     </para>
 			<para>
-   에러가 발생하면 false를 반환합니다.
+   에러가 발생하면 &false;를 반환합니다.
     </para>
 			<para>
    일반적인 함정:
@@ -624,8 +624,8 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-     Returns true if the file specified by
-     <parameter>filename</parameter>에 의해 지정된 파일이 있으면 true, 없으면 false를 반환합니다.
+     Returns &true; if the file specified by
+     <parameter>filename</parameter>에 의해 지정된 파일이 있으면 &true;, 없으면 &false;를 반환합니다.
     </simpara>
 			<simpara>
 				<function>file_exists</function>는 원격 파일에는 동작하지 않습니다.;
@@ -652,7 +652,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</funcprototype>
 			</funcsynopsis>
 			<simpara> 
-    파일에 최종 접근 시간을 반환하며 에러가 발생할 경우에는 false를 반환합니다. 반환되는 시간은 유닉스형식입니다.
+    파일에 최종 접근 시간을 반환하며 에러가 발생할 경우에는 &false;를 반환합니다. 반환되는 시간은 유닉스형식입니다.
     </simpara>
 			<simpara>
     이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶다면 <function>clearstatcache</function>를 보십시오.
@@ -679,7 +679,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     파일이 마지막으로 변경된 시간을 반환합니다. 에러가 발생하면 false를 반환합니다. 반환되는 시간은 유닉스 형식입니다. 
+     파일이 마지막으로 변경된 시간을 반환합니다. 에러가 발생하면 &false;를 반환합니다. 반환되는 시간은 유닉스 형식입니다. 
     </para>
 			<para>
     이 함수의 실행결과는 캐쉬가 됩니다. 좀 더 자세한 내용은  <function>clearstatcache</function>를 참조하세요.
@@ -708,7 +708,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</funcprototype>
 			</funcsynopsis>
 			<para>    
-      파일의 소유자나 그룹의 ID를 반환합니다. 에러가 발생하면 false를 반환합니다. 그룹 ID는 숫자형식으로 반환이 됩니다. 그룹의 이름으로 바꾸기 위해서 <function>posix_getgrgid</function>함수가 사용됩니다. 
+      파일의 소유자나 그룹의 ID를 반환합니다. 에러가 발생하면 &false;를 반환합니다. 그룹 ID는 숫자형식으로 반환이 됩니다. 그룹의 이름으로 바꾸기 위해서 <function>posix_getgrgid</function>함수가 사용됩니다. 
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶을 때는 
@@ -736,7 +736,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</funcprototype>
 			</funcsynopsis>
 			<para> 
-      파일의 아이노드 숫자를 반환하거나 에러일 경우에는 false를 반환합니다.
+      파일의 아이노드 숫자를 반환하거나 에러일 경우에는 &false;를 반환합니다.
      </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶을 때는 
@@ -764,7 +764,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     파일이 마지막으로 수정이 된 시간을 반환하거나 실패할 경우에는 false를 반환합니다. 반환되는 시간은 유닉스 형식입니다
+     파일이 마지막으로 수정이 된 시간을 반환하거나 실패할 경우에는 &false;를 반환합니다. 반환되는 시간은 유닉스 형식입니다
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶을 때는 
@@ -789,7 +789,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 				</funcprototype>
 			</funcsynopsis>
 			<para>    
-     파일 소유자의 ID를 숫자형식으로 반환하거나 실패할 경우에는 false를 반환합니다. ID를 사용자의 이름으로 바꾸기 위해서 <function>posix_getpwuid</function>를 사용합니다.
+     파일 소유자의 ID를 숫자형식으로 반환하거나 실패할 경우에는 &false;를 반환합니다. ID를 사용자의 이름으로 바꾸기 위해서 <function>posix_getpwuid</function>를 사용합니다.
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶을 때는 
@@ -817,7 +817,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 					</paramdef>
 				</funcprototype>
 			</funcsynopsis>
-			<para>파일의 권한을 반환하거나 실패할 경우에는 false를 반환합니다.
+			<para>파일의 권한을 반환하거나 실패할 경우에는 &false;를 반환합니다.
     </para>
 			<para>이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶을때는 
      <function>clearstatcache</function>를 참조하세요   </para>
@@ -838,7 +838,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 					</paramdef>
 				</funcprototype>
 			</funcsynopsis>
-			<para> 파일의 크기나 false를 반환합니다.
+			<para> 파일의 크기나 &false;를 반환합니다.
     </para>
 			<para>이 함수의 실행결과는 캐시가 됩니다. 
      좀 더 자세한 내용을 알고 싶을때는 
@@ -863,7 +863,7 @@ $fcontents = join ('', file ('http://www.php.net'));
 			</funcsynopsis>
 			<para>반환되는 파일의 형식은  fifo, char,
      dir, block, link, file, 그리고 unknown 입니다.</para>
-			<para>에러가 발생하면 false를 반환합니다.
+			<para>에러가 발생하면 &false;를 반환합니다.
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 
@@ -936,11 +936,11 @@ $fcontents = join ('', file ('http://www.php.net'));
 				간단한 읽기/쓰기 예를 수행할 수 있게 만들어줍니다
      reader/writer model which can be used on virtually every platform
      (대부분의 유닉스와 윈도우즈 환경에서도). 접근을 막을 수가 없다면
-     세번째 매개변수가 true로 설정되어 있는 것입니다.(EWOULDBLOCK
+     세번째 매개변수가 &true;로 설정되어 있는 것입니다.(EWOULDBLOCK
      errno condition)
     </simpara>
 			<simpara>
-				<function>flock</function>은 성공하면 true를 반환하고 실패하면 false를 반환합니다.
+				<function>flock</function>은 성공하면 &true;를 반환하고 실패하면 &false;를 반환합니다.
 				(예를 들면 파일 접근을 막는것이 요청되지 못할 때).
     </simpara>
 			<warning>
@@ -1004,7 +1004,7 @@ $fcontents = join ('', file ('http://www.php.net'));
       파일 시스템에서 열려집니다. 그리고, 파일에 대한 파일 포인터가 열려서 반환됩니다.
     </simpara>
 			<simpara>
-     열수가 없다면 false를 반환합니다.
+     열수가 없다면 &false;를 반환합니다.
     </simpara>
 			<para>
 				<parameter>mode</parameter>다음의 어느것이라도 될 수가 있습니다:
@@ -1105,7 +1105,7 @@ $fp = fopen ("c:\\data\\info.txt", "r");
      주어진 파일포인터를 끝까지 읽고 일반 출력으로 결과를 씁니다.
     </simpara>
 			<simpara>
-     에러가 발생하면<function>fpassthru</function>는 false를 반환합니다.
+     에러가 발생하면<function>fpassthru</function>는 &false;를 반환합니다.
     </simpara>
 			<simpara>
      파일포인터는 유효한 것이어야 합니다. 그리고 <function>fopen</function>,
@@ -1397,7 +1397,7 @@ luigi   florist it
 			<para>
      fp에 의해 참조되는 파일의 위치를 반환합니다. 다시 말해서 상쇄된 결과가 파일 스트림안으로 들어갑니다    </para>
 			<para>
-    에러가 발생하면 false를 반환합니다.
+    에러가 발생하면 &false;를 반환합니다.
     </para>
 			<para>
      파일 포인터는 반드시 유효한 것이어야 하고 <function>fopen</function>이나
@@ -1430,7 +1430,7 @@ luigi   florist it
 			</funcsynopsis>
 			<para>
      파일포인터와 fp를 가져옵니다. 그리고 파일을 길이, 크기로 잘라냅니다. 
-     이 함수는 성공하면 true, 실패하면 false를 반환합니다
+     이 함수는 성공하면 &true;, 실패하면 &false;를 반환합니다
     </para>
 		</refsect1>
 	</refentry>
@@ -1539,7 +1539,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     filename이 존재하고 디렉토리이면 true를 반환합니다.
+     filename이 존재하고 디렉토리이면 &true;를 반환합니다.
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀더 자세한 내용을 알고 싶으면
@@ -1566,7 +1566,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     filename이 존재하고, 실행가능한 것이면 true를 반환합니다
+     filename이 존재하고, 실행가능한 것이면 &true;를 반환합니다
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶으면 
@@ -1595,7 +1595,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     filename이 존재하고, 정상적인 보통의 파일이라면(regular) true를 반환
+     filename이 존재하고, 정상적인 보통의 파일이라면(regular) &true;를 반환
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶으면
@@ -1625,7 +1625,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     filename이 존재하고 심볼릭링크된 파일이라면 true
+     filename이 존재하고 심볼릭링크된 파일이라면 &true;
     </para>
 			<para>
      이 함수의 실행결과는 캐시가 됩니다. 좀 더 자세한 내용을 알고 싶으면
@@ -1659,7 +1659,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     filename이 존재하고 읽기 가능한 것이면 true를 반환합니다
+     filename이 존재하고 읽기 가능한 것이면 &true;를 반환합니다
     </para>
 			<para>
      웹 서버가 자주 'nobody' 등으로 실행될 때 PHP는 파일에 접근할 때 
@@ -1690,7 +1690,7 @@ if($fp){
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-     filename이 존재하고 쓰기가능한 것이면 true를 반환합니다. 
+     filename이 존재하고 쓰기가능한 것이면 &true;를 반환합니다. 
      filename의 인수는 디렉토리가 쓰기가능한 것일때 
      디렉토리이름인지 체크할 수 있도록 합니다.
     </para>
@@ -1727,7 +1727,7 @@ if($fp){
     </para>
 			<para>
      HTTP POST를 통해 업로드되어 파일의 이름이 <varname>filename</varname>에 의해 붙여진 것이면
-    true를 반환합니다. 악의적인 사용자가 동작하지 말아야할 파일에서 동작하는 스크립트를 사용하려는 
+    &true;를 반환합니다. 악의적인 사용자가 동작하지 말아야할 파일에서 동작하는 스크립트를 사용하려는 
     트릭을 쓰지 못하도록 하는데 유용합니다.--예를 들자면,
      <filename>/etc/passwd</filename>같은 것입니다.
     </para>
@@ -1791,7 +1791,7 @@ if($fp){
 				<function>linkinfo</function>는 마지막 시스템 호출에 의해서 반환이 되는 유닉스 C stat 구조체입니다.
       이 함수는 링크(<parameter>path</parameter>에 의해 지정된)가 실제로 있는지 검증하는데 사용이 되곤 합니다.
       (stat.h에 매크로 정의된 S_ISLINK 와 같은 방법을 사용합니다.) This
-      0을 반환하거나 실패시 FALSE를 반환합니다.
+      0을 반환하거나 실패시 &false;를 반환합니다.
     </para>
 			<para>
      참조<function>symlink</function>, <function>link</function>,
@@ -1832,7 +1832,7 @@ if($fp){
 				</informalexample>
 			</para>
 			<para>
-     성공하면 true, 실패하면 false를 반환합니다.
+     성공하면 &true;, 실패하면 &false;를 반환합니다.
     </para>
 			<para>
      참조<function>rmdir</function>.
@@ -1865,12 +1865,12 @@ if($fp){
     </para>
 			<para>
 				<parameter>filename</parameter>이 유효한 것이 아니면 아무 일도 발생하지 않습니다.
-     그리고 <function>move_uploaded_file</function>는 <literal>false</literal>를 반환합니다. 
+     그리고 <function>move_uploaded_file</function>는 &false;를 반환합니다. 
     </para>
 			<para>
 				<parameter>filename</parameter>은 유효하나 어떤 이유가 있어서 이동할 수가 없을 때
      아무런 일도 발생하지 않습니다. 그리고 <function>move_uploaded_file</function>은
-     <literal>false</literal>를 반환합니다. 덧붙여서 경고문이 보여집니다.
+     &false;를 반환합니다. 덧붙여서 경고문이 보여집니다.
     </para>
 			<para>
      이런 체크방법은 파일의내용을 이용자, 같은 시스템내의 다른 사람에게 파일을 
@@ -1936,7 +1936,7 @@ if($fp){
      <function>fputs</function>과 함께 사용할 수 있습니다.
     </para>
 			<para>
-     에러가 발생하면 false를 반환합니다.
+     에러가 발생하면 &false;를 반환합니다.
     </para>
 			<para>
 				<informalexample>
@@ -1975,7 +1975,7 @@ $fp = popen ("/bin/ls", "r");
     </para>
 			<para>
      파일에서 읽은 바이트수를 반환합니다. 에러가 발생하면
-     false를 반환하고 함수가 @readfile로 반환되지 않는 한 에러 메시지가 프린트 됩니다
+     &false;를 반환하고 함수가 @readfile로 반환되지 않는 한 에러 메시지가 프린트 됩니다
     </para>
 			<para>
 				<parameter>filename</parameter>이 "http://"로 시작이 되면 (자동반응이 아닌 경우에), HTTP 1.0 은 지정된 서버로 연결이 됩니다. 응답된 텍스트는 표준 출력으로 쓰여집니다.
@@ -2048,7 +2048,7 @@ $fp = popen ("/bin/ls", "r");
 				<parameter>oldname</parameter>을 <parameter>newname</parameter>으로 다시 이름 붙이고자 할 때.
     </para>
 			<para> 
-     성공하면 true, 실패하면 false를 반환합니다.
+     성공하면 &true;, 실패하면 &false;를 반환합니다.
     </para>
 		</refsect1>
 	</refentry>
@@ -2395,7 +2395,7 @@ $tmpfname = tempnam ("/tmp", "FOO");
      파일이 존재하지 않으면 파일을 만듭니다.
     </para>
 			<para>
-     성공하면 true 를 반환하고 그렇지 않으면 false를 반환합니다.
+     성공하면 &true; 를 반환하고 그렇지 않으면 &false;를 반환합니다.
      <example>
 					<title>
 						<function>touch</function>예문</title>
@@ -2457,7 +2457,7 @@ if (touch ($FileName)) {
 				<parameter>filename</parameter>을 삭제합니다. Unix C의 unlink() 함수와 비슷합니다.
     </para>
 			<para>
-     0 이나 FALSE를 반환합니다.
+     0 이나 &false;를 반환합니다.
     </para>
 			<para>
      참조 디렉토리를 제거하는데 <function>rmdir</function>

@@ -188,10 +188,10 @@ while ((string)$key != "") {
 		</simpara>
 	</sect1>
 	<sect1 id="migration-truefalse">
-		<title>함수 리턴값 true/false/title</title>
+		<title>함수 리턴값 &true;/false/title</title>
 		<simpara>
 		PHP/FI 2.0의 각각 반대되는 0과 -1처럼 대부분의 내장 함수들은 
-		true은 성공적일때 false는 실패했을때 리턴값을 주도록 다시 씌여졌다.
+		&true;은 성공적일때 &false;는 실패했을때 리턴값을 주도록 다시 씌여졌다.
 		새로운 행동자는 <literal>$fp = fopen("/your/file") or fail("darn!");</literal>같은 더 많은 논리적 코드를 허락했다.
 		함수가 리턴값을 제대로 넘기지 못할때 PHP/FI 2.0은 더이상 깨끗한 규칙이 아니다.
 		대부분의 그러한 스크립트는 2.0에서 3.0의 변환이후 아마 수작업으로 점검해야 한다.

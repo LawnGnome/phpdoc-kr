@@ -82,7 +82,7 @@
 	<refentry id="function.headers-sent">
 		<refnamediv>
 			<refname>headers_sent</refname>
-			<refpurpose>헤더가 전송되었으면 참(true)을 돌려준다.</refpurpose>
+			<refpurpose>헤더가 전송되었으면 참(&true;)을 돌려준다.</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>함수 설명</title>
@@ -96,7 +96,7 @@
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-                 이 함수는 HTTP 헤더가 이미 전송되어진 경우 참(true)을, 반대의 경우 거짓(false)을 돌려준다.    
+                 이 함수는 HTTP 헤더가 이미 전송되어진 경우 참(&true;)을, 반대의 경우 거짓(&false;)을 돌려준다.    
                </para>
 			<para>
 				<function>header</function>도 참고하라.

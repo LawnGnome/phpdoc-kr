@@ -102,7 +102,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     성공하면 true를 에러가 발생하면 false를 리턴한다.
+     성공하면 &true;를 에러가 발생하면 &false;를 리턴한다.
     </para>  
     <para>
      <function>imap_append</function>함수는 특정 
@@ -236,7 +236,7 @@ imap_close($stream);
      </funcprototype>
     </funcsynopsis>
     <para>
-     현재 메일 박스에 대한 정보를 리턴한다. 실패하면 FALSE를 리턴한다.
+     현재 메일 박스에 대한 정보를 리턴한다. 실패하면 &false;를 리턴한다.
     </para>  
     <para> 
      <function>imap_check</function> 함수는 서버에서 현재 메일박스의
@@ -320,7 +320,7 @@ imap_close($stream);
      함수로 인코딩되어야 한다.
     </para> 
     <para>
-     성공하면 true를 실패하면 false를 리턴한다.
+     성공하면 &true;를 실패하면 &false;를 리턴한다.
     </para>
     <para>
      See also <function>imap_renamemailbox</function>,
@@ -401,7 +401,7 @@ imap_close($mbox);
      </funcprototype>
     </funcsynopsis>
     <para>
-     true를 리턴한다.
+     &true;를 리턴한다.
     </para> 
     <para> 
      <function>imap_delete</function>함수는
@@ -455,7 +455,7 @@ imap_close ($mbox);
       <function>imap_open</function>함수를 보시오).
     </para>  
     <para>
-     성공하면 true를 실패하면 false를 리턴한다.
+     성공하면 &true;를 실패하면 &false;를 리턴한다.
     </para>
     <para>
      See also <function>imap_createmailbox</function>, 
@@ -486,7 +486,7 @@ imap_close ($mbox);
      메시지를 완전히 삭제한다.
     </para>
     <para>
-     Returns true.
+     Returns &true;.
     </para>
    </refsect1>
   </refentry>
@@ -591,7 +591,7 @@ imap_close ($mbox);
 	</row>
 	<row>
 	 <entry>ifsubtype</entry>
-	 <entry>True if there is a subtype string</entry>
+	 <entry>&true; if there is a subtype string</entry>
 	</row>
 	<row>
 	 <entry>subtype</entry>
@@ -599,7 +599,7 @@ imap_close ($mbox);
 	</row>
 	<row>
 	 <entry>ifdescription</entry>
-	 <entry>True if there is a description string</entry>
+	 <entry>&true; if there is a description string</entry>
 	</row>
 	<row>
 	 <entry>description</entry>
@@ -607,7 +607,7 @@ imap_close ($mbox);
 	</row>
 	<row>
 	 <entry>ifid</entry>
-	 <entry>True if there is an identification string</entry>
+	 <entry>&true; if there is an identification string</entry>
 	</row>
 	<row>
 	 <entry>id</entry>
@@ -623,7 +623,7 @@ imap_close ($mbox);
 	</row>
 	<row>
 	 <entry>ifdisposition</entry>
-	 <entry>True if there is a disposition string</entry>
+	 <entry>&true; if there is a disposition string</entry>
 	</row>
 	<row>
 	 <entry>disposition</entry>
@@ -631,7 +631,7 @@ imap_close ($mbox);
 	</row>
 	<row>
 	 <entry>ifdparameters</entry>
-	 <entry>True if the dparameters array exists</entry>
+	 <entry>&true; if the dparameters array exists</entry>
 	</row>
 	<row>
 	 <entry>dparameters</entry>
@@ -639,7 +639,7 @@ imap_close ($mbox);
 	</row>
 	<row>
 	 <entry>ifparameters</entry>
-	 <entry>True if the parameters array exists</entry>
+	 <entry>&true; if the parameters array exists</entry>
 	</row>
 	<row>
 	 <entry>parameters</entry>
@@ -1116,7 +1116,7 @@ imap_close($mbox);
      </funcprototype>
     </funcsynopsis>
     <para>
-     성공하면 true를 에러가 발생하면 false를 돌려준다.
+     성공하면 &true;를 에러가 발생하면 &false;를 돌려준다.
     </para>  
     <para> 
      <parameter>msglist</parameter>인수에 의해 지정된 메일 메시지를 
@@ -1178,7 +1178,7 @@ imap_close($mbox);
      </itemizedlist>
     </para>
     <para>
-     성공하면 true를 에러가 발생하면 false를 리턴한다.
+     성공하면 &true;를 에러가 발생하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1242,7 +1242,7 @@ imap_close($mbox);
      </funcprototype>
     </funcsynopsis>
     <para>
-     성공하면 IMAP 스트림(stream)을 돌려주고 에러가 발생하면 false를 넘겨준다.
+     성공하면 IMAP 스트림(stream)을 돌려주고 에러가 발생하면 &false;를 넘겨준다.
      이 함수는 POP3나 NNTP서버의 스트림(stream)을 열 때에도 사용된다.
      하지만 어떤 함수나 특성은 IMAP 서버에 적용되지 않는다. 
     </para>
@@ -1356,8 +1356,8 @@ imap_close($mbox);
      </funcprototype>
     </funcsynopsis>
     <para>  
-     Returns true if the stream is still alive, false otherwise.
-     스트림(stream)이 아직 살아있다면 true를 리턴하고, 그외에는 false를 리턴한다
+     Returns &true; if the stream is still alive, &false; otherwise.
+     스트림(stream)이 아직 살아있다면 &true;를 리턴하고, 그외에는 &false;를 리턴한다
     </para>
     <para>
      <function>imap_ping</function>함수는 스트림(stream)이 아직 사용가능한지
@@ -1391,7 +1391,7 @@ imap_close($mbox);
      형식은 <function>imap_open</function>함수를 보면 알수 있다)
     </para>
     <para>
-     성공하면 true를 리턴하고 에러가 발생하면 false를 리턴한다.
+     성공하면 &true;를 리턴하고 에러가 발생하면 &false;를 리턴한다.
     </para>
     <para>
      <parameter>mbox</parameter>형식에 대해서는 또한
@@ -1453,7 +1453,7 @@ imap_close($mbox);
      </itemizedlist>
     </para>  
     <para>
-     성공하면 true를 리턴하고 에러가 발생하면 false를 리턴한다.
+     성공하면 &true;를 리턴하고 에러가 발생하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1476,7 +1476,7 @@ imap_close($mbox);
      새로운 메일박스를 Subscribe한다.
     </para>
     <para>
-     성공하면 true를 리턴하고 에러가 발생하면 false를 리턴한다.
+     성공하면 &true;를 리턴하고 에러가 발생하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1503,7 +1503,7 @@ imap_close($mbox);
      <function>imap_mail_move</function>함수에 의해서 지움 표시된 메시지이다.
     </para>
     <para>
-     성공하면 true를 리턴하고 에러가 발생하면 false를 리턴한다.
+     성공하면 &true;를 리턴하고 에러가 발생하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1526,7 +1526,7 @@ imap_close($mbox);
      특정 메일박스에서 Unsubscribe한다.
     </para>
     <para>
-     성공하면 true를 리턴하고 에러가 발생하면 false를 리턴한다.
+     성공하면 &true;를 리턴하고 에러가 발생하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1655,7 +1655,7 @@ imap_close($mbox);
      </funcprototype>
     </funcsynopsis>
     <para>
-     현재 메일박스에 관한 정보를 돌려준다. 실패하면 FALSE를 리턴한다.
+     현재 메일박스에 관한 정보를 돌려준다. 실패하면 &false;를 리턴한다.
     </para> 
     <para> 
      <function>imap_mailboxmsginfo</function>함수는 서버에서 현재 메일박스의
@@ -2417,7 +2417,7 @@ imap_close($mbox);
     </para>
     <para>
      디코딩된 8비트 데이터를 돌려주거나, 
-     입력 문자열이 유효한 modified UTF-7이 아니면 false를 돌려준다.
+     입력 문자열이 유효한 modified UTF-7이 아니면 &false;를 돌려준다.
      이 함수는 출력가능한 아스키(ASCII)코드 범위를 벗어난 국제적인 문자를
      갖는 메일박스 이름을 디코딩할 때 필요하다.
      modified UTF-7 인코딩은 <ulink 

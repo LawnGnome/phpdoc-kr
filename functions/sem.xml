@@ -110,7 +110,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     반환값: 성공하면 true, 실패하면 에러를 출력한다.
+     반환값: 성공하면 &true;, 실패하면 에러를 출력한다.
     </para>
     <para>
      <function>sem_acquire</function>함수는 (만일 필요하다면)세마포어를 획득할 수 있을 때까지 막는다.
@@ -140,7 +140,7 @@
      </funcprototype>
     </funcsynopsis>
     <para>
-     반환값: 성공하면 true, 실패하면 에러 출력.
+     반환값: 성공하면 &true;, 실패하면 에러 출력.
     </para>
     <para>
      <function>sem_release</function>는 호출 과정에 의해 일반적으로 획득된 세마포어를 릴리즈한다.

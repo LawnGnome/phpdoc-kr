@@ -166,45 +166,45 @@ $b .= "There!"; // $b는 "Hello There!"가 된다. $b = $b . "There!";와 같다
 					<row>
 						<entry>$a == $b</entry>
 						<entry>Equal</entry>
-						<entry>$a와 $b가 같으면 true.</entry>
+						<entry>$a와 $b가 같으면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a === $b</entry>
 						<entry>Identical</entry>
-						<entry>$a와 $b가 같으면 true. $a와 $b의 type까지 동일해야 한다. (PHP4 only)</entry>
+						<entry>$a와 $b가 같으면 &true;. $a와 $b의 type까지 동일해야 한다. (PHP4 only)</entry>
 					</row>
 					<row>
 						<entry>$a != $b</entry>
 						<entry>Not equal</entry>
-						<entry>$a와 $b가 다르면 true.</entry>
+						<entry>$a와 $b가 다르면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a !== $b</entry>
 						<entry>Not identical</entry>
-						<entry>$a와 $b가 다르면 같으면 true. $a와 $b의 type만 달라도 true. (PHP4 only)
-	True if $a is not equal to $b, or they are not of the same
+						<entry>$a와 $b가 다르면 같으면 &true;. $a와 $b의 type만 달라도 &true;. (PHP4 only)
+	&true; if $a is not equal to $b, or they are not of the same
 	type. (PHP 4 only)
        </entry>
 					</row>
 					<row>
 						<entry>$a &lt; $b</entry>
 						<entry>Less than</entry>
-						<entry>$a가 $b보다 작으면 true.</entry>
+						<entry>$a가 $b보다 작으면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a &gt; $b</entry>
 						<entry>Greater than</entry>
-						<entry>$a가 $b보다 크면 true.</entry>
+						<entry>$a가 $b보다 크면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a &lt;= $b</entry>
 						<entry>Less than or equal to </entry>
-						<entry>$a가 $b보다 작거나 같으면 true.</entry>
+						<entry>$a가 $b보다 작거나 같으면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a &gt;= $b</entry>
 						<entry>Greater than or equal to </entry>
-						<entry>$a가 $b보다 크거나 같으면 true.</entry>
+						<entry>$a가 $b보다 크거나 같으면 &true;.</entry>
 					</row>
 				</tbody>
 			</tgroup>
@@ -361,32 +361,32 @@ echo "Should be 4: " . $a . "&lt;br&gt;\n";
 					<row>
 						<entry>$a and $b</entry>
 						<entry>And</entry>
-						<entry>$a와 $b가 모두 true 이면 true.</entry>
+						<entry>$a와 $b가 모두 &true; 이면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a or $b</entry>
 						<entry>Or</entry>
-						<entry>$a와 $b중 하나라도 true이면 true.</entry>
+						<entry>$a와 $b중 하나라도 &true;이면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a xor $b</entry>
 						<entry>Xor</entry>
-						<entry>$a와 $b중 하나만 true이어야 true</entry>
+						<entry>$a와 $b중 하나만 &true;이어야 &true;</entry>
 					</row>
 					<row>
 						<entry>! $a</entry>
 						<entry>Not</entry>
-						<entry>$a가 true가 아니면 true</entry>
+						<entry>$a가 &true;가 아니면 &true;</entry>
 					</row>
 					<row>
 						<entry>$a &amp;&amp; $b</entry>
 						<entry>And</entry>
-						<entry>$a와 $b가 모두 true 이면 true.</entry>
+						<entry>$a와 $b가 모두 &true; 이면 &true;.</entry>
 					</row>
 					<row>
 						<entry>$a || $b</entry>
 						<entry>Or</entry>
-						<entry>$a와 $b중 하나라도 true이면 true.</entry>
+						<entry>$a와 $b중 하나라도 &true;이면 &true;.</entry>
 					</row>
 				</tbody>
 			</tgroup>

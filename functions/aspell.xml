@@ -63,7 +63,7 @@ $aspell_link=aspell_new ("english");
 				</funcprototype>
 			</funcsynopsis>
 			<simpara>
-				<function>aspell_check</function> 함수는 단어를 검사하고 단어가 올바를 경우 true, 틀릴 경우 false를
+				<function>aspell_check</function> 함수는 단어를 검사하고 단어가 올바를 경우 &true;, 틀릴 경우 &false;를
 				 반환합니다.
     </simpara>
 			<para>
@@ -104,7 +104,7 @@ if (aspell_check ($aspell_link, "testt")) {
 			</funcsynopsis>
 			<simpara>
 				<function>aspell_check_raw</function> 함수는 단어가 올바른지만 검사합니다.
-				단어가 올바를 경우  true, 틀릴 경우 false를 반환합니다.</simpara>
+				단어가 올바를 경우  &true;, 틀릴 경우 &false;를 반환합니다.</simpara>
 			<para>
 				<example>
 					<title>

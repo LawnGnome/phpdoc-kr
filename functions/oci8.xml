@@ -906,7 +906,7 @@ Upload file: &lt;input type="file" name="lob_upload">&lt;br>
      <parameter>result</parameter>배열에 페치한다.
      <function>OCIFetchInto</function>함수는 <parameter>result</parameter>
      변수의 이전값을 덮어 쓸것이다.
-     기본적으로 <parameter>result</parameter>변수는 NULL이 아닌 모든 컬럼의
+     기본적으로 <parameter>result</parameter>변수는 &null;이 아닌 모든 컬럼의
      일차원 배열을 포함할것이다.
     </para>
 	<para>
@@ -1003,7 +1003,7 @@ OCILogoff($conn);
   <refentry id="function.ocicolumnisnull">
    <refnamediv>
     <refname>OCIColumnIsNULL</refname>
-    <refpurpose>결과 컬럼이 널(NULL)인지 테스트한다</refpurpose>
+    <refpurpose>결과 컬럼이 널(&null;)인지 테스트한다</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -1017,8 +1017,8 @@ OCILogoff($conn);
     <para>
      <function>OCIColumnIsNULL</function>함수는
      구문 <parameter>stmt</parameter>의 결과값에서
-     리턴된 컬럼 <parameter>column</parameter> 값이 널(NULL)이면
-     true를 리턴한다.  <parameter>col</parameter> 인수를 위해
+     리턴된 컬럼 <parameter>column</parameter> 값이 널(&null;)이면
+     &true;를 리턴한다.  <parameter>col</parameter> 인수를 위해
      컬럼 숫자(column-number(1-Based))나 컬럼 이름(column-name)을
      사용할 수 있다. 
     </para>
@@ -1389,8 +1389,8 @@ OCILogoff($conn);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCIFreeStatement</function> 함수는 자원 해제에 성공하면 true를
-     리턴하고, 실패하면 false를 리턴한다.
+     <function>OCIFreeStatement</function> 함수는 자원 해제에 성공하면 &true;를
+     리턴하고, 실패하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1411,8 +1411,8 @@ OCILogoff($conn);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCIFreeCursor</function> 함수는 자원 해제에 성공하면 true를,
-     실패하면 false를 리턴한다.
+     <function>OCIFreeCursor</function> 함수는 자원 해제에 성공하면 &true;를,
+     실패하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1431,8 +1431,8 @@ OCILogoff($conn);
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>OCIFreeDesc</function>함수는 성공하면 true를,
-     실패하면 false를 리턴한다.
+     <function>OCIFreeDesc</function>함수는 성공하면 &true;를,
+     실패하면 &false;를 리턴한다.
     </para>
    </refsect1>
   </refentry>
@@ -1455,7 +1455,7 @@ OCILogoff($conn);
      <function>OCIParse</function> 함수는 <parameter>conn</parameter>인수를
      사용하는  <parameter>query</parameter>를 해석한다.
      질의(query)가 유효하면 구문(statement)를 리턴한다.
-     그렇지 않으면 false를 리턴한다.
+     그렇지 않으면 &false;를 리턴한다.
      <parameter>query</parameter>인수는 어떤 유효한 SQL 구문(statement)
      도 될 수 있다.
     </simpara>
@@ -1465,7 +1465,7 @@ OCILogoff($conn);
    <refnamediv>
     <refname>OCIError</refname>
     <refpurpose>stmt|conn|global의 제일 마지막 에러를 리턴한다.
-    아무 에러도 없었다면 false를 리턴한다.
+    아무 에러도 없었다면 &false;를 리턴한다.
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -1482,7 +1482,7 @@ OCILogoff($conn);
      <function>OCIError</function>함수는 마지막 에러를 리턴한다.
      선택적 인수<parameter>stmt|conn|global</parameter>가 제공되지않으면,
      제일 마지막에 발행한 에러가 리턴된다.  
-     아무 에러도 없었다면 <function>OCIError</function>함수는 false를 리턴한다.
+     아무 에러도 없었다면 <function>OCIError</function>함수는 &false;를 리턴한다.
      <function>OCIError</function>함수는 연관배열(associative array)로서
      에러를 리턴한다. 이 배열은 오라클 에러 코드인 
      <parameter>code</parameter>인수와 오라클 에러문자열인

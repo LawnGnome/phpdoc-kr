@@ -53,8 +53,8 @@ print $double_value_of_var; // prints 122.34343
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns false if <parameter>var</parameter> is set and has a
-     non-empty or non-zero value; true otherwise.
+     Returns &false; if <parameter>var</parameter> is set and has a
+     non-empty or non-zero value; &true; otherwise.
      <informalexample>
       <programlisting role="php">
 $var = 0;
@@ -73,7 +73,7 @@ if (!isset($var)) { // evaluates false
      Note that this is meaningless when used on anything which isn't a
      variable; i.e. <command>empty (addslashes ($name))</command> has
      no meaning since it would be checking whether something which
-     isn't a variable is a variable with a false value.
+     isn't a variable is a variable with a &false; value.
     </simpara>
     <simpara>
      See also <function>isset</function> and
@@ -190,7 +190,7 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true if <parameter>var</parameter> is an array, false
+     Returns &true; if <parameter>var</parameter> is an array, &false;
      otherwise.
     </para>
     <para>
@@ -226,7 +226,7 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
      </funcsynopsis>
      <para>
-      Returns true if the <parameter>var</parameter> parameter is 
+      Returns &true; if the <parameter>var</parameter> parameter is 
       a boolean.
      </para>
      <para>
@@ -257,8 +257,8 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true if <parameter>var</parameter> is a double,
-     false otherwise.
+     Returns &true; if <parameter>var</parameter> is a double,
+     &false; otherwise.
     </para>
     <para>
      See also <function>is_array</function>,
@@ -379,8 +379,8 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true if <parameter>var</parameter> is an integer (long),
-     false otherwise.
+     Returns &true; if <parameter>var</parameter> is an integer (long),
+     &false; otherwise.
     </para>
     <para>
      See also <function>is_bool</function>,
@@ -412,8 +412,8 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true if <parameter>var</parameter> is a number or a
-     numeric string, false otherwise.
+     Returns &true; if <parameter>var</parameter> is a number or a
+     numeric string, &false; otherwise.
     </para>
     <para>
      See also <function>is_bool</function>,
@@ -443,7 +443,7 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true if <parameter>var</parameter> is an object, false
+     Returns &true; if <parameter>var</parameter> is an object, &false;
      otherwise.
     </para>
     <para>
@@ -510,9 +510,9 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <para>
-     <function>is_resource</function> returns true if the variable
+     <function>is_resource</function> returns &true; if the variable
      given by the <parameter>var</parameter> parameter is a resource, 
-     otherwise it returns false.
+     otherwise it returns &false;.
     </para>
     <para>
      Resources are things like file or database result handles that
@@ -537,8 +537,8 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <para>
-     Returns true if <parameter>var</parameter> is a string,
-     false otherwise.
+     Returns &true; if <parameter>var</parameter> is a string,
+     &false; otherwise.
     </para>
     <para>
      See also <function>is_bool</function>,
@@ -568,8 +568,8 @@ if (!isset($var)) { // evaluates false
      </funcprototype>
     </funcsynopsis>
     <simpara>
-     Returns true if <parameter>var</parameter> exists;
-     false otherwise.
+     Returns &true; if <parameter>var</parameter> exists;
+     &false; otherwise.
     </simpara>
     <para>
      If a variable has been unset with <function>unset</function>,
@@ -631,7 +631,7 @@ print_r ($a);
       This function will continue forever if given an array or object 
       that contains a direct or indirect reference to itself or that 
       contains an array or object on a deeper level that does so.
-      This is especially true for <literal>print_r($GLOBALS)</literal>, 
+      This is especially &true; for <literal>print_r($GLOBALS)</literal>, 
       as <literal>$GLOBALS</literal> is itself a global variable and
       contains a reference to itself as such.
      </para>
@@ -725,7 +725,7 @@ if (!odbc_execute ($stmt, &amp;$sqldata)) {
      </itemizedlist>
     </para>
     <para>
-     Returns true if successful; otherwise returns false.
+     Returns &true; if successful; otherwise returns &false;.
     </para>
     <para>
      See also <function>gettype</function>.
@@ -831,7 +831,7 @@ if (!odbc_execute ($stmt, &amp;$sqldata) || !odbc_fetch_into ($stmt, &amp;$tmp))
     </funcsynopsis>
     <para>
      <function>unset</function> destroys the specified variables and
-     returns true.
+     returns &true;.
     </para>
     <para>
      <example>

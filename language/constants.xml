@@ -46,18 +46,18 @@
 				</listitem>
 			</varlistentry>
 			<varlistentry>
-				<term>TRUE</term>
+				<term>&true;</term>
 				<listitem>
 					<simpara>
-       참(TRUE) 값 
+       참(&true;) 값 
       </simpara>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
-				<term>FALSE</term>
+				<term>&false;</term>
 				<listitem>
 					<simpara>
-       거짓(FALSE) 값 
+       거짓(&false;) 값 
       </simpara>
 				</listitem>
 			</varlistentry>

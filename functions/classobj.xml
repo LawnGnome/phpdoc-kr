@@ -232,7 +232,7 @@ call_user_method (&quot;print_info&quot;, $cntry, &quot;\t&quot;);
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-이 함수는 인수로 주어진 <parameter>class_name</parameter> 클래스가 정의 되어 있으면 참(true)을 반환하고, 그렇지 않으면 거짓(false)을 반환합니다.
+이 함수는 인수로 주어진 <parameter>class_name</parameter> 클래스가 정의 되어 있으면 참(&true;)을 반환하고, 그렇지 않으면 거짓(&false;)을 반환합니다.
     </para>
 		</refsect1>
 	</refentry>
@@ -448,7 +448,7 @@ print_r(get_object_vars($p1));
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-이 함수는 객체 <parameter>obj</parameter>가 상위클래스(<parameter>superclass</parameter>)의 하위클래스에 속하면 참(true)을 , 그렇지 않으면 거짓(false)를 반환합니다.
+이 함수는 객체 <parameter>obj</parameter>가 상위클래스(<parameter>superclass</parameter>)의 하위클래스에 속하면 참(&true;)을 , 그렇지 않으면 거짓(&false;)를 반환합니다.
     </para>
 			<simpara>
 <function>get_class</function>,<function>get_parent_class</function>를 참고하세요.
@@ -473,7 +473,7 @@ print_r(get_object_vars($p1));
 				</funcprototype>
 			</funcsynopsis>
 			<para>
-이 함수는 객체 <parameter>object</parameter>에 메소드 <parameter>method_name</parameter>이 존재하면 참(true)을 반환하고, 그렇지 않으면 거짓(false)을 반환합니다.
+이 함수는 객체 <parameter>object</parameter>에 메소드 <parameter>method_name</parameter>이 존재하면 참(&true;)을 반환하고, 그렇지 않으면 거짓(&false;)을 반환합니다.
     </para>
 		</refsect1>
 	</refentry>

@@ -1502,11 +1502,11 @@ $result = count ($a);
 	지시되는 현재의 원소를 반환한다.
 	이 함수는 포인터를 어떠한 방법으로든 이동시키지 않는다.
 	내부 포인터가 원소 목록의 범위를 넘어선 곳을 지시하면,
-	<function>current</function> 는 거짓(false)를 반환한다.
+	<function>current</function> 는 거짓(&false;)를 반환한다.
      <warning>
 					<para> 
 	배열이 가지는 원소가 하나도 없다면 (0 이거나 "", 빈문자열)
-	이 함수는 이 원소들에 대해서도 거짓(false)를 반환한다.
+	이 함수는 이 원소들에 대해서도 거짓(&false;)를 반환한다.
 	이때문에 지금 사용중인 <function>current</function> 배열에서
 	정말 리스트의 끝에 있는지 아니면 빈 배열인지를 구분하기 어렵다.
 	배열이 원소가 없는 빈 배열인지를 알맞게 검토하기 위해서는 
@@ -1551,7 +1551,7 @@ $result = count ($a);
     </para>
 			<para>
 	만약 그 배열에 해당하는 내부 포인터가 배열의 범위를 지나면,
-	<function>each</function>는 거짓(false)를 반환한다.
+	<function>each</function>는 거짓(&false;)를 반환한다.
     </para>
 			<para>
 				<example>
@@ -1807,7 +1807,7 @@ blue, large, sphere, medium
 	<refentry id="function.in-array">
 		<refnamediv>
 			<refname>in_array</refname>
-			<refpurpose>Return true if a value exists in an array</refpurpose>
+			<refpurpose>Return &true; if a value exists in an array</refpurpose>
 		</refnamediv>
 		<refsect1>
 			<title>설명</title>
@@ -1822,8 +1822,8 @@ blue, large, sphere, medium
 			</funcsynopsis>
 			<para>
      Searches <parameter>haystack</parameter> for
-     <parameter>needle</parameter> and returns true if it is found in
-     the array, false otherwise.
+     <parameter>needle</parameter> and returns &true; if it is found in
+     the array, &false; otherwise.
     </para>
 			<para>
 				<example>
@@ -2177,7 +2177,7 @@ Array
 			</funcsynopsis>
 			<para>
      Returns the array element in the next place that's pointed by the
-     internal array pointer, or false if there are no more elements.
+     internal array pointer, or &false; if there are no more elements.
     </para>
 			<para>
 				<function>next</function> behaves like
@@ -2186,11 +2186,11 @@ Array
      element.  That means it returns the next array element and
      advances the internal array pointer by one.  If advancing the
      internal array pointer results in going beyond the end of the
-     element list, <function>next</function> returns false.
+     element list, <function>next</function> returns &false;.
      <warning>
 					<para>
        If the array contains empty elements, or elements that have a key
-       value of 0 then this function will return false for these elements 
+       value of 0 then this function will return &false; for these elements 
        as well.  To properly traverse an array which may contain empty 
        elements or elements with key values of 0 see the
        <function>each</function> function.
@@ -2246,12 +2246,12 @@ Array
 			</funcsynopsis>
 			<para>
      Returns the array element in the previous place that's pointed by
-     the internal array pointer, or false if there are no more
+     the internal array pointer, or &false; if there are no more
      elements.
      <warning>
 					<para>
        If the array contains empty elements then this function will
-       return false for these elements as well.  To properly traverse
+       return &false; for these elements as well.  To properly traverse
        an array which may contain empty elements see the
        <function>each</function> function.
       </para>
