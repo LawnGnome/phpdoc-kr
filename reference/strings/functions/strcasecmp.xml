@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
- 	<refentry id="function.strcasecmp">
+  <refentry id="function.strcasecmp">
    <refnamediv>
     <refname>strcasecmp</refname>
     <refpurpose>
