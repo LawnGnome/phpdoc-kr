@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <!-- EN-Revision: 1.22 -->
 <appendix id="wrappers">
  <title>지원 프로토콜/래퍼 목록</title>
@@ -53,7 +53,7 @@
   </note>
   <para>
    <table>
-    <title>Wrapper Summary</title>
+    <title>래퍼(Wrapper) 요약</title>
     <tgroup cols="2">
      <thead>
       <row>
@@ -63,31 +63,31 @@
      </thead>
      <tbody>
       <row>
-       <entry>Restricted by <literal>allow_url_fopen</literal>.</entry>
+       <entry><literal>allow_url_fopen</literal>에만 한정됨.</entry>
        <entry>Yes</entry>
       </row>
       <row>
-       <entry>Allows Reading</entry>
+       <entry>읽기 허용</entry>
        <entry>Yes</entry>
       </row>
       <row>
-       <entry>Allows Writing</entry>
+       <entry>쓰기 허용</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Allows Appending</entry>
+       <entry>추가 허용</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Allows Simultaneous Reading and Writing</entry>
+       <entry>동시 읽기/쓰기 허용</entry>
        <entry>N/A</entry>
       </row>
       <row>
-       <entry>Supports <function>stat</function></entry>
+       <entry><function>stat</function> 지원</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Supports <function>unlink</function></entry>
+       <entry><function>unlink</function> 지원</entry>
        <entry>No</entry>
       </row>
      </tbody>
@@ -96,7 +96,7 @@
   </para>
   <para>
    <table>
-    <title>Context options (as of <literal>PHP 5.0.0</literal>)</title>
+    <title>컨텍스트 옵션(<literal>PHP 5.0.0</literal>의)</title>
     <tgroup cols="3">
      <thead>
       <row>
@@ -107,27 +107,38 @@
      </thead>
      <tbody>
       <row>
-       <entry><literal>method</literal></entry>
        <entry>
-        <constant>GET</constant>, <constant>POST</constant>, or
-        any other HTTP method supported by the remote server.
+        <literal>method</literal>
        </entry>
-       <entry><constant>GET</constant></entry>
+       <entry>
+        원격 서버에 의해 지원되는
+        <constant>GET</constant>, <constant>POST</constant>과 
+        다른 모든 HTTP 메소드
+       </entry>
+       <entry>
+        <constant>GET</constant>
+       </entry>
       </row>
       <row>
-       <entry><literal>header</literal></entry>
-       <entry>Additional headers to be sent during request.  Values
-        in this option will override other values (such as
-        <literal>User-agent:</literal>, <literal>Host:</literal>,
-        and <literal>Authentication:</literal>.
+       <entry>
+        <literal>header</literal>
        </entry>
-       <entry></entry>
+       <entry>
+        요청시 전송되는 추가적인 헤더. 이 옵션 값은
+        다른 값들(<literal>User-agent:</literal>, <literal>Host:</literal>,
+        <literal>Authentication:</literal>)에 의해 오버라이드될것이다.
+       </entry>
+       <entry>
+       </entry>
       </row>
       <row>
-       <entry><literal>user_agent</literal></entry>
-       <entry>Value to send with User-Agent: header.  This value will
-        only be used if user-agent is <emphasis>not</emphasis> specified
-        in the <literal>header</literal> context option above.  
+       <entry>
+        <literal>user_agent</literal>
+       </entry>
+       <entry>
+        User-Agent: 헤더에 의해 전송되는 값. 이 값은
+        user-agent가 <literal>header</literal> 컨텍스트 옵션에서 설정되지
+        <emphasis>않을때</emphasis>만 사용될것이다.
        </entry>
        <entry>
         &php.ini; setting: <literal>user_agent</literal>
@@ -136,8 +147,8 @@
       <row>
        <entry><literal>content</literal></entry>
        <entry>
-        Additional data to be sent after the headers.  Typically used
-        with POST or PUT requests.
+        헤더 다음에 전송되는 추가데이터. 표준적으로 POST나 PUT 요청에서
+        사용된다.
        </entry>
        <entry></entry>
       </row>
@@ -147,21 +158,23 @@
   </para>
 
   <note>
-   <title>Underlying socket stream context options</title>
+   <title>기저(Underlying) 소켓 스트림 컨텍스트 옵션</title>
    <simpara>
-    Additional context options may be supported by the 
-    <link linkend="transports.inet">underlying transport</link>
-    For <literal>http://</literal> streams, refer to context
-    options for the <literal>tcp://</literal> transport.  For
-    <literal>https://</literal> streams, refer to context options
-    for the <literal>ssl://</literal> transport.
+    <literal>http://</literal> 스트림에 대한 
+    <link linkend="transports.inet">기저(underlying) 전송</link>에
+    의해 지원될수 있는 추가 컨텍스트 옵션이고, 
+    <literal>tcp://</literal> 전송 컨텍스트 옵션으로 참조된다.
+    <literal>https://</literal> 스트림에 대해서는
+    <literal>ssl://</literal> 전송 컨텍스트 옵션으로 참조된다.
    </simpara>
   </note>
  </section>
 
  <section id="wrappers.ftp">
-  <title>FTP and FTPS</title>
-  <simpara>PHP 3, PHP 4.  <filename>ftps://</filename> since <literal>PHP 4.3.0</literal></simpara>
+  <title>FTP 와 FTPS</title>
+  <simpara>
+   PHP 3, PHP 4. <literal>PHP 4.3.0</literal>이후부터 <filename>ftps://</filename> 
+  </simpara>
 
   <itemizedlist>
    <listitem><simpara><filename>ftp://example.com/pub/file.txt</filename></simpara></listitem>
@@ -171,43 +184,40 @@
   </itemizedlist>
 
   <simpara>
-   Allows read access to existing files and creation of new files
-   via FTP.  If the server does not support passive mode ftp, the
-   connection will fail.
+   FTP를 통해 기존 파일에 대한 읽기 권한과 새로운 파일의 생성 권한을
+   허용한다. 서버가 패시브 모드(passive mode) ftp를 지원하지않으면,
+   접속이 실패할것이다.
   </simpara>
   <simpara>
-   You can open files for either reading or writing, but not both
-   simultaneously.  If the remote file already exists on the ftp
-   server and you attempt to open it for writing but have not specified
-   the context option <literal>overwrite</literal>, the connection
-   will fail.  If you need to overwrite existing files over ftp,
-   specify the <literal>overwrite</literal> option in the context 
-   and open the file for writing.  Alternatively, you can
-   use the <link linkend="ref.ftp">FTP extension</link>.
+   읽거나 쓰기 위해 파일을 열수 있다. 그러나 동시에 읽기/쓰기를 할수 없다.
+   원격 파일이 ftp 서버에 이미 존재하고 그 파일에 쓰기를 시도하려하는데
+   컨텍스트 옵션 <literal>overwrite</literal> 를 설정하지 않았다면,
+   접속이 실패할것이다. 차선책으로
+   <link linkend="ref.ftp">FTP extension</link>을 사용할수 있다.
   </simpara>
   <note>
    <title>Appending</title>
    <simpara>
-    As of <literal>PHP 5.0.0</literal> files may be appended via the
-    <literal>ftp://</literal> url wrapper.  In prior versions, attempting
-    to append to a file via <literal>ftp://</literal> will result in failure.
+    <literal>ftp://</literal> url 래퍼를 통해 
+    <literal>PHP 5.0.0</literal> 파일이 추가될것이다. 이전 버전에서,
+    <literal>ftp://</literal>를 통해 파일을 추가하려하면 실패할것이다.
    </simpara>
   </note>
   <simpara>
-   <filename>ftps://</filename> was introduced in <literal>PHP 4.3.0</literal>.  
-   It is the same as <filename>ftp://</filename>,
-   but attempts to negotiate a secure connection with the ftp server.
-   If the server does not support SSL, then the connection falls back
-   to regular unencrypted ftp.
+   <literal>PHP 4.3.0</literal>부터 <filename>ftps://</filename>를 지원한다.
+   <filename>ftp://</filename>와 동일하지만, ftp 서버를 통해 안전한 접속
+   협상(negotiate)을 시도하려 한다. 서버가 SSL을 지원하지 않으면, 접속은
+   원래의 인코딩되지 않는 ftp로 되돌아간다.
   </simpara>
   <note>
-   <simpara>FTPS is supported starting from <literal>PHP 4.3.0</literal>, if you
-    have compiled in support for OpenSSL.
+   <simpara>
+    FTPS는 <literal>PHP 4.3.0</literal>부터 지원되었다.
+    OpenSSL을 지원하도록 컴파일되어야 한다.
    </simpara>
   </note>
   <para>
    <table>
-    <title>Wrapper Summary</title>
+    <title>래퍼(Wrapper) 요약</title>
     <tgroup cols="2">
      <thead>
       <row>
@@ -217,36 +227,35 @@
      </thead>
      <tbody>
       <row>
-       <entry>Restricted by <literal>allow_url_fopen</literal>.</entry>
+       <entry><literal>allow_url_fopen</literal>에만 한정됨.</entry>
        <entry>Yes</entry>
       </row>
       <row>
-       <entry>Allows Reading</entry>
+       <entry>읽기 허용</entry>
        <entry>Yes</entry>
       </row>
       <row>
-       <entry>Allows Writing</entry>
+       <entry>쓰기 허용</entry>
        <entry>
-        Yes (Prior to <literal>PHP 5.0.0</literal>: new files only.
-        <literal>PHP 5.0.0</literal> and later: overwrite allowed
-        with context option)
+        Yes (<literal>PHP 5.0.0</literal> 이전: 새로운 파일만.
+        <literal>PHP 5.0.0</literal> 이후: 컨텍스트 옵션으로 overwrite 허용)
        </entry>
       </row>
       <row>
-       <entry>Allows Appending</entry>
-       <entry>Yes (<literal>PHP 5.0.0</literal> or later)</entry>
+       <entry>추가 허용</entry>
+       <entry>Yes (<literal>PHP 5.0.0</literal> 이후)</entry>
       </row>
       <row>
-       <entry>Allows Simultaneous Reading and Writing</entry>
+       <entry>동시 읽기/쓰기 허용</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Supports <function>stat</function></entry>
+       <entry><function>stat</function> 지원</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Supports <function>unlink</function></entry>
-       <entry>Yes (<literal>PHP 5.0.0</literal> or later)</entry>
+       <entry><function>unlink</function> 지원</entry>
+       <entry>Yes (<literal>PHP 5.0.0</literal> 이후)</entry>
       </row>
      </tbody>
     </tgroup>
@@ -254,7 +263,7 @@
   </para>
   <para>
    <table>
-    <title>Context options (as of <literal>PHP 5.0.0</literal>)</title>
+    <title>컨텍스트 옵션(<literal>PHP 5.0.0</literal>의)</title>
     <tgroup cols="3">
      <thead>
       <row>
@@ -267,7 +276,7 @@
       <row>
        <entry><literal>overwrite</literal></entry>
        <entry>
-        Allow overwriting of already existing files on remote server.
+        원격 서버이 이미 존재하는 파일 덮어쓰기를 허용
        </entry>
        <entry>&false; (Disabled)</entry>
       </row>
@@ -276,24 +285,23 @@
    </table>
   </para>
   <note>
-   <title>Underlying socket stream context options</title>
+   <title>기저(Underlying) 소켓 스트림 컨텍스트 옵션</title>
    <simpara>
-    Additional context options may be supported by the 
-    <link linkend="transports.inet">underlying transport</link>
-    For <literal>ftp://</literal> streams, refer to context
-    options for the <literal>tcp://</literal> transport.  For
-    <literal>ftps://</literal> streams, refer to context options
-    for the <literal>ssl://</literal> transport.
+    <link linkend="transports.inet">기저(underlying) 전송</link>에 
+    <literal>ftp://</literal> 스트림을 지원할수 있는 추가 컨텍스트 옵션이며
+    <literal>tcp://</literal> 전송에 대한 컨텍스트 옵션으로 참조된다.
+    <literal>ftps://</literal> 스트림에 대해서는
+    <literal>ssl://</literal> 전송에 대한 컨텍스트 옵션으로 참조된다.
    </simpara>
   </note>
  </section>
 
  <section id="wrappers.php">
-  <title>PHP input/output streams</title>
+  <title>PHP 입력/출력(input/output) 스트림</title>
   <simpara>
-   <literal>PHP 3.0.13</literal> and up, <filename>php://output</filename> 
-   and <filename>php://input</filename> since <literal>PHP 4.3.0</literal>,
-   <filename>php://filter</filename> since <literal>PHP 5.0.0</literal>
+   <literal>PHP 3.0.13</literal> 이후의, <filename>php://output</filename> 
+   <literal>PHP 4.3.0</literal> 이후의 <filename>php://input</filename>,
+   <literal>PHP 5.0.0</literal> 이후의 <filename>php://filter</filename>
   </simpara>
 
   <itemizedlist>
@@ -307,48 +315,46 @@
 
   <simpara>
    <filename>php://stdin</filename>, <filename>php://stdout</filename> 
-   and <filename>php://stderr</filename> allow access to
-   the corresponding input or output stream of the PHP process.
+   <filename>php://stderr</filename>은 PHP 프로세스의 입력이나 출력 스트림에
+   대한 접속 권한을 허용한다.
   </simpara>
   <simpara>
-   <filename>php://output</filename> allows you to write to the
-   output buffer mechanism in the same way as
-   <function>print</function> and <function>echo</function>.
+   <filename>php://output</filename>은 
+   <function>print</function> 와 <function>echo</function> 같은 출력 버퍼 메카니즘에
+   대한 쓰기 권한을 허용한다.
   </simpara>
   <simpara>
-   <filename>php://input</filename> allows you to read raw POST data.
-   It is a less memory intensive alternative to
-   <varname>$HTTP_RAW_POST_DATA</varname> and does not need any
-   special &php.ini; directives.
+   <filename>php://input</filename>은 raw POST 데이터를 읽을수 있는 권한을 허용한다.
+   <varname>$HTTP_RAW_POST_DATA</varname>에 대한 메모리 집적에 대한 차선책이고,
+   특별한 &php.ini; 디렉티브 설정이 필요치 않다.
   </simpara>
   <simpara>
-   <filename>php://stdin</filename> and
-   <filename>php://input</filename> are read-only, whereas
+   <filename>php://stdin</filename> 과
+   <filename>php://input</filename> 은 읽기 전용, 반면에
    <filename>php://stdout</filename>,
-   <filename>php://stderr</filename> and
-   <filename>php://output</filename> are write-only.
+   <filename>php://stderr</filename> 은
+   <filename>php://output</filename> 쓰기 전용이다.
   </simpara>
 
   <simpara>
-   <filename>php://filter</filename> is a kind of meta-wrapper designed
-   to permit the application of filters to a stream at the time of 
-   opening.  This is useful with all-in-one file functions such as
-   <function>readfile</function>, <function>file</function>, and
-   <function>file_get_contents</function> where there is otherwise
-   no opporotunity to apply a filter to the stream prior the contents
-   being read.
+   <filename>php://filter</filename>는 스트림을 열때
+   필터의 응용을 허용하도록 설계된 메타-래퍼(meta-wrapper)의 한 종류이다.
+   컨텐츠를 읽기전에 스트림에 대한 필터를 적용할 기회가 전혀 없는
+   <function>readfile</function>, <function>file</function>, 
+   <function>file_get_contents</function> 같은 올-인-원(all-in-one) 함수에
+   대한 가용성을 갖는다. 
   </simpara>
   <simpara>
-   The <filename>php://filter</filename> target takes the following 
-   &apos;parameters&apos; as parts of its &apos;path&apos;.
+   <filename>php://filter</filename> 타겟은 
+   그 &apos;path&apos;의 부분으로서 다음 &apos;parameters&apos;를 취한다.
   </simpara>
   <itemizedlist>
    <listitem>
     <para>
-     <literal>/resource=&lt;stream to be filtered&gt;</literal>
-     (<emphasis>required</emphasis>)  This parameter must be located at
-     the end of your <filename>php://filter</filename> specification and
-     should point to the stream which you want filtered.
+     <literal>/resource=&lt;필터링되는 스트림&gt;</literal>
+     (<emphasis>필수</emphasis>) 이 인자는
+     <filename>php://filter</filename> 사양의 끝부분에 위치해야 하고
+     필터링을 원하는 스트림을 가리켜야 한다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -366,9 +372,10 @@ readfile("php://filter/resource=http://www.example.com");
    </listitem>
    <listitem>
     <para>
-     <literal>/read=&lt;filter list to apply to read chain&gt;</literal>
-     (<emphasis>optional</emphasis>)  This parameter takes one or more
-     filternames separated by the pipe character <literal>|</literal>.
+     <literal>/read=&lt;읽기 체인에 적용되는 필터 리스트&gt;</literal>
+     (<emphasis>선택적</emphasis>) 이 인자는 
+     <literal>|</literal> 파이프 문자로 구분되는 하나이상의 필터명이
+     적용된다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -388,9 +395,10 @@ readfile("php://filter/read=string.toupper|string.rot13/resource=http://www.exam
    </listitem>
    <listitem>
     <para>
-     <literal>/write=&lt;filter list to apply to write chain&gt;</literal>
-     (<emphasis>optional</emphasis>)  This parameter takes one or more
-     filternames separated by the pipe character <literal>|</literal>.
+     <literal>/write=&lt;쓰기 체인에 적용되는 필터 리스트&gt;</literal>
+     (<emphasis>선택적</emphasis>) 이 인자는 
+     <literal>|</literal> 파이프 문자로 구분되는 하나이상의 필터명이
+     적용된다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[
@@ -407,19 +415,18 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
    </listitem>
    <listitem>
     <simpara>
-     <literal>/&lt;filter list to apply to both chains&gt;</literal>
-     (<emphasis>optional</emphasis>)  Any filter lists which are not
-     prefixed specifically by <literal>read=</literal> or 
-     <literal>write=</literal> will be applied to both the read and
-     write chains (as appropriate).
+     <literal>/&lt;양쪽 체인에 적용되는 필터 리스트&gt;</literal>
+     (<emphasis>선택적</emphasis>) <literal>read=</literal>나 
+     <literal>write=</literal>에 선행하지 않는 모든 필터리스트가
+     읽기와 쓰기 양쪽 모두의 체인(적절하게)에 적용될것이다.
     </simpara>
    </listitem>
   </itemizedlist>
   <para>
    <table>
     <title>
-     Wrapper Summary (For <literal>php://filter</literal>, 
-     refer to summary of wrapper being filtered.)
+     래퍼(Wrapper) 요약(<literal>php://filter</literal>에 대한, 
+     필터링 되는 래퍼의 요약으로 참조됨.)
     </title>
     <tgroup cols="2">
      <thead>
@@ -430,42 +437,42 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
      </thead>
      <tbody>
       <row>
-       <entry>Restricted by <literal>allow_url_fopen</literal>.</entry>
+       <entry><literal>allow_url_fopen</literal>에 한정됨.</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Allows Reading</entry>
+       <entry>읽기 허용</entry>
        <entry>
-        <literal>php://stdin</literal> and 
+        <literal>php://stdin</literal> 과
         <literal>php://input</literal> only.
        </entry>
       </row>
       <row>
-       <entry>Allows Writing</entry>
+       <entry>쓰기 허용</entry>
        <entry>
         <literal>php://stdout</literal>,
-        <literal>php://stderr</literal>, and 
+        <literal>php://stderr</literal>, 과
         <literal>php://output</literal> only.
        </entry>
       </row>
       <row>
-       <entry>Allows Appending</entry>
+       <entry>추가 허용</entry>
        <entry>
         <literal>php://stdout</literal>,
-        <literal>php://stderr</literal>, and 
-        <literal>php://output</literal> only. (Equivalent to writing)
+        <literal>php://stderr</literal>, 과
+        <literal>php://output</literal> only. (쓰기와 동일)
        </entry>
       </row>
       <row>
-       <entry>Allows Simultaneous Reading and Writing</entry>
-       <entry>No.  These wrappers are unidirectional.</entry>
+       <entry>동시 읽기/쓰기 허용</entry>
+       <entry>No.  이 래퍼는 방향성을 갖지 않는다.</entry>
       </row>
       <row>
-       <entry>Supports <function>stat</function></entry>
+       <entry><function>stat</function> 지원</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Supports <function>unlink</function></entry>
+       <entry><function>unlink</function> 지원</entry>
        <entry>No</entry>
       </row>
      </tbody>
@@ -475,9 +482,9 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
  </section>
 
  <section id="wrappers.compression">
-  <title>Compression Streams</title>
-  <simpara><filename>zlib:</filename> PHP 4.0.4 - PHP 4.2.3 (systems with fopencookie only)</simpara>
-  <simpara><filename>compress.zlib://</filename> and <filename>compress.bzip2://</filename> PHP 4.3.0 and up</simpara>
+  <title>압축 스트림</title>
+  <simpara><filename>zlib:</filename> PHP 4.0.4 - PHP 4.2.3 (fopencookie만 갖는 시스템)</simpara>
+  <simpara><filename>compress.zlib://</filename> 과 <filename>compress.bzip2://</filename> PHP 4.3.0 이상</simpara>
 
   <itemizedlist>
    <listitem><simpara><filename>zlib:</filename></simpara></listitem>
@@ -486,23 +493,21 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
   </itemizedlist>
 
   <simpara> 
-   <filename>zlib:</filename> works like <function>gzopen</function>, except that the
-   stream can be used with <function>fread</function> and the other
-   filesystem functions.  This is deprecated as of <literal>PHP 4.3.0</literal> due
-   to ambiguities with filenames containing ':' characters; use
-   <filename>compress.zlib://</filename> instead.
+   <filename>zlib:</filename>는 <function>gzopen</function>처럼 동작한다, 
+   <function>fread</function>와 다른 파일시스템 함수와 함께 사용할수 없다.
+   ':' 문자를 포함하는 파일명이 갖는 모호함때문에 <literal>PHP 4.3.0</literal>이후부터
+   사용되지 않는다. 대신 <filename>compress.zlib://</filename>를 사용한다.
   </simpara>
 
   <simpara>
-   <filename>compress.zlib://</filename> and
-   <filename>compress.bzip2://</filename> are equivalent to
-   <function>gzopen</function> and <function>bzopen</function>
-   respectively, and operate even on systems that do not support
-   fopencookie.
+   <filename>compress.zlib://</filename> 와
+   <filename>compress.bzip2://</filename> 은 각각
+   <function>gzopen</function> , <function>bzopen</function>와 동일하게 동작하고,
+   fopencookie를 지원하지 않는 시스템에서도 사용할수 있다.
   </simpara>
   <para>
    <table>
-    <title>Wrapper Summary</title>
+    <title>래퍼(Wrapper) 요약</title>
     <tgroup cols="2">
      <thead>
       <row>
@@ -512,37 +517,37 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
      </thead>
      <tbody>
       <row>
-       <entry>Restricted by <literal>allow_url_fopen</literal>.</entry>
+       <entry><literal>allow_url_fopen</literal>에 한정됨.</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Allows Reading</entry>
+       <entry>읽기 허용</entry>
        <entry>Yes</entry>
       </row>
       <row>
-       <entry>Allows Writing</entry>
+       <entry>쓰기 허용</entry>
        <entry>Yes</entry>
       </row>
       <row>
-       <entry>Allows Appending</entry>
+       <entry>추가 허용</entry>
        <entry>Yes</entry>
       </row>
       <row>
-       <entry>Allows Simultaneous Reading and Writing</entry>
+       <entry>동시 읽기/쓰기 허용</entry>
        <entry>No</entry>
       </row>
       <row>
-       <entry>Supports <function>stat</function></entry>
+       <entry><function>stat</function>지원</entry>
        <entry>
-        No, use the normal <literal>file://</literal> wrapper 
-        to stat compressed files.
+        No, 압축된 파일을 stat하기 위해서
+        보통의 <literal>file://</literal> 래퍼를 사용한다.
        </entry>
       </row>
       <row>
-       <entry>Supports <function>unlink</function></entry>
+       <entry><function>unlink</function>지원</entry>
        <entry>
-        No, use the normal <literal>file://</literal> wrapper 
-        to unlink compressed files.
+        No, 압축된 파일을 unlink하기 위해서
+        보통의 <literal>file://</literal> 래퍼를 사용한다.
        </entry>
       </row>
      </tbody>
