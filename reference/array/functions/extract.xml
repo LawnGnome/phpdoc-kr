@@ -1,11 +1,12 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.3 $ -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.4 $ -->
+<!-- EN-Revision: 1.9 -->
 <!-- splitted from ./en/functions/array.xml, last change in rev 1.2 -->
   <refentry id="function.extract">
    <refnamediv>
     <refname>extract</refname>
     <refpurpose>
-     Import variables into the current symbol table from an array
+     배열의 현재 심볼 테이블로 변수들을 입력한다
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -17,43 +18,39 @@
       <methodparam choice="opt"><type>string</type><parameter>prefix</parameter></methodparam>
      </methodsynopsis>
     <para>
-     This function is used to import variables from an array into the
-     current symbol table.  It takes an associative array
-     <parameter>var_array</parameter> and treats keys as variable
-     names and values as variable values.  For each key/value pair it
-     will create a variable in the current symbol table, subject to
-     <parameter>extract_type</parameter> and
-     <parameter>prefix</parameter> parameters.
+     이 함수는 배열의 값들을 현재 심볼 테이블에 입력하는데 사용된다.
+     연관 배열 <parameter>var_array</parameter>를 취해서 변수명을 키로,
+     변수값을 값으로 취급한다. <parameter>extract_type</parameter>과
+     <parameter>prefix</parameter> 에 따라 각 키/값 쌍에 대해서 
+     현재 심볼 테이블안에 변수를 생성한다.
     </para>
     <note>
      <para>
-      Beginning with version 4.0.5, this function returns the number of
-      variables extracted.
+      버전 4.0.5에 시작하여, 이 함수는 추출된 변수의 수를 반환한다.
      </para>
     </note>
     <note>
      <para>
-      <constant>EXTR_IF_EXISTS</constant> and <constant>EXTR_PREFIX_IF_EXISTS</constant> was introduced in version 4.2.0.
-     </para>
+      <constant>EXTR_IF_EXISTS</constant>과
+      <constant>EXTR_PREFIX_IF_EXISTS</constant>는 버전 4.2.0에서부터 지원된다.
     </note>
     <note>
      <para>
-      <constant>EXTR_REFS</constant> was introduced in version 4.3.0.
+      <constant>EXTR_REFS</constant> 버전 4.3.0부터 지원된다.
      </para>
     </note>
     <para>
-     <function>extract</function> checks each key to see whether it
-     has a valid variable name. It also checks for collisions with
-     existing variables in the symbol table. The way invalid/numeric
-     keys and collisions are treated is determined by the
-     <parameter>extract_type</parameter>. It can be one of the
-     following values:
+     <function>extract</function>는 각 키가 유효한 변수명을 갖을수 있는지 검사
+     한다. 또한 심볼 테이블에 존재하는 변수들과의 충돌도 검사한다.
+     유효하지않은/숫자 키와 충돌인 경우를 취급하는 방법은
+     <parameter>extract_type</parameter>에 의해 결정된다.
+     다음 값들 중 하나가 될 수 있다:
      <variablelist>
       <varlistentry>
        <term><constant>EXTR_OVERWRITE</constant></term>
        <listitem>
         <simpara>
-         If there is a collision, overwrite the existing variable.
+         충돌이 발생하면, 기존 변수를 덮어쓴다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -61,7 +58,7 @@
        <term><constant>EXTR_SKIP</constant></term>
        <listitem>
         <simpara>
-         If there is a collision, don't overwrite the existing
+         충돌이 발생하면, 기존 변수를 덮어쓰지 않는다.
          variable.
         </simpara>
        </listitem>
@@ -69,8 +66,8 @@
       <varlistentry>
        <term><constant>EXTR_PREFIX_SAME</constant></term>
        <listitem>
-        <simpara>If there is a collision, prefix the variable name with
-        <parameter>prefix</parameter>.
+        <simpara>충돌이 발생하면, <parameter>prefix</parameter>를
+        변수명 앞에 첨가한다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -78,9 +75,8 @@
        <term><constant>EXTR_PREFIX_ALL</constant></term>
        <listitem>
         <simpara>
-         Prefix all variable names with
-         <parameter>prefix</parameter>. Beginning with PHP 4.0.5, this includes
-         numeric variables as well.
+         <parameter>prefix</parameter>를 모든 변수명 앞에 첨가한다.
+         PHP 4.0.5에서 시작하여, 이 플래그는 숫자 변수도 적용된다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -88,9 +84,8 @@
        <term><constant>EXTR_PREFIX_INVALID</constant></term>
        <listitem>
         <simpara>
-         Only prefix invalid/numeric variable names with
-         <parameter>prefix</parameter>. This flag was added in
-         PHP 4.0.5.
+         유효하지 않은/숫자 변수명 앞에만 <parameter>prefix</parameter>를 
+         첨가한다. 이 플래그는 PHP 4.0.5에서 추가되었다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -98,11 +93,10 @@
        <term><constant>EXTR_IF_EXISTS</constant></term>
        <listitem>
         <simpara>
-         Only overwrite the variable if it already exists in the
-         current symbol table, otherwise do nothing.  This is useful
-         for defining a list of valid variables and then extracting
-         only those variables you have defined out of $_REQUEST, for
-         example.  This flag was added in PHP 4.2.0.
+         현재 심볼 테이블에 이미 존재하는 변수만 덮어쓴다. 그렇지 않으면
+         아무것도 하지 않는다. 이 플래그는 유효한 변수 목록을 정의하고
+         이 변수들만 추출하는데 유용하다. 예를 들어, 이런 변수는 
+         $_REQUEST에서 정의된 변수들이다. 이 플래그는 PHP 4.2.0에서 추가되었다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -110,9 +104,8 @@
        <term><constant>EXTR_PREFIX_IF_EXISTS</constant></term>
        <listitem>
         <simpara>
-         Only create prefixed variable names if the non-prefixed version
-         of the same variable exists in the current symbol table.  This
-         flag was added in PHP 4.2.0.
+         현재 심볼 테이블에 앞첨가된 버전의 같은 변수가 존재할때만
+         앞첨가된 변수명을 생성한다. 이 플래그는 PHP 4.2.0에서 추가되었다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -120,41 +113,39 @@
        <term><constant>EXTR_REFS</constant></term>
        <listitem>
         <simpara>
-         Extracts variables as references. This effectively means that the
-         values of the imported variables are still referencing the values of
-         the <parameter>var_array</parameter> parameter. You can use this flag
-         on its own or combine it with any other flag by OR'ing the
-         <parameter>extract_type</parameter>. This flag was added in PHP
-         4.3.0.
+         변수를 참조로써 추출한다. 입력된 변수 값이 
+         <parameter>var_array</parameter> 매개변수의 값을 참조한다는 의미를
+         갖는다. 이 플래그는 그 자체로나 다른 플래그와 OR 연산하여 
+         <parameter>extract_type</parameter>에서 사용할수 있다.
+         이 플래그는 PHP 4.3.0에서 추가되었다.
         </simpara>
        </listitem>
       </varlistentry>
      </variablelist>
     </para>
     <para>
-     If <parameter>extract_type</parameter> is not specified, it is
-     assumed to be <constant>EXTR_OVERWRITE</constant>.
+     <parameter>extract_type</parameter>가 설정되지 않으면,
+     <constant>EXTR_OVERWRITE</constant>가 설정되 있다고 가정한다.
     </para>
     <para>
-     Note that <parameter>prefix</parameter> is only required if
-     <parameter>extract_type</parameter> is <constant>EXTR_PREFIX_SAME</constant>,
-     <constant>EXTR_PREFIX_ALL</constant>, <constant>EXTR_PREFIX_INVALID</constant> 
-     or <constant>EXTR_PREFIX_IF_EXISTS</constant>. If 
-     the prefixed result is not a valid variable name, it is not 
-     imported into the symbol table.
+     <parameter>prefix</parameter>는
+     <parameter>extract_type</parameter>이 <constant>EXTR_PREFIX_SAME</constant>,
+     <constant>EXTR_PREFIX_ALL</constant>,<constant>EXTR_PREFIX_INVALID</constant>
+     또는, <constant>EXTR_PREFIX_IF_EXISTS</constant> 일때만 요구된다.
+     앞 첨가된 변수가 유효한 변수명이 아니면, 심볼테이블에 입력되지 않는다.
     </para>
     <para>
-     <function>extract</function> returns the number of variables
-     successfully imported into the symbol table.
+     <function>extract</function>는 심볼 테이블에 성공적으로 입력된 변수의
+     수를 반환한다.
     </para>
     <para>
-     A possible use for <function>extract</function> is to import into the
-     symbol table variables contained in an associative array returned by
-     <function>wddx_deserialize</function>.
+     <function>extract</function>가 사용가능한 경우는
+     <function>wddx_deserialize</function>에서 반환한 연관배열에 포함되어있는
+     심볼 테이블 변수들 안에 입력하는것이다.
     </para>
     <para>
      <example>
-      <title><function>extract</function> example</title>
+      <title><function>extract</function> 예제코드</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -174,7 +165,7 @@ print "$color, $size, $shape, $wddx_size\n";
 ]]>
       </programlisting>
       <para>
-       The above example will produce:
+       위 예제코드는 다음을 출력할것이다:
       </para>
       <programlisting>
 <![CDATA[
@@ -184,23 +175,24 @@ blue, large, sphere, medium
      </example>
     </para>
     <para>
-     The <varname>$size</varname> wasn't overwritten, because we
-     specified <constant>EXTR_PREFIX_SAME</constant>, which resulted in
-     <varname>$wddx_size</varname> being created.  If <constant>EXTR_SKIP</constant> was
-     specified, then $wddx_size wouldn't even have been created.
-     <constant>EXTR_OVERWRITE</constant> would have caused <varname>$size</varname> to have
-     value "medium", and <constant>EXTR_PREFIX_ALL</constant> would result in new variables
-     being named <varname>$wddx_color</varname>,
-     <varname>$wddx_size</varname>, and
-     <varname>$wddx_shape</varname>.
+     <varname>$size</varname>는 덮어씌어지지 않았다, 왜냐하면 
+     <constant>EXTR_PREFIX_SAME</constant>를 설정했기 때문이다.
+     결과적으로 <varname>$wddx_size</varname>가 생성되었다.
+     <constant>EXTR_SKIP</constant>가 설정되어 있으면,
+     <constant>EXTR_OVERWRITE</constant> 는 <varname>$size</varname>가
+     "medium" 값을 갖게 하고 <constant>EXTR_PREFIX_ALL</constant>는
+     새로운 변수인 <varname>$wddx_color</varname>,
+     <varname>$wddx_size</varname>, <varname>$wddx_shape</varname>를 
+     갖게한다.
     </para>
     <para>
-     You must use an associative array, a numerically indexed array
-     will not produce results unless you use <constant>EXTR_PREFIX_ALL</constant> or 
-     <constant>EXTR_PREFIX_INVALID</constant>.
+     연관 배열을 사용해야 한다.
+     <constant>EXTR_PREFIX_ALL</constant> 나
+     <constant>EXTR_PREFIX_INVALID</constant>를 사용하지 않으면 숫자로 인덱스된
+     배열은 결과를 도출할수 없다.
     </para>
     <para>
-     See also <function>compact</function>.
+     <function>compact</function> 참고.
     </para>
    </refsect1>
   </refentry>
