@@ -3,7 +3,7 @@ Files                                  Translators                Maintainers
 bookinfo.xml
 preface.xml
 ------- appendices -----------------------------------------------------------
-appendices/about.xml
+appendices/about.xml  Ryeonho Heo <rhheo@funit.net>
 appendices/commandline.xml
 appendices/debugger.xml
 appendices/escaping.xml
