@@ -1820,7 +1820,7 @@ PHP3를 CGI 프로그램 형태로 만들었다면, <command>make bench</command
        </para>
 						<warning>
 							<para>
-        이 옵션은 PHP 4.0.3 이상에서에서는 <parameter>allow_url_fopen</parameter>이라는 INI 파라메터로만 제공된다. 
+        이 옵션은 PHP 4.0.3 이하에서는 <parameter>allow_url_fopen</parameter>이라는 INI 파라메터로만 제공된다. 
 				</para>
 						</warning>
 					</listitem>
@@ -2434,31 +2434,31 @@ PHP3를 CGI 프로그램 형태로 만들었다면, <command>make bench</command
 					</listitem>
 					<listitem>
 						<simpara>
-        <literal>phpfile</literal>이라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
+							<literal>phpfile</literal>이라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
         <literal>PHP Script</literal>라고 적는다. 
        </simpara>
 					</listitem>
 					<listitem>
 						<simpara>
-        <literal>phpfile key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
+							<literal>phpfile key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
         <literal>Shell</literal>이라고 이름 붙인다
        </simpara>
 					</listitem>
 					<listitem>
 						<simpara>
-        <literal>Shell key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
+							<literal>Shell key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
         <literal>open</literal>이라고 이름 붙인다. 
        </simpara>
 					</listitem>
 					<listitem>
 						<simpara>
-        <literal>open key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
+							<literal>open key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
         <literal>command</literal>이라고 이름 붙인다. 
        </simpara>
 					</listitem>
 					<listitem>
 						<simpara>
-        <literal>command</literal>라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
+							<literal>command</literal>라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
         <literal>php.exe</literal>의 path를 적는다. ( ex: <literal>c:\php\php.exe -q %1</literal> ) (<literal>%1</literal>을 잊지 말도록) . 
        </simpara>
 					</listitem>
