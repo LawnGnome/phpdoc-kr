@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
+<!-- $Revision: 1.12 $ -->
 <!-- EN-Revision: 1.96 -->
  <chapter id="configuration">
   <title>환경 설정</title>
@@ -258,19 +258,19 @@ php_admin_value open_basedir none
   </sect1>
 
   <sect1 id="configuration.directives">
-   <title>Configuration directives</title>
+   <title>환경 설정 지시자</title>
 
   <sect2 id="ini.sect.httpd-options">
-   <title>Httpd Options</title>
+   <title>Httpd 옵션</title>
     <para>
      <table>
-      <title>Httpd Options</title>
+      <title>Httpd 옵션</title>
       <tgroup cols="3">
        <thead>
         <row>
-         <entry>Name</entry>
-         <entry>Default</entry>
-         <entry>Changeable</entry>
+         <entry>이름</entry>
+         <entry>초기값</entry>
+         <entry>변경가능성</entry>
         </row>
        </thead>
        <tbody>
@@ -288,16 +288,16 @@ php_admin_value open_basedir none
    </sect2>
 
   <sect2 id="ini.sect.language-options">
-   <title>Language Options</title>
+   <title>언어 옵션</title>
    <para>
    <table>
-    <title>Language and Misc Configuration Options</title>
+    <title>언어와 기타 환경 설정 옵션</title>
     <tgroup cols="3">
      <thead>
       <row>
-       <entry>Name</entry>
-       <entry>Default</entry>
-       <entry>Changeable</entry>
+       <entry>이름</entry>
+       <entry>초기값</entry>
+       <entry>변경가능성</entry>
       </row>
      </thead>
      <tbody>
@@ -336,7 +336,7 @@ php_admin_value open_basedir none
    </table>
    </para>
     <para>
-     Here is a short explanation of the configuration directives.
+     위 환경 설정 지시자에 대한 간단한 설명입니다.
      <variablelist>
       <varlistentry id="ini.short-open-tag">
        <term>
@@ -345,20 +345,20 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Tells whether the short form (<userinput>&lt;? ?&gt;</userinput>)
-         of PHP's open tag should be allowed.  If you want to use PHP in
-         combination with XML, you can disable this option in order to 
-         use <userinput>&lt;?xml ?&gt;</userinput> inline.  Otherwise, you 
-         can print it with PHP, for example: <userinput>&lt;?php echo '&lt;?xml 
-         version="1.0"'; ?&gt;</userinput>.  Also if disabled, you must use the 
-         long form of the PHP open tag (<userinput>&lt;?php ?&gt;</userinput>).
+         PHP의 시작 태그로 짧은 형태(<userinput>&lt;? ?&gt;</userinput>)를
+         사용하게 할 지를 결정합니다. PHP를 XML과 결함해서 사용할 때는,
+         라인에서 <userinput>&lt;?xml ?&gt;</userinput>를 사용하기 위해서
+         이 옵션을 끌 수 있습니다. 또는, PHP를 이용해서 출력해야 합니다.
+         예: <userinput>&lt;?php echo '&lt;?xml version="1.0"';
+         ?&gt;</userinput>. 옵션을 끌 경우, 긴 형태의 PHP 시작
+         태그(<userinput>&lt;?php ?&gt;</userinput>)를 사용해야만 합니다.
         </para>
         <note>
          <para>
-          This directive also affects the shorthand <userinput>&lt;?=</userinput>, 
-          which is identical to <userinput>&lt;? echo</userinput>.  Use of this 
-          shortcut requires <systemitem role="directive">short_open_tag</systemitem>
-          to be on.
+          이 지시자는 <userinput>&lt;? echo</userinput>의 짧은 형태인
+          <userinput>&lt;?=</userinput>에도 영향을 미칩니다. 이 짧은 형태를
+          사용하기 위해서는 <systemitem role="directive">short_open_tag</systemitem>를
+          on으로 해야 합니다.
          </para>
         </note>
        </listitem>
@@ -371,15 +371,15 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <simpara>
-         Enables the use of ASP-like &lt;% %&gt; tags in addition to
-         the usual &lt;?php ?&gt; tags. This includes the
-         variable-value printing shorthand of &lt;%= $value %&gt;. For 
-         more information, see <link 
-         linkend="language.basic-syntax.phpmode">Escaping from HTML</link>.
+         보통의 &lt;?php ?&gt; 태그에 추가로, ASP형태의 &lt;% %&gt;의
+         사용을 가능하게 합니다. 변수값 출력의 짧은 형태인 &lt;%= $value %&gt;도
+         사용 가능해집니다. 추가 정보는 <link 
+         linkend="language.basic-syntax.phpmode">HTML에서 빠져나가기</link>를
+         참고하십시오.
         </simpara>
         <note>
          <para>
-          Support for ASP-style tags was added in 3.0.4.
+          ASP-형태 태그의 지원은 3.0.4에서 추가하였습니다.
          </para>
         </note>
        </listitem>
@@ -392,7 +392,7 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <simpara>
-         The number of significant digits displayed in floating point numbers.
+         부동소수에 표시되는 유효 숫자의 수입니다.
         </simpara>
        </listitem>
       </varlistentry>
@@ -404,7 +404,7 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <simpara>
-         Enforce year 2000 compliance (will cause problems with non-compliant browsers)
+         2000년 호환을 강제합니다. (비호환 브라우저와 문제가 있을 수 있습니다)
         </simpara>
        </listitem>
       </varlistentry>
@@ -417,18 +417,15 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Whether to enable the ability to force arguments to be passed by reference
-         at function call time. This method is deprecated and is likely to be
-         unsupported in future versions of PHP/Zend.  The encouraged method of
-         specifying which arguments should be passed by reference is in the function
-         declaration.  You're encouraged to try and turn this option Off and make
-         sure your scripts work properly with it in order to ensure they will work
-         with future versions of the language (you will receive a warning each time
-         you use this feature, and the argument will be passed by value instead of by
-         reference).
+         함수를 호출할 때, 인자를 참조로 넘기는 것의 강제 여부를 결정합니다.
+         이 방법은 부정되었으며, PHP/Zend의 차후 버전에서는 지원하지 않을 것입니다.
+         권장하는 방법은 함수 정의시에 어떤 인자가 참조로 넘어갈지를 결정하는 것입니다.
+         차후 버전에서의 작동성을 보장받기 위해서 이 옵션을 끈 상태에서
+         스크립트가 제대로 작동하게 하는 것을 권장합니다. (이 기능을 사용할때마다
+         경고를 받게 되고, 인자는 참조 대신 값으로 넘어가게 될 것입니다)
         </para>
         <para>
-         See also <link linkend="language.references">References Explained</link>.
+         참조: <link linkend="language.references">References Explained</link>.
         </para>
        </listitem>
       </varlistentry>
@@ -440,10 +437,9 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Decides whether PHP may expose the fact that it is installed on the server
-         (e.g. by adding its signature to the Web server header). It is no security
-         threat in any way, but it makes it possible to determine whether you use PHP
-         on your server or not.
+         서버에 PHP가 설치 여부를 표출하게 하는 것을 결정합니다. (즉, 웹 서버 헤더에
+         사인을 추가합니다). 보안 관련에 영향은 없으나, 그 서버에서 PHP의 사용 여부를
+         확인할 수 있게 합니다.
         </para>
        </listitem>
       </varlistentry>
@@ -452,16 +448,16 @@ php_admin_value open_basedir none
    </sect2>
 
   <sect2 id="ini.sect.resource-limits">
-   <title>Resource Limits</title>
+   <title>리소스 제한</title>
    <para>
     <table>
-     <title>Resource Limits</title>
+     <title>리소스 제한</title>
      <tgroup cols="3">
       <thead>
        <row>
-        <entry>Name</entry>
-        <entry>Default</entry>
-        <entry>Changeable</entry>
+        <entry>이름</entry>
+        <entry>초기값</entry>
+        <entry>변경가능성</entry>
        </row>
       </thead>
       <tbody>
@@ -475,7 +471,7 @@ php_admin_value open_basedir none
     </table>
    </para>
    <para>
-    Here is a short explanation of the configuration directives.
+     위 환경 설정 지시자에 대한 간단한 설명입니다.
     <variablelist>
 
      <varlistentry id="ini.memory-limit">
@@ -485,34 +481,33 @@ php_admin_value open_basedir none
       </term>
       <listitem>
        <para>
-        This sets the maximum amount of memory in bytes that a script
-        is allowed to allocate.  This helps prevent poorly written
-        scripts for eating up all available memory on a server.  In order to
-        use this directive you must have enabled it at compile time.  So, 
-        your configure line would have included:
-        <literal>--enable-memory-limit</literal>. Note that you have to set 
-        it to -1 if you don't want any limit for your memory.
+        스크립트가 사용할 수 있는 최대 메모리 양을 바이트로 설정합니다.
+        엉망인 스크립트가 서버의 많은 메모리를 차지하는 것을 방지할 수 있습니다.
+        이 지시자를 사용하기 위해서는, 컴파일시에 활성화하여야 합니다.
+        즉, 설정 라인에 다음이 추가되어야 합니다:
+        <literal>--enable-memory-limit</literal>. 메모리 제한을 하지 않으려면
+        -1로 설정하십시오.
        </para>
       </listitem>
      </varlistentry>
     </variablelist>
    </para>
    <para>
-    See also: <link linkend="ini.max-execution-time">max_execution_time</link>.
+    참고: <link linkend="ini.max-execution-time">max_execution_time</link>.
    </para>
   </sect2>
 
   <sect2 id="ini.sect.data-handling">
-   <title>Data Handling</title>
+   <title>데이터 핸들링</title>
     <para>
      <table>
-      <title>Data Handling Configuration Options</title>
+      <title>데이터 핸들링 환경 설정 옵션</title>
       <tgroup cols="3">
        <thead>
         <row>
-         <entry>Name</entry>
-         <entry>Default</entry>
-         <entry>Changeable</entry>
+         <entry>이름</entry>
+         <entry>초기값</entry>
+         <entry>변경가능성</entry>
         </row>
        </thead>
        <tbody>
@@ -591,7 +586,7 @@ php_admin_value open_basedir none
      </table>
     </para>
     <para>
-     Here is a short explanation of the configuration directives.
+     위 환경 설정 지시자에 대한 간단한 설명입니다.
      <variablelist>
       <varlistentry id="ini.track-vars">
        <term>
@@ -600,17 +595,18 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         If enabled, then Environment, GET, POST, Cookie, and Server
-         variables can be found in the global associative arrays
+         활성화하면, 환경 변수, GET, POST, 쿠키, 서버 변수에 대한
+         전역 연관 배열
          <varname>$_ENV</varname>,
          <varname>$_GET</varname>,
          <varname>$_POST</varname>,
-         <varname>$_COOKIE</varname>, and
-         <varname>$_SERVER</varname>.
+         <varname>$_COOKIE</varname>,
+         <varname>$_SERVER</varname>을 사용할 수 있습니다.
         </para>
         <para>
-         Note that as of PHP 4.0.3, <systemitem
-         role="directive">track_vars</systemitem> is always turned on.
+         PHP 4.3.0부터 <systemitem
+         role="directive">track_vars</systemitem>는
+         항상 on입니다.
         </para>
        </listitem>
       </varlistentry>
@@ -622,7 +618,7 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         The separator used in PHP generated URLs to separate arguments.
+         PHP가 생성하는 URL의 인자를 구분하는 구분자입니다.
         </para>
        </listitem>
       </varlistentry>
@@ -634,11 +630,11 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         List of separator(s) used by PHP to parse input URLs into variables.
+         PHP가 URL에서 변수를 분리하는데 사용하는 구분자 목록입니다.
         </para>
         <note>
          <para>
-          Every character in this directive is considered as separator!
+          이 지시자의 모든 문자는 구분자로 인식합니다!
          </para>
         </note>
        </listitem>
@@ -651,15 +647,14 @@ php_admin_value open_basedir none
        </term>
        <listitem>
         <para>
-         Set the order of the EGPCS (Environment, GET, POST, Cookie,
-         Server) variable parsing. The default setting of this
-         directive is "EGPCS". Setting this to "GP", for example,
-         will cause PHP to completely ignore environment variables,
-         cookies and server variables, and to overwrite any GET
-         method variables with POST-method variables of the same name.
+         EGPCS(환경변수, GET, POST, 쿠키, 서버) 변수의 파싱 순서를
+         결정합니다. 이 지시자의 기본값은 "EGPCS"입니다. 예를 들어,
+         "GP"로 설정하면, PHP는 환경 변수, 쿠키, 서버 변수를 무시할
+         것이고, GET 변수는 같은 이름을 가지는 POST 변수에 의해
+         덮어씌워질 것입니다.
         </para>
         <para>
-         See also <link linkend="ini.register-globals">register_globals</link>.
+         참고: <link linkend="ini.register-globals">register_globals</link>.
         </para>
        </listitem>
       </varlistentry>
