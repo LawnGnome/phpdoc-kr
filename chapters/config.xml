@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.116 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.120 Maintainer: progcom Status: ready -->
  <chapter id="configuration">
   <title>실행 환경 설정</title>
 
@@ -7,8 +7,8 @@
    <title>환경 설정 파일</title>
 
    <simpara>
-    환경 설정 파일(PHP 3.0에서는 <filename>php3.ini</filename>, PHP
-    4.0부터는 간단히 &php.ini;)은 PHP가 시작될 때 읽혀집니다.
+    환경 설정 파일(PHP 3에서 <filename>php3.ini</filename>, PHP
+    4.0부터는 단순히 &php.ini;)은 PHP가 시작될 때 읽혀집니다.
     PHP의 서버 모듈 버전에서는 웹 서버가 시작될 때 한번만 읽혀집니다.
     <acronym>CGI</acronym>와 <acronym>CLI</acronym> 버전에서는 실행될 때마다
     읽혀집니다.
@@ -18,9 +18,14 @@
     linkend="faq.installation.phpini">FAQ</link> 참고) <acronym>CGI</acronym>와
     <acronym>CLI</acronym> 버전에서는 <literal>-c</literal> 커맨드 라인 스위치를
     이용해서 변경할 수 있습니다. <link linkend="features.commandline">커맨드
-    라인</link>에서 <literal>PHP</literal> 사용하기 챕터를 참고하십시오.
-    &php.ini;를 찾기 위한 추가 경로를 지정하기 위해 <literal>PHPRC</literal>
+    라인</link>에서 PHP 사용하기 챕터를 참고하십시오.
+    &php.ini;를 찾기 위한 추가 경로를 지정하기 위해 <varname>PHPRC</varname>
     환경 변수를 이용할 수도 있습니다.
+   </para>
+   <para>
+    <filename>php-SAPI.ini</filename>가 존재하면 (SAPI는 사용하는 SAPI, 즉
+    파일명은 <filename>php-cli.ini</filename>이나
+    <filename>php-apache.ini</filename> 등), &php.ini; 대신 사용합니다.
    </para>
    <note>
     <para>
@@ -29,18 +34,13 @@
     </para>
    </note>
    <para>
-    모든 PHP 설정이 아래에 쓰여있지는 않습니다. 모든 설정의 목록을 확인하기
-    위해서는, &php.ini; 파일의 주석들을 읽어보십시오. CVS에서 최신의
-    <ulink url="&url.php.cvs.phpini;">php.ini</ulink>를 확인할 수도 있습니다.
+    확장 모듈의 &php.ini; 지시어는 각 확장에 관한 문서에 존재합니다. <link
+     linkend="ini">핵심 지시어 목록</link>은 부록에 있습니다. 대부분의 PHP
+    지시어 목록은 변경 권한과 함께 <function>ini_set</function>에 문서 링크가
+    있습니다. 사용하는 PHP 버전에 해당하는 모든 지시어는, &php.ini; 파일에
+    주석과 함께 존재합니다. 또는, CVS에서 <ulink
+     url="&url.php.cvs.phpini;">최신 &php.ini;</ulink>를 찾아볼 수 있습니다.
    </para>
-   <note>
-    <para>
-     PHP <ulink url="&url.php.release4.2.0;">4.2.0</ulink>부터
-     PHP 설정 <link linkend="ini.register-globals">register_globals</link>의
-     기본값이 <emphasis>on</emphasis>에서 <emphasis>off</emphasis>로
-     변경되었습니다.
-    </para>
-   </note>
    <para>
     <example>
      <title>&php.ini; 예제</title>
@@ -52,7 +52,7 @@
 ;    true, on, yes
 ; 또는 false, off, no, none
 register_globals = off
-magic_quotes_gpc = yes
+track_errors = yes
 
 ; 문자열은 큰따옴표(")로 묶습니다
 include_path = ".:/usr/local/lib/php"
@@ -70,15 +70,15 @@ include_path = ".;c:\php\lib"
    <title>환경 설정을 변경하는 방법</title>
 
    <sect2 id="configuration.changes.apache">
-    <title><literal>PHP</literal>를 아파치 모듈로 실행</title>
+    <title>PHP를 아파치 모듈로 실행</title>
     <simpara>
      PHP를 아파치 모듈로 사용할 때, 아파치 환경 설정 파일(예. &httpd.conf;)과
-     &htaccess; 파일("AllowOverride Options"이나 "AllowOverride All" 권한이
-     필요합니다)을 이용해서 환경 설정을 변경할 수 있습니다.
+     &htaccess; 파일을 이용해서 환경 설정을 변경할 수 있습니다. 이를 위해서는
+     "AllowOverride Options"나 "AllowOverride All" 권한이 필요합니다.
     </simpara>
 
     <para>
-     PHP 4.0에서는, 아파치 환경 설정 파일에서 PHP 설정을 변경할 수 있게
+     PHP 4와 PHP 5에서는, 아파치 환경 설정 파일에서 PHP 설정을 변경할 수 있게
      하는 몇가지 아파치 설정이 존재합니다. 가능한 설정 목록은
      <function>ini_set</function> 문서에 있는 테이블의
      <constant>PHP_INI_ALL</constant>, <constant>PHP_INI_PERDIR</constant>,
@@ -87,7 +87,7 @@ include_path = ".;c:\php\lib"
     
     <note>
      <simpara>
-      PHP 3.0에서는, <filename>php3.ini</filename> 이름에 각각 대응하는
+      PHP 3에서는, <filename>php3.ini</filename> 이름에 각각 대응하는
       "php3_"를 붙여서 사용할 수 있는 아파치 설정이 존재합니다.
      </simpara>
     </note>
@@ -109,8 +109,9 @@ include_path = ".;c:\php\lib"
         </para>
         <note>
          <simpara>
-          boolean 값을 설정하기 위해서 <literal>php_value</literal>를
-          사용하지 마십시오. 대신, <literal>php_flag</literal>(아래를 참고)를
+          boolean 값을 설정하기 위해서 <systemitem
+           role="directive">php_value</systemitem>를 사용하지 마십시오. 대신,
+          <systemitem role="directive">php_flag</systemitem>(아래를 참고)를
           사용해야만 합니다.
          </simpara>
         </note>
@@ -124,9 +125,9 @@ include_path = ".;c:\php\lib"
        </term>
        <listitem>
         <para>
-         Boolean 환경 설정에 사용합니다.
-         <constant>PHP_INI_ALL</constant>과 <constant>PHP_INI_PERDIR</constant>형
-         지시자에만 사용할 수 있습니다.
+         boolean 값의 환경 설정에 사용합니다.
+         <constant>PHP_INI_ALL</constant>과
+         <constant>PHP_INI_PERDIR</constant>형 지시어에만 사용할 수 있습니다.
         </para>
        </listitem>
       </varlistentry>
@@ -138,8 +139,8 @@ include_path = ".;c:\php\lib"
        </term>
        <listitem>
         <para>
-         특정한 설정값을 설정합니다.
-         &htaccess; 파일에서는 사용할 수 없습니다.
+         특별한 설정값을 설정합니다.
+         &htaccess; 파일에서는 <emphasis>사용할 수 없습니다</emphasis>.
          <systemitem role="directive">php_admin_value</systemitem>의 설정값은
          &htaccess;나 버추얼 호스트 설정으로 바꿀 수 없습니다.
          기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
@@ -154,7 +155,8 @@ include_path = ".;c:\php\lib"
        </term>
        <listitem>
         <para>
-         Boolean 환경 설정에 사용합니다.
+         boolean 값의 환경 설정에 사용합니다.
+         &htaccess; 파일에서는 <emphasis>사용할 수 없습니다</emphasis>.
          <systemitem role="directive">php_admin_flag</systemitem>의 설정값은
          &htaccess;나 버추얼 호스트 설정으로 바꿀 수 없습니다.
          기존 설정값을 제거하기 위해서는 값을 <literal>none</literal>로 설정하십시오.
@@ -168,6 +170,10 @@ include_path = ".;c:\php\lib"
       <title>아파치 환경 설정 예제</title>
       <programlisting role="ini">
 <![CDATA[
+<IfModule mod_php5.c>
+  php_value include_path ".:/usr/local/lib/php"
+  php_admin_flag safe_mode on
+</IfModule>
 <IfModule mod_php4.c>
   php_value include_path ".:/usr/local/lib/php"
   php_admin_flag safe_mode on
@@ -194,7 +200,7 @@ include_path = ".;c:\php\lib"
    </sect2>
 
    <sect2 id="configuration.changes.windows">
-    <title>윈도우 레지스트리를 통해 <literal>PHP</literal> 설정 변경하기</title>
+    <title>윈도우 레지스트리를 통해 PHP 설정 변경하기</title>
      <simpara>
       윈도우에서 PHP를 실행할 때, 윈도우 레지스트리를 통해서 디렉토리
       단위로 설정값을 변경할 수 있습니다. 레지스트리 키
@@ -203,1141 +209,24 @@ include_path = ".;c:\php\lib"
       디렉토리 <literal>c:\inetpub\wwwroot</literal>를 위한 설정값은
       <literal>HKLM\SOFTWARE\PHP\Per Directory Values\c\inetpub\wwwroot</literal>에
       기록합니다. 디렉토리 단위의 설정은 그 디렉토리와 그 하위 디렉토리에서
-      실행되는 모든 스크립트에 영향을 줍니다. 키가 가지는 이름은
-      <link linkend="configuration">PHP 설정 지시어</link>이고,
-      문자열 값을 가집니다. 값에 지정한 PHP 상수는 처리되지 않습니다.
+      실행되는 모든 스크립트에 영향을 줍니다. PHP 설정 지시어를 키로 가지고,
+      문자열 값을 지정해야 합니다. 값에 포함한 PHP 상수는 처리하지 않습니다.
      </simpara>
    </sect2>
 
    <sect2 id="configuration.changes.other">
-    <title><literal>PHP</literal>의 다른 인터페이스</title>
+    <title>PHP의 다른 인터페이스</title>
     <para>
-     <literal>PHP</literal>의 인터페이스에 상관 없이, <function>ini_set</function>를
-     이용하여 스크립트 실행시의 몇가지 값을 변경할 수 있습니다. 아래의
-     표는 설정값이 어느 레벨에서 변경/지정될 수 있는지 보여줍니다.
+     PHP를 어떤 방식으로 실행하는가에 관계 없이,
+     <function>ini_set</function>을 통하여 몇가지 값을 변경할 수 있습니다.
+     자세한 정보는 <function>ini_set</function> 문서를 참고하십시오.
     </para>
     <para>
-     <table>
-     <title>PHP_INI_* 상수 정의</title>
-     <tgroup cols="3">
-      <thead>
-       <row>
-        <entry>상수</entry>
-        <entry>값</entry>
-        <entry>의미</entry>
-       </row>
-      </thead>
-      <tbody>
-       <row>
-        <entry>PHP_INI_USER</entry>
-        <entry>1</entry>
-        <entry>유저 스크립트에서 설정 가능한 엔트리</entry>
-       </row>
-       <row>
-        <entry>PHP_INI_PERDIR</entry>
-        <entry>2</entry>
-        <entry>
-         &php.ini;, &htaccess;, &httpd.conf;에서
-         설정 가능한 엔트리
-        </entry>
-       </row>
-       <row>
-        <entry>PHP_INI_SYSTEM</entry>
-        <entry>4</entry>
-        <entry>
-         &php.ini;나 &httpd.conf;에서 설정 가능한 엔트리
-        </entry>
-       </row>
-       <row>
-        <entry>PHP_INI_ALL</entry>
-        <entry>7</entry>
-        <entry>어디에서라도 설정 가능한 엔트리</entry>
-       </row>
-      </tbody>
-     </tgroup>
-    </table>
+     시스템의 환경 설정 목록과 현재 값을 알고 싶으면,
+     <function>phpinfo</function> 함수를 실행하여 결과 페이지를 참고하십시오.
+     실행시에 개별적인 지시어의 값을 <function>ini_get</function>이나
+     <function>get_cfg_var</function>를 통해 얻을 수 있습니다.
     </para>
-    <para>
-     환경 설정의 설정값은 <function>phpinfo</function> 출력에서
-     확인할 수 있습니다. <function>ini_get</function>나
-     <function>get_cfg_var</function>을 이용하여 개별 설정값에
-     접근할 수도 있습니다.
-    </para>
-   </sect2>
-  </sect1>
-
-  <sect1 id="configuration.directives">
-   <title>기타 환경 설정 지시자</title>
-   <para>
-    아래는 모든 PHP 지시자 목록이 아닙니다. 지시자 목록은 적합한 위치에
-    존재합니다. 예를 들어, 세션 지시자에 대한 정보는
-    <link linkend="ref.session">세션 챕터</link>에 위치합니다.
-   </para>
-
-  <sect2 id="ini.sect.httpd-options">
-   <title>Httpd 옵션</title>
-    <para>
-     <table>
-      <title>Httpd 옵션</title>
-      <tgroup cols="3">
-       <thead>
-        <row>
-         <entry>이름</entry>
-         <entry>기본값</entry>
-         <entry>변경가능성</entry>
-        </row>
-       </thead>
-       <tbody>
-        <row>
-         <entry>async_send</entry>
-         <entry>"0"</entry>
-         <entry>PHP_INI_ALL</entry>
-        </row>
-       </tbody>
-      </tgroup>
-     </table>
-    </para>
-    <para>
-    </para>
-   </sect2>
-
-  <sect2 id="ini.sect.language-options">
-   <title>언어 옵션</title>
-   <para>
-   <table>
-    <title>언어와 기타 환경 설정 옵션</title>
-    <tgroup cols="3">
-     <thead>
-      <row>
-       <entry>이름</entry>
-       <entry>기본값</entry>
-       <entry>변경가능성</entry>
-      </row>
-     </thead>
-     <tbody>
-     <row>
-      <entry>short_open_tag</entry>
-      <entry>On</entry>
-      <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-     </row>
-     <row>
-      <entry>asp_tags</entry>
-      <entry>Off</entry>
-      <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-     </row>
-     <row>
-      <entry>precision</entry>
-      <entry>"14"</entry>
-      <entry>PHP_INI_ALL</entry>
-     </row>
-     <row>
-      <entry>y2k_compliance</entry>
-      <entry>Off</entry>
-      <entry>PHP_INI_ALL</entry>
-     </row>
-     <row>
-      <entry>allow_call_time_pass_reference</entry>
-      <entry>On</entry>
-      <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-     </row>
-     <row>
-      <entry>expose_php</entry>
-      <entry>On</entry>
-      <entry>PHP_INI_SYSTEM</entry>
-     </row>
-    </tbody>
-    </tgroup>
-   </table>
-   </para>
-
-   &ini.descriptions.title;
-
-    <para>
-     <variablelist>
-      <varlistentry id="ini.short-open-tag">
-       <term>
-        <parameter>short_open_tag</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         PHP의 시작 태그로 짧은 형태(<userinput>&lt;? ?&gt;</userinput>)를
-         사용하게 할 지를 결정합니다. PHP를 XML과 결함해서 사용할 때는,
-         라인에서 <userinput>&lt;?xml ?&gt;</userinput>를 사용하기 위해서
-         이 옵션을 끌 수 있습니다. 또는, PHP를 이용해서 출력해야 합니다.
-         예: <userinput>&lt;?php echo '&lt;?xml version="1.0"';
-         ?&gt;</userinput>. 옵션을 끌 경우, 긴 형태의 PHP 시작
-         태그(<userinput>&lt;?php ?&gt;</userinput>)를 사용해야만 합니다.
-        </para>
-        <note>
-         <para>
-          이 지시자는 <userinput>&lt;? echo</userinput>의 짧은 형태인
-          <userinput>&lt;?=</userinput>에도 영향을 미칩니다. 이 짧은 형태를
-          사용하기 위해서는 <systemitem role="directive">short_open_tag</systemitem>를
-          on으로 해야 합니다.
-         </para>
-        </note>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.asp-tags">
-       <term>
-        <parameter>asp_tags</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <simpara>
-         보통의 &lt;?php ?&gt; 태그에 추가로, ASP형태의 &lt;% %&gt;의
-         사용을 가능하게 합니다. 변수값 출력의 짧은 형태인 &lt;%= $value %&gt;도
-         사용 가능해집니다. 추가 정보는 <link 
-         linkend="language.basic-syntax.phpmode">HTML에서 빠져나가기</link>를
-         참고하십시오.
-        </simpara>
-        <note>
-         <para>
-          ASP-형태 태그의 지원은 3.0.4에서 추가하였습니다.
-         </para>
-        </note>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.precision">
-       <term>
-        <parameter>precision</parameter>
-        <type>integer</type>
-       </term>
-       <listitem>
-        <simpara>
-         부동소수에 표시되는 유효 숫자의 수입니다.
-        </simpara>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.y2k-compliance">
-       <term>
-        <parameter>y2k_compliance</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <simpara>
-         2000년 호환을 강제합니다. (비호환 브라우저와 문제가 있을 수 있습니다)
-        </simpara>
-       </listitem>
-      </varlistentry>
-
-
-      <varlistentry id="ini.allow-call-time-pass-reference">
-       <term>
-        <parameter>allow_call_time_pass_reference</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         함수를 호출할 때, 인자를 참조로 넘기는 것의 강제 여부를 결정합니다.
-         이 방법은 부정되었으며, PHP/Zend의 차후 버전에서는 지원하지 않을 것입니다.
-         권장하는 방법은 함수 정의시에 어떤 인자가 참조로 넘어갈지를 결정하는 것입니다.
-         차후 버전에서의 작동성을 보장받기 위해서 이 옵션을 끈 상태에서
-         스크립트가 제대로 작동하게 하는 것을 권장합니다. (이 기능을 사용할때마다
-         경고를 받게 되고, 인자는 참조 대신 값으로 넘어가게 될 것입니다)
-        </para>
-        <para>
-         참조: <link linkend="language.references">References Explained</link>.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.expose-php">
-       <term>
-        <parameter>expose_php</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         서버에 PHP가 설치 여부를 표출하게 하는 것을 결정합니다. (즉, 웹 서버 헤더에
-         사인을 추가합니다). 보안 관련에 영향은 없으나, 그 서버에서 PHP의 사용 여부를
-         확인할 수 있게 합니다.
-        </para>
-       </listitem>
-      </varlistentry>
-     </variablelist>
-    </para>
-   </sect2>
-
-  <sect2 id="ini.sect.resource-limits">
-   <title>리소스 제한</title>
-   <para>
-    <table>
-     <title>리소스 제한</title>
-     <tgroup cols="3">
-      <thead>
-       <row>
-        <entry>이름</entry>
-        <entry>기본값</entry>
-        <entry>변경가능성</entry>
-       </row>
-      </thead>
-      <tbody>
-       <row>
-        <entry>memory_limit</entry>
-        <entry>"8M"</entry>
-        <entry>PHP_INI_ALL</entry>
-       </row>
-      </tbody>
-     </tgroup>
-    </table>
-   </para>
-
-   &ini.descriptions.title;
-
-   <para>
-    <variablelist>
-
-     <varlistentry id="ini.memory-limit">
-      <term>
-       <parameter>memory_limit</parameter>
-       <type>integer</type>
-      </term>
-      <listitem>
-       <para>
-        스크립트가 사용할 수 있는 최대 메모리 양을 바이트로 설정합니다.
-        엉망인 스크립트가 서버의 많은 메모리를 차지하는 것을 방지할 수 있습니다.
-        이 지시자를 사용하기 위해서는, 컴파일시에 활성화하여야 합니다.
-        즉, 설정 라인에 다음을 포함되야 합니다:
-        <literal>--enable-memory-limit</literal>. 메모리 제한을 하지 않으려면
-        -1로 설정하십시오.
-        </para>
-        <para>
-         PHP 4.3.2부터, memory_limit를 활성화 했을때, PHP 함수
-         <function>memory_get_usage</function>가 사용 가능합니다.
-       </para>
-      </listitem>
-     </varlistentry>
-    </variablelist>
-   </para>
-   <para>
-    참고: <link linkend="ini.max-execution-time">max_execution_time</link>.
-   </para>
-  </sect2>
-
-  <sect2 id="ini.sect.data-handling">
-   <title>데이터 핸들링</title>
-    <para>
-     <table>
-      <title>데이터 핸들링 환경 설정 옵션</title>
-      <tgroup cols="3">
-       <thead>
-        <row>
-         <entry>이름</entry>
-         <entry>기본값</entry>
-         <entry>변경가능성</entry>
-        </row>
-       </thead>
-       <tbody>
-        <row>
-         <entry>track-vars</entry>
-         <entry>"On"</entry>
-         <entry>PHP_INI_??</entry>
-        </row>
-        <row>
-         <entry>arg_separator.output</entry>
-         <entry>"&amp;"</entry>
-         <entry>PHP_INI_ALL</entry>
-        </row>
-        <row>
-         <entry>arg_separator.input</entry>
-         <entry>"&amp;"</entry>
-         <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-        </row>
-        <row>
-         <entry>variables_order</entry>
-         <entry>"EGPCS"</entry>
-         <entry>PHP_INI_ALL</entry>
-        </row>
-        <row>
-         <entry>register_globals</entry>
-         <entry>"Off"</entry>
-         <entry>PHP_INI_PERDIR|PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>register_argc_argv</entry>
-         <entry>"On"</entry>
-         <entry>PHP_INI_PERDIR|PHP_INI_SYSTEM</entry>
-       </row>
-       <row>
-        <entry>post_max_size</entry>
-        <entry>"8M"</entry>
-        <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-       </row>
-       <row>
-        <entry>gpc_order</entry>
-        <entry>"GPC"</entry>
-        <entry>PHP_INI_ALL</entry>
-       </row>
-       <row>
-        <entry>auto_prepend_file</entry>
-        <entry>""</entry>
-        <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-       </row>
-       <row>
-        <entry>auto_append_file</entry>
-        <entry>""</entry>
-        <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-       </row>
-        <row>
-         <entry>default_mimetype</entry>
-         <entry>"text/html"</entry>
-         <entry>PHP_INI_ALL</entry>
-        </row>
-        <row>
-         <entry>default_charset</entry>
-         <entry>"iso-8859-1"</entry>
-         <entry>PHP_INI_ALL</entry>
-        </row>
-        <row>
-         <entry>always_populate_raw_post_data</entry>
-         <entry>"0"</entry>
-         <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-        </row>
-        <row>
-         <entry>allow_webdav_methods</entry>
-         <entry>"0"</entry>
-         <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-        </row>
-       </tbody>
-      </tgroup>
-     </table>
-    </para>
-
-    &ini.descriptions.title;
-
-    <para>
-     <variablelist>
-      <varlistentry id="ini.track-vars">
-       <term>
-        <parameter>track_vars</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         활성화하면, 환경 변수, GET, POST, 쿠키, 서버 변수에 대한
-         전역 연관 배열
-         <varname>$_ENV</varname>,
-         <varname>$_GET</varname>,
-         <varname>$_POST</varname>,
-         <varname>$_COOKIE</varname>,
-         <varname>$_SERVER</varname>을 사용할 수 있습니다.
-        </para>
-        <para>
-         PHP 4.3.0부터 <systemitem
-         role="directive">track_vars</systemitem>는
-         항상 on입니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.arg-separator.output">
-       <term>
-        <parameter>arg_separator.output</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         PHP가 생성하는 URL의 인자를 구분하는 구분자입니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.arg-separator.input">
-       <term>
-        <parameter>arg_separator.input</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         PHP가 URL에서 변수를 분리하는데 사용하는 구분자 목록입니다.
-        </para>
-        <note>
-         <para>
-          이 지시자의 모든 문자는 구분자로 인식합니다!
-         </para>
-        </note>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.variables-order">
-       <term>
-        <parameter>variables_order</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         EGPCS(환경변수, GET, POST, 쿠키, 서버) 변수의 파싱 순서를
-         결정합니다. 이 지시자의 기본값은 "EGPCS"입니다. 예를 들어,
-         "GP"로 설정하면, PHP는 환경 변수, 쿠키, 서버 변수를 무시할
-         것이고, GET 변수는 같은 이름을 가지는 POST 변수에 의해
-         덮어씌워질 것입니다.
-        </para>
-        <para>
-         참고: <link linkend="ini.register-globals">register_globals</link>.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.register-globals">
-       <term>
-        <parameter>register_globals</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         EGPCS(환경, GET, POST, 쿠키, 서버) 변수를 전역 변수로 등록할지를
-         결정합니다. 예를 들어, register_globals = on 이라면 URL
-         <literal>http://www.example.com/test.php?id=3</literal> 요청에
-         <varname>$id</varname>를 생성합니다. 또는,
-         <varname>$_SERVER['DOCUMENT_ROOT']</varname>에서
-         <varname>$DOCUMENT_ROOT</varname>를 등록합니다. 스크립트의
-         전역 위치에 유저 데이터로 채워지는것을 원하지 않는다면, 이 옵션을
-         끄십시오. PHP <ulink url="&url.php.release4.2.0;">4.2.0</ulink>부터는
-         이 지시자의 기본값은 <emphasis>off</emphasis>입니다.
-         <link linkend="language.variables.superglobals">자동전역</link>:
-         <varname>$_ENV</varname>, <varname>$_GET</varname>,
-         <varname>$_POST</varname>, <varname>$_COOKIE</varname>,
-         <varname>$_SERVER</varname> 등의 PHP <link linkend="reserved.variables">예약
-         정의 변수</link>를 사용하는 것을 권장합니다. 보안 챕터의
-         <link linkend="security.globals">register_globals 사용</link>에 대한
-         관련 정보를 읽어보십시오.
-        </para>
-        <para>
-         <systemitem role="directive">register_globals</systemitem>는 실행시에
-         설정(<function>ini_set</function>)할 수 없는 점에 주의하십시오. 그러나,
-         호스트가 &htaccess;를 허용한다면, 그것을 이용할 수 있습니다. 예제
-         &htaccess; 엔트리:
-         <userinput>php_flag register_globals on</userinput>
-        </para>
-        <note>
-         <para>
-          <systemitem role="directive">register_globals</systemitem>는
-          <link linkend="ini.variables-order">variables_order</link> 지시자의
-          영향을 받습니다.
-         </para>
-        </note>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.register-argc-argv">
-       <term>
-        <parameter>register_argc_argv</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <simpara>
-         (GET 정보를 포함하는) argv와 argc 변수 사용 여부를 결정합니다.
-        </simpara>
-        <simpara>
-         참고 : <link linkend="features.commandline">command line</link>.
-         이 지시자는 PHP 4.0.0부터 사용 가능하며, 이전에는 항상 "on"이였습니다.
-        </simpara>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.register-long-arrays">
-       <term>
-        <parameter>register_long_arrays</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <simpara>
-         PHP에서 사용을 권하지 않는 <varname>$HTTP_*_VARS</varname> 형태의 
-         <link linkend="language.variables.predefined">예약
-         변수</link>의 등록 여부를 결정합니다. On (기본값)일때,
-         <varname>$HTTP_GET_VARS</varname> 등의 긴 형태의 PHP 예약 변수가
-         정의됩니다. 이 형태를 사용하지 않는다면, 성능 향상을 위해 off로
-         설정하는 것을 권장합니다. 대신, <varname>$_GET</varname> 등의 자동
-         전역 배열을 사용하십시오.
-        </simpara>
-        <simpara>
-         이 지시자는 PHP 5.0.0부터 사용 가능합니다.
-        </simpara>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.post-max-size">
-       <term>
-        <parameter>post_max_size</parameter>
-        <type>integer</type>
-       </term>
-       <listitem>
-        <simpara>
-         POST 데이터가 허용하는 최대 사이즈를 설정합니다. 이 설정은
-         파일 업로드에도 관여합니다. 큰 파일을 업로드 하기 위해서는
-         이 값이 <link linkend="ini.upload-max-filesize">upload_max_filesize</link>보다
-         커야만 합니다.
-        </simpara>
-        <simpara>
-         환경 설정 스크립트에서 메모리 제한을 활성화하였으면, <link
-         linkend="ini.memory-limit">memory_limit</link>도 파일 업로드에
-         관여합니다. 일반적으로, <link linkend="ini.memory-limit">memory_limit</link>는
-         <parameter>post_max_size</parameter>보다 커야만 합니다.
-        </simpara>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.gpc-order">
-       <term>
-        <parameter>gpc_order</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         GET/POST/COOKIE 변수 파싱 순서를 설정합니다. 이 지시자의
-         기본값은 "GPC"입니다. 예를 들어, "GP"로 설정하면 PHP는
-         쿠키는 무시하고, 같은 이름의 POST 방식 변수로 GET 방식 변수를
-         덮어씌울 것입니다.
-        </para>
-        <note>
-         <para>
-          이 옵션은 PHP 4에서는 사용할 수 없습니다. 대신,
-          <link linkend="ini.variables-order">variables_order</link>를 사용합니다.
-         </para>
-        </note>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.auto-prepend-file">
-       <term>
-        <parameter>auto_prepend_file</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         메인 파일 앞에 자동적으로 붙는 파일의 이름을 정합니다.
-         <function>include</function> 함수 호출과 동등하게 작동하며,
-         <link linkend="ini.include-path">include_path</link>를
-         사용합니다.
-        </para>
-        <para>
-         특수값 <systemitem class="constant">none</systemitem>은
-         auto-prepending을 비활성화 합니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.auto-append-file">
-       <term>
-        <parameter>auto_append_file</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         메인 파일 뒤에 자동적으로 붙는 파일의 이름을 정합니다.
-         <function>include</function> 함수 호출과 동등하게 작동하며,
-         <link linkend="ini.include-path">include_path</link>를
-         사용합니다.
-        </para>
-        <para>
-         특수값 <systemitem class="constant">none</systemitem>은
-         auto-appending을 비활성화 합니다.
-         <note>
-          <simpara>
-           스크립트가 <function>exit</function>로 종료되면,
-           auto-append는 작동하지 <emphasis>않습니다</emphasis>.
-          </simpara>
-         </note>
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.default-mimetype">
-       <term>
-        <parameter>default_mimetype</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.default-charset">
-       <term>
-        <parameter>default_charset</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         4.0b4부터, PHP는 기본값으로 항상 Content-type: 헤더로 문자 인코딩을
-         출력합니다. 문자셋의 전송을 하지 않기 위해서는, 간단히 이 설정을
-         비워두십시오.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.always-populate-raw-post-data">
-       <term>
-        <parameter>always_populate_raw_post_data</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         항상 $HTTP_RAW_POST_DATA 변수를 선언합니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.allow-webdav-methods">
-       <term>
-        <parameter>allow_webdav_methods</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         PHP 스크립트에서 WebDAV http 요청(즉, PROPFIND, PROPPATCH, MOVE,
-         COPY 등등..)을 핸들링할 수 있게 합니다. 이 요청들로부터
-         포스트 데이터를 얻기 원한다면, <link linkend="ini.always-populate-raw-post-data">
-         always_populate_raw_post_data</link>도 설정해야 합니다.
-        </para>
-       </listitem>
-      </varlistentry>
-     </variablelist>
-    </para>
-    <para>
-     참고: <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>,
-     <link linkend="ini.magic-quotes-runtime">magic-quotes-runtime</link>,
-     <link linkend="ini.magic-quotes-sybase">magic_quotes_sybase</link>.
-    </para>
-   </sect2>
-
-  <sect2 id="ini.sect.path-directory">
-   <title>경로와 디렉토리</title>
-    <para>
-     <table>
-      <title>경로와 디렉토리 환경 설정 옵션</title>
-      <tgroup cols="3">
-       <thead>
-        <row>
-         <entry>이름</entry>
-         <entry>기본값</entry>
-         <entry>변경가능성</entry>
-        </row>
-       </thead>
-       <tbody>
-        <row>
-         <entry>include_path</entry>
-         <entry>PHP_INCLUDE_PATH</entry>
-         <entry>PHP_INI_ALL</entry>
-        </row>
-        <row>
-         <entry>doc_root</entry>
-         <entry>PHP_INCLUDE_PATH</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>user_dir</entry>
-         <entry>NULL</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>extension_dir</entry>
-         <entry>PHP_EXTENSION_DIR</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>cgi.fix_pathinfo</entry>
-         <entry>"0"</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>cgi.force_redirect</entry>
-         <entry>"1"</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>cgi.redirect_status_env</entry>
-         <entry>""</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>fastcgi.impersonate</entry>
-         <entry>"0"</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>cgi.rfc2616_headers</entry>
-         <entry>"0"</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-       </tbody>
-      </tgroup>
-     </table>
-    </para>
-
-    &ini.descriptions.title;
-
-    <para>
-     <variablelist>
-
-      <varlistentry id="ini.include-path">
-       <term>
-        <parameter>include_path</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         <function>require</function>, <function>include</function>,
-         <function>fopen_with_path</function> 함수가 파일을 찾는
-         디렉토리 목록을 지정합니다. 형식은 시스템의 <envar>PATH</envar>
-         환경 변수와 같습니다: 디렉토리 목록은 유닉스에서는 콜론으로,
-         윈도우에서는 세미콜론으로 구분합니다.
-        </para>
-        <para>
-         <example>
-          <title>유닉스 include_path</title>
-          <programlisting role="php.ini">
-<![CDATA[
-include_path=".:/php/includes"
-]]>
-          </programlisting>
-         </example>
-        </para>
-        <para>
-         <example>
-          <title>윈도우 include_path</title>
-          <programlisting role="php.ini">
-<![CDATA[
-include_path=".;c:\php\includes"
-]]>
-          </programlisting>
-         </example>
-        </para>
-        <para>
-         상대 경로의 인크루드를 허용하기 위해서, 현재 경로를 의미하는
-         <literal>.</literal>을 경로에 사용하십시오.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.doc-root">
-       <term>
-        <parameter>doc_root</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         서버에서 PHP의 "루트 디렉토리"입니다. 비어있지 않은 경우에만
-         사용합니다. PHP를 &safemode;로 설정하면, 이 디렉토리 밖에 있는 파일은
-         사용할 수 없습니다. IIS를 제외한 모든 웹 서버에서, PHP를 CGI로
-         사용하면서 FORCE_REDIRECT를 설정하지 않고 컴파일 했다면, doc_root를
-         꼭 설정해야 합니다. 아래의 <link
-         linkend="ini.cgi.force-redirect">cgi.force_redirect</link> 설정을
-         대신 사용할 수도 있습니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.user-dir">
-       <term>
-        <parameter>user_dir</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         <literal>PHP</literal> 파일을 사용하는 유저의 홈 디렉토리의
-         기본 이름입니다. 예를 들면, <literal>public_html</literal>이
-         있습니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.extension-dir">
-       <term>
-        <parameter>extension_dir</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         동적 로드 확장를 찾을 디렉토리를 설정합니다.
-         참고: <link linkend="ini.enable-dl">enable_dl</link>,
-         <function>dl</function>.
-        </para>
-       </listitem>
-      </varlistentry>
-     
-      <varlistentry id="ini.extension">
-       <term>
-        <parameter>extension</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         PHP가 시작할 때 설정한 동적 로드 확장을 읽어옵니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.cgi.fix_pathinfo">
-       <term>
-        <parameter>cgi.fix_pathinfo</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         CGI를 위한 <emphasis>실제</emphasis> PATH_INFO/PATH_TRANSLATED 지원을
-         제공합니다. PHP의 이전 작동은 PATH_TRANSLATED를 SCRIPT_FILENAME으로
-         설정했고, and to not grok what PATH_INFO is. PATH_INFO에 관한 정보는,
-         cgi 규격을 참고하십시오. 1로 설정하면 PHP CGI가 규격에 맞게 경로를
-         수정합니다. 0으로 설정하면 PHP는 이전과 같이 작동합니다. 기본값은
-         0입니다. PATH_TRANSLATED 대신 SCRIPT_FILENAME을 사용하도록 스크립트를
-         수정할 필요가 있습니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.cgi.force-redirect">
-       <term>
-        <parameter>cgi.force_redirect</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         cgi.force_redirect는 대부분의 웹 서버에서 PHP를 CGI로 사용할 때
-         보안을 제공하기 위해 필요합니다. 미정의 상태라면, PHP는
-         기본값으로 on으로 인식합니다. <emphasis>자신의 책임하</emphasis>에
-         끌 수 있습니다.
-        </para>
-        <note>
-         <para>
-          윈도우 유저: IIS에서는 이것을 꺼도 안전하며, 사실상 꺼야합니다.
-          OmniHTTPD나 Xitami로 작업한다면, 반드시 꺼야 합니다.
-         </para>
-        </note>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.cgi.redirect-status-env">
-       <term>
-        <parameter>cgi.redirect_status_env</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         cgi.force_redirect가 켜져있고, 아파치나 넷스케이프(iPlanet) 웹 서버를
-         사용하지 않는다면, 계속해서 실행하기 위한 OK를 알리기 위한 환경 변수
-         이름을 설정해야 할 수도 있습니다.
-        </para>
-        <note>
-         <para>
-          이 변수를 설정하는건 보안 문제가 될 수도 있습니다.
-          어떤 일을 하는지 우선적으로 알아보십시오.
-         </para>
-        </note>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.fastcgi.impersonate">
-       <term>
-        <parameter>fastcgi.impersonate</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         IIS(WINNT 기반 OS)에서 FastCGI는 클라이언트 호출에 대한 가상 보안 토큰을
-         지원합니다. 이 지시자는 IIS에게 요청에 대한 보안 문장을 정의하도록 허용합니다.
-         아파치의 mod_fastcgi에서는 현재(2002/03/17) 이 기능을 지원하지 않습니다.
-         IIS에서 실행할때는 1로 설정하십시오. 기본값은 0입니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.cgi.rfc2616-headers">
-       <term>
-        <parameter>cgi.rfc2616_headers</parameter>
-        <type>int</type>
-       </term>
-       <listitem>
-        <para>
-         PHP가 HTTP 응답 코드를 보낼 때 어떤 형식의 헤더를 사용할지를 결정합니다.
-         0으로 설정하면, PHP는 아파치 및 기타 웹 서버에서 지원하는 Status: 헤더를
-         이용합니다. 이 옵션을 1로 설정하면, PHP는
-         <ulink url="&url.rfc;2616">RFC 2616</ulink> 호환 헤더를 전송합니다.
-         어떤 일을 하는지 알 수 없는 한 0으로 설정해두십시오.
-        </para>
-       </listitem>
-      </varlistentry>
-     </variablelist>
-    </para>
-   </sect2>
-
-  <sect2 id="ini.sect.file_uploads">
-   <title>파일 업로드</title>
-    <para>
-     <table>
-      <title>파일 업로드 환경 설정 옵션</title>
-      <tgroup cols="3">
-       <thead>
-        <row>
-         <entry>이름</entry>
-         <entry>기본값</entry>
-         <entry>변경가능성</entry>
-        </row>
-       </thead>
-       <tbody>
-        <row>
-         <entry>file_uploads</entry>
-         <entry>"1"</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>upload_tmp_dir</entry>
-         <entry>NULL</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-        <row>
-         <entry>upload_max_filesize</entry>
-         <entry>"2M"</entry>
-         <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-        </row>
-       </tbody>
-      </tgroup>
-     </table>
-    </para>
-
-    &ini.descriptions.title;
-
-    <para>
-     <variablelist>
-      <varlistentry id="ini.file-uploads">
-       <term>
-        <parameter>file_uploads</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-         HTTP <link linkend="features.file-upload">파일 업로드</link> 허용 여부를
-         결정합니다. <link linkend="ini.upload-max-filesize">upload_max_filesize</link>,
-         <link linkend="ini.upload-tmp-dir">upload_tmp_dir</link>, 
-         <link linkend="ini.post-max-size">post_max_size</link> 지시자를 참고하십시오.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.upload-tmp-dir">
-       <term>
-        <parameter>upload_tmp_dir</parameter>
-        <type>string</type>
-       </term>
-       <listitem>
-        <para>
-         파일 업로드 중의 저장을 위한 임시 디렉토리 설정입니다.
-         <literal>PHP</literal>가 실행되는 유저가 쓰기 권한을 가져야 합니다.
-         지정하지 않으면 시스템 기본값을 사용합니다.
-        </para>
-       </listitem>
-      </varlistentry>
-
-      <varlistentry id="ini.upload-max-filesize">
-       <term>
-        <parameter>upload_max_filesize</parameter>
-        <type>integer</type>
-       </term>
-       <listitem>
-        <para>
-         업로드 파일의 최대 크기를 지정합니다.
-        </para>
-       </listitem>
-      </varlistentry>
-     </variablelist>
-    </para>
-   </sect2>
-
-  <sect2 id="ini.sql-general">
-   <title>SQL 일반</title>
-    <para>
-     <table>
-      <title>SQL 일반 환경설정 옵션</title>
-      <tgroup cols="3">
-       <thead>
-        <row>
-         <entry>이름</entry>
-         <entry>기본값</entry>
-         <entry>변경가능성</entry>
-        </row>
-       </thead>
-       <tbody>
-        <row>
-         <entry>sql.safe_mode</entry>
-         <entry>"0"</entry>
-         <entry>PHP_INI_SYSTEM</entry>
-        </row>
-       </tbody>
-      </tgroup>
-     </table>
-    </para>
-
-    &ini.descriptions.title;
-
-    <para>
-     <variablelist>
-      <varlistentry id="ini.sql.safe-mode">
-       <term>
-        <parameter>sql.safe_mode</parameter>
-        <type>boolean</type>
-       </term>
-       <listitem>
-        <para>
-        </para>
-       </listitem>
-      </varlistentry>
-     </variablelist>
-    </para>
-   </sect2>
-
-   <sect2 id="ini.sect.debugger">
-    <title>디버거 환경 설정 지시자</title>
-    <caution>
-     <para>
-      PHP 3만 기본 디버거를 가지고 있습니다. 추가 정보는 <xref
-      linkend="debugger"/>를 참고하십시오.
-     </para>
-    </caution>
-
-    <variablelist>
-     <varlistentry id="ini.debugger.host">
-      <term>
-       <parameter>debugger.host</parameter>
-       <type>string</type>
-      </term>
-      <listitem>
-       <para>
-        디버거가 사용하는 호스트의 DNS 이름이나 IP.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry id="ini.debugger.port">
-      <term>
-       <parameter>debugger.port</parameter>
-       <type>string</type>
-      </term>
-      <listitem>
-       <para>
-        디버거가 사용하는 포트 번호.
-       </para>
-      </listitem>
-     </varlistentry>
-
-     <varlistentry id="ini.debugger.enabled">
-      <term>
-       <parameter>debugger.enabled</parameter>
-       <type>boolean</type>
-      </term>
-      <listitem>
-       <para>
-        디버거 활성화 여부.
-       </para>
-      </listitem>
-     </varlistentry>
-
-    </variablelist>
    </sect2>
 
   </sect1>
