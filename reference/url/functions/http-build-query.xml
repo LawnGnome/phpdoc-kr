@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.3 Maintainer: progcom Status: ok -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
   <refentry id="function.http-build-query">
    <refnamediv>
     <refname>http_build_query</refname>
@@ -15,13 +15,13 @@
     </methodsynopsis>
     
     <simpara>
-     주어진 연관(혹은 인덱스) 배열에서 url-인코드 쿼리 문자열을 생성합니다.
+     주어진 연관(혹은 인덱스) 배열에서 url-인코드한 쿼리 문자열을 생성합니다.
      <parameter>formdata</parameter>는 배열이나 속성을 가지는 객체일 수
      있습니다. <parameter>formdata</parameter>는 단순한 1차원 구조일수도, 혹은
      (다른 배열을 포함한)배열의 배열일 수 있습니다. 기본 배열에 숫자 인덱스를
      사용하고 <parameter>numeric_prefix</parameter>가 주어지면, 기본 배열 안의
      숫자 인덱스 앞에 덧붙여집니다. 이는 <literal>PHP</literal>나 다른 CGI
-     어플리케이션에 적합한 변수 이름을 가지도록 합니다.
+     어플리케이션에 적합한 변수명을 가지도록 합니다.
     </simpara>
     
     <example>
@@ -81,19 +81,29 @@ $data = array('user'=>array('name'=>'Bob Smith',
               'CEO');
                                                
 echo http_build_query($data, 'flags_');
-/* 출력: (읽기 편하게 단어를 구분)
-      user[name]=Bob+Smith&user[age]=47&user[sex]=M&user[dob]=5%1F12%1F1956&
-      pastimes[0]=golf&pastimes[1]=opera&pastimes[2]=poker&pastimes[3]=rap&
-      children[bobby][age]=12&children[bobby][sex]=M&children[sally][age]=8&
-      children[sally][sex]=F&flags_0=CEO
-
-   주의: 기본 배열의 숫자 인덱스 요소인 "CEO"만이 prefix를 가집니다.
-         안쪽에 존재하는 다른 숫자 인덱스는 적합한 변수 이름을 위한
-         문자열 prefix가 필요하지 않습니다.
- */
 ?>
 ]]>
      </programlisting>
+     <para>
+      출력은(읽기 편하도록 줄바꿈 처리):
+     </para>
+     <screen>
+<![CDATA[
+user[name]=Bob+Smith&user[age]=47&user[sex]=M&user[dob]=5%1F12%1F1956&
+pastimes[0]=golf&pastimes[1]=opera&pastimes[2]=poker&pastimes[3]=rap&
+children[bobby][age]=12&children[bobby][sex]=M&children[sally][age]=8&
+children[sally][sex]=F&flags_0=CEO
+]]>
+     </screen>
+     <para>
+      <note>
+       <para>
+        기본 배열의 숫자 인덱스 요소인 "CEO"만이 전치사를 가집니다.
+        내부에 존재하는 다른 숫자 인덱스는, 적합한 변수명을 가지기
+        위한 문자열 전치사가 필요하지 않습니다.
+       </para>
+      </note>
+     </para>
     </example>
     
     <example>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.11 Maintainer: progcom Status: ok -->
+<!-- $Revision: 1.6 $ -->
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ok -->
  <reference id="ref.zlib">
   <title>Zlib 압축 함수</title>
   <titleabbrev>Zlib</titleabbrev>
@@ -22,12 +22,12 @@
       파일에 자유롭게 접근할 수 있습니다.
      </para>
      <para>
-      버전 4.3.0에서 이 특별한 prefix는 ':'을 포함하는 파일 이름과의
+      버전 4.3.0에서 이 특별한 전치사는 ':'을 포함하는 파일 이름과의
       혼동을 막기 위해서 'zlib://'으로 변경되었습니다.
      </para>
      <para>
       이 기능은 <literal>fopencookie()</literal> 함수를 제공하는
-      C 런타임 라이브러리가 필요합니다. 현재 지식으로는 GNU libc가
+      C 런타임 라이브러리가 필요합니다. 현재 알려진 바로는 GNU libc가
       이 기능을 제공하는 유일한 라이브러리입니다.
      </para>
     </note>
@@ -86,6 +86,7 @@ print gzread($zp, 3);
 
 // 파일을 끝까지 출력하고 닫습니다.
 gzpassthru($zp);
+gzclose($zp);
 
 print "\n";
 

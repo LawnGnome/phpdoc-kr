@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.12 Maintainer: progcom Status: working -->
  <reference id="ref.xml">
   <title>XML 파서 함수</title>
@@ -75,22 +75,22 @@ libexpat.a: $(OBJS)
     <section id="xml.eventhandlers">
      <title>이벤트 핸들러</title>
      <para>
-      The XML event handlers defined are:
+      정의된 XML 이벤트 핸들러는:
       <table>
-       <title>Supported XML handlers</title>
+       <title>지원하는 XML 핸들러</title>
        <tgroup cols="2">
         <thead>
          <row>
-          <entry>PHP function to set handler</entry>
-          <entry>Event description</entry>
+          <entry>핸들러를 설정하는 PHP 함수</entry>
+          <entry>이벤트 설명</entry>
          </row>
         </thead>
         <tbody>
          <row>
           <entry><function>xml_set_element_handler</function></entry>
           <entry>
-           Element events are issued whenever the XML parser
-           encounters start or end tags.  There are separate handlers
+           엘레멘트 이벤트는 XML 파서가 시작과 끝 태그에 도달했을 때
+           발생합니다. There are separate handlers
            for start tags and end tags.
           </entry>
          </row>
@@ -183,10 +183,10 @@ libexpat.a: $(OBJS)
     </section>
 
     <section id="xml.error-codes">
-     <title>Error Codes</title>
+     <title>오류 코드</title>
      <para>
-      The following constants are defined for XML error codes (as
-      returned by <function>xml_parse</function>):
+      다음 상수들이 XML 오류 코드로 정의되어 있습니다
+      (<function>xml_parse</function>가 반환합니다):
       <simplelist>
        <member>XML_ERROR_NONE</member>
        <member>XML_ERROR_NO_MEMORY</member>
@@ -215,15 +215,13 @@ libexpat.a: $(OBJS)
     </section>
 
     <section id="xml.encoding">
-     <title>Character Encoding</title>
+     <title>문자 인코딩</title>
      <para>
-      PHP's XML extension supports the <ulink
-      url="&url.unicode;">Unicode</ulink> character set through
-      different <glossterm>character encoding</glossterm>s.  There are
-      two types of character encodings, <glossterm>source
-      encoding</glossterm> and <glossterm>target encoding</glossterm>.
-      PHP's internal representation of the document is always encoded
-      with <literal>UTF-8</literal>.
+      PHP의 XML 확장은 <ulink url="&url.unicode;">유니코드</ulink> 문자셋을
+      통해 서로 다른 <glossterm>문자 인코딩</glossterm>을 지원합니다. 문자
+      인코딩에는 <glossterm>소스 인코딩</glossterm>과 <glossterm>타겟
+       인코딩</glossterm>의 두 종류가 존재합니다. PHP 내부에서 문서 표현은
+      항상 <literal>UTF-8</literal>로 인코드되어 있습니다.
      </para>
      <para>
       Source encoding is done when an XML document is <link
@@ -263,10 +261,10 @@ libexpat.a: $(OBJS)
    <section id="xml.examples">
     &reftitle.examples;
     <para>
-     Here are some example PHP scripts parsing XML documents.
+     XML 문서를 파싱하는 몇몇 예제 PHP 스크립트입니다.
     </para>
     <section id="example.xml-structure">
-     <title>XML Element Structure Example</title>
+     <title>XML 엘레멘트 구조 예제</title>
      <para>
       This first example displays the structure of the start elements in
       a document with indentation.
@@ -314,7 +312,7 @@ xml_parser_free($xml_parser);
     </section>
 
     <section id="example.xml-map-tags">
-     <title>XML Tag Mapping Example</title>
+     <title>XML 태그 매핑 예제</title>
      <para>
       <example>
        <title>Map XML to HTML</title>

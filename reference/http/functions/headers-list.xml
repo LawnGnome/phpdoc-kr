@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.1 $ -->
-<!-- EN-Revision: 1.1 Maintainer: progcom Status: ok -->
+<!-- $Revision: 1.2 $ -->
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
   <refentry id="function.headers-list">
    <refnamediv>
     <refname>headers_list</refname>
@@ -14,7 +14,7 @@
      </methodsynopsis>
     <simpara>
      <function>headers_list</function>는 브라우저/클라이언트에 전송한 헤더를
-     숫자 인덱스 배열로 반환합니다. 헤더가 전송되었는지 여부를 확인하려면,
+     숫자 인덱스 배열로 반환합니다. 헤더가 이미 전송되었는지를 확인하려면,
      <function>headers_send</function>를 사용하십시오.
     </simpara>
     <para>
@@ -34,13 +34,19 @@ header("X-Sample-Test: foo");
 /* 응답은 평문 내용임을 지정합니다. */
 header('Content-type: text/plain');
 
-/* 어떤 헤더가 전송된걸까요? */
+/* 어떤 헤더를 전송하였을까요? */
 var_dump(headers_list());
-
+?>
 
 /* 출력
    ====
-
+]]>
+      </programlisting>
+      <para>
+       출력은:
+      </para>
+      <screen>
+<![CDATA[
 array(4) {
   [0]=>
   string(29) "X-Powered-By: PHP/5.0.0"
@@ -51,12 +57,8 @@ array(4) {
   [3]=>
   string(24) "Content-type: text/plain"
 }
-
-*/
-
-?>
 ]]>
-      </programlisting>
+      </screen>
      </example>
     </para>
     <simpara>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
+<!-- $Revision: 1.9 $ -->
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: wip -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
-    <refname>패턴 구문</refname>
-    <refpurpose>PCRE 정규표현식 구문 설명</refpurpose>
+    <refname>패턴 문법</refname>
+    <refpurpose>PCRE 정규표현식 문법 설명</refpurpose>
    </refnamediv>
 
    <refsect1>
@@ -341,13 +341,11 @@
      있습니다.
     </para>
     <para>
-     A second use of backslash provides a way of encoding non-
-     printing characters in patterns in a visible manner. There
-     is no restriction on the appearance of non-printing  characters,
-     apart from the binary zero that terminates a pattern,
-     but when a pattern is being prepared by text editing, it is
-     usually  easier to use one of the following escape sequences
-     than the binary character it represents:
+     백슬래쉬의 두번째 사용은 패턴에서 출력할 수 없는 문자를 보여지게
+     인코딩하는 방법을 제공합니다. 바이너리 제로가 패턴 종료를 의미하는걸
+     제외하면, 출력할 수 없는 문자가 나타나는 제한은 존재하지 않습니다. 그러나
+     패턴을 텍스트 편집으로 준비할 때, 다음의 이스케이프 스퀀스를 사용하는
+     편이 바이너리 문자를 직접 표현하는 것보다 간편합니다:
     </para>
     <para>
       <variablelist>
@@ -426,16 +424,16 @@
       </variablelist>
     </para>
     <para>
-     The precise effect of "<literal>\cx</literal>" is as follows: 
-     if "<literal>x</literal>" is a lower case  letter, it is converted
-     to upper case. Then bit 6 of the character (hex 40) is inverted. 
+     "<literal>\cx</literal>"의 효과는 다음과 같이 계산합니다:
+     "<literal>x</literal>"가 소문자라면, 대문자로 변환합니다. 
+     Then bit 6 of the character (hex 40) is inverted. 
      Thus "<literal>\cz</literal>" becomes  hex 1A, but
      "<literal>\c{</literal>" becomes hex 3B, while "<literal>\c;</literal>"
      becomes hex 7B.
     </para>
     <para>
-     After "<literal>\x</literal>", up to two hexadecimal digits are
-     read (letters can be in upper or lower case).
+     "<literal>\x</literal>" 뒤에, 두개의 16진 숫자를 읽습니다. (대소문자
+     구별은 하지 않습니다)
     </para>
     <para>
      After "<literal>\0</literal>" up to two further octal digits are read.
