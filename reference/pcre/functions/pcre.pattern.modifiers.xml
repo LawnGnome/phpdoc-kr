@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.5 -->
   <refentry id="pcre.pattern.modifiers">
    <refnamediv>
@@ -91,10 +91,10 @@
     <term><emphasis>A</emphasis> (PCRE_ANCHORED)</term>
     <listitem>
      <simpara>
-      If this modifier is set, the pattern is forced to be
-      "anchored", that is, it is constrained to match only at the
-      start of the string which is being searched (the "subject
-      string").  This effect can also be achieved by appropriate
+      이 변경자를 지정하면, 패턴을 강제적으로 "anchored"합니다.
+      이는 ("주어진 문자열"에서) 검색된 문자열의 시작에만 매치도록
+      강제합니다. 
+      This effect can also be achieved by appropriate
       constructs in the pattern itself, which is the only way to
       do it in Perl.
      </simpara>
@@ -117,10 +117,9 @@
     <term><emphasis>S</emphasis></term>
     <listitem>
      <simpara>
-      When a pattern is going to be used several times, it is
-      worth spending more time analyzing it in order to speed up
-      the time taken for matching. If this modifier is set, then
-      this extra analysis is performed. At present, studying a
+      패턴이 여러번 이용되면, 매칭에 걸리는 시간을 절약하기 위해서
+      분석에 더 많은 시간을 들일 가치가 있습니다. 이 변경자를 지정하면,
+      추가 분석을 행합니다. At present, studying a
       pattern is useful only for non-anchored patterns that do not
       have a single fixed starting character.
      </simpara>
@@ -186,3 +185,4 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
+
