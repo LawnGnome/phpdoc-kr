@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.14 $ -->
-<!-- EN-Revision: 1.19 -->
+<!-- $Revision: 1.15 $ -->
+<!-- EN-Revision: 1.21 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
 
@@ -8,8 +8,8 @@
    짧고 간단한 튜토리얼로 PHP의 가장 기초가 되는 부분을 보여드리겠습니다.
    PHP는 웹페이지를 만드는데에만 쓰이는 것은 아니지만, 여기서는
    PHP로 동적 웹페이지를 만드는 내용에 대해서만 다루겠습니다.
-   더 많은 정보는 <link linkend="intro-whatcando">PHP는 무엇을
-   할 수 있는가?</link> 섹션에 있습니다.
+   <link linkend="intro-whatcando">PHP로 할 수 있는 것들</link> 섹션에서
+   더 많은 정보를 얻을 수 있습니다.
   </para>
   <para>
    PHP가 포함된 웹 페이지는 보통의 HTML 페이지와 같이 취급됩니다.
@@ -414,9 +414,12 @@ Joe씨 안녕하세요.
        <link linkend="language.variables.superglobals">자동 전역 배열</link>을
        사용하십시오. 그 종류에는 <varname>$_GET</varname>, <varname>$_POST</varname>,
        <varname>$_COOKIE</varname>, <varname>$_SERVER</varname>,
-       <varname>$_ENV</varname>, <varname>$_REQUEST</varname>,
-       <varname>$_SESSION</varname>이 있습니다. $HTTP_POST_VARS와 같은
-       이전의 <varname>$HTTP_*_VARS</varname> 배열은 PHP 3부터 아직까지 존재합니다.
+       <varname>$_ENV</varname>, <varname>$_FILES</varname>,
+       <varname>$_REQUEST</varname>, <varname>$_SESSION</varname>이 존재합니다.
+       $HTTP_POST_VARS 등과 같은 이전의 <varname>$HTTP_*_VARS</varname> 배열은
+       PHP 3부터 여전히 존재합니다.
+
+       &avail.register-long-arrays;
       </simpara>
      </listitem>
      <listitem>
