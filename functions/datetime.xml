@@ -218,7 +218,9 @@
       </listitem>
       <listitem>
        <simpara>
-        Z - timezone offset in seconds (i.e. "-43200" to "43200")
+	Z - timezone offset in seconds (i.e. "-43200" to "43200"). The
+	offset for timezones west of UTC is always negative, and for
+	those east of UTC is always positive.
        </simpara>
       </listitem>
      </itemizedlist>
@@ -757,7 +759,7 @@ echo strftime ("Last day in Feb 2000 is: %d", $lastday);
       </listitem>
       <listitem>
        <simpara>
-	%d - day of the month as a decimal number (range 00 to 31)
+	%d - day of the month as a decimal number (range 01 to 31)
        </simpara>
       </listitem>
       <listitem>
@@ -906,6 +908,13 @@ echo strftime ("Last day in Feb 2000 is: %d", $lastday);
        </simpara>
       </listitem>
      </itemizedlist>
+     <note>
+      <para>
+       Not all conversion specifiers may be supported by your C
+       library, in which case they will not be supported by PHP's
+       <function>strftime</function>.
+      </para>
+     </note>
      <example>
       <title><function>Strftime</function> example</title>
       <programlisting role="php">
