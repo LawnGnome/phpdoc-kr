@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.78 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.80 Maintainer: progcom Status: ready -->
 
 <!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
@@ -232,6 +232,11 @@ supplemental files to mark section titles -->
 <!ENTITY php '<literal>PHP</literal>'>
 <!ENTITY safemode '<link linkend="ini.safe-mode">안전 모드</link>'>
 
+<!-- Notes for SAPI/Apache -->
+<!ENTITY note.apache.nsapi-module '<note><para>PHP 4.3.3부터 이 함수를
+넷스케이프/iPlanet/SunONE 웹서버의 <link linkend="ref.nsapi">NSAPI 서버
+모듈</link>에서도 사용할 수 있습니다.</para></note>'>
+
 <!-- SimpleXML Notes -->
 <!ENTITY simplexml.iteration '<note><simpara>SimpleXML은 대부분의 메쏘드에 반복하여
 속성을 추가하는 규칙을 가지고 있습니다. 이들은 <function>var_dump</function>나 객체를
@@ -279,9 +284,10 @@ supplemental files to mark section titles -->
 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <ulink
 url="&url.tidy.conf;">&url.tidy.conf;</ulink>를 확인하십시오.
 <parameter>encoding</parameter> 인수는 입출력 문서의 인코등을 지정합니다. 가능한
-<parameter>encoding</parameter> 값은: ascii, latin0, latin1, raw, utf8, iso202,
-utf16le, utf16be, utf16, mac, win1252, ibm858, big5, shiftjis.</para>'>
+<parameter>encoding</parameter> 값은: ascii, latin1, raw, utf8, iso2022, mac,
+win1252, utf16le, utf16be, utf16, big5, shiftjis.</para>'>
 
 <!-- Korean translation entity -->
 <!ENTITY ko.reference.ini.constants 'PHP_INI_* 상수에 대한 자세한 내용 및 정의는
 <function>ini_set</function>을 참고하십시오'>
+
