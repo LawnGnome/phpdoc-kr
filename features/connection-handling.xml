@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
+<!-- $Revision: 1.8 $ -->
 <!-- EN-Revision: 1.14 -->
  <chapter id="features.connection-handling">
-  <title>Connection handling</title>
+  <title>연결 제어</title>
 
   <note>
    <para>이 기능은 PHP version 3.0.7 이후부터 적용된 것들이다.</para>
