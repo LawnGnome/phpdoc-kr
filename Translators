@@ -80,7 +80,7 @@ functions/icap.xml
 functions/iconv.xml
 functions/ifx.xml
 functions/image.xml
-functions/imap.xml                       Jin Taeyoung
+functions/imap.xml      Jin Taeyoung <fuzzy74@hitel.net>
 functions/info.xml
 functions/ingres_ii.xml
 functions/java.xml
@@ -97,7 +97,7 @@ functions/mssql.xml
 functions/mysql.xml
 functions/network.xml
 functions/nis.xml
-functions/oci8.xml                        Jin Taeyoung
+functions/oci8.xml        Jin Taeyoung <fuzzy74@hitel.net>
 functions/openssl.xml
 functions/oracle.xml
 functions/ovrimos.xml
@@ -149,12 +149,3 @@ pear/benchmark_timer.xml
 pear/pear.xml
 pear/standards.xml
 ----------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-

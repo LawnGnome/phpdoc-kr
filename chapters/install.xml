@@ -1,110 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.10 $ -->
 <chapter id="installation">
-	<title>설치(Installation)</title>
-	<sect1 id="install.downloading">
-		<title>최신 버전 내려받기</title>
-		<simpara>
-             최신버전의 소스와 (윈도우즈를 포함한) 여러 플랫폼의 배포판은 
-             <literal><ulink url="&url.php;">&url.php;</ulink></literal>에서 내려 받을 수 있다.
-             가능하다면 여러분과 가장 가까이 있는 <ulink url="&url.mirrors;">미러 사이트</ulink>에서 내려 받기를 권한다.
-             </simpara>
-	</sect1>
-	<sect1 id="install.unix">
-		<title>Unix에 설치</title>
-		<para>
-  이 장은 PHP를 유닉스 시스템에서의 일반인 설치 방법과 설정 방법에 대해 설명하고 있다. 
-  시작전에 여러분이 사용하고 있는 시스템 내역과 웹서버의 스펙에 에 대해 자세히 알고 있어야 할 것이다.
-   </para>
-		<para>
-  필요한 지식과 소프트웨어: 
-    
+    <title>설치(Installation)</title>
+
+  <sect1 id="install.general">
+   <title>설치시 고려사항</title>
+   <para>
+    설치하기 전에, 여러분은 무엇을 위해 PHP를 사용할것인지
+    알 필요가 있다. PHP를 사용할 수 있는 세가지의 주요
+    영역이 있다.
+    <link linkend="intro-whatcando">What can PHP do?</link>
+    섹션에서 설명이 되어있다:
     <itemizedlist>
-				<listitem>
-					<simpara>
-      기본적인 UNIX 사용법 (컴파일 하고 설치할 경우 "make"와 C 컴파일러를 사용할 수 있어야 한다.)
+     <listitem><simpara>Server-side scripting</simpara></listitem>
+     <listitem><simpara>Command line scripting</simpara></listitem>
+     <listitem><simpara>Client-side GUI applications</simpara></listitem>
+    </itemizedlist>
+   </para>
+   <para>
+    최우선적으로 세가지가 필요하다:
+    PHP 자신, 웹서버, 그리고 웹브라우저.
+    여러분은 이미 웹 브라우저를 가지고 있을것이며, 여러분의 
+    운영체제에 관련이 있을것이다. 그리고 웹서버(예. 리눅스의 아파치나
+    윈도우즈의 IIS)가 준비되어있어야 한다.
+    여러분은 회사의 웹공간(webspace)을 빌려쓰고 있을 수 있다.
+    이 경우에는 어떠한 것도 설정할 필요가 없다. 단지 PHP스크립트를
+    쓰고, 그것을 빌려쓰는 서버에 업로드하고, 웹브라우저로
+    결과를 보면된다.
+    호스팅 회사의 목록은 <ulink url="&url.php.hosts;">&url.php.hosts;</ulink>
+    에서 찾을 수 있다.
+   </para>
+   <para>
+    여러분의 서버와 PHP를 세팅할때에는 서버의 PHP를 접속하는
+    데 있어서 두가지 방법이 있다. 많은 서버는 PHP가 직접 모듈
+    인터페이스(direct module interface(즉 SAPI))를 사용한다.
+    이런 서버에는 아파치, 마이크로소프트 IIS, 네스케이프, iPlanet
+    가 있다. 또 다른 많은 서버는 ISAPI(Microsoft module interface)
+    를 지원한다(예로는 OmniHTTPd). 여러분의 웹서버에 PHP의 모듈
+    지원이 되지 않으면, CGI 프로세서로서 PHP를 사용할 수 있다.
+    이를 위해서는 서버의 모든 PHP 파일 요구를 처리하기 위한
+    PHP의 커맨드라인 실행을 사용할 수 있도록
+    여러분의 웹서버를 설정해야 한다(<filename>php.exe</filename> on Windows)
+   </para>
+   <para>
+    물론 커맨드 라인 스크립트로서 PHP를 사용하는데 관심이 있다면
+    (eg. 오프라인에서 어떤 이미지를 자동생성시키는 스크립트를 쓰기,
+    어떤 인수에 의해 텍스트 파일을 처리하기 같은일),
+    여러분은 커맨드 라인 실행이 필요하다. 더 자세한 정보는
+    <link linkend="commandline">writing command line PHP applications</link>
+    섹션을 보라.
+    이경우에는 서버와 브라우저가 필요하지 않다.
+   </para>
+   <para>
+    PHP로 여러분은 PHP-GTK 확장을 이용하여 클라이언트측의 
+    GUI 응용프로그램을 만들수 있다. 이것은 웹페이지를 만드는
+    것과는 전혀 틀린 접근이 필요하다. HTML을 출력하지 않고,
+    윈도우즈와 그 안의 객체에 대해서 다루게 된다.
+    PHP-GTK에 대한 더 자세한 정보는 
+    <ulink url="&url.php.gtk;">visit the site dedicated to
+    this extension</ulink>을 방문하다.
+    PHP-GTK는 공식적인 PHP 배포판에 포함되지 않는다.
+   </para>
+   <para>
+    지금부터, 이 장은 서버 모듈 인터페이스와 CGI 실행형
+    으로 유닉스와 윈도우즈상의 웹서버에 PHP를 설정하는 법
+    을 다룬다.
+   </para>
+   <para>
+    PHP의 소스와 윈도우즈를 위한 바이너리 배포판은
+    <ulink url="&url.php;">&url.php;</ulink>에서 내려 받을 수 있다.
+    가능하다면 여러분과 가장 가까이 있는 <ulink url="&url.mirrors;">미러 사이트</ulink>
+    에서 내려 받기를 권한다.
+   </para>
+  </sect1>
+  
+  <sect1 id="install.unix">
+   <title>Unix 시스템에 설치</title>
+   <para>
+   이 장은 PHP를 유닉스 시스템에서의 일반적인 설치 방법과 설정 방법에
+   대해 설명하고 있다.  시작전에 여러분이 사용하고 있는 시스템 내역과
+   웹서버의 스펙에 대해 자세히 알고 있어야 할 것이다.
+   </para>
+   <para>
+    필요한 지식과 소프트웨어: 
+    <itemizedlist>
+     <listitem>
+      <simpara>
+      기본적인 UNIX 사용법 (컴파일 하고 설치할 경우 "make"와 
+      C 컴파일러를 사용할 수 있어야 한다.)
       </simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </listitem>
+     <listitem>
+      <simpara>
        ANSI C 컴파일러 (컴파일을 할 경우)
       </simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </listitem>
+     <listitem>
+      <simpara>
        flex (컴파일을 할 경우)
       </simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </listitem>
+     <listitem>
+      <simpara>
        bison (컴파일을 할 경우)
       </simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </listitem>
+     <listitem>
+      <simpara>
        web 서버
       </simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </listitem>
+     <listitem>
+      <simpara>
       여러분이 사용하고 싶은 모듈 컴포넌트 (gd, pdf 라이브러리 등) 
       </simpara>
-				</listitem>
-			</itemizedlist>
-		</para>
-		<para>
-  Unix 환경에서 PHP를 설치하는 데는 여러가지 방법이 있는데,
-  크게 PHP를 처음부터 컴파일하고 설정하는 방법과 
-  미리 컴파일된 여러 패키지 중에 하나를 사용하는 방법이 있을 수 있다.
-  이 문서는 PHP를 처음부터 컴파일하고 설정하는 방법에 대해 주로 설명 하도록 하겠다.
-		</para>
-		<para>
-  초기 PHP의 설치와 설정은 <filename>configure</filename> 
-  스크립트의 커맨드라인 옵션을 사용하여 설정한다.
-  이 글에서는 몇몇 핵심적인 옵션에 대해서만 대강 설명하지만, 실제로 다른 많은 옵션이 있다.
-  PHP를 보다 안정적이고 효율적으로 동작를 시키려면 
-  <link linkend="install.configure">전체 설정 옵션</link>을 살펴 보는 것이 좋다.
-  PHP는 다음과 같은 형태중 하나로 설치될 수 있다. :
-    <itemizedlist>
-				<listitem>
-					<simpara>
+     </listitem>
+    </itemizedlist>
+   </para>
+
+   <para>
+    Unix 환경에서 PHP를 설치하는 데는 여러가지 방법이 있는데,
+    크게 PHP를 처음부터 컴파일하고 설정하는 방법과 
+    미리 컴파일된 여러 패키지 중에 하나를 사용하는 방법이 있을 수 있다.
+    이 문서는 PHP를 처음부터 컴파일하고 설정하는 방법에 대해 주로 설명 하도록 하겠다.
+   </para>
+
+   <para>
+    초기 PHP의 설치와 설정은 <filename>configure</filename>스크립트의
+    커맨드라인 옵션을 사용하여 설정한다. 이 글에서는 몇몇 핵심적인 옵션에
+    대해서만 대강 설명하지만, 실제로 다른 많은 옵션이 있다.
+    PHP를 보다 안정적이고 효율적으로 동작를 시키려면 <link linkend="install.configure">전체 설정 옵션</link>을
+    살펴 보는 것이 좋다.
+    PHP는 다음과 같은 형태중 하나로 설치될 수 있다:
+   <itemizedlist>
+    <listitem>
+     <simpara>
        <link linkend="install.apache">Apache module</link>로
-					</simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
        <link linkend="install.fhttpd">fhttpd module</link>로
-					</simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
        <link linkend="install.otherhttpd">AOLServer, NSAPI,
        phttpd, Pi3Web, Roxen, thttpd, Zeus</link>와 함께
-					</simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
        <link linkend="install.commandline">CGI 실행파일</link>로
-					</simpara>
-				</listitem>
-			</itemizedlist>
-		</para>
-		<sect2 id="install.unix.apache-module">
-			<title>Apache 모듈 개략적인 설명</title>
-			<para>
-    PHP는 여러 다른 방법을 사용하여 컴파일될 수 있으나,
-    가장 많이 사용되는 방법은 Apache 모듈로 컴파일 되는 것이다. 
-    우선 간단한 방법을 선보인다. 
+     </simpara>
+    </listitem>
+    </itemizedlist>
+   </para>
+
+   <sect2 id="install.unix.apache-module">
+    <title>Apache 모듈 개략적인 설명</title>
+
+    <para>
+     PHP는 여러 다른 방법을 사용하여 컴파일될 수 있으나,
+     가장 많이 사용되는 방법은 Apache 모듈로 컴파일 되는 것이다. 
+     우선 간단한 방법을 선보인다. 
     </para>
-			<para>
-     아래 8번째 라인의 <command>configure</command> 명령에는 
-     <link linkend="install.configure">Complete list of configure options</link>에서 설명하는
-     여러 다른 옵션을 줄 수 있다.
-    </para>
-			<example id="install.unix.apache-module.quick">
-				<title>
+
+    <example id="install.unix.apache-module.quick">
+     <title>
       Quick Installation Instructions for PHP 4 (Apache Module Version)
      </title>
-				<programlisting>
+     <programlisting role="shell">
+<![CDATA[
 1.  gunzip apache_1.3.x.tar.gz
 2.  tar xvf apache_1.3.x.tar
 3.  gunzip php-x.x.x.tar.gz
@@ -126,48 +193,53 @@
 18. 일반적인 방식대로 Apache 서버를 시작한다. 
      (반드시 stop과 start하여 재시동하여야한다. 
       HUP이나 USR1같은 signal을 주는 등의 reload만 해서는 소용이 없다.)
-      </programlisting>
-			</example>
-		</sect2>
-		<sect2 id="install.building">
-			<title>Building</title>
-			<simpara>
-    PHP의 설정이 완료되면 CGI 실행 파일을 생성할 준비가 끝난 것이다. 
-    <command>make</command> 명령으로 결과물을 만들 수 있다. 
+]]>
+     </programlisting>
+    </example>
+   </sect2>
+
+   <sect2 id="install.building">
+    <title>Building</title>
+    <simpara>
+     PHP의 설정이 완료되면 CGI 실행 파일을 생성할 준비가 끝난 것이다. 
+     <command>make</command> 명령으로 결과물을 만들 수 있다. 
      만약 실패하였는데, 그 이유를 모를 경우에는 
-    <link linkend="install.problems">Problems section</link>을 살펴보기 바란다.
+     <link linkend="install.problems">Problems section</link>을 살펴보기 바란다.
     </simpara>
-		</sect2>
-	</sect1>
-	<sect1 id="install.linux">
-		<title>Linux에서 설치</title>
-		<para>
+   </sect2>
+  </sect1>
+
+  <sect1 id="install.linux">
+   <title>Linux에서 설치</title>
+   <para>
     이 장은 PHP를 리눅스 배포판에 설치하는데 있어서의
-   여러가지 주의점과 힌트를 포함하고 있다.
+    여러가지 주의점과 힌트를 포함하고 있다.
    </para>
-		<sect2 id="install.linux.packages">
-			<title>패키지 사용</title>
-			<simpara>
+   <sect2 id="install.linux.packages">
+    <title>패키지 사용</title>
+    <simpara>
      여러 리눅스 배포판은 RPM같은 패키지 설치 프로그램을 제공한다.
-    이것은 표준적인 설정을 하는데는 도움을 주지만,
-    보안 서버나 별도의 데이타베이스 드라이버등의 좀 특별한 기능을 필요로 한다면,
-    php 혹은 웹서버까지도 새로 컴파일하여 만들 필요가 있다.
-    만일 컴파일작업에 익숙치 않다면, 기존에 만들어진 패키지중에 
-    여러분이 원하는 기능을 포함하고 있는 패키지가 있는가 찾아보는 것이 좋을 것이다.
+     이것은 표준적인 설정을 하는데는 도움을 주지만,
+     보안 서버나 별도의 데이타베이스 드라이버등의 좀 특별한 기능을 필요로 한다면,
+     php 혹은 웹서버까지도 새로 컴파일하여 만들 필요가 있다.
+     만일 컴파일작업에 익숙치 않다면, 기존에 만들어진 패키지중에 
+     여러분이 원하는 기능을 포함하고 있는 패키지가 있는가 찾아보는 것이 좋을 것이다.
     </simpara>
-		</sect2>
-	</sect1>
-	<sect1 id="install.hpux">
-		<title>HP-UX에서 설치</title>
-		<para>
+   </sect2>
+  </sect1>
+
+  <sect1 id="install.hpux">
+   <title>HP-UX에서 설치</title>
+   <para>
     이 장은 PHP를 HP-UX 에 설치하는데 있어서의
-   여러가지 주의점과 힌트를 포함하고 있다.
+    여러가지 주의점과 힌트를 포함하고 있다.
    </para>
-		<example id="install.hpux.example">
-			<title>
+   <example id="install.hpux.example">
+    <title>
      HP-UX 10에서의 설치 과정
     </title>
-			<programlisting>
+    <screen>
+<![CDATA[
 From: paul_mckay@clearwater-it.co.uk
 04-Jan-2001 09:49
 (PHP 4.0.4 와 Apache v1.3.9를 사용한다.) 
@@ -236,110 +308,158 @@ PHP와 Apache를 HP-UX 10.20 시스템에 설치하고 싶으세요?
 
 이 내용이 누군가에게 도움이 되었으면 좋겠다.
 Paul Mckay.
-  </programlisting>
-		</example>
-	</sect1>
-	<sect1 id="install.solaris">
-		<title>솔라리스에서 설치</title>
-		<para>
-    이 장은 PHP를 솔라리스 시스템에 설치하는데 있어서의
-   여러가지 주의점과 힌트를 포함하고 있다.
+]]>
+  </screen>
+ </example>
+
+</sect1>
+
+<sect1 id="install.solaris">
+ <title>솔라리스에서 설치</title>
+ <para>
+  이 장은 PHP를 솔라리스 시스템에 설치하는데 있어서의
+  여러가지 주의점과 힌트를 포함하고 있다.
  </para>
-		<sect2 id="install.solaris.required">
-			<title>필요한 소프트웨어</title>
-			<para>
+ <sect2 id="install.solaris.required">
+  <title>필요한 소프트웨어</title>
+  <para>
    솔라리스는 C 컴파일러와 그와 관련된 도구들이 없이 설치된 경우가 많다.
-  다음과 같은 소프트웨어가 필요하다. :
+   다음과 같은 소프트웨어가 필요하다. :
    <itemizedlist>
-					<listitem>
-						<simpara>
+    <listitem>
+     <simpara>
       gcc (가급적 gcc를 추천하지만 다른 C 컴파일러도 동작하기는 한다.)
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       make
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       flex
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       bison
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       m4
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       autoconf
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       automake
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       perl
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       gzip
      </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       tar
      </simpara>
-					</listitem>
-				</itemizedlist>
+    </listitem>
+   </itemizedlist>
     추가로 여러분의 설정에 사용한다고 표시한 추가적인 소프트웨어가
-   컴파일을 지원하는 형태로 설치되어 있어야 한다. (Oracle, MySQL 등)
+    컴파일을 지원하는 형태로 설치되어 있어야 한다. (Oracle, MySQL 등)
   </para>
-		</sect2>
-		<sect2 id="install.solaris.packages">
-			<title>패키지 사용</title>
-			<simpara>
+ </sect2>
+ <sect2 id="install.solaris.packages">
+  <title>패키지 사용</title>
+  <simpara>
    원하는 컴포넌트를 포함한 패키지를 pkgadd 로 설치하여 간단히 설치할 수도 있다.
   </simpara>
-		</sect2>
-	</sect1>
-	<sect1 id="install.macosx">
-		<title>Mac OS X 에서 설치</title>
-		<para>
+ </sect2>
+</sect1>
 
-    이 장은 PHP를 Mac OS X에 설치하는데 있어서의
-   여러가지 주의점과 힌트를 포함하고 있다.
+<sect1 id="install.openbsd">
+ <title>Unix/OpenBSD installs</title>
+ <para>
+ This section contains notes and hints specific to installing
+ PHP on <ulink url="&url.openbsd;">OpenBSD</ulink>.
  </para>
-		<sect2 id="install.macosx.packages">
-			<title>패키지 사용</title>
-			<simpara>
+ <sect2 id="install.openbsd.ports">
+  <title>Using Ports</title>
+   <simpara>
+    This is the recommended method of installing PHP on OpenBSD, as it will have 
+    the latest patches and security fixes applied to it by the maintainers.  To
+    use this method, ensure that you have a <ulink url="&url.openbsd.ports;">
+    recent ports tree</ulink>.  Then simply find out which flavors you wish
+    to install, and issue the <command>make install</command> command.  Below
+    is an example of how to do this.
+   </simpara>
+   <example id="install.openbsd.ports.example">
+    <title>OpenBSD Ports Install Example</title>
+    <programlisting>
+<![CDATA[
+$ cd /usr/ports/www/php4
+$ make show VARNAME=FLAVORS
+ (choose which flavors you want from the list)
+$ env FLAVOR="imap gettext ldap mysql gd" make install
+$ /usr/local/sbin/php4-enable
+]]>
+    </programlisting>
+   </example>
+ </sect2>
+ <sect2 id="install.openbsd.packages">
+  <title>Using Packages</title>
+  <simpara>
+   There are pre-compiled packages available for your release
+   of <ulink url="&url.openbsd;">OpenBSD</ulink>.  These integrate 
+   automatically with the version of Apache installed with the OS.
+   However, since there are a large number of options (called 
+   <emphasis>flavors</emphasis>) available for this port,
+   you may find it easier to compile it from source using the ports tree.
+   Read the <ulink url="&url.openbsd.packages;">packages(7)</ulink>
+   manual page for more information in what packages are available.
+  </simpara>
+ </sect2>
+</sect1>
+
+<sect1 id="install.macosx">
+ <title>Mac OS X 에서 설치</title>
+ <para>
+  이 장은 PHP를 Mac OS X에 설치하는데 있어서의
+  여러가지 주의점과 힌트를 포함하고 있다.
+ </para>
+ <sect2 id="install.macosx.packages">
+  <title>패키지 사용</title>
+  <simpara>
    Mac OS X에는 PHP를 미리 컴파일하여 만들어 놓은 패키지가 매우 적다.
-  이것은 표준적인 설정을 사용한 경우에는 도움이 되지만,
-  보안 서버나 별도의 데이타베이스 드라이버등의 좀 특별한 기능을 필요로 한다면,
-  php 혹은 웹서버까지도 새로 컴파일하여 만들 필요가 있다.
-  만일 컴파일작업에 익숙치 않다면, 기존에 만들어진 패키지중에 
-  여러분이 원하는 기능을 포함하고 있는 패키지가 있는가 찾아보는 것이 좋을 것이다.
+   이것은 표준적인 설정을 사용한 경우에는 도움이 되지만,
+   보안 서버나 별도의 데이타베이스 드라이버등의 좀 특별한 기능을 필요로 한다면,
+   php 혹은 웹서버까지도 새로 컴파일하여 만들 필요가 있다.
+   만일 컴파일작업에 익숙치 않다면, 기존에 만들어진 패키지중에 
+   여러분이 원하는 기능을 포함하고 있는 패키지가 있는가 찾아보는 것이 좋을 것이다.
   </simpara>
-		</sect2>
-		<sect2 id="install.macosx.compile">
-			<title>OS X 서버에서의 컴파일</title>
-			<simpara>
+ </sect2>
+ <sect2 id="install.macosx.compile">
+  <title>OS X 서버에서의 컴파일</title>
+  <simpara>
    Mac OS X에는 서버와 클라이언트의 약간 다른 두가지 버젼이 있는데, 
-  여기에서는 서버 버젼을 대상으로 설명한다.
+   여기에서는 서버 버젼을 대상으로 설명한다.
   </simpara>
-			<example id="install.macosx.compile.example">
-				<title>Mac OS X 서버에서의 설치</title>
-				<programlisting>
+   <example id="install.macosx.compile.example">
+   <title>Mac OS X 서버에서의 설치</title>
+    <screen>
+<![CDATA[
 1. 최근의 Apache 와 PHP의 배포판을 받는다.
 2. 위에서 다운받은 것들을 Untar 하고, 아파치에서 다음과 같이 설정 프로그램을 실행 한다.
     ./configure --exec-prefix=/usr \ 
@@ -406,322 +526,624 @@ Paul Mckay.
     혹은 (local 디렉토리가 없다면) 
 
     cp php.ini-dist /usr/bin/php.ini 
-   </programlisting>
-			</example>
-			<simpara>
-				<ulink url="&url.stepwise.macosx-client;">Mac OS X client</ulink>와
+]]>
+   </screen>
+  </example>
+  <simpara>
+   <ulink url="&url.stepwise.macosx-client;">Mac OS X client</ulink>와
    <ulink url="&url.stepwise.macosx-client;">Mac OS X server</ulink>에 대한
    다른 예는 <ulink url="&url.stepwise;">Stepwise</ulink>에서 찾을 수 있다.
   </simpara>
-		</sect2>
-	</sect1>
-	<sect1 id="install.configure">
-		<title>전체 설정 옵션 목록(Complete list of configure options)</title>
-		<note>
-			<para>
+ </sect2>
+ <sect2 id="install.macosx.client">
+  <title>Compiling for MacOS X client</title>
+  <simpara>
+   Those tips are graciously provided by <ulink url="&url.macosx;">Marc Liyanage</ulink>.
+  </simpara>
+  <simpara>
+   The PHP module for the Apache web server included in Mac OS X.
+   This version includes support for the MySQL and PostgreSQL databases.
+  </simpara>
+  <simpara>
+   NOTE: Be careful when you do this, you could screw up your Apache web server!
+  </simpara>
+  <para>
+   Do this to install:
+   <itemizedlist>
+    <listitem>
+     <simpara>
+      1.	Open a terminal window 
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      2.	Type "wget http://www.diax.ch/users/liyanage/software/macosx/libphp4.so.gz",
+      wait for download to finish 
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      3.	Type "gunzip libphp4.so.gz" 
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      4.	Type "sudo apxs -i -a -n php4 libphp4.so" 
+     </simpara>
+    </listitem>
+   </itemizedlist>
+   Now type "<literal>sudo open -a TextEdit /etc/httpd/httpd.conf</literal>"
+   TextEdit will open with the web server configuration file. Locate these 
+   two lines towards the end of the file: (Use the Find command)
+   <programlisting role="apache">
+<![CDATA[
+   #AddType application/x-httpd-php .php 
+   #AddType application/x-httpd-php-source .phps
+]]>
+   </programlisting>
+   Remove the two hash marks (<literal>#</literal>), then save the file and quit TextEdit.
+  </para>
+  <para>
+   Finally, type "<literal>sudo apachectl graceful</literal>" to restart the web server.
+  </para>
+  <para>
+   PHP should now be up and running. You can test it by dropping a file into 
+   your "Sites" folder which is called "test.php". Into that file, write this
+   line: "<literal>&lt;?php phpinfo() ?&gt;</literal>".
+  </para>
+  <para>
+   Now open up <literal>127.0.0.1/~your_username/test.php</literal> in your web browser.
+   You should see a status table with information about the PHP module.
+  </para>
+ </sect2>
+</sect1>
+
+<sect1 id="install.configure">
+ <title>전체 설정 옵션 목록(Complete list of configure options)</title>
+ <note>
+  <para>
     이것들은 컴파일 시에만 유효한 옵션이다. 
     PHP가 실행시에 설정하는 옵션들에 대해서는 
     <link linkend="configuration">설정(Configuration)</link> 부분을 살펴보자.
-    </para>
-		</note>
-		<para>
-    아래 목록은 PHP3와 PHP4가 Unix 환경에서 컴파일될 때 <filename>configure</filename> 
-    스크립트가 지원하는 옵션의 전체 목록이다. 일부는 PHP3에서만, 일부는 PHP4에서만, 
-    나머지는 두군데 모두에서 사용가능하다. PHP4로 옮겨가면서 많은 옵션의 이름이 바뀌었다.
-    이 이름이 바뀐 옵션들은 상호간의 내용을 표시해 놓았으므로, PHP3에서 사용하던 옵션이 
-    PHP4에서 문제가 있는 경우 이 이름의 변화를 잘 살펴보기 바란다.
-   </para>
-		<itemizedlist>
-			<listitem>
-				<para>
-					<link linkend="install.configure.databases">Database</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.ecommerce">Ecommerce</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.graphics">Graphics</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.misc">Miscellaneous</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.networking">Networking</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.php">PHP Behaviour</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.servers">Server</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.text">Text and language</link>
-				</para>
-			</listitem>
-			<listitem>
-				<para>
-					<link linkend="install.configure.xml">XML</link>
-				</para>
-			</listitem>
-		</itemizedlist>
-		<sect2 id="install.configure.databases">
-			<title>Database</title>
-			<variablelist>
-				<varlistentry id="install.configure.with-adabas">
-					<term>
-						<parameter>--with-adabas[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+  </para>
+ </note>
 
+ <para>
+  아래 목록은 PHP4가 Unix 환경에서 컴파일될때  <filename>configure</filename>스크립트(4.1.0으로)
+  가 지원하는 옵션의 전체 목록이다. 일부는 PHP3에서만, 일부는 PHP4에서만, 나머지는
+  두 군데 모두에서 사용가능하다. 이것은 아직 작성되지 않았다.
+
+<!--  아래 목록은 PHP3와 PHP4가 Unix 환경에서 컴파일될 때 <filename>configure</filename> 
+  스크립트가 지원하는 옵션의 전체 목록이다. 일부는 PHP3에서만, 일부는 PHP4에서만, 
+  나머지는 두군데 모두에서 사용가능하다. PHP4로 옮겨가면서 많은 옵션의 이름이 바뀌었다.
+  이 이름이 바뀐 옵션들은 상호간의 내용을 표시해 놓았으므로, PHP3에서 사용하던 옵션이 
+  PHP4에서 문제가 있는 경우 이 이름의 변화를 잘 살펴보기 바란다.
+-->
+ </para>
+
+<!--
+ <itemizedlist>
+  <listitem>
+  <para>
+   <link linkend="install.configure.databases">Database</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.ecommerce">Ecommerce</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.graphics">Graphics</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.misc">Miscellaneous</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.networking">Networking</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.php">PHP Behaviour</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.servers">Server</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.text">Text and language</link>
+  </para>
+ </listitem>
+ <listitem>
+  <para>
+   <link linkend="install.configure.xml">XML</link>
+  </para>
+ </listitem>
+ </itemizedlist>
+-->
+
+ <sect2 id="install.configure.options">
+  <title>Configure Options in PHP 4</title>
+ <note>
+  <para>
+   These options are only used in PHP 4 as of PHP 4.1.0. 
+   Some are available in older versions of PHP 4, some even in PHP 3, some only in PHP 4.1.0.
+   If you want to compile an older version, some options will probably 
+   not be available.
+  </para>
+ </note>
+  <variablelist>
+   <varlistentry id="install.configure.enable-maintainer-mode">
+    <term>
+     <parameter>--enable-maintainer-mode</parameter>
+    </term>
+    <listitem>
+     <para>
+      PHP 3, PHP 4: 평범한(casual) 사용자가 설치시에 필요한 컴파일러 주의 메시지나, 
+      의존 관계(dependencie) 메시지 (때때로 충돌 메세지)등을 출력한다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-aolserver">
+    <term>
+     <parameter>--with-aolserver=DIR</parameter>
+    </term>
+    <listitem>
+     <para>
+      PHP 4: AOLserver가 설치된 곳의 경로를 명시해 준다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-apxs">
+    <term>
+     <parameter>--with-apxs[=FILE]</parameter>
+    </term>
+   <listitem>
+   <para>
+    PHP를 공유 Apache 모듈로 만든다.
+    FILE은 옵션으로 Apache apxs 툴의 pathname이고, 기본값은 apxs이다.
+   </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry id="install.configure.with-apache">
+   <term>
+    <parameter>--with-apache[=DIR]</parameter>
+   </term>
+   <listitem>
+    <para>
+    PHP를 Apache 모듈로 만든다. DIR은 Apache build directory의 최상단 디렉토리이고, 
+    기본값은 /usr/local/apache이다.
+   </para>
+   </listitem>
+  </varlistentry>
+  <varlistentry id="install.configure.with-mod_charset">
+   <term>
+    <parameter>--with-mod_charset</parameter>
+   </term>
+   <listitem>
+    <para>
+     mod_charset을 위한 transfer tables을 사용한다. (Rus Apache).
+    </para>
+   </listitem>
+  </varlistentry>
+   <varlistentry id="install.configure.with-apxs2">
+    <term>
+     <parameter>--with-apxs2[=FILE]</parameter>
+    </term>
+    <listitem>
+     <para>
+      Build shared Apache 2.0 module. FILE is the optional pathname to the Apache 
+      apxs tool; defaults to apxs.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.enable-force-cgi-redirect">
+    <term>
+     <parameter>--enable-force-cgi-redirect</parameter>
+    </term>
+    <listitem>
+     <para>
+        내부적인 서버 리디렉트(internal server redirects) 시에 
+        보안 검사(security check)를 하도록 한다. 여러분이 Apache와 함께 
+        CGI 버전을 사용한다면 반드시 이 옵션을 사용하여야 할 것이다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.enable-discard-path">
+    <term>
+     <parameter>--enable-discard-path</parameter>
+    </term>
+    <listitem>
+     <para>
+        이것을 Enabled하면, PHP CGI 실행파일이 웹 트리 밖에 안전하게 위치할 수 있게 되어, 
+        이용자들이 .htaccess security 제약을 피할 수 없도록 한다. 
+        자세한 사항은 security chapter를 읽어보기 바란다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-fhttpd">
+    <term>
+     <parameter>--with-fhttpd[=DIR]</parameter>
+    </term>
+    <listitem>
+     <para>
+        PHP를 fhttpd 모듈로 만든다. 
+        DIR은 fhttpd 소스 디렉토리이고, 기본값은 /usr/local/src/fhttpd이다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-fastcgi">
+    <term>
+     <parameter>--with-fastcgi=SRCDIR</parameter>
+    </term>
+    <listitem>
+     <para>
+      Build PHP as FastCGI application.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-isapi">
+    <term>
+     <parameter>--with-isapi=DIR</parameter>
+    </term>
+    <listitem>
+     <para>
+      Build PHP as an ISAPI module for use with Zeus.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-nsapi">
+    <term>
+     <parameter>--with-nsapi=DIR</parameter>
+    </term>
+    <listitem>
+     <para>
+        설치된 Netscape 서버의 path를 명시한다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-phttpd">
+    <term>
+     <parameter>--with-phttpd=DIR</parameter>
+    </term>
+    <listitem>
+     <para>
+       아직 정보가 없슴. 
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-pi3web">
+    <term>
+     <parameter>--with-pi3web=DIR</parameter>
+    </term>
+    <listitem>
+     <para>
+        PHP를 Pi3Web에서 사용하는 모듈로 만든다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-roxen">
+    <term>
+     <parameter>--with-roxen=DIR</parameter>
+    </term>
+    <listitem>
+     <para>
+        PHP를 Pike 모듈로 만든다. DIR은 base Roxen directory이고, 
+        보통 /usr/local/roxen/server이다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.enable-roxen-zts">
+    <term>
+     <parameter>--enable-roxen-zts</parameter>
+    </term>
+    <listitem>
+     <para>
+        Roxen 모듈에서 Zend Thread Safety를 사용하게 만든다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-servlet">
+    <term>
+     <parameter>--with-servlet[=DIR]</parameter>
+    </term>
+    <listitem>
+     <para>
+        servlet 지원을 포함한다. DIR은 JSDK의 base install directory이다.
+        이 SAPI를 위해서는 Java extension이 dl을 사용해서 동적으로 적재할 수 있는 
+        공유 모듈(shared dl)로 만들어져 있어야 한다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-thttpd">
+    <term>
+     <parameter>--with-thttpd=SRCDIR</parameter>
+    </term>
+    <listitem>
+     <para>
+        PHP를 thttpd 모듈로 만든다.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-zip">
+    <term>
+     <parameter>--with-zip</parameter>
+    </term>
+    <listitem>
+     <para>
+      Include ZIP support (requires zziplib >= 0.10.6).
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.enable-dbx">
+    <term>
+     <parameter>--enable-dbx</parameter>
+    </term>
+    <listitem>
+     <para>
+      Enable dbx.
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-cybermut">
+    <term>
+     <parameter>--with-cybermut[=DIR]</parameter>
+    </term>
+    <listitem>
+     <para>
+      Include CyberMut (french Credit Mutuel telepaiement).
+     </para>
+    </listitem>
+   </varlistentry>
+   <varlistentry id="install.configure.with-adabas">
+    <term>
+     <parameter>--with-adabas[=DIR]</parameter>
+    </term>
+    <listitem>
+     <para>
         PHP 3, PHP 4: Adabas D 지원을 포함한다. 
         DIR은 Adabas D가 설치된 Directory이고, 기본값은 /usr/local이다. 
-       </para>
-						<para>
-							<ulink url="&url.adabas;">Adabas home page</ulink>
-						</para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-dba">
-					<term>
-						<parameter>--enable-dba=shared</parameter>
-					</term>
-					<listitem>
-						<para>
+    </para>
+    <para>
+                            <ulink url="&url.adabas;">Adabas home page</ulink>
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-dba">
+                    <term>
+                        <parameter>--enable-dba=shared</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: DBA를 동적으로 적재할 수 있는 공유 모듈(shared module) 형태로 만든다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-dbase">
-					<term>
-						<parameter>--enable-dbase</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-dbase">
+                    <term>
+                        <parameter>--enable-dbase</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; <link linkend="install.configure.with-dbase">--with-dbase</link>옵션을 대신 사용
        </para>
-						<para>
+                        <para>
         PHP 4: 내장된 DBase 라이브러리를 사용가능하게 한다. 별도의 외부 라이브러리는 필요 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-dbase">
-					<term>
-						<parameter>--with-dbase</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-dbase">
+                    <term>
+                        <parameter>--with-dbase</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 내장된 DBase 라이브러리를 사용가능하게 한다. 별도의 외부 라이브러리는 필요 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용 불가; <link linkend="install.configure.enable-dbase">--enable-dbase</link>옵션을 대신 사용
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-db2">
-					<term>
-						<parameter>--with-db2[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-db2">
+                    <term>
+                        <parameter>--with-db2[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Berkeley DB2 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-db3">
-					<term>
-						<parameter>--with-db3[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-db3">
+                    <term>
+                        <parameter>--with-db3[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Berkeley DB3 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-dbm">
-					<term>
-						<parameter>--with-dbm[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-dbm">
+                    <term>
+                        <parameter>--with-dbm[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: DBM 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-dbmaker">
-					<term>
-						<parameter>--with-dbmaker[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-dbmaker">
+                    <term>
+                        <parameter>--with-dbmaker[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: DBMaker 지원을 포함한다. 
         DIR은 DBMaker의 Base Directory이고, 
         기본값은 최근 버젼의 DBMaker가 설치된 디렉토리이다. (such as /home/dbmaker/3.6)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-empress">
-					<term>
-						<parameter>--with-empress[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-empress">
+                    <term>
+                        <parameter>--with-empress[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Empress 지원을 포함한다. 
         DIR은 Empress의 base install directory이고, 기본값은 $EMPRESSPATH 이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-filepro">
-					<term>
-						<parameter>--enable-filepro</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-filepro">
+                    <term>
+                        <parameter>--enable-filepro</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; <link linkend="install.configure.with-filepro">--with-filepro</link>를 대신 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: 내장된 읽기 전용 filePro 지원 모듈을 포함한다. 별도의 외부 라이브러리는 필요 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-filepro">
-					<term>
-						<parameter>--with-filepro</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-filepro">
+                    <term>
+                        <parameter>--with-filepro</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 내장된 읽기 전용 filePro 지원 모듈을 포함한다. 별도의 외부 라이브러리는 필요 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용 불가; <link linkend="install.configure.enable-filepro">--enable-filepro</link>를 대신 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-gdbm">
-					<term>
-						<parameter>--with-gdbm[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-gdbm">
+                    <term>
+                        <parameter>--with-gdbm[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: GDBM 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-hyperwave">
-					<term>
-						<parameter>--with-hyperwave</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-hyperwave">
+                    <term>
+                        <parameter>--with-hyperwave</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Hyperwave  지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-ibm-db2">
-					<term>
-						<parameter>--with-ibm-db2[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-ibm-db2">
+                    <term>
+                        <parameter>--with-ibm-db2[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: IBM DB2  지원을 포함한다. 
         DIR은 DB2의 base install directory로, 기본값은 <filename>/home/db2inst1/sqllib</filename>이다.
        </para>
-						<para>
-							<ulink url="&url.ibmdb2;">IBM DB2 home page</ulink>
-						</para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-informix">
-					<term>
-						<parameter>--with-informix[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <para>
+                            <ulink url="&url.ibmdb2;">IBM DB2 home page</ulink>
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-informix">
+                    <term>
+                        <parameter>--with-informix[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Informix  지원을 포함한다. DIR은 Informix base install directory로, 기본값은 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-ingres">
-					<term>
-						<parameter>--with-ingres[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-ingres">
+                    <term>
+                        <parameter>--with-ingres[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Ingres II  지원을 포함한다. DIR은 Ingres base directory이다. (default /II/ingres) 
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-interbase">
-					<term>
-						<parameter>--with-interbase[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-interbase">
+                    <term>
+                        <parameter>--with-interbase[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: InterBase 지원을 포함한다.
         DIR은 InterBase base install directory이고, 기본값은<filename>/usr/interbase</filename>이다.
        </para>
-						<simpara>
-							<link linkend="ref.ibase">Interbase functions</link>
-						</simpara>
-						<simpara>
-							<ulink url="&url.ibase;">Interbase home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-ldap">
-					<term>
-						<parameter>--with-ldap[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <link linkend="ref.ibase">Interbase functions</link>
+                        </simpara>
+                        <simpara>
+                            <ulink url="&url.ibase;">Interbase home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-ldap">
+                    <term>
+                        <parameter>--with-ldap[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: LDAP 지원을 포함한다.
         DIR은 LDAP base install directory이고, 기본값은<filename>/usr</filename>와 <filename>/usr/local</filename>이다.
-						</para>
-						<para>
+                        </para>
+                        <para>
         PHP 4: LDAP 지원을 포함한다. DIR은 LDAP base install directory이다.
        </para>
-						<simpara>
+                        <simpara>
         이 옵션은 LDAP (Lightweight Directory Access Protocol) 지원을 포함시킨다. 
       DIR은 LDAP가 설치된 base 디렉토리이고, 기본값은 <filename class="directory">/usr/local/ldap</filename>이다.
        </simpara>
-						<simpara>
+                        <simpara>
         LDAP에 대한 자세한 설명은 <ulink url="&url.rfc;rfc1777.html">RFC1777</ulink>과
         <ulink url="&url.rfc;rfc1778.html">RFC1778</ulink>에서 찾을 수 있다.
        </simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-msql">
-					<term>
-						<parameter>--with-msql[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-msql">
+                    <term>
+                        <parameter>--with-msql[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: mSQL 지원을 포함한다. DIR은 mSQL이 설치된 디렉토리이고 
         기본값은 <filename class="directory">/usr/local/Hughes</filename>이다. 
         이 디렉토리는 mSQL 2.0 배포본의 기본 디렉토리이다. 
@@ -730,222 +1152,222 @@ Paul Mckay.
         여러분은 mSQL 2.0 database는 사용하지 못한다. 마찬가지로 2.0으로 컴파일 되었다면 
         1.0 database는 사용할 수 없다.
        </para>
-						<simpara>
+                        <simpara>
         <link linkend="configuration.file">configuration file</link>에 있는 
         <link linkend="ini.sect.msql">mSQL Configuration</link> 지시자에 대해서도 알아두기 바란다.
        </simpara>
-						<simpara>
-							<ulink url="&url.msql;">mSQL home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mysql">
-					<term>
-						<parameter>--with-mysql[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <ulink url="&url.msql;">mSQL home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-mysql">
+                    <term>
+                        <parameter>--with-mysql[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: MySQL 지원을 포함한다. DIR은 MySQL의 base install directory이고, 
         기본값은 MySQL이 설치된 장소를 자동으로 찾는 것이다.
        </para>
-						<para>
+                        <para>
         PHP 4: MySQL 지원을 포함한다. DIR은 MySQL의 base install directory이고, 
         기본값은 MySQL이 설치된 장소를 자동으로 찾는 것이다. 이 옵션은 자동으로 on으로 설정된다.
        </para>
-						<para>
+                        <para>
         <link linkend="configuration.file">configuration file</link>에 있는 
         <link linkend="ini.sect.mysql">MySQL Configuration</link> 지시자에 대해서도 알아두기 바란다.
        </para>
-						<para>
-							<ulink url="&url.mysql;">MySQL home page</ulink>
-						</para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-ndbm">
-					<term>
-						<parameter>--with-ndbm[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <para>
+                            <ulink url="&url.mysql;">MySQL home page</ulink>
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-ndbm">
+                    <term>
+                        <parameter>--with-ndbm[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: NDBM 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-oci8">
-					<term>
-						<parameter>--with-oci8[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-oci8">
+                    <term>
+                        <parameter>--with-oci8[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다. 
        </para>
-						<para>
+                        <para>
         PHP 4: Oracle-oci8 지원을 포함한다. 기본 DIR 은 ORACLE_HOME 이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-oracle">
-					<term>
-						<parameter>--with-oracle[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-oracle">
+                    <term>
+                        <parameter>--with-oracle[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: Oracle database 지원을 포함한다. DIR 은 Oracle의 홈디렉토리이고, 기본값은 $ORACLE_HOME이다.
        </para>
-						<para>
+                        <para>
         PHP 4: Oracle-oci7  지원을 포함한다. 기본 DIR 은 ORACLE_HOME 이다.
        </para>
-						<simpara>
+                        <simpara>
       오라클 지원을 포함하도록 한다. 오라클 버전 7.0에서 7.3까지는 동작을 테스트하여 문제가 없었다. 
       DIR은 <envar>ORACLE_HOME</envar>디렉토리이다.
       오라클 환경이 이미 설정되어 있다면, DIR을 반드시 정해줄 필요는 없다.
        </simpara>
-						<simpara>
-							<ulink url="&url.oracle;">Oracle home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-pgsql">
-					<term>
-						<parameter>--with-pgsql[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <ulink url="&url.oracle;">Oracle home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-pgsql">
+                    <term>
+                        <parameter>--with-pgsql[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PostgresSQL 지원을 포함한다.  DIR은 PostgresSQL의 base install directory이고,
         기본값은 <filename>/usr/local/pgsql</filename>이다.
        </para>
-						<para>
+                        <para>
         PHP 4: PostgresSQL 지원을 포함한다.  DIR은 PostgresSQL의 base install directory이고,
         기본값은 <filename>/usr/local/pgsql</filename>이다.
         dl을 사용해서 동적으로 적재할 수 있는 공유 모듈을 만들려면 DIR에 shared를 적어주면 되고,
         디렉토리까지 표시해 주려면 shared,DIR의 형태로 적어주면 된다.
        </para>
-						<simpara>
+                        <simpara>
         <link linkend="configuration.file">configuration file</link>에 있는 
         <link linkend="ini.sect.pgsql">Postgres Configuration</link> 지시자에 대해서도 알아두기 바란다.
        </simpara>
-						<simpara>
-							<ulink url="&url.pgsql;">PostgreSQL home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-solid">
-					<term>
-						<parameter>--with-solid[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <ulink url="&url.pgsql;">PostgreSQL home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-solid">
+                    <term>
+                        <parameter>--with-solid[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Solid 지원을 포함한다. 
         DIR은 Solid의 base install directory이고, 기본값은 /usr/local/solid이다.
        </para>
-						<simpara>
-							<ulink url="&url.solid;">Solid home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-sybase-ct">
-					<term>
-						<parameter>--with-sybase-ct[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <ulink url="&url.solid;">Solid home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-sybase-ct">
+                    <term>
+                        <parameter>--with-sybase-ct[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Sybase-CT 지원을 포함한다.
         DIR은 Sybase의 home directory이고, 기본값은 /home/sybase이다.
        </para>
-						<simpara>
+                        <simpara>
         <link linkend="configuration.file">configuration file</link>에 있는 
         <link linkend="ini.sect.sybct">Sybase-CT Configuration</link> 지시자에 대해서도 알아두기 바란다.
        </simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-sybase">
-					<term>
-						<parameter>--with-sybase[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-sybase">
+                    <term>
+                        <parameter>--with-sybase[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Sybase-DB 지원을 포함한다.
         DIR은 Sybase의 home directory이고, 기본값은 <filename>/home/sybase</filename>이다.
        </para>
-						<simpara>
+                        <simpara>
         <link linkend="configuration.file">configuration file</link>에 있는 
         <link linkend="ini.sect.sybase">Sybase Configuration</link> 지시자에 대해서도 알아두기 바란다.
        </simpara>
-						<simpara>
-							<ulink url="&url.sybase;">Sybase home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-openlink">
-					<term>
-						<parameter>--with-openlink[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <ulink url="&url.sybase;">Sybase home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-openlink">
+                    <term>
+                        <parameter>--with-openlink[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: OpenLink ODBC 지원을 포함한다.
         DIR은 OpenLink의 base install directory이고, 기본값은/usr/local/openlink이다.
        </para>
-						<simpara>
-							<ulink url="&url.openlink;">OpenLink Software's home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-iodbc">
-					<term>
-						<parameter>--with-iodbc[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <ulink url="&url.openlink;">OpenLink Software's home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-iodbc">
+                    <term>
+                        <parameter>--with-iodbc[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: iODBC 지원을 포함한다.
         DIR은 iODBC의 base install directory이고, 기본값은 <filename>/usr/local</filename>이다.
        </para>
-						<para>
+                        <para>
        이 기능은 iODBC 드라이버 관리자를 위해 처음 개발되었는데, 
        이 iODBC 드라이버 관리자는 여러 UNIX에서 돌아가는 무료 배포가 가능한 ODBC 드라이버 관리자이다. 
        </para>
-						<simpara>
-							<ulink url="&url.freeodbc;">FreeODBC home page</ulink> 
+                        <simpara>
+                            <ulink url="&url.freeodbc;">FreeODBC home page</ulink> 
         or <ulink url="&url.iodbc;">iODBC home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-custom-odbc">
-					<term>
-						<parameter>--with-custom-odbc[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-custom-odbc">
+                    <term>
+                        <parameter>--with-custom-odbc[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: 사용자 지정의 ODBC 라이브러리 지원을 포함하도록 한다. 
         DIR은 base 디렉토리이고, 기본값은 <filename class="directory">/usr/local</filename>이다.
        </para>
-						<simpara>
+                        <simpara>
         이 옵션을 사용하려면 configure 스크립트를 실행할 때 CUSTOM_ODBC_LIBS를 이미 정의해 주었어야 한다. 
         또한, include path에는 적합한 odbc.h라는 헤더 파일이 반드시 있어야 한다.
         만약 없다면, 만들어서 포함시켜야 한다. 헤더에는 좀 특별한 정의들이 필요하게 되는데, 
         특히 그것이 multiplatform일 경우는 상세히 적어주어야 한다. 그 정의는 CFLAGS 옵션에 적어준다.
        </simpara>
-						<simpara>
+                        <simpara>
         예를들어 다음과 같은 옵션으로 QNX 하에서 Sybase SQL Anywhere를 사용할수 있다.: 
         <literal>
          CFLAGS=-DODBC_QNX LDFLAGS=-lunix CUSTOM_ODBC_LIBS="-ldblib
          -lodbc" ./configure --with-custom-odbc=/usr/lib/sqlany50
         </literal>
-						</simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-unified-odbc">
-					<term>
-						<parameter>--disable-unified-odbc</parameter>
-					</term>
-					<listitem>
-						<para>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-unified-odbc">
+                    <term>
+                        <parameter>--disable-unified-odbc</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: Unified ODBC 모듈을 사용하지 않도록한다. 
         이 Unified ODBC 모듈은 iODBC나 Adabas, Solid, Velocis, a custom ODBC interface 가 사용될 때만 포함하면 된다.
        </para>
-						<para>
+                        <para>
         PHP 4: PHP 4에는 없다.
        </para>
-						<simpara>
+                        <simpara>
      이 Unified ODBC 모듈은 Solid나 Adabas D같은 ODBC기 반의 인터페이스(ODBC-based interface)를 
      가지고 있는 모든 database의 공통의 interface이다. 또한 이 모듈은 일반 ODBC 라이브러리를 위해 동작한다. 
      이 옵션은 iODBC와 Solid, Adabas D, IBM DB2, Sybase SQL Anywhere에서 시험을 거쳤다. 
@@ -959,1604 +1381,1420 @@ Paul Mckay.
         <link linkend="install.configure.with-velocis">--with-velocis</link>,
         or <link linkend="install.configure.with-custom-odbc">--with-custom-odbc</link>.
        </simpara>
-						<simpara>
+                        <simpara>
         <link linkend="configuration.file">configuration file</link>에 있는 
         <link linkend="ini.sect.uodbc">Unified ODBC Configuration</link> 지시자에 대해서도 알아두기 바란다.
        </simpara>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-unixODBC">
-					<term>
-						<parameter>--with-unixODBC[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-unixODBC">
+                    <term>
+                        <parameter>--with-unixODBC[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: unixODBC 지원을 포함한다. 
         DIR은 unixODBC의 base install directory이고, 기본값은 /usr/local이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-velocis">
-					<term>
-						<parameter>--with-velocis[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-velocis">
+                    <term>
+                        <parameter>--with-velocis[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Velocis 지원을 포함한다.
         DIR은 Velocis의 base install directory이고, 기본값은 /usr/local/velocis이다.
        </para>
-						<simpara>
-							<ulink url="&url.velocis;">Velocis home page</ulink>
-						</simpara>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.ecommerce">
-			<title>Ecommerce</title>
-			<variablelist>
-				<varlistentry id="install.configure.with-ccvs">
-					<term>
-						<parameter>--with-ccvs[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        <simpara>
+                            <ulink url="&url.velocis;">Velocis home page</ulink>
+                        </simpara>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.ecommerce">
+            <title>Ecommerce</title>
+            <variablelist>
+                <varlistentry id="install.configure.with-ccvs">
+                    <term>
+                        <parameter>--with-ccvs[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: CCVS를 지원하도록 컴파일한다. DIR은 CCVS의 base install directory이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mck">
-					<term>
-						<parameter>--with-mck[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-mck">
+                    <term>
+                        <parameter>--with-mck[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: Cybercash MCK 지원을 포함한다. DIR은 cybercash mck의 build directory이고, 
         기본값은 <filename>/usr/src/mck-3.2.0.3-linux</filename>이다. 
         자세한 도움말은 <filename>extra/cyberlib</filename>에 있는 문서를 참조하자.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용 불가; <link linkend="install.configure.with-cybercash">--with-cybercash</link>를 대신 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-cybercash">
-					<term>
-						<parameter>--with-cybercash[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-cybercash">
+                    <term>
+                        <parameter>--with-cybercash[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; use <link linkend="install.configure.with-mck">--with-mck</link>를 대신 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: Cybercash MCK 지원을 포함한다. DIR은 CyberCash MCK install directory이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-pfpro">
-					<term>
-						<parameter>--with-pfpro[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-pfpro">
+                    <term>
+                        <parameter>--with-pfpro[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Verisign Payflow Pro 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.graphics">
-			<title>Graphics</title>
-			<variablelist>
-				<varlistentry id="install.configure.enable-freetype-4bit-antialias-hack">
-					<term>
-						<parameter>--enable-freetype-4bit-antialias-hack</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.graphics">
+            <title>Graphics</title>
+            <variablelist>
+                <varlistentry id="install.configure.enable-freetype-4bit-antialias-hack">
+                    <term>
+                        <parameter>--enable-freetype-4bit-antialias-hack</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: FreeType2 지원을 포함한다 (아직 완벽하지 않다.-experimental).
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-gd">
-					<term>
-						<parameter>--with-gd[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-gd">
+                    <term>
+                        <parameter>--with-gd[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: GD 지원을 포함한다 (DIR은 GD의 install dir).
        </para>
-						<para>
+                        <para>
         PHP 4: GD 지원을 포함한다 (DIR은 GD의 install dir). 
         dl을 사용해서 동적으로 적재할 수 있는 공유 모듈을 만들려면 DIR에 shared를 적어주면 되고,
         디렉토리까지 표시해 주려면 shared,DIR의 형태로 적어주면 된다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.without-gd">
-					<term>
-						<parameter>--without-gd</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.without-gd">
+                    <term>
+                        <parameter>--without-gd</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: GD를 지원하지 않도록 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-imagick">
-					<term>
-						<parameter>--with-imagick[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-imagick">
+                    <term>
+                        <parameter>--with-imagick[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: ImageMagick 지원을 포함한다 .
        DIR은 ImageMagick의 install directory이고, 만약 없다면, PHP는 그 위치를 스스로 찾는다.(아직 완전하지 않다.)
        </para>
-						<para>
+                        <para>
         PHP 4: PHP 4에는 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-jpeg-dir">
-					<term>
-						<parameter>--with-jpeg-dir[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-jpeg-dir">
+                    <term>
+                        <parameter>--with-jpeg-dir[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: pdflib 2.0이 사용하는 jpeg dir
        </para>
-						<para>
+                        <para>
         PHP 4: pdflib 3.x가 사용하는 jpeg dir
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-png-dir">
-					<term>
-						<parameter>--with-png-dir[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-png-dir">
+                    <term>
+                        <parameter>--with-png-dir[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: pdflib 3.x에서 사용하는 png dir
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-t1lib">
-					<term>
-						<parameter>--enable-t1lib</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-t1lib">
+                    <term>
+                        <parameter>--enable-t1lib</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: T1lib 지원을 포함한다.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용 불가; <link linkend="install.configure.with-t1lib">--with-t1lib</link>을 대신 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-t1lib">
-					<term>
-						<parameter>--with-t1lib[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-t1lib">
+                    <term>
+                        <parameter>--with-t1lib[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; <link linkend="install.configure.enable-t1lib">--enable-t1lib</link>를 대신 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: T1lib 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-tiff-dir">
-					<term>
-						<parameter>--with-tiff-dir[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-tiff-dir">
+                    <term>
+                        <parameter>--with-tiff-dir[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: pdflib 2.0이 사용하는 tiff dir 
        </para>
-						<para>
+                        <para>
         PHP 4: pdflib 3.x가 사용하는 tiff dir
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-ttf">
-					<term>
-						<parameter>--with-ttf[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-ttf">
+                    <term>
+                        <parameter>--with-ttf[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: FreeType 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-xpm-dir">
-					<term>
-						<parameter>--with-xpm-dir[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-xpm-dir">
+                    <term>
+                        <parameter>--with-xpm-dir[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: gd-1.8+가 사용하는 xpm dir
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.misc">
-			<title>Miscellaneous</title>
-			<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.misc">
+            <title>Miscellaneous</title>
+            <para>
      이것들은 분류를 명확히 나누기 어려운 것 들이다.
     </para>
-			<variablelist>
-				<varlistentry id="install.configure.disable-bcmath">
-					<term>
-						<parameter>--disable-bcmath</parameter>
-					</term>
-					<listitem>
-						<para>
+            <variablelist>
+                <varlistentry id="install.configure.disable-bcmath">
+                    <term>
+                        <parameter>--disable-bcmath</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: BC arbitrary precision 수학 함수를 제외하고 컴파일 한다.
         이 함수들은 일반적인 수학 함수들의 범위를 넘는 정밀도(precision)를 
        가지고 계산할 수 있도록 해 준다. 자세한 내용은 
        <link linkend="ref.bc">BCMath Arbitrary Precision Mathematics Functions</link> 부분을 살펴보자.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용 불가; bcmath는 기본으로 제외되어 컴파일된다. bcmath를 포함시키려면 
         <link linkend="install.configure.enable-bcmath">--enable-bcmath</link>옵션을 준다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-display-source">
-					<term>
-						<parameter>--disable-display-source</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-display-source">
+                    <term>
+                        <parameter>--disable-display-source</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 소스를 보여주는 기능을 끈다.
        </para>
-						<para>
+                        <para>
         PHP 4: PHP 4에는 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-libtool-lock">
-					<term>
-						<parameter>--disable-libtool-lock</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-libtool-lock">
+                    <term>
+                        <parameter>--disable-libtool-lock</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: locking을 피한다. (might break parallel builds)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-pear">
-					<term>
-						<parameter>--disable-pear</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-pear">
+                    <term>
+                        <parameter>--disable-pear</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: PEAR을 설치하지 않는다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-pic">
-					<term>
-						<parameter>--disable-pic</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-pic">
+                    <term>
+                        <parameter>--disable-pic</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: shared objects를 위한 PIC를 Disable 한다 (Disable PIC for shared objects)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-posix">
-					<term>
-						<parameter>--disable-posix</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-posix">
+                    <term>
+                        <parameter>--disable-posix</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; <link linkend="install.configure.without-posix">--without-posix</link>를 대신 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: POSIX 관련 함수들을 사용할 수 없도록 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-rpath">
-					<term>
-						<parameter>--disable-rpath</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-rpath">
+                    <term>
+                        <parameter>--disable-rpath</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 추가적인 runtime library search path를 지나치지 않도록 한다. 
                  (Disable passing additional runtime library search paths)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-session">
-					<term>
-						<parameter>--disable-session</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-session">
+                    <term>
+                        <parameter>--disable-session</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: session을 지원하지 못하도록 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-bcmath">
-					<term>
-						<parameter>--enable-bcmath</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-bcmath">
+                    <term>
+                        <parameter>--enable-bcmath</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; bcmath는 기본적으로 포함되어 컴파일 된다.
         제외하고 싶으면 <link linkend="install.configure.disable-bcmath">--disable-bcmath</link>을 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: bc 형식의 수의 정밀도(precision)를 마음대로 조정할 수 있는 수학 함수를 사용할 수 있게 해 준다. 
         이 모듈의 자세한 사용법은 README-BCMATH 파일을 읽어보기 바란다. 이 함수들은 일반적인 수학 
         함수들의 범위를 넘는 정밀도를 가지고 계산할 수 있도록 해 준다. 자세한 내용은 
         <link linkend="ref.bc">BCMath Arbitrary Precision Mathematics Functions</link> 부분을 살펴보자.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-c9x-inline">
-					<term>
-						<parameter>--enable-c9x-inline</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-c9x-inline">
+                    <term>
+                        <parameter>--enable-c9x-inline</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: C9x-inline semantics 를 사용하게 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-calendar">
-					<term>
-						<parameter>--enable-calendar</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-calendar">
+                    <term>
+                        <parameter>--enable-calendar</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 역법 변환(calendar conversion)을 지원한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-debug">
-					<term>
-						<parameter>--enable-debug</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-debug">
+                    <term>
+                        <parameter>--enable-debug</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: 디버그용 디버깅 심볼을 포함하여 컴파일 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-debugger">
-					<term>
-						<parameter>--enable-debugger</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-debugger">
+                    <term>
+                        <parameter>--enable-debugger</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 내장된 원격 디버거 지원을 가능하게 한다. 
        </para>
-						<para>
+                        <para>
         PHP 4: PHP 4에는 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-discard-path">
-					<term>
-						<parameter>--enable-discard-path</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3, PHP 4: 이것을 Enabled하면, PHP CGI 실행파일이 웹 트리 밖에 안전하게 위치할 수 있게 되어, 
-        이용자들이 .htaccess security 제약을 피할 수 없도록 한다. 
-        자세한 사항은 security chapter를 읽어보기 바란다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-dmalloc">
-					<term>
-						<parameter>--enable-dmalloc</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-dmalloc">
+                    <term>
+                        <parameter>--enable-dmalloc</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: dmalloc을 사용하도록 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-exif">
-					<term>
-						<parameter>--enable-exif</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-exif">
+                    <term>
+                        <parameter>--enable-exif</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: exif를 지원한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-experimental-zts">
-					<term>
-						<parameter>--enable-experimental-zts</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-experimental-zts">
+                    <term>
+                        <parameter>--enable-experimental-zts</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 이것은 아직 완전치 않다. 이 옵션을 사용하면 대부분의 경우 PHP의 build에 실패할 것이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-fast-install">
-					<term>
-						<parameter>--enable-fast-install[=PKGS]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-fast-install">
+                    <term>
+                        <parameter>--enable-fast-install[=PKGS]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 빠른 설치를 위해 최적화한다. [default=yes]
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-force-cgi-redirect">
-					<term>
-						<parameter>--enable-force-cgi-redirect</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3, PHP 4: 내부적인 서버 리디렉트(internal server redirects) 시에 
-        보안 검사(security check)를 하도록 한다. 여러분이 Apache와 함께 
-        CGI 버전을 사용한다면 반드시 이 옵션을 사용하여야 할 것이다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-inline-optimization">
-					<term>
-						<parameter>--enable-inline-optimization</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-inline-optimization">
+                    <term>
+                        <parameter>--enable-inline-optimization</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 만약 대용량 메모리에서 gcc를 사용한다면 한번 사용해 보기 바란다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-libgcc">
-					<term>
-						<parameter>--enable-libgcc</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-libgcc">
+                    <term>
+                        <parameter>--enable-libgcc</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: libgcc에 반하는 명시된 linking을 허용한다. (Enable explicitly linking against libgcc)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-maintainer-mode">
-					<term>
-						<parameter>--enable-maintainer-mode</parameter>
-					</term>
-					<listitem>
-						<para>
-    PHP 3, PHP 4: 평범한(casual) 사용자가 설치시에 필요한 컴파일러 주의 메시지나, 
-    의존 관계(dependencie) 메시지 (때때로 충돌 메세지)등을 출력한다.
-    </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-memory-limit">
-					<term>
-						<parameter>--enable-memory-limit</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-memory-limit">
+                    <term>
+                        <parameter>--enable-memory-limit</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: 메모리 제한 기능을 지원한다. [default=no] 
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-safe-mode">
-					<term>
-						<parameter>--enable-safe-mode</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-safe-mode">
+                    <term>
+                        <parameter>--enable-safe-mode</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: 기본으로 안전모드(safe mode)를 사용하도록 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-satellite">
-					<term>
-						<parameter>--enable-satellite</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-satellite">
+                    <term>
+                        <parameter>--enable-satellite</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Satellite를 통한 CORBA 기능을 지원한다. (Requires ORBit) 
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-shared">
-					<term>
-						<parameter>--enable-shared[=PKGS]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-shared">
+                    <term>
+                        <parameter>--enable-shared[=PKGS]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 공유 라이브러리(shared libraries)를 사용한다. [default=yes]
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-sigchild">
-					<term>
-						<parameter>--enable-sigchild</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-sigchild">
+                    <term>
+                        <parameter>--enable-sigchild</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: PHP가 가진 고유의 SIGCHLD handler를 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-static">
-					<term>
-						<parameter>--enable-static[=PKGS]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-static">
+                    <term>
+                        <parameter>--enable-static[=PKGS]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: 정적 라이브러리(static libraries)를 사용한다. [default=yes]
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-sysvsem">
-					<term>
-						<parameter>--enable-sysvsem</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-sysvsem">
+                    <term>
+                        <parameter>--enable-sysvsem</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: System V semaphore를 지원한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-sysvshm">
-					<term>
-						<parameter>--enable-sysvshm</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-sysvshm">
+                    <term>
+                        <parameter>--enable-sysvshm</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: System V shared memory 를 지원한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-trans-sid">
-					<term>
-						<parameter>--enable-trans-sid</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-trans-sid">
+                    <term>
+                        <parameter>--enable-trans-sid</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: transparent session id propagation을 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-cdb">
-					<term>
-						<parameter>--with-cdb[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-cdb">
+                    <term>
+                        <parameter>--with-cdb[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: CDB를 지원한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-config-file-path">
-					<term>
-						<parameter>--with-config-file-path=PATH</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-config-file-path">
+                    <term>
+                        <parameter>--with-config-file-path=PATH</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: php3.ini를 찾을 디렉토리를 지정한다. 기본값은 <filename>/usr/local/lib</filename>이다.
-						</para>
-						<para>
+                        </para>
+                        <para>
         PHP 4: <filename>php.ini</filename>를 찾을 디렉토리를 지정한다.
         기본값은 <filename>/usr/local/lib</filename>이다.
-						</para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-cpdflib">
-					<term>
-						<parameter>--with-cpdflib[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-cpdflib">
+                    <term>
+                        <parameter>--with-cpdflib[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: ClibPDF 지원을 포함한다. DIR은 ClibPDF의 install directory,이고, 기본값은 /usr/local이다.
        </para>
-						<para>
+                        <para>
         PHP 4: cpdflib 지원을 포함한다.(cpdflib 2 이상이 필요). 
         DIR은 cpdflib의 install directory,이고, 기본값은 /usr이다.
 
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-esoob">
-					<term>
-						<parameter>--with-esoob[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-esoob">
+                    <term>
+                        <parameter>--with-esoob[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Easysoft OOB 지원을 포함한다. DIR은 OOB의 base install directory이고, 
         기본값은 /usr/local/easysoft/oob/client이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-exec-dir">
-					<term>
-						<parameter>--with-exec-dir[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-exec-dir">
+                    <term>
+                        <parameter>--with-exec-dir[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: 안전 모드(safe mode)일 때, 여기서 지정해 준 DIR안의 실행 파일만 실행이 가능하다. 
         기본값은 /usr/local/php/bin이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-fdftk">
-					<term>
-						<parameter>--with-fdftk[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-fdftk">
+                    <term>
+                        <parameter>--with-fdftk[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: fdftk 지원을 포함한다. DIR은 fdftk의 install directory이고, 기본값은 /usr/local이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-gnu-ld">
-					<term>
-						<parameter>--with-gnu-ld</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-gnu-ld">
+                    <term>
+                        <parameter>--with-gnu-ld</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: C 컴파일러가 GNU ld를 사용한다고 추정한다. [default=no]
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-icap">
-					<term>
-						<parameter>--with-icap[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-icap">
+                    <term>
+                        <parameter>--with-icap[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: ICAP 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-imap">
-					<term>
-						<parameter>--with-imap[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-imap">
+                    <term>
+                        <parameter>--with-imap[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: IMAP 지원을 포함한다. DIR은 IMAP include와 c-client.a가 있는 디렉토리이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-imsp">
-					<term>
-						<parameter>--with-imsp[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-imsp">
+                    <term>
+                        <parameter>--with-imsp[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: IMSP 지원을 포함한다. (DIR은 IMSP의 include dir 과 libimsp.a dir 이다).
        </para>
-						<para>
+                        <para>
         PHP 4: PHP 4에는 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-java">
-					<term>
-						<parameter>--with-java[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-java">
+                    <term>
+                        <parameter>--with-java[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Java 지원을 포함한다. DIR은 JDK의 base install directory이다. 
         이 확장은 dl을 사용해서 동적으로 적재할 수 있는 공유 모듈(shared dl)의 형태로만 만들 수 있다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-kerberos">
-					<term>
-						<parameter>--with-kerberos[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-kerberos">
+                    <term>
+                        <parameter>--with-kerberos[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: IMAP에서 Kerberos 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mcal">
-					<term>
-						<parameter>--with-mcal[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-mcal">
+                    <term>
+                        <parameter>--with-mcal[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: MCAL 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mcrypt">
-					<term>
-						<parameter>--with-mcrypt[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-mcrypt">
+                    <term>
+                        <parameter>--with-mcrypt[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: mcrypt 지원을 포함한다. DIR은 mcrypt의 install directory.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mhash">
-					<term>
-						<parameter>--with-mhash[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-mhash">
+                    <term>
+                        <parameter>--with-mhash[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: mhash  지원을 포함한다. DIR은 mhash의 install directory.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mm">
-					<term>
-						<parameter>--with-mm[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-mm">
+                    <term>
+                        <parameter>--with-mm[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: session storage를 위한 mm 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mod_charset">
-					<term>
-						<parameter>--with-mod_charset</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3, PHP 4: mod_charset을 위한 transfer tables을 사용한다. (Rus Apache).
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-pdflib">
-					<term>
-						<parameter>--with-pdflib[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-pdflib">
+                    <term>
+                        <parameter>--with-pdflib[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: pdflib 지원을 포함한다. (0.6과 2.0에서 테스트되었음). 
         DIR은 pdflib의 install directory이고, 기본값은 <filename>/usr/local</filename>이다.
        </para>
-						<para>
+                        <para>
         PHP 4: pdflib 3.x 지원을 포함한다.
         DIR은 pdflib의 install directory이고, 기본값은 <filename>/usr/local</filename>이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-readline">
-					<term>
-						<parameter>--with-readline[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-readline">
+                    <term>
+                        <parameter>--with-readline[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: readline 지원을 포함한다. DIR은 readline의 install directory.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-regex">
-					<term>
-						<parameter>--with-regex=TYPE</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-regex">
+                    <term>
+                        <parameter>--with-regex=TYPE</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: regex 라이브러리 타입: system, apache, php
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-servlet">
-					<term>
-						<parameter>--with-servlet[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-swf">
+                    <term>
+                        <parameter>--with-swf[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
-        PHP 4: servlet 지원을 포함한다. DIR은 JSDK의 base install directory이다.
-        이 SAPI를 위해서는 Java extension이 dl을 사용해서 동적으로 적재할 수 있는 
-        공유 모듈(shared dl)로 만들어져 있어야 한다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-swf">
-					<term>
-						<parameter>--with-swf[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP 3에는 없다.
-       </para>
-						<para>
+                        <para>
         PHP 4: swf 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-system-regex">
-					<term>
-						<parameter>--with-system-regex</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-system-regex">
+                    <term>
+                        <parameter>--with-system-regex</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP에 내장된 regex 라이브러리를 사용하지 않는다.
        </para>
-						<para>
+                        <para>
         PHP 4: 시스템의 regex 라이브러리를 사용한다. (별로 권하지 않는다.)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-tsrm-pth">
-					<term>
-						<parameter>--with-tsrm-pth[=pth-config]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-tsrm-pth">
+                    <term>
+                        <parameter>--with-tsrm-pth[=pth-config]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: GNU Pth를 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-tsrm-pthreads">
-					<term>
-						<parameter>--with-tsrm-pthreads</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-tsrm-pthreads">
+                    <term>
+                        <parameter>--with-tsrm-pthreads</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP 3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: POSIX threads를 사용한다. (default)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-x">
-					<term>
-						<parameter>--with-x</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-x">
+                    <term>
+                        <parameter>--with-x</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: X Window System을 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: PHP 4에는 없다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-zlib-dir">
-					<term>
-						<parameter>--with-zlib-dir[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-zlib-dir">
+                    <term>
+                        <parameter>--with-zlib-dir[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: pdflib 2.0에서 사용하는 zlib 디렉토리 지정, 혹은 zlib 지원을 포함한다.
        </para>
-						<para>
+                        <para>
         PHP 4: pdflib 3.x에서 사용하는 zlib 디렉토리 지정, 혹은 zlib 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-zlib">
-					<term>
-						<parameter>--with-zlib[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-zlib">
+                    <term>
+                        <parameter>--with-zlib[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: zlib 지원을 포함한다.(zlib 1.0.9 이상 필요). DIR은 zlib의 install directory이고, 기본값은 /usr이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.without-pcre-regex">
-					<term>
-						<parameter>--without-pcre-regex</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.without-pcre-regex">
+                    <term>
+                        <parameter>--without-pcre-regex</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: Perl 호환 정규표현식 (Perl Compatible Regular Expressions) 지원을 포함하지 않는다.
        </para>
-						<para>
+                        <para>
         PHP 4: Perl 호환 정규표현식 (Perl Compatible Regular Expressions) 지원을 포함하지 않는다.
         만약 내장된 라이브러리를 사용하지 않고 PCRE를 사용하고 싶다면, --with-pcre-regex=DIR옵션을 사용하세요. 
         (DIR은 PCRE의 include와 library 파일이 있는 디렉토리)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.without-posix">
-					<term>
-						<parameter>--without-posix</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.without-posix">
+                    <term>
+                        <parameter>--without-posix</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: POSIX 함수를 포함하지 않는다.
        </para>
-						<para>
+                        <para>
         PHP 4: PHP4에는 없다; 
         대신 <link linkend="install.configure.disable-posix">--disable-posix</link>를 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.networking">
-			<title>Networking</title>
-			<variablelist>
-				<varlistentry id="install.configure.with-curl">
-					<term>
-						<parameter>--with-curl[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.networking">
+            <title>Networking</title>
+            <variablelist>
+                <varlistentry id="install.configure.with-curl">
+                    <term>
+                        <parameter>--with-curl[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: CURL 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-ftp">
-					<term>
-						<parameter>--enable-ftp</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-ftp">
+                    <term>
+                        <parameter>--enable-ftp</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; 대신 <link linkend="install.configure.with-ftp">--with-ftp</link>를 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: FTP 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-ftp">
-					<term>
-						<parameter>--with-ftp</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-ftp">
+                    <term>
+                        <parameter>--with-ftp</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: FTP 지원을 포함한다.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용 불가; 대신 <link linkend="install.configure.enable-ftp">--enable-ftp</link>를 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-url-fopen-wrapper">
-					<term>
-						<parameter>--disable-url-fopen-wrapper</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-url-fopen-wrapper">
+                    <term>
+                        <parameter>--disable-url-fopen-wrapper</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: http나 ftp를 통한 URL 형태의 파일을 fopen으로 접근하는 것을 막는다.
        </para>
-						<warning>
-							<para>
+                        <warning>
+                            <para>
         이 옵션은 PHP 4.0.3 이하에서만 사용가능하다. 
         그 이후 버전에서는 컴파일시에 이 기능을 결정하는 대신,
         <parameter>allow_url_fopen</parameter>이라는 INI 파라메터가 제공된다.
-				</para>
-						</warning>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-mod-dav">
-					<term>
-						<parameter>--with-mod-dav=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
+                </para>
+                        </warning>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-mod-dav">
+                    <term>
+                        <parameter>--with-mod-dav=DIR</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: Apache의 mod_dav를 통한 DAV 지원을 포함한다. 
         DIR은 mod_dav의 installation directory (Apache module 버전만 사용가능)
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-openssl">
-					<term>
-						<parameter>--with-openssl[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-openssl">
+                    <term>
+                        <parameter>--with-openssl[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: SNMP에서 OpenSSL 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-snmp">
-					<term>
-						<parameter>--with-snmp[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-snmp">
+                    <term>
+                        <parameter>--with-snmp[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: SNMP 지원을 포함한다. DIR은 SNMP의 base install directory이고, 
         기본값은 SNMP가 설치된 디렉토리를 자동으로 찾는 것이다. 
         dl을 사용해서 동적으로 적재할 수 있는 공유 모듈을 만들려면 DIR에 shared를 적어주면 되고,
         디렉토리까지 표시해 주려면 shared,DIR의 형태로 적어주면 된다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-ucd-snmp-hack">
-					<term>
-						<parameter>--enable-ucd-snmp-hack</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-ucd-snmp-hack">
+                    <term>
+                        <parameter>--enable-ucd-snmp-hack</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: UCD SNMP hack을 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-sockets">
-					<term>
-						<parameter>--enable-sockets</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-sockets">
+                    <term>
+                        <parameter>--enable-sockets</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: sockets 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-yaz">
-					<term>
-						<parameter>--with-yaz[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-yaz">
+                    <term>
+                        <parameter>--with-yaz[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: YAZ 지원을 포함한다. (ANSI/NISO Z39.50). DIR은 YAZ bin의 install directory.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-yp">
-					<term>
-						<parameter>--enable-yp</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-yp">
+                    <term>
+                        <parameter>--enable-yp</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 사용 불가; 대신 <link linkend="install.configure.with-yp">--with-yp</link>을 사용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: YP 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-yp">
-					<term>
-						<parameter>--with-yp</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-yp">
+                    <term>
+                        <parameter>--with-yp</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: YP 지원을 포함한다.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용 불가; 대신<link linkend="install.configure.enable-yp">--enable-yp</link>을 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.php">
-			<title>PHP Behaviour</title>
-			<variablelist>
-				<varlistentry id="install.configure.enable-magic-quotes">
-					<term>
-						<parameter>--enable-magic-quotes</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.php">
+            <title>PHP Behaviour</title>
+            <variablelist>
+                <varlistentry id="install.configure.enable-magic-quotes">
+                    <term>
+                        <parameter>--enable-magic-quotes</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: 기본값으로 magic quotes를 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-short-tags">
-					<term>
-						<parameter>--disable-short-tags</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-short-tags">
+                    <term>
+                        <parameter>--disable-short-tags</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: 기본값으로 short form &lt;? PHP 태그의 사용을 불가능하게 한다. 
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-track-vars">
-					<term>
-						<parameter>--enable-track-vars</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-track-vars">
+                    <term>
+                        <parameter>--enable-track-vars</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: 기본값으로 GET/POST/Cookie 변수를 추적한다.
        </para>
-						<para>
+                        <para>
         PHP 4: PHP4에는 없다; PHP 4.0.2에서 track_vars는 항상 on이다.
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.servers">
-			<title>Server</title>
-			<variablelist>
-				<varlistentry id="install.configure.with-aolserver-src">
-					<term>
-						<parameter>--with-aolserver-src=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.servers">
+            <title>Server</title>
+            <variablelist>
+                <varlistentry id="install.configure.with-aolserver-src">
+                    <term>
+                        <parameter>--with-aolserver-src=DIR</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: AOLserver 소스 배포판의 경로를 명시해 준다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-aolserver">
-					<term>
-						<parameter>--with-aolserver=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP3에는 없다.
-       </para>
-						<para>
-        PHP 4: AOLserver가 설치된 곳의 경로를 명시해 준다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-apache">
-					<term>
-						<parameter>--with-apache[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3, PHP 4: PHP를 Apache 모듈로 만든다. DIR은 Apache build directory의 최상단 디렉토리이고, 
-        기본값은 /usr/local/etc/httpd이다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-apxs">
-					<term>
-						<parameter>--with-apxs[=FILE]</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3, PHP 4: PHP를 공유 Apache 모듈로 만든다. 
-        FILE은 옵션으로 Apache apxs 툴의 pathname이고, 기본값은 apxs이다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-versioning">
-					<term>
-						<parameter>--enable-versioning</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-versioning">
+                    <term>
+                        <parameter>--enable-versioning</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: Solaris 2.x와 Linux에서 제공되는 versioning과 scoping을 이용한다.
        </para>
-						<para>
+                        <para>
         PHP 4: 필요한 심볼들만 export한다. 자세한 정보는 INSTALL 파일을 보자.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-fhttpd">
-					<term>
-						<parameter>--with-fhttpd[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3, PHP 4: PHP를 fhttpd 모듈로 만든다. 
-        DIR은 fhttpd 소스 디렉토리이고, 기본값은 /usr/local/src/fhttpd이다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-nsapi">
-					<term>
-						<parameter>--with-nsapi=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-zeus">
+                    <term>
+                        <parameter>--with-zeus=DIR</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
-        PHP 4: 설치된 Netscape 서버의 path를 명시한다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-phttpd">
-					<term>
-						<parameter>--with-phttpd=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP3에는 없다.
-       </para>
-						<para>
-        PHP 4: 
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-pi3web">
-					<term>
-						<parameter>--with-pi3web=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP3에는 없다.
-       </para>
-						<para>
-        PHP 4: PHP를 Pi3Web에서 사용하는 모듈로 만든다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-roxen">
-					<term>
-						<parameter>--with-roxen=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP3에는 없다.
-       </para>
-						<para>
-        PHP 4: PHP를 Pike 모듈로 만든다. DIR은 base Roxen directory이고, 보통 /usr/local/roxen/server이다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-roxen-zts">
-					<term>
-						<parameter>--enable-roxen-zts</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP3에는 없다.
-       </para>
-						<para>
-        PHP 4: Roxen 모듈에서 Zend Thread Safety를 사용하게 만든다.
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-thttpd">
-					<term>
-						<parameter>--with-thttpd=SRCDIR</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP3에는 없다.
-       </para>
-						<para>
-        PHP 4: 
-       </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-zeus">
-					<term>
-						<parameter>--with-zeus=DIR</parameter>
-					</term>
-					<listitem>
-						<para>
-        PHP 3: PHP3에는 없다.
-       </para>
-						<para>
+                        <para>
         PHP 4: PHP를 Zeus에 사용하는 ISAPI 모듈로 만든다.
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.text">
-			<title>Text and language</title>
-			<variablelist>
-				<varlistentry id="install.configure.with-aspell">
-					<term>
-						<parameter>--with-aspell[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.text">
+            <title>Text and language</title>
+            <variablelist>
+                <varlistentry id="install.configure.with-aspell">
+                    <term>
+                        <parameter>--with-aspell[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: ASPELL 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-gettext">
-					<term>
-						<parameter>--with-gettext[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-gettext">
+                    <term>
+                        <parameter>--with-gettext[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3, PHP 4: GNU gettext 지원을 포함한다. DIR은 gettext의 install directory이고, 기본값은 /usr/local이다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-pspell">
-					<term>
-						<parameter>--with-pspell[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-pspell">
+                    <term>
+                        <parameter>--with-pspell[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: PSPELL 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-recode">
-					<term>
-						<parameter>--with-recode[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-recode">
+                    <term>
+                        <parameter>--with-recode[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: GNU recode 지원을 포함한다.
        </para>
-						<para>
+                        <para>
         PHP 4: recode 지원을 포함한다. DIR은 recode의 install directory.
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		<sect2 id="install.configure.xml">
-			<title>XML</title>
-			<variablelist>
-				<varlistentry id="install.configure.with-dom">
-					<term>
-						<parameter>--with-dom[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+        <sect2 id="install.configure.xml">
+            <title>XML</title>
+            <variablelist>
+                <varlistentry id="install.configure.with-dom">
+                    <term>
+                        <parameter>--with-dom[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: DOM 지원을 포함한다. (libxml 2.0 이상이 필요하다). 
         DIR은 libxml의 install directory이고, 기본값은 <filename>/usr</filename>.
-						</para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-sablot-errors-descriptive">
-					<term>
-						<parameter>--enable-sablot-errors-descriptive</parameter>
-					</term>
-					<listitem>
-						<para>
+                        </para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-sablot-errors-descriptive">
+                    <term>
+                        <parameter>--enable-sablot-errors-descriptive</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Descriptive errors를 사용한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-sablot">
-					<term>
-						<parameter>--with-sablot[=DIR]</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-sablot">
+                    <term>
+                        <parameter>--with-sablot[=DIR]</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: Sablotron 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.enable-wddx">
-					<term>
-						<parameter>--enable-wddx</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.enable-wddx">
+                    <term>
+                        <parameter>--enable-wddx</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다.
        </para>
-						<para>
+                        <para>
         PHP 4: WDDX 지원을 포함한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.disable-xml">
-					<term>
-						<parameter>--disable-xml</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.disable-xml">
+                    <term>
+                        <parameter>--disable-xml</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: PHP3에는 없다; XML 함수들은 기본적으로 포함되지 않는다. 
         이 함수들을 사용하고 싶다면 <link linkend="install.configure.with-xml">--with-xml</link>옵션을 사용하라.
        </para>
-						<para>
+                        <para>
         PHP 4: 내장된 expat lib를 사용한 XML 지원을 못하도록 한다.
        </para>
-					</listitem>
-				</varlistentry>
-				<varlistentry id="install.configure.with-xml">
-					<term>
-						<parameter>--with-xml</parameter>
-					</term>
-					<listitem>
-						<para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry id="install.configure.with-xml">
+                    <term>
+                        <parameter>--with-xml</parameter>
+                    </term>
+                    <listitem>
+                        <para>
         PHP 3: XML 지원을 포함한다.
        </para>
-						<para>
+                        <para>
         PHP 4: 사용불가; XML 지원은 기본적으로 포함된다. 
         이 기능을 빼고 싶으면 <link linkend="install.configure.disable-xml">--disable-xml</link> 옵션을 사용하라.
        </para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-	</sect1>
-	<sect1 id="install.windows">
-		<title>Windows 9x/Me/NT/2000 시스템에 설치</title>
-		<para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </sect2>
+    </sect1>
+    <sect1 id="install.windows">
+        <title>Windows 9x/Me/NT/2000 시스템에 설치</title>
+        <para>
     PHP를 윈도우로 설치하는데는 두가지 방법이 있다.
    하나는 <link linkend="install.windows.manual">직접하는 방법(manually)</link>과
     <link linkend="install.windows.installer">InstallShield</link> 설치 프로그램을 이용하는 방법이다.
    </para>
-		<para>
+        <para>
     만약 Microsoft Visual Studio를 가지고 있다면, PHP의 소스코드를 사용하여
     PHP를 <link linkend="install.windows.build">build</link> 할 수 있다.
    </para>
-		<para>
+        <para>
     시스템에 PHP를 설치한 다음에는, 추가적인 기능을 위하여 여러분이 원하는
    <link linkend="install.windows.extensions">추가 모듈을 적재(load various extensions)</link>할 수 있다.
    </para>
-		<sect2 id="install.windows.installer">
-			<title>Windows InstallShield</title>
-			<para>
+        <sect2 id="install.windows.installer">
+            <title>Windows InstallShield</title>
+            <para>
      Windows PHP 설치 프로그램은 <ulink url="&url.php;">&url.php;</ulink>의
     다운로드 페이지에 있다. 이것은 CGI 버젼의 PHP를 설치하고, 
     IIS와 PWS, Xitami의 웹서버에 대한 설정을 자동으로 해 준다.
     </para>
-			<simpara>
+            <simpara>
      시스템에 선택한 <acronym>HTTP</acronym> 서버를 미리 설치해 놓고
     동작하도록 만들어 놓아야 한다.
     </simpara>
-			<simpara>
+            <simpara>
      설치 프로그램을 실행하고 설치 마법사가 시키는대로 따라서 설치하면 된다.
     모든 설정에 적당한 기본값을 사용하는 표준(standard) 설치 방법과,
     사용자에게 일일이 물어보는 고급(advanced) 설치 방법을 지원한다.
     </simpara>
-			<simpara>
+            <simpara>
      설치 마법사는 <filename>php.ini</filename>을 설정하는데 충분한
     정보를 수집하고, 웹서버를 PHP를 사용할 수 있도록 설정한다.
     IIS와 NT 웍스테이션에서의 PWS에서는 서버의 모든 노드들과
     그 각각의 스트립트 맵 설정을 보여준다. 이 때 PHP용 스크립트 맵을
     추가할 노드들을 선택 할 수 있다.
     </simpara>
-			<simpara>
+            <simpara>
      설치프로그램이 시스템을 재 시작할 필요가 있다고 한다면
     스스템을 재시작하고 서버를 재실행한다. 아니라면 단지 서버를 실행하면 된다.
     </simpara>
-		</sect2>
-		<sect2 id="install.windows.manual">
-			<title>일반적인 걸치 과정</title>
-			<simpara>
+        </sect2>
+        <sect2 id="install.windows.manual">
+            <title>일반적인 걸치 과정</title>
+            <simpara>
     이 설치 안내서는 PHP를 9x/Me/NT/2000 웹서버에서 설치하고 설정하는데 도움을 줄 것입니다. 
     이 안내서는 &link.bob;에 의해 작성되었습니다. 따라서 가장 최신의 개정판은 
     <ulink url="&url.win32install;">&url.win32install;</ulink>에서 찾을 수 있습니다.
     </simpara>
-			<para>
+            <para>
     이 안내서는 다음과 같은 웹서버를 대상으로 합니다.:
     <itemizedlist>
-					<listitem>
-						<para>
+                    <listitem>
+                        <para>
        Personal Web Server 3와 4 혹은 더 최신
       </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
        Internet Information Server 3와 4 혹은 더 최신
       </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
        Apache 1.3.x
       </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         OmniHTTPd 2.0b1 and up
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Oreilly Website Pro
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Xitami
        </para>
-					</listitem>
-				</itemizedlist>
-			</para>
-			<para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
      windows에서 PHP4는 CGI 형태(php.exe)나 SAPI 모듈의 형태(예: php4isapi.dll)로 
     만들어 질 수 있습니다. 후자의 형태는 PHP4에서 추가된 형태로,
     괄목할만한 성능의 향상을 얻을 수 있고, 새로운 기능도 추가되었습니다.
@@ -2569,7 +2807,7 @@ Paul Mckay.
     결론적으로 아직 안정성을 보증받지 못했다. 만약 매우 안정적인 동작을 원한다면,
     SAPI 모듈을 사용해서 얻는 효율의 향상보다는 CGI 버젼의 안정성을 택하기 바란다.
    </para>
-			<para>
+            <para>
     만약 Windows 95에서 SAPI 모듈을 사용하려 한다면,
    <ulink url="http://download.microsoft.com/msdownload/dcom/95/x86/en/dcom95.exe">Microsoft
     DCOM pages</ulink>에서 DCOM 업테이트를 받아서 DCOM을 업데이트해 두어야 한다.
@@ -2578,120 +2816,120 @@ Paul Mckay.
    따라서 IIS 3.0을 사용중이라면 Windows NT 4.0 Option Pack with IIS 4.0을 다운로드하여
    IIS 4.0으로 업데이트 해야 할 것이다.
    </para>
-			<para>
+            <para>
       웹 서버의 종류와 관계없이 다음의 설치 과정들이 완료되어야 한다. 
      <itemizedlist>
-					<listitem>
-						<para>
+                    <listitem>
+                        <para>
         배포 파일을 풀어 놓을 디렉토리를 정한다. 일반적으로 &quot;C:\PHP\&quot; 도 좋다
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
           &apos;php.ini-dist&apos; 파일을 windows95/98 이라면 &apos;%WINDOWS%&apos; 디렉토리에, 
           Windows NT/2000이라면 &apos;%SYSTEMROOT%&apos; 디렉토리에 &apos;php.ini&apos;라는 이름으로 복사해 둔다. 
           &apos;%WINDOWS%&apos; 나 &apos;%SYSTEMROOT%&apos; 디렉토리는 일반적으로 다음과 같다. 
                                    <simplelist>
-								<member>c:\windows for Windows 95/98</member>
-								<member>c:\winnt or c:\winnt40 for NT/2000 servers</member>
-							</simplelist>
-						</para>
-					</listitem>
-					<listitem>
-						<para>
+                                <member>c:\windows for Windows 95/98</member>
+                                <member>c:\winnt or c:\winnt40 for NT/2000 servers</member>
+                            </simplelist>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
          &apos;php.ini&apos; 파일을 다음과 같이 수정한다.:
         <itemizedlist>
-								<listitem>
-									<simpara>
+                                <listitem>
+                                    <simpara>
            'extension_dir'을 여러분의 php-install-dir로 고쳐주어야 한다. 
            혹은 'php_*.dll'이 놓여있는 위치를 지정한다. (예. c:\php) 
           </simpara>
-								</listitem>
-								<listitem>
-									<simpara>
+                                </listitem>
+                                <listitem>
+                                    <simpara>
           Omni Httpd의 경우에는 이 과정은 생략!
           'doc_root'를 웹서버의 document_root 디렉토리를 지정하도록 합니다. (예. c:\apache\htdocs 혹은 c:\webroot) 
           </simpara>
-								</listitem>
-								<listitem>
-									<simpara>
+                                </listitem>
+                                <listitem>
+                                    <simpara>
           PHP가 시작될 때 적재할 모듈들을 선택한다. 'extension=php_*.dll' 설정을 uncomment하면 해당 모듈을 load하는 것입니다. 
           일부 모듈은 올바르게 동작하기 위해 시스템에 별도의 라이브러리를 설치해야 하는 경우도 있습니다. 
           어디서 지원하는 라이브러리를 얻을 수 있는지는 PHP의 <ulink url="&url.php.faq;">FAQ</ulink>를 보면 
           좀더 자세한 정보를 얻을 수 있을 것입니다.
           또한 모듈을 <function>dl</function> 함수를 사용하여 스크립트 내에서 동적으로 적재할 수도 있다. 
           <link linkend="install.windows.extensions">Windows extensions</link>을 살펴보기 바란다.
-									</simpara>
-								</listitem>
-								<listitem>
-									<simpara>
+                                    </simpara>
+                                </listitem>
+                                <listitem>
+                                    <simpara>
           PWS와 IIS에서 browscap.ini는 다음의 위치에 있다. Windows 9x/Me는 
           'c:\windows\system\inetsrv\browscap.ini', 
           NT/2000 서버에서는 'c:\winnt\system32\inetsrv\browscap.ini'에 있다.
                                              </simpara>
-								</listitem>
-							</itemizedlist>
-						</para>
-					</listitem>
-				</itemizedlist>
-			</para>
-		</sect2>
-		<sect2 id="install.windows.build">
-			<title>소스로 부터 만들기</title>
-			<para>
+                                </listitem>
+                            </itemizedlist>
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </sect2>
+        <sect2 id="install.windows.build">
+            <title>소스로 부터 만들기</title>
+            <para>
      시작하기 전에 다음 질문을 생각해 보자. :
     "windows에서 만드는 것이 왜 어려운가?" 
     다음 두가지 이유가 떠오를 것이다. :
     </para>
-			<orderedlist>
-				<listitem>
-					<simpara>
+            <orderedlist>
+                <listitem>
+                    <simpara>
       windows는 자신들의 소스를 자유롭게 공유하고자 하는 개발자들에게는
     커다란 공동체를 (아직) 만들지 못하고 있다. 그로인해 개발을 위한 기본적으로 
     필요한 기초적 투자가 아직 되어 있지 않다. 대체로, 사용 가능한 것들 대부분은
     Unix의 기본 유틸리티에서 포팅된 것들이다. 이런 관계는 별로 놀랄만한 것도 아니다.
      </simpara>
-				</listitem>
-				<listitem>
-					<simpara>
+                </listitem>
+                <listitem>
+                    <simpara>
        아래나오는 설명은 "설정하고 잊어버리는" 내용이 대부분이다.
      따라서 조금 휴식한 후에 아래의 설명을 충실히 따르도록 하자.
      </simpara>
-				</listitem>
-			</orderedlist>
-			<sect3 id="install.windows.build.prepare">
-				<title>준비</title>
-				<para>
+                </listitem>
+            </orderedlist>
+            <sect3 id="install.windows.build.prepare">
+                <title>준비</title>
+                <para>
       시작하기전에 다운로드할 것이 좀 있다.
      </para>
-				<itemizedlist>
-					<listitem>
-						<simpara>
+                <itemizedlist>
+                    <listitem>
+                        <simpara>
        처음 사용자는 <ulink url="http://sources.redhat.com/cygwin/download.html">cygwin</ulink> 미러사이트에서
        Cygwin 툴킷을 다운받는다. 이것은 build 중에 사용할 대부분의 필수 GNU 유틸리티를 제공해 준다.
       </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<ulink url="http://www.php.net/extra/win32build.zip">http://www.php.net/extra/win32build.zip</ulink>에서
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <ulink url="http://www.php.net/extra/win32build.zip">http://www.php.net/extra/win32build.zip</ulink>에서
      PHP build 시에 필요한 나머지 도구들을 받아둔다.
       </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<ulink url="http://www.php.net/extra/bindlib_w32.zip">http://www.php.net/extra/bindlib_w32.zip</ulink>에서
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <ulink url="http://www.php.net/extra/bindlib_w32.zip">http://www.php.net/extra/bindlib_w32.zip</ulink>에서
      PHP가 사용하는 DNS name resolver의 소스 코드를 받아온다.
      이것은 <filename>win32build.zip</filename>에 포함된 <filename>resolv.lib</filename> 라이브러리의 대체 파일이다.
       </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
        만약 unzip 유틸리티가 없다면 이것도 필요하다.
        <ulink url="http://www.cdrom.com/pub/infozip/UnZip.html">InfoZip</ulink>에 가면 무료 버젼을 구할 수 있다.
       </simpara>
-					</listitem>
-				</itemizedlist>
-				<simpara>
+                    </listitem>
+                </itemizedlist>
+                <simpara>
       마지막으로 당연히 PHP 4의 소스코드가 필요하다.
     <ulink url="http://www.php.net/anoncvs.php">anonymous CVS</ulink>를 사용하여 최신 개발 버젼을
     얻어올 수도 있다. 만약 <ulink url="http://snaps.php.net/">snapshot</ulink> 이나 
@@ -2699,47 +2937,47 @@ Paul Mckay.
     yntar와 ungzip은 물론이고, Microsoft Visual C++을 사용한 작업을 하기전에 
    <filename>*.dsp</filename>와 <filename>*.dsw</filename> 파일의 모든 LF를 CRLF로 바꿔 주어야 한다.
      </simpara>
-				<note>
-					<simpara>
-						<filename>Zend</filename>와 <filename>TSRM</filename> 디렉토리는 
+                <note>
+                    <simpara>
+                        <filename>Zend</filename>와 <filename>TSRM</filename> 디렉토리는 
        build 과정중에 프로젝트가 찾을 수 있도록 
        <filename>php4</filename> 디렉토리 안에 넣어두어야 한다.
       </simpara>
-				</note>
-			</sect3>
-			<sect3 id="install.windows.build.install">
-				<title>모두 한자리에 모으기</title>
-				<itemizedlist>
-					<listitem>
-						<simpara>
+                </note>
+            </sect3>
+            <sect3 id="install.windows.build.install">
+                <title>모두 한자리에 모으기</title>
+                <itemizedlist>
+                    <listitem>
+                        <simpara>
        선택한 unzip 유틸리티는 해당 설명의 내용을 따라주세요.
       </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<filename>setup.exe</filename>를 실행한 후, 설치 설명을 따른다.
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <filename>setup.exe</filename>를 실행한 후, 설치 설명을 따른다.
       만약 <filename>c:\cygnus</filename>과 다른 경로에 설치하였다면,
       build 과정중에 Cygwin 환경변수에 이를 지정해야 한다.
       Windows 95/98 에서는 autoexec.bat 파일에서 지정하면 되고,
       Windows NT의 경우 내 컴퓨터(My Computer) =&gt; 제어판(Control Panel) =&gt; 시스템(System) 에 가서
       환경(environment) 탭을 선택한 후 설정하면 된다.
        </simpara>
-						<warning>
-							<simpara>
+                        <warning>
+                            <simpara>
          Cygwin이 사용할 임시디렉토리를 만들어 두여야한다. 그렇지않으면
        여러 명령(특히 bison)에서 에러가 발생한다. Windows 95/98에서는
          <userinput>mkdir C:\TMP</userinput>. Windows NT에서는
          <userinput>mkdir %SystemDrive%\tmp</userinput>.
         </simpara>
-						</warning>
-					</listitem>
-					<listitem>
-						<simpara>
+                        </warning>
+                    </listitem>
+                    <listitem>
+                        <simpara>
        디렉토리를 만들고 여기에 <filename>win32build.zip</filename>을 풀어놓는다.
       </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         Microsoft Visual C++을 실행하고, 메뉴의 Tools =&gt; Options를 선택한다.
         대화창에서 directories 탯을 선택한 후 Executables, Includes, Library files를
       각각 <filename>cygwin\bin</filename>,
@@ -2747,121 +2985,121 @@ Paul Mckay.
         <filename>win32build\lib</filename>으로 차례대로 바꾼다.
       보통 다음과 같이 지정된다.
        </simpara>
-						<itemizedlist>
-							<listitem>
-								<simpara>
-									<filename>c:\cygnus\bin</filename>
-								</simpara>
-							</listitem>
-							<listitem>
-								<simpara>
-									<filename>c:\php-win32build\include</filename>
-								</simpara>
-							</listitem>
-							<listitem>
-								<simpara>
-									<filename>c:\php-win32build\lib</filename>
-								</simpara>
-							</listitem>
-						</itemizedlist>
-						<simpara>
+                        <itemizedlist>
+                            <listitem>
+                                <simpara>
+                                    <filename>c:\cygnus\bin</filename>
+                                </simpara>
+                            </listitem>
+                            <listitem>
+                                <simpara>
+                                    <filename>c:\php-win32build\include</filename>
+                                </simpara>
+                            </listitem>
+                            <listitem>
+                                <simpara>
+                                    <filename>c:\php-win32build\lib</filename>
+                                </simpara>
+                            </listitem>
+                        </itemizedlist>
+                        <simpara>
       OK를 누르고, Visual C++을 빠져나온다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         다른 디렉토리를 만들고 <filename>bindlib_w32.zip</filename>를 여기에 풀어 놓는다.
         디버그용 심볼테이블을 포함할 것인가(bindlib - Win32 Debug) , 
         안 포함할 것인가(bindlib - Win32 Release)를 결정한다.
       적절한 설정파일을 만든다.
        </simpara>
-						<itemizedlist>
-							<listitem>
-								<simpara>
+                        <itemizedlist>
+                            <listitem>
+                                <simpara>
         이제 GUI 사용자는 VC++을 실행하고, File =&gt; Open Workspace 를 선택하고
          bindlib를 선택한다. 그후 Build=&gt;Set Active Configuration 을 선택한 후에
        원하는 설정파일을 선택한다. 마지막으로 Build=&gt;Rebuild All을 선택한다.
         </simpara>
-							</listitem>
-							<listitem>
-								<simpara>
+                            </listitem>
+                            <listitem>
+                                <simpara>
           커맨드라인 사용자는 등록된 C++ 환경 변수를 확인하고,
           잘못되어 있으면 <command>vcvars.bat</command>을 실행한 후,
           다음 두개의 명령 중 하나를 실행한다. :
          </simpara>
-								<itemizedlist>
-									<listitem>
-										<simpara>
-											<userinput>msdev bindlib.dsp /MAKE "bindlib - Win32 Debug"</userinput>
-										</simpara>
-									</listitem>
-									<listitem>
-										<simpara>
-											<userinput>msdev bindlib.dsp /MAKE "bindlib - Win32 Release"</userinput>
-										</simpara>
-									</listitem>
-								</itemizedlist>
-							</listitem>
-							<listitem>
-								<simpara>
+                                <itemizedlist>
+                                    <listitem>
+                                        <simpara>
+                                            <userinput>msdev bindlib.dsp /MAKE "bindlib - Win32 Debug"</userinput>
+                                        </simpara>
+                                    </listitem>
+                                    <listitem>
+                                        <simpara>
+                                            <userinput>msdev bindlib.dsp /MAKE "bindlib - Win32 Release"</userinput>
+                                        </simpara>
+                                    </listitem>
+                                </itemizedlist>
+                            </listitem>
+                            <listitem>
+                                <simpara>
          이제 <filename>Debug</filename> 나 <filename>Release</filename> 서브 디렉토리에
        알맞은 <filename>resolv.lib</filename>가 만들어져 있어야 한다.
        이 파일을 <filename>win32build\lib</filename>에 있는 동일한 이름의 파일을 덮어 쓴다.
         </simpara>
-							</listitem>
-						</itemizedlist>
-					</listitem>
-				</itemizedlist>
-			</sect3>
-			<sect3 id="install.windows.build.compile">
-				<title>컴파일</title>
-				<simpara>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </itemizedlist>
+            </sect3>
+            <sect3 id="install.windows.build.compile">
+                <title>컴파일</title>
+                <simpara>
       처음에 하기 가장 좋은 것은 standalone/CGI 버젼으로 만드는 것이다.
      </simpara>
-				<itemizedlist>
-					<listitem>
-						<simpara>
+                <itemizedlist>
+                    <listitem>
+                        <simpara>
        GUI 사용자는, VC++을 실행하고, File =&gt; Open Workspace를 선택하고 
      php4ts를 선택한다. 그런 다음 Build=&gt;Set Active Configuration 을 선택하여 
      원하는 설정파일을 선택한다. 마지막으로 Build=&gt;Rebuild All을 선택한다.
       </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         커맨드라인 사용자는 등록된 C++ 환경 변수를 확인하고,
         잘못되어 있으면 <command>vcvars.bat</command>을 실행한 후,
         다음 두개의 명령 중 하나를 실행한다. :
        </simpara>
-						<itemizedlist>
-							<listitem>
-								<simpara>
-									<userinput>msdev php4ts.dsp /MAKE "php4ts - Win32 Debug_TS"</userinput>
-								</simpara>
-							</listitem>
-							<listitem>
-								<simpara>
-									<userinput>msdev php4ts.dsp /MAKE "php4ts - Win32 Release_TS"</userinput>
-								</simpara>
-							</listitem>
-							<listitem>
-								<simpara>
+                        <itemizedlist>
+                            <listitem>
+                                <simpara>
+                                    <userinput>msdev php4ts.dsp /MAKE "php4ts - Win32 Debug_TS"</userinput>
+                                </simpara>
+                            </listitem>
+                            <listitem>
+                                <simpara>
+                                    <userinput>msdev php4ts.dsp /MAKE "php4ts - Win32 Release_TS"</userinput>
+                                </simpara>
+                            </listitem>
+                            <listitem>
+                                <simpara>
          이제 <filename>Debug_TS</filename> 나 <filename>Release_TS</filename> 서브 디렉토리에
        최종 결과물인 <filename>php.exe</filename>가 만들어져 있어야 한다.
         </simpara>
-							</listitem>
-						</itemizedlist>
-					</listitem>
-				</itemizedlist>
-				<simpara>
+                            </listitem>
+                        </itemizedlist>
+                    </listitem>
+                </itemizedlist>
+                <simpara>
       위의 과정을 <filename>php4isapi.dsp</filename>를 사용하여 반복하면
      (이 파일은 <filename>sapi\isapi</filename>에 있다.), 
      Microsoft IIS용 ISAPI 버젼의 PHP를 만들 수 있다.
      </simpara>
-			</sect3>
-		</sect2>
-		<sect2 id="install.windows.extensions">
-			<title>Windows 확장 모듈의 설치</title>
-			<para>
+            </sect3>
+        </sect2>
+        <sect2 id="install.windows.extensions">
+            <title>Windows 확장 모듈의 설치</title>
+            <para>
      windows에 PHP와 웹서버를 설치한 후에는 원하는 기능을
     추가하기 위해 확장 모듈을 설치하기를 원할 것이다.
      아래 표에 사용할 수 있는 확장 모듈이 표시되어 있다.
@@ -2874,12 +3112,12 @@ Paul Mckay.
     또한 <function>dl</function> 함수를 사용하면 추가 모듈을 
      실행중에도 동적으로 적재할 수 있다.
     </para>
-			<para>
+            <para>
      PHP 확장을 위한 DLL들은 'php_'로 시작한다. 
      이것은 PHP 확장을 위한 DLL들과 자체적인 지원을 위한 DLL들간의 혼란을 방지하기 위해서이다.
                </para>
-			<note>
-				<para>
+            <note>
+                <para>
 
        PHP 4.0.4pl1에서 MySQL, ODBC, FTP, Calendar, BCMath, COM, PCRE,
        Session, WDDX, XML 지원이 기본적으로 <emphasis>내장</emphasis>되어 있다.
@@ -2887,105 +3125,105 @@ Paul Mckay.
      필요는 없다. 내장된 모듈의 목록은 배포판에 있는 
      <filename>README.txt</filename>나 <filename>install.txt</filename>파일을 참조하기 바란다.
      </para>
-			</note>
-			<para>
-				<table>
-					<title>PHP Extensions</title>
-					<tgroup cols="2">
-						<tbody>
-							<row>
-								<entry>php_calendar.dll</entry>
-								<entry>Calendar conversion functions</entry>
-							</row>
-							<row>
-								<entry>php_crypt.dll</entry>
-								<entry>Crypt functions</entry>
-							</row>
-							<row>
-								<entry>php_dbase.dll</entry>
-								<entry>dBase functions</entry>
-							</row>
-							<row>
-								<entry>php_dbm.dll</entry>
-								<entry>Berkeley DB2 library</entry>
-							</row>
-							<row>
-								<entry>php_filepro.dll</entry>
-								<entry>Read-only access to Filepro databases</entry>
-							</row>
-							<row>
-								<entry>php_gd.dll</entry>
-								<entry>GD library functions for GIF manipulation</entry>
-							</row>
-							<row>
-								<entry>php_hyperwave.dll</entry>
-								<entry>HyperWave functions</entry>
-							</row>
-							<row>
-								<entry>php_imap4r2.dll</entry>
-								<entry>IMAP 4 functions</entry>
-							</row>
-							<row>
-								<entry>php_ldap.dll</entry>
-								<entry>LDAP functions</entry>
-							</row>
-							<row>
-								<entry>php_msql1.dll</entry>
-								<entry>mSQL 1 client</entry>
-							</row>
-							<row>
-								<entry>php_msql2.dll</entry>
-								<entry>mSQL 2 client</entry>
-							</row>
-							<row>
-								<entry>php_mssql.dll</entry>
-								<entry>MSSQL client (requires MSSQL DB-Libraries</entry>
-							</row>
-							<row>
-								<entry>php3_mysql.dll (built into PHP 4)</entry>
-								<entry>MySQL functions</entry>
-							</row>
-							<row>
-								<entry>php_nsmail.dll</entry>
-								<entry>Netscape mail functions</entry>
-							</row>
-							<row>
-								<entry>php_oci73.dll</entry>
-								<entry>Oracle functions</entry>
-							</row>
-							<row>
-								<entry>php_snmp.dll</entry>
-								<entry>SNMP get and walk functions (NT only!)</entry>
-							</row>
-							<row>
-								<entry>php_zlib.dll</entry>
-								<entry>ZLib compression functions</entry>
-							</row>
-						</tbody>
-					</tgroup>
-				</table>
-			</para>
-		</sect2>
-	</sect1>
-	<sect1 id="install.apache">
-		<title>Apache 서버 설치</title>
-		<para>
+            </note>
+            <para>
+                <table>
+                    <title>PHP Extensions</title>
+                    <tgroup cols="2">
+                        <tbody>
+                            <row>
+                                <entry>php_calendar.dll</entry>
+                                <entry>Calendar conversion functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_crypt.dll</entry>
+                                <entry>Crypt functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_dbase.dll</entry>
+                                <entry>dBase functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_dbm.dll</entry>
+                                <entry>Berkeley DB2 library</entry>
+                            </row>
+                            <row>
+                                <entry>php_filepro.dll</entry>
+                                <entry>Read-only access to Filepro databases</entry>
+                            </row>
+                            <row>
+                                <entry>php_gd.dll</entry>
+                                <entry>GD library functions for GIF manipulation</entry>
+                            </row>
+                            <row>
+                                <entry>php_hyperwave.dll</entry>
+                                <entry>HyperWave functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_imap4r2.dll</entry>
+                                <entry>IMAP 4 functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_ldap.dll</entry>
+                                <entry>LDAP functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_msql1.dll</entry>
+                                <entry>mSQL 1 client</entry>
+                            </row>
+                            <row>
+                                <entry>php_msql2.dll</entry>
+                                <entry>mSQL 2 client</entry>
+                            </row>
+                            <row>
+                                <entry>php_mssql.dll</entry>
+                                <entry>MSSQL client (requires MSSQL DB-Libraries</entry>
+                            </row>
+                            <row>
+                                <entry>php3_mysql.dll (built into PHP 4)</entry>
+                                <entry>MySQL functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_nsmail.dll</entry>
+                                <entry>Netscape mail functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_oci73.dll</entry>
+                                <entry>Oracle functions</entry>
+                            </row>
+                            <row>
+                                <entry>php_snmp.dll</entry>
+                                <entry>SNMP get and walk functions (NT only!)</entry>
+                            </row>
+                            <row>
+                                <entry>php_zlib.dll</entry>
+                                <entry>ZLib compression functions</entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </para>
+        </sect2>
+    </sect1>
+    <sect1 id="install.apache">
+        <title>Apache 서버 설치</title>
+        <para>
     이 장은 PHP와 아파치를 <link linkend="install.apache.unix">Unix</link> 와
     <link linkend="install.apache.windows">Windows</link>에 설치하는데 있어서의
    여러가지 주의점과 힌트를 포함하고 있다.
    </para>
-		<sect2 id="install.apache.unix">
-			<title>Unix에서 Apache에 PHP를 설치하는 상세 내용</title>
-			<para>
+        <sect2 id="install.apache.unix">
+            <title>Unix에서 Apache에 PHP를 설치하는 상세 내용</title>
+            <para>
      아래에 8단계의 <command>configure</command>시에 
     <link linkend="install.configure">Complete list of configure options</link>에 있는
     원하는 다른 옵션들을 추가한다.
     </para>
-			<example id="install.apache.unix.longer">
-				<title>
+            <example id="install.apache.unix.longer">
+                <title>
       Installation Instructions (Apache Module Version)
      </title>
-				<programlisting>
+                <programlisting>
 1.  gunzip apache_1.3.x.tar.gz
 2.  tar xvf apache_1.3.x.tar
 3.  gunzip php-x.x.x.tar.gz
@@ -3024,44 +3262,44 @@ Paul Mckay.
      (반드시 stop과 start하여 재시동하여야한다. 
       HUP이나 USR1같은 signal을 주는 등의 reload만 해서는 소용이 없다.)
       </programlisting>
-			</example>
-			<para>
+            </example>
+            <para>
       아파치에서 PHP를 컴파일하는 여러 다른 예가 아래에 나와있다. :
       <informalexample>
-					<programlisting>
+                    <programlisting>
 ./configure --with-apxs --with-pgsql
        </programlisting>
-				</informalexample>
-			</para>
-			<para>
+                </informalexample>
+            </para>
+            <para>
       이것은 <filename>libphp4.so</filename> 공유 라이브러리를 만든다.
      이 파일은 아파치의 <filename>httpd.conf</filename> 파일에서
      LoadModule 설정을 사용하여 아파치에 적재 될 수 있다.
      그리고 PostgreSQL 지원은 <filename>libphp4.so</filename>에 
      포함시킨 형태이다.
      </para>
-			<para>
-				<informalexample>
-					<programlisting>
+            <para>
+                <informalexample>
+                    <programlisting>
 ./configure --with-apxs --with-pgsql=shared
        </programlisting>
-				</informalexample>
-			</para>
-			<para>
+                </informalexample>
+            </para>
+            <para>
       이것은 아파치용 <filename>libphp4.so</filename> 공유 라이브러리를 
      만들고, <filename>pgsql.so</filename>라는 공유 라이브러리도 동시에 만든다.
      이 <filename>pgsql.so</filename> 파일은 <filename>php.ini</filename> 파일에서
      extension 지시자를 통해 적재할 수도 될 수도 있고,
        스크립트내에서 <function>dl</function>함수를 통해 적재될 수도 있다.
      </para>
-			<para>
-				<informalexample>
-					<programlisting>
+            <para>
+                <informalexample>
+                    <programlisting>
 ./configure --with-apache=/path/to/apache_source --with-pgsql
        </programlisting>
-				</informalexample>
-			</para>
-			<para>
+                </informalexample>
+            </para>
+            <para>
       이것은 <filename>libmodphp4.a</filename> 라이브러리와 <filename>mod_php4.c</filename>,
       기타 그에 따른 파일들을 만들고, 이 파일들을 아파치 소스 트리 밑의
      <literal>src/modules/php4</literal>에 복사한다.
@@ -3073,20 +3311,20 @@ Paul Mckay.
      직접 링크되므로, 결론적으로 Apache와 PHP의 모든 것을
      포함한 <filename>httpd</filename> 바이너리 하나만이 만들어진다.
      </para>
-			<para>
-				<informalexample>
-					<programlisting>
+            <para>
+                <informalexample>
+                    <programlisting>
 ./configure --with-apache=/path/to/apache_source --with-pgsql=shared
        </programlisting>
-				</informalexample>
-			</para>
-			<para>
+                </informalexample>
+            </para>
+            <para>
       PostgreSQL지원을 최종 <filename>httpd</filename>에 포함시켰던 것을,
      <filename>php.ini</filename> 파일이나 <function>dl</function> 함수를 사용하여
      PHP에 동적으로 적재할 수 있는 <filename>pgsql.so</filename> 파일로 만든다는
      것을 제외하면 이전 것과 같다.
      </para>
-			<para>
+            <para>
       이중에 어떤 방식을 사용해서 PHP를 만들 것인가는 각 방식의 장,단점을 충분히
      고려한 후 결정하여야 한다. 동적 모듈로 만든 경우, 아파치를 별도로 컴파일 할
      수 있고, 따라서 PHP에 어떤 추가나 변화가 있어도 전체를 다시 컴파일할
@@ -3094,88 +3332,88 @@ Paul Mckay.
      적재하고 빠르게 실행할 수 있다. 자세한 정보는 
      Apache <ulink url="&url.apachedso;">webpage on DSO support</ulink>를 살펴보기 바란다.
      </para>
-		</sect2>
-		<sect2 id="install.apache.windows">
-			<title>Windows에서 Apache 1.3.x에 PHP를 설치하는 상세 내용</title>
-			<simpara>
+        </sect2>
+        <sect2 id="install.apache.windows">
+            <title>Windows에서 Apache 1.3.x에 PHP를 설치하는 상세 내용</title>
+            <simpara>
     PHP를 windows하의 Apache 1.3.x에서 동작하도록 설치하는 방법은 두가지가 있다.
     CGI binary (php.exe)를 사용하는 방법과, Apache module dll을 사용하는 방법이다.
     두 경우 모두 아파치를 PHP가 동작하도록 설정하기 위해서는 아파치 서버를 
     중지 시킨 후 <literal>srm.conf</literal>나 <literal>httpd.conf</literal>를 수정해 주어야 한다.
     </simpara>
-			<simpara>
+            <simpara>
 
       비록 Apache하에서 PHP의 설정이 약간 차이가 있을지 모르지만, 이 설정은 초보자도 할 수 있을 정도로 쉽다. 
       여기에 나온 것 이상의 설정 지시자는 Apache Docs를 참조하도록 하자. 
     </simpara>
-			<para>
+            <para>
      만약 <link linkend="install.windows.manual">General Installation Steps</link>에서와 같이
     PHP 패키지를 C:\PHP\ 에 풀어놓았다면, CGI 바이너리를 설정하기 위해 
     다음과 같은 라인을 추가할 필요가 있다. :
      <itemizedlist>
-					<listitem>
-						<simpara>
-							<literal>
+                    <listitem>
+                        <simpara>
+                            <literal>
          ScriptAlias /php/ "c:/php/"
         </literal>
-						</simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>
          AddType application/x-httpd-php .php .phtml
         </literal>
-						</simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>
          Action application/x-httpd-php "/php/php.exe"
         </literal>
-						</simpara>
-					</listitem>
-				</itemizedlist>
-			</para>
-			<para>
+                        </simpara>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
      만약 아파치에서 PHP를 모듈로 사용하고 싶다면,
     <filename>php4ts.dll</filename>을 windows/system (Windows 9x/Me의 경우) 이나
      winnt/system32 (Windows NT/2000의 경우) 디렉토리로 옮겨야 한다.
     그런 다음 아파치 conf 파일에 다음 두줄을 추가해 주어야 한다. :
      <itemizedlist>
-					<listitem>
-						<simpara>
-							<literal>
+                    <listitem>
+                        <simpara>
+                            <literal>
          LoadModule php4_module c:/php/sapi/php4apache.dll
         </literal>
-						</simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>
           AddType application/x-httpd-php .php .phtml
         </literal>
-						</simpara>
-					</listitem>
-				</itemizedlist>
-			</para>
-			<simpara>
+                        </simpara>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <simpara>
     소스 코드 하이라이팅 기능(소스에 색깔을 넣어서 보기 좋게 출력해 주는 기능)을 
     사용하기 위해서는 다음과 같은 내용을 가지는 스크립트를 만들어주면 된다. : 
      <literal>&lt;?php show_source("original_php_script.php"); ?></literal>
      여기서 <literal>original_php_script.php</literal> 를 여러분이 원하는 소스 
      코드의 이름으로 바꿔주면 된다. (이것이 유일한 방법입니다.)
     </simpara>
-			<note>
-				<simpara>
+            <note>
+                <simpara>
      Win-Apache에서 "c:\directory\file.ext"와 같은 path에 사용되는 
      모든 백슬래시(\)는 일반 슬래시(/)로 바꿔야 합니다.
      </simpara>
-			</note>
-		</sect2>
-	</sect1>
-	<sect1 id="install.commandline">
-		<title>CGI/Commandline 서버 설치 </title>
-		<para>
+            </note>
+        </sect2>
+    </sect1>
+    <sect1 id="install.commandline">
+        <title>CGI/Commandline 서버 설치 </title>
+        <para>
     PHP는 디폴트로 CGI 프로그램으로 만들어 진다. 
    이것은 CGI 형태로 사용하거나, 웹과 관련이 없는 PHP 스크립팅에 
    사용할 수 있는 commandline 인터프리터가 된다.
@@ -3185,18 +3423,18 @@ Paul Mckay.
    별도의 PHP-enabled 페이지를 실행할 수 있도록 해 준다. 
    만약 PHP를 CGI로 실행하고 싶다면 <link linkend="security">Security chapter</link> 를 반드시 읽어보기 바란다.
    </para>
-		<sect2 id="install.commandline.testing">
-			<title>Testing</title>
-			<simpara>
+        <sect2 id="install.commandline.testing">
+            <title>Testing</title>
+            <simpara>
     PHP를 CGI 프로그램 형태로 만들었다면, 
    <command>make test</command>라고 입력하여 테스트해 볼 수 있다.
    이 방법은 만들어진 PHP 자체를 테스트하는 좋은 방법이다. 
    또한 이 방법은 여러분의 시스템 환경에서 미리 PHP의 문제를 발견할 수 있게 해 준다. 
     </simpara>
-		</sect2>
-		<sect2 id="install.commandline.benchmarking">
-			<title>Benchmarking</title>
-			<simpara>
+        </sect2>
+        <sect2 id="install.commandline.benchmarking">
+            <title>Benchmarking</title>
+            <simpara>
     PHP3를 CGI 프로그램 형태로 만들었다면, 
    <command>make bench</command>라고 입력하여 벤치마크 테스트를 할 수 있다. 
    안전 모드(safe mode)의 기본값이 on 되어 있을 때는, 
@@ -3206,36 +3444,36 @@ Paul Mckay.
    사용하여 시간 간격을 조절할 수는 있다. <command>make bench</command> 명령은 
     <link linkend="configuration.file">configuration file</link>을 무시한다.
     </simpara>
-			<note>
-				<simpara>
-					<command>make bench</command>는 PHP 3에서만 유효하다
+            <note>
+                <simpara>
+                    <command>make bench</command>는 PHP 3에서만 유효하다
      </simpara>
-			</note>
-		</sect2>
-	</sect1>
-	<sect1 id="install.fhttpd">
-		<title>fhttpd 서버 설치</title>
-		<para>
+            </note>
+        </sect2>
+    </sect1>
+    <sect1 id="install.fhttpd">
+        <title>fhttpd 서버 설치</title>
+        <para>
     PHP를 fhttpd 모듈로 만들려면, "Build as an fhttpd module?"의 질문에 
    "yes"로 답하고, fhttpd 소스의 base 디렉토리를 명시해 주면 된다.
    (configure에서는 <option>
-				<link linkend="install.configure.with-fhttpd">--with-fhttpd</link>=<replaceable>DIR</replaceable>
-			</option> 옵션을 주면 된다.) 
+                <link linkend="install.configure.with-fhttpd">--with-fhttpd</link>=<replaceable>DIR</replaceable>
+            </option> 옵션을 주면 된다.) 
     기본 디렉토리는<filename class="directory">/usr/local/src/fhttpd</filename>이다. 
     여러분이 fhttpd를 운영중에 있다면, 모듈 형태로 만들어 실행하는 것이 
     더 좋은 성능을 제공하며, 또한 제어가 가능해지고 원격 실행도 가능해 진다.
    </para>
-	</sect1>
-	<sect1 id="install.caudium">
-		<title>Caudium 서버 설치</title>
-		<para>
+    </sect1>
+    <sect1 id="install.caudium">
+        <title>Caudium 서버 설치</title>
+        <para>
     PHP4는 Caudium 웹서버를 위한 Pike 모듈로 만들어 질 수 있다.
    PHP3는 이것을 지원하지 않는다. 아래는 PHP4를 Caudium 모듈로
    설치하는 간단한 설명이다.
    </para>
-		<example id="install.caudium.instructions">
-			<title>Caudium Installation Instructions</title>
-			<programlisting>
+        <example id="install.caudium.instructions">
+            <title>Caudium Installation Instructions</title>
+            <programlisting>
 1.  PHP4를 설치하기 전에 반드시 Caudium이 설치되어 있어야 한다.
     또한 PHP4가 정상적으로 작동하려면 Pike 7.0.268 이나 이후 버젼이 필요하다. 
     여기서는 Caudium이 /opt/caudium/server/에 설치되어 있다고 가정한다.
@@ -3253,38 +3491,38 @@ Paul Mckay.
     확인해보자.
 10. 필요하다면 PHP Script Support 모듈을 설정한다.
     </programlisting>
-		</example>
-		<para>
+        </example>
+        <para>
     물론 Caudium 모듈을 여러 PHP4에 다른 확장을 포함하도록 컴파일하는 것도 가능하다.
    자세한 설명은 <link linkend="install.configure">complete list of configure options</link>을 보자.
    </para>
-		<note>
-			<para>
+        <note>
+            <para>
     PHP4를 MySQL지원으로 커파일 할 때 일반적인 MySQL 클라이언트 코드를 사용하도록
    명시해 주어야 한다. 그렇지 않으면 Pike 가 이미 MySQL 지원을 포함하고 있을 때는
    충돌이 생긴다. 이 지정은 <link linkend="install.configure.with-mysql">--with-mysql 옵션에</link>
     MySQL의 설치 디렉토리를 지정해주면 된다.
     </para>
-		</note>
-	</sect1>
-	<sect1 id="install.iis">
-		<title>IIS/PWS 서버 설치</title>
-		<para>
+        </note>
+    </sect1>
+    <sect1 id="install.iis">
+        <title>IIS/PWS 서버 설치</title>
+        <para>
    이 장은 PHP를 IIS (Microsoft Internet Information Server)에 설치하는데 있어서의
    여러가지 주의점과 힌트를 포함하고 있다. 각각
     <link linkend="install.iis.iis3">PWS/IIS 3</link>,
     <link linkend="install.iis.pws4">PWS 4 혹은 최신</link>
-			<link linkend="install.iis.iis4">IIS 4 혹은 최신</link> 버젼으로 나누어 설명한다.
+            <link linkend="install.iis.iis4">IIS 4 혹은 최신</link> 버젼으로 나누어 설명한다.
    </para>
-		<sect2 id="install.iis.iis3">
-			<title>Windows 와 PWS/IIS 3</title>
-			<simpara>
+        <sect2 id="install.iis.iis3">
+            <title>Windows 와 PWS/IIS 3</title>
+            <simpara>
       이 서버에서의 설정은 배포판의 INF 파일(php_iis_reg.inf)을 사용하는 것을 권한다. 
     여러분은 이 파일을 수정하여 여러분이 원하는 PHP 설치 디렉토리와 확장 내용들을 설정할 수 있다. 
     만약 수동으로 설정하고 싶다면 다음과 같이 합니다.
     </simpara>
-			<warning>
-				<para>
+            <warning>
+                <para>
     이 과정은 윈도우의 resistry를 직접 만지게 됩니다. 
     하나의 실수가 여러분의 시스템 전체를 불안한 상태로 만들 수 있습니다. 
     우리는 여러분이 registry를 편집하기 전에 반드시 편집 전의 registry를 백업해 
@@ -3292,266 +3530,266 @@ Paul Mckay.
     책임지지 않습니다. 만약 registry에 손상이 갈 경우 OS를 새로 깔기 전에는 
     부팅되지 않을 수도 있습니다. 
      </para>
-			</warning>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<simpara>
+            </warning>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <simpara>
         Regedit를 실행한다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         다음으로 이동한다: <literal>HKEY_LOCAL_MACHINE /System
          /CurrentControlSet /Services /W3Svc /Parameters
          /ScriptMap</literal>.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         edit 메뉴를 선택하여 <literal>New->String Value</literal>를 선택한다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         PHP script가 사용할 확장자를 입력한다. ( ex: <literal>.php</literal>) 
             </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
        새 문자열 값을 더블 클릭하고 value 필드에 <literal>php.exe</literal>path를 적는다. 
        (ex: <literal>c:\php\php.exe %s %s</literal>) '%s %s'는 매우 중요하다. PHP는 이것없이는 동작하지 않는다
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
        만약 PHP 스크립트의 다른 확장자가 있다면 위의 과정을 반복한다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         다음으로 이동한다.: <literal>HKEY_CLASSES_ROOT</literal>
-						</simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         edit 메뉴에서 <literal>New->Key</literal>.를 선택한다
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         여러분이 이전 과정에서 설정한 확장자를 Key의 이름으로 지정한다. ( ex: <literal>.php</literal> ) 
             </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 <literal>phpfile</literal>이라고 적는다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         위에서 설정한 다른 확장자가 있으면 다른 확장자에 대해서도 이 과정을 반복한다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         이제 <literal>HKEY_CLASSES_ROOT</literal>에서 <literal>New->Key</literal>를 선택하여 새로운 Key를 만들고 
         <literal>phpfile</literal>로 이름을 정한다. 
                                </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>phpfile</literal>이라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>phpfile</literal>이라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
         <literal>PHP Script</literal>라고 적는다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>phpfile key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>phpfile key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
         <literal>Shell</literal>이라고 이름 붙인다
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>Shell key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>Shell key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
         <literal>open</literal>이라고 이름 붙인다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>open key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>open key</literal>에서 오른쪽 버튼을 클릭하여 <literal>New->Key</literal>를 선택하고 
         <literal>command</literal>이라고 이름 붙인다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
-							<literal>command</literal>라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <literal>command</literal>라고 정한 새 키를 Highlight시키고 오른쪽 창에서 "default value" 를 더블 클릭한 후에 
         <literal>php.exe</literal>의 path를 적는다. ( ex: <literal>c:\php\php.exe -q %1</literal> )
          (<literal>%1</literal>을 잊지 말도록) . 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         Regedit를 종료한다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         PWS를 윈도우즈에서 현재 사용중이면, 윈도우즈를 리부트하여 registry를 다시 로드하도록 합니다.
        </simpara>
-					</listitem>
-				</itemizedlist>
-			</para>
-			<simpara>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <simpara>
      PWS와 IIS 3 사용자들은 현재 실제로 훌륭하게 운영중인 시스템을 갖고 있습니다. 
    IIS 3 사용자들은 Steven Genusa가 작성한 스크립트 맵을 설정하는 매력적인 
    <ulink url="&url.iiscfg;">도구</ulink>를 사용할 수 있습니다.
     </simpara>
-		</sect2>
-		<sect2 id="install.iis.pws4">
-			<title>Windows 와 PWS 4 혹은 최신</title>
-			<simpara>
+        </sect2>
+        <sect2 id="install.iis.pws4">
+            <title>Windows 와 PWS 4 혹은 최신</title>
+            <simpara>
      PHP를 window에서 PWS 4 혹은 최신 버젼에 설치하는 방법은 두가지가 있다.
     하나는 PHP CGI 바이너리를 사용하는 방법이고, 
     다른 방법은 ISAPI 모듈 DLL로 만들어 사용하는 방법이다.
     </simpara>
-			<para>
+            <para>
      만약 CGI 바이너리를 선택했다면 다음과 같이 한다. :
      <itemizedlist>
-					<listitem>
-						<simpara>
+                    <listitem>
+                        <simpara>
         php.exe가 어디에 있는 가를 명시하기 위해 같이 포함되어 있는 
       <filename>pws-php4cgi.reg</filename> 파일(sapi 디렉토리를 보라)을
       편집한다. 슬래시는 반드시 escaped 되어야 한다. 예를 들어 :
         <literal>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w3svc\parameters\Script Map] 
          ".php"="C:\\PHP\\php.exe"</literal>
-						</simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         PWS 매니저에서 PHP를 지원하기 원하는 디렉토리에다 오른쪽 버튼을 클릭하고 
       properties(등록정보)를 선택하여, 'Execute' 체크박스를 체크한 후 confirm한다.
        </simpara>
-					</listitem>
-				</itemizedlist>
-			</para>
-			<para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
      만약 ISAPI 모듈을 선택했다면 다음과 같이 한다. :
      <itemizedlist>
-					<listitem>
-						<simpara>
+                    <listitem>
+                        <simpara>
         php4isapi.dll가 어디에 있는 가를 명시하기 위해 같이 포함되어 있는 
       <filename>pws-php4isapi.reg</filename> 파일(sapi 디렉토리를 보라)을
       편집한다. 슬래시는 반드시 escaped 되어야 한다. 예를 들어 :
         <literal>[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\w3svc\parameters\Script Map] 
          ".php"="C:\\PHP\\sapi\\php4isapi.dll"</literal>
-						</simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         PWS 매니저에서 PHP를 지원하기 원하는 디렉토리에다 오른쪽 버튼을 클릭하고 
       properties(등록정보)를 선택하여, 'Execute' 체크박스를 체크한 후 confirm한다.
        </simpara>
-					</listitem>
-				</itemizedlist>
-			</para>
-		</sect2>
-		<sect2 id="install.iis.iis4">
-			<title>Windows NT/2000 과 IIS 4 혹은 최신</title>
-			<simpara>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </sect2>
+        <sect2 id="install.iis.iis4">
+            <title>Windows NT/2000 과 IIS 4 혹은 최신</title>
+            <simpara>
      PHP를 IIS 4가 운영중인 NT/2000 서버에 설치하려면 다음 과정을 따른다. 
      PHP를 설치하는데는 두가지 옵션이 있다.
     CGI 바이너리(php.exe)를 사용하는 방법과 ISAPI 모듈을 사용하는 방법이다.
     </simpara>
-			<simpara>
+            <simpara>
      어떤 경우든, Microsoft Management Console을 시작해야 한다.
     (이것은 NT 4.0 Option Pack 아래나, windows 2000에서는 Control
      Panel=&gt;Administrative Tools 아래에 'Internet Services Manager'이라는
     이름으로 있다.) 시작한 후에, 여러분의 웹서버 노드(보통 'Default Web Server'로
     되어 있다.)에서 오른쪽 버튼을 클릭하고 properties(등록정보)를 선택한다.
     </simpara>
-			<para>
+            <para>
      만약 CGI 바이너리를 사용하기를 원한다면 다음과 같이 한다. :
      <itemizedlist>
-					<listitem>
-						<simpara>
+                    <listitem>
+                        <simpara>
         'Home Directory' 나 'Virtual Directory' 혹은 'Directory' 밑에 'Configuration'  버튼을 클릭한 후,
         App Mappings 탭으로 들어간다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         Add를 클릭하여 Executable 박스에서 다음과 같이 입력한다. : 
         <literal>c:\php\php.exe %s %s</literal>(PHP를 c:\php\에 풀어놓았다고 가정). 
       이때 반드시 맨 뒤에 %s %s를 붙여주어야 합니다. 그렇지 않으면 PHP는 올바르게 작동하지 않습니다. 
         </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         Extension 박스에서 PHP스크립트들의 파일 확장자를 입력합니다. 
       'Method exclusions'은 빈칸으로 남겨두고, Script engine 체크박스는
       체크합니다. 각각의 확장자에 대하여 스텝 3과 4의 과정을 반복합니다. 
       (<literal>.php</literal>와 <literal>.phtml</literal>이 일반적입니다.) 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
        적당한 보안을 설정한다. (이것으로 Internet Service Manager에서의 설정은 끝이다.) 
      만약 여러분이 NT Server에 NTFS 파일 시스템을 사용한다면, 
      <literal>php.exe</literal>가 있는 디렉토리에 대하여 I_USR_ 사용자에게 실행 권한을 주어야 한다
        </simpara>
-					</listitem>
-				</itemizedlist>
-			</para>
-			<para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
      ISAPI module로 사용하기를 원한다면 다음과 같이 한다. :
      <itemizedlist>
-					<listitem>
-						<simpara>
+                    <listitem>
+                        <simpara>
         만약 PHP를 사용한 HTTP 인증을 원하지 않는다면,
       이 과정을 넘어갈 수 있다.(사실 반드시 넘어가야 한다.) 
       ISAPI Filters 밑에서 add a new ISAPI filter를 선택한다. 
       PHP를 필터이름으로 하고, 경로명에 php4isapi.dll를 지정한다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         'Home Directory' 밑에 'Configuration'  버튼을 클릭한 후,
         App Mappings 에 새 Entry를 추가한다.
       경로에는 php4isapi.dll 를 Executable로 지정하고, .php를
       확장자로 지정한다. 'Method exclusions'은 빈칸으로 남겨두고, 
       Script engine 체크박스는 체크합니다. 
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         IIS를 완전히 정지시킨다.
        </simpara>
-					</listitem>
-					<listitem>
-						<simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
         IIS를 새로 시작한다.
        </simpara>
-					</listitem>
-				</itemizedlist>
-			</para>
-		</sect2>
-	</sect1>
-	<sect1 id="install.netscape-enterprise">
-		<title>Netscape 와 iPlanet Enterprise 서버 설치</title>
-		<para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </sect2>
+    </sect1>
+    <sect1 id="install.netscape-enterprise">
+        <title>Netscape 와 iPlanet Enterprise 서버 설치</title>
+        <para>
     PHP를 NES 나 iPlanet 웹 서버에 설치하려면 
     <option><link linkend="install.configure.with-nsapi">--with-nsapi</link> = 
     <replaceable>DIR</replaceable></option> 옵션에 올바른 설치 디렉토리를 지정해 주면 된다.
     보통 기본값은 <filename class="directory">/opt/netscape/suitespot/</filename>이다.
     <filename>/php-xxx-version/sapi/nsapi/nsapi-readme.txt</filename> 파일을 읽어보기 바란다.
    </para>
-		<para>
-			<example id="install.netscape-enterprise.solaris">
-				<title>
+        <para>
+            <example id="install.netscape-enterprise.solaris">
+                <title>
       Solaris에서 Netscape Enterprise에 설치하는 예
      </title>
-				<programlisting>
+                <programlisting>
 Sun Solaris 2.6 과 Netscape Enterprise Server 3.6 에서의 설치과정
 From: bhager@invacare.com
 
@@ -3582,25 +3820,25 @@ From: bhager@invacare.com
 7. make 
 8. make install
       </programlisting>
-			</example>
+            </example>
      이제 설치의 기초를 마쳤으면 적절한 readme 파일을 읽어보는 것이 좋다.
      지금부터 시작될 추가적인 설정에 필요한 정보를 얻을 수 있을 것이다.
     </para>
-		<para>
+        <para>
      우선 Netscape가 모든 공유 라이브러리들을 찾을 수 있도록 
      LD_LIBRARY_PATH 환경변수에 원하는 경로들을 추가해주어야 한다.
      이작업은 Netscape 서버에서 제공하는 start 스크립트를 사용하는 것이 가장 좋다.
      windows 사용자들은 이 과정을 생략할 수 있다.
      start 스크립트는 보통 다음 경로에 위치한다. :
      <filename class="directory">/path/to/server/https-servername/start</filename>
-		</para>
-		<para>
+        </para>
+        <para>
      또한 다음에 위치한 설정파일을 수정하여야 한다. :
      <filename class="directory">/path/to/server/https-servername/config/</filename>.
     </para>
-		<example id="install.netscape-enterprise.configure">
-			<title>Netscape Enterprise의 설정 예</title>
-			<programlisting>
+        <example id="install.netscape-enterprise.configure">
+            <title>Netscape Enterprise의 설정 예</title>
+            <programlisting>
 Netscape Enterprise Server 에서의 설정 과정
 From: bhager@invacare.com
 
@@ -3652,60 +3890,60 @@ From: bhager@invacare.com
     AuthTrans fn=php4_auth_trans 
     &lt;/Object&gt;
      </programlisting>
-		</example>
-	</sect1>
-	<sect1 id="install.omnihttpd">
-		<title>OmniHTTPd 서버 설치</title>
-		<para>
+        </example>
+    </sect1>
+    <sect1 id="install.omnihttpd">
+        <title>OmniHTTPd 서버 설치</title>
+        <para>
     이 장은 OmniHTTPd 에서의 여러가지 주의점과 힌트를 포함하고 있다.
    </para>
-		<sect2 id="install.omnihttpd.windows">
-			<title>Windows에서 Omni HTTPd 2.0b1 이상</title>
-			<simpara>
+        <sect2 id="install.omnihttpd.windows">
+            <title>Windows에서 Omni HTTPd 2.0b1 이상</title>
+            <simpara>
      이 설정은 매우 쉬운 편이다. 
     </simpara>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
         Step 1: Omni server를 설치한다.
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Step 2:system tray의 푸른색 OmniHTTPd 아이콘에서 오른쪽 버튼을 클릭하여 
                   <literal>Properties(등록정보)</literal>를 선택한다.
-						</para>
-					</listitem>
-					<listitem>
-						<para>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Step 3: <literal>Web Server Global Settings</literal>을 클릭한다
-						</para>
-					</listitem>
-					<listitem>
-						<para>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Step 4: 'External' 탭에서 다음을 입력한다. : 
          <literal>virtual = .php | actual = c:\path-to-php-dir\php.exe</literal>
-						</para>
-					</listitem>
-					<listitem>
-						<para>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Step 5: <literal>Mime</literal> 탭에서 다음을 입력한다. :
         <literal>virtual = wwwserver/stdcgi | actual = .php</literal>
-						</para>
-					</listitem>
-					<listitem>
-						<para>
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Step 6: <literal>OK</literal>를 클릭한다.
-						</para>
-					</listitem>
-				</itemizedlist>
-			</para>
-			<simpara>
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <simpara>
      PHP의 모든 확장자에 대해 steps 2 - 6을 반복한다.
     </simpara>
-			<note>
-				<para>
+            <note>
+                <para>
       일부 OmniHTTPd 패키지에는 PHP 지원이 포함되어 있다.
      처음 설치시에 사용자 설정을 선택하여, PHP 컴포넌트에 되어 있는
      선택을 취소하도록 한다. 우리는 당연히 최신 버젼의 PHP를
@@ -3715,133 +3953,133 @@ From: bhager@invacare.com
      경우라면 스텝 4와 5에서 Replace 버튼을 사용하여 새로운
      PHP에 대한 올바른 정보를 샐로 설정해야 한다.
      </para>
-			</note>
-		</sect2>
-	</sect1>
-	<sect1 id="install.oreilly">
-		<title>Oreilly Website Pro 서버 설치</title>
-		<para>
+            </note>
+        </sect2>
+    </sect1>
+    <sect1 id="install.oreilly">
+        <title>Oreilly Website Pro 서버 설치</title>
+        <para>
     이 장은 Oreilly Website Pro에서의 여러가지 주의점과 힌트를 포함하고 있다.
    </para>
-		<sect2 id="install.oreilly.windows">
-			<title>Windows 환경의 Oreilly Website Pro 2.5 이상 </title>
-			<simpara>
+        <sect2 id="install.oreilly.windows">
+            <title>Windows 환경의 Oreilly Website Pro 2.5 이상 </title>
+            <simpara>
      아래 목록은 Windows 환경에서 Oreilly Website Pro에 PHP를 CGI 바이너리로
      설정하는 방법과 ISAPI 모듈로 설정하는 방법에 대해 설명하고 있다.
     </simpara>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
         Edit the Server Properties 에서 "Mapping" 탭을 선택한다.
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         List에서 "Associations"을 선택하고, 원하는 확장자(".php")와
         CGI exe (ex. c:\php\php.exe)의 경로나 ISAPI dll 파일
         (ex. c:\php\sapi\php4isapi.dll)의 경로를 입력한다.
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         "Content Types"을 선택하여 위에서 입력한 것과 동일한 확장자 
         (".php")를 입력하고 content type을 입력한다.
         CGI exe를 선택했다면 'wwwserver/shellcgi'를,
         ISAPI module이라면 'wwwserver/isapi'를 입력한다.
         (모두 따옴표는 제외)
        </para>
-					</listitem>
-				</itemizedlist>
-			</para>
-		</sect2>
-	</sect1>
-	<sect1 id="install.xitami">
-		<title>Xitami 서버 설치</title>
-		<para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </sect2>
+    </sect1>
+    <sect1 id="install.xitami">
+        <title>Xitami 서버 설치</title>
+        <para>
     이 장은 Xitami에서의 여러가지 주의점과 힌트를 포함하고 있다.
    </para>
-		<sect2 id="install.xitami.windows">
-			<title>Xitami for Windows</title>
-			<simpara>
+        <sect2 id="install.xitami.windows">
+            <title>Xitami for Windows</title>
+            <simpara>
      아래 목록은 Windows 환경에서 Oreilly Website Pro에 PHP를 CGI 바이너리로
      설정하는 방법에 대해 설명하고 있다.
     </simpara>
-			<para>
-				<itemizedlist>
-					<listitem>
-						<para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>
         웹서버를 실행하고, 브라우저에 xitamis admin console을 띄운다.
         (보통 http://127.0.0.1/admin 이다) 화면이 나오면 Configuration을 클릭한다.
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Filters화면을 띄우고, File extensions (.xxx) 필드에 PHP로 처리되기를
         원하는 스크립트의 확장자(예, .php)를 입력한다.
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         Filter command or script 에 PHP 실행 파일의 경로와 파일명을 입력한다.
         (예, c:\php\php.exe)
        </para>
-					</listitem>
-					<listitem>
-						<para>
+                    </listitem>
+                    <listitem>
+                        <para>
         'Save' 아이콘을 누른다.
        </para>
-					</listitem>
-				</itemizedlist>
-			</para>
-		</sect2>
-	</sect1>
-	<sect1 id="install.otherhttpd">
-		<title>다른 웹서버</title>
-		<para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </sect2>
+    </sect1>
+    <sect1 id="install.otherhttpd">
+        <title>다른 웹서버</title>
+        <para>
     PHP는 다양한 웹 서버들에서 사용될 수 있다. 
    웹서버와 관련된 자세한 설정 내용은 
    <link linkend="install.configure.servers">Server-related options</link>을 
    보도록 하자. PHP CGI 바이너리는 CGI 인터페이스를 제공하는 
    대부분의 웹서버에서 사용이 가능하다.
    </para>
-	</sect1>
-	<sect1 id="install.problems">
-		<title>Problems?</title>
-		<sect2>
-			<title>Read the FAQ</title>
-			<simpara>
+    </sect1>
+    <sect1 id="install.problems">
+        <title>Problems?</title>
+        <sect2>
+            <title>Read the FAQ</title>
+            <simpara>
      보통 질문들은 공통적인 것이 많다. PHP FAQ에 이 공통적인 질문들이 모여있으니 찾아보자. 
     이 문서는 <ulink url="&url.php.faq;">&url.php.faq;</ulink>에서 찾을 수 있다.
-			</simpara>
-		</sect2>
-		<sect2 id="install.bugreports">
-			<title>Bug reports</title>
-			<simpara>
+            </simpara>
+        </sect2>
+        <sect2 id="install.bugreports">
+            <title>Bug reports</title>
+            <simpara>
     만약 여러분이 Bug라고 생각되는 것이 발견될 경우 이것을 반드시 보고해 주기 바란다. 
     PHP의 개발자들은 아마 그 버그에 대해 여러분이 알려주기 전에는 모르고 있을 것이다. 
     여러분의 버그 레포트가 있어야 버그들을 잡을 수 있겠지요?. 버그 보고용 폼이 PHP 사이트에 있습니다. 
     주요 양식은 <ulink url="&url.php.bugs;">&url.php.bugs;</ulink>에서 찾을 수 있습니다. 
     (역자주: 버그 레포트는 영어로 써야 겠지요. Hi)
     </simpara>
-		</sect2>
-		<sect2 id="install.otherproblems">
-			<title>Other problems</title>
-			<simpara>
+        </sect2>
+        <sect2 id="install.otherproblems">
+            <title>Other problems</title>
+            <simpara>
       만약 여러분이 아직도 고생하고 있다면, PHP의 메일링 리스트(mailing list)가 도움을 줄 수 있을 것이다. 
       단, 어떤 질문을 하기 전에 우선 보관 문서(archive)를 찾아보아 같은 문제에 대한 해답이 있는지 찾아보는 것을 잊지 말도록 하자. 
       보관 문서는 <ulink url="&url.php;">&url.php;</ulink>에서 찾아 볼 수 있다. 
       PHP 메일링 리스트에 참가하려면 <ulink url="mailto:&email.php.install.subscribe;">&email.php.install.subscribe;</ulink>으로 
       빈 편지를 하나 보내면 된다. mailing list 주소는 <literal>&email.php.install;</literal>이다.
     </simpara>
-			<simpara>
+            <simpara>
       만약 여러분이 mailing list를 통해서 어떤 도움을 받고 싶다면, 
       질문시에 자세하고 명확한 질문과 함께, 여러분의 운영 환경에 대한 세부항목을 첨부하는 것이 좋다 
       (운영체계, PHP 버전, 웹서버의 종류와 버전, PHP를 CGI로 쓰고 있는지 모듈로 쓰고 있는지 등). 
       또한 여러분이 당면한 문제를 재현할 수 있는 코드를 포함시키면 더욱 좋다. (역자주: 이것도 당연히 영어로 써야 겠지요. Hi)
      </simpara>
-		</sect2>
-	</sect1>
+        </sect2>
+    </sect1>
 </chapter>
 <!-- Keep this comment at the end of the file
  Local variables:

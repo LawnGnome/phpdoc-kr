@@ -29,7 +29,7 @@ echo "$var, $Var";      // 결과값은 "Bob, Joe"
 
 $4site = 'not yet';      // 변수명이 숫자로 시작했으므로 규칙에 위배된다
 $_4site = 'not yet';    // 밑줄로 시작된 변수는 사용할수 있다. 
-$täe = 'mansikka';    // 'ä는 ASCII 228번째 문자이므로 유효하다. 
+$tae = 'mansikka';    // 'a는 ASCII 228번째 문자이므로 유효하다. 
      </programlisting>
 			</informalexample>
 		</para>
@@ -816,4 +816,4 @@ indent-tabs-mode:nil
  sgml-local-catalogs:nil
  sgml-local-ecat-files:nil
  End:
- -->
+-->

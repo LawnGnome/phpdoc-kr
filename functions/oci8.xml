@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
+<!-- $Revision: 1.12 $ -->
  <reference id="ref.oci8">
   <title>오라클 8 함수</title>
   <titleabbrev>OCI8</titleabbrev>
@@ -319,7 +319,7 @@ OCILogoff($conn);
      </programlisting>
     </example>
     <warning>
-     </para> 
+     <para>
       It is a bad idea to use magic quotes and
       <function>OciBindByName</function> simultaneously as no quoting
       is needed on quoted variables and any quotes magically applied
@@ -1624,7 +1624,6 @@ OCILogoff($conn);
     </simpara>
    </refsect1>
   </refentry>
- </reference>
 
   <refentry id="function.ocicancel">
    <refnamediv>
