@@ -1,37 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
-<!-- EN-Revision: 1.95 -->
+<!-- $Revision: 1.9 $ -->
+<!-- EN-Revision: 1.96 -->
  <chapter id="configuration">
-  <title>설정</title>
+  <title>환경 설정</title>
 
   <sect1 id="configuration.file">
-   <title>설정 파일</title>
+   <title>환경 설정 파일</title>
 
    <simpara>
-    설정 파일(PHP 3.0에서는 <filename>php3.ini</filename>, PHP 4.0부터는
-    간단히 &php.ini;)은 PHP가 시작될 때 읽어집니다. 서버 모듈 버전의
-    PHP에서는 웹서버가 시작될 때 한번만 읽어집니다. <acronym>CGI</acronym>와
-    <acronym>CLI</acronym> 버전에서는 실행될때마다 매번 읽어집니다.
+    환경 설정 파일(PHP 3.0에서는 <filename>php3.ini</filename>, PHP
+    4.0부터는 간단히 &php.ini;)은 PHP가 시작될 때 읽혀집니다.
+    PHP의 서버 모듈 버전에서는 웹 서버가 시작될 때 한번만 읽혀집니다.
+    <acronym>CGI</acronym>와 <acronym>CLI</acronym> 버전에서는 실행될 때마다
+    읽혀집니다.
    </simpara>
    <para>
-    &php.ini;의 기본 위치는 컴파일 시의 옵션(<link
-    linkend="faq.installation.phpini">FAQ</link>를 읽어보십시오)으로
-    결정되지만, <acronym>CGI</acronym>와 <acronym>CLI</acronym> 버전에서는
-    <literal>-c</literal> 커맨드 라인 스위치로 변경이 가능합니다.
-    <link linkend="features.commandline">커맨드 라인</link>에서
-    <literal>PHP</literal> 사용하기 챕터를 참고하십시오. <literal>PHPRC</literal>
-    환경 변수를 이용해서 &php.ini; 파일 검색을 위한 경로를 추가할 수 있습니다.
+    &php.ini;의 기본 위치는 컴파일 시의 옵션입니다. (<link
+    linkend="faq.installation.phpini">FAQ</link> 참고) <acronym>CGI</acronym>와
+    <acronym>CLI</acronym> 버전에서는 <literal>-c</literal> 커맨드 라인 스위치를
+    이용해서 변경할 수 있습니다. <link linkend="features.commandline">커맨드
+    라인</link>에서 <literal>PHP</literal> 사용하기 챕터를 참고하십시오.
+    &php.ini;를 찾기 위한 추가 경로를 지정하기 위해 <literal>PHPRC</literal>
+    환경 변수를 이용할 수도 있습니다.
    </para>
+   <note>
+    <para>
+     아파치 웹 서버는 시작할 때 디렉토리를 루트로 변경하기 때문에,
+     루트에 <filename>php.ini</filename>가 존재할 경우, 루트 파일
+     시스템으로부터 읽혀집게 됩니다.
+    </para>
+   </note>
    <para>
-    모든 PHP 설정이 아래에 나와있지는 않습니다. 모든 설정 목록을 확인하기 위해서는
-    &php.ini; 파일의 코멘트를 읽어보십시오. CVS에서 최신의 <ulink
-    url="&url.php.cvs.phpini;">php.ini</ulink>를 볼 수도 있습니다.
+    모든 PHP 설정이 아래에 쓰여있지는 않습니다. 모든 설정의 목록을 확인하기
+    위해서는, &php.ini 파일의 주석들을 읽어보십시오. CVS에서 최신의
+    <ulink url="&url.php.cvs.phpini;">php.ini</ulink>를 확인할 수도 있습니다.
    </para>
    <note>
     <para>
      PHP <ulink url="&url.php.release4.2.0;">4.2.0</ulink>부터
      PHP 설정 <link linkend="ini.register-globals">register_globals</link>의
-     기본값이 <emphasis>on</emphasis>에서 <emphasis>off</emphasis>로 변경되었습니다.
+     기본값이 <emphasis>on</emphasis>에서 <emphasis>off</emphasis>로
+     변경되었습니다.
     </para>
    </note>
    <para>
@@ -39,15 +48,15 @@
      <title>&php.ini; 예제</title>
      <programlisting role="ini">
 <![CDATA[
-; 따옴표 밖의 세미콜론(;) 이후의 모든 텍스트는 무시합니다
-[php] ; 섹션 마커 (대괄호 안의 텍스트)는 무시합니다
-; Boolean값은 다음과 같이 설정할 수 있습니다:
+; 따옴표 밖에서 세미콜론(;)뒤에 오는 그 줄의 텍스트는 무시합니다
+[PHP] ; 섹션 마커 (대괄호 안의 텍스트)는 무시합니다
+; Boolean 값은 다음과 같이 설정합니다:
 ;    true, on, yes
 ; 또는 false, off, no, none
 register_globals = off
 magic_quotes_gpc = yes
 
-; 따옴표(")로 문자열을 지정할 수 있습니다
+; 문자열은 큰따옴표(")로 묶습니다
 include_path = ".:/usr/local/lib/php"
 
 ; 백슬래쉬(\)는 보통의 문자로 취급합니다
@@ -60,28 +69,32 @@ include_path = ".;c:\php\lib"
   </sect1>
 
   <sect1 id="configuration.changes">
-   <title>설정값 변경하기</title>
+   <title>환경 설정을 변경하는 방법</title>
 
    <sect2 id="configuration.changes.apache">
-    <title><literal>PHP</literal>를 아파치 모듈로 실행</title>
+    <title>Running <literal>PHP</literal> as Apache module</title>
     <simpara>
-     PHP를 아파치 모듈로 사용할때, 아파치 설정 파일(예: &httpd.conf;)과
-     &htaccess; 파일("AllowOverride Options"나 "AllowOverride All" 관한이
-     필요합니다)에서 설정값을 변경할 수 있습니다.
+     When using PHP as an Apache module, you can also change the
+     configuration settings using directives in Apache configuration
+     files (e.g. &httpd.conf;) and
+     &htaccess; files (You will need
+     "AllowOverride Options" or "AllowOverride All" privileges)
     </simpara>
 
     <para>
-     PHP 4.0에서는, 아파치 설정 파일에서 PHP 설정값을 변경할 수 있는
-     여러가지 아파치 설정이 있습니다. 변경 할 수 있는 설정은
-     <function>ini_set</function> 문서에서 볼 수 있는
+     With PHP 4.0, there are several Apache directives that allow you
+     to change the PHP configuration from within the Apache configuration
+     files.  For a listing of which directives are 
      <constant>PHP_INI_ALL</constant>, <constant>PHP_INI_PERDIR</constant>, 
-     <constant>PHP_INI_SYSTEM</constant> 목록에 있는 설정값입니다.
+     or <constant>PHP_INI_SYSTEM</constant>, have a look at the table
+     found within the <function>ini_set</function> documentation.
     </para>
     
     <note>
      <simpara>
-      PHP 3.0에서는, "php3_"로 시작되는 이름을 제외하고,
-      <filename>php3.ini</filename> 이름에 대응하는 아파치 설정이 존재합니다.
+      With PHP 3.0, there are Apache directives that correspond to each
+      configuration setting in the <filename>php3.ini</filename> name,
+      except the name is prefixed by "php3_".
      </simpara>
     </note>
 
@@ -254,7 +267,7 @@ php_admin_value open_basedir none
    <title>Configuration directives</title>
 
   <sect2 id="ini.sect.httpd-options">
-   <title>Httpd 옵션</title>
+   <title>Httpd Options</title>
     <para>
      <table>
       <title>Httpd Options</title>
@@ -281,7 +294,7 @@ php_admin_value open_basedir none
    </sect2>
 
   <sect2 id="ini.sect.language-options">
-   <title>언어 옵션</title>
+   <title>Language Options</title>
    <para>
    <table>
     <title>Language and Misc Configuration Options</title>
@@ -445,7 +458,7 @@ php_admin_value open_basedir none
    </sect2>
 
   <sect2 id="ini.sect.resource-limits">
-   <title>리소스 제한</title>
+   <title>Resource Limits</title>
    <para>
     <table>
      <title>Resource Limits</title>
@@ -491,12 +504,12 @@ php_admin_value open_basedir none
     </variablelist>
    </para>
    <para>
-    참고: <link linkend="ini.max-execution-time">max_execution_time</link>.
+    See also: <link linkend="ini.max-execution-time">max_execution_time</link>.
    </para>
   </sect2>
 
   <sect2 id="ini.sect.data-handling">
-   <title>데이터 핸들링</title>
+   <title>Data Handling</title>
     <para>
      <table>
       <title>Data Handling Configuration Options</title>
@@ -857,14 +870,15 @@ php_admin_value open_basedir none
      </variablelist>
     </para>
     <para>
-     참고: <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>,
+     See also: <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>,
      <link linkend="ini.magic-quotes-runtime">magic-quotes-runtime</link>,
+     and
      <link linkend="ini.magic-quotes-sybase">magic_quotes_sybase</link>.
     </para>
    </sect2>
 
   <sect2 id="ini.sect.path-directory">
-   <title>경로와 디렉토리</title>
+   <title>Paths and Directories</title>
     <para>
      <table>
       <title>Paths and Directories Configuration Options</title>
@@ -1081,7 +1095,7 @@ include_path=".;c:\php\includes"
    </sect2>
 
   <sect2 id="ini.sect.file_uploads">
-   <title>파일 업로드</title>
+   <title>File Uploads</title>
     <para>
      <table>
       <title>File Uploads Configuration Options</title>
