@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.27 $ -->
-<!-- EN-Revision: 1.109 -->
+<!-- $Revision: 1.28 $ -->
+<!-- EN-Revision: 1.110 -->
  <chapter id="configuration">
   <title>실행 환경 설정</title>
 
@@ -31,7 +31,7 @@
    </note>
    <para>
     모든 PHP 설정이 아래에 쓰여있지는 않습니다. 모든 설정의 목록을 확인하기
-    위해서는, &php.ini 파일의 주석들을 읽어보십시오. CVS에서 최신의
+    위해서는, &php.ini; 파일의 주석들을 읽어보십시오. CVS에서 최신의
     <ulink url="&url.php.cvs.phpini;">php.ini</ulink>를 확인할 수도 있습니다.
    </para>
    <note>
@@ -487,9 +487,13 @@ include_path = ".;c:\php\lib"
         스크립트가 사용할 수 있는 최대 메모리 양을 바이트로 설정합니다.
         엉망인 스크립트가 서버의 많은 메모리를 차지하는 것을 방지할 수 있습니다.
         이 지시자를 사용하기 위해서는, 컴파일시에 활성화하여야 합니다.
-        즉, 설정 라인에 다음이 추가되어야 합니다:
+        즉, 설정 라인에 다음을 포함되야 합니다:
         <literal>--enable-memory-limit</literal>. 메모리 제한을 하지 않으려면
         -1로 설정하십시오.
+        </para>
+        <para>
+         PHP 4.3.2부터, memory_limit를 활성화 했을때, PHP 함수
+         <function>memory_get_usage</function>가 사용 가능합니다.
        </para>
       </listitem>
      </varlistentry>
