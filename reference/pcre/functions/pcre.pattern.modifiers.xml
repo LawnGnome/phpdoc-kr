@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: partial -->
+<!-- $Revision: 1.6 $ -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry id="pcre.pattern.modifiers">
    <refnamediv>
     <refname>패턴 변경자</refname>
@@ -119,9 +119,8 @@
      <simpara>
       패턴이 여러번 이용되면, 매칭에 걸리는 시간을 절약하기 위해서
       분석에 더 많은 시간을 들일 가치가 있습니다. 이 변경자를 지정하면,
-      추가 분석을 행합니다. At present, studying a
-      pattern is useful only for non-anchored patterns that do not
-      have a single fixed starting character.
+      추가 분석을 행합니다. 현 시점에서, 패턴의 분석은 하나의 고정된 시작
+      문자를 가지지 않는 non-ahchored 패턴에만 유용합니다.
      </simpara>
     </listitem>
        </varlistentry>
@@ -129,10 +128,9 @@
     <term><emphasis>U</emphasis> (PCRE_UNGREEDY)</term>
     <listitem>
      <simpara>
-      This modifier inverts the "greediness" of the quantifiers so
-      that they are not greedy by default, but become greedy if
-      followed by "?". It is not compatible with Perl. It can also
-      be set by a (?U) modifier setting within the pattern.
+      이 변경자는 수량 지시의 "greediness"를 뒤집습니다. 그리하여 기본값으로
+      not greedy하게 합니다. 하지만 "?"가 붙으면 greedy하게 됩니다. 이는 펄과
+      호환되지 않습니다. 패턴 안에서 (?U) 변경자 설정으로 지정할 수 있습니다.
      </simpara>
     </listitem>
        </varlistentry>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
+<!-- $Revision: 1.7 $ -->
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: wip -->
   <refentry id="pcre.pattern.syntax">
    <refnamediv>
@@ -80,16 +80,14 @@
       </listitem>
       <listitem>
       <simpara>
-     There are at the time of writing some  oddities  in  Perl
-     5.005_02  concerned  with  the  settings of captured strings
-     when part of a pattern is repeated.  For  example,  matching
-     "aba"  against the pattern /^(a(b)?)+$/ sets $2 to the value
-     "b", but matching "aabbaa" against /^(aa(bb)?)+$/ leaves  $2
-     unset.    However,    if   the   pattern   is   changed   to
-     /^(aa(b(b))?)+$/ then $2 (and $3) get set.
-     In Perl 5.004 $2 is set in both cases, and that is also &true;
-     of PCRE. If in the future Perl changes to a consistent state
-     that is different, PCRE may change to follow.
+     패턴의 일부가 반복될 때, 잡혀진 문자열의 설정에 관한 펄 5.005_02에서 일부
+     이상함이 존재합니다. 예를 들면, "aba"에 대해서 패턴 /^(a(b)?)+$/를
+     매칭하면 $2를 "b" 값으로 설정하지만, "aabbaa"에 대해서 /^(aa(bb)?)+$/를
+     매칭하면 $2를 설정하지 않습니다. 하지만 패턴을 /^(aa(b(b))?)+$/로
+     변경하면 $2(와 $3)를 설정합니다.
+     펄 5.004에서는 $2를 두 경우 모두 설정하며, PCRE에서도 &true;입니다.
+     앞으로 펄이 이 차이를 일관성 있게 변경한다면, PCRE는 따라서 변경할
+     것입니다.
       </simpara>
       </listitem>
       <listitem>
@@ -121,8 +119,8 @@
         </listitem>
         <listitem>
          <simpara>
-     If <link linkend="pcre.pattern.modifiers">PCRE_EXTRA</link>  is set, a backslash followed by  a  letter
-     with no special meaning is faulted.
+     <link linkend="pcre.pattern.modifiers">PCRE_EXTRA</link>를 설정하면,
+     백슬래쉬 뒤에 특별한 의미를 가지지 않는 문자를 사용하면 실패하게 됩니다.
          </simpara>
         </listitem>
         <listitem>
@@ -327,7 +325,7 @@
     </para>
     </refsect2>
    <refsect2 id="regexp.reference.backslash">
-    <title>backslash</title>
+    <title>백슬래쉬</title>
      <para>
      The backslash character has several uses. Firstly, if it  is
      followed by a non-alphanumeric character, it takes away any
@@ -790,7 +788,7 @@
     </refsect2>
 
     <refsect2 id="regexp.reference.squarebrackets">
-     <title>Square brackets</title>
+     <title>스퀘어 브라켓</title>
      <literallayout>
      An opening square bracket introduces a character class, ter-
      minated  by  a  closing  square  bracket.  A  closing square
@@ -870,7 +868,7 @@
     </refsect2>
 
     <refsect2 id="regexp.reference.verticalbar">
-     <title>Vertical bar</title>
+     <title>수직 바</title>
      <literallayout>
      Vertical bar characters are  used  to  separate  alternative
      patterns. For example, the pattern
@@ -889,7 +887,7 @@
     </refsect2>
 
     <refsect2 id="regexp.reference.internal-options">
-     <title>Internal option setting</title>
+     <title>내부 옵션 설정</title>
      <literallayout>
      The settings of <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link> , 
      <link linkend="pcre.pattern.modifiers">PCRE_MULTILINE</link> ,  
@@ -961,7 +959,7 @@
     </refsect2>
 
     <refsect2 id="regexp.reference.subpatterns">
-     <title>subpatterns</title>
+     <title>서브패턴</title>
      <literallayout>
      Subpatterns are delimited by parentheses  (round  brackets),
      which can be nested.  Marking part of a pattern as a subpattern
@@ -1522,7 +1520,7 @@
     </refsect2>
 
     <refsect2 id="regexp.reference.comments">
-     <title>Comments</title>
+     <title>코멘트</title>
      <literallayout>
      The  sequence  (?#  marks  the  start  of  a  comment  which
      continues   up  to  the  next  closing  parenthesis.  Nested
