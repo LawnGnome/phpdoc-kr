@@ -65,7 +65,7 @@
 					</term>
 					<listitem>
 						<simpara>
-	Date in ISO 8601 format
+ISO 8601 포멧의 날짜
 	(<replaceable>yyyy</replaceable>-<replaceable>mm</replaceable>-<replaceable>dd</replaceable>)
        </simpara>
 					</listitem>
@@ -75,7 +75,8 @@
 						<replaceable>time</replaceable>
 					</term>
 					<listitem>
-						<simpara>Time including microseconds:
+						<simpara>
+마이크로초(100만분의 1초) 타임:
 	<replaceable>hh</replaceable>:<replaceable>mm</replaceable>:<replaceable>uuuuuu</replaceable>
 						</simpara>
 					</listitem>
@@ -86,8 +87,7 @@
 					</term>
 					<listitem>
 						<simpara>
-	DNS name or IP address of the host where the script error was
-	generated.
+스크립트 에러발생된 DNS name 이나 host의 IP.
        </simpara>
 					</listitem>
 				</varlistentry>
