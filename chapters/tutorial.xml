@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
+<!-- $Revision: 1.10 $ -->
 <!-- EN-Revision: 1.14 -->
  <chapter id="tutorial">
   <title>간단한 튜토리얼</title>
@@ -375,31 +375,29 @@ Joe씨 안녕하세요.
     </example>
    </para>
    <para>
-    It should be obvious what this does. There is nothing more to it.
-    The <varname>$_POST["name"]</varname> and <varname>$_POST["age"]</varname>
-    variables are automatically set for you by PHP.  Earlier we
-    used the <varname>$_SERVER</varname> autoglobal, now above we just 
-    introduced the <link linkend="reserved.variables.post">$_POST</link>
-    autoglobal which contains all POST data.  Notice how the
-    <emphasis>method</emphasis> of our form is POST.  If we used the 
-    method <emphasis>GET</emphasis> then our form information would live in 
-    the <link linkend="reserved.variables.get">$_GET</link> autoglobal instead.
-    You may also use the <link linkend="reserved.variables.request">$_REQUEST</link>
-    autoglobal if you don't care the source of your request data. It 
-    contains a mix of GET, POST, COOKIE and FILE data.  See also the 
-    <function>import_request_variables</function> function.
+    이것이 무엇을 하는지는 명백합니다. 더 이상 할 일은 없습니다.
+    <varname>$_POST["name"]</varname>와 <varname>$_POST["age"]</varname> 변수는
+    PHP가 자동적으로 사용 가능하게 설정합니다. 이전에 자동전역
+    <varname>$_SERVER</varname>를 사용했듯이, 이번에는 모든 POST 데이터를
+    포함하는 <link linkend="reserved.variables.post">$_POST</link> 자동전역을
+    소개합니다. 폼에서 <emphasis>method</emphasis>를 POST 설정하는 방법에
+    주의하십시오. 폼에서 <emphasis>GET</emphasis> method로 지정하면, 폼 정보는
+    <link linkend="reserved.variables.get">$_GET</link> 자동전역에 포함됩니다.
+    요청한 데이터가 어떤 소스인지 신경쓰지 않을때는
+    <link linkend="reserved.variables.request">$_REQUEST</link> 자동전역을
+    사용할 수 있습니다. 이것은 GET, POST, COOKIE, FILE 데이터를 포함합니다.
+    <function>import_request_variables</function> 함수를 참고하십시오.
    </para>
   </sect1>
   
   <sect1 id="tutorial.oldcode">
    <title>새 버전의 PHP에서 예전의 코드를 사용하기</title>
    <para>
-    Now that PHP has grown to be a popular scripting language, there are
-    more resources out there that have listings of code you can reuse
-    in your own scripts. For the most part the developers of the PHP
-    language have tried to be backwards compatible, so a script written
-    for an older version should run (ideally) without changes in a newer
-    version of PHP, in practice some changes will usually be needed.
+    PHP는 유명한 스크립트 언어로 성장했고, 재사용 할 수 있는
+    많은 코드 자원이 존재합니다. PHP 언어의 대부분은 하위 호환을
+    생각하여 개발되기 떄문에, 이전 버전에서 작성된 스크립트라도
+    아무런 변경 없이 (완벽하게) 작동할 것입니다. 실제 상황에서는
+    몇가지 변경이 필요할 수도 있습니다.
    </para>
    <para>
     예전의 코드에 영향을 주는 최근의 중요한 두가지 변경점:
@@ -440,10 +438,9 @@ Joe씨 안녕하세요.
   <sect1 id="tutorial.whatsnext">
    <title>다음은?</title>
    <para>
-    With what you know now you should be able to understand most of 
-    the manual and also the various example scripts available in the
-    example archives. You can also find other examples on the php.net
-    websites in the links section:
+    여기까지 알아낸 것으로 매뉴얼과 예제 아카이브의 수많은 예제 스크립트의
+    대부분을 이해할 수 있을 것입니다. php.net 사이트의 또다른 예제들을
+    다음 링크 섹션에서 찾아볼 수 있습니다:
     <ulink url="&url.php.links;">&url.php.links;</ulink>.
    </para>
   </sect1>
