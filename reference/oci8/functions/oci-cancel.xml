@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
 <refentry id="function.oci-cancel">
    <refnamediv>
     <refname>oci_cancel</refname>
-    <refpurpose>Cancels reading from cursor</refpurpose>
+    <refpurpose>Ä¿¼­¿¡¼­ ÀÐ±â¸¦ Ãë¼ÒÇÑ´Ù</refpurpose>
    </refnamediv>
    <refsect1>
     <title>Description</title>
@@ -12,17 +12,15 @@
       <methodparam><type>resource</type><parameter>stmt</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>oci_cancel</function> invalidates a cursor, freeing all
-     associated resources and cancels the ability to read from it.
+     <function>oci_cancel</function> cursor¸¦ ¹«È¿È­ÇÏ°í , ¸ðµç ÇÒ´ç ÀÚ¿øÀ» ÇØÁ¦ÇÏ°í ÀÐ±â¸¦ Ãë¼ÒÇÑ´Ù.
     </para>
     <para>
      &return.success;
     </para>
     <para>
-     In PHP versions before 5.0.0 you must use <function>ocicancel</function> instead. 
-     This name still can be used, it was left as alias of
-     <function>oci_cancel</function> for downwards compatability. 
-     This, however, is deprecated and not recommended.
+	 PHP 5.0.0 ÀÌÀü ¹öÁ¯¿¡¼­´Â ¹Ýµå½Ã <function>ocicancel</function>¸¦ ´ë½Å »ç¿ëÇØ¾ß ÇÑ´Ù.
+	 ÀÌ ÇÔ¼ö¸íÀº °è¼Ó »ç¿ë °¡´ÉÇÏ¸ç ÀÌ´Â ÇÏÀ§ È£È¯¼ºÀ» À§ÇØ <function>oci_cancel</function>ÀÇ 
+	 alias·Î ³²¾ÆÀÖÁö¸¸ »ç¿ëÀ» ±ÇÇÏÁö ¾Ê´Â´Ù. 
     </para>
    </refsect1>
   </refentry>
