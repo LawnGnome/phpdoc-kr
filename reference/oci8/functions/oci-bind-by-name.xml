@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+<!-- $Revision: 1.2 $ -->
   <refentry id="function.oci-bind-by-name">
    <refnamediv>
     <refname>oci_bind_by_name</refname>
@@ -8,7 +8,7 @@
     </refpurpose>
    </refnamediv>
    <refsect1>
-    <title>����</title>
+    <title>설명</title>
      <methodsynopsis>
       <type>bool</type><methodname>oci_bind_by_name</methodname>
       <methodparam><type>resource</type><parameter>stmt</parameter></methodparam>
@@ -18,16 +18,12 @@
       <methodparam choice="opt"><type>int</type><parameter>type</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>oci_bind_by_name</function> binds the PHP variable
-     <parameter>variable</parameter> to the Oracle placeholder
-     <parameter>ph_name</parameter>.  Whether it will be used for
-     input or output will be determined at run-time and the necessary
-     storage space will be allocated. The <parameter>length</parameter> 
-     parameter sets the maximum length for the bind. If you set 
-     <parameter>length</parameter> to -1
-     <function>oci_bind_by_name</function> will use the current length of
-     <parameter>variable</parameter> to set the maximum length.
-    </para>
+     <function>oci_bind_by_name</function> PHP 변수 <parameter>variable</parameter>을
+     오라클 변수 <parameter>ph_name</parameter>으로 바인드 한다. 인풋, 아웃풋 어느것으로 사용되더라도 
+	 런타임 시에 결정되며 필요한 저장공간이 할당된다. <parameter>length</parameter> 
+     인자는 파인드를 위한 최대 값을 설정한다. <parameter>length</parameter> 을 -1 로 설정할 경우
+     <function>oci_bind_by_name</function>은 <parameter>variable</parameter>의 길이를 최대값으로 설정한다.
+	</para>
     <para>
      If you need to bind an abstract datatype (LOB/ROWID/BFILE) you
      need to allocate it first using the
