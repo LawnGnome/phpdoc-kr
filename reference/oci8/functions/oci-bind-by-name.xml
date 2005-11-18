@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
   <refentry id="function.oci-bind-by-name">
    <refnamediv>
     <refname>oci_bind_by_name</refname>
@@ -21,52 +21,49 @@
      <function>oci_bind_by_name</function> PHP 변수 <parameter>variable</parameter>을
      오라클 변수 <parameter>ph_name</parameter>으로 바인드 한다. 인풋, 아웃풋 어느것으로 사용되더라도 
 	 런타임 시에 결정되며 필요한 저장공간이 할당된다. <parameter>length</parameter> 
-     인자는 파인드를 위한 최대 값을 설정한다. <parameter>length</parameter> 을 -1 로 설정할 경우
+     인자는 바인드를 위한 최대 값을 설정한다. <parameter>length</parameter> 을 -1 로 설정할 경우
      <function>oci_bind_by_name</function>은 <parameter>variable</parameter>의 길이를 최대값으로 설정한다.
 	</para>
     <para>
-     If you need to bind an abstract datatype (LOB/ROWID/BFILE) you
-     need to allocate it first using the
-     <function>oci_new_descriptor</function> function. The
-     <parameter>length</parameter> is not used for abstract datatypes
-     and should be set to -1. The <parameter>type</parameter> parameter
-     tells Oracle which descriptor is used. Possible
-     values are: 
+     추상 데이터 타입(LOB/ROWID/BFILE)을 바인드 하기 위해 
+	 <function>oci_new_descriptor</function> 함수를 사용한 할당작업이 필요하다.
+	<parameter>length</parameter>는 추상 데이터 타입에는 사용되지 않고 반드시 -1로 설정이 되어야 한다.
+	<parameter>type</parameter> 인자는 어떤 descriptor가 사용될 지를 오라클에 알려준다.
+	사용 가능한 값들: 
      <itemizedlist>
       <listitem>
        <para>
-        <constant>OCI_B_FILE</constant> - for BFILEs;
+        <constant>OCI_B_FILE</constant> - BFILEs 용;
        </para>
       </listitem>
       <listitem>
        <para>
-        <constant>OCI_B_CFILE</constant> - for CFILEs;
+        <constant>OCI_B_CFILE</constant> - CFILEs 용;
        </para>
       </listitem>
       <listitem>
        <para>
-        <constant>OCI_B_CLOB</constant> - for CLOBs;
+        <constant>OCI_B_CLOB</constant> - CLOBs 용;
        </para>
       </listitem>
       <listitem>
        <para>
-        <constant>OCI_B_BLOB</constant> - for BLOBs;
+        <constant>OCI_B_BLOB</constant> - BLOBs 용;
        </para>
       </listitem>
       <listitem>
        <para>
-        <constant>OCI_B_ROWID</constant> - for ROWIDs;
+        <constant>OCI_B_ROWID</constant> - ROWIDs 용;
        </para>
       </listitem>
       <listitem>
        <para>
-        <constant>OCI_B_NTY</constant> - for named datatypes;
+        <constant>OCI_B_NTY</constant> - named datatypes 용;
        </para>
       </listitem>
       <listitem>
        <para>
-        <constant>OCI_B_CURSOR</constant> - for cursors, that were created
-        before with <function>oci_new_cursor</function>.
+        <constant>OCI_B_CURSOR</constant> - <function>oci_new_cursor</function>로 생성되기 전의 cursors 용.
        </para>
       </listitem>
      </itemizedlist>
