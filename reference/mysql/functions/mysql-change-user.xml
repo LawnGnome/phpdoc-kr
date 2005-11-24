@@ -1,37 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/mysql.xml, last change in rev 1.1 -->
-<!-- last change to 'mysql-change-user' in en/ tree in rev 1.2 -->
-  <refentry id="function.mysql-change-user">
-   <refnamediv>
-    <refname>mysql_change_user</refname> 
-    <refpurpose>
-     현 접속에서 로그인된 사용자를 변경
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>mysql_change_user</methodname>
-      <methodparam><type>string</type><parameter>user</parameter></methodparam>
-      <methodparam><type>string</type><parameter>password</parameter></methodparam>
-      <methodparam choice="opt"><type>string</type><parameter>
-        database
-       </parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>
-        link_identifier
-       </parameter></methodparam>
-     </methodsynopsis>
-    <para> 
-     <function>mysql_change_user</function> 함수는 현재 사용중인 접속 또는
-     link identifier 인자로 주어진 접속에서 로그인된 사용자를 변경한다.
-     데이터베이스 이름이 지정되면, 사용자가 변경된 다음
-     이 데이터베이스가 기본값으로 되며, 그렇지 않을 경우 현재 데이터베이스가 사용된다.
-     변경할 사용자와 비밀번호 인증에 실패하게되면,
-     현재 접속된 사용자는 접속이 그대로 유지된다.</para>
-     <note><para>이 함수는 PHP 3.0.13 과 MySQL 3.23.3 이상에서만 동작한다.
-    </para></note>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.6 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-change-user">
+ <refnamediv>
+  <refname>mysql_change_user</refname>
+  <refpurpose>현 접속에서 로그인된 사용자를 변경</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>mysql_change_user</methodname>
+   <methodparam><type>string</type><parameter>user</parameter></methodparam>
+   <methodparam><type>string</type><parameter>password</parameter></methodparam>
+   <methodparam choice="opt"><type>string</type><parameter>database</parameter></methodparam>
+   <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+	<function>mysql_change_user</function> 함수는 현재 사용중인 접속 또는
+	<parameter>link_identifier</parameter> 로 주어진 접속에서 로그인된 사용자를 변경한다.
+	데이터베이스 이름이 지정되면, 사용자가 변경된 다음
+	이 데이터베이스가 기본값으로 되며, 그렇지 않을 경우 현재 데이터베이스가 사용된다.
+	변경할 사용자와 비밀번호 인증에 실패하게되면,
+	현재 접속된 사용자는 접속이 그대로 유지된다.
+  </para>
+  <para>
+	본 함수는 PHP에서 더이상 존재하지 않으며 권장되지 않는다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>user</parameter></term>
+     <listitem>
+      <para>
+		변경할 MySQL 사용자명.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>password</parameter></term>
+     <listitem>
+      <para>
+		변경할 MySQL 사용자의 접속 비밀번호
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>database</parameter></term>
+     <listitem>
+      <para>
+		MySQL 데이터베이스명. 만약, 기술되지 않으면 현재 선택된 데이터베이스를 사용한다.
+      </para>
+     </listitem>
+    </varlistentry>
+    &mysql.linkid.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>3.0.14</entry>
+       <entry>
+		본 함수는 PHP로부터 제거되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <title>필수사항</title>
+   <para>
+	본 함수는 MySQL 3.23.3 또는 그 이상의 버전을 필요로 한다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_connect</function></member>
+    <member><function>mysql_select_db</function></member>
+    <member><function>mysql_query</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
