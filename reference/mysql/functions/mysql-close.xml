@@ -1,54 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/mysql.xml, last change in rev 1.1 -->
-<!-- last change to 'mysql-close' in en/ tree in rev 1.2 -->
-  <refentry id="function.mysql-close">
-   <refnamediv>
-    <refname>mysql_close</refname>
-    <refpurpose>MySQL 접속을 닫음</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>mysql_close</methodname>
-      <methodparam choice="opt"><type>int</type><parameter>
-        link_identifier                   
-       </parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     반환값: 성공하면 &true;값을 실패하면 &false;값을 반환
-    </para>
-    <para> <function>mysql_close</function> link identifier와 관련된
-     MySQL 접속을 닫는다. <parameter>link identifier</parameter>를
-     지정하지 않으면 마지막 열려진 link를 사용한다.
-    </para>
-    <para>
-     <function>mysql_close</function>는 비영구적으로
-     열려진 링크에서는 일반적으로 스크립트(script) 실행 마지막 부분에서
-     자동으로 종료되기 때문에 사용할 필요가 없다.
-    </para>
-    <note>
-     <para> 
-      <function>mysql_close</function>은 <function>mysql_pconnect</function>로
-      생성된 영구적으로 접속된 링크에서는 종료가 안될 것이다.
-     </para>
-    </note>
-    <example>
-     <title>MySQL close 예제</title>
-     <programlisting role="php">
-&lt;?php
-    $link = mysql_connect ("kraemer", "marliesle", "secret")
-        or die ("접속할 수 없습니다");
-    print ("접속되었습니다");
-    mysql_close ($link);
+<!-- EN-Revision: 1.11 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-close">
+ <refnamediv>
+  <refname>mysql_close</refname>
+  <refpurpose>MySQL 접속을 닫음</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>mysql_close</methodname>
+   <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
+  </methodsynopsis>
+  <para> 
+	<function>mysql_close</function>는 <parameter>link_identifier</parameter>와 연관된 MySQL서버의 비영속적 접속을 종료한다.
+	만약, <parameter>link_identifier</parameter>가 기술되지 않으면 최근 접속된 연결을 사용한다.
+  </para>
+  <para>
+	<function>mysql_close</function>는 비영구적으로
+	열려진 링크에서는 일반적으로 스크립트(script) 실행 마지막 부분에서
+	자동으로 종료되기 때문에 사용할 필요가 없다.
+   <link linkend="language.types.resource.self-destruct">resource 해제하기</link>.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    &mysql.linkid.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>mysql_close</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+if (!$link) {
+    die('Could not connect: ' . mysql_error());
+}
+echo 'Connected successfully';
+mysql_close($link);
 ?>
-     </programlisting>
-    </example>
-    <para> 
-     참조: <function>mysql_connect</function>, 
-     <function>mysql_pconnect</function>.
-    </para>
-   </refsect1>
-  </refentry>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+Connected successfully
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+	<function>mysql_close</function>는 <function>mysql_pconnect</function>에 의해
+	영속적으로 연결된 접속은 종료하지 않는다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_connect</function></member>
+    <member><function>mysql_free_result</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
