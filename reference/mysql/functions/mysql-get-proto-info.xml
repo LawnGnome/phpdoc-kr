@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.13 Maintainer: pcraft Status: ok -->
 <refentry id="function.mysql-get-proto-info">
  <refnamediv>
   <refname>mysql_get_proto_info</refname>
-  <refpurpose>MySQL ???? ??? ???</refpurpose>
+  <refpurpose>MySQL 프로토콜 정보를 얻는다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -13,7 +13,7 @@
    <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
   </methodsynopsis>
   <para>
-   ???? ??? ????.
+   프로토콜 정보를 출력한다.
   </para>
  </refsect1>
 
@@ -29,7 +29,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   ???? ??? ?????, ??? ?? &false;? ????.
+   프로토콜 정보를 반환하거나, 실패할 경우 &false;를 반환한다.
   </para>
  </refsect1>
 
@@ -37,7 +37,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>mysql_get_proto_info</function> ??</title>
+    <title><function>mysql_get_proto_info</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
