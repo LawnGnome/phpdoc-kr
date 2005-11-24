@@ -2037,7 +2037,7 @@ echo $obj->scalar;  // outputs 'ciao'
    </sect2>
 
     <sect2 id="language.types.resource.self-destruct">
-     <title>Freeing resources</title>
+     <title>resource 해제하기</title>
     
     <para>
      PHP 4의 젠드 엔진에서 참조-카운팅(reference-counting) 시스템이 추가되어,
