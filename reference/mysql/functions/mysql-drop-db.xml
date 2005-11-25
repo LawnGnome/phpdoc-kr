@@ -1,33 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/mysql.xml, last change in rev 1.1 -->
-<!-- last change to 'mysql-drop-db' in en/ tree in rev 1.2 -->
-  <refentry id="function.mysql-drop-db">
-   <refnamediv>
-    <refname>mysql_drop_db</refname>
-    <refpurpose>MySQL 데이터베이스를 삭제</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>mysql_drop_db</methodname>
-      <methodparam><type>string</type><parameter>database_name</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>
-        link_identifier
-       </parameter></methodparam>
-     </methodsynopsis>
-    <para> 
-     반환값: 성공하면 &true;, 실패하면 &false;.
-    </para>  
-    <para> 
-     <function>mysql_drop_db</function>는 지정된 link_identifier와
-	 관련된 서버로부터 데이터베이스 삭제를 시도한다.
-    </para>
-    <para> 
-     참조: <function>mysql_create_db</function>.
-     하위 호환성이 있는 <function>mysql_dropdb</function> 함수 역시 사용 가능하다.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.16 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-drop-db">
+ <refnamediv>
+  <refname>mysql_drop_db</refname>
+  <refpurpose>MySQL 데이터베이스를 삭제</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>mysql_drop_db</methodname>
+   <methodparam><type>string</type><parameter>database_name</parameter></methodparam>
+   <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+<function>mysql_drop_db</function>는 link_identifier 인자와 연관된 서버로부터
+데이터베이스 삭제를 시도한다.
+본 함수는 사용이 권장되지 않으며, 대신 
+<literal>DROP DATABASE</literal> 구문의 SQL을 <function>mysql_query</function>을 이용하여
+실행하는 것을 권한다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>database_name</parameter></term>
+     <listitem>
+      <para>
+삭제될 데이터베이스 이름.
+      </para>
+     </listitem>
+    </varlistentry>
+    &mysql.linkid.description;
+   </variablelist>
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+  
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>mysql_drop_db</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$link = mysql_connect('localhost', 'mysql_user', 'mysql_password');
+if (!$link) {
+    die('Could not connect: ' . mysql_error());
+}
+
+$sql = 'DROP DATABASE my_db';
+if (mysql_query($sql, $link)) {
+    echo "Database my_db was successfully dropped\n";
+} else {
+    echo 'Error dropping database: ' . mysql_error() . "\n";
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <warning>
+   <para>
+본 함수는 MySQL 4.x 클라이언트 라이브러리에 대응하는 MySQL 확장에서는 사용이 불가능할 것이다.
+   </para>
+  </warning>
+  <note>
+   <para>
+    &info.deprecated.alias;
+    <function>mysql_dropdb</function>
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_query</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
