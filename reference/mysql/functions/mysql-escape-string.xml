@@ -1,35 +1,84 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
-  <refentry id="function.mysql-escape-string">
-   <refnamediv>
-    <refname>mysql_escape_string</refname>
-    <refpurpose>
-     mysql_query에서 문자열을 escape 하기위해 사용.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-    <methodsynopsis>
-     <type>string</type><methodname>mysql_escape_string</methodname>
-     <methodparam><type>string</type><parameter>unescaped_string</parameter></methodparam>
-    </methodsynopsis>
-    <para>
-	 이 함수는 <parameter>unescaped_string</parameter>을 <function>mysql_query</function>에 안전하도록  escape 한다.
-    </para>
-    <note>
-     <simpara>
-      <function>mysql_escape_string</function>은 
-	  <literal>%</literal>와 <literal>_</literal>를 escape하지 않는다.
-     </simpara>
-     <simpara>
-      이 함수는 접속 핸들러를 이용하여 현재 문자셋을 따라서 문자를 escape하는 것만 제외하고는 <function>mysql_real_escape_string</function>와 비슷하다. <function>mysql_escape_string</function>는
-	  접속 핸들러를 파라미터로 갖지 않으며, 현재 문자셋에 대해 고려하지 않는다. 
-     </simpara>
-    </note>
-    <para>
-     <example>
-      <title><function>mysql_escape_string</function> 예</title>
-      <programlisting role="php">
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.14 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-escape-string">
+ <refnamediv>
+  <refname>mysql_escape_string</refname>
+  <refpurpose>mysql_query에서 문자열을 escape하기위해 사용</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>mysql_escape_string</methodname>
+   <methodparam><type>string</type><parameter>unescaped_string</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+이 함수는 <parameter>unescaped_string</parameter>을
+<function>mysql_query</function>에 안전하도록  escape시킨다.  
+이 함수의 사용은 권장하지 않는다.
+  </para>
+  <para>
+이 함수는 접속 핸들러를 이용하여 현재 문자셋을 따라서 문자를 escape하는 것만 제외하고는
+<function>mysql_real_escape_string</function>와 비슷하다.
+<function>mysql_escape_string</function>는
+접속 핸들러를 파라미터로 갖지 않으며, 현재 문자셋에 대해 고려하지 않는다. 
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>unescaped_string</parameter></term>
+     <listitem>
+      <para>
+Escape할 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+Escape된 문자열.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+이 함수의 사용을 권장하지 않으며, 사용하면 안된다.
+대신, <function>mysql_real_escape_string</function>를 사용하라.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>mysql_escape_string</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $item = "Zak's Laptop";
@@ -37,25 +86,39 @@ $escaped_item = mysql_escape_string($item);
 printf("Escaped string: %s\n", $escaped_item);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위의 예제는 아래의 결과를 보여줄 것이다:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 Escaped string: Zak\'s Laptop
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     참조: 
-     <function>mysql_real_escape_string</function>,
-     <function>addslashes</function>, 
-     <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    <function>mysql_escape_string</function>은
+    <literal>%</literal>와 <literal>_</literal>를
+    escape하지 않는다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_real_escape_string</function></member>
+    <member><function>addslashes</function></member>
+    <member><link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link> 지시자.</member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
