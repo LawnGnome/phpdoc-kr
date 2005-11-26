@@ -13,7 +13,8 @@
    <methodparam><type>resource</type><parameter>result</parameter></methodparam>
   </methodsynopsis>
   <para>
-내부 데이터 포인터 바로 앞으로 이동하여 인출된 행으로부터 속성을 가진 객체로 반환한다.  
+인출된 행으로부터 속성을 가진 객체로 반환하고,
+앞으로 내부 데이터 포인터를 이동한다.
   </para>
  </refsect1>
 
