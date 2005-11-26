@@ -1,30 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/mysql.xml, last change in rev 1.3 -->
-<!-- last change to 'mysql-field-seek' in en/ tree in rev 1.2 -->
-	<refentry id="function.mysql-field-seek">
-		<refnamediv>
-			<refname>mysql_field_seek</refname>
-			<refpurpose>
-     특정 필드의 오프셋(offset)으로 위치(pointer)를 이동
-    </refpurpose>
-		</refnamediv>
-		<refsect1>
-			<title>설명</title>
-				<methodsynopsis>
-					<type>int</type><methodname>mysql_field_seek</methodname>
-					<methodparam><type>int</type><parameter>result</parameter></methodparam>
-					<methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
-				</methodsynopsis>
-			<para>
-     특정 필드 오프셋을 검색하는데 사용된다.
-     <function>mysql_fetch_field</function>을 실행하면서 필드 오프셋을 설정하지 않으면,
-     <function>mysql_field_seek</function>이 돌려준 값으로 지정된다.
-    </para>
-			<para>
-     참조: <function>mysql_fetch_field</function>.
-    </para>
-		</refsect1>
-	</refentry>
+<!-- EN-Revision: 1.7 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-field-seek">
+ <refnamediv>
+  <refname>mysql_field_seek</refname>
+  <refpurpose>특정 필드의 오프셋으로 결과 포인터를 이동</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>mysql_field_seek</methodname>
+   <methodparam><type>resource</type><parameter>result</parameter></methodparam>
+   <methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+특정 필드 오프셋으로 탐색한다.
+필드 오프셋을 포함하지 않는 <function>mysql_fetch_field</function> 이후에 호출하면,
+<function>mysql_field_seek</function>에서 반환된 값으로 지정될 것이다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    &mysql.result.description;
+    &mysql.field-offset.req.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_fetch_field</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

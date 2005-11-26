@@ -1,32 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.5 Maintainer: pcraft Status: ok -->
-  <refentry id="function.mysql-info">
-   <refnamediv>
-    <refname>mysql_info</refname>
-    <refpurpose>
-     가장 최근에 질의한 정보를 반환
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>mysql_info</methodname>
-      <methodparam choice="opt"><type>resource</type><parameter>
-        link_identifier
-       </parameter></methodparam>
-     </methodsynopsis>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-info">
+ <refnamediv>
+  <refname>mysql_info</refname>
+  <refpurpose>가장 최근 질의에 대한 정보를 반환</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>mysql_info</methodname>
+   <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+최근 질의에 대한 상세한 정보를 반환한다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    &mysql.linkid.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+성공하면 진술문(statement) 정보를, 실패하면 &false;를 반환한다.
+진술문이 제공하는 정보와 반환되는 값이 어떻게 보여지는지 아래의 예제를 참고하라.
+진술문은 &false;를 반환하는  
+   Returns information about the statement on success, or &false; on
+   failure. See the example below for which statements provide information,
+   and what the returned value may look like. Statements that aren't listed 
+   will return &false;
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>관련된 MySQL 진술문</title>
     <para>
-     <function>mysql_info</function>는 주어진 <parameter>link_identifier</parameter>를
-	 사용하는 마지막 질의에 대한 상세한 정보를 반환한다.
-	 만약 <parameter>link_identifier</parameter>를 지정하지 않으면,
-	 최근 열려진 접속을 이용한다.
+진술문은 문자열로 반환된다. 숫자들은 질의와 관련된 값이며 설명을 목적으로한  용도이다.
     </para>
-    <para>
-     <function>mysql_info</function>는 아래 나열된 모든 문장들을 문자열로 반환한다.
-	 그렇지 않다면, &false;가 아닌 값을 반환한다. 문자열 형식은 주어진 구문에 따라 다르다.
-     <example>
-      <title>관련된 MySQL 구문들</title>
-      <programlisting role="mysql">
+    <programlisting role="mysql">
 <![CDATA[
 INSERT INTO ... SELECT ...
 String format: Records: 23 Duplicates: 0 Warnings: 0 
@@ -39,21 +60,32 @@ String format: Records: 60 Duplicates: 0 Warnings: 0
 UPDATE
 String format: Rows matched: 65 Changed: 65 Warnings: 0
 ]]>
-      </programlisting>
-     </example> 
-	 숫자들은 설명하기 위한 용도일 뿐이며, 질의에 따라 다르다.
-    </para>
-    <note>
-     <para>
-      <function>mysql_info</function>는 INSERT ... VALUES 구문상에서 다중 값
-      목록이 기술된다면, &false;가 아닌 값이 반환된다.
-    </para>
-    </note>
-    <para>
-     참조: <function>mysql_affected_rows</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+다중 값 목록이 기술된 INSERT ... VALUES 구문에서 <function>mysql_info</function>는
+&false;가 아닌 값을 반환한다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_affected_rows</function></member>
+    <member><function>mysql_insert_id</function></member>
+    <member><function>mysql_stat</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
