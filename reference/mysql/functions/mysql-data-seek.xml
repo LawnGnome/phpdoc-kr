@@ -14,14 +14,14 @@
   </methodsynopsis>
   <para>
 <function>mysql_data_seek</function> 함수는 
-result 인자로 지정된 MySQL 내부 결과 행 포인터를 
+result로 지정된 MySQL 내부 결과 행 포인터를 
 row_number에 지정된 행으로 이동시켜준다.
 그후 <function>mysql_fetch_row</function>를 호출하면 행 내용을 반환받을 수 있을 것이다.
   </para>
   <para>
 <parameter>row_number</parameter>는 0부터 시작한다.
 <parameter>row_number</parameter>는 0부터 <function>mysql_num_rows</function> - 1 까지의
-값을  가질 수 있다. 그러나, 만약 결과 집합이 빈값(<function>mysql_num_rows</function> == 0)이면,
+값을  가질 수 있다. 그러나, 결과 집합이 빈 값(<function>mysql_num_rows</function> == 0)이면,
 0행을 탐색하는 것은 <link linkend="e-warning">E_WARNING</link> 경고메시지와 함께
 <function>mysql_data_seek</function>는  &false;를 반환하면서 실패할 것이다.
   </para>
@@ -36,7 +36,7 @@ row_number에 지정된 행으로 이동시켜준다.
      <term><parameter>row_number</parameter></term>
      <listitem>
       <para>
-새로운 결과 포인터의 행 번호를 필요로한다.
+새로운 결과 포인터의 행 번호를 필요로 한다.
       </para>
      </listitem>
     </varlistentry>

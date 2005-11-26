@@ -14,7 +14,8 @@
    <methodparam choice="opt"><type>int</type><parameter>field_offset</parameter></methodparam>
   </methodsynopsis>
   <para>
-필드 정보를 포함하는 객체를 반환한다. 이 함수는 질의 결과에서 필드에 대한 정보를 얻는 데 사용할 수 있다.
+필드 정보를 포함하는 객체를 반환한다.
+이 함수는 질의 결과에서 필드에 대한 정보를 얻는 데 사용할 수 있다.
   </para>
  </refsect1>
 
@@ -28,8 +29,8 @@
      <listitem>
       <para>
 숫자형 필드 위치.
-만약, 필드 위치를 지정하지 않으면, 이 함수로 아직 조회되지 않은 다음 필드가 조회된다.
-<parameter>field_offset</parameter>는 <literal>0</literal>부터 시작한다.
+필드 위치를 지정하지 않으면, 이 함수로 아직 조회되지 않은 다음 필드가 조회된다.
+<parameter>field_offset</parameter>은 <literal>0</literal>부터 시작한다.
       </para>
      </listitem>
     </varlistentry>

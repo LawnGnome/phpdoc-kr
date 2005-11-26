@@ -18,7 +18,7 @@
   <para>
 MySQL 데이터베이스 후면으로부터 발생한 에러들은 경고를 발생하지 않는다.
 대신, <function>mysql_errno</function>를 사용하여 에러 코드를 조회할 수 있다.
-본 함수는 가장 최근에 실행된 MySQL 함수(<function>mysql_error</function> and
+본 함수는 가장 최근에 실행된 MySQL 함수(<function>mysql_error</function>,
 <function>mysql_errno</function>는 제외)로부터 발생한 에러 코드만을 반환하므로
 다른 MySQL 함수를 호출하기 전에 에러코드를 점검하기 위해 본 함수를 사용할 필요가 있다.
   </para>
@@ -37,7 +37,7 @@ MySQL 데이터베이스 후면으로부터 발생한 에러들은 경고를 발
   &reftitle.returnvalues;
   <para>
 최근 MySQL 함수로부터 에러를 반환하거나 에러가 없을 경우에는   
-<literal>0</literal>를 반환한다.
+<literal>0</literal>을 반환한다.
   </para>
  </refsect1>
 

@@ -13,7 +13,7 @@
    <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
   </methodsynopsis>
   <para>
-<function>mysql_create_db</function>는 link identifier로 연결된 서버에
+<function>mysql_create_db</function>는 link 지시자와 연결된 서버에
 새로운 데이터베이스를 생성하도록 한다.  
   </para>
  </refsect1>
@@ -45,11 +45,11 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>mysql_create_db</function> alternative 예제</title>
+    <title><function>mysql_create_db</function> 예제</title>
     <para>
-<function>mysql_create_db</function> 함수의 사용은 권장되지 않는다.
-대신, <function>mysql_query</function>의 <literal>CREATE DATABASE</literal> 구문으로
-질의하면 된다.
+<function>mysql_create_db</function>의 사용은 권장되지 않는다.
+대신, <function>mysql_query</function>의 <literal>CREATE DATABASE</literal>
+구문으로 질의하면 된다.
     </para>
     <programlisting role="php">
 <![CDATA[

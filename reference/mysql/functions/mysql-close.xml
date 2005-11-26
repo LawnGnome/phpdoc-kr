@@ -13,14 +13,15 @@
    <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
   </methodsynopsis>
   <para> 
-	<function>mysql_close</function>는 <parameter>link_identifier</parameter>와 연관된 MySQL서버의 비영속적 접속을 종료한다.
-	만약, <parameter>link_identifier</parameter>가 기술되지 않으면 최근 접속된 연결을 사용한다.
+<function>mysql_close</function>는 <parameter>link_identifier</parameter>와
+연관된 MySQL서버의 비영속적 접속을 종료한다.
+<parameter>link_identifier</parameter>가 기술되지 않으면 최근 접속된 연결을 사용한다.
   </para>
   <para>
-	<function>mysql_close</function>는 비영구적으로
-	열려진 링크에서는 일반적으로 스크립트(script) 실행 마지막 부분에서
-	자동으로 종료되기 때문에 사용할 필요가 없다.
-   <link linkend="language.types.resource.self-destruct">resource 해제하기</link>.
+<function>mysql_close</function>는 비영구적으로
+열려진 링크에서는 일반적으로 스크립트 실행 마지막 부분에서
+자동으로 종료되므로 사용할 필요가 없다.
+<link linkend="language.types.resource.self-destruct">resource 해제하기</link>.
   </para>
  </refsect1>
 
@@ -71,8 +72,8 @@ Connected successfully
   &reftitle.notes;
   <note>
    <para>
-	<function>mysql_close</function>는 <function>mysql_pconnect</function>에 의해
-	영속적으로 연결된 접속은 종료하지 않는다.
+<function>mysql_close</function>는 <function>mysql_pconnect</function>에 의해
+영속적으로 연결된 접속은 종료하지 않는다.
    </para>
   </note>
  </refsect1>

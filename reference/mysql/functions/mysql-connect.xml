@@ -35,8 +35,8 @@ MySQL 서버명을 입력하며, 포트번호가 포함될 수 있다.
 예) ":/path/to/socket"
       </para>
       <para>
-만약, PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>가 지정되지
-않는다면 기본값은 'localhost:3306'이다.
+PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>가
+지정되지 않는다면, 기본값은 'localhost:3306'이다.
       </para>
      </listitem>
     </varlistentry>
@@ -61,9 +61,9 @@ MySQL 서버명을 입력하며, 포트번호가 포함될 수 있다.
      <listitem>
       <para>
 동일한 인수로 <function>mysql_connect</function>을 다시 호출하면,
-새로운 link가 생성되는 것이 아니라, 이미 생성된 link identifier 값을
+새로운 link가 생성되는 것이 아니라, 이미 생성된 link 식별자 값을
 돌려받게 된다.
-단, <parameter>new_link</parameter> 인수로 <function>mysql_connect</function>를
+단, <parameter>new_link</parameter>로 <function>mysql_connect</function>를
 호출하면 동일한 인수로 <function>mysql_connect</function>를 이미 호출하였다 하더라도
 항상 새로운 접속을 생성한다.
       </para>
@@ -73,7 +73,7 @@ MySQL 서버명을 입력하며, 포트번호가 포함될 수 있다.
      <term><parameter>client_flags</parameter></term>
      <listitem>
       <para>
-<parameter>client_flags</parameter> 인수는 다음의 상수를 결합하여 사용할 수 있다:
+<parameter>client_flags</parameter>는 다음의 상수를 조합하여 사용할 수 있다:
 <constant>MYSQL_CLIENT_COMPRESS</constant>, 
 <constant>MYSQL_CLIENT_IGNORE_SPACE</constant> or
 <constant>MYSQL_CLIENT_INTERACTIVE</constant>.
@@ -88,7 +88,7 @@ MySQL 서버명을 입력하며, 포트번호가 포함될 수 있다.
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-접속 성공시 MySQL link identifier를 반환하고 실패시에는 &false;를 반환한다.
+접속 성공시 MySQL link 식별자를 반환하고, 실패시에는 &false;를 반환한다.
   </para>
  </refsect1>
 
@@ -107,25 +107,25 @@ MySQL 서버명을 입력하며, 포트번호가 포함될 수 있다.
       <row>
        <entry>4.3.0</entry>
        <entry>
-<parameter>client_flags</parameter> 인수가 추가되었다.
+<parameter>client_flags</parameter>가 추가되었다.
        </entry>
       </row>
       <row>
        <entry>4.2.0</entry>
        <entry>
-<parameter>new_link</parameter> 인수가 추가되었다.
+<parameter>new_link</parameter>가 추가되었다.
        </entry>
       </row>
       <row>
        <entry>3.0.10</entry>
        <entry>
-<parameter>server</parameter> 인수에 ":/path/to/socket" 를 사용할 수 있게 되었다.
+<parameter>server</parameter>에 ":/path/to/socket" 를 사용할 수 있게 되었다.
        </entry>
       </row>
       <row>
        <entry>3.0.0</entry>
        <entry>
-<parameter>server</parameter> 인수에 ":port" 를 사용가능하게 되었다.
+<parameter>server</parameter>에 ":port" 를 사용 가능하게 되었다.
        </entry>
       </row>
      </tbody>
@@ -181,7 +181,7 @@ mysql_close($link);
   </para>
   <para>
    <example>
-    <title>":/path/to/socket" 문법을 사용한 <function>mysql_connect</function> 예체</title>
+    <title>":/path/to/socket" 문법을 사용한 <function>mysql_connect</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -214,18 +214,18 @@ mysql_close($link);
   &reftitle.notes;
   <note>
    <para>
-서버에서는 &quot;localhost&quot; 및 &quot;localhost:port&quot; 를 사용할 때마다 
+서버에서는 &quot;localhost&quot; 및 &quot;localhost:port&quot;를 사용할 때마다 
 로컬 소켓(윈도우즈에서는 named pipe)으로 접속을 시도한다.
-만약, TCP/IP를 이용하기를 원한다면 &quot;localhost&quot; 대신 &quot;127.0.0.1&quot;를
+TCP/IP를 이용하려면 &quot;localhost&quot; 대신 &quot;127.0.0.1&quot;를
 사용하면 된다.
-만약 MySQL 클라이언트 라이브러리가 로컬 소켓으로 잘못된 접속을 시도한다면,
+MySQL 클라이언트 라이브러리가 로컬 소켓으로 잘못된 접속을 시도한다면,
 PHP 환경설정에 있는 <xref linkend="ini.mysql.default-host" /> 항목에 경로를 수정하고,
-server 인수에 빈값으로 호출해야 한다.
+server에 빈 값으로 호출해야 한다.
    </para>
   </note>
   <note>
    <para>
-서버로의 접속은 <function>mysql_close</function>을 명시적으로 호출하여 종료하지 않더라도
+서버로 접속은 <function>mysql_close</function>을 명시적으로 호출하여 종료하지 않더라도
 스크립트가 종료되는 순간 종료될 것이다.
    </para>
   </note>

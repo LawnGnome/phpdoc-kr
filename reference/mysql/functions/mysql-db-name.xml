@@ -26,7 +26,7 @@
      <term><parameter>result</parameter></term>
      <listitem>
       <para>
-<function>mysql_list_dbs</function> 함수 호출로 얻은 결과 포인터.
+<function>mysql_list_dbs</function> 호출로 얻은 결과 포인터.
       </para>
      </listitem>
     </varlistentry>
@@ -53,8 +53,8 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-성공할경우 데이터베이스 이름을 반환하고 실패할 경우  &false;를 반환한다.
-만약 &false;이 반환되었을 경우, <function>mysql_error</function>를 사용하여 
+성공하면 데이터베이스 이름을 반환하고 실패할 경우  &false;를 반환한다.
+&false;이 반환되었을 경우, <function>mysql_error</function>를 사용하여 
 에러의 형태를 확인한다.
   </para>
  </refsect1>

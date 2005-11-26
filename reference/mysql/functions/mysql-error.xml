@@ -35,7 +35,7 @@ MySQL 데이터베이스 후면으로부터 발생한 에러들은 경고를 발
   &reftitle.returnvalues;
   <para>
 MySQL 함수로 발생된 에러 메시지를 얻을 수 있으며,
-에러가 발생하지 않았을 경우에는 <literal>''</literal> (빈값)를 얻을 수 있다.  
+에러가 발생하지 않았을 경우에는 <literal>''</literal>(빈 값)을 얻을 수 있다.  
   </para>
  </refsect1>
 

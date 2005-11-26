@@ -3,7 +3,7 @@
 <refentry id="function.mysql-affected-rows">
  <refnamediv>
   <refname>mysql_affected_rows</refname>
-  <refpurpose>최근 MySQL 작업으로 처리된 행(row) 개수를 얻음</refpurpose>
+  <refpurpose>최근 MySQL 작업으로 변경된 행 개수를 얻음</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -13,8 +13,9 @@
    <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <parameter>link_identifier</parameter>와 연관된 최근의 INSERT, UPDATE, DELETE 질의에 의해
-      적용된 행의 개수를 돌려준다.
+<parameter>link_identifier</parameter>와 연관된
+최근의 INSERT, UPDATE, DELETE 질의에 의해
+변경된 행의 개수를 돌려준다.
   </para>
  </refsect1>
 
@@ -30,20 +31,20 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-	 최근 질의가 실패할 경우 -1을 반환하고, 성공했을 경우에는 적용된 행의 개수를 반환한다.
+최근 질의가 실패했을 경우 -1을 반환하고, 그렇지 않을 경우 적용된 행의 개수를 반환한다.
   </para>
   <para>
-	만약, 최근 질의가 WHERE 절이 없는 DELETE 질의일 경우 테이블의 모든 레코드가 삭제되지만,
-	4.1.2 버전 이후의 MySQL은 0을 반환한다.
+최근 질의가 WHERE 절이 없는 DELETE 질의일 경우 테이블의 모든 레코드가 삭제되지만,
+4.1.2 버전 이후의 MySQL은 0을 반환한다.
   </para>
   <para>
-	UPDATE를 사용할 때, MySQL은 기존 값과 새로운 값이 동일한 컬럼들은 변경하지 않을 것이다.
-	<function>mysql_affected_rows</function>는 조건에 해당하는 행의 개수가 아닌
-	실제 적용된 행의 개수를 제공한다.
+UPDATE를 사용할 때, MySQL은 기존 값과 새로운 값이 동일한 컬럼들은 변경하지 않을 것이다.
+<function>mysql_affected_rows</function>는 조건에 해당하는 행의 개수가 아닌
+실제 변경된 행의 개수를 제공한다.
   </para>
   <para>
-	REPLACE 구문은 동일한 기본키의 레코드를 먼저 삭제한 다음 새 레코드를 삽입한다.
-	이 함수는 삽입된 레코드수에 삭제된 레코드수를 더한 값을 반환한다.
+REPLACE 구문은 동일한 기본키의 레코드를 먼저 삭제한 다음 새 레코드를 삽입한다.
+결국, 이 함수는 삽입된 레코드수와 삭제된 레코드수를 더한 값을 반환한다.
   </para> 
  </refsect1>
 
@@ -82,7 +83,7 @@ Records deleted: 0
   </para>
   <para>
    <example>
-    <title><function>mysql_affected_rows</function> 트랜젝션을 이용한 예제</title>
+    <title>트랜젝션을 이용한 <function>mysql_affected_rows</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -112,18 +113,17 @@ Updated Records: 10
  <refsect1 role="notes">
   &reftitle.notes;
   <note>
-   <title>Transactions</title>
+   <title>트랜젝션 사용</title>
    <para>
-	만약, 트랜잭션을 사용한다면, <function>mysql_affected_rows</function>는
-	COMMIT 명령 이후가 아니라 INSERT, UPDATE, DELETE 명령 바로 이후에 호출할 필요가
-	있다.
+트랜젝션을 사용한다면 <function>mysql_affected_rows</function>는
+COMMIT 명령 이후가 아니라 INSERT, UPDATE, DELETE 명령 직후에 호출해야 한다.
    </para>
   </note>
   <note>
    <title>SELECT 구문</title>
    <para>
-	SELECT에 의해 반환된 행의 수를 얻기 위해서는 <function>mysql_num_rows</function>를
-	사용하면 된다.
+SELECT에 의해 반환된 행의 수를 얻기 위해서는
+<function>mysql_num_rows</function>를 사용하면 된다.
    </para>
   </note>
  </refsect1>

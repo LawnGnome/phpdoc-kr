@@ -14,7 +14,8 @@
    <methodparam choice="opt"><type>int</type><parameter>result_type</parameter></methodparam>
   </methodsynopsis>
   <para>
-내부 데이터 포인터 바로 앞쪽으로 이동하여 인출된 행을 배열로 반환한다.
+인출된 행을 배열로 반환하고,
+앞으로 내부 데이터 포인터를 이동한다.
   </para>
  </refsect1>
 
@@ -53,7 +54,7 @@
 숫자형 인덱스 배열로 반환한다.
   </para>
   <para>
-만약, 동일한 이름을 포함하는 둘 또는 그이상의 컬럼들은 마지막 컬럼이 우선권을 가질 것이다.
+동일한 이름을 포함하는 둘 또는 그 이상의 컬럼들은 마지막 컬럼이 우선권을 가질 것이다.
 동일한 이름의 다른 컬럼에 접근하기 위해서는 숫자 색인 또는 별명(alias) 컬럼명을 사용하면 된다.
 단, 별명 컬럼들은 원래의 컬럼명으로 데이터를 접근할 수 없다.
   </para>
@@ -63,7 +64,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title>Query with aliased duplicate field names</title>
+    <title>별명(alias)으로 지정한 중복된 필드 이름으로 질의</title>
     <programlisting role="sql">
 <![CDATA[
 SELECT table1.field AS foo, table2.field AS bar FROM table1, table2
@@ -73,7 +74,7 @@ SELECT table1.field AS foo, table2.field AS bar FROM table1, table2
   </para>
   <para>
    <example>
-    <title><function>mysql_fetch_array</function> with <constant>MYSQL_NUM</constant></title>
+    <title><constant>MYSQL_NUM</constant>을 이용한 <function>mysql_fetch_array</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -95,7 +96,7 @@ mysql_free_result($result);
   </para>
   <para>
    <example>
-    <title><function>mysql_fetch_array</function> with <constant>MYSQL_ASSOC</constant></title>
+    <title><constant>MYSQL_ASSOC</constant>를 이용한 <function>mysql_fetch_array</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -117,7 +118,7 @@ mysql_free_result($result);
   </para>
   <para>
    <example>
-    <title><function>mysql_fetch_array</function> with <constant>MYSQL_BOTH</constant></title>
+    <title><constant>MYSQL_BOTH</constant>를 이용한 <function>mysql_fetch_array</function> 예제 </title>
     <programlisting role="php">
 <![CDATA[
 <?php

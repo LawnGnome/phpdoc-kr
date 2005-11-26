@@ -33,9 +33,9 @@
 속성을 가진 <type>object</type>로 반환하거나, 더 이상의 행이 없을 때에는 &false;를 반환한다.
   </para>
   <para>
-<function>mysql_fetch_row</function>는 지정된 result identifier와 연관된 결과로부터
+<function>mysql_fetch_row</function>는 지정된 result 지시자와 연관된 결과로부터
 한 행의 데이터를 인출하여 배열로 반환한다.
-각 결과 컬럼은 0부터 시작하고 저장된다.
+각 컬럼은 0부터 시작한다.
   </para>
  </refsect1>
 

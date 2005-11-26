@@ -69,9 +69,9 @@ MySQL 질의문.
       <row>
        <entry>4.0.6</entry>
        <entry>
-본 함수는 더이상 존재하지 않으며 권장되지 않는다. 대신,
-<function>mysql_select_db</function>과  <function>mysql_query</function>를
-사용하라.
+본 함수는 더 이상 존재하지 않으며 권장되지 않는다.
+대신, <function>mysql_select_db</function>과 
+<function>mysql_query</function>를 사용하라.
        </entry>
       </row>
      </tbody>
@@ -125,9 +125,9 @@ mysql_free_result($result);
   &reftitle.notes;
   <note>
    <para>
-본 함수는 이전에 접속된 데이터베이스로 변경되지는 않는다는 것을 알아야 한다.
-다시말하면, 다른 데이터베이스에서 SQL 질의를 위해 <emphasis>임시로</emphasis> 실행하는 용도로
-본 함수를 사용할 수 없으며, 직접 데이터베이스를 변경해야만 한다.
+이 함수는 이전에 접속된 데이터베이스로 변경되지는 않는다.
+다시말하면, 다른 데이터베이스에서 SQL 질의를 위해 <emphasis>임시로</emphasis>
+실행하는 용도로 본 함수를 사용할 수 없으며, 직접 데이터베이스를 변경해야만 한다.
 본 함수 대신, SQL 질의에서의 <literal>database.table</literal> 문법과
 <function>mysql_select_db</function>를  사용하기를 권장한다.
    </para>

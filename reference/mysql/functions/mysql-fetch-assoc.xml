@@ -13,10 +13,10 @@
    <methodparam><type>resource</type><parameter>result</parameter></methodparam>
   </methodsynopsis>
   <para>
-내부 데이터 포인터 바로 앞으로 이동하여 인출된 행을 연관 배열로 반환한다.
-<function>mysql_fetch_assoc</function>는 
-두번째 선택 인자로 MYSQL_ASSOC를 이용하여 <function>mysql_fetch_array</function>를 호출하는
-것과 동일하다.
+인출된 행을 연관 배열로 반환하고, 내부 데이터 포인터 바로 앞으로 이동한다.
+<function>mysql_fetch_assoc</function>은 
+두번째 선택 인자로 MYSQL_ASSOC를 이용하여
+<function>mysql_fetch_array</function>를 호출하는 것과 동일하다.
 이 함수는 연관 배열만을 반환한다. 
   </para>
  </refsect1>
@@ -36,11 +36,11 @@
 인출된 행에서 연관 배열을 반환하거나 더 이상의 행이 없다면 &false;를 반환한다.
   </para>
   <para>
-만약, 동일한 이름을 포함하는 둘 또는 그이상의 컬럼들은 마지막 컬럼이 우선권을 가질 것이다.
+동일한 이름을 포함하는 둘 또는 그 이상의 컬럼들은 마지막 컬럼이 우선권을 가질 것이다.
 동일한 이름의 다른 컬럼에 접근하기 위해서는 
 <function>mysql_fetch_row</function>를 사용하거나,
 별명(alias)을 사용하면 된다.
-<function>mysql_fetch_array</function> 별명에 대한 설명은 예제를 참조하라.
+<function>mysql_fetch_array</function>의 별명에 대한 설명은 예제를 참조하라.
   </para>
  </refsect1>
 
@@ -48,7 +48,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title><function>mysql_fetch_assoc</function>의 확장된 예제</title>
+    <title><function>mysql_fetch_assoc</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -106,7 +106,7 @@ mysql_free_result($result);
    <title>성능</title>
    <para>
 <function>mysql_fetch_assoc</function>는 
-<function>mysql_fetch_row</function> 보다 느려지지는 않는다.   
+<function>mysql_fetch_row</function>보다 느려지지는 않는다.   
    </para>
   </note>
   &database.field-case;
