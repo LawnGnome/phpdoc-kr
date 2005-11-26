@@ -1,59 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- splitted from ./kr/functions/mysql.xml, last change in rev 1.1 -->
-<!-- last change to 'mysql-fetch-assoc' in en/ tree in rev 1.45 -->
-  <refentry id="function.mysql-fetch-assoc">
-   <refnamediv>
-    <refname>mysql_fetch_assoc</refname> 
-    <refpurpose>
-     결과를 필드이름 색인으로 된 배열로 반환
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>mysql_fetch_assoc</methodname>
-      <methodparam><type>int</type><parameter>result</parameter></methodparam>
-     </methodsynopsis>
-    <para> 
-     필드이름의 색인을 가진 배열로 돌려주고,
-     가져올 행이 없을 경우 &false;값을 반환한다.</para>
-    <para>
-     <function>mysql_fetch_assoc</function>는
-     <function>mysql_fetch_array</function>의 두번째 인자로
-     MYSQL_ASSOC를 사용한 경우과 동일하게 작동한다.
-     이 방식은 <function>mysql_fetch_array</function>의 본래의 동작 방법이다.
-     만일 숫자 색인 방식과 필드이름 색인을 동시에 사용하려면,
-     <function>mysql_fetch_array</function>를 사용하면 된다.
-    </para>
-    <para>
-     결과로 두개 이상의 동일한 필드 이름을 가진 열(column)이 있다면,
-     마지막 열이 우선권을 가진다. 동일한 다른 열을 사용하기 위해서는
-     색인 번호도 추가된 <function>mysql_fetch_array</function>를
-     사용해야할 것이다.
-    </para>
-    <para>
-     <function>mysql_fetch_assoc</function>는 필드이름으로 된 색인이 추가되지만,
-     <function>mysql_fetch_row</function> 보다 느려지지는 않는다.
-    </para>
-    <para>
-     참조: <function>mysql_fetch_row</function>, <function>mysql_fetch_array</function>.
-    </para>
-    <example>
-     <title><function>mysql_fetch_assoc</function></title>
-     <programlisting role="php">
-&lt;?php 
-mysql_connect ($host, $user, $password);
-$result = mysql_db_query ("database","select * from table");
-while ($row = mysql_fetch_assoc ($result)) {
-    echo $row["user_id"];
-    echo $row["fullname"];
+<!-- EN-Revision: 1.15 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-fetch-assoc">
+ <refnamediv>
+  <refname>mysql_fetch_assoc</refname>
+  <refpurpose>결과 행으로 부터 연관 배열로 반환</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>mysql_fetch_assoc</methodname>
+   <methodparam><type>resource</type><parameter>result</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+내부 데이터 포인터 바로 앞으로 이동하여 인출된 행을 연관 배열로 반환한다.
+<function>mysql_fetch_assoc</function>는 
+두번째 선택 인자로 MYSQL_ASSOC를 이용하여 <function>mysql_fetch_array</function>를 호출하는
+것과 동일하다.
+이 함수는 연관 배열만을 반환한다. 
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    &mysql.result.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+인출된 행에서 연관 배열을 반환하거나 더 이상의 행이 없다면 &false;를 반환한다.
+  </para>
+  <para>
+만약, 동일한 이름을 포함하는 둘 또는 그이상의 컬럼들은 마지막 컬럼이 우선권을 가질 것이다.
+동일한 이름의 다른 컬럼에 접근하기 위해서는 
+<function>mysql_fetch_row</function>를 사용하거나,
+별명(alias)을 사용하면 된다.
+<function>mysql_fetch_array</function> 별명에 대한 설명은 예제를 참조하라.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>mysql_fetch_assoc</function>의 확장된 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+$conn = mysql_connect("localhost", "mysql_user", "mysql_password");
+
+if (!$conn) {
+    echo "Unable to connect to DB: " . mysql_error();
+    exit;
 }
-mysql_free_result ($result);
+  
+if (!mysql_select_db("mydbname")) {
+    echo "Unable to select mydbname: " . mysql_error();
+    exit;
+}
+
+$sql = "SELECT id as userid, fullname, userstatus 
+        FROM   sometable
+        WHERE  userstatus = 1";
+
+$result = mysql_query($sql);
+
+if (!$result) {
+    echo "Could not successfully run query ($sql) from DB: " . mysql_error();
+    exit;
+}
+
+if (mysql_num_rows($result) == 0) {
+    echo "No rows found, nothing to print so am exiting";
+    exit;
+}
+
+// While a row of data exists, put that row in $row as an associative array
+// Note: If you're expecting just one row, no need to use a loop
+// Note: If you put extract($row); inside the following loop, you'll
+//       then create $userid, $fullname, and $userstatus
+while ($row = mysql_fetch_assoc($result)) {
+    echo $row["userid"];
+    echo $row["fullname"];
+    echo $row["userstatus"];
+}
+
+mysql_free_result($result);
+
 ?>
-     </programlisting>
-    </example>
-   </refsect1>
-  </refentry>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <title>성능</title>
+   <para>
+<function>mysql_fetch_assoc</function>는 
+<function>mysql_fetch_row</function> 보다 느려지지는 않는다.   
+   </para>
+  </note>
+  &database.field-case;
+  &database.fetch-null;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_fetch_row</function></member>
+    <member><function>mysql_fetch_array</function></member>
+    <member><function>mysql_data_seek</function></member>
+    <member><function>mysql_query</function></member>
+    <member><function>mysql_error</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
