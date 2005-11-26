@@ -3,7 +3,7 @@
 <refentry id="function.mysql-fetch-assoc">
  <refnamediv>
   <refname>mysql_fetch_assoc</refname>
-  <refpurpose>결과 행으로 부터 연관 배열로 반환</refpurpose>
+  <refpurpose>연관 배열로 결과 행을 반환</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

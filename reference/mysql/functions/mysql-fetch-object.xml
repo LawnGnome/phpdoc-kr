@@ -3,7 +3,7 @@
 <refentry id="function.mysql-fetch-object">
  <refnamediv>
   <refname>mysql_fetch_object</refname>
-  <refpurpose>결과 행을 객체형으로 인출</refpurpose>
+  <refpurpose>객체형으로 결과 행을 인출</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
