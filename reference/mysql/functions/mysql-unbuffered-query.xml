@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-unbuffered-query">
+ <refnamediv>
+  <refname>mysql_unbuffered_query</refname>
+  <refpurpose>결과 행을 버퍼링하지도 인출하지도 않으면서 MySQL로 SQL 질의를 전송</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>resource</type><methodname>mysql_unbuffered_query</methodname>
+   <methodparam><type>string</type><parameter>query</parameter></methodparam>
+   <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+<function>mysql_unbuffered_query</function>는 SQL 질의를 
+결과 행들을 버퍼링하지도 인출하지도 않고 <parameter>query</parameter>를 MySQL로 전송한다.
+한편, 이는 거대한 결과 집합을 만드는 SQL 질의로 점유하는 메모리를 절약한다.
+또한, 완료된 SQL 질의가 수행될 때까지 기다리지 않고, 첫행이 조회된 이후로
+즉시 작업을 시작할 수 있다.
+다중 DB-접속을 사용할 때, 옵션 인자인 <parameter>link_identifier</parameter>를
+지정해야한다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>query</parameter></term>
+     <listitem>
+      <para>
+SQL 질의문
+      </para>
+     </listitem>
+    </varlistentry>
+    &mysql.linkid.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+SELECT, SHOW, DESCRIBE, EXPLAIN 구문에서
+<function>mysql_unbuffered_query</function>가
+성공하면 <type>resource</type>를 에러가 발생하면 &false;를 반환한다.
+  </para>
+  <para>
+UPDATE, DELETE, DROP 등과 같은 SQL 구문에서
+<function>mysql_unbuffered_query</function>가
+성공하면 &true;를 에러가 발생하면 &false;를 반환한다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+<function>mysql_unbuffered_query</function>의 이점은 비용에서 온다:
+<function>mysql_unbuffered_query</function>로부터 반환된 결과 집합은
+<function>mysql_num_rows</function>와 <function>mysql_data_seek</function>에서
+사용할 수 없다.
+또한, MySQL로 새로운 SQL 질의를 전송하기 전에
+비-버퍼링 SQL 질의로부터의 모든 결과 행을 인출해야한다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_query</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
