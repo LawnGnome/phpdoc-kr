@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.11 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-list-fields">
+<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-num-fields">
  <refnamediv>
-  <refname>mysql_list_fields</refname>
-  <refpurpose>MySQL 테이블 필드 목록을 반환한다.</refpurpose>
+  <refname>mysql_num_fields</refname>
+  <refpurpose>결과로부터 필드의 개수를 반환</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
-   <type>resource</type><methodname>mysql_list_fields</methodname>
-   <methodparam><type>string</type><parameter>database_name</parameter></methodparam>
-   <methodparam><type>string</type><parameter>table_name</parameter></methodparam>
-   <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
+   <type>int</type><methodname>mysql_num_fields</methodname>
+   <methodparam><type>resource</type><parameter>result</parameter></methodparam>
   </methodsynopsis>
   <para>
-주어진 테이블명에 대한 정보를 반환한다.
-  </para>
-  <para>
-이 함수는 권장되지 않는다.
-대신, <literal>SHOW COLUMNS FROM table [LIKE 'name']</literal>을
-<function>mysql_query</function>에서 실행하는 것을 권한다.  
+질의로부터 필드의 개수를 반환한다.
   </para>
  </refsect1>
 
@@ -28,23 +21,7 @@
   &reftitle.parameters;
   <para>
    <variablelist>
-    <varlistentry>
-     <term><parameter>database_name</parameter></term>
-     <listitem>
-      <para>
-데이터베이스명.
-      </para>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><parameter>table_name</parameter></term>
-     <listitem>
-      <para>
-테이블명.
-      </para>
-     </listitem>
-    </varlistentry>
-    &mysql.linkid.description;
+    &mysql.result.description;
    </variablelist>
   </para>
  </refsect1>
@@ -52,60 +29,30 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-성공하면 <type>resource</type>를, 실패하면 &false;를 반환한다.
-  </para>
-  <para>
-결과값은 <function>mysql_field_flags</function>,
-<function>mysql_field_len</function>,
-<function>mysql_field_name</function>,
-<function>mysql_field_type</function>와 함께 사용될 수 있다.   
+성공하면 <type>resource</type> 결과 셋으로부터 필드의 개수를 반환하고,
+실패하면 &false;를 반환한다.
   </para>
  </refsect1>
-
+ 
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
    <example>
-    <title><function>mysql_list_fields</function> 예제</title>
+    <title><function>mysql_num_fields</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
-$result = mysql_query("SHOW COLUMNS FROM sometable");
+$result = mysql_query("SELECT id,email FROM people WHERE id = '42'");
 if (!$result) {
     echo 'Could not run query: ' . mysql_error();
     exit;
 }
-if (mysql_num_rows($result) > 0) {
-    while ($row = mysql_fetch_assoc($result)) {
-        print_r($row);
-    }
-}
+
+/* returns 2 because id,email === two fields */
+echo mysql_num_fields($result);
 ?>
 ]]>
     </programlisting>
-    &example.outputs.similar;
-    <screen>
-<![CDATA[
-Array
-(
-    [Field] => id
-    [Type] => int(7)
-    [Null] =>  
-    [Key] => PRI
-    [Default] =>
-    [Extra] => auto_increment
-)
-Array
-(
-    [Field] => email
-    [Type] => varchar(100)
-    [Null] =>
-    [Key] =>
-    [Default] =>
-    [Extra] =>
-)
-]]>
-    </screen>
    </example>
   </para>
  </refsect1>
@@ -115,7 +62,7 @@ Array
   <note>
    <para>
     &info.deprecated.alias;
-    <function>mysql_listfields</function>
+    <function>mysql_numfields</function>
    </para>
   </note>
  </refsect1>
@@ -124,8 +71,10 @@ Array
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>mysql_field_flags</function></member>
-    <member><function>mysql_info</function></member>
+    <member><function>mysql_select_db</function></member>
+    <member><function>mysql_query</function></member>
+    <member><function>mysql_fetch_field</function></member>
+    <member><function>mysql_num_rows</function></member>
    </simplelist>
   </para>
  </refsect1>

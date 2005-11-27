@@ -1,33 +1,87 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.4 Maintainer: pcraft Status: ok -->
-  <refentry id="function.mysql-ping">
-   <refnamediv>
-    <refname>mysql_ping</refname>
-    <refpurpose>서버 접속을 검사하고 접속이 없으면 재접속한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>mysql_ping</methodname>
-      <methodparam choice="opt"><type>resource</type><parameter>
-       link_identifier
-       </parameter></methodparam>
-     </methodsynopsis>
-    <para>
-	 <function>mysql_ping</function>은 서버와의 접속이 동작하는지 그렇지 않은지
-	 검사한다. 만약, 접속이 종료되었다면 자동으로 재접속을 시도한다.
-	 이 함수는 한동안 멈춰있는 스크립트들이 접속이 종료되었는지 검사를 하고
-	 만약 필요하다면 재접속하기위해 사용될 수 있다.
-     <function>mysql_ping</function>은 서버와의 접속이 동작하면 &true;를 반환하고,
-	 그렇지 않으면 &false;를 반환한다.
-    </para>
-    <para>
-     참조: 
-     <function>mysql_thread_id</function>,
-     <function>mysql_list_processes</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.8 Maintainer: pcraft Status: ok -->
+<refentry id="function.mysql-ping">
+ <refnamediv>
+  <refname>mysql_ping</refname>
+  <refpurpose>서버 접속을 검사하고 접속이 없으면 재접속한다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>mysql_ping</methodname>
+   <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+서버로의 접속이 정상적으로 동작하는지 점검한다.
+접속이 종료되었다면 자동으로 재접속을 시도한다.
+이 함수는 스크립트에서 사용된 이후 오랜 시간동안 멈추어 있을 때때,
+접속이 종료되지 않았는지 점검하고 필요시에는 재접속을 하는 용도로 사용된다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    &mysql.linkid.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+MySQL 서버와의 접속이 정상적이면 &true;를 그렇지 않다면 &false;를 반환한다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>mysql_ping</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+set_time_limit(0);
+
+$conn = mysql_connect('localhost', 'mysqluser', 'mypass');
+$db   = mysql_select_db('mydb');
+
+/* Assuming this query will take a long time */
+$result = mysql_query($sql);
+if (!$result) {
+    echo 'Query #1 failed, exiting.';
+    exit;
+}
+
+/* Make sure the connection is still alive, if not, try to reconnect */
+if (!mysql_ping($conn)) {
+    echo 'Lost connection, exiting after query #1';
+    exit;
+}
+mysql_free_result($result);
+
+/* So the connection is still alive, let's run another query */
+$result2 = mysql_query($sql2);
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_thread_id</function></member>
+    <member><function>mysql_list_processes</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

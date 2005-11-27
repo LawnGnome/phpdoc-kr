@@ -75,7 +75,7 @@ PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
       <para>
 <parameter>client_flags</parameter>는 다음의 상수를 조합하여 사용할 수 있다:
 <constant>MYSQL_CLIENT_COMPRESS</constant>, 
-<constant>MYSQL_CLIENT_IGNORE_SPACE</constant> or
+<constant>MYSQL_CLIENT_IGNORE_SPACE</constant>,
 <constant>MYSQL_CLIENT_INTERACTIVE</constant>.
 더 많은 정보는 <xref linkend="mysql.client-flags" />를 참조하면 된다.
       </para>
