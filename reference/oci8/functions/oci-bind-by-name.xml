@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.4 $ -->
+﻿<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- $Revision: 1.5 $ -->
   <refentry id="function.oci-bind-by-name">
    <refnamediv>
     <refname>oci_bind_by_name</refname>
@@ -164,8 +164,7 @@ oci_close($conn);
      </example>
     </para>
     <para>
-     Remember, this function strips trailing whitespaces. See the following
-     example:
+     이 함수는 따라오는 공백문자를 제거한다는 것을 기억하라.:
     </para>
     <para>
      <example>
