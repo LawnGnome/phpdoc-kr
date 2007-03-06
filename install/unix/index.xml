@@ -73,7 +73,6 @@
     참고하십시오.
    </para>
    
-   &install.unix.gentoo;
    &install.unix.hpux;
    &install.unix.openbsd;
    &install.unix.solaris;
