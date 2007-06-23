@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/strings.xml, last change in rev 1.3 -->
 <!-- last change to 'setlocale' in en/ tree in rev 1.2 -->
-	<refentry id="function.setlocale">
+	<refentry xml:id="function.setlocale" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>setlocale</refname>
 			<refpurpose>지역적보를 지정한다.</refpurpose>

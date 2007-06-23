@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
-  <chapter id="security.cgi-bin">
+  <chapter xml:id="security.cgi-bin" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>CGI 바이너리로 설치</title>
 
-   <sect1 id="security.cgi-bin.attacks">
+   <sect1 xml:id="security.cgi-bin.attacks">
     <title>가능한 공격</title>
     <simpara>
      몇가지 이유로 인해 PHP를 서버 소프트웨어(아파치 등)의 모듈로
@@ -11,7 +11,7 @@
      안전한 chroot와 setuid 환경을 제공하기 위해 <acronym>CGI</acronym>
      바이너리로 PHP를 사용하는 것을 선택할 수 있습니다.
      이 설치는 보통 실행 가능한 PHP 바이너리를 웹서버 cgi-bin 디렉토리에
-     두는 것입니다. CERT 권고 <ulink url="&url.cert;">CA-96.11</ulink>는
+     두는 것입니다. CERT 권고 <link xlink:href="&url.cert;">CA-96.11</link>는
      어떠한 인터프리터도 cgi-bin에 두지 않을 것을 권장합니다. PHP 바이너리는
      독립 인터프리터로 사용할 수 있지만, 이러한 방법의 설치가 가능하도록 하는
      몇가지 공격을 방지하도록 설계되어 있습니다.
@@ -69,7 +69,7 @@
     </itemizedlist>
    </sect1>
 
-   <sect1 id="security.cgi-bin.default">
+   <sect1 xml:id="security.cgi-bin.default">
     <title>방법 1: 공개 파일만을 제공</title>
     <simpara>
      서버가 패스워드나 IP 기반 접근 컨트롤로 제한하는 콘텐츠를 가지고
@@ -91,7 +91,7 @@
     </simpara>
    </sect1>
 
-   <sect1 id="security.cgi-bin.force-redirect">
+   <sect1 xml:id="security.cgi-bin.force-redirect">
     <title>방법 2: --enable-force-cgi-redirect 사용</title>
     <simpara>
      이 컴파일시의 옵션은 누구라도 <filename
@@ -118,7 +118,7 @@ AddHandler php-script .php
     </simpara>
    </sect1>
 
-   <sect1 id="security.cgi-bin.doc-root">
+   <sect1 xml:id="security.cgi-bin.doc-root">
     <title>방법 3: doc_root나 user_dir을 설정</title>
     <simpara>
      스크립트나 실행 파일과 같은 활동적인 콘텐츠를 웹서버 디렉토리에
@@ -172,7 +172,7 @@ AddHandler php-script .php
     </simpara>
    </sect1>
 
-   <sect1 id="security.cgi-bin.shell">
+   <sect1 xml:id="security.cgi-bin.shell">
     <title>방법 4: 웹 트리 외부의 PHP 파서</title>
     <para>
      매우 안전한 옵션은 PHP 파서 바이너리를 웹트리 밖에 위치시키는

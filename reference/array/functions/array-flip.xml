@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.10 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.array-flip">
+  <refentry xml:id="function.array-flip" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>array_flip</refname>
     <refpurpose>배열안의 모든 키를 각 키의 연관값으로 바꾼다.</refpurpose>

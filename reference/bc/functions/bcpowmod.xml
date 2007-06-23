@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.3 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bcpowmod">
+  <refentry xml:id="function.bcpowmod" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bcpowmod</refname>
     <refpurpose>

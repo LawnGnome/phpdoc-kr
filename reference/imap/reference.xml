@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
- <reference id="ref.imap">
+ <reference xml:id="ref.imap" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>IMAP, POP3 그리고 NNTP 함수</title>
   <titleabbrev>IMAP</titleabbrev>
 
@@ -9,7 +9,7 @@
    <simpara>
     이 함수를 작동시키려면, <option role="configure">--with-imap</option>
     옵션으로 PHP를 컴파일해야 한다. 이 옵션은 c-client 라이브러리가 요구된다.
-    <ulink url="&url.imap;">&url.imap;</ulink>으로부터 최신 버전을 내려받아
+    <link xlink:href="&url.imap;">&url.imap;</link>으로부터 최신 버전을 내려받아
     컴파일 하시오. 그리고 <filename>c-client/c-client.a</filename>파일을
     <filename>/usr/local/lib/libc-client.a</filename>로,또는 다른 링크 경로에
     복사하시오.  
@@ -32,55 +32,55 @@
     <itemizedlist>
      <listitem>
       <simpara>
-       <ulink url="&url.rfc;rfc821.html">RFC821</ulink>: Simple Mail
+       <link xlink:href="&url.rfc;rfc821.html">RFC821</link>: Simple Mail
 			 Transfer Protocol (SMTP).
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       <ulink url="&url.rfc;rfc822.html">RFC822</ulink>: Standard for
+       <link xlink:href="&url.rfc;rfc822.html">RFC822</link>: Standard for
 			 ARPA internet text messages.
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       <ulink url="&url.rfc;rfc2060.html">RFC2060</ulink>: Internet
+       <link xlink:href="&url.rfc;rfc2060.html">RFC2060</link>: Internet
 			 Message Access Protocol (IMAP) Version 4rev1. 
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       <ulink url="&url.rfc;rfc1939.html">RFC1939</ulink>:  Post
+       <link xlink:href="&url.rfc;rfc1939.html">RFC1939</link>:  Post
 			 Office Protocol Version 3 (POP3).
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       <ulink url="&url.rfc;rfc977.html">RFC977</ulink>: Network News
+       <link xlink:href="&url.rfc;rfc977.html">RFC977</link>: Network News
 			 Transfer Protocol (NNTP).
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       <ulink url="&url.rfc;rfc2076.html">RFC2076</ulink>: Common
+       <link xlink:href="&url.rfc;rfc2076.html">RFC2076</link>: Common
 			 Internet Message Headers.
       </simpara>
      </listitem>
      <listitem>
       <simpara>
-       <ulink url="&url.rfc;rfc2045.html">RFC2045</ulink> , <ulink
-				url="&url.rfc;rfc2046.html">RFC2046</ulink> , <ulink
-				url="&url.rfc;rfc2047.html">RFC2047</ulink> , <ulink
-				url="&url.rfc;rfc2048.html">RFC2048</ulink> &amp; <ulink
-				url="&url.rfc;rfc2049.html">RFC2049</ulink>: Multipurpose
+       <link xlink:href="&url.rfc;rfc2045.html">RFC2045</link> , <link
+				url="&url.rfc;rfc2046.html">RFC2046</link> , <link
+				url="&url.rfc;rfc2047.html">RFC2047</link> , <link
+				url="&url.rfc;rfc2048.html">RFC2048</link> &amp; <link
+				url="&url.rfc;rfc2049.html">RFC2049</link>: Multipurpose
 			 Internet Mail Extensions (MIME).
       </simpara>
      </listitem>
     </itemizedlist> 
     더 자세한 사항은 David Wood씨가 저술한  
-		<ulink url="&url.email.book;">Programming Internet Email</ulink>
+		<link xlink:href="&url.email.book;">Programming Internet Email</link>
 		과 Dianna Mullet씨와 Kevin Mullet씨가 같이 저술한 
-    <ulink url="&url.imap.book;">Managing IMAP</ulink>를 참고하시오. 
+    <link xlink:href="&url.imap.book;">Managing IMAP</link>를 참고하시오. 
    </para>
   </partintro>
 

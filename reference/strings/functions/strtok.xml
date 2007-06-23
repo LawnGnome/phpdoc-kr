@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry id="function.strtok">
+  <refentry xml:id="function.strtok" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>strtok</refname>
     <refpurpose>문자열을 토큰화 합니다.</refpurpose>

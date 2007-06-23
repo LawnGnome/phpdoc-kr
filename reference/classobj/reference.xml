@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.8 Maintainer: fuzzy74 Status: ready -->
- <reference id="ref.classobj">
+ <reference xml:id="ref.classobj" xmlns="http://docbook.org/ns/docbook">
   <title>클래스/객체 함수</title>
   <titleabbrev>클래스/객체</titleabbrev>
 
   <partintro>
-    <section id="classobj.intro">
+    <section xml:id="classobj.intro">
      &reftitle.intro;
      <para>
       이 함수들은 클래스와 객체에 대한 정보를 얻을수 있게 해준다.
@@ -17,32 +17,32 @@
      </para>
     </section>
 
-   <section id="classobj.requirements">
+   <section xml:id="classobj.requirements">
     &reftitle.required;
     &no.requirement;
    </section>
 
-   <section id="classobj.installation">
+   <section xml:id="classobj.installation">
     &reftitle.install;
     &no.install;
    </section>
 
-   <section id="classobj.configuration">
+   <section xml:id="classobj.configuration">
     &reftitle.runtime;
     &no.config;
    </section>
 
-   <section id="classobj.resources">
+   <section xml:id="classobj.resources">
     &reftitle.resources;
     &no.resource;
    </section>
 
-   <section id="classobj.constants">
+   <section xml:id="classobj.constants">
     &reftitle.constants;
     &no.constants;
    </section>
 
-    <section id="classobj.examples">
+    <section xml:id="classobj.examples">
      &reftitle.examples;
      <para>
       다음 예제코드를 보면, 먼저 기본 클래스를 선언하고, 그 클래스를

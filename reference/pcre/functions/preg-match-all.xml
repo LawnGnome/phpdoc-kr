@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
-  <refentry id="function.preg-match-all">
+  <refentry xml:id="function.preg-match-all" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>preg_match_all</refname>
     <refpurpose>전역 정규 표현식 매치를 수행합니다.</refpurpose>

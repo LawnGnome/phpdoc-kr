@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
- <sect1 id="install.macosx.packages">
+ <sect1 xml:id="install.macosx.packages" xmlns="http://docbook.org/ns/docbook">
   <title>패키지 사용하기</title>
   <simpara>
    Mac OS X를 위해 미리 컴파일 하여 패키지 된 몇몇 PHP 버전이 존재합니다. 이는

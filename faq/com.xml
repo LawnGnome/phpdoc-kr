@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.10 Maintainer: fuzzy74 Status: ready -->
- <chapter id="faq.com">
+ <chapter xml:id="faq.com" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP와 COM</title>
   <titleabbrev>PHP와 COM</titleabbrev>
 
@@ -10,7 +10,7 @@
    </para>
 
   <qandaset>
-   <qandaentry id="faq.com.q1">
+   <qandaentry xml:id="faq.com.q1">
     <question>
      <para>
       어떤것을 계산하는 DLL을 빌드했습니다. PHP상에서 이 DLL을 실행시킬수 있는 방법
@@ -25,7 +25,7 @@
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q2">
+   <qandaentry xml:id="faq.com.q2">
     <question>
      <para>
       'Unsupported variant type: xxxx (0xxxxx)'은 무엇을 의미합니까?
@@ -42,7 +42,7 @@
     </answer>
    </qandaentry>
   
-   <qandaentry id="faq.com.q3">
+   <qandaentry xml:id="faq.com.q3">
     <question>
      <para>
       PHP에서 비주얼한 객체(visual object)를 조작할수 있습니까?
@@ -58,7 +58,7 @@
     </answer>
    </qandaentry>
   
-   <qandaentry id="faq.com.q4">
+   <qandaentry xml:id="faq.com.q4">
     <question>
      <para>
       세션안에 COM 객체를 저장할 수 있습니까?
@@ -72,7 +72,7 @@
     </answer>
    </qandaentry>
   
-   <qandaentry id="faq.com.q5">
+   <qandaentry xml:id="faq.com.q5">
     <question>
      <para>
       COM 에러를 어떻게 추적할 수 있습니까?
@@ -86,7 +86,7 @@
     </answer>
    </qandaentry>
   
-   <qandaentry id="faq.com.q6">
+   <qandaentry xml:id="faq.com.q6">
     <question>
      <para>
       펄에서 쓰던 방법으로 PHP 스크립트에서 DLL 파일을 만들수 있습니까?
@@ -99,7 +99,7 @@
     </answer>
    </qandaentry>
   
-   <qandaentry id="faq.com.q7">
+   <qandaentry xml:id="faq.com.q7">
     <question>
      <para>
       'Unable to obtain IDispatch interface for CLSID {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}'의
@@ -130,7 +130,7 @@
     </answer>
    </qandaentry>
     
-   <qandaentry id="faq.com.q8">
+   <qandaentry xml:id="faq.com.q8">
     <question>
      <para>
       다른 서버(remote server)에서 COM 객체(object)를 어떻게 실행할수 있습니까?
@@ -147,7 +147,7 @@
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q9">
+   <qandaentry xml:id="faq.com.q9">
     <question>
      <para>
       'DCOM is disabled in C:\path...\scriptname.php on line 6'라는 메시지를 봤습니다.
@@ -161,7 +161,7 @@
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q10">
+   <qandaentry xml:id="faq.com.q10">
     <question>
      <para>
       PHP에서 ActiveX 객체(object)를 부르거나/변경할수 있습니까?
@@ -176,7 +176,7 @@
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q11">
+   <qandaentry xml:id="faq.com.q11">
     <question>
      <para>
       특정 컴포넌트에서 실행중인 인스턴스(instance)에 접근 가능합니까? 
@@ -197,7 +197,7 @@
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q12">
+   <qandaentry xml:id="faq.com.q12">
     <question>
      <para>
       COM 객체로부터 받은 이벤트를 제어할 방법이 있습니까?
@@ -246,7 +246,7 @@ $ie = null;
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q13">
+   <qandaentry xml:id="faq.com.q13">
     <question>
      <para>
       하나 이상의 인터페이스를 갖는 COM 객체의 메소드(method)를 불러
@@ -257,12 +257,12 @@ $ie = null;
      <para>
       답은 불만스럽겠지만 간단합니다. 확실치는 않지만 당신은 아무것도 할수없습니다.
       어떤사람은 이 문제와 관련된 정보를 가지고 있습니다. 
-      <ulink url="mailto:&email.harald;">저</ulink>에게 알려주시라 :)
+      <link url="mailto:&email.harald;">저</link>에게 알려주시라 :)
      </para>
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q14">
+   <qandaentry xml:id="faq.com.q14">
     <question>
      <para>
       그래서 PHP와 COM이 작동하는군요. COM+는 어떤가요?
@@ -276,7 +276,7 @@ $ie = null;
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.com.q15">
+   <qandaentry xml:id="faq.com.q15">
     <question>
      <para>
       PHP가 COM 객체를 다룰수있다면, PHP로 컴포넌트 자원을 관리하는 MTS를 쓸수있지 않을까요?

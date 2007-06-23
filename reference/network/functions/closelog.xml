@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/network.xml, last change in rev 1.3 -->
 <!-- last change to 'closelog' in en/ tree in rev 1.2 -->
-	<refentry id="function.closelog">
+	<refentry xml:id="function.closelog" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>closelog</refname>
 			<refpurpose>시스템 로그에 기록을 못하도록 연결을 닫습니다.</refpurpose>

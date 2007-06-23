@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
- <appendix id="migration5">
+ <appendix xml:id="migration5" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP 4에서 PHP 5로 이행</title>
 
-  <section id='migration5.changes'>
+  <section xml:id='migration5.changes'>
    <title>PHP 5에서 바뀐 것들</title>
    <para>
     PHP 5와 내장된 젠드 엔진 2는 PHP의 성능과 능력을 대폭 향상하면서, 기존의
@@ -15,7 +15,7 @@
    </para>
   </section>
 
-  <section id="migration5.incompatible">
+  <section xml:id="migration5.incompatible">
    <title>이전 버전과 호환하지 않는 변경점</title>
    <para>
     기존 PHP 4 코드의 대부분은 변경 없이 작동하지만, 다음의 비호환 변경점에
@@ -40,9 +40,9 @@
     <listitem><simpara>
      더이상 Apahce2 SAPI에서 PATH_TRANSLATED 서버 변수를 자동으로 설정하지
      않습니다. PHP 4에서는 아파치가 생성하지 않았을 때, SCRIPT_FILENAME 서버
-     변수와 동일하게 설정했었습니다. 이 변경은 <ulink url="&url.cgispecs;">CGI
-      규격</ulink>에 따르기 위한 점입니다. 자세한 정보는 <ulink
-      url="&url.php.bugs;23610">버그 #23610</ulink>를 참고하십시오.
+     변수와 동일하게 설정했었습니다. 이 변경은 <link xlink:href="&url.cgispecs;">CGI
+      규격</link>에 따르기 위한 점입니다. 자세한 정보는 <link
+      xlink:href="&url.php.bugs;23610">버그 #23610</link>를 참고하십시오.
     </simpara></listitem>
     <listitem><simpara>
      <link linkend="ref.tokenizer">Tokenizer</link> 확장은 더 이상
@@ -131,7 +131,7 @@ class fubar {
    </para>
   </section>
 
-  <section id="migration5.cli-cgi">
+  <section xml:id="migration5.cli-cgi">
    <title>CLI와 CGI</title>
    <para>
     PHP 5에서 CLI와 CGI 파일명이 변경되었습니다. PHP 5에서, CGI 버전은
@@ -150,7 +150,7 @@ class fubar {
    </para>
   </section>
 
-  <section id="migration5.configuration">
+  <section xml:id="migration5.configuration">
    <title>설정 파일 이행</title>
    <para>
     ISAPI 모듈들의 이름이 php4xxx에서 php5xxx로 바뀌었기에, 설정 파일에 약간의
@@ -193,7 +193,7 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    </para>
   </section>
 
-  <section id="migration5.functions">
+  <section xml:id="migration5.functions">
    <title>새로운 함수들</title>
    <para>
     PHP 5에서 새로운 함수가 추가되었습니다. 그 목록입니다:
@@ -510,7 +510,7 @@ Action application/x-httpd-php "/php/php-cgi.exe"
   </section>
 
 
-  <section id="migration5.newconf">
+  <section xml:id="migration5.newconf">
    <title>새로운 지시어</title>
    <para>
     PHP 5는 몇몇 새로운 &php.ini; 지시어를 가집니다. 그 목록입니다:
@@ -542,7 +542,7 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    </itemizedlist>
   </section>
 
-  <section id="migration5.databases">
+  <section xml:id="migration5.databases">
    <title>데이터베이스</title>
    <para>
     PHP 5에서 데이터베이스에 관한 변경이 있습니다. (MySQL과 SQLite)
@@ -565,12 +565,12 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    </para>
   </section>
 
-  <section id='migration5.oop'>
+  <section xml:id='migration5.oop'>
    <title>새로운 객체 모델</title>
    <para>
     PHP 5에서 새로운 객체 모델이 존재합니다. PHP의 객체 조작은 완전히 새로
-    쓰여졌으며, 더 나은 성능과 많은 기능을 허용합니다. 자세한 정보는 <ulink
-     url="http://www.php.net/zend_engine-2.php">http://www.php.net/zend-engine-2.php</ulink>를
+    쓰여졌으며, 더 나은 성능과 많은 기능을 허용합니다. 자세한 정보는 <link
+     url="http://www.php.net/zend_engine-2.php">http://www.php.net/zend-engine-2.php</link>를
     읽어보십시오.
    </para>
   </section>

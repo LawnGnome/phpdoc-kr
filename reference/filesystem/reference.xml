@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
- <reference id="ref.filesystem">
+ <reference xml:id="ref.filesystem" xmlns="http://docbook.org/ns/docbook">
   <title>파일시스템 함수</title>
   <titleabbrev>파일시스템</titleabbrev>
 
   <partintro>
-   <section id="filesystem.intro">
+   <section xml:id="filesystem.intro">
    &reftitle.intro;
     <para>
     </para>
    </section>
 
-   <section id="filesystem.requirements">
+   <section xml:id="filesystem.requirements">
     &reftitle.required;
     <para>
      이 확장을 빌드하기 위해서 외부 라이브러리가 필요하지 않습니다. 그러나
@@ -21,14 +21,14 @@
     </para>
    </section>
    
-   <section id="filesystem.installation">
+   <section xml:id="filesystem.installation">
     &reftitle.install;
     &no.install;
    </section>
 
    &reference.filesystem.ini;
 
-   <section id="filesystem.resources">
+   <section xml:id="filesystem.resources">
     &reftitle.resources;
      <para>
      </para>
@@ -36,7 +36,7 @@
 
    &reference.filesystem.constants;
 
-   <section id="filesystem.seealso">
+   <section xml:id="filesystem.seealso">
    &reftitle.seealso;
     <simpara>
      관련있는 함수인, <link linkend="ref.dir">디렉토리</link>와 <link

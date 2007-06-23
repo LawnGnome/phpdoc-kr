@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.round">
+  <refentry xml:id="function.round" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>round</refname>
     <refpurpose>실수를 반올림합니다.</refpurpose>

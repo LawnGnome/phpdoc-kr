@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
 <!-- last change to 'rename' in en/ tree in rev 1.2 -->
-	<refentry id="function.rename">
+	<refentry xml:id="function.rename" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>rename</refname>
 			<refpurpose>파일을 새 이름으로 고치기</refpurpose>

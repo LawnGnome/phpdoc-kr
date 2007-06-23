@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/zlib.xml, last change in rev 1.2 -->
 <!-- last change to 'gzuncompress' in en/ tree in rev 1.11 -->
-	<refentry id="function.gzuncompress">
+	<refentry xml:id="function.gzuncompress" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>gzuncompress</refname>
 			<refpurpose>gz로 압축된 문자를 압축해제 한다.</refpurpose>

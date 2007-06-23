@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.8 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.count">
+  <refentry xml:id="function.count" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>count</refname>
     <refpurpose>변수의 원소 갯수를 구한다</refpurpose>

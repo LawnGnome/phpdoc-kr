@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry id="function.fprintf">
+  <refentry xml:id="function.fprintf" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>fprintf</refname>
     <refpurpose>문자열을 형식화하여 스트림에 기록합니다.</refpurpose>

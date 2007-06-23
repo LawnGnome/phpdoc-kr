@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bccomp">
+  <refentry xml:id="function.bccomp" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bccomp</refname>
     <refpurpose>두개의 임의 정확도 수를 비교한다</refpurpose>

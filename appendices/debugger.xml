@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
+<!-- $Revision: 1.11 $ -->
 <!-- EN-Revision: 1.25 Maintainer: fuzzy74 Status: ready -->
- <appendix id="debugger">
+ <appendix xml:id="debugger" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP 디버깅하기</title>
 
-  <sect1 id="debugger-about">
+  <sect1 xml:id="debugger-about">
    <title>디버거에 관하여</title>
    <simpara>
     PHP 3는 네트워크-기반의 디버거가 지원된다.
    </simpara>
    <simpara>
     PHP 4는 내장된 디버깅 기능을 갖지 않는다. 대신 외부 디버거 중 하나를 이용할수 있다. 
-    <ulink url="&url.zend.ide;">Zend IDE</ulink>는 디버거를 내장하고 있고, 
-    <ulink url="&url.dbg;">&url.dbg;</ulink>에서 DBG같은 몇가지 무료 디버거 확장을 볼수 있다.
-    <ulink url="&url.apd;">Advanced PHP Debugger</ulink> (APD) 나
-    <ulink url="&url.xdebug;">Xdebug</ulink>는 이 섹션에서 설명하는
+    <link xlink:href="&url.zend.ide;">Zend IDE</link>는 디버거를 내장하고 있고, 
+    <link xlink:href="&url.dbg;">&url.dbg;</link>에서 DBG같은 몇가지 무료 디버거 확장을 볼수 있다.
+    <link xlink:href="&url.apd;">Advanced PHP Debugger</link> (APD) 나
+    <link xlink:href="&url.xdebug;">Xdebug</link>는 이 섹션에서 설명하는
     PHP 3의 디버깅 기능과 같은 디버거 인터페이스 호환성을 갖는다.
    </simpara>
   </sect1>
 
-  <sect1 id="debugger-using">
+  <sect1 xml:id="debugger-using">
    <title>디버거 사용하기</title>
 
    <para>
@@ -60,7 +60,7 @@
    </para>
   </sect1>
 
-  <sect1 id="debugger-protocol">
+  <sect1 xml:id="debugger-protocol">
    <title>디버거 프로토콜</title>
    <para>
     PHP 3 디버거 프로토콜은 줄-단위다. 각 줄은 각각 <emphasis>type</emphasis>을

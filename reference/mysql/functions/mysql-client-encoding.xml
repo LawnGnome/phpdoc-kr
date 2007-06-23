@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-client-encoding">
+<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-client-encoding" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_client_encoding</refname>
   <refpurpose>문자셋을 반환</refpurpose>

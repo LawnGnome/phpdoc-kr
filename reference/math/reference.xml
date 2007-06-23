@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
- <reference id="ref.math">
+ <reference xml:id="ref.math" xmlns="http://docbook.org/ns/docbook">
   <title>수학 함수</title>
   <titleabbrev>수학</titleabbrev>
   
   <partintro>
-   <section id="math.intro">
+   <section xml:id="math.intro">
     &reftitle.intro;
     <para>
      수학 함수는 컴퓨터의 <type>integer</type>형과 <type>float</type>형만을
@@ -20,22 +20,22 @@
     </simpara>
    </section>
 
-   <section id="math.requirements">
+   <section xml:id="math.requirements">
     &reftitle.required;
     &no.requirement;
    </section>
    
-   <section id="math.installation">
+   <section xml:id="math.installation">
     &reftitle.install;
     &no.install;
    </section>
 
-   <section id="math.configuration">
+   <section xml:id="math.configuration">
     &reftitle.runtime;
     &no.config;
    </section>
 
-   <section id="math.resources">
+   <section xml:id="math.resources">
     &reftitle.resources;
     &no.resource;
    </section>

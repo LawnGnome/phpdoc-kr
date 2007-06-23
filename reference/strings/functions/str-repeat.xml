@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-	 <refentry id="function.str-repeat">
+	 <refentry xml:id="function.str-repeat" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>str_repeat</refname>
     <refpurpose>문자열을 반복합니다.</refpurpose>

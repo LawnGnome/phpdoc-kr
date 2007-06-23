@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/zlib.xml, last change in rev 1.2 -->
 <!-- last change to 'gzrewind' in en/ tree in rev 1.2 -->
-	<refentry id="function.gzrewind">
+	<refentry xml:id="function.gzrewind" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>gzrewind</refname>
 			<refpurpose>지정된 .gz파일을 리와인드한다</refpurpose>

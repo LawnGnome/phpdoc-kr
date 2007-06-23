@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
- <reference id="ref.sem">
+ <reference xml:id="ref.sem" xmlns="http://docbook.org/ns/docbook">
   <title>세마포어(semaphore)와 공유 메모리(shared memory) 함수</title>
   <titleabbrev>세마포어</titleabbrev>
 

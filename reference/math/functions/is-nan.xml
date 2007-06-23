@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
+<!-- $Revision: 1.5 $ -->
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry id='function.is-nan'>
+  <refentry xml:id='function.is-nan' xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>is_nan</refname>
     <refpurpose>값이 수가 아닌지 확인합니다.</refpurpose>

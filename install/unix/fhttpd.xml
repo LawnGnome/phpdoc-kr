@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <sect1 id="install.unix.fhttpd">
+<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
+  <sect1 xml:id="install.unix.fhttpd" xmlns="http://docbook.org/ns/docbook">
    <title>fhttpd 관련 노트</title>
    <para>
     PHP를 fttpd 모듈로 빌드하려면, fttpd 소스 기반 디렉토리를 지정하고 "Build

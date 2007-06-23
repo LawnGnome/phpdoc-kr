@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
- 	<refentry id="function.htmlspecialchars">
+ 	<refentry xml:id="function.htmlspecialchars" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>htmlspecialchars</refname>
     <refpurpose>

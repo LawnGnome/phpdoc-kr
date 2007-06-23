@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry id="function.floatval">
+  <refentry xml:id="function.floatval" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>floatval</refname>
     <refpurpose>변수의 실수값을 얻습니다.</refpurpose>

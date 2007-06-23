@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-change-user">
+<!-- EN-Revision: 1.7 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-change-user" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_change_user</refname>
   <refpurpose>현 접속에서 로그인된 사용자를 변경</refpurpose>

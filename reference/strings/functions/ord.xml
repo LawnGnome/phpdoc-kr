@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-	 <refentry id="function.ord">
+	 <refentry xml:id="function.ord" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>ord</refname>
     <refpurpose>문자의 아스키 값을 반환합니다.</refpurpose>
@@ -28,7 +28,7 @@ if (ord($str) == 10) {
      </example>
     </para>
     <para>
-     아스키 표는 <ulink url="&url.asciitable;">&url.asciitable;</ulink>에서
+     아스키 표는 <link xlink:href="&url.asciitable;">&url.asciitable;</link>에서
      확인할 수 있습니다.
     </para>
     <simpara>

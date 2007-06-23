@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.natsort">
+  <refentry xml:id="function.natsort" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>natsort</refname>
     <refpurpose>
@@ -63,8 +63,8 @@ Array
 ]]>
       </screen>
       <para>
-       추가 정보: Martin Pool의 <ulink
-       url="&url.strnatcmp;">Natural Order String Comparison</ulink> 페이지.
+       추가 정보: Martin Pool의 <link
+       xlink:href="&url.strnatcmp;">Natural Order String Comparison</link> 페이지.
       </para>
      </example>
     </para>

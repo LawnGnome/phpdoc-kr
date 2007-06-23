@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: cannot -->
-  <refentry id="function.levenshtein">
+  <refentry xml:id="function.levenshtein" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>levenshtein</refname> 
     <refpurpose>

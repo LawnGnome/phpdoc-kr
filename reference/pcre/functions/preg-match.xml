@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
-  <refentry id="function.preg-match">
+  <refentry xml:id="function.preg-match" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>preg_match</refname>
     <refpurpose>정규표현식 매치를 수행합니다.</refpurpose>

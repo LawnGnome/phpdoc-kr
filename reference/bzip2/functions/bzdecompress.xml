@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bzdecompress">
+  <refentry xml:id="function.bzdecompress" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>bzdecompress</refname>
     <refpurpose>bzip2 인코딩 데이터의 압축을 해제한다</refpurpose>
@@ -19,7 +19,7 @@
      이 &true;이면, 메모리를 더 적게 사용하는 대체 압축 해제 알고리즘이 
      사용될것이다 (최대 메모리 요구량은 2300K 이하이다). 
      그러나 속도는 반으로 줄게 된다.이 기능에 대해 더많은 정보를
-     얻으려면 <ulink url="&url.bzip2;">bzip2 문서</ulink>를 참고한다.
+     얻으려면 <link xlink:href="&url.bzip2;">bzip2 문서</link>를 참고한다.
     </para>
     <para>
      <example>

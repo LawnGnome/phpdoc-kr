@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry id="function.sha1-file">
+  <refentry xml:id="function.sha1-file" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>sha1_file</refname>
     <refpurpose>파일의 sha1 해쉬를 계산합니다.</refpurpose>
@@ -13,7 +13,7 @@
       <methodparam choice='opt'><type>bool</type><parameter>raw_output</parameter></methodparam>
      </methodsynopsis>
     <simpara>
-     <ulink url="&url.rfc;3174">US Secure Hash Algorithm 1</ulink>을 사용하여,
+     <link xlink:href="&url.rfc;3174">US Secure Hash Algorithm 1</link>을 사용하여,
      <parameter>filename</parameter>의 sha1 해쉬를 계산하여 반환합니다. 해쉬는
      16진수를 나타내는 40 문자입니다. 실패하면 &false;를 반환합니다. 선택적인
      <parameter>raw_output</parameter>를 &true;로 설정하면, 길이 20인 무변환

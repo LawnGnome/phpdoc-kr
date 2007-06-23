@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry id="function.stristr">
+  <refentry xml:id="function.stristr" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>stristr</refname>
     <refpurpose>

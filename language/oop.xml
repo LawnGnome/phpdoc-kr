@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
+<!-- $Revision: 1.12 $ -->
 <!-- EN-Revision: 1.43 Maintainer: fuzzy74 Status: ready -->
- <chapter id="language.oop">
+ <chapter xml:id="language.oop" xmlns="http://docbook.org/ns/docbook">
   <title>클래스와 객체</title>
 
-  <sect1 id="keyword.class">
+  <sect1 xml:id="keyword.class">
    <title><literal>class</literal></title>
    <para>
     클래스(class)는 특정 변수들 그리고 이 변수들과 같이 동작하는 함수의 집합체이다.
@@ -223,7 +223,7 @@ $cart->$myvar = array("10" => 1);
    </note>
   </sect1>
   
-  <sect1 id="keyword.extends">
+  <sect1 xml:id="keyword.extends">
    <title><literal>extends</literal></title>
 
    <para>
@@ -295,7 +295,7 @@ $ncart->add_item("10", 1);  // (기존 cart에서 상속한 함수 사용)
    </note>
   </sect1>
 
-  <sect1 id="language.oop.constructor">
+  <sect1 xml:id="language.oop.constructor">
    <title><literal>생성자</literal></title>
 
    <caution>
@@ -487,7 +487,7 @@ $b = new B;
    </para>
   </sect1>
 
- <sect1 id="keyword.paamayim-nekudotayim"><!-- :-) -->
+ <sect1 xml:id="keyword.paamayim-nekudotayim"><!-- :-) -->
    <title><literal>::</literal></title>
 
    <caution>
@@ -571,7 +571,7 @@ $b->example();
 
  </sect1>
 
- <sect1 id="keyword.parent">
+ <sect1 xml:id="keyword.parent">
    <title><literal>parent</literal></title>
 
   <para>
@@ -620,7 +620,7 @@ $b->example();
   </informalexample>
  </sect1>
 
- <sect1 id="language.oop.serialization">
+ <sect1 xml:id="language.oop.serialization">
   <title>객체 일렬화 - 세션 내의 객체</title>
 
   <note>
@@ -723,7 +723,7 @@ $b->example();
   </para>
  </sect1>
 
- <sect1 id="language.oop.magic-functions">
+ <sect1 xml:id="language.oop.magic-functions">
   <title>매직함수 <literal>__sleep</literal>와 <literal>__wakeup</literal></title>
 
   <para>
@@ -753,7 +753,7 @@ $b->example();
   </para>
  </sect1>
   
- <sect1 id="language.oop.newref">
+ <sect1 xml:id="language.oop.newref">
    <title>생성자의 재참조</title>
    <para>
     생성자 내로 참조를 만드는 것은 혼란스런 결과를 유도할수 있다. 이런
@@ -946,7 +946,7 @@ class B: 11
    </para>
   </sect1>
 
-  <sect1 id="language.oop.object-comparison-php4">
+  <sect1 xml:id="language.oop.object-comparison-php4">
    <title>PHP 4에서 객체 비교</title>
   <para>
    PHP 4에서 객체는 매우 단순한 방식으로 비교된다. 즉: 두 객체 인스턴스
@@ -1097,7 +1097,7 @@ o1 !== o2 : TRUE
   </para>
  </sect1>
 
-  <sect1 id="language.oop.object-comparison-php5">
+  <sect1 xml:id="language.oop.object-comparison-php5">
    <title>PHP 5에서 객체 비교</title>
    &warn.experimental;
    <para>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry id="function.strnatcmp">
+  <refentry xml:id="function.strnatcmp" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>strnatcmp</refname>
     <refpurpose>
@@ -59,8 +59,8 @@ Array
 ]]>
       </screen>
      </informalexample>
-     자세한 정보는 Martin Pool의 <ulink url="&url.strnatcmp;">Natural Order
-      String Comparison</ulink> 페이지를 참고하십시오.
+     자세한 정보는 Martin Pool의 <link xlink:href="&url.strnatcmp;">Natural Order
+      String Comparison</link> 페이지를 참고하십시오.
     </para>
     <simpara>
      다른 문자열 비교 함수와 동일하게, <parameter>str1</parameter>이

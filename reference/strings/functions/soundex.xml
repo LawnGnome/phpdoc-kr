@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry id="function.soundex">
+  <refentry xml:id="function.soundex" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>soundex</refname>
     <refpurpose>문자열의 soundex 키를 계산합니다.</refpurpose>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-	 <refentry id="function.strchr">
+	 <refentry xml:id="function.strchr" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>strchr</refname>
     <refpurpose><function>strstr</function>의 별칭.</refpurpose>

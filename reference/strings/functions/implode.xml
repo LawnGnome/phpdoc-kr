@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
-  <refentry id="function.implode">
+  <refentry xml:id="function.implode" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>implode</refname>
     <refpurpose>문자열로 배열 요소를 결합합니다.</refpurpose>

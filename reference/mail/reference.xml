@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
- <reference id="ref.mail">
+ <reference xml:id="ref.mail" xmlns="http://docbook.org/ns/docbook">
   <title>메일 함수</title>
   <titleabbrev>메일</titleabbrev>
   <partintro>
 
-   <section id="mail.intro">
+   <section xml:id="mail.intro">
     &reftitle.intro;
     <para>
      <function>mail</function> 함수는 메일을 보낼 수 있게 합니다.
     </para>
    </section>
 
-   <section id="mail.requirements">
+   <section xml:id="mail.requirements">
     &reftitle.required;
     <para>
      메일 함수를 사용하기 위해서는, PHP를 컴파일 할 때 시스템의
@@ -27,19 +27,19 @@
     </para>
    </section>
 
-   <section id="mail.installation">
+   <section xml:id="mail.installation">
     &reftitle.install;
     &no.install;
    </section>
 
    &reference.mail.ini;
 
-   <section id="mail.resources">
+   <section xml:id="mail.resources">
     &reftitle.resources;
     &no.resource;
    </section>
 
-   <section id="mail.constants">
+   <section xml:id="mail.constants">
     &reftitle.constants;
     &no.constants;
    </section>

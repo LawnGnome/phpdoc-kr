@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
-  <refentry id="function.preg-replace">
+  <refentry xml:id="function.preg-replace" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>preg_replace</refname>
     <refpurpose>정규 표현식 검색과 치환을 수행합니다.</refpurpose>

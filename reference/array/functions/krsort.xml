@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: fuzzy74 Status: unknown  -->
-  <refentry id="function.krsort">
+  <refentry xml:id="function.krsort" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>krsort</refname>
     <refpurpose>역순으로 키에 의해 배열을 정렬한다</refpurpose>

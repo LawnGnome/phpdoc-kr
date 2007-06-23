@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry id="function.decbin">
+  <refentry xml:id="function.decbin" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>decbin</refname>
     <refpurpose>10진수를 2진수로 변환합니다.</refpurpose>

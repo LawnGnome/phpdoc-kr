@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.abs">
+  <refentry xml:id="function.abs" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>abs</refname>
     <refpurpose>절대값</refpurpose>

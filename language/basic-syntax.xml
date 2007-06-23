@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
+<!-- $Revision: 1.8 $ -->
 <!-- EN-Revision: 1.34 Maintainer: fuzzy74 Status: ready -->
- <chapter id="language.basic-syntax">
+ <chapter xml:id="language.basic-syntax" xmlns="http://docbook.org/ns/docbook">
   <title>기본 문법</title>
 
    <!--
@@ -47,7 +47,7 @@
      oop   : has been revised by Kristian, DONE.
    -->
    
-  <sect1 id="language.basic-syntax.phpmode">
+  <sect1 xml:id="language.basic-syntax.phpmode">
    <title>HTML에서 벗어나기</title>
   
    <para>
@@ -163,7 +163,7 @@ if ($expression) {
    </para>
   </sect1>
   
-  <sect1 id="language.basic-syntax.instruction-separation">
+  <sect1 xml:id="language.basic-syntax.instruction-separation">
    <title>명령 구분 기호</title>
    
    <simpara>
@@ -188,7 +188,7 @@ if ($expression) {
    </para>
   </sect1>
 
-  <sect1 id="language.basic-syntax.comments">
+  <sect1 xml:id="language.basic-syntax.comments">
    <title>주석</title>
    
    <para>

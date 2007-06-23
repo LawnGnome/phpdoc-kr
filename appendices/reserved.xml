@@ -2,7 +2,7 @@
 <!-- EN-Revision: 1.39 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 
- <appendix id="reserved">
+ <appendix xml:id="reserved" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>예약어 목록</title>
   <para>
    다음은 PHP에서 기선언된 식별자 목록이다. 이 식별자 목록 중 어느것도
@@ -10,7 +10,7 @@
    상수, 클래스 명도 포함한다. 이 목록은 철저하지도 완벽하지도 않다.
   </para>
 
-  <sect1 id="reserved.keywords">
+  <sect1 xml:id="reserved.keywords">
   <title>키워드 목록</title>
    <simpara>
     이 단어들은 PHP에서 특별한 의미를 갖는다. 이중 일부는 함수처럼 보여지기도하고
@@ -218,7 +218,7 @@
    </table>
   </sect1>
 
-  <sect1 id="reserved.variables">
+  <sect1 xml:id="reserved.variables">
    <title>기선언 변수</title>
    
    <para>
@@ -230,7 +230,7 @@
     &avail.register-long-arrays;
    </para>
 
-   <sect2 id="reserved.variables.server">
+   <sect2 xml:id="reserved.variables.server">
     <title>서버 변수: <varname>$_SERVER</varname></title>
     <note>
      <simpara>
@@ -244,7 +244,7 @@
      생성된다. 모든 웹서버가 이런 것들을 제공한다는 보장은 없다.
      서버는 어떤것은 빠뜨리거나 여기에서 목록화된 것 외의 것을 제공할수
      도 있다. 이런 많은 수의 변수들은
-     <ulink url="&url.cgispec;">CGI 1.1 specification</ulink>에 기반하므로,
+     <link xlink:href="&url.cgispec;">CGI 1.1 specification</link>에 기반하므로,
      그런 변수들은 기대할수 있을것이다.
     </simpara>
 
@@ -623,7 +623,7 @@
 
    </sect2>
 
-   <sect2 id="reserved.variables.environment">
+   <sect2 xml:id="reserved.variables.environment">
     <title>환경 변수: <varname>$_ENV</varname></title>
 
     <note>
@@ -670,7 +670,7 @@
     </simpara>
    </sect2>
 
-   <sect2 id="reserved.variables.cookies">
+   <sect2 xml:id="reserved.variables.cookies">
     <title>HTTP 쿠키: <varname>$_COOKIE</varname></title>
 
     <note>
@@ -710,7 +710,7 @@
     </simpara>
    </sect2>
 
-   <sect2 id="reserved.variables.get">
+   <sect2 xml:id="reserved.variables.get">
     <title>HTTP GET 변수: <varname>$_GET</varname></title>
 
     <note>
@@ -750,7 +750,7 @@
     </simpara>
    </sect2>
 
-   <sect2 id="reserved.variables.post">
+   <sect2 xml:id="reserved.variables.post">
     <title>HTTP POST 변수: <varname>$_POST</varname></title>
 
     <note>
@@ -790,7 +790,7 @@
     </simpara>
    </sect2>
 
-   <sect2 id="reserved.variables.files">
+   <sect2 xml:id="reserved.variables.files">
     <title>HTTP File 업로드 변수: <varname>$_FILES</varname></title>
     
     <note>
@@ -828,7 +828,7 @@
     </simpara>
    </sect2>
 
-   <sect2 id="reserved.variables.request">
+   <sect2 xml:id="reserved.variables.request">
     <title>Request 변수: <varname>$_REQUEST</varname></title>
 
     <note>
@@ -864,7 +864,7 @@
     </simpara>
    </sect2>
 
-   <sect2 id="reserved.variables.session">
+   <sect2 xml:id="reserved.variables.session">
     <title>세션 변수: <varname>$_SESSION</varname></title>
 
     <note>
@@ -903,7 +903,7 @@
     </simpara>
    </sect2>
 
-   <sect2 id="reserved.variables.globals">
+   <sect2 xml:id="reserved.variables.globals">
     <title>Global 변수: <varname>$GLOBALS</varname></title>
 
     <note>
@@ -926,7 +926,7 @@
 
    </sect2>
 
-   <sect2 id="reserved.variables.phperrormsg">
+   <sect2 xml:id="reserved.variables.phperrormsg">
     <title>이전 에러 메시지: <varname>$php_errormsg</varname></title>
     <simpara>
      <varname>$php_errormsg</varname>는 PHP에 의해 생성되는 가장
@@ -939,10 +939,10 @@
   </sect1>
 
 
-  <sect1 id="reserved.classes">
+  <sect1 xml:id="reserved.classes">
    <title>기선언 클래스</title>
 
-   <sect2 id="reserved.classes.standard">
+   <sect2 xml:id="reserved.classes.standard">
     <title>기본적인 선언 클래스</title>
 
     <simpara>
@@ -975,7 +975,7 @@
     </variablelist>
    </sect2>
    
-   <sect2 id="reserved.classes.php5">
+   <sect2 xml:id="reserved.classes.php5">
     <title>PHP 5의 기선언 클래스</title>
     
     <simpara>
@@ -1000,7 +1000,7 @@
     </variablelist>
    </sect2>
 
-   <sect2 id="reserved.classes.ming">
+   <sect2 xml:id="reserved.classes.ming">
     <title><link linkend="ref.ming">Ming</link> 선언 클래스</title>
 
     <simpara>
@@ -1104,7 +1104,7 @@
     </variablelist>
    </sect2>
 
-   <sect2 id="reserved.classes.oci8">
+   <sect2 xml:id="reserved.classes.oci8">
     <title><link linkend="ref.oci8">Oracle 8</link> 선언 클래스</title>
 
     <simpara>
@@ -1131,7 +1131,7 @@
     </variablelist>
    </sect2>
 
-   <sect2 id="reserved.classes.qtdom">
+   <sect2 xml:id="reserved.classes.qtdom">
     <title><link linkend="ref.qtdom">qtdom</link> 선언 클래스</title>
 
     <simpara>

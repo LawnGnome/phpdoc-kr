@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id='function.str-rot13'>
+  <refentry xml:id='function.str-rot13' xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>str_rot13</refname>
     <refpurpose>문자열에 rot13 변환을 수행합니다.</refpurpose>

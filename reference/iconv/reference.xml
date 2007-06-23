@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
- <reference id="ref.iconv">
+ <reference xml:id="ref.iconv" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>iconv 함수</title>
   <titleabbrev>iconv</titleabbrev>
 
   <partintro>
-   <section id="iconv.intro">
+   <section xml:id="iconv.intro">
     &reftitle.intro;
     <para>
      이 모듈은 iconv 문자셋 변환 기능을 사용하는 인터페이스를 가지고 있습니다.
      이 모듈로, 로컬 문자셋을 유니코드 문자셋 등의 다른 문자셋으로 변환할 수
      있습니다. 지원하는 문자셋은 시스템의 iconv 실행에 의존합니다. 몇몇
      시스템에서는 iconv가 기대한대로 작동하지 않을 수 있는 점에 주의하십시오.
-     <ulink url="&url.libiconv;">GNU libiconv</ulink> 라이브러리를 설치하면
+     <link xlink:href="&url.libiconv;">GNU libiconv</link> 라이브러리를 설치하면
      대부분의 경우에 좋은 결과를 얻을 수 있습니다.
     </para>
 
@@ -23,12 +23,12 @@
     </para>
    </section>
 
-   <section id="iconv.requirements">
+   <section xml:id="iconv.requirements">
     &reftitle.required;
     <para>
      최근의 POSIX 호환 시스템을 사용한다면 iconv 기능을 표준 C 라이브러리에서
-     지원하기 때문에, 추가로 필요한 것이 없습니다. 그렇지 않다면 <ulink
-      url="&url.libiconv;">libiconv</ulink> 라이브러리를 얻어서 시스템에
+     지원하기 때문에, 추가로 필요한 것이 없습니다. 그렇지 않다면 <link
+      xlink:href="&url.libiconv;">libiconv</link> 라이브러리를 얻어서 시스템에
      설치해야 합니다.
     </para>
    </section>
@@ -37,14 +37,14 @@
 
    &reference.iconv.ini;
 
-   <section id="iconv.resources">
+   <section xml:id="iconv.resources">
     &reftitle.resources;
     &no.resource;
    </section>
 
    &reference.iconv.constants;
 
-   <section id="iconv.seealso">
+   <section xml:id="iconv.seealso">
     &reftitle.seealso;
     <para>
      참고: <link linkend="ref.recode">GNU Recode 함수</link>.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/zlib.xml, last change in rev 1.2 -->
 <!-- last change to 'gzgetc' in en/ tree in rev 1.2 -->
-	<refentry id="function.gzgetc">
+	<refentry xml:id="function.gzgetc" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>gzgetc</refname>
 			<refpurpose>지정된 .gz파일로부터 문자를 추출한다.</refpurpose>

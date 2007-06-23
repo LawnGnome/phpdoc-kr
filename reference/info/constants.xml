@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-<section id="info.constants">
+<section xml:id="info.constants" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.constants;
  &extension.constants.core;
    <table>
@@ -133,7 +133,7 @@
        <entry>INFO_LICENSE</entry>
        <entry>64</entry>
        <entry>
-        PHP 라이센스 정보. <ulink url="&url.php.license;">라이센스 faq</ulink>
+        PHP 라이센스 정보. <link xlink:href="&url.php.license;">라이센스 faq</link>
         참고.
        </entry>
       </row>

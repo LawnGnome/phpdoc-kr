@@ -293,10 +293,10 @@ PHP 코어의 일부입니다.</para>'>
 요구합니다.</simpara></note>'>
 
 <!-- PECL entities -->
-<!ENTITY pecl.moved '이 <ulink url="&url.pecl;">PECL</ulink> 확장은 PHP
+<!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에서 제공하지 않습니다.'>
 
-<!ENTITY pecl.moved '이 <ulink url="&url.pecl;">PECL</ulink> 확장은 PHP
+<!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에 포함되어 있습니다.'>
 
 <!ENTITY pecl.info '새 릴리즈, 내려받기, 소스 파일, 개발자 정보, CHANGELOG 등의
@@ -311,12 +311,12 @@ PHP 윈도우 바이너리 안의 <filename>extensions/</filename> 디렉토리 
 있습니다.'>
 
 <!ENTITY pecl.windows.download '이 <acronym>PECL</acronym> 확장
-<acronym>DLL</acronym>은 <ulink url="&url.php.downloads;">PHP 내려받기</ulink>
-페이지나 <ulink url="&url.php.snapshots;">&url.php.snapshots;</ulink>에서 받을
+<acronym>DLL</acronym>은 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.php.downloads;">PHP 내려받기</link>
+페이지나 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.php.snapshots;">&url.php.snapshots;</link>에서 받을
 수 있습니다.'>
 
-<!ENTITY note.pecl-php5 '<note><simpara>이 확장은 PHP 5에서 제거되어, <ulink
-url="&url.pecl;">PECL</ulink> 저장소로 이동되었습니다.</simpara></note>'>
+<!ENTITY note.pecl-php5 '<note><simpara>이 확장은 PHP 5에서 제거되어, <link xmlns:xlink="http://www.w3.org/1999/xlink"
+url="&url.pecl;">PECL</link> 저장소로 이동되었습니다.</simpara></note>'>
 
 <!-- Common pieces for reference part END -->
 
@@ -385,8 +385,8 @@ url="&url.pecl;">PECL</ulink> 저장소로 이동되었습니다.</simpara></not
 
 <!ENTITY tidy.conf-enc '<para><parameter>config</parameter> 인수는 배열이나
 문자열을 전달할 수 있습니다. 문자열을 넘기면, 설정 파일의 이름을 의미합니다.
-그 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <ulink
-url="&url.tidy.conf;">&url.tidy.conf;</ulink>를 확인하십시오.
+그 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <link xmlns:xlink="http://www.w3.org/1999/xlink"
+url="&url.tidy.conf;">&url.tidy.conf;</link>를 확인하십시오.
 <parameter>encoding</parameter> 인수는 입출력 문서의 인코딩을 지정합니다.
 가능한 <parameter>encoding</parameter> 값은:
 ascii, latin1, raw, utf8, iso2022, mac, win1252, ibm858, utf16,

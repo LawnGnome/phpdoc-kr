@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-<section id="iconv.constants">
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<section xml:id="iconv.constants" xmlns="http://docbook.org/ns/docbook">
  &reftitle.constants;
  <para>
   <application>PHP</application> 4.3.0부터 실행시에 이 확장 모듈에서 어느

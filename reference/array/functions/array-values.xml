@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.array-values">
+  <refentry xml:id="function.array-values" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>array_values</refname>
     <refpurpose>배열의 모든 값들을 반환한다</refpurpose>

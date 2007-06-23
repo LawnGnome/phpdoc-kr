@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
-<reference id="ref.pcre">
+<reference xml:id="ref.pcre" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>정규표현식 함수 (펄-호환)</title>
   <titleabbrev>PCRE</titleabbrev>   
 
   <partintro>
-   <section id="pcre.intro">
+   <section xml:id="pcre.intro">
     &reftitle.intro;
     <para>
      이 함수들에서 사용되는 패턴 문법은 펄에 가깝습니다. 표현식은 구분자로
@@ -27,36 +27,36 @@
     </para>
     <warning>
      <para>
-      PCRE의 몇몇 제한에 주의를 해야합니다. 자세한 정보는 <ulink
-       url="&url.pcre.man;">&url.pcre.man;</ulink>을 참고하십시오.
+      PCRE의 몇몇 제한에 주의를 해야합니다. 자세한 정보는 <link
+       xlink:href="&url.pcre.man;">&url.pcre.man;</link>을 참고하십시오.
      </para>
     </warning>
    </section>
    
-   <section id="pcre.requirements">
+   <section xml:id="pcre.requirements">
     &reftitle.required;
     <para>
      정규표현식 지원은 Philip Hazel이 작성한 PCRE 라이브러리 패키지에
      의해 제공됩니다. 저작권은 University of Cambridge, England에
-     있습니다. <ulink url="&url.pcre;">&url.pcre;</ulink>에 존재합니다.
+     있습니다. <link xlink:href="&url.pcre;">&url.pcre;</link>에 존재합니다.
     </para>
    </section>
 
    &reference.pcre.configure;
 
-   <section id="pcre.configuration">
+   <section xml:id="pcre.configuration">
     &reftitle.runtime;
     &no.config;
    </section>
 
-   <section id="pcre.resources">
+   <section xml:id="pcre.resources">
     &reftitle.resources;
     &no.resource;
    </section>
 
    &reference.pcre.constants;
 
-   <section id="pcre.examples">
+   <section xml:id="pcre.examples">
     &reftitle.examples;
     <para>
      <example>

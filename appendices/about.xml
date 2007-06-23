@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.26 Maintainer: fuzzy74 Status: ready -->
 
 <!--
@@ -10,10 +10,10 @@
         add some tips about combining the versions (online-
         offline), and using "http://anymirror.php.net/funcname"
 -->
-<appendix id="about">
+<appendix xml:id="about" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>이 매뉴얼에 관하여</title>
 
- <sect1 id="about.formats">
+ <sect1 xml:id="about.formats">
   <title>포맷</title>
   <para>
    PHP 매뉴얼은 여러 종류의 포맷으로 제공되고 있다. 이 포맷들은 두가지 그룹으로
@@ -26,7 +26,7 @@
    </para>
   </note>
   <para>
-   온라인 상의 <ulink url="&url.php;">&url.php;</ulink>과 그외 여러 
+   온라인 상의 <link xlink:href="&url.php;">&url.php;</link>과 그외 여러 
    미러사이트를 통해서 이 매뉴얼을 볼 수 있다. 빠른 속도를 위해서는 접속지역과 
    가장 가까운 미러사이트에 접속해야 할것이다. 이 매뉴얼을 단순한(출력용) HTML
    포맷이나 PHP 웹사이트 자체에 통합된 매뉴얼의 HTML 포맷으로도 볼수 있다.
@@ -59,13 +59,13 @@
   <note>
    <para>
     PDF 포맷 파일을 볼수 있도록 하는 프로그램을 아직 설치하지 않았다면,
-    <ulink url="&url.adobe.acrobat;">Adobe Acrobat Reader</ulink>을 다운로드해야 할것이다.
+    <link xlink:href="&url.adobe.acrobat;">Adobe Acrobat Reader</link>을 다운로드해야 할것이다.
    </para>
   </note>
   <para>
    팜(Palm) 호환 핸드헬드 사용자라면, 팜 문서와 아이실로(iSilo) 포맷이 이
    플랫폼에 가장 적합하다. 통근중에 이 핸드헬드를 갖고다니면서
-   <ulink url="&url.palm.doc;">DOC</ulink>이나 <ulink url="&url.palm.isilo;">iSilo</ulink> 리더를
+   <link xlink:href="&url.palm.doc;">DOC</link>이나 <link xlink:href="&url.palm.isilo;">iSilo</link> 리더를
    사용하여 PHP 지식을 연마할수 있다. 또는 퀵 레퍼런스로 이 포맷을 사용할수있다.
   </para>
   <para>
@@ -80,14 +80,14 @@
    <para>
     A Visual Basic for Linux project is in the planning stage, which will
     include the development of a CHM Creator and Viewer for Linux. See their
-    <ulink url="&url.vb4linux;">SourceForge.net page</ulink> if you are
+    <link xlink:href="&url.vb4linux;">SourceForge.net page</link> if you are
     interested in the progress.
    </para>
   </note>
   -->
  </sect1>
  
- <sect1 id="about.notes">
+ <sect1 xml:id="about.notes">
   <title>user notes에 관하여</title>
   <para>
    user-contributed notes는 이 매뉴얼 개발에 있어서 매우 중요한 역할을 담당하고
@@ -112,7 +112,7 @@
   </note>
  </sect1>
 
- <sect1 id="about.prototypes">
+ <sect1 xml:id="about.prototypes">
    <title>함수 선언(prototype)을 읽는 방법</title>
    <para>
     각 함수는 퀵 레퍼런스를 위해 문서화되어있다. 매뉴얼을 읽고 이해하는 방법을
@@ -230,7 +230,7 @@ Returns the length of string.
     </para>
  </sect1>
  
- <sect1 id="about.phpversions">
+ <sect1 xml:id="about.phpversions">
   <title>PHP 버전에 대해서 이 매뉴얼에 문서화되어있다</title>
   <para>
    이 문서는 PHP 4에 관한 정보를 갖고 있다. PHP 3에서는 추가된 
@@ -243,7 +243,7 @@ Returns the length of string.
    PHP 자체의 개발자가 아니고, PHP의 최종 버전을 사용하려하지 않는다면,
    "available in CVS"라고 표시되어있는 기능은 접근할수 없다. 이 기능들이
    어쩌면 다음 안정 버전에서 사용가능할수도 있을것이다. CVS 버전을 내려받고자
-   한다면, <ulink url="&url.php.anoncvs;">anonymous CVS access page</ulink>를 참고.
+   한다면, <link xlink:href="&url.php.anoncvs;">anonymous CVS access page</link>를 참고.
   </para>
   <para>
    아직 릴리즈되지 않은 PHP 버전에 대한 문서 내용도 볼수 있다 (PHP 4.3.0이 최종
@@ -253,34 +253,34 @@ Returns the length of string.
   </para>
  </sect1>
    
- <sect1 id="about.more">
+ <sect1 xml:id="about.more">
   <title>PHP에 관한 더 많은 정보를 찾는 방법</title>
   <para>
    이 매뉴얼은 일반적인 프로그래밍 연습을 위한 명령을 제공하지 않는다.
    이제 방금 시작한, 초심자 프로그래머라면, 이 매뉴얼만으로 PHP를 프로그램하는
    방법을 배우기 어렵다는 것을 알게 될것이다. 좀더 초심자 지향적인 텍스트를
-   찾아야 할것이다. <ulink url="&url.php.books;">&url.php.books;</ulink>에
+   찾아야 할것이다. <link xlink:href="&url.php.books;">&url.php.books;</link>에
    PHP 관련 서적의 목록을 찾을수 있다.
   </para>
   <para>
    PHP 프로그래밍을 위한 모든 부문의 많은 수의 토론용 메일링 리스트가 활성화되어
    있다. 해결책을 찾을수 없는 문제에 빠져있다면, 이런 메일링 리스트에서 다른사람들의
-   도움을 받을수도 있을것이다. <ulink url="&url.php.support;">&url.php.support;</ulink>에서
+   도움을 받을수도 있을것이다. <link xlink:href="&url.php.support;">&url.php.support;</link>에서
    메일링 리스트의 목록을 볼수 있을 뿐만아니라, 메일링 리스트 아카이브(저장된 목록)와
    다른 온라인 지원 리소스를 찾을수 있다. 그외에 
-   <ulink url="&url.php.links;">&url.php.links;</ulink>에서는 PHP 관련기사, 토론, 
+   <link xlink:href="&url.php.links;">&url.php.links;</link>에서는 PHP 관련기사, 토론, 
    코드를 제공하는 웹사이트의 목록을 볼수 있다.
   </para>
  </sect1>
 
- <sect1 id="about.howtohelp">
+ <sect1 xml:id="about.howtohelp">
   <title>문서화 향상을 위해 도울수 있는 방법</title>
   <para>
    독자가 이 문서화를 향상시키는데 도움을 줄수 있는 방법은 세가지가 있다.
   </para>
   <para>
    이 문서, 어떤 언어에서 잘못된 부분을 발견한다면,
-   <ulink url="&url.php.bugs;">&url.php.bugs;</ulink>에 있는 버그 시스템을
+   <link xlink:href="&url.php.bugs;">&url.php.bugs;</link>에 있는 버그 시스템을
    이용하여 그 부분을 보고하면 된다. 매뉴얼 포맷에 관련된 문제점도 보고될
    수 있다.
   </para>
@@ -299,18 +299,18 @@ Returns the length of string.
   <para>
    영어와 그외의 외국어를 사용한다면, 번역에 관한 도움을 받을수 있다.
    새로운 번역을 시작하려면, 또는 번역 포로젝트에 대한 도움을 받고자 한다면
-   <ulink url="&url.php.dochowto;">&url.php.dochowto;</ulink>을 읽도록 한다.
+   <link xlink:href="&url.php.dochowto;">&url.php.dochowto;</link>을 읽도록 한다.
   </para>
  </sect1>
  
- <sect1 id="about.generate">
+ <sect1 xml:id="about.generate">
   <title>포맷을 어떤 방법으로 만들었는가</title>
   <para>
-   이 매뉴얼은 <ulink url="&url.docbook.xml;">DocBook XML DTD</ulink>,
-   포맷을 위한 <ulink url="&url.dsssl;"><acronym>DSSSL</acronym></ulink>
+   이 매뉴얼은 <link xlink:href="&url.docbook.xml;">DocBook XML DTD</link>,
+   포맷을 위한 <link xlink:href="&url.dsssl;"><acronym>DSSSL</acronym></link>
    (문서 스타일과 구문 사양 언어)을 사용하고,
    유지관리와 형식화를 위해 실험적으로 
-   <ulink url="&url.xslt;"><acronym>XSLT</acronym></ulink>(확장 스타일시트 언어 변환)
+   <link xlink:href="&url.xslt;"><acronym>XSLT</acronym></link>(확장 스타일시트 언어 변환)
    를 사용하는 <acronym>XML</acronym>로 작성된다.
   </para>
   <para>
@@ -318,28 +318,28 @@ Returns the length of string.
    많은 출력 포맷을 생성할수 있고, 모든 포맷에 대해 하나의 원본 문서만을
    유지관리할수 있다.
    <acronym>HTML</acronym>과 <acronym>TeX</acronym>버전을 포맷팅하기 위한
-   툴은 <ulink url="&url.jclark;">James Clark</ulink>가 작성한
-   <ulink url="&url.jade;">Jade</ulink>와
-   <ulink url="&url.nwalsh;">Norman Walsh</ulink>가 작성한
-   <ulink url="&url.dbstyle;">The Modular DocBook Stylesheets</ulink>를 사용한다.
+   툴은 <link xlink:href="&url.jclark;">James Clark</link>가 작성한
+   <link xlink:href="&url.jade;">Jade</link>와
+   <link xlink:href="&url.nwalsh;">Norman Walsh</link>가 작성한
+   <link xlink:href="&url.dbstyle;">The Modular DocBook Stylesheets</link>를 사용한다.
    매뉴얼의 윈도우 HTML 도움말 포맷을 생성하기 위해
-   <ulink url="&url.winhelp;">Microsoft HTML Help Workshop</ulink>을 사용하며,
+   <link xlink:href="&url.winhelp;">Microsoft HTML Help Workshop</link>을 사용하며,
    물론 PHP 자체에서도 몇가지 추가적인 변환과 포맷기능이 존재한다.
   </para>
   <para>
    다양한 언어와 일반텍스트, 일반 <acronym>HTML</acronym>,
    <acronym>PDF</acronym>, PalmPilot DOC, PalmPilot iSilo와 윈도우 HTML 도움말 같은
-   다양한 포맷으로 되어있는 매뉴얼을 <ulink url="&url.php.docs;">&url.php.docs;</ulink>에서
+   다양한 포맷으로 되어있는 매뉴얼을 <link xlink:href="&url.php.docs;">&url.php.docs;</link>에서
    내려받을수 있다. 매뉴얼은 그 내용이 업데이트되면 자동적으로 업데이트된다.
   </para>
   <para>
-   <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>에서
+   <link xlink:href="&url.php.cvs;">&url.php.cvs;</link>에서
    이 문서의 <acronym>XML</acronym> 원본 코드를 다운받는 방법에 대한
    더 많은 정보를 찾을수 있다. 매뉴얼은 <literal>phpdoc</literal> 모듈안에 저장된다.
   </para>
  </sect1>
 
- <sect1 id="about.translations">
+ <sect1 xml:id="about.translations">
   <title>번역</title>
   <para>
    PHP 매뉴얼은 다양한 포맷 뿐만 아니라, 다양한 언어로도 제공된다. 매뉴얼의
@@ -348,7 +348,7 @@ Returns the length of string.
    빌드 시스템은 그부분의 영어 버전으로 연결한다.
   </para>
   <para>
-   번역하는 사람은 <ulink url="&url.php.cvs;">&url.php.cvs;</ulink>에 있는
+   번역하는 사람은 <link xlink:href="&url.php.cvs;">&url.php.cvs;</link>에 있는
    <acronym>XML</acronym> 소스 코드에서 시작하여 그들의 모국어로 번역한다.
    이 시스템은 <acronym>HTML</acronym>, 일반 텍스트나 <acronym>PDF</acronym>버전을
    <emphasis>사용하지 않는다</emphasis>. 
@@ -358,7 +358,7 @@ Returns the length of string.
    <para>
     독자의 지역 언어로 문서를 번역하는데 도움을 주고자 한다면,
     phpdoc 메일링리스트를 구독하는 번역/문서 팀과 연락을 하도록 한다:
-    <ulink url="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</ulink>에
+    <link url="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</link>에
     아무 내용없는 메일을 보낸다. 메일링 리스트의 주소는 <literal>&email.php.doc;</literal>이다.
     다른 언어로 매뉴얼을 번역하는데 관심이 있다는 메시지를 넣는다면 누군가가 당신에게
     답장을 보낼것이고, 새로운 언어 번역을 시작하고 거주지역 언어의 기존 문서팀에
@@ -373,7 +373,7 @@ Returns the length of string.
    Turkish.
   </para>
   <para>
-   그들 모두 여기서 내려받을수 있다: <ulink url="&url.php.docs;">&url.php.docs;</ulink>.
+   그들 모두 여기서 내려받을수 있다: <link xlink:href="&url.php.docs;">&url.php.docs;</link>.
   </para>
  </sect1>
 

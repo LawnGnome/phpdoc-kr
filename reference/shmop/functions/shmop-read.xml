@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/shmop.xml, last change in rev 1.1 -->
 <!-- last change to 'shmop-read' in en/ tree in rev 1.1 -->
-  <refentry id="function.shmop-read">
+  <refentry xml:id="function.shmop-read" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>shmop_read</refname>
     <refpurpose>공유 메모리 블럭으로부터 데이터를 판독</refpurpose>

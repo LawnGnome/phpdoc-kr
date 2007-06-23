@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
-  <refentry id="function.isset">
+  <refentry xml:id="function.isset" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>isset</refname>
     <refpurpose>존재하는 변수인지 확인합니다.</refpurpose>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.20 Maintainer: fuzzy74 Status: ready -->
-<chapter id="faq.obtaining">
+<chapter xml:id="faq.obtaining" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>PHP 구하기</title>
   <titleabbrev>PHP 구하기</titleabbrev>
 
@@ -9,22 +9,22 @@
    </para>
 
   <qandaset>
-   <qandaentry id="faq.obtaining.where">
+   <qandaentry xml:id="faq.obtaining.where">
     <question>
      <para>PHP는 어디서 구할수 있습니까?</para>
     </question>
     <answer>
      <para>
       PHP는 PHP 관련 사이트들로부터 구할수 있습니다.
-      <ulink url="&url.php;">&url.php;</ulink>에 정리되어있습니다.
+      <link xlink:href="&url.php;">&url.php;</link>에 정리되어있습니다.
       또한 익명 CVS를 사용하여 가장 최종 버전을 다운로드 받을수도 있습니다.
-      <ulink url="&url.php.anoncvs;">&url.php.anoncvs;</ulink>에 
+      <link xlink:href="&url.php.anoncvs;">&url.php.anoncvs;</link>에 
       자세한 정보가 있습니다.
      </para>
     </answer>
    </qandaentry>
 
-   <qandaentry id="faq.obtaining.precompiled">
+   <qandaentry xml:id="faq.obtaining.precompiled">
     <question>
      <para>pre-compiled 바이너리 버전도 있습니까?</para>
     </question>
@@ -33,13 +33,13 @@
       모든 주요 리눅스/유닉스 플랫폼을 모든 확장 옵션을 가진 PHP로 
       컴파일 할수 없기 때문에, 윈도우 시스템에서만 precompiled 바이너리를 제공합니다. 
       알려진대로, 많은 리눅스 배포판은 요즘 PHP가 내장되어 나옵니다.
-      윈도우 바이너리는 <ulink url="&url.php.downloads;">Downloads</ulink>페이지
+      윈도우 바이너리는 <link xlink:href="&url.php.downloads;">Downloads</link>페이지
       에서 내려받을수 있습니다. 리눅스는 현재 사용중인 배포판 웹사이트를 방문하세요.
      </para>
     </answer>
    </qandaentry>
 
-   <qandaentry id="faq.obtaining.optional">
+   <qandaentry xml:id="faq.obtaining.optional">
     <question>
      <para>
       추가적인 PHP 확장을 컴파일하기 위해서 필요한 라이브러리는 어디서 구할수 있습니까?
@@ -59,110 +59,110 @@
       <itemizedlist>
        <listitem>
         <simpara>
-         <ulink url="&url.ldap.openldap.source;">LDAP (Unix)</ulink>.
+         <link xlink:href="&url.ldap.openldap.source;">LDAP (Unix)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.ldap.mt;">LDAP* (Unix)</ulink>.
+         <link xlink:href="&url.ldap.mt;">LDAP* (Unix)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.ldap.netscape.sdk;">LDAP (Unix/Win)</ulink> : 
+         <link xlink:href="&url.ldap.netscape.sdk;">LDAP (Unix/Win)</link> : 
          Netscape Directory (LDAP) SDK 1.1.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.ldap.netscape.sdk;">free LDAP server</ulink>.
+         <link xlink:href="&url.ldap.netscape.sdk;">free LDAP server</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.sleepycat;">Berkeley DB2 (Unix/Win)</ulink> :
+         <link xlink:href="&url.sleepycat;">Berkeley DB2 (Unix/Win)</link> :
          &url.sleepycat;.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.net-snmp;">SNMP* (Unix): </ulink>.
+         <link xlink:href="&url.net-snmp;">SNMP* (Unix): </link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.gd;">GD* (Unix/Win)</ulink>.
+         <link xlink:href="&url.gd;">GD* (Unix/Win)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.msql;">mSQL* (Unix)</ulink>.
+         <link xlink:href="&url.msql;">mSQL* (Unix)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.pgsql;">PostgreSQL (Unix)</ulink>.
+         <link xlink:href="&url.pgsql;">PostgreSQL (Unix)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.imap;">IMAP* (Win/Unix)</ulink>.
+         <link xlink:href="&url.imap;">IMAP* (Win/Unix)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.sybase;">Sybase-CT* (Linux, libc5)</ulink> : 
+         <link xlink:href="&url.sybase;">Sybase-CT* (Linux, libc5)</link> : 
          Available locally.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.freetype;">FreeType (libttf):</ulink>.
+         <link xlink:href="&url.freetype;">FreeType (libttf):</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.zlib;">ZLib (Unix/Win32)</ulink>.
+         <link xlink:href="&url.zlib;">ZLib (Unix/Win32)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.expat;">expat XML parser (Unix/Win32)</ulink>.
+         <link xlink:href="&url.expat;">expat XML parser (Unix/Win32)</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.pdf;">PDFLib</ulink>.
+         <link xlink:href="&url.pdf;">PDFLib</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.mcrypt;">mcrypt</ulink>.
+         <link xlink:href="&url.mcrypt;">mcrypt</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.mhash;">mhash</ulink>.
+         <link xlink:href="&url.mhash;">mhash</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.t1lib;">t1lib</ulink>.
+         <link xlink:href="&url.t1lib;">t1lib</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.dmalloc;">dmalloc</ulink>.
+         <link xlink:href="&url.dmalloc;">dmalloc</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.aspell;">aspell</ulink>.
+         <link xlink:href="&url.aspell;">aspell</link>.
         </simpara>
        </listitem>
        <listitem>
         <simpara>
-         <ulink url="&url.readline;">readline</ulink>.
+         <link xlink:href="&url.readline;">readline</link>.
         </simpara>
        </listitem>
       </itemizedlist>
@@ -170,7 +170,7 @@
     </answer>
    </qandaentry>
   
-   <qandaentry id="faq.obtaining.how">
+   <qandaentry xml:id="faq.obtaining.how">
     <question>
      <para>이 라이브러리를 작동시키려면 어떻게 해야 합니까?</para>
     </question>
@@ -184,7 +184,7 @@
      </para>
     </answer>
    </qandaentry>
-   <qandaentry id="faq.obtaining.compileNT">
+   <qandaentry xml:id="faq.obtaining.compileNT">
     <question>
      <para>
       윈도우 머신에 CVS 저장소로부터 최종 PHP 소스 코드를 받아왔습니다.
@@ -200,13 +200,13 @@
     </para>
     </answer>
    </qandaentry>
-   <qandaentry id="faq.obtaining.browscap">
+   <qandaentry xml:id="faq.obtaining.browscap">
     <question>
      <para>Browser Capabilities File을 어디서 구할수 있나요?</para>
     </question>
     <answer>
      <para>
-      <ulink url="&url.browscap.download;">&url.browscap.download;</ulink>
+      <link xlink:href="&url.browscap.download;">&url.browscap.download;</link>
       에서 <filename>browscap.ini</filename>파일을 찾을수 있습니다.
      </para>
     </answer>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.11 $ -->
+<!-- $Revision: 1.12 $ -->
 <!-- EN-Revision: 1.19 Maintainer: fuzzy74 Status: ready -->
 
-<appendix id="history">
+<appendix xml:id="history" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>PHP와 PHP 관련 프로젝트의 역사</title>
  <para>
   PHP는 최근 몇년간 출세가도를 달려왔다. 웹을 강화하는 가장 부각되는
   언어중 하나로 성장하는 것은 쉬운 일이 아니었다. 오늘날 PHP가 어떻게
   성장했는지에 대해 간단히 보고자 한다면, 계속 읽어나가자.
-  구버전의 PHP는 <ulink url="&url.php.museum;">PHP Museum</ulink>에서
+  구버전의 PHP는 <link xlink:href="&url.php.museum;">PHP Museum</link>에서
   확인할수있다.
  </para>
  
- <sect1 id="history.php">
+ <sect1 xml:id="history.php">
   <title>PHP의 역사</title>
   
-  <sect2 id="history.phpfi">
+  <sect2 xml:id="history.phpfi">
    <title>PHP/FI</title>
    <para>
     PHP는 PHP/FI라는 이름의 오래된 소프트웨어를 계승했다. PHP/FI는
@@ -26,7 +26,7 @@
     이 구현물은 데이터베이스와 의사소통을 하고, 유저가 단순한
     동적 웹 애플리케이션을 작성할수 있게 하였다. Rasmus는
     모든 사람이 볼수 있도록 PHP/FI의 소스 코드를
-    <ulink url="&url.php.release1.0.0;">release</ulink>하기로 결정했다.
+    <link xlink:href="&url.php.release1.0.0;">release</link>하기로 결정했다.
     그래서 모든 사람이 그것을 사용하고, 버그를 고칠수 있을뿐만 아니라
     코드를 향상시킬수 있었다.
    </para>
@@ -51,7 +51,7 @@
    </para>
   </sect2>
 
-  <sect2 id="history.php3">
+  <sect2 xml:id="history.php3">
    <title>PHP 3</title>
    <para>
     PHP 3.0은 오늘날 알려진 PHP와 매우 가깝게 닮아있는 첫번째
@@ -88,7 +88,7 @@
    </para>
   </sect2>
 
-  <sect2 id="history.php4">
+  <sect2 xml:id="history.php4">
    <title>PHP 4</title>
    <para>
     1998년 겨울까지, PHP 3.0이 공식적으로 릴리즈된후 얼마안되어서,
@@ -125,22 +125,22 @@
    </para>
   </sect2>
 
-  <sect2 id="history.php5">
+  <sect2 xml:id="history.php5">
    <title>PHP 5</title>
    <para>
     PHP의 미래는 주로 그 코어, 젠드 엔진에 의해 운영된다. PHP 5는 새로운
     젠드 엔진 2.0을 포함할것이다. 이 엔진에 대한 더 자세한 정보를 원한다면,
-    <ulink url="&url.zend.future;">이 웹페이지를 참고한다</ulink>.
+    <link xlink:href="&url.zend.future;">이 웹페이지를 참고한다</link>.
    </para>
   </sect2>
  </sect1>
  
- <sect1 id="history.php.related">
+ <sect1 xml:id="history.php.related">
   <title>PHP 관련 프로젝트의 역사</title>
   
   <!-- Hope Stig and/or Egon can do this
   
-  <sect2 id="history.phpdoc">
+  <sect2 xml:id="history.phpdoc">
    <title>PHP Documentation Project</title>
    <para>
    </para>
@@ -148,7 +148,7 @@
   
   -->
 
-  <sect2 id="history.pear">
+  <sect2 xml:id="history.pear">
    <title>PEAR</title>
    <para>
     PEAR, PHP Extension 과 Application Repository (원래,
@@ -170,7 +170,7 @@
    </para>
   </sect2>
 
-  <sect2 id="history.phpqa">
+  <sect2 xml:id="history.phpqa">
    <title>PHP 품질 보증 발의</title>
    <para>
     PHP 품질 보증 발의(PHP Quality Assurance Initiative)는 2000년 여름에
@@ -182,7 +182,7 @@
    </para>
   </sect2>
 
-  <sect2 id="history.phpgtk">
+  <sect2 xml:id="history.phpgtk">
    <title>PHP-GTK</title>
    <para>
     PHP-GTK는 클라이언트측 GUI 응용프로그램을 작성하기 위한 PHP 솔루션이다.
@@ -233,7 +233,7 @@
   </sect2>
  </sect1>
 
- <sect1 id="history.php.books">
+ <sect1 xml:id="history.php.books">
   <title>PHP 관련 서적</title>
   <para>
    PHP가 성장함에 따라, 그것은 전세계적으로 유행하는 개발 플랫폼으로
@@ -261,7 +261,7 @@
   </para>
  </sect1>
  
- <sect1 id="history.php.publications">
+ <sect1 xml:id="history.php.publications">
   <title>PHP에 관한 출판물</title>
   <para>
    우리가 아는한, 잡지에서 PHP에 관한 최초의 기사는 

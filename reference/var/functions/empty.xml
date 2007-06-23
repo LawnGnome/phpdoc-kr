@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.empty">
+  <refentry xml:id="function.empty" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>empty</refname>
     <refpurpose>변수가 비어있는지 검사합니다.</refpurpose>

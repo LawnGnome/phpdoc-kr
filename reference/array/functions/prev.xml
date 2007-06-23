@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.prev">
+  <refentry xml:id="function.prev" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>prev</refname>
     <refpurpose>내부 배열 포인터를 앞으로 돌린다</refpurpose>

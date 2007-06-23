@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/sybase.xml, last change in rev 1.3 -->
 <!-- last change to 'sybase-close' in en/ tree in rev 1.2 -->
-	<refentry id="function.sybase-close">
+	<refentry xml:id="function.sybase-close" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>sybase_close</refname>
 			<refpurpose> Sybase서버로의  연결을 종료한다.</refpurpose>

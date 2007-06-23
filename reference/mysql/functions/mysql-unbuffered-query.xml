@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-unbuffered-query">
+<!-- EN-Revision: 1.11 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-unbuffered-query" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_unbuffered_query</refname>
   <refpurpose>결과 행을 버퍼링하지도 인출하지도 않으면서 MySQL로 SQL 질의를 전송</refpurpose>

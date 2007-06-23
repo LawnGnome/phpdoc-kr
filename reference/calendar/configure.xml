@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.1 Maintainer: fuzzy74 Status: unknown -->
-<section id="calendar.installation">
+<section xml:id="calendar.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
  <para>
   이 함수들를 작동시키기 위해서는, PHP를 컴파일할때

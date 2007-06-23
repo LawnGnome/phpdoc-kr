@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.key">
+  <refentry xml:id="function.key" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>key</refname>
     <refpurpose>연관배열에서 키를 꺼낸다</refpurpose>

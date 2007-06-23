@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.3 Maintainer: progcom Status: ok -->
-  <refentry id="function.urldecode">
+  <refentry xml:id="function.urldecode" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>urldecode</refname>
     <refpurpose>URL 인코드 문자열을 디코드합니다.</refpurpose>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
 <!-- splitted from ./kr/functions/imap.xml, last change in rev 1.1 -->
 <!-- last change to 'imap-rfc822-parse-adrlist' in en/ tree in rev 1.2 -->
-  <refentry id="function.imap-rfc822-parse-adrlist">
+  <refentry xml:id="function.imap-rfc822-parse-adrlist" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>imap_rfc822_parse_adrlist</refname>
     <refpurpose>주소 문자열을 해석한다</refpurpose>
@@ -16,7 +16,7 @@
       <methodparam><type>string</type><parameter>default_host</parameter></methodparam>
      </methodsynopsis>
     <para>
-     이 함수는 <ulink url="&url.rfc;rfc822.html">RFC822</ulink>문서에 정의된대로
+     이 함수는 <link xlink:href="&url.rfc;rfc822.html">RFC822</link>문서에 정의된대로
      각 주소에 대해 주소 문자열을 해석하고 객체의 문자열을 돌려준다.
      객체의 속성은 다음과 같다:
     </para>

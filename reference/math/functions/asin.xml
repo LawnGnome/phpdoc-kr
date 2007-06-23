@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry id="function.asin">
+  <refentry xml:id="function.asin" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>asin</refname>
     <refpurpose>아크 사인</refpurpose>

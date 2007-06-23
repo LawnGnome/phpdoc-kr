@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/shmop.xml, last change in rev 1.1 -->
 <!-- last change to 'shmop-open' in en/ tree in rev 1.12 -->
-  <refentry id="function.shmop-open">
+  <refentry xml:id="function.shmop-open" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>shmop_open</refname>
     <refpurpose>공유 메모리 블럭을 열거나 생성</refpurpose>

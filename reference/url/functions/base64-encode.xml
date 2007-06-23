@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ok -->
-  <refentry id="function.base64-encode">
+  <refentry xml:id="function.base64-encode" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>base64_encode</refname>
     <refpurpose>데이터를 MIME base64로 인코드합니다.</refpurpose>
@@ -45,7 +45,7 @@ VGhpcyBpcyBhbiBlbmNvZGVkIHN0cmluZw==
     <para>
      참고: <function>base64_decode</function>,
      <function>chunk_split</function>,
-     <ulink url="&url.rfc;2045">RFC 2045</ulink> 섹션 6.8.
+     <link xlink:href="&url.rfc;2045">RFC 2045</link> 섹션 6.8.
     </para>
    </refsect1>
   </refentry>

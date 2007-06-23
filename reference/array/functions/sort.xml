@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.sort">
+  <refentry xml:id="function.sort" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>sort</refname>
     <refpurpose>배열을 정렬한다</refpurpose>

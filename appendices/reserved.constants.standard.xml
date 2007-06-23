@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: ready -->
 
 <!-- DOCNOTE: some constants listed here are also there at
@@ -7,7 +7,7 @@
      about the place where general constants need to be put,
      and how they should be presented. Info constants are not
      deleted from here to have a consistent standard constants list. -->
- <refentry id="reserved.constants.standard">
+ <refentry xml:id="reserved.constants.standard" xmlns="http://docbook.org/ns/docbook">
   <refnamediv>
    <refname>표준 기선언 상수</refname>
    <refpurpose>PHP에서 선언되는 기본 상수</refpurpose>

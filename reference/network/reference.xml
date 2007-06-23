@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
- <reference id="ref.network">
+ <reference xml:id="ref.network" xmlns="http://docbook.org/ns/docbook">
   <title>네트워크 함수</title>
   <titleabbrev>네트워크</titleabbrev>
   <partintro>
 
-   <section id="network.intro">
+   <section xml:id="network.intro">
     &reftitle.intro;
     <para>
 
     </para>
    </section>
 
-   <section id="network.requirements">
+   <section xml:id="network.requirements">
     &reftitle.required;
     &no.requirement;
    </section>
 
-   <section id="network.installation">
+   <section xml:id="network.installation">
     &reftitle.install;
     &no.install;
    </section>
 
    &reference.network.ini;
 
-   <section id="network.resources">
+   <section xml:id="network.resources">
     &reftitle.resources;
     &no.resource;
    </section>

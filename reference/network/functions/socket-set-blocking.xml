@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/network.xml, last change in rev 1.3 -->
 <!-- last change to 'socket-set-blocking' in en/ tree in rev 1.2 -->
-	<refentry id="function.socket-set-blocking">
+	<refentry xml:id="function.socket-set-blocking" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>socket_set_blocking</refname>
 			<refpurpose>소켓의 모드를 설정 (blocking 모드/ non-blocking 모드)</refpurpose>

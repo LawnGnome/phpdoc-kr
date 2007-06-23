@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.23 Maintainer: fuzzy74 Status: ready -->
-<chapter id="features.commandline">
+<chapter xml:id="features.commandline" xmlns="http://docbook.org/ns/docbook">
  <title>커맨드 라인에서 PHP 사용하기</title>
  <!-- NEW DOCUMENTATION STARTS -->
  <para>

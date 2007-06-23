@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.17 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-data-seek">
+<refentry xml:id="function.mysql-data-seek" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_data_seek</refname>
   <refpurpose>내부 결과 포인터를 이동</refpurpose>

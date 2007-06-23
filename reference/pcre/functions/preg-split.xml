@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
-  <refentry id="function.preg-split">
+  <refentry xml:id="function.preg-split" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>preg_split</refname>
     <refpurpose>정규 표션식에 따라 문자열을 나눕니다.</refpurpose>

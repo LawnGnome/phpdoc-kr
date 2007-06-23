@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE translation SYSTEM "../dtds/translation.dtd">
 
-<translation>
+<translation xmlns="http://docbook.org/ns/docbook">
 
  <intro>
   PHP 매뉴얼 한글 번역 상태입니다.<br/>

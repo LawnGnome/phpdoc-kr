@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.current">
+  <refentry xml:id="function.current" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>current</refname>
     <refpurpose>배열의 현재 원소를 반환한다</refpurpose>

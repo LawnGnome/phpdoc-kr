@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.ini-get-all">
+  <refentry xml:id="function.ini-get-all" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>ini_get_all</refname>
     <refpurpose>모든 설정 옵션을 얻습니다.</refpurpose>

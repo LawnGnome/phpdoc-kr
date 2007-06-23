@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.11 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-list-fields">
+<!-- EN-Revision: 1.12 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-list-fields" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_list_fields</refname>
   <refpurpose>MySQL 테이블 필드를 반환</refpurpose>

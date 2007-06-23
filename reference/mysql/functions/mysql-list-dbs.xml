@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-list-dbs">
+<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-list-dbs" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_list_dbs</refname>
   <refpurpose>MySQL 서버에 있는 데이터베이스 목록을 반환</refpurpose>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.http-build-query">
+  <refentry xml:id="function.http-build-query" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>http_build_query</refname>
     <refpurpose>URL 인코드한 쿼리 문자열을 생성합니다.</refpurpose>

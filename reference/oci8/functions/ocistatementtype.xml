@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.ocistatementtype">
+  <refentry xml:id="function.ocistatementtype" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>OCIStatementType</refname>
     <refpurpose>OCI 구문(statement)의 타입을 리턴한다.</refpurpose>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/sybase.xml, last change in rev 1.3 -->
 <!-- last change to 'sybase-data-seek' in en/ tree in rev 1.2 -->
-	<refentry id="function.sybase-data-seek">
+	<refentry xml:id="function.sybase-data-seek" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>sybase_data_seek</refname>
 			<refpurpose>move internal row pointer  내부 결과 데이타셋내의  위치 포인터를 이동한다.</refpurpose>

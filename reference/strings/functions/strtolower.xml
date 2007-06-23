@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry id="function.strtolower">
+  <refentry xml:id="function.strtolower" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>strtolower</refname>
     <refpurpose>문자열을 소문자로 만듭니다.</refpurpose>

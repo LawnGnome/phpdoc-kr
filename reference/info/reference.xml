@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
- <reference id="ref.info">
+ <reference xml:id="ref.info" xmlns="http://docbook.org/ns/docbook">
   <title>PHP 옵션&amp;정보</title>
   <titleabbrev>PHP 옵션/정보</titleabbrev>
 
   <partintro>
-   <section id="info.intro">
+   <section xml:id="info.intro">
    &reftitle.intro;
    <para>
     이 함수들은 실행 설정, 읽어들인 확장 모듈, 버전 등, PHP에 대한 많은 정보를
@@ -15,19 +15,19 @@
    </para>
    </section>
    
-   <section id="info.requirements">
+   <section xml:id="info.requirements">
     &reftitle.required;
     &no.requirement;
    </section>
    
-   <section id="info.installation">
+   <section xml:id="info.installation">
     &reftitle.install;
      &no.install;
    </section>
 
    &reference.info.ini;
 
-   <section id="info.resources">
+   <section xml:id="info.resources">
     &reftitle.resources;
      &no.resource;
    </section>

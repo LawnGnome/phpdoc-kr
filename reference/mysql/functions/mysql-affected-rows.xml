@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.21 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-affected-rows">
+<refentry xml:id="function.mysql-affected-rows" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_affected_rows</refname>
   <refpurpose>최근 MySQL 작업으로 변경된 행 개수를 얻음</refpurpose>

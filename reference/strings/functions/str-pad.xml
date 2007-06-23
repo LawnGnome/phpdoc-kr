@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-  <refentry id="function.str-pad">
+  <refentry xml:id="function.str-pad" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>str_pad</refname>
     <refpurpose>

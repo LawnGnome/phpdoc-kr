@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.ob-gzhandler">
+  <refentry xml:id="function.ob-gzhandler" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>ob_gzhandler</refname>
     <refpurpose>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
-  <refentry id="function.log">
+  <refentry xml:id="function.log" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>log</refname>
     <refpurpose>자연로그</refpurpose>

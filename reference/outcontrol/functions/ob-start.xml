@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
-  <refentry id="function.ob-start">
+  <refentry xml:id="function.ob-start" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>ob_start</refname> 
     <refpurpose>출력 버퍼링을 켭니다.</refpurpose>

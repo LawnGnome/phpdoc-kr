@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.readdir">
+  <refentry xml:id="function.readdir" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>readdir</refname>
     <refpurpose>디렉토리 핸들에서 엔트리를 읽습니다.</refpurpose>

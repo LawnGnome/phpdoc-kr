@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
-  <refentry id="function.print">
+  <refentry xml:id="function.print" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>print</refname>
     <refpurpose>문자열을 출력합니다.</refpurpose>
@@ -67,8 +67,8 @@ END;
     </para>
     <simpara>
      <function>print</function>와 <function>echo</function>의 차이에 관한
-     간단한 설명은 FAQT의 Knowledge Base Article에서 볼 수 있습니다: <ulink
-      url="&url.echo-print;">&url.echo-print;</ulink>
+     간단한 설명은 FAQT의 Knowledge Base Article에서 볼 수 있습니다: <link
+      xlink:href="&url.echo-print;">&url.echo-print;</link>
     </simpara>
     
     &note.language-construct;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.73 Maintainer: progcom Status: ready -->
- <chapter id="features.file-upload">
+ <chapter xml:id="features.file-upload" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>파일 업로드 다루기</title>
 
-  <sect1 id="features.file-upload.post-method">
+  <sect1 xml:id="features.file-upload.post-method">
    <title>POST 방식 업로드</title>
 
    <simpara>
@@ -73,7 +73,7 @@
     PHP 지시어 <link linkend="ini.register-globals">register_globals</link>가
     <emphasis>on</emphasis>일때는, 관련된 변수명도 존재합니다. <link
      linkend="ini.register-globals">register_globals</link>의 기본값은 PHP
-    <ulink url="&url.php.release4.2.0;">4.2.0</ulink>부터
+    <link xlink:href="&url.php.release4.2.0;">4.2.0</link>부터
     <emphasis>off</emphasis>입니다.
    </para>
    <para>
@@ -207,7 +207,7 @@ print "</pre>";
    </simpara>
   </sect1>
 
-  <sect1 id="features.file-upload.errors">
+  <sect1 xml:id="features.file-upload.errors">
    <title>에러 메세지 설명</title>
    <simpara>
     PHP 4.2.0부터, PHP는 파일 배열에 적절한 에러 코드를 반환합니다. 에러 코드는
@@ -269,7 +269,7 @@ print "</pre>";
    </note>
   </sect1>
 
-  <sect1 id="features.file-upload.common-pitfalls">
+  <sect1 xml:id="features.file-upload.common-pitfalls">
    <title>일반적인 문제</title>
    <simpara>
     <literal>MAX_FILE_SIZE</literal>는 ini 설정 <link
@@ -328,7 +328,7 @@ print "</pre>";
    </simpara>
   </sect1>
 
-  <sect1 id="features.file-upload.multiple">
+  <sect1 xml:id="features.file-upload.multiple">
    <title>복수 파일 전송하기</title>
    <simpara>
     복수 파일은 <literal>input</literal>에서 다른
@@ -388,7 +388,7 @@ print "</pre>";
    </simpara>
   </sect1>
 
-  <sect1 id="features.file-upload.put-method">
+  <sect1 xml:id="features.file-upload.put-method">
    <title>PUT 방식 지원</title>
    <simpara>
     PUT 방식 지원은 PHP 3와 PHP 4에서 차이가 있습니다.

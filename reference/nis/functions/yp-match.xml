@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/nis.xml, last change in rev 1.3 -->
 <!-- last change to 'yp-match' in en/ tree in rev 1.2 -->
-	<refentry id="function.yp-match">
+	<refentry xml:id="function.yp-match" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>yp_match</refname>
 			<refpurpose>매치(match)된 라인을 반환합니다.</refpurpose>

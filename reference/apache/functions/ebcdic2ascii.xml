@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry id="function.ebcdic2ascii">
+  <refentry xml:id="function.ebcdic2ascii" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>ebcdic2ascii</refname>
     <refpurpose>문자열을 EBCDIC에서 ASCII로 변환한다.</refpurpose>

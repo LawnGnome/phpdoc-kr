@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.14 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-fetch-object">
+<refentry xml:id="function.mysql-fetch-object" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_fetch_object</refname>
   <refpurpose>객체형으로 결과 행을 인출</refpurpose>

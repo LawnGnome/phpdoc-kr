@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.preg-replace-callback">
+  <refentry xml:id="function.preg-replace-callback" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>preg_replace_callback</refname>
     <refpurpose>콜백을 이용한 정규 표현식 검색과 치환을 수행합니다.</refpurpose>

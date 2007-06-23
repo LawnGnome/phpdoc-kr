@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.38 Maintainer: progcom Status: ready -->
- <chapter id="features.http-auth">
+ <chapter xml:id="features.http-auth" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP로 HTTP 인증하기</title>
 
   <simpara>
@@ -24,7 +24,7 @@
    <para>
     <link linkend="reserved.variables.server">$_SERVER</link> 등의
     <link linkend="language.variables.superglobals">자동 전역 변수</link>는
-    PHP <ulink url="&url.php.release4.1.0;">4.1.0</ulink>부터 사용할 수
+    PHP <link xlink:href="&url.php.release4.1.0;">4.1.0</link>부터 사용할 수
     있습니다. <varname>$HTTP_SERVER_VARS</varname>는 PHP 3부터 사용할 수
     있습니다.
    </para>

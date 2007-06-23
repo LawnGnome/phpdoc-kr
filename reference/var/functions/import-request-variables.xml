@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
-  <refentry id="function.import-request-variables">
+  <refentry xml:id="function.import-request-variables" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>import_request_variables</refname>
     <refpurpose>GET/POST/쿠키 변수를 전역으로 가져옵니다.</refpurpose>

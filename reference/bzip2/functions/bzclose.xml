@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bzclose">
+  <refentry xml:id="function.bzclose" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bzclose</refname>
     <refpurpose>bzip2 파일 포인터를 닫는다</refpurpose>

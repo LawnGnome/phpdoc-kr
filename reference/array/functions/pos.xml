@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.pos">
+  <refentry xml:id="function.pos" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>pos</refname>
     <refpurpose>배열에서 현재 원소를 꺼내온다</refpurpose>

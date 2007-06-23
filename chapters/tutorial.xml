@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.37 Maintainer: progcom Status: ready -->
- <chapter id="tutorial">
+ <chapter xml:id="tutorial" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>간단한 튜토리얼</title>
 
   <para>
@@ -14,7 +14,7 @@
    보통의 HTML 페이지를 만드는 것과 같은 방법으로 작성할 수 있습니다.
   </para>
 
-  <sect1 id="tutorial.requirements">
+  <sect1 xml:id="tutorial.requirements">
    <title>무엇이 필요한가?</title>
    <para>
     이 튜토리얼은 서버가 PHP를 지원하고, <filename>.php</filename> 확장자를
@@ -25,34 +25,34 @@
     자동적으로 처리합니다. 컴파일할 필요도 없고, 별도의 툴을 설치할 필요도
     없습니다. PHP를 포함한 파일을, 모든 일을 할 수 있는 마법의 태그를 가진
     단순한 HTML 파일이라고 생각하십시오. 대부분의 웹 호스트는 PHP를
-    지원하지만, 지원하지 않을 경우에는 <ulink url="&url.php.links;">PHP
-     Links</ulink> 섹션에서 PHP를 지원하는 웹 호스트에 대한 정보를 얻을 수
+    지원하지만, 지원하지 않을 경우에는 <link xlink:href="&url.php.links;">PHP
+     Links</link> 섹션에서 PHP를 지원하는 웹 호스트에 대한 정보를 얻을 수
     있습니다.
    </para>
    <para>
     대역폭을 보존하기 위해 로컬 영역에서 개발하고 싶을 수도 있습니다. 이
-    경우에는, <ulink url="&url.apache;">아파치</ulink> 등의 웹 서버와 함께
-    <ulink url="&url.php.downloads;">PHP</ulink>를 설치할 수 있습니다.
-    원한다면 <ulink url="&url.mysql.docs;">MySQL</ulink> 등의 데이터베이스를
+    경우에는, <link xlink:href="&url.apache;">아파치</link> 등의 웹 서버와 함께
+    <link xlink:href="&url.php.downloads;">PHP</link>를 설치할 수 있습니다.
+    원한다면 <link xlink:href="&url.mysql.docs;">MySQL</link> 등의 데이터베이스를
     설치할 수도 있습니다.
    </para>
    <para>
     이들은 개별적으로 설치하거나, 보다 간단한 방법을 이용할 수 있습니다.
     매뉴얼에는 <link linkend="install">PHP 설치 안내</link>(이미 설치한 몇몇
     웹 서버를 따라서)가 있습니다. 이 경우, PHP 설치시에 문제가 있다면,
-    <ulink url="&url.php.mailing-lists;">설치 메일링 리스트</ulink>를 통하여
-    질문을 할 수 있습니다. 보다 간단한 길을 간다면, 사용하는 OS를 위한 <ulink
-     url="&url.installkits;">미리 설정된 패키지</ulink>를 사용하여, 이 모든
+    <link xlink:href="&url.php.mailing-lists;">설치 메일링 리스트</link>를 통하여
+    질문을 할 수 있습니다. 보다 간단한 길을 간다면, 사용하는 OS를 위한 <link
+     xlink:href="&url.installkits;">미리 설정된 패키지</link>를 사용하여, 이 모든
     것을 간단한 마우스 클릭만으로 설치할 수 있습니다. MacOSX, 리눅스, 윈도우를
     포함하여, 어떠한 운영 체제 아래에서도 간단히 PHP를 지원하는 웹 서버를
-    설정합니다. 리눅스에서는, <ulink url="&url.rpmfind;">rpmfind</ulink>와
-    <ulink url="&url.rpmfind.pbone;">PBone</ulink>이 RPM을 찾을 때 유용할
-    것입니다. <ulink url="&url.apt-get;">apt-get</ulink>에서 데비안 패키지를
+    설정합니다. 리눅스에서는, <link xlink:href="&url.rpmfind;">rpmfind</link>와
+    <link xlink:href="&url.rpmfind.pbone;">PBone</link>이 RPM을 찾을 때 유용할
+    것입니다. <link xlink:href="&url.apt-get;">apt-get</link>에서 데비안 패키지를
     찾을 수 있습니다.
    </para>
   </sect1>
 
-  <sect1 id="tutorial.firstpage">
+  <sect1 xml:id="tutorial.firstpage">
    <title>첫번째 PHP 실행 페이지</title>
    <para>
     다음에 쓰여진 내용으로 <filename>hello.php</filename>를 만들고,
@@ -110,8 +110,8 @@
      linkend="install">설치</link> 장을 참고하여 PHP를 사용할 수
     있게 해달라고 요청하십시오. http를 통하여, 서버가 출력을 제공하도록
     접근하고 있는지 확인하십시오. 단순히 파일 시스템에서 읽어들인다면, PHP를
-    통하여 처리되지 않습니다. 문제가 계속된다면, 망설이지 말고 <ulink
-     url="&url.php.support;">PHP 지원</ulink>을 이용하십시오.
+    통하여 처리되지 않습니다. 문제가 계속된다면, 망설이지 말고 <link
+     xlink:href="&url.php.support;">PHP 지원</link>을 이용하십시오.
    </para>
    <para>
     예제의 초점은 특별한 PHP 태그를 보여주는 것입니다. 이 예제에서
@@ -128,7 +128,7 @@
     <para>
      PHP를 만들고, 수정하고, 관리할 수 있는 많은 텍스트 편집기와 IDE가
      있습니다. 이러한 도구에 대한 부분적인 목록은
-     <ulink url="&url.phpeditorlist;">PHP 편집기 목록</ulink>에서 관리하고
+     <link xlink:href="&url.phpeditorlist;">PHP 편집기 목록</link>에서 관리하고
      있습니다. 편집기를 추천하려면, 위 페이지를 방문해서 페이지 관리자에게 그
      편집기를 목록에 추가해달라고 하십시오. 구문 하이라이팅이 있는 편집기는
      도움이 될 것입니다.
@@ -178,7 +178,7 @@
    </para>
   </sect1>
 
-  <sect1 id="tutorial.useful">
+  <sect1 xml:id="tutorial.useful">
    <title>유용한 무언가</title>
    <para>
     이제 더 유용한 무언가를 해봅시다. 방문자가 사용하는 브라우저의 종류를
@@ -195,7 +195,7 @@
      부릅니다. 더 많은 정보는
      <link linkend="language.variables.superglobals">자동전역</link>과 관련한
      매뉴얼 페이지를 참고하십시오. 이 특별한 변수들은 PHP
-     <ulink url="&url.php.release4.1.0;">4.1.0</ulink>에서 소개되었습니다.
+     <link xlink:href="&url.php.release4.1.0;">4.1.0</link>에서 소개되었습니다.
      이전에는 <varname>$HTTP_SERVER_VARS</varname> 등의
      <varname>$HTTP_*_VARS</varname> 배열을 이용하였습니다. 배제되었지만, 이
      구형의 변수들은 아직 존재합니다.
@@ -267,7 +267,7 @@ Internet Explorer를 사용하고 있습니다.<br />
     사용하는 기본 문법에 친숙하다면, 이것은 매우 논리적으로 보일 것입니다.
     그렇지 않으면, PHP 소개서를 구해서 첫부분을 읽어보거나, 매뉴얼의
     <link linkend="langref">언어 레퍼런스</link> 부분을 읽어보십시오. PHP에
-    관한 책의 목록은 <ulink url="&url.php.books;">&url.php.books;</ulink>에서
+    관한 책의 목록은 <link xlink:href="&url.php.books;">&url.php.books;</link>에서
     찾아볼 수 있습니다.
    </para>
    <para>
@@ -333,7 +333,7 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE) {
    </para>
   </sect1>
    
-  <sect1 id="tutorial.forms">
+  <sect1 xml:id="tutorial.forms">
    <title>폼 다루기</title>
    <para>
     PHP의 매우 강력한 기능의 하나는 HTML 폼을 다루는 방법입니다. 이를
@@ -405,7 +405,7 @@ Joe씨 안녕하세요. 당신은 22세입니다.
    </para>
   </sect1>
   
-  <sect1 id="tutorial.oldcode">
+  <sect1 xml:id="tutorial.oldcode">
    <title>새 버전의 PHP에서 예전의 코드를 사용하기</title>
    <para>
     PHP는 유명한 스크립트 언어로 성장했고, 재사용 할 수 있는 많은 양의
@@ -421,7 +421,7 @@ Joe씨 안녕하세요. 당신은 22세입니다.
       <simpara>
        (함수나 메쏘드 안에서 사용할 때 global 선언을 필요로 하는) 이전의
        <varname>$HTTP_*_VARS</varname> 배열의 배제. PHP
-       <ulink url="&url.php.release4.1.0;">4.1.0</ulink>에서 소개한
+       <link xlink:href="&url.php.release4.1.0;">4.1.0</link>에서 소개한
        <link linkend="language.variables.superglobals">자동전역 배열</link>을
        사용하십시오. 그 종류는 <varname>$_GET</varname>,
        <varname>$_POST</varname>, <varname>$_COOKIE</varname>,
@@ -436,7 +436,7 @@ Joe씨 안녕하세요. 당신은 22세입니다.
      <listitem>
       <simpara>
        기본값으로, 외부 변수를 더 이상 전역 변수로 등록하지 않습니다. 즉, PHP
-       <ulink url="&url.php.release4.2.0;">4.2.0</ulink>부터 &php.ini;에서의
+       <link xlink:href="&url.php.release4.2.0;">4.2.0</link>부터 &php.ini;에서의
        PHP 설정 <link linkend="ini.register-globals">register_globals</link>의
        기본값이 <emphasis>off</emphasis>가 되었습니다. 이 값들에의 접근은
        위에서 언급한 자동전역 배열을 이용하는 것을 권장합니다. 예전의
@@ -454,19 +454,19 @@ Joe씨 안녕하세요. 당신은 22세입니다.
    </para>
   </sect1>
   
-  <sect1 id="tutorial.whatsnext">
+  <sect1 xml:id="tutorial.whatsnext">
    <title>다음은?</title>
    <para>
     새로운 지식으로 매뉴얼과 예제 아카이브의 수많은 예제 스크립트의 대부분을
     이해할 수 있을 것입니다. php.net 사이트의 또다른 예제들을 다음 링크
     섹션에서 찾아볼 수 있습니다:
-    <ulink url="&url.php.links;">&url.php.links;</ulink>.
+    <link xlink:href="&url.php.links;">&url.php.links;</link>.
    </para>
    <para>
     PHP로 할 수 있는 많은 일들에 대한 다양한 슬라이드 프리젠테이션을 PHP
     Conference Material 사이트에서 볼 수 있습니다:
-    <ulink url="&url.php.conf;">&url.php.conf;</ulink>,
-    <ulink url="&url.php.talks;">&url.php.talks;</ulink>
+    <link xlink:href="&url.php.conf;">&url.php.conf;</link>,
+    <link xlink:href="&url.php.talks;">&url.php.talks;</link>
    </para>
   </sect1>
  </chapter>

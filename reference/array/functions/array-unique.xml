@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.11 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.array-unique">
+  <refentry xml:id="function.array-unique" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>array_unique</refname>
     <refpurpose>배열에서 중복된 값을 제거한다</refpurpose>

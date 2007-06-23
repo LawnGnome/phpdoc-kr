@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: unknown -->
- <reference id="ref.aspell">
+ <reference xml:id="ref.aspell" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Aspell 함수 [deprecated]</title>
   <titleabbrev>Aspell</titleabbrev>
 
   <partintro>
-   <section id="aspell.intro">
+   <section xml:id="aspell.intro">
     &reftitle.intro;
     <para>
      <function>aspell</function> 함수는 단어의 철자를 검사하고 틀린 경우
@@ -21,19 +21,19 @@
    </note>
    </section>
    
-   <section id="aspell.requirements">
+   <section xml:id="aspell.requirements">
     &reftitle.required;
     <para>
      aspell은  구버전( .27.* 까지 )의 aspell 라이브러리에서만 동작한다.
      이 모듈과 그런 버전의 aspell 라이브러리는 더이상 지원되지 않는다.
-     aspell 라이브러리가 필요하면, <ulink url="&url.aspell;">&url.aspell;</ulink>
+     aspell 라이브러리가 필요하면, <link xlink:href="&url.aspell;">&url.aspell;</link>
      에서 구할수 있다.
     </para>
    </section>
    
    &reference.aspell.configure;
    
-   <section id="aspell.seealso">
+   <section xml:id="aspell.seealso">
     &reftitle.seealso;
     <para>
      <link linkend="ref.pspell">pspell</link> 참고.

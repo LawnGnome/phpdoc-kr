@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.var-export">
+  <refentry xml:id="function.var-export" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>var_export</refname>
     <refpurpose>변수의 표현을 출력하거나 문자열로 반환합니다.</refpurpose>

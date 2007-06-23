@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry id="function.apache-getenv">
+  <refentry xml:id="function.apache-getenv" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>apache_getenv</refname>
     <refpurpose>

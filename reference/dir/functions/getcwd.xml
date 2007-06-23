@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.getcwd">
+  <refentry xml:id="function.getcwd" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>getcwd</refname>
     <refpurpose>현재 작업 디렉토리를 구합니다.</refpurpose>

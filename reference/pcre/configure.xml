@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-<section id="pcre.installation">
+<!-- $Revision: 1.4 $ -->
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<section xml:id="pcre.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
  <para>
   PHP 4.2.0부터 이 함수들은 기본값으로 사용 가능합니다.

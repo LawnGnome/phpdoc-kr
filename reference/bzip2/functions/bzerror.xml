@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bzerror">
+  <refentry xml:id="function.bzerror" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bzerror</refname>
     <refpurpose>bzip2 에러 번호와 에러 문자열을 배열로 반환한다</refpurpose>

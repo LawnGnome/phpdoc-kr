@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.55 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
- <chapter id="features.safe-mode">
+ <chapter xml:id="features.safe-mode" xmlns="http://docbook.org/ns/docbook">
   <title>안전 모드</title>
 
   <para>
@@ -11,7 +11,7 @@
    많은 사람, 특히 ISP, 들이 현재 안전 모드를 사용한다.
   </para>
 
-  <sect1 id="ini.sect.safe-mode">
+  <sect1 xml:id="ini.sect.safe-mode">
    <title>보안과 안전 모드</title>
    <para>
     <table>
@@ -81,7 +81,7 @@
    
    <para>
     <variablelist>
-     <varlistentry id="ini.safe-mode">
+     <varlistentry xml:id="ini.safe-mode">
       <term>
        <parameter>safe_mode</parameter>
        <type>boolean</type>
@@ -93,7 +93,7 @@
        </para>
       </listitem>
      </varlistentry>
-     <varlistentry id="ini.safe-mode-gid">
+     <varlistentry xml:id="ini.safe-mode-gid">
       <term>
        <parameter>safe_mode_gid</parameter>
        <type>boolean</type>
@@ -107,7 +107,7 @@
        </para>
       </listitem>
      </varlistentry>
-     <varlistentry id="ini.safe-mode-include-dir">
+     <varlistentry xml:id="ini.safe-mode-include-dir">
       <term>
        <parameter>safe_mode_include_dir</parameter>
        <type>string</type>
@@ -134,7 +134,7 @@
        </simpara>
       </listitem>
      </varlistentry>
-     <varlistentry id="ini.safe-mode-exec-dir">
+     <varlistentry xml:id="ini.safe-mode-exec-dir">
       <term>
        <parameter>safe_mode_exec_dir</parameter>
        <type>string</type>
@@ -147,7 +147,7 @@
        </para>
       </listitem>
      </varlistentry>
-     <varlistentry id="ini.safe-mode-allowed-env-vars">
+     <varlistentry xml:id="ini.safe-mode-allowed-env-vars">
       <term>
        <parameter>safe_mode_allowed_env_vars</parameter>
        <type>string</type>
@@ -167,7 +167,7 @@
        </note>
       </listitem>
      </varlistentry>
-     <varlistentry id="ini.safe-mode-protected-env-vars">
+     <varlistentry xml:id="ini.safe-mode-protected-env-vars">
       <term>
        <parameter>safe_mode_protected_env_vars</parameter>
        <type>string</type>
@@ -181,7 +181,7 @@
        </para>
       </listitem>
      </varlistentry>
-      <varlistentry id="ini.open-basedir">
+      <varlistentry xml:id="ini.open-basedir">
       <term>
        <parameter>open_basedir</parameter>
        <type>string</type>
@@ -198,7 +198,7 @@
         모든 심볼릭 링크가 검사되기 때문에, symlink로 이 제한을 회피할수 없다.
        </para>
        <para>
-        특수한 값 <systemitem class="constant">.</systemitem>은 스크립트가
+        특수한 값 <constant>.</constant>은 스크립트가
         작업하는 디렉토리를 기본 디렉토리로 사용합니다. 이는 스크립트의 작업
         디렉토리가 <function>chdir</function>을 통해 쉽게 바뀔 수 있기 때문에
         조금 위험합니다.
@@ -225,7 +225,7 @@
        </para>
       </listitem>
      </varlistentry>
-     <varlistentry id="ini.disable-functions">
+     <varlistentry xml:id="ini.disable-functions">
       <term>
        <parameter>disable_functions</parameter>
        <type>string</type>
@@ -243,7 +243,7 @@
        </simpara>
       </listitem>
      </varlistentry>
-     <varlistentry id="ini.disable-classes">
+     <varlistentry xml:id="ini.disable-classes">
       <term>
        <parameter>disable_classes</parameter>
        <type>string</type>
@@ -351,7 +351,7 @@ Warning: readfile() has been disabled for security reasons in
   </para>
  </sect1>
 
-  <sect1 id="features.safe-mode.functions">
+  <sect1 xml:id="features.safe-mode.functions">
    <title>안전 모드에 의해 제한되는/비활성화되는 함수들</title>
    <para>
     다음은 아직 완전하지 않고 부정확할 수도 있는 

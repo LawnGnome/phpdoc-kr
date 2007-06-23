@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.fmod">
+  <refentry xml:id="function.fmod" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>fmod</refname>
     <refpurpose>인자의 나눗셈에 대한 소수점 나머지(modulo)를

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry id="function.rewinddir">
+  <refentry xml:id="function.rewinddir" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>rewinddir</refname>
     <refpurpose>디렉토리 핸들을 되감습니다.</refpurpose>

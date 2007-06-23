@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.3 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.aspell-suggest">
+  <refentry xml:id="function.aspell-suggest" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>aspell_suggest</refname>
     <refpurpose>추천 단어를 제시한다 [deprecated]</refpurpose>

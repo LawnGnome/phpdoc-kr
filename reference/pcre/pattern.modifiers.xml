@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.1 Maintainer: progcom Status: ready -->
-  <refentry id="pcre.pattern.modifiers">
+  <refentry xml:id="pcre.pattern.modifiers" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>패턴 변경자</refname>
     <refpurpose>정규표현식 패턴에 존재하는 변경자의 설명</refpurpose>

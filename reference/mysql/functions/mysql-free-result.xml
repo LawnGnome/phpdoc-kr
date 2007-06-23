@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-free-result">
+<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-free-result" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_free_result</refname>
   <refpurpose>질의결과를 메모리에서 해제</refpurpose>

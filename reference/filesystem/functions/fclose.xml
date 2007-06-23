@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
 <!-- last change to 'fclose' in en/ tree in rev 1.2 -->
-	<refentry id="function.fclose">
+	<refentry xml:id="function.fclose" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>fclose</refname>
 			<refpurpose>열려있는 파일 포인터를 닫습니다.</refpurpose>

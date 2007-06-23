@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.16 Maintainer: progcom Status: working -->
- <reference id="ref.xml">
+ <reference xml:id="ref.xml" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>XML 해석기 함수</title>
   <titleabbrev>XML</titleabbrev>
 
   <partintro>
 
-   <section id="xml.intro">
+   <section xml:id="xml.intro">
     &reftitle.intro;
     <para>
      XML(eXtensible Markup Language)은 웹에서 구조화된 문서 교환을 위한 데이터
      형식입니다. The World Wide Web consortium(W3C)에서 정의한 표준입니다.
-     XML과 관련 기술에 대한 정보는 <ulink
-     url="&url.xml;">&url.xml;</ulink>에서 볼 수 있습니다.
+     XML과 관련 기술에 대한 정보는 <link
+     xlink:href="&url.xml;">&url.xml;</link>에서 볼 수 있습니다.
     </para>
     <para>
      PHP 확장은 James Clark의 <productname>expat</productname>를 사용합니다.
@@ -30,10 +30,10 @@
     </para>
    </section>
 
-   <section id="xml.requirements">
+   <section xml:id="xml.requirements">
     &reftitle.required;
     <para>
-     이 확장은 <ulink url="&url.expat;">&url.expat;</ulink>에서 찾을 수 있는
+     이 확장은 <link xlink:href="&url.expat;">&url.expat;</link>에서 찾을 수 있는
      <productname>expat</productname>를 사용합니다. expat에 들어있는
      Makefile은 기본값으로 라이브러리를 생성하지 않기 때문에, 다음의 make
      규칙을 사용할 수 있습니다:
@@ -44,21 +44,21 @@ libexpat.a: $(OBJS)
     ranlib $@
 ]]>
      </programlisting>
-     expat의 소스 RPM 패키지는 <ulink
-     url="&url.expat.rpm;">&url.expat.rpm;</ulink>에서 찾을 수 있습니다.
+     expat의 소스 RPM 패키지는 <link
+     xlink:href="&url.expat.rpm;">&url.expat.rpm;</link>에서 찾을 수 있습니다.
     </para>
    </section>
 
    &reference.xml.configure;
 
-   <section id="xml.configuration">
+   <section xml:id="xml.configuration">
     &reftitle.runtime;
     &no.config;
    </section>
 
-   <section id="xml.resources">
+   <section xml:id="xml.resources">
     &reftitle.resources;
-    <section id="xml.resources.xml">
+    <section xml:id="xml.resources.xml">
      <title><literal>xml</literal></title>
      <para>
       <function>xml_parser_create</function>와
@@ -71,7 +71,7 @@ libexpat.a: $(OBJS)
 
    &reference.xml.constants;
 
-    <section id="xml.eventhandlers">
+    <section xml:id="xml.eventhandlers">
      <title>이벤트 핸들러</title>
      <para>
       정의된 XML 이벤트 핸들러는:
@@ -158,7 +158,7 @@ libexpat.a: $(OBJS)
      </para>
     </section>
 
-    <section id="xml.case-folding">
+    <section xml:id="xml.case-folding">
      <title>케이스 폴딩</title>
      <para>
       The element handler functions may get their element names
@@ -178,7 +178,7 @@ libexpat.a: $(OBJS)
      </para>
     </section>
 
-    <section id="xml.error-codes">
+    <section xml:id="xml.error-codes">
      <title>오류 코드</title>
      <para>
       다음 상수들이 XML 오류 코드로 정의되어 있습니다
@@ -210,10 +210,10 @@ libexpat.a: $(OBJS)
      </para>
     </section>
 
-    <section id="xml.encoding">
+    <section xml:id="xml.encoding">
      <title>문자 인코딩</title>
      <para>
-      PHP의 XML 확장은 <ulink url="&url.unicode;">유니코드</ulink> 문자셋을
+      PHP의 XML 확장은 <link xlink:href="&url.unicode;">유니코드</link> 문자셋을
       통해 서로 다른 <glossterm>문자 인코딩</glossterm>을 지원합니다. 문자
       인코딩에는 <glossterm>소스 인코딩</glossterm>과 <glossterm>타겟
       인코딩</glossterm>의 두 종류가 존재합니다. PHP 내부에서 문서 표현은
@@ -250,12 +250,12 @@ libexpat.a: $(OBJS)
      </para>
     </section>
 
-   <section id="xml.examples">
+   <section xml:id="xml.examples">
     &reftitle.examples;
     <para>
      XML 문서를 파싱하는 몇몇 예제 PHP 스크립트입니다.
     </para>
-    <section id="example.xml-structure">
+    <section xml:id="example.xml-structure">
      <title>XML 엘레멘트 구조 예제</title>
      <para>
       This first example displays the structure of the start elements in
@@ -305,7 +305,7 @@ xml_parser_free($xml_parser);
      </para>
     </section>
 
-    <section id="example.xml-map-tags">
+    <section xml:id="example.xml-map-tags">
      <title>XML 태그 매핑 예제</title>
      <para>
       <example>
@@ -372,7 +372,7 @@ xml_parser_free($xml_parser);
      </para>
     </section>
 
-    <section id="example.xml-external-entity">
+    <section xml:id="example.xml-external-entity">
      <title>XML 외부 엔티티 예제</title>
      <para>
       This example highlights XML code.  It illustrates how to use an
@@ -544,7 +544,7 @@ xml_parser_free($xml_parser);
   </informaltable>
  </para>
  &systemEntity;
- <section id="about">
+ <section xml:id="about">
   <title>About this Document</title>
   <para>
    <!-- this is a comment -->

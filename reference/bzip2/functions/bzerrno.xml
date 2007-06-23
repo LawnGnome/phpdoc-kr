@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bzerrno">
+  <refentry xml:id="function.bzerrno" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bzerrno</refname>
     <refpurpose>bzip2 에러 번호를 반환한다</refpurpose>

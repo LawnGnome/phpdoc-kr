@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry id="function.acos">
+  <refentry xml:id="function.acos" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>acos</refname>
     <refpurpose>아크 코사인</refpurpose>

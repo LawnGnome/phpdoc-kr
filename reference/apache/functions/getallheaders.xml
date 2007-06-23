@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.getallheaders">
+  <refentry xml:id="function.getallheaders" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>getallheaders</refname>
     <refpurpose>모든 HTTP 요청 헤더를 가져옵니다.</refpurpose>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- edited by Jeongha Kwon(SuViA) -->
-<reference id="ref.pspell">
+<reference xml:id="ref.pspell" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<title>Pspell 함수</title>
 	<titleabbrev>Pspell</titleabbrev>
 	<partintro>
@@ -8,8 +8,8 @@
     이 함수는 단어의 철자를 검사하고 추천하는 단어를 제시합니다.
    </simpara>
 		<simpara>
-    이 함수를 사용하기 위해서는 aspell 라이브러리와 pspell 라이브러리가 필요합니다. 각각 <ulink url="&url.aspell;">&url.aspell;</ulink> 와
-    <ulink url="&url.pspell;">&url.pspell;</ulink> 에서 다운로드 할 수 있습니다. 그리고 PHP 컴파일시 <option role="configure">--with-pspell[=dir]</option> 옵션을 추가해야합니다.
+    이 함수를 사용하기 위해서는 aspell 라이브러리와 pspell 라이브러리가 필요합니다. 각각 <link xlink:href="&url.aspell;">&url.aspell;</link> 와
+    <link xlink:href="&url.pspell;">&url.pspell;</link> 에서 다운로드 할 수 있습니다. 그리고 PHP 컴파일시 <option role="configure">--with-pspell[=dir]</option> 옵션을 추가해야합니다.
    </simpara>
 	</partintro>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry id="function.var-dump">
+  <refentry xml:id="function.var-dump" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>var_dump</refname>
     <refpurpose>변수에 관한 정보를 덤프합니다.</refpurpose>

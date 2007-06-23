@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.1 Maintainer: fuzzy74 Status: unknown -->
 <!-- CREDITS: dhyuk -->
-  <refentry id='function.pg-cancel-query'>
+  <refentry xml:id='function.pg-cancel-query' xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>pg_cancel_query</refname>
     <refpurpose>

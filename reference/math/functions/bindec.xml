@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.bindec">
+  <refentry xml:id="function.bindec" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bindec</refname>
     <refpurpose>2진수를 10진수로 변환합니다.</refpurpose>

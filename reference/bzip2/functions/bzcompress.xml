@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bzcompress">
+  <refentry xml:id="function.bzcompress" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bzcompress</refname>
     <refpurpose>문자열을 bzip2 인코딩 데이터로 압축한다</refpurpose>

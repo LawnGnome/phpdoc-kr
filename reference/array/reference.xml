@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.10 Maintainer: fuzzy74 Status: unknown -->
- <reference id="ref.array">
+ <reference xml:id="ref.array" xmlns="http://docbook.org/ns/docbook">
   <title>배열함수</title>
   <titleabbrev>배열</titleabbrev>
 
   <partintro>
-   <section id="array.intro">
+   <section xml:id="array.intro">
     &reftitle.intro;
     <para>
      이 함수는 다양한 방법으로 배열에 접근하고 배열을 조작할 수 있게 해 준다.
@@ -22,29 +22,29 @@
     </para>
    </section>
 
-   <section id="array.requirements">
+   <section xml:id="array.requirements">
     &reftitle.required;
     &no.requirement;
    </section>
     
-   <section id="array.installation">
+   <section xml:id="array.installation">
     &reftitle.install;
     &no.install;
    </section>
 
-   <section id="array.configuration">
+   <section xml:id="array.configuration">
     &reftitle.runtime;
     &no.config;
    </section>
 
-   <section id="array.resources">
+   <section xml:id="array.resources">
     &reftitle.resources;
     &no.resource;
    </section>
 
    &reference.array.constants;
 
-   <section id="array.seealso">
+   <section xml:id="array.seealso">
     &reftitle.seealso;
     <para>
      <function>is_array</function>, <function>explode</function>,

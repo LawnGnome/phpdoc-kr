@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-pconnect">
+<refentry xml:id="function.mysql-pconnect" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_pconnect</refname>
   <refpurpose>MySQL 서버로 영속적으로 접속</refpurpose>

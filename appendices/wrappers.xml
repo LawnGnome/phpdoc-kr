@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.36 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
-<appendix id="wrappers">
+<appendix xml:id="wrappers" xmlns="http://docbook.org/ns/docbook">
  <title>지원 프로토콜/래퍼 목록</title>
  <para>
   다음은 <function>fopen</function>과 <function>copy</function> 등의
@@ -11,7 +11,7 @@
   수 있다.
  </para>
 
- <section id="wrappers.file">
+ <section xml:id="wrappers.file">
   <title>파일시스템</title>
   <simpara>
    PHP의 모든 버전. 특히 <literal>PHP 4.3.0</literal>부터는
@@ -98,7 +98,7 @@
   </para>
  </section>
 
- <section id="wrappers.http">
+ <section xml:id="wrappers.http">
   <title>HTTP 와 HTTPS</title>
    <simpara>
     PHP 3, PHP 4.  <literal>PHP 4.3.0</literal> 이후의 <filename>https://</filename>
@@ -314,7 +314,7 @@ foreach(stream_get_meta_data($fp) as $response) {
   </note>
  </section>
 
- <section id="wrappers.ftp">
+ <section xml:id="wrappers.ftp">
   <title>FTP 와 FTPS</title>
   <simpara>
    PHP 3, PHP 4. <literal>PHP 4.3.0</literal>이후부터 <filename>ftps://</filename> 
@@ -472,7 +472,7 @@ foreach(stream_get_meta_data($fp) as $response) {
   </note>
  </section>
 
- <section id="wrappers.php">
+ <section xml:id="wrappers.php">
   <title>PHP 입력/출력(input/output) 스트림</title>
   <simpara>
    <literal>PHP 3.0.13</literal> 이후의, <filename>php://output</filename> 
@@ -669,7 +669,7 @@ file_set_contents("php://filter/write=string.rot13/resource=example.txt","Hello 
   </para>
  </section>
 
- <section id="wrappers.compression">
+ <section xml:id="wrappers.compression">
   <title>압축 스트림</title>
   <simpara><filename>zlib:</filename> PHP 4.0.4 - PHP 4.2.3 (fopencookie만 갖는 시스템)</simpara>
   <simpara><filename>compress.zlib://</filename>과 <filename>compress.bzip2://</filename> PHP 4.3.0 이상</simpara>

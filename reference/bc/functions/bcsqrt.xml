@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bcsqrt">
+  <refentry xml:id="function.bcsqrt" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bcsqrt</refname>
     <refpurpose>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.sscanf">
+  <refentry xml:id="function.sscanf" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>sscanf</refname>
     <refpurpose>
@@ -53,7 +53,7 @@ echo "Item $serial was manufactured on: $year-" . substr($month, 0, 3) . "-$day\
 // 작가 정보를 얻어서 DocBook 엔트리를 생성합니다.
 $auth = "24\tLewis Carroll";
 $n = sscanf($auth, "%d\t%s %s", &$id, &$first, &$last);
-echo "<author id='$id'>
+echo "<author xml:id='$id'>
     <firstname>$first</firstname>
     <surname>$last</surname>
 </author>\n";

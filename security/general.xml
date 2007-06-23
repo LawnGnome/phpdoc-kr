@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <chapter id="security.general">
+  <chapter xml:id="security.general" xmlns="http://docbook.org/ns/docbook">
    <title>일반적인 고려 사항</title>
    <simpara>
     완벽한 보안 시스템은 불가능에 가깝기에, 보안 대책의 지향점은 보통

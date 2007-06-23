@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.24 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-fetch-array">
+<refentry xml:id="function.mysql-fetch-array" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_fetch_array</refname>
   <refpurpose>연관 색인 및 숫자 색인으로 된 배열로 결과 행을 반환</refpurpose>

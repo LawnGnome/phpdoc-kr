@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/sybase.xml, last change in rev 1.3 -->
 <!-- last change to 'sybase-num-rows' in en/ tree in rev 1.2 -->
-	<refentry id="function.sybase-num-rows">
+	<refentry xml:id="function.sybase-num-rows" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>sybase_num_rows</refname>
 			<refpurpose>결과값의 데이타(열)수를 구한다.</refpurpose>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<reference id="ref.yaz">
+<reference xml:id="ref.yaz" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<title>YAZ functions</title>
 	<titleabbrev>YAZ</titleabbrev>
 	<partintro>
-		<section id="yaz.intro">
+		<section xml:id="yaz.intro">
 			<title>Introduction</title>
 			<para>
     이 익스텐션은 정보검색을 위한 Z39.50 프로토콜을 사용하는<productname>YAZ</productname>툴킷의 PHP 인터페이스를 제공한다. 이 익스텐션은 Z39.50 origin(client)에게 쉽게 Z39.50 targets (servers)을 병렬 검색할 수 있는 도구를 제공한다. 
    </para>
 			<para>
-				<productname>YAZ</productname>는 <ulink url="&url.yaz;">&url.yaz;</ulink>서 만나볼 수 있다. 뉴스, 예제 스크립트, 등등 이 익스텐션은 <ulink url="&url.yaz-phpyaz;">&url.yaz-phpyaz;</ulink>여기서 구할 수 있다.
+				<productname>YAZ</productname>는 <link xlink:href="&url.yaz;">&url.yaz;</link>서 만나볼 수 있다. 뉴스, 예제 스크립트, 등등 이 익스텐션은 <link xlink:href="&url.yaz-phpyaz;">&url.yaz-phpyaz;</link>여기서 구할 수 있다.
    </para>
 			<para>
     이 모듈은 Z39.50의 복잡성은 대부분 감추어져 있어서 매우 사용하기 쉽다. 이것은 PHP가 이용할 수 있는 다양한 SQL APIs와 매우 유사한 persistent stateless connections 을 제공한다. 이것은 세션들이 stateless 하지만 사용자들에게 분배된다는 것을 의미한다. 결국. 대부분의 경우 연결은 저장되고 상태의 진행은 초기화 된다.
    </para>
 		</section>
-		<section id="yaz.install">
+		<section xml:id="yaz.install">
 			<title>설치</title>
 			<para>
     YAZ를 컴파일 하고 설치를 한다. PHP를 필요한 모듈과 빌드 할때 --with-yaz 옵션을 추가한다. 작업은 대개 다음과 같다.:
@@ -37,7 +37,7 @@ make install
 				</informalexample>
 			</para>
 		</section>
-		<section id="yaz.example">
+		<section xml:id="yaz.example">
 			<title>Example</title>
 			<para>
     PHP/YAZ는 targets(Z-Associations)의 연결을 유지한다. positive integer는 ID of a

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
+<!-- $Revision: 1.5 $ -->
 <!-- EN-Revision: 1.30 Maintainer: fuzzy74 Status: ready -->
-<appendix id="resource">
+<appendix xml:id="resource" xmlns="http://docbook.org/ns/docbook">
  <title>리소스 타입 목록</title>
  <para>
   다음은 PHP 리소스를 생성, 사용, 파괴하는 함수 목록이다.

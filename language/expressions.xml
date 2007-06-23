@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
+<!-- $Revision: 1.13 $ -->
 <!-- EN-Revision: 1.21 Maintainer: fuzzy74 Status: ready -->
- <chapter id="language.expressions">
+ <chapter xml:id="language.expressions" xmlns="http://docbook.org/ns/docbook">
    <title>표현식</title>
 
    <simpara>

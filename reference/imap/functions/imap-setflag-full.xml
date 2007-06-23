@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
 <!-- splitted from ./kr/functions/imap.xml, last change in rev 1.1 -->
 <!-- last change to 'imap-setflag-full' in en/ tree in rev 1.2 -->
-  <refentry id="function.imap-setflag-full">
+  <refentry xml:id="function.imap-setflag-full" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>imap_setflag_full</refname>
     <refpurpose>메시지에서 플래그(flags)를 셋(set)한다</refpurpose>

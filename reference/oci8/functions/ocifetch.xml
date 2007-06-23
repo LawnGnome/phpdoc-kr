@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.ocifetch">
+  <refentry xml:id="function.ocifetch" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>OCIFetch</refname>
     <refpurpose>결과 버퍼(result-buffer)로 다음 열을 페치한다</refpurpose>

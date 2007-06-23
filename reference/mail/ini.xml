@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-<section id="mail.configuration">
+<section xml:id="mail.configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.runtime;
  &extension.runtime;
  <para>
@@ -45,7 +45,7 @@
  
  <para>
  <variablelist>
-  <varlistentry id="ini.smtp">
+  <varlistentry xml:id="ini.smtp">
    <term>
     <parameter>SMTP</parameter>
     <type>string</type>
@@ -58,7 +58,7 @@
    </listitem>
   </varlistentry>
 
-  <varlistentry id="ini.smtp-port">
+  <varlistentry xml:id="ini.smtp-port">
    <term>
     <parameter>smtp_port</parameter>
     <type>int</type>
@@ -72,7 +72,7 @@
    </listitem>
   </varlistentry>
 
-  <varlistentry id="ini.sendmail-from">
+  <varlistentry xml:id="ini.sendmail-from">
    <term>
     <parameter>sendmail_from</parameter>
     <type>string</type>
@@ -84,7 +84,7 @@
    </listitem>
   </varlistentry>
 
-  <varlistentry id="ini.sendmail-path">
+  <varlistentry xml:id="ini.sendmail-path">
    <term>
     <parameter>sendmail_path</parameter>
     <type>string</type>
@@ -100,7 +100,7 @@
     <para>
      센드메일을 사용하지 않는 시스템은 이 지시어를 메일 시스템이
      제공하는 센드메일 랩퍼/교체자로 설정해야합니다. 예를 들어,
-     <ulink url="&url.qmail;">Qmail</ulink> 사용자는 일반적으로
+     <link xlink:href="&url.qmail;">Qmail</link> 사용자는 일반적으로
      <filename>/var/qmail/bin/sendmail</filename>이나
      <filename>/var/qmail/bin/qmail-inject</filename>으로 설정합니다.
     </para>

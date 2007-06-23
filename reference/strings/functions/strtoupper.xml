@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry id="function.strtoupper">
+  <refentry xml:id="function.strtoupper" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>strtoupper</refname>
     <refpurpose>문자열을 대문자로 만듭니다.</refpurpose>

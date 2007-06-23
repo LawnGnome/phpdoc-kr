@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
-  <refentry id="function.unset">
+  <refentry xml:id="function.unset" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>unset</refname>
     <refpurpose>주어진 변수를 제거합니다.</refpurpose>

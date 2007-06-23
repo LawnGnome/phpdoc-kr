@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/network.xml, last change in rev 1.3 -->
 <!-- last change to 'ip2long' in en/ tree in rev 1.18 -->
-	<refentry id="function.ip2long">
+	<refentry xml:id="function.ip2long" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>ip2long</refname>
 			<refpurpose>

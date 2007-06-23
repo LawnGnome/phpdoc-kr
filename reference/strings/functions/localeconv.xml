@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: stopped -->
-  <refentry id="function.localeconv">
+  <refentry xml:id="function.localeconv" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>localeconv</refname>
     <refpurpose>숫자 형식화 정보를 얻습니다.</refpurpose>

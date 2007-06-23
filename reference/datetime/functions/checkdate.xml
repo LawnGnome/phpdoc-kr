@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.checkdate">
+  <refentry xml:id="function.checkdate" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>checkdate</refname>
     <refpurpose>그레고리안력 날짜를 확인합니다.</refpurpose>

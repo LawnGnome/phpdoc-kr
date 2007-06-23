@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry id="function.rawurlencode">
+  <refentry xml:id="function.rawurlencode" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>rawurlencode</refname>
     <refpurpose>RFC 1738에 따라 URL을 인코드합니다.</refpurpose>
@@ -52,7 +52,7 @@ echo '<a href="http://example.com/department_list_script/',
      참고: <function>rawurldecode</function>,
      <function>urldecode</function>,
      <function>urlencode</function>,
-     <ulink url="&url.rfc;1738">RFC 1738</ulink>.
+     <link xlink:href="&url.rfc;1738">RFC 1738</link>.
     </simpara>
    </refsect1>
   </refentry>

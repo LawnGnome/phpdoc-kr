@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
-  <refentry id="function.str-replace">
+  <refentry xml:id="function.str-replace" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>str_replace</refname>
     <refpurpose>

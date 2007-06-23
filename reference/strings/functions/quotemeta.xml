@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-	 <refentry id="function.quotemeta">
+	 <refentry xml:id="function.quotemeta" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>quotemeta</refname>
     <refpurpose>메타 문자를 인용합니다.</refpurpose>

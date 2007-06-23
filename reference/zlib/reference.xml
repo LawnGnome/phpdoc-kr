@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
- <reference id="ref.zlib">
+ <reference xml:id="ref.zlib" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Zlib 압축 함수</title>
   <titleabbrev>Zlib</titleabbrev>
 
   <partintro>
-   <section id="zlib.intro">
+   <section xml:id="zlib.intro">
     &reftitle.intro;
     <para>
      이 모듈은 gzip (.gz) 압축 파일을 읽고 쓸 수 있게 하며, 버전에
@@ -32,11 +32,11 @@
     </note>
    </section>
 
-   <section id="zlib.requirements">
+   <section xml:id="zlib.requirements">
     &reftitle.required;
     <para>
      이 모듈을 Jean-loup Gailly와 Mark Adler가 작성한
-     <ulink url="&url.zlib;">zlib</ulink>의 함수들을 사용합니다.
+     <link xlink:href="&url.zlib;">zlib</link>의 함수들을 사용합니다.
      이 모듈에서는 zlib 버전 &gt;= 1.0.9를 사용해야 합니다.
     </para>
    </section>
@@ -45,14 +45,14 @@
 
    &reference.zlib.ini;
 
-   <section id="zlib.resources">
+   <section xml:id="zlib.resources">
     &reftitle.resources;
     &no.resource;
    </section>
 
    &reference.zlib.constants;
 
-   <section id="zlib.examples">
+   <section xml:id="zlib.examples">
     &reftitle.examples;
     <para>
      이 예제는 임시 파일을 열어서 테스트 문자열을 쓰고, 이 파일의

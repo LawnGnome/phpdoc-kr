@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.4 Maintainer: fuzzy74 Status: ready -->
-<appendix id="transports">
+<appendix xml:id="transports" xmlns="http://docbook.org/ns/docbook">
  <title>지원되는 소켓 전송 목록</title>
  <para>
   다음은 <function>fsockopen</function>과 <function>stream_socket_client</function>같은 
@@ -16,7 +16,7 @@
  <function>stream_get_transports</function>를 사용하라.
  </para>
 
- <section id="transports.inet">
+ <section xml:id="transports.inet">
   <title>인터넷 도메인: TCP, UDP, SSL, TLS</title>
   <simpara>PHP 3, PHP 4. <literal>ssl://</literal> &amp; PHP 4.3이후의 <literal>tls://</literal></simpara>
 
@@ -161,7 +161,7 @@
   </note>
  </section>
 
- <section id="transports.unix">
+ <section xml:id="transports.unix">
   <title>유닉스 도메인: UNIX와 UDG</title>
   <simpara>
    <literal>PHP 3</literal> 이후의 <literal>unix://</literal>,

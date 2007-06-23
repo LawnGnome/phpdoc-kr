@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bcadd">
+  <refentry xml:id="function.bcadd" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bcadd</refname>
     <refpurpose>두개의 임의 정확도 수를 더한다</refpurpose>

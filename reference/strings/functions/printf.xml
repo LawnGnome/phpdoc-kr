@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-	 <refentry id="function.printf">
+	 <refentry xml:id="function.printf" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>printf</refname>
     <refpurpose>형식화한 문자열을 출력합니다.</refpurpose>

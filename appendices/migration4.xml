@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
+<!-- $Revision: 1.10 $ -->
 <!-- EN-Revision: 1.34 Maintainer: fuzzy74 Status: ready -->
- <appendix id="migration4">
+ <appendix xml:id="migration4" xmlns="http://docbook.org/ns/docbook">
   <title>PHP 3 에서 PHP 4로 이주</title>
 	
-  <section id='migration4.changes'>
+  <section xml:id='migration4.changes'>
    <title>PHP 4에서 바뀐것</title>
    <para>
     PHP 4 와 젠드 엔진은 PHP의 성능과 기능을 크게 향상시켰다.
@@ -17,7 +17,7 @@
    </para>
   </section>
 
-  <section id="migration4.php4.with.php3">
+  <section xml:id="migration4.php4.with.php3">
    <title>PHP 3와 PHP 4를 동시에 작동시키기 </title>
    <simpara>
     최근 운영 체제는 버전관리(versioning)와 영역관리(scoping) 기능을
@@ -50,7 +50,7 @@ $ ./configure \
    </para>
   </section>
 
-  <section id="migration4.configuration">
+  <section xml:id="migration4.configuration">
    <title>설정파일 이주하기</title>
    <para>
     전역 설정 파일, <filename>php3.ini</filename>, 는 &php.ini;로 
@@ -159,7 +159,7 @@ php_admin_flag [PHP directive name] [On|Off]
    </simpara>
   </section>
 
-  <section id='migration4.parser'>
+  <section xml:id='migration4.parser'>
    <title>해석기(Parser) 동작</title>
    <para>
     해석과 실행은 현재 두 단계로 완전히 따로 분리되어있다. 파일 코드의 실행은
@@ -192,10 +192,10 @@ php_admin_flag [PHP directive name] [On|Off]
    </para>
   </section>
 
-  <section id='migration4.error-reporting'>
+  <section xml:id='migration4.error-reporting'>
    <title>에러 보고</title>
 	 
-   <section id='migration4.error-reporting.config'>
+   <section xml:id='migration4.error-reporting.config'>
     <title>변경된 설정</title>
     <para>
      PHP 3에서 에러 보고 레벨은 단순하게 숫자값으로 설정되었다.
@@ -251,7 +251,7 @@ php_admin_flag [PHP directive name] [On|Off]
     </warning>
    </section>
 
-   <section id='migration4.error-reporting.additions'>
+   <section xml:id='migration4.error-reporting.additions'>
     <title>추가된 경고 메시지</title>
     <para>
      기존의 많은 PHP 3 코드는 좋지 않은 스타일의 언어 구조를 사용하였다.
@@ -282,7 +282,7 @@ php_admin_flag [PHP directive name] [On|Off]
    
   </section>
 
-  <section id='migration4.initializers'>
+  <section xml:id='migration4.initializers'>
    <title>초기화</title>
    <para>
     static 변수와 클래스 멤버 초기화는 오직 스칼라 값만을 허용한다.
@@ -298,7 +298,7 @@ php_admin_flag [PHP directive name] [On|Off]
    </para>
   </section>
 
-  <section id='migration4.empty'>
+  <section xml:id='migration4.empty'>
    <title><literal>empty("0")</literal></title>
    <para>
     아마도 동작에 있어서 가장 쟁점이 되었던 변화가
@@ -314,7 +314,7 @@ php_admin_flag [PHP directive name] [On|Off]
    </para>
   </section>
 
-  <section id='migration4.missing'>
+  <section xml:id='migration4.missing'>
    <title>사라진 함수들</title>
    <para>
     PHP 4는 수많은 새로운 기능, 함수, 확장과 함께 릴리즈되었다.
@@ -327,7 +327,7 @@ php_admin_flag [PHP directive name] [On|Off]
     확장은 라이센스 때문에 사라질수도 있게 되었다.
    </para>
 
-   <section id='migration4.missing.concept'>
+   <section xml:id='migration4.missing.concept'>
     <title>구조적 변화때문에 사라진 함수들</title>
     <para>
      현재 PHP 4는 실행과 해석을 분리했기 때문에 이미 
@@ -344,7 +344,7 @@ php_admin_flag [PHP directive name] [On|Off]
     </para>
    </section>
 
-   <section id='migration4.deprecate'>
+   <section xml:id='migration4.deprecate'>
     <title>지원되지 않는 함수와 확장</title>
     <para>
      Adabas 와 Solid 데이터베이스 확장은 더이상 지원되지 않는다.
@@ -352,7 +352,7 @@ php_admin_flag [PHP directive name] [On|Off]
     </para>
    </section>
 
-   <section id='migration4.unset'>
+   <section xml:id='migration4.unset'>
     <title><function>unset</function>을 위한 변경 상태</title>
     <para>
      <function>unset</function>, 아직 지원되지만, 함수로서보다는
@@ -373,7 +373,7 @@ php_admin_flag [PHP directive name] [On|Off]
    </section>
   </section>
 
-  <section id='migration4.extensions'>
+  <section xml:id='migration4.extensions'>
    <title>PHP 3 확장</title>
    <para>
     PHP 3를 위해 씌여진 확장은 PHP 4에서 작동하지 않을것이다. 이진파일도 안되고
@@ -382,7 +382,7 @@ php_admin_flag [PHP directive name] [On|Off]
    </para>
   </section>
 
-  <section id='migration4.strings'>
+  <section xml:id='migration4.strings'>
    <title>Variable substitution in strings</title>
    <para>
     PHP 4는 문자열의 가변 치환이라는 새로운 메카니즘을 추가시켰다.
@@ -409,7 +409,7 @@ php_admin_flag [PHP directive name] [On|Off]
    </para>
   </section>
 
-  <section id='migration4.cookies'>
+  <section xml:id='migration4.cookies'>
    <title>쿠키</title>
    <para>
     PHP 3는 코드내에서 <function>setcookie</function> 호출은 반대방향으로
@@ -424,7 +424,7 @@ php_admin_flag [PHP directive name] [On|Off]
    </para>
   </section>
 
-  <section id='migration4.variables'>
+  <section xml:id='migration4.variables'>
    <title>전역 변수 다루기</title>
    <para>
     PHP 3와 초기 PHP 4버전에서는 전역 변수를 좀 더 쉽게 다룰수 있지만

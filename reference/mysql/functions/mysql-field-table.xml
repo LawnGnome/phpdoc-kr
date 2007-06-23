@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-field-table">
+<!-- EN-Revision: 1.8 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-field-table" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_field_table</refname>
   <refpurpose>특정 필드가 속한 테이블명을 얻음</refpurpose>

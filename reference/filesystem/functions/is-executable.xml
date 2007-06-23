@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
 <!-- last change to 'is-executable' in en/ tree in rev 1.2 -->
-	<refentry id="function.is-executable">
+	<refentry xml:id="function.is-executable" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>is_executable</refname>
 			<refpurpose>filename이 실행가능한 것인지 아닌지 이야기하기</refpurpose>

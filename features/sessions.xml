@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.1 Maintainer: progcom Status: ready -->
- <chapter id="features.sessions">
+ <chapter xml:id="features.sessions" xmlns="http://docbook.org/ns/docbook">
   <title>세션</title>
 
   <para>

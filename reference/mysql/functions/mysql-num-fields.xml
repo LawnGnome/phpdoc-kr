@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-num-fields">
+<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-num-fields" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_num_fields</refname>
   <refpurpose>결과로부터 필드의 개수를 반환</refpurpose>

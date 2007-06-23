@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.ociexecute">
+  <refentry xml:id="function.ociexecute" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>OCIExecute</refname>
     <refpurpose>SQL 구문(Statement)을 수행한다.</refpurpose>

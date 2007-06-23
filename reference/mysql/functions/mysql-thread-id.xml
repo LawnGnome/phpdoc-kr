@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-thread-id">
+<!-- EN-Revision: 1.11 Maintainer: pcraft Status: ok -->
+<refentry xml:id="function.mysql-thread-id" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_thread_id</refname>
   <refpurpose>현재 쓰레드 ID를 반환</refpurpose>

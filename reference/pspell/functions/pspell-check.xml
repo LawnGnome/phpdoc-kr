@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/pspell.xml, last change in rev 1.3 -->
 <!-- last change to 'pspell-check' in en/ tree in rev 1.6 -->
-	<refentry id="function.pspell-check">
+	<refentry xml:id="function.pspell-check" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>pspell_check</refname>
 			<refpurpose>단어 검사</refpurpose>

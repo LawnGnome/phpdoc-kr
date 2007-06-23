@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
+<!-- $Revision: 1.5 $ -->
 <!-- EN-Revision: 1.19 Maintainer: fuzzy74 Status: ready -->
- <chapter id="faq.databases">
+ <chapter xml:id="faq.databases" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>데이터베이스와 관련된 문제</title>
   <titleabbrev>데이터베이스와 관련된 문제</titleabbrev>
 
@@ -12,7 +12,7 @@
   </para>
 
   <qandaset>
-   <qandaentry id="faq.databases.mssql">
+   <qandaentry xml:id="faq.databases.mssql">
     <question>
      <para>
       PHP로 Microsoft SQL 서버로 접근이 가능하다고 들었습니다. 어떻게요?
@@ -26,14 +26,14 @@
      <para>
       유닉스 머신에서, 사이베이스-CT(Sybase-CT)드라이버를 사용할수있습니다.
       왜냐하면 둘은 프로토콜이 호환되기 때문입니다. 사이베이스는
-      <ulink url="&url.sybase.ctlib;">리눅스 시스템에 필요한 무료버전</ulink>
+      <link xlink:href="&url.sybase.ctlib;">리눅스 시스템에 필요한 무료버전</link>
       을 만들었습니다. 다른 유닉스 운영체제에서는 적합 라이브러리(correct library)
       로 사이베이스와 연동해야 합니다. 또한 다음 FAQ를 보세요.
      </para>
     </answer>
    </qandaentry>
 
-   <qandaentry id="faq.databases.access">
+   <qandaentry xml:id="faq.databases.access">
     <question>
      <para>MS 액세스 데이터베이스(Microsoft Access database)에 접속할수있습니까?</para>
     </question>
@@ -46,7 +46,7 @@
      <para>
       유닉스에서 PHP를 사용하고 있고 윈도우 박스의 MS 액세스와 연동하기를 원한다면
       유닉스 ODBC 드라이버가 필요합니다.
-      <ulink url="&url.openlink;">OpenLink Software</ulink>에 이를 수행할수 있는
+      <link xlink:href="&url.openlink;">OpenLink Software</link>에 이를 수행할수 있는
       유닉스 기반(Unix-based) ODBC 드라이버가 있습니다. 그곳에는 시험판(evalution)을
       다운로드 할수 있는 안내용 프로그램(pilot program)이 있고, 그리고 675달러이상하는
       상업용 버전도 있습니다.
@@ -62,7 +62,7 @@
       use ODBC from PHP straight to your database - i.e. with OpenLink's drivers. If
       you do need to use an intermediary file format, OpenLink have now released
       Virtuoso (a virtual database engine) for NT, Linux and other unix platforms.
-      Please visit our <ulink url="&url.openlink;">website</ulink> for a free download.
+      Please visit our <link xlink:href="&url.openlink;">website</link> for a free download.
       </programlisting>
      </para>
      <para>
@@ -74,7 +74,7 @@
        <listitem>
         <simpara>
          MySQL의 지시에 따라 사용중인 플래폼에 MySQL을 설치합니다.
-         <ulink url="&url.mysql;">www.mysql.com</ulink>(미러에서 받을수있슴!)에서 받을수 있습니다.
+         <link xlink:href="&url.mysql;">www.mysql.com</link>(미러에서 받을수있슴!)에서 받을수 있습니다.
          데이터베이스를 설치할때 외에는 특별한 설정이 필요치않습니다. 계정을 설정하고,
          host 필드에는 %로 놓거나 MySQL을 접속하고자하는 윈도우 컴퓨터의 호스트명을 넣습니다.
          서버명, 계정, 비밀번호를 넣습니다.
@@ -148,7 +148,7 @@
     </answer>
    </qandaentry>
 
-   <qandaentry id="faq.databases.mysql.php5">
+   <qandaentry xml:id="faq.databases.mysql.php5">
     <question>
      <para>
       PHP 5 부터는 더이상 <link linkend="ref.mysql">MySQL</link> 클라이언트
@@ -197,7 +197,7 @@
     </answer>
    </qandaentry>
 
-   <qandaentry id="faq.databases.upgraded">
+   <qandaentry xml:id="faq.databases.upgraded">
     <question>
      <para>
       I upgraded to PHP 4, and now mysql keeps telling me
@@ -222,7 +222,7 @@
     </answer>
    </qandaentry>
    
-   <qandaentry id="faq.databases.shared-mysql">
+   <qandaentry xml:id="faq.databases.shared-mysql">
     <question>
      <para>
       공유 MySQL 지원(shared MySQL support)을 설치한후에, 아파치가 libphp4.so를 로드할때마다
@@ -240,7 +240,7 @@
     </answer>
    </qandaentry>
 
-   <qandaentry id="faq.databases.mysqlresource">
+   <qandaentry xml:id="faq.databases.mysqlresource">
     <question>
      <para>
       왜 다음과 같은 에러가 발생합니까:

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.sprintf">
+  <refentry xml:id="function.sprintf" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>sprintf</refname>
     <refpurpose>형식화한 문자열을 반환합니다.</refpurpose>

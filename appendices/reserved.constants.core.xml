@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
+<!-- $Revision: 1.3 $ -->
 <!-- EN-Revision: 1.6 Maintainer: fuzzy74 Status: ready -->
- <refentry id="reserved.constants.core">
+ <refentry xml:id="reserved.constants.core" xmlns="http://docbook.org/ns/docbook">
   <refnamediv>
    <refname>코어 기선언 상수</refname>
    <refpurpose>PHP 코어, 젠드, SAPI 모듈에서 선언된 상수</refpurpose>

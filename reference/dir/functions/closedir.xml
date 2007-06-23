@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry id="function.closedir">
+  <refentry xml:id="function.closedir" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>closedir</refname>
     <refpurpose>디렉토리 핸들을 닫습니다.</refpurpose>

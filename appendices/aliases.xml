@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.28 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
-<appendix id="aliases">
+<appendix xml:id="aliases" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>함수 별칭 목록</title>
  <para>
   여기서는 함수 별칭 목록을 보인다. 모든 별칭들이 여기서 목록화된다.
@@ -16,8 +16,8 @@
   <function>is_integer</function> 은 모두 양호하다)
  </para>
  <para>
-  이 목록은 PHP 4.0.6 기준입니다. 매일 갱신하는 별칭 목록은 <ulink
-   url="&url.zend.aliaslist;">&url.zend.aliaslist;</ulink>를 참고하십시오.
+  이 목록은 PHP 4.0.6 기준입니다. 매일 갱신하는 별칭 목록은 <link
+   xlink:href="&url.zend.aliaslist;">&url.zend.aliaslist;</link>를 참고하십시오.
  </para>
  <para>
   <table>

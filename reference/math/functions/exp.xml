@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry id="function.exp">
+  <refentry xml:id="function.exp" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>exp</refname>
     <refpurpose><constant>e</constant>(자연로그 밑)의 승수를 계산합니다.</refpurpose>

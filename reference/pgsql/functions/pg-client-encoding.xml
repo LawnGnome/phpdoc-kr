@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
+<!-- $Revision: 1.5 $ -->
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
 <!-- CREDITS: dhyuk -->
-  <refentry id="function.pg-client-encoding">
+  <refentry xml:id="function.pg-client-encoding" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>pg_client_encoding</refname>
     <refpurpose>

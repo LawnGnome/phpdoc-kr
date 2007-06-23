@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.natcasesort">
+  <refentry xml:id="function.natcasesort" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>natcasesort</refname>
     <refpurpose>
@@ -25,8 +25,8 @@
      <function>natsort</function>의 예제코드에서 확인할수 있다:
     </para>
     <para>
-     추가 정보: Martin Pool의 <ulink
-     url="&url.strnatcmp;">Natural Order String Comparison</ulink> 페이지.
+     추가 정보: Martin Pool의 <link
+     xlink:href="&url.strnatcmp;">Natural Order String Comparison</link> 페이지.
     </para>
     <para>
      <function>sort</function>,

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
-  <refentry id="function.tanh">
+  <refentry xml:id="function.tanh" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>tanh</refname>
     <refpurpose>쌍곡선 탄젠트</refpurpose>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.2 $ -->
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-<para>
+<!-- $Revision: 1.3 $ -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<para xmlns="http://docbook.org/ns/docbook">
  PHP 4.3.0 이상에서 다음 문자셋을 지원합니다.
  <table>
   <title>지원 문자셋</title>

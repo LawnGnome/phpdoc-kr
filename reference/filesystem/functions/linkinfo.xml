@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
 <!-- last change to 'linkinfo' in en/ tree in rev 1.2 -->
-	<refentry id="function.linkinfo">
+	<refentry xml:id="function.linkinfo" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>linkinfo</refname>
 			<refpurpose>링크 정보 가져오기</refpurpose>

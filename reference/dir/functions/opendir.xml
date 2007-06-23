@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.opendir">
+  <refentry xml:id="function.opendir" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>opendir</refname>
     <refpurpose>디렉토리 핸들을 엽니다.</refpurpose>

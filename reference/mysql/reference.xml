@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.19 Maintainer: progcom Status: ready -->
- <reference id="ref.mysql">
+ <reference xml:id="ref.mysql" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>MySQL 함수</title>
   <titleabbrev>MySQL</titleabbrev>
 
   <partintro>
-   <section id="mysql.intro">
+   <section xml:id="mysql.intro">
     &reftitle.intro;
     <para>
      이 함수들은 MySQL 데이터베이스 서버에 접근할 수 있도록 합니다. MySQL에
-     대한 정보는 <ulink url="&url.mysql;">&url.mysql;</ulink>에서 확인할 수
+     대한 정보는 <link xlink:href="&url.mysql;">&url.mysql;</link>에서 확인할 수
      있습니다.
     </para>
     <para>
-     MySQL 문서는 <ulink url="&url.mysql.docs;">&url.mysql.docs;</ulink>에서
+     MySQL 문서는 <link xlink:href="&url.mysql.docs;">&url.mysql.docs;</link>에서
      볼 수 있습니다.
     </para>
    </section>
 
-   <section id="mysql.requirements">
+   <section xml:id="mysql.requirements">
     &reftitle.required;
     <para>
      이 함수들을 사용하려면, PHP가 MySQL을 지원하도록 컴파일해야 합니다.
@@ -29,7 +29,7 @@
 
     &reference.mysql.ini;
 
-   <section id="mysql.resources">
+   <section xml:id="mysql.resources">
    &reftitle.resources;
     <para>
      MySQL 모듈에서 사용하는 두가지 자원형이 존재합니다. 첫번째는 데이터베이스
@@ -40,7 +40,7 @@
    &reference.mysql.constants;
 
     
-   <section id="mysql.examples">
+   <section xml:id="mysql.examples">
    &reftitle.examples;
     <para>
      MySQL 데이터베이스에 접속하여, 쿼리를 실행하고, 결과열을 출력하고,

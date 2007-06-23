@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bzflush">
+  <refentry xml:id="function.bzflush" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bzflush</refname>
     <refpurpose>버퍼에 담긴 모든 데이터를 강제로 기록한다</refpurpose>

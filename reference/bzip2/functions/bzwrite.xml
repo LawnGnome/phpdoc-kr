@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.bzwrite">
+  <refentry xml:id="function.bzwrite" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>bzwrite</refname>
     <refpurpose>bzip2 파일을 바이너리 형태로 기록</refpurpose>

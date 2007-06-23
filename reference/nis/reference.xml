@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<reference id="ref.nis">
+<reference xml:id="ref.nis" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
 	<title>YP/NIS 관련 함수</title>
 	<titleabbrev>YP/NIS</titleabbrev>
 	<partintro>
 		<para>
     NIS (이전에는 옐로우 페이지(Yellow Pages)라고 불려졌습니다)는 중요한 관리자용 파일(예를 들면 패스워드 파일같은)을 네트워크 관리가 가능하도록 합니다.
-	더 이상의 정보는 NIS의 man 페이지와 <ulink url="&url.nis;"> Introduction to YP/NIS </ulink>에 좀 더 참조할 만한 정보가 있습니다.
-	또 <ulink url="&url.nis.book;">Managing NFS and NIS</ulink>라고 부르는 Hal Stern의 책도 있습니다.
+	더 이상의 정보는 NIS의 man 페이지와 <link xlink:href="&url.nis;"> Introduction to YP/NIS </link>에 좀 더 참조할 만한 정보가 있습니다.
+	또 <link xlink:href="&url.nis.book;">Managing NFS and NIS</link>라고 부르는 Hal Stern의 책도 있습니다.
    </para>
 		<para>
     이 함수가 동작하도록 하고 싶다면 PHP를

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.136 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
- <chapter id="language.types">
+ <chapter xml:id="language.types" xmlns="http://docbook.org/ns/docbook">
   <title>변수형</title>
 
-  <sect1 id="language.types.intro">
+  <sect1 xml:id="language.types.intro">
   <title>소개</title>
   
   <simpara>
@@ -161,7 +161,7 @@ if (is_string($bool)) {
   </simpara>
  </sect1>
    
-   <sect1 id="language.types.boolean">
+   <sect1 xml:id="language.types.boolean">
     <title>논리값</title>
     
     <simpara>
@@ -175,7 +175,7 @@ if (is_string($bool)) {
      </simpara>
     </note>
 
-    <sect2 id="language.types.boolean.syntax">
+    <sect2 xml:id="language.types.boolean.syntax">
      <title>문법</title>
      <para>
       boolean 을 표현하기 위해서 키워드 &true; 나 &false;를 사용한다.
@@ -221,7 +221,7 @@ if ($show_separators) {
      </para>
     </sect2>
 
-    <sect2 id="language.types.boolean.casting">
+    <sect2 xml:id="language.types.boolean.casting">
      <title>boolean으로 변환</title>
       <simpara>
        명시적으로 <type>boolean</type> 값으로 변경하려면
@@ -296,7 +296,7 @@ echo gettype((bool) array());   // bool(false)
      </sect2>
    </sect1>
 
-   <sect1 id="language.types.integer">
+   <sect1 xml:id="language.types.integer">
     <title>정수</title>
     
     <simpara>
@@ -310,7 +310,7 @@ echo gettype((bool) array());   // bool(false)
      <link linkend="ref.bc">Arbitrary precision / BCMath</link>를 참고
     </para>
 
-    <sect2 id="language.types.integer.syntax">
+    <sect2 xml:id="language.types.integer.syntax">
      <title>문법</title>
      <simpara>
       정수는 10진수(10-based), 16진수(16-based), 8진수(8-based) 표기법으로 표현
@@ -356,7 +356,7 @@ integer     : [+-]?decimal
      </para>
     </sect2>
    
-    <sect2 id="language.types.integer.overflow">
+    <sect2 xml:id="language.types.integer.overflow">
      <title>정수 오버플로우</title>
      <para>
       <type>정수</type>타입의 범위를 넘는 수를 사용하려면 그 값은 대신
@@ -422,7 +422,7 @@ var_dump(round(25/7));  // float(4)
     </sect2>
    
 
-    <sect2 id="language.types.integer.casting">
+    <sect2 xml:id="language.types.integer.casting">
      <title>정수로 변환하기</title>
       <simpara>
        명시적으로 <type>integer</type>로 변환하려면 <literal>(int)</literal>나
@@ -436,7 +436,7 @@ var_dump(round(25/7));  // float(4)
        See also <link linkend="language.types.type-juggling">type-juggling</link>.
       </simpara>
       
-      <sect3 id="language.types.integer.casting.from-boolean">
+      <sect3 xml:id="language.types.integer.casting.from-boolean">
        <title><link linkend="language.types.boolean">논리값</link>에서</title>
        <simpara>
         &false;는 <literal>0</literal> (zero), 그리고
@@ -444,7 +444,7 @@ var_dump(round(25/7));  // float(4)
        </simpara>
       </sect3>
 
-      <sect3 id="language.types.integer.casting.from-float">
+      <sect3 xml:id="language.types.integer.casting.from-float">
        <title><link linkend="language.types.float">부동소수점수</link>에서</title> 
        <simpara>
         float에서 integer로 변환할때, 그 수는 <emphasis>0으로</emphasis> 깍일것이다.
@@ -476,7 +476,7 @@ echo (int) ( (0.1+0.7) * 10 ); // echoes 7!
        </para></warning>
       </sect3>
       
-      <sect3 id="language.types.integer.casting.from-string">
+      <sect3 xml:id="language.types.integer.casting.from-string">
        <title>문자열로부터</title>
        <simpara>
         <link linkend="language.types.string.conversion">문자열을 숫자로 
@@ -484,7 +484,7 @@ echo (int) ( (0.1+0.7) * 10 ); // echoes 7!
        </simpara>
       </sect3>
       
-      <sect3 id="language.types.integer.casting.from-other">
+      <sect3 xml:id="language.types.integer.casting.from-other">
        <title>다른 타입으로부터</title>
        <para>
         <caution>
@@ -500,7 +500,7 @@ echo (int) ( (0.1+0.7) * 10 ); // echoes 7!
     </sect2>
   </sect1>
 
-  <sect1 id="language.types.float">
+  <sect1 xml:id="language.types.float">
    <title>부동소수점</title>
    <para>
     부동소수점(AKA "floats", "doubles", "real numbers")은 다음과 같은
@@ -528,7 +528,7 @@ EXPONENT_DNUM ( ({LNUM} | {DNUM}) [eE][+-]? {LNUM})
     정밀도를 갖는 ~1.8e308까지의 최대값을 갖을지라도 플랫폼에 따라 달라진다.
    </para>
  
-   <warning id="warn.float-precision">
+   <warning xml:id="warn.float-precision">
     <title>부동소수점 정밀도</title>
     <para>
      <literal>0.1</literal>이나 <literal>0.7</literal>와 같은 단순한
@@ -551,7 +551,7 @@ EXPONENT_DNUM ( ({LNUM} | {DNUM}) [eE][+-]? {LNUM})
     </para>
    </warning>
 
-   <sect2 id="language.types.float.casting">
+   <sect2 xml:id="language.types.float.casting">
     <title>float으로 변환하기</title>
     
     <para>
@@ -563,7 +563,7 @@ EXPONENT_DNUM ( ({LNUM} | {DNUM}) [eE][+-]? {LNUM})
    </sect2>
   </sect1>
 
-  <sect1 id="language.types.string">
+  <sect1 xml:id="language.types.string">
    <title>문자열</title>
    <para>
     <type>string</type>은 일련의 문자들이다. PHP에서 문자는 바이트와 같다. 즉
@@ -578,7 +578,7 @@ EXPONENT_DNUM ( ({LNUM} | {DNUM}) [eE][+-]? {LNUM})
      이유가 전혀 없다.
     </simpara>
    </note>
-   <sect2 id="language.types.string.syntax">
+   <sect2 xml:id="language.types.string.syntax">
     <title>문법</title>
     <para>
      문자열 리터럴은 3가지 다른 방식으로 표현될수 있다.
@@ -602,7 +602,7 @@ EXPONENT_DNUM ( ({LNUM} | {DNUM}) [eE][+-]? {LNUM})
 
      </itemizedlist>
     </para>
-    <sect3 id="language.types.string.syntax.single">
+    <sect3 xml:id="language.types.string.syntax.single">
      <title>작은 따옴표</title>
      <para>
       단순한 문자열을 표현하는 가장 간단한 방법이 작은 따옴표
@@ -658,7 +658,7 @@ echo 'Variables do not $expand $either';
       </informalexample>
      </para>
     </sect3>
-    <sect3 id="language.types.string.syntax.double">
+    <sect3 xml:id="language.types.string.syntax.double">
      <title>큰 따옴표</title>
      <para>
       문자열이 큰따옴표(")로 둘러싸이면, PHP는 특별한 문자의
@@ -725,7 +725,7 @@ echo 'Variables do not $expand $either';
      </para>
     </sect3>
     
-    <sect3 id="language.types.string.syntax.heredoc">
+    <sect3 xml:id="language.types.string.syntax.heredoc">
      <title>히어닥 문법</title>
      <simpara>
       문자열을 구분하는 다른 방법은 히어닥 문법("&lt;&lt;&lt;")을
@@ -808,7 +808,7 @@ EOT;
      </note>
     </sect3>
 
-    <sect3 id="language.types.string.parsing">
+    <sect3 xml:id="language.types.string.parsing">
      <title>변수 해석</title>
      <simpara>
       문자열이 큰따옴표나 히어닥으로 표현되면
@@ -827,7 +827,7 @@ EOT;
       복합 문법은 PHP 4에서부터 지원되고, 중괄호로 둘러싸는 표현으로 인식된다.
      </simpara>
 
-     <sect4 id="language.types.string.parsing.simple">
+     <sect4 xml:id="language.types.string.parsing.simple">
       <title>단순 문법</title>
       <simpara>
        달러사인(<literal>$</literal>)과 만나면, 해석기는 가능한 많은
@@ -908,7 +908,7 @@ echo "This square is $square->{width}00 centimeters broad.";
       </simpara>
      </sect4>
 
-     <sect4 id="language.types.string.parsing.complex">
+     <sect4 xml:id="language.types.string.parsing.complex">
       <title>복합(curly) 문법</title>
       <simpara>
        이 방법은 문법이 복합적이라서 복합이라고 부르는것이 아니다.
@@ -973,7 +973,7 @@ echo "I'd like to have another {${ strrev('reeb') }}, hips";
      </sect4>
     </sect3>
     
-    <sect3 id="language.types.string.substr">
+    <sect3 xml:id="language.types.string.substr">
      <title>문자열의 문자에 접근 및 변경</title>
      <para>
       문자열 내의 문자들 중 원하는 문자를 중괄호안에 0을 기준으로 한 위치를
@@ -1015,7 +1015,7 @@ $str{strlen($str)-1} = 'e';
 
    </sect2><!-- end syntax -->
 
-   <sect2 id="language.types.string.useful-funcs">
+   <sect2 xml:id="language.types.string.useful-funcs">
     <title>유용한 함수와 연산자</title>
     <para>
      문자열들은 '.' (점) 연산자를 사용하여 합칠수 있다. '+' (덧셈) 연산자는
@@ -1044,7 +1044,7 @@ $str{strlen($str)-1} = 'e';
     </simpara>
    </sect2>
 
-   <sect2 id="language.types.string.casting">
+   <sect2 xml:id="language.types.string.casting">
     <title>문자열로 변환</title>
     
     <para>
@@ -1105,7 +1105,7 @@ $str{strlen($str)-1} = 'e';
     </para>
    </sect2>
 
-   <sect2 id="language.types.string.conversion">
+   <sect2 xml:id="language.types.string.conversion">
     <title>문자열을 숫자로 변환하기</title>
 
     <simpara>
@@ -1165,7 +1165,7 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "<br />\n";
    </sect2>
   </sect1><!-- end string -->
 
-  <sect1 id="language.types.array">
+  <sect1 xml:id="language.types.array">
    <title>배열</title>
 
    <para>
@@ -1183,10 +1183,10 @@ echo "\$foo==$foo; type is " . gettype ($foo) . "<br />\n";
     위해 이 광범위한 주제에 대한 참고서적을 제시해줄것이다.
    </para>
    
-   <sect2 id="language.types.array.syntax">
+   <sect2 xml:id="language.types.array.syntax">
     <title>문법</title>
     
-    <sect3 id="language.types.array.syntax.array-func">
+    <sect3 xml:id="language.types.array.syntax.array-func">
      <title><function>array</function>함수로 명기</title>
      <para>
       <type>array</type>는 <function>array</function> 언어-구조에 의해 생성될수 있다.
@@ -1280,7 +1280,7 @@ array(5 => 43, 6 => 32, 7 => 56, "b" => 12);
      </para>
     </sect3>
     
-    <sect3 id="language.types.array.syntax.modifying">
+    <sect3 xml:id="language.types.array.syntax.modifying">
      <title>대괄호 문법을 사용하여 생성/변경</title>
      <para>
       그 안에 값을 명시적으로 표시함으로써 기존의 배열을 변경할수 있다.
@@ -1403,7 +1403,7 @@ Array
     </sect3>
    </sect2><!-- end syntax -->
    
-   <sect2 id="language.types.array.useful-funcs">
+   <sect2 xml:id="language.types.array.useful-funcs">
     <title>유용한 함수</title>
     <para>
      배열을 위한 유용한 함수가 지원된다.
@@ -1443,10 +1443,10 @@ $b = array_values($a);
     </para>
    </sect2>
    
-   <sect2 id="language.types.array.donts">
+   <sect2 xml:id="language.types.array.donts">
     <title>배열이 하는것과 하지 않는것</title>
 
-    <sect3 id="language.types.array.foo-bar">
+    <sect3 xml:id="language.types.array.foo-bar">
      <title>왜 <literal>$foo[bar]</literal>이 잘못인가?</title>
      <para>
       항상 문자열 리터럴 배열 인덱스 주위에는 따옴표를 사용해야 한다.
@@ -1658,7 +1658,7 @@ $error_descriptions[8] = "This is just an informal notice";
     </sect3>
    </sect2>
 
-   <sect2 id="language.types.array.casting">
+   <sect2 xml:id="language.types.array.casting">
     <title>배열로 변환</title>
     
     <para>
@@ -1678,7 +1678,7 @@ $error_descriptions[8] = "This is just an informal notice";
     </para>
    </sect2>
 
-   <sect2 id="language.types.array.comparing">
+   <sect2 xml:id="language.types.array.comparing">
     <title>비교하기</title>
     <para>
      <function>array_diff</function>와 <link
@@ -1687,7 +1687,7 @@ $error_descriptions[8] = "This is just an informal notice";
     </para>
    </sect2>
 
-   <sect2 id="language.types.array.examples">
+   <sect2 xml:id="language.types.array.examples">
     <title>예제 코드</title>
     <para>
      PHP에서 배열 타입은 다용도로 쓰인다. 그래서 여기서 배열의 완벽한
@@ -1767,7 +1767,7 @@ $empty = array();
      </programlisting>
     </example>
 
-    <example id="language.types.array.examples.loop">
+    <example xml:id="language.types.array.examples.loop">
      <title>컬렉션</title>
      <programlisting role="php">
 <![CDATA[
@@ -1803,7 +1803,7 @@ Do you like yellow?
        See bug#3074
       -->
      다음과 같은 편법이 있다:
-     <example id="language.types.array.examples.changeloop">
+     <example xml:id="language.types.array.examples.changeloop">
       <title>컬렉션</title>
       <programlisting role="php">
 <![CDATA[
@@ -1952,10 +1952,10 @@ $arr3[] = 4; // now $arr1 and $arr3 are the same
    </sect2>
   </sect1>
 
-  <sect1 id="language.types.object">
+  <sect1 xml:id="language.types.object">
    <title>객체</title>
 
-   <sect2 id="language.types.object.init">
+   <sect2 xml:id="language.types.object.init">
     <title>객체 초기화</title>
 
     <para>
@@ -1987,7 +1987,7 @@ $bar->do_foo();
     </simpara>
    </sect2>
    
-   <sect2 id="language.types.object.casting">
+   <sect2 xml:id="language.types.object.casting">
     <title>객체로 변환하기</title>
     
     <para>
@@ -2010,7 +2010,7 @@ echo $obj->scalar;  // outputs 'ciao'
    
   </sect1>
 
-  <sect1 id="language.types.resource">
+  <sect1 xml:id="language.types.resource">
    <title>자원</title>
     
     <para>
@@ -2026,7 +2026,7 @@ echo $obj->scalar;  // outputs 'ciao'
      </simpara>
     </note>
 
-   <sect2 id="language.types.resource.casting">
+   <sect2 xml:id="language.types.resource.casting">
     <title>resource로 변환하기</title>
     
     <para>
@@ -2036,7 +2036,7 @@ echo $obj->scalar;  // outputs 'ciao'
     </para>
    </sect2>
 
-    <sect2 id="language.types.resource.self-destruct">
+    <sect2 xml:id="language.types.resource.self-destruct">
      <title>resource 해제하기</title>
     
     <para>
@@ -2057,7 +2057,7 @@ echo $obj->scalar;  // outputs 'ciao'
    </sect2>
   </sect1>
     
-  <sect1 id="language.types.null">
+  <sect1 xml:id="language.types.null">
    <title>NULL</title>
     
    <para>
@@ -2090,7 +2090,7 @@ echo $obj->scalar;  // outputs 'ciao'
      </itemizedlist>
     </para>
     
-   <sect2 id="language.types.null.syntax">
+   <sect2 xml:id="language.types.null.syntax">
     <title>문법</title>
     <para>
      타입은 유일한 값 &null;을 갖는다. 
@@ -2111,10 +2111,10 @@ $var = NULL;
    </sect2>
   </sect1>
  
-  <sect1 id="language.pseudo-types">
+  <sect1 xml:id="language.pseudo-types">
    <title>이 문서에서 사용되는 의사 타입</title> 
 
-   <sect2 id="language.types.mixed">
+   <sect2 xml:id="language.types.mixed">
     <title>mixed</title>
     <para>
      <literal>mixed</literal>는 인자가 여러 타입을 허용한다는 것을 가리킨다
@@ -2126,7 +2126,7 @@ $var = NULL;
     </para>
    </sect2>
   
-   <sect2 id="language.types.number">
+   <sect2 xml:id="language.types.number">
     <title>number</title>
     <para>
      <literal>number</literal>는 인자가 
@@ -2134,7 +2134,7 @@ $var = NULL;
     </para>
    </sect2>
 
-   <sect2 id="language.types.callback">
+   <sect2 xml:id="language.types.callback">
     <title>callback</title>
     <para>
      <function>call_user_func</function>나 <function>usort</function>와 같은
@@ -2202,7 +2202,7 @@ call_user_func(array(&$obj, 'myCallbackMethod'));
    </sect2>
   </sect1>
 
-  <sect1 id="language.types.type-juggling">
+  <sect1 xml:id="language.types.type-juggling">
    <title>타입 저글링</title>
 
    <simpara>
@@ -2310,7 +2310,7 @@ $a{1} = "f";   // $a is now "afc"
     </para>
    </note>
 
-   <sect2 id="language.types.typecasting">
+   <sect2 xml:id="language.types.typecasting">
     <title>타입 캐스트</title>
 
     <para>

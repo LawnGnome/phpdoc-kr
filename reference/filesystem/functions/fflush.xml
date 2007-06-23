@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
 <!-- last change to 'fflush' in en/ tree in rev 1.43 -->
-	<refentry id="function.fflush">
+	<refentry xml:id="function.fflush" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>fflush</refname>
 			<refpurpose>출력결과를 파일로 보냅니다.</refpurpose>

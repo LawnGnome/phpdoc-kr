@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry id="function.crypt">
+  <refentry xml:id="function.crypt" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>crypt</refname>
     <refpurpose>단방향 문자열 암호화(해슁).</refpurpose>

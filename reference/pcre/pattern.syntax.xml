@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.1 Maintainer: progcom Status: working -->
-  <refentry id="pcre.pattern.syntax">
+  <refentry xml:id="pcre.pattern.syntax" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>패턴 문법</refname>
     <refpurpose>PCRE 정규표현식 문법 설명</refpurpose>
@@ -132,9 +132,9 @@
     </para>
    </refsect1>
 
-   <refsect1 id="regexp.reference">
+   <refsect1 xml:id="regexp.reference">
     <title>정규표현식 상세</title>
-    <refsect2 id="regexp.introduction">
+    <refsect2 xml:id="regexp.introduction">
      <title>소개</title>
      <para>
       아래 설명은 PCRE가 지원하는 정규표현식의 문법과 의미입니다. 정규표현식은
@@ -150,7 +150,7 @@
       목표 문자열의 동일한 부분에 매치합니다.
      </para>
     </refsect2>
-    <refsect2 id="regexp.reference.meta">
+    <refsect2 xml:id="regexp.reference.meta">
      <title>메타 문자</title>
      <para>     
       정규표현식이 강력한 이유는 패턴에 선택과 반복을 포함할 수 있다는
@@ -315,7 +315,7 @@
       다음 섹션은 각 메타 문자의 사용을 설명합니다.
      </para>
     </refsect2>
-    <refsect2 id="regexp.reference.backslash">
+    <refsect2 xml:id="regexp.reference.backslash">
      <title>백슬래쉬</title>
      <para>
       백슬래쉬 문자는 여러가지 사용법을 가집니다. 먼저, 뒤에 영숫자가 아닌
@@ -682,7 +682,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.circudollar">
+    <refsect2 xml:id="regexp.reference.circudollar">
      <title>Circumflex와 달러</title>
      <para>
       문자열 클래스의 밖, 기본 매칭 모드에서는 circumflex 문자는 현재 매칭
@@ -729,7 +729,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.dot">
+    <refsect2 xml:id="regexp.reference.dot">
      <title>마침표</title>
      <para>
       문자 클래스 밖에서, 패턴의 마침표는 패턴의 아무 문자에 매치합니다.
@@ -742,7 +742,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.squarebrackets">
+    <refsect2 xml:id="regexp.reference.squarebrackets">
      <title>대괄호</title>
      <para>
       여는 대괄호로 문자 클래스를 시작하고, 닫는 대괄호로 종료합니다. 닫는
@@ -812,7 +812,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.verticalbar">
+    <refsect2 xml:id="regexp.reference.verticalbar">
      <title>수직 바</title>
      <para>
       수직 바 문자는 선택 패턴을 구별할 때 사용합니다. 예를 들어, 패턴
@@ -825,7 +825,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.internal-options">
+    <refsect2 xml:id="regexp.reference.internal-options">
      <title>내부 옵션 설정</title>
      <para>
       <link linkend="pcre.pattern.modifiers">PCRE_CASELESS</link>,
@@ -918,7 +918,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.subpatterns">
+    <refsect2 xml:id="regexp.reference.subpatterns">
      <title>서브패턴</title>
      <para>
       서브패턴은 괄호로 구분하며, 중첩할 수 있습니다. 패턴의 부분을
@@ -980,7 +980,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.repetition">
+    <refsect2 xml:id="regexp.reference.repetition">
      <title>반복</title>
      <para>
       반복은 다음 항목들에 덧붙이는 수량어로 지정합니다:
@@ -1120,7 +1120,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.back-references">
+    <refsect2 xml:id="regexp.reference.back-references">
      <title>역참조</title>
      <para>
       Outside a character class, a backslash followed by  a  digit
@@ -1182,7 +1182,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.assertions">
+    <refsect2 xml:id="regexp.reference.assertions">
      <title>단정</title>
      <para>
       An assertion is  a  test  on  the  characters  following  or
@@ -1303,7 +1303,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.onlyonce">
+    <refsect2 xml:id="regexp.reference.onlyonce">
      <title>Once-only subpatterns</title>
      <para>
       With both maximizing and minimizing repetition,  failure  of
@@ -1419,7 +1419,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.conditional">
+    <refsect2 xml:id="regexp.reference.conditional">
      <title>Conditional subpatterns</title>
      <para>
       It is possible to cause the matching process to obey a  subpattern 
@@ -1486,7 +1486,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.comments">
+    <refsect2 xml:id="regexp.reference.comments">
      <title>주석</title>
      <para>
       The  sequence  (?#  marks  the  start  of  a  comment  which
@@ -1501,7 +1501,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.recursive">
+    <refsect2 xml:id="regexp.reference.recursive">
      <title>재귀 패턴</title>
      <para>
       Consider the problem of matching a  string  in  parentheses,
@@ -1565,7 +1565,7 @@
      </para>
     </refsect2>
 
-    <refsect2 id="regexp.reference.performances">
+    <refsect2 xml:id="regexp.reference.performances">
      <title>성능</title>
      <para>
       패턴에 사용하는 몇몇 항목은 다른 항목에 비해서 더욱 효율적입니다.

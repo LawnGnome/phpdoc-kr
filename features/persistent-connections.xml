@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
+<!-- $Revision: 1.11 $ -->
 <!-- EN-Revision: 1.21 Maintainer: fuzzy74 Status: ready -->
 <!-- CREDITS: regina -->
-<chapter id="features.persistent-connections">
+<chapter xml:id="features.persistent-connections" xmlns="http://docbook.org/ns/docbook">
     <title>영구적인 데이터베이스 접속</title>
     <simpara>
     영구적인 접속(Persistent connection)은 스크립트 수행이 종료되어도 

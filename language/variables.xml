@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.76 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
- <chapter id="language.variables">
+ <chapter xml:id="language.variables" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>변수</title>
   
-  <sect1 id="language.variables.basics">
+  <sect1 xml:id="language.variables.basics">
    <title>기본문법</title>
 
    <simpara>
@@ -105,7 +105,7 @@ $bar = &test();    // Invalid.
    </para>
   </sect1>
 
-  <sect1 id="language.variables.predefined">
+  <sect1 xml:id="language.variables.predefined">
    <title>미리 선언된 변수</title>
    
    <simpara>
@@ -130,8 +130,8 @@ $bar = &test();    // Invalid.
     <simpara>
      이와 관련된 변경사항은 <link linkend="ini.register-globals">register_globals</link>의
      설정 엔트리를 읽거나, <link linkend="security.globals">전역 등록 사용하기</link>에 관한
-     보안 챕터는 물론, <ulink url="&url.php.release4.1.0;">4.1.0</ulink>과
-     <ulink url="&url.php.release4.2.0;">4.2.0</ulink> Release Announcements도 참고하기 바란다.
+     보안 챕터는 물론, <link xlink:href="&url.php.release4.1.0;">4.1.0</link>과
+     <link xlink:href="&url.php.release4.2.0;">4.2.0</link> Release Announcements도 참고하기 바란다.
     </simpara>
     <simpara>
      <link linkend="language.variables.superglobals">superglobal arrays</link>와 같은
@@ -165,7 +165,7 @@ $bar = &test();    // Invalid.
     설정되어있지 않으면, 적합한 PHP의 미리선언된 배열도 비워있게 된다.
    </para>
 
-   <variablelist id="language.variables.superglobals">
+   <variablelist xml:id="language.variables.superglobals">
     <title>PHP 슈퍼전역변수</title>
     <varlistentry>
      <term><link linkend="reserved.variables.globals">$GLOBALS</link></term>
@@ -281,7 +281,7 @@ $bar = &test();    // Invalid.
   </sect1>
 
 
-  <sect1 id="language.variables.scope">
+  <sect1 xml:id="language.variables.scope">
    <title>변수 유효영역</title>
 
    <simpara>
@@ -333,7 +333,7 @@ Test();
     함수안에서 global로 선언해야 합니다.
    </simpara>
 
-   <sect2 id="language.variables.scope.global">
+   <sect2 xml:id="language.variables.scope.global">
     <title>global 키워드</title>
     <simpara>
      우선, <literal>global</literal>의 사용 예제입니다:
@@ -430,7 +430,7 @@ function test_global()
     </para>
    </sect2>
 
-   <sect2 id="language.variables.scope.static">
+   <sect2 xml:id="language.variables.scope.static">
     <title>정적 변수 사용하기</title>
    <simpara>
     변수 유효영역의 또 다른 중요한 기능이 <emphasis>static</emphasis> 변수이다.
@@ -545,7 +545,7 @@ function foo() {
     </note>
    </sect2>
 
-   <sect2 id="language.variables.scope.references">
+   <sect2 xml:id="language.variables.scope.references">
     <title>전역 변수와 정적 변수의 참조</title>
     <simpara>
      <literal>PHP 4</literal>를 작동하는 Zend Engine 1은 <link
@@ -659,7 +659,7 @@ Static object: object(stdClass)(1) {
    </sect2>
   </sect1>
 
-  <sect1 id="language.variables.variable">
+  <sect1 xml:id="language.variables.variable">
    <title>가변 변수</title>
 
    <simpara>
@@ -751,10 +751,10 @@ echo "$a $hello";
   
   </sect1>
 
-  <sect1 id="language.variables.external">
+  <sect1 xml:id="language.variables.external">
    <title>PHP 외부 출신의 변수들</title>
    
-   <sect2 id="language.variables.external.form">
+   <sect2 xml:id="language.variables.external.form">
     <title>HTML 폼 (GET과 POST)</title>
 
     <simpara>
@@ -894,7 +894,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
      PHP 4에서는 이런 제약이 적용되지 않는다.
     </para>
 
-    <sect3 id="language.variables.external.form.submit">
+    <sect3 xml:id="language.variables.external.form.submit">
      <title>변수명으로 IMAGE SUBMIT</title>
 
      <simpara>
@@ -921,11 +921,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
 
    </sect2>
 
-   <sect2 id="language.variables.external.cookies">
+   <sect2 xml:id="language.variables.external.cookies">
     <title>HTTP 쿠키</title>
 
     <simpara>
-     PHP는 <ulink url="&spec.cookies;">Netscape's Spec</ulink>에 의해 정의된
+     PHP는 <link xlink:href="&spec.cookies;">Netscape's Spec</link>에 의해 정의된
      HTTP 쿠키를 투명하게 지원한다. 쿠키는 원격 브라우저안에 데이터를 저장하는
      메카니즘이고 따라서 복귀하는 유저를 추적하거나 식별하게 해준다. 
      <function>setcookie</function> 함수를 사용하여 쿠키를 설정할수 있다. 쿠키는
@@ -986,7 +986,7 @@ setcookie("Cart[$count]", $item, time()+3600);
 
    </sect2>
 
-   <sect2 id="language.variables.external.dot-in-names">
+   <sect2 xml:id="language.variables.external.dot-in-names">
     <title>유입되는 변수명에 존재하는 점(dot)</title>
 
     <para>
@@ -1013,7 +1013,7 @@ $varname.ext;  /* invalid variable name */
 
    </sect2>
 
-   <sect2 id="language.variables.determining-type-of">
+   <sect2 xml:id="language.variables.determining-type-of">
     <title>변수 타입 결정하기</title>
 
     <para>

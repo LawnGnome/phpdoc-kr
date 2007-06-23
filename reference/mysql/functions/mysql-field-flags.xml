@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-field-flags">
+<refentry xml:id="function.mysql-field-flags" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_field_flags</refname>
   <refpurpose>결과로부터 특정 필드와 관련된 플래그를 반환</refpurpose>

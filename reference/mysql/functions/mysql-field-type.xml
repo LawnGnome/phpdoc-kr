@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.12 Maintainer: pcraft Status: ok -->
-<refentry id="function.mysql-field-type">
+<refentry xml:id="function.mysql-field-type" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>mysql_field_type</refname>
   <refpurpose>결과로부터 특정 필드의 데이터 형(type) 정보를 반환</refpurpose>
@@ -36,7 +36,7 @@
 반환되는 필드 형태는 
 <literal>"int"</literal>, <literal>"real"</literal>, 
 <literal>"string"</literal>, <literal>"blob"</literal>, 
-그리고 <ulink url="&url.mysql.docs;">MySQL 문서</ulink>에 설명되어 있는
+그리고 <link xlink:href="&url.mysql.docs;">MySQL 문서</link>에 설명되어 있는
 데이터형 중 하나이다.
   </para>
  </refsect1>

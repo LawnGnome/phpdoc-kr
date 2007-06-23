@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
-  <refentry id="function.htmlentities">
+  <refentry xml:id="function.htmlentities" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>htmlentities</refname>
     <refpurpose>

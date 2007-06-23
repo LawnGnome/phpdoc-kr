@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.6 Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.asort">
+  <refentry xml:id="function.asort" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>asort</refname>
     <refpurpose>배열을 정렬하고 인덱스 상관 관계를 유지한다</refpurpose>

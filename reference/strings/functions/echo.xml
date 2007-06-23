@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
-  <refentry id="function.echo">
+  <refentry xml:id="function.echo" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>echo</refname>
     <refpurpose>하나 이상의 문자열을 출력합니다.</refpurpose>
@@ -91,8 +91,8 @@ I have <?=$foo?> foo.
     </para>
     <simpara>
      <function>print</function>와 <function>echo</function>의 차이에 대해서는,
-     FAQT의 Knowledge Base Article을 읽어보십시오: <ulink
-      url="&url.echo-print;">&url.echo-print;</ulink>
+     FAQT의 Knowledge Base Article을 읽어보십시오: <link
+      xlink:href="&url.echo-print;">&url.echo-print;</link>
     </simpara>
     
     &note.language-construct;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.9 $ -->
+<!-- $Revision: 1.10 $ -->
 <!-- EN-Revision: 1.23 Maintainer: fuzzy74 Status: ready -->
-<appendix id="migration">
+<appendix xml:id="migration" xmlns="http://docbook.org/ns/docbook">
  <title>PHP/FI 2 에서 PHP 3로 이주하기</title>
 
- <section id="migration.about">
+ <section xml:id="migration.about">
   <title>3.0의 비호환성</title>
 
   <simpara>
@@ -35,7 +35,7 @@
   </simpara>
  </section>
 
- <section id="migration.old-function">
+ <section xml:id="migration.old-function">
   <title><literal>old_function</literal></title>
   <simpara>
    <literal>old_function</literal> 구문은 PHP/FI2와 동일한 문법을 사용하는
@@ -57,7 +57,7 @@
   </warning>
  </section>
  
- <section id="migration.startendtags">
+ <section xml:id="migration.startendtags">
   <title>Start/end tags</title>
 
   <para>
@@ -117,7 +117,7 @@
   </para>
  </section>
 
- <section id="migration.if-endif">
+ <section xml:id="migration.if-endif">
   <title>if..endif 문법</title>
 
   <para>
@@ -158,7 +158,7 @@ endif;
   </para>
  </section>
 
- <section id="migration.while">
+ <section xml:id="migration.while">
   <title>while 문법</title>
   <para>
    if..endif 와 비슷하게, while..endwhile 문법도 변경되었다:
@@ -191,7 +191,7 @@ endwhile;
   </warning>
  </section>
 
- <section id="migration.expr">
+ <section xml:id="migration.expr">
   <title>표현식 타입</title>
   <simpara>
    PHP/FI 2.0은 결과값이 무슨 타입이 되어야 할지 결정하기 위해 표현식의
@@ -237,7 +237,7 @@ while ((string)$key != "") {
   </para>
  </section>
 
- <section id="migration.errors">
+ <section xml:id="migration.errors">
   <title>변경된 에러 메시지</title>
   <simpara>
    PHP 3.0의 에러 메시지는 대체로 2.0보다는 정확하다. 그러나 에러를 일으키는
@@ -246,7 +246,7 @@ while ((string)$key != "") {
   </simpara>
  </section>
 
- <section id="migration.booleval">
+ <section xml:id="migration.booleval">
   <title>짧은-순환 논리 비교</title>
   <simpara>
    PHP 3.0의 논리 비교는 짧은-순환이다. 이 말은 의미는 
@@ -261,7 +261,7 @@ while ((string)$key != "") {
   </simpara>
  </section>
 
- <section id="migration.truefalse">
+ <section xml:id="migration.truefalse">
   <title>함수 &true;/&false; 리턴 값</title>
   <simpara>
    대부분의 내장함수들은 성공하면 &true;를 실패하면 &false;를 리턴하도록
@@ -295,7 +295,7 @@ $fp = @fopen($file, "r") or print("Could not open $file for reading<br>\n");
   </para>
  </section>
 
- <section id="migration.other">
+ <section xml:id="migration.other">
   <title>다른 비호환성</title>
 
   <itemizedlist>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.ocicancel">
+  <refentry xml:id="function.ocicancel" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>OCICancel</refname>
     <refpurpose>커서로부터 읽기를 취소한다</refpurpose>

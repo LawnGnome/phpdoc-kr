@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
-  <refentry id="function.date">
+  <refentry xml:id="function.date" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <refnamediv>
     <refname>date</refname>
     <refpurpose>로컬 날짜/시간을 형식화합니다.</refpurpose>
@@ -151,7 +151,7 @@
         </row>
         <row>
          <entry><literal>r</literal></entry>
-         <entry><ulink url="&url.rfc;2822">RFC 2822</ulink> 형식 날짜</entry>
+         <entry><link xlink:href="&url.rfc;2822">RFC 2822</link> 형식 날짜</entry>
          <entry>예: <literal>Thu, 21 Dec 2000 16:01:07 +0200</literal></entry>
         </row>
         <row>

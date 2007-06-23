@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: readu -->
 <!-- CREDITS: cycle98 -->
-  <refentry id="function.strrchr">
+  <refentry xml:id="function.strrchr" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>strrchr</refname>
     <refpurpose>

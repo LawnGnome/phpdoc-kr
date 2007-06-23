@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-<section id="iconv.installation">
+<section xml:id="iconv.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
  <para>
   이 모듈이 제공하는 함수를 사용하려면, 설정 옵션 <option

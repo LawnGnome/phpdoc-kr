@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry id="function.base-convert">
+  <refentry xml:id="function.base-convert" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>base_convert</refname>
     <refpurpose>수를 임의의 진수로 변환합니다.</refpurpose>

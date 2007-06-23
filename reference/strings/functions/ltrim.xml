@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
-  <refentry id="function.ltrim">
+  <refentry xml:id="function.ltrim" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>ltrim</refname> 
     <refpurpose>

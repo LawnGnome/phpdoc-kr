@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
 <!-- last change to 'fileatime' in en/ tree in rev 1.2 -->
-	<refentry id="function.fileatime">
+	<refentry xml:id="function.fileatime" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>fileatime</refname>
 			<refpurpose>최근에 파일에 접근한 시간을 가져옴</refpurpose>

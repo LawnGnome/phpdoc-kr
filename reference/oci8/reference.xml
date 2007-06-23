@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
+<!-- $Revision: 1.5 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
- <reference id="ref.oci8">
+ <reference xml:id="ref.oci8" xmlns="http://docbook.org/ns/docbook">
   <title>오라클 8 함수</title>
   <titleabbrev>OCI8</titleabbrev>
   <partintro>

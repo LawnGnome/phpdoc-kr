@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
- <reference id="ref.strings">
+ <reference xml:id="ref.strings" xmlns="http://docbook.org/ns/docbook">
   <title>문자열 함수</title>
   <titleabbrev>문자열</titleabbrev>
 
   <partintro>
-   <section id="strings.intro">
+   <section xml:id="strings.intro">
     &reftitle.intro;
     <para>
      이 함수들은 문자열을 여러가지 방법으로 다룹니다. 좀 더 특화된 섹션으로
@@ -19,19 +19,19 @@
     </para>
    </section>
 
-   <section id="strings.requirements">
+   <section xml:id="strings.requirements">
     &reftitle.required;
     &no.requirement;
    </section>
 
-   <section id="strings.installation">
+   <section xml:id="strings.installation">
     &reftitle.install;
     &no.install;
    </section>
    
    &reference.strings.constants;
    
-   <section id="strings.seealso">
+   <section xml:id="strings.seealso">
     &reftitle.seealso;
     <para>
      더 강력하게 문자열을 다루고 조작하는 함수를 원한다면, <link

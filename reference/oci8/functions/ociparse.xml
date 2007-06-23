@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: n/a Maintainer: fuzzy74 Status: unknown -->
-  <refentry id="function.ociparse">
+  <refentry xml:id="function.ociparse" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>OCIParse</refname>
     <refpurpose>질의(query)를 해석하고 구문(statement)를 리턴한다</refpurpose>

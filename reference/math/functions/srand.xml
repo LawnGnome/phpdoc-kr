@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry id="function.srand">
+  <refentry xml:id="function.srand" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>srand</refname>
     <refpurpose>난수 생성기를 초기화합니다.</refpurpose>
