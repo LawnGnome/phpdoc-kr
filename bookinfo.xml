@@ -8,48 +8,6 @@
   <pubdate>&php.build-date;</pubdate>
   &frontpage.editors;
 
-  <authorgroup id="translators">
-   <collab>
-    <collabname>Korean Translators (한글 번역)</collabname>
-   </collab>
-   <collab>
-    <collabname>LEE Yunyoung (이윤영)</collabname>
-   </collab>
-   <collab>
-    <collabname>JIN Taeyoung (진태영)</collabname>
-   </collab>
-   <collab>
-    <collabname>BYON Jaemin (변재민)</collabname>
-   </collab>
-   <collab>
-    <collabname>CHOI Joongyeon (최중연)</collabname>
-   </collab>
-   <collab>
-    <collabname>HWANG Wonhee (황원희)</collabname>
-   </collab>
-   <collab>
-    <collabname>KIM Younsoo (김윤수)</collabname>
-   </collab>
-   <collab>
-    <collabname>KWON Jeongha (권정하)</collabname>
-   </collab>
-   <collab>
-    <collabname>LEE Gwangjong (이광종)</collabname>
-   </collab>
-   <collab>
-    <collabname>LEE SeungHwan (이승환)</collabname>
-   </collab>
-   <collab>
-    <collabname>SHIM Seungjoon (심승준)</collabname>
-   </collab>
-   <collab>
-    <collabname>SONG Jungmin (송정민)</collabname>
-   </collab>
-   <collab>
-    <collabname>SUK Bongwoon (석봉운)</collabname>
-   </collab>
-  </authorgroup>
-
   <copyright>
    <year>1997-2007</year>
    <holder>the PHP Documentation Group (PHP 문서 그룹)</holder>
