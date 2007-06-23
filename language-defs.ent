@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.30 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -10,12 +10,13 @@
 <!ENTITY Features          "기능">
 <!ENTITY Security          "보안">
 <!ENTITY FunctionReference "함수 레퍼런스">
-<!ENTITY Appendixes        "부록">
+<!ENTITY PECLReference	   "PCEL 함수 레퍼런스">
+<!ENTITY AddOnReference    "애드온 확장 함수 레퍼런스">
 <!ENTITY PEAR              "PEAR: PHP 확장 및 어플리케이션 저장소">
 <!ENTITY FAQ               "FAQ: 자주 물어보는 질문들">
 <!ENTITY FAQabbrev         "FAQ">
-<!ENTITY api               "PHP API: 확장 모듈 제작자를 위한 인터페이스">
-<!ENTITY apiabbrev         "PHP API">
+<!ENTITY Internals         "PHP와 Zend 엔진 내부">
+<!ENTITY ZendAPI           "Zend API: PHP 코어 해킹">
 <!ENTITY FunctionIndex     "함수 인덱스">
 <!ENTITY CHMEdition        "HTML 도움말 에디션">
 <!ENTITY ReservedConstants "예약 상수">
@@ -29,22 +30,27 @@
 <!ENTITY Definition        "정의">
 <!ENTITY Functions         "함수">
 <!ENTITY Name              "이름">
+<!ENTITY Alias             "Alias of">
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
-<!ENTITY reftitle.intro        '<title>소개</title>'>
-<!ENTITY reftitle.required     '<title>요구 사항</title>'>
-<!ENTITY reftitle.install      '<title>설치</title>'>
-<!ENTITY reftitle.runtime      '<title>런타임 설정</title>'>
-<!ENTITY reftitle.resources    '<title>리소스 종류</title>'>
-<!ENTITY reftitle.constants    '<title>예약 상수</title>'>
-<!ENTITY reftitle.classes      '<title>예약 클래스</title>'>
-<!ENTITY reftitle.constructor  '<title>생성자</title>'>
-<!ENTITY reftitle.methods      '<title>메쏘드</title>'>
-<!ENTITY reftitle.properties   '<title>속성</title>'>
-<!ENTITY reftitle.description  '<title>설명</title>'>
-<!ENTITY reftitle.returnvalues '<title>반환값</title>'>
-<!ENTITY reftitle.examples     '<title>예제</title>'>
-<!ENTITY reftitle.seealso      '<title>참고</title>'>
 <!ENTITY reftitle.changelog    '<title>변경 기록</title>'>
-<!ENTITY reftitle.parameters   '<title>인수 목록</title>'>
+<!ENTITY reftitle.classes      '<title>예약 클래스</title>'>
+<!ENTITY reftitle.constants    '<title>예약 상수</title>'>
+<!ENTITY reftitle.constructor  '<title>생성자</title>'>
+<!ENTITY reftitle.description  '<title>설명</title>'>
+<!ENTITY reftitle.examples     '<title>예제</title>'>
+<!ENTITY reftitle.exceptions   '<title>예외</title>'>
+<!ENTITY reftitle.errors       '<title>오류/예외</title>'>
+<!ENTITY reftitle.install      '<title>설치</title>'>
+<!ENTITY reftitle.intro        '<title>소개</title>'>
+<!ENTITY reftitle.methods      '<title>메쏘드</title>'>
+<!ENTITY reftitle.parameters   '<title>매개변수</title>'>
+<!ENTITY reftitle.properties   '<title>속성</title>'>
+<!ENTITY reftitle.required     '<title>요구 조건</title>'>
+<!ENTITY reftitle.resources    '<title>자원형</title>'>
+<!ENTITY reftitle.runtime      '<title>실행시 설정</title>'>
+<!ENTITY reftitle.returnvalues '<title>반환값</title>'>
+<!ENTITY reftitle.seealso      '<title>참고</title>'>
+<!ENTITY reftitle.notes        '<title>주의</title>'>
+
