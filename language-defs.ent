@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.30 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.31 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -16,6 +16,7 @@
 <!ENTITY FAQ               "FAQ: 자주 물어보는 질문들">
 <!ENTITY FAQabbrev         "FAQ">
 <!ENTITY Internals         "PHP와 Zend 엔진 내부">
+<!ENTITY Internals2        "PHP 코어: Zend 엔진 해커 가이드">
 <!ENTITY ZendAPI           "Zend API: PHP 코어 해킹">
 <!ENTITY FunctionIndex     "함수 인덱스">
 <!ENTITY CHMEdition        "HTML 도움말 에디션">

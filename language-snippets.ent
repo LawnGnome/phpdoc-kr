@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.201 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.205 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 
@@ -98,13 +98,13 @@ linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 <function>escapeshellcmd</function>를 사용하여, 사용자가 어떠한 명령을 실행하여
 시스템을 조작하지 못하게 하여야 합니다.</para></warning>'>
 
-<!ENTITY warn.experimental '<warning><simpara>이 확장 모듈은
+<!ENTITY warn.experimental '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 확장 모듈은
 <emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
 이 확장 모듈에 대한 모든 문서 자료에 대해서 -- 은 이후의 PHP 릴리즈에서
 예고 없이 변경될 수 있습니다. 이 확장 모듈의 사용은 사용자의 책임하에
 이루어집니다.</simpara></warning>'>
 
-<!ENTITY warn.experimental.func '<warning><simpara>이 함수는
+<!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook">><simpara>이 함수는
 <emphasis>실험적</emphasis>입니다. 이 함수의 작동, 함수의 이름,
 그리고 이 함수에 대해 모든 문서는 이후의 PHP 릴리즈에서 예고 없이
 변경할 수 있습니다. 이 함수의 사용에 관한 것은 사용자
@@ -407,10 +407,10 @@ linkend="ini"/>를 참고하십시오.'>
 있습니다.'>
 
 <!-- PECL entities -->
-<!ENTITY pecl.moved '이 <ulink url="&url.pecl;">PECL</ulink> 확장은 PHP
+<!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에서 제공하지 않습니다.'>
 
-<!ENTITY pecl.moved '이 <ulink url="&url.pecl;">PECL</ulink> 확장은 PHP
+<!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=&url.pecl;">PECL</link> 확장은 PHP
 배포판에 포함되어 있습니다.'>
 
 <!ENTITY pecl.info 'PECL 확장 설치에 관한 정보는 매뉴얼의 <link
@@ -426,17 +426,17 @@ PHP 윈도우 바이너리 안의 <filename>extensions/</filename> 디렉토리 
 있습니다.'>
 
 <!ENTITY pecl.windows.download '<acronym>PECL</acronym> 확장
-<acronym>DLL</acronym>은 <ulink url="&url.php.downloads;">PHP 내려받기</ulink>
-페이지나 <ulink url="&url.php.win;">&url.php.win;</ulink>에서 받을 수
+<acronym>DLL</acronym>은 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.php.downloads;">PHP 내려받기</link>
+페이지나 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.php.win;">&url.php.win;</link>에서 받을 수
 있습니다.'>
 
 <!ENTITY pecl.windows.download.unbundled '번들되지 않은
-<acronym>PECL</acronym> 확장은 <ulink
-url="&url.pecl.win;">&url.pecl.win;</ulink>에서 받을 수 있습니다.'>
+<acronym>PECL</acronym> 확장은 <link
+xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl.win;">&url.pecl.win;</link>에서 받을 수 있습니다.'>
 
 <!-- kept for BC -->
-<!ENTITY note.pecl-php5 '<note><simpara>이 확장은 PHP 5에서 제거되어, <ulink
-url="&url.pecl;">PECL</ulink> 저장소로 이동되었습니다.</simpara></note>'>
+<!ENTITY note.pecl-php5 '<note><simpara>이 확장은 PHP 5에서 제거되어, <link
+xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 저장소로 이동되었습니다.</simpara></note>'>
 
 <!-- Common pieces for reference part END -->
 
@@ -641,8 +641,8 @@ user 이름공간은 모든 사용자가 사용할 수 있지만, root 이름공
 
 <!ENTITY tidy.conf-enc '<para><parameter>config</parameter> 인수는 배열이나
 문자열을 전달할 수 있습니다. 문자열을 넘기면, 설정 파일의 이름을 의미합니다.
-그 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <ulink
-url="&url.tidy.conf;">&url.tidy.conf;</ulink>를 확인하십시오.
+그 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <link
+xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>를 확인하십시오.
 <parameter>encoding</parameter> 인수는 입출력 문서의 인코딩을 지정합니다.
 가능한 <parameter>encoding</parameter> 값은:
 ascii, latin1, raw, utf8, iso2022, mac, win1252, ibm858, utf16,
@@ -775,17 +775,23 @@ linkend="http.HttpResponse"><classname>HttpResponse</classname></link>
 <function>xmlwriter_open_memory</function> 호출로
 만들어집니다.</para></listitem></varlistentry>'>
 
-<!-- Imagick generic return types -->
-<!ENTITY imagick.imagick.return.success '성공시에 &true;를 반환하고, 실패시에
-ImagickException을 발생합니다.'>
-<!ENTITY imagick.imagickdraw.return.success '성공시에 &true;를 반환하고,
-실패시에 ImagickDrawException을 발생합니다.'>
-<!ENTITY imagick.imagickpixel.return.success '성공시에 &true;를 반환하고,
-실패시에 ImagickPixelException을 발생합니다.'>
-<!ENTITY imagick.imagickpixeliterator.return.success '성공시에 &true;를
-반환하고, 실패시에 ImagickPixelIteratorException을 발생합니다.'>
+<!-- SVN notes -->
+<!ENTITY svn.relativepath "<note><simpara>상대 경로는 PHP 바이너리가 있는
+디렉토리를 현재 작업 디렉토리로 인식합니다. 스크립트의 작업 디렉토리를
+얻으려면, <function>realpath</function>나 dirname(__FILE__)을
+사용하십시오.</simpara></note>">
+<!ENTITY svn.referto.status '사용할 수 있는 값에 대해서는 <link
+linkend="svn.constants.status">status 상수</link>를 참고하십시오.'>
+<!ENTITY svn.referto.type '사용할 수 있는 값에 대해서는 <link
+linkend="svn.constants.type">type 상수</link>를 참고하십시오.'>
 
-<!-- Korean translation only MUST REMOVE AFTER ALL ini.xml updated -->
-<!ENTITY ko.reference.ini.constants 'PHP_INI_* 상수에 대한 자세한 내용 및 정의는
-<function>ini_set</function>을 참고하십시오.'>
+<!-- Imagick generic return types -->
+<!ENTITY imagick.return.success '성공시에 &true;를 반환합니다.'>
+<!ENTITY imagick.imagick.throws '오류시에 ImagickException이 발생합니다.'>
+<!ENTITY imagick.imagickdraw.throws '오류시에 ImagickDrawException이
+발생합니다.'>
+<!ENTITY imagick.imagickpixel.throws '오류시에 ImagickPixelException이
+발생합니다.'>
+<!ENTITY imagick.imagickpixeliterator.throws '오류시에
+ImagickPixenIterratorException이 발생합니다.'>
 

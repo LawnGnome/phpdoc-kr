@@ -1,0 +1,91 @@
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+
+<!--
+  Entities for the categorized extension list, so it does not need
+  to be translated, and thus it is not going to be outdated.
+-->
+
+<!ENTITY extcat.intro '<title>확장 분류</title><para>이 부록은 PHP 매뉴얼에
+문서화된 150개가 넘는 확장을 몇몇 기준에 따라 분류한 것입니다.</para>'>
+
+<!-- ======================================================================= -->
+
+<!ENTITY extcat.purpose '<title>목적</title>'>
+
+<!ENTITY extcat.purpose.basic '<title>기본 PHP 확장</title>'>
+<!ENTITY extcat.purpose.basic.vartype '<title>확장에 관련된 변수와 형</title>'>
+<!ENTITY extcat.purpose.basic.text '<title>텍스트 처리</title>'>
+<!ENTITY extcat.purpose.basic.php "<title>PHP 동작에 영향을 줌</title>">
+<!ENTITY extcat.purpose.basic.session '<title>세션 확장</title>'>
+<!ENTITY extcat.purpose.basic.other '<title>기타 기본 확장</title>'>
+
+<!ENTITY extcat.purpose.database '<title>데이터베이스 확장</title>'>
+<!ENTITY extcat.purpose.database.abstract '<title>추상 레이어</title>'>
+<!ENTITY extcat.purpose.database.vendors '<title>벤더 한정 데이터베이스 확장</title>'>
+
+<!ENTITY extcat.purpose.xml '<title>XML 조작</title>'>
+
+<!ENTITY extcat.purpose.webservice '<title>웹 서비스</title>'>
+
+<!ENTITY extcat.purpose.creditcard '<title>신용카드 처리</title>'>
+   
+<!ENTITY extcat.purpose.mathcrypto '<title>수학과 암호화</title>'>
+<!ENTITY extcat.purpose.mathcrypto.math '<title>수학 확장</title>'>
+<!ENTITY extcat.purpose.mathcrypto.crypto '<title>암호화 확장</title>'>
+
+<!ENTITY extcat.purpose.international '<title>자연어와 문자 인코딩 지원</title>'>
+   
+<!ENTITY extcat.purpose.fileprocess '<title>파일 시스템과 프로세스 제어</title>'>
+<!ENTITY extcat.purpose.fileprocess.file '<title>파일 시스템 관련 확장</title>'>
+<!ENTITY extcat.purpose.fileprocess.process '<title>프로세세 제어 확장</title>'>
+
+<!ENTITY extcat.purpose.remote '<title>접근 서비스</title>'>
+<!ENTITY extcat.purpose.remote.mail '<title>메일 관련 확장</title>'>
+<!ENTITY extcat.purpose.remote.auth '<title>인증 서비스</title>'>
+<!ENTITY extcat.purpose.remote.other '<title>기타 서비스</title>'>
+
+<!ENTITY extcat.purpose.compression '<title>압축 확장</title>'>
+
+<!ENTITY extcat.purpose.calendar '<title>달력과 이벤트 관련 확장</title>'>
+
+<!ENTITY extcat.purpose.utilspec '<title>특정 용도 한정 확장</title>'>
+<!ENTITY extcat.purpose.utilspec.nontext '<title>텍스트가 아닌 MIME 출력</title>'>
+<!ENTITY extcat.purpose.utilspec.image '<title>이미지 처리와 생성</title>'>
+<!ENTITY extcat.purpose.utilspec.audio '<title>오디오 형식 조작</title>'>
+<!ENTITY extcat.purpose.utilspec.cmdline '<title>명령줄 한정 확장</title>'>
+<!ENTITY extcat.purpose.utilspec.windows '<title>윈도우 전용 확장</title>'>
+<!ENTITY extcat.purpose.utilspec.server '<title>서버 한정 확장</title>'>
+    
+<!-- ======================================================================= -->
+
+<!ENTITY extcat.membership '<title>자격</title>'>
+
+<!ENTITY extcat.membership.core '<title>코어 확장</title><para>이 확장은 실제
+확장이 아닙니다. PHP 코어의 일부분이며 컴파일 옵션으로 PHP 바이너리에서 제외할
+수 없습니다.</para>'>
+
+<!ENTITY extcat.membership.bundled '<title>번들 확장</title><para>이 확장은
+PHP에 번들됩니다.</para>'>
+
+<!ENTITY extcat.membership.external '<title>외부 확장</title><para>이 확장을
+컴파일 하려면, 외부 라이브러리가 필요합니다.</para>'>
+
+<!ENTITY extcat.membership.pecl '<title>PECL 확장</title><para>이 확장은 <link
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xlilnk:href="&url.pecl;">PECL</link>에서 받을 수 있습니다. PHP 매뉴얼에 없는
+더 많은 PECL 확장이 존재합니다.</para>'>
+
+<!-- ======================================================================= -->
+
+<!ENTITY extcat.state '<title>상태</title><para>여기 있는 확장은 제품에
+사용하지 적합하지 않습니다 - 너무 "낡은"(배제된) 확장이거나,
+"새로운"(실험적인) 확장입니다.</para>'>
+
+<!ENTITY extcat.state.deprecated '<title>배제된 확장</title><para>이 확장은
+다른 확장의 기능으로 인하여 배제될 확장입니다.</para>'>
+
+<!ENTITY extcat.state.experimental '<title>실험적 확장</title><para>이 확장의
+작동-함수 이름과 확장에 대한 문서를 포함한 모든 것-은 PHP 다음 버전에서 아무런
+설명 없이 변경될 수 있습니다. 이 확장으로 인한 문제는 스스로 책임져야
+합니다.</para>'>
+
