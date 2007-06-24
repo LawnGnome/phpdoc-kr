@@ -570,7 +570,7 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    <para>
     PHP 5에서 새로운 객체 모델이 존재합니다. PHP의 객체 조작은 완전히 새로
     쓰여졌으며, 더 나은 성능과 많은 기능을 허용합니다. 자세한 정보는 <link
-     url="http://www.php.net/zend_engine-2.php">http://www.php.net/zend-engine-2.php</link>를
+     xlink:href="http://www.php.net/zend_engine-2.php">http://www.php.net/zend-engine-2.php</link>를
     읽어보십시오.
    </para>
   </section>

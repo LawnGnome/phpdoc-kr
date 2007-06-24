@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
+<!-- $Revision: 1.7 $ -->
 <!-- EN-Revision: 1.26 Maintainer: fuzzy74 Status: ready -->
 
 <!--
@@ -358,7 +358,7 @@ Returns the length of string.
    <para>
     독자의 지역 언어로 문서를 번역하는데 도움을 주고자 한다면,
     phpdoc 메일링리스트를 구독하는 번역/문서 팀과 연락을 하도록 한다:
-    <link url="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</link>에
+    <link xlink:href="mailto:&email.php.doc.subscribe;">&email.php.doc.subscribe;</link>에
     아무 내용없는 메일을 보낸다. 메일링 리스트의 주소는 <literal>&email.php.doc;</literal>이다.
     다른 언어로 매뉴얼을 번역하는데 관심이 있다는 메시지를 넣는다면 누군가가 당신에게
     답장을 보낼것이고, 새로운 언어 번역을 시작하고 거주지역 언어의 기존 문서팀에
