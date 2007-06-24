@@ -22,7 +22,7 @@
     <para>
      <function>empty</function>는 변수값이 지정되지 않았을 때 경고를 출력하지
      않는 것을 제외하고, <literal>(boolean)
-     <parameter>var</parameter></literal>의 반대입니다. 자세한 정보는 <link
+     var</literal>의 반대입니다. 자세한 정보는 <link
      linkend="language.types.boolean.casting">불린으로 변경</link>을
      참고하십시오.
     </para>
