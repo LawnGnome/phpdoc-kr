@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
 <section xml:id="pgsql.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
  <para>
  <table>
   <title>PostgreSQL 설정 옵션</title>
-  <tgroup cols="3">
+  <tgroup cols="4">
    <thead>
     <row>
      <entry>이름</entry>
      <entry>기본값</entry>
-     <entry>변경가능성</entry>
+     <entry>설정권한</entry>
+     <entry>변경점</entry>
     </row>
    </thead>
    <tbody>
@@ -19,36 +20,42 @@
      <entry>pgsql.allow_persistent</entry>
      <entry>"1"</entry>
      <entry>PHP_INI_SYSTEM</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>pgsql.max_persistent</entry>
      <entry>"-1"</entry>
      <entry>PHP_INI_SYSTEM</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>pgsql.max_links</entry>
      <entry>"-1"</entry>
      <entry>PHP_INI_SYSTEM</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>pgsql.auto_reset_persistent</entry>
      <entry>"0"</entry>
      <entry>PHP_INI_SYSTEM</entry>
+     <entry>PHP 4.2.0부터 사용할 수 있습니다.</entry>
     </row>
     <row>
      <entry>pgsql.ignore_notice</entry>
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.3.0부터 사용할 수 있습니다.</entry>
     </row>
     <row>
      <entry>pgsql.log_notice</entry>
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.3.0부터 사용할 수 있습니다.</entry>
     </row>
    </tbody>
   </tgroup>
  </table>
- &ko.reference.ini.constants;
+ &ini.php.constants;
  </para>
   
   &ini.descriptions.title;

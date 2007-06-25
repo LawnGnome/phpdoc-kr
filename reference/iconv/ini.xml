@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.1 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 <section xml:id="iconv.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
  <para>
  <table>
   <title>Iconv 설정 옵션</title>
-  <tgroup cols="3">
+  <tgroup cols="4">
    <thead>
     <row>
      <entry>이름</entry>
      <entry>기본값</entry>
-     <entry>변경가능성</entry>
+     <entry>설정권한</entry>
+     <entry>변경점</entry>
     </row>
    </thead>
    <tbody>
      <row>
       <entry>iconv.input_encoding</entry>
-      <entry>ICONV_INPUT_ENCODING</entry>
+      <entry>"ISO-8859-1"</entry>
       <entry>PHP_INI_ALL</entry>
+      <entry>PHP 4.0.5부터 사용할 수 있습니다.</entry>
      </row>
      <row>
       <entry>iconv.output_encoding</entry>
-      <entry>ICONV_OUTPUT_ENCODING</entry>
+      <entry>"ISO-8859-1"</entry>
       <entry>PHP_INI_ALL</entry>
+      <entry>PHP 4.0.5부터 사용할 수 있습니다.</entry>
      </row>
      <row>
       <entry>iconv.internal_encoding</entry>
-      <entry>ICONV_INTERNAL_ENCODING</entry>
+      <entry>"ISO-8859-1"</entry>
       <entry>PHP_INI_ALL</entry>
+      <entry>PHP 4.0.5부터 사용할 수 있습니다.</entry>
      </row>
    </tbody>
   </tgroup>
  </table>
- &ko.reference.ini.constants;
+ &ini.php.constants;
  </para>
+ <warning>
+  <para>
+   몇몇 시스템(IBM AIX 등)은 "ISO-8859-1" 대신에 "ISO8859-1"을 사용하기에, 이
+   값을 설정 옵션과 함수 매개변수로 사용합니다.
+  </para>
+ </warning>
+ <note>
+  <para>
+   설정 옵션 <parameter>iconv.input_encoding</parameter>는 현재 사용되지
+   않습니다.
+  </para>
+ </note>
 </section>
 
 <!-- Keep this comment at the end of the file

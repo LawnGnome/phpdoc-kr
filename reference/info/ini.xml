@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.118 Maintainer: progcom Status: ready -->
 <section xml:id="info.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
  <para>
   <table>
    <title>PHP 옵션/정보 설정 옵션</title>
-   <tgroup cols="3">
+   <tgroup cols="4">
     <thead>
      <row>
       <entry>이름</entry>
       <entry>기본값</entry>
-      <entry>변경가능성</entry>
+      <entry>설정권한</entry>
+      <entry>변경점</entry>
      </row>
     </thead>
     <tbody>
@@ -19,56 +20,73 @@
      <entry>assert.active</entry>
      <entry>"1"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>assert.bail</entry>
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>assert.warning</entry>
      <entry>"1"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>assert.callback</entry>
      <entry>NULL</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>assert.quiet_eval</entry>
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>enable_dl</entry>
      <entry>"1"</entry>
      <entry>PHP_INI_SYSTEM</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>max_execution_time</entry>
      <entry>"30"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>max_input_time</entry>
-     <entry>"60"</entry>
-     <entry>PHP_INI_ALL</entry>
+     <entry>"-1"</entry>
+     <entry>PHP_INI_PERDIR</entry>
+     <entry>PHP 4.3.0부터 사용할 수 있습니다.</entry>
+    </row>
+    <row>
+     <entry>max_input_nesting_level</entry>
+     <entry>"64"</entry>
+     <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
+     <entry>PHP 5.2.2와 4.4.8부터 사용할 수 있습니다. PHP 4.4.x에서 기본값은
+      500입니다.</entry>
     </row>
     <row>
      <entry>magic_quotes_gpc</entry>
      <entry>"1"</entry>
-     <entry>PHP_INI_PERDIR|PHP_INI_SYSTEM</entry>
+     <entry>PHP_INI_PERDIR</entry>
+     <entry>PHP &lt;=4.2.3에서는 PHP_INI_ALL입니다.</entry>
     </row>
     <row>
      <entry>magic_quotes_runtime</entry>
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     </tbody>
    </tgroup>
   </table>
-  &ko.reference.ini.constants;
+  &ini.php.constants;
  </para>
  
  &ini.descriptions.title;
@@ -106,7 +124,7 @@
     </term>
     <listitem>
      <para>
-      실패하는 assertion마다 <literal>PHP</literal> 경고를 발생합니다.
+      실패하는 assertion마다 PHP 경고를 발생합니다.
      </para>
     </listitem>
    </varlistentry>
@@ -145,8 +163,8 @@
     </term>
     <listitem>
      <para>
-      이 지시어는 <literal>PHP</literal>의 아파치 모듈 버전에서만 유용합니다. 
-      <function>dl</function>로 <literal>PHP</literal> 확장 모듈을 동적으로
+      이 지시어는 PHP의 아파치 모듈 버전에서만 유용합니다. 
+      <function>dl</function>로 PHP 확장 모듈을 동적으로
       읽어들일 수 있는지 여부를, 가상 서버나 디렉토리 단위로 설정할 수
       있습니다.
      </para>
@@ -180,6 +198,12 @@
       변경할 수 없습니다. 안전 모드를 끄거나 &php.ini;에서 시간 제한을
       변경해야 합니다.
      </para>
+     <para>
+      웹 서버가 다른 시간초과 설정을 가질 수 있습니다. 예를 들면, 아파치는
+      <literal>Timeout</literal> 지시어, IIS는 CGI timeout 함수를 가지고
+      있습니다. 둘 다 기본값은 300초입니다. 이들의 의미에 대해서는 웹 서버
+      문서를 참고하십시오.
+     </para>
     </listitem>
    </varlistentry>
 
@@ -190,11 +214,27 @@
     </term>
     <listitem>
      <para>
-      스크립트가 POST, GET, 파일 업로드 등의 입력 데이터를 받아들이는 최대
-      시간을 초 단위로 설정합니다. 기본값은 <literal>60</literal>입니다.
+      POST, GET, 파일 업로드 등의 입력 데이터 처리에 허용하는 최대 시간을
+      설정합니다. 
      </para>
     </listitem>
    </varlistentry>
+
+   <varlistentry xml:id="ini.max-input-nesting-level">
+    <term>
+     <parameter>max_input_nesting_level</parameter>
+     <type>integer</type>
+    </term>
+    <listitem>
+     <para>
+      <link linkend="language.variables.external">입력 변수</link>(즉, <link
+       linkend="reserved.variables.get"><varname>$_GET</varname></link>, <link
+       linkend="reserved.variables.post"><varname>$_POST</varname></link>..)의
+      최대 중첩 깊이를 설정합니다.
+     </para>
+    </listitem>
+   </varlistentry>
+
 
    <varlistentry xml:id="ini.magic-quotes-gpc">
     <term>

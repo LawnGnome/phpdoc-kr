@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
 <section xml:id="mail.configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.runtime;
  &extension.runtime;
  <para>
  <table>
   <title>메일 설정 옵션</title>
-  <tgroup cols="3">
+  <tgroup cols="4">
    <thead>
     <row>
      <entry>이름</entry>
      <entry>기본값</entry>
-     <entry>변경가능성</entry>
+     <entry>설정권한</entry>
+     <entry>변경점</entry>
     </row>
    </thead>
    <tbody>
@@ -19,26 +20,30 @@
      <entry>SMTP</entry>
      <entry>"localhost"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>smtp_port</entry>
      <entry>"25"</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry></entry>
     </row>
     <row>
      <entry>sendmail_from</entry>
      <entry>NULL</entry>
      <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.3.0부터 사용할 수 있습니다.</entry>
     </row>
     <row>
      <entry>sendmail_path</entry>
-     <entry>DEFAULT_SENDMAIL_PATH</entry>
+     <entry>NULL</entry>
      <entry>PHP_INI_SYSTEM</entry>
+     <entry></entry>
     </row>
    </tbody>
   </tgroup>
  </table>
- &ko.reference.ini.constants;
+ &ini.php.constants;
  </para>
  
  &ini.descriptions.title;
@@ -52,8 +57,8 @@
    </term>
    <listitem>
     <para>
-     윈도우즈에서만 사용합니다: PHP가 <function>mail</function> 함수를
-     사용하여 메일을 보낼때 사용할 SMTP 서버의 DNS 이름이나 IP 어드레스.
+     윈도우에서만 사용합니다: PHP가 <function>mail</function> 함수를
+     사용하여 메일을 보낼때 사용할 SMTP 서버의 호스트 이름이나 IP 어드레스.
     </para>
    </listitem>
   </varlistentry>
@@ -65,9 +70,9 @@
    </term>
    <listitem>
     <para>
-     윈도우즈에서만 사용합니다: <function>mail</function>로 메일을 보낼 때
+     윈도우에서만 사용합니다: <function>mail</function>로 메일을 보낼 때
      <literal>SMTP</literal> 설정에서 지정한 서버에 접속하기 위한 포트 번호;
-     기본값은 25. <literal>PHP</literal> 4.3.0부터 사용할 수 있습니다.
+     기본값은 25. PHP 4.3.0부터 사용할 수 있습니다.
     </para>
    </listitem>
   </varlistentry>
@@ -79,7 +84,8 @@
    </term>
    <listitem>
     <para>
-     윈도우즈에서 PHP가 메일을 보낼 때 "From:"에 붙이는 메일 주소.
+     윈도우에서 PHP가 메일을 보낼 때 "From:"에 붙이는 메일 주소.
+     이 지시어는 "Return-Path:" 헤더도 설정합니다.
     </para>
    </listitem>
   </varlistentry>
@@ -107,6 +113,11 @@
     <para>
      <command>qmail-inject</command>는 메일을 정확하게 처리하기
      위한 어떠한 옵션도 필요하지 않습니다.
+    </para>
+    <para>
+     이 지시어는 윈도우에서도 작동합니다. 설정하면, <varname>smtp</varname>,
+     <varname>smtp_port</varname>, <varname>sendmail_from</varname>을 무시하고
+     지정한 명령을 실행합니다.
     </para>
    </listitem>
   </varlistentry>
