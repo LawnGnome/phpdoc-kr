@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.18 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-connect" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_connect</refname>
@@ -35,8 +36,10 @@ MySQL 서버명을 입력하며, 포트번호가 포함될 수 있다.
 예) ":/path/to/socket"
       </para>
       <para>
-PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>가
-지정되지 않는다면, 기본값은 'localhost:3306'이다.
+       PHP 지시어 <link
+        linkend="ini.mysql.default-host">mysql.default_host</link>를 지정하지
+       않았다면(기본값), 'localhost:3306'입니다. &sqlsafemode;에서는, 이
+       매개변수를 무시하고 항상 'localhost:3306' 값을 사용합니다.
       </para>
      </listitem>
     </varlistentry>
@@ -44,7 +47,10 @@ PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
      <term><parameter>username</parameter></term>
      <listitem>
       <para>
-사용자명. 기본값은 서버 프로세스가 소유하고 있는 사용자명이다.
+       사용자명. 기본값은 <link
+        linkend="ini.mysql.default-user">mysql.default_user</link>로
+       지정합니다. &sqlsafemode;에서는, 이 매개변수를 무시하고 사용중인 서버
+       프로세스를 소유하는 사용자 이름을 사용합니다.
       </para>
      </listitem>
     </varlistentry>
@@ -52,7 +58,10 @@ PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
      <term><parameter>password</parameter></term>
      <listitem>
       <para>
-비밀번호. 기본값은 빈 비밀번호이다.
+       비밀번호. 기본값은 <link
+        linkend="ini.mysql.default-password">mysql.default_password</link>로
+       지정합니다. &sqlsafemode;에서는, 이 매개변수를 무시하고 빈 비밀번호를
+       사용합니다.
       </para>
      </listitem>
     </varlistentry>   
@@ -66,6 +75,7 @@ PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
 단, <parameter>new_link</parameter>로 <function>mysql_connect</function>를
 호출하면 동일한 인수로 <function>mysql_connect</function>를 이미 호출하였다 하더라도
 항상 새로운 접속을 생성한다.
+       &sqlsafemode;에서는, 이 매개변수를 무시합니다.
       </para>
      </listitem>
     </varlistentry>
@@ -73,11 +83,15 @@ PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
      <term><parameter>client_flags</parameter></term>
      <listitem>
       <para>
-<parameter>client_flags</parameter>는 다음의 상수를 조합하여 사용할 수 있다:
-<constant>MYSQL_CLIENT_COMPRESS</constant>, 
-<constant>MYSQL_CLIENT_IGNORE_SPACE</constant>,
-<constant>MYSQL_CLIENT_INTERACTIVE</constant>.
-더 많은 정보는 <xref linkend="mysql.client-flags" />를 참조하면 된다.
+       <parameter>client_flags</parameter> 매개변수는 다음 상수들을 조합하여
+       사용할 수 있습니다:
+       128 (<literal>LOAD DATA LOCAL</literal> 핸들링 활성화),
+       <constant>MYSQL_CLIENT_SSL</constant>,
+       <constant>MYSQL_CLIENT_COMPRESS</constant>, 
+       <constant>MYSQL_CLIENT_IGNORE_SPACE</constant>,
+       <constant>MYSQL_CLIENT_INTERACTIVE</constant>.
+       자세한 정보는 <xref linkend="mysql.client-flags" />를 읽어보십시오.
+       &sqlsafemode;에서는, 이 매개변수를 무시합니다.
       </para>
      </listitem>
     </varlistentry> 

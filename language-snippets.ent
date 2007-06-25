@@ -764,7 +764,7 @@ linkend="http.HttpResponse"><classname>HttpResponse</classname></link>
 쿠키값이 <function>urlencode</function>를 통할 지 여부를
 제어합니다.</simpara></note>'>
 <!ENTITY note.http.request.affects.any
-'<note><simpara>&http.request.affests.any;</simpara></note>'>
+'<note><simpara>&http.request.affects.any;</simpara></note>'>
 <!ENTITY note.http.ob.once '<note><simpara>이 출력 핸들러는 한번만 사용할 수
 있습니다.</simpara></note>'>
 

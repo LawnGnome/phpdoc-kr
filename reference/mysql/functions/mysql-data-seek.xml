@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.17 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.21 Maintainer: pcraft Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-data-seek" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_data_seek</refname>
   <refpurpose>내부 결과 포인터를 이동</refpurpose>
  </refnamediv>
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
@@ -13,17 +15,20 @@
    <methodparam><type>int</type><parameter>row_number</parameter></methodparam>
   </methodsynopsis>
   <para>
-<function>mysql_data_seek</function> 함수는 
-result로 지정된 MySQL 내부 결과 행 포인터를 
-row_number에 지정된 행으로 이동시켜준다.
-그후 <function>mysql_fetch_row</function>를 호출하면 행 내용을 반환받을 수 있을 것이다.
+   <function>mysql_data_seek</function>는 result에 지정한 MySQL 결과의 내부 행
+   포인터를 지정한 행 번호로 옮깁니다. 다음으로
+   <function>mysql_fetch_assoc</function> 등의 MySQL 페치 함수를 호출하면, 그
+   행이 반환됩니다.
   </para>
   <para>
-<parameter>row_number</parameter>는 0부터 시작한다.
-<parameter>row_number</parameter>는 0부터 <function>mysql_num_rows</function> - 1 까지의
-값을  가질 수 있다. 그러나, 결과 집합이 빈 값(<function>mysql_num_rows</function> == 0)이면,
-0행을 탐색하는 것은 <link linkend="e-warning">E_WARNING</link> 경고메시지와 함께
-<function>mysql_data_seek</function>는  &false;를 반환하면서 실패할 것이다.
+   <parameter>row_number</parameter>는 0부터 시작합니다.
+   <parameter>row_number</parameter>는 0부터
+   <function>mysql_num_rows</function> - 1까지의 값을 가질 수 있습니다. 그러나
+   결과셋이 비어 있고(<function>mysql_num_rows</function> == 0), 0행을
+   탐색하면 <link
+    linkend="errorfunc.constants.errorlevels.e-warning">E_WARNING</link>을
+   발생하며 실패하고 <function>mysql_data_seek</function>는 &false;를
+   반환합니다.
   </para>
  </refsect1>
  

@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.89 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.142 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.control-structures" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>제어 구조</title>
@@ -7,10 +7,10 @@
   <simpara>
    모든 PHP 스크립트는 연속적인 구문으로 이루어진다. 하나의 구문은 지정문
    이 될수도 있고, 함수 호출, 반복문, 조건문이 될수 있으며 심지어는 아무
-   내용이 없는 빈 문장일수도 있다. 한 구문은 보통 세미콜른(;)으로 끝난다.
-   또한 여러개의 구문을 중괄호({,})를 사용하여 하나의 그룹으로 만들어 사용할 수도 있다.
-   이 구문 그룹은 그 그룹의 모든 구문들이 하나의 구문인 것처럼 인식된다.
-   이 장에서는 여러 가지 구문형태에 대해 알아본다.
+   내용이 없는 빈 문장일수도 있다. 한 구문은 보통 세미콜론(;)으로 끝난다.
+   또한 여러개의 구문을 중괄호({,})를 사용하여 하나의 그룹으로 만들어 사용할
+   수도 있다. 이 구문 그룹은 그 그룹의 모든 구문들이 하나의 구문인 것처럼
+   인식된다. 이 장에서는 여러 가지 구문형태에 대해 알아본다.
   </simpara>
 
   <sect1 xml:id="control-structures.if">
@@ -38,7 +38,7 @@ if (expr)
     섹션을 참고한다.
    </simpara>
    <para>
-    다음 예는 <replaceable>$a</replaceable>가 <replaceable>$b</replaceable>보다
+    다음 예는 <varname>$a</varname>가 <varname>$b</varname>보다
     크다면 <computeroutput>a는 b보다 크다</computeroutput>를 출력할 것이다.
     <informalexample>
      <programlisting role="php">
@@ -55,9 +55,9 @@ if ($a > $b)
     종종 하나 이상의 구문을 조건적으로 수행시켜야 하는 때가 있다.
     물론 <literal>if</literal>절로 각 구문을 감싸줄 필요는 없다.
     대신, 구문 그룹안에 몇개의 구문을 그룹화할 수 있다. 예를 들면,
-    이코드는 <replaceable>$a</replaceable>가 <replaceable>$b</replaceable>보다
+    이코드는 <varname>$a</varname>가 <varname>$b</varname>보다
     크다면 <computeroutput>a는 b보다 크다</computeroutput>라고 출력할것이고,
-    <replaceable>$a</replaceable>의 값을 <replaceable>$b</replaceable>로
+    <varname>$a</varname>의 값을 <varname>$b</varname>로
     지정하게 될것이다.
     <informalexample>
      <programlisting role="php">
@@ -86,8 +86,8 @@ if ($a > $b) {
     다른 구문을 수행하게 하고 싶은 때가 있다. <literal>else</literal>
     문은 이 목적을 위한 것이다. <literal>if</literal>문 다음의
     <literal>else</literal>문은 <literal>if</literal>구문안의 표현식이
-    &false;일때 수행된다. 예를 들면, 다음 코드는 <replaceable>$a</replaceable>가
-    <replaceable>$b</replaceable>보다 크다면 <computeroutput>a는 b보다 크다</computeroutput> 
+    &false;일때 수행된다. 예를 들면, 다음 코드는 <varname>$a</varname>가
+    <varname>$b</varname>보다 크다면 <computeroutput>a는 b보다 크다</computeroutput> 
     를 출력할것이고, 그렇지않다면 <computeroutput>a는 b보다 크지 않다</computeroutput>를 
     출력할것이다:
     <informalexample>
@@ -176,7 +176,7 @@ A는 5와 같다
    </para>
    <simpara>
     위 예에서는 대체 문법으로 쓰여진 <literal>if</literal>구문안에 "A는 5와 같다"
-    HTML 블록이 포함되어있다. 이 HTML 블록은 $a가 5와 같을때만 출력될것이다.
+    HTML 블록이 포함되어있다. 이 HTML 블록은 <varname>$a</varname>가 5와 같을때만 출력될것이다.
    </simpara>
    <para>
     대체 문법은 <literal>else</literal>와 <literal>elseif</literal>문에도
@@ -216,7 +216,8 @@ endif;
     <informalexample>
      <programlisting>
 <![CDATA[
-while (expr) statement
+while (expr)
+    statement
 ]]>
      </programlisting>
     </informalexample>
@@ -237,13 +238,16 @@ while (expr) statement
     <informalexample>
      <programlisting>
 <![CDATA[
-while (expr): statement ... endwhile;
+while (expr):
+    statement
+    ...
+endwhile;
 ]]>
      </programlisting>
     </informalexample>
    </para>
    <para>
-    다음 예는 모두 동일하다. 둘다 1부터 10까지의 숫자를 출력한다.:
+    다음 예는 모두 동일하다. 둘다 1부터 10까지의 숫자를 출력한다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -272,19 +276,19 @@ endwhile;
   </sect1>
 
   <sect1 xml:id="control-structures.do.while">
-   <title><literal>do..while</literal></title>
+   <title><literal>do-while</literal></title>
    <simpara>
-    <literal>do..while</literal>루프는 시작부분이 아니라 각 반복(iteration)의
+    <literal>do-while</literal> 루프는 시작부분이 아니라 각 반복(iteration)의
     끝부분에서 표현식이 참인지 체크한다는것을 제외하고 <literal>while</literal>루프와
     매우 비슷하다. 일반적인 <literal>while</literal>문과의 주요한 차이점은
-    <literal>do..while</literal>문의 첫번째 반복이 반드시 수행된다는것이다
+    <literal>do-while</literal>문의 첫번째 반복이 반드시 수행된다는것이다
     (반복의 끝부분에서 표현식이 참인지 체크한다), 이와 같은 경우는
     일반 <literal>while</literal>루프로 수행시킬수 없을것이다. (while루프에서는
     각 반복의 시작부분에서 표현식이 참인지 체크되고, 시작부터 바로 그 값이 
     &false;이면 그 루프는 즉시 수행을 멈추게 된다)
    </simpara>
    <para>
-    다음에 <literal>do..while</literal>루프의 한가지 문법을 보인다:
+    다음에 <literal>do-while</literal>루프의 한가지 문법을 보인다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -303,8 +307,8 @@ do {
      참인지 체크할때, &false;가 되므로 ($i는 0보다 크지 않다) 루프 수행이 멈춘다. 
    </simpara>
    <para>
-    고급 C 유저는 <literal>do..while</literal>루프의 다른 사용법에 익숙할것이다.
-    즉, <literal>do..while</literal> (0)로 감싸고, <link
+    고급 C 유저는 <literal>do-while</literal>루프의 다른 사용법에 익숙할것이다.
+    즉, <literal>do-while</literal> (0)으로 감싸고, <link
      linkend="control-structures.break"><literal>break</literal></link>절을
     사용하여 코드 블록의 중간에서 수행을 멈출수 있습니다.
     다음 코드 예는 이런 경우를 보여준다:
@@ -347,26 +351,30 @@ do {
     <informalexample>
      <programlisting>
 <![CDATA[
-for (expr1; expr2; expr3) statement
+for (expr1; expr2; expr3)
+    statement
 ]]>
      </programlisting>
     </informalexample>
    </para>
    <simpara>
-    첫번째 표현식(<replaceable>expr1</replaceable>)은 루프의 시작에서
+    첫번째 표현식(<varname>expr1</varname>)은 루프의 시작에서
     바로 조건없이 평가된다 (수행된다).
    </simpara>
    <simpara>
-    각 반복(iteration)의 시작부분에서 <replaceable>expr2</replaceable>이 평
+    각 반복(iteration)의 시작부분에서 <varname>expr2</varname>이 평
     가된다. 이 표현식이 &true;이면 루프는 계속되고 내포된 구문(들)이
     수행된다. &false;이면, 루프 수행을 멈춘다.
    </simpara>
    <simpara>
-    <replaceable>expr3</replaceable>표현식은 각 반복의 끝부분에서
+    <varname>expr3</varname>표현식은 각 반복의 끝부분에서
     평가된다 (수행된다).
    </simpara>
    <simpara>
-    각 표현식은 비어 있을수 있다. <replaceable>expr2</replaceable>이 비어있다는
+    각 표현은 비어있거나 콤마로 구분한 여러 표현을 가질 수 있습니다. expr2에서
+    콤마로 구분한 표현은 <link linkend="language.operators.logical">||
+     연산자</link>처럼 동작하지만, || 보다 우선권이 낮습니다.
+    <varname>expr2</varname>이 비어있다는
     것은 루프가 무제한 수행되어야 한다는 것을 의미한다 (PHP는 C처럼 &true;로 인식)
     이런 기법은 생각처럼 필요없지는 않다. 왜냐 하면 종종 <literal>for</literal>문의 
     표현식 대신에 <link linkend="control-structures.break"><literal>break</literal></link>문으로
@@ -406,7 +414,7 @@ for (; ; ) {
 
 /* 예제 4 */
 
-for ($i = 1; $i <= 10; echo $i, $i++);
+for ($i = 1, $j = 0; $i <= 10; $j += 1, print $i, $i++);
 ?>
 ]]>
      </programlisting>
@@ -422,26 +430,20 @@ for ($i = 1; $i <= 10; echo $i, $i++);
     <informalexample>
      <programlisting>
 <![CDATA[
-for (expr1; expr2; expr3): statement; ...; endfor;
+for (expr1; expr2; expr3):
+    statement
+    ...
+endfor;
 ]]>
      </programlisting>
      </informalexample>
    </para>
-   <para>
-    다른 언어에서는 배열이나 해쉬를 편리하게 사용하기위해 <literal>foreach</literal>구문도 
-    지원합니다. PHP 3는 이 구조를 지원하지 않지만, PHP 4는 지원합니다.
-    (<link linkend="control-structures.foreach">foreach</link>를 보세요)
-    PHP 3에서는 <link linkend="control-structures.while">while</link>문과
-    <function>list</function>, <function>each</function>함수를 조합하여 같은 
-    효과를 볼수있습니다. 이런 예제는 위 함수에 대한 문서를 보세요.
-   </para>
-
   </sect1>
 
   <sect1 xml:id="control-structures.foreach">
    <title><literal>foreach</literal></title>
    <para>
-    PHP 4(PHP 3는 아님)는 펄이나 다른 언어와 같이 <literal>foreach</literal>구문을 지원합니다.
+    PHP 4는 펄이나 다른 언어처럼 <literal>foreach</literal>구문을 지원합니다.
     이런 구문은 간단하게 배열에 대한 작업을 수행하는 가장 쉬운 기법입니다.
     <literal>foreach</literal>는 배열에서만 작동하고 다른 데이터형을 갖는 변수나
     초기화되지 않은 변수에 대해서 이 구문을 사용하려한다면 에러 메시지를 만날것입니다.
@@ -449,8 +451,10 @@ for (expr1; expr2; expr3): statement; ...; endfor;
     <informalexample>
      <programlisting>
 <![CDATA[
-foreach (array_expression as $value) statement
-foreach (array_expression as $key => $value) statement
+foreach (array_expression as $value)
+    statement
+foreach (array_expression as $key => $value)
+    statement
 ]]>
      </programlisting>
     </informalexample>
@@ -465,6 +469,10 @@ foreach (array_expression as $key => $value) statement
     두번째 루프도 같은 일을 한다. 단 현재 배열요소의 키(key)값은
     각 루프의 <literal>$key</literal>변수로 지정된다.
    </simpara>
+   <simpara>
+    PHP 5부터 <link linkend="language.oop5.iterations">객체 순환</link>도 할
+    수 있습니다.
+   </simpara>
    <para>
     <note>
      <para>
@@ -478,12 +486,31 @@ foreach (array_expression as $key => $value) statement
    <para>
     <note>
      <para>
-      <literal>foreach</literal>는 특정 배열의 복사본에 작용하는것이며 
-      배열 자체를 직접 건드리지 않는다. 따라서, 배열 포인터는 <function>each</function>함수
-      에 의해 변경이 되는것이 아니다. 넘어온 배열요소에 대한 변화는 원래 
-      배열에는 영향을 주지 않는다. 하지만, 원래 배열의 내부적 포인터는
-      배열 처리에 의해 <emphasis>이동한다</emphasis>. foreach루프는 
-      완료될때까지 루프를 돌고, 배열의 내부적 포인터는 배열 끝을 가리키게된다.
+      배열이 <link linkend="language.references">참조</link>되지 않는 이상,
+      <literal>foreach</literal>는 지정한 배열 자체가 아닌 복사한 배열을
+      대상으로 작동합니다. 그러므로, <function>each</function> 구문과 달리
+      배열 포인터는 변경되지 않으며, 반환된 배열 요소의 변경은 원 배열에
+      반영되지 않습니다. 그러나, 원 배열의 내부 포인터는 배열 처리에 따라
+      <emphasis>증가</emphasis>됩니다. foreach 루프가 끝까지 작동하면, 배열의
+      내부 포인터는 배열의 끝에 위치하게 됩니다.
+     </para>
+     <para>
+      PHP 5부터, <literal>$value</literal> 앞에 &amp;를 붙여서 배열 원소를
+      쉽게 변경할 있습니다. 값을 복사하지 않고 <link
+       linkend="language.references">참조</link>합니다.
+      <informalexample>
+       <programlisting role="php">
+<![CDATA[
+<?php
+$arr = array(1, 2, 3, 4);
+foreach ($arr as &$value) {
+    $value = $value * 2;
+}
+// $arr은 이제 array(2, 4, 6, 8)입니다.
+]]>
+       </programlisting>
+      </informalexample>
+      이는 반복할 배열을 참조할 수 있을 때(즉, 변수)만 가능합니다.
      </para>
     </note>
    </para>
@@ -501,14 +528,14 @@ foreach (array_expression as $key => $value) statement
      <programlisting role="php">
 <![CDATA[
 <?php
-$arr = array("one", "two", "three");
-reset ($arr);
-while (list(, $value) = each ($arr)) {
-    echo "Value: $value<br />\n";
+$arr = array("하나", "둘", "셋");
+reset($arr);
+while (list(, $value) = each($arr)) {
+    echo "값: $value<br />\n";
 }
 
 foreach ($arr as $value) {
-    echo "Value: $value<br />\n";
+    echo "값: $value<br />\n";
 }
 ?>
 ]]>
@@ -519,14 +546,14 @@ foreach ($arr as $value) {
      <programlisting role="php">
 <![CDATA[
 <?php
-$arr = array("one", "two", "three");
-reset ($arr);
-while (list($key, $value) = each ($arr)) {
-    echo "Key: $key; Value: $value<br />\n";
+$arr = array("하나", "둘", "셋");
+reset($arr);
+while (list($key, $value) = each($arr)) {
+    echo "키: $key; 값: $value<br />\n";
 }
 
 foreach ($arr as $key => $value) {
-    echo "Key: $key; Value: $value<br />\n";
+    echo "키: $key; 값: $value<br />\n";
 }
 ?>
 ]]>
@@ -573,6 +600,7 @@ foreach ($a as $k => $v) {
 
 /* foreach 예제 4: 다차원 배열 */
 
+$a = array();
 $a[0][0] = "a";
 $a[0][1] = "b";
 $a[1][0] = "y";
@@ -599,8 +627,9 @@ foreach (array(1, 2, 3, 4, 5) as $v) {
   <sect1 xml:id="control-structures.break">
    <title><literal>break</literal></title>
    <simpara>
-    <literal>break</literal>는 현재 <literal>for</literal>, <literal>foreach</literal>
-    <literal>while</literal>, <literal>do..while</literal> 또는
+    <literal>break</literal>는 현재 <literal>for</literal>,
+    <literal>foreach</literal>,
+    <literal>while</literal>, <literal>do-while</literal> 또는
     <literal>switch</literal>절의 수행을 멈춘다.
    </simpara>
    <simpara>
@@ -645,8 +674,9 @@ while (++$i) {
   <sect1 xml:id="control-structures.continue">
    <title><literal>continue</literal></title>
    <simpara>
-    <literal>continue</literal>는 루프 구조의 절안에서 현재 루프 반복의 
-    나머지부분을 건너뛰게 하고 다음 반복의 시작으로 실행을 속행시켜준다.
+    <literal>continue</literal>는 루프 구조 내부에서 현재 루프 반복의 나머지
+    부분을 생략하고 조건 평가를 한 후 다음 반복 시작에서 실행을 지속하게
+    합니다.
    </simpara>
    <note>
     <simpara>
@@ -663,11 +693,11 @@ while (++$i) {
      <programlisting role="php">
 <![CDATA[
 <?php
-while (list ($key, $value) = each ($arr)) {
+while (list($key, $value) = each($arr)) {
     if (!($key % 2)) { // skip odd members
         continue;
     }
-    do_something_odd ($value);
+    do_something_odd($value);
 }
 
 $i = 0;
@@ -754,7 +784,8 @@ while ($i++ < 5) {
     다음 예제 코드들은 같은 일을 서로 다르게 표현한 것입니다. 하나는
     <literal>if</literal>와 <literal>elseif</literal>문을 사용한 것이고, 다른
     하나는 <literal>switch</literal>문을 사용했습니다:
-    <informalexample>
+    <example>
+     <title><literal>switch</literal> 구조</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -780,7 +811,27 @@ case 2:
 ?>
 ]]>
      </programlisting>
-    </informalexample>
+    </example>
+    <example>
+     <title>문자열을 사용하는 <literal>switch</literal> 구조</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+switch ($i) {
+case "apple":
+    echo "i는 apple";
+    break;
+case "bar"
+    echo "i는 bar";
+    break;
+case "cake":
+    echo "i는 cake";
+    break;
+}
+?>
+]]>
+     </programlisting>
+    </example>
    </para>
    <para>
     실수하지 않기 위해 <literal>switch</literal>문이 어떻게 동작하는지
@@ -810,10 +861,11 @@ case 2:
     </informalexample>
    </para>
    <simpara>
-    여기에서, $i가 0이라면 PHP는 모든 echo문을 수행합니다! $i가 1이면 밑의 두
-    echo문을 수행합니다. $i가 2일때만 원하는 동작 ('i는 2와 같다'를 표시)을
-    합니다. 따라서 <literal>break</literal>문을 잊어서는 안됩니다. (어떤
-    경우에는 일부러 빠뜨릴수 있을지 모르지만)
+    여기에서, <varname>$i</varname>가 0이라면, PHP는 모든 echo문을
+    실행합니다! <varname>$i</varname>가 1이라면, PHP는 마지막 두 echo문을
+    실행합니다. <varname>$i</varname>가 2일 때만, 원하는 동작('i는 2와 같다'
+    표시)을 합니다. 따라서, <literal>break</literal>을 잊어서는 안됩니다.
+    (어떤 경우에는 일부러 빠트릴 수 있어도, 잊지 마십시오)
    </simpara>
    <simpara>
     <literal>switch</literal>구문에서, 조건문은 오직 한번만 평가되고
@@ -953,10 +1005,10 @@ declare(ticks=1);
     <title>틱(Ticks)</title>
     <para>
     틱은 <literal>declare</literal>블록에서 파서에 의해 수행되는
-    <replaceable>N</replaceable> 저레벨(low-level) 구문마다 발생하는
-    이벤트이다. <replaceable>N</replaceable> 값은 
+    <varname>N</varname> 저레벨(low-level) 구문마다 발생하는
+    이벤트이다. <varname>N</varname> 값은 
     <literal>declare</literal>블록의 <literal>directive</literal>부분에서
-    <literal>ticks=<replaceable>N</replaceable></literal> 으로 지정할수 있다.
+    <code>ticks=<varname>N</varname></code> 으로 지정할수 있다.
    </para>
    <para>
     각 틱에서 발생하는 이벤트(들)은 <function>register_tick_function</function>함수
@@ -977,11 +1029,11 @@ function profile($dump = FALSE)
     // Profile에 저장된 모든 시간 리턴하고, 삭제함
     if ($dump) {
         $temp = $profile;
-        unset ($profile);
-        return ($temp);
+        unset($profile);
+        return $temp;
     }
 
-    $profile[] = microtime ();
+    $profile[] = microtime();
 }
 
 // 틱 핸들러 설정
@@ -998,7 +1050,7 @@ declare(ticks=2) {
 }
 
 // 분석표에 저장된 데이터를 출력
-print_r(profile (TRUE));
+print_r(profile(TRUE));
 ?>
 ]]>
      </programlisting>
@@ -1047,10 +1099,18 @@ print_r(profile (TRUE));
    <para>
     <note>
      <simpara>
-      <function>return</function>은 언어 구조로, 함수가 아닌 점에
-      주의하십시오. 인자를 괄호로 감싸는 것은 인자가 <emphasis>표현을 포함하고
-       있을 경우에만</emphasis> 필요합니다. 변수를 반환할 때는 괄호 없이 쓰는
-      것이 일반적입니다.
+      <function>return</function>은 함수가 아닌 언어 구조이기 때문에, 인자를
+      괄호로 쌀 필요가 없습니다. 괄호가 없는 것이 일반적으로, PHP가 더 적은
+      일을 하게 합니다.
+     </simpara>
+    </note>
+    <note>
+     <simpara>
+      반환값이 참조로 반환될 때는 <emphasis>절대로</emphasis> 괄호를 사용하면
+      안되며, 동작하지 않습니다. 참조는 변수만 반환할 수 있으며, 구문 결과는
+      반환할 수 없습니다. <literal>return ($a);</literal>를 사용한다면, 변수를
+      반환하지 않고 <literal>($a)</literal> 표현의 반환값을 반환합니다. (물론,
+      <varname>$a</varname>의 값입니다)
      </simpara>
     </note>
    </para>
@@ -1069,15 +1129,16 @@ print_r(profile (TRUE));
      대한 문서에서 설명한다.
    </simpara>
    <simpara>
-     <function>require</function>와 <function>include</function> 는
-     수행실패를 제어하는 방법을 제외하고 모든면에서 동일하다.
-     <function>include</function>는 <link linkend="internal.e-warning">Warning</link>을
-     발생시키는 반면에 <function>require</function>는 <link linkend="internal.e-error">
-     Fatal Error</link>을 발생시킨다. 즉, 파일이 존재하지 않을때 페이지 처리를 중단시키
-     고자 한다면 <function>require</function>를 쓰는데 주저할 필요가 없다.
-     <function>include</function>는 이와같이 동작하지 않으므로 파일이 없더라도 스크립트는
-     계속 실행될것이다. 또한 적절한 <link linkend="ini.include-path">include_path</link>설정인지
-     확인해야 한다.
+    <function>require</function>와 <function>include</function>는 수행 실패를
+    다루는 방법을 제외하고 완전히 동일합니다. 둘 모두 <link
+     linkend="errorfunc.constants.errorlevels.e-warning">Warning</link>을
+    발생시키지만, <function>require</function>는 <link
+     linkend="errorfunc.constants.errorlevels.e-error">Fatal Error</link>가
+    나타납니다. 즉, 파일이 없을 때 페이지 처리를 멈추고 싶으면
+    <function>require</function>를 사용하면 됩니다.
+    <function>include</function>는 멈추지 않고 스크립트가 계속 실행됩니다.
+    또한, 적합한 <link linkend="ini.include-path">include_path</link> 설정인지
+    확인해야 합니다.
    </simpara>
    <para>
     <example>
@@ -1113,17 +1174,18 @@ require ('somefile.txt');
      </simpara>
     </note>
    </para>
-   
+
    &note.language-construct;
-   
+
    &warn.no-win32-fopen-wrapper;
-   
+
    <simpara>
-    <function>include</function>, <function>require_once</function>,
-    <function>include_once</function>, <function>eval</function>, 
-    <function>file</function>, <function>readfile</function>, 
-    <function>virtual</function>과 <link linkend="ini.include-path">include_path</link>
-    섹션도 참고할것.
+    참고: <function>include</function>, <function>require_once</function>,
+    <function>include_once</function>,
+    <function>get_included_files</function>, <function>eval</function>,
+    <function>file</function>, <function>readfile</function>,
+    <function>virtual</function>, <link
+     linkend="ini.include-path">include_path</link>.
    </simpara>
   </sect1>
 
@@ -1133,34 +1195,38 @@ require ('somefile.txt');
     <function>include</function>문은 특정 파일을 인클루드 하고, 적용시킨다.
    </simpara>
    <simpara>
-     이하 내용은 <function>require</function>에도 적용되는 사항이다.
-     두가지 구조는 수행실패를 제어하는 방법을 제외하고 모든면에서 동일하다.
-     <function>include</function>는 <link linkend="internal.e-warning">Warning</link>을
-     발생시키는 반면에 <function>require</function>는 <link linkend="internal.e-error">
-     Fatal Error</link>을 발생시킨다. 즉, 파일이 존재하지 않을때 페이지 처리를 중단시키
-     고자 한다면 <function>require</function>를 쓰는데 주저할 필요가 없다.
-     <function>include</function>는 이와같이 동작하지 않으므로 파일이 없더라도 스크립트는
-     계속 실행될것이다. 또한 적절한 <link linkend="ini.include-path">include_path</link>설정인지
-     확인해야 한다.
-     require한 파일 안에서의 처리 오류는 수행을 멈추지 않는 점에 주의하십시오.
+    아래 내용은 <function>require</function>에도 적용됩니다. 두 구조는 수행
+    실패를 다루는 방법을 제외하고 완전히 동일합니다. 둘 모두 <link
+     linkend="errorfunc.constants.errorlevels.e-warning">Warning</link>을
+    발생시키지만, <function>require</function>는 <link
+     linkend="errorfunc.constants.errorlevels.e-error">Fatal Error</link>가
+    나타납니다. 즉, 파일이 없을 때 페이지 처리를 멈추고 싶으면
+    <function>require</function>를 사용하면 됩니다.
+    <function>include</function>는 멈추지 않고 스크립트가 계속 실행됩니다.
+    또한, 적합한 <link linkend="ini.include-path">include_path</link> 설정인지
+    확인해야 합니다. 
+    PHP 4.3.5 이전에는 포함한 파일 안에서 해석 오류가 발생해도 수행을 멈추지
+    않는 점에 주의하십시오. 이 버전부터는 멈춥니다.
    </simpara>
    <simpara>
-    파일을 포함할 경우 가장 먼저 현재 작업 디렉토리에 상대 경로로
-    include_path를 찾고, 다음으로 현재 스크립트의 디렉토리에 상대 경로로
-    include_path를 찾습니다. 예를 들어, include_path가
-    <literal>.</literal>이고, 현재 작업 디렉토리 <filename
-     class="directory">/www/</filename>에서
-    <filename>include/a.php</filename>를 포함하였고, 그 파일 안에
-    <literal>include "b.php"</literal>이 존재하면,
-    <filename>b.php</filename>는 우선 <filename
-     class="directory">/www/</filename>에서 찾고, 다음으로 <filename
-     class="directory">/www/inclde/</filename>에서 찾습니다.
+    파일을 포함할 때는 먼저 현재 작업 디렉토리에서 상대 경로로 include_path를
+    찾고, 실행중인 스크립트가 있는 디렉토리를 찾습니다. 즉, include_path가
+    <literal>libraries</literal>이고, 현재 작업 디렉토리가 <filename
+     class="directory">/www/</filename>이며, 포함한 파일
+    <filename>include/a.php</filename>에 <literal>include
+     "b.php"</literal>가 있으면, <filename>b.php</filename>는 먼저 <filename
+     class="directory">/www/libraries/</filename>에서 찾고, 그 후에
+    <filename class="directory">/www/include/</filename>을 찾습니다. 파일
+    이름이 <literal>./</literal>이나 <literal>../</literal>로 시작하면, 현재
+      작업 디렉토리에 상대적인 include_path 안에서만 찾습니다.
    </simpara>
    <simpara>
      파일이 인클루드 되면, 그 코드를 포함하는 코드는 인클루드가 발생한 줄의
      <link linkend="language.variables.scope">변수 유효 범위</link>를 물려받는다.
      호출하는 파일의 그 줄에서 사용되는 어떤 변수도 그 줄부터는 호출된 파일안에서 
      사용이 가능하다.
+     그러나, 포함한 파일에서 선언한 모든 함수와 클래스는 전역 영역에
+     들어갑니다.
    </simpara>
    <para>
      <example>
@@ -1270,39 +1336,22 @@ include 'file.php';  // Works.
 ]]>
      </programlisting>
     </example>
-    관련정보는 <link linkend="features.remote-files">Remote files</link>,
-    <function>fopen</function>, <function>file</function>함수를 참고하세요.
    </para>
+   <warning>
+    <title>보안 경고</title>
+    <para>
+     원격 파일은 원격 서버에서 실행(파일 확장자와 원격 서버가 PHP를
+     실행하는가에 따라 다릅니다)되지만, 로컬 서버에서 실행할 수 있는 유효한
+     PHP 스크립트를 만들 수도 있습니다. 원격 서버에서만 실행한 결과를 그대로
+     출력해야 한다면, <function>readfile</function> 함수가 더 적합합니다.
+     아니라면, 원격 스크립트가 유효하고 적합한 코드를 생성하도록 특별한
+     주의를 기울이십시오.
+    </para>
+   </warning>
    <para>
-     <function>include</function>와 <function>require</function>는 특별한 언어 
-     구조이기 때문에, 조건절 블록안에 들어가게 된다면, 구문 블록안으로 그들을 
-     완벽하게 막아줘야 한다.
-   </para>
-   <para>
-    <example>
-     <title>include()와 조건절 블록</title>
-     <programlisting role="php">
-<![CDATA[
-<?php
-
-// This is WRONG and will not work as desired.
-if ($condition)
-    include $file;
-else
-    include $other;
-
-
-// This is CORRECT.
-if ($condition) {
-    include $file;
-} else {
-    include $other;
-}
-
-?>
-]]>
-     </programlisting>
-    </example>
+    참고: <link linkend="features.remote-files">원격 파일</link>,
+    <function>fopen</function>, <function>file</function>에 관련 정보가
+    있습니다.
    </para>
    <simpara>
     반환 다루기: include한 파일 안에서 그 파일의 수행을 종료하고, 호출한
@@ -1315,6 +1364,28 @@ if ($condition) {
     필요한 값을 정의하면, include한 파일의 어떤 위치에서라도 사용할 수
     있습니다.
    </simpara>
+   <para>
+    <function>include</function>은 특별한 언어 구조이기 때문에, 인자를 괄호로
+    쌀 필요가 없습니다. 반환값을 비교할 때는 조심하십시오.
+    <example>
+     <title>include의 반환값 비교하기</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+// include(('vars.php') == 'OK'), 즉 include('')로 인식하여 작동하지 않습니다.
+if (include('vars.php') == 'OK') {
+    echo 'OK';
+}
+
+// 작동합니다.
+if ((include 'vars.php') == 'OK') {
+    echo 'OK';
+}
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
    <para>
     <note>
      <simpara>
@@ -1361,21 +1432,66 @@ echo $bar; // prints 1
     </example>
    </para>
    <simpara>
-    인클루드가 성공하면 <literal>$bar</literal>는 <literal>1</literal>의 값을 갖는다.
-    위 두 예제의 차이점에 주의해야 한다. 첫번째 경우는 인클루드된 파일에서 
-    <function>return</function>을 사용하지만 다른 예는 그렇지 않다. 변수로 파일을
-    "인클루드"하는 다른 방법은 <function>fopen</function>, <function>file</function>
-    을 사용하거나, <link linkend="ref.outcontrol">Output Control Functions</link>와 함께
-    <function>include</function>를 쓰는것이다.
+    include가 성공했기 때문에 <literal>$bar</literal>의 값은
+    <literal>1</literal>입니다. 위 예제 사이의 차이에 주목하십시오. 처음 것은
+    포함한 파일 안에서 <function>return</function>을 사용하였지만, 다른 것은
+    하지 않았습니다. 파일을 포함할 수 없으면 &false;를 반환하고
+    <literal>E_WARNING</literal>을 발생합니다.
    </simpara>
+   <para>
+    포함한 파일에서 함수를 정의하면, 어디서 <function>return</function>을
+    했는지에 관계 없이 메인 파일에서 사용할 수 있습니다. 파일이 두번 포함되면,
+    PHP 5는 함수가 이미 정의되어 있기 때문에 치명적인 오류를 발생하지만, PHP
+    4는 <function>return</function> 뒤에 정의했다면 불평하지 않습니다. 이미
+    포함한 파일을 확인하기 위해서는 포함한 파일 안에서 조건적으로 return하기
+    보다는 <function>include_once</function>를 사용하는 것을 권합니다.
+   </para>
+   <simpara>
+    PHP 파일을 변수로 "포함"하는 또 다른 방법은 <link
+     linkend="ref.outcontrol">출력 제어 함수</link>를
+    <function>include</function>와 함께 사용하여 출력을 캡쳐하는 것입니다.
+    예를 들면:
+   </simpara>
+   <para>
+    <example>
+     <title>PHP 파일을 포함하여 문자열로 변환하기 위해 출력 버퍼링
+      사용하기</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+$string = get_include_contents('somefile.php');
+
+function get_include_constents($filename) {
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        $contents = ob_get_contents();
+        ob_end_clean();
+        return $contents;
+    }
+    return false;
+}
+
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+   <para>
+    스크립트 안에 자동으로 파일을 포함하기 위해서는, &php.ini;의 <link
+     linkend="ini.auto-prepend-file">auto_prepend_file</link>과 <link
+     linkend="ini.auto-append-file">auto_append_file</link> 설정 옵션을
+    참고하십시오.
+   </para>
    
    &note.language-construct;
 
    <simpara>
-    <function>require</function>, <function>require_once</function>,
-    <function>include_once</function>, <function>readfile</function>,
-    <function>virtual</function>, 그리고
-    <link linkend="ini.include-path">include_path</link>도 참고하세요.
+    참고: <function>require</function>, <function>require_once</function>,
+    <function>include_once</function>,
+    <function>get_included_files</function>, <function>readfile</function>,
+    <function>virtual</function>, <function>virtual</function>, <link
+     linkend="ini.include-path">include_path</link>.
    </simpara>
  </sect1>
 
@@ -1400,9 +1516,13 @@ echo $bar; // prints 1
      참고할것.
    </para>
    <para>
+    반환값은 <function>include</function>와 동일합니다. 파일이 이미
+    포함되었면, &true;를 반환합니다.
+   </para>
+   <para>
     <note>
      <para>
-      <function>require_once</function>는 PHP 4.0.1pl2에 추가되었다.
+      <function>require_once</function>는 PHP 4.0.1에 추가되었다.
      </para>
     </note>
    </para>
@@ -1418,12 +1538,16 @@ echo $bar; // prints 1
        <programlisting role="php">
 <![CDATA[
 <?php
-require_once("a.php"); // this will include a.php
-require_once("A.php"); // this will include a.php again on Windows!
+require_once("a.php"); // a.php를 포함합니다.
+require_once("A.php"); // 윈도우에서 또다시 a.php를 포함합니다. (PHP 4만)
 ?>
 ]]>
         </programlisting>
       </example>
+      이 동작은 PHP 5에서 바뀌었습니다 - 경로가 먼저 표준화되기 때문에
+      <filename>C:\PROGRA~1\A.php</filename>은 <filename>C:\Program
+       Files\a.php</filename>와 동일하게 인식하고, 파일은 딱 한번만 포함하게
+      됩니다.
      </para>
     </note>
    </para>
@@ -1456,9 +1580,13 @@ require_once("A.php"); // this will include a.php again on Windows!
     최신 PHP소스 내의 <link xlink:href="&url.php.pear;">PEAR</link>코드를 참고할것
    </para>
    <para>
+    반환값은 <function>include</function>와 동일합니다. 파일이 이미
+    포함되었면, &true;를 반환합니다.
+   </para>
+   <para>
     <note>
      <para>
-      <function>include_once</function>는 PHP 4.0.1pl2에서 추가됨
+      <function>include_once</function>는 PHP 4.0.1에서 추가됨
      </para>
     </note>
    </para>
@@ -1473,12 +1601,16 @@ require_once("A.php"); // this will include a.php again on Windows!
        <programlisting role="php">
 <![CDATA[
 <?php
-include_once("a.php"); // this will include a.php
-include_once("A.php"); // this will include a.php again on Windows!
+include_once("a.php"); // a.php를 포함합니다.
+include_once("A.php"); // 윈도우에서 또다시 a.php를 포함합니다. (PHP 4만)
 ?>
 ]]>
         </programlisting>
       </example>
+      이 동작은 PHP 5에서 바뀌었습니다 - 경로가 먼저 표준화되기 때문에
+      <filename>C:\PROGRA~1\A.php</filename>은 <filename>C:\Program
+       Files\a.php</filename>와 동일하게 인식하고, 파일은 딱 한번만 포함하게
+      됩니다.
      </para>
     </note>
    </para>
