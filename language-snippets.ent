@@ -219,7 +219,7 @@ linkend="language.types.boolean">Booleans</link> 섹션에서 자세한 정보�
 
 <!ENTITY note.freetype '<note><simpara>이 함수는 PHP에 freetype 지원을 포함하여
 컴파일해야 합니다. (<option
-rold="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
+role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 
 <!ENTITY note.gd.2 '<note><simpara>이 함수는 GD 2.0.1 이상이 필요합니다.
 (2.0.28 이상을 권장합니다)</simpara></note>'>

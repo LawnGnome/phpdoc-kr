@@ -338,7 +338,7 @@
    </term>
    <listitem>
     <simpara>
-     이 속성에 대한 정보는 <link lnkend='pdo.error-handling'>오류와 오류
+     이 속성에 대한 정보는 <link linkend='pdo.error-handling'>오류와 오류
       다루기</link>를 참고하십시오.
     </simpara>
    </listitem>
