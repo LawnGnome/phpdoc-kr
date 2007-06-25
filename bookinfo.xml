@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.51 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.52 Maintainer: progcom Status: ready -->
 
- <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
+ <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
   <title>&PHPManual;</title>
   &frontpage.authors;
   <pubdate>&php.build-date;</pubdate>
@@ -13,7 +12,7 @@
    <holder>the PHP Documentation Group (PHP 문서 그룹)</holder>
   </copyright>
 
-  <legalnotice xml:id="copyright">
+  <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>저작권</title>
    <simpara>
     Copyright &copy; 1997 - 2007 by the PHP Documentation Group.
