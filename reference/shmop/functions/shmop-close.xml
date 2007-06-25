@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/shmop.xml, last change in rev 1.1 -->
-<!-- last change to 'shmop-close' in en/ tree in rev 1.1 -->
+<!-- EN-Revision: n/a Maintainer: pcraft Status: bad -->
   <refentry xml:id="function.shmop-close" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>shmop_close</refname>

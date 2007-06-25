@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/sybase.xml, last change in rev 1.3 -->
-<!-- last change to 'sybase-min-message-severity' in en/ tree in rev 1.9 -->
+<!-- EN-Revision: n/a Maintainer: ftfuture Status: bad -->
 	<refentry xml:id="function.sybase-min-message-severity" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>sybase_min_message_severity</refname>

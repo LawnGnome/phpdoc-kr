@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/filesystem.xml, last change in rev 1.3 -->
-<!-- last change to 'filetype' in en/ tree in rev 1.2 -->
+<!-- EN-Revision: n/a Maintainer: vizvil Status: bad -->
 	<refentry xml:id="function.filetype" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>filetype</refname>

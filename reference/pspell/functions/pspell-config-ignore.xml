@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/pspell.xml, last change in rev 1.3 -->
-<!-- last change to 'pspell-config-ignore' in en/ tree in rev 1.6 -->
+<!-- EN-Revision: n/a Maintainer: suvia Status: bad -->
 	<refentry xml:id="function.pspell-config-ignore" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>pspell_config_ignore</refname>

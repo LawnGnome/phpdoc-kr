@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/pspell.xml, last change in rev 1.3 -->
-<!-- last change to 'pspell-save-wordlist' in en/ tree in rev 1.6 -->
+<!-- EN-Revision: n/a Maintainer: suvia Status: bad -->
 	<refentry xml:id="function.pspell-save-wordlist" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>pspell_save_wordlist</refname>

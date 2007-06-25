@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- splitted from ./kr/functions/zlib.xml, last change in rev 1.2 -->
-<!-- last change to 'gzgets' in en/ tree in rev 1.2 -->
+<!-- EN-Revision: n/a Maintainer: karoora Status: bad -->
 	<refentry xml:id="function.gzgets" xmlns="http://docbook.org/ns/docbook">
 		<refnamediv>
 			<refname>gzgets</refname>
