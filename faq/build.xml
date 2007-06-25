@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.6 $ -->
+<!-- $Revision: 1.7 $ -->
 <!-- EN-Revision: 1.26 Maintainer: fuzzy74 Status: ready -->
 <chapter xml:id="faq.build" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>빌드(build)시의 문제</title>
@@ -43,7 +43,7 @@
     <answer>
      <para>
       configure/setup 스크립트에 아파치 소스 트리의 최상위 디렉토리 위치를
-      알려줘야 합니다. 즉, <options
+      알려줘야 합니다. 즉, <option
        role="configure">--with-apache=/path/to/apache</option>을 적어주세요.
       <option role="configure">--with-apache=/path/to/apache/src</option>이
       <emphasis>아닙니다</emphasis>.
