@@ -77,64 +77,64 @@
      정보는 c-client 라이브러리 소스에 제공되는
      문서(<filename>docs/internal.txt</filename>)에서 제공합니다. 그리고 다음
      RFC 문서를 참고하십시오:
-   </para>
-   <itemizedlist>
-    <listitem>
-     <simpara>
-      <link xlink:href="&url.rfc;2821">RFC2821</link>: Simple Mail
-      Transfer Protocol (SMTP).
-     </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      <link xlink:href="&url.rfc;2822">RFC2822</link>: Standard for
-      ARPA internet text messages.
-     </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      <link xlink:href="&url.rfc;2060">RFC2060</link>: Internet
-      Message Access Protocol (IMAP) Version 4rev1. 
-     </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      <link xlink:href="&url.rfc;1939">RFC1939</link>:  Post
-      Office Protocol Version 3 (POP3).
-     </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      <link xlink:href="&url.rfc;977">RFC977</link>: Network News
-      Transfer Protocol (NNTP).
-     </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      <link xlink:href="&url.rfc;2076">RFC2076</link>: Common
-      Internet Message Headers.
-     </simpara>
-    </listitem>
-    <listitem>
-     <simpara>
-      <link xlink:href="&url.rfc;2045">RFC2045</link> , <link
-       xlink:href="&url.rfc;2046">RFC2046</link> , <link
-       xlink:href="&url.rfc;2047">RFC2047</link> , <link
-       xlink:href="&url.rfc;2048">RFC2048</link> &amp; <link
-       xlink:href="&url.rfc;2049">RFC2049</link>: Multipurpose
-      Internet Mail Extensions (MIME).
-     </simpara>
-    </listitem>
-   </itemizedlist> 
-   더 자세한 사항은 David Wood가 저술한  
-   <link xlink:href="&url.email.book;">Programming Internet Email</link>
-   과 Dianna Mullet와 Kevin Mullet가 공저한
-   <link xlink:href="&url.imap.book;">Managing IMAP</link> 책에서 확인할 수
-   있습니다.
-  </para>
- </partintro>
+     <itemizedlist>
+      <listitem>
+       <simpara>
+        <link xlink:href="&url.rfc;2821">RFC2821</link>: Simple Mail
+        Transfer Protocol (SMTP).
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        <link xlink:href="&url.rfc;2822">RFC2822</link>: Standard for
+        ARPA internet text messages.
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        <link xlink:href="&url.rfc;2060">RFC2060</link>: Internet
+        Message Access Protocol (IMAP) Version 4rev1. 
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        <link xlink:href="&url.rfc;1939">RFC1939</link>:  Post
+        Office Protocol Version 3 (POP3).
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        <link xlink:href="&url.rfc;977">RFC977</link>: Network News
+        Transfer Protocol (NNTP).
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        <link xlink:href="&url.rfc;2076">RFC2076</link>: Common
+        Internet Message Headers.
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        <link xlink:href="&url.rfc;2045">RFC2045</link> , <link
+         xlink:href="&url.rfc;2046">RFC2046</link> , <link
+         xlink:href="&url.rfc;2047">RFC2047</link> , <link
+         xlink:href="&url.rfc;2048">RFC2048</link> &amp; <link
+         xlink:href="&url.rfc;2049">RFC2049</link>: Multipurpose
+        Internet Mail Extensions (MIME).
+       </simpara>
+      </listitem>
+     </itemizedlist> 
+     더 자세한 사항은 David Wood가 저술한  
+     <link xlink:href="&url.email.book;">Programming Internet Email</link>
+     과 Dianna Mullet와 Kevin Mullet가 공저한
+     <link xlink:href="&url.imap.book;">Managing IMAP</link> 책에서 확인할 수
+     있습니다.
+    </para>
+   </section>
+  </partintro>
 
- &reference.imap.functions;
+  &reference.imap.functions;
 
  </reference>
 <!-- Keep this comment at the end of the file
