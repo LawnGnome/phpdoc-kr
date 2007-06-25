@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.26 Maintainer: fuzzy74 Status: ready -->
 <chapter xml:id="faq.build" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>빌드(build)시의 문제</title>
   <titleabbrev>빌드 시 발생할수 있는 문제</titleabbrev>
 
-   <para>
-    이 절은 빌드 시에 가장 자주 발생하는 에러에 대해서 정리합니다.
-   </para>
+  <para>
+   이 절은 빌드 시에 가장 자주 발생하는 에러에 대해서 정리합니다.
+  </para>
 
   <qandaset>
    <qandaentry xml:id="faq.build.configure">
@@ -42,9 +42,11 @@
     </question>
     <answer>
      <para>
-      configure/setup 스크립트에게 아파치 소스 트리의 최상위 디렉토리의 위치를
-      알려줄 필요가 있습니다. 즉, <literal>--with-apache=/path/to/apache</literal>을
-      적어주세요. <literal>--with-apache=/path/to/apache/src</literal>이 <emphasis>아닙니다</emphasis>.
+      configure/setup 스크립트에 아파치 소스 트리의 최상위 디렉토리 위치를
+      알려줘야 합니다. 즉, <options
+       role="configure">--with-apache=/path/to/apache</option>을 적어주세요.
+      <option role="configure">--with-apache=/path/to/apache/src</option>이
+      <emphasis>아닙니다</emphasis>.
      </para>
     </answer>
    </qandaentry>
@@ -91,13 +93,13 @@
      </para>
      <para>
       <screen>
-      --enable-shared=max --enable-rule=SHARED_CORE
+       --enable-shared=max --enable-rule=SHARED_CORE
       </screen>
      </para>
      <para>
       더 자세한 정보는 아파치 디렉토리의 최상위에 위치한
-      <filename>INSTALL</filename> 파일이나 아파치의
-      <link xlink:href="&url.apachedso;">DSO manual page</link>를 보세요.
+      <filename>INSTALL</filename> 파일이나 아파치
+      <link xlink:href="&url.apachedso;">DSO 매뉴얼 페이지</link>를 보세요.
      </para>
     </answer>
    </qandaentry>
@@ -175,10 +177,9 @@
       빠뜨린 경우가 대부분입니다.
      </para>
      <para>
-      아파치 1.2.x 버전과 같이 설치하는것이라면, 설정파일의 EXTRA_LIBS에
-      적절한 정보를 추가했는지, 아파치 설정 스크립트를 재실행했는지 확인하세요.
-      아파치에 포함되어있는 <link xlink:href="&url.file.installation;">INSTALL</link>파일을
-      확인하는것도 도움이 될것입니다.
+      아파치 1.2.x에 설치한다면, 설정 파일의 EXTRA_LIBS에 적절한 정보를
+      추가하여 아파치 설정 스크립트를 다시 실행하셨습니까? 제사한 정보는 <link
+       linkend="install">설치 챕터</link>를 참고하십시오.
      </para>
      <para>
       어떤분들의 보고에 따르면 아파치와 같이 설치할때에는 <filename>libphp4.a</filename>파일
@@ -255,7 +256,7 @@
    <qandaentry xml:id="faq.build.not-running">
     <question>
      <para>
-      UNIX상에서 아파치 모듈을 인스톨하기 위한 모든 단계를 따라했습니다.
+      Unix상에서 아파치 모듈을 인스톨하기 위한 모든 단계를 따라했습니다.
       그리고 브라우저에서 PHP 스크립트를 보려고하면 저장하겠냐고 묻습니다.
      </para>
     </question>
@@ -342,8 +343,8 @@
    <qandaentry xml:id="faq.build.apxs">
     <question>
      <para>
-      <literal>--with-apxs</literal>옵션으로 PHP를 빌드하려고 하는데
-      이상한 메시지를 봤습니다.
+      <option role="configure">--with-apxs</option>옵션으로 PHP를 빌드하려고
+      하는데 이상한 메시지를 봤습니다.
      </para>
     </question>
     <answer>
@@ -385,9 +386,9 @@ my $CFG_LIBEXECDIR    = 'modules';         # substituted via APACI install
 my $CFG_LIBEXECDIR    = '/usr/lib/apache'; # substituted via APACI install
 ]]>
       </programlisting>
-       마지막으로, 아파치를 재설정/재설치했을경우에  <command>make clean</command> 명령을
-       <command>./configure</command> 명령 후와  <command>make</command> 명령 전에
-       실행해보는 것입니다.
+      마지막으로, 아파치를 재설정/재설치했을경우에  <command>make clean</command> 명령을
+      <command>./configure</command> 명령 후와  <command>make</command> 명령 전에
+      실행해보는 것입니다.
      </para>
     </answer>
    </qandaentry>
@@ -397,7 +398,7 @@ my $CFG_LIBEXECDIR    = '/usr/lib/apache'; # substituted via APACI install
      <para>
       <command>make</command>명령 실행 중에 몇몇개의 에러메시지와
       많은 <literal>RUSAGE_</literal>관련 에러 메시지가 발생합니다.
-    </para>
+     </para>
     </question>
     <answer>
      <para>
@@ -426,7 +427,7 @@ make: *** [all-recursive] Error 1
       <filename>/usr/include</filename>밑의 파일들을 고칠필요가 있습니다.
       이것이 PHP를 위해 절대적인것은 아닙니다. 이런것을 해결하기 위해서는
       다음과 같은 테스트를 해보세요.
-     <programlisting>
+      <programlisting>
 <![CDATA[
 $ cat >test.c <<X
 #include <sys/resource.h>
@@ -438,15 +439,15 @@ $ gcc -E test.c >/dev/null
      </para>
     </answer>
    </qandaentry>
-   
+
    <qandaentry xml:id="faq.build.mysql.tempnam">
     <question>
      <para>
       MySQL과 연동하여 PHP를 컴파일하려고 할때 configure는 잘 진행되지만
       <literal>make</literal>명령 실행중에는 다음과 같은 에러가 납니다.
       <emphasis>ext/mysql/libmysql/my_tempnam.o(.text+0x46): In function 
-      my_tempnam': /php4/ext/mysql/libmysql/my_tempnam.c:103: the 
-      use of tempnam' is dangerous, better use mkstemp'</emphasis>, 
+       my_tempnam': /php4/ext/mysql/libmysql/my_tempnam.c:103: the 
+       use of tempnam' is dangerous, better use mkstemp'</emphasis>, 
       무엇이 잘못된 건가요?
      </para>
     </question>
@@ -461,7 +462,7 @@ $ gcc -E test.c >/dev/null
      </para>
     </answer>
    </qandaentry>
-   
+
    <qandaentry xml:id="faq.build.upgrade">
     <question>
      <para>
@@ -473,7 +474,7 @@ $ gcc -E test.c >/dev/null
      <para>
       현재 PHP설치 디렉토리의 config.nice 파일이나 다음스크립트를 실행시키면
       확인할수 있습니다.
-      <programlisting>
+      <programlisting role="php">
 <![CDATA[
        <?php phpinfo(); ?> 
 ]]>
@@ -483,7 +484,7 @@ $ gcc -E test.c >/dev/null
      </para>
     </answer>
    </qandaentry>
-   
+
    <qandaentry xml:id="faq.build.gdlibs">
     <question>
      <para>
@@ -498,24 +499,24 @@ $ gcc -E test.c >/dev/null
      </para>
     </answer>
    </qandaentry>   
-   
+
    <qandaentry xml:id="faq.installation.needgnu">
     <question>
      <para>
-      When compiling PHP I seemingly get random errors, like it hangs.
-      I'm using Solaris if that matters.
+      PHP를 컴파일 할 때 여러 오류가 나면서 멈춥니다. 솔라리스를 사용하고
+      있습니다.
      </para>
     </question>
     <answer>
      <para>
-      Using non-GNU utilities while compiling PHP may cause problems.  Be
-      sure to use GNU tools in order to be certain that compiling PHP will
-      work.  For example, on Solaris, using either the SunOS BSD-compatible
-      or Solaris versions of <literal>sed</literal> will not work, but using
-      the GNU or Sun POSIX (xpg4) versions of <literal>sed</literal> will
-      work.  Links: <link xlink:href="&url.sed;">GNU sed</link>,
-      <link xlink:href="&url.flex;">GNU flex</link>, and
-      <link xlink:href="&url.bison;">GNU bison</link>.
+      PHP를 컴파일 할 때 GNU 유틸리티를 사용하지 않으면 문제가 발생할 수
+      있습니다. PHP를 컴파일할 때 적합한 GNU 툴을 사용하는지 확인해 보십시오.
+      예를 들어, 솔라리스에서 사용하는 SunOS BSD-호환이나 솔라리스 버전의
+      <literal>sed</literal>는 적합하지 않습니다. GNU나 Sub POSIX (xpg4)
+      버전의 <literal>sed</literal>을 사용해야 합니다. 연결: <link
+       xlink:href="&url.sed;">GNU sed</link>, <link
+       xlink:href="&url.flex;">GNU flex</link>, <link
+       xlink:href="&url.bison;">GNU bison</link>.
      </para>
     </answer>
    </qandaentry>
