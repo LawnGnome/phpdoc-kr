@@ -1,24 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.apache-setenv" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>apache_setenv</refname>
-    <refpurpose>아파치의 subprocess_env 변수를 설정한다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>apache_setenv</methodname>
-      <methodparam><type>string</type><parameter>variable</parameter></methodparam>
-      <methodparam><type>string</type><parameter>value</parameter></methodparam>
-      <methodparam choice="opt"><type>bool</type><parameter>walk_to_top</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     &warn.undocumented.func;
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.apache-setenv" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>apache_setenv</refname>
+  <refpurpose>아파치의 서브프로세스의 환경 변수를 설정합니다.</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  <title>설명</title>
+  <methodsynopsis>
+   <type>bool</type><methodname>apache_setenv</methodname>
+   <methodparam><type>string</type><parameter>variable</parameter></methodparam>
+   <methodparam><type>string</type><parameter>value</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>walk_to_top</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>apache_setenv</function>은 <parameter>variable</parameter>로
+   지정한 아파치 환경 변수를 설정합니다.
+  </para>
+  <note>
+   <para>
+    아파치 환경 변수를 설정할 때, 해당하는 <link
+     linkend="reserved.variables.server">$_SERVER</link> 변수는 바뀌지
+    않습니다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>variable</parameter></term>
+     <listitem>
+      <para>
+       설정할 환경 변수
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>value</parameter></term>
+     <listitem>
+      <para>
+       새 <parameter>variable</parameter> 값.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>walk_to_top</parameter></term>
+     <listitem>
+      <para>
+       모든 아파치 레이어에서 사용할 수 있는 최고 레벨 변수를 설정할 지 여부
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>apache_setenv</function>를 사용하여 아파치 환경 변수
+     설정하기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+apache_setenv("EXAMPLE_VAR", "Example Value");
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    <function>apache_setenv</function>은 <function>apache_getenv</function>과
+    함께 PHP 스크립트에서 읽어들이는 Server Side Includes(.shtml)에 변수를
+    설정하여 나눠진 페이지에서 같은 값을 사용할 수 있습니다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>apache_getenv</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -104,7 +104,13 @@ linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 예고 없이 변경될 수 있습니다. 이 확장 모듈의 사용은 사용자의 책임하에
 이루어집니다.</simpara></warning>'>
 
-<!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook">><simpara>이 함수는
+<!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>This function is
+<emphasis>EXPERIMENTAL</emphasis>. The behaviour of this function, the
+name of this function, and anything else documented about this
+function may change without notice in a future release of PHP. 
+Use this function at your own risk.</simpara></warning>'>
+
+<!ENTITY ko.warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook">><simpara>이 함수는
 <emphasis>실험적</emphasis>입니다. 이 함수의 작동, 함수의 이름,
 그리고 이 함수에 대해 모든 문서는 이후의 PHP 릴리즈에서 예고 없이
 변경할 수 있습니다. 이 함수의 사용에 관한 것은 사용자
@@ -144,7 +150,11 @@ PHP 4.3.7 이후는 https:// 래퍼를 통해 스트림을 열 때, 문제가 �
 <function>fsockopen</function>을 사용한다면, 경고를 직접 검출하여 없애야
 합니다.</para></warning>'>
 
-<!ENTITY warn.undocumented.func '<warning><simpara>이 함수는 현재
+<!ENTITY warn.undocumented.func '<warning><simpara>This function is
+currently not documented; only the argument list is
+available.</simpara></warning>'>
+
+<!ENTITY ko.warn.undocumented.func '<warning><simpara>이 함수는 현재
 문서화 되어있지 않습니다; 인수 목록만을 제공합니다.</simpara></warning>'>
 
 

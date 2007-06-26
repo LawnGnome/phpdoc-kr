@@ -1,22 +1,95 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.apache-getenv" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>apache_getenv</refname>
-    <refpurpose>
-     아파치 부프로세스의 환경 변수를 얻습니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-    <methodsynopsis>
-     <type>string</type><methodname>apache_getenv</methodname>
-     <methodparam><type>string</type><parameter>variable</parameter></methodparam>
-     <methodparam choice="opt"><type>bool</type><parameter>walk_to_top</parameter></methodparam>
-    </methodsynopsis>
-     &warn.undocumented.func;
-   </refsect1>
-  </refentry>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.apache-getenv" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>apache_getenv</refname>
+  <refpurpose>아파치 서브프로세스의 환경 변수를 가져옵니다.</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>apache_getenv</methodname>
+   <methodparam><type>string</type><parameter>variable</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>walk_to_top</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>variable</parameter>로 지정한 아파치 환경 변수를 가져옵ㄴ디ㅏ.
+  </para>
+  <para>
+   이 함수는 아파치 2가 필요하며, 그렇지 않다면 정의되지 않습니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>variable</parameter></term>
+     <listitem>
+      <para>
+       아파치 환경 변수
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>walk_top_top</parameter></term>
+     <listitem>
+      <para>
+       모든 아파치 레이어에서 최고 레벨 변수를 가져올지 결정합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   성공하면 아파치 환경 변수 값, 실패하면 &false;입니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>apache_getenv</function> 예제</title>
+    <para>
+     이 예제는 아파치 환경 변수 <varname>SERVER_ADDR</varname>을 가져오는
+     방볍을 보여줍니다.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$ret = apache_getenv("SERVER_ADDR");
+echo $ret;
+?>
+]]>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
+<![CDATA[
+42.24.42.240
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>apache_setenv</function></member>
+    <member><function>getenv</function></member>
+    <member><link linkend="language.variables.supergloblas">자동 전역</link></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
