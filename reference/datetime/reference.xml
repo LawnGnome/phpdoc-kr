@@ -3,7 +3,7 @@
 <!-- Purpose: calendar -->
 <!-- Membership: core -->
 
- <reference xml:id="ref.datetime" xmlns="http://docbook.org/ns/docbook">
+ <reference xml:id="ref.datetime" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>날짜와 시간 함수</title>
   <titleabbrev>날짜/시간</titleabbrev>
   <partintro>
