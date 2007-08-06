@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.205 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.207 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 
@@ -488,6 +488,11 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 '<varlistentry><term><parameter>result</parameter></term><listitem><para><function>fbsql_query</function>나
 <function>fbsql_db_query</function>가 반환한 결과셋
 식별자.</para></listitem></varlistentry>'>
+
+<!-- GMP Notes -->
+<!ENTITY gmp.return 'GMP 수 <type>resource</type>.'>
+<!ENTITY gmp.parameter '<para>GMP 수 <type>resource</type>나 수로 변환할 수
+있는 문자열일 수 있습니다.</para>'>
 
 <!-- MySQLi Notes -->
 <!ENTITY mysqli.result.description

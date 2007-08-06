@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.31 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.32 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -40,6 +40,7 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.constants    '<title>예약 상수</title>'>
 <!ENTITY reftitle.constructor  '<title>생성자</title>'>
 <!ENTITY reftitle.description  '<title>설명</title>'>
+<!ENTITY reftitle.encoding     '<title>인코딩</title>'>
 <!ENTITY reftitle.examples     '<title>예제</title>'>
 <!ENTITY reftitle.exceptions   '<title>예외</title>'>
 <!ENTITY reftitle.errors       '<title>오류/예외</title>'>
