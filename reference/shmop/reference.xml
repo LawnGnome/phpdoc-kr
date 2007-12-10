@@ -59,7 +59,7 @@ shmop_close($shm_id);
    </para>
   </partintro>  
 
-&reference.shmop.functions;
+&reference.shmop.entities.functions;
 
  </reference> 
 
