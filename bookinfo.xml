@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.52 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.54 Maintainer: progcom Status: ready -->
 
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
-  <title>&PHPManual;</title>
   &frontpage.authors;
   <pubdate>&php.build-date;</pubdate>
   &frontpage.editors;
 
   <copyright>
-   <year>1997-2007</year>
+   <year>1997-2008</year>
    <holder>the PHP Documentation Group (PHP 문서 그룹)</holder>
   </copyright>
 
   <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>저작권</title>
    <simpara>
-    Copyright &copy; 1997 - 2007 by the PHP Documentation Group.
+    Copyright &copy; 1997 - 2008 by the PHP Documentation Group.
     이 저작물은 Open Publication License v1.0 이상의 조항 및 제약에 따를 경우에
     재배포할 수 있습니다. <link linkend="opl.license">Open Publication
      License</link>는 이 매뉴얼에 포함되어 있으며, 최신 버전은 <link
