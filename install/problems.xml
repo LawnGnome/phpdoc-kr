@@ -1,57 +1,51 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.2 $ -->
 
   <chapter xml:id="install.problems" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <title>Problems?</title>
+   <title>문제가 있습니까?</title>
 
    <sect1 xml:id="install.problems.faq">
-    <title>Read the FAQ</title>
+    <title>FAQ를 읽어 보십시오.</title>
     <simpara>
-     Some problems are more common than others. The most
-     common ones are listed in the <link linkend="faq">PHP
-     FAQ</link>, part of this manual.
+     어떤 문제들은 다른 문제들보다 더 일반적입니다.
+     가장 일반적인 것들이 <link linkend="faq">PHP
+     FAQ</link>에 본 매뉴얼의 일부로서 기재되어 있습니다.
     </simpara>
    </sect1>
 
    <sect1 xml:id="install.problems.support">
-    <title>Other problems</title>
+    <title>다른 문제들</title>
 
     <simpara>
-     If you are still stuck, someone on the PHP installation mailing list may be
-     able to help you. You should check out the archive first, in case
-     someone already answered someone else who had the same problem as
-     you. The archives are available from the support page on <link
-      xlink:href="&url.php.support;">&url.php.support;</link>. To subscribe to the PHP installation
-     mailing list, send an empty mail to <link
-     xlink:href="mailto:&email.php.install.subscribe;">&email.php.install.subscribe;</link>.
-     The mailing list address is <link
-     xlink:href="mailto:&email.php.install;">&email.php.install;</link>.
+     아직도 문제에 봉착해 있다면, PHP 설치 메일링 리스트의 누군가는 도움을 줄수 있을 것입니다.
+     누군가 당신과 같은 문제를 가지고 있거나 답변이 없는지 제일 먼저 아카이브를 체크해야만 합니다.
+     아카이브는 <link xlink:href="&url.php.support;">&url.php.support;</link>의 서포트 페이지에서 제공 합니다. 
+     PHP 설치 메일링 리스트를 구독하기 위해서는, 빈(empty) 메일을 <link
+     xlink:href="mailto:&email.php.install.subscribe;">&email.php.install.subscribe;</link>로 보내시기 바랍니다.
+     메일링 리스트 주소는 <link
+     xlink:href="mailto:&email.php.install;">&email.php.install;</link> 입니다.
     </simpara>
     <simpara>
-     If you want to get help on the mailing list, please try to be
-     precise and give the necessary details about your environment
-     (which operating system, what PHP version, what web server, if
-     you are running PHP as CGI or a server module, &safemode;, etc...), and
-     preferably enough code to make others able to reproduce and test
-     your problem.
+     메일링 리스트로부터 도움을 얻길 원한다면, 필요한 세부 환경( 어떤 운영체제 인지, 
+     PHP 버전이 무엇인지, 무슨 웹서버 인지, PHP를 돌리고 있다면 CGI방식인지 웹서버 모듈 방식인지, &safemode;, 등등...)과 함께, 
+     되도록이면 다른 사람들이 문제를 재현하고 테스트 할수 있도록 충분한 코드를 명확하게 알려주시기 바랍니다.
     </simpara>
    </sect1>
 
    <sect1 xml:id="install.problems.bugs">
-    <title>Bug reports</title>
+    <title>버그 보고</title>
     <simpara>
-     If you think you have found a bug in PHP, please report it.  The
-     PHP developers probably don't know about it, and unless you
-     report it, chances are it won't be fixed. You can report bugs
-     using the bug-tracking system at <link
-     xlink:href="&url.php.bugs;">&url.php.bugs;</link>. Please do not
-     send bug reports in mailing list or personal letters. The
-     bug system is also suitable to submit feature requests.
+     PHP에서 버그를 찾은것 같다면, 그것을 보고해 주시기 바랍니다.
+     PHP 개발자들은 그것에 관해 모를수도 있으며, 그것을 보고 하기 전에는, 충분히 그럴 가능성이 있습니다.
+     <link
+     xlink:href="&url.php.bugs;">&url.php.bugs;</link>의 버그 트랙킹(bug-tracking) 시스템을 사용하여 버그를 보고 할 수 있습니다.
+     버그 보고를 메일링 리스트나 개인적인 편지로 보내지 마시기 바랍니다.
+     버그 시스템은 또한 기능요청을 제출 하기에 적합합니다.
     </simpara>
     <simpara>
-     Read the <link 
-     xlink:href="&url.php.bugs.howtoreport;">How to report a bug</link> 
-     document before submitting any bug reports!
+     어떤 버그를 보고하기 전에 <link 
+     xlink:href="&url.php.bugs.howtoreport;">버그를 보고하는 방법</link> 
+     을 읽어 보시기 바랍니다.
     </simpara>
    </sect1>
   </chapter>
