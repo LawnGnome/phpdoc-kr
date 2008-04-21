@@ -1,35 +1,30 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.2 $ -->
   <chapter xml:id="install.windows" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <title>Installation on Windows systems</title>
+   <title>윈도우즈 시스템에 인스톨하기</title>
    <para>
-    This section applies to Windows 98/Me and Windows NT/2000/XP/2003. PHP 
-    will not work on 16 bit platforms such as Windows 3.1 and sometimes 
-    we refer to the supported Windows platforms as Win32. Windows 95
-    is no longer supported as of PHP 4.3.0.
+    본 섹션은 Windows 98/Me 와 Windows NT/2000/XP/2003 에 해당 됩니다. 
+    PHP는 Windows 3.1 같은 16비트 플랫폼상에서는 동작하지 않고 때때로 지원되는 윈도우즈 플랫폼이 Win32에 의존합니다.
+    Windows 95는 PHP 4.3.0 과 같은것은 더이상 지원되지 않습니다.
    </para>
    <para>
-    There are two main ways to install PHP for Windows: either
-    <link linkend="install.windows.manual">manually</link>
-    or by using the <link linkend="install.windows.installer">installer</link>.
+   	윈도우즈에 PHP를 인스톨하는데에는 크게 두가지 방법이 있습니다.
+    <link linkend="install.windows.manual">수동설치</link>
+    를 하거나 <link linkend="install.windows.installer">설치관리자</link> 를 사용하는 것입니다.
    </para>
    <para>
-    If you have Microsoft Visual Studio, you can also 
-    <link linkend="install.windows.building">build</link>
-    PHP from the original source code.
+   	Microsoft Visual Studio 를 가지고 있다면, 원본 소스코드로 부터 PHP를 
+    <link linkend="install.windows.building">빌드</link> 할 수가 있습니다.
    </para>
    <para>
-    Once you have PHP installed on your Windows system, you may also
-    want to <link linkend="install.windows.extensions">load various extensions</link>
-    for added functionality.
+   	일단 PHP를 설치 했다면, 기능을 추가시키기 위해 
+    <link linkend="install.windows.extensions">몇가지 확장모듈을 적재</link> 하기를 원할수도 있을 것입니다.
    </para>
    <warning>
     <para>
-     There are several all-in-one installers over the Internet, but none of
-     those are endorsed by PHP.net, as we believe that using one of
-     the official windows packages from 
+     인터넷에 몇가지의 올인원(all-in-one) 설치관리자가 나돌지만, 어떤것도 PHP.net으로부터 승인된 것은 없으며,
      <link xlink:href="&url.php.downloads;">&url.php.downloads;</link>
-     is the best choice to have your system secure and optimised.
+     으로부터 제공되는 공식 윈도우 패키지를 사용하는것이 시스템을 안전하고 최적화되게 하는 최선의 선택이라고 생각합니다.
     </para>
    </warning>
    
