@@ -1,45 +1,40 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- $Revision: 1.1 $ -->
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision: 1.2 $ -->
 
 <chapter xml:id="install.pecl" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
- <title>Installation of PECL extensions</title>
+ <title>PECL 확장의 설치</title>
 
  <sect1 xml:id="install.pecl.intro">
-  <title>Introduction to PECL Installations</title>
+  <title>PECL 설치 소개</title>
   <simpara>
-   <link xlink:href="&url.pecl;">PECL</link> is a repository of PHP extensions that
-   are made available to you via the <link xlink:href="&url.php.pear;">PEAR</link>
-   packaging system.  This section of the manual is intended to demonstrate
-   how to obtain and install PECL extensions.
+   <link xlink:href="&url.pecl;">PECL</link> 은 PHP 확장의 저장소(repository)이며 
+   <link xlink:href="&url.php.pear;">PEAR</link> 패키징 시스템을 통하여 이용할 수가 있습니다.
+   본 섹션은 PECL을 구하여 설치하는것을 설명하기 위해 마련 되었습니다.
   </simpara>
   <simpara>
-   These instructions assume <literal>/your/phpsrcdir/</literal> is the path
-   to the PHP source distribution, and that <literal>extname</literal> is the name of the
-   PECL extension.  Adjust accordingly.  These instructions also assume a 
-   familiarity with the <link xlink:href="&url.php.pear.cli;">pear command</link>.
-   The information in the PEAR manual for the <literal>pear</literal> command also
-   applies to the <literal>pecl</literal> command.
+   이 지침들은 <literal>/your/phpsrcdir/</literal> 은 PHP 소스가 위치하는 경로이고, 
+   <literal>extname</literal> 은 PECL 확장의 이름인것으로 가정 합니다.
+    적절히 조절하시기 바랍니다.
+    또한 이 지침들은 <link xlink:href="&url.php.pear.cli;">pear command</link> 에 친숙한것을 가정합니다.
+   <literal>pear</literal> 명령에 대한 PEAR 매뉴얼의 정보는 또한 <literal>pecl</literal> 명령에도 적용됩니다.
   </simpara>
   <simpara>
-   To be useful, a shared extension must be built, installed, and loaded.  The
-   methods described below provide you with various instructions on how to
-   build and install the extensions, but they do not automatically load them.
-   Extensions can be loaded by adding an <link
-   linkend="ini.extension">extension</link> directive.  To this &php.ini;
-   file, or through the use of the <function>dl</function> function.
+   이 기능을 사용하기 위해서는, 확장모듈을 빌드하고, 설치하고, 로드해야 합니다. 
+   확장모듈을 어떻게 빌드하고 설치할것인지에 대해 아래에서 다양한 지침과 함께 그 방법들이 설명되지만, 
+   하지만 그것만으론 모듈을 자동으로 로드할 수는 없습니다.
+   확장모듈은 &php.ini; 파일에 <link
+   linkend="ini.extension">extension</link> 디렉티브를 추가하든지, <function>dl</function> 함수를 사용하여 로드할 수 있습니다.
   </simpara>
   <simpara>
-   When building PHP modules, it's important to have known-good versions 
-   of the required tools (autoconf, automake, libtool, etc.) See the 
-   <link xlink:href="&url.php.anoncvs;">Anonymous CVS Instructions</link> for 
-   details on the required tools, and required versions.
+   PHP 모듈을 빌드할때는, 적절한 버전의 필수 툴을 사용하는것이 중요합니다 (autoconf, automake, libtool, 등등.).
+   필수 툴과 그 버전에 대한 자세한 내용은 <link xlink:href="&url.php.anoncvs;">Anonymous CVS 지침</link> 을 보십시오.
   </simpara>
  </sect1>
 
  <sect1 xml:id="install.pecl.downloads">
-  <title>Downloading PECL extensions</title>
+  <title>PECL 확장모듈 다운로드</title>
   <simpara>
-   There are several options for downloading PECL extensions, such as:
+   PECL 확장모듈을 다운로드 하는데에는 몇가지 방법이 있습니다. 다음과 같습니다:
   </simpara>
   <itemizedlist>
    <listitem>
@@ -47,10 +42,8 @@
      <link xlink:href="&url.pecl;">&url.pecl;</link>
     </simpara>
     <simpara>
-     The PECL web site contains information about the different extensions
-     that are offered by the PHP Development Team.  The information available
-     here includes: ChangeLog, release notes, requirements and other similar
-     details.
+     PECL 웹사이트는 PHP 개발팀이 제공하는 여러가지의 확장모듈에 대한 정보를 제공하고 있습니다.
+     다음과 같은 정보가 있습니다.: 변경내역(ChangeLog),릴리즈 노트(release notes), 요구사항(requirements) 과 같은 다른 비슷한 항목들이 있습니다.
     </simpara>
    </listitem>
    <listitem>
@@ -58,10 +51,9 @@
      <literal>pecl download extname</literal>
     </simpara>
     <simpara>
-     PECL extensions that have releases listed on the PECL web site are
-     available for download and installation using the <link
-     xlink:href="&url.php.pear.cli;">pecl command</link>.
-     Specific revisions may also be specified.
+     릴리즈된 PECL 확장모듈은 <link
+     xlink:href="&url.php.pear.cli;">pecl 명령</link> 를 사용하여 다운로드나 설치를 할수 있도록 PECL 웹사이트에 게재됩니다.
+     또한 특정 리비전을 지정할수도 있습니다.
     </simpara>
    </listitem>
    <listitem>
@@ -69,11 +61,10 @@
      <acronym>CVS</acronym>
     </simpara>
     <simpara>
-     Most PECL extensions also reside in <acronym>CVS</acronym>.  A web-based view may
-     be seen at <link xlink:href="&url.php.cvs;pecl/">&url.php.cvs;pecl/</link>.  
-     To download straight from <acronym>CVS</acronym>, the following 
-     sequence of commands may be used.  Note that <emphasis>phpfi</emphasis> is the password for user 
-     <emphasis>cvsread</emphasis>:
+     대부분의 PECL 확장모듈은 <acronym>CVS</acronym> 에도 존재합니다. 
+     웹기반 보기는 <link xlink:href="&url.php.cvs;pecl/">&url.php.cvs;pecl/</link> 에서 볼수 있습니다.
+     <acronym>CVS</acronym> 로부터 바로 다운로드 하기 위해서는, 다음과 같은 명령들을 사용해야 할것입니다.
+     <emphasis>phpfi</emphasis> 는 <emphasis>cvsread</emphasis> 사용자의 패스워드임을 상기하십시오.:
     </simpara>
     <para>
      <screen>
@@ -84,28 +75,25 @@ $ cvs -d:pserver:cvsread@cvs.php.net:/repository co pecl/extname
    </listitem>
    <listitem>
     <simpara>
-     Windows downloads
+     윈도우용 다운로드
     </simpara>
     <simpara>
-     Windows users may find compiled PECL binaries by downloading the
-     <emphasis>Collection of PECL modules</emphasis> from the 
-     <link xlink:href="&url.php.downloads;">PHP Downloads</link> page, or by
-     retrieving a <link xlink:href="&url.php.snapshots;">PECL Snapshot</link>
-     or an extension DLL on <link xlink:href="&url.pecl.win;">PECL4WIN</link>.
-     To compile PHP under Windows, read the 
-     <link linkend="install.windows.building">appropriate chapter</link>.
+     윈도우즈 사용자들은 컴파일된 PECL 바이너리를 
+     <link xlink:href="&url.php.downloads;">PHP 다운로드</link> 페이지에 있는 
+     <emphasis>PECL 확장모듈 모음</emphasis> 에서 다운로드 받을 수 있습니다.
+     또는 <link xlink:href="&url.php.snapshots;">PECL 스냅샷</link> 을 가져오거나,
+     <link xlink:href="&url.pecl.win;">PECL4WIN</link> 에서 확장모듈 DLL을 구할수 있습니다.
+     윈도우즈에서 PHP를 컴파일하기 위해서는 <link linkend="install.windows.building">절충 장</link> 을 읽어 보십시오.
     </simpara>
    </listitem>
   </itemizedlist>
  </sect1>
 
  <sect1 xml:id="install.pecl.windows">
-  <title>PECL for Windows users</title>
+  <title>윈도우 사용자들을 위한 PECL</title>
   <simpara>
-   As with any other PHP extension <acronym>DLL</acronym>, installation is as
-   simple as copying the PECL extension DLLs into the <link linkend="ini.extension-dir">
-   extension_dir</link> folder and loading them from &php.ini;.  For 
-   example, add the following line to your &php.ini;:
+   다른 PHP 확장 <acronym>DLL</acronym> 처럼, PECL 확장 DLL들을 간단하게 <link linkend="ini.extension-dir">
+   extension_dir</link> 폴더에 복사하여 설치하고, &php.ini; 에서 로딩 합니다. 예를 들면, 다음 라인을 &php.ini;에 추가하십시오:
   </simpara>
   <para>
    <screen>
@@ -113,15 +101,15 @@ extension=php_extname.dll
    </screen>
   </para>
   <simpara>
-   After doing this, restart the web service.
+   이것을 한 다음에는, 웹서비스를 다시 시작하십시오.
   </simpara>
  </sect1>
  
  <sect1 xml:id="install.pecl.pear">
-  <title>Compiling shared PECL extensions with the pecl command</title>
+  <title>pecl 명령을 사용하여 공유 PECL 확장모듈을 컴파일 하기</title>
   <simpara>
-   PECL makes it easy to create shared PHP extensions. Using the 
-   <link xlink:href="&url.php.pear.cli;">pecl command</link>, do the following:
+   PECL은 공유 PHP 확장모듈을 만들기 쉽게 합니다. 
+   <link xlink:href="&url.php.pear.cli;">pecl command</link> 을 사용하려면, 다음을 따라하십시오.:
   </simpara>
   <para>
    <screen>
@@ -129,17 +117,16 @@ $ pecl install extname
    </screen>
   </para>
   <simpara>
-   This will download the source for <emphasis>extname</emphasis>, 
-   compile, and install <filename>extname.so</filename> into your <link
-   linkend="ini.extension-dir">extension_dir</link>.  
-   <filename>extname.so</filename> may then be loaded via &php.ini;
+   이 명령은 <emphasis>extname</emphasis> 소스를 다운받아 컴파일 하고, 
+   <filename>extname.so</filename> 를 <link
+   linkend="ini.extension-dir">extension_dir</link> 에 설치할 것입니다.
+   <filename>extname.so</filename>는 &php.ini;를 통해 로드될 것입니다.
   </simpara>
   <simpara>
-   By default, the <literal>pecl</literal> command will not install
-   packages that are marked with the <literal>alpha</literal> or
-   <literal>beta</literal> state.  If no <literal>stable</literal> packages
-   are available, you may install a <literal>beta</literal> package using the
-   following command:
+   기본적으로 <literal>pecl</literal>은 <literal>alpha</literal>나 
+   <literal>beta</literal> 상태로 마크되어 있는 패키지는 설치하지 않을 것입니다.
+   만약에 <literal>stable</literal> 패키지가 없다면, 
+   다음 명령을 사용해 <literal>beta</literal> 패키지를 설치 할수 있습니다.:
   </simpara>
   <para>
    <screen>
@@ -147,7 +134,7 @@ $ pecl install extname-beta
    </screen>
   </para>
   <para>
-   You may also install a specific version using this variant:
+   다음과 같이 변형하면 특정버전을 설치할수 있을것입니다.
   </para>
   <para>
    <screen>
@@ -156,26 +143,21 @@ $ pecl install extname-0.1
   </para>
   <note>
    <para>
-    After enabling the extension in &php.ini;, restarting the web service is
-    required for the changes to be picked up.
+    &php.ini; 에 확장모듈을 사용가능하도록 한 뒤에는, 그것이 반영되기 위해 웹서비스를 다시 시작해야 합니다.
    </para>
   </note>
  </sect1>
 
  <sect1 xml:id="install.pecl.phpize">
-  <title>Compiling shared PECL extensions with phpize</title>
+  <title>phpize로 공유 PECL 확장모듈 컴파일하기</title>
   <simpara>
-   Sometimes, using the <literal>pecl</literal> installer is not an option.
-   This could be because you're behind a firewall, or it could be because the
-   extension you want to install is not available as a PECL compatible
-   package, such as unreleased extensions from CVS.  If you need to build such
-   an extension, you can use the lower-level build tools to perform the build
-   manually.
+   가끔은, <literal>pecl</literal> 인스톨러를 사용하는것이 선택사항이 아닐수 있습니다.
+   방화벽뒤에 있거나, CVS의 릴리즈되지 않은 확장 모듈처럼 설치할 PECL 호환패키지가 없는것이 이유가 될 것입니다.
+   이런 확장모듈을 빌드할 필요가 있을 경우, 좀더 하위 레벨의 빌드툴을 사용하여 직접 빌드할수가 있습니다.
   </simpara>
   <simpara>
-   The <literal>phpize</literal> command is used to prepare the build
-   environment for a PHP extension.  In the following sample, the sources for
-   an extension are in a directory named <filename>extname</filename>:
+   <literal>phpize</literal> 명령은 PHP 확장모듈을 위한 빌드환경을 만들기 위해 사용합니다.
+   아래의 샘플코드에는 확장모듈의 소스가 <filename>extname</filename> 이름의 디렉터리 안에 있습니다.:
   </simpara>
   <para>
    <screen>
@@ -189,31 +171,27 @@ $ make
    </screen>
   </para>
   <simpara>
-   A successful install will have created <filename>extname.so</filename> and put it 
-   into the PHP 
-   <link linkend="ini.extension-dir">extensions directory</link>.  You'll need
-   to and adjust &php.ini; and add an <literal>extension=extname.so</literal>
-   line before you can use the extension.
+   성공적으로 인스톨되었다면 <filename>extname.so</filename> 이 생성될것이고,
+   그것을 PHP의 <link linkend="ini.extension-dir">확장모듈 디렉터리</link> 안에 위치시킬 것입니다.
+   확장 모듈을 사용하기전에 &php.ini; 에 <literal>extension=extname.so</literal> 라인의 추가가 필요할 것입니다.
   </simpara>
   <simpara>
-   If the system is missing the <literal>phpize</literal> command, and precompiled
-   packages (like RPM's) are used, be sure to also install the appropriate 
-   <literal>devel</literal> version of the PHP package as they often include the 
-   <literal>phpize</literal> command along with the appropriate header files to 
-   build PHP and its extensions.
+   만약에 시스템이 <literal>phpize</literal> 명령을 찾지 못하고, 
+   미리컴파일된 패키지(RPM 같은)를 사용하고 있다면,
+   적절한 버전의 PHP <literal>devel</literal> 패키지를 설치하도록 합니다.
+   그것들은 대체로 <literal>phpize</literal> 명령 이외에 PHP와 확장모듈을 빌드할 적절한 헤더파일을 포함합니다.
   </simpara>
   <simpara>
-   Execute <literal>phpize --help</literal> to display additional usage information.
+   <literal>phpize --help</literal> 를 실행하면 추가적인 사용법 정보를 볼수가 있습니다.
   </simpara>
  </sect1>
 
  <sect1 xml:id="install.pecl.static">
-  <title>Compiling PECL extensions statically into PHP</title>
+  <title>PECL 확장모듈을 PHP안에 정적으로 컴파일 하기</title>
   <simpara>
-   You might find that you need to build a PECL extension statically into your
-   PHP binary.  To do this, you'll need to place the extension source under
-   the <filename>php-src/ext/</filename> directory and tell the PHP build
-   system to regenerate its configure script.
+   아마도 필요한 PECL 확장모듈을 PHP 바이너리 안에 정적으로 빌드하는 방법을 찾을 것입니다.
+   이것을 위해서는, 확장모듈 소스를 <filename>php-src/ext/</filename> 디렉터리 아래에 위치시키고, 
+   PHP 빌드 시스템에 설정(configure) 스크립트를 다시 만들라고 말해줄 필요가 있습니다.
   </simpara>
   <para>
    <screen>
@@ -226,7 +204,7 @@ $ mv extname-x.x.x extname
    </screen>
   </para>
   <simpara>
-   This will result in the following directory:
+   이 스크립트는 아래의 디렉터리를 만들어 냅니다.:
   </simpara>
   <para>
    <screen>
@@ -234,7 +212,7 @@ $ mv extname-x.x.x extname
    </screen>
   </para>
   <simpara>
-   From here, force PHP to rebuild the configure script, and then build PHP as normal:
+   여기에서, 강제로 PHP 설정 스크립트를 리빌드 한다음, 통상적인 방법으로 PHP를 빌드하십시오:
   </simpara>
   <para>
    <screen>
@@ -249,15 +227,15 @@ $ make install
   </para>
   <note>
    <simpara>
-    To run the 'buildconf' script you need autoconf 2.13 and automake 1.4+
-    (newer versions of autoconf may work, but are not supported).
+    'buildconf' 스크립트를 실행하기 위해서는 autoconf 2.13 버전과 automake 1.4+ 의 버전이 필요합니다.
+    (새로운 버전의 autoconf는 동작할지도 모르나 지원되지 않을수도 있습니다.)
    </simpara>
   </note>
   <simpara>
-   Whether <literal>--enable-extname</literal> or <literal>--with-extname
-   </literal> is used depends on the extension.  Typically an extension that 
-   does not require external libraries uses <literal>--enable</literal>.  To be
-   sure, run the following after buildconf:
+   <literal>--enable-extname</literal> 이든 <literal>--with-extname
+   </literal> 이든 그것들은 확장모듈 의존성을 위해 사용됩니다.
+   일반적으로 외부 라이브러리를 필요로하지 않는 확장모듈은 <literal>--enable</literal> 을 사용합니다.
+   확인을 위해 다음의 buildconf를 실행하십시오.:
   </simpara>
   <para>
    <screen>
