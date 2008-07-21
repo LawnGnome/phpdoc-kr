@@ -1,7 +1,8 @@
-<!-- EN-Revision: 1.41 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.42 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
+<!ENTITY Seealso           "참고">
 <!ENTITY Date              "날짜:">
 <!ENTITY GettingStarted    "시작하기">
 <!ENTITY InstallAndConfigure "설치와 설정">
