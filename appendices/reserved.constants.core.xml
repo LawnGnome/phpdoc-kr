@@ -407,7 +407,7 @@
     </varlistentry>
    </variablelist>
    <para>
-    참고: <link linkend="language.constants.predefiend">마법 상수</link>.
+    참고: <link linkend="language.constants.predefined">마법 상수</link>.
    </para>
   </sect2>
 

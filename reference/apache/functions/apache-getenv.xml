@@ -85,7 +85,7 @@ echo $ret;
    <simplelist>
     <member><function>apache_setenv</function></member>
     <member><function>getenv</function></member>
-    <member><link linkend="language.variables.supergloblas">자동 전역</link></member>
+    <member><link linkend="language.variables.superglobals">자동 전역</link></member>
    </simplelist>
   </para>
  </refsect1>

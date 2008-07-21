@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.37 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.41 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -59,7 +59,8 @@
 <!ENTITY Definition        "정의">
 <!ENTITY Functions         "함수">
 <!ENTITY Name              "이름">
-<!ENTITY Alias             "Alias of">
+<!ENTITY Alias             "축약">
+<!ENTITY Type              "자료형">
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
@@ -73,11 +74,13 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.examples     '<title>예제</title>'>
 <!ENTITY reftitle.exceptions   '<title>예외</title>'>
 <!ENTITY reftitle.errors       '<title>오류/예외</title>'>
+<!ENTITY reftitle.faq          '<title>&FAQ;</title>'>
 <!ENTITY reftitle.install      '<title>설치</title>'>
 <!ENTITY reftitle.intro        '<title>소개</title>'>
 <!ENTITY reftitle.methods      '<title>메쏘드</title>'>
 <!ENTITY reftitle.notes        '<title>주의</title>'>
 <!ENTITY reftitle.parameters   '<title>매개변수</title>'>
+<!ENTITY reftitle.options      '<title>옵션</title>'>
 <!ENTITY reftitle.properties   '<title>속성</title>'>
 <!ENTITY reftitle.required     '<title>요구 조건</title>'>
 <!ENTITY reftitle.resources    '<title>자원형</title>'>

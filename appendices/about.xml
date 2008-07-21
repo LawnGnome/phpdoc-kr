@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.50 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.53 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 
 <appendix xml:id="about" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -95,7 +95,7 @@
    <para>
     라이센스를 보호하기 위해서 사용자 공헌 주석은 PHP 매뉴얼의 부속물로
     봅니다. 따라서 이 문서를 보호하는 라이센스와 동일한 보호를 받습니다. (현재
-    Open Publication License) 자세한 사항은 <link linkend="copyright">매뉴얼
+    Creative Commons Attribution) 자세한 사항은 <link linkend="copyright">매뉴얼
      저작권</link>을 참고하십시오.
    </para>
   </note>
@@ -128,7 +128,7 @@
 <![CDATA[
 strlen
 
-(PHP 3, PHP 4, PHP 5)
+(PHP 4, PHP 5)
 strlen -- 문자열의 길이를 구합니다.
 
 설명
@@ -159,10 +159,10 @@ int strlen ( string $string )
       </row>
       <row>
        <entry>
-        (PHP 3, PHP 4, PHP 5)
+        (PHP 4, PHP 5, PHP 6)
        </entry>
        <entry>
-        strlen()은 PHP 3, PHP 4, PHP 5의 모든 버전에 있습니다.
+        strlen()은 PHP 4, PHP 5, PHP 6의 모든 버전에 있습니다.
        </entry>
       </row>
       <row>
@@ -242,17 +242,17 @@ int strlen ( string $string )
    </screen>
   </para>
   <para>
-   이 함수는 PHP 3에 없고, PHP 4.3.0부터만 사용할 수 있음을 나타냅니다.
+   이 함수가 PHP 4.3.0 이후에 릴리즈된 버전에서만 사용할 수 있음을 나타냅니다.
   </para>
  </sect1>
 
  <sect1 xml:id="about.phpversions">
-  <title>매뉴얼에 문서화한 PHP 버전</title>
+  <title>매뉴얼에 실려있는 PHP 버전</title>
   <para>
-   이 문서는 현재와 미래의 PHP 버전에 대한 정보를 가지고 있습니다. 상위
-   버전으로 업그레이드하는 방법과 호환성 정보는 PHP 3부터 제공합니다. PHP
-   버전에 따른 작동, 매개변수, 반환값, 기타 변경 사항은 주석이나 매뉴얼안에
-   문서화되어 있습니다.
+   매뉴얼에는 과거, 현재, 미래의 PHP 버전에 대한 정보를 포함하고 있습니다.
+   버전에 따라 다른 행동은, 매뉴얼 안에 주석, 변경점 등으로 안내하고 있습니다.
+   문서에 포함된 가장 오래된 버전은 PHP 4.1.0이고, 가장 최근 버전은 PHP
+   6.x.x입니다.
   </para>
   <para>
    가장 최근 개발 버전인 PHP CVS 버전에 대한 문서가 존재하기도 합니다. 이는
@@ -337,20 +337,15 @@ int strlen ( string $string )
   <para>
    이 매뉴얼은 <link xlink:href="&url.docbook.xml;">DocBook XML DTD</link>를
    사용하여 <acronym>XML</acronym>로 쓰여져 있고, 관리와 형식을 위해 <link
-    xlink:href="&url.xslt;"><acronym>XSLT</acronym></link>(확장 스타일시트
-   언어 변환)를 사용합니다.
+    xlink:href="&url.phd;"><acronym>PhD</acronym></link>([PH]P 기반 [D]ocBook
+   렌더러)를 사용합니다.
   </para>
   <para>
    원본 형식에 <acronym>XML</acronym>을 사용하여 원본 파일에서 많은 출력
    형식을 만들어냄으로써, 모든 형식에 대하여 하나의 원본 문서만 관리할 수
-   있습니다. 온라인 문서 형식을 위해 사용하는 툴은 <link
-    xlink:href="&url.xsltproc;">xsltproc</link>과 <link
-    xlink:href="&url.dbxsl;">DocBook XSL 스타일시트</link>입니다.
-   <acronym>HTML</acronym>과 <acronym>TeX</acronym>판은 <link
-    xlink:href="&url.jclark;">James Clark</link>이 만든 <link
-    xlink:href="&url.jade;">Jade</link>와 <link
-    xlink:href="&url.nwalsh;">Norman Walsh</link>가 만든 <link
-    xlink:href="&url.dbstyle;">모듈화 DocBook 스타일시트</link>를 사용합니다.
+   있습니다.
+   온라인 매뉴얼 형식화에는 <link xlink:href="&url.phd;">PhD</link>를
+   사용합니다.
    윈도우 HTML 도움말 형식을 작성하기 위해 <link
     xlink:href="&url.winhelp;">마이크로소프트 HTML 도움말 워크샵</link>을
    사용합니다. 물론, 추가적인 변환과 형식화를 위해 PHP도 사용합니다.
@@ -390,11 +385,7 @@ int strlen ( string $string )
    </para>    
   </note>
   <para>
-   현재 매뉴얼은 전체적으로, 또는 부분적으로 다음 언어로 제공됩니다:
-   Brazilian Portuguese, Chinese (Simplified), Chinese (Hong Kong Cantonese), Chinese (Traditional), Czech, 
-   Dutch, Finnish, French, German, Greek, Hebrew, Hungarian, Italian, Japanese, 
-   Korean, Polish, Romanian, Russian, Slovak, Slovenian, Spanish, Swedish,
-   Turkish.
+   현재 매뉴얼은, 전체적 혹은 부분적으로 10개 이상의 언어로 제공되고 있습니다.
   </para>
   <para>
    모두 여기에서 받을 수 있습니다: <link

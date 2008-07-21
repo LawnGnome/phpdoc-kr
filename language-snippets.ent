@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.207 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.227 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 
@@ -15,21 +15,22 @@
 추가되었습니다. 자세한 설명은 <xref linkend="ref.stream"/>을
 참고하십시오.</simpara></note>'>
 
-<!ENTITY note.exec-bg '<note><para>이 함수를 사용하여 프로그램을 백그라운드에서
-실행시키려면, 프로그램의 출력이 파일이나 다른 출력 스트림을 향하게 해야 합니다.
-그렇지 않으면, PHP는 프로그램이 종료할 때까지 멈춰있을 것입니다.</para></note>'>
+<!ENTITY note.exec-bg '<note><para>백그라운드에서 실행하기 위해서 이 함수로
+프로그램을 시작하면, 프로그램의 출력은 파일이나, 다른 출력 스트림으로 보내야
+합니다. 그렇지 않으면, 프로그램이 종료할 때까지 PHP가 멈출 수
+있습니다.</para></note>'>
 
 <!ENTITY note.func-callback '<note><simpara>함수 이름 대신에, 객체의 참조와
 메쏘드 이름을 가지는 배열을 사용할 수 있습니다.</simpara></note>'>
 
-<!ENTITY note.funcnoparam '<note><para>이 함수는 매개변수를 현재 위치(scope)에
-의존하기 때문에, 함수의 매개변수로 사용할 수 없습니다. 이 값을 넘겨야 한다면
-결과값을 변수에 할당하여, 그 변수를 넘겨야 합니다.</para></note>'>
+<!ENTITY note.funcnoparam '<note><para>이 함수는 매개변수를 현재 영역(scope)에
+의존하기 때문에, 함수의 매개변수로 사용할 수 없습니다. 이 값을 함수에 넘겨야
+한다면, 결과값을 변수에 할당하여 그 변수로 넘겨야 합니다.</para></note>'>
 
-<!ENTITY note.line-endings '<note><simpara>매킨토시 컴퓨터에서 작성한 파일을
-읽어들일 때 PHP가 줄의 끝을 판단하지 못하면, <link
+<!ENTITY note.line-endings '<note><simpara>PHP가 매킨토시 컴퓨터에서 파일을
+읽거나 작성할 때 행의 끝을 판단하지 못하면, <link
 linkend="ini.auto-detect-line-endings">auto_detect_line_endings</link> 실행
-옵션을 활성화할 수 있습니다.</simpara></note>'>
+옵션을 활성화 함으로써 문제가 해결될 수 있습니다.</simpara></note>'>
 
 <!ENTITY note.no-remote '<note><simpara>이 함수는
 <link linkend="features.remote-files">원격 파일</link>을 다루지 못합니다.
@@ -39,8 +40,9 @@ linkend="ini.auto-detect-line-endings">auto_detect_line_endings</link> 실행
 호환(binary safe)이 아닙니다!</simpara></warning>'>
 
 <!ENTITY note.no-key-association '<note><simpara>이 함수는
-<parameter>array</parameter>에 새로운 키를 할당합니다. 이로 인하여 이미
-할당되어있는 키가 삭제될 수 있습니다.</simpara></note>'>
+<parameter>array</parameter>에 새로운 키를 할당합니다. 이 작업은 단순히 키를
+재배열할 뿐만 아니라, 이미 할당되어 있는 키를 제거할 수
+있습니다.</simpara></note>'>
 
 <!ENTITY note.no-windows '<note><simpara>이 함수는 윈도우 플랫폼에서는
 작동하지 않습니다.</simpara></note>'>
@@ -60,20 +62,25 @@ linkend="ini.register-globals">register_globals</link>의 기본값은
 커뮤니티에서는 이 지시어에 의존하지 않는 &link.superglobals; 방식의 사용을
 권합니다.</para></note>'>
 
+<!ENTITY note.is-superglobal "<note><para>이는 '자동전역' 변수입니다.
+스크립트의 모든 영역에서 사용할 수 있습니다. 함수나 메쏘드 안에서 접근하기
+위해서 <command>global $variable;</command>를 할 필요가
+없습니다.</para></note>">
+
 <!ENTITY note.superglobals '<note><title>자동 전역: 사용상
-주의</title><para>PHP 4.1.0부터, <varname>$_GET</varname>,
-<varname>$_POST</varname>, <varname>$_SERVER</varname> 등의 자동 전역 배열을
-사용할 수 있습니다. 더 자세한 내용은 매뉴얼 &link.superglobals; 섹션을
+주의</title><para><varname>$_GET</varname>, <varname>$_POST</varname>,
+<varname>$_SERVER</varname> 등의 자동 전역 배열은 PHP 4.1.0부터 사용할 수
+있습니다. 자세한 내용은 매뉴얼의 &link.superglobals; 섹션을
 읽어보십시오.</para></note>'>
 
-<!ENTITY note.uses-ob '<note><para>이 함수는 이 매개변수를 사용하여 내부적으로
+<!ENTITY note.uses-ob '<note><para>이 함수는 내부적으로 이 매개변수로
 출력 버퍼링을 사용합니다. 그래서 <function>ob_start</function> 콜백 함수
-내부에서 사용할 수 없습니다.</para></note>'>
+안에서 사용할 수 없습니다.</para></note>'>
 
 <!-- Tips -->
 
 <!ENTITY tip.fopen-wrapper '<tip><simpara><link linkend="ini.allow-url-fopen"
->fopen 래퍼</link>를 활성화하면, 이 함수의 파일명으로 URL을 사용할 수 있습니다.
+>fopen 래퍼</link>를 활성화하면, 파일명으로 URL을 사용할 수 있습니다.
 파일 이름을 지정하는 방법은 <function>fopen</function>을, 지원하는 URL 프로토콜
 목록은 <xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
@@ -84,35 +91,38 @@ linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
 <!ENTITY tip.ob-capture '<tip><simpara>어떠한 결과가 브라우저로 직접
 출력될 때, <link linkend="ref.outcontrol">출력 제어 함수</link>를
-이용해서 이 함수의 출력을 잡아내고, (예를 들면) <type>string</type>으로
+이용해서 이 함수의 출력을 캡쳐하여, (예를 들면) <type>string</type>으로
 저장할 수 있습니다.</simpara></tip>'>
 
-<!ENTITY tip.userlandnaming '<tip><simpara><xref linkend="userlandnaming" />을
-참고할 수 있습니다.</simpara></tip>'>
+<!ENTITY tip.userlandnaming '<tip><simpara>참고: <xref linkend="userlandnaming" />.</simpara></tip>'>
 
 
 <!-- Warnings -->
 
 <!ENTITY warn.escapeshell '<warning><para>사용자가 입력한 데이터를 이 함수로
 넘길 때는, <function>escapeshellarg</function>나
-<function>escapeshellcmd</function>를 사용하여, 사용자가 어떠한 명령을 실행하여
-시스템을 조작하지 못하게 하여야 합니다.</para></warning>'>
+<function>escapeshellcmd</function>를 이용하여, 사용자가 위험한 명령을
+실행하는 조작을 하지 못하게 해야 합니다.</para></warning>'>
 
 <!ENTITY warn.experimental '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 확장 모듈은
-<emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동 -- 함수의 이름과
-이 확장 모듈에 대한 모든 문서 자료에 대해서 -- 은 이후의 PHP 릴리즈에서
+<emphasis>실험적</emphasis>입니다. 이 확장 모듈의 작동(함수의 이름과
+이 확장 모듈에 관련된 모든 문서 자료)은 이후의 PHP 릴리즈에서
 예고 없이 변경될 수 있습니다. 이 확장 모듈의 사용은 사용자의 책임하에
 이루어집니다.</simpara></warning>'>
 
-<!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>This function is
-<emphasis>EXPERIMENTAL</emphasis>. The behaviour of this function, the
-name of this function, and anything else documented about this
-function may change without notice in a future release of PHP. 
-Use this function at your own risk.</simpara></warning>'>
+<!ENTITY warn.deprecated.removed-6-0-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은
+<emphasis>배제되었고</emphasis> PHP 6.0.0부터 <emphasis>제거됩니다</emphasis>.
+이 기능을 사용하지 않기를 권합니다.</simpara></warning>'>
 
-<!ENTITY ko.warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook">><simpara>이 함수는
+<!ENTITY warn.deprecated.function.removed-5-3-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
+<emphasis>배제되었고</emphasis> PHP 5.3.0부터
+<emphasis>제거됩니다</emphasis>.</simpara></warning>'>
+
+<!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <emphasis>실험적</emphasis>입니다. 이 함수의 작동, 함수의 이름,
-그리고 이 함수에 대해 모든 문서는 이후의 PHP 릴리즈에서 예고 없이
+그리고 관련된 모든 문서는 이후의 PHP 릴리즈에서 예고 없이
 변경할 수 있습니다. 이 함수의 사용에 관한 것은 사용자
 책임입니다.</simpara></warning>'>
 
@@ -123,42 +133,40 @@ linkend="ref.imap">IMAP</link>, <link linkend="ref.recode">recode</link>,
 없습니다.</simpara></warning>'>
 
 <!ENTITY warn.install.cgi '<warning><para>CGI 설정을 사용할 때, 서버가 여러
-공격에 노출됩니다. 이러한 공격을 막기 위해 <link linkend="security.cgi-bin">CGI
+공격에 노출됩니다. 그러한 공격을 막기 위해 <link linkend="security.cgi-bin">CGI
 보안 섹션</link>을 읽어보십시오.</para></warning>'>
 
 <!ENTITY note.magicquotes.gpc '<note><title>지시어 주의:
-magic_quotes_gpc</title><para>PHP 지시어 <link
+magic_quotes_gpc</title><para>지시어 <link
 linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>의 기본값은
 <literal>on</literal>입니다. 이것은 모든 GET, POST, COOKIE 데이터에 대해
 <function>addslashes</function>를 실행합니다. 이를 제거하기 위해서
 <function>stripslashes</function>를 사용할 수 있습니다.</para></note>'>
 
-<!ENTITY warn.no-win32-fopen-wrapper '<warning><para>PHP 4.3.0 이후의
+<!ENTITY warn.no-win32-fopen-wrapper '<warning><para>PHP 4.3.0 이전의
 Windows 버전 <literal>PHP</literal>에서는 이 함수를 이용하여 원격 파일에
 접근할 수 없습니다. <link linkend="ini.allow-url-fopen">allow_url_fopen</link>을
 활성화하여도 마찬가지입니다.
 </para></warning>'>
 
 <!ENTITY warn.ssl-non-standard '<warning><para>SSL을 사용할 때, 마이크로소프트
-IIS는 close_notify 식별자를 보내지 않은채 접속을 종료하는 프로토콜 오류가
-있습니다. PHP는 데이터의 마지막에 도달했을때, 이를 "SSL: Fatal Protocol Error"로
-보고합니다. 이를 다루기 위해서는 <link
+IIS는 <literal>close_notify</literal> 식별자를 보내지 않은채 접속을 종료하는
+프로토콜 오류가 있습니다. PHP는 데이터의 마지막에 도달했을때, 이를 "SSL: Fatal
+Protocol Error"로 보고합니다. 이를 처리하기 위해서는 <link
 linkend="ini.error-reporting">error_reporting</link> 레벨에 경고를 포함하지
 않도록 해야합니다.
-PHP 4.3.7 이후는 https:// 래퍼를 통해 스트림을 열 때, 문제가 있는 IIS 서버
-소프트웨어를 검출하여 경고를 하지 않습니다. ssl:// 소켓을 만들기 위해
+PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 열 때, 문제가 있는 IIS 서버
+소프트웨어를 검출하여 경고를 하지 않습니다. <literal>ssl://</literal> 소켓을 만들기 위해
 <function>fsockopen</function>을 사용한다면, 경고를 직접 검출하여 없애야
 합니다.</para></warning>'>
 
-<!ENTITY warn.undocumented.func '<warning><simpara>This function is
-currently not documented; only the argument list is
-available.</simpara></warning>'>
-
-<!ENTITY ko.warn.undocumented.func '<warning><simpara>이 함수는 현재
+<!ENTITY warn.undocumented.func '<warning><simpara>이 함수는 현재
 문서화 되어있지 않습니다; 인수 목록만을 제공합니다.</simpara></warning>'>
 
 
 <!-- Misc -->
+
+<!ENTITY no.function.parameters '<para>이 함수는 인수가 없습니다.</para>'>
 
 <!ENTITY example.outputs '<para>위 예제의 출력:</para>'>
 
@@ -177,19 +185,20 @@ linkend="ini.register-long-arrays">register_long_arrays</link> 지시어로
 
 <!ENTITY ini.shorthandbytes '<simpara><type>integer</type> 형이 사용될 때,
 바이트로 값을 측정합니다. <link linkend="faq.using.shorthandbytes">FAQ</link>에
-설명된 단축어를 사용할 수도 있습니다.</simpara>'>
+나와 있는 단축어를 사용할 수도 있습니다.</simpara>'>
 
 <!ENTITY info.deprecated.alias '하위 호환을 위하여, 다음의 권장하지 않는
 alias를 사용할 수 있습니다: '>
 
 <!ENTITY info.function.alias '이 함수는 다음 함수의 alias입니다: '>
 
-<!ENTITY info.function.alias.deprecated '<simpara>이 함수 alias는 권장되지
-않으며, 하위 호환을 위하여 남겨져 있습니다. 앞으로 PHP에서 제거될 수 있으므로
+<!ENTITY info.function.alias.deprecated '<simpara>이 함수 축약은 배제되었고,
+하위 호환을 위하여 남겨져 있습니다. 앞으로 PHP에서 제거될 수 있으므로
 사용하지 않기를 권합니다.</simpara>'>
 
 <!ENTITY ext.window.path.dll '이 확장이 동작하려면, <acronym>DLL</acronym>
-파일이 윈도우 시스템 <literal>PATH</literal>에 존재하여야 합니다. 이를 위하여
+파일이 윈도우 시스템 <literal>PATH</literal>에 존재하여야 합니다. 이를 위한
+정보는, 
 "<link linkend="faq.installation.addtopath">윈도우에서 PHP 디렉토리를 PATH에
 추가하기</link>"에 관한 <acronym>FAQ</acronym>을 참고하십시오. DLL 파일을 PHP
 폴더에서 윈도우 시스템 디렉토리로 복사하여도 작동하지만(시스템 디렉토리는
@@ -234,8 +243,13 @@ role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 <!ENTITY note.gd.2 '<note><simpara>이 함수는 GD 2.0.1 이상이 필요합니다.
 (2.0.28 이상을 권장합니다)</simpara></note>'>
 
-<!ENTITY gd.image.description
-'<varlistentry><term><parameter>font</parameter></term><listitem><para>내장
+<!ENTITY gd.image.description '<varlistentry><term><parameter>
+image</parameter></term><listitem><para><function>imagecreatetruecolor</function>
+등의 이미지 생성 함수에서 반환한 이미지
+자원.</para></listitem></varlistentry>'>
+
+<!ENTITY gd.font.description '<varlistentry><term><parameter>
+font</parameter></term><listitem><para>litin2 인코딩의 내장
 글꼴 1, 2, 3, 4, 5(큰 숫자가 큰 글꼴)나 <function>imageloadfont</function>로
 등록한 글꼴 식별자를 사용할 수 있습니다.</para></listitem></varlistentry>'>
 
@@ -261,6 +275,15 @@ role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 '<varlistentry><term><parameter>imap_stream</parameter></term><listitem><para><function>imap_open</function>이
 반환한 IMAP 스트림입니다.</para></listitem></varlistentry>'>
 
+<!-- mbstring notes -->
+
+<!ENTITY note.mbstring.encoding.internal '<note><para>내부 인코딩이나
+<function>mb_regex_encoding</function>으로 정의한 문자 인코딩을 이 함수의 문자
+인코딩으로 사용할 수 있습니다.</para></note>'>
+
+<!ENTITY mbstring.encoding.parameter '<para><parameter>encoding</parameter>
+인수는 문자 인코딩입니다. 생략하면, 내부 문자 인코딩값을 사용합니다.</para>'>
+
 <!-- MCVE notes -->
 
 <!ENTITY mcve.conn.description
@@ -268,6 +291,21 @@ role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 반환한 MCVE_CONN 리소스입니다.</para></listitem></varlistentry>'>
 
 <!-- Date and time entities -->
+<!ENTITY date.timezone.intro.title '<title>지원하는 시간대 목록</title>'>
+
+<!ENTITY date.timezone.intro "<para>여기에서 PHP에서 지원하는 모든 시간대
+목록을 확인할 수 있습니다. 이는 <function>date_default_timezone_set</function>
+등에서 사용합니다.</para><note><simpara>최신 버전의 시간대 데이터베이스는
+PECL의 <link xlink:href='&url.pecl.package.get;timezonedb' 
+xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>를 통해 설치할 수
+있습니다. 윈도우 사용자는, PECL4Win 사이트에서 컴파일된 DLL을 내려받을 수
+있습니다: <link xlink:href='&url.pecl.timezonedb.dll;'
+xmlns:xlink='http://www.w3.org/1999/xlink'>php_timezonedb.dll</link>.</simpara></note>">
+
+<!ENTITY date.timezone.bc '<simpara>여기에 있는 시간대 목록을 사용하지
+마십시오(UTC 제외). 하위 호환을 위해서 남겨져 있을 뿐입니다.</simpara>'>
+
+
 <!ENTITY date.timezone.errors.description '<para>모든 날짜/시간 함수 호출은
 시간대가 유효하지 않을 때 <constant>E_NOTICE</constant>를, 시스템 설정이나
 <varname>TZ</varname> 환경 변수를 사용할 때 <constant>E_STRICT</constant>를
@@ -286,7 +324,7 @@ role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 
 <!-- Dom Notes -->
 <!ENTITY dom.node.inserted '이 노드는 <link
-linkend="function.dom-domnode-appendchild">DOMNode->appendChild()</link> 등을
+linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 통하여 삽입하지 않으면 보여지지 않습니다.'>
 
 <!-- FileSystem entities -->
@@ -294,23 +332,31 @@ linkend="function.dom-domnode-appendchild">DOMNode->appendChild()</link> 등을
 <function>fsockopen</function>을 통하여 성공적으로 열려,
 <function>fclose</function>로 닫지 않은 유효한 파일이여야 합니다.</para>'>
 
+<!ENTITY fs.file.pointer '<para>일반적으로 <function>fopen</function>으로
+생성하는 파일 시스템 포인터 <type>resource</type>.</para>'>
+
+<!-- GNUPG -->
+<!ENTITY gnupg.identifier '<para><function>gnupg_init</function>나
+<classname>gnupg</classname> 호출로 생성되는 gnupg 식별자.</para>'>
+
+<!ENTITY gnupg.fingerprint '<para>fungerprint 키.</para>'>
+
+<!-- ODBC -->
+<!ENTITY odbc.connection.id '<para>ODBC 접속 식별자.
+<function>odbc_connect</function>를 참고하십시오.</para>'>
+
+<!ENTITY odbc.parameter.search '이 인수는 다음 검색 패턴을 허용합니다:
+"&#x25;"로 0개 이상의 문자, "_"로 하나의 문자.'>
+
 <!-- Oracle -->
 <!ENTITY oci.charset "<para>오라클 서버 버전 9.2 이상을 사용하면, 새로운 연결에
 사용할 <parameter>charset</parameter> 인수를 지정할 수 있습니다. 오라클 서버
-&lt; 9.2를 사용한다면, 이 인수는 무시되고, 대신 NLS_LANG 환경 변수를
-사용합니다.</para>">
+&lt; 9.2를 사용한다면, 이 인수는 무시되고, 대신 <literal>NLS_LANG</literal>
+환경 변수를 사용합니다.</para>">
 
 <!ENTITY oci.datatypes '<para>oci8 드라이버에서 수행하는 자료형 매핑에 대한
 상세는 <link linkend="oci8.datatypes">드라이버가 지원하는 자료형</link>을
 참고하십시오.</para>'>
-
-<!ENTITY oracle.deprecated '<para><link linkend="ref.oracle">oracle</link>
-확장은 권장되지 않습니다. <link linkend="ref.oci8">oci8</link>를
-사용하십시오.</para>'>
-
-<!ENTITY oracle.replacement.desc '권장되지 않는 <link
-linkend="ref.oracle">oracle</link>을 대신하여 <link
-linkend="ref.oci8">oci8</link>를 사용할 때는 다음을 고려하십시오: '>
 
 <!-- PCNTL Notes -->
 <!ENTITY pcntl.parameter.status '<para><parameter>status</parameter> 인수는
@@ -327,7 +373,7 @@ linkend="ref.oci8">oci8</link>를 사용할 때는 다음을 고려하십시오:
 <!ENTITY note.sm.disabled '<note><simpara>&sm.disabled;</simpara></note>'>
 
 <!ENTITY note.sm.uidcheck '<note><simpara><link
-linkend="features.safe-mode">안전 모드</link>일때, PHP는 조작하려는 파일이나
+linkend="features.safe-mode">안전 모드</link>일 때, PHP는 조작하려는 파일이나
 디렉토리가 실행중인 스크립트와 같은 UID(owner)인지
 확인합니다.</simpara></note>'>
 
@@ -365,8 +411,8 @@ linkend="ini.safe-mode-exec-dir">safe_mode_exec_dir</link> 안에서만 실행�
 <!ENTITY sm.uidcheck.dir '작업하려는 디렉토리가 실행 중인 스크립트와
 같은 UID (owner)를 가지고 있는지 확인합니다.'>
 
-<!ENTITY sm.disabled '이 함수는 <link linkend="features.safe-mode">안전
-모드</link>에서 사용할 수 없습니다.'>
+<!ENTITY sm.disabled '이 함수는 PHP가 <link linkend="features.safe-mode">안전
+모드</link>일 때는 사용할 수 없습니다.'>
 
 <!-- Common pieces in partintro-sections -->
 <!ENTITY no.config '<para>이 확장은 &php.ini; 설정이 존재하지 않습니다.</para>'>
@@ -584,7 +630,7 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 연결. 지정하지 않으면 <function>mysql_connect</function>로 연 마지막 연결을
 사용합니다. 연결이 없으면, 매개변수 없이 <function>mysql_connect</function>를
 호출하여 연결을 만듭니다. 연결이 성립되지 않으면
-<constant>E_WARNING</constant> 경고를
+<constant>E_WARNING</constant> 등급의 오류를
 생성합니다.</para></listitem></varlistentry>'>
 
 <!ENTITY mysql.result.description
@@ -611,35 +657,37 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 연결. 지정하지 않으면 <function>sybase_connect</function>로 연 마지막 연결을
 사용합니다. 연결이 없으면, 매개변수 없이 <function>sybase_connect</function>를
 호출하여 연결을 만듭니다. 연결이 성립되지 않으면
-<constant>E_WARNING</constant> 경고를
+<constant>E_WARNING</constant> 등급의 오류를
 생성합니다.</para></listitem></varlistentry>'>
 
 <!-- CPDF Notes -->
 <!ENTITY cpdf.ul '<para>선택 인수 <parameter>mode</parameter>는
-유니트 길이를 결정합니다. 0이나 없을 경우에는 페이지를 위한 특정값을
-기본 유니트로 사용합니다. 그렇지 않으면 현재 유니트를 무시하고
-포스트스크립트 상에서 좌표를 측정합니다.</para>'>
+단위 길이를 결정합니다. <literal>0</literal>이나 생략할 경우, 페이지에 지정된
+기본 단위를 사용합니다. 그 외에는, 현재 단위를 무시하고 좌표를
+포스트스크립트 점으로 측정합니다.</para>'>
 
 <!ENTITY cpdf.mode.description
 '<varlistentry><term><parameter>mode</parameter></term><listitem><para>선택적인
-<parameter>mode</parameter> 매개변수는 단위 길이를 결정합니다. 0이나 없을 경우,
-사용하는 페이지의 기본 단위를 사용합니다. 그 외에는 현재 단위에 관계 없이
-좌표를 postscript 포인트로 측정합니다.</para></listitem></varlistentry>'>
+<parameter>mode</parameter> 인수는 단위 길이를 결정합니다.
+<literal>0</literal>이나 생략할 경우, 페이지에 지정된 기본 단위를 사용합니다.
+그 외에는, 현재 단위에 관계 없이 좌표를 포스트스크립트 점으로
+측정합니다.</para></listitem></varlistentry>'>
 
 <!ENTITY cpdf.pdf-document.description
 '<varlistentry><term><parameter>pdf_document</parameter></term><listitem><para><function>cpdf_open</function>이
 반환한 문서 핸들.</para></listitem></varlistentry>'>
 
 <!-- Xattr entities -->
-<!ENTITY xattr.namespace '<para>확장 속성은 user와 root의 이름공간을 가집니다.
-user 이름공간은 모든 사용자가 사용할 수 있지만, root 이름공간은 root 권한을
-가진 사용자만 사용할 수 있습니다. xattr은 기본적으로 user 이름공간에서
+<!ENTITY xattr.namespace '<para>확장 속성은 user와 root의 두가지 이름공간을
+가집니다. user 이름공간은 모든 사용자가 사용할 수 있지만, root 이름공간은 root
+권한을 가진 사용자만 사용할 수 있습니다. xattr은 기본적으로 user 이름공간에서
 실행하지만, <parameter>flags</parameter> 인자를 사용하여 변경할 수
 있습니다.</para>'>
 
 <!-- Notes for IPv6 -->
-<!ENTITY ipv6.brackets '<note><simpara>숫자로 이루어진 IPv6 주소(예. fe80::1)를
-지정할 때는 IP를 대괄호로 감싸줘야합니다. 예를 들면, 
+<!ENTITY ipv6.brackets '<note><simpara>숫자로 이루어진 IPv6 주소(예.
+<literal>fe80::1</literal>)를
+지정할 때는 IP를 대괄호로 감싸야 합니다. 예를 들면, 
 <literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
 
 <!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0.0</literal>부터
@@ -657,19 +705,23 @@ user 이름공간은 모든 사용자가 사용할 수 있지만, root 이름공
 추가되었습니다.</simpara></note>'>
 
 <!ENTITY tidy.conf-enc '<para><parameter>config</parameter> 인수는 배열이나
-문자열을 전달할 수 있습니다. 문자열을 넘기면, 설정 파일의 이름을 의미합니다.
+문자열을 전달할 수 있습니다. 문자열을 넘기면, 설정 파일의 이름으로 해석합니다.
 그 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <link
 xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>를 확인하십시오.
 <parameter>encoding</parameter> 인수는 입출력 문서의 인코딩을 지정합니다.
 가능한 <parameter>encoding</parameter> 값은:
-ascii, latin1, raw, utf8, iso2022, mac, win1252, ibm858, utf16,
-utf16le, utf16be, big5, shiftjis.</para>'>
+<literal>ascii</literal>, <literal>latin0</literal>,
+<literal>latin1</literal>, <literal>raw</literal>, <literal>utf8</literal>,
+<literal>iso2022</literal>, <literal>mac</literal>,
+<literal>win1252</literal>, <literal>ibm858</literal>, <literal>utf16</literal>,
+<literal>utf16le</literal>, <literal>utf16be</literal>,
+<literal>big5</literal>, <literal>shiftjis</literal>.</para>'>
 
 <!-- Snippets for the installation section -->
-<!ENTITY warn.apache2.compat '<warning><para>제품 환경에서 아파치2 쓰레드 MPM
-사용을 권하지 않습니다. prefork MPM을 사용하거나, Apache1을 사용하십시오. 그
-이유는 <link linkend="faq.installation.apache2">아파치2 쓰레드 MPM</link>에서
-관련 FAQ를 읽어보십시오.</para></warning>'>
+<!ENTITY warn.apache2.compat '<warning><para>제품 환경에서 아파치 2 쓰레드 MPM
+사용을 권하지 않습니다. prefork MPM을 사용하거나, Apache 1을 사용하십시오.
+이유는 관련 FAQ <link linkend="faq.installation.apache2">아파치2 쓰레드
+MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 
 <!ENTITY note.apache.slashes '<note><simpara>윈도우 상에서 아파치 설정 파일에
 경로값을 추가할 때는 다음과 같이 모든 백슬래쉬를 슬래쉬로 바꿔야 합니다:
@@ -712,9 +764,9 @@ utf16le, utf16be, big5, shiftjis.</para>'>
 
 <!ENTITY note.runkit.sandbox '<note><simpara>Sandbox
 지원(<function>runkit_linux</function>, <function>runkit_lint_file</function>,
-Runkit_Sandbox 클래스에 필요합니다)은 PHP 5.1이나 특별히 패치된 PHP 5.0에서
+<classname>Runkit_Sandbox</classname> 클래스에 필요합니다)은 PHP 5.1이나 특별히 패치된 PHP 5.0에서
 쓰레드 안전(therad safety)을 활성화해야 합니다. 자세한 정보는 runkit 패키지에
-포함된 README 파일을 참고하십시오.</simpara></note>'>
+포함된 <filename>README</filename> 파일을 참고하십시오.</simpara></note>'>
 
 <!ENTITY note.runkit.internal-override '<note><simpara>기본적으로 사용자
 함수만 삭제하거나, 이름을 바꾸거나, 변경할 수 있습니다. 내장 함수를 덮어쓰려면
@@ -744,20 +796,20 @@ linkend="http.request.options">요청 옵션</link>'>
 옵션들</link>'>
 <!ENTITY link.http.request.info '<link linkend="http.request.info">요청/응답
 정보</link>'>
-<!ENTITY returns.http.response '성공시 HTTP 응답을 문자열로, 실패시 FALSE를
+<!ENTITY returns.http.response '성공시 HTTP 응답을 문자열로, 실패시 &false;를
 반환합니다.'>
 <!ENTITY returns.http.false.orexits '성공시 &false;를 반환하거나 
 <emphasis>종료</emphasis>합니다.'>
 <!ENTITY http.request.affects '다음 요청 방식에만 적용됩니다:'>
 <!ENTITY http.request.affects.any '모든 요청 방식에 적용됩니다.'>
-<!ENTITY http.response.class.php51 'PHP-5.1 이상을 사용할 때 <link
-linkend="http.HttpResponse"><classname>HttpResponse</classname></link>
+<!ENTITY http.response.class.php51 'PHP 5.1.0 이상을 사용할 때 <link
+linkend="class.httpresponse"><classname>HttpResponse</classname></link>
 클래스'>
 <!ENTITY http.maynotwork.SAPI '다음 SAPI에서는 정상 작동하지 않을 수
 있습니다:'>
 <!ENTITY http.content.disposition '데이터가 파일 등에서 전송해야 할 때
 <literal>Content-Disposition</literal> 헤더가 매우 유용합니다. 반드시
-클라이언트/사용자에 의해 &quot;저장&quot;됩니다. (브라우저에서 &quot;다른
+클라이언트/사용자에 의해 &quot;저장&quot;됩니다. (브라우저의 &quot;다른
 이름으로 저장&quot; 창을 띄웁니다)'>
 <!ENTITY http.use.ob_start '<function>ob_start</function>와 사용합니다.'>
 
@@ -765,10 +817,10 @@ linkend="http.HttpResponse"><classname>HttpResponse</classname></link>
 계산했거나 정의한 <literal>ETag</literal>와 <literal>Last-Modified</literal>은
 다시 계산되어 적용될 수 있습니다.</simpara></note>'>
 <!ENTITY note.http.throttling.yields.process '<note><simpara>엔티티를 완전히
-전송할 때까지 현재 프로세스의 각 쓰레드에 양보하는 간단한 속도제어를
+전송할 때까지 현재 프로세스나 쓰레드에 양보하는 간단한 속도제어를
 제공합니다.</simpara></note>'>
 <!ENTITY note.http.send.API '<note><simpara>이 함수는 다음 함수와 함께
-사용합니다: <function>http_send_data</function>,
+사용해야 합니다: <function>http_send_data</function>,
 <function>http_seld_file</function> &listendand;
 <function>http_send_stream</function>.</simpara></note>'>
 <!ENTITY note.http.send.API.mayuse '<note><simpara>이 함수는 다음 함수와 함께
@@ -811,4 +863,54 @@ linkend="svn.constants.type">type 상수</link>를 참고하십시오.'>
 발생합니다.'>
 <!ENTITY imagick.imagickpixeliterator.throws '오류시에
 ImagickPixenIterratorException이 발생합니다.'>
+
+<!ENTITY note.openssl.cnf '<note
+xmlns="http://docbook.org/ns/docbook"><simpara>이 함수가 제대로 작동하려면
+유효한 <filename>openssl.cnf</filename>을 설치해야 합니다. 자세한 정보는 <link
+linkend="openssl.installation">설치 섹션</link>의 주석을
+살펴보십시오.</simpara></note>'>
+<!ENTITY note.openssl.param-notext '<para
+xmlns="http://docbook.org/ns/docbook">선택 인수
+<parameter>notext</parameter>는 출력 정밀도에 영향을 미칩니다; &false;이면
+추가적인 정보가 출력에 포함됩니다. <parameter>notext</parameter>의 기본값은
+&true;입니다.</para>'>
+
+<!-- COM/Dotnet -->
+<!ENTITY com.variant-arith '<note
+xmlns="http://docbook.org/ns/docbook"><para>variant 연산 함수와 마찬가지로, 이
+함수의 인수로는 PHP 자료형(정수, 문자열, 부동소수점, 불린, &null;)이나 COM,
+VARIANT, DOTNET 클래스의 인스턴스를 사용할 수 있습니다. PHP 자료형은 <xref
+linkend="class.variant"/> 클래스 생성자와 같은 방식으로 vriant로 변환됩니다.
+COM과 DOTNET 객체는 기본 프로퍼티 값을 variant 값으로
+사용합니다.</para><para>variant 연산 함수는 비슷한 이름의 COM 라이브러리
+함수의 래퍼입니다; 이 함수들에 관한 자세한 정보는 MSDN 라이브러리를
+참조하십시오. PHP 함수 이름은 차이가 있습니다; 예를 들어, PHP에서
+<function>variant_add</function>는 MSDN 문서의 <literal>VarAdd()</literal>에
+해당합니다.</para></note>'>
+<!ENTITY com.use-oo-instead '<note
+xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5에 존재하지
+않습니다; 프로퍼티에 접근하거나 메쏘드를 호출하려면, 일반적인 OO 문법을
+사용해야 합니다.</simpara></note>'>
+
+<!-- phar -->
+<!ENTITY phar.write '<note xmlns="http://docbook.org/ns/docbook"><para>이
+메쏘드가 <classname>Phar</classname> 객체에 작용하려면 &php.ini; 설정
+<literal>phar.readonly</literal>을 <literal>0</literal>으로 설정해야 합니다.
+그렇지 않으면, <classname>PharException</classname>이
+발생합니다.</para></note>'>
+
+<!ENTITY phar.removed.pharcompress '<note
+xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0부터
+제거되었습니다. 대신, <function>Phar::compress</function>,
+<function>Phar::decompress</function>,
+<function>Phar::compressFiles</function>,
+<function>Phar::decompressFiles</function>를 사용할 수
+있습니다.</para></note>'>
+
+<!ENTITY phar.removed.pharfileinfocompress '<note
+xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0부터
+제거되었습니다. 대신, <function>PharFileInfo::isCompressed</function>,
+<function>PharFileInfo::decompress</function>,
+<function>PharFileInfo::compress</function>를 사용할 수
+있습니다.</para></note>'>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.76 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.101 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.variables" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>변수</title>
@@ -25,13 +25,26 @@
     </simpara>
    </note>
 
+   <note>
+    <simpara>
+     <literal>$this</literal>은 특수 변수로, 할당할 수 없습니다.
+    </simpara>
+   </note>
+
+   &tip.userlandnaming;
+
+   <para>
+    변수 관련 함수는, <link linkend="ref.var">변수 함수 레퍼런스</link>를
+    참고하십시오.
+   </para>
+
    <para>
     <informalexample>
      <programlisting role="php"> 
 <![CDATA[
 <?php
-$var = "Bob";
-$Var = "Joe";
+$var = 'Bob';
+$Var = 'Joe';
 echo "$var, $Var";      // outputs "Bob, Joe"
 
 $4site = 'not yet';     // invalid; starts with a number
@@ -44,7 +57,7 @@ $täyte = 'mansikka';    // valid; 'ä' is ASCII 228.
    </para>
 
    <para>
-    PHP 3에서 변수는 항상 값에 의해 지정되야 한다(assinged by value). 
+    기본값으로, 변수는 항상 값에 의해 할당되어야 합니다.
     변수를 표현식으로 지정할때에 원래 표현식의 모든 값이 목표 변수로 복사된다.
     이 말의 의미는 예를 들면, 어떤 변수값을 다른 변수로 지정한 후에,
     그 변수중 어떤 하나를 변경하는것이 다른 변수에 영향을 미치지 않는다는
@@ -52,16 +65,11 @@ $täyte = 'mansikka';    // valid; 'ä' is ASCII 228.
     <link linkend="language.expressions">표현식</link>을 참고.
    </para>
    <para>
-    PHP 4에서는 이와 다른 방법으로 변수에 값이 지정된다:
+    또한, PHP에서는 이와 다른 방법으로 변수에 값이 지정된다:
     <link linkend="language.references">참조에 의한 지정</link>. 
     이 용어의 의미는 새로운 변수가 원래 변수를 참조한다는 것이다.(즉,
     "원래 변수의 별명이 되는것" 이나 "가리키는 것")
     새 변수의 변경은 원래 변수에 영향을 미치고, 그 반대도 가능하다.
-    이것은 복사가 수행되지 않는다는 것을 의미한다. 따라서, 지정은
-    매우 신속하게 이루어진다. 하지만, 속도향상은 견고한 루프나 
-    거대한 <link linkend="language.types.array">배열</link>이나
-    <link linkend="language.types.object">객체</link>를 지정할때만
-    효과가 있을것이다.
    </para>
    <para>
     참조에 의한 지정을 위해서는, 단순히 지정되는(소스 변수) 변수의 시작부분에
@@ -103,6 +111,38 @@ $bar = &test();    // Invalid.
      </programlisting>
     </informalexample>
    </para>
+
+   <para>
+    PHP에서 변수를 초기화 할 필요는 없지만, 초기화는 매우 좋은 습관입니다.
+    초기화되지 않은 변수는 형에 따라서 기본값을 가집니다 - &false;, 영, 빈
+    문자열, 빈 배열.
+   </para>
+   <para>
+    <example>
+     <title>초기화되지 않은 변수의 기본값</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+echo ($unset_bool ? "true" : "false"); // false
+$unset_int += 25; // 0 + 25 => 25
+echo $unset_string . "abc"; // "" . "abc" => "abc"
+$unset_array[3] = "def"; // array() + array(3 => "def") => array(3 => "def")
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+   <para>
+    초기화되지 않은 변수의 기본값에 의존하는 것은, 같은 변수명을 사용하는
+    파일을 포함하는 등에서 문제가 될 수 있습니다. 또한, <link
+     linkend="ini.register-globals">register_globals</link>를 켜놓은 상태에서
+    주요한 <link linkend="security.globals">보안 위험</link>입니다. 초기화되지
+    않은 변수를 사용할 때 <link
+     linkend="errorfunc.constants.errorlevels.e-notice">E_NOTICE</link> 등급의
+    오류가 발생하지만, 초기화되지 않은 배열에 요소를 추가할 때는 발생하지
+    않습니다. <function>isset</function> 언어 구조로 변수가 초기화되었는지
+    확인 할 수 있습니다.
+   </para>
   </sect1>
 
   <sect1 xml:id="language.variables.predefined">
@@ -143,7 +183,7 @@ $bar = &test();    // Invalid.
     4.1.0 버전 이후에, PHP는 웹서버, 환경, 유저 입력과 관련된 미리 선언된 배열 
     변수 집합을 추가적으로 제공한다. 이 새로운 배열은 자동적으로 전역화되기 때문에
     더 특별해진다. 즉, 자동적으로 모든 유효영역안에서 적용이 가능하다. 이런 이유로,
-    이런 변수를 '자동전역변수' 또는 '슈퍼전역변수' 이라고 불리기도 한다. (PHP에서는
+    이런 변수를 '자동전역변수'라고 한다. (PHP에서는
     사용자-선언 슈퍼전역변수가 허용되지 않는다.) 슈퍼전역변수는 아래에 열거한다.
     하지만, 이 변수 목록과 논의는 <link linkend="reserved.variables">예약된 미리선언된 변수</link>섹션을
     참고한다. 또한 구버전의 미리선언된 변수(<varname>$HTTP_*_VARS</varname>)가 아직도
@@ -155,8 +195,15 @@ $bar = &test();    // Invalid.
    <note>
     <title>가변 변수</title>
     <para>
-     슈퍼전역변수는 
+     슈퍼전역변수는 함수나 클래스 메쏘드 안에서
      <link linkend="language.variables.variable">가변 변수</link>로는 쓰일수 없다.
+    </para>
+   </note>
+
+   <note>
+    <para>
+     자동 전역과 HTTP_*_VARS가 동시에 존재할 수 있습니다; 하지만 동일하지
+     않으며, 하나를 변경해도 다른 하나는 바뀌지 않습니다.
     </para>
    </note>
 
@@ -164,120 +211,6 @@ $bar = &test();    // Invalid.
     <link linkend="ini.variables-order">variables_order</link>내의 특정 변수들이
     설정되어있지 않으면, 적합한 PHP의 미리선언된 배열도 비워있게 된다.
    </para>
-
-   <variablelist xml:id="language.variables.superglobals">
-    <title>PHP 슈퍼전역변수</title>
-    <varlistentry>
-     <term><link linkend="reserved.variables.globals">$GLOBALS</link></term>
-     <listitem>
-      <simpara>
-       스트립트의 전역 유효영역에서 쓸수있는 모든 변수에 대한 참조를 포함한다.
-       이 배열의 key는 전역 변수들의 이름이다.
-       PHP 3 이래로 <varname>$GLOBALS</varname>가 존재해왔다.
-      </simpara>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.server">$_SERVER</link></term>
-     <listitem>
-      <simpara>
-       웹서버나, 현재 스크립트의 실행환경에 직접적으로 관련되어 설정되는
-       변수이다. 구버전의 <varname>$HTTP_SERVER_VARS</varname> 배열과 동일하다.
-       (이 변수는 현재 유효하지만, 추천하지는 않는다)
-      </simpara>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.get">$_GET</link></term>
-     <listitem>
-      <simpara>
-       HTTP GET에 의해 스크립트로 제공되는 변수이다. 
-       구버전의 <varname>$HTTP_GET_VARS</varname> 배열과 동일하다.
-       (이 변수는 현재 유효하지만, 추천하지는 않는다)
-      </simpara>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.post">$_POST</link></term>
-     <listitem>
-      <simpara>
-       HTTP POST에 의해 스크립트로 제공되는 변수이다.
-       구버전의 <varname>$HTTP_POST_VARS</varname> 배열과 동일하다.
-       (이 변수는 현재 유효하지만, 추천하지는 않는다)
-      </simpara>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.cookies">$_COOKIE</link></term>
-     <listitem>
-      <simpara>
-       HTTP 쿠키에 의해 스크립트로 제공되는 변수이다.
-       구버전의 <varname>$HTTP_COOKIE_VARS</varname> 배열과 동일하다.
-       (이 변수는 현재 유효하지만, 추천하지는 않는다)
-      </simpara>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.files">$_FILES</link></term>
-     <listitem>
-      <simpara>
-       HTTP post 파일 업로드에 의해 스크립트로 제공되는 변수이다.
-       구버전의 <varname>$HTTP_POST_FILES</varname> 배열과 동일하다.
-       (이 변수는 현재 유효하지만, 추천하지는 않는다). 더 자세한 정보는
-       <link linkend="features.file-upload.post-method">POST 메소드 업로드</link>를
-       참고하도록 한다.
-      </simpara>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.environment">$_ENV</link></term>
-     <listitem>
-      <simpara>
-       환경에 의해 스크립트로 제공되는 변수이다.
-       구버전의 <varname>$HTTP_ENV_VARS</varname> 배열과 동일하다.
-       (이 변수는 현재 유효하지만, 추천하지는 않는다)
-      </simpara>
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.request">$_REQUEST</link></term>
-     <listitem>
-      <simpara>
-       GET, POST, COOKIE 입력 메카니즘을 통해 스크립트로 제공되는 변수이다.
-       이 메카니즘은 신용될수는 없다. 이 배열 안에 포함된 존재하는 변수와 변수의 나열 순서는
-       PHP <link linkend="ini.variables-order">variables_order</link> 설정 디렉티브에
-       의해 정의된다. 이 배열은 PHP 4.1.0 이전 버전에서 동일한 변수가 존재하지 않는다.
-       <function>import_request_variables</function>도 참고.
-      </simpara>
-      <caution>
-       <simpara>
-        PHP 4.3.0이후, <varname>$_REQUEST</varname> 안에 FILE 정보를 갖는
-        <varname>$_FILES</varname> 변수가 존재하지 않게 되었다.
-       </simpara>
-      </caution>
-      <note>
-       <simpara>
-        <link linkend="features.commandline">커맨드 라인</link>에서 수행될때,
-        이 변수는 <varname>argv</varname>와 <varname>argc</varname> 엔트리에 포함되지
-        <emphasis>않는다</emphasis>; 이 변수들은 <varname>$_SERVER</varname> 배열에
-        존재한다.
-       </simpara>
-      </note> 
-     </listitem>
-    </varlistentry>
-    <varlistentry>
-     <term><link linkend="reserved.variables.session">$_SESSION</link></term>
-     <listitem>
-      <simpara>
-       스크립트의 세션에 등록되는 변수이다. 
-       구버전의 <varname>$HTTP_SESSION_VARS</varname> 배열과 동일하다.
-       (이 변수는 현재 유효하지만, 추천하지는 않는다). 더 자세한 정보는
-       <link linkend="ref.session">Session handling functions</link>섹션을 참고.
-      </simpara>
-     </listitem>
-    </varlistentry>
-   </variablelist>
-
   </sect1>
 
 
@@ -294,7 +227,7 @@ $bar = &test();    // Invalid.
 <![CDATA[
 <?php
 $a = 1;
-include "b.inc";
+include 'b.inc';
 ?>
 ]]>
     </programlisting>
@@ -386,7 +319,7 @@ $b = 2;
 
 function Sum()
 {
-    $GLOBALS["b"] = $GLOBALS["a"] + $GLOBALS["b"];
+    $GLOBALS['b'] = $GLOBALS['a'] + $GLOBALS['b'];
 } 
 
 Sum();
@@ -420,7 +353,8 @@ function test_global()
     
     // 자동 전역은 어떠한 영역에서도 사용할 수 있고,
     // 'global'이 필요하지 않습니다. 자동 전역은
-    // PHP 4.1.0부터 사용할 수 있습니다.
+    // PHP 4.1.0부터 사용할 수 있고, HTTP_POST_VARS는
+    // 배제되었습니다.
     echo $_POST['name'];
 }
 ?>
@@ -444,7 +378,7 @@ function test_global()
       <programlisting role="php">
 <![CDATA[
 <?php
-function Test ()
+function Test()
 {
     $a = 0;
     echo $a;
@@ -508,7 +442,7 @@ function Test()
     $count++;
     echo $count;
     if ($count < 10) {
-        Test ();
+        Test();
     }
     $count--;
 }
@@ -548,7 +482,7 @@ function foo() {
    <sect2 xml:id="language.variables.scope.references">
     <title>전역 변수와 정적 변수의 참조</title>
     <simpara>
-     <literal>PHP 4</literal>를 작동하는 Zend Engine 1은 <link
+     PHP 4를 작동하는 Zend Engine 1은 <link
       linkend="language.variables.scope.static">static</link>과 <link
       linkend="language.variables.scope.global">global</link>을 <link
       linkend="language.references">참조</link>를 통한 변수 변경자로
@@ -603,7 +537,7 @@ object(stdClass)(0) {
 function &get_instance_ref() {
     static $obj;
 
-    echo "Static object: ";
+    echo 'Static object: ';
     var_dump($obj);
     if (!isset($obj)) {
         // Assign a reference to the static variable
@@ -616,7 +550,7 @@ function &get_instance_ref() {
 function &get_instance_noref() {
     static $obj;
 
-    echo "Static object: ";
+    echo 'Static object: ';
     var_dump($obj);
     if (!isset($obj)) {
         // Assign the object to the static variable
@@ -672,7 +606,7 @@ Static object: object(stdClass)(1) {
     <programlisting role="php">
 <![CDATA[
 <?php
-$a = "hello";
+$a = 'hello';
 ?>
 ]]>
     </programlisting>
@@ -688,7 +622,7 @@ $a = "hello";
     <programlisting role="php">
 <![CDATA[
 <?php
-$$a = "world";
+$$a = 'world';
 ?>
 ]]>
     </programlisting>
@@ -741,18 +675,17 @@ echo "$a $hello";
    
    <warning>
     <simpara>
-     가변 변수가 PHP의 <link linkend="language.variables.superglobals">슈퍼전역 배열</link>로
-     사용될수 없음을 주의해야 한다. 
-     <varname>${$_GET}</varname>와 같은 변수를 사용할수 없음을 의미한다. 슈퍼전역변수의
-     유효성과 구버전의 <varname>HTTP_*_VARS</varname>를 제어하는 방법을 원한다면,
-     그 변수들을 <link linkend="language.references">참조</link>하려 할것이다.
+     가변 변수로 함수나 클래스 메쏘드 안에서 PHP <link
+      linkend="language.variables.superglobals">자동 전역 배열</link>을
+     사용할 수 없음에 주의하십시오. <literal>$this</literal> 변수도 특수
+     변수로써, 동적으로 참조할 수 없습니다.
     </simpara>
    </warning>
   
   </sect1>
 
   <sect1 xml:id="language.variables.external">
-   <title>PHP 외부 출신의 변수들</title>
+   <title>외부에서 오는 변수들</title>
    
    <sect2 xml:id="language.variables.external.form">
     <title>HTML 폼 (GET과 POST)</title>
@@ -797,7 +730,7 @@ echo "$a $hello";
    import_request_variables('p', 'p_');
    echo $p_username;
 
-// PHP 3부터 사용 가능. PHP 5.0.0부터, 이러한 긴 예약 변수는
+// PHP 6부터 사용 불가. PHP 5.0.0부터, 이러한 긴 예약 변수는
 // register_long_arrays 지시어로 비활성화 할 수 있습니다.
 
    echo $HTTP_POST_VARS['username'];
@@ -832,7 +765,7 @@ echo "$a $hello";
     <para>
      전에 설명한대로, PHP 4.2.0 이전에는 
      <link linkend="ini.register-globals">register_globals</link>의 기본값이
-     <emphasis>on</emphasis>이었고, PHP 3에서는 항상 on이었다. PHP 커뮤니티는
+     <emphasis>on</emphasis>이였다. PHP 커뮤니티는
      그 디렉티브 값이 <emphasis>off</emphasis>가 되어있다고 가정하고 적절하게
      코딩하는 것을 추천하기 때문에 이 디렉티브값에 연연할 필요가 없다.
     </para>
@@ -861,15 +794,13 @@ echo "$a $hello";
       <programlisting role="php">
 <![CDATA[
 <?php
-if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
+if ($_POST) {
     echo '<pre>';
-    print_r($_POST);
-    echo '<a href="'. $_SERVER['PHP_SELF'] .'">다시 시도하십시오.</a>';
-
+    echo htmlspecialchars(print_r($_POST, true));
     echo '</pre>';
-} else {
+}
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="" method="post">
     이름: <input type="text" name="personal[name]" /><br />
     메일: <input type="text" name="personal[email]" /><br />
     맥주: <br />
@@ -879,19 +810,11 @@ if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
         <option value="stuttgarter">Stuttgarter Schwabenbräu</option>
     </select><br />
     <input type="hidden" name="action" value="submitted" />
-    <input type="submit" name="submit" value="전송합니다!" />
+    <input type="submit" value="전송합니다!" />
 </form>
-<?php
-}
-?>
 ]]>
       </programlisting>
      </example>
-    </para>
-
-    <para>
-     PHP 3에서, 배열 폼 변수의 사용은 1차원 배열로만 제한된다.
-     PHP 4에서는 이런 제약이 적용되지 않는다.
     </para>
 
     <sect3 xml:id="language.variables.external.form.submit">
@@ -947,8 +870,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'submitted') {
      <programlisting role="php">
 <![CDATA[
 <?php
-  setcookie("MyCookie[foo]", "Testing 1", time()+3600);
-  setcookie("MyCookie[bar]", "Testing 2", time()+3600);
+  setcookie("MyCookie[foo]", 'Testing 1', time()+3600);
+  setcookie("MyCookie[bar]", 'Testing 2', time()+3600);
 ?>
 ]]>
      </programlisting>
@@ -977,7 +900,7 @@ if (isset($_COOKIE['count'])) {
 } else {
     $count++;
 }
-setcookie("count", $count, time()+3600);
+setcookie('count', $count, time()+3600);
 setcookie("Cart[$count]", $item, time()+3600);
 ?>
 ]]>

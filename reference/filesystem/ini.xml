@@ -1,44 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
 <section xml:id="filesystem.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
  <para>
   <table>
    <title>파일시스템과 스트림 설정 옵션</title>
-   <tgroup cols="3">
+   <tgroup cols="4">
     <thead>
      <row>
       <entry>이름</entry>
       <entry>기본값</entry>
       <entry>변경권한</entry>
+      <entry>변경점</entry>
      </row>
     </thead>
     <tbody>
      <row>
       <entry>allow_url_fopen</entry>
       <entry>"1"</entry>
-      <entry>PHP_INI_SYSTEM</entry>
+      <entry>PHP_INI_ALL</entry>
+      <entry>PHP &lt;= 4.3.4에서 PHP_INI_ALL. PHP &lt; 6에서 PHP_INI_SYSTEM.
+       PHP 4.0.4부터 사용 가능.</entry>
+     </row>
+     <row>
+      <entry>allow_url_include</entry>
+      <entry>"0"</entry>
+      <entry>PHP_INI_ALL</entry>
+      <entry>PHP 5에서 PHP_INI_SYSTEM. PHP 5.2.0부터 사용 가능.</entry>
      </row>
      <row>
       <entry>user_agent</entry>
       <entry>NULL</entry>
       <entry>PHP_INI_ALL</entry>
+      <entry>PHP 4.3.0부터 사용 가능.</entry>
      </row>
      <row>
       <entry>default_socket_timeout</entry>
       <entry>"60"</entry>
       <entry>PHP_INI_ALL</entry>
+      <entry>PHP 4.3.0부터 사용 가능.</entry>
     </row>
      <row>
       <entry>from</entry>
-      <entry>NULL</entry>
-      <entry>??</entry>
+      <entry>""</entry>
+      <entry>PHP_INI_ALL</entry>
+      <entry></entry>
      </row>
      <row>
       <entry>auto_detect_line_endings</entry>
-      <entry>"Off"</entry>
+      <entry>"0"</entry>
       <entry>PHP_INI_ALL</entry>
+      <entry>PHP 4.3.0부터 사용 가능.</entry>
      </row>
     </tbody>
    </tgroup>
@@ -88,6 +101,25 @@
     </listitem>
    </varlistentry>
 
+   <varlistentry xml:id="ini.allow-url-include">
+    <term>
+     <parameter>allow_url_include</parameter>
+     <type>boolean</type>
+    </term>
+    <listitem>
+     <para>
+      이 옵션은 다음 함수에서 URL을 사용한 fopen 래퍼를 허용합니다:
+      <function>include</function>, <function>include_once</function>,
+      <function>require</function>, <function>require_once</function>.
+     </para>
+     <note>
+      <para>
+       이 설정은 allow_url_fopen이 on이여야 합니다.
+      </para>
+     </note>
+    </listitem>
+   </varlistentry>
+
    <varlistentry xml:id="ini.user-agent">
     <term>
      <parameter>user_agent</parameter>
@@ -95,7 +127,7 @@
     </term>
     <listitem>
      <para>
-      <literal>PHP</literal>가 전송하는 유저 에이전트를 지정합니다.
+      PHP가 전송하는 유저 에이전트를 지정합니다.
      </para>
     </listitem>
    </varlistentry>
@@ -119,7 +151,7 @@
 
    <varlistentry xml:id="ini.from">
     <term>
-     <parameter>from="joe@example.com"</parameter>
+     <parameter>from</parameter>
      <type>string</type>
     </term>
     <listitem>

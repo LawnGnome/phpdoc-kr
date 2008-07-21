@@ -1,164 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.1 Maintainer: progcom Status: ready -->
-  <refentry xml:id="pcre.pattern.modifiers" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>패턴 변경자</refname>
-    <refpurpose>정규표현식 패턴에 존재하는 변경자의 설명</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-    <para>
-     아래 목록은 현재 존재하는 PCRE 변경자입니다. 괄호 안의 이름은
-     각 변경자에 대한 PCRE 내부의 이름입니다.
-    </para>
-    <para>
-     <blockquote>
-      <variablelist>
-       <varlistentry>
-    <term><emphasis>i</emphasis> (PCRE_CASELESS)</term>
-    <listitem>
-     <simpara>
-      이 변경자를 지정하면, 패턴의 문자는 대문자와 소문자를
-      구별하지 않습니다.
-     </simpara>
-    </listitem>
-       </varlistentry>
-       <varlistentry>
-    <term><emphasis>m</emphasis> (PCRE_MULTILINE)</term>
-    <listitem>
-     <simpara>
-      기본적으로, PCRE는 주어진 문자열을 하나의 "줄"로 취급합니다.
-      (실제로 몇개의 라인을 가지더라도) "줄 시작" 메타문자(^)는
-      문자열의 처음만을 인식하며, "줄 끝" 메타문자($)는 문자열의
-      끝이나 (<emphasis>D</emphasis> 변경자가 지정되지 않는 한)
-      마지막 뉴라인의 직전만을 인식합니다. 이는 펄과 같습니다.
-     </simpara>
-     <simpara>
-      이 변경자를 지정하면, "줄 시작"과 "줄 끝"은 주어진 문자열의
-      모든 뉴라인 직후와 직전을 인식합니다. respectively, as
-      well as at the very start and end. 이는 펄의 /m 변경자와
-      동일합니다. 주어진 문자열에 "\n" 문자가 존재하지 않거나
-      ^나 $ 패턴이 일어나지 않으면 이 변경자는 아무런 효과가 없습니다.
-     </simpara>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><emphasis>s</emphasis> (PCRE_DOTALL)</term>
-    <listitem>
-     <simpara>
-      이 변경자가 지정되면, 패턴의 점 메타문자는 뉴라인을 포함하는
-      모든 문자를 인식합니다. 지정하지 않으면, 뉴라인은 제외됩니다.
-      이 변경자는 펄의 /s 변경자와 동일합니다. [^a]와 같은 부정클래스는
-      이 변경자에 관계 없이 항상 뉴라인 문자를 포함합니다.
-     </simpara>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><emphasis>x</emphasis> (PCRE_EXTENDED)</term>
-    <listitem>
-     <simpara>
-      이 변경자가 지정되면, 공백 문자는 이스케이프 되거나 문자 클래스
-      안에 있을 경우를 제외하고, 완전히 무시합니다. 문자 클래스 밖에서
-      이스케이프 되지 않은 # 사이와 뉴라인 문자 다음의 문자도 무시합니다.
-      이는 펄의 /x 변경자와 같고, 복잡한 패턴 안에 코멘트를 사용할 수
-      있게 합니다. 그러나 이는 데이터 문자에만 해당하는 점에 주의하십시오.
-      공백 문자는 패턴의 특별한 문자 시퀀스 안에는 존재할 수 없습니다.
-      예를 들면, 조건 서브 패턴을 나타내는 (?( 시퀀스에는 나와서는 안됩니다.
-     </simpara>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><emphasis>e</emphasis></term>
-    <listitem>
-     <simpara>
-      이 변경자를 지정하면, <function>preg_replace</function>는
-      변경할 문자열을 PHP 코드로 처리하고, 그 결과를 검색된 문자열의
-      이용하여 일반적인 치환을 합니다.
-     </simpara>
-     <para>
-      <function>preg_replace</function>만 이 변경자를 사용합니다;
-      다른 PCRE 함수는 무시합니다.
-      <note>
+<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
+<article xml:id="reference.pcre.pattern.modifiers" xmlns="http://docbook.org/ns/docbook">
+ <title>패턴 변경자</title>
+ <titleabbrev>정규표현식 패턴에 존재하는 변경자의 설명</titleabbrev>
+
+  <para>
+   아래 목록은 현재 존재하는 PCRE 변경자입니다. 괄호 안의 이름은
+   각 변경자에 대한 PCRE 내부의 이름입니다.
+   공백과 줄바꿈은 변경자에서 무시되며, 다른 문자는 오류를 발생합니다.
+  </para>
+  <para>
+   <blockquote>
+    <variablelist>
+     <varlistentry>
+      <term><emphasis>i</emphasis> (PCRE_CASELESS)</term>
+      <listitem>
        <simpara>
-        이 변경자는 PHP 3에서는 사용할 수 없습니다.
+        이 변경자를 지정하면, 패턴의 문자는 대문자와 소문자를
+        구별하지 않습니다.
        </simpara>
-      </note>
-     </para>
-    </listitem>
-   </varlistentry>
-   <varlistentry>
-    <term><emphasis>A</emphasis> (PCRE_ANCHORED)</term>
-    <listitem>
-     <simpara>
-      이 변경자를 지정하면, 패턴을 강제적으로 "고정"합니다. 이는 ("주어진
-      문자열"에서) 검색된 문자열의 시작에만 매치도록 강제합니다. 패턴 자체에서
-      특정한 구조를 가지게 하는, 펄에서는 유일한 방법으로 같은 효과를 얻을 수
-      있습니다.
-     </simpara>
-    </listitem>
-       </varlistentry>
-       <varlistentry>
-    <term><emphasis>D</emphasis> (PCRE_DOLLAR_ENDONLY)</term>
-    <listitem>
-     <simpara>
-      이 변경자가 설정되면, 패턴의 달러($) 메타문자는 주어진 문자열의
-      마지막에만 대응합니다. 이 변경자 없이는, 달러는 마지막 문자가
-      뉴라인일 경우에는 바로 직전의 문자에도 매칭합니다. (마지막이
-      아닌 뉴라인은 제외합니다) 이 변경자는 <emphasis>m</emphasis>
-      변경자가 지정되었을때는 무시됩니다. 펄에는 이 변경자가
-      존재하지 않습니다. 
-     </simpara>
-    </listitem>
-       </varlistentry>
-       <varlistentry>
-    <term><emphasis>S</emphasis></term>
-    <listitem>
-     <simpara>
-      패턴이 여러번 이용되면, 매칭에 걸리는 시간을 절약하기 위해서
-      분석에 더 많은 시간을 들일 가치가 있습니다. 이 변경자를 지정하면,
-      추가 분석을 행합니다. 현 시점에서, 패턴의 분석은 하나의 고정된 시작
-      문자를 가지지 않는 비고정 패턴에만 유용합니다.
-     </simpara>
-    </listitem>
-       </varlistentry>
-       <varlistentry>
-    <term><emphasis>U</emphasis> (PCRE_UNGREEDY)</term>
-    <listitem>
-     <simpara>
-      이 변경자는 수량 지시의 "greediness"를 뒤집습니다. 그리하여 기본값으로
-      not greedy하게 합니다. 하지만 "?"가 붙으면 greedy하게 됩니다. 이는 펄과
-      호환되지 않습니다. 패턴 안에서 (?U) 변경자 설정으로 지정할 수 있습니다.
-     </simpara>
-    </listitem>
-       </varlistentry>
-       <varlistentry>
-    <term><emphasis>X</emphasis> (PCRE_EXTRA)</term>
-    <listitem>
-     <simpara>
-      이 변경자는 펄과 호환되지 않는 PCRE의 추가 기능을 사용하게
-      합니다. 패턴의 문자와 결합된 백슬래쉬가 특별한 의미를
-      지니지 않을 경우에 에러를 발생시켜서, 차후에 추가 기능을
-      위해 예약해둡니다. 기본적으로 펄은, 문자와 결합된 백슬래쉬가
-      특별한 의미를 지니지 않을 경우에는 글자로 취급합니다.
-      이 변경자는 다른 기능을 제어하지 않습니다.
-     </simpara>
-    </listitem>
-       </varlistentry>
-       <varlistentry>
-    <term><emphasis>u</emphasis> (PCRE_UTF8)</term>
-    <listitem>
-     <simpara>
-      이 변경자는 펄과 호환되지 않는 PCRE의 추가 기능을 사용하게
-      합니다. 패턴 문자열을 UTF-8으로 취급합니다. 유닉스에서는
-      PHP 4.1.0부터, win32에서는 PHP 4.2.3부터 사용할 수 있습니다.
-     </simpara>
-    </listitem>
-       </varlistentry>
-      </variablelist>
-     </blockquote>
-    </para>
-   </refsect1>
-  </refentry>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>m</emphasis> (PCRE_MULTILINE)</term>
+      <listitem>
+       <simpara>
+        기본적으로, PCRE는 주어진 문자열을 하나의 "줄"로 취급합니다.
+        (실제로 몇개의 라인을 가지더라도) "줄 시작" 메타문자(^)는
+        문자열의 처음만을 인식하며, "줄 끝" 메타문자($)는 문자열의
+        끝이나 (<emphasis>D</emphasis> 변경자가 지정되지 않는 한)
+        마지막 뉴라인의 직전만을 인식합니다. 이는 펄과 같습니다.
+       </simpara>
+       <simpara>
+        이 변경자를 지정하면, "줄 시작"과 "줄 끝"은 주어진 문자열의
+        모든 뉴라인 직후와 직전을 인식합니다. respectively, as
+        well as at the very start and end. 이는 펄의 /m 변경자와
+        동일합니다. 주어진 문자열에 "\n" 문자가 존재하지 않거나
+        ^나 $ 패턴이 일어나지 않으면 이 변경자는 아무런 효과가 없습니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>s</emphasis> (PCRE_DOTALL)</term>
+      <listitem>
+       <simpara>
+        이 변경자가 지정되면, 패턴의 점 메타문자는 뉴라인을 포함하는
+        모든 문자를 인식합니다. 지정하지 않으면, 뉴라인은 제외됩니다.
+        이 변경자는 펄의 /s 변경자와 동일합니다. [^a]와 같은 부정클래스는
+        이 변경자에 관계 없이 항상 뉴라인 문자를 포함합니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>x</emphasis> (PCRE_EXTENDED)</term>
+      <listitem>
+       <simpara>
+        이 변경자가 지정되면, 공백 문자는 이스케이프 되거나 문자 클래스
+        안에 있을 경우를 제외하고, 완전히 무시합니다. 문자 클래스 밖에서
+        이스케이프 되지 않은 # 사이와 뉴라인 문자 다음의 문자도 무시합니다.
+        이는 펄의 /x 변경자와 같고, 복잡한 패턴 안에 코멘트를 사용할 수
+        있게 합니다. 그러나 이는 데이터 문자에만 해당하는 점에 주의하십시오.
+        공백 문자는 패턴의 특별한 문자 시퀀스 안에는 존재할 수 없습니다.
+        예를 들면, 조건 서브 패턴을 나타내는 (?( 시퀀스에는 나와서는 안됩니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>e</emphasis> (PCRE_REPLACE_EVAL)</term>
+      <listitem>
+       <simpara>
+        이 변경자를 지정하면, <function>preg_replace</function>는
+        변경할 문자열을 PHP 코드로 처리하고, 그 결과를 검색된 문자열의
+        이용하여 일반적인 치환을 합니다.
+        작은 따옴표, 큰 따옴표, 백슬래시와 NULL 문자는 백슬래시로
+        이스케이프됩니다.
+       </simpara>
+       <para>
+        <function>preg_replace</function>만 이 변경자를 사용합니다;
+        다른 PCRE 함수는 무시합니다.
+        <note>
+         <simpara>
+          이 변경자는 PHP 3에서는 사용할 수 없습니다.
+         </simpara>
+        </note>
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>A</emphasis> (PCRE_ANCHORED)</term>
+      <listitem>
+       <simpara>
+        이 변경자를 지정하면, 패턴을 강제적으로 "고정"합니다. 이는 ("주어진
+        문자열"에서) 검색된 문자열의 시작에만 매치도록 강제합니다. 패턴 자체에서
+        특정한 구조를 가지게 하는, 펄에서는 유일한 방법으로 같은 효과를 얻을 수
+        있습니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>D</emphasis> (PCRE_DOLLAR_ENDONLY)</term>
+      <listitem>
+       <simpara>
+        이 변경자가 설정되면, 패턴의 달러($) 메타문자는 주어진 문자열의
+        마지막에만 대응합니다. 이 변경자 없이는, 달러는 마지막 문자가
+        뉴라인일 경우에는 바로 직전의 문자에도 매칭합니다. (마지막이
+        아닌 뉴라인은 제외합니다) 이 변경자는 <emphasis>m</emphasis>
+        변경자가 지정되었을때는 무시됩니다. 펄에는 이 변경자가
+        존재하지 않습니다. 
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>S</emphasis></term>
+      <listitem>
+       <simpara>
+        패턴이 여러번 이용되면, 매칭에 걸리는 시간을 절약하기 위해서
+        분석에 더 많은 시간을 들일 가치가 있습니다. 이 변경자를 지정하면,
+        추가 분석을 행합니다. 현 시점에서, 패턴의 분석은 하나의 고정된 시작
+        문자를 가지지 않는 비고정 패턴에만 유용합니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>U</emphasis> (PCRE_UNGREEDY)</term>
+      <listitem>
+       <simpara>
+        이 변경자는 수량 지시의 "greediness"를 뒤집습니다. 그리하여 기본값으로
+        not greedy하게 합니다. 하지만 "?"가 붙으면 greedy하게 됩니다. 이는 펄과
+        호환되지 않습니다. <link
+         linkend="regexp.reference.internal-options">패턴 안에서 변경자
+         설정</link>으로 (?U)처럼 지정하거나, 수량지시어 뒤의 물음표로 지정할
+        수 있습니다. (예. <literal>.*?</literal>)
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>X</emphasis> (PCRE_EXTRA)</term>
+      <listitem>
+       <simpara>
+        이 변경자는 펄과 호환되지 않는 PCRE의 추가 기능을 사용하게
+        합니다. 패턴의 문자와 결합된 백슬래쉬가 특별한 의미를
+        지니지 않을 경우에 에러를 발생시켜서, 차후에 추가 기능을
+        위해 예약해둡니다. 기본적으로 펄은, 문자와 결합된 백슬래쉬가
+        특별한 의미를 지니지 않을 경우에는 글자로 취급합니다.
+        이 변경자는 다른 기능을 제어하지 않습니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>J</emphasis> (PCRE_INFO_JCHANGED)</term>
+      <listitem>
+       <simpara>
+        내부 옵션 (?J) 설정은 영역의 PCRE_DUPNAMES 옵션을 변경합니다.
+        서브패턴에 동일한 이름을 허용합니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><emphasis>u</emphasis> (PCRE_UTF8)</term>
+      <listitem>
+       <simpara>
+        이 변경자는 펄과 호환되지 않는 PCRE의 추가 기능을 사용하게
+        합니다. 패턴 문자열을 UTF-8으로 취급합니다. 유닉스에서는
+        PHP 4.1.0부터, win32에서는 PHP 4.2.3부터 사용할 수 있습니다.
+        PHP 4.3.5부터 패턴의 UTF-8 유효성이 검사됩니다.
+       </simpara>
+      </listitem>
+     </varlistentry>
+    </variablelist>
+   </blockquote>
+  </para>
+</article>
 
 <!-- Keep this comment at the end of the file
 Local variables:
