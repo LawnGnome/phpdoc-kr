@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.chop" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>chop</refname>
-    <refpurpose><function>rtrim</function>의 별칭.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-    <para>
-     이 함수는 <function>rtrim</function>의 별칭입니다.
-    </para>
-    <note>
-     <para>
-      <function>chop</function>은 문자열의 마지막 글자를 제거하는 펄의
-      <literal>chop()</literal> 함수와 다릅니다.
-     </para>
-    </note>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.chop" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>chop</refname>
+  <refpurpose>&Alias; <function>rtrim</function></refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <simpara>
+   &info.function.alias;
+   <function>rtrim</function>.
+  </simpara>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    <function>chop</function>은 문자열의 마지막 글자를 제거하는 펄의
+    <literal>chop()</literal> 함수와 다릅니다.
+   </para>
+  </note>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

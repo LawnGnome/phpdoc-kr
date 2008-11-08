@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
 <refentry xml:id="function.apache-setenv" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>apache_setenv</refname>
@@ -20,9 +20,8 @@
   </para>
   <note>
    <para>
-    아파치 환경 변수를 설정할 때, 해당하는 <link
-     linkend="reserved.variables.server">$_SERVER</link> 변수는 바뀌지
-    않습니다.
+    아파치 환경 변수를 설정할 때, 해당하는 <varname>$_SERVER</varname> 변수는
+    바뀌지 않습니다.
    </para>
   </note>
  </refsect1>

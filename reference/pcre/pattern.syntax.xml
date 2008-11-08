@@ -1,135 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.20 Maintainer: progcom Status: working -->
+<!-- EN-Revision: 1.21 Maintainer: progcom Status: working -->
 <chapter xml:id="reference.pcre.pattern.syntax" xmlns="http://docbook.org/ns/docbook">
  <title>패턴 문법</title>
  <titleabbrev>PCRE 정규표현식 문법 설명</titleabbrev>
-
-   <section xml:id="pcre.pattern.syntax.description">
-    <title>설명</title>
-    <simpara>
-     PCRE 라이브러리는 아주 약간의 차이(아래를 참고)를 제외하고, 펄 5와
-     동일한 구문과 의미를 사용하여 정규표현식 패턴 매칭을 수행하는
-     함수의 집합입니다. 현재 수행은 펄 5.005에 대응합니다.
-    </simpara>
-   </section>
-
-   <section xml:id="pcre.pattern.syntax.differences">
-    <title>펄과의 차이</title>
-    <para>
-     여기에서 설명한 차이는 펄 5.005 기준입니다.
-     <orderedlist>
-      <listitem>
-       <simpara>
-        PCRE는 다른 문자 집합으로 컴파일할 수 있지만, 기본적으로 공백 문자는 C
-        라이브러리 함수 isspace()가 인식하는 모든 문자입니다. 보통 isspace()는
-        스페이스, 폼피드, 줄바꿈, 캐리지 리턴, 수평 탭, 수직 탭을 인식합니다.
-        펄 5는 공백 문자에 수직 탭을 포함하지 않습니다. 오랜 기간동안 펄
-        문서의 \v 이스케이프는 사실상 인정되지 않았습니다. 그러나 문자 자체는
-        적어도 5.002까지 공백으로 취급되었으며, 5.004와 5.005는 \s에서
-        인식하지 않습니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        PCRE는 lookahead 단정에서 반복 횟수를 허용하지 않습니다. 펄은
-        허용하지만, 생각하는 그대로의 의미를 갖지 않습니다. 예를 들어,
-        (?!a){3}는 다음 세 문자가 "a"가 아닌 것을 의미하지 않습니다. 단지,
-        다음 문자가 "a"가 아니라는 것을 세번 확인할 뿐입니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        부정 lookahead 단정 안에서 일어나는 서브패턴 검출을 카운트를 하지만,
-        시작 위치 벡터에 그 엔트리를 설정하지는 않습니다. 펄은 부정 lookahead
-        단정이 단 하나의 브랜치를 가지고 있을 경우에 한하여, 그 단정이 매치에
-        실패(결과적으로 성공)하기 전에 매치한 어떠한 패턴에 대해서만 그에 대한
-        숫자 변수를 설정합니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        바이너리 제로 문자는 목표 문자열에서는 지원하지만, 패턴 문자열에서는
-        허용하지 않습니다. 패턴은 제로로 종료하는 보통의 C 문자열로 처리하기
-        때문입니다. 패턴에서 바이너리 제로를 표현하기 위해서는 이스케이프
-        시퀀스 "\x00"로 사용할 수 있습니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        다음의 펄 이스케이프 시퀀스는 지원하지 않습니다:
-        \l,  \u,  \L,  \U. 사실, 이들은 펄의 일반 문자열
-        핸들링이며, 패턴 매칭 엔진의 부분이 아닙니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        펄의 \G는 싱글 패턴 매치에 적절하지 않기 때문에 지원하지 않습니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        분명히, PCRE는 (?{code})와 (??{code}) 구조를 지원하지 않습니다. 그러나,
-        반복 패턴에서는 지원합니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        패턴의 일부가 반복될 때, 잡아낸 문자열의 설정에 관해서, 펄
-        5.005_02에서 일부 이상한 동작이 존재합니다. 예를 들어, "aba"에 대해서
-        패턴 /^(a(b)?)+$/를 매칭하면 $2를 "b" 값으로 설정하지만, "aabbaa"에
-        대해서 /^(aa(bb)?)+$/를 매칭하면 $2를 설정하지 않습니다. 하지만 패턴을
-        /^(aa(b(b))?)+$/로 변경하면 $2(와 $3)를 설정합니다. 펄 5.004에서는
-        $2를 두 경우 모두 설정했으며, PCRE에서도 &true;입니다. 앞으로 펄이 이
-        차이를 일관성 있게 변경한다면, PCRE는 그 변경에 따를 것입니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        또다른 해결되지 않은 모순점은 펄 5.005_02가 패턴 /^(a)?(?(1)a|b)+$/를
-        문자열 "a"에 매치하지만, PCRE는 하지 않습니다. 그러나 펄과 PCRE 모두
-        /^(a)?a/를 "a"에 매치하고 $1을 설정하지 않습니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <para>
-        PCRE는 펄 정규표현식 기능의 몇가지 확장을 지원합니다:
-        <orderedlist>
-         <listitem>
-          <simpara>
-           lookbehind 단정은 고정 길이 문자열에만 매치해야하지만, 양자 택일의
-           lookbehind 단정에서는 다른 길이의 문자열을 매치할 수 있습니다. 펄
-           5.005에서는 모두 같은 길이를 가질 것을 요구합니다.
-          </simpara>
-         </listitem>
-         <listitem>
-          <simpara>
-           <link linkend="reference.pcre.pattern.modifiers">PCRE_DOLLAR_ENDONLY</link>를
-           설정하고 <link
-            linkend="reference.pcre.pattern.modifiers">PCRE_MULTILINE</link>를 설정하지
-           않으면 $ 메타 문자는 문자열의 가장 마지막에만 매치합니다.
-          </simpara>
-         </listitem>
-         <listitem>
-          <simpara>
-           <link linkend="reference.pcre.pattern.modifiers">PCRE_EXTRA</link>를
-           설정하면, 백슬래시 뒤에 특별한 의미를 가지지 않는 문자의 사용은
-           실패하게 됩니다.
-          </simpara>
-         </listitem>
-         <listitem>
-          <simpara>
-           <link linkend="reference.pcre.pattern.modifiers">PCRE_UNGREEDY</link>를
-           설정하면, 반복 수량어의 greediness가 뒤집어져서, 기본값으로
-           greedy하지 않게 됩니다. 하지만 뒤에 물음표가 붙으면 greedy하게
-           됩니다.
-          </simpara>
-         </listitem>
-        </orderedlist>
-       </para>
-      </listitem>
-     </orderedlist>
-    </para>
-   </section>
 
    <section xml:id="regexp.reference">
     <title>정규표현식 상세</title>
@@ -544,12 +417,11 @@
       마지막에만 매치합니다.
      </para>
      <para>
-      The <literal>\G</literal> assertion is true only when the current
-      matching position is at the start point of the match, as specified by
-      the <parameter>offset</parameter> argument of
-      <function>preg_match</function>. It differs from <literal>\A</literal>
-      when the value of <parameter>offset</parameter> is non-zero.
-      It is available since PHP 4.3.3.
+      <literal>\G</literal> 단정은 현재 매치한 위치가
+      <function>preg_match</function>에서 <parameter>offset</parameter> 인수로
+      지정한 시작 지점일 경우에만 참입니다. <parameter>offset</parameter>이
+      0이 아닐 때 <literal>\A</literal>와 다릅니다.
+      PHP 4.3.3부터 사용할 수 있습니다.
      </para>
 
      <para>
@@ -572,7 +444,7 @@
     </section>
 
     <section xml:id="regexp.reference.unicode">
-     <title>Unicode character properties</title>
+     <title>유니코드 문자 속성</title>
      <para>
       Since PHP 4.4.0 and 5.1.0, three
       additional escape sequences to match generic character types are available
@@ -611,7 +483,7 @@
       \pL
      </literallayout>
      <table>
-      <title>Supported property codes</title>
+      <title>지원하는 속성 코드</title>
       <tgroup cols="2">
        <tbody>
         <row><entry><literal>C</literal></entry><entry>Other</entry></row>
@@ -942,14 +814,11 @@
       "erpillar", 또는 빈 문자열에 매치할 것입니다.
      </para>
      <para>
-      2. It sets up the subpattern as a capturing  subpattern  (as
-      defined  above).   When the whole pattern matches, that portion
-      of the subject string that matched  the  subpattern  is
-      passed  back  to  the  caller  via  the  <emphasis>ovector</emphasis>
-      argument of
-      <function>pcre_exec</function>. Opening parentheses are counted
-      from  left  to right (starting from 1) to obtain the numbers of the
-      capturing subpatterns.
+      2. 서브패턴을 (위에서 정의한) 캡쳐한 서브패턴으로 지정합니다. 모든
+      패턴이 매치하면, 매치한 주제 문자열이 <function>pcre_exec</function>의
+      <emphasis>ovector</emphasis>를 통하여 호출자에게 넘겨집니다. 열린 괄호는
+      왼쪽에서 오른쪽으로 세어서 (1부터 시작) 캡쳐한 서브패턴에 번호를
+      부여합니다.
      </para>
      <para>
       예를 들어, 문자열 "the red king"이 패턴
@@ -1053,17 +922,15 @@
       </table>
      </para>
      <para>
-      It is possible to construct infinite loops  by  following  a
-      subpattern  that  can  match no characters with a quantifier
-      that has no upper limit, for example:
+      상위 제한이 없는 수량어에 문자를 매치지키지 않음으로써, 다음 서브패턴과
+      같이 무한루프를 만들수 있습니다. 예를 들면:
       <literal>(a?)*</literal>
      </para>
      <para>
-      Earlier versions of Perl and PCRE used to give an  error  at
-      compile  time  for such patterns. However, because there are
-      cases where this  can  be  useful,  such  patterns  are  now
-      accepted,  but  if  any repetition of the subpattern does in
-      fact match no characters, the loop is forcibly broken.
+      Perl과 PCRE 예전 버전에선 이러한 패턴에 대해서 컴파일 시에 오류를
+      발생시켰습니다. 그러나, 이것이 유용한 경우가 있어서, 지금은 이러한
+      패턴이 받아들여집니다. 그러나 서브패턴의 반복이 실제로는 어떠한 문자도
+      매치하지 않을 때, 루프는 강제로 깨어집니다.
      </para>
      <para>
       By default, the quantifiers  are  "greedy",  that  is,  they

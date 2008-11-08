@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-	 <refentry xml:id="function.join" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>join</refname>
-    <refpurpose><function>implode</function>의 별칭.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-    <para>
-     이 함수는 <function>implode</function>의 별칭입니다.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.join" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>join</refname>
+  <refpurpose>&Alias; <function>implode</function></refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <simpara>
+   &info.function.alias;
+   <function>implode</function>.
+  </simpara>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
