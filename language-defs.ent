@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.42 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.43 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -38,6 +38,7 @@
 <!ENTITY CommandLineSpecificExtentions		"명령줄 특정 확장">
 <!ENTITY WindowsOnlyExtentions			"윈도우 전용 확장">
 <!ENTITY ServerSpecificExtentions		"특정 서버 확장">
+<!ENTITY SearchEngineExtentions			"검색 엔진 확장">
 <!ENTITY MiscExtentions				"기타 확장">
 <!ENTITY PECLReference	   "PCEL 함수 레퍼런스">
 <!ENTITY AddOnReference    "애드온 확장 함수 레퍼런스">
