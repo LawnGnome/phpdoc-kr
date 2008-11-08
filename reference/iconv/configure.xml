@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 <section xml:id="iconv.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
  <para>
@@ -15,6 +15,10 @@
    <emphasis>iconv-1.3.dll</emphasis>(4.2.1 이전) DLL 파일을
    <literal>PATH</literal> 환경 변수로 지정한 디렉토리나 Windows&reg;의 시스템
    디렉토리에 놓아야 합니다.
+  </simpara>
+  <simpara>
+   이 모듈은 PHP 5에서 PHP에 내장되었고, <emphasis>iconv.dll</emphasis>과
+   <emphasis>php_iconv.dll</emphasis>는 더 이상 필요하지 않습니다.
   </simpara>
  </note>
 </section>

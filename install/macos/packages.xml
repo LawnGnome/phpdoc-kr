@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
- <sect1 xml:id="install.macosx.packages" xmlns="http://docbook.org/ns/docbook">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+ <sect1 xml:id="install.macosx.packages" xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>패키지 사용하기</title>
   <simpara>
    Mac OS X를 위해 미리 컴파일 하여 패키지 된 몇몇 PHP 버전이 존재합니다. 이는
@@ -10,9 +11,31 @@
    기능을 포함한 PHP 버전을 패키지로 만들어 두었는지 확인해 보는 것도
    좋습니다. 
   </simpara>
-  
-  <!-- TODO: list some packages here, if possible -->
- 
+  <simpara>
+   PHP를 MacOS에 쉽게 설치할 수 있는 패키지와 컴파일된 바이너리입니다:
+  </simpara>
+  <para>
+   <itemizedlist>
+    <listitem>
+     <simpara>
+      MacPorts:
+      <link xlink:href="&url.mac.macports;">&url.mac.macports;</link>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      Entropy:
+      <link xlink:href="&url.mac.entropy;">&url.mac.entropy;</link>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      Fink:
+      <link xlink:href="&url.mac.fink;">&url.mac.fink;</link>
+     </simpara>
+    </listitem>
+   </itemizedlist>
+  </para>
  </sect1>
 
 <!-- Keep this comment at the end of the file
