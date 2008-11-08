@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.59 Maintainer: progcom Status: ready -->
  <appendix xml:id="migration5" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>PHP 4에서 PHP 5로 이행</title>
+  <title>PHP 4에서 PHP 5.0.x로 이행</title>
+  <para>
+   &manual.migration.seealso;
+   <link linkend="migration51">5.1.x</link>, <link
+    linkend="migration52">5.2.x</link>.
+  </para>
 
   <section xml:id='migration5.changes'>
-   <title>PHP 5에서 바뀐 것들</title>
+   <title>PHP 5.0.x부터 바뀐 것들</title>
    <para>
     PHP 5와 내장된 젠드 엔진 2는 PHP의 성능과 능력을 대폭 향상하면서, 기존의
     코드를 가능한 그대로 사용할 수 있게 주의를 하였습니다. 그리하여, PHP 4의
@@ -22,52 +27,119 @@
     주의를 해야 합니다:
    </para>
    <itemizedlist>
-    <listitem><simpara>
+    <listitem>
+     <simpara>
+      <link linkend="reserved.keywords">새 예약어</link>가 있습니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>strrpos</function>와 <function>strripos</function>가 전체
       문자열을 needle로 사용합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       문자열 오프셋의 비정상적인 사용은 <constant>E_WARNING</constant> 대신
-      <constant>E_ERROR</constant>를 발생합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+      <constant>E_ERROR</constant>를 발생합니다. 비정상적인 사용의 예제:
+      <literal>$str = 'abc'; unset($set[0]);</literal>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>array_merge</function>가 배열만을 받아들이게 변경되었습니다.
       배열이 아닌 값을 넘기면, 그러한 인수마다
       <constant>E_WARNING</constant>을 발생합니다. 코드가 갑작스레
       <constant>E_WARNING</constant>를 표시하기 시작할 수 있으므로
       주의하십시오.
-    </simpara></listitem>
-    <listitem><simpara>
-     더이상 Apahce2 SAPI에서 PATH_TRANSLATED 서버 변수를 자동으로 설정하지
-     않습니다. PHP 4에서는 아파치가 생성하지 않았을 때, SCRIPT_FILENAME 서버
-     변수와 동일하게 설정했었습니다. 이 변경은 <link xlink:href="&url.cgispecs;">CGI
-      규격</link>에 따르기 위한 점입니다. 자세한 정보는 <link
-      xlink:href="&url.php.bugs;23610">버그 #23610</link>를 참고하십시오.
-    </simpara></listitem>
-    <listitem><simpara>
-     <link linkend="ref.tokenizer">Tokenizer</link> 확장은 더 이상
-     <constant>T_ML_CONSTANT</constant> 상수를 정의하지 않습니다.
-     error_reporting을 <constant>E_ALL</constant>로 설정하면, PHP가 주의문을
-     생성합니다. <constant>T_ML_CONSTANT</constant>는 사용되지 않았지만, PHP
-     4에서 정의되어 있었습니다. PHP 4와 PHP 5 둘 다,
-     <constant>T_COMMENT</constant> 상수가 //와 /* */를 모두 인식합니다.
-     그러나 PHP 5에서 도입한, PHP가 처리하는 PHPDoc 스타일 주석 /** */은,
-     <constant>T_DOC_COMMENT</constant>로 인식합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      더이상 Apahce2 SAPI에서 PATH_TRANSLATED 서버 변수를 자동으로 설정하지
+      않습니다. PHP 4에서는 아파치가 생성하지 않았을 때, SCRIPT_FILENAME 서버
+      변수와 동일하게 설정했었습니다. 이 변경은 <link xlink:href="&url.cgispecs;">CGI
+       규격</link>에 따르기 위한 점입니다. 자세한 정보는 <link
+       xlink:href="&url.php.bugs;23610">버그 #23610</link>를 확인하고,
+      매뉴얼에서 <varname>$_SERVER['PATH_TRANSLATED']</varname> 설명을
+      참고하십시오. 이 내용은 PHP &gt;= 4.3.2에도 영향이 있습니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <link linkend="ref.tokenizer">Tokenizer</link> 확장은 더 이상
+      <constant>T_ML_COMMENT</constant> 상수를 정의하지 않습니다.
+      error_reporting을 <constant>E_ALL</constant>로 설정하면, PHP가 주의문을
+      생성합니다. <constant>T_ML_COMMENT</constant>는 사용되지 않았지만, PHP
+      4에서 정의되어 있었습니다. PHP 4와 PHP 5 둘 다,
+      <constant>T_COMMENT</constant> 상수가 //와 /* */를 모두 인식합니다.
+      그러나 PHP 5에서 도입한, PHP가 처리하는 PHPDoc 스타일 주석 /** */은,
+      <constant>T_DOC_COMMENT</constant>로 인식합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <link linkend="ini.variables-order">variables_order</link>가 "S"를
-      포함하고 있으면, $_SERVER는 argc와 argv를 가져야 합니다. 시스템이
-      $_SERVER를 생성하지 않게 설정하였다면, 물론 존재하지 않아야 합니다. 변경
-      후에는 <link linkend="ini.variables-order">variables_order</link> 설정에
-      관계 없이, CLI 버전에서 argc와 argv를 사용할 수 있게 만듭니다. 또한, CLI
-      버전은 항상 전역의 $argc와 $argv도 가집게 되었습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+      포함하고 있으면, $_SERVER는 <varname>argc</varname>와
+      <varname>argv</varname>를 가져야 합니다. 시스템이 $_SERVER를 생성하지
+      않게 설정하였다면, 물론 존재하지 않았습니다. 변경 후에는 <link
+       linkend="ini.variables-order">variables_order</link> 설정에 관계 없이,
+      CLI 버전에서 <varname>argc</varname>와 <varname>argv</varname>를 사용할
+      수 있게 만듭니다. 또한, CLI 버전은 항상 전역의
+      <varname>$argc</varname>와 <varname>$argv</varname>도 가지게 되었습니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       프로퍼티가 없는 객체를 더 이상 "빈" 것으로 판단하지 않습니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      클래스는 사용하기 전에 정의해야 합니다.
-    </simpara></listitem>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      몇몇 경우에 클래스는 사용하기 전에 선언해야 합니다. 이는 PHP 5의
+      신기능(<link linkend="language.oop5.interfaces">인터페이스</link> 등)을
+      사용할 경우이며, 다른 경우엔 이전과 같습니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>get_class</function>, <function>get_parent_class</function>,
+      <function>get_class_methods</function>가 클래스/메쏘드 이름을 선언한
+      대로(대소문자 구분) 반환하므로, 이전의 동작(클래스/메쏘드 이름을 항상
+      소문자로 반환)에 의존하는 스크립트에 문제가 발생합니다. 해결법 중 하나는
+      모든 스크립트에서 위 함수들을 검색하여 <function>strtolower</function>을
+      적용하는 방법입니다.
+     </simpara>
+     <simpara>
+      이 대소문자 구분은 <link linkend="language.constants.predefined">마법
+       예약 상수</link> <constant>__CLASS__</constant>,
+      <constant>__METHOD__</constant>, <constant>__FUNCTION__</constant>에도
+      적용됩니다. 반환되는 값은 정확히 선언한 대로(대소문자 구분) 입니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>ip2long</function>에 잘못된 IP 주소를 인자로 넘겼을 때 이제
+      <literal>-1</literal>이 아닌 &false;를 반환합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      포함한 파일에 함수 정의가 있으면, <function>return</function>의 위치에
+      상관 없이 메인 파일에서 독립적으로 사용할 수 있습니다. 그 파일을 두번
+      포함하면, PHP 5는 함수가 이미 정의되어 있기에, 치명적인 오류를
+      발생합니다. PHP 4는 아무런 오류를 내지 않았었습니다. 포함하는 파일에서
+      포함 여부를 판단하고 리턴하는 대신, <function>include_once</function>를
+      사용하길 권장합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>include_once</function>와 <function>require_once</function>은
+      윈도우에서 포함하는 파일의 경로를 정규화해서, A.php와 a.php는
+      한번만 포함하게 됩니다.
+     </simpara>
+    </listitem>
    </itemizedlist>
 
    <para>
@@ -81,7 +153,7 @@ var_dump(strrpos('ABCDEF','DEF')); //int(3)
 
 var_dump(strrpos('ABCDEF','DAF')); //bool(false)
 ?>
-]]>
+      ]]>
      </programlisting>
     </example>
    </para>
@@ -97,33 +169,35 @@ $t = new test();
 
 var_dump(empty($t)); // echo bool(false)
 
-if (!$t) {
-    // 이 부분이 실행됩니다.
+if ($t) {
+      // 이 부분이 실행됩니다.
 }
 ?>
-
 ]]>
      </programlisting>
     </example>
    </para>
    <para>
-    다음 예제는 PHP 4에서는 유효하지만, PHP 5에서는 치명적인 오류를
-    생성합니다.
-   </para>
-   <para>
     <example>
-     <title>클래스는 사용하기 전에 정의해야 합니다.</title>
+     <title>몇몇 경우에 클래스는 사용하기 전에 선언해야 합니다.</title>
      <programlisting role="php">
 <![CDATA[
 <?php
-$test = new fubar();
-$test->barfu();
 
-class fubar {
-    function barfu() {
-        echo 'fubar';
-    }
+// 오류 없이 실행:
+$a = new a();
+class a {
 }
+
+
+// 오류 발생:
+$a = new b();
+
+interface c {
+}
+class b implements c {
+}
+
 ?>
 ]]>
      </programlisting>
@@ -135,18 +209,25 @@ class fubar {
    <title>CLI와 CGI</title>
    <para>
     PHP 5에서 CLI와 CGI 파일명이 변경되었습니다. PHP 5에서, CGI 버전은
-    <literal>php-cgi.exe</literal>로 변경되었고 (이전에는
-    <literal>php.exe</literal>) CLI 버전이 주 디렉토리에 위치합니다. (이전에는
-    <literal>cli/php.exe</literal>)
+    <filename>php-cgi.exe</filename>로 변경되었고 (이전에는
+    <filename>php.exe</filename>) CLI 버전이 주 디렉토리에 위치합니다. (이전에는
+    <filename>cli/php.exe</filename>)
    </para>
    <para>
     PHP 5에서, 새로운 모드가 존재합니다:
-    <literal>php-win.exe</literal>. 이는 CLI 버전과 동일하지만, php-win은
+    <filename>php-win.exe</filename>. 이는 CLI 버전과 동일하지만, php-win은
     아무것도 출력하지 않으며, 그렇기에 콘솔을 생성하지 않습니다. ("도스창"이
     화면에 나타나지 않습니다) 이는 php-gtk와 비슷합니다.
    </para>
    <para>
-    PHP 5에서, CLI 버전은 항상 전역의 $argv와 $argc 변수를 가집니다.
+    PHP 5에서 CLI 버전은 어떠한 &php.ini; 지시어 설정과 관계 없이 항상 전역의
+    <varname>$argv</varname>와 <varname>$argc</varname> 변수를 가집니다.
+    심지어 <link linkend="ini.register-argc-argv">register_argc_argv</link>를
+    <literal>off</literal>로 설정해도 CLI에는 영향이 없습니다.
+   </para>
+   <para>
+    <link linkend="features.commandline">명령줄 레퍼런스</link>를
+    참고하십시오.
    </para>
   </section>
 
@@ -160,7 +241,8 @@ class fubar {
    <para>
     아파치 설정 파일을 이행하는 것은 매우 쉽습니다. 아래의 예제를 보고 필요한
     변경을 하십시오:
-    <informalexample>
+    <example>
+     <title>PHP 5로 아파치 설정 파일을 이행하기.</title>
      <programlisting role="apache-conf">
 <![CDATA[
 # 이 줄을:    
@@ -170,23 +252,24 @@ LoadModule php4_module /php/sapi/php4apache2.dll
 LoadModule php5_module /php/php5apache2.dll
 ]]>
      </programlisting>
-    </informalexample>
+    </example>
    </para>
    <para>
-    웹서버가 PHP를 CGI 모드로 실행한다면, CGI 버전의 이름이 php.exe에서
-    php-cgi.exe로 바뀐 점에 주의해야 합니다. 아파치에서는 다음과 같이 해야
-    합니다:
-    <informalexample>
+    웹서버가 PHP를 CGI 모드로 실행한다면, CGI 버전의 이름이
+    <filename>php.exe</filename>에서 <filename>php-cgi.exe</filename>로 바뀐
+    점에 주의해야 합니다. 아파치에서는 다음과 같이 해야 합니다:
+    <example>
+     <title>PHP CGI 모드를 위한 아파치 설정 파일 이행하기.</title>
      <programlisting role="apache-conf">
-<![CDATA[
-# 이 줄을:    
-Action application/x-httpd-php "/php/php.exe" 
+      <![CDATA[
+      # 이 줄을:    
+      Action application/x-httpd-php "/php/php.exe" 
 
-# 이렇게 변경합니다:
-Action application/x-httpd-php "/php/php-cgi.exe" 
-]]>
+      # 이렇게 변경합니다:
+      Action application/x-httpd-php "/php/php-cgi.exe" 
+      ]]>
      </programlisting>
-    </informalexample>
+    </example>
    </para>
    <para>
     다른 웹서버에서도 CGI나 ISAPI 모듈의 파일명을 변경해야 합니다.
@@ -198,309 +281,500 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    <para>
     PHP 5에서 새로운 함수가 추가되었습니다. 그 목록입니다:
    </para>
-   <para>배열:</para>
-    <itemizedlist>
-    <listitem><simpara>
+   <para><link linkend="ref.array">배열</link>:</para>
+   <itemizedlist>
+    <listitem>
+     <simpara>
       <function>array_combine</function> - 하나의 배열을 키로, 하나의 배열을
       값으로 가지는 배열을 생성합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>array_diff_uassoc</function> - 사용자가 제공하는 콜백 함수를
       통한 추가적인 인덱스 확인을 포함하여 배열의 차이를 계산합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>array_udiff</function> - 데이터 비교에 콜백 함수를 사용하여
       배열의 차이를 계산합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>array_udiff_assoc</function> - 추가적인 인덱스 확인을 통한
       배열의 차이를 계산합니다. 데이터 비교는 콜백 함수를 사용합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>array_udiff_uassoc</function> - 추가적인 인덱스 확인을 통한
       배열의 차이를 계산합니다. 데이터 비교는 콜백 함수를 사용합니다. 인덱스
       확인도 콜백 함수를 사용합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>array_walk_recursive</function> - 배열의 모든 원소에 사용자
       함수를 적용합니다.
-    </simpara></listitem>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>array_uintersect_assoc</function> - 배열 교집합을 추가적인
+      인덱스 확인을 통해서 계산합니다. 데이터는 콜백 함수를 사용하여
+      비교됩니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>array_uintersect_uassoc</function> - 배열 교집합을 추가적인
+      인덱스 확인을 통해서 계산합니다. 데이터와 인덱스 모두 별개의 콜백 함수를
+      사용하여 비교합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>array_uintersect</function> - 배열 교집합을 계산합니다.
+      데이터는 콜백 함수를 사용하여 비교합니다.
+     </simpara>
+    </listitem>
    </itemizedlist>
 
-   <para>인터베이스:</para>
+   <para><link linkend="ref.ibase">인터베이스</link>:</para>
    <itemizedlist>
-    <listitem><simpara>
+    <listitem>
+     <simpara>
       <function>ibase_affected_rows</function> - 이전의 질의에 영향을 받은
       열의 수를 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_backup</function> - 서비스 관리자에 백업 작업을
       실행시키고, 바로 돌아옵니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_commit_ret</function> - 트랜젝션을 열어둔 채로
       작업을 기록합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_db_info</function> - 데이터베이스에 관한 통계를
       요청합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_drop_db</function> - 데이터베이스를 지웁니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_errcode</function> - 오류 코드를 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_free_event_handler</function> - 등록되어 있는 이벤트
       핸들러를 취소합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_gen_id</function> - Named generator를 증가하고 새로운
       값을 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_maintain_db</function> - 데이터베이스 서버에 관리 명령을
       실행합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_name_result</function> - 이름을 결과셋에 할당합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_num_params</function> - 준비한 질의문의 인자 수를
       반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_param_info</function> - 준비한 질의문의 인자에 대한
       정보를 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_restore</function> - 서비스 관리자에 복구 작업을
       실행시키고, 바로 돌아옵니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_rollback_ret</function> - 트랜젝션 내용은 유지한 채로
       작업을 되돌립니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>ibase_server_info</function> - 데이터베이스에 관한 통계를
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>ibase_server_info</function> - 데이터베이스 서버에 관한 통계를
       요청합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_service_attach</function> - 서비스 관리자에 접속합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_service_detach</function> - 서비스 관리자 연결을
       끊습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_set_event_handler</function> - 이벤트가 발생했을 때
       호출할 콜백 함수를 등록합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ibase_wait_event</function> - 데이터베이스에 의해 이벤트가
       발생하기를 기다립니다.
-    </simpara></listitem>
+     </simpara>
+    </listitem>
    </itemizedlist>
 
-   <para>iconv:</para>
+   <para><link linkend="ref.iconv">iconv</link>:</para>
    <itemizedlist>
-    <listitem><simpara>
+    <listitem>
+     <simpara>
       <function>iconv_mime_decode</function> - MIME 헤더 필드를 디코드합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>iconv_mime_decode_headers</function> - 복수의 MIME 헤더 필드를
       한번에 디코드합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>iconv_mime_encode</function> - MIME 헤더 필드를 작성합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>iconv_strlen</function> - 문자열의 문자 수를 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>iconv_strpos</function> - haystack에서 needle이 처음으로
       나타나는 위치를 찾습니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>iconv_strrpos</function> - haystack에 지정한 범위에서 needle이
-      마지막으로 나타나는 위치를 찾습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>iconv_strrpos</function> - haystack에서 needle이 마지막으로
+      나타나는 위치를 찾습니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>iconv_substr</function> - 문자열의 부분을 잘라냅니다.
-    </simpara></listitem>
+     </simpara>
+    </listitem>
    </itemizedlist>
 
-   <para>스트림:</para>
+   <para><link linkend="ref.stream">스트림</link>:</para>
    <itemizedlist>
-    <listitem><simpara>
+    <listitem>
+     <simpara>
       <function>stream_copy_to_stream</function> - 한 스트림의 데이터를 다른
       스트림으로 복제합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>stream_get_line</function> - 스트림 자원에서 주어진 구분자로
       나타나는 열을 얻습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>stream_socket_accept</function> -
       <function>stream_socket_server</function>로 생성한 소켓에 연결을
       받아들입니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>stream_socket_client</function> - 인터넷이나 유닉스 도메인
       소켓 연결을 엽니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>stream_socket_get_name</function> - 로컬이나 원격 소켓의
       이름을 얻습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>stream_socket_recvfrom</function> - 연결 여부에 관계 없이,
       소켓에서 데이터를 받습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>stream_socket_sendto</function> - 연결 여부에 관계 없이,
       소켓에 메세지를 보냅니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>stream_socket_server</function> - 인터넷이나 유닉스 도메인
       소켓을 생성합니다.
-    </simpara></listitem>
+     </simpara>
+    </listitem>
+   </itemizedlist>
+
+   <para><link linkend="ref.datetime">날짜와 시간 관련</link>:</para>
+   <itemizedlist>
+    <listitem>
+     <simpara>
+      <function>idate</function> - 지역 날짜/시간을 정수로 바꿉니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>date_sunset</function> - 주어진 날짜와 위치의 일몰 시간.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>date_sunrise</function> - 주어진 날짜와 위치의 일출 시간.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>time_nanosleep</function> - 초와 나노초의 수만큼 지연합니다.
+     </simpara>
+    </listitem>
+   </itemizedlist>
+
+   <para><link linkend="ref.strings">문자열</link>:</para>
+   <itemizedlist>
+    <listitem>
+     <simpara>
+      <function>str_split</function> - 문자열을 배열로 변환합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>strpbrk</function> - 문자열에서 문자 세트에 있는 문자를
+      검색합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>substr_compare</function> - 두 문자열을 offset부터 length까지
+      (대소문자 구분 없이:옵션) 이진 안전하게 비교합니다.
+     </simpara>
+    </listitem>
    </itemizedlist>
 
    <para>기타:</para>
    <itemizedlist>
-    <listitem><simpara>
+    <listitem>
+     <simpara>
       <function>convert_uudecode</function> - uuencode된 문자열을
       디코드합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>convert_uuencode</function> - 문자열을 uuencode합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>curl_copy_handle</function> - 모든 속성과 함께 cURL 핸들을
       복제합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>dba_key_split</function> - 문자열 표현에서 배열 표현으로 키를
       분리합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>dbase_get_header_info</function> - dBase 데이터베이스의 헤더
       정보를 얻습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>dbx_fetch_row</function> - DBX_RESULT_UNBUFFERED 플래그를
       설정한 질의 결과에서 열을 가져옵니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>fbsql_set_password</function> - 주어진 사용자의 암호를
       변경합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>file_put_contents</function> - 문자열을 파일로 씁니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ftp_alloc</function> - 업로드할 파일의 공간을 할당합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>get_declared_interfaces</function> - 정의된 모든 인터페이스를
       배열로 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>get_headers</function> - HTTP 요청의 응답으로 서버가 보낸 모든
       헤더를 가져옵니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>headers_list</function> - 보내진 (혹은 보내질) 응답 해더의
       목록을 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>http_build_query</function> - URL-encode한 쿼리 문자열을
       생성합니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>idate</function> - 로컬 날짜/시간을 정수로 형식화합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>image_type_to_extension</function> -
       <function>getimagesize</function>,
       <function>exif_read_data</function>,
       <function>exif_thumbnail</function>,
       <function>exif_imagetype</function> 가 반환한 그림 형식으로 파일
       확장자를 얻습니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>imagefilter</function> - 사용자 각도를 사용하여 그림에 필터를
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>imagefilter</function> - 사용자 인자를 사용하여 그림에 필터를
       적용합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>imap_getacl</function> - 주어진 편지함을 위한 ACL을 얻습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>ldap_sasl_bind</function> - SASL을 사용하여 LDAP 디렉토리에
       바인드합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>mb_list_encodings</function> - 지원하는 모든 인코딩을 배열로
       반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>pcntl_getpriority</function> - 어떠한 프로세스의 우선권을
       얻습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>pcntl_wait</function> - waitpid() 시스템 호출에 따라서 자식
       프로세스의 상태를 얻거나 기다립니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>pg_version</function> - 클라이언트, 프로토콜, (가능할 경우)
       서버의 버전을 배열로 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>php_check_syntax</function> - 지정한 파일의 문법을 확인합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>php_strip_whitespace</function> - 주석과 공백을 제거한 소스를
       반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>proc_nice</function> - 현재 프로세스의 우선권을 변경합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>pspell_config_data_dir</function> - 언어 데이터 파일의 위치를
       변경합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>pspell_config_dict_dir</function> - 주 단어 목록의 위치를
       변경합니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>setrawcookie</function> - 값을 url 인코딩 하지 않은 쿠키를
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>setrawcookie</function> - 값에 URL 인코딩을 하지 않은 쿠키를
       전송합니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <function>scandir</function> - 지정한 경로 안에 파일과 디렉토리 목록.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>snmp_read_mib</function> - MIB 파일을 읽어서 활성 MIB 트리에
       넣습니다.
-    </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <function>sqlite_fetch_column_types</function> - 특정 테이블의 컬럼형을
       배열로 반환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>str_split</function> - 문자열으로 배열로 변환합니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>strpbrk</function> - 문자 집합의 어떠한 문자를 문자열에서
-      찾습니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>substr_compare</function> - 이진 호환의 특정 위치에서 길이만큼
-      두 분자열을 비교합니다. 옵션으로 대소문자 구분을 하지 않을 수 있습니다.
-    </simpara></listitem>
-    <listitem><simpara>
-      <function>time_nanosleep</function> - 나노초 단위로 지연합니다.
-    </simpara></listitem>
+     </simpara>
+    </listitem>
    </itemizedlist>
    <note>
     <para>
@@ -516,29 +790,40 @@ Action application/x-httpd-php "/php/php-cgi.exe"
     PHP 5는 몇몇 새로운 &php.ini; 지시어를 가집니다. 그 목록입니다:
    </para>
    <itemizedlist>
-    <listitem><simpara>
-     mail.force_extra_paramaters - 지정한 인수를 센드메일 바이너리에 추가적인
-     인수로 전달하도록 강제합니다. 이 인수는 항상 <function>mail</function>의
-     다섯번째 인수를 교체합니다. 안전 모드에서도 동작합니다.
-   </simpara></listitem>
-    <listitem><simpara>
-     <link linkend="ini.register-long-arrays">register_long_arrays</link> -
-     배제된 긴 형태의 $HTTP_*_VARS를 PHP가 등록할지를 지정합니다.
-   </simpara></listitem>
-    <listitem><simpara>
+    <listitem>
+     <simpara>
+      mail.force_extra_paramaters - 지정한 인수를 센드메일 바이너리에 추가적인
+      인수로 전달하도록 강제합니다. 이 인수는 항상 <function>mail</function>의
+      다섯번째 인수를 교체합니다. 안전 모드에서도 동작합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <link linkend="ini.register-long-arrays">register_long_arrays</link> -
+      배제된 긴 형태의 $HTTP_*_VARS를 PHP가 등록할지를 지정합니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <link linkend="ini.session.hash-function">session.hash_function</link> -
       해쉬 함수를 선택합니다. (MD5나 SHA-1)
-   </simpara></listitem>
-    <listitem><simpara>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
       <link
        linkend="ini.session.hash-bits-per-character">session.hash_bits_per_character</link>
       - 바이너리 해쉬 데이터를 읽을 수 있는 형태로 변환 할 때, 각 문자당 몇
       비트를 저장할지 지정합니다 (4에서 6)
-   </simpara></listitem>
-    <listitem><simpara>
-     zend.ze1_compatibility_mode - 젠드 엔진 1 (PHP 4) 호환 모드를
-     활성화합니다.
-   </simpara></listitem>
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      <link
+       linkend="ini.zend.ze1-compatibility-mode">zend.ze1_compatibility_mode</link>
+        - 젠드 엔진 1 (PHP 4) 호환 모드를 활성화합니다.
+     </simpara>
+    </listitem>
    </itemizedlist>
   </section>
 
@@ -569,11 +854,48 @@ Action application/x-httpd-php "/php/php-cgi.exe"
    <title>새로운 객체 모델</title>
    <para>
     PHP 5에서 새로운 객체 모델이 존재합니다. PHP의 객체 조작은 완전히 새로
-    쓰여졌으며, 더 나은 성능과 많은 기능을 허용합니다. 자세한 정보는 <link
-     xlink:href="http://www.php.net/zend_engine-2.php">http://www.php.net/zend-engine-2.php</link>를
-    읽어보십시오.
+    쓰여졌으며, 더 나은 성능과 많은 기능을 허용합니다. 이전 버전의 PHP에서,
+    객체는 기본형처럼(정수형이나 문자열 같이) 다루었습니다. 이런 방식의 단점은
+    변수가 할당되거나, 메쏘드의 인수로 넘겨질 때 모든 객체를 복사해야
+    했습니다. 새로운 방식으로, 객체는 값이 아닌 핸들을 참조하게 됩니다.
+    (핸들을 객체 식별자로 생각할 수도 있습니다)
+   </para>
+   <para>
+    많은 PHP 프로그래머는 이전 객체 모델의 복사에 대해서 크게 신경 쓰지 않았기
+    때문에, 대부분의 PHP 어플리케이션은 매우 작은 변경만으로도 작동합니다.
+   </para>
+   <para>
+    새 객체 모델은 <link linkend="language.oop5">언어 레퍼런스</link>에 문서가
+    있습니다.
+   </para>
+   <para>
+    PHP 5에서 클래스 이름을 가진 함수는 같은 클래스 안에서 정의되었을 때에만
+    생성자로 호출됩니다. PHP 4에서는 정의된 클래스가 부모 클래스였어도
+    호출됩니다.
+   </para>
+   <para>
+    PHP 4와 호환을 위해서 <link
+     linkend="ini.zend.ze1-compatibility-mode">zend.ze1_compatibility_mode</link>
+    지시어를 참고하십시오.
    </para>
   </section>
+
+  <section xml:id='migrating5.errorrep'>
+   <title>오류 보고</title>
+   <para>
+    PHP 5부터 새 오류 보고 상수 E_STRICT가 2048 값으로 나왔습니다. 이는 코드에
+    대해서 상호 운용성과 상위 호환을 전제로 한 런타임 PHP 제안을 활성화합니다.
+    이로써 최신의 좋은 권고 방식으로 코딩할 수 있습니다. 예를 들면, STRICT
+    메세지는 배제된 함수에 대해서 경고를 해줍니다.
+   </para>
+   <note>
+    <simpara>
+     E_ALL은 E_STRICT를 포함하지 않으므로, 기본값으로 활성화 되어 있지
+     않습니다.
+    </simpara>
+   </note>
+  </section>
+
  </appendix>
 
 
