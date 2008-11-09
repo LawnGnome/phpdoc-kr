@@ -729,7 +729,7 @@ foreach (array(1, 2, 3, 4, 5) as $v) {
     <literal>switch</literal>절의 수행을 멈춘다.
    </simpara>
    <simpara>
-    <literal>break</literal>는 숫자 인자 옵션을 허용함으로써
+    <literal>break</literal>는 숫자 인수 옵션을 허용함으로써
     내포된 구문구조의 깊이를 표시하고 거기서 빠져나올수 있게 해준다.
    </simpara>
    <para>
@@ -745,7 +745,7 @@ while (list (, $val) = each ($arr)) {
     echo "$val<br />\n";
 }
 
-/* 옵션 인자 사용하기. */
+/* 옵션 인수 사용하기. */
 
 $i = 0;
 while (++$i) {
@@ -781,7 +781,7 @@ while (++$i) {
     </simpara>
    </note>
    <simpara>
-    <literal>continue</literal>는 숫자 인자 옵션을 사용하여 루프의 깊이를
+    <literal>continue</literal>는 숫자 인수 옵션을 사용하여 루프의 깊이를
     표시할수 있고, 루프의 끝까지 건너뛸수 있다.
    </simpara>
    <para>
@@ -852,7 +852,7 @@ while ($i++ < 5) {
       </screen>
       <para>
        <function>print</function> 호출의 반환값은
-       <literal>int(1)</literal>이기 때문에, 위에서 언급한 부수적인 수 인자로
+       <literal>int(1)</literal>이기 때문에, 위에서 언급한 부수적인 수 인수로
        보여집니다.
       </para>
      </informalexample>
@@ -1200,7 +1200,7 @@ print_r(profile(TRUE));
    <title>return</title>
    <simpara>
     <function>return</function>문이 함수안에서 호출된다면, 현재 함수의
-    수행을 즉시 끝내고, 함수 호출 결과값으로 return의 인자값을 넘겨준다.
+    수행을 즉시 끝내고, 함수 호출 결과값으로 return의 인수값을 넘겨준다.
     <function>return</function>문은 <function>eval</function>함수나 
     스크립트 파일의 수행을 종료시킨다.
    </simpara>
@@ -1223,7 +1223,7 @@ print_r(profile(TRUE));
    <para>
     <note>
      <simpara>
-      <function>return</function>은 함수가 아닌 언어 구조이기 때문에, 인자를
+      <function>return</function>은 함수가 아닌 언어 구조이기 때문에, 인수를
       괄호로 쌀 필요가 없습니다. 괄호가 없는 것이 일반적으로, PHP가 더 적은
       일을 하게 합니다.
      </simpara>
@@ -1492,7 +1492,7 @@ include 'file.php';  // Works.
     있습니다.
    </simpara>
    <para>
-    <function>include</function>은 특별한 언어 구조이기 때문에, 인자를 괄호로
+    <function>include</function>은 특별한 언어 구조이기 때문에, 인수를 괄호로
     쌀 필요가 없습니다. 반환값을 비교할 때는 조심하십시오.
     <example>
      <title>include의 반환값 비교하기</title>

@@ -23,8 +23,8 @@
 <!ENTITY note.func-callback '<note><simpara>함수 이름 대신에, 객체의 참조와
 메쏘드 이름을 가지는 배열을 사용할 수 있습니다.</simpara></note>'>
 
-<!ENTITY note.funcnoparam '<note><para>이 함수는 매개변수를 현재 영역(scope)에
-의존하기 때문에, 함수의 매개변수로 사용할 수 없습니다. 이 값을 함수에 넘겨야
+<!ENTITY note.funcnoparam '<note><para>이 함수는 인수를 현재 영역(scope)에
+의존하기 때문에, 함수의 인수로 사용할 수 없습니다. 이 값을 함수에 넘겨야
 한다면, 결과값을 변수에 할당하여 그 변수로 넘겨야 합니다.</para></note>'>
 
 <!ENTITY note.line-endings '<note><simpara>PHP가 매킨토시 컴퓨터에서 파일을
@@ -73,7 +73,7 @@ linkend="ini.register-globals">register_globals</link>의 기본값은
 있습니다. 자세한 내용은 매뉴얼의 &link.superglobals; 섹션을
 읽어보십시오.</para></note>'>
 
-<!ENTITY note.uses-ob '<note><para>이 함수는 내부적으로 이 매개변수로
+<!ENTITY note.uses-ob '<note><para>이 함수는 내부적으로 이 인수로
 출력 버퍼링을 사용합니다. 그래서 <function>ob_start</function> 콜백 함수
 안에서 사용할 수 없습니다.</para></note>'>
 
@@ -320,7 +320,7 @@ xmlns:xlink='http://www.w3.org/1999/xlink'>php_timezonedb.dll</link>.</simpara><
 
 <!ENTITY date.timestamp.description
 '<varlistentry><term><parameter>timestamp</parameter></term><listitem><para>선택적인
-<parameter>timestamp</parameter> 매개변수는 현재 로컬 시간을 기본값으로 가지는
+<parameter>timestamp</parameter> 인수는 현재 로컬 시간을 기본값으로 가지는
 <type>integer</type> 유닉스 타임스탬프입니다. 즉, 기본값은
 <function>time</function> 값입니다.</para></listitem></varlistentry>'>
 
@@ -536,7 +536,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 <!-- BCMath Notes -->
 <!ENTITY bc.scale.description
 '<varlistentry><term><parameter>scale</parameter></term><listitem><para>이
-선택적인 매개변수는 소수점 아래 자리수를 설정합니다.
+선택적인 인수는 소수점 아래 자리수를 설정합니다.
 <function>bcscale</function>을 사용하여 모든 함수에 대한 전역 기본값을 설정할
 수 있습니다.</para></listitem></varlistentry>'>
 
@@ -595,7 +595,7 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 대소문자가 변환됩니다.</para>'>
 
 <!ENTITY sqlite.decode-bin '<para><parameter>decode_binary</parameter>
-매개변수가 &true;(기본값)로 설정되면, PHP는
+인수가 &true;(기본값)로 설정되면, PHP는
 <function>sqlite_escape_string</function>를 사용하여 인코드한 데이터로
 취급하여 이진 인코딩을 해제합니다. 다른 sqlite 적용 프로그램에서 생성한
 데이터베이스를 사용하지 않는 한, 기본값으로 사용하면 됩니다.</para>'>
@@ -605,11 +605,11 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 
 <!ENTITY sqlite.param-compat '<note><simpara>(MySQL 같은) 다른 데이터베이스
 확장과 호환성을 유지하기 위하여 두가지 다른 형식의 문법을 지원합니다. 권장하는
-방식은 <parameter>dbhandle</parameter> 매개변수를 함수의 첫번째 매개변수로
+방식은 <parameter>dbhandle</parameter> 인수를 함수의 첫번째 인수로
 사용하는 것입니다.</simpara></note>'>
 
 <!ENTITY sqlite.result-type '<para>선택적인 <parameter>result_type</parameter>
-매개변수는 반환하는 배열이 어떤 형식일지에 대한 대한 상수를 받습니다.
+인수는 반환하는 배열이 어떤 형식일지에 대한 대한 상수를 받습니다.
 <constant>SQLITE_ASSOC</constant>를 사용하면 연상배열(이름 필드)로 반환합니다.
 <constant>SQLITE_NUM</constant>은 수치배열(순차적인 필드 번호)를 반환합니다.
 <constant>SQLITE_BOTH</constant>는 연상 및 수치를 동시에 반환합니다.
@@ -644,7 +644,7 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 <!ENTITY mysql.linkid.description
 '<varlistentry><term><parameter>link_identifier</parameter></term><listitem><para>MySQL
 연결. 지정하지 않으면 <function>mysql_connect</function>로 연 마지막 연결을
-사용합니다. 연결이 없으면, 매개변수 없이 <function>mysql_connect</function>를
+사용합니다. 연결이 없으면, 인수 없이 <function>mysql_connect</function>를
 호출하여 연결을 만듭니다. 연결이 성립되지 않으면
 <constant>E_WARNING</constant> 등급의 오류를
 생성합니다.</para></listitem></varlistentry>'>
@@ -671,7 +671,7 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 <!ENTITY sybase.linkid.description
 '<varlistentry><term><parameter>link_identifier</parameter></term><listitem><para>Sybase
 연결. 지정하지 않으면 <function>sybase_connect</function>로 연 마지막 연결을
-사용합니다. 연결이 없으면, 매개변수 없이 <function>sybase_connect</function>를
+사용합니다. 연결이 없으면, 인수 없이 <function>sybase_connect</function>를
 호출하여 연결을 만듭니다. 연결이 성립되지 않으면
 <constant>E_WARNING</constant> 등급의 오류를
 생성합니다.</para></listitem></varlistentry>'>
@@ -697,7 +697,7 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 <!ENTITY xattr.namespace '<para>확장 속성은 user와 root의 두가지 이름공간을
 가집니다. user 이름공간은 모든 사용자가 사용할 수 있지만, root 이름공간은 root
 권한을 가진 사용자만 사용할 수 있습니다. xattr은 기본적으로 user 이름공간에서
-실행하지만, <parameter>flags</parameter> 인자를 사용하여 변경할 수
+실행하지만, <parameter>flags</parameter> 인수를 사용하여 변경할 수
 있습니다.</para>'>
 
 <!-- Notes for IPv6 -->

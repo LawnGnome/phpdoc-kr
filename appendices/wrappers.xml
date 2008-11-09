@@ -434,7 +434,7 @@ X-MyCustomHeader: Foo
    <listitem>
     <para>
      <literal>/resource=&lt;필터링되는 스트림&gt;</literal>
-     (<emphasis>필수</emphasis>) 이 인자는
+     (<emphasis>필수</emphasis>) 이 인수는
      <filename>php://filter</filename> 사양의 끝부분에 위치해야 하고
      필터링을 원하는 스트림을 가리켜야 한다.
      <informalexample>
@@ -455,7 +455,7 @@ readfile("php://filter/resource=http://www.example.com");
    <listitem>
     <para>
      <literal>/read=&lt;읽기 체인에 적용되는 필터 리스트&gt;</literal>
-     (<emphasis>선택적</emphasis>) 이 인자는 
+     (<emphasis>선택적</emphasis>) 이 인수는 
      <literal>|</literal> 파이프 문자로 구분되는 하나이상의 필터명이
      적용된다.
      <informalexample>
@@ -478,7 +478,7 @@ readfile("php://filter/read=string.toupper|string.rot13/resource=http://www.exam
    <listitem>
     <para>
      <literal>/write=&lt;쓰기 체인에 적용되는 필터 리스트&gt;</literal>
-     (<emphasis>선택적</emphasis>) 이 인자는 
+     (<emphasis>선택적</emphasis>) 이 인수는 
      <literal>|</literal> 파이프 문자로 구분하는 하나이상의 필터명을
      적용합니다.
      <informalexample>

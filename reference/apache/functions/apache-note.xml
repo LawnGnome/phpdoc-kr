@@ -51,8 +51,8 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   하나의 인자로 호출하면, <literal>note_name</literal> 노트의 현재 값을
-   반환합니다. 두 인자로 호출하면, <literal>note_name</literal> 노트의 값을
+   하나의 인수로 호출하면, <literal>note_name</literal> 노트의 현재 값을
+   반환합니다. 두 인수로 호출하면, <literal>note_name</literal> 노트의 값을
    <literal>note_value</literal>로 설정하고, 이전의
    <literal>note_name</literal> 노트값을 반환합니다.
    노트를 확인할 수 없으면, &false;를 반환합니다.

@@ -81,7 +81,7 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.intro        '<title>소개</title>'>
 <!ENTITY reftitle.methods      '<title>메쏘드</title>'>
 <!ENTITY reftitle.notes        '<title>주의</title>'>
-<!ENTITY reftitle.parameters   '<title>매개변수</title>'>
+<!ENTITY reftitle.parameters   '<title>인수</title>'>
 <!ENTITY reftitle.options      '<title>옵션</title>'>
 <!ENTITY reftitle.properties   '<title>프로퍼티</title>'>
 <!ENTITY reftitle.required     '<title>요구 조건</title>'>

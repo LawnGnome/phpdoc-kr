@@ -44,7 +44,7 @@
      <term><parameter>mode</parameter></term>
      <listitem>
       <para>
-       부수적인 <parameter>mode</parameter> 인자를
+       부수적인 <parameter>mode</parameter> 인수를
        <constant>COUNT_RECURSIVE</constant>(또는 1)로 설정하면,
        <function>count</function>는 배열을 재귀적으로 셉니다. 이는 다차원
        배열의 요소를 셀 경우 유용한 경우가 있습니다.
@@ -90,7 +90,7 @@
       <row>
        <entry>4.2.0</entry>
        <entry>
-        부수적인 <parameter>mode</parameter> 인자가 추가되었습니다.
+        부수적인 <parameter>mode</parameter> 인수가 추가되었습니다.
        </entry>
       </row>
      </tbody>

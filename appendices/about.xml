@@ -179,7 +179,7 @@ int strlen ( string $string )
         ( string $string )
        </entry>
        <entry>
-        이 함수의 처음 (이 경우는 하나뿐인) 매개변수는
+        이 함수의 처음 (이 경우는 하나뿐인) 인수는
         <parameter>string</parameter>이라는 이름을 가지는
         <type>string</type>형입니다.
        </entry>
@@ -194,12 +194,12 @@ int strlen ( string $string )
   <para>
    <screen>
 <![CDATA[
-      반환형    함수이름    ( 매개변수형   매개변수이름 )
+      반환형    함수이름    ( 인수형   인수이름 )
 ]]>
    </screen>
   </para>
   <para>
-   <function>in_array</function>처럼, 많은 함수는 여러 매개변수를 가집니다.
+   <function>in_array</function>처럼, 많은 함수는 여러 인수를 가집니다.
    프로토타입은 다음과 같습니다:
   </para>
   <para>
@@ -216,18 +216,18 @@ int strlen ( string $string )
    <parameter>needle</parameter>을 찾았을 때)에는 &true;를,
    실패시(<parameter>haystack</parameter>에서
    <parameter>needle</parameter>을 찾지 못했을 때)에는 &false;입니다. 첫번째
-   매개변수는 <parameter>needle</parameter>이라는 이름을 가지고, 여러 <link
+   인수는 <parameter>needle</parameter>이라는 이름을 가지고, 여러 <link
     linkend="language.types">타입</link>이 될 수 있기 때문에,
    "<emphasis>mixed</emphasis>"라고 불립니다. (찾을 목표인) mixed
    <parameter>needle</parameter>은 스칼라 값(문자열, 정수, <link
     linkend="language.types.float">실수</link>)이나 <link
     linkend="language.types.array">배열</link>이 될 수 있습니다. (찾아볼
-   배열) <parameter>haystack</parameter>은 두번째 매개변수입니다. 세번째
-   <emphasis>선택적인</emphasis> 매개변수 이름은
-   <parameter>strict</parameter>입니다. 모든 선택적인 매개변수는
+   배열) <parameter>haystack</parameter>은 두번째 인수입니다. 세번째
+   <emphasis>선택적인</emphasis> 인수 이름은
+   <parameter>strict</parameter>입니다. 모든 선택적인 인수는
    <emphasis>[</emphasis> 브라켓 <emphasis>]</emphasis> 사이에 들어갑니다.
-   매뉴얼에 <parameter>strict</parameter> 매개변수의 기본값은 불 &false;로
-   나와 있습니다. 매개변수가 어떻게 동작하는지에 대한 자세한 사항은 각 함수의
+   매뉴얼에 <parameter>strict</parameter> 인수의 기본값은 불 &false;로
+   나와 있습니다. 인수가 어떻게 동작하는지에 대한 자세한 사항은 각 함수의
    매뉴얼 페이지를 참고하십시오.
   </para>
   <para>
