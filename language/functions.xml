@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.55 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.69 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.functions" xmlns="http://docbook.org/ns/docbook">
   <title>함수</title>
@@ -27,22 +27,21 @@ function foo($arg_1, $arg_2, /* ..., */ $arg_n)
     </example>
    </para>
    
-   <!--
-    
-    status of func(const $param) ?
-    zend doesn't care at all whether or not you specify it.
-    I've never seen it before... what's its use? (or was...)
-    
-    -->
    <simpara>
     모든 유효 PHP코드는 특정 함수 내에서 뿐만 아니라, 여러 다른 함수나
     <link linkend="keyword.class">class</link>정의 안에서도 
     나타날수있다.
    </simpara>
+   <para>
+    함수 이름은 PHP의 다른 라벨과 같은 규칙을 따릅니다. 유효한 함수 이름은
+    문자나 _로 시작하고, 여러 개의 문자, 숫자, _가 붙습니다. 정규 표현식으로는
+    다음과 같이 표현됩니다:
+    <literal>[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*</literal>.
+   </para>
+   &tip.userlandnaming;
    <simpara>
-    PHP 3에서는 함수가 참조되기 전에 선언되어야 한다. 다음 두 예제 코드와 
-    같이 함수가 조건적으로 선언되는 경우를 <emphasis>제외하고</emphasis>
-    PHP 4부터는 이러한 제약이 없습니다. 
+    함수는 아래 두 예제처럼 조건적으로 정의할 경우를
+    <emphasis>제외하고</emphasis>, 참조하기 전에 정의할 필요는 없습니다.
    </simpara>
    <para>
     아래 예제 코드와 같이 함수가 조건적으로 선언되면 그 함수가 호출되기
@@ -115,6 +114,10 @@ bar();
      </programlisting>
     </example>
    </para>
+   <para>
+    PHP의 모든 함수와 클래스는 전역입니다 - 함수가 내부에서 정의되었더라도
+    외부에서 호출할 수 있으며, 반대도 성립합니다.
+   </para>
    <simpara>
     PHP는 함수 오버로딩(overloading)을 지원하지 않으며, 함수 정의를
     해제하거나 이미 선언된 함수를 다시 선언할수 없다.
@@ -126,15 +129,34 @@ bar();
     </simpara>
    </note>   
    <simpara>
-    PHP 3에서 함수는 기본 인자(default argument)를 지원되지만, 
-    가변 인자 갯수(variable-length argument)를 지원하지 않는다. (자세한 정보는 
-    <link linkend="functions.arguments.default">기본 인자</link>섹션을 참고). 
-    PHP 4부터는 둘 다 지원합니다: 자세한 정보는 
-    <link linkend="functions.variable-arg-list">가변 길이 인자 목록</link>섹션과
-    <function>func_num_args</function>,
-    <function>func_get_arg</function>,
-    <function>func_get_args</function>함수 레퍼런스를 참고.
+    함수에서 <link linkend="functions.variable-arg-list">가변 길이 인자
+     목록</link>과 <link linkend="functions.arguments.default">인자
+     기본값</link>을 지원합니다. 자세한 정보는
+    <function>func_num_args</function>, <function>func_get_arg</function>,
+    <function>func_get_args</function> 함수 레퍼런스를 참고하십시오.
    </simpara>
+
+   <para>
+    PHP에서 재귀 함수 호출을 할 수 있습니다. 그러나 100-200 재귀 레벨을
+    넘어서는 함수/메쏘드 호출을 피하십시오. 스택 한계에 도달하여 현재
+    스크립트가 중단됩니다.
+    <example>
+     <title>재귀 함수</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+function recursion($a)
+{
+    if ($a < 20) {
+        echo "$a\n";
+        recursion($a + 1);
+    }
+}
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
 
   </sect1>
  
@@ -143,19 +165,16 @@ bar();
  
    <simpara>
     함수 인자를 통해서 함수에 정보를 넘겨줄수 있다. 이런 함수 인자는
-    콤마(,)로 구별되는 변수나 상수의 목록이다.
+    콤마(,)로 구별되는 표현 목록이다.
    </simpara> 
    <para>
     PHP는 값에 의한 인자 전달(passing by value) (기본값),
-    <link linkend="functions.arguments.by-reference">참조에 의한 전달(passing by reference)</link>, 
-    <link linkend="functions.arguments.default">기본 인자 값(default argument value)</link>기능
-    을 지원한다. 가변 인자 목록(variable-length argument)은 PHP 4이후 버전에서만 지원된다;
-    더 자세한 정보는
-    <link linkend="functions.variable-arg-list">가변 인자 목록</link>섹션과
-    <function>func_num_args</function>,
-    <function>func_get_arg</function>,
-    <function>func_get_args</function>함수 레퍼런스를 참고.
-    PHP 3에서는 함수에 인자 배열을 넘겨줌으로써 비슷한 효과를 낼수있다:
+    <link linkend="functions.arguments.by-reference">참조에 의한 전달</link>, 
+    <link linkend="functions.arguments.default">인자 기본값</link> 기능을
+    지원합니다. <link linkend="functions.variable-arg-list">가변 길이 인자
+     목록</link>도 지원하며, 자세한 정보는 <function>func_num_args</function>,
+    <function>func_get_arg</function>, <function>func_get_args</function> 함수
+    레퍼런스를 참고하십시오.
    </para>
    <para>
     <example>
@@ -177,13 +196,13 @@ function takes_array($input)
     <title>참조에 의한 인자 전달하기</title>
  
     <simpara>
-     기본적으로, 함수 인자는 값에 의해 전달된다 (그래서 함수내의 인자값
-     이 변경되도 함수 밖에서는 바뀌지 않는다). 함수가 그 인자까지 변경가능하게
-     하려면, 참조에 의해 인자를 전달해야 한다.
+     기본적으로, 함수 인자는 값에 의해 전달됩니다. (그래서 함수내의 인자
+     변수값을 변경해도 함수 밖에서는 바뀌지 않습니다) 함수가 그 인자를 바꾸게
+     하려면, 참조로 넘겨줘야 합니다.
     </simpara>
     <para>
-     함수의 인자를 참조로 전달하려면, 함수 선언시에 엠퍼센트(&amp;)를 인자명 앞에
-     덧붙이면 된다: 
+     항상 함수의 인자를 참조로 넘기게 하려면, 함수 정의에서 엠퍼샌드(&amp;)를
+     인자 이름 앞에 붙이면 됩니다:
     </para>
     <para>
      <example>
@@ -207,7 +226,7 @@ echo $str;    // outputs 'This is a string, and something extra.'
    </sect2>
  
    <sect2 xml:id="functions.arguments.default">
-    <title>기본 인수 값</title>
+    <title>기본 인자 값</title>
  
     <para>
      함수는 다음과 같이 스칼라 인자에 대해 C++스타일 기본값으로 지정할수있다:
@@ -223,6 +242,7 @@ function makecoffee($type = "cappuccino")
     return "Making a cup of $type.\n";
 }
 echo makecoffee();
+echo makecoffee(null);
 echo makecoffee("espresso");
 ?>
 ]]>
@@ -236,12 +256,13 @@ echo makecoffee("espresso");
     <para>
      <screen>
 Making a cup of cappuccino.
+Making a cup of .
 Making a cup of espresso.
      </screen>
     </para>
     <para>
-     또한, PHP는 배열과 특별한 값인 NULL을 기본값으로 사용할 수 있습니다. 예를
-     들면:
+     PHP는 <type>array</type>와 특별형 &null;을 기본값으로 사용할 수 있습니다.
+     예를 들면:
     </para>
     <para>
      <example>
@@ -294,7 +315,7 @@ echo makeyogurt("raspberry");   // won't work as expected
     <para>
      <screen>
 Warning: Missing argument 2 in call to makeyogurt() in 
-/usr/local/etc/httpd/htdocs/php3test/functest.html on line 41
+/usr/local/etc/httpd/htdocs/phptest/functest.html on line 41
 Making a bowl of raspberry .
      </screen>
     </para>
@@ -357,10 +378,10 @@ Making a bowl of acidophilus raspberry.
   </sect1>
  
   <sect1 xml:id="functions.returning-values">
-   <title>값 돌려주기</title>
+   <title>반환값</title>
  
    <para>
-    선택적인 return문을 사용하여 값을 돌려준다. 리스트나 객체를 포함하여
+    선택적인 return문을 사용하여 값을 돌려준다. 배열이나 객체를 포함하여
     모든 타입을 돌려줄수있다. 이 구문에서 함수의 수행이 즉시 중단되고
     현재 함수를 호출한 코드줄로 제어를 되돌린다. 
     자세한 정보는 <function>return</function>섹션을 참고할것.
@@ -383,8 +404,8 @@ echo square(4);   // outputs '16'.
    </para>
       
    <para>
-    함수는 여러 값을 돌려줄수 없다. 그러나 리스트를 돌려줌으로서
-    비슷한 효과를 볼수있다.
+    함수는 여러 값을 반환할 수 없습니다. 그러나 배열을 반환하게 해서 비슷한
+    결과를 얻을 수 있습니다.
    </para>
    <para>
     <example>
@@ -443,8 +464,7 @@ $newref =& returns_reference();
     <function>unset</function>, <function>isset</function>,
     <function>empty</function>, <function>include</function>,
     <function>require</function>와 같은 언어 구조와 함께 작동하지 않을것이다.
-    이런 구조를 가변 변수로 사용하기 위해서는 보호 함수(wrapper function)를 
-    사용할 필요가 있다.
+    래퍼 함수를 사용해서 이러한 구조를 가변 함수로 이용할 수 있습니다.
    </para>
    <para>
     <example>
@@ -458,7 +478,7 @@ function foo() {
 
 function bar($arg = '')
 {
-    echo "bar() 안입니다; 인수는 '$arg'입니다.<br />\n";
+    echo "bar() 안입니다; 인자는 '$arg'입니다.<br />\n";
 }
 
 // echo를 감싸는 래퍼 함수입니다.
@@ -481,9 +501,9 @@ $func('test');  // echoit()을 호출합니다.
     </example>
    </para>
    <para>
-    가변 함수 기능을 사용하여 객체의 메소드를 호출할수 있다.
+    객체 메쏘드도 가변 함수 구문으로 호출할 수 있습니다.
     <example>
-     <title>가변 메소드 사용예</title>
+     <title>가변 메쏘드 사용예</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -523,7 +543,7 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
    <para>
     PHP는 많은 함수와 상수로 표준화되었다. 그리고 특정 PHP확장 컴파일이
     요구하는 함수도 제공한다. 이런 함수는 확장을 컴파일하지 않으면 "undefined
-    function"같은 치명적 오류 메시지를 출력할 것이다. 예를 들면, <link
+    function"같은 치명적 오류 메시지를 출력합니다. 예를 들면, <link
      linkend="ref.image">이미지</link> 함수를 사용하기 위해서는
     <productname>GD</productname> 지원이 가능하게 컴파일해야 합니다.
     <function>mysql_connect</function> 함수를 사용하려면 <link
@@ -531,16 +551,17 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
      linkend="ref.strings">문자열</link>과 <link linkend="ref.var">변수
      관련</link> 함수와 같이 PHP의 모든 버전에 포함되어있는 많은 핵심 함수가
     존재한다.
-    <function>phpinfo</function>나 <function>get_loaded_extensions</function>함수
-    를 호출하면 현재 PHP에 올라간 확장에 어떤것인지 확인할수 있다. 많은 확장이 
-    기본값으로 활성화되어있고, PHP 매뉴얼은 여러 확장에 의해 분할되어있다는 것에 
-    주의해야 한다. PHP를 셋업하는 방법을 알고 싶다면,
+    <function>phpinfo</function>나
+    <function>get_loaded_extensions</function>를 호출하면 현재 PHP에 올라간
+    확장에 어떤것인지 확인할수 있다. 많은 확장이 기본값으로 활성화되어있고,
+    PHP 매뉴얼은 여러 확장에 의해 분할되어있다는 것에 주의해야 한다. PHP를
+    셋업하는 방법을 알고 싶다면,
     <link linkend="configuration">설정</link>,  
     <link linkend="install">설치</link>, 각 확장에 대한 챕터를 보라.
    </para>
    <para>
-    함수의 원형(prototype) 읽기와 이해는 <link linkend="about.prototypes">함수 선언 읽는 법</link>
-    이라는 매뉴얼 섹션에서 설명한다.
+    함수의 원형(prototype) 읽기와 이해는 <link linkend="about.prototypes">함수
+     선언 읽는 법</link>이라는 매뉴얼 섹션에서 설명한다.
     함수가 돌려주는 것이나 함수가 값으로 직접 전달하는지 이해하는것이 중요하다.
     예를 들면,  
     <function>str_replace</function>함수는 변경된 문자열을 돌려주는 반면에
@@ -549,6 +570,14 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
     돌려주는 값과 유용한 정보에 대해서 나와있다. 이런 중요한 차이점(아직은 희박)
     을 아는 것은 PHP 코드를 정확하게 쓰는데 있어서 매우 결정적인 역할을 한다.
    </para>
+   <note>
+    <simpara>
+     <type>string</type>을 기대한 곳에 <type>array</type>를 넘기는 등, 함수에
+     주어진 인자가 기대한 것이 아닐 경우, 함수의 반환값은 정의되지 않았습니다.
+     이런 경우 &null;을 반환할 수 있지만, 이는 단순한 경우이며, 이에 의존하지
+     마십시오.
+    </simpara>
+   </note>
    <para>
     더불어 <function>function_exists</function>, 
     <link linkend="funcref">the function reference</link>,

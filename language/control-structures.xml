@@ -1,23 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.142 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.170 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.control-structures" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>제어 구조</title>
 
-  <simpara>
-   모든 PHP 스크립트는 연속적인 구문으로 이루어진다. 하나의 구문은 지정문
-   이 될수도 있고, 함수 호출, 반복문, 조건문이 될수 있으며 심지어는 아무
-   내용이 없는 빈 문장일수도 있다. 한 구문은 보통 세미콜론(;)으로 끝난다.
-   또한 여러개의 구문을 중괄호({,})를 사용하여 하나의 그룹으로 만들어 사용할
-   수도 있다. 이 구문 그룹은 그 그룹의 모든 구문들이 하나의 구문인 것처럼
-   인식된다. 이 장에서는 여러 가지 구문형태에 대해 알아본다.
-  </simpara>
+  <sect1 xml:id="control-structures.intro">
+   <title>소개</title>
+   <simpara>
+    모든 PHP 스크립트는 연속적인 구문으로 이루어진다. 하나의 구문은 지정문
+    이 될수도 있고, 함수 호출, 반복문, 조건문이 될수 있으며 심지어는 아무
+    내용이 없는 빈 문장일수도 있다. 한 구문은 보통 세미콜론(;)으로 끝난다.
+    또한 여러개의 구문을 중괄호({,})를 사용하여 하나의 그룹으로 만들어 사용할
+    수도 있다. 이 구문 그룹은 그 그룹의 모든 구문들이 하나의 구문인 것처럼
+    인식된다. 이 장에서는 여러 가지 구문형태에 대해 알아본다.
+   </simpara>
+  </sect1>
 
   <sect1 xml:id="control-structures.if">
    <title><literal>if</literal></title>
    <para>
     <literal>if</literal>문은 PHP를 포함해서 모든 언어에 있어서 가장
-    중요한 기능(feature) 중 하나이다. 이 제어문으로 각각 다른 코드에 대해
+    중요한 기능 중 하나이다. 이 제어문으로 각각 다른 코드에 대해
     조건적인 수행을 가능케한다. <literal>if</literal>문의 기능은 C와 비슷하다:
     <informalexample>
      <programlisting>
@@ -111,7 +114,7 @@ if ($a > $b) {
   </sect1>
 
   <sect1 xml:id="control-structures.elseif">
-   <title><literal>elseif</literal></title>
+   <title><literal>elseif</literal>/<literal>else if</literal></title>
    <para>
     <literal>elseif</literal>, 이 이름에서 알수 있듯이,
     <literal>if</literal>와 <literal>else</literal>의 조합이다.
@@ -151,6 +154,43 @@ if ($a > $b) {
     다른 <literal>elseif</literal>표현식이 &false;이고,
     이 <literal>elseif</literal>표현식이 &true;일때만 수행된다.
    </simpara>
+   <note>
+    <simpara>
+     <literal>elseif</literal>와 <literal>else if</literal>은 위 예제처럼
+     대괄호를 사용할 때 정확히 같은 구문으로 간주됩니다.
+     <literal>if</literal>/<literal>elseif</literal> 조건을 콜론을 사용해서
+     정의할 때, <literal>else if</literal> 처럼 두 단어로 나눠서는 안됩니다.
+     PHP는 처리 오류로 실패합니다.
+    </simpara>
+   </note>
+   <para>
+    <informalexample>
+     <programlisting role="php">
+<![CDATA[
+<?php
+
+/* 부적합한 방법: */
+if($a > $b):
+    echo $a." is greater than ".$b;
+else if($a == $b): // 컴파일 되지 않습니다.
+    echo "위 줄은 처리 오류를 일으킵니다.";
+endif;
+
+
+/* 적합한 방법: */
+if($a > $b):
+    echo $a." is greater than ".$b;
+elseif($a == $b): // 단어가 붙어 있는 점에 주의.
+    echo $a." equals ".$b;
+else:
+    echo $a." is neither greater than or equal to ".$b;
+endif;
+
+?>
+]]>
+     </programlisting>
+    </informalexample>
+   </para>
   </sect1>
 
   <sect1 xml:id="control-structures.alternative-syntax">
@@ -371,9 +411,9 @@ for (expr1; expr2; expr3)
     평가된다 (수행된다).
    </simpara>
    <simpara>
-    각 표현은 비어있거나 콤마로 구분한 여러 표현을 가질 수 있습니다. expr2에서
-    콤마로 구분한 표현은 <link linkend="language.operators.logical">||
-     연산자</link>처럼 동작하지만, || 보다 우선권이 낮습니다.
+    각 표현은 비어있거나 콤마로 구분한 여러 표현을 가질 수 있습니다.
+    <varname>expr2</varname>에서, 콤마로 구분한 표현은 모두 평가되지만 결과는
+    마지막 부분에서만 가져옵니다.
     <varname>expr2</varname>이 비어있다는
     것은 루프가 무제한 수행되어야 한다는 것을 의미한다 (PHP는 C처럼 &true;로 인식)
     이런 기법은 생각처럼 필요없지는 않다. 왜냐 하면 종종 <literal>for</literal>문의 
@@ -436,7 +476,57 @@ for (expr1; expr2; expr3):
 endfor;
 ]]>
      </programlisting>
-     </informalexample>
+    </informalexample>
+   </para>
+   <simpara>
+    많은 사용자가 아래 예제처럼 배열을 탐색합니다.
+   </simpara>
+   <para>
+    <informalexample>
+     <programlisting role="php">
+<![CDATA[
+<?php
+/*
+ * 이 배열은 루프를 도는 동안
+ * 변경할 데이터를 가지고 있습니다.
+ */
+$people = Array(
+        Array('name' => 'Kalle', 'salt' => 856412),
+        Array('name' => 'Pierre', 'salt' => 215863),
+        );
+
+for($i = 0; $i < sizeof($people); ++$i)
+{
+    $people[$i]['salt'] = rand(000000, 999999);
+}
+?>
+]]>
+     </programlisting>
+    </informalexample>
+   </para>
+   <simpara>
+    문제는 두번째 표현식입니다. 이 코드는 매 실행마다 배열의 크기를 계산하기
+    때문에 느려집니다. 크기는 변하지 않기 때문에, 크기를 저장하는 중간 변수를
+    사용하여 루프를 돌리도록 최적화 할 수 있습니다. 아래 예제가 보여줍니다:
+   </simpara>
+   <para>
+    <informalexample>
+     <programlisting role="php">
+<![CDATA[
+<?php
+$people = Array(
+        Array('name' => 'Kalle', 'salt' => 856412),
+        Array('name' => 'Pierre', 'salt' => 215863),
+        );
+ 
+for($i = 0, $size = sizeof($people); $i < $size; ++$i)
+{
+    $people[$i]['salt'] = rand(000000, 999999);
+}
+?>
+]]>
+     </programlisting>
+    </informalexample>
    </para>
   </sect1>
 
@@ -488,18 +578,18 @@ foreach (array_expression as $key => $value)
      <para>
       배열이 <link linkend="language.references">참조</link>되지 않는 이상,
       <literal>foreach</literal>는 지정한 배열 자체가 아닌 복사한 배열을
-      대상으로 작동합니다. 그러므로, <function>each</function> 구문과 달리
-      배열 포인터는 변경되지 않으며, 반환된 배열 요소의 변경은 원 배열에
-      반영되지 않습니다. 그러나, 원 배열의 내부 포인터는 배열 처리에 따라
-      <emphasis>증가</emphasis>됩니다. foreach 루프가 끝까지 작동하면, 배열의
-      내부 포인터는 배열의 끝에 위치하게 됩니다.
+      대상으로 작동합니다. <literal>foreach</literal>는 배열 포인터에 영향이
+      있습니다. foreach 도중이나 이후에는 리셋하지 않은 배열 포인터에 의존하지
+      마십시오.
      </para>
-     <para>
-      PHP 5부터, <literal>$value</literal> 앞에 &amp;를 붙여서 배열 원소를
-      쉽게 변경할 있습니다. 값을 복사하지 않고 <link
-       linkend="language.references">참조</link>합니다.
-      <informalexample>
-       <programlisting role="php">
+    </note>
+   </para>
+   <para>
+    PHP 5부터, <literal>$value</literal> 앞에 &amp;를 붙여서 배열 원소를
+    쉽게 변경할 있습니다. 값을 복사하지 않고 <link
+     linkend="language.references">참조</link>합니다.
+    <informalexample>
+     <programlisting role="php">
 <![CDATA[
 <?php
 $arr = array(1, 2, 3, 4);
@@ -507,18 +597,24 @@ foreach ($arr as &$value) {
     $value = $value * 2;
 }
 // $arr은 이제 array(2, 4, 6, 8)입니다.
+unset($value); // 마지막 요소로 참조를 제거합니다.
 ]]>
-       </programlisting>
-      </informalexample>
-      이는 반복할 배열을 참조할 수 있을 때(즉, 변수)만 가능합니다.
-     </para>
-    </note>
+     </programlisting>
+    </informalexample>
+    이는 반복할 배열을 참조할 수 있을 때(즉, 변수)만 가능합니다.
    </para>
+   <warning>
+    <para>
+     <literal>$value</literal> 참조와 마지막 배열 요소는
+     <literal>foreach</literal> 루프 뒤에도 남아 있습니다.
+     <function>unset</function>으로 제거하는 것을 권합니다.
+    </para>
+   </warning>
    <para>
     <note>
      <para>
-      <literal>foreach</literal>는 '@'를 사용해서 에러메시지를 출력하지 못하도록
-      할수는 없다.
+      <literal>foreach</literal>는 '@'를 사용해서 에러메시지를 출력하지
+      못하도록 할 수 없습니다.
      </para>
     </note>
    </para>
@@ -574,7 +670,7 @@ foreach ($a as $v) {
    echo "\$a의 현재 값: $v.\n";
 }
 
-/* foreach 예제 2: 값 (키는 가상으로 출력) */
+/* foreach 예제 2: 값 (표시를 위해 수동으로 접근 순서를 출력) */
 
 $a = array(1, 2, 3, 17);
 
@@ -896,9 +992,8 @@ case 3:
     </informalexample>
    </para>
    <para>
-    특별한 case가 바로 <literal>default</literal> case문이다. 이것은 다른 case문과
-    모두 조건이 맞지 않을때의 경우를 위한것이고, <literal>case</literal>구문의 
-    마지막에 위치해야 한다. 예제 코드는 다음과 같다:
+    특별한 case가 바로 <literal>default</literal> case문이다. 이것은 다른
+    case문과 모두 조건이 맞지 않을때의 경우를 위한 것입니다. 예를 들면:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -951,6 +1046,28 @@ endswitch;
      </programlisting>
     </informalexample>
    </para>
+   <para>
+    case 뒤에 세미콜론 대신 콜론을 쓸 수 있습니다:
+    <informalexample>
+     <programlisting role="php">
+<![CDATA[
+<?php
+switch($beer)
+{
+    case 'tuborg';
+    case 'carlsberg';
+    case 'heineken';
+        echo 'Good choice';
+    break;
+    default;
+        echo 'Please make a new selection...';
+    break;
+}
+?>
+]]>
+     </programlisting>
+    </informalexample>
+   </para>
   </sect1>
 
   <sect1 xml:id="control-structures.declare">
@@ -981,7 +1098,9 @@ declare (directive) statement
    </para>
    <para>
     <literal>declare</literal> 구문은 전역 유효영역 안에서 사용할수 있다.
-    그래서 모든 코드가 그 디렉티브에 영향을 받는다. 
+    그래서 모든 코드가 그 디렉티브에 영향을 받는다. (그러나
+    <literal>declare</literal>가 있는 파일을 포함하였을 때에는 원 파일에는
+    영향을 주지 않습니다)
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -1003,6 +1122,11 @@ declare(ticks=1);
    </para>
    <sect2 xml:id="control-structures.declare.ticks">
     <title>틱(Ticks)</title>
+    <caution>
+     <simpara>
+      PHP 5.3.0부터 틱은 배제되었고, PHP 6.0.0에서 제거될 예정입니다.
+     </simpara>
+    </caution>
     <para>
     틱은 <literal>declare</literal>블록에서 파서에 의해 수행되는
     <varname>N</varname> 저레벨(low-level) 구문마다 발생하는
@@ -1209,8 +1333,9 @@ require ('somefile.txt');
     않는 점에 주의하십시오. 이 버전부터는 멈춥니다.
    </simpara>
    <simpara>
-    파일을 포함할 때는 먼저 현재 작업 디렉토리에서 상대 경로로 include_path를
-    찾고, 실행중인 스크립트가 있는 디렉토리를 찾습니다. 즉, include_path가
+    파일을 포함할 때는 각 include_path에 대해서 먼저 현재 작업 디렉토리에서
+    상대 경로를 찾고, 실행중인 스크립트가 있는 디렉토리를 찾습니다. 즉,
+    include_path가
     <literal>libraries</literal>이고, 현재 작업 디렉토리가 <filename
      class="directory">/www/</filename>이며, 포함한 파일
     <filename>include/a.php</filename>에 <literal>include
@@ -1218,7 +1343,7 @@ require ('somefile.txt');
      class="directory">/www/libraries/</filename>에서 찾고, 그 후에
     <filename class="directory">/www/include/</filename>을 찾습니다. 파일
     이름이 <literal>./</literal>이나 <literal>../</literal>로 시작하면, 현재
-      작업 디렉토리에 상대적인 include_path 안에서만 찾습니다.
+    작업 디렉토리 안에서만 찾습니다.
    </simpara>
    <simpara>
      파일이 인클루드 되면, 그 코드를 포함하는 코드는 인클루드가 발생한 줄의
@@ -1259,6 +1384,8 @@ echo "A $color $fruit"; // A green apple
      인클루드가 호출하는 파일안의 함수내에서 발생한다면, 호출된 파일안의
      모든 코드가 그 함수에서 정의된것처럼 동작한다. 그래서, 그 함수의 변수
      유효범위를 따를것이다.
+     이 규칙의 에외는 포함이 일어나기 전에 평가되는 <link
+      linkend="language.constants.predefined">마법 상수</link>입니다.
    </simpara>
    <para>
      <example>
@@ -1385,14 +1512,6 @@ if ((include 'vars.php') == 'OK') {
 ]]>
      </programlisting>
     </example>
-   </para>
-   <para>
-    <note>
-     <simpara>
-      PHP 3에서 그 블록이 함수가 아니면 블록 안에 return이 보이지 않을것이다.
-      그런 경우에는 전체 파일이 아니고 그 함수로만 <function>return</function>이 적용된다.
-     </simpara>
-    </note>
    </para>
    <para>
     <example>
@@ -1538,8 +1657,8 @@ function get_include_constents($filename) {
        <programlisting role="php">
 <![CDATA[
 <?php
-require_once("a.php"); // a.php를 포함합니다.
-require_once("A.php"); // 윈도우에서 또다시 a.php를 포함합니다. (PHP 4만)
+require_once "a.php"; // a.php를 포함합니다.
+require_once "A.php"; // 윈도우에서 또다시 a.php를 포함합니다. (PHP 4만)
 ?>
 ]]>
         </programlisting>
@@ -1601,8 +1720,8 @@ require_once("A.php"); // 윈도우에서 또다시 a.php를 포함합니다. (P
        <programlisting role="php">
 <![CDATA[
 <?php
-include_once("a.php"); // a.php를 포함합니다.
-include_once("A.php"); // 윈도우에서 또다시 a.php를 포함합니다. (PHP 4만)
+include_once "a.php"; // a.php를 포함합니다.
+include_once "A.php"; // 윈도우에서 또다시 a.php를 포함합니다. (PHP 4만)
 ?>
 ]]>
         </programlisting>

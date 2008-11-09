@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.101 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.107 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.variables" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>변수</title>
@@ -21,7 +21,8 @@
    
    <note>
     <simpara>
-     여기서, 문자는 a-z, A-Z, 그리고 아스키문자(ASCII) 127에서 255까지(0x7f-0xff).
+     여기서 문자는 a-z, A-Z, 그리고 127부터 255까지(0x7f-0xff) 바이트를
+     의미합니다.
     </simpara>
    </note>
 
@@ -114,8 +115,10 @@ $bar = &test();    // Invalid.
 
    <para>
     PHP에서 변수를 초기화 할 필요는 없지만, 초기화는 매우 좋은 습관입니다.
-    초기화되지 않은 변수는 형에 따라서 기본값을 가집니다 - &false;, 영, 빈
-    문자열, 빈 배열.
+    초기화되지 않은 변수는 자료형과 사용되는 위치에 따라서 기본값을 가집니다 -
+    불린 기본값은 &false;, 정수형과 소수형은 0,
+    문자열(<function>echo</function>등에서 사용)은 빈 문자열로 설정되고,
+    배열은 빈 배열로 설정됩니다.
    </para>
    <para>
     <example>
@@ -123,10 +126,32 @@ $bar = &test();    // Invalid.
      <programlisting role="php">
 <![CDATA[
 <?php
-echo ($unset_bool ? "true" : "false"); // false
+// 설정되지 않고 참조되지 않은 (사용되지 않은) 변수; NULL 출력
+var_dump($unset_var);
+
+// 불린 사용; 'false' 출력 (이 구문에 대한 설명은 3항 연산자를 참고하십시오)
+echo($unset_bool ? "true\n" : "false\n");
+
+// 문자열 사용; 'string(3) "abc"' 출력
+$unset_str .= 'abc';
+var_dump($unset_str);
+
+// 정수 사용; 'int(25)' 출력
 $unset_int += 25; // 0 + 25 => 25
-echo $unset_string . "abc"; // "" . "abc" => "abc"
-$unset_array[3] = "def"; // array() + array(3 => "def") => array(3 => "def")
+var_dump($unset_int);
+
+// 소수 사용; 'float(1.25)' 출력
+$unset_float += 1.25;
+var_dump($unset_float);
+
+// 배열 사용; array(1) {  [3]=>  string(3) "def" } 출력
+$unset_arr[3] = "def" // array() + array(3 => "def") => array(3 => "def")
+var_dump($unset_arr);
+
+// 객체 사용; 새 stdClass 객체 생성 (http://www.php.net/manual/kr/reserved.classes.php 참고)
+// 출력: object(stdClass)#1 (1) {  ["foo"]=>  string(3) "bar" }
+$unset_obj->foo = 'bar';
+var_dump($unset_obj);
 ?>
 ]]>
      </programlisting>
@@ -245,12 +270,12 @@ include 'b.inc';
 <?php
 $a = 1; /* global scope */ 
 
-function Test()
+function test()
 { 
     echo $a; /* reference to local scope variable */ 
 } 
 
-Test();
+test();
 ?>
 ]]>
     </programlisting>
@@ -378,7 +403,7 @@ function test_global()
       <programlisting role="php">
 <![CDATA[
 <?php
-function Test()
+function test()
 {
     $a = 0;
     echo $a;
@@ -404,7 +429,7 @@ function Test()
       <programlisting role="php">
 <![CDATA[
 <?php
-function Test()
+function test()
 {
     static $a = 0;
     echo $a;
@@ -417,8 +442,8 @@ function Test()
     </para>
 
    <simpara>
-    이제 Test() 함수가 호출될 때마다 <varname>$a</varname> 값이 출력되고
-    그 값을 증가시킬것이다.
+    처음 함수를 호출할 때만 <varname>$a</varname>가 초기화 되고, test() 함수가
+    호출될때마다 <varname>$a</varname> 값을 출력하고 그 값이 증가합니다.
    </simpara>
 
    <simpara>
@@ -435,14 +460,14 @@ function Test()
       <programlisting role="php">
 <![CDATA[
 <?php
-function Test()
+function test()
 {
     static $count = 0;
 
     $count++;
     echo $count;
     if ($count < 10) {
-        Test();
+        test();
     }
     $count--;
 }
@@ -750,7 +775,7 @@ echo "$a $hello";
      동일하다. GET은 QUERY_STRING (URL에서 '?'이후의 값)에도 적용이 된다.
      따라서, 예를 들면 <literal>http://www.example.com/test.php?id=3</literal>는
      <varname>$_GET['id']</varname>으로 접근할수 있는 GET 데이터를 포함한다.
-     또한 <link linkend="reserved.variables.request">$_REQUEST</link>와
+     또한 <varname>$_REQUEST</varname>와
      <function>import_request_variables</function>를 참고.
     </para>
 
