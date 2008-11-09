@@ -13,11 +13,11 @@
       <methodparam choice="opt"><type>string</type><parameter>argn...</parameter></methodparam>
      </methodsynopsis>
     <simpara>
-     모든 인자를 출력합니다.
+     모든 인수를 출력합니다.
     </simpara>
     <para>
      <function>echo</function>은 실제 함수가 아니기에 (언어 구조입니다) 괄호를
-     사용할 필요가 없습니다. 실제로, 둘 이상의 인자를 사용할 때는 괄호를
+     사용할 필요가 없습니다. 실제로, 둘 이상의 인수를 사용할 때는 괄호를
      사용해서는 안됩니다.
     </para>
     <para>
@@ -54,7 +54,7 @@ echo 'foo는 $foo'; // foo는 $foo
 echo $foo;          // foobar
 echo $foo,$bar;     // foobarbarbaz
 
-// 몇몇 사람들은 결합 echo보다 복수 인자 사용을 선호합니다.
+// 몇몇 사람들은 결합 echo보다 복수 인수 사용을 선호합니다.
 echo 'This ', 'string ', 'was ', 'made ', 'with multiple parameters.', chr(10);
 echo 'This ' . 'string ' . 'was ' . 'made ' . 'with concatenation.' . "\n";
 

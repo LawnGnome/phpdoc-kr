@@ -25,10 +25,10 @@
     </para>
     <para>
      선택적인 <parameter>output_callback</parameter> 함수를 지정할 수
-     있습니다. 이 함수는 문자열을 인자로 받고, 문자열을 반환해야 합니다. 이
+     있습니다. 이 함수는 문자열을 인수로 받고, 문자열을 반환해야 합니다. 이
      함수는 <function>ob_end_flush</function>를 호출하거나, 요청이 끝날 때
      출력 버퍼가 브라우저로 전송할 때 호출됩니다.
-     <parameter>output_callback</parameter>은 출력 버퍼의 모든 내용을 인자로
+     <parameter>output_callback</parameter>은 출력 버퍼의 모든 내용을 인수로
      받아서 브라우저로 전송할 새 출력 버퍼를 결과로 반환할 것이 기대됩니다.
      <parameter>output_callback</parameter>가 호출할 수 있는 함수가 아니라면,
      이 함수는 &false;를 반환합니다.

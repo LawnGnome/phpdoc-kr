@@ -18,13 +18,13 @@
      압축하고 bzip2 인코딩 데이터로 반환한다
     </para>
     <para>
-     선택적인 매개변수 <parameter>blocksize</parameter> 는 압축중에 사용할
+     선택적인 인수 <parameter>blocksize</parameter> 는 압축중에 사용할
      blocksize를 설정하고 1에서 9까지의 숫자가 되어야 하고 여기서 9는
      가장 압축률이 높지만 자원을 더 많이 사용하게 된다.
      <parameter>blocksize</parameter>의 기본값은 4이다.
     </para>
     <para>
-     선택적인 매개변수 <parameter>workfactor</parameter> 는 
+     선택적인 인수 <parameter>workfactor</parameter> 는 
      반복이 많은 입력 데이터와 같은 최악의 경우에 압축이 어떻게 동작할지에
      대해 제어한다. 이 값은 0부터 250이 될수 있고 0은 특수한 상황에서
      쓰이고, 30은 기본값이 된다. 이 <parameter>workfactor</parameter>에 

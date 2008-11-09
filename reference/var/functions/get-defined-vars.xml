@@ -33,7 +33,7 @@ print_r($arr["b"]);
  * 즉, /usr/local/bin/php */
 echo $arr["_"];
 
-// 명령줄 인자가 존재한다면 출력
+// 명령줄 인수가 존재한다면 출력
 print_r($arr["argv"]);
 
 // 모든 서버 변수를 출력

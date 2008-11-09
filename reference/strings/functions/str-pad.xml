@@ -18,13 +18,13 @@
      </methodsynopsis>
     <para>
      지정한 길이가 되도록 왼쪽, 오른쪽, 혹은 양쪽 모두를 채워넣은
-     <parameter>input</parameter> 문자열을 반환합니다. 선택적인 인자
+     <parameter>input</parameter> 문자열을 반환합니다. 선택적인 인수
      <parameter>pad_string</parameter>를 제공하지 않으면,
      <parameter>input</parameter>을 공백으로 채웁니다. 그렇지 않으면,
      <parameter>pad_string</parameter>의 문자들로 제한까지 채워넣습니다.
     </para>
     <para>
-     선택적인 인자 <parameter>pad_type</parameter>에는 STR_PAD_RIGHT,
+     선택적인 인수 <parameter>pad_type</parameter>에는 STR_PAD_RIGHT,
      STR_PAD_LEFT, STR_PAD_BOTH를 사용할 수 있습니다.
      <parameter>pad_type</parameter>를 지정하지 않으면 STR_PAD_RIGHT를
      사용합니다.

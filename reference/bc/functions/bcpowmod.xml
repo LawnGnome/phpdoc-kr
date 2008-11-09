@@ -20,13 +20,13 @@
     <simpara>
      <parameter>x</parameter> 를 계수 <parameter>modulus</parameter>와 관련된
      <parameter>y</parameter> 제곱하기 위한 고속-멱법(fast-exponentiation) 기법을
-     사용한다. 선택적인 <parameter>scale</parameter> 매개변수는 소수점 이하 자릿수를
+     사용한다. 선택적인 <parameter>scale</parameter> 인수는 소수점 이하 자릿수를
      설정하는데 사용된다.
     </simpara>
     <para>
      다음 두 구문은 기능상 동일하다. 
      하지만 <function>bcpowmod</function> 버전은 좀더 짧은 시간에 수행되고
-     더 긴 매개변수를 허용한다.
+     더 긴 인수를 허용한다.
      <informalexample>
       <programlisting role="php">
 <![CDATA[

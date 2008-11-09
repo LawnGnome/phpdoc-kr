@@ -19,7 +19,7 @@
      <parameter>haystack</parameter> 문자열에서
      <parameter>needle</parameter>이 처음 나타나는 수 위치를 반환합니다.
      <function>strrpos</function>와는 달리, 이 함수는
-     <parameter>needle</parameter> 인자로 완전한 문자열을 받아서 전체 문자열을
+     <parameter>needle</parameter> 인수로 완전한 문자열을 받아서 전체 문자열을
      사용합니다.
     </para>
     <para>
@@ -61,7 +61,7 @@ $pos = strpos($newstring, 'a', 1); // $pos = 7, not 0
      해당하는 값의 문자를 적용합니다.
     </para>
     <para>
-     선택적인 <parameter>offset</parameter> 인자로
+     선택적인 <parameter>offset</parameter> 인수로
      <parameter>haystack</parameter>에서 검색을 시작할 문자 위치를 지정할 수
      있습니다. 반환하는 위치는 여전히 <parameter>haystack</parameter>의 시작
      위치로부터 세어집니다.

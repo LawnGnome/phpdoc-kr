@@ -135,7 +135,7 @@ Array
     </para>
     <note>
      <para>
-      <parameter>flags</parameter>인자는 PHP 4 베타 3에서 추가되었습니다.
+      <parameter>flags</parameter>인수는 PHP 4 베타 3에서 추가되었습니다.
      </para>
     </note>
     <para>

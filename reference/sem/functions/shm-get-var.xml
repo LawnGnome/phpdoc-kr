@@ -14,7 +14,7 @@
       <methodparam><type>int</type><parameter>variable_key</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>shm_get_var</function>함수는 <parameter>variable_key</parameter> 인자로 주어진 변수를 반환한다.
+     <function>shm_get_var</function>함수는 <parameter>variable_key</parameter> 인수로 주어진 변수를 반환한다.
      공유메모리에서의 변수는 여전히 존재한다.
     </para>
     <note>

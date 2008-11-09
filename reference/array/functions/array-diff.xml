@@ -15,7 +15,7 @@
      </methodsynopsis>
     <para>
      <function>array_diff</function>는 <parameter>array1</parameter> 중에서
-     다른 인자에서 존재하지 않는 모든 값들을 포함하는 배열을 반환한다.
+     다른 인수에서 존재하지 않는 모든 값들을 포함하는 배열을 반환한다.
      키는 보존된다는 것에 주의.
     </para>
     <para>

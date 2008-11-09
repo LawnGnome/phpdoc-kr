@@ -20,7 +20,7 @@
     <simpara>
      포맷 문자열은 0개 이상의 지시어로 작성합니다:
      보통의 문자(<literal>%</literal>을 제외)는 결과에 직접 복사되고,
-     <emphasis>변환 특정어</emphasis>는 각각의 인자로 치환됩니다. 이는
+     <emphasis>변환 특정어</emphasis>는 각각의 인수로 치환됩니다. 이는
      <function>fprintf</function>, <function>sprintf</function>,
      <function>printf</function>에 적용됩니다.
     </simpara>
@@ -60,45 +60,45 @@
       </listitem>
       <listitem>
        <para>
-        <emphasis>형 지정어</emphasis>는 인자의 데이터를 어떻게 취급할지
+        <emphasis>형 지정어</emphasis>는 인수의 데이터를 어떻게 취급할지
         결정합니다. 가능한 형은:
         <simplelist>
          <member>
-          <literal>%</literal> - 단순한 퍼센트 문자. 인자는 필요하지 않습니다.
+          <literal>%</literal> - 단순한 퍼센트 문자. 인수는 필요하지 않습니다.
          </member>
          <member>
-          <literal>b</literal> - 인자를 정수형으로 취급하고, 이진수로
+          <literal>b</literal> - 인수를 정수형으로 취급하고, 이진수로
           표현합니다.
          </member>
          <member>
-          <literal>c</literal> - 인자를 정수형으로 취급하고, ASCII 값에
+          <literal>c</literal> - 인수를 정수형으로 취급하고, ASCII 값에
           해당하는 문자로 표현합니다.
          </member>
          <member>
-          <literal>d</literal> - 인자를 정수형으로 취급하고, (부호 있는)
+          <literal>d</literal> - 인수를 정수형으로 취급하고, (부호 있는)
           10진수로 표현합니다.
          </member>
          <member>
-          <literal>u</literal> - 인자를 정수형으로 취급하고, 부호 없는
+          <literal>u</literal> - 인수를 정수형으로 취급하고, 부호 없는
           10진수로 표현합니다.
          </member>
          <member>
-          <literal>f</literal> - 인자를 <type>float</type>로 취급하고,
+          <literal>f</literal> - 인수를 <type>float</type>로 취급하고,
           부동소수점 수로 표현합니다.
          </member>
          <member>
-          <literal>o</literal> - 인자를 정수형으로 취급하고, 8진수로
+          <literal>o</literal> - 인수를 정수형으로 취급하고, 8진수로
           표현합니다.
          </member>
          <member>
-          <literal>s</literal> - 인자를 문자열로 취급/표현합니다.
+          <literal>s</literal> - 인수를 문자열로 취급/표현합니다.
          </member>
          <member>
-          <literal>x</literal> - 인자를 정수형으로 취급하고, (소문자를
+          <literal>x</literal> - 인수를 정수형으로 취급하고, (소문자를
           사용하여) 16진수로 표현합니다.
          </member>
          <member>
-          <literal>X</literal> - 인자를 정수형으로 취급하고, (대문자를
+          <literal>X</literal> - 인수를 정수형으로 취급하고, (대문자를
           사용하여) 16진수로 표현합니다.
          </member>
         </simplelist>

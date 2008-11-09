@@ -21,7 +21,7 @@
 이 함수는 접속 핸들러를 이용하여 현재 문자셋을 따라서 문자를 escape하는 것만 제외하고는
 <function>mysql_real_escape_string</function>와 비슷하다.
 <function>mysql_escape_string</function>는
-접속 핸들러를 인자로 갖지 않으며, 현재 문자셋에 대해 고려하지 않는다. 
+접속 핸들러를 인수로 갖지 않으며, 현재 문자셋에 대해 고려하지 않는다. 
   </para>
  </refsect1>
 

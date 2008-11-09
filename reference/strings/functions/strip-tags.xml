@@ -18,7 +18,7 @@
      태그 제거 방식을 사용합니다.
     </para>
     <para>
-     선택적인 두번째 인자로 제거하지 않을 태그를 지정할 수 있습니다.
+     선택적인 두번째 인수로 제거하지 않을 태그를 지정할 수 있습니다.
      <note>
       <para>
        <parameter>allowable_tags</parameter>은 PHP 3.0.13과 PHP 4.0b3에서

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
+<!-- $Revision: 1.13 $ -->
 <!-- EN-Revision: 1.19 Maintainer: fuzzy74 Status: ready -->
 
 <appendix xml:id="history" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -117,7 +117,7 @@
    <para>
     현재, PHP는 수십만명의 개발자들에 의해서 사용되고있고(추정치), 수백만
     사이트에 설치되어있다고 보고되었다. 이 수치는 인터넷상에서 20% 이상의
-    도메인수가 된다.
+    도메인 수가 된다.
    </para>
    <para>
     PHP 개발팀은 수십명의 개발자들을 포함하고, 그외에 PEAR, 문서 프로젝트와

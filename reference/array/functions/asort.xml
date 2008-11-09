@@ -47,7 +47,7 @@ a = orange
      fruits는 알파벳 순으로 정렬하고, 각 원소와 연관된 인덱스가 유지된다.
     </para>
     <para>
-     선택적인 매개변수 <parameter>sort_flags</parameter> 를 사용하여
+     선택적인 인수 <parameter>sort_flags</parameter> 를 사용하여
      정렬 방식을 변경할수 있다. 더 자세한 것은
      <function>sort</function>를 참고.
     </para>

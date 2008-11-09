@@ -21,7 +21,7 @@
      <function>htmlentities</function>의 역함수입니다.
     </para>
     <para>
-     두번째에 위치하는 선택적인 <parameter>quote_style</parameter> 인자는
+     두번째에 위치하는 선택적인 <parameter>quote_style</parameter> 인수는
      '작은 따옴표'와 "큰 따옴표"를 어떻게 처리할지 정의합니다. 아래의 상수들을
      사용할 수 있으며, 기본값은 <constant>ENT_COMPAT</constant>입니다:
      <table>

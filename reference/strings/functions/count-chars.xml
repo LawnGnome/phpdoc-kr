@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
+<!-- $Revision: 1.4 $ -->
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry xml:id="function.count-chars" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
@@ -17,7 +17,7 @@
      </methodsynopsis>
     <para>
      <parameter>string</parameter> 안의 모든 바이트값(0..255)의 발견 수를 세고
-     여러 방법으로 반환합니다. 선택적인 인자 <parameter>mode</parameter>의
+     여러 방법으로 반환합니다. 선택적인 인수 <parameter>mode</parameter>의
      기본값은 0입니다. <parameter>mode</parameter>에 따른
      <function>count_chars</function>의 반환값은 다음과 같습니다:
      <itemizedlist>

@@ -17,7 +17,7 @@
     </para>
     <para>
      <function>shmop_delete</function>함수는 <function>shmop_open</function>으로 생성된
-     공유 메모리 블럭 identifier인 shmid를 인자로 가진다.
+     공유 메모리 블럭 identifier인 shmid를 인수로 가진다.
      성공하면 1을 반환하고 실패하면 0을 반환한다.
     </para> 
     <para>
@@ -31,7 +31,7 @@ shmop_delete($shm_id);
      </example>
     </para>
     <para>
-     위 예제는 <literal>$shm_id</literal> 인자로 지정된 공유 메모리 블럭을 삭제한다.
+     위 예제는 <literal>$shm_id</literal> 인수로 지정된 공유 메모리 블럭을 삭제한다.
     </para>
    </refsect1>
   </refentry>

@@ -4,7 +4,7 @@
    <refnamediv>
     <refname>bcscale</refname>
     <refpurpose>
-     모든 bc 수치계산 함수의 scale 매개변수의 기본값을 설정한다
+     모든 bc 수치계산 함수의 scale 인수의 기본값을 설정한다
     </refpurpose>
    </refnamediv>
    <refsect1>
@@ -14,8 +14,8 @@
       <methodparam><type>int</type><parameter>scale</parameter></methodparam>
      </methodsynopsis>
     <para>
-     이 함수는 scale 매개변수를 명시하지 않은 모든 bc 수치계산 함수의 
-     의 scale 매개변수의 기본값을 설정한다.
+     이 함수는 scale 인수를 명시하지 않은 모든 bc 수치계산 함수의 
+     의 scale 인수의 기본값을 설정한다.
     </para>
    </refsect1>
   </refentry>

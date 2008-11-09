@@ -19,7 +19,7 @@
 한편, 이는 거대한 결과 집합을 만드는 SQL 질의로 점유하는 메모리를 절약한다.
 또한, 완료된 SQL 질의가 수행될 때까지 기다리지 않고, 첫행이 조회된 이후로
 즉시 작업을 시작할 수 있다.
-다중 DB-접속을 사용할 때, 옵션 인자인 <parameter>link_identifier</parameter>를
+다중 DB-접속을 사용할 때, 옵션 인수인 <parameter>link_identifier</parameter>를
 지정해야한다.
   </para>
  </refsect1>

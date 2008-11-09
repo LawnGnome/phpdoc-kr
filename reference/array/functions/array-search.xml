@@ -27,7 +27,7 @@
      </para>
     </note>
     <para>
-     선택적인 세번째 매개변수인 <parameter>strict</parameter>가
+     선택적인 세번째 인수인 <parameter>strict</parameter>가
      &true;로 설정되면 <function>array_search</function>는
      <parameter>haystack</parameter>에서 
      <parameter>needle</parameter>의 타입도 함께 검사할것이다.

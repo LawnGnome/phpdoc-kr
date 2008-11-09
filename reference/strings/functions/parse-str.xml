@@ -15,12 +15,12 @@
      </methodsynopsis>
     <para>
      <parameter>str</parameter>을 URL을 통한 질의 문자열처럼 처리하여, 현재
-     위치에 변수를 설정합니다. 두번째 인자 <parameter>arr</parameter>이
+     위치에 변수를 설정합니다. 두번째 인수 <parameter>arr</parameter>이
      존재하면, 변수를 설정하는 대신 이 배열 변수의 원소로 저장합니다.
     </para>
     <note>
      <para>
-      선택적인 두번째 인자는 PHP 4.0.3에서 추가되었습니다.
+      선택적인 두번째 인수는 PHP 4.0.3에서 추가되었습니다.
      </para>
     </note>
     <note>

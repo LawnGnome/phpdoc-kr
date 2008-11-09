@@ -21,7 +21,7 @@
      생성기에 비해 4배 정도 빠릅니다.
     </simpara>
     <simpara>
-     선택적인 <parameter>min</parameter>, <parameter>max</parameter> 인자 없이
+     선택적인 <parameter>min</parameter>, <parameter>max</parameter> 인수 없이
      호출하면, <function>mt_rand</function>는 0과
      <constant>RAND_MAX</constant> 사이의 모조 난수를 반환합니다. 예를 들어,
      5와 15(포함)사이의 난수를 원할 경우에는, <literal>mt_rand

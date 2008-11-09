@@ -17,7 +17,7 @@
     </simpara>
     <para>
      <function>print</function>는 실제 함수가 아닙니다. (언어 구조입니다)
-     그러므로, 인자 목록에 괄호를 사용할 필요가 없습니다.
+     그러므로, 인수 목록에 괄호를 사용할 필요가 없습니다.
     </para>
     <para>
      <example>

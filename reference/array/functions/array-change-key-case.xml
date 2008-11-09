@@ -15,8 +15,8 @@
     <para>
      <function>array_change_key_case</function>는 
      <parameter>input</parameter> 배열 안의 키를 모두 소문자나 대문자로 변경한다.
-     변경은 마지막 선택적인 <parameter>case</parameter> 매개변수에 의해 결정된다.
-     그 매개변수에 <constant>CASE_UPPER</constant> 와
+     변경은 마지막 선택적인 <parameter>case</parameter> 인수에 의해 결정된다.
+     그 인수에 <constant>CASE_UPPER</constant> 와
      <constant>CASE_LOWER</constant> 두 가지 상수를 전달할수 있다.
      기본값은 <constant>CASE_LOWER</constant> 이다. 이 함수는 숫자키는 그대로
      두게 된다.

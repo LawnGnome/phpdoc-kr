@@ -18,7 +18,7 @@
 						</parameter></methodparam>
 				</methodsynopsis>
 			<para>
-     이 함수는 경로가 포함된 파일이름이 주어졌을때 파일의 이름부분만 반환합니다. 만약 파일이름에 suffix (두번째 인자)가 붙어 있으면 이 역시 잘라집니다
+     이 함수는 경로가 포함된 파일이름이 주어졌을때 파일의 이름부분만 반환합니다. 만약 파일이름에 suffix (두번째 인수)가 붙어 있으면 이 역시 잘라집니다
     </para>
 			<para>
      윈도우즈에서는 슬래시와 (<literal>/</literal>) 백슬래시(<literal>\</literal>) 모두 경로구분자로 사용됩니다. 그 외의 환경에서는 슬래시(<literal>/</literal>)만 사용됩니다

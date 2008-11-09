@@ -14,7 +14,7 @@
       <methodparam choice="opt"><type>array</type><parameter> ...</parameter></methodparam>
      </methodsynopsis>
     <simpara>
-     <function>array_intersect_assoc</function>는 모든 인자에 존재하는
+     <function>array_intersect_assoc</function>는 모든 인수에 존재하는
      <parameter>array1</parameter>의 모든 값을 포함하는 배열을 반환한다.
      이 함수는 <function>array_intersect</function>과 달리 비교시에
      키가 사용된다는것에 주의한다.

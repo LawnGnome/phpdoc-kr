@@ -15,7 +15,7 @@
     <para>
      <function>shm_detach</function>함수는 
      <function>shm_attach</function>에 의해 생성되는
-     <parameter>shm_identifier</parameter> 인자에 의해 주어진 공유 메모리를 종료시킨다.
+     <parameter>shm_identifier</parameter> 인수에 의해 주어진 공유 메모리를 종료시킨다.
      주의할 점은, 함수를 호출하더라도 Unix 시스템에서의 공유메모리는 여전히 존재하며,
      데이터 역시 존재하고 있다는 것이다.
     </para>

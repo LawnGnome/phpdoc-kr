@@ -67,7 +67,7 @@ Array
     </para>
     <note>
      <para>
-      PHP 4.0.3에서 두번째 매개변수가 추가되었슴.
+      PHP 4.0.3에서 두번째 인수가 추가되었슴.
      </para>
     </note>
     <para>

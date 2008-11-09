@@ -852,8 +852,8 @@ while ($i++ < 5) {
       </screen>
       <para>
        <function>print</function> 호출의 반환값은
-       <literal>int(1)</literal>이기 때문에, 위에서 언급한 부수적인 수 인수로
-       보여집니다.
+       <literal>int(1)</literal>이기 때문에, 위에서 언급한 선택적인 수 인수로
+       간주합니다.
       </para>
      </informalexample>
     </para>

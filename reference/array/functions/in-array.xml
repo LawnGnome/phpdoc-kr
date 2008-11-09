@@ -19,7 +19,7 @@
      &false;를 반환한다.
     </para>
     <para>
-     세번째 매개변수 <parameter>strict</parameter>가 &true;로 설정되면,
+     세번째 인수 <parameter>strict</parameter>가 &true;로 설정되면,
      <function>in_array</function> 함수는 
      <parameter>haystack</parameter> 안의 <parameter>needle</parameter>의
      <link linkend="language.types">타입</link>도 점검할것이다.

@@ -94,7 +94,7 @@ if (!$fp) {
      </programlisting>
 				</example>
 				<note>
-					<para>시간초과 매개변수는 PHP 3.0.9 에 소개가 되었고 UDP 지원은 PHP 4에 추가되었습니다.
+					<para>시간초과 인수는 PHP 3.0.9 에 소개가 되었고 UDP 지원은 PHP 4에 추가되었습니다.
       </para>
 				</note>
     참조: <function>pfsockopen</function>, 

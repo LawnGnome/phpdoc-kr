@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
+<!-- $Revision: 1.5 $ -->
 <!-- EN-Revision: 1.10 Maintainer: fuzzy74 Status: ready -->
  <chapter xml:id="faq.com" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP와 COM</title>
@@ -138,7 +138,7 @@
     </question>
     <answer>
      <para>
-      로컬 객체를 실행시키는것과 완전히 똑같습니다. 단지 COM 생성자(constructor)의 두번째 인자(parameter)에
+      로컬 객체를 실행시키는것과 완전히 똑같습니다. 단지 COM 생성자(constructor)의 두번째 인수(parameter)에
       다른 서버의 IP를 넘겨주면 됩니다.
      </para>
      <para>

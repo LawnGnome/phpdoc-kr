@@ -16,7 +16,7 @@
     <para>
      <parameter>left_operand</parameter>를 
      <parameter>right_operand</parameter>와 비교하고 결과값을 정수로 반환한다.
-     선택적인 <parameter>scale</parameter> 매개변수는 비교시 사용되는 소수점 이하
+     선택적인 <parameter>scale</parameter> 인수는 비교시 사용되는 소수점 이하
      자릿수를 설정하는데 사용된다. 두 수가 같으면 0의 결과값을 반환한다.
      <parameter>left_operand</parameter>가 <parameter>right_operand</parameter> 보다
      크면 +1을 반환하고, <parameter>left_operand</parameter>가

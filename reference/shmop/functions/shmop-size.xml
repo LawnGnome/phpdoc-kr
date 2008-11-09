@@ -17,7 +17,7 @@
     </para>
     <para>
      <function>shmop_size</function>는 <function>shmop_open</function>으로 생성된
-     공유 메모리 블럭 identifier인 shmid 인자를 지정하면,
+     공유 메모리 블럭 identifier인 shmid 인수를 지정하면,
      공유 메모리 블럭이 차지하고 있는 바이트 수를 정수형으로 반환한다.
     </para> 
     <para>

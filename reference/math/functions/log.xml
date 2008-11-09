@@ -13,7 +13,7 @@
       <methodparam choice="opt"><type>float</type><parameter>base</parameter></methodparam>
      </methodsynopsis>
     <para>
-     부수적인 <parameter>base</parameter> 인자가 정의되면,
+     선택적인 <parameter>base</parameter> 인수가 정의되면,
      <function>log</function>는 log<subscript>base</subscript>
      <parameter>arg</parameter>를 반환합니다. 그 외의 경우에는
      <function>log</function>는 <parameter>arg</parameter>의 자연로그를
@@ -21,7 +21,7 @@
     </para>
     <note>
      <para>
-      <parameter>base</parameter> 인자는 PHP 4.3.0부터 사용할 수 있습니다.
+      <parameter>base</parameter> 인수는 PHP 4.3.0부터 사용할 수 있습니다.
      </para>
      <para>
       밑이 <literal>b</literal>인 <literal>n</literal>에 대한 로그는

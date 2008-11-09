@@ -16,7 +16,7 @@
      </methodsynopsis>
     <note>
      <simpara>
-      <parameter>return</parameter> 인자는 PHP 4.3.0에서 추가되었습니다.
+      <parameter>return</parameter> 인수는 PHP 4.3.0에서 추가되었습니다.
      </simpara>
     </note>
     <simpara>
@@ -69,13 +69,13 @@ Array
     </para>
     <para>
      <function>print_r</function>의 출력을 가져오려면,
-     <parameter>return</parameter> 인자를 사용하십시오. 이 인자를 &true;로
+     <parameter>return</parameter> 인수를 사용하십시오. 이 인수를 &true;로
      설정하면, <function>print_r</function>은 출력을 표시(기본값)하는 대신,
      반환값으로 내보냅니다.
     </para>
     <para>
      <example>
-      <title><parameter>return</parameter> 인자 예제</title>
+      <title><parameter>return</parameter> 인수 예제</title>
       <programlisting role="php">
 <![CDATA[
 <?php

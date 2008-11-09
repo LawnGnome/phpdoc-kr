@@ -50,7 +50,7 @@ c = apple
      유지되었다.
     </para>
     <para>
-     선택적인 매개변수 <parameter>sort_flags</parameter>를 사용하여
+     선택적인 인수 <parameter>sort_flags</parameter>를 사용하여
      정렬 동작을 변경할 수 있다. 더 자세한 것은
      <function>sort</function>를 참고.
     </para>

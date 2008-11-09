@@ -22,7 +22,7 @@
     </para>
     <para>
      <function>htmlspecialchars</function>와 같게, 두번째에 위치하는 선택적인
-     <parameter>quote_style</parameter> 인자는 '작은 따옴표'와 "큰 따옴표"를
+     <parameter>quote_style</parameter> 인수는 '작은 따옴표'와 "큰 따옴표"를
      어떻게 처리할지 정의합니다. 아래의 세 상수 중 하나를 가질 수 있으며,
      기본값은 <constant>ENT_COMPAT</constant>입니다:
      <table>
@@ -52,12 +52,12 @@
      </table>
     </para>
     <para>
-     선택적인 <parameter>quote</parameter> 인자는 PHP 4.0.3부터 지원합니다.
+     선택적인 <parameter>quote</parameter> 인수는 PHP 4.0.3부터 지원합니다.
     </para>
     <para>
      <function>htmlspecialchars</function>와 같게, 세번째에 위치하는 선택적인
-     <parameter>charset</parameter> 인자는 변환에 사용할 문자셋을 정의합니다.
-     이 인자는 PHP 4.1.0부터 지원합니다. 현재 기본값은 ISO-8859-1
+     <parameter>charset</parameter> 인수는 변환에 사용할 문자셋을 정의합니다.
+     이 인수는 PHP 4.1.0부터 지원합니다. 현재 기본값은 ISO-8859-1
      문자셋입니다.
     </para>
     &reference.strings.charsets;

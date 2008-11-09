@@ -30,8 +30,8 @@ $addr = strtr($addr, "妶", "aao");
 				</example>
 			</para>
 			<para>
-				<function>strtr</function>은 단지 두개의 인자를 가질 수 도 있다.
-	만약 두개의 인자만 가지고 호출된다면 새로운 방식으로 동작한다.:
+				<function>strtr</function>은 단지 두개의 인수를 가질 수 도 있다.
+	만약 두개의 인수만 가지고 호출된다면 새로운 방식으로 동작한다.:
 	이때 <parameter>from</parameter>은 소스에서 변환 될 
 	문자열 -> 문자열 쌍을 갖는 배열이어야 한다.
 	<function>strtr</function>은 항상 처음에 가장 긴 번역 가능한 매치를 찾고

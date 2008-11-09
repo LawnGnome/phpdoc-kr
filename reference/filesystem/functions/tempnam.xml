@@ -18,8 +18,8 @@
      디렉토리가 존재하지 않으면 <function>tempnam</function>은 시스템의 임시 디렉토리안에 파일 이름을 만듭니다.
     </para>
 			<para>
-				<function>tempnam</function>함수의 하는 일은 시스템 의존적입니다. 윈도우즈에서 TMP 환경변수는 <parameter>dir</parameter>매개변수를 뛰어넘고, 리눅스에서 
-     TMPDIR 환경변수가 존재하고 있는 것을 가리키고 있다면 SVR4가  항상 <parameter>dir</parameter> 매개변수를 사용하려고 하는 동안에 앞서서 TMPDIR 환경변수가 실행됩니다. 미심쩍은 부분이 있다면 tempnam(3) 함수부분의 시스템 문서를  참고 하십시오.
+				<function>tempnam</function>함수의 하는 일은 시스템 의존적입니다. 윈도우즈에서 TMP 환경변수는 <parameter>dir</parameter>인수를 뛰어넘고, 리눅스에서 
+     TMPDIR 환경변수가 존재하고 있는 것을 가리키고 있다면 SVR4가  항상 <parameter>dir</parameter> 인수를 사용하려고 하는 동안에 앞서서 TMPDIR 환경변수가 실행됩니다. 미심쩍은 부분이 있다면 tempnam(3) 함수부분의 시스템 문서를  참고 하십시오.
     </para>
 			<para>
      새로운 임시 파일이름이나 널 문자열을 반환합니다.

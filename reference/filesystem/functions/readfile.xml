@@ -35,7 +35,7 @@
 				<parameter>filename</parameter>이 이와 같은 문자열로 시작이 되지 않는다면 파일이 파일 시스템에서 열리고 내용은 표준 출력으로 쓰여집니다.
     </para>
 			<para>
-				<link linkend="ini.include-path">include_path</link>에서 파일을 찾고 싶으면 두번째 매개변수를 "1"로 설정할 수 도 있습니다.
+				<link linkend="ini.include-path">include_path</link>에서 파일을 찾고 싶으면 두번째 인수를 "1"로 설정할 수 도 있습니다.
     </para>
 			<para>
      참조<function>fpassthru</function>,

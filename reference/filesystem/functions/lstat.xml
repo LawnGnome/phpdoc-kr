@@ -15,7 +15,7 @@
 				</methodsynopsis>
 			<para>
      Gathers the statistics of the file or symbolic link named by
-     filename에 의해 이름이 붙은 파일이나 심볼릭 링크에 관한 통계자료를 모읍니다. 이 함수는 <parameter>filename</parameter>매개변수가 심볼릭 링크면 심볼릭 링크가 가리키는 파일의 상태가 아니라 심볼릭 링크의 상태가 반환되는 것을 제외하면 <function>stat</function>함수와 같습니다.
+     filename에 의해 이름이 붙은 파일이나 심볼릭 링크에 관한 통계자료를 모읍니다. 이 함수는 <parameter>filename</parameter>인수가 심볼릭 링크면 심볼릭 링크가 가리키는 파일의 상태가 아니라 심볼릭 링크의 상태가 반환되는 것을 제외하면 <function>stat</function>함수와 같습니다.
     </para>
 			<para>
      파일의 통계자료가 아래와 같은 요소들로 배열로 반환됩니다:

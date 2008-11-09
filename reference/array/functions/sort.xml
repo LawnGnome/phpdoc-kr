@@ -50,7 +50,7 @@ fruits[3] = orange
      fruits 는 알파벳순으로 정렬되었다.
     </para>
     <para>
-     선택적인 두번째 <parameter>sort_flags</parameter> 매개변수는
+     선택적인 두번째 <parameter>sort_flags</parameter> 인수는
      이 값들을 사용하여 정렬방법을 변경하는데 사용된다:
     </para>
     <para>
@@ -69,7 +69,7 @@ fruits[3] = orange
     </para>
     <note>
      <para>
-      두번째 매개변수는 PHP 4에서 추가되었다.
+      두번째 인수는 PHP 4에서 추가되었다.
      </para>
     </note>
     <para>

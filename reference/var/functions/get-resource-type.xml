@@ -15,7 +15,7 @@
      </methodsynopsis>
     <para>
      이 함수는 <type>resource</type>에 들어있는 형의 문자열 표현을 반환합니다.
-     인자가 유효하지 않은 <type>resource</type>라면, 에러를 발생합니다.
+     인수가 유효하지 않은 <type>resource</type>라면, 에러를 발생합니다.
     </para>
     <para>
      <informalexample>

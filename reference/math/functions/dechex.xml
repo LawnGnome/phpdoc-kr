@@ -12,7 +12,7 @@
       <methodparam><type>int</type><parameter>number</parameter></methodparam>
      </methodsynopsis>
     <para>
-     주어진 <parameter>number</parameter> 인자에 해당하는
+     주어진 <parameter>number</parameter> 인수에 해당하는
      16진수 표현의 문자열을 반환합니다. 변환 가능한 가장 큰 숫자는
      10진수 2147483647로, 결과값은 "7fffffff"이 됩니다.
     </para>

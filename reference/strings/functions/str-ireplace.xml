@@ -59,7 +59,7 @@ $bodytag = str_ireplace("%body%", "black", "<body text=%BODY%>");
       <literal>PHP 5.0.0</literal>부터 매치하여 교체한
       <parameter>needles</parameter>의 수를 참조로 전달한
       <parameter>count</parameter>로 반환합니다. <literal>PHP 5.0.0</literal>
-      이전에 이 인자는 사용할 수 없습니다.
+      이전에 이 인수는 사용할 수 없습니다.
      </simpara>
     </note>
     <para>

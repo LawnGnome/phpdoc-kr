@@ -17,7 +17,7 @@
     </para>
     <para>
      <function>shmop_close</function>는 <function>shmop_open</function>으로 생성된
-     공유 메모리 블럭 identifier인 shmid를 인자로 가진다.
+     공유 메모리 블럭 identifier인 shmid를 인수로 가진다.
     </para> 
     <para>
      <example>
@@ -30,7 +30,7 @@ shmop_close($shm_id);
      </example>
     </para>
     <para>
-     위의 예제는 <literal>$shm_id</literal> 인자로 지정된 공유 메모리 블럭을 닫는다.
+     위의 예제는 <literal>$shm_id</literal> 인수로 지정된 공유 메모리 블럭을 닫는다.
     </para>
    </refsect1>
   </refentry>

@@ -13,7 +13,7 @@
      </methodsynopsis>
     <para>
      <parameter>number</parameter>의 절대값을 반환합니다.
-     <parameter>number</parameter> 인자의 형이 <type>float</type>일 경우,
+     <parameter>number</parameter> 인수의 형이 <type>float</type>일 경우,
      반환값도 <type>float</type>이고, <type>integer</type>일 경우에도
      마찬가지입니다. (일반적으로 <type>float</type> 값의 범위가
      <type>integer</type> 값의 범위보다 큽니다)

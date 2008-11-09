@@ -12,7 +12,7 @@
       <methodparam><type>int</type><parameter>number</parameter></methodparam>
      </methodsynopsis>
     <para>
-     주어진 <parameter>number</parameter> 인자에 대응하는 2진수 표현의
+     주어진 <parameter>number</parameter> 인수에 대응하는 2진수 표현의
      문자열을 반환합니다. 변환 가능한 가장 큰 숫자는
      10진수 4294967295로, 결과값은 1이 32개 들어간 문자열이 됩니다.
     </para>

@@ -65,7 +65,7 @@ mail("joecool@example.com", "My Subject", "Line 1\nLine 2\nLine 3");
      </example>
     </para>
     <simpara>
-     네번째 문자열 인자가 주어지면, 문자열은 헤더의 마지막에 추가됩니다.
+     네번째 문자열 인수가 주어지면, 문자열은 헤더의 마지막에 추가됩니다.
      일반적으로 기타 헤더를 추가할 때 사용합니다. 복수의 헤더는 캐리지리턴과
      뉴라인으로 구별합니다.
     </simpara>
@@ -92,15 +92,15 @@ mail("nobody@example.com", "the subject", $message,
      </example>
     </para>
     <para>
-     <parameter>additional_parameters</parameter> 인자는 메일을 보낼 때
+     <parameter>additional_parameters</parameter> 인수는 메일을 보낼 때
      사용하는 <literal>sendmail_path</literal> 설정에 있는 프로그램에 추가
-     인자를 넘깁니다. 예를 들어, 센드메일을 사용할때 인증 전송자 주소를
+     인수를 넘깁니다. 예를 들어, 센드메일을 사용할때 인증 전송자 주소를
      지정하는 <literal>-f</literal> 센드메일 옵션을 사용하게 할 수 있습니다.
      이 방법으로 인증 전송자를 지정했을 때 'X-warning'헤더가 메세지에 추가되는
      것을 막기 위해서는 센드메일 설정에 웹 서버를 실행하는 유저를 추가해야
      합니다.
      <example>
-      <title>추가 헤더와 추가 명령줄 인자를 지정하여 메일 보내기.</title>
+      <title>추가 헤더와 추가 명령줄 인수를 지정하여 메일 보내기.</title>
       <programlisting role="php">
 <![CDATA[
 <?php
@@ -113,7 +113,7 @@ mail("nobody@example.com", "the subject", $message,
     </para>
     <note>
      <para>
-      다섯번째 인자는 PHP 4.0.5에서 추가되었고, PHP 4.2.3부터 이 인자는 <link
+      다섯번째 인수는 PHP 4.0.5에서 추가되었고, PHP 4.2.3부터 이 인수는 <link
       linkend="ini.safe-mode">안전 모드</link>에서는 사용할 수 없습니다. 이를
       사용하려고 하면 <function>mail</function> 함수는 경고 메세지를 출력하고
       &false;를 반환합니다.
@@ -183,7 +183,7 @@ mail($to, $subject, $message, $headers);
     </note>
     <note>
      <para>
-      <parameter>to</parameter> 인자는 &quot;Something
+      <parameter>to</parameter> 인수는 &quot;Something
       &lt;someone@example.com&gt;&quot; 형태로 주어져서는 안됩니다. mail
       명령은 MTA와 통신할 때 이를 정상적으로 처리하지 못할 수 있습니다.
       (특히 윈도우즈에서)

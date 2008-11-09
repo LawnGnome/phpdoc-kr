@@ -41,7 +41,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   <parameter>full_status</parameter> 매개변수 없이, 혹은
+   <parameter>full_status</parameter> 인수 없이, 혹은
    <parameter>full_status</parameter> = &false;로 호출하면 다음 요소를
    포함하는 간단한 배열을 반환합니다:
    <informalexample>

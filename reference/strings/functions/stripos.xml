@@ -64,7 +64,7 @@ if ($pos2 !== false) {
      해당하는 값의 문자로 적용합니다.
     </para>
     <para>
-     선택적인 <parameter>offset</parameter> 인자로
+     선택적인 <parameter>offset</parameter> 인수로
      <parameter>haystack</parameter>의 몇번째 문자에서 검색을 시작할지 지정할
      수 있습니다. 위치는 여전히 <parameter>haystack</parameter>의 처음부터
      세어집니다.

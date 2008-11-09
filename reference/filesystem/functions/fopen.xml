@@ -90,7 +90,7 @@
      (다시 말하면 유닉스에서는 쓸모가 없습니다).필요가 없으면 사용하지 마세요.
     </para>
 			<para>
-     세번째 매개변수를 사용할 수 있는데 <link linkend="ini.include-path">include_path</link>가운데서
+     세번째 인수를 사용할 수 있는데 <link linkend="ini.include-path">include_path</link>가운데서
      파일을 찾고 싶으면 "1"로 설정하세요.
     </para>
 			<para>

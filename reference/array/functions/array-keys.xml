@@ -19,7 +19,7 @@
      숫자와 문자열의 키를 반환한다.
     </para>
     <para>
-     선택 인자 <parameter>search_value</parameter>가 지정되면,
+     선택 인수 <parameter>search_value</parameter>가 지정되면,
      그 값에 대한 키만 반환한다. 그렇지 않으면, <parameter>input</parameter>의
      모든 키를 반환한다.
     </para>

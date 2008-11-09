@@ -15,7 +15,7 @@
      </methodsynopsis>
     <para>
      <function>array_fill</function>은 배열은 <parameter>value</parameter>
-     매개변수의 값, <parameter>start_index</parameter>로 시작되는 키의
+     인수의 값, <parameter>start_index</parameter>로 시작되는 키의
      <parameter>num</parameter> 엔트리들로 채운다.
      <parameter>num</parameter> 는 0보다 큰 수가 되어야 하고, 그렇지 않으면 PHP
      는 경고를 보여준다.

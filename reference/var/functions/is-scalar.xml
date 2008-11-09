@@ -14,7 +14,7 @@
       <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>is_scalar</function>는 <parameter>var</parameter> 인자에 주어진
+     <function>is_scalar</function>는 <parameter>var</parameter> 인수에 주어진
      변수가 스칼라면 &true;를, 아니라면 &false;를 반환합니다.
     </para>
     <para>

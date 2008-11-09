@@ -18,7 +18,7 @@
 				</methodsynopsis>
 			<para>
 				<function>fputs</function>는 <function>fwrite</function>로 언제나 앨리어스 됩니다.  
-		<parameter>length</parameter>매개변수는 선택이 가능하고 전체 문자열이 나열되지 않으면 쓰여진다는 것을 주의하세요.
+		<parameter>length</parameter>인수는 선택이 가능하고 전체 문자열이 나열되지 않으면 쓰여진다는 것을 주의하세요.
     </para>
 		</refsect1>
 	</refentry>

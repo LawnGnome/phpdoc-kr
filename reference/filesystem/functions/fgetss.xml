@@ -22,7 +22,7 @@
 fgetss가 읽어들인 텍스트에서 HTML과 PHP 태그를 없애는 것을 제외하고는 <function>fgets</function>와 같습니다.
     </para>
 			<para>
-세번째 매개변수로 옵션을 사용해서 특정한 태그를 제외시킬 수가 있습니다. 
+세번째 인수로 옵션을 사용해서 특정한 태그를 제외시킬 수가 있습니다. 
      <note>
 					<para>
 						<parameter>allowable_tags</parameter>가 PHP 3.0.13, PHP4B3 에 추가되었습니다.

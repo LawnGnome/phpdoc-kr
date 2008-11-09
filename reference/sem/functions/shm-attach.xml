@@ -21,9 +21,9 @@
      공유 메모리 세그먼트를 생성한다.
     </para>
     <para>
-     동일한 <parameter>key</parameter> 인자로 <function>shm_attach</function>함수의 두번째 호출은
+     동일한 <parameter>key</parameter> 인수로 <function>shm_attach</function>함수의 두번째 호출은
      또다른 공유 메모리 identifier를 반환할 것이다.
-     <parameter>Memsize</parameter> 인자와 <parameter>perm</parameter> 인자는 무시될 것이다.
+     <parameter>Memsize</parameter> 인수와 <parameter>perm</parameter> 인수는 무시될 것이다.
     </para>
     <note>
      <simpara>

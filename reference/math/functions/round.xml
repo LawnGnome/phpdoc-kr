@@ -63,7 +63,7 @@ echo round(5.055, 2);    // 5.06
     <para>
      <note>
       <simpara>
-       <parameter>precision</parameter> 인자는 PHP 4에서만 사용할 수 있습니다.
+       <parameter>precision</parameter> 인수는 PHP 4에서만 사용할 수 있습니다.
       </simpara>
      </note>
     </para>

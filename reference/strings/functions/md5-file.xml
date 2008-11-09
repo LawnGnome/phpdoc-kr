@@ -21,7 +21,7 @@
     </para>
     <note>
      <simpara>
-      선택적인 <parameter>raw_output</parameter> 인자는 PHP 5.0.0에서
+      선택적인 <parameter>raw_output</parameter> 인수는 PHP 5.0.0에서
       추가되었으며, 기본값으로 &false;입니다.
      </simpara>
     </note>

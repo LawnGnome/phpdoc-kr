@@ -18,7 +18,7 @@
 				</methodsynopsis>
 			<para>
 	Substr은 <parameter>start</parameter>와 <parameter>length</parameter>
-	매개변수에 의해 지정된 <parameter>string</parameter> 문자열의 일부를 반환한다.
+	인수에 의해 지정된 <parameter>string</parameter> 문자열의 일부를 반환한다.
     </para>
 			<para>
 	만약 <parameter>start</parameter>양수라면, 반환되는 문자열은

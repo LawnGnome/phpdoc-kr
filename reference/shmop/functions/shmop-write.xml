@@ -18,7 +18,7 @@
       <function>shmop_write</function>함수는 공유 메모리 블럭으로 문자열을 기록할 것이다.
      </para>
      <para>
-      <function>shmop_write</function>함수는 3개의 인자를 가진다:
+      <function>shmop_write</function>함수는 3개의 인수를 가진다:
       <function>shmop_open</function>에 의해 생성된 공유 메모리 블럭 identifier인 shmid,
       공유 메모리 블럭에 기록하기를 원하는 문자열인 data, 공유 메모리 세그먼트 내부에 기록을 시작할 
       데이터의 위치를 지정한 offset.

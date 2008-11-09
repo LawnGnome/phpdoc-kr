@@ -15,7 +15,7 @@
      </methodsynopsis>
     <para>
      <function>array_diff_assoc</function>는 <parameter>array1</parameter> 중에서
-     다른 인자에서 존재하지 않는 모든 값들을 포함하는 배열을 반환한다.
+     다른 인수에서 존재하지 않는 모든 값들을 포함하는 배열을 반환한다.
      이 함수는 <function>array_diff</function>과 달리 비교시에
      키가 사용된다는것에 주의한다.
     </para>
@@ -46,7 +46,7 @@ Array
      위 예제코드에서 <literal>"a" =&gt; "green"</literal> 쌍은 두 배열에 모두
      존재하기 때문에 이 함수의 출력에서 존재하지 않는다. 이와 달리,
      <literal>0 =&gt; "red"</literal>  쌍은 출력에 보이는데 그 이유는 
-     두번째 인자에서 <literal>"red"</literal> 가 <literal>1</literal> 이라는 
+     두번째 인수에서 <literal>"red"</literal> 가 <literal>1</literal> 이라는 
      키를 갖기 때문이다.
     </simpara>
     <simpara>

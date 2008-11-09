@@ -58,7 +58,7 @@
 				간단한 읽기/쓰기 예를 수행할 수 있게 만들어줍니다
      reader/writer model which can be used on virtually every platform
      (대부분의 유닉스와 윈도우즈 환경에서도). 접근을 막을 수가 없다면
-     세번째 매개변수가 &true;로 설정되어 있는 것입니다.(EWOULDBLOCK
+     세번째 인수가 &true;로 설정되어 있는 것입니다.(EWOULDBLOCK
      errno condition)
     </simpara>
 			<simpara>

@@ -33,17 +33,17 @@ echo $comma_separated; // lastname,email,phone
     </para>
     <note>
      <para>
-      <function>implode</function>는 관습적인 이유로 인자의 순서를 바꾸는 것을
+      <function>implode</function>는 관습적인 이유로 인수의 순서를 바꾸는 것을
       허용합니다. 그러나, <function>explode</function>와의 일관성을 위해서
-      문서에 나온 인자의 순서를 사용하는 편이 혼동이 적을 것입니다.
+      문서에 나온 인수의 순서를 사용하는 편이 혼동이 적을 것입니다.
      </para>
     </note>
     <note>
      <para>
-      PHP 4.3.0부터 <function>implode</function>의 glue 인자는 선택적이
+      PHP 4.3.0부터 <function>implode</function>의 glue 인수는 선택적이
       되었고, 기본값으로 빈 문자열('')입니다. 이는
       <function>implode</function>의 권장하지 않는 사용법입니다. 이전 버전과의
-      호환을 위해서 항상 두개의 인자를 사용하기를 권장합니다.
+      호환을 위해서 항상 두개의 인수를 사용하기를 권장합니다.
      </para>
     </note>
     <simpara>

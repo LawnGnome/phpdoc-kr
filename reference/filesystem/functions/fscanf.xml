@@ -21,9 +21,9 @@
      내용을 파일로부터 가져온다는 것이 다릅니다.
      <parameter>handle</parameter>과 함께 일련의 <parameter>format</parameter>으로 
      입력내용을 바꾸어 줍니다.
-     이 함수에 두개의 매개변수만 사용된다면 배열 형식의 값으로 변환되어 반환됩니다.
-     그렇지 않은 경우에는 선택적인 매개변수를 사용하지 않으면 이 함수는 할당된 값을 숫자로 반환합니다.
-     선택적인 매개변수는 반드시 passed by reference여야 합니다.
+     이 함수에 두개의 인수만 사용된다면 배열 형식의 값으로 변환되어 반환됩니다.
+     그렇지 않은 경우에는 선택적인 인수를 사용하지 않으면 이 함수는 할당된 값을 숫자로 반환합니다.
+     선택적인 인수는 반드시 passed by reference여야 합니다.
      <example>
 					<title>
 						<function>fscanf</function>예</title>

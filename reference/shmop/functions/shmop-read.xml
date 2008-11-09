@@ -18,7 +18,7 @@
      <function>shmop_read</function>함수는 공유 메모리 블럭으로부터 문자열을 읽는다.
     </para>
     <para>
-     <function>shmop_read</function>함수는 3개의 인자를 가진다:
+     <function>shmop_read</function>함수는 3개의 인수를 가진다:
      <function>shmop_open</function>에 의해 생성된 공유 메모리 블럭 identifier인 shmid,
      읽기 시작할 offset, 읽어낼 바이트 수를 나타내는 count.
     </para> 

@@ -16,7 +16,7 @@
     <para>
      <function>bzwrite</function>는 <parameter>bz</parameter>에 의해
      참조되는 bzip2 파일 스트림으로 <parameter>data</parameter> 문자열의
-     내용을 기록한다. 선택적인 <parameter>length</parameter> 인자가 주어지면,
+     내용을 기록한다. 선택적인 <parameter>length</parameter> 인수가 주어지면,
      이 length (압축되지 않은 상태의) 바이트만큼이나
      문자열의 끝에 도달했을때 기록을 멈춘다.
     </para>

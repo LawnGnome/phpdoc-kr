@@ -113,7 +113,7 @@
        <listitem>
         <simpara>
          변수를 참조로써 추출한다. 입력된 변수 값이 
-         <parameter>var_array</parameter> 매개변수의 값을 참조한다는 의미를
+         <parameter>var_array</parameter> 인수의 값을 참조한다는 의미를
          갖는다. 이 플래그는 그 자체로나 다른 플래그와 OR 연산하여 
          <parameter>extract_type</parameter>에서 사용할수 있다.
          이 플래그는 PHP 4.3.0에서 추가되었다.

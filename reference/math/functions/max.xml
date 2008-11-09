@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
+<!-- $Revision: 1.6 $ -->
 <!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
   <refentry xml:id="function.max" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
@@ -20,19 +20,19 @@
      <methodparam choice="opt"><type>array</type><parameter>...</parameter></methodparam>
     </methodsynopsis>
     <para>
-     <function>max</function>는 인자 중 수치적인 최고값을 반환합니다.
+     <function>max</function>는 인수 중 수치적인 최고값을 반환합니다.
     </para>
     <para>
-     첫번째 인자만이 배열이라면, <function>max</function>는 그 배열에서의
-     최고값을 반환합니다. 첫번째 인자가 정수, 문자열, 혹은 실수일 경우
-     최소한 2개의 인자가 필요하며, <function>max</function>는 그 중에
+     첫번째 인수만이 배열이라면, <function>max</function>는 그 배열에서의
+     최고값을 반환합니다. 첫번째 인수가 정수, 문자열, 혹은 실수일 경우
+     최소한 2개의 인수가 필요하며, <function>max</function>는 그 중에
      최고값을 반환합니다. 비교할 수 있는 값의 수는 무제한입니다.
     </para>
     <note>
      <para>
       PHP는 숫자가 아닌 <type>string</type>은 <literal>0</literal>으로
       계산하지만, 그것이 가장 큰 값일 경우 그 문자열을 반환합니다.
-      <literal>0</literal>으로 계산된 여러 인자가 존재할 경우,
+      <literal>0</literal>으로 계산된 여러 인수가 존재할 경우,
       <function>max</function>는 가장 처음 나온 값을 사용합니다.
       (가장 왼쪽의 값)
      </para>

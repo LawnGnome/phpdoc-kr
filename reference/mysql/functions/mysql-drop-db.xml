@@ -14,7 +14,7 @@
    <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
   </methodsynopsis>
   <para>
-<function>mysql_drop_db</function>는 link_identifier 인자와 연관된 서버로부터
+<function>mysql_drop_db</function>는 link_identifier 인수와 연관된 서버로부터
 데이터베이스 삭제를 시도한다.
 본 함수는 사용이 권장되지 않으며, 대신 
 <literal>DROP DATABASE</literal> 구문의 SQL을 <function>mysql_query</function>을 이용하여

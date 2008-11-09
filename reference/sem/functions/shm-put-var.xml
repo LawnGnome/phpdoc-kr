@@ -15,8 +15,8 @@
       <methodparam><type>mixed</type><parameter>variable</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <parameter>variable_key</parameter> 인자로 주어진
-     <parameter>variable</parameter> 인자를 삽입하거나 경신한다.
+     <parameter>variable_key</parameter> 인수로 주어진
+     <parameter>variable</parameter> 인수를 삽입하거나 경신한다.
      모든 변수 타입(double, int, string, array)가 지원된다.
     </para> 
     <note>

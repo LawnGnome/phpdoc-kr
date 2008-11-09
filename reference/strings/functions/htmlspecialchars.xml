@@ -25,7 +25,7 @@
     </para>
     <simpara>
      이 함수로 게시판이나 방명록 등의 프로그램에서, HTML을 포함하는 사용자
-     입력 텍스트를 막을 수 있습니다. 선택적인 두번째 인자
+     입력 텍스트를 막을 수 있습니다. 선택적인 두번째 인수
      <parameter>quote_style</parameter>은 작은 따옴표와 큰 따옴표를 어떻게
      처리할지 결정합니다. 기본 모드는 하위 호환 모드
      <constant>ENT_COMPAT</constant>로, 큰 따옴표만 변환합니다.
@@ -79,12 +79,12 @@ echo $new; // &lt;a href=&#039;test&#039;&gt;TEST&lt;/a&gt;
     <para>
      이 함수는 위 목록 이외에는 아무 것도 번역하지 않는 점에 주의하십시오.
      완전한 엔터티 번역을 위해서는, <function>htmlentities</function>를
-     참고하십시오. 선택적인 두번째 인자는 PHP 3.0.17과 PHP 4.0.3에서
+     참고하십시오. 선택적인 두번째 인수는 PHP 3.0.17과 PHP 4.0.3에서
      추가되었습니다.
     </para>
     <para>
-     선택적인 세번째 인자 <parameter>charset</parameter>은 변환에 사용하는
-     문자셋을 정의합니다. 기본 문자셋은 ISO-8859-1입니다. 세번째 인자는 PHP
+     선택적인 세번째 인수 <parameter>charset</parameter>은 변환에 사용하는
+     문자셋을 정의합니다. 기본 문자셋은 ISO-8859-1입니다. 세번째 인수는 PHP
      4.1.0부터 지원합니다.
     </para>
     &reference.strings.charsets;

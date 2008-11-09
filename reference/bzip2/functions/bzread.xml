@@ -16,7 +16,7 @@
      <function>bzread</function>는 <parameter>bz</parameter>에 의해 참조되는
      bzip2 파일 포인터에서 <parameter>length</parameter> 바이트만큼을 읽어
      온다. <parameter>length</parameter> (압축되지 않은 상태의) 바이트만큼
-     읽혀지거나 EOF 에 도달하면 읽기를 멈춘다. 선택적인 매개변수
+     읽혀지거나 EOF 에 도달하면 읽기를 멈춘다. 선택적인 인수
      <parameter>length</parameter>가 설정되지 않으면,
      <function>bzread</function>는 한번에
      1024 (압축되지 않은 상태의) 바이트만큼 읽어올것이다.

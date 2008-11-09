@@ -14,7 +14,7 @@
      </methodsynopsis>
     <simpara>
      두 변수 <parameter>x</parameter>와 <parameter>y</parameter>의
-     아크 탄젠트를 계산합니다. 이것은 각 인자의 부호가 4분구간을 결정한다는
+     아크 탄젠트를 계산합니다. 이것은 각 인수의 부호가 4분구간을 결정한다는
      점을 제외하면 <parameter>y</parameter> / <parameter>x</parameter>의
      아크 탄젠트와 동일합니다.
     </simpara>

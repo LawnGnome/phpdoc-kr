@@ -21,7 +21,7 @@
     <para>
      <function>array_splice</function>는 <parameter>input</parameter> 배열로부터
      <parameter>offset</parameter> 과 <parameter>length</parameter> 에
-     정해진대로 배열원소를 제거하고, 매개변수가 주어진다면
+     정해진대로 배열원소를 제거하고, 인수가 주어진다면
      <parameter>replacement</parameter> 배열의 배열원소로 그부분을 대체한다.
      그리고 확장된 배열원소를 포함하는 배열을 반환한다.
     </para>
@@ -39,7 +39,7 @@
      배열의 끝에서부터 그 수만큼의 원소가 될것이다.
      팁: <parameter>replacement</parameter>가 주어져있고
      <parameter>offset</parameter>에서 배열 끝까지의 모든 원소를 삭제하려면
-     <parameter>length</parameter> 매개변수에 <literal>count($input)</literal>을
+     <parameter>length</parameter> 인수에 <literal>count($input)</literal>을
      사용하도록 한다.
     </para>
     <para>

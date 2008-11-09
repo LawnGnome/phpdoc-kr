@@ -22,10 +22,10 @@
     </para>
 			<para>
    sybase_connect() 함수는 Sybase 서버로 연결하는 함수이다.
-   "servername" 인자는 'interface'파일에 의해 정의된 실제 servername이여야  한다.
+   "servername" 인수는 'interface'파일에 의해 정의된 실제 servername이여야  한다.
     </para>
 			<para> 
-   만약 sybase_connect()함수가 같은 인자를 가지고 두번 호출된다면,  새로운 연결이 생성되는 대신에 먼저 열렸던 link identifier(식별자)가 반환된다.
+   만약 sybase_connect()함수가 같은 인수를 가지고 두번 호출된다면,  새로운 연결이 생성되는 대신에 먼저 열렸던 link identifier(식별자)가 반환된다.
     </para>
 			<para>     
    스크립트의 실행이 끝나자 마자  서버로의 링크는 끝나게 된다. 

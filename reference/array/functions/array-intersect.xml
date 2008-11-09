@@ -14,7 +14,7 @@
       <methodparam choice="opt"><type>array</type><parameter> ...</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <function>array_intersect</function>는 모든 인자에 존재하는
+     <function>array_intersect</function>는 모든 인수에 존재하는
      <parameter>array1</parameter>의 모든 값을 포함하는 배열을 반환한다.
      키는 보존된다는 것에 주의할것.
     </para>

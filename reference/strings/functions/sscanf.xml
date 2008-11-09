@@ -19,7 +19,7 @@
      <function>sscanf</function>은 <function>printf</function>의 입력
      형태입니다. <function>sscanf</function>는 문자열
      <parameter>str</parameter>을 읽어서 지정한
-     <parameter>format</parameter>에 따라 해석합니다. 인자를 두개만 지정하면,
+     <parameter>format</parameter>에 따라 해석합니다. 인수를 두개만 지정하면,
      처리한 값을 배열로 반환합니다.
     </para>
     <para>
@@ -43,10 +43,10 @@ echo "Item $serial was manufactured on: $year-" . substr($month, 0, 3) . "-$day\
 ]]>
       </programlisting>
      </example>
-     선택적인 인자를 지정하면, 할당한 값의 수를 반환합니다. 선택 인자는 참조로
+     선택적인 인수를 지정하면, 할당한 값의 수를 반환합니다. 선택 인수는 참조로
      전달해야 합니다.
      <example>
-      <title><function>sscanf</function> - 선택 인자 사용하기</title>
+      <title><function>sscanf</function> - 선택 인수 사용하기</title>
       <programlisting role="php">
 <![CDATA[
 <?php

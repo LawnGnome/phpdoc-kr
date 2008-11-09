@@ -16,7 +16,7 @@
      </methodsynopsis>
     <para>
      <parameter>operand</parameter>의 제곱근을 반환한다.
-     선택적인 <parameter>scale</parameter> 매개변수는 결과값의 소수점 이하
+     선택적인 <parameter>scale</parameter> 인수는 결과값의 소수점 이하
      자릿수를 설정한다.
     </para>
     <para>

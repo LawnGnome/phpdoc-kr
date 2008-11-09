@@ -17,8 +17,8 @@
     <para>
      <function>array_rand</function>은 배열안에서 하나이상의 임의  원소를 꺼내
      올때 가장 유용하다. <parameter>input</parameter> 배열과 꺼내고 싶은
-     원소 수를 설정하는 <parameter>num_req</parameter> 선택 인자를 취한다.
-     이 선택인자가 설정되지 않으면 기본값 1이 된다.
+     원소 수를 설정하는 <parameter>num_req</parameter> 선택 인수를 취한다.
+     이 선택인수가 설정되지 않으면 기본값 1이 된다.
     </para>
     <para>
      오직 한개의 원소만 꺼낼때에는 <function>array_rand</function>는

@@ -47,7 +47,7 @@ while (list ($key, $val) = each ($fruits)) {
      fruits 는 알파벳 역순으로 정렬되었다.
     </para>
     <para>
-     선택적인 매개변수 <parameter>sort_flags</parameter>를 사용하여
+     선택적인 인수 <parameter>sort_flags</parameter>를 사용하여
      정렬 방법을 변경할수 있다. 더 자세한것은
      <function>sort</function> 를 참고.
     </para>

@@ -38,7 +38,7 @@
  <refsect1 role="parameters">
   &reftitle.parameters;
   <para>
-   <function>PDO::pgsqlLOBCreate</function>는 인자가 없습니다.
+   <function>PDO::pgsqlLOBCreate</function>는 인수가 없습니다.
   </para>
  </refsect1>
 

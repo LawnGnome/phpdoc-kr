@@ -38,7 +38,7 @@
     </para>
     <para>
      <table>
-      <title>다음 문자들은 <parameter>format</parameter> 인자 문자열로
+      <title>다음 문자들은 <parameter>format</parameter> 인수 문자열로
        인식합니다.</title>
       <tgroup cols="3">
        <thead>

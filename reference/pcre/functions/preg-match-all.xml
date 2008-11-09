@@ -118,11 +118,11 @@ echo $out[1][0].", ".$out[1][1]."\n";
     </para>
 
     <para>
-     보통, 검색은 목표 문자열의 처음에서 시작합니다. 선택적인 인자
+     보통, 검색은 목표 문자열의 처음에서 시작합니다. 선택적인 인수
      <parameter>offset</parameter>으로 검색을 시작할 다른 위치를 지정할 수
      있습니다. 이는 <function>preg_match</function>의 목표 문자열에
      <function>substr</function>($subject, $offset)을 넘기는 것과 동일합니다.
-     <parameter>offset</parameter> 인자는 <literal>PHP</literal> 4.3.3부터
+     <parameter>offset</parameter> 인수는 <literal>PHP</literal> 4.3.3부터
      사용할 수 있습니다.
     </para>
 

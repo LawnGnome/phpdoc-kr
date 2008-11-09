@@ -21,9 +21,9 @@
      low > high 일 경우에는 일련값은 high에서 low까지가 될것이다.
     </para>
     <note>
-     <title>새로운 매개변수</title>
+     <title>새로운 인수</title>
      <simpara>
-      선택적인 <parameter>step</parameter> 매개변수가 5.0.0에서 추가되었다.
+      선택적인 <parameter>step</parameter> 인수가 5.0.0에서 추가되었다.
      </simpara>
     </note>
     <para>
@@ -42,7 +42,7 @@ foreach(range(0, 12) as $number) {
     echo $number;
 }
 
-// 5.0.0 부터 stemp 매개변수가 추가되었다
+// 5.0.0 부터 stemp 인수가 추가되었다
 // array(0,10,20,30,40,50,60,70,80,90,100)
 foreach(range(0, 100, 10) as $number) {
     echo $number;

@@ -12,7 +12,7 @@
       <methodparam><type>string</type><parameter>binary_string</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <parameter>binary_string</parameter> 인자에 표현된 2진수와
+     <parameter>binary_string</parameter> 인수에 표현된 2진수와
      동일한 10진수를 반환합니다.
     </para>
     <para>

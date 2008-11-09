@@ -14,7 +14,7 @@
       <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
      </methodsynopsis>
     <para>
-     매개변수의 배열을 반환한다. 매개변수는
+     인수의 배열을 반환한다. 인수는
      <literal>=&gt;</literal> 연산자를 통해 인덱스가 주어질수 있다.
      배열이 무엇인지에 대한 더 자세한 정보는
      <link linkend="language.types.array">배열 타입</link>에 관한 섹션을

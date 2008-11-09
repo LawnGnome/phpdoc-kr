@@ -16,7 +16,7 @@
     </methodsynopsis>
     <para>
      문자열을 배열로 변환합니다. 선택적인 <parameter>split_length</parameter>
-     인자를 지정하면, 반환하는 배열은 <parameter>split_length</parameter>
+     인수를 지정하면, 반환하는 배열은 <parameter>split_length</parameter>
      길이의 원소로 나누어집니다. 지정하지 않으면 하나의 원소에 한 문자가
      들어갑니다.
     </para>

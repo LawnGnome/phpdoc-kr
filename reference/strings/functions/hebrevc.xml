@@ -18,7 +18,7 @@
     <para>
      개행 문자(\n)를 "&lt;br&gt;\n"로 바꾼는 점을 제외하면,
      <function>hebrev</function>와 동일합니다. 선택적인
-     <parameter>max_chars_per_line</parameter> 인자는 한 줄에 출력할 최대
+     <parameter>max_chars_per_line</parameter> 인수는 한 줄에 출력할 최대
      문자 수를 지시합니다. 단어 중간에서는 줄바꿈을 하지 않습니다.
     </para>
     <para>

@@ -29,8 +29,8 @@
       <methodparam><type>function</type><parameter>cost</parameter></methodparam>
      </methodsynopsis>
     <para>
-     이 함수는 두 문자열 인자 사이의 Levenshtein-Distance를 반환합니다. 문자열
-     인자 중 하나가 255 문자 제한을 넘어갈 경우에는 -1을 반환합니다. (255는
+     이 함수는 두 문자열 인수 사이의 Levenshtein-Distance를 반환합니다. 문자열
+     인수 중 하나가 255 문자 제한을 넘어갈 경우에는 -1을 반환합니다. (255는
      이름이나 사전 비교에 충분하며, 누구도 PHP로 복잡한 일반 분석을 행하지
      않습니다)
     </para>
@@ -49,7 +49,7 @@
      필요한 삽입, 치환, 삭제 시행 수를 계산합니다.
     </para>
     <para> 
-     두번째 형식은 삽입, 치환, 삭제 시행의 비용을 정의하는  세개의 추가 인자를
+     두번째 형식은 삽입, 치환, 삭제 시행의 비용을 정의하는  세개의 추가 인수를
      줄 수 있습니다. 이는 더욱 일반적이고 적용성이 높지만, 효율적이지
      않습니다.
     </para>
@@ -59,7 +59,7 @@
      함수를 호출합니다.
     </para>
     <para>
-     사용자 제공 함수는 다음 인자로 호출합니다:
+     사용자 제공 함수는 다음 인수로 호출합니다:
      <itemizedlist>
       <listitem>
        <simpara>
@@ -98,7 +98,7 @@
       </listitem>
      </itemizedlist>
      사용자 제공 함수는 해당하는 시행의 비용을 나타내는 양의 정수를
-     반환해야 합니다. 제공한 인자의 일부만을 사용하여 결정하여도 됩니다.
+     반환해야 합니다. 제공한 인수의 일부만을 사용하여 결정하여도 됩니다.
     </para>
     <para> 
      The user-supplied function approach offers the possibility to

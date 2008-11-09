@@ -85,7 +85,7 @@
        <listitem>
         <para>
          접속에 사용하는 사용자 패스워드. DSN에서 패스워드를 지정하면, PDO는
-         PDO 생성자에 넘긴 패스워드 인자 값을 무시합니다.
+         PDO 생성자에 넘긴 패스워드 인수 값을 무시합니다.
         </para>
        </listitem>
       </varlistentry>

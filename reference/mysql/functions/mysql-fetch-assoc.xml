@@ -15,7 +15,7 @@
   <para>
 인출된 행을 연관 배열로 반환하고, 내부 데이터 포인터 바로 앞으로 이동한다.
 <function>mysql_fetch_assoc</function>은 
-두번째 선택 인자로 MYSQL_ASSOC를 이용하여
+두번째 선택 인수로 MYSQL_ASSOC를 이용하여
 <function>mysql_fetch_array</function>를 호출하는 것과 동일하다.
 이 함수는 연관 배열만을 반환한다. 
   </para>
