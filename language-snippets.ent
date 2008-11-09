@@ -193,7 +193,7 @@ linkend="ini.register-long-arrays">register_long_arrays</link> 지시어로
 <!ENTITY info.deprecated.alias '하위 호환을 위하여, 다음의 권장하지 않는
 alias를 사용할 수 있습니다: '>
 
-<!ENTITY info.function.alias '이 함수는 다음 함수의 alias입니다: '>
+<!ENTITY info.function.alias '이 함수는 다음 함수의 별칭입니다: '>
 
 <!ENTITY info.function.alias.deprecated '<simpara>이 함수 축약은 배제되었고,
 하위 호환을 위하여 남겨져 있습니다. 앞으로 PHP에서 제거될 수 있으므로
@@ -209,7 +209,7 @@ alias를 사용할 수 있습니다: '>
 <emphasis>이 확장은 다음 파일이 <literal>PATH</literal> 상에 존재하여야
 합니다:</emphasis> '>
 
-<!ENTITY manual.migration.seealso 'PHP 버전에 맞는 이전 가이드를
+<!ENTITY manual.migration.seealso 'PHP 버전에 맞는 이행 가이드를
 참고하십시오.'>
 
 <!-- Returns -->

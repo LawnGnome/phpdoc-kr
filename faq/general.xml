@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.25 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.27 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <chapter xml:id="faq.general" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>일반적인 정보</title>
@@ -34,11 +34,13 @@
     </question>
     <answer>
      <para>
-     PHP약어를 풀어쓰면 <emphasis>PHP: Hypertext Preprocessor</emphasis>입니다. 
-     약어의 첫번째 글자가 약어이기 때문에 많은 사람에게 혼란을 줍니다. 이와 같은 
-     약어를 재귀적 약어라고 부릅니다.
-     궁금하신 분은 <link xlink:href="&url.foldoc;">Free On-Line Dictionary of Computing</link>사이트를
-     방문해보세요.
+     PHP약어를 풀어쓰면 <emphasis>PHP: Hypertext
+      Preprocessor</emphasis>입니다. 약어의 첫번째 글자가 약어이기 때문에 많은
+     사람에게 혼란을 줍니다. 이와 같은 약어를 재귀적 약어라고 부릅니다.
+     궁금하신 분은 <link xlink:href="&url.foldoc;">Free On-Line Dictionary of
+      Computing</link>이나 <link
+      xlink:href="&url.wiki.recursive-acronym;">Wikipedia 재귀 약어
+      엔트리</link>를 확인해보세요.
      </para>
     </answer>
    </qandaentry>
@@ -50,11 +52,10 @@
     <answer>
      <para>
       PHP/FI 2.0는 PHP의 초기 버전이며 더이상 지원되지 않습니다. PHP 3는
-      PHP/FI 2.0의 다음 버전으로서 좀 더 나아진 단계입니다. PHP 4는 
-      <link xlink:href="&url.zend;">젠드 엔진</link>을 기반으로 사용하는 PHP의
-      현 세대입니다. PHP 5는 <link xlink:href="&url.zend.future;">젠드 엔진
-       2</link>를 사용하여, 추가적인 많은 <link
-       linkend="ref.classobj">OOP</link> 특성을 제공합니다.
+      PHP/FI 2.0의 다음 버전으로서 좀 더 나아진 단계입니다. PHP 5는 
+      추가적인 <link linkend="language.oop5">OOP</link> 특성과, 다른 많은
+      기능들을 제공하는 <link xlink:href="&url.zend;">젠드 엔진 2</link>를
+      사용합니다.
      </para>
     </answer>
    </qandaentry>
@@ -107,6 +108,45 @@
       이 특정은 물론 다른 특성에 대해 더 자세히 알고 싶다면
       <link xlink:href="&url.zend.new;">What's new in PHP 4
        overview</link>문서를 참고하세요.
+     </para>
+    </answer>
+   </qandaentry>
+
+   <qandaentry xml:id="faq.general.differences-45">
+    <question>
+     <para>PHP 4와 PHP 5의 차이점은 무엇입니까?</para>
+    </question>
+    <answer>
+     <para>
+      PHP 5는 이전 버전과 가능한 호환되도록 설계되었습니다만, 몇몇 중요한
+      변경점이 있습니다. 이러한 차이점은 다음을 포함합니다:
+      <itemizedlist>
+       <listitem>
+        <simpara><emphasis>젠드 엔진 2.0</emphasis> 기반의 <link
+          linkend="language.oop5">새 OOP 모델</link></simpara>
+       </listitem>
+       <listitem>
+        <simpara>향상된 MySQL 지원을 위한 새 확장</simpara>
+       </listitem>
+       <listitem>
+        <simpara>SQLite의 내장 지원</simpara>
+       </listitem>
+       <listitem>
+        <simpara>실행시 코드 권장을 위한 새 오류 보고 상수 <link
+          xlink:href="&url.php.migrating5-errorrep;">E_STRICT</link>
+        </simpara>
+       </listitem>
+       <listitem>
+        <simpara>간단한 코드 작성을 위한 많은 새 <link
+          xlink:href="&url.php.migrating5-functions;">함수들</link> (많은 일반
+         처리에 대해서 코드 작성을 줄임)
+        </simpara>
+       </listitem>
+      </itemizedlist>
+      보다 자세한 정보는 <link
+       xlink:href="&url.php.backwards-incompatible;">하위 호환이 없는
+       변경점</link>에 있는 <link xlink:href="&url.php.migrate-45;">PHP 4에서
+       PHP 5로 이행하기</link> 섹션을 확인하십시오.
      </para>
     </answer>
    </qandaentry>

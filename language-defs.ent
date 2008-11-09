@@ -61,7 +61,7 @@
 <!ENTITY Definition        "정의">
 <!ENTITY Functions         "함수">
 <!ENTITY Name              "이름">
-<!ENTITY Alias             "축약">
+<!ENTITY Alias             "별칭:">
 <!ENTITY Type              "자료형">
 
 <!-- These are using in reference/$extname/reference.xml and other
