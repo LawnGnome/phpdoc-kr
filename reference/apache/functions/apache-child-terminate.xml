@@ -1,39 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.apache-child-terminate" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>apache_child_terminate</refname>
-    <refpurpose>이 요청 후에 아파치 프로세스를 종료한다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>apache_child_terminate</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     <function>apache_child_terminate</function>는 PHP 코드의 실행이 끝났을
-     때 프로세스를 종료시키기 위하여 현재 PHP 요청을 실행하는 아파치 프로세스를
-     등록합니다. 보통 메모리는 내부적으로 사용할 수 있게 해제되지만, 운영 체계에
-     반환되지 않기 때문에 많은 메모리를 소모하는 스크립트를 실행한 후에
-     프로세스를 종료시키기 위해서 사용됩니다.
-    </para>
-    <note>
-     <simpara>
-      이 기능은 &php.ini;에서 지시어 <option>apache.child_terminate</option>를
-      통해서 유효화 할 수 있습니다. 기본값은 <literal>off</literal>입니다.
-     </simpara>
-     <simpara>
-      이 기능은 아파치의 win32 버전 같은 멀티쓰레드(multithread) 버전에서는
-      사용할 수 없습니다.
-     </simpara>
-    </note>
-    <para>
-     참고: <function>exit</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.apache-child-terminate" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>apache_child_terminate</refname>
+  <refpurpose>이 요청 후에 아파치 프로세스를 종료한다.</refpurpose>
+ </refnamediv>
+
+ <refsect1 sole="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>apache_child_terminate</methodname>
+   <void/>
+  </methodsynopsis>
+  <para>
+   <function>apache_child_terminate</function>는 PHP 코드의 실행이 끝났을
+   때 프로세스를 종료시키기 위하여 현재 PHP 요청을 실행하는 아파치 프로세스를
+   등록합니다. 보통 메모리는 내부적으로 사용할 수 있게 해제되지만, 운영 체계에
+   반환되지 않기 때문에 많은 메모리를 소모하는 스크립트를 실행한 후에
+   프로세스를 종료시키기 위해서 사용됩니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   PHP가 아파치 1 모듈이고, 아파치가 멀티 쓰레드 버전이 아니며, PHP 지시어
+   <link linkend="ini.child-terminate">child_terminate</link>가 활성화
+   되어있을 때 (기본값 비활성화) &true;를 반환합니다. 이 조건이 맞지 않으면
+   &false;를 반환하고 <constant>E_WARNING</constant> 등급의 오류가 발생합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.no-windows;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>exit</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,37 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.getallheaders" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>getallheaders</refname>
-    <refpurpose>모든 HTTP 요청 헤더를 가져옵니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>getallheaders</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     <function>getallheaders</function>는 <function>apache_request_headers</function>의
-     별칭입니다. 현재 요청의 모든 HTTP 헤더를 연합 배열로 반환합니다.
-     이 함수의 작동에 대한 정보는 <function>apache_request_headers</function>
-     문서를 읽어보십시오.
-    </para>
-    <note>
-     <para>
-      PHP 4.3.0에서, <function>getallheaders</function>는
-      <function>apache_request_headers</function>의 별칭이
-      되었습니다. 정확히는 이름이 바뀌었습니다. 이는 이 함수가
-      <productname>Apache</productname> 모듈로 컴파일했을 때만
-      작동하기 때문입니다.
-     </para>
-    </note>
-    &note.apache.nsapi-module;
-    <para>
-     참고: <function>apache_request_headers</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.getallheaders" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>getallheaders</refname>
+  <refpurpose>모든 HTTP 요청 헤더를 가져옵니다.</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>getallheaders</methodname>
+   <void/>
+  </methodsynopsis>
+  <para>
+   현재 요청에서 모든 HTTP 헤더를 가져옵니다.
+  </para>
+  <para>
+   이 함수는 <function>apache_request_headers</function>의 별칭입니다. 이
+   함수의 작동에 관해서는 <function>apache_request_headers</function>를
+   참고하십시오.
+  </para>
+  &apache.req.module;
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        <function>apahce_request_headers</function>의 별칭이 되었습니다.
+        정확히는, 이름이 바뀌었습니다. 이 함수가 아파치에서만 작동하기
+        때문입니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>getallheaders</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+foreach (getallheaders() as $name => $value) {
+    echo "$name: $value\n";
+}
+
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.apache.nsapi-module;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>apache_response_headers</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

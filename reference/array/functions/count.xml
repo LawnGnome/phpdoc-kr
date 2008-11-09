@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.19 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.20 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <refentry xml:id="function.count" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>count</refname>
   <refpurpose>배열의 원소수, 객체의 프로퍼티수를 셉니다</refpurpose>
  </refnamediv>
- <refsect1>
-  <title>설명</title>
+ <refsect1 role="description">
+  &reftitle.description;
   <methodsynopsis>
    <type>int</type><methodname>count</methodname>
    <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
    <methodparam choice="opt"><type>int</type><parameter>mode</parameter></methodparam>
   </methodsynopsis>
   <para>
-   일반적으로 <type>array</type>형에 들어있는 원소수를 반환합니다. 다른 형은
-   (하나의 원소만 가지기 때문입니다)
+   배열의 요소 수를 세거나, 객체의 프로퍼티 수를 셉니다.
   </para>
   <para>
    객체는 <link linkend="ref.spl">SPL</link>을 설치했다면,
@@ -25,24 +24,49 @@
    <function>count</function> 함수의 반환값을 반환합니다.
   </para>
   <para>
+   매뉴얼 <link linkend="language.types.array">배열</link> 섹션을 참고하여
+   배열이 PHP에서 어떻게 구현되고 사용되는지 확인하십시오.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>var</parameter></term>
+     <listitem>
+      <para>
+       배열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>mode</parameter></term>
+     <listitem>
+      <para>
+       부수적인 <parameter>mode</parameter> 인자를
+       <constant>COUNT_RECURSIVE</constant>(또는 1)로 설정하면,
+       <function>count</function>는 배열을 재귀적으로 셉니다. 이는 다차원
+       배열의 요소를 셀 경우 유용한 경우가 있습니다.
+       <parameter>mode</parameter> 기본값은 <literal>0</literal>입니다.
+       <function>count</function>는 무한 재귀를 검출하지 못합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>var</parameter> 안에 있는 요소 수를 반환합니다. 보통
+   <type>array</type>이며, 다른 자료형은 하나의 요소만 가집니다.
+  </para>
+  <para>
    <parameter>var</parameter>가 배열이나 <literal>Countable</literal>
    인터페이스를 가진 객체가 아니라면, <literal>1</literal>을 반환합니다.
    한가지 예외는, <parameter>var</parameter>가 &null;일 경우에
    <literal>0</literal>을 반환합니다.
-  </para>
-  <note>
-   <simpara>
-    선택적인 <parameter>mode</parameter> 매개변수는 PHP 4.2.0부터 사용할 수
-    있습니다.
-   </simpara>
-  </note>
-  <para>
-   선택적인 <parameter>mode</parameter> 매개변수를
-   <constant>COUNT_RECURSIVE</constant>(또는 1)로 설정하면,
-   <function>count</function>는 재귀적으로 배열을 셉니다. 이 매개변수는 다차원
-   배열의 모든 원소를 셀때 특히 유용합니다. <parameter>mode</parameter>의
-   기본값은 <literal>0</literal>입니다. <function>count</function>는 무한
-   재귀를 감지하지 못합니다.
   </para>
   <caution>
    <para>
@@ -51,11 +75,31 @@
     <function>isset</function>을 사용하시오.
    </para>
   </caution>
+ </refsect1>
+ <refsect1 role="changelog">
   <para>
-   PHP에서 배열이 어떻게 구현되고 어떻게 사용되는지에 대한 자세한 설명을
-   보기 위해서는 <link linkend="language.types.array">배열</link> 섹션을
-   참고하십시오.
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.2.0</entry>
+       <entry>
+        부수적인 <parameter>mode</parameter> 인자가 추가되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
   </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
   <para>
    <example>
     <title><function>count</function> 예제</title>
@@ -86,9 +130,7 @@ $result = count(false);
   </para>
   <para>
    <example>
-    <title>
-     재귀적인 <function>count</function> 예제 (PHP &gt;= 4.2.0)
-    </title>
+    <title>재귀적인 <function>count</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -106,10 +148,15 @@ echo count($food);                  // 2 출력
     </programlisting>
    </example>
   </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
   <para>
-   참고: <function>is_array</function>,
-   <function>isset</function>,
-   <function>strlen</function>.
+   <simplelist>
+    <member><function>is_array</function></member>
+    <member><function>isset</function></member>
+    <member><function>strlen</function></member>
+   </simplelist>
   </para>
  </refsect1>
 </refentry>
