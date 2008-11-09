@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.55 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.79 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="features.safe-mode" xmlns="http://docbook.org/ns/docbook">
   <title>안전 모드</title>
@@ -10,18 +10,24 @@
    그러나 웹서버와 OS 수준에서의 차선책이 아주 현실적이지는 않기 때문에,
    많은 사람, 특히 ISP, 들이 현재 안전 모드를 사용한다.
   </para>
+  <warning>
+   <para>
+    안전 모드는 PHP 6.0.0에서 제거되었습니다.
+   </para>
+  </warning>
 
   <sect1 xml:id="ini.sect.safe-mode">
    <title>보안과 안전 모드</title>
    <para>
     <table>
      <title>보안과 안전 모드 설정 지시어</title>
-     <tgroup cols="3">
+     <tgroup cols="4">
       <thead>
        <row>
         <entry>지시어명</entry>
         <entry>기본값</entry>
         <entry>변경값</entry>
+        <entry>변경점</entry>
        </row>
       </thead>
       <tbody>
@@ -29,52 +35,60 @@
        <entry>safe_mode</entry>
        <entry>"0"</entry>
        <entry>PHP_INI_SYSTEM</entry>
+       <entry>PHP 6.0.0에서 제거.</entry>
       </row>
       <row>
        <entry>safe_mode_gid</entry>
        <entry>"0"</entry>
        <entry>PHP_INI_SYSTEM</entry>
+       <entry>PHP 4.1.0부터 존재. PHP 6.0.0에서 제거.</entry>
       </row>
       <row>
        <entry>safe_mode_include_dir</entry>
        <entry>NULL</entry>
        <entry>PHP_INI_SYSTEM</entry>
+       <entry>PHP 4.1.0부터 존재. PHP 6.0.0에서 제거.</entry>
       </row>
       <row>
        <entry>safe_mode_exec_dir</entry>
        <entry>""</entry>
        <entry>PHP_INI_SYSTEM</entry>
+       <entry>PHP 6.0.0에서 제거.</entry>
       </row>
       <row>
        <entry>safe_mode_allowed_env_vars</entry>
-       <entry>PHP_</entry>
+       <entry>"PHP_"</entry>
        <entry>PHP_INI_SYSTEM</entry>
+       <entry>PHP 6.0.0에서 제거.</entry>
       </row>
       <row>
        <entry>safe_mode_protected_env_vars</entry>
-       <entry>LD_LIBRARY_PATH</entry>
+       <entry>"LD_LIBRARY_PATH"</entry>
        <entry>PHP_INI_SYSTEM</entry>
+       <entry>PHP 6.0.0에서 제거.</entry>
       </row>
       <row>
        <entry>open_basedir</entry>
        <entry>NULL</entry>
-       <entry>PHP_INI_SYSTEM</entry>
+       <entry>PHP_INI_ALL</entry>
+       <entry>PHP &lt; 6에서 PHP_INI_SYSTEM.</entry>
       </row>
       <row>
        <entry>disable_functions</entry>
        <entry>""</entry>
-       <entry>PHP_INI_SYSTEM</entry>
+       <entry>&php.ini;만</entry>
+       <entry>PHP 4.0.1부터 존재.</entry>
       </row>
       <row>
        <entry>disable_classes</entry>
        <entry>""</entry>
-       <entry>PHP_INI_SYSTEM</entry>
+       <entry>&php.ini;만</entry>
+       <entry>PHP 4.3.2부터 존재.</entry>
       </row>
       </tbody>
      </tgroup>
     </table>
-    PHP_INI_* 상수에 대한 좀 더 자세한 설명과 정의를 보기 위해서는
-    <function>ini_set</function> 참조.
+    &ini.php.constants;
    </para>
    
    &ini.descriptions.title;
@@ -89,7 +103,8 @@
       <listitem>
        <para>
         PHP의 안전 모드 활성화 여부.
-        더 자세한 정보는 <link linkend="security">보안</link> 장을 참고.
+        PHP가 <literal>--enable-safe-mode</literal>로 컴파일 되면 기본값 On,
+        아니면 Off.
        </para>
       </listitem>
      </varlistentry>
@@ -130,7 +145,13 @@
         이말의 의미는 "safe_mode_include_dir = /dir/incl"는 
         "/dir/include"와 "/dir/incls"가 존재하기만 한다면 그 디렉토리도 접근이 허용된
         다는 것이다. 특정 디렉토리만으로 접근을 제한하고자 하면, 슬래시로 끝내면 된다.
-        For example: "safe_mode_include_dir = /dir/incl/"
+        예를 들면: "safe_mode_include_dir = /dir/incl/"
+       </simpara>
+       <simpara>
+        이 지시어 값이 비어 있으면, PHP 4.2.3과 PHP 4.3.3부터 다른
+        <literal>UID</literal>/<literal>GID</literal> 값을 가지는 파일을
+        포함할 수 없습니다. 이 이전 버전에서는 모든 파일을 포함할 수
+        있었습니다.
        </simpara>
       </listitem>
      </varlistentry>
@@ -144,6 +165,8 @@
         PHP가 안전 모드를 사용중이라면, <function>system</function>과 그 외의
         <link linkend="ref.exec">시스템 프로그램을 실행하는 함수</link>는
         이 디렉토리에 있지 않으면 프로그램 시작이 거부된다.
+        윈도우를 포함한 모든 환경에서 디렉토리 구분은 <literal>/</literal>를
+        이용해야 합니다.
        </para>
       </listitem>
      </varlistentry>
@@ -181,7 +204,7 @@
        </para>
       </listitem>
      </varlistentry>
-      <varlistentry xml:id="ini.open-basedir">
+     <varlistentry xml:id="ini.open-basedir">
       <term>
        <parameter>open_basedir</parameter>
        <type>string</type>
@@ -193,19 +216,28 @@
        </para>
        <para>
         스크립트가 예를 들면, <function>fopen</function> 이나 
-        <function>gzopen</function>으로 파일을 열려고 시도할때, 파일의 위치를 검사한다.
-        파일이 설정된 디렉토리-트리의 밖에 있다면, PHP는 그 파일을 여는것을 거부할것이다.
-        모든 심볼릭 링크가 검사되기 때문에, symlink로 이 제한을 회피할수 없다.
+        <function>gzopen</function>으로 파일을 열려고 시도할때, 파일의 위치를
+        검사한다. 파일이 설정된 디렉토리-트리의 밖에 있다면, PHP는 그 파일을
+        여는것을 거부할것이다. 모든 심볼릭 링크가 검사되기 때문에, symlink로
+        이 제한을 회피할수 없다. 파일이 존재하지 않아서 symlink로 풀어낼 수
+        없으면 파일 이름을 (풀어낸) <parameter>open_basedir</parameter>와
+        비교합니다.
        </para>
        <para>
-        특수한 값 <constant>.</constant>은 스크립트가
+        특수한 값 <systemitem class="filesystem">.</systemitem>은 스크립트가
         작업하는 디렉토리를 기본 디렉토리로 사용합니다. 이는 스크립트의 작업
         디렉토리가 <function>chdir</function>을 통해 쉽게 바뀔 수 있기 때문에
         조금 위험합니다.
        </para>
        <para>
-        윈도우에서는 세미콜른으로 디렉토리를 구분한다. 그외 모든 시스템은,
-        콜른으로 디렉토리를 구분한다. 아파치 모듈에서, 부모 디렉토리부터의 
+        <filename>httpd.conf</filename>에서, 다른 지시어와 <link
+         linkend="configuration.changes.apache">같은 방식</link>으로
+        "php_admin_value open_basedir none"을 사용해서 open_basedir을 끌 수
+        있습니다. (특정 가상 호스트를 위해 사용할 수 있습니다)
+       </para>
+       <para>
+        윈도우에서는 세미콜론으로 디렉토리를 구분한다. 그외 모든 시스템은,
+        콜론으로 디렉토리를 구분한다. 아파치 모듈에서, 부모 디렉토리부터의 
         open_basedir 경로는 현재 자동적으로 상속된다.
        </para>
        <para>
@@ -215,11 +247,6 @@
          특정 디렉토리로만 접근을 제한하고자 한다면, 슬래쉬로 끝내면 된다.
          For example: "open_basedir = /dir/incl/"
        </para>
-       <note>
-        <para>
-         다중 디렉토리에 대한 지원은 3.0.7에서 추가되었다.
-        </para>
-       </note>
        <para>
         기본값은 모든 파일이 열릴수 있도록 허용되어 있다.
        </para>
@@ -272,20 +299,20 @@
    <para>
     참고: <link linkend="ini.register-globals">register_globals</link>,
     <link linkend="ini.display-errors">display_errors</link>, 
-    <link linkend="ini.log-errors">log_errors</link>
+    <link linkend="ini.log-errors">log_errors</link>.
    </para>
 
   <para>
-   <link linkend="ini.safe-mode">safe_mode</link>가 켜져 있으면, PHP는 현재 스크립트의
-   소유자(owner)가 파일 함수에 의해 제어되는 파일의 소유자(owner)와 일치하는지 검사한다.
-   예를 들면:
+   <link linkend="ini.safe-mode">safe_mode</link>가 켜져 있으면, PHP는 현재
+   스크립트의 소유자(owner)가 파일 함수에 의해 제어되는 파일의 소유자(owner)나
+   그 디렉토리와 일치하는지 검사한다. 예를 들면:
    <programlisting role="ls">
 <![CDATA[
 -rw-rw-r--    1 rasmus   rasmus       33 Jul  1 19:20 script.php 
 -rw-r--r--    1 root     root       1116 May 26 18:01 /etc/passwd 
 ]]>
    </programlisting>
-   이 script.php를 실행
+   script.php를 실행:
    <programlisting role="php">
 <![CDATA[
 <?php
@@ -312,7 +339,7 @@ allowed to access /etc/passwd owned by uid 0 in /docroot/script.php on line 2
   <para>
    <link linkend="ini.safe-mode">safe_mode</link> 대신에, 
    <link linkend="ini.open-basedir">open_basedir</link> 디렉토리를 설정하면,
-   모든 파일 제어가  특정 디렉토리 밑의 파일로만 제한될것이다. 
+   모든 파일 제어가 특정 디렉토리 밑의 파일로만 제한됩니다.
    예를 들면(아파치 &httpd.conf; 예): 
    <programlisting role="ini">
 <![CDATA[
@@ -338,7 +365,7 @@ Warning: open_basedir restriction in effect. File is in wrong directory in
    이 지시어를 &php.ini;에 추가하면:
    <programlisting role="ini">
 <![CDATA[
-disable_functions readfile,system  
+disable_functions = readfile,system  
 ]]>
    </programlisting>
    다음의 결과가 나온다:
@@ -349,6 +376,11 @@ Warning: readfile() has been disabled for security reasons in
 ]]>
    </screen>
   </para>
+  <warning>
+   <para>
+    물론, 이러한 PHP 제한은 실행 중인 바이너리에선 유효하지 않습니다.
+   </para>
+  </warning>
  </sect1>
 
   <sect1 xml:id="features.safe-mode.functions">
@@ -498,9 +530,8 @@ Warning: readfile() has been disabled for security reasons in
        </row>
        <row>
         <entry><function>copy</function></entry>
-        <entry>&sm.uidcheck; &sm.uidcheck.dir; (
-        <parameter>source</parameter> 와
-        <parameter>target</parameter> 에서) </entry>
+        <entry>&sm.uidcheck; &sm.uidcheck.dir; (<parameter>source</parameter>와
+        <parameter>target</parameter>에서)</entry>
        </row>
        <row>
         <entry><function>chgrp</function></entry>
@@ -592,9 +623,25 @@ Warning: readfile() has been disabled for security reasons in
        </row>
        <row>
         <entry>
-         <filename>php4/main/fopen_wrappers.c</filename>를 사용하는 모든 함수
+         <function>session_start</function>
         </entry>
-        <entry>??</entry>
+        <entry>
+         기본값인 <literal>files</literal> <link
+          linkend="ini.session.save-handler">session.save_handler</link>를
+         사용할 때 스트립트 소유자는 <link
+          linkend="ini.session.save-path">session.save_path</link> 디렉토리
+         소유자와 같아야 합니다.
+        </entry>
+       </row>
+       <row>
+        <entry>
+         모든 파일시스템과 스트림 함수.
+        </entry>
+        <entry>
+         &sm.uidcheck; &sm.uidcheck.dir; (<link
+          linkend="ini.safe-mode-include-dir">safe_mode_include_dir</link>
+         &php.ini; 옵션 참고)
+        </entry>
        </row>
       </tbody>
      </tgroup>

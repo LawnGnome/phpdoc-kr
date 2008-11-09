@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.38 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.52 Maintainer: progcom Status: ready -->
  <chapter xml:id="features.http-auth" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP로 HTTP 인증하기</title>
 
   <simpara>
-   PHP를 이용한 HTTP 인증은 아파치 모듈로 실행할때만 사용할 수 있으며, CGI
+   PHP를 이용한 <acronym>HTTP</acronym> 인증은 아파치 모듈로 실행할때만 사용할 수 있으며, CGI
    버전에서는 사용할 수 없습니다. 아파치 모듈에서 PHP 스크립트가
    <function>header</function> 함수를 이용하여 "인증 요구" 메세지를 클라이언트
    브라우저에 전송함으로써, 사용자명/패스워드 입력창을 띄울 수 있습니다.
@@ -13,19 +13,18 @@
    <varname>PHP_AUTH_USER</varname>, <varname>PHP_AUTH_PW</varname>,
    <varname>AUTH_TYPE</varname>에 사용자명, 패스워드, 인증 형식이 들어갑니다.
    이 예약 정의 변수들은
-   <link linkend="reserved.variables.server">$_SERVER</link>와
-   <varname>$HTTP_SERVER_VARS</varname> 배열로 확인할 수 있습니다. 현재는
-   "Basic" 인증만을 지원합니다. 자세한 정보는 <function>header</function>
-   함수를 참고하십시오.
+   <varname>$_SERVER</varname>와
+   <varname>$HTTP_SERVER_VARS</varname> 배열로 확인할 수 있습니다. "Basic"과
+   "Digest"(PHP 5.1.0부터) 인증 방식 모두를 지원합니다. 자세한 정보는
+   <function>header</function> 함수를 참고하십시오.
   </simpara>
 
   <note>
    <title>PHP 버전 주의</title>
    <para>
-    <link linkend="reserved.variables.server">$_SERVER</link> 등의
+    <varname>$_SERVER</varname> 등의
     <link linkend="language.variables.superglobals">자동 전역 변수</link>는
     PHP <link xlink:href="&url.php.release4.1.0;">4.1.0</link>부터 사용할 수
-    있습니다. <varname>$HTTP_SERVER_VARS</varname>는 PHP 3부터 사용할 수
     있습니다.
    </para>
   </note>
@@ -35,19 +34,75 @@
   </para>
   <para>
    <example>
-    <title>HTTP 인증 예제</title>
+    <title>Basic HTTP 인증 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
-  if (!isset($_SERVER['PHP_AUTH_USER'])) {
+if (!isset($_SERVER['PHP_AUTH_USER'])) {
     header('WWW-Authenticate: Basic realm="My Realm"');
     header('HTTP/1.0 401 Unauthorized');
     echo '사용자가 취소 버튼을 눌렀을 때 전송되는 텍스트';
     exit;
-  } else {
+} else {
     echo "<p>안녕하세요, {$_SERVER['PHP_AUTH_USER']}.</p>";
     echo "<p>{$_SERVER['PHP_AUTH_PW']}를 패스워드로 접속했습니다.</p>";
-  }
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+
+  <para>
+   <example>
+    <title>Digest HTTP 인증 예제</title>
+    <para>
+     이 예제는 어떻게 Digest HTTP 인증을 하는 지 간단하게 보여줍니다. 자세한
+     정보는 <link xlink:href="&url.rfc;2617">RFC 2617</link>을 읽어 보십시오.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$realm = '제한 영역';
+
+//user => password
+$users = array('admin' => 'mypass', 'guest' => 'guest);
+
+
+if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
+    header('HTTP/1.1 401 Unauthorized');
+    header('WWW-Authenticate: Digest realm="'.$realm.
+           '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
+
+    die('사용자가 취소 버튼을 눌렀을 때 보내지는 텍스트');
+}
+
+
+// PHP_AUTH_DIGEST 변수 조사
+if (!($data = http_digest_parse($_SERVER['PHP_AUTH_DIGEST'])) ||
+    !isset($users[$data['username']]))
+    die('Wrong Credentials!');
+
+// ok, 유효한 username & password
+echo $data['username'] . '으로 로그인 되었습니다.';
+
+
+// http auth 헤더를 처리하는 함수
+function http_digest_parse($txt)
+{
+    // 빠진 데이터에 대한 보호
+    $needed_parts = array('nonce'=>1, 'nc'=>1, 'cnonce'=>1, 'qop'=>1, 'username'=>1, 'uri'=>1, 'response'=>1);
+    $data = array();
+
+    preg_match_all('@(\w+)=(?:([\'"])([^\2]+)]\2|([^\s,]+))@', $txt, $matches, PREG_SET_ORDER);
+
+    foreach ($matches as $m) {
+        $data[$m[1]] = $m[3] ? $m[3] : $m[4];
+        unset($needed_parts[$m[1]);
+    }
+
+    return $needed_parts ? false : $data;
+}
 ?>
 ]]>
     </programlisting>
@@ -59,8 +114,9 @@
    <para>
     HTTP 헤더열을 코딩할때는 주의를 기울이십시오. 모든 클라이언트에 대해 최대의 호환성을
     보장받기 위해서는, 키워드 "Basic"은 대문자 "B"로 쓰여져야하고, 렐름 메세지는
-    이중 인용 부호(")로 감싸져야하며, <emphasis>HTTP/1.0 401</emphasis> 헤더열에서
-    401 코드는 정확히 하나의 스페이스를 가져야합니다.
+    이중 인용 부호(")로 감싸져야하며, <emphasis>HTTP/1.0 401</emphasis>
+    헤더열에서 401 코드는 정확히 하나의 스페이스를 가져야합니다. 인증 인수는
+    위 digest 예제에서 볼 수 있듯이, 쉼표로 구분해야 합니다.
    </para>
   </note>
 
@@ -112,26 +168,25 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-  function authenticate() {
+function authenticate() {
     header('WWW-Authenticate: Basic realm="테스트 인증 시스템"');
     header('HTTP/1.0 401 Unauthorized');
     echo "이 자원에 접근하기 위해서는 유효한 로그인 ID와 패스워드를 입력해야 합니다.\n";
     exit;
-  }
+}
  
-  if (!isset($_SERVER['PHP_AUTH_USER']) ||
-      ($_POST['SeenBefore'] == 1 && $_POST['OldAuth'] == $_SERVER['PHP_AUTH_USER'])) {
+if (!isset($_SERVER['PHP_AUTH_USER']) ||
+    ($_POST['SeenBefore'] == 1 && $_POST['OldAuth'] == $_SERVER['PHP_AUTH_USER'])) {
    authenticate();
-  } 
-  else {
-   echo "<p>어서오십시오: {$_SERVER['PHP_AUTH_USER']}<br />";
-   echo "이전: {$_REQUEST['OldAuth']}";
-   echo "<form action='{$_SERVER['PHP_SELF']}' METHOD='post'>\n";
-   echo "<input type='hidden' name='SeenBefore' value='1' />\n";
-   echo "<input type='hidden' name='OldAuth' value='{$_SERVER['PHP_AUTH_USER']}' />\n";
-   echo "<input type='submit' value='재인증' />\n";
-   echo "</form></p>\n";
-  }
+} else {
+    echo "<p>어서오십시오: {$_SERVER['PHP_AUTH_USER']}<br />";
+    echo "이전: {$_REQUEST['OldAuth']}";
+    echo "<form action='{$_SERVER['PHP_SELF']}' METHOD='post'>\n";
+    echo "<input type='hidden' name='SeenBefore' value='1' />\n";
+    echo "<input type='hidden' name='OldAuth' value='{$_SERVER['PHP_AUTH_USER']}' />\n";
+    echo "<input type='submit' value='재인증' />\n";
+    echo "</form></p>\n";
+}
 ?>
 ]]>
     </programlisting>
@@ -152,8 +207,9 @@
    필드는 체크를 해제하십시오.
   </simpara>
   <simpara>
-   IIS 모듈(ISAPI)를 사용할 때 다른 제약은, <literal>PHP_AUTH_*</literal> 변수를
-   사용할 수 없는 대신, <literal>HTTP_AUTHORIZATION</literal> 변수를 사용하게 됩니다.
+   IIS 모듈(ISAPI)과 PHP 4를 사용할 때 다른 제약은,
+   <literal>PHP_AUTH_*</literal> 변수를 사용할 수 없는 대신,
+   <literal>HTTP_AUTHORIZATION</literal> 변수를 사용하게 됩니다.
    즉, 다음의 코드를 고려해야합니다. <literal>list($user, $pw) = explode(':',  
    base64_decode(substr($_SERVER['HTTP_AUTHORIZATION'], 6)));</literal>
   </simpara>

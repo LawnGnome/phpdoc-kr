@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.25 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.29 Maintainer: progcom Status: ready -->
 <!-- CREDITS: regina fuzzy74 -->
  <chapter xml:id="features.remote-files" xmlns="http://docbook.org/ns/docbook">
   <title>원격 파일 사용하기</title>
@@ -10,7 +10,8 @@
    URL을 사용할 수 있습니다. 이와 더불어 URL을 
    <function>include</function>, <function>include_once</function>, 
    <function>require</function>, <function>require_once</function> 구문에서
-   사용할수 있다.
+   사용할수 있다. (PHP 5.2.0부터, 이 기능을 사용하려면
+   <option>allow_url_include</option>를 활성화해야 합니다)
    PHP가 지원하는 프로토콜에 대한 정보는 <xref linkend="wrappers"/>를
    참고하십시오.
   </para>
@@ -24,7 +25,7 @@
   <para>
    <note>
     <para>
-     PHP 4.3 이하 버전의 <literal>PHP</literal>의 윈도우 버전은
+     PHP 4.3 이하 버전의 PHP 윈도우 버전은
      다음 함수에서 원격 파일 접근을 지원하지 않는다:
      <function>include</function>, <function>include_once</function>,
      <function>require</function>, <function>require_once</function>,

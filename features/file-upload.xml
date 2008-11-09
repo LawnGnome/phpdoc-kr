@@ -1,83 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.73 Maintainer: progcom Status: ready -->
- <chapter xml:id="features.file-upload" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- EN-Revision: 1.95 Maintainer: progcom Status: ready -->
+ <chapter xml:id="features.file-upload" xmlns="http://docbook.org/ns/docbook">
   <title>파일 업로드 다루기</title>
 
   <sect1 xml:id="features.file-upload.post-method">
    <title>POST 방식 업로드</title>
-
    <simpara>
-    PHP는 RFC-1867 호환 브라우저(넷스케이프 네비게이터 3 이상,
-    마이크로소프트 인터넷 익스플로러 3 이상을 포함)로부터 파일 업로드를
-    받을 수 있습니다. 이 기능은 사람들이 텍스트와 바이너리 파일을 동시에
-    업로드 할 수 있게 합니다. PHP의 인증 및 파일 관리 함수를 이용해서,
-    업로드를 할 수 있는 사람 및 업로드한 파일의 처리를 완전히 제어할 수
-    있습니다.
+    이 기능은 사람들이 텍스트와 바이너리 파일을 올릴 수 있게 합니다. PHP의
+    인증과 파일 조작 함수로, 누군가에게 업로드를 허용하거나, 업로드한 파일에
+    대한 모든 조작을 할 수 있습니다.
    </simpara>
+   <simpara>
+    PHP는 RFC-1867 호환 브라우저(<productname>넷스케이프 네비게이터
+     3</productname> 이상, <productname>마이크로소프트 인터넷 익스플로러
+     3</productname>+패치나 패치 없이 그 이상 버전을 포함)라면 파일 업로드를
+    받을 수 있는 능력을 가지고 있습니다.
+   </simpara>
+
    <note>
     <title>관련 환경설정</title>
     <para>
      &php.ini;의 <link linkend="ini.file-uploads">file_uploads</link>, 
      <link linkend="ini.upload-max-filesize">upload_max_filesize</link>,
      <link linkend="ini.upload-tmp-dir">upload_tmp_dir</link>,
-     <link linkend="ini.post-max-size">post_max_size</link> 지시어를
+     <link linkend="ini.post-max-size">post_max_size</link>,
+     <link linkend="ini.max-input-time">max_input_time</link> 지시어를
      참고하십시오.
     </para>
    </note>
+
    <para>
-    PHP는 넷스케이프 컴포저와 W3C의 Amaya 클라이언트가 사용하는
+    PHP는 <productname>넷스케이프 컴포저</productname>와 W3C의
+    <productname>Amaya</productname> 클라이언트가 사용하는
     PUT 방식 파일 업로드도 지원합니다. 자세한 내용은 <link
      linkend="features.file-upload.put-method">PUT 방식 지원</link>을
     참고하십시오.
    </para>
-   <para>
-    파일 업로드 화면은 다음과 같은 특별한 폼으로 만들어집니다:
-   </para>
+
    <para>
     <example>
      <title>파일 업로드 폼</title>
+     <para>
+      파일 업로드 화면은 다음과 같은 특별한 폼으로 만들어집니다:
+     </para>
      <programlisting role="html">
 <![CDATA[
-<form enctype="multipart/form-data" action="_URL_" method="post">
- <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
- 이 파일을 전송합니다: <input name="userfile" type="file" />
- <input type="submit" value="파일 전송" />
+<!-- 데이터 인코딩형 enctype은 꼭 아래처럼 설정해야 합니다 -->
+<form enctype="multipart/form-data" action="_URL_" method="POST">
+    <!-- MAX_FILE_SIZE는 file 입력 필드보다 먼저 나와야 합니다 -->
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000" />
+    <!-- input의 name은 $_FILES 배열의 name을 결정합니다 -->
+    이 파일을 전송합니다: <input name="userfile" type="file" />
+    <input type="submit" value="파일 전송" />
 </form>
 ]]>
      </programlisting>
+     <para>
+      위 예제에서 사용한 <literal>__URL__</literal>은 PHP 파일을 지정하도록
+      교체해야 합니다.
+     </para>
+     <para>
+      숨겨진 <literal>MAX_FILE_SIZE</literal>(바이트로 측정) 필드는 file 입력
+      필드보다 먼저 나와야하며, PHP가 받아들이는 최대 파일 크기값을 가집니다.
+      브라우저에서 이 값을 속이는건 매우 간단하므로, 이 기능으로 이보다 큰
+      파일이 막힐거라고 생각하지 마십시오. 대신, 최대 크기에 대한 PHP 설정은
+      속일 수 없습니다. 이 폼 요소는 사용자가 큰 파일이 전송되는걸 기다린
+      후에서야 파일이 너무 커서 전송에 실패한다는걸 알게 되는걸 방지하기
+      위해서 사용해야 합니다.
+     </para>
     </example>
    </para>
+
+   <note>
+    <para>
+     파일 업로드 폼이 <literal>enctype="multipart/form-data"</literal>를
+     가졌는지 확인하십시오. 그렇지 않으면 파일 업로드는 작동하지 않습니다.
+    </para>
+   </note>
+
    <para>
-    위 예제의 "_URL_"을 변경하여, PHP 파일을 지시하도록 해야합니다.
-    MAX_FILE_SIZE 히든 필드는 파일 입력 필드 앞에 위치해야 하며, 최대
-    파일크기(바이트로 지시)를 값으로 가집니다. 또한, 파일 업로드 폼은
-    <literal>enctype="multipart/form-data"</literal>을 가지고 있어야 하며,
-    그렇지 않으면 파일 업로드는 작동하지 않습니다.
-    <warning>
-     <para>
-      MAX_FILE_SIZE는 PHP가 확인하기도 하지만, 브라우저에 대한 권고입니다.
-      이 값을 변경하는건 매우 간단하기에, 크기가 큰 파일을 막기 위해서는 이
-      기능에 의존해서는 안됩니다. 대신, 최대 크기에 관한 PHP 설정은 속일 수
-      없습니다. 그러나 MAX_FILE_SIZE 폼 변수는 사용자가 파일이 너무 크다는
-      것을 파악하기 위해서 실제 전송을 하는 동안 기다릴 필요를 없애줍니다.
-     </para>
-    </warning>
+    전역 <varname>$_FILES</varname>가 PHP 4.1.0부터 존재합니다. (이전
+    버전에서는 <varname>$HTTP_POST_FILES</varname>를 사용하십시오) 이 배열은
+    업로드된 파일 정보를 가지고 있습니다.
    </para>
 
    <para>
-    업로드한 파일을 정의하는 변수는 PHP 버전과 환경 설정에 따라 달라집니다.
-    자동 전역 <link linkend="reserved.variables.files">$_FILES</link>가
-    PHP 4.1.0부터 존재합니다. <varname>$HTTP_POST_FILES</varname> 배열은
-    PHP 4.1.0 이전에도 존재합니다. 이 배열들은 업로드 된 파일의 모든 정보를
-    가지고 있습니다. <varname>$_FILES</varname>를 사용하는 편을 권장합니다.
-    PHP 지시어 <link linkend="ini.register-globals">register_globals</link>가
-    <emphasis>on</emphasis>일때는, 관련된 변수명도 존재합니다. <link
-     linkend="ini.register-globals">register_globals</link>의 기본값은 PHP
-    <link xlink:href="&url.php.release4.2.0;">4.2.0</link>부터
-    <emphasis>off</emphasis>입니다.
-   </para>
-   <para>
-    예제 스크립트에서 <link linkend="reserved.variables.files">$_FILES</link>의
+    예제 폼에서 <varname>$_FILES</varname>의
     내용은 다음과 같습니다. 위 예제 스크립트에서 사용한 파일 업로드 이름
     <emphasis>userfile</emphasis>로 표현함에 주의하십시오. 어떠한 이름이라도
     가질 수 있습니다.
@@ -95,7 +103,8 @@
       <listitem>
        <para>
         브라우저가 이 정보를 제공할 경우에, 파일의 mime 형식.
-        예를 들면 <literal>"image/gif"</literal>.
+        예를 들면 <literal>"image/gif"</literal>. 그러나 이 mime 형은 PHP
+        측에서 확인하지 않으므로 이 값을 신용하지 마십시오.
        </para>
       </listitem>
      </varlistentry>
@@ -120,31 +129,13 @@
       <listitem>
        <para>
         파일 업로드에 관련한 <link linkend="features.file-upload.errors">에러
-        코드</link>. <emphasis>['error']</emphasis>는 PHP 4.2.0에서 추가되었습니다.
+        코드</link>. PHP 4.2.0에서 추가되었습니다.
        </para>
       </listitem>
      </varlistentry>
     </variablelist>
    </para>
-   <note>
-    <para>
-     PHP 4.1.0 이전 버전에서는 <varname>$HTTP_POST_FILES</varname>이고,
-     <varname>$_FILES</varname>와 같은
-     <link linkend="language.variables.superglobals">자동 전역</link> 변수는
-     존재하지 않습니다. PHP 3는 <varname>$HTTP_POST_FILES</varname>를
-     지원하지 않습니다.
-    </para>
-   </note>
-   <para>
-    &php.ini;에서 <link linkend="ini.register-globals">register_globals</link>가
-    <emphasis>on</emphasis>일때, 변수가 추가로 사용 가능합니다. 예를 들면,
-    <varname>$userfile_name</varname>은
-    <varname>$_FILES['userfile']['name']</varname>과 동일하고,
-    <varname>$userfile_type</varname>은
-    <varname>$_FILES['userfile']['type']</varname>과 동일합니다.
-    PHP 4.2.0부터 register_globals의 기본값이 off임에 주의하십시오.
-    이 지시어에 의존하지 않는 방법을 권장합니다.
-   </para>
+
    <para>
     &php.ini;에서 <link linkend="ini.upload-tmp-dir">upload_tmp_dir</link>을
     이용하여 다른 위치를 지정하지 않는 한, 파일은 서버의 기본 임시 디렉토리에
@@ -166,17 +157,18 @@
 // 사용해야 합니다.
 
 $uploaddir = '/var/www/uploads/';
-$uploadfile = $uploaddir . $_FILES['userfile']['name'];
+$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
-print "<pre>";
+echo '<pre>';
 if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
-    print "파일이 존재하고, 성공적으로 업로드 되었습니다.";
-    print "추가 디버깅 정보입니다:\n";
-    print_r($_FILES);
+    echo "파일이 유효하고, 성공적으로 업로드 되었습니다.\n";
 } else {
-    print "파일 업로드 공격의 가능성이 있습니다! 디버깅 정보입니다:\n";
-    print_r($_FILES);
+    print "파일 업로드 공격의 가능성이 있습니다!\n";
 }
+
+echo '자세한 디버깅 정보입니다:';
+print_r($_FILES);
+
 print "</pre>";
 
 ?>
@@ -190,7 +182,9 @@ print "</pre>";
     <varname>$_FILES['userfile']['size']</varname> 변수는
     너무 작거나 큰 파일을 처리하는데 이용할 수 있습니다.
     <varname>$_FILES['userfile']['type']</varname> 변수는 형식 기준에
-    맞지 않는 파일을 처리하는데 이용할 수 있습니다.
+    맞지 않는 파일을 처리하는데 이용할 수 있습니다. 그러나 이것은 확인 작업 중
+    하나가 되어야 합니다. 이 값은 완전히 클라이언트에서 만들어지며, PHP 측에서
+    확인하지 않습니다.
     PHP 4.2.0부터, <varname>$_FILES['userfile']['error']</varname>를
     이용하여 <link linkend="features.file-upload.errors">에러 코드</link>에
     따라서 처리하게 할 수 있습니다. 어떠한 로직이건 간에, 임시 디렉토리로부터
@@ -198,27 +192,59 @@ print "</pre>";
    </simpara>
    <simpara>
     폼에서 어떠한 파일도 선택하지 않으면, PHP는
-    $_FILES['userfile']['size']를 0으로, $_FILES['userfile']['tmp_name']을
-    none으로 반환합니다.
+    <varname>$_FILES['userfile']['size']</varname>를 0으로,
+    <varname>$_FILES['userfile']['tmp_name']</varname>은 없습니다.
    </simpara>
    <simpara>
     요청이 끝날 때, 이동하거나 이름을 변경하지 않은 임시 디렉토리의 파일은
     삭제됩니다.
    </simpara>
+   <example>
+    <title>파일 배열 업로드하기</title>
+    <para>
+     PHP는 파일에서도 <link linkend="faq.html.arrays">HTML 배열 기능</link>을
+     지원합니다.
+    </para>
+    <programlisting role="html">
+<![CDATA[
+<form action="" method="post" enctype="multipart/form-data">
+<p>그림들:
+<input type="file" name="pictures[]" />
+<input type="file" name="pictures[]" />
+<input type="file" name="pictures[]" />
+<input type="submit" name="전송" />
+</p>
+</form>
+]]>
+    </programlisting>
+    <programlisting role="php">
+<![CDATA[
+<?php
+foreach ($_FILES["pictures"]["error"] as $key => $error) {
+    if ($error = UPLOAD_ERR_OK) {
+        $tmp_name = $_FILES["pictures"]["tmp_name"][$key];
+        $name = $_FILES["pictures"]["name"][$key];
+        move_uploaded_file($tmp_name, "data/$name");
+    }
+}
+?>
+]]>
+    </programlisting>
+   </example>
   </sect1>
 
   <sect1 xml:id="features.file-upload.errors">
    <title>에러 메세지 설명</title>
    <simpara>
     PHP 4.2.0부터, PHP는 파일 배열에 적절한 에러 코드를 반환합니다. 에러 코드는
-    PHP로 파일을 업로드 했을때 만들어지는 파일 배열의 <emphasis>['error']</emphasis>
+    PHP로 파일을 업로드 했을때 만들어지는 파일 배열의 <literal>error</literal>
     세그먼트에서 확인할 수 있습니다. 예를 들면,
     <varname>$_FILES['userfile']['error']</varname>에서 확인할 수 있을겁니다.
    </simpara>
    <para>
     <variablelist>
      <varlistentry>
-      <term><varname>UPLOAD_ERR_OK</varname></term>
+      <term><constant>UPLOAD_ERR_OK</constant></term>
       <listitem>
        <para>
         값: 0; 오류 없이 파일 업로드가 성공했습니다.
@@ -226,7 +252,7 @@ print "</pre>";
       </listitem>
      </varlistentry>
      <varlistentry>
-      <term><varname>UPLOAD_ERR_INI_SIZE</varname></term>
+      <term><constant>UPLOAD_ERR_INI_SIZE</constant></term>
       <listitem>
        <para>
         값: 1; 업로드한 파일이 &php.ini; <link
@@ -236,7 +262,7 @@ print "</pre>";
       </listitem>
      </varlistentry>
      <varlistentry>
-      <term><varname>UPLOAD_ERR_FORM_SIZE</varname></term>
+      <term><constant>UPLOAD_ERR_FORM_SIZE</constant></term>
       <listitem>
        <para>
         값: 2; 업로드한 파일이 HTML 폼에서 지정한
@@ -245,7 +271,7 @@ print "</pre>";
       </listitem>
      </varlistentry>
      <varlistentry>
-      <term><varname>UPLOAD_ERR_PARTIAL</varname></term>
+      <term><constant>UPLOAD_ERR_PARTIAL</constant></term>
       <listitem>
        <para>
         값: 3; 파일이 일부분만 전송되었습니다.
@@ -253,10 +279,34 @@ print "</pre>";
       </listitem>
      </varlistentry>
      <varlistentry>
-      <term><varname>UPLOAD_ERR_NO_FILE</varname></term>
+      <term><constant>UPLOAD_ERR_NO_FILE</constant></term>
       <listitem>
        <para>
         값: 4; 파일이 전송되지 않았습니다.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><constant>UPLOAD_ERR_NO_TMP_DIR</constant></term>
+      <listitem>
+       <para>
+        값: 6; 임시 폴더가 없습니다. PHP 4.3.10과 PHP 5.0.3에서 추가.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><constant>UPLOAD_ERR_CANT_WRITE</constant></term>
+      <listitem>
+       <para>
+        값: 7; 디스크에 파일 쓰기를 실패했습니다. PHP 5.1.0에서 추가.
+       </para>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><constant>UPLOAD_ERR_EXTENSION</constant></term>
+      <listitem>
+       <para>
+        값: 8; 확장에 의해 파일 업로드가 중지되었습니다. PHP 5.2.0에서 추가.
        </para>
       </listitem>
      </varlistentry>
@@ -298,12 +348,14 @@ print "</pre>";
      않습니다.
     </simpara>
    </note>
-   <simpara>
-    <link linkend="ini.max-input-time">max_input_time</link>은 스크립트가
-    입력을 받아들이는 최대 시간을 초 단위로 지정합니다; 이는 파일 업로드를
-    포함합니다. 커다란 파일이나 여러 개의 파일을 전송하거나, 사용자가 느린
-    회선을 사용한다면 기본값인 <literal>60</literal>초를 초과할 수 있습니다.
-   </simpara>
+   <warning>
+    <simpara>
+     <link linkend="ini.max-input-time">max_input_time</link>은 스크립트가
+     입력을 받아들이는 최대 시간을 초 단위로 지정합니다; 이는 파일 업로드를
+     포함합니다. 커다란 파일이나 여러 개의 파일을 전송하거나, 사용자가 느린
+     회선을 사용한다면 기본값인 <literal>60</literal>초를 초과할 수 있습니다.
+    </simpara>
+   </warning>
    <simpara>
     <link linkend="ini.post-max-size">post_max_size</link>을 너무 작게
     설정하면, 큰 파일은 업로드할 수 없습니다.
@@ -314,16 +366,17 @@ print "</pre>";
     접근할 수 있습니다.
    </simpara>
    <simpara>
-    CERN httpd는 클라이언트에서 보내지는 content-type 마임 헤더의
-    첫번째 공백을 제거하는 것에 주의하십시오. 이 문제로 인해서, CERN
-    httpd는 파일 업로드 기능을 지원하지 않습니다.
+    <productname>CERN httpd</productname>는 클라이언트에서 보내지는
+    content-type 마임 헤더 첫번째 공백을 제거합니다. 이 문제로 인해서,
+    <productname>CERN httpd</productname>는 파일 업로드 기능을 지원하지
+    않습니다.
    </simpara>
    <simpara>
     많은 양의 디렉토리 목록 형식으로 인해, 확장 형식의 이름(공백을 포함하는 등의)을
     가지는 파일을 정상적으로 다룰 수 있는 보장은 없습니다.
    </simpara>
    <simpara>
-    하나의 폼 변수에 (입력 이름으로 foo[] 등을 사용하여) 보통의 입력 필드와
+    하나의 폼 변수에 (입력 이름으로 <literal>foo[]</literal> 등을 사용하여) 보통의 입력 필드와
     파일 업로드 필드를 섞어서는 안됩니다.
    </simpara>
   </sect1>
@@ -339,11 +392,6 @@ print "</pre>";
     이를 위해서는, HTML 폼에 복수 선택이나 체크박스와 동일한 방식으로
     동일한 이름의 배열형 구문을 갖추면 됩니다:
    </simpara>
-   <note>
-    <para>
-     복수 파일 업로드 지원은 PHP 3.0.10에서 추가되었습니다.
-    </para>
-   </note>
    <para>
     <example>
      <title>복수 파일 전송하기</title>
@@ -363,8 +411,8 @@ print "</pre>";
     위 폼을 전송하면, 배열 <varname>$_FILES['userfile']</varname>,
     <varname>$_FILES['userfile']['name']</varname>, 
     <varname>$_FILES['userfile']['size']</varname>가 초기화됩니다.
-    (버전 4.1.0 이전에는 $HTTP_POST_FILES)
-    <literal>register_globals</literal>가 on이라면, 전송된 파일들에
+    (버전 4.1.0 이전에는 <varname>$HTTP_POST_FILES</varname>)
+    <link linkend="ini.register-globals">register_globals</link>가 on이라면, 전송된 파일들에
     대한 전역 변수도 초기화됩니다. 이 각각에 대해서 전송된 파일에 따른
     숫자로 정렬된 배열을 가지게 됩니다.
    </simpara>
@@ -390,27 +438,65 @@ print "</pre>";
 
   <sect1 xml:id="features.file-upload.put-method">
    <title>PUT 방식 지원</title>
+   <para>
+    PHP는 몇몇 클라이언트에서 서버에 파일을 저장하기 위해서 사용하는 HTTP PUT
+    방식을 지원합니다.
+    PUT 요청은 POST 요청을 이용한 파일 업로드보다 단순하며, 다음과 같은 식으로
+    이루어집니다:
+    <informalexample>
+     <programlisting role="HTTP">
+<![CDATA[
+PUT /path/filename.html HTTP/1.1
+]]>
+     </programlisting>
+    </informalexample>
+   </para>
+   <para>
+    일반적으로 원격 클라이언트가 웹 트리의
+    <filename>/path/filename.html</filename>에 내용을
+    저장하는걸 의미합니다. 아파치나 PHP가 웹 트리의 모든 파일에 누구나
+    자동적으로 덮어쓰게 하는 것은 좋은 생각이 아닙니다. 그래서, 웹 서버에
+    이러한 요청이 들어왔을때, PHP 스크립트를 통해서 다루도록 할 수 있습니다.
+    아파치에서는 <emphasis>Script</emphasis> 지시자를 통해 지정할 수
+    있습니다. 아파치 환경 설정 파일의 거의 모든 곳에서 지정할 수 있습니다.
+    일반적으로는 &lt;Directory&gt; 블록이나 &lt;VirtualHost&gt; 블록의
+    내부에 위치하게 됩니다. 다음 줄을 추가하면 됩니다:
+    <informalexample>
+     <programlisting>
+<![CDATA[
+Script PUT /put.php
+]]>
+     </programlisting>
+    </informalexample>
+   </para>
    <simpara>
-    PUT 방식 지원은 PHP 3와 PHP 4에서 차이가 있습니다.
-    PHP 4에서는, 표준 입력 스트림으로 HTTP PUT의 내용을 읽어야 합니다.
+    이는 아파치가 이 줄이 들어가 있는 URI에 해당하는 모든 PUT 요청을
+    put.php 스크립트에 전달하게 합니다. 물론, .php 확장자에 대해 PHP를
+    사용할 수 있어야 합니다. 이 스크립트로 전해지는 모든 PUT 요청은 스크립트
+    자신이여야 하며, 업로드된 파일 이름이 존재해서는 안됩니다.
+   </simpara>
+   <simpara>
+    PHP로 put.php 안에 다음과 같은 일을 할 수 있습니다. 여기서는 업로드한
+    파일의 내용을 서버의 <filename>myputfile.ext</filename>으로 복사합니다. 이
+    파일 복사 전에 몇가지 확인을 하거나 사용자 인증을 할 수도 있습니다.
    </simpara>
    <para>
     <example>
-     <title>PHP 4로 HTTP PUT 파일을 저장하기</title>
+     <title>HTTP PUT 파일 저장하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
-/* PUT 데이터는 stdin 스트림으로 들어옵니다. */
-$putdata = fopen("php://stdin", "r");
+/* PUT 데이터는 stdin 스트림으로 옵니다 */
+$putdata = fopen("php://input", "r");
 
-/* 쓰기 위한 파일을 엽니다. */
+/* 파일 쓰기를 위해 열기 */
 $fp = fopen("myputfile.ext", "w");
 
-/* 한번에 1kb씩 읽어서 파일에 씁니다. */
+/* 한번에 1KB씩 읽어서 파일로 쓰기 */
 while ($data = fread($putdata, 1024))
   fwrite($fp, $data);
 
-/* 스트림을 닫습니다. */
+/* 스트림 닫기 */
 fclose($fp);
 fclose($putdata);
 ?>
@@ -418,64 +504,6 @@ fclose($putdata);
      </programlisting>
     </example>
    </para>
-   <note>
-    <para>
-     아래의 문서는 PHP 3에만 해당합니다.
-    </para>
-   </note>
-   <para>
-    PHP는 Netscape Composer나 W3C Amaya 등의 클라이언트에서 사용하는
-    HTTP PUT 방식에 대한 지원을 제공합니다. PUT 요청은 파일 업로드보다
-    단순하고 다음과 같은 식으로 이루어집니다.
-    <informalexample>
-     <programlisting>
-PUT /path/filename.html HTTP/1.1
-     </programlisting>
-    </informalexample>
-   </para>
-   <para>
-    일반적으로 원격 클라이언트가 웹 트리의 /path/filename.html에 내용을
-    저장하는걸 의미합니다. 아파치나 PHP가 웹 트리의 모든 파일에 누구나
-    자동적으로 덮어쓰게 하는 것은 좋은 생각이 아닙니다. 그래서, 웹 서버에
-    이러한 요청이 들어왔을때, PHP 스크립트를 통해서 다루도록 할 수 있습니다.
-    아파치에서는 <emphasis>Script</emphasis> 지시자를 통해 지정할 수
-    있습니다. 아파치 환경 설정 파일의 거의 모든 곳에서 지정할 수 있습니다.
-    일반적으로는 &lt;Directory&gt; 블록이나 &lt;Virtualhost&gt; 블록의
-    내부에 위치하게 됩니다. 다음 줄을 추가하면 됩니다:
-    <informalexample>
-     <programlisting>
-Script PUT /put.php
-     </programlisting>
-    </informalexample>
-   </para>
-   <simpara>
-    이는 아파치가 이 줄이 들어가 있는 URI에 해당하는 모든 PUT 요청을
-    put.php 스크립트에 전달하게 합니다. 물론, .php 확장자에 대해 PHP가
-    사용 가능한 상태여야 합니다.
-   </simpara>
-   <simpara>
-    put.php 파일 안에서는 다음과 같은 작업을 해야 합니다:
-   </simpara>
-   <para>
-    <informalexample><programlisting role="php">
-<![CDATA[
-<?php copy($PHP_UPLOADED_FILE_NAME, $DOCUMENT_ROOT . $REQUEST_URI); ?>
-]]>
-    </programlisting></informalexample>
-   </para>
-   <simpara>
-    파일을 원격 클라이언트에서 요청한 위치로 복사합니다. 파일 복사가
-    이루어지기 전에 몇가지 체크나 사용자 인증을 할 수 있습니다. 여기서
-    보였듯이 PHP는 PUT 방식 요청을 <link
-     linkend="features.file-upload.post-method">POST 방식</link>을 다루는 것과
-    마찬가지로 임시 파일로 저장합니다. 요청이 끝날 때, 임시 파일은 삭제됩니다.
-    그러므로, PUT을 다루는 PHP 스크립트는 파일을 어딘가로 복사해야합니다. 임시
-    파일의 파일명은 $PHP_PUT_FILENAME 변수에 들어있고, 대상 파일명의 지정은
-    $REQUEST_URI에서 확인할 수 있습니다. (아파치가 아닌 경우 다를 수 있습니다)
-    대상 파일 이름은 원격 클라이언트가 지정합니다. 이 클라이언트로부터의
-    지정을 무시할 수 있습니다. 예를 들면, 모든 전송 파일을 특별한 업로드
-    디렉토리로 복사할 수 있습니다.
-   </simpara>
   </sect1>
 
  </chapter>
