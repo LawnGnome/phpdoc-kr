@@ -1,37 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.get-defined-constants" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>get_defined_constants</refname>
-    <refpurpose>
-     모든 상수와 그 값의 연관 배열을 반환합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>get_defined_constants</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     현재 정의된 모든 상수의 이름과 값을 반환합니다. 여기에는 확장 모듈에서
-     작성한 상수와 <function>define</function> 함수로 작성한 상수를
-     포함합니다.
-    </para>
-    <para>
-     아래는 예제입니다:
-     <informalexample>
-      <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.get-defined-constants" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>get_defined_constants</refname>
+  <refpurpose>모든 상수와 그 값의 연관 배열을 반환합니다.</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>get_defined_constants</methodname>
+   <methodparam choice="opt"><type>bool</type><parameter>categorize</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   현재 정의된 모든 상수의 이름과 값을 반환합니다. 여기에는 확장 모듈에서
+   작성한 상수와 <function>define</function> 함수로 작성한 상수를
+   포함합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>categorize</parameter></term>
+     <listitem>
+      <para>
+       분류를 1차원 키로 사용하고, 상수와 값을 2차원에 넣는 다차원 배열을
+       반환하도록 합니다.
+       <informalexample>
+        <programlisting role="php">
+<![CDATA[
+<?php
+define("MY_CONSTANT", 1);
+print_r(get_defined_constants(true));
+?>
+]]>
+        </programlisting>
+        &example.outputs.similar;
+        <screen>
+<![CDATA[
+Array
+(
+    [internal] => Array
+        (
+            [E_ERROR] => 1
+            [E_WARNING] => 2
+            [E_PARSE] => 4
+            [E_NOTICE] => 8
+            [E_CORE_ERROR] => 16
+            [E_CORE_WARNING] => 32
+            [E_COMPILE_ERROR] => 64
+            [E_COMPILE_WARNING] => 128
+            [E_USER_ERROR] => 256
+            [E_USER_WARNING] => 512
+            [E_USER_NOTICE] => 1024
+            [E_ALL] => 2047
+            [TRUE] => 1
+        )
+
+    [pcre] => Array
+        (
+            [PREG_PATTERN_ORDER] => 1
+            [PREG_SET_ORDER] => 2
+            [PREG_OFFSET_CAPTURE] => 256
+            [PREG_SPLIT_NO_EMPTY] => 1
+            [PREG_SPLIT_DELIM_CAPTURE] => 2
+            [PREG_SPLIT_OFFSET_CAPTURE] => 4
+            [PREG_GREP_INVERT] => 1
+        )
+
+    [user] => Array
+        (
+            [MY_CONSTANT] => 1
+        )
+
+)
+]]>
+        </screen>
+       </informalexample>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        <parameter>categorize</parameter> 인수가 추가되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>get_defined_constants</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 print_r(get_defined_constants());
 ?>
 ]]>
-      </programlisting>
-      <para>
-       다음과 같이 출력할 것입니다:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
 <![CDATA[
 Array
 (
@@ -50,16 +150,24 @@ Array
     [TRUE] => 1
 )
 ]]>
-      </screen>
-     </informalexample>
-    </para>
-    <para>
-     참고: <function>get_loaded_extensions</function>,
-     <function>get_defined_functions</function>,
-     <function>get_defined_vars</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>defined</function></member>
+    <member><function>get_loaded_extensions</function></member>
+    <member><function>get_defined_functions</function></member>
+    <member><function>get_defined_vars</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.ezmlm-hash" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>ezmlm_hash</refname>
-    <refpurpose>EZMLM에 필요한 해쉬값을 계산합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>ezmlm_hash</methodname>
-      <methodparam><type>string</type><parameter>addr</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     <function>ezmlm_hash</function>은 MySQL 데이터베이스에 EZMLM 메일링
-     리스트를 보존할 때 필요한 해쉬값을 계산합니다.
-    </simpara>
-    <para>
-     <example>
-      <title>해쉬를 계산하고 사용자를 추가합니다.</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.19 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.ezmlm-hash" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>ezmlm_hash</refname>
+  <refpurpose>EZMLM에 필요한 해시값을 계산합니다.</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>ezmlm_hash</methodname>
+   <methodparam><type>string</type><parameter>addr</parameter></methodparam>
+  </methodsynopsis>
+  <simpara>
+   <function>ezmlm_hash</function>은 MySQL 데이터베이스에 EZMLM 메일링
+   리스트를 보존할 때 필요한 해시 값을 계산합니다.
+  </simpara>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>addr</parameter></term>
+     <listitem>
+      <para>
+       해시를 구할 이메일 주소.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>addr</parameter>의 해시 값.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>해시를 계산하고 사용자를 추가합니다.</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
@@ -29,11 +57,11 @@ $db->query($query); // PHPLIB db 인터페이스 사용.
 
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
