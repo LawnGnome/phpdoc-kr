@@ -12,8 +12,8 @@
 참고하십시오.</simpara></note>'>
 
 <!ENTITY note.context-support '<note><simpara>Context 지원은 PHP 5.0.0에서
-추가되었습니다. 자세한 설명은 <xref linkend="ref.stream"/>을
-참고하십시오.</simpara></note>'>
+추가되었습니다. <literal>contexts</literal>에 관한 자세한 설명은 <xref
+linkend="ref.stream"/>을 참고하십시오.</simpara></note>'>
 
 <!ENTITY note.exec-bg '<note><para>백그라운드에서 실행하기 위해서 이 함수로
 프로그램을 시작하면, 프로그램의 출력은 파일이나, 다른 출력 스트림으로 보내야
@@ -147,7 +147,7 @@ linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>의 기본값은
 <function>stripslashes</function>를 사용할 수 있습니다.</para></note>'>
 
 <!ENTITY warn.no-win32-fopen-wrapper '<warning><para>PHP 4.3.0 이전의
-Windows 버전 <literal>PHP</literal>에서는 이 함수를 이용하여 원격 파일에
+Windows 버전 PHP에서는 이 함수를 이용하여 원격 파일에
 접근할 수 없습니다. <link linkend="ini.allow-url-fopen">allow_url_fopen</link>을
 활성화하여도 마찬가지입니다.
 </para></warning>'>
@@ -173,7 +173,7 @@ PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 �
 
 <!ENTITY example.outputs '<para>위 예제의 출력:</para>'>
 
-<!ENTITY example.outputs.similar '<para>위 예제의 출력 예:</para>'>
+<!ENTITY example.outputs.similar '<para>위 예제의 출력 예시:</para>'>
 
 <!ENTITY array.resetspointer '<note><simpara>이 함수는 사용 후에
 <type>array</type> 포인터를 <function>reset</function>합니다.</simpara></note>'>
@@ -226,6 +226,8 @@ linkend="language.types.boolean">Booleans</link> 섹션에서 자세한 정보�
 얻을 수 있습니다. 이 함수의 반환값을 테스트하기 위해서
 <link linkend="language.operators.comparison">=== 연산자</link>를
 이용하십시오.</simpara></warning>'>
+
+
 
 
 <!-- Image (GD) Notes -->
@@ -318,9 +320,15 @@ xmlns:xlink='http://www.w3.org/1999/xlink'>php_timezonedb.dll</link>.</simpara><
 생성합니다. <function>date_default_timezone_set</function>을
 참고하십시오.</para>'>
 
+<!ENTITY date.timezone.errors.changelog
+'<row><entry>5.1.0</entry><entry><para>시간대 오류시
+<constant>E_STRICT</constant>와 <constant>E_NOTICE</constant>가
+발생합니다.</para></entry></row>'>
+
 <!ENTITY date.timestamp.description
 '<varlistentry><term><parameter>timestamp</parameter></term><listitem><para>선택적인
-<parameter>timestamp</parameter> 인수는 현재 로컬 시간을 기본값으로 가지는
+<parameter>timestamp</parameter> 인수는 <parameter>timestamp</parameter>가
+주어지지 않았을 경우, 현재 로컬 시간을 기본값으로 가지는
 <type>integer</type> 유닉스 타임스탬프입니다. 즉, 기본값은
 <function>time</function> 값입니다.</para></listitem></varlistentry>'>
 
@@ -338,10 +346,12 @@ obejct</parameter></term><listitem><para>절차식 전용:
 <!ENTITY node.inserted '이 노드는 <function>domnode_append_child</function>
 등을 통하여 삽입하지 않으면 보여지지 않습니다.'>
 
+
 <!-- Dom Notes -->
 <!ENTITY dom.node.inserted '이 노드는 <link
 linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 통하여 삽입하지 않으면 보여지지 않습니다.'>
+
 
 <!-- FileSystem entities -->
 <!ENTITY fs.validfp.all '<para>파일 포인터는 <function>fopen</function>,
@@ -355,7 +365,7 @@ linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 <!ENTITY gnupg.identifier '<para><function>gnupg_init</function>나
 <classname>gnupg</classname> 호출로 생성되는 gnupg 식별자.</para>'>
 
-<!ENTITY gnupg.fingerprint '<para>fungerprint 키.</para>'>
+<!ENTITY gnupg.fingerprint '<para>fingerprint 키.</para>'>
 
 <!-- ODBC -->
 <!ENTITY odbc.connection.id '<para>ODBC 접속 식별자.
@@ -382,7 +392,7 @@ linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 
 <!-- XSLT Notes -->
 <!ENTITY note.xslt.windows '<note><para>윈도우를 사용한다면, 경로 앞에
-<emphasis>file://</emphasis>이 필요한 점에 주의하십시오.</para></note>'>
+<literal>file://</literal>이 필요한 점에 주의하십시오.</para></note>'>
 
 
 <!-- Notes for safe-mode limited functions: -->
@@ -483,7 +493,7 @@ linkend="ini"/>를 참고하십시오.'>
 <!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에서 제공하지 않습니다.'>
 
-<!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=&url.pecl;">PECL</link> 확장은 PHP
+<!ENTITY pecl.bundled '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=&url.pecl;">PECL</link> 확장은 PHP
 배포판에 포함되어 있습니다.'>
 
 <!ENTITY pecl.info 'PECL 확장 설치에 관한 정보는 매뉴얼의 <link
@@ -508,6 +518,10 @@ xlink:href="&url.pecl.win;">&url.pecl.win;</link>에서 받을 수
 <acronym>PECL</acronym> 확장은 <link
 xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl.win;">&url.pecl.win;</link>에서 받을 수 있습니다.'>
 
+<!ENTITY pecl.moved-ver '이 확장은 <link
+xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link>
+저장소로 옮겨졌으며, 더 이상 PHP로 제공되지 않습니다.'>
+
 <!-- kept for BC -->
 <!ENTITY note.pecl-php5 '<note><simpara>이 확장은 PHP 5에서 제거되어, <link
 xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 저장소로 이동되었습니다.</simpara></note>'>
@@ -515,7 +529,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 <!-- Common pieces for reference part END -->
 
 
-<!ENTITY windows.builtin '<simpara><literal>PHP</literal> 윈도우 버전에서는
+<!ENTITY windows.builtin '<simpara>PHP 윈도우 버전에서는
 이 확장에 대한 지원이 포함되어 있습니다. 이 함수들을 이용하기 위해서 추가로
 확장을 읽어들일 필요가 없습니다.</simpara>'>
 
@@ -544,7 +558,9 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 <!ENTITY fbsql.link-identifier.description
 '<varlistentry><term><parameter>link_identifier</parameter></term><listitem><para><function>fbsql_connect</function>나
 <function>fbsql_pconnect</function>가 반환한 FrontBase 연결
-식별자.</para></listitem></varlistentry>'>
+식별자.</para><para>선택적이고 지정하지 않았을 때, 함수는 FrontBase 서버로
+열려있는 연결을 찾고, 찾지 못하면 <function>fbsql_connect</function>를 인수
+없이 호출했을 때처럼 연결을 시도합니다.</para></listitem></varlistentry>'>
 
 <!ENTITY fbsql.result.description
 '<varlistentry><term><parameter>result</parameter></term><listitem><para><function>fbsql_query</function>나
@@ -563,13 +579,11 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 <function>mysqli_store_result</function>나
 <function>mysqli_use_result</function>가 반환한 결과셋
 식별자.</para></listitem></varlistentry>'>
-
 <!ENTITY mysqli.link.description
 '<varlistentry><term><parameter>link</parameter></term><listitem><para>순차
 형식 전용: <function>mysqli_connect</function>나
 <function>mysqli_init</function>가 반환한 연결
 식별자.</para></listitem></varlistentry>'>
-
 <!ENTITY mysqli.stmt.description
 '<varlistentry><term><parameter>stmt</parameter></term><listitem><para>순차
 형식 전용: <function>mysqli_stmt_init</function>가 반환한 statement
@@ -706,7 +720,7 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 지정할 때는 IP를 대괄호로 감싸야 합니다. 예를 들면, 
 <literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
 
-<!ENTITY ipv6.php5 '<note><simpara>IPv6는 <literal>PHP 5.0.0</literal>부터
+<!ENTITY ipv6.php5 '<note><simpara>IPv6는 PHP 5.0.0부터
 지원합니다.</simpara></note>'>
 
 <!-- Notes for tidy -->
@@ -717,15 +731,15 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 있습니다. Tidy 2.0에서는 제거되었습니다.</simpara></note>'>
 
 <!ENTITY note.tidy2.only '<note><simpara>선택적인 인수
-<literal>config</literal>와 <literal>encoding</literal>은 Tidy 2.0에서
+<parameter>config</parameter>와 <parameter>encoding</parameter>은 Tidy 2.0에서
 추가되었습니다.</simpara></note>'>
 
 <!ENTITY tidy.conf-enc '<para><parameter>config</parameter> 인수는 배열이나
 문자열을 전달할 수 있습니다. 문자열을 넘기면, 설정 파일의 이름으로 해석합니다.
 그 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <link
-xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>를 확인하십시오.
-<parameter>encoding</parameter> 인수는 입출력 문서의 인코딩을 지정합니다.
-가능한 <parameter>encoding</parameter> 값은:
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>를
+확인하십시오.</para><para><parameter>encoding</parameter> 인수는 입출력 문서의 인코딩을 지정합니다. 가능한 <parameter>encoding</parameter> 값은:
 <literal>ascii</literal>, <literal>latin0</literal>,
 <literal>latin1</literal>, <literal>raw</literal>, <literal>utf8</literal>,
 <literal>iso2022</literal>, <literal>mac</literal>,
@@ -885,8 +899,7 @@ xmlns="http://docbook.org/ns/docbook"><simpara>이 함수가 제대로 작동하
 유효한 <filename>openssl.cnf</filename>을 설치해야 합니다. 자세한 정보는 <link
 linkend="openssl.installation">설치 섹션</link>의 주석을
 살펴보십시오.</simpara></note>'>
-<!ENTITY note.openssl.param-notext '<para
-xmlns="http://docbook.org/ns/docbook">선택 인수
+<!ENTITY note.openssl.param-notext '<para xmlns="http://docbook.org/ns/docbook">선택 인수
 <parameter>notext</parameter>는 출력 정밀도에 영향을 미칩니다; &false;이면
 추가적인 정보가 출력에 포함됩니다. <parameter>notext</parameter>의 기본값은
 &true;입니다.</para>'>

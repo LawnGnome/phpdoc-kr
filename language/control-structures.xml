@@ -876,6 +876,12 @@ while ($i++ < 5) {
      <literal>continue 2</literal>를 사용한다.
     </simpara>
    </note>
+   <note>
+    <para>
+     switch/case는 <link linkend="types.comparisions-loose">느슨한
+      비교</link>를 하는 점에 주의하십시오.
+    </para>
+   </note>
    <para>
     다음 예제 코드들은 같은 일을 서로 다르게 표현한 것입니다. 하나는
     <literal>if</literal>와 <literal>elseif</literal>문을 사용한 것이고, 다른
@@ -932,9 +938,10 @@ case "cake":
    <para>
     실수하지 않기 위해 <literal>switch</literal>문이 어떻게 동작하는지
     이해할 필요가 있다. <literal>switch</literal>문은 한줄씩 수행된다
-    (실제는, 한구문씩). 처음에는 아무 코드도 수행되지 않는다. 오직
-    값을 갖는 <literal>case</literal>문이 발견될때에만 구문을 수행하기 
-    시작한다. PHP는 <literal>switch</literal>블록의 끝부분이 될때까지,
+    (실제는, 한구문씩). 처음에는 아무 코드도 수행되지 않는다.
+    <literal>switch</literal> 표현의 값과 일치하는 값을 가진
+    <literal>case</literal> 구문을 발견했을 때, PHP는 그 구분을 실행합니다.
+    PHP는 <literal>switch</literal>블록의 끝부분이 될때까지,
     또는 <literal>break</literal>문와 첫번째 조우를 할때까지
     구문을 계속 수행해 간다. 만약 각 case 구문 목록의 끝부분에
     <literal>break</literal>문을 쓰지않는다면 PHP는 다음 case문으로 계속

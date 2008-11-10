@@ -3,7 +3,7 @@
 <refentry xml:id="function.get-defined-constants" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>get_defined_constants</refname>
-  <refpurpose>모든 상수와 그 값의 연관 배열을 반환합니다.</refpurpose>
+  <refpurpose>모든 상수와 그 값의 연관 배열을 반환합니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

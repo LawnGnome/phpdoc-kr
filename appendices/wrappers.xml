@@ -228,7 +228,8 @@ foreach($meta_data['wrapper_data'] as $response) {
   <para>
    버전 5 이전에서, HTTP 요청에 사용자 헤더를 보내기 위해서는
    <literal>user_agent</literal> INI 설정의 부작용을 이용해야 합니다.
-   <literal>user_agent</literal>에 유효한 문자열을 설정하고, CR/LF를 넣은 후
+   <literal>user_agent</literal>에 유효한 문자열(기본
+   <literal>PHP/version</literal> 설정 등)을 설정하고, CR/LF를 넣은 후
    추가 헤더를 넣었습니다. 이 방법은 PHP 4와 이후의 모든 버전에서 작동합니다.
   </para>
   <para>
@@ -277,8 +278,10 @@ X-MyCustomHeader: Foo
    읽거나 쓰기 위해 파일을 열수 있다. 그러나 동시에 읽기/쓰기를 할수 없다.
    원격 파일이 ftp 서버에 이미 존재하고 그 파일에 쓰기를 시도하려하는데
    컨텍스트 옵션 <literal>overwrite</literal>를 설정하지 않았다면,
-   접속이 실패할것이다. 차선책으로
-   <link linkend="ref.ftp">FTP extension</link>을 사용할수 있다.
+   접속이 실패할것이다. ftp를 통해서 존재하는 파일을 덮어쓰려면,
+   <literal>overwrite</literal> 옵션을 설정하고 파일을 쓰기 모드로 열어야
+   합니다. 차선책으로
+   <link linkend="ref.ftp">FTP 확장</link>을 사용할수 있다.
   </simpara>
   <note>
    <title>덧붙이기</title>
@@ -1322,7 +1325,7 @@ $stream = fopen("ssh2.tunnel://$session/remote.example.com:1234", 'r');
    <simpara>
     <filename>expect://</filename> 래퍼를 사용하려면 <link
      xlink:href="&url.pecl;">PECL</link>에서 <link
-     xlink:href="&url.pecl.package;oggvorbis">Expect</link> 확장을
+     xlink:href="&url.pecl.package;expect">Expect</link> 확장을
     설치해야 합니다.
    </simpara>
   </note>

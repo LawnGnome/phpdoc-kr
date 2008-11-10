@@ -217,7 +217,7 @@
       </row>
       <row>
        <entry>
-        <link linkend="language.constants.predefined">__NAMESPACE__</link>
+        <link linkend="language.namespaces">__NAMESPACE__</link>
         (PHP 5.3부터)
        </entry>
        <entry>

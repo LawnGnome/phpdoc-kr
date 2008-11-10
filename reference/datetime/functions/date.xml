@@ -3,7 +3,7 @@
 <refentry xml:id="function.date" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <refnamediv>
   <refname>date</refname>
-  <refpurpose>로컬 날짜/시간을 형식화합니다.</refpurpose>
+  <refpurpose>로컬 날짜/시간을 형식화합니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

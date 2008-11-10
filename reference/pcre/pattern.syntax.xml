@@ -970,23 +970,30 @@
       default behaviour.
      </para>
      <para>
+      <literal>+</literal>이 따라오는 수량어는 "소유권"입니다. 이 경우 최대한
+      많은 문자를 먹고, 나머지 패턴으로 돌려주지 않습니다. 그러므로
+      <literal>.*abc</literal>은 "aabc"에 매치하지만
+      <literal>.*+abc</literal>는 매치하지 않습니다. <literal>.*+</literal>가
+      전체 문자열을 먹기 때문입니다. 소유권 수량어는 PHP 4.3.3부터 빠른 처리를
+      위해서 사용될 수 있습니다.
+     </para>
+     <para>
       When a parenthesized subpattern is quantified with a minimum
       repeat  count  that is greater than 1 or with a limited maximum,
       more store is required for the  compiled  pattern,  in
       proportion to the size of the minimum or maximum.
      </para>
      <para>
-      If a pattern starts with .* or  .{0,}  and  the  <link linkend="reference.pcre.pattern.modifiers">PCRE_DOTALL</link> 
-      option (equivalent to Perl's /s) is set, thus allowing the .
-      to match newlines, then the pattern is implicitly  anchored,
-      because whatever follows will be tried against every character
-      position in the subject string, so there is no point  in
-      retrying  the overall match at any position after the first.
-      PCRE treats such a pattern as though it were preceded by \A.
-      In  cases where it is known that the subject string contains
-      no newlines, it is worth setting <link linkend="reference.pcre.pattern.modifiers">PCRE_DOTALL</link>  when  the  pattern begins with .* in order to
-      obtain this optimization, or
-      alternatively using ^ to indicate anchoring explicitly.
+      패턴이 .*이나 .{0,}로 시작하고 <link
+       linkend="reference.pcre.pattern.modifiers">PCRE_DOTALL</link>
+      옵션(Perl의 /s와 동일)이 설정되면, .이 줄바꿈에도 매치하게 되면, 패턴은
+      무조건 고정됩니다. 주제 문자열에 무엇이 붙어도 모든 문자가
+      포함되고, 처음 이후에 다른 위치를 잡을 수 없게 되기 때문입니다. PCRE는
+      그러한 패턴을 \A가 앞에 있는 것으로 취급합니다. 주제 문자열에 줄바꿈이
+      없다는 걸 알 경우엔, 이러한 최적화를 얻기 위해서 .*로 시작하는 패턴에
+      <link linkend="reference.pcre.pattern.modifiers">PCRE_DOTALL</link>을
+      설정할 가치가 있습니다. 다른 대안은 명시적으로 ^를 사용해서 위치를
+      표시할 수 있습니다.
      </para>
      <para>
       When a capturing subpattern is repeated, the value  captured
@@ -1001,6 +1008,7 @@
       matches "aba" the value of the second captured substring  is
       "b".
      </para>
+
     </section>
 
     <section xml:id="regexp.reference.back-references">
@@ -1177,7 +1185,8 @@
 
       is another pattern which matches  "foo"  preceded  by  three
       digits and any three characters that are not "999".
-
+     </para>
+     <para>
       Assertion subpatterns are not capturing subpatterns, and may
       not  be  repeated,  because  it makes no sense to assert the
       same thing several times. If any kind of assertion  contains
@@ -1186,14 +1195,15 @@
       pattern.   However,  substring capturing is carried out only
       for positive assertions, because it does not make sense  for
       negative assertions.
-
+     </para>
+     <para>
       Assertions count towards the maximum  of  200  parenthesized
       subpatterns.
      </para>
     </section>
 
     <section xml:id="regexp.reference.onlyonce">
-     <title>Once-only subpatterns</title>
+     <title>일회용 서브패턴</title>
      <para>
       With both maximizing and minimizing repetition,  failure  of
       what  follows  normally  causes  the repeated item to be

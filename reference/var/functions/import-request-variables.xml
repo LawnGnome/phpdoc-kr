@@ -3,7 +3,7 @@
 <refentry xml:id="function.import-request-variables" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>import_request_variables</refname>
-  <refpurpose>GET/POST/쿠키 변수를 전역으로 가져옵니다.</refpurpose>
+  <refpurpose>GET/POST/쿠키 변수를 전역으로 가져옵니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

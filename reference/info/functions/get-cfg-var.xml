@@ -4,7 +4,7 @@
 <refentry xml:id="function.get-cfg-var" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>get_cfg_var</refname>
-  <refpurpose>PHP 설정 옵션의 값을 얻습니다.</refpurpose>
+  <refpurpose>PHP 설정 옵션의 값을 얻습니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -43,7 +43,7 @@
   </para>
  </refsect1>
 
- <refsect1 role="returnvalues;">
+ <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
    <parameter>option</parameter>으로 지정한 PHP 설정 변수의 현재 값을

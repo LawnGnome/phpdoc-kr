@@ -3,7 +3,7 @@
 <refentry xml:id="function.get-current-user" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>get_current_user</refname>
-  <refpurpose>현재 PHP 스크립트 소유자의 이름을 얻습니다.</refpurpose>
+  <refpurpose>현재 PHP 스크립트 소유자의 이름을 얻습니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

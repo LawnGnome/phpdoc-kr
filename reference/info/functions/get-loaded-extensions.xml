@@ -4,7 +4,7 @@
 <refentry xml:id="function.get-loaded-extensions" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>get_loaded_extensions</refname>
-  <refpurpose>적재된 모든 모듈명을 배열로 반환합니다.</refpurpose>
+  <refpurpose>적재된 모든 모듈명을 배열로 반환합니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

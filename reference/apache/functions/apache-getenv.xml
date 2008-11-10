@@ -3,7 +3,7 @@
 <refentry xml:id="function.apache-getenv" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>apache_getenv</refname>
-  <refpurpose>아파치 서브프로세스의 환경 변수를 가져옵니다.</refpurpose>
+  <refpurpose>아파치 서브프로세스의 환경 변수를 가져옵니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

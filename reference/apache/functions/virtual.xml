@@ -3,7 +3,7 @@
 <refentry xml:id="function.virtual" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>virtual</refname>
-  <refpurpose>아파치 하위 요청을 실행합니다.</refpurpose>
+  <refpurpose>아파치 하위 요청을 실행합니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,7 +14,7 @@
   </methodsynopsis>
   <para>
    <function>virtual</function>은 mod_include의
-   &lt;!--#include virtual...--&gt;과 동일한 아파치 전용 함수입니다.
+   <literal>&lt;!--#include virtual...--&gt;</literal>과 동일한 아파치 전용 함수입니다.
    이것은 아파치 하위 요청을 실행합니다. CGI 스크립트나 .shtml 파일
    등 아파치를 통해서 실행 가능한 무엇이든 가능합니다.
    CGI 스크립트의 경우, 그 스크립트가 유효한 CGI 헤더를 생성해야 함에

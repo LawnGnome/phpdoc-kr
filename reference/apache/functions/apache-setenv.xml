@@ -3,7 +3,7 @@
 <refentry xml:id="function.apache-setenv" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>apache_setenv</refname>
-  <refpurpose>아파치의 서브프로세스의 환경 변수를 설정합니다.</refpurpose>
+  <refpurpose>아파치의 서브프로세스의 환경 변수를 설정합니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

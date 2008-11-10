@@ -275,6 +275,13 @@ int strlen ( string $string )
    x.1.x부터 사용할 수 있다고 써 있는 경우가 자주 있습니다. 문서는 미래 시제가
    아닌 현재 시제로 쓰여진다는 점에 주의하십시오.
   </para>
+  <para>
+   PHP 매뉴얼은 종종 PHP 지시어의 "기본값" 목록을 제공합니다. 이 값은
+   <filename>php.ini-dist</filename>에 기초하고 있으며
+   <filename>php.ini-recommended</filename>가 아닙니다. 두 파일 모두 최신
+   버전의 PHP를 참조합니다. 이러한 값과 변경에 대해 자세한 사항은 <link
+    linkend="ini.list">PHP 지시어 부록</link>을 참고하십시오.
+  </para>
  </sect1>
 
  <!-- TODO not update from here (1.26->1.50) -->

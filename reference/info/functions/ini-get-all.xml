@@ -3,7 +3,7 @@
 <refentry xml:id="function.ini-get-all" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>ini_get_all</refname>
-  <refpurpose>모든 설정 옵션을 얻습니다.</refpurpose>
+  <refpurpose>모든 설정 옵션을 얻습니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

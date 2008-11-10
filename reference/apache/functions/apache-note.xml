@@ -3,7 +3,7 @@
 <refentry xml:id="function.apache-note" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>apache_note</refname>
-  <refpurpose>아파치의 요청 노트를 얻거나 설정한다.</refpurpose>
+  <refpurpose>아파치의 요청 노트를 얻거나 설정한다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

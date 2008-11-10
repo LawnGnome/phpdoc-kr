@@ -3,7 +3,7 @@
 <refentry xml:id="function.checkdate" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>checkdate</refname>
-  <refpurpose>그레고리력 날짜를 확인합니다.</refpurpose>
+  <refpurpose>그레고리력 날짜를 확인합니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

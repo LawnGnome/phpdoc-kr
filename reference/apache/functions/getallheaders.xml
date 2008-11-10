@@ -3,7 +3,7 @@
 <refentry xml:id="function.getallheaders" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>getallheaders</refname>
-  <refpurpose>모든 HTTP 요청 헤더를 가져옵니다.</refpurpose>
+  <refpurpose>모든 HTTP 요청 헤더를 가져옵니다</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -21,6 +21,13 @@
    참고하십시오.
   </para>
   &apache.req.module;
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   현재 요청에 존재하는 모든 HTTP 헤더의 연관 배열, 실패시엔 &false;.
+  </para>
  </refsect1>
 
  <refsect1 role="changelog">
