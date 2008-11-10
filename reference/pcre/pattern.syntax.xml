@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 1.21 Maintainer: progcom Status: working -->
 <chapter xml:id="reference.pcre.pattern.syntax" xmlns="http://docbook.org/ns/docbook">
  <title>패턴 문법</title>

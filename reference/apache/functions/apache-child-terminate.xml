@@ -6,7 +6,7 @@
   <refpurpose>이 요청 후에 아파치 프로세스를 종료한다.</refpurpose>
  </refnamediv>
 
- <refsect1 sole="description">
+ <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <type>bool</type><methodname>apache_child_terminate</methodname>
