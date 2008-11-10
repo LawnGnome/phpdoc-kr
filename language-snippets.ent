@@ -403,7 +403,7 @@ linkend="ini.open-basedir">open_basedir</link>에 영향을
 받습니다.</para></note>'>
 
 <!ENTITY note.language-construct '<note><simpara>이것은 함수가 아닌
-언어 구조이기 때문에, <link linkend="functions.variable-functions">변수
+언어 구조이기 때문에, <link linkend="functions.variable-functions">가변
 함수</link> 방식으로 호출할 수 없습니다.</simpara></note>'>
 
 <!-- Common pieces in features/safe-mode.xml 
