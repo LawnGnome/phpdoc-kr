@@ -1,29 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.atanh" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>atanh</refname>
-    <refpurpose>역 쌍곡선 탄젠트</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>float</type><methodname>atanh</methodname>
-      <methodparam><type>float</type><parameter>arg</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>arg</parameter>의 역 쌍곡선 탄젠트 값을 반환합니다.
-     즉, 반환값의 쌍곡선 탄젠트는 <parameter>arg</parameter>가 됩니다.
-    </para>
-    &note.no-windows;
-    <para>
-     참고:
-     <function>atan</function>,
-     <function>asinh</function>,
-     <function>acosh</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.atanh" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>atanh</refname>
+  <refpurpose>역쌍곡탄젠트</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>float</type><methodname>atanh</methodname>
+   <methodparam><type>float</type><parameter>arg</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>arg</parameter>의 역쌍곡탄젠트 값을 반환합니다.
+   즉, 반환값의 쌍곡탄젠트는 <parameter>arg</parameter>가 됩니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>arg</parameter></term>
+     <listitem>
+      <para>
+       처리할 인수
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>arg</parameter>의 역쌍곡탄젠트
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        모든 플랫폼에서 이 함수를 사용할 수 있게 되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>tanh</function></member>
+    <member><function>atan</function></member>
+    <member><function>asinh</function></member>
+    <member><function>acosh</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.rewinddir" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>rewinddir</refname>
-    <refpurpose>디렉토리 핸들을 되감습니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>rewinddir</methodname>
-      <methodparam><type>resource</type><parameter>dir_handle</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>dir_handle</parameter>에 지정한 디렉토리 핸들을 디렉토리의
-     처음 위치로 되돌립니다.
-    </para>
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.rewinddir" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>rewinddir</refname>
+  <refpurpose>디렉토리 핸들을 되감습니다</refpurpose>
+ </refnamediv>
 
-   </refsect1>
-  </refentry>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>void</type><methodname>rewinddir</methodname>
+   <methodparam choice="opt"><type>resource</type><parameter>dir_handle</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>dir_handle</parameter>에 지정한 디렉토리 핸들을 디렉토리의
+   처음 위치로 되돌립니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>dir_handle</parameter></term>
+     <listitem>
+      <para>
+       <function>opendir</function>로 열린 디렉토리 핸들
+       <type>resource</type>. 디렉토리 핸들이 지정되지 않으면,
+       <function>opendir</function>로 열린 마지막 연결을 할당합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

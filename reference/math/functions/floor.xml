@@ -1,42 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.floor" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>floor</refname>
-    <refpurpose>소수점 내림</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>float</type><methodname>floor</methodname>
-      <methodparam><type>float</type><parameter>value</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     필요할 경우 <parameter>value</parameter>를 소수점 내림한
-     다음으로 가장 작은 정수를 반환합니다.
-     보통 <type>float</type>의 범위가 <type>integer</type>의 범위보다
-     크기 때문에, <function>floor</function>의 반환값은 여전히
-     <type>float</type>를 유지합니다.
-    </simpara>
-    <para>
-      <example>
-       <title><function>floor</function> 예제</title>
-       <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.floor" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>floor</refname>
+  <refpurpose>소수점 아래 내림</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>float</type><methodname>floor</methodname>
+   <methodparam><type>float</type><parameter>value</parameter></methodparam>
+  </methodsynopsis>
+  <simpara>
+   필요할 경우 <parameter>value</parameter>를 소수점 아래 내림하여
+   다음으로 작은 정수를 반환합니다.
+  </simpara>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>value</parameter></term>
+     <listitem>
+      <para>
+       내림할 숫자 값
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>value</parameter>를 내린 정수.
+   일반적으로 <type>float</type> 범위가 <type>integer</type> 범위보다
+   넓기 때문에, <function>floor</function>의 반환값은 여전히
+   <type>float</type>를 유지합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>floor</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo floor(4.3);   // 4
 echo floor(9.999); // 9
+echo floor(-3.14); // -4
 ?>
 ]]>
-       </programlisting>
-      </example>
-    </para>
-    <simpara>
-     참고: <function>ceil</function>, <function>round</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>ceil</function></member>
+    <member><function>round</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

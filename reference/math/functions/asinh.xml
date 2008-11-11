@@ -1,29 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.asinh" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>asinh</refname>
-    <refpurpose>역 쌍곡선 사인</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>float</type><methodname>asinh</methodname>
-      <methodparam><type>float</type><parameter>arg</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>arg</parameter>의 역 쌍곡선 사인값을 반환합니다.
-     즉, 반환값의 쌍곡선 사인은 <parameter>arg</parameter>가 됩니다.
-    </para>
-    &note.no-windows;
-    <para>
-     참고:
-     <function>asin</function>,
-     <function>acosh</function>,
-     <function>atanh</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.asinh" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>asinh</refname>
+  <refpurpose>역쌍곡사인</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>float</type><methodname>asinh</methodname>
+   <methodparam><type>float</type><parameter>arg</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>arg</parameter>의 역쌍곡사인 값을 반환합니다.
+   즉, 반환값의 쌍곡사인은 <parameter>arg</parameter>가 됩니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>arg</parameter></term>
+     <listitem>
+      <para>
+       처리할 인수
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>arg</parameter>의 역쌍곡사인
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        모든 플랫폼에서 이 함수를 사용할 수 있게 되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>sinh</function></member>
+    <member><function>asin</function></member>
+    <member><function>acosh</function></member>
+    <member><function>atanh</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

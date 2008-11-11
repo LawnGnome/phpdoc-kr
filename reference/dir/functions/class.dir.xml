@@ -1,75 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="class.dir" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>dir</refname>
-    <refpurpose>디렉토리 클래스</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-    <classsynopsis>
-     <ooclass><classname>dir</classname></ooclass>
-     <constructorsynopsis>
-      <methodname>dir</methodname>
-      <methodparam><type>string</type><parameter>directory</parameter></methodparam>
-     </constructorsynopsis>
-     <fieldsynopsis>
-      <type>string</type><varname>path</varname>
-     </fieldsynopsis>
-     <fieldsynopsis>
-      <type>resource</type><varname>handle</varname>
-     </fieldsynopsis>
-     <methodsynopsis><type>string</type><methodname>read</methodname><void/></methodsynopsis>
-     <methodsynopsis><type>void</type><methodname>rewind</methodname><void/></methodsynopsis>
-     <methodsynopsis><type>void</type><methodname>close</methodname><void/></methodsynopsis>
-    </classsynopsis>
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<refentry xml:id="class.dir" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>dir</refname>
+  <refpurpose>디렉토리 클래스의 인스턴스를 반환합니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <classsynopsis>
+   <ooclass><classname>Directory</classname></ooclass>
+   <classsynopsisinfo>
+    <ooclass>
+     <classname>Directory</classname>
+    </ooclass>
+   </classsynopsisinfo>
+   <fieldsynopsis>
+    <type>string</type><varname>path</varname>
+   </fieldsynopsis>
+   <fieldsynopsis>
+    <type>resource</type><varname>handle</varname>
+   </fieldsynopsis>
+   <methodsynopsis><type>string</type><methodname>Directory::read</methodname><void/></methodsynopsis>
+   <methodsynopsis><type>void</type><methodname>Directory::rewind</methodname><void/></methodsynopsis>
+   <methodsynopsis><type>void</type><methodname>Directory::close</methodname><void/></methodsynopsis>
+  </classsynopsis>
+  <para>
+   디렉토리를 읽는 모의-객체 기반 방법입니다. 주어진
+   <parameter>directory</parameter>를 엽니다. 열려진 디렉토리에 사용할 수
+   있는 두가지 프로퍼티가 존재합니다. handle 프로퍼티는
+   <function>readdir</function>, <function>rewinddir</function>,
+   <function>closedir</function> 등의 다른 디렉토리 함수에 사용할 수
+   있습니다. path 프로퍼티는 열려진 디렉토리의 경로가 지정됩니다. 세가지
+   메쏘드를 사용할 수 있습니다: read, rewind, close.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>dir</function> 예제</title>
     <para>
-     디렉토리를 읽는 모조-객체 기반 방법입니다. 주어진
-     <parameter>directory</parameter>를 엽니다. 열려진 디렉토리에 사용할 수
-     있는 두가지 속성이 존재합니다. handle 속성은
-     <function>readdir</function>, <function>rewinddir</function>,
-     <function>closedir</function> 등의 다른 디렉토리 함수에 사용할 수
-     있습니다. path 속성에은 열려진 디렉토리의 경로가 지정됩니다. 세가지
-     메쏘드를 사용할 수 있습니다: read, rewind, close.
-    </para>
-    <para>
-     <function>dir</function>의 반환값은 아래 예제처럼 확인해야 하는 점에
-     주의하십시오. 반환값이 &false;와 완전히 동일한지 (형까지 같게--자세한
+     <function>dir::read</function>의 반환값은 아래 예제처럼 확인해야 하는 점에
+     주의하십시오. 반환값이 &false;와 완전히 동일한지 (형까지 같게 - 자세한
      정보는 <link linkend="language.operators.comparison">비교
-     연산자</link>를 참고하십시오) 확인하고 있습니다. 이렇게 하지 않으면,
+      연산자</link>를 참조) 확인하고 있습니다. 이렇게 하지 않으면,
      &false;로 판단할 수 있는 이름을 가진 디렉토리 엔트리에서 루프가 멈춥니다.
-     <example>
-      <title><function>dir</function> 예제</title>
-      <programlisting role="php">
+    </para>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$d = dir("/etc");
-echo "Handle: " . $d->handle . "<br />\n";
-echo "Path: " . $d->path . "<br />\n";
+$d = dir("/etc/php5");
+echo "Handle: " . $d->handle . "\n";
+echo "Path: " . $d->path . "\n";
 while (false !== ($entry = $d->read())) {
-   echo $entry."<br />\n";
+   echo $entry."\n";
 }
 $d->close();
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <note>
-     <para>
-      read 메쏘드가 반환하는 디렉토리 엔트리의 순서는 시스템 의존적입니다. 
-     </para>
-    </note>
-    <note>
-     <para>
-      이는 내부적으로 <classname>Directory</classname> 클래스를 정의하기에, 이
-      이름을 가지는 클래스를 정의할 수 없습니다. PHP에 미리 정의된 클래스의
-      전체 목록은 <link linkend="reserved.classes">미리 정의된 클래스</link>를
-      참고하십시오.
-     </para>
-    </note>
-   </refsect1>
-  </refentry>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
+<![CDATA[
+Handle: Resource id #2
+Path: /etc/php5
+.
+..
+apache
+cgi
+cli
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    read 메쏘드가 반환하는 디렉토리 엔트리의 순서는 시스템에 의존합니다.
+   </para>
+  </note>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

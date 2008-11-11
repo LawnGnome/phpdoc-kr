@@ -1,22 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.closedir" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>closedir</refname>
-    <refpurpose>디렉토리 핸들을 닫습니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>closedir</methodname>
-      <methodparam><type>resource</type><parameter>dir_handle</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>dir_handle</parameter>가 지시하는 디렉토리 스트림을 닫습니다.
-     스트림은 <function>opendir</function>로 열려 있는 것이여야 합니다.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.closedir" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>closedir</refname>
+  <refpurpose>디렉토리 핸들을 닫습니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>void</type><methodname>closedir</methodname>
+   <methodparam choice="opt"><type>resource</type><parameter>dir_handle</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>dir_handle</parameter>가 지시하는 디렉토리 스트림을 닫습니다.
+   스트림은 <function>opendir</function>로 열려 있는 것이여야 합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>dir_handle</parameter></term>
+     <listitem>
+      <para>
+       <function>opendir</function>로 열린 디렉토리 핸들
+       <type>resource</type>. 디렉토리 핸들이 지정되지 않으면,
+       <function>opendir</function>로 열린 마지막 연결을 할당합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>closedir</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+// 디렉토리를 열고, 읽어서 변수로 넣고 닫습니다.
+if (is_dir($dir)) {
+    if ($dh = opendir($dir)) {
+        $directory = readdir($dh);
+        closedir($dh);
+    }
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

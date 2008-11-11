@@ -1,26 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id='function.is-nan' xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>is_nan</refname>
-    <refpurpose>값이 수가 아닌지 확인합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>is_nan</methodname>
-      <methodparam><type>float</type><parameter>val</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>val</parameter>가 숫자가 아닐(not a number) 경우 &true;를
-     반환합니다. <literal>acos(1.01)</literal>의 결과 등이 해당합니다.
-    </para>
-    <para>
-     참고: <function>is_finite</function>, <function>is_infinite</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id='function.is-nan' xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>is_nan</refname>
+  <refpurpose>값이 수가 아닌지 확인합니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>is_nan</methodname>
+   <methodparam><type>float</type><parameter>val</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>val</parameter>이 '숫자가 아닌'지 확인합니다.
+   <literal>acos(1.01)</literal>의 결과 등은 숫자가 아닙니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>val</parameter></term>
+     <listitem>
+      <para>
+       확인할 값
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>val</parameter>이 '숫자가 아닐' 경우 &true;, 아니면 &false;를
+   반환합니다. 
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>is_nan</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+// NaN을 반환하는
+// 잘못된 계산
+$nan = acos(8);
+
+var_dump($nan, is_nan($nan));
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+float(NaN)
+bool(true)
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>in_finite</function></member>
+    <member><function>in_infinite</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
