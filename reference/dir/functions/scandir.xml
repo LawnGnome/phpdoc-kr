@@ -18,7 +18,7 @@
     <para>
      <parameter>directory</parameter>에서 파일과 디렉토리의
      <type>array</type>를 반환합니다. <parameter>directory</parameter>가
-     디렉토리가 아닐 경우, 불린 &false;를 반환하고, 에러 레벨
+     디렉토리가 아닐 경우, 논리 &false;를 반환하고, 에러 레벨
      <constant>E_WARNING</constant>를 생생합니다.
     </para>
     <para>

@@ -141,7 +141,7 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-$a_bool = TRUE;   // 불린
+$a_bool = TRUE;   // 논리
 $a_str  = "foo";  // 문자열
 $a_str  = 'foo';  // 문자열
 $an_int = 12;     // 정수

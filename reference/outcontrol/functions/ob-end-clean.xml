@@ -43,7 +43,7 @@ while (@ob_end_clean());
       이 함수가 실패하면 E_NOTICE를 생성합니다.
      </simpara>
      <simpara>
-      불린 반환값은 PHP 4.2.0에서 추가되었습니다.
+      논리 반환값은 PHP 4.2.0에서 추가되었습니다.
      </simpara>
     </note>
     <para>

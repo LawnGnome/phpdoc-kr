@@ -1,65 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.strstr" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strstr</refname>
-    <refpurpose>문자열이 처음으로 나타나는 부분을 찾습니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>strstr</methodname>
-      <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
-      <methodparam><type>string</type><parameter>needle</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>needle</parameter>에서 <parameter>haystack</parameter>이 처음
-     발견된 곳부터 끝까지의 부분 문자열을 반환합니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>이 발견되지 않으면, &false;를 반환합니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>이 문자열이 아니라면, 정수형으로 변환하여 그
-     수에 해당하는 문자를 적용합니다.
-    </para>
-    <note>
-     <para>
-      이 함수는 대소문자를 구별합니다. 구별하지 않으려면,
-      <function>stristr</function>을 사용하십시오.
-     </para>
-    </note>
-    <para>
-     <example>
-      <title><function>strstr</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.strstr" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>strstr</refname>
+  <refpurpose>문자열이 처음으로 나오는 부분을 찾습니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>strstr</methodname>
+   <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
+   <methodparam><type>mixed</type><parameter>needle</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>before_needle</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>needle</parameter>에서 <parameter>haystack</parameter>이 처음
+   발견된 곳부터 끝까지의 부분 문자열을 반환합니다.
+  </para>
+  <note>
+   <para>
+    이 함수는 대소문자를 구분합니다. 구분하지 않으려면,
+    <function>stristr</function>을 사용하십시오.
+   </para>
+  </note>
+  <note>
+   <para>
+    <parameter>haystack</parameter> 안에 <parameter>needle</parameter>이
+    있는지만 확인하려면, 빠르고 메모리도 적게 사용하는
+    <function>strpos</function>를 사용하십시오.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>haystack</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>needle</parameter></term>
+     <listitem>
+      <para>
+       <parameter>needle</parameter>이 문자열이 아니면, 정수로 변환하여
+       해당하는 값의 문자를 적용합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>before_needle</parameter></term>
+     <listitem>
+      <para>
+       &true;이면 (기본값은 &false;) <parameter>haystack</parameter>에서 첫
+       <parameter>needle</parameter>의 앞에 있는 부분을 반환합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   문자열의 부분을 반환하거나, <parameter>needle</parameter>을 발견하지 못하면
+   &false;를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        선택적인 <parameter>before_needle</parameter> 인수 추가.
+       </entry>
+      </row>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        <function>strstr</function>이 바이너리 안전하게 되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strstr</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$email = 'user@example.com';
+$email  = 'name@example.com';
 $domain = strstr($email, '@');
-echo $domain; // @example.com 을 출력.
+echo $domain; // @example.com 출력.
+
+$user = strstr($email, '@' true); // PHP 5.3.0부터
+echo $user; // name 출력
 ?>
 ]]>
-      </programlisting>
-     </example> 
-    </para>
-    <para>
-     <note>
-      <para>
-       <parameter>needle</parameter>이 <parameter>haystack</parameter>에
-       존재하는지만을 확인하려 한다면, 더 빠르고 메모리를 적게 쓰는
-       <function>strpos</function> 함수를 사용하십시오.
-      </para>
-     </note>
-    </para>
-    <para>
-     참고: <function>ereg</function>, <function>preg_match</function>,
-     <function>strchr</function>, <function>stristr</function>,
-     <function>strpos</function>, <function>strrchr</function>,
-     <function>substr</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example> 
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function></function></member>
+    <member><function></function></member>
+    <member><function></function></member>
+    <member><function></function></member>
+    <member><function></function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -49,7 +49,7 @@
       함수가 실패하면 E_NOTICE를 발생합니다.
      </simpara>
      <simpara>
-      불린 반환값은 PHP 4.2.0에서 추가되었습니다.
+      논리 반환값은 PHP 4.2.0에서 추가되었습니다.
      </simpara>
     </note>
     <para>

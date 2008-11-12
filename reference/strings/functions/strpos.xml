@@ -1,38 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.strpos" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strpos</refname>
-    <refpurpose>
-     문자열이 처음 나타나는 위치를 찾습니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>strpos</methodname>
-      <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
-      <methodparam><type>string</type><parameter>needle</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>offset</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>haystack</parameter> 문자열에서
-     <parameter>needle</parameter>이 처음 나타나는 수 위치를 반환합니다.
-     <function>strrpos</function>와는 달리, 이 함수는
-     <parameter>needle</parameter> 인수로 완전한 문자열을 받아서 전체 문자열을
-     사용합니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>을 발견하지 못하면,
-     <function>strpos</function>는 <type>boolean</type> &false;를 반환합니다.
-    </para>
+<!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.strpos" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>strpos</refname>
+  <refpurpose>문자열이 처음 나타나는 위치를 찾습니다</refpurpose>
+ </refnamediv>
 
-    &return.falseproblem;
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>strpos</methodname>
+   <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
+   <methodparam><type>mixed</type><parameter>needle</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>offset</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>haystack</parameter> 문자열에서
+   <parameter>needle</parameter>이 처음 나타나는 수 위치를 반환합니다.
+   PHP 5 이전의 <function>strrpos</function>와는 달리, 이 함수는
+   <parameter>needle</parameter> 인수로 문자열을 받아서, 전체 문자열을
+   사용합니다.
+  </para>
+ </refsect1>
 
-    <para>
-     <example>
-     <title><function>strpos</function> 예제</title>
-      <programlisting role="php">
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>haystack</parameter></term>
+     <listitem>
+      <para>
+       탐색할 문자열
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>needle</parameter></term>
+     <listitem>
+      <para>
+       <parameter>needle</parameter>이 문자열이 아니면, 정수로 변환하여
+       해당하는 값의 문자를 취합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>offset</parameter></term>
+     <listitem>
+      <para>
+       선택적인 <parameter>offset</parameter> 인수는
+       <parameter>haystack</parameter>에서 몇 번째 문자부터 탐색을 시작할 지
+       결정합니다. 반환하는 위치는 <parameter>haystack</parameter> 시작부터
+       셉니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   위치를 정수로 반환합니다. <parameter>needle</parameter>을 발견하지 못하면,
+   <function>strpos</function>는 <type>boolean</type> &false;를 반환합니다.
+  </para>
+  &return.falseproblem;
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>=== 사용하기</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $mystring = 'abc';
@@ -47,36 +88,70 @@ if ($pos === false) {
     echo "'$findme' 문자열을 '$mystring' 문자열에서 찾았습니다.";
     echo "위치 $pos에 존재합니다.";
 }
+?>
+]]>
+    </programlisting>
+   </example>
 
-// offset 전의 모든걸 무시하고 문자를 찾을 수 있습니다.
+   <example>
+    <title>!== 사용하기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$mystring = 'abc';
+$findme   = 'a';
+$pos = strpos($mystring, $findme);
+
+// !== 연산자를 사용할 수 있습니다. !=는 'a'의 위치가
+// 0이기 때문에 원하는 동작을 얻을 수 없습니다.
+// 구문 (0 != false)는 false로 평가됩니다.
+if ($pos !== false) {
+    echo "'$findme' 문자열을 '$mystring' 문자열에서 찾았습니다.";
+    echo "위치 $pos에 존재합니다.";
+} else {
+    echo "'$findme' 문자열을 '$mystring' 문자열에서 찾지 못했습니다.";
+}
+?>
+]]>
+    </programlisting>
+   </example>
+
+   <example>
+    <title>offset 사용하기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+// offset 앞을 모두 무시하고 문자를 찾을 수 있습니다.
 $newstring = 'abcdef abcdef';
 $pos = strpos($newstring, 'a', 1); // $pos = 7, not 0
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <parameter>needle</parameter>이 문자열이 아니라면, 정수로 변환하여
-     해당하는 값의 문자를 적용합니다.
-    </para>
-    <para>
-     선택적인 <parameter>offset</parameter> 인수로
-     <parameter>haystack</parameter>에서 검색을 시작할 문자 위치를 지정할 수
-     있습니다. 반환하는 위치는 여전히 <parameter>haystack</parameter>의 시작
-     위치로부터 세어집니다.
-    </para>
-    <para>
-     참고: <function>strrpos</function>, 
-     <function>stripos</function>,
-     <function>strripos</function>,
-     <function>strrchr</function>, 
-     <function>substr</function>,
-     <function>stristr</function>,
-     <function>strstr</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.bin-safe;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>strrpos</function></member>
+    <member><function>stripos</function></member>
+    <member><function>strripos</function></member>
+    <member><function>strrchr</function></member>
+    <member><function>substr</function></member>
+    <member><function>stristr</function></member>
+    <member><function>strstr</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

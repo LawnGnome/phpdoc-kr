@@ -1,38 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: readu -->
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry xml:id="function.strrchr" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strrchr</refname>
-    <refpurpose>
-     문자열에서 문자가 마지막으로 나오는 부분을 찾습니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-    <methodsynopsis>
-     <type>string</type><methodname>strrchr</methodname>
-     <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
-     <methodparam><type>string</type><parameter>needle</parameter></methodparam>
-    </methodsynopsis>
-    <para>
-     이 함수는 <parameter>needle</parameter>가 마지막으로 나오는 위치부터
-     <parameter>haystack</parameter>의 마지막까지의
-     <parameter>haystack</parameter> 문자열 부분을 반환합니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>이 발견되지 않으면, &false;를 반환합니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>이 한 문자 이상을 포함하고 있으면,
-     첫번째 문자를 사용합니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>이 문자열이 아닐 경우, 정수형으로 변환하여
-     그 수에 해당하는 문자를 적용합니다.
-     <example>
-      <title><function>strrchr</function> 예제</title>
-      <programlisting role="php">
+<refentry xml:id="function.strrchr" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>strrchr</refname>
+  <refpurpose>문자열에서 문자가 마지막으로 나오는 부분을 찾습니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>strrchr</methodname>
+   <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
+   <methodparam><type>mixed</type><parameter>needle</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   이 함수는 <parameter>needle</parameter>가 마지막으로 나오는 위치부터
+   <parameter>haystack</parameter>의 마지막까지의
+   <parameter>haystack</parameter> 문자열 부분을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>haystack</parameter></term>
+     <listitem>
+      <para>
+       탐색할 문자열
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>needle</parameter></term>
+     <listitem>
+      <para>
+       <parameter>needle</parameter>이 하나 이상의 문자를 가지고 있으면,
+       첫번째 문자만 사용합니다. 이 동작은 <function>strstr</function>과
+       다릅니다.
+      </para>
+      <para>
+       <parameter>needle</parameter>이 문자열이 아니면, 정수로 변환하여
+       해당하는 값의 문자를 취합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   문자열의 부분을 반환하거나, <parameter>needle</parameter>이 발견되지 않으면
+   &false;를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        이 함수는 바이너리 안전입니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strrchr</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 // $PATH에서 마지막 디렉토리를 얻는다.
@@ -43,15 +99,28 @@ $text = "줄 1\n줄 2\n줄 3";
 $last = substr(strrchr($text, 10), 1);
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     참고: <function>strchr</function>, <function>substr</function>,
-     <function>stristr</function>, <function>strstr</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.bin-safe;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>strstr</function></member>
+    <member><function>substr</function></member>
+    <member><function>stristr</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,56 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.is-bool" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>is_bool</refname>
-     <refpurpose>
-      변수가 불린인지 확인합니다.
-     </refpurpose>
-    </refnamediv>
-    <refsect1>
-     <title>설명</title>
-     <methodsynopsis>
-       <type>bool</type><methodname>is_bool</methodname>
-       <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
-     </methodsynopsis>
-     <para>
-      <parameter>var</parameter> 인수가 <type>boolean</type>이면 &true;를
-      반환합니다.
-     </para>
-     <para>
-      <example>
-      <title><function>is_bool</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.is-bool" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>is_bool</refname>
+  <refpurpose>변수가 논리형인지 확인</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>is_bool</methodname>
+   <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   주어진 변수가 논리형인지 확인합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>var</parameter></term>
+     <listitem>
+      <para>
+       평가할 변수.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>var</parameter>가 <type>boolean</type>이면 &true;, 아니면
+   &false;를 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>is_bool</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $a = false;
 $b = 0;
 
-// $a는 불린이기 때문에, true입니다.
+// $a는 논리형이기 때문에, true입니다.
 if (is_bool($a)) {
-    echo "불린입니다.";
+    echo "논리형입니다.";
 }
 
-// $b는 불린이 아니기 때문에, true가 아닙니다.
+// $b는 논리형이 아니기 때문에, true가 아닙니다.
 if (is_bool($b)) {
-    echo "불린입니다.";
+    echo "논리형입니다.";
 }
 ?>
 ]]>
-       </programlisting>
-      </example>
-     </para>
-     <para>
-     참고:
-     <function>is_array</function>,
-     <function>is_float</function>,
-     <function>is_int</function>,
-     <function>is_integer</function>,
-     <function>is_string</function>,
-     <function>is_object</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>is_float</function></member>
+    <member><function>is_int</function></member>
+    <member><function>is_string</function></member>
+    <member><function>is_object</function></member>
+    <member><function>is_array</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

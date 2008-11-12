@@ -5,7 +5,7 @@
 <!-- Notes -->
 
 <!ENTITY note.bin-safe '<note><simpara>이 함수는 바이너리
-호환(binary-safe)입니다.</simpara></note>'>
+안전입니다.</simpara></note>'>
 
 <!ENTITY note.clearstatcache '<note><simpara>이 함수의 결과는 캐시에
 저장합니다. 자세한 설명은 <function>clearstatcache</function>를
@@ -37,7 +37,7 @@ linkend="ini.auto-detect-line-endings">auto_detect_line_endings</link> 실행
 파일은 서버 파일시스템을 통해서 사용 가능해야만 합니다.</simpara></note>'>
 
 <!ENTITY note.not-bin-safe '<warning><simpara>이 함수는 (아직) 바이너리
-호환(binary safe)이 아닙니다!</simpara></warning>'>
+안전하지 않습니다!</simpara></warning>'>
 
 <!ENTITY note.no-key-association '<note><simpara>이 함수는
 <parameter>array</parameter>에 새로운 키를 할당합니다. 이 작업은 단순히 키를
@@ -219,11 +219,10 @@ alias를 사용할 수 있습니다: '>
 
 <!ENTITY return.void '값을 반환하지 않습니다.'>
 
-<!ENTITY return.falseproblem '<warning><simpara>이 함수는 Boolean &false;를
-반환하지만, <literal>0</literal>이나 &quot;&quot; 등의 &false;로 취급할 수 있는
-Boolean이 아닌 값을 반환할 수도 있습니다. <link
-linkend="language.types.boolean">Booleans</link> 섹션에서 자세한 정보를
-얻을 수 있습니다. 이 함수의 반환값을 테스트하기 위해서
+<!ENTITY return.falseproblem '<warning><simpara>이 함수는 논리 &false;를
+반환하지만, <literal>0</literal>이나 &quot;&quot; 등, 논리 &false;로 취급할 수 있는 다른 값을 반환할 수 있습니다. 자세한 정보는 <link
+linkend="language.types.boolean">논리형</link> 섹션을 참고하십시오.
+이 함수의 반환값을 확인하려면 
 <link linkend="language.operators.comparison">=== 연산자</link>를
 이용하십시오.</simpara></warning>'>
 
@@ -907,7 +906,7 @@ linkend="openssl.installation">설치 섹션</link>의 주석을
 <!-- COM/Dotnet -->
 <!ENTITY com.variant-arith '<note
 xmlns="http://docbook.org/ns/docbook"><para>variant 연산 함수와 마찬가지로, 이
-함수의 인수로는 PHP 자료형(정수, 문자열, 부동소수점, 불린, &null;)이나 COM,
+함수의 인수로는 PHP 자료형(정수, 문자열, 소수, 논리, &null;)이나 COM,
 VARIANT, DOTNET 클래스의 인스턴스를 사용할 수 있습니다. PHP 자료형은 <xref
 linkend="class.variant"/> 클래스 생성자와 같은 방식으로 vriant로 변환됩니다.
 COM과 DOTNET 객체는 기본 프로퍼티 값을 variant 값으로
