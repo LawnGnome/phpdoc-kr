@@ -1,45 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.unserialize" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>unserialize</refname>
-    <refpurpose>
-     저장 표현에서 PHP 값을 작성합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>mixed</type><methodname>unserialize</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     <function>unserialize</function>은 하나의 일렬화된
-     변수(<function>serialize</function> 참고)를 받아서 PHP 값으로 변환합니다.
-     변환한 값을 반환합니다. <type>integer</type>, <type>float</type>,
-     <type>string</type>, <type>array</type>, <type>object</type>형이 될 수
-     있습니다. unserialize할 수 없는 문자열일 경우에는, &false;를 반환합니다.
-    </simpara>
-    <note>
-     <title>unserialize_callback_func 지시어</title>
-     <para>
-      unserialize중에 정의되지 않은 클래스를 작성해야 할 경우에 콜백 함수를
-      호출할 수 있습니다. (완전하지 않은 <type>object</type>
-      "__PHP_Incomplete_Class"를 얻는것을 방지할 수 있습니다) &php.ini;나
-      <function>ini_set</function>이나 &htaccess;를 이용하여
-      'unserialize_callback_func'를 정의하십시오. 정의되지 않은 클래스를
-      작성해야 할 때 마다, 호출됩니다. 이 기능을 비활성화 하려면 간단히 이
-      설정을 비워두십시오. unserialize_callback_func 지시어는 PHP 4.2.0부터
-      사용할 수 있습니다.
-     </para>
-    </note>
-    <para>
-     변수가 객체로 unserialize되고, 성공적으로 객체로 재구성되면, PHP는
-     자동적으로 <function>__wakeup</function> 멤버 함수를 호출합니다.
-     (존재한다면)
-     <example>
-      <title>unserialize_callback_func 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.23 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.unserialize" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>unserialize</refname>
+  <refpurpose>
+   저장 표현에서 PHP 값을 작성
+  </refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>unserialize</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+  </methodsynopsis>
+  <simpara>
+   <function>unserialize</function>은 하나의 일렬화된 변수를 받아서 PHP 값으로
+   변환합니다.
+  </simpara>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       일렬화된 문자열.
+      </para>
+      <para>
+       변수가 객체로 unserialize되고, 성공적으로 객체로 재구성되면, PHP는
+       자동적으로 <function>__wakeup</function> 멤버 함수를 호출합니다.
+       (존재한다면)
+      </para>
+      <para>
+       <note>
+        <title>unserialize_callback_func 지시어</title>
+        <para>
+         일렬화를 푸는 도중에 미정의된 클래스가 생성될 때 호출할 콜백 함수를
+         설정할 수 있습니다. (미완성된 <type>object</type>
+         "__PHP_Incomplete_Class"를 방지합니다) &php.ini;,
+         <function>ini_set</function>, &htaccess; 등을 이용해서
+         'unserialize_callback_func'를 정의하십시오. 미정의 클래스가
+         생성되어야 할 때마다 호출됩니다. 이 기능을 끄려면 설정을 비워두면
+         됩니다.
+        </para>
+       </note>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   변환된 값이 반환되며, <type>boolean</type>, <type>integer</type>,
+   <type>float</type>, <type>string</type>, <type>array</type>,
+   <type>object</type>가 될 수 있습니다.
+  </para>
+  <para>
+   주어진 문자열에서 일렬화를 풀 수 없을 때는 &false;를 반환하고
+   <literal>E_NOTICE</literal>가 발생합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.2.0</entry>
+       <entry>
+        unserialize_callback_func 지시어를 사용할 수 있게 되었습니다.
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.0</entry>
+       <entry>
+        객체를 일렬화 할 때, 메쏘드를 잃어버리지 않습니다. 자세한 정보는 <link
+         linkend="language.oop.serialization">객체 일렬화</link>를
+        참고하십시오.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>unserialize</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+// 여기서는, 데이터베이스에서 가져온 문자열로부터 $session_data
+// 배열에 세션 데이터를 읽어들일 때 unserialize()를 사용합니다.
+// 이 예제는 serialize()에 설명된 예제를 보완합니다.
+
+$conn = odbc_connect("webdb", "php", "chicken");
+$stmt = odbc_prepare($conn, "SELECT data FROM sessions WHERE id = ?");
+$sqldata = array($_SERVER['PHP_AUTH_USER']);
+if (!odbc_execute($stmt, &$sqldata) || !odbc_fetch_into($stmt, &$tmp)) {
+    // excute나 fetch가 실패하면, 빈 배열로 초기화합니다.
+    $session_data = array();
+} else {
+    // 여기서는 일렬화된 데이터를 $tmp[0]에 가집니다.
+    $session_data = unserialize($tmp[0]);
+    if (!is_array($session_data)) {
+        // 무언가 잘못되면, 빈 배열로 초기화합니다.
+        $session_data = array();
+    }
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>unserialize_callback_func 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $serialized_object='O:1:"a":1:{s:5:"value";s:3:"100";}';
@@ -54,52 +149,34 @@ function mycallback($classname)
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <note>
-     <para>
-      PHP 3에서, 메쏘드는 일렬화된 객체를 unserialize할 때 복구되지 않습니다.
-      PHP 4는 이 제한을 제거했고, 속성과 메쏘드를 둘 다 복구합니다. 자세한
-      정보는 <link linkend="language.oop">클래스와 객체</link>의 <link
-      linkend="language.oop.serialization">객체 일렬화하기</link> 섹션을
-      참고하십시오.
-     </para>
-    </note>
-    <para>
-     <example>
-      <title><function>unserialize</function> 예제</title>
-      <programlisting role="php">
-<![CDATA[
-<?php
-// 여기서는, 데이터베이스에서 가져온 문자열로부터 $session_data
-// 배열에 세션 데이터를 읽어들일 때 unserialize()를 사용합니다.
-// 이 예제는 serialize()에 설명된 예제를 보완합니다.
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
 
-$conn = odbc_connect("webdb", "php", "chicken");
-$stmt = odbc_prepare($conn, "SELECT data FROM sessions WHERE id = ?");
-$sqldata = array ($PHP_AUTH_USER);
-if (!odbc_execute($stmt, &$sqldata) || !odbc_fetch_into($stmt, &$tmp)) {
-    // excute나 fetch가 실패하면, 빈 배열로 초기화합니다.
-    $session_data = array();
-} else {
-    // 여기서는 일렬화된 데이터를 $tmp[0]에 가집니다.
-    $session_data = unserialize($tmp[0]);
-    if (!is_array($session_data)) {
-        // 무언가 잘못되면, 빈 배열로 초기화합니다.
-        $session_data = array();
-    }
-}
-?>
-]]>
-      </programlisting>
-     </example>
-    </para>
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <warning>
    <para>
-    참고: <function>serialize</function>.
+    오류가 발생했을 때와 일렬화된 &false; 값을 복구했을 때, 둘 다 &false;를
+    반환합니다. <parameter>str</parameter>를
+    <literal>serialize(false)</literal>와 비교하거나,
+    <literal>E_NOTICE</literal> 발생을 확인해서 이러한 특별한 경우를 처리할 수
+    있습니다.
    </para>
-   </refsect1>
-  </refentry>
+  </warning>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>serialize</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

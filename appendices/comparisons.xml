@@ -7,7 +7,7 @@
   다음 테이블은 PHP <link linkend="language.types">타입</link> 과
   느슨한 비교와 엄격한 비교를 위한 
   <link linkend="language.operators.comparison">비교 연산자</link>의 동작을 설명한다.
-  이 부록은 <link linkend="language.types.type-juggling">타입 저글링</link>에 관한
+  이 부록은 <link linkend="language.types.type-juggling">자료형 조절</link>에 관한
   매뉴얼 섹션과도 관련이 있다. 다양한 유저 주석과 
   <link xlink:href="&url.blueshoes.comparisons;">BlueShoes</link>의 보고서를 통해
   영감을 얻을수 있다.

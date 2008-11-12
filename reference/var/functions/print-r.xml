@@ -1,54 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.print-r" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>print_r</refname>
-    <refpurpose>
-     변수에 관한 정보를 사람이 읽기 좋게 출력합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>print_r</methodname>
-      <methodparam><type>mixed</type><parameter>expression</parameter></methodparam>
-      <methodparam choice="opt"><type>bool</type><parameter>return</parameter></methodparam>
-     </methodsynopsis>
-    <note>
-     <simpara>
-      <parameter>return</parameter> 인수는 PHP 4.3.0에서 추가되었습니다.
-     </simpara>
-    </note>
-    <simpara>
-     <function>print_r</function>은 변수에 대한 정보를 사람이 읽을 수 있는
-     방법으로 표시합니다. <type>string</type>, <type>integer</type>,
-     <type>float</type>이 주어지면, 값을 그대로 출력합니다.
-     <type>array</type>가 주어지면, 키와 요소를 알아볼 수 있는 형태로
-     표현합니다. <type>object</type>에 대해서도 비슷하게 표현합니다.
-     <function>var_dump</function>와는 달리, <function>print_r</function>과
-     <function>var_export</function>는 PHP 5에서 protected 및 private 속성도
-     보여줍니다.
-    </simpara>
-    <simpara>
-     <function>print_r</function>은 배열 포인터를 마지막으로 이동합니다.
-     처음으로 되돌리려면 <function>reset</function>을 사용하십시오.
-    </simpara>
-    <para>
-     <informalexample>
-      <programlisting role="php">
+<!-- EN-Revision: 1.18 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.print-r" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>print_r</refname>
+  <refpurpose>
+   변수에 관한 정보를 사람이 읽기 편하게 출력
+  </refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>print_r</methodname>
+   <methodparam><type>mixed</type><parameter>expression</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>return</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>print_r</function>은 변수에 대한 정보를 사람이 읽을 수 있는
+   방법으로 표시합니다.
+  </para>
+  <para>
+   <function>print_r</function>, <function>var_dump</function>,
+   <function>var_export</function>는 PHP 5에서 객체의 protected와 private
+   프로퍼티도 보여줍니다.
+   정적 클래스 멤버는 보여주지 않습니다.
+  </para>
+  <para>
+   <function>print_r</function>은 배열 포인터를 마지막으로 이동합니다.
+   처음으로 되돌리려면 <function>reset</function>을 사용하십시오.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>expression</parameter></term>
+     <listitem>
+      <para>
+       출력할 표현
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>return</parameter></term>
+     <listitem>
+      <para>
+       <function>print_r</function>의 출력을 잡으려면,
+       <parameter>return</parameter> 인수를 &true;로 사용하십시오.
+       <function>print_r</function>은 출력(기본값)하는 대신, 출력을
+       반환합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <type>string</type>, <type>integer</type>, <type>float</type>가 주어지면,
+   값이 그대로 출력됩니다. <type>array</type>가 주어지면, 키와 요소를 보여주는
+   형식으로 값을 출력합니다. 비슷한 방식이 <type>object</type>에 사용됩니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.uses-ob;
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        <parameter>return</parameter> 인수가 추가되었습니다. 이전 버전의
+        PHP에서 <function>print_r</function>의 출력을 잡으려면, <link
+         linkend="ref.outcontrol">출력 제어 함수</link>를 사용하십시오.
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.4</entry>
+       <entry>
+        PHP 4.0.4 이전에는, 주어진 <type>array</type>나 <type>object</type>가
+        직접적/간접적으로 자신에 대한 참조를 가지고 있을 때,
+        <function>print_r</function>은 영원히 계속되었습니다. 예로써,
+        <literal>print_r($GLOBALS)</literal>을 들 수 있습니다.
+        <literal>$GLOBALS</literal>가 자신에 대한 참조를 가지고 있기
+        때문입니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>print_r</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <pre>
 <?php
-    $a = array ('a' => 'apple', 'b' => 'banana', 'c' => array ('x', 'y', 'z'));
-    print_r ($a);
+$a = array ('a' => 'apple', 'b' => 'banana', 'c' => array ('x', 'y', 'z'));
+print_r ($a);
 ?>
 </pre>
 ]]>
-      </programlisting>
-      <para>
-       출력은:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 <pre>
 Array
@@ -64,52 +141,36 @@ Array
 )
 </pre>
 ]]>
-      </screen>
-     </informalexample>
-    </para>
-    <para>
-     <function>print_r</function>의 출력을 가져오려면,
-     <parameter>return</parameter> 인수를 사용하십시오. 이 인수를 &true;로
-     설정하면, <function>print_r</function>은 출력을 표시(기본값)하는 대신,
-     반환값으로 내보냅니다.
-    </para>
-    <para>
-     <example>
-      <title><parameter>return</parameter> 인수 예제</title>
-      <programlisting role="php">
+    </screen>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title><parameter>return</parameter> 인수 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-    $b = array ('m' => 'monkey', 'foo' => 'bar', 'x' => array ('x', 'y', 'z'));
-    $results = print_r($b, true); //$results가 print_r의 출력을 가집니다.
+$b = array ('m' => 'monkey', 'foo' => 'bar', 'x' => array ('x', 'y', 'z'));
+$results = print_r($b, true); // $results가 print_r의 출력을 가집니다.
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <note>
-     <simpara>
-      4.3.0 이전 버전의 PHP에서 <function>print_r</function>의 출력을
-      가져오려면, <link linkend="ref.outcontrol">출력 제어 함수</link>를
-      이용하십시오.
-     </simpara>
-    </note>
-    <note>
-     <simpara>
-      PHP 4.0.4 이전에는, 주어진 <type>array</type>이나 <type>object</type>가
-      자기 자신에의 직접적/비직접적 참조를 포함하고 있으면
-      <function>print_r</function>은 무한 루프에 빠졌습니다. 예를 들면,
-      <literal>print_r($GLOBALS)</literal>가 해당합니다.
-      <literal>$GLOBALS</literal>는 자기 자신에의 참조를 포함하고 있는 전역
-      변수이기 때문입니다. 
-     </simpara>
-    </note>
-    <simpara>
-     참고: <function>ob_start</function>,
-     <function>var_dump</function>,
-     <function>var_export</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>ob_start</function></member>
+    <member><function>var_dump</function></member>
+    <member><function>var_export</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,37 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
   <refentry xml:id="function.is-float" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>is_float</refname>
-    <refpurpose>변수가 실수인지 확인합니다.</refpurpose>
+    <refpurpose>변수의 자료형이 소수인지 확인합니다</refpurpose>
    </refnamediv>
-   <refsect1>
-    <title>설명</title>
+   <refsect1 role="description">
+    &reftitle.description;
      <methodsynopsis>
       <type>bool</type><methodname>is_float</methodname>
       <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
      </methodsynopsis>
-    <simpara>
-     <parameter>var</parameter>가 <type>float</type>라면 &true;, 아니라면
-     &false;를 반환합니다.
-    </simpara>
+    <para>
+     주어진 변수의 자료형이 float인지 확인합니다.
+    </para>
     <note>
      <para>
       변수가 숫자나 숫자 문자열(폼 입력 등은 항상 문자열입니다)인지
       확인하려면, <function>is_numeric</function>을 사용해야 합니다.
      </para>
     </note>
-    <simpara>
-     참고:
-     <function>is_bool</function>,
-     <function>is_int</function>,
-     <function>is_integer</function>,
-     <function>is_numeric</function>,
-     <function>is_string</function>,
-     <function>is_array</function>,
-     <function>is_object</function>,
-    </simpara>
+   </refsect1>
+   <refsect1 role="parameters">
+    &reftitle.parameters;
+    <para>
+     <variablelist>
+      <varlistentry>
+       <term><parameter>var</parameter></term>
+       <listitem>
+        <para>
+         평가할 변수.
+        </para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </para>
+   </refsect1>
+   <refsect1 role="returnvalues">
+    &reftitle.returnvalues;
+    <para>
+     <parameter>var</parameter>가 <type>float</type>이면 &true; 아니면
+     &false;를 반환합니다.
+    </para>
+   </refsect1>
+   <refsect1 role="examples">
+    &reftitle.examples;
+    <para>
+   <example>
+    <title><function>is_float</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+if(is_float(27.25)) {
+ echo "is float\n";
+} else {
+ echo "is not float\n";
+}
+var_dump(is_float('abc'));
+var_dump(is_float(23));
+var_dump(is_float(23.5));
+var_dump(is_float(1e7));  // 과학형식
+var_dump(is_float(true));
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+is float
+bool(false)
+bool(false)
+bool(true)
+bool(true)
+bool(false)
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+   <refsect1 role="seealso">
+    &reftitle.seealso;
+    <para>
+     <simplelist>
+      <member><function>is_bool</function></member>
+      <member><function>is_int</function></member>
+      <member><function>is_numeric</function></member>
+      <member><function>is_string</function></member>
+      <member><function>is_array</function></member>
+      <member><function>is_object</function></member>
+     </simplelist>
+    </para>
    </refsect1>
   </refentry>
 
@@ -55,4 +114,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

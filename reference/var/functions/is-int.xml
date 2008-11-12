@@ -1,36 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
   <refentry xml:id="function.is-int" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>is_int</refname>
-    <refpurpose>변수가 정수인지 확인합니다.</refpurpose>
+    <refpurpose>변수의 자료형이 정수인지 확인합니다</refpurpose>
    </refnamediv>
-   <refsect1>
-    <title>설명</title>
+   <refsect1 role="description">
+    &reftitle.description;
      <methodsynopsis>
       <type>bool</type><methodname>is_int</methodname>
       <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
      </methodsynopsis>
-    <simpara>
-     <parameter>var</parameter>가 <type>integer</type>이면 &true;를, 아니라면
-     &false;를 반환합니다.
-    </simpara>
+    <para>
+     주어진 변수의 자료형이 정수형인지 확인합니다.
+    </para>
     <note>
      <para>
       변수가 수나 수 문자열(항상 문자열인 폼 입력 등)인지를 확인하려면,
       <function>is_numeric</function>을 사용해야 합니다.
      </para>
     </note>
-    <simpara>
-     참고: <function>is_bool</function>,
-     <function>is_float</function>,
-     <function>is_integer</function>,
-     <function>is_numeric</function>,
-     <function>is_string</function>,
-     <function>is_array</function>,
-     <function>is_object</function>.
-    </simpara>
+   </refsect1>
+   <refsect1 role="parameters">
+    &reftitle.parameters;
+    <para>
+     <variablelist>
+      <varlistentry>
+       <term><parameter>var</parameter></term>
+       <listitem>
+        <para>
+         평가할 변수.
+        </para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </para>
+   </refsect1>
+   <refsect1 role="returnvalues">
+    &reftitle.returnvalues;
+    <para>
+     <parameter>var</parameter>가 <type>integer</type>이면 &true;, 아니면
+     &false;를 반환합니다.
+    </para>
+   </refsect1>
+
+   <refsect1 role="examples">
+    &reftitle.examples;
+    <para>
+     <example>
+      <title><function>is_int</function> 예제</title>
+      <programlisting role="php">
+<![CDATA[
+if (is_int(23)) {
+ echo "정수형입니다.\n";
+} else {
+ echo "정수형이 아닙니다.\n";
+}
+var_dump(is_int(23));
+var_dump(is_int("23"));
+var_dump(is_int(23.5));
+var_dump(is_int(true));
+?>
+]]>
+      </programlisting>
+      &example.outputs;
+      <screen>
+<![CDATA[
+정수형입니다.
+bool(true)
+bool(false)
+bool(false)
+bool(false)
+]]>
+      </screen>
+     </example>
+    </para>
+   </refsect1>
+
+
+   <refsect1 role="seealso">
+    &reftitle.seealso;
+    <para>
+     <simplelist>
+      <member><function>is_bool</function></member>
+      <member><function>is_float</function></member>
+      <member><function>is_numeric</function></member>
+      <member><function>is_string</function></member>
+      <member><function>is_array</function></member>
+      <member><function>is_object</function></member>
+     </simplelist>
+    </para>
    </refsect1>
   </refentry>
 
@@ -54,4 +113,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

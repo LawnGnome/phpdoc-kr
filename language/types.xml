@@ -167,7 +167,7 @@ if (is_string($a_bool)) {
 
   <simpara>
    변수를 강제로 특정 자료형으로 변환하려면, 변수를 <link
-    linkend="language.types.typecasting">캐스트</link>하거나
+    linkend="language.types.typecasting">형변환</link>하거나
    <function>settype</function> 함수를 사용하십시오.
   </simpara>
 

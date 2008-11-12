@@ -73,9 +73,9 @@ linkend="ini.register-globals">register_globals</link>의 기본값은
 있습니다. 자세한 내용은 매뉴얼의 &link.superglobals; 섹션을
 읽어보십시오.</para></note>'>
 
-<!ENTITY note.uses-ob '<note><para>이 함수는 내부적으로 이 인수로
-출력 버퍼링을 사용합니다. 그래서 <function>ob_start</function> 콜백 함수
-안에서 사용할 수 없습니다.</para></note>'>
+<!ENTITY note.uses-ob '<note><para>이 함수를 특정 인수와 함께 사용할 때,
+내부적으로 출력 버퍼링을 사용합니다. 그러므로, <function>ob_start</function>
+콜백 함수 안에서는 사용할 수 없습니다.</para></note>'>
 
 <!ENTITY note.filesystem-time-res '<note><para>시간 정밀도는 각각 파일
 시스템에 따라 다를 수 있습니다.</para></note>'>
