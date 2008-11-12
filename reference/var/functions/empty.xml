@@ -136,7 +136,7 @@ if (isset($var)) {
     <member><function>array_key_exists</function></member>
     <member><function>count</function></member>
     <member><function>strlen</function></member>
-    <member><link linkend="types.comparisons">자료형 비교 표</link></member>
+    <member><link linkend="types.comparisons">자료형 비교표</link></member>
    </simplelist>
   </para>
  </refsect1>

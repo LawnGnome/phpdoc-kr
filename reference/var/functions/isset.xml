@@ -97,7 +97,7 @@ var_dump(array_key_exists('hello', $a)); // TRUE
      참고: <function>empty</function>,
      <function>unset</function>, 
      <function>defined</function>,
-     <link linkend="types.comparisons">타입 비교표</link>,
+     <link linkend="types.comparisons">자료형 비교표</link>,
      <function>array_key_exists</function>,
      에러 제어
      <link linkend="language.operators.errorcontrol">@</link> 연산자.
