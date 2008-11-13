@@ -9,7 +9,7 @@
  &windows.builtin;
  <note>
   <simpara>
-   윈도우즈에서 zlib 지원 내장은 PHP 4.3.0에서 이루어졌습니다.
+   윈도우에서 zlib 지원 내장은 PHP 4.3.0에서 이루어졌습니다.
   </simpara>
  </note>
 </section>

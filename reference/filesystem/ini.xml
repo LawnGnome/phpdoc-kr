@@ -91,7 +91,7 @@
      </note>
      <warning>
       <para> 
-       윈도우즈 버전 PHP 4.3.0 이전에는, 다음 함수는 원격 파일 접근을
+       윈도우 버전 PHP 4.3.0 이전에는, 다음 함수는 원격 파일 접근을
        허용하지 않습니다: <function>include</function>,
        <function>include_once</function>, <function>require</function>,
        <function>require_once</function>, 그리고 <xref linkend="ref.image"/>

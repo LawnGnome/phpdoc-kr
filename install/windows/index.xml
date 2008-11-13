@@ -1,14 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.18 Maintainer: acidd15 Status: ? -->
+<!-- EN-Revision: 1.21 Maintainer: progcom Status: ready -->
+<!-- CREDITS: acidd15 -->
   <chapter xml:id="install.windows" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <title>윈도우즈 시스템에 인스톨하기</title>
+   <title>윈도우 시스템에 인스톨하기</title>
    <para>
-    본 섹션은 Windows 98/Me 와 Windows NT/2000/XP/2003 에 해당 됩니다. 
-    PHP는 Windows 3.1 같은 16비트 플랫폼상에서는 동작하지 않고 때때로 지원되는 윈도우즈 플랫폼이 Win32에 의존합니다.
-    Windows 95는 PHP 4.3.0 과 같은것은 더이상 지원되지 않습니다.
+    본 섹션은 윈도우 98/Me와 윈도우 NT/2000/XP/2003에 해당합니다.
+    PHP는 윈도우 3.1 같은 16비트 플랫폼상에서는 동작하지 않고 때때로 지원되는 윈도우 플랫폼이 Win32에 의존합니다.
+    윈도우 95는 PHP 4.3.0과 같은것은 더이상 지원되지 않습니다.
    </para>
+   <note>
+    <para>
+     PHP 5.3.0부터 윈도우 98/ME/NT4를 지원하지 않습니다.
+    </para>
+   </note>
+   <note>
+    <para>
+     PHP 4.3.0부터 윈도우 95를 지원하지 않습니다.
+    </para>
+   </note>
    <para>
-   	윈도우즈에 PHP를 인스톨하는데에는 크게 두가지 방법이 있습니다.
+   	윈도우에 PHP를 인스톨하는데에는 크게 두가지 방법이 있습니다.
     <link linkend="install.windows.manual">수동설치</link>
     를 하거나 <link linkend="install.windows.installer">설치관리자</link> 를 사용하는 것입니다.
    </para>

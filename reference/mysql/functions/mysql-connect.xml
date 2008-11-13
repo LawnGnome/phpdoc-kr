@@ -229,7 +229,7 @@ mysql_close($link);
   <note>
    <para>
 서버에서는 &quot;localhost&quot; 및 &quot;localhost:port&quot;를 사용할 때마다 
-로컬 소켓(윈도우즈에서는 named pipe)으로 접속을 시도한다.
+로컬 소켓(윈도우에서는 named pipe)으로 접속을 시도한다.
 TCP/IP를 이용하려면 &quot;localhost&quot; 대신 &quot;127.0.0.1&quot;를
 사용하면 된다.
 MySQL 클라이언트 라이브러리가 로컬 소켓으로 잘못된 접속을 시도한다면,

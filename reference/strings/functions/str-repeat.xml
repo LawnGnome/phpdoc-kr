@@ -1,44 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-	 <refentry xml:id="function.str-repeat" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>str_repeat</refname>
-    <refpurpose>문자열을 반복합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>str_repeat</methodname>
-      <methodparam><type>string</type><parameter>input</parameter></methodparam>
-      <methodparam><type>int</type><parameter>multiplier</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>multiplier</parameter>번 반복한
-     <parameter>input_str</parameter>을 반환합니다.
-     <parameter>multiplier</parameter>는 0 이상이여야 합니다.
-     <parameter>multiplier</parameter>를 0으로 설정하면, 빈 문자열을
-     반환합니다.
-    </para>
-    <example>
-     <title><function>str_repeat</function> 예제</title>
-     <programlisting role="php">
+<refentry xml:id="function.str-repeat" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>str_repeat</refname>
+  <refpurpose>문자열을 반복</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>str_repeat</methodname>
+   <methodparam><type>string</type><parameter>input</parameter></methodparam>
+   <methodparam><type>int</type><parameter>multiplier</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>multiplier</parameter>번 반복한
+   <parameter>input</parameter>을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>input</parameter></term>
+     <listitem>
+      <para>
+       반복할 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>multiplier</parameter></term>
+     <listitem>
+      <para>
+       <parameter>input</parameter> 문자열을 반복할 횟수.
+      </para>
+      <para>
+       <parameter>multiplier</parameter>는 0 이상이여야 합니다.
+       <parameter>multiplier</parameter>를 0으로 설정하면, 빈 문자열을
+       반환합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   반복한 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>str_repeat</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo str_repeat("-=", 10);
 ?>
 ]]>
-     </programlisting>
-    </example>
-    <para>
-     이는 "-=-=-=-=-=-=-=-=-=-="를 출력합니다.
-    </para>
-    <para>
-     참고: <link linkend="control-structures.for">for</link>,
-     <function>str_pad</function>, <function>substr_count</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+-=-=-=-=-=-=-=-=-=-=
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><link linkend="control-structures.for">for</link></member>
+    <member><function>str_pad</function></member>
+    <member><function>substr_count</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

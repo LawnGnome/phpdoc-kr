@@ -78,12 +78,12 @@ $ cvs -d:pserver:cvsread@cvs.php.net:/repository co pecl/extname
      윈도우용 다운로드
     </simpara>
     <simpara>
-     윈도우즈 사용자들은 컴파일된 PECL 바이너리를 
+     윈도우 사용자들은 컴파일된 PECL 바이너리를 
      <link xlink:href="&url.php.downloads;">PHP 다운로드</link> 페이지에 있는 
      <emphasis>PECL 확장모듈 모음</emphasis> 에서 다운로드 받을 수 있습니다.
      또는 <link xlink:href="&url.php.snapshots;">PECL 스냅샷</link> 을 가져오거나,
      <link xlink:href="&url.pecl.win;">PECL4WIN</link> 에서 확장모듈 DLL을 구할수 있습니다.
-     윈도우즈에서 PHP를 컴파일하기 위해서는 <link linkend="install.windows.building">절충 장</link> 을 읽어 보십시오.
+     윈도우에서 PHP를 컴파일하기 위해서는 <link linkend="install.windows.building">절충 장</link> 을 읽어 보십시오.
     </simpara>
    </listitem>
   </itemizedlist>

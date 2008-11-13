@@ -92,7 +92,7 @@
        커맨드 라인 스크립팅. 어떠한 서버나 브라우저 없이 PHP 스크립트를
        실행하게 할 수 있습니다. 이 때에는 PHP 파서만 있으면 됩니다.
        이런 사용법은 스크립트를 cron(*nix나 Linux에서)이나 작업
-       관리자(Windows에서)를 사용해 실행하는 것과 동일합니다. 이런 스크립트들은
+       관리자(윈도우에서)를 사용해 실행하는 것과 동일합니다. 이런 스크립트들은
        간단한 텍스트 처리 작업에 사용될 수도 있습니다. 더 많은 정보를 위해서는
        <link linkend="features.commandline">PHP의 커맨드 라인 사용법</link>
        섹션을 참고하십시오.
@@ -114,7 +114,7 @@
    </para>
    <para>
     PHP는 리눅스, 많은 유닉스 계열 (HP-UX, Solaris와 OpenBSD를 포함),
-    Microsoft Windows, 맥 OS X, RISC OS 등과 같은 모든 유명한 OS에서 사용할
+    마이크로소프트 윈도우, 맥 OS X, RISC OS 등과 같은 모든 유명한 OS에서 사용할
     수 있습니다. 또한, PHP는 오늘날의 대부분의 웹 서버를 지원합니다.
     이것에는 아파치, Microsoft Internet Information Server, Personal Web Server,
     Netscape and iPlanet servers, Oreilly, Website Pro server, Caudium, Xitami,
@@ -174,7 +174,7 @@
     이 세계 표준을 지원하는 어떤 데이터베이스라도 연결할 수 있습니다.
    </para>
    <para>
-    또한 PHP는 LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (Windows에서),
+    또한 PHP는 LDAP, IMAP, SNMP, NNTP, POP3, HTTP, COM (윈도우에서),
     그리고 셀 수 없는 여러가지 프로토콜들을 이용해서 다른 서비스와
     연계할 수 있도록 지원합니다. 또한 비어있는 네트워크 소켓을 열수도 있기에
     어떤 프로토콜과도 연계해서 실행할 수 있습니다. PHP는 WDDX complex data
