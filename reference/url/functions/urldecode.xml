@@ -70,7 +70,7 @@ while ($i < count($a)) {
    <para>
     자동 전역 <varname>$_GET</varname>과 <varname>$_REQUEST</varname>는 이미
     디코드되어 있습니다. <varname>$_GET</varname>과
-    <varname>$_REQUEST</varname>에 들어있는 요소에
+    <varname>$_REQUEST</varname>에 들어있는 원소에
     <function>urldecode</function>를 사용하면 기대하지 않았던 위험한 결과가
     나올 수 있습니다.
    </para>

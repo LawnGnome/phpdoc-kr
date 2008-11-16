@@ -69,7 +69,7 @@ var_dump(isset($foo));   // FALSE
      </informalexample>
     </para>
     <para>
-     배열 요소와도 작동합니다:
+     배열 원소에도 작동합니다:
      <informalexample>
       <programlisting role="php">
 <![CDATA[

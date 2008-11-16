@@ -53,7 +53,7 @@
      <listitem>
       <para>
        두번째 인수 <parameter>arr</parameter>이 존재하면, 변수들을 이 배열
-       요소로 저장합니다.
+       원소로 저장합니다.
       </para>
      </listitem>
     </varlistentry>

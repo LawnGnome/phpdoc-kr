@@ -62,7 +62,7 @@
   &reftitle.returnvalues;
   <para>
    <type>string</type>, <type>integer</type>, <type>float</type>가 주어지면,
-   값이 그대로 출력됩니다. <type>array</type>가 주어지면, 키와 요소를 보여주는
+   값이 그대로 출력됩니다. <type>array</type>가 주어지면, 키와 원소를 보여주는
    형식으로 값을 출력합니다. 비슷한 방식이 <type>object</type>에 사용됩니다.
   </para>
  </refsect1>

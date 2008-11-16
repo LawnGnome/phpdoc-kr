@@ -164,7 +164,7 @@ var_dump($unset_obj);
     주요한 <link linkend="security.globals">보안 위험</link>입니다. 초기화되지
     않은 변수를 사용할 때 <link
      linkend="errorfunc.constants.errorlevels.e-notice">E_NOTICE</link> 등급의
-    오류가 발생하지만, 초기화되지 않은 배열에 요소를 추가할 때는 발생하지
+    오류가 발생하지만, 초기화되지 않은 배열에 원소를 추가할 때는 발생하지
     않습니다. <function>isset</function> 언어 구조로 변수가 초기화되었는지
     확인 할 수 있습니다.
    </para>
@@ -357,7 +357,7 @@ echo $b;
 
    <simpara>
     <varname>$GLOBALS</varname> 배열은 전역변수명이 key가 되는 연관배열이고
-    배열의 요소 값이 그 변수의 내용이 된다.
+    배열의 원소 값이 그 변수의 내용이 된다.
     <varname>$GLOBALS</varname>이 어떻게 모든 유효영역에서 존재하는지 주의하라.
     이유는 $GLOBALS이 <link linkend="language.variables.superglobals">슈퍼전역변수</link>이기
     때문이다. 아래에 슈퍼전역변수의 파워를 설명하는 예제코드를 보였다:

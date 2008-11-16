@@ -34,7 +34,7 @@
   &reftitle.returnvalues;
   <para>
    <parameter>timestamp</parameter>에 관련된 정보를 가진 연관
-   <type>array</type>를 반환합니다. 반환되는 연관 배열 요소는 다음과 같습니다:
+   <type>array</type>를 반환합니다. 반환되는 연관 배열 원소는 다음과 같습니다:
   </para>
   <para>
    <table>

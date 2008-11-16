@@ -3,7 +3,7 @@
   <refentry xml:id="function.implode" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>implode</refname>
-    <refpurpose>문자열로 배열 요소를 결합합니다.</refpurpose>
+    <refpurpose>문자열로 배열 원소를 결합합니다.</refpurpose>
    </refnamediv>
    <refsect1>
     <title>설명</title>
