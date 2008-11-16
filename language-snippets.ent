@@ -179,7 +179,7 @@ PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 �
 <type>array</type> 포인터를 <function>reset</function>합니다.</simpara></note>'>
 
 <!ENTITY seealso.callback '<link
-linkend="language.types.callback">callback</link> 형에 대한 정보'>
+linkend="language.types.callback">callback</link>형에 대한 정보'>
 
 <!ENTITY avail.register-long-arrays 'PHP 5.0.0부터, 긴 형태의 PHP <link
 linkend="language.variables.predefined">예약 변수</link> 배열을 <link

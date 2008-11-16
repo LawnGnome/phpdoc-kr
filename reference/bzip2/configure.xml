@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: fuzzy74 Status: unknown -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
+<!-- CREDITES: fuzzy74 -->
 <section xml:id="bzip2.installation" xmlns="http://docbook.org/ns/docbook">
  &reftitle.install;
  <para>
-  Bzip2 는 <literal>PHP</literal> 에서 기본적으로 활성화되지 않는다.
+  Bzip2는 PHP에서 기본적으로 활성화되지 않는다.
   bzip2 지원을 활성화시키고 PHP 를 컴파일하기 위해서는
   <option role="configure">--with-bz2[=DIR]</option> 설정 옵션을 
   사용해야 한다.
