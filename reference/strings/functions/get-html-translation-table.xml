@@ -1,41 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry xml:id="function.get-html-translation-table" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>get_html_translation_table</refname>
-    <refpurpose>
-     <function>htmlspecialchars</function>와
-     <function>htmlentities</function>에서 사용하는 변환표를 반환합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>get_html_translation_table</methodname>
-      <methodparam><type>int</type><parameter>table</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>quote_style</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>get_html_translation_table</function>은
-     <function>htmlspecialchars</function>와
-     <function>htmlentities</function>에서 내부적으로 사용하는 변환표를
-     반환합니다.
-    </para>
-    <para>
-     원하는 테이블을 지정할 수 있게 하는 두가지 새로운
-     상수(<constant>HTML_ENTITIES</constant>,
-     <constant>HTML_SPECIALCHARS</constant>)가 존재합니다. 그리고
-     <function>htmlspecialchars</function>와 <function>htmlentities</function>
-     함수와 마찬가지로, 사용할 <parameter>quote_style</parameter>을 선택적으로 
-     지정할 수 있습니다. 기본값은 <constant>ENT_COMPAT</constant> 모드입니다.
-     이 모드들에 대한 설명은 <function>htmlspecialchars</function>를
-     참고하십시오.
-    </para>
-    <para>
-     <example>
-      <title>변환표 예제</title>
-      <programlisting role="php">
+<refentry xml:id="function.get-html-translation-table" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>get_html_translation_table</refname>
+  <refpurpose><function>htmlspecialchars</function>와 <function>htmlentities</function>에서 사용하는 변환표를 반환합니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>get_html_translation_table</methodname>
+   <methodparam choice="opt"><type>int</type><parameter>table</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>quote_style</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>get_html_translation_table</function>은
+   <function>htmlspecialchars</function>와
+   <function>htmlentities</function>에서 내부적으로 사용하는 변환표를
+   반환합니다.
+  </para>
+  <note>
+   <para>
+    특수 문자는 여러 방법으로 인코드 할 수 있습니다. 예를 들면,
+    <literal>"</literal>는 <literal>&amp;quot;</literal>,
+    <literal>&amp;#34;</literal>, <literal>&amp;#x22</literal>이 될 수
+    있습니다. <function>get_html_translation_table</function>은 이 중 가장
+    평범한 형식만을 반환합니다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>table</parameter></term>
+     <listitem>
+      <para>
+       원하는 테이블을 지정하는 새로운 두가지
+       상수(<constant>HTML_ENTITIES</constant>,
+       <constant>HTML_SPECIALCHARS</constant>)가 존재합니다.
+       <parameter>table</parameter>의 기본값은
+       <constant>HTML_SPECIALCHARS</constant>입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>quote_style</parameter></term>
+     <listitem>
+      <para>
+       <function>htmlspecialchars</function>와
+       <function>htmlentities</function> 함수와 마찬가지로, 선택적인 인수로
+       작동할 <parameter>quote_style</parameter>을 지정할 수 있습니다.
+       기본값은 <constant>ENT_COMPAT</constant> 모드입니다. 이 모드들에 대한
+       설명은 <function>htmlspecialchars</function>를 참고하십시오.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   변환표를 배열로 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>변환표 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $trans = get_html_translation_table(HTML_ENTITIES);
@@ -43,35 +83,26 @@ $str = "Hallo & <Frau> & Krämer";
 $encoded = strtr($str, $trans);
 ?>
 ]]>
-      </programlisting>
-     </example>
-     <literal>$encoded</literal> 변수는 다음을 가지게 됩니다:
-     <literal>"Hallo &amp;amp; &amp;lt;Frau&amp;gt; &amp;amp;
-     Kr&amp;auml;mer".</literal>
-    </para>
-    <para>
-     다른 사용법으로, <function>array_flip</function>과 함께 이 함수를
-     사용하여 역변환을 할 수 있습니다.
-     <informalexample>
-      <programlisting role="php">
-<![CDATA[
-<?php
-$trans = array_flip($trans);
-$original = strtr($encoded, $trans);
-?>
-]]>
-      </programlisting>
-     </informalexample>
-     <literal>$original</literal>의 내용은: "Hallo &amp; &lt;Frau&gt; &amp;
-     Kr&auml;mer".
-    </para>
-    <para>
-     참고: <function>htmlspecialchars</function>,
-     <function>htmlentities</function>, <function>strtr</function>,
-     <function>array_flip</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+   <literal>$encoded</literal> 변수는 다음을 가지게 됩니다:
+   <literal>"Hallo &amp;amp; &amp;lt;Frau&amp;gt; &amp;amp;
+    Kr&amp;auml;mer".</literal>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>htmlspecialchars</function></member>
+    <member><function>htmlentities</function></member>
+    <member><function>html_entity_decode</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

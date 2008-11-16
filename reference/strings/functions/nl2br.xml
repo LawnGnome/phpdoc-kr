@@ -1,58 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.nl2br" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>nl2br</refname>
-    <refpurpose>
-     문자열의 모든 줄바꿈 앞에 HTML 줄바꿈 태그를 삽입합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>nl2br</methodname>
-      <methodparam><type>string</type><parameter>string</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     모든 줄바꿈 앞에 '&lt;br /&gt;'를 삽입한 <parameter>string</parameter>을
-     반환합니다.
-    </para>
-   <note>
-    <para>
-     PHP 4.0.5부터, <function>nl2br</function>은 XHTML과 호환합니다. 4.0.5
-     이전의 모든 버전은 줄바꿈 앞에 '&lt;br /&gt;' 대신 '&lt;br&gt;'를 삽입한
-     <parameter>string</parameter>를 반환합니다.
-    </para>
-   </note>
-    <para>
-     <example>
-      <title><function>nl2br</function> 사용하기</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.nl2br" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>nl2br</refname>
+  <refpurpose>문자열의 모든 줄바꿈 앞에 HTML 줄바꿈 태그를 삽입</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>nl2br</methodname>
+   <methodparam><type>string</type><parameter>string</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>is_xhtml</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   모든 줄바꿈 앞에 '&lt;br /&gt;'이나 '&lt;br&gt;'를 삽입한
+   <parameter>string</parameter>을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>string</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>is_xhtml</parameter></term>
+     <listitem>
+      <para>
+       XHTML 호환 줄바꿈의 사용 여부. (기본값은 &true;)
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   변경된 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>nl2br</function> 사용하기</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo nl2br("foo isn't\n bar");
 ?>
 ]]>
-      </programlisting>
-      <para>
-       출력은:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 foo isn't<br />
  bar
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     참고: <function>htmlspecialchars</function>,
-     <function>htmlentities</function>, 
-     <function>wordwrap</function>,
-     <function>str_replace</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+   <example>
+    <title><parameter>is_xhtml</parameter> 인수를 사용해서 유효한 HTML 생성하기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+echo nl2br("Welcome\r\nThis is my HTML document", false);
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+Welcome<br>
+This is my HTML document
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        선택적인 <parameter>is_xhtml</parameter> 인수 추가.
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.5</entry>
+       <entry>
+        <function>nl2br</function>은 XHTML 호환입니다. 이전의 모든 버전은
+        줄바꿈 앞에 '&lt;br /&gt;' 대신 '&lt;br&gt;'를 삽입했습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>htmlspecialchars</function></member>
+    <member><function>htmlentities</function></member>
+    <member><function>wordwrap</function></member>
+    <member><function>str_replace</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

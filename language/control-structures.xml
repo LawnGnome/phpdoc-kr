@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.170 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.172 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.control-structures" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>제어 구조</title>
@@ -1093,11 +1093,19 @@ declare (directive) statement
     </informalexample>
    </para>
    <para>
-    <literal>directive</literal>부분은 <literal>declare</literal>블록의 동작이
-    활성화되도록 해준다. 현재는 오직 한 디렉티브만 인식된다:
-    <literal>ticks</literal> 디렉티브. (더 자세한 정보는
-    <link linkend="control-structures.declare.ticks">ticks</link> 디렉티브를 볼것)
+    <literal>directive</literal> 부분은 <literal>declare</literal> 블록의
+    동작을 활성화합니다. 현재는 두 지시어만 인식합니다:
+    <literal>ticks</literal> 지시어(자세한 정보는 아래 <link
+     linkend="control-structures.declare.ticks">ticks</link> 지시어 참고)와
+    <literal>encoding</literal> 지시어(자세한 정보는 아래 <link
+     linkend="control-structures.declare.encoding">encoding</link> 지시어
+    참고).
    </para>
+   <note>
+    <simpara>
+     encoding 지시어는 PHP 5.3.0에서 추가되었습니다.
+    </simpara>
+   </note>
    <para>
     <literal>declare</literal>블록의 <literal>statement</literal>부분이 수행될것이다
     - 어떻게 수행이 되고 수행중에 어떤 사이드 이펙트가 발생할지는 
@@ -1200,6 +1208,37 @@ print_r(profile(TRUE));
     <function>register_tick_function</function>함수와
     <function>unregister_tick_function</function>함수를 참고하세요.
    </simpara>
+   </sect2>
+   <sect2 xml:id="control-structures.declare.encoding">
+    <title>인코딩</title>
+    <para>
+     encoding 지시어를 사용하여 스크립트 별로 지정할 수 있는 인코딩입니다.
+     <example>
+      <title>스크립트의 인코딩 선언하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+declare(encoding='ISO-8859-1');
+// code here
+]]>
+      </programlisting>
+     </example>
+    </para>
+
+    <caution>
+     <simpara>
+      이름공간과 결합할 때, declare의 적합한 문법은
+      <literal>declare(encoding='...');</literal> 뿐입니다.
+      (<literal>...</literal>은 인코딩 값) 이름공간과 결합했을 때,
+      <literal>declare(encoding='...') {}</literal>은 해석 오류를 발생합니다.
+     </simpara>
+    </caution>
+    <para>
+     PHP 5.3에서는 PHP가 <literal>--enable-zend-multibyte</literal>로 컴파일
+     되지 않았을 경우, encoding 선언 값이 무시됩니다. PHP 6.0에서는,
+     <literal>encoding</literal> 지시어가 파일이 생성된 인코딩을 스캐너에게
+     알려줍니다. 적절한 값은 <literal>UTF-8</literal> 등의 인코딩 이름입니다.
+    </para>
    </sect2>
   </sect1>
 
