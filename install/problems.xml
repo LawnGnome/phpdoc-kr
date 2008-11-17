@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.3 Maintainer: acidd15 Status: ? -->
+<!-- EN-Revision: 1.4 Maintainer: acidd15 Status: ? -->
 
   <chapter xml:id="install.problems" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>문제가 있습니까?</title>
@@ -27,7 +27,8 @@
     </simpara>
     <simpara>
      메일링 리스트로부터 도움을 얻길 원한다면, 필요한 세부 환경( 어떤 운영체제 인지, 
-     PHP 버전이 무엇인지, 무슨 웹서버 인지, PHP를 돌리고 있다면 CGI방식인지 웹서버 모듈 방식인지, &safemode;, 등등...)과 함께, 
+     PHP 버전이 무엇인지, 무슨 웹서버 인지, PHP를 돌리고 있다면 CGI방식인지
+     웹서버 모듈 방식인지, &safemode;, 등등)과 함께,
      되도록이면 다른 사람들이 문제를 재현하고 테스트 할수 있도록 충분한 코드를 명확하게 알려주시기 바랍니다.
     </simpara>
    </sect1>

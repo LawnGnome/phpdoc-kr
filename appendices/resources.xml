@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.30 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.39 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
 <appendix xml:id="resource" xmlns="http://docbook.org/ns/docbook">
- <title>리소스 타입 목록</title>
+ <title>리소스형 목록</title>
  <para>
   다음은 PHP 리소스를 생성, 사용, 파괴하는 함수 목록이다.
   함수 <function>is_resource</function>는 특정 변수가 리소스인지 확인하기
-  위해 사용될수 있고 <function>get_resource_type</function>은 변수의 리소스
-  타입을 리턴할것이다.
+  위해 사용할수 있고 <function>get_resource_type</function>은 변수의
+  리소스형을 반환합니다.
   <table>
-   <title>리소스 타입</title>
+   <title>리소스형</title>
    <tgroup cols="5">
      <colspec colwidth='1*'/>
      <colspec colwidth='1*'/>
@@ -18,11 +18,11 @@
      <colspec colwidth='1*'/>
      <thead>
       <row>
-       <entry>리소스 타입명</entry>
+       <entry>리소스형 이름</entry>
        <entry>생성 함수</entry>
        <entry>사용 함수</entry>
        <entry>파괴 함수</entry>
-       <entry>선언</entry>
+       <entry>정의</entry>
       </row>
      </thead>
      <tbody>
@@ -39,9 +39,9 @@
     <entry>
      None
     </entry>
-    <entry>Aspell dictionary</entry>
+    <entry>Aspell 사전</entry>
    </row>
-	<row>	
+   <row>	
    <entry>bzip2</entry>
     <entry>
      <function>bzopen</function>
@@ -57,7 +57,7 @@
     <entry>
      <function>bzclose</function>
     </entry>
-    <entry>Bzip2 file</entry>
+    <entry>Bzip2 파일</entry>
    </row>
    <row>
     <entry>COM</entry>
@@ -75,7 +75,7 @@
     <entry>
      None
     </entry>
-    <entry>COM 객체 레퍼런스</entry>
+    <entry>COM 객체 참조</entry>
    </row>
    <row>
      <entry>VARIANT</entry>
@@ -164,16 +164,21 @@
    <row>
     <entry>curl</entry>
     <entry>
+     <function>curl_copy_handle</function>,
      <function>curl_init</function>
     </entry>
     <entry>
-     <function>curl_init</function>,
-     <function>curl_exec</function>
+     <function>curl_copy_handle</function>,
+     <function>curl_errno</function>,
+     <function>curl_error</function>,
+     <function>curl_exec</function>,
+     <function>curl_getinfo</function>,
+     <function>curl_setopt</function>
     </entry>
     <entry>
      <function>curl_close</function>
     </entry>
-    <entry>Curl session</entry>
+    <entry>Curl 세션</entry>
    </row>
    <row>
     <entry>dbm</entry>
@@ -192,7 +197,7 @@
     <entry>
      <function>dbmclose</function>
     </entry>
-    <entry>DBM database로의 연결</entry>
+    <entry>DBM 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>dba</entry>
@@ -213,7 +218,7 @@
     <entry>
      <function>dba_close</function>
     </entry>
-    <entry>Link to DBA database</entry>
+    <entry>DBA 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>dba persistent</entry>
@@ -234,7 +239,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to DBA database</entry>
+    <entry>DBA 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>dbase</entry>
@@ -254,7 +259,7 @@
     <entry>
      <function>dbase_close</function>
     </entry>
-    <entry>Link to Dbase database</entry>
+    <entry>Dbase 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>dbx_link_object</entry>
@@ -267,7 +272,7 @@
     <entry>
      <function>dbx_close</function>
     </entry>
-    <entry>dbx connection</entry>
+    <entry>dbx 접속</entry>
    </row>
    <row>
     <entry>dbx_result_object</entry>
@@ -279,7 +284,7 @@
     <entry>
      None
     </entry>
-    <entry>dbx result</entry>
+    <entry>dbx 결과</entry>
    </row>
    <row>
      <entry>domxml attribute</entry>
@@ -317,18 +322,6 @@
      <entry> </entry>
     </row>
    <row>
-    <entry>fbsql database</entry>
-    <entry>
-     <function>fbsql_select_db</function>
-    </entry>
-    <entry>
-    </entry>
-    <entry>
-     None
-    </entry>
-    <entry>fbsql database</entry>
-   </row>
-   <row>
     <entry>fbsql link</entry>
     <entry>
      <function>fbsql_change_user</function>,
@@ -336,22 +329,40 @@
     </entry>
     <entry>
      <function>fbsql_autocommit</function>,
+     <function>fbsql_blob_size</function>,
+     <function>fbsql_clob_size</function>,
+     <function>fbsql_commit</function>,
      <function>fbsql_change_user</function>,
+     <function>fbsql_create_blob</function>,
      <function>fbsql_create_db</function>,
+     <function>fbsql_create_clob</function>,
      <function>fbsql_data_seek</function>,
+     <function>fbsql_database_password</function>,
+     <function>fbsql_database</function>,
      <function>fbsql_db_query</function>,
+     <function>fbsql_db_status</function>,
      <function>fbsql_drop_db</function>,
-     <function></function>,
-     <function>fbsql_select_db</function>,
      <function>fbsql_errno</function>,
      <function>fbsql_error</function>,
+     <function>fbsql_get_autostart_info</function>,
+     <function>fbsql_hostname</function>,
      <function>fbsql_insert_id</function>,
-     <function>fbsql_list_dbs</function>
+     <function>fbsql_list_dbs</function>,
+     <function>fbsql_password</function>,
+     <function>fbsql_read_blob</function>,
+     <function>fbsql_read_clob</function>,
+     <function>fbsql_rollback</function>,
+     <function>fbsql_select_db</function>,
+     <function>fbsql_set_password</function>,
+     <function>fbsql_set_transaction</function>,
+     <function>fbsql_start_db</function>,
+     <function>fbsql_stop_db</function>,
+     <function>fbsql_username</function>
     </entry>
     <entry>
      <function>fbsql_close</function>
     </entry>
-    <entry>Link to fbsql database</entry>
+    <entry>fbsql 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>fbsql plink</entry>
@@ -366,7 +377,6 @@
      <function>fbsql_data_seek</function>,
      <function>fbsql_db_query</function>,
      <function>fbsql_drop_db</function>,
-     <function></function>,
      <function>fbsql_select_db</function>,
      <function>fbsql_errno</function>,
      <function>fbsql_error</function>,
@@ -376,7 +386,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to fbsql database</entry>
+    <entry>fbsql 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>fbsql result</entry>
@@ -411,7 +421,7 @@
     <entry>
      <function>fbsql_free_result</function>
     </entry>
-    <entry>fbsql result</entry>
+    <entry>fbsql 결과</entry>
    </row>
    <row>
     <entry>fdf</entry>
@@ -437,12 +447,13 @@
     <entry>
      <function>fdf_close</function>
     </entry>
-    <entry>FDF File</entry>
+    <entry>FDF 파일</entry>
    </row>
    <row>
     <entry>ftp</entry>
     <entry>
-     <function>ftp_connect</function>
+     <function>ftp_connect</function>,
+     <function>ftp_ssl_connect</function>
     </entry>
     <entry>
      <function>ftp_login</function>,
@@ -463,23 +474,40 @@
      <function>ftp_mdtm</function>,
      <function>ftp_rename</function>,
      <function>ftp_delete</function>,
-     <function>ftp_site</function>
+     <function>ftp_site</function>,
+     <function>ftp_alloc</function>,
+     <function>ftp_chmod</function>,
+     <function>ftp_exec</function>,
+     <function>ftp_get_option</function>,
+     <function>ftp_nb_continue</function>,
+     <function>ftp_nb_fget</function>,
+     <function>ftp_nb_fput</function>,
+     <function>ftp_nb_get</function>,
+     <function>ftp_nb_put</function>,
+     <function>ftp_raw</function>,
+     <function>ftp_set_option</function>
     </entry>
     <entry>
-     <function>ftp_quit</function>
+     <function>ftp_close</function>
     </entry>
-    <entry>FTP stream</entry>
+    <entry>FTP 스트림</entry>
    </row>
    <row>
     <entry>gd</entry>
     <entry>
      <function>imagecreate</function>,
+     <function>imagecreatefromgd</function>,
+     <function>imagecreatefromgd2</function>,
+     <function>imagecreatefromgd2part</function>,
      <function>imagecreatefromgif</function>,
      <function>imagecreatefromjpeg</function>,
      <function>imagecreatefrompng</function>,
      <function>imagecreatefromwbmp</function>,
      <function>imagecreatefromstring</function>,
-     <function>imagecreatetruecolor</function>
+     <function>imagecreatefromxbm</function>,
+     <function>imagecreatefromxpm</function>,
+     <function>imagecreatefromtruecolor</function>,
+     <function>imagerotate</function>
     </entry>
     <entry>
      <function>imagearc</function>,
@@ -512,6 +540,7 @@
      <function>imagepolygon</function>,
      <function>imagepstext</function>,
      <function>imagerectangle</function>,
+     <function>imagerotate</function>,
      <function>imagesetpixel</function>,
      <function>imagestring</function>,
      <function>imagestringup</function>,
@@ -530,12 +559,29 @@
      <function>imagetruecolortopalette</function>,
      <function>imagesetbrush</function>,
      <function>imagesettile</function>,
-     <function>imagesetthickness</function>
+     <function>imagesetthickness</function>,
+     <function>image2wbmp</function>,
+     <function>imagealphablending</function>,
+     <function>imageantialias</function>,
+     <function>imagecolorallocatealpha</function>,
+     <function>imagecolorclosesthwb</function>,
+     <function>imagecolordeallocate</function>,
+     <function>imagecolormatch</function>,
+     <function>imagefilter</function>,
+     <function>imagefttext</function>,
+     <function>imagegd</function>,
+     <function>imagegd2</function>,
+     <function>imageistruecolor</function>,
+     <function>imagelayereffect</function>,
+     <function>imagepalettecopy</function>,
+     <function>imagesavealpha</function>,
+     <function>imagesetstyle</function>,
+     <function>imagexbm</function>
     </entry>
     <entry>
      <function>imagedestroy</function>
     </entry>
-    <entry>GD Image</entry>
+    <entry>GD 이미지</entry>
    </row>
    <row>
     <entry>gd font</entry>
@@ -550,7 +596,7 @@
     <entry>
      None
     </entry>
-    <entry>Font for GD</entry>
+    <entry>GD 폰트</entry>
    </row>
    <row>
      <entry>gd PS encoding</entry>
@@ -574,7 +620,7 @@
     <entry>
      <function>imagepsfreefont</function>
     </entry>
-    <entry>PS font for GD</entry>
+    <entry>GD PS 폰트</entry>
    </row>
    <row>
     <entry>GMP integer</entry>
@@ -623,7 +669,7 @@
     <entry>
      None
     </entry>
-    <entry>GMP Number</entry>
+    <entry>GMP 수</entry>
    </row>
    <row>
     <entry>hyperwave document</entry>
@@ -657,7 +703,7 @@
     <entry>
      <function>hw_deleteobject</function>
     </entry>
-    <entry>Hyperwave object</entry>
+    <entry>Hyperwave 객체</entry>
    </row>
    <row>
     <entry>hyperwave link</entry>
@@ -710,7 +756,7 @@
      <function>hw_close</function>,
      <function>hw_free_document</function>
     </entry>
-    <entry>Link to Hyperwave server</entry>
+    <entry>Hyperwave 서버 연결</entry>
    </row>
    <row>
     <entry>hyperwave link persistent</entry>
@@ -762,7 +808,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to Hyperwave server</entry>
+    <entry>Hyperwave 서버 지속 연결</entry>
    </row>
    <row>
     <entry>icap</entry>
@@ -780,7 +826,7 @@
     <entry>
      <function>icap_close</function>
     </entry>
-    <entry>Link to icap server</entry>
+    <entry>icap 서버 연결</entry>
    </row>
    <row>
     <entry>imap</entry>
@@ -829,7 +875,7 @@
     <entry>
      <function>imap_close</function>
     </entry>
-    <entry>Link to IMAP, POP3 server</entry>
+    <entry>IMAP, POP3 서버 연결</entry>
    </row>
    <row>
      <entry>imap chain persistent</entry>
@@ -870,7 +916,7 @@
     <entry>
      <function>ingres_close</function>
     </entry>
-    <entry>Link to ingresII base</entry>
+    <entry>ingresII base 연결</entry>
    </row>
    <row>
     <entry>ingres persistent</entry>
@@ -897,7 +943,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to ingresII base</entry>
+    <entry>ingresII base 지속 연결</entry>
    </row>
    <row>
      <entry>interbase blob</entry>
@@ -919,7 +965,7 @@
     <entry>
      <function>ibase_close</function>
     </entry>
-    <entry>Link to Interbase database</entry>
+    <entry>Interbase 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>interbase link persistent</entry>
@@ -934,7 +980,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to Interbase database</entry>
+    <entry>Interbase 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>interbase query</entry>
@@ -947,7 +993,7 @@
     <entry>
      <function>ibase_free_query</function>
     </entry>
-    <entry>Interbase query</entry>
+    <entry>Interbase 질의</entry>
    </row>
    <row>
     <entry>interbase result</entry>
@@ -963,7 +1009,7 @@
     <entry>
      <function>ibase_free_result</function>
     </entry>
-    <entry>Interbase Result</entry>
+    <entry>Interbase 결과</entry>
    </row>
    <row>
     <entry>interbase transaction</entry>
@@ -976,7 +1022,7 @@
     <entry>
      <function>ibase_rollback</function>
     </entry>
-    <entry>Interbase transaction</entry>
+    <entry>Interbase 트랜잭션</entry>
    </row>
    <row>
      <entry>java</entry>
@@ -1006,7 +1052,7 @@
     <entry>
      <function>ldap_close</function>
     </entry>
-    <entry>ldap connection</entry>
+    <entry>ldap 접속</entry>
    </row>
    <row>
     <entry>ldap result</entry>
@@ -1042,7 +1088,7 @@
     <entry>
      <function>ldap_free_result</function>
     </entry>
-    <entry>ldap search result</entry>
+    <entry>ldap 검색 결과</entry>
    </row>
    <row>
      <entry>ldap result entry</entry>
@@ -1090,7 +1136,7 @@
     <entry>
      <function>mcal_close</function>
     </entry>
-    <entry>Link to calendar server</entry>
+    <entry>calendar 서버 연결</entry>
    </row>
    <row>
      <entry>SWFAction</entry>
@@ -1214,7 +1260,7 @@
     <entry>
      <function>msql_close</function>
     </entry>
-    <entry>Link to mSQL database</entry>
+    <entry>mSQL 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>msql link persistent</entry>
@@ -1233,11 +1279,15 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to mSQL</entry>
+    <entry>mSQL 지속 연결</entry>
    </row>
    <row>
     <entry>msql query</entry>
     <entry>
+     <function>msql_db_query</function>,
+     <function>msql_list_dbs</function>,
+     <function>msql_list_fields</function>,
+     <function>msql_list_tables</function>,
      <function>msql_query</function>
     </entry>
     <entry>
@@ -1249,12 +1299,12 @@
      <function>msql_fetch_field</function>,
      <function>msql_fetch_object</function>,
      <function>msql_fetch_row</function>,
-     <function>msql_fieldname</function>,
      <function>msql_field_seek</function>,
-     <function>msql_fieldtable</function>,
-     <function>msql_fieldtype</function>,
-     <function>msql_fieldflags</function>,
-     <function>msql_fieldlen</function>,
+     <function>msql_field_table</function>,
+     <function>msql_field_flags</function>,
+     <function>msql_field_len</function>,
+     <function>msql_field_name</function>,
+     <function>msql_field_type</function>,
      <function>msql_num_fields</function>,
      <function>msql_num_rows</function>,
      <function>msql_numfields</function>,
@@ -1265,7 +1315,7 @@
      <function>msql_free_result</function>,
      <function>msql_free_result</function>
     </entry>
-    <entry>mSQL result</entry>
+    <entry>mSQL 결과</entry>
    </row>
    <row>
     <entry>mssql link</entry>
@@ -1279,7 +1329,7 @@
     <entry>
      <function>mssql_close</function>
     </entry>
-    <entry>Link to Microsft SQL Server database</entry>
+    <entry>마이크로소프트 SQL 서버 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>mssql link persistent</entry>
@@ -1293,7 +1343,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to Microsft SQL Server</entry>
+    <entry>마이크로소프트 SQL 서버 지속 연결</entry>
    </row>
    <row>
     <entry>mssql result</entry>
@@ -1317,7 +1367,7 @@
     <entry>
      <function>mssql_free_result</function>
     </entry>
-    <entry>Microsft SQL Server result</entry>
+    <entry>마이크로소프트 SQL 서버 결과</entry>
    </row>
    <row>
     <entry>mysql link</entry>
@@ -1349,7 +1399,7 @@
     <entry>
      <function>mysql_close</function>
     </entry>
-    <entry>Link to MySQL database</entry>
+    <entry>MySQL 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>mysql link persistent</entry>
@@ -1381,7 +1431,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to MySQL database</entry>
+    <entry>MySQL 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>mysql result</entry>
@@ -1389,8 +1439,10 @@
      <function>mysql_db_query</function>,
      <function>mysql_list_dbs</function>,
      <function>mysql_list_fields</function>,
+     <function>mysql_list_processes</function>,
      <function>mysql_list_tables</function>,
-     <function>mysql_query</function>
+     <function>mysql_query</function>,
+     <function>mysql_unbuffered_query</function>
     </entry>
     <entry>
      <function>mysql_data_seek</function>,
@@ -1416,7 +1468,7 @@
     <entry>
      <function>mysql_free_result</function>
     </entry>
-    <entry>MySQL result</entry>
+    <entry>MySQL 결과</entry>
    </row>
    <row>
      <entry>oci8 collection</entry>
@@ -1442,7 +1494,7 @@
     <entry>
      <function>ocilogoff</function>
     </entry>
-    <entry>Link to Oracle database</entry>
+    <entry>오라클 데이터베이스 연결</entry>
    </row>
    <row>
      <entry>oci8 descriptor</entry>
@@ -1492,7 +1544,7 @@
     <entry>
      <function>ocifreestatement</function>
     </entry>
-    <entry>Oracle Cursor</entry>
+    <entry>오라클 커서</entry>
    </row>
    <row>
     <entry>odbc link</entry>
@@ -1524,12 +1576,12 @@
     <entry>
      <function>odbc_close</function>
     </entry>
-    <entry>Link to ODBC database</entry>
+    <entry>ODBC 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>odbc link persistent</entry>
     <entry>
-     <function>odbc_connect</function>
+     <function>odbc_pconnect</function>
     </entry>
     <entry>
      <function>odbc_autocommit</function>,
@@ -1556,7 +1608,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to ODBC database</entry>
+    <entry>ODBC 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>odbc result</entry>
@@ -1585,7 +1637,7 @@
     <entry>
      <function>odbc_free_result</function>
     </entry>
-    <entry>ODBC result</entry>
+    <entry>ODBC 결과</entry>
    </row>
    <row>
      <entry>birdstep link</entry>
@@ -1616,7 +1668,7 @@
     <entry>
      <function>openssl_free_key</function>
     </entry>
-    <entry>OpenSSL key</entry>
+    <entry>OpenSSL 키</entry>
    </row>
    <row>
     <entry>OpenSSL X.509</entry>
@@ -1630,7 +1682,7 @@
     <entry>
      <function>openssl_x509_free</function>
     </entry>
-    <entry>Public Key</entry>
+    <entry>공개키</entry>
    </row>
    <row>
     <entry>oracle Cursor</entry>
@@ -1655,7 +1707,7 @@
     <entry>
      <function>ora_close</function>
     </entry>
-    <entry>Oracle cursor</entry>
+    <entry>오라클 커서</entry>
    </row>
    <row>
     <entry>oracle link</entry>
@@ -1675,7 +1727,7 @@
     <entry>
      <function>ora_logoff</function>
     </entry>
-    <entry>Link to oracle database</entry>
+    <entry>오라클 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>oracle link persistent</entry>
@@ -1695,7 +1747,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to oracle database</entry>
+    <entry>오라클 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>pdf document</entry>
@@ -1774,13 +1826,24 @@
      <function>pdf_stringwidth</function>,
      <function>pdf_stroke</function>,
      <function>pdf_translate</function>,
+     <function>pdf_add_thumbnail</function>,
+     <function>pdf_arcn</function>,
+     <function>pdf_begin_pattern</function>,
+     <function>pdf_begin_template</function>,
+     <function>pdf_end_pattern</function>,
+     <function>pdf_end_template</function>,
+     <function>pdf_initgraphics</function>,
+     <function>pdf_makespotcolor</function>,
+     <function>pdf_set_info</function>,
+     <function>pdf_setcolor</function>,
+     <function>pdf_setmatrix</function>,
      <function>pdf_open_memory_image</function>
     </entry>
     <entry>
      <function>pdf_close</function>,
      <function>pdf_delete</function>
     </entry>
-    <entry>PDF document</entry>
+    <entry>PDF 문서</entry>
    </row>
    <row>
     <entry>pdf image</entry>
@@ -1798,7 +1861,7 @@
     <entry>
      <function>pdf_close_image</function>
     </entry>
-    <entry>Image in PDF file</entry>
+    <entry>PDF 파일 안의 이미지</entry>
    </row>
    <row>
      <entry>pdf object</entry>
@@ -1832,7 +1895,7 @@
     <entry>
      <function>pg_lo_close</function>
     </entry>
-    <entry>PostgreSQL Large Object</entry>
+    <entry>PostgreSQL 라지 오브젝트</entry>
    </row>
    <row>
     <entry>pgsql link</entry>
@@ -1877,7 +1940,7 @@
     <entry>
      <function>pg_close</function>
     </entry>
-    <entry>Link to PostgreSQL database</entry>
+    <entry>PostgreSQL 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>pgsql link persistent</entry>
@@ -1922,12 +1985,14 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to PostgreSQL database</entry>
+    <entry>PostgreSQL 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>pgsql result</entry>
     <entry>
+     <function>pg_execute</function>,
      <function>pg_query</function>,
+     <function>pg_query_params</function>,
      <function>pg_get_result</function>
     </entry>
     <entry>
@@ -1950,7 +2015,7 @@
     <entry>
      <function>pg_free_result</function>
     </entry>
-    <entry>PostgreSQL result</entry>
+    <entry>PostgreSQL 결과</entry>
    </row>
    <row>
      <entry>pgsql string</entry>
@@ -2012,7 +2077,7 @@
     <entry>
      None
     </entry>
-    <entry>pspell dictionary</entry>
+    <entry>pspell 사전</entry>
    </row>
    <row>
     <entry>pspell config</entry>
@@ -2025,7 +2090,7 @@
     <entry>
      None
     </entry>
-    <entry>pspell configuration </entry>
+    <entry>pspell 설정</entry>
    </row>
    <row>
     <entry>Sablotron XSLT</entry>
@@ -2045,7 +2110,7 @@
     <entry>
      <function>xslt_free</function>
     </entry>
-    <entry>XSLT parser</entry>
+    <entry>XSLT 파서</entry>
    </row>
    <row>
     <entry>shmop</entry>
@@ -2079,7 +2144,7 @@
     <entry>
      <function>close</function>
     </entry>
-    <entry>Socket</entry>
+    <entry>소켓</entry>
    </row>
    <row>
      <entry>sockets i/o vector</entry>
@@ -2089,9 +2154,9 @@
      <entry> </entry>
     </row>
    <row>
-    <entry>dir</entry>
+    <entry>stream</entry>
     <entry>
-     <function>dir</function>
+     <function>opendir</function>
     </entry>
     <entry>
      <function>readdir</function>,
@@ -2100,12 +2165,13 @@
     <entry>
      <function>closedir</function>
     </entry>
-    <entry>Dir handle</entry>
+    <entry>디렉토리 핸들</entry>
    </row>
    <row>
-    <entry>file</entry>
+    <entry>stream</entry>
     <entry>
-     <function>fopen</function>
+     <function>fopen</function>,
+     <function>tmpfile</function>
     </entry>
     <entry>
      <function>feof</function>,
@@ -2129,12 +2195,14 @@
     <entry>
      <function>fclose</function>
     </entry>
-    <entry>File handle</entry>
+    <entry>파일 핸들</entry>
    </row>
    <row>
-    <entry>pipe</entry>
+    <entry>stream</entry>
     <entry>
-     <function>popen</function>
+     <function>popen</function>,
+     <function>fsockopen</function>,
+     <function>pfsockopen</function>
     </entry>
     <entry>
      <function>feof</function>,
@@ -2151,12 +2219,11 @@
     <entry>
      <function>pclose</function>
     </entry>
-    <entry>Process handle</entry>
+    <entry>프로세스 핸들</entry>
    </row>
    <row>
     <entry>socket</entry>
     <entry>
-     <function>fsockopen</function>
     </entry>
     <entry>
      <function>fflush</function>,
@@ -2172,15 +2239,8 @@
     <entry>
      <function>fclose</function>
     </entry>
-    <entry>Socket handle</entry>
+    <entry>소켓 핸들</entry>
    </row>
-   <row>
-     <entry>stream</entry>
-     <entry> </entry>
-     <entry> </entry>
-     <entry> </entry>
-     <entry> </entry>
-    </row>
    <row>
     <entry>sybase-db link</entry>
     <entry>
@@ -2193,7 +2253,7 @@
     <entry>
      <function>sybase_close</function>
     </entry>
-    <entry>Link to Sybase database using DB library</entry>
+    <entry>DB 라이브러리를 이용한 Sybase 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>sybase-db link persistent</entry>
@@ -2207,12 +2267,13 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to Sybase database using DB library</entry>
+    <entry>DB 라이브러리를 이용한 Sybase 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>sybase-db result</entry>
     <entry>
-     <function>sybase_query</function>
+     <function>sybase_query</function>,
+     <function>sybase_unbuffered_query</function>
     </entry>
     <entry>
      <function>sybase_data_seek</function>,
@@ -2228,7 +2289,7 @@
     <entry>
      <function>sybase_free_result</function>
     </entry>
-    <entry>Sybase result using DB library</entry>
+    <entry>DB 라이브러리를 이용한 Sybase 결과</entry>
    </row>
    <row>
     <entry>sybase-ct link</entry>
@@ -2243,7 +2304,7 @@
     <entry>
      <function>sybase_close</function>
     </entry>
-    <entry>Link to Sybase database using CT library</entry>
+    <entry>CT 라이브러리를 이용한 Sybase 데이터베이스 연결</entry>
    </row>
    <row>
     <entry>sybase-ct link persistent</entry>
@@ -2258,7 +2319,7 @@
     <entry>
      None
     </entry>
-    <entry>Persistent link to Sybase database using CT library</entry>
+    <entry>CT 라이브러리를 이용한 Sybase 데이터베이스 지속 연결</entry>
    </row>
    <row>
     <entry>sybase-ct result</entry>
@@ -2279,7 +2340,7 @@
     <entry>
      <function>sybase_free_result</function>
     </entry>
-    <entry>Sybase result using CT library</entry>
+    <entry>CT 라이브러리를 이용한 Sybase 결과</entry>
    </row>
    <row>
     <entry>sysvsem</entry>
@@ -2292,7 +2353,7 @@
     <entry>
      <function>sem_release</function>
     </entry>
-    <entry>System V Semaphore</entry>
+    <entry>System V 세마포어</entry>
    </row>
    <row>
     <entry>sysvshm</entry>
@@ -2308,7 +2369,7 @@
     <entry>
      <function>shm_detach</function>
     </entry>
-    <entry>System V Shared Memory</entry>
+    <entry>System V 공유 메모리</entry>
    </row>
    <row>
     <entry>wddx</entry>
@@ -2321,12 +2382,13 @@
     <entry>
      <function>wddx_packet_end</function>
     </entry>
-    <entry>WDDX packet</entry>
+    <entry>WDDX 패킷</entry>
    </row>
    <row>
     <entry>xml</entry>
     <entry>
-     <function>xml_parser_create</function>
+     <function>xml_parser_create</function>,
+     <function>xml_parser_create_ns</function>
     </entry>
     <entry>
      <function>xml_set_object</function>,
@@ -2350,7 +2412,7 @@
     <entry>
      <function>xml_parser_free</function>
     </entry>
-    <entry>XML parser</entry>
+    <entry>XML 파서</entry>
    </row>
    <row>
     <entry>zlib</entry>
@@ -2373,7 +2435,7 @@
     <entry>
      <function>gzclose</function>
     </entry>
-    <entry>gz-compressed file</entry>
+    <entry>gz-압축 파일</entry>
    </row>
        </tbody>
    </tgroup>

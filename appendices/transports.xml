@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.4 Maintainer: fuzzy74 Status: ready -->
-<appendix xml:id="transports" xmlns="http://docbook.org/ns/docbook">
+<!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+<appendix xml:id="transports" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>지원되는 소켓 전송 목록</title>
  <para>
   다음은 <function>fsockopen</function>과 <function>stream_socket_client</function>같은 
@@ -12,13 +12,17 @@
  </para>
 
  <para>
-  설치된 <literal>PHP</literal> 버전안에 사용가능한 전송 리스트를 보려면
+  설치된 PHP 버전안에 사용가능한 전송 리스트를 보려면
  <function>stream_get_transports</function>를 사용하라.
  </para>
 
  <section xml:id="transports.inet">
   <title>인터넷 도메인: TCP, UDP, SSL, TLS</title>
-  <simpara>PHP 3, PHP 4. <literal>ssl://</literal> &amp; PHP 4.3이후의 <literal>tls://</literal></simpara>
+  <simpara>
+   PHP 4, PHP 5, PHP 6.
+   PHP 4.3.0부터 <literal>ssl://</literal> &amp; <literal>tls://</literal>
+   PHP 5.0.2부터 <literal>sslv2://</literal> &amp; <literal>sslv3://</literal>
+  </simpara>
 
   <note>
    <simpara>
@@ -35,13 +39,15 @@
    <listitem><simpara><literal>tcp://www.example.com</literal></simpara></listitem>
    <listitem><simpara><literal>udp://www.example.com</literal></simpara></listitem>
    <listitem><simpara><literal>ssl://www.example.com</literal></simpara></listitem>
+   <listitem><simpara><literal>sslv2://www.example.com</literal></simpara></listitem>
+   <listitem><simpara><literal>sslv3://www.example.com</literal></simpara></listitem>
    <listitem><simpara><literal>tls://www.example.com</literal></simpara></listitem>
   </itemizedlist>
 
   <simpara>
    인터넷 도메인 소켓은 목표 주소에 더하여 포트 번호가 올것을
    예상할수 있다. <function>fsockopen</function>의 경우 이것은 두번째
-   인수에서 설정되고 따라서 전송 url의 구성에 영향을 주지 않는다.
+   인수에서 설정되고 따라서 전송 URL의 구성에 영향을 주지 않는다.
    <function>stream_socket_client</function>와 이와 관련된 함수는 전통적인 URL을
    갖는다. 포트 번호는 전송 URL의 끝에 콜론으로 구분되어 덧붙여진다.
   </simpara>
@@ -67,105 +73,23 @@
    <literal>ssl://</literal> 과 <literal>tls://</literal> 전송은 
    (openssl 지원이 PHP안에 컴파일되었을때만 가용) SSL 암호화를 포함하는
    <literal>tcp://</literal> 전송의 확장이다.
-   <literal>PHP 4.3.0</literal>이후에 OpenSSL 지원은 <literal>PHP</literal>와 
-   정적으로 컴파일되어야 한다. <literal>PHP 5.0.0</literal> 이후부터는
+   PHP 4.3.0 이후에 OpenSSL 지원은 PHP와 
+   정적으로 컴파일되어야 한다. PHP 5.0.0 이후부터는
    모듈이건 정적이건 아무거나 컴파일 되어 사용될수 있을것이다.
   </simpara>
 
-  <para>
-   <table>
-    <title>
-     <literal>ssl://</literal>와 <literal>tls://</literal>에 대한 환경 옵션
-     (<literal>PHP 4.3.2</literal> 이후 버전)
-    </title>
-    <tgroup cols="4">
-     <thead>
-      <row>
-       <entry>이름</entry>
-       <entry>용도</entry>
-       <entry>기본값</entry>
-      </row>
-     </thead>
-     <tbody>
-      <row>
-       <entry><literal>verify_peer</literal></entry>
-       <entry>
-        &true; or &false;.
-        사용되는 SSL 인증의 조회를 요구
-       </entry>
-       <entry>&false;</entry>
-      </row>
-      <row>
-       <entry><literal>allow_self_signed</literal></entry>
-       <entry>
-        &true; or &false;.
-        자체-사인된 인증을 허용
-       </entry>
-       <entry>&false;</entry>
-      </row>
-      <row>
-       <entry><literal>cafile</literal></entry>
-       <entry>
-        원격단의 신원을 인증하기 위한 <literal>verify_peer</literal> 환경 옵션으로
-        사용될수 있는 로컬 파일시스템상의 인증 증명서 파일의 위치
-       </entry>
-       <entry></entry>
-      </row>
-      <row>
-       <entry><literal>capath</literal></entry>
-       <entry>
-        <literal>cafile</literal>에서 설정되지 않거나 인증서를 거기서 찾을수 없다면,
-        <literal>capath</literal>에 의해 지정된 디렉토리에서 적절한 인증서를 검색한다.
-        <literal>capath</literal>는 정확하게 해쉬된 인증서 디렉토리여야 한다.
-       </entry>
-       <entry></entry>
-      </row>
-      <row>
-       <entry><literal>local_cert</literal></entry>
-       <entry>
-        파일시스템 상의 로컬 인증서 파일로의 경로. 인증과 개인키를 포함하는
-        인코딩된 PEM 파일이 되어야 한다. 이것은 요구자의 인증 체인을
-        선택적으로 포함할수 있다.
-       </entry>
-       <entry></entry>
-      </row>
-      <row>
-       <entry><literal>passphrase</literal></entry>
-       <entry>
-        인코딩된 <literal>local_cert</literal>파일의 패스구절(passphrase).
-       </entry>
-       <entry></entry>
-      </row>
-      <row>
-       <entry><literal>CN_match</literal></entry>
-       <entry>
-        Common Name 이 와야 함. PHP는 제한된 와일드카드 비교를 수행할것이다.
-        Common Name이 이와 일치하지 않으면, 접속시도가 실패할것이다.
-       </entry>
-       <entry></entry>
-      </row>
-     </tbody>
-    </tgroup>
-   </table>
-  </para>
-
-  <note>
-   <simpara>
-    <literal>ssl://</literal>은
-    <link linkend="wrappers.http"><literal>https://</literal></link>와
-    <link linkend="wrappers.ftp"><literal>ftps://</literal></link> 래퍼를
-    위한 중요한 전송이기 때문에, 
-    <literal>ssl://</literal>에 적용되는 환경 옵션은
-    <literal>https://</literal>와 <literal>ftps://</literal>에도 적용된다.
-   </simpara>
-  </note>
+  <simpara>
+   <literal>ssl://</literal>은 원격 호스트의 가용성과 설정에 의존하여 SSL V2나
+   SSL V3 접속을 허용합니다. <literal>sslv2://</literal>와
+   <literal>sslv3://</literal>는 명시적으로 SSL V2나 SSL V3를 선택합니다.
+  </simpara>
  </section>
 
  <section xml:id="transports.unix">
-  <title>유닉스 도메인: UNIX와 UDG</title>
+  <title>유닉스 도메인: Unix와 UDG</title>
   <simpara>
-   <literal>PHP 3</literal> 이후의 <literal>unix://</literal>,
-   <literal>PHP 5</literal> 이후의 <literal>udg://</literal> 
+   <literal>unix://</literal>와
+   <literal>udg://</literal> (udg://는 PHP 5부터)
   </simpara>
 
   <itemizedlist>
@@ -175,7 +99,7 @@
 
   <simpara>
    <literal>unix://</literal>는 유닉스 도메인에 대한 소켓 스트림 접속 시도를
-   제공한다. <literal>udg://</literal>는 user datagram protocol을 사용하는
+   제공한다. <literal>udg://</literal>는 사용자 데이터그램 프로토콜을 사용하는
    유닉스 도메인 소켓에 대한 대체 전송을 제공한다.
   </simpara>
 

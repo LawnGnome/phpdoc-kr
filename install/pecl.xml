@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.17 Maintainer: acidd15 Status: ? -->
+<!-- EN-Revision: 1.20 Maintainer: progcom Status: ready -->
+<!-- CREDITS: acidd15 -->
 
 <chapter xml:id="install.pecl" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>PECL 확장의 설치</title>
@@ -90,19 +91,172 @@ $ cvs -d:pserver:cvsread@cvs.php.net:/repository co pecl/extname
  </sect1>
 
  <sect1 xml:id="install.pecl.windows">
-  <title>윈도우 사용자들을 위한 PECL</title>
-  <simpara>
-   다른 PHP 확장 <acronym>DLL</acronym> 처럼, PECL 확장 DLL들을 간단하게 <link linkend="ini.extension-dir">
-   extension_dir</link> 폴더에 복사하여 설치하고, &php.ini; 에서 로딩 합니다. 예를 들면, 다음 라인을 &php.ini;에 추가하십시오:
-  </simpara>
+  <title>PHP 확장 설치하기</title>
   <para>
-   <screen>
-extension=php_extname.dll
-   </screen>
+   윈도우에서, PHP 확장을 적재하는 두가지 방법이 있습니다: PHP 안에
+   컴파일하거나, DLL을 적재. 미리 컴파일된 확장을 적재하는 것이 쉽고 편한
+   방법입니다.
   </para>
-  <simpara>
-   이것을 한 다음에는, 웹서비스를 다시 시작하십시오.
-  </simpara>
+  <para>
+   확장을 적재하려면, 시스템에 해당하는 ".dll" 파일이 있어야 합니다. 모든
+   확장은 자동으로 주기적으로 PHP 그룹에서 컴파일합니다. (내려받기는 다음
+   섹션을 참고하십시오)
+  </para>
+  <para>
+   확장을 PHP 안에 컴파일하려면, <link
+    linkend="install.windows.building">소스에서 빌드하기</link> 문서를
+   확인하십시오.
+  </para>
+  <para>
+   독립 확장(DLL 파일)을 컴파일하려면, <link
+    linkend="install.windows.building">소스에서 빌드하기</link> 문서를
+   확인하십시오. DLL 파일이 PHP 배포판이나 PECL에 존재하지 않는다면, 그 확장을
+   사용하기 전에 컴파일해야 합니다.
+  </para>
+ </sect1>
+
+ <sect1 xml:id="install.pecl.windows.find">
+  <title>확장을 어디에서 찾나요?</title>
+  <para>
+   PHP 확장은 일반적으로 "php_*.dll"(별은 확장 이름)로 불리고, "PHP\ext"(PHP
+   4에서는 "PHP\extensions") 폴더에 위치하고 있습니다.
+  </para>
+  <para>
+   PHP는 대다수의 개발자에게 가장 유용한 확장을 포함하고 있습니다. 이들은
+   "핵심" 확장이라고 불립니다.
+  </para>
+  <para>
+   그러나, 핵심 확장에서 지원하지 않는 기능이 필요하면, PECL에서 찾을 수
+   있습니다. PHP Extension Community Library (PECL)는 PHP 확장의 저장고로,
+   알려진 모든 알려진 확장의 디렉토리를 제공하고, PHP 확장 개발과 내려받기에
+   필요한 기능을 지원합니다.
+  </para>
+  <para>
+   스스로 사용할 확장을 개발했다면, PECL에 올려서 같은 요구를 가진 다른
+   사람들에게 혜택을 제공할 수 있습니다. 좋은 추가 효과로 다른 사람들의
+   피드백, 감사, 버그 보고와 심지어 픽스/패치를 받을 수 있습니다. PECL에
+   확장을 제공하기 전에, &url.pecl.submit;를 읽어보십시오.
+  </para>
+
+  <sect2 xml:id="install.pecl.windows.which">
+   <title>어떤 확장을 내려받나요?</title>
+   <para>
+    <emphasis>많은 경우에, 각 DLL의 여러 버전을 찾을 수 있습니다:</emphasis>
+    <itemizedlist>
+     <listitem>
+      <simpara>
+       다른 버전 번호 (적어도 처음 두 숫자는 일치)
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       쓰레드 안전 설정 차이
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       프로세서 설정 차이 (x86, 64비트...)
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       디버그 설정 차이
+      </simpara>
+     </listitem>
+     <listitem>
+      <simpara>
+       <literal>기타</literal>
+      </simpara>
+     </listitem>
+    </itemizedlist>
+   </para>
+   <para>
+    확장 설정이 사용하는 PHP 실행 설정과 일치해야만 합니다. 다음 PHP
+    스크립트가 <emphasis>모든</emphasis> PHP 설정을 알려줍니다:
+    <screen>
+<![CDATA[
+<?php
+phpinfo();
+?>
+]]>
+    </screen>
+   </para>
+   <para>
+    또는 명령줄에서, 실행:
+    <screen>
+<![CDATA[
+drive:\\path\to\php\executable\php.exe -i
+]]>
+    </screen>
+   </para>
+  </sect2>
+
+  <sect2 xml:id="install.pecl.windows.loading">
+   <title>확장 적재하기</title>
+   <para>
+    PHP 확장을 적재하는 가장 일반적인 방법은 <filename>php.ini</filename> 설정
+    파일에 포함하는 것입니다. 많은 확장이 이미 <filename>php.ini</filename>에
+    존재하고, 세미콜론을 제거하면 바로 활성화됩니다.
+    <screen>
+<![CDATA[
+;extension=php_extname.dll
+]]>
+    </screen>
+    <screen>
+<![CDATA[
+extension=php_extname.dll
+]]>
+    </screen>
+   </para>
+   <para>
+    그러나, 일부 웹서버는 PHP 실행에 놓여있는 php.ini를 사용하지 않아서 혼동을
+    가져옵니다. 정확한 <filename>php.ini</filename>의 위치를 확인하려면,
+    <function>phpinfo</function>에서 경로를 찾아보십시오:
+    <screen>
+<![CDATA[
+Configuration File (php.ini) Path  C:\WINDOWS
+]]>
+    </screen>
+    <screen>
+<![CDATA[
+Loaded Configuration File  C:\Program Files\PHP\5.2\php.ini
+]]>
+    </screen>
+   </para>
+   <para>
+    확장을 활성화한 후, <filename>php.ini</filename>을 저장, 웹서버를
+    재시작하고 <function>phpinfo</function>를 다시 확인하십시오. 새 확장이
+    자신의 섹션을 가지고 있어야 합니다.
+   </para>
+  </sect2>
+
+  <sect2 xml:id="install.pecl.windows.problemsolving">
+   <title>문제 해결</title>
+   <para>
+    확장이 <function>phpinfo</function>에 나타나지 않으면, 어디서 문제가
+    발생하였는지 로그를 확인해야 합니다.
+   </para>
+   <para>
+    PHP를 명령줄(CLI)에서 사용한다면, 확장 적재 오류를 화면에서 바로 읽을 수
+    있습니다.
+   </para>
+   <para>
+    PHP를 웹서버에서 사용하면, 로그의 위치와 형식은 웹서버 소프트웨어에
+    의존합니다. 웹서버 문서에서 로그 위치를 찾아서 읽어보십시오. PHP 자체로는
+    아무것도 하지 않습니다.
+   </para>
+   <para>
+    일반적인 문제는 DLL 위치입니다. <literal>php.ini</literal> 안의 "<link
+     linkend="ini.extension-dir">extension_dir</link>" 값이 컴파일시 설정과
+    일치하지 않아서 발생합니다.
+   </para>
+   <para>
+    문제가 컴파일시 설정이 일치하지 않는 것이라면, 아마도 옮은 DLL을 내려받지
+    않았을 것입니다. 적합한 설정을 가진 확장을 다시 내려받아 보십시오. 다시
+    말하지만, <function>phpinfo</function>가 큰 도움이 될 것입니다.
+   </para>
+  </sect2>
+
  </sect1>
  
  <sect1 xml:id="install.pecl.pear">

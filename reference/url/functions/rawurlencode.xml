@@ -1,61 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.rawurlencode" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <refnamediv>
-    <refname>rawurlencode</refname>
-    <refpurpose>RFC 1738에 따라 URL을 인코드합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>rawurlencode</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <literal>-_.</literal>을 제외한 모든 영숫자가 아닌 문자를
-     퍼센트(<literal>%</literal>) 사인에 이어지는 두 16진수로 교체한
-     문자열을 반환합니다. 이는 표시 문자가 특별한 URL 구분자로 해석되는걸
-     방지하고, 문자 변환이 이루어지는 전송 매체(몇몇 email 시스템 등)에서
-     URL을 보호하기 위한 RFC 1738에 설명된 인코딩입니다. 예를 들어,
-     FTP URL에 패스워드를 포함하고자 한다면:
-    </para>
-    <para>
-     <example>
-      <title><function>rawurlencode</function> 예제 1</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.rawurlencode" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>rawurlencode</refname>
+  <refpurpose>RFC 1738에 따른 URL 인코드</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>rawurlencode</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   주어진 문자열을 <link xlink:href="&url.rfc;1738">RFC 1738</link>에 따라
+   인코드합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       인코드할 URL
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <literal>-_.</literal>을 제외한 모든 영숫자가 아닌 문자를
+   퍼센트(<literal>%</literal>) 사인에 이어지는 두 16진수로 교체한
+   문자열을 반환합니다. 이는 표시 문자가 특별한 URL 구분자로 해석되는걸
+   방지하고, 문자 변환이 이루어지는 전송 매체(몇몇 email 시스템 등)에서
+   URL을 보호하기 위한 <link xlink:href="&url.rfc;1738">RFC 1738</link>에
+   설명된 인코딩입니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>FTP URL에 패스워드 포함하기</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo '<a href="ftp://user:', rawurlencode('foo @+%/'),
      '@ftp.example.com/x.txt">';
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     혹은, URL의 PATH_INFO 안에 경로 정보를 전달하고자 한다면:
-    </para>
-    <para>
-     <example>
-      <title><function>rawurlencode</function> 예제 2</title>
-      <programlisting role="php">
+    </programlisting>
+    &example.outputs;
+    <screen role="html">
+<![CDATA[
+<a href="ftp://user:foo%20%40%2B%25%2F@ftp.example.com/x.txt">
+]]>
+    </screen>
+   </example>
+  </para>
+  <para>
+   혹은, URL의 PATH_INFO 안에 경로 정보를 전달하고자 한다면:
+  </para>
+  <para>
+   <example>
+    <title><function>rawurlencode</function> 예제 2</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo '<a href="http://example.com/department_list_script/',
     rawurlencode('sales and marketing/Miami'), '">';
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <simpara>
-     참고: <function>rawurldecode</function>,
-     <function>urldecode</function>,
-     <function>urlencode</function>,
-     <link xlink:href="&url.rfc;1738">RFC 1738</link>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+    &example.outputs;
+    <screen role="html">
+<![CDATA[
+<a href="http://example.com/department_list_script/sales%20and%20marketing%2FMiami">
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>rawurldecode</function></member>
+    <member><function>urldecode</function></member>
+    <member><function>urlencode</function></member>
+    <member><link xlink:href="&url.rfc;1738">RFC 1738</link></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
