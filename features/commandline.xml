@@ -112,15 +112,15 @@
    <listitem>
     <para>
      셀 환경에 맞지 않는 것들 때문에 <literal>CLI SAPI</literal>에 의해 
-     오버로드되는 &php.ini; 지시자(directive)가 몇가지 존재한다.
+     오버로드되는 &php.ini; 지시어가 몇가지 존재한다.
     </para>
     <para>
      <table>
-      <title>&php.ini; 지시자(directive) 오버로드</title>
+      <title>&php.ini; 지시어 오버로드</title>
       <tgroup cols="3">
        <thead>
         <row>
-         <entry>지시자(directive)</entry>
+         <entry>지시어</entry>
          <entry><literal>CLI SAPI</literal> 기본값</entry>
          <entry>주석</entry>
         </row>
@@ -132,7 +132,7 @@
          <entry>
           셀에서 에러메시지를 읽을때 의미없는 <literal>HTML</literal>태그로
           뒤범벅이 되면 에러메시지를 읽기가 매우 어려울수 있다.
-          따라서 이 지시자(directive)의 기본값은 &false;다.
+          따라서 이 지시어의 기본값은 &false;다.
          </entry>
         </row>
         <row>
@@ -184,10 +184,10 @@
     </para>
     <note>
      <para>
-      이 지시자(directive)는 설정 파일 &php.ini;나 사용자 설정으로부터 온 다른 값으로
+      이 지시어는 설정 파일 &php.ini;나 사용자 설정으로부터 온 다른 값으로
       초기화될수 없다. 모든 설정 파일이 해석되고 난 후에 기본값이 적용되기 때문에
       이 것은 제한이 된다. 하지만, 각 값은 런타임동안에 변경될수 있다.
-      (위 지시자(directive) 중 환경과 맞지 않는것
+      (위 지시어 중 환경과 맞지 않는것
       e.g. <link linkend="ini.register-argc-argv">register_argc_argv</link>).
      </para>
     </note>

@@ -63,7 +63,7 @@ MySQL 서버명을 입력하며, 포트번호가 포함될 수 있다.
 예) ":/path/to/socket"
       </para>
       <para>
-PHP 지시자 <link linkend="ini.mysql.default-host">mysql.default_host</link>가
+PHP 지시어 <link linkend="ini.mysql.default-host">mysql.default_host</link>가
 지정되지 않는다면, 기본값은 'localhost:3306'이다.
       </para>
      </listitem>

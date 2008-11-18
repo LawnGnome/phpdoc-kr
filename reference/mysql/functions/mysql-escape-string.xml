@@ -114,7 +114,7 @@ Escaped string: Zak\'s Laptop
    <simplelist>
     <member><function>mysql_real_escape_string</function></member>
     <member><function>addslashes</function></member>
-    <member><link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link> 지시자.</member>
+    <member><link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link> 지시어.</member>
    </simplelist>
   </para>
  </refsect1>

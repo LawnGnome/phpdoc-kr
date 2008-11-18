@@ -216,7 +216,7 @@ if (!isset($_SERVER['PHP_AUTH_USER']) ||
   <note>
    <title>IIS 주의:</title>
    <simpara>
-    IIS에서 HTTP 인증을 작동하게 하려면, PHP 지시자
+    IIS에서 HTTP 인증을 작동하게 하려면, PHP 지시어
     <link linkend="ini.cgi.rfc2616-headers">cgi.rfc2616_headers</link>를
     <literal>0</literal>(초기값)으로 설정해야 합니다.
    </simpara>
