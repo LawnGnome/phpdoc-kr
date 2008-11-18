@@ -492,7 +492,8 @@ linkend="ini"/>를 참고하십시오.'>
 <!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에서 제공하지 않습니다.'>
 
-<!ENTITY pecl.bundled '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href=&url.pecl;">PECL</link> 확장은 PHP
+<!ENTITY pecl.bundled '이 <link xmlns:xlink="http://www.w3.org/1999/xlink"
+xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에 포함되어 있습니다.'>
 
 <!ENTITY pecl.info 'PECL 확장 설치에 관한 정보는 매뉴얼의 <link
@@ -799,7 +800,7 @@ MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 
 <!ENTITY note.runkit.internal-override '<note><simpara>기본적으로 사용자
 함수만 삭제하거나, 이름을 바꾸거나, 변경할 수 있습니다. 내장 함수를 덮어쓰려면
-시스템레벨의 php.ini 파일에서 <literal>runkit.internal_override</literal>을
+&php.ini; 파일에서 <literal>runkit.internal_override</literal>을
 활성화하여야 합니다.</simpara></note>'>
 
 <!-- SSH2 Extension -->

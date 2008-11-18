@@ -1,23 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.implode" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>implode</refname>
-    <refpurpose>문자열로 배열 원소를 결합합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>implode</methodname>
-      <methodparam><type>string</type><parameter>glue</parameter></methodparam>
-      <methodparam><type>array</type><parameter>pieces</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     모든 배열 원소를 순서대로, 각각의 원소 사이에 glue 문자열을 덧붙인 문자열
-     표현을 반환합니다.
-     <example>
-      <title><function>implode</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.implode" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>implode</refname>
+  <refpurpose>문자열로 배열 원소를 결합</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>implode</methodname>
+   <methodparam><type>string</type><parameter>glue</parameter></methodparam>
+   <methodparam><type>array</type><parameter>pieces</parameter></methodparam>
+  </methodsynopsis>
+  <methodsynopsis>
+   <type>string</type><methodname>implode</methodname>
+   <methodparam><type>array</type><parameter>pieces</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   배열 원소를 <parameter>glue</parameter> 문자열로 결합합니다.
+  </para>
+  <note>
+   <para>
+    <function>implode</function>은 역사적인 이유로 인수를 다른 순서로
+    받아들입니다. 그러나 <function>explode</function>와 일관성을 위하여,
+    문서에 나온 순서대로 인수를 사용해야 혼동이 적습니다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>glue</parameter></term>
+     <listitem>
+      <para>
+       기본 값은 빈 문자열입니다. <parameter>glue</parameter>를
+       <function>implode</function>의 두번째 인수로 사용하는 것은 추천되지
+       않으며, 나쁜 프로토타입을 사용하게 됩니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>pieces</parameter></term>
+     <listitem>
+      <para>
+       결합할 문자열을 가진 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   모든 배열 원소를 동일한 순서로, 각 원소의 문자열 표현 사이에 glue 문자열을
+   넣은 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        <parameter>glue</parameter> 인수가 선택적이 되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>implode</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
@@ -28,29 +103,27 @@ echo $comma_separated; // lastname,email,phone
 
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <note>
-     <para>
-      <function>implode</function>는 관습적인 이유로 인수의 순서를 바꾸는 것을
-      허용합니다. 그러나, <function>explode</function>와의 일관성을 위해서
-      문서에 나온 인수의 순서를 사용하는 편이 혼동이 적을 것입니다.
-     </para>
-    </note>
-    <note>
-     <para>
-      PHP 4.3.0부터 <function>implode</function>의 glue 인수는 선택적이
-      되었고, 기본값으로 빈 문자열('')입니다. 이는
-      <function>implode</function>의 권장하지 않는 사용법입니다. 이전 버전과의
-      호환을 위해서 항상 두개의 인수를 사용하기를 권장합니다.
-     </para>
-    </note>
-    <simpara>
-     참고: <function>explode</function>, <function>split</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.bin-safe;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>explode</function></member>
+    <member><function>split</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

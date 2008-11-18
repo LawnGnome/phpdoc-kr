@@ -1,55 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.strtok" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strtok</refname>
-    <refpurpose>문자열을 토큰화 합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>strtok</methodname>
-      <methodparam><type>string</type><parameter>arg1</parameter></methodparam>
-      <methodparam><type>string</type><parameter>arg2</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>strtok</function>는 <parameter>arg2</parameter>안의 어떠한
-     문자를 기준으로 하여, 문자열(<parameter>arg1</parameter>)을 작은
-     문자열들(토큰)로 나눕니다.
-     즉, "This is an example string"이라는 문자열이 있을 때, 공백 문자를
-     사용하여 각각의 단어를 토큰으로 만들 수 있습니다.
-     <example>
-      <title><function>strtok</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.strtok" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>strtok</refname>
+  <refpurpose>문자열을 토큰화</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>strtok</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam><type>string</type><parameter>token</parameter></methodparam>
+  </methodsynopsis>
+  <methodsynopsis>
+   <type>string</type><methodname>strtok</methodname>
+   <methodparam><type>string</type><parameter>token</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>strtok</function>는 <parameter>token</parameter> 안의 문자들을
+   기준으로 하여, 문자열(<parameter>str</parameter>)을 작은 문자열들(토큰)로
+   나눕니다.
+   즉, "This is an example string"이라는 문자열이 있을 때, 공백 문자를
+   사용하여 각각의 단어를 토큰으로 만들 수 있습니다.
+  </para>
+  <para>
+   strtok의 첫번째 호출만 문자열 인수를 받는 점에 주의하십시오. 모든 추가적인
+   strtok 호출은 토큰만 필요하며, 현재 문자열을 계속해서 따라갑니다. 새로
+   시작하거나, 새 문자열을 토큰화 하려면, 단순히 문자열 인수와 함께 strtok를
+   호출하여 초기화합니다. 토큰 인수로 여러 개의 토큰을 넣을 수 있는 점에
+   주의하십시오. 토큰 인수에 들어있는 어떤 문자 하나로 문자열은
+   토큰화됩니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       작은 문자열들(토큰)으로 나눌 <type>string</type>.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>token</parameter></term>
+     <listitem>
+      <para>
+       <parameter>str</parameter>을 나눌때 쓰는 구분자.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <type>string</type> 토큰.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strtok</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $string = "This is\tan example\nstring";
-/* 탭과 줄바꿈도 토큰화 문자열로 사용합니다. */
+/* 탭과 줄바꿈도 토큰화 문자열로 사용합니다 */
 $tok = strtok($string, " \n\t");
-while ($tok) {
+
+while ($tok !== false) {
     echo "단어=$tok<br />";
     $tok = strtok(" \n\t");
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     처음 strtok를 호출할 때만 문자열 인수를 사용하는 점에 주의하십시오.
-     이후의 모든 strtok 호출은 토큰만 사용하며, strtok는 현재 문자열을
-     계속해서 추적합니다. 새로 시작하거나, 새로운 문자열을 토큰화 하려면
-     간단히 strtok를 그 문자열로 다시 초기화하십시오. 토큰 인수로 여러 문자를
-     넣을 수 있는 점에 주의하십시오. 문자열은 그 중의 어떠한 하나라도
-     발견하였을때 토큰이 됩니다.
-    </para>
-    <para>
-     빈 부분을 발견하였을때 동작이 PHP 4.1.0에서 바뀌었습니다. 이전의 동작은
-     빈 문자열을 반환하였지만, 새로운, 올바른 동작은 그 문자열 부분을
-     넘어갑니다.
-     <example>
-      <title>이전 <function>strtok</function> 동작</title>
-      <programlisting role="php">
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   빈 부분을 발견하였을때 동작이 PHP 4.1.0에서 바뀌었습니다. 이전의 동작은
+   빈 문자열을 반환하였지만, 새로운, 올바른 동작은 그 문자열 부분을
+   넘어갑니다:
+  </para>
+  <para>
+   <example>
+    <title><function>strtok</function> 이전 동작</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $first_token  = strtok('/something', '/');
@@ -57,20 +102,18 @@ $second_token = strtok('/');
 var_dump($first_token, $second_token);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       출력:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
     string(0) ""
     string(9) "something"
 ]]>
-      </screen>
-     </example>
-     <example>
-      <title>새로운 <function>strtok</function> 동작</title>
-      <programlisting role="php">
+    </screen>
+   </example>
+   <example>
+    <title><function>strtok</function> 새 동작</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $first_token  = strtok('/something', '/');
@@ -78,28 +121,35 @@ $second_token = strtok('/');
 var_dump($first_token, $second_token);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       출력:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
     string(9) "something"
     bool(false)
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     토큰이 "0"일수 있는 점에 주의하십시오. 이는 조건문에서 &false;로
-     판단합니다.
-    </para>
-    <para>
-     참고: <function>split</function>
-     <function>explode</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+
+  &return.falseproblem;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>split</function></member>
+    <member><function>explode</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.10 $ -->
-<!-- EN-Revision: 1.14 Maintainer: fuzzy74 Status: ready -->
-<!-- CREDITS: regina -->
+<!-- EN-Revision: 1.20 Maintainer: progcom Status: ready -->
  <chapter xml:id="features.connection-handling" xmlns="http://docbook.org/ns/docbook">
-  <title>연결 제어</title>
-
-  <note>
-   <para>이 기능은 PHP version 3.0.7 이후부터 적용된 것들이다.</para>
-  </note>
+  <title>접속 다루기</title>
 
   <para>
-	내부적으로 PHP는 연결의 상태를 다음 3가지중 하나로 설정한다. :
+   PHP는 내부적으로 접속 상태를 관리합니다. 3가지 상태가 존재합니다:
    <itemizedlist>
     <listitem><simpara>0 - NORMAL</simpara></listitem>
     <listitem><simpara>1 - ABORTED</simpara></listitem>
@@ -19,60 +13,48 @@
   </para>
 
   <simpara>
-	PHP 스크립트가 일반적으로 실행되고 있을 때는 NORMAL 상태가 active된다. 
-	만약 원격 클라이언트가 연결을 끊게되면 ABORTED 상태 flag가 켜지게 된다. 
-	보통 클라이언트가 연결을 끊는 것은 사용자가 STOP 버튼을 눌렀을 때 일어난다. 
-	만약 PHP가 설정한 시간 제한에 (<function>set_time_limit</function>을 보라) 걸리게 되면 
-	TIMEOUT 상태 flag가 켜지게 된다.
+   PHP 스크립트가 정상적으로 작동하고 있으면, NORMAL 상태가 활성화됩니다. 원격
+   클라이언트가 접속을 끊으면 ABORTED 상태 플래그가 켜집니다. 원격
+   클라이언트의 접속 차단은 보통 사용자가 중지 버튼을 누르는 경우입니다. PHP
+   내장 시간 제한(<function>set_time_limit</function>)에 걸리면, TIMEOUT 상태
+   플래그가 켜집니다.</simpara>
+
+  <simpara>
+   클라이언트 접속 차단으로 인해 스크립트를 중단할 지 여부를 결정할 수
+   있습니다. 때때로 원격 브라우저가 출력을 받아들이지 않더라도 스크립트가
+   동작을 마쳐야 할 수 있습니다. 기본 동작은 원격 클라이언트 접속 차단 시에
+   스크립트를 중단합니다. 이 동작은 &php.ini;에서 ignore_user_abort 지시어나,
+   , 아파치 .conf <literal>php_value ignore_user_abort</literal> 지시어,
+   <function>ignore_user_abort</function> 함수로 설정할 수 있습니다. PHP에
+   사용자 중단을 무시하도록 하지 않고 사용자가 중단하면, 스크립트는
+   종료됩니다. 한가지 예외는 <function>register_shutdown_function</function>을
+   사용하여 종료 함수를 등록했을 경우입니다. 종료 함수가 있으면 사용자가
+   중단 버튼을 눌렀을 때, 스크립트에서 무언가를 출력하려 해서 PHP가 접속이
+   중단되었음을 알게 되었을 경우 종료 함수가 호출됩니다. 이 종료 함수는
+   정상적으로 스크립트 마지막에 종료될 때도 호출되므로, 클라이언트 접속 차단시
+   다른 동작을 하려면 <function>connection_aborted</function> 함수를 이용할 수
+   있습니다. 이 함수는 접속이 취소되었을 때 &true;를 반환합니다.</simpara>
+
+  <simpara>
+   스크립트는 내장 스크립트 타이머에 의해 종료될 수도 있습니다.
+   기본 시간 제한은 30초입니다. 이는 &php.ini;
+   <option>max_execution_time</option> 지시어나, 아파치 .conf
+   <literal>php_value max_execution_time</literal> 지시어,
+   <function>set_time_limit</function> 함수로 바꿀 수 있습니다. 타이머가
+   초과되면 스크립트는 중단되고, 위의 클라이언트 접속 차단의 경우와 마찬가지로
+   종료함수가 있으면 호출됩니다. 종료 함수에서
+   <function>connection_status</function> 함수를 호출하여 시간 초과가 종료
+   함수 호출을 유발하였는지 확인할 수 있습니다. 이 함수는 시간 초과가 원인으로
+   종료 함수를 호출하였을 때 2를 반환합니다.
   </simpara>
 
   <simpara>
-	클라이언트가 연결을 끊었을 때 스크립트가 수행을 중단할 것인가 아닌가를 
-    결정하여야 한다. 때때로 원격 브라우저가 어떤 결과도 받아들이지 않더라도
-    스크립트를 끝까지 실행하는 것이 편리할 때가 많다. 
-	기본 동작은 클라이언트가 연결을 끊으면 스크립트도 중단되는 것이다. 
-	이 동작은 ignore_user_abort라는 php3.ini 지시자(directive)나, 
-	php3_ignore_user_abort라는 Apache의 .conf의 지시자로 설정이 가능하고, 
-	<function>ignore_user_abort</function> 함수를 사용하여 설정할 수도 있다. 
-	만약 PHP에게 사용자가 내린 중지 명령을 무시하라고 말해주지 않았다면, 
-	사용자의 중지 신호는 여러분의 스크립트를 종료시킨다. 
-	단, <function>register_shutdown_function</function>을 사용하여 
-	shutdown 함수를 등록해 놓은 경우는 예외가 된다. 
-	shutdown 함수를 사용하면, 사용자가 STOP버튼을 눌렀을 때, 
-	여러분의 스크립트는 남은 출력을 하려고 하고, 
-	PHP는 연결이 중단되었음을 인지하여 shutdown 함수를 호출하게 된다. 
-	shutdown 함수는 여러분의 스크립트가 정상적으로 종료되었을 때도 호출 된다. 
-	만약 여기서 클라이언트의 연결 중단시에 다른 동작을 원한다면 
-	<function>connection_aborted</function> 함수를 사용하면 된다. 
-	이 함수는 연결이 중단되었다면 &true;를 반환한다.
+   ABORTED와 TIMEOUT 상태가 동시에 일어날 수 있는 점에 주의해야 합니다. 이는
+   PHP에 사용자 중단을 무시하도록 했을 때 일어날 수 있습니다. PHP는 사용자가
+   접속을 끊었음을 기록하지만, 스크립트는 계속 실행됩니다. 그리고 시간 제한에
+   도달하여 취소되면 종료 함수가 존재할 경우 호출됩니다. 이 경우
+   <function>connection_status</function>가 3을 반환합니다.
   </simpara>
-
-  <simpara>
-	스크립트는 내장된 스크립트 타이머에 의해 종료될 수 있다. 
-	기본 timeout 시간은 30초로 되어 있다. 이 시간을 max_execution_time이라는 
-    php3.ini 지시자(directive)나, 동일한 내용의 php3_max_execution_time이라는
-    Apache의 .conf 지시자에 의해 다르게 설정이 가능하고 
-    <function>set_time_limit</function> 함수를 사용하여 설정할 수도 있다. 
-	설정한 시간이 경과하면 스크립트는 자동으로 중단되고, 
-	이 스크립트는 위에 설명한 클라이언트와의 연결이 종료된 것처럼 동작한다. 
-	따라서 shutdown 함수가 등록되어 있다면 이 함수가 실행된다. 
-	shutdown 함수내에서 이 함수가 timeout에 의해 호출된 것인가를 판단하려면 
-	<function>connection_timeout</function> 함수를 사용하면 된다. 
-	이 함수는 timeout에 의해 shutdown 함수가 호출되었다면 &true;를 반환한다.
-  </simpara>
-  <simpara>
-	한가지 유의할 사항은 ABORTED와 TIMEOUT 상태는 두 개가 동시에 active될 수 
-    있다는 것이다.  이것은 PHP가 사용자 중단을 무시하도록 설정해 놓았을 때 
-    생길 수 있다. 사용자가 연결을 끊었지만, 스크립트는 계속 실행되고, 
-    시간 제한에 걸려 스크립트의 수행이 중단되고 shutdown 함수가 호출되면,
-    <function>connection_timeout</function>과 
-    <function>connection_aborted</function>함수 모두 &true;를 반환하게 된다. 
-	<function>connection_status</function>함수를 사용하여 두가지 상태 모두를
-    검사할 수 있다. 이 함수는 각 상태에 대한 active 정보를 bit 단위로 반환한다. 
-	예를들어 위와같이 ABORT와 TIMEOUT 두 개의 상태가 모두 active되어 있다면
-    이 함수는 3을 반환한다.
-  </simpara>
-
  </chapter>
 
 <!-- Keep this comment at the end of the file
@@ -86,9 +68,12 @@ sgml-indent-step:1
 sgml-indent-data:t
 indent-tabs-mode:nil
 sgml-parent-document:nil
-sgml-default-dtd-file:"../manual.ced"
+sgml-default-dtd-file:"../../manual.ced"
 sgml-exposed-tags:nil
 sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
 End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
 -->

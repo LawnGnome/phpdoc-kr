@@ -1,29 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-	 <refentry xml:id="function.printf" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>printf</refname>
-    <refpurpose>형식화한 문자열을 출력합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>printf</methodname>
-      <methodparam><type>string</type><parameter>format</parameter></methodparam>
-      <methodparam choice="opt"><type>mixed</type><parameter>args</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     <function>sprintf</function> 문서에서 설명한 방법대로,
-     <parameter>format</parameter>에 따른 출력을 생성합니다.
-    </simpara>
-    <simpara>
-     참고: <function>print</function>, <function>sprintf</function>, 
-     <function>vprintf</function>, <function>sscanf</function>,
-     <function>fscanf</function>, <function>flush</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+<refentry xml:id="function.printf" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>printf</refname>
+  <refpurpose>형식화한 문자열을 출력</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>printf</methodname>
+   <methodparam><type>string</type><parameter>format</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>args</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
+  </methodsynopsis>
+  <simpara>
+   <parameter>format</parameter>에 따른 출력을 생성합니다.
+  </simpara>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>format</parameter></term>
+     <listitem>
+      <para>
+       <parameter>format</parameter>에 대한 설명은
+       <function>sprintf</function>를 참고하십시오.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>args</parameter></term>
+     <listitem>
+      <para>
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>...</parameter></term>
+     <listitem>
+      <para>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   출력한 문자열의 길이를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>print</function></member>
+    <member><function>sprintf</function></member>
+    <member><function>vprintf</function></member>
+    <member><function>sscanf</function></member>
+    <member><function>fscanf</function></member>
+    <member><function>flush</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
