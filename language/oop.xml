@@ -1,41 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.13 $ -->
-<!-- EN-Revision: 1.43 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.71 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.oop" xmlns="http://docbook.org/ns/docbook">
-  <title>클래스와 객체</title>
+  <title>클래스와 객체 (PHP 4)</title>
 
   <sect1 xml:id="keyword.class">
    <title><literal>class</literal></title>
    <para>
-    클래스(class)는 특정 변수들 그리고 이 변수들과 같이 동작하는 함수의 집합체이다.
-    다음 예제코드처럼 클래스를 선언할수 있다:
+    클래스는 변수들과 이 변수들과 같이 동작하는 함수의 집합체이다.
+    변수는 <literal>var</literal>로 정의하고 함수는
+    <literal>function</literal>으로 정의합니다. 클래스는 다음 구문을 사용하여
+    정의합니다:
    </para>
    <para>
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
-class Cart
-{
+class Cart {
     var $items;  // Items in our shopping cart
-   
+
     // Add $num articles of $artnr to the cart
  
-    function add_item ($artnr, $num)
-    {
+    function add_item ($artnr, $num) {
         $this->items[$artnr] += $num;
     }
-   
+
     // Take $num articles of $artnr out of the cart
  
-    function remove_item ($artnr, $num)
-    {
+    function remove_item ($artnr, $num) {
         if ($this->items[$artnr] > $num) {
             $this->items[$artnr] -= $num;
             return true;
+        } elseif ($this->items[$artnr] == $num) {
+            unset($this->items[$artnr]);
+            return true;
         } else {
             return false;
-        }   
+        }
     }
 }
 ?>
@@ -43,26 +45,45 @@ class Cart
      </programlisting>
     </informalexample>
    </para>
- 
    <para>
     위 코드에서 Cart라는 이름을 갖는 클래스는 카트(cart)를 위한 품목의 연관 배열,
     그리고 카트에 아이템을 추가하거나 제거하는 두 개의 함수로 구성되어있다. 
    </para>
-
    <warning>
     <simpara>
-     클래스 선언부를 여러 파일이나 여러 PHP블록으로 분리할수 <emphasis>없다</emphasis>
-     다음 코드는 작동하지 않을것이다:
+     클래스 정의를 여러 파일로 나눌 수 <emphasis>없습니다</emphasis>. 또한,
+     메쏘드 선언 안에서 나누지 않는 한, 클래스 정의를 여러 PHP 블록으로 나눌
+     수 <emphasis>없습니다</emphasis>. 다음 코드는 작동하지 않습니다:
     </simpara>
     <para>
      <informalexample>
-      <programlisting>
+      <programlisting role="php">
 <![CDATA[
 <?php
 class test {
 ?>
 <?php
     function test() {
+        print 'OK';
+    }
+}
+?>
+]]>
+      </programlisting>
+     </informalexample>
+    </para>
+    <simpara>
+     하지만, 다음 코드는 허용됩니다:
+    </simpara>
+    <para>
+     <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?php
+class test {
+    function test() {
+        ?>
+        <?php
         print 'OK';
     }
 }
@@ -112,25 +133,23 @@ class test {
     <programlisting role="php">
 <![CDATA[
 <?php
-/* PHP 4에서 이 코드는 작동하지 않을것이다 */
-class Cart
-{
+class Cart {
+    /* PHP 4에서 이 코드는 작동하지 않을것이다 */
     var $todays_date = date("Y-m-d");
     var $name = $firstname;
     var $owner = 'Fred ' . 'Jones';
+    /* 그러나, 배열은 고정값을 가질 수 있습니다 */
     var $items = array("VCR", "TV");
 }
 
 /* 이와 같이 해야 한다 */
-class Cart
-{
+class Cart {
     var $todays_date;
     var $name;
     var $owner;
-    var $items;
+    var $items = array("VCR", "TV");
 
-    function Cart()
-    {
+    function Cart() {
         $this->todays_date = date("Y-m-d");
         $this->name = $GLOBALS['firstname'];
         /* etc. . . */
@@ -171,11 +190,11 @@ $another_cart->add_item("0815", 3);
     <varname>$cart</varname>와 <varname>$another_cart</varname> 둘다 
     add_item(), remove_item() 함수와 items변수를 갖는다. 이들 모두 서로
     다른 함수와 변수들이다. 이런 객체는 파일시스템의 디렉토리에 비유될수 있다.
-    파일시스템에서는 서로 다른 디렉토리에 있으면 두개의 다른 README.TXT파일을 
-    저장할수 있다. 이 파일 각각에 접근하기 위해서는 최상위 디렉토리에서
-    각 파일로의 경로를 지정해 줘야 하듯이, 이런 각 함수를 호출하고자 한다면 
-    각 함수의 완전한 이름을 지정해야 한다: PHP에서 최상위 디렉토리는 전역 
-    네임스페이스를 갖고, 경로 구분자로 <literal>-&gt;</literal>를 사용할수 있다. 
+    파일 시스템에서는 서로 다른 디렉토리에 존재하는 두 개의 다른
+    <filename>README.TXT</filename>를 가질 수 있습니다. 디렉토리에서 최상위
+    디렉토리에서 이들 파일까지의 경로를 지정하는 것과 마찬가지로 , 호출하려는
+    함수의 완전한 이름을 지정해야 합니다: PHP에서, 최상위 디렉토리는 전역
+    이름공간이고, 경로 구분자는 <literal>-&gt;</literal>입니다.
     따라서, <varname>$cart-&gt;items</varname>과 <varname>$another_cart-&gt;items</varname>
     은 서로 다른 변수를 지칭하는 것이다.
     변수는 <varname>$cart-&gt;$items</varname>이 아니라, <varname>$cart-&gt;items</varname>
@@ -204,8 +223,9 @@ $cart->$myvar = array("10" => 1);
 
    <para>
     클래스의 선언부에서는 프로그램이 객체에 접근할때 어느 객체명 밑에 속해있을지
-    알수 없다: Cart 클래스가 선언된 후에 그 객체가 <varname>$cart</varname>나 
-    <varname>$another_cart</varname> 객체명을 갖을지 알수 없는것이다. 따라서,
+    알수 없다: Cart 클래스가 선언된 후에 그 객체가 <varname>$cart</varname>, 
+    <varname>$another_cart</varname>, 또다른 객체명을 갖을지 알 수 없는것이다.
+    따라서,
     Cart 클래스 선언부 안에서 <varname>$cart-&gt;items</varname>라고 쓸수 없다.
     대신에, 클래스내의 함수나 변수에 접근할 수 있게 하려면 '내 소유'나 '현재
     객체'라고 해석할수 있는 <varname>$this</varname>라는 의사-변수를 사용할수 있다.
@@ -217,8 +237,63 @@ $cart->$myvar = array("10" => 1);
 
    <note>
     <para>
-    클래스와 객체를 제어할 수 있는 몇가지의 유용한 함수가 제공된다.
-    <link linkend="ref.classobj">클래스/객체 함수</link>에서 확인할수 있다.
+     <varname>$this</varname> 모의 변수는 메쏘드가 정적으로 호출되었을 때는
+     일반적으로 정의되지 않습니다. 그러나, 정적 규칙: 메쏘드가 다른 객체
+     안에서 정적으로 호출되었을 때는 <varname>$this</varname>가 정의됩니다.
+     이런 경우, <varname>$this</varname>은 호출한 객체의 것입니다. 다음 예제가
+     이를 보여줍니다:
+     <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?php
+class A
+{
+    function foo()
+    {
+        if (isset($this)) {
+            echo '$this is defined (';
+            echo get_class($this);
+            echo ")\n";
+        } else {
+            echo "\$this is not defined.\n";
+        }
+    }
+}
+
+class B
+{
+    function bar()
+    {
+        A::foo();
+    }
+}
+
+$a = new A();
+$a->foo();
+A::foo();
+$b = new B();
+$b->bar();
+B::bar();
+?>
+]]>
+      </programlisting>
+      &example.outputs;
+      <screen>
+<![CDATA[
+$this is defined (a)
+$this is not defined.
+$this is defined (b)
+$this is not defined.
+]]>
+      </screen>
+     </informalexample>
+    </para>
+   </note>
+
+   <note>
+    <para>
+     클래스와 객체를 제어할 수 있는 몇가지의 유용한 함수가 제공된다.
+     <link linkend="ref.classobj">클래스/객체 함수</link>에서 확인할수 있다.
     </para>
    </note>
   </sect1>
@@ -243,12 +318,10 @@ $cart->$myvar = array("10" => 1);
     <programlisting role="php">
 <![CDATA[
 <?php
-class Named_Cart extends Cart
-{
+class Named_Cart extends Cart {
     var $owner;
-  
-    function set_owner ($name)
-    {
+
+    function set_owner ($name) {
         $this->owner = $name;
     }
 }
@@ -296,33 +369,22 @@ $ncart->add_item("10", 1);  // (기존 cart에서 상속한 함수 사용)
   </sect1>
 
   <sect1 xml:id="language.oop.constructor">
-   <title><literal>생성자</literal></title>
-
-   <caution>
-    <simpara>
-     PHP 3와 PHP 4에서 생성자(constructor)는 서로 다르게 동작한다.
-     PHP 4의 문법이 강력히 추천하는 바이다.
-    </simpara>
-   </caution>
+   <title>생성자</title>
 
    <para>
     생성자는 <literal>new</literal>를 사용하여 클래스의 새 인스턴스를
-    생성할때 자동으로 호출되는 클래스 내의 함수를 말한다. PHP 3에서는
-    클래스의 이름과 동일한 함수가 생성자가 된다. PHP 4에서는 클래스가
-    선언될때의 클래스명과 동일한 이름을 갖는 함수가 생성자가 된다. - 
-    차이는 미묘하지만 매우 중요하다 (다음 글을 보세요).
+    생성할때 자동으로 호출되는 클래스 내의 함수를 말한다. 클래스명과 동일한
+    이름을 가지는 함수가 생성자가 됩니다. 클래스에 생성자가 없으면, 부모
+    클래스의 생성자가 호출됩니다. (존재할 경우)
    </para>
  
    <informalexample>
     <programlisting role="php">
 <![CDATA[
 <?php
-// PHP 3와  PHP 4에서 작동함
-class Auto_Cart extends Cart
-{
-    function Auto_Cart()
-    {
-        $this->add_item ("10", 1);
+class Auto_Cart extends Cart {
+    function Auto_Cart() {
+        $this->add_item("10", 1);
     }
 }
 ?>
@@ -343,21 +405,16 @@ class Auto_Cart extends Cart
     <programlisting role="php">
 <![CDATA[
 <?php
-// PHP 3와 PHP 4에서 동작함.
-class Constructor_Cart extends Cart
-{
-    function Constructor_Cart($item = "10", $num = 1)
-    {
+class Constructor_Cart extends Cart {
+    function Constructor_Cart($item = "10", $num = 1) {
         $this->add_item ($item, $num);
     }
 }
  
 // Shop the same old boring stuff.
- 
 $default_cart = new Constructor_Cart;
  
 // Shop for real...
- 
 $different_cart = new Constructor_Cart("20", 17);
 ?>
 ]]>
@@ -370,13 +427,6 @@ $different_cart = new Constructor_Cart("20", 17);
     <literal>@new</literal>를 쓸수 있다.
    </para>
 
-   <caution>
-    <simpara>
-     PHP 3에서 파생 클래스와 생성자는 많은 제약을 갖는다.
-     다음 예제 코드는 이런 제약을 이해하기 위해 주의깊게 살펴봐야할것이다.
-    </simpara> 
-   </caution>
-   
    <informalexample>
     <programlisting role="php">
 <![CDATA[
@@ -385,110 +435,53 @@ class A
 {
     function A()
     {
-      echo "I am the constructor of A.<br>\n";
-    }
-}
-
-class B extends A
-{
-    function C()
-    {
-        echo "I am a regular function.<br>\n";
-    }
-}
-
-// PHP 3에서는 어떤 생성자도 호출되지 않는다.
-$b = new B;
-?>
-]]>
-    </programlisting>
-   </informalexample>
-
-   <para>
-    위 예제 코드는 PHP 3에서는 어떤 생성자도 호출되지 않는다. PHP 3의
-    규칙은 : '생성자는 클래스와 같은 이름을 갖는 함수이다'. 클래스명 
-    이 B이고 이 클래스에서는 B()함수가 없으므로 아무일도 일어나지 않는다.
-   </para>
-   
-   <para>
-    PHP 4에서는 다른 규칙이 적용되어서 이런 규칙의 문제가 해결되었다: 클래스가
-    생성자를 갖지 않을때, 원래 클래스에서 생성자가 존재하면 그 생성자가 
-    호출된다. 위 예제 코드는 PHP 4에서 'I am the constructor of A.&lt;br>'
-    를 출력할것이다.
-   </para>
-
-   <informalexample>
-    <programlisting role="php">
-<![CDATA[
-<?php
-class A
-{
-    function A()
-    {
-        echo "I am the constructor of A.<br>\n";
+        echo "I am the constructor of A.<br />\n";
     }
 
     function B()
     {
-        echo "I am a regular function named B in class A.<br>\n";
-        echo "I am not a constructor in A.<br>\n";
+        echo "I am a regular function named B in class A.<br />\n";
+        echo "I am not a constructor in A.<br />\n";
     }
 }
 
 class B extends A
 {
-    function C()
-    {
-        echo "I am a regular function.<br>\n";
-    }
 }
 
-// This will call B() as a constructor.
+// B()를 생성자로 호출합니다
 $b = new B;
 ?>
 ]]>
     </programlisting>
    </informalexample>
-   
+
    <para>
-    PHP 3에서 클래스 A의 함수 B()는 의도하지 않았을지라도 즉시 
-    클래스 B의 생성자가 될것이다. PHP 3의 규칙: '생성자는 클래스와 
-    같은 이름을 갖는 함수이다'. PHP 3에서는 그 함수가 클래스 B에서
+    클래스 A의 함수 B()는 의도하지 않았을지라도 즉시 
+    클래스 B의 생성자가 될것이다.
+    PHP 4에서는 그 함수가 클래스 B에서
     선언되었는지 또는 거기서 상속되었는지는 상관하지 않는다.
    </para>
-   
-   <para>
-    위 규칙의 문제점을 PHP 4에서는 다음과 같은 규칙으로 해결했다 : 
-    '생성자는 그것이 선언된 클래스와 같은 이름을 갖는 함수이다'. 
-    따라서 PHP 4는 클래스 B가 생성자를 갖지 않으므로 원래 클래스의
-    생성자가 호출되어서 'I am the constructor of A.&lt;br>'를 출력한다.
-   </para>
-   
+
    <caution>
     <simpara>
-     PHP 3와 PHP 4 모두 파생 클래스의 생성자에서 자동으로 원래
+     PHP 4는 파생 클래스의 생성자에서 자동으로 부모
      클래스의 생성자를 호출하지 않는다. 적절하게 상단에 생성자 호출을 
      전달할 책임은 당신에게 달려있다.
     </simpara>
    </caution>
-   
-   <note>
-    <simpara>
-     PHP 3나 PHP 4에서는 소멸자(destructor)를 지원하지 않는다. 대신에 이런
-     소멸자의 기능을 수행하기 위해 <function>register_shutdown_function</function>
-     함수를 사용할수 있다.
-    </simpara>
-   </note>
-   
+
    <para>
     소멸자는 객체가 파괴될때, <function>unset</function>함수나, 
     단순히 현재 영역을 벗어남으로써 자동으로 호출되는 함수이다.
-    PHP에서는 소멸자가 없다.
+    PHP에서는 소멸자가 없다. 대신
+    <function>register_shutdown_function</function>을 사용하여 소멸자의 효과를
+    낼 수는 있습니다.
    </para>
   </sect1>
 
  <sect1 xml:id="keyword.paamayim-nekudotayim"><!-- :-) -->
-   <title><literal>::</literal></title>
+  <title>영역 해결 연산자 (<literal>::</literal>)</title>
 
    <caution>
     <simpara>
@@ -506,34 +499,30 @@ $b = new B;
     <programlisting role="php">
 <![CDATA[
 <?php
-class A
-{
-    function example()
-    {
-        echo "I am the original function A::example().<br>\n";
+class A {
+    function example() {
+        echo "I am the original function A::example().<br />\n";
     }
 }
 
-class B extends A
-{
-    function example()
-    {
-        echo "I am the redefined function B::example().<br>\n";
+class B extends A {
+    function example() {
+        echo "I am the redefined function B::example().<br />\n";
         A::example();
     }
 }
 
 // 여기서는 클래스 A의 객체가 존재하지 않는다.
 // 이 코드는
-//   I am the original function A::example().<br>를 출력한다.
+//   I am the original function A::example().<br />를 출력한다.
 A::example();
 
 // B 클래스의 객체를 생성한다.
 $b = new B;
 
 // 여기서는 다음과 같이 출력할것이다.
-//   I am the redefined function B::example().<br>
-//   I am the original function A::example().<br>
+//   I am the redefined function B::example().<br />
+//   I am the original function A::example().<br />
 $b->example();
 ?>
 ]]>
@@ -593,19 +582,15 @@ $b->example();
    <programlisting role="php">
 <![CDATA[
 <?php
-class A
-{
-    function example()
-    {
-        echo "I am A::example() and provide basic functionality.<br>\n";
+class A {
+    function example() {
+        echo "I am A::example() and provide basic functionality.<br />\n";
     }
 }
 
-class B extends A
-{
-    function example()
-    {
-        echo "I am B::example() and provide additional functionality.<br>\n";
+class B extends A {
+    function example() {
+        echo "I am B::example() and provide additional functionality.<br />\n";
         parent::example();
     }
 }
@@ -622,21 +607,6 @@ $b->example();
 
  <sect1 xml:id="language.oop.serialization">
   <title>객체 일렬화 - 세션 내의 객체</title>
-
-  <note>
-   <simpara>
-    PHP 3에서 객체는 일렬화(serialization)와 비일렬화(unserialization)처리 
-    과정에서 클래스의 구성요소를 잃게 된다. 처리후 이 변수는 더이상 객체 타입 
-    이 아니다. 그래서 클래스와 메소드를 갖지 않는다. 결국은 거의 쓸모 없게 
-    되는것이다 (웃기는 문법을 갖는 배열처럼 바뀌게 된다)
-   </simpara>
-  </note>
-
-  <caution>
-   <simpara>
-    다음 설명은 PHP 4로만 한정되는 내용이다.
-   </simpara>
-  </caution>
 
   <para>
    <function>serialize</function>함수는 PHP에 저장할수 있는 값은 뭐든지 
@@ -664,12 +634,10 @@ $b->example();
 <?php
 // classa.inc:
   
-  class A 
-  {
+  class A {
       var $one = 1;
     
-      function show_one()
-      {
+      function show_one() {
           echo $this->one;
       }
   }
@@ -682,7 +650,7 @@ $b->example();
   $s = serialize($a);
   // store $s somewhere where page2.php can find it.
   $fp = fopen("store", "w");
-  fputs($fp, $s);
+  fwrite($fp, $s);
   fclose($fp);
 
 // page2.php:
@@ -712,7 +680,8 @@ $b->example();
    모든 페이지에서 실제로 이런 클래스를 사용하지 않더라도, 모든 페이지에 
    등록된 모든 객체의 클래스 선언을 인클루드하도록 한다. 이렇게 하지 않고,
    존재하는 클래스 선언부없이 객체가 일렬화되면, 그 객체는 클래스 구성원을
-   잃게 될것이고 어떤 함수도 갖지 않는 <literal>stdClass</literal>클래스의
+   잃게 될것이고 어떤 함수도 갖지 않는
+   <classname>__PHP_Incomplete_Class_Name</classname> 클래스의
    객체가 될것이다. 즉, 그 객체는 쓸모없게 될것이다.
   </para>
   
@@ -731,12 +700,13 @@ $b->example();
    매직 이름을 갖는 함수를 갖는지 체크한다. 이 함수를 갖고있다면, 
    일렬화되기 전에 이 함수가 수행된다. 이 함수는 객체를 깨끗하게 비울수 있고,
    일렬화되어야 하는 그 객체의 모든 변수명을 갖는 배열을 돌려준다.
+   이 메쏘드가 아무것도 반환하지 않는다면, &null;이 일렬화되고 E_NOTICE가
+   발생합니다.
   </para>
   
   <para>
-   <literal>__sleep</literal>의 의도된 사용은 그 객체가 소유할지도 모르는
-   모든 데이터베이스의 접속을 종료하고, 아직 수행되지 않은 커밋(commit)
-   을 수행하거나 청소작업을 수행한다. 또한, 완전히 저장할 필요가 없는
+   <literal>__sleep</literal>의 의도된 사용은 지연된 데이터를 커밋하거나
+   비슷한 정리 작업을 수행하는 것입니다. 또한, 완전히 저장할 필요가 없는
    매우 거대한 객체를 갖고 있다면 이 함수를 유용하게 쓸수 있다.
   </para>
   
@@ -754,7 +724,7 @@ $b->example();
  </sect1>
   
  <sect1 xml:id="language.oop.newref">
-   <title>생성자의 재참조</title>
+   <title>생성자 안에서 참조</title>
    <para>
     생성자 내로 참조를 만드는 것은 혼란스런 결과를 유도할수 있다. 이런
     튜토리얼같은 섹션이 문제를 회피하도록 도와준다.
@@ -763,10 +733,8 @@ $b->example();
      <programlisting role="php">
 <![CDATA[
 <?php
-class Foo
-{
-    function Foo($name)
-    {
+class Foo {
+    function Foo($name) {
         // 전역 배열 $globalref 안에 참조를 만든다
         global $globalref;
         $globalref[] = &$this;
@@ -776,13 +744,11 @@ class Foo
         $this->echoName();
     }
 
-    function echoName()
-    {
-        echo "<br>",$this->name;
+    function echoName() {
+        echo "<br />", $this->name;
     }
  
-    function setName($name)
-    {
+    function setName($name) {
         $this->name = $name;
     }
 }
@@ -881,41 +847,34 @@ set from outside */
      <programlisting role="php">
 <![CDATA[
 <?php
-class A
-{
-    function A($i)
-    {
+class A {
+    function A($i) {
         $this->value = $i;
         // try to figure out why we do not need a reference here
         $this->b = new B($this);
     }
 
-    function createRef()
-    {
+    function createRef() {
         $this->c = new B($this);
     }
 
-    function echoValue()
-    {
-        echo "<br>","class ",get_class($this),': ',$this->value;
+    function echoValue() {
+        echo "<br />","class ",get_class($this),': ',$this->value;
     }
 }
 
 
-class B
-{
-    function B(&$a)
-    {
+class B {
+    function B(&$a) {
         $this->a = &$a;
     }
 
-    function echoValue()
-    {
-        echo "<br>","class ",get_class($this),': ',$this->a->value;
+    function echoValue() {
+        echo "<br />","class ",get_class($this),': ',$this->a->value;
     }
 }
 
-// try to undestand why using a simple copy here would yield
+// try to understand why using a simple copy here would yield
 // in an undesired result in the *-marked line
 $a =& new A(10);
 $a->createRef();
@@ -930,24 +889,26 @@ $a->echoValue();
 $a->b->echoValue(); // *
 $a->c->echoValue();
 
-/*
-output:
+?>
+]]>
+     </programlisting>
+     &example.outputs;
+     <screen>
+<![CDATA[
 class A: 10
 class B: 10
 class B: 10
 class A: 11
 class B: 11
 class B: 11
-*/
-?>
 ]]>
-     </programlisting>
+     </screen>
     </informalexample>
    </para>
   </sect1>
 
-  <sect1 xml:id="language.oop.object-comparison-php4">
-   <title>PHP 4에서 객체 비교</title>
+  <sect1 xml:id="language.oop.object-comparison">
+   <title>객체 비교</title>
   <para>
    PHP 4에서 객체는 매우 단순한 방식으로 비교된다. 즉: 두 객체 인스턴스
    가 같은 속성과 값을 갖고, 같은 클래스의 인스턴스라면 두 객체는 동일하다.
@@ -1012,9 +973,9 @@ compareObjects($o, $r);
 ?>
 ]]>
     </programlisting>
-   </example>
-   결과는 다음과 같다:
-   <screen>
+    &example.outputs;
+    <screen>
+<![CDATA[
 Compare instances created with the same parameters
 o1 == o2 : TRUE
 o1 != o2 : FALSE
@@ -1032,7 +993,9 @@ o1 == o2 : FALSE
 o1 != o2 : TRUE
 o1 === o2 : FALSE
 o1 !== o2 : TRUE
-   </screen>
+]]>
+    </screen>
+   </example>
    위 출력중 어떤것은 위에서 설명한 비교 규칙이 적용된다는 것을 알수 있다.
    같은 속성에 대해 같은 값을 갖고, 같은 클래스에서 파생된 인스턴스만 동일
    하고 동치로 판단한다. 
@@ -1079,9 +1042,9 @@ compareObjects($u, $w);
 ?>     
 ]]>
     </programlisting>
-   </example>
-   이 코드의 결과는 다음과 같은 출력이 기대된다:
-   <screen>
+    &example.outputs;
+    <screen>
+<![CDATA[
 Composite objects u(o,p) and v(q,p)
 o1 == o2 : TRUE
 o1 != o2 : FALSE
@@ -1093,109 +1056,11 @@ o1 == o2 : FALSE
 o1 != o2 : TRUE
 o1 === o2 : FALSE
 o1 !== o2 : TRUE
-   </screen>
+]]>
+    </screen>
+   </example>
   </para>
  </sect1>
-
-  <sect1 xml:id="language.oop.object-comparison-php5">
-   <title>PHP 5에서 객체 비교</title>
-   &warn.experimental;
-   <para>
-    PHP 5에서 객체 비교는 PHP 4보다 좀더 복잡하고 객체 지향 언어
-    (PHP 5는 그런 언어가 아니다)에서 기대할수 있는 특성에 더 가깝다. 
-   </para>
-   <para>
-    비교 연산자 (<literal>==</literal>)를 사용할 때에는 객체 변수는 단순
-    한 방식으로 비교된다. 즉: 두 객체 인스턴스가 같은 속성과 값을 갖고, 
-    같은 클래스에서 파생된 인스턴스이고, 같은 네임스페이스에서 선언되었
-    다면 동일한 객체라고 본다.
-   </para>
-   <para>
-    하지만, 식별 연산자 (<literal>===</literal>)를 사용하면 객체 변수는 오직 
-    같은 클래스(특별한 네임스페이스에서)의 같은 인스턴스로 참조될때만 
-    동일한 객체라고 본다.
-   </para>
-   <para>
-    다음 예제 코드를 보고 이런 규칙을 음미해보자.
-    <example>
-     <title>PHP 5에서의 객체 비교에 대한 예제 코드</title>
-     <programlisting role='php'>
-<![CDATA[
-<?php
-function bool2str($bool) {
-    if ($bool === false) {
-            return 'FALSE';
-    } else {
-            return 'TRUE';
-    }
-}
-
-function compareObjects(&$o1, &$o2) {
-    echo 'o1 == o2 : '.bool2str($o1 == $o2)."\n";
-    echo 'o1 != o2 : '.bool2str($o1 != $o2)."\n";
-    echo 'o1 === o2 : '.bool2str($o1 === $o2)."\n";
-    echo 'o1 !== o2 : '.bool2str($o1 !== $o2)."\n";
-}
-
-class Flag {
-    var $flag;
-
-    function Flag($flag=true) {
-            $this->flag = $flag;
-    }
-}
-
-namespace Other {
-
-    class Flag {
-        var $flag;
-
-        function Flag($flag=true) {
-                $this->flag = $flag;
-        }
-    }
-
-}
-
-$o = new Flag();
-$p = new Flag();
-$q = $o;
-$r = new Other::Flag();
-
-echo "Two instances of the same class\n";
-compareObjects($o, $p);
-
-echo "\nTwo references to the same instance\n";
-compareObjects($o, $q);
-
-echo "\nInstances of similarly named classes in different namespaces\n";
-compareObjects($o, $r);
-?>
-]]>
-     </programlisting>
-    </example>
-    이 예제 코드는 다음과 같이 출력한다:
-    <screen>
-Two instances of the same class
-o1 == o2 : TRUE
-o1 != o2 : FALSE
-o1 === o2 : FALSE
-o1 !== o2 : TRUE
-
-Two references to the same instance
-o1 == o2 : TRUE
-o1 != o2 : FALSE
-o1 === o2 : TRUE
-o1 !== o2 : FALSE
-
-Instances of similarly named classes in different namespaces
-o1 == o2 : FALSE
-o1 != o2 : TRUE
-o1 === o2 : FALSE
-o1 !== o2 : TRUE
-    </screen>
-   </para>
-  </sect1>
  </chapter>
  
 <!-- Keep this comment at the end of the file

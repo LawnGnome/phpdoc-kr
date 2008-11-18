@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.12 $ -->
-<!-- EN-Revision: 1.25 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.50 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.references" xmlns="http://docbook.org/ns/docbook">
   <title>참조 표현</title>
 
@@ -8,7 +8,7 @@
    <title>참조란 무엇인가</title>
    <simpara>  
     PHP에서 참조란 다른 이름으로 같은 변수의 내용에 접근한다는 것을
-    의미한다. C 포인터와 비슷한 개념은 아니며, 심볼 테이블이라고 볼수 있다.
+    의미한다. C 포인터와 비슷한 개념은 아닙니다; 심볼 테이블이라고 볼 수 있다.
     PHP에서 변수명과 변수의 내용은 다르다. 그래서 같은 내용이 다른 이름을
     갖을수 있다. 유닉스 파일명과 파일에 가장 가까운 개념이다 - 변수명은
     디렉토리 엔트리이고, 변수 내용은 파일 자체라고 볼수 있다. 참조는 유닉스
@@ -24,13 +24,13 @@
      <programlisting role="php">
 <![CDATA[
 <?php
-$a =& $b 
+$a =& $b;
 ?>
 ]]>
      </programlisting>
     </informalexample>
-    <varname>$a</varname>와 <varname>$b</varname>는 같은 변수를 가리킨다는 것을
-    의미이다.
+    <varname>$a</varname>와 <varname>$b</varname>가 같은 내용을 가리키는 것을
+    의미합니다.
     <note>
      <para>
       여기서 <varname>$a</varname>와 <varname>$b</varname>는 완전히 같다.
@@ -40,6 +40,38 @@ $a =& $b
      </para>
     </note>
    </para>
+   <note>
+    <para>
+     참조를 가진 배열이 복사되면, 그 값은 참조인 상태로 남습니다. 이는 배열이
+     함수에 값으로 넘겨졌을 때에도 유효합니다.
+    </para>
+   </note>
+   <note>
+    <para>
+     정의되지 않은 변수를 참조를 통해 할당하거나, 넘기거나 반환하면 변수가
+     생성됩니다.
+     <example>
+      <title>정의도지 않은 변수에 참조 사용하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+function foo(&$var) { }
+
+foo($a); // $a가 "생성되고" null로 할당됩니다
+
+$b = array();
+foo($b['b']);
+var_dump(array_key_exists('b', $b)); // bool(true)
+
+$c = new StdClass;
+foo($c->d);
+var_dump(property_exists($c, 'd')); // boold(true)
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+   </note>
    <para>
    같은 문법은 함수에도 적용된다. 참조를 돌려받고, 
    <literal>new</literal>연산자와도 함께 쓸수 있다 (PHP 4.0.4 이후 버전부터 유효):
@@ -48,12 +80,15 @@ $a =& $b
 <![CDATA[
 <?php
 $bar =& new fooclass();
-$foo =& find_var ($bar);
+$foo =& find_var($bar);
 ?>
 ]]>
-    </programlisting>
+     </programlisting>
     </informalexample>
-    </para>
+    PHP 5부터, <link linkend="language.oop5.basic.new">new</link>는 자동으로
+    참조를 반환하므로, 여기에서처럼 <literal>=&amp;</literal>를 사용하는 것은
+    배제되었고 E_STRICT 등급 메세지를 발생합니다.
+   </para>
     <note>
      <para>
      <literal>&amp;</literal> 연산자를 사용하지않으면 생성된 객체의 복사본을 돌려받는다.
@@ -69,6 +104,64 @@ $foo =& find_var ($bar);
       이것은 젠드 엔진(Zend Engine)의 한계이고 이런 표현을 쓰면 파싱 에러가 발생한다.
      </para>
    </note>
+   <warning>
+    <para>
+     함수 안에서 <literal>global</literal>로 선언한 변수에 참조를 할당하면, 그
+     참조는 그 함수 안에서만 보여집니다. 이를 피하려면
+     <varname>$GLOBALS</varname> 배열을 사용하십시오.
+     <example>
+      <title>함수 안에서 전역 변수 참조하기</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$var1 = "Example variable";
+$var2 = "";
+
+function global_references($use_globals)
+{
+    global $var1, $var2;
+    if ($use_globals) {
+        $var2 =& $var1; // 함수 안에서만 보여집니다
+    } else {
+        $GLOBALS["var2"] =& $var1; // 전역 문맥에서도 보여집니다
+    }
+}
+
+global_references(false);
+echo "var2 is set to '$var2'\n"; // var2 is set to ''
+global_references(true);
+echo "var2 is set to '$var2'\n"; // var2 is set to 'Example variable'
+?>
+]]>
+      </programlisting>
+     </example>
+     <literal>global $var;</literal>는 <literal>$var =&amp;
+      $GLOBALS['var'];</literal>의 단축형임을 생각하십시오. 그러므로 다른
+     참조를 <literal>$var</literal>에 할당하는 것은 지역 변수의 참조를 변경할
+     뿐입니다.
+    </para>
+   </warning>
+   <note>
+    <para>
+     <link linkend="control-structures.foreach">foreach</link> 구문 안에서
+     참조 변수에 값을 할당하면, 참조도 변경됩니다.
+     <example>
+      <title>참조와 foreach 구문</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$ref = 0;
+$row =& $ref;
+foreach (array(1, 2, 3) as $row) {
+    // do something
+}
+echo $ref; // 3 - 반복한 배열의 마지막 원소
+?>
+]]>
+      </programlisting>
+     </example>
+    </para>
+   </note>
    <para>
     참조가 하는 두번째 일은 참조에 의해 변수를 전달하는 것이다. 이와 같은 것은 
     함수에서 지역 변수를 만들거나 같은 내용을 참조하는 호출을 사용하는 변수를 
@@ -77,13 +170,13 @@ $foo =& find_var ($bar);
      <programlisting role="php">
 <![CDATA[
 <?php
-function foo (&$var)
+function foo(&$var)
 {
     $var++;
 }
 
 $a=5;
-foo ($a);
+foo($a);
 ?>
 ]]>
      </programlisting>
@@ -108,7 +201,7 @@ foo ($a);
      <programlisting role="php">
 <![CDATA[
 <?php
-function foo (&$var)
+function foo(&$var)
 {
     $var =& $GLOBALS["baz"];
 }
@@ -127,6 +220,9 @@ foo($bar);
     유효하지 않기 때문이다 (그것은 <varname>$var</varname>에 의해 표현되는 것이 아니고, 
     <varname>$var</varname>는 오직 변수 내용만을 소유하고 호출 심볼 테이블 내에서
     이름이 값으로 변환되어 연결되지는 않는다).
+    함수에 의해 선택된 참조 변수를 <link
+     linkend="language.references.return">참조 반환</link>에 사용할 수
+    있습니다.
    </simpara>
   </sect1>
 
@@ -139,13 +235,13 @@ foo($bar);
      <programlisting role="php">
 <![CDATA[
 <?php
-function foo (&$var)
+function foo(&$var)
 {
     $var++;
 }
 
 $a=5;
-foo ($a);
+foo($a);
 // $a is 6 here
 ?>
 ]]>
@@ -153,8 +249,9 @@ foo ($a);
     </informalexample>
   함수 호출에 대해 참조 표시를 할수 없다는 것에 주의해야 한다. 
   - 함수선언에서만 참조표시를 할수 있다
-  함수 선언만으로도 충분히 참조에 의해 인수를 정확하게 전달할수 있다.
-
+  함수 선언만으로도 충분히 참조에 의해 인수를 정확하게 전달할수 있다. 최근
+  버전의 PHP에서 <literal>foo(&amp;$a);</literal>처럼 &amp;를 사용하면,
+  "Call-time pass-by-reference"가 배제되었다는 경고를 받습니다.
   </para>
   <para>
   다음과 같은 것들은 참조에 의해 전달될수 있다:
@@ -204,40 +301,47 @@ function bar() // Note the missing &
     $a = 5;
     return $a;
 }
-foo(bar());
+foo(bar()); // PHP 5.0.5부터 치명적인 오류가 발생합니다
 
-foo($a = 5) // Expression, not variable
-foo(5) // Constant, not variable
+foo($a = 5); // 변수가 아닌, 표현식입니다
+foo(5); // 치명적인 오류가 발생합니다
 ?>
 ]]>
      </programlisting>
     </informalexample>
-		이런 조건은 PHP 4.0.4 이후 버전에서만 요구된다.
+    이런 조건은 PHP 4.0.4 이후 버전에서만 요구된다.
   </para>
   </sect1>
 
   <sect1 xml:id="language.references.return">
-   <title>참조 돌려받기</title>
+   <title>참조 반환하기</title>
    <para>
-    참조에 의한 돌려받기는 참조에 연결되어 있는 변수를 확인하기 위해
-    함수를 사용할 때 유용하다. 참조 돌려받기는 다음과 같은 문법을 사용한다:
+    참조에 의한 반환하기는 참조에 연결되어 있는 변수를 찾는 함수를 사용할 때
+    유용합니다. 참조에 의한 반환을 성능을 증가시키기 위해 사용하지
+    <emphasis>마십시오</emphasis>. 엔진이 스스로 최적화해 줍니다. 참조를
+    반환하는건 기술적으로 할 필요가 있을 경우에만 하십시오! 참조를 반환하려면,
+    다음 문법을 사용합니다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
-function &find_var ($param)
-{
-    ...code...
-    return $found_var;
+class foo {
+    public $value = 42;
+
+    public function &getValue() {
+        retrun $this->value;
+    }
 }
 
-$foo =& find_var ($bar);
-$foo->x = 2; 
+$obj = new foo;
+$myValue = &$obj->getValue(); // $myValue는 $obj->value의 참조로, 42입니다.
+$obj->value = 2;
+echo $myValue;                // $obj->value의 새 값, 즉 2를 출력합니다.
 ?>
 ]]>
      </programlisting>
     </informalexample>
-    위 예제 코드는  함수 <varname>find_var</varname>에 의해 돌려받는
+    위 예제 코드는  함수 <varname>getvalue</varname>에 의해 반환하는
     객체의 속성을 설정하지만, 참조 문법을 사용하지 않을 때와 같은
     복사가 아니다.
    </para>
@@ -246,7 +350,18 @@ $foo->x = 2;
      인수가 전달되는것과 달리, 여기서는 두 근데에서 <literal>&amp;</literal>을
      사용해야 한다 - 보통의 복사가 아니라, 참조에 의해 돌려받는다는것을 가리킬때,
      그리고 일반적인 지정이 아닌 참조 연결이라는 것을 가리킬때,
-     <varname>$foo</varname>변수에 대해 사용해야 한다.
+     <varname>$myValue</varname>변수에 대해 사용해야 한다.
+    </simpara>
+   </note>
+   <note>
+    <simpara>
+     다음 문법으로 함수에서 참조를 반환하려 할 수 있습니다:
+     <literal>return ($this->value);</literal> 이는 작동하지
+     <emphasis>않습니다</emphasis>. 변수가 아닌 <emphasis>표현식</emphasis>을
+     참조로 반환하려고 하는 일이기 때문입니다. 함수에서는 변수만을 참조로
+     반환할 수 있습니다 - 다른 것은 안됩니다. PHP 4.4.0과 PHP 5.1.0부터, 코드가
+     동적 표현식이나 <literal>new</literal> 연산자의 결과를 반환하려 할 경우
+     <constant>E_NOTICE</constant> 오류가 발생합니다.
     </simpara>
    </note>
   </sect1>
@@ -262,7 +377,7 @@ $foo->x = 2;
 <?php
 $a = 1;
 $b =& $a;
-unset ($a); 
+unset($a); 
 ?>
 ]]>
      </programlisting>
@@ -308,7 +423,8 @@ $var =& $GLOBALS["var"];
    <sect2 xml:id="references.this">
     <title><literal>$this</literal></title>
     <simpara>
-     객체 메소드에서,<varname>$this</varname>는 호출 객체로의 참조를 하게 된다.
+     객체 메소드에서,<varname>$this</varname>는 항상 호출 객체로의 참조를 하게
+     된다.
     </simpara>
    </sect2>
   </sect1>

@@ -1,121 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.8 $ -->
-<!-- EN-Revision: 1.34 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.52 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.basic-syntax" xmlns="http://docbook.org/ns/docbook">
   <title>기본 문법</title>
-
-   <!--
-   
-    NOTE:                             Last modified: 2001-05-16 13:00 GMT
-    
-    the language part is currently under heavy revision. Please do not
-    not make any heavy (i.e. structural) modifications to this part 
-    for a moment. 
-    
-    You'd also better not start any translation yet.
-    
-    Comments are always welcome at phpdoc@lists.php.net
-    
-    Progress:
-    
-     intro : DOESN'T EXIST - yet?
-             new chapter, with some introductionary remarks?
-             Will be discussed on the ML soon.
-     basic-syntax: 
-             FINISHED
-             except maybe moving the 'advanced escaping'
-             to a better place?
-             TODO: 
-              - nada
-     types : Being revised. Added all new types
-             Boolean and Integer are more or less finished.
-             The rest isn't.
-             TODO: 
-              - why is $foo[bar] bad syntax?
-              - what's the difference between unset($bla) and
-                $bla = NULL; (it is different!)
-              - $obj->{expr} syntax
-              - (unset) cast?????
-              - $bla = unset <== should've been nuked, don't mention it
-              - $str{offset} syntax, rather than $str[offset]
-              - read notes and apply when any of them are useful
-              - remove notes which have been included here.
-              - ...
-     the rest: Not yet started with.
-             TODO: 
-              - ?
-     oop   : has been revised by Kristian, DONE.
-   -->
-   
   <sect1 xml:id="language.basic-syntax.phpmode">
    <title>HTML에서 벗어나기</title>
-  
    <para>
-    PHP가 파일을 해석할때 PHP코드로 해석하라고 하는 특별한 코드와 만나지
-    않는다면 단순히 그 파일의 텍스트를 넘겨줄 뿐이다. 해석기(parser)는
-    PHP 닫기 태그가 있는곳까지 발견된 코드 모두를 수행한다. PHP 닫기 태그
-    를 만나면 다시 텍스트를 그냥 넘겨주기 시작하는것이다. 이런 메카니즘은
-    HTML안에 PHP코드를 내장시킬수 있게 해준다: PHP 태그 밖의 모든것은 완전히
-    단독으로 존재하는것이고, 반면에 PHP 태그 안쪽은 코드로서 해석이 된다.
-   </para>
-
-   <para>
-    PHP 코드 블록은 네가지의 태그형태로 표시할수 있다. 이 중에서 두가지
-    (&lt;?php. . .?&gt; 과 &lt;script language="php"&gt;. . .&lt;/script&gt;)는
-    항상 유효한 형태이다. 반면에 다른 형태는 &php.ini; 설정 파일에서 켜거나 끌
-    수 있다. 짧은형(short-form)태그와 ASP스타일(ASP-style) 태그는 편하겠지만,
-    긴 형태 태그만큼 이식성이 뛰어나진 못하다. XML이나 XHTML안에
-    PHP코드를 내장시키려면 XML과 호환될수 있도록 &lt;?php. . .?&gt;형을
-    써야한다.
-   </para>
-
-   <para>
-    PHP가 지원하는 태그 형태:
-   </para>
-
-    <para>
-     <example>
-      <title>HTML에서 벗어나기</title>
-      <programlisting role="php">
+    PHP가 파일을 해석할 때, PHP가 사이에 있는 코드를 해석하라고 하는 시작과 끝
+    태그를 찾습니다. 이런 방법의 해석은, 시작과 끝 태그 밖에 있는 부분은 PHP
+    해석기가 무시하게 됨으로써, php가 어떠한 종료의 문서에도 포함될 수 있도록
+    합니다. 대부분의 경우 다음 예제와 같이 php가 포함된 HTML 문서를 보게 될
+    것입니다.
+    <informalexample>
+     <programlisting role="php">
 <![CDATA[
-1.  <?php echo("XHTML나 XML 문서와 호환시키려면, 이렇게 쓰세요\n"); ?>
-
-2.  <? echo ("이런 형태가 제일간단하다. SGML 처리명령\n"); ?>
-    <?= expression ?>는 "<? echo expression ?>"을 간단히 쓴 태그형
-    
-3.  <script language="php">
-        echo ("어떤 에디터 (프론트페이지같은)는 
-              처리 명령을 좋아하지 않는다");
-    </script>
-
-4.  <% echo ("ASP스타일 태그를 쓸수도 있다"); %>
-    <%= $variable; # 이것은 "<% echo . . ." %>을 간단히 쓴 태그형
+<p>이 부분은 무시합니다.</p>
+<?php echo '이 부분은 해석합니다.'; ?>
+<p>이 부분도 무시합니다.</p>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-
-   <para>
-    첫번째 방법 &lt;?php. . .?&gt;을 쓰는것이 가장 좋다. 이런 형태는 
-    XHTML과 같은 XML호환 코드안에 PHP를 쓸수 있게 해주기때문이다.
+     </programlisting>
+    </informalexample>
    </para>
-
    <para>
-    두번째 방법은 항상 유효하지 않다. 이 짧은 형은 활성화시켰을때만 유효하다.
-    <function>short_tags</function> 함수 (PHP 3에서만)로,
-    PHP 설정 파일 안의 <link linkend="ini.short-open-tag">short_open_tag</link>
-    설정 값을 활성화시키거나, <command>configure</command>명령 시에
-    --enable-short-tags옵션을 줘서 PHP를 컴파일함으로써 가용하게 할수있다.
+    좀 더 복잡한 구조도 사용할 수 있습니다:
+    <example>
+     <title>복잡한 벗어나기</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+if ($expression) {
+    ?>
+    <strong>This is true.</strong>
+    <?php
+} else {
+    ?>
+    <strong>This is false.</strong>
+    <?php
+}
+?>
+]]>
+     </programlisting>
+    </example>
+    예상한 대로 작동합니다. PHP가 ?&gt; 닫기 태그를 만나면, 그것이
+    무엇이던간에 다른 시작 태그를 만나기 전까지 단순히 출력하기 때문입니다.
+    (바로 따라오는 줄바꿈 제외 - <link
+     linkend="language.basic-syntax.instruction-separation">명령 구분</link>
+    참고) 물론, 여기서 주어진 예제는 부자연스럽지만 큰 텍스트 블록을
+    출력할 경우에는 PHP 해석 모드를 벗어나는 것이 모든 텍스트를
+    <function>echo</function>나 <function>print</function>를 통하여 전송하는
+    것보다 효율적입니다.
    </para>
-
    <para>
-    네번째 방법은 <link linkend="ini.asp-tags">asp_tags</link>설정값을
-    활성화시킴으로써 ASP 스타일 태그형태를 쓸수 있을때만 유효하다.
+    php에서 사용할 수 있는 네가지 형태의 시작과 끝 태그가 있습니다. 그 중
+    두가지, &lt;?php ?&gt;와 &lt;script language="php"&gt; &lt;/script&gt;는
+    항상 사용할 수 있습니다. 두가지 짧은 태그와 <productname>ASP</productname>
+    형식 태그는 &php.ini; 설정 파일에서 끄거나 켤 수 있습니다. 그러므로, 몇몇
+    사람들에겐 짧은 태그나 <productname>ASP</productname> 형식 태그가 편할지는
+    몰라도, 이식성이 부족하므로 일반적으로 권하지 않습니다.
     <note>
-     <para>3.0.4부터 ASP 스타일 태그에 대한 지원이 추가되었다</para>
+     <para>
+      PHP를 XML이나 XHTML에 넣을 경우 &lt;?php ?&gt; 태그를 사용해야 표준과
+      호환을 유지할 수 있습니다.
+     </para>
     </note>
    </para>
+   <para>
+    <example>
+     <title>PHP 시작과 끝 태그</title>
+     <programlisting role="php">
+<![CDATA[
+1.  <?php echo 'XHTML나 XML 문서와 호환시키려면, 이렇게 쓰세요'; ?>
 
+2.  <script language="php">
+        echo '어떤 에디터 (프론트페이지같은)는 
+              처리 명령을 좋아하지 않습니다';
+    </script>
+
+3.  <? echo '이런 형태가 제일 간단한 SGML 처리명령입니다'; ?>
+    <?= expression ?>은 "<? echo expression ?>"을 간단히 쓴 모양입니다
+
+4.  <% echo ("ASP스타일 태그를 쓸 수도 있습니다"); %>
+    <%= $variable; # 이것은 "<% echo . . ." %>을 간단히 쓴 모양입니다
+]]>
+     </programlisting>
+    </example>
+   </para>
+   <para>
+    예제에서 볼 수 있는 태그 중 첫번째와 두번째는 항상 사용할 수 있지만,
+    둘 중 첫번째 예제가 가장 보편적으로 사용되며, 권장됩니다.
+   </para>
+   <para>
+    짧은 태그(예제 3)은 &php.ini; 설정 파일 지시어 <link
+     linkend="ini.short-open-tag">short_open_tag</link>를 활성화하거나, php를
+    <option>--enable-short-tags</option> 옵션으로 설정하였을 경우에만 사용할
+    수 있습니다.
+   </para>
+   <para>
+    <productname>ASP</productname> 형식 태그(예제 4)는 &php.ini; 설정 파일
+    지시어 <link linkend="ini.asp-tags">asp_tags</link>를 활성화 했을 경우에만
+    사용할 수 있습니다.
+   </para>
    <para>
     <note>
      <para>
@@ -127,131 +111,100 @@
      </para>
     </note>
    </para>
-
-   <para>
-    블록의 닫기 태그가 하나만 존재한다면 그 뒤에 바로 
-    새줄(newline)이 포함될것이다. 또, 닫기 태그는 자동적으로 
-    세미콜른(;)의 역할도 수행한다. 따라서 PHP블록의 마지막 줄은 세미콜른
-    으로 끝낼 필요가 없다.
-   </para>
-    
-   <para>
-    PHP는 다음과 같은 구조도 허용이 된다:
-    <example><title>향상된 회피(escaping)</title>
-     <programlisting role="php">
-<![CDATA[
-<?php
-if ($expression) { 
-    ?>
-    <strong>이것은 참이다.</strong>
-    <?php 
-} else { 
-    ?>
-    <strong>이것은 거짓이다.</strong>
-    <?php 
-}
-?>
-]]>
-     </programlisting>
-    </example>
-    이런 구조는 기대하던대로 작동한다. 왜냐하면 PHP는 ?&gt;닫기 태그에
-    맞닥뜨리고나서 열기 태그를 만나기 전까지의 무엇이든 단순히
-    출력만 하기 때문이다. 이 예제는 PHP 파싱 모드를 줄임으로써
-    <function>echo</function>나 <function>print</function> 또는 비슷한
-    함수들이 모든 텍스트를 출력하는것보다 효율적으로 거대한 텍스트 블록
-    을 출력할수 있게 한다.
-   </para>
   </sect1>
   
   <sect1 xml:id="language.basic-syntax.instruction-separation">
-   <title>명령 구분 기호</title>
-   
-   <simpara>
-    명령은 C나 펄과 같은 기호를 사용하여 구분한다 - 각 명령은 세미콜른(;)
-    으로 끝난다.
-   </simpara>
-
+   <title>명령 구분</title>
    <para>
-    닫기 태그 (?&gt;)는 또한 문장의 끝이라는 의미를 내포한다. 그래서
-    다음 문장은 동일하다:
+    C나 펄처럼, PHP는 각 명령 구문 끝을 세미콜론으로 종료해야 합니다. PHP 코드
+    블록을 종료하면 자동으로 세미콜론을 적용합니다; PHP 블록의 마지막 줄에는
+    세미콜론 종료를 하지 않아도 됩니다. 블록의 닫기 태그는 바로 뒤에 따라올 수
+    있는 줄바꿈도 포함합니다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
-    echo "This is a test";
+    echo 'This is a test';
 ?>
 
-<?php echo "This is a test" ?>
+<?php echo 'This is a test' ?>
+
+<?php echo '마지막 닫기 태그를 생략합니다';
 ]]>
      </programlisting>
     </informalexample>
+    <note>
+     <para>
+      파일의 마지막에서 PHP 블록의 닫기 태그를 생략할 수 있으며, 때로는
+      유용합니다. <function>include</function>나
+      <function>require</function>를 사용할 경우, 원하지 않은 공백이 파일
+      마지막에 들어가지 않게 함으로써, 나중에 추가 응답 헤더를 추가할 수
+      있습니다. 또한 출력 버퍼링을 사용할 경우에도 포함한 파일들에 의해서 각
+      파트의 마지막에 원하지 않은 공백을 피할 수 있으므로 도움이 됩니다.
+     </para>
+    </note>
    </para>
   </sect1>
 
   <sect1 xml:id="language.basic-syntax.comments">
    <title>주석</title>
-   
    <para>
-    PHP는 'C', 'C++', Unix 셀 스타일(shell-style)의 주석(comment)형태를 
+    PHP는 'C', 'C++', Unix 쉘 형식(펄 형식)의 주석(comment)형태를 
     지원한다. 예를 들면:
 
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
-    echo "This is a test"; // 한줄짜리 c++ 스타일 주석
+    echo 'This is a test'; // 한줄짜리 c++ 스타일 주석
     /* 여러줄의 주석
        이줄까지 주석처리 된다 */
-    echo "This is yet another test";
-    echo "One Final Test"; # 셀스타일의 한줄짜리 주석
+    echo 'This is yet another test';
+    echo 'One Final Test'; # 쉘 형식의 한줄짜리 주석
 ?>
 ]]>
      </programlisting>
     </informalexample>
    </para>
-
    <simpara>
-    "한줄짜리" 주석은 그 줄의 끝이나, 처음에 무엇이 오든 해당 PHP코드 
-    블록에 주석을 단다.
+    "한 줄" 주석 형식은 줄의 끝까지나 PHP 코드의 현재 블록까지 중, 먼저 오는
+    부분까지만 주석으로 처리합니다. 이는 <literal>// ... ?&gt;</literal>나
+    <literal># ... ?&gt;</literal> 뒤에 오는 HTML 코드가 출력됨을 의미합니다:
+    ?&gt;는 PHP 모드를 종료하고 HTML 모드로 돌아가게 하므로,
+    <literal>//</literal>나 <literal>#</literal>은 영향을 주지 않습니다. <link
+     linkend="ini.asp-tags">asp_tags</link> 설정 지시어가 켜져 있으면,
+    <literal>// %&gt;</literal>나 <literal># %&gt;</literal>에도 동일하게
+    적용됩니다. 그러나, <literal>&lt;/script&gt;</literal> 태그는 한 줄
+    주석에서 PHP 모드를 종료하지 않습니다.
    </simpara>
    <para>
     <informalexample>
      <programlisting role="php">
 <![CDATA[
-<h1>This is an <?php # echo "simple";?> example.</h1>
-<p>The header above will say 'This is an example'.
+<h1>This is an <?php # echo 'simple';?> example.</h1>
+<p>The header above will say 'This is an example'.</p>
 ]]>
      </programlisting>
     </informalexample> 
    </para>
-
    <simpara>
-    'C' 스타일 주석을 중복 내포하지 않도록 주의해야 한다. 이와 같은 실수는
-    거대한 블록을 주석처리할 때 일어날수 있다.
+    'C' 형식 주석은 첫 <literal>*/</literal>에서 종료합니다. 그러므로 'C' 형식
+    주석을 중첩하지 않아야 합니다. 이는 큰 코드 블럭을 주석처리 하려고 할
+    경우에 자주 발생하는 실수입니다.
    </simpara>
-
    <para>
     <informalexample>
      <programlisting role="php">
 <![CDATA[
 <?php
  /* 
-    echo "This is a test"; /* 이 주석은 문제를 일으킬것이다. */
+    echo 'This is a test'; /* 이 주석은 문제가 발생합니다 */
  */
 ?>
 ]]>
      </programlisting>
     </informalexample>
    </para>
-   
-   <simpara>
-    한줄짜리 주석은 그 줄의 끝이나, 처음에 무엇이 오든 해당 PHP코드 
-    블록에 주석을 단다.
-    이 말의 의미는 <literal>// ?></literal>이후에 HTML코드가 출력될것이
-    라는 것이다: ?> 은 PHP모드를 벗어나서 HTML모드로 돌아오게 하고,
-    <literal>//</literal>은 이 동작에 영향을 미치지 못한다.
-
-   </simpara>
   </sect1>
  </chapter>
  
