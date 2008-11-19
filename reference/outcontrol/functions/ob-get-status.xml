@@ -10,9 +10,7 @@
   &reftitle.description;
   <methodsynopsis>
    <type>array</type><methodname>ob_get_status</methodname>
-   <methodparam choice="opt"><type>bool</type>
-    <parameter>full_status</parameter>
-    <initializer>FALES</initializer></methodparam>
+   <methodparam choice="opt"><type>bool</type> <parameter>full_status</parameter> <initializer>FALSE</initializer></methodparam>
   </methodsynopsis>
   <para>
    <function>ob_set_status</function>는 최고 레벨 출력 버퍼의 상태 정보를

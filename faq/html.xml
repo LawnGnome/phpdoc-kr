@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.21 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.31 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter xml:id="faq.html" xmlns="http://docbook.org/ns/docbook">
   <title>PHP와 HTML</title>
   <titleabbrev>PHP와 HTML</titleabbrev>
@@ -8,8 +8,8 @@
   <para>
    PHP와 HTML은 많은 연관성을 가지고 있습니다: PHP는 HTML을 생성할 수있고,
    HTML은 PHP로 정보를 넘겨줄수 있습니다. 이 faq를 읽기전에
-   <link linkend="language.variables.external">PHP로 변수를 가져오는 방법</link>을
-   아는것이 필요합니다. 이 주제에 관한 매뉴얼 페이지는 많은 예제도 포함되있습니다.
+   <link linkend="language.variables.external">외부 변수</link>를 가져오는
+   방법을 알아야 합니다. 이 주제에 관한 매뉴얼 페이지는 많은 예제도 포함되있습니다.
    <literal>register_globals</literal>가 무슨 의미인지도 알아야 합니다.
   </para>
 
@@ -48,7 +48,7 @@
         <programlisting role="php">
 <![CDATA[
 <?php
-    echo "<input type=hidden value=\"" . htmlspecialchars($data) . "\">\n";
+    echo "<input type='hidden' value='" . htmlspecialchars($data) . "' />\n";
 ?>
 ]]>
         </programlisting>
@@ -68,7 +68,7 @@
         <programlisting role="php">
 <![CDATA[
 <?php
-    echo "<textarea name=mydata>\n";
+    echo "<textarea name='mydata'>\n";
     echo htmlspecialchars($data)."\n";
     echo "</textarea>";
 ?>
@@ -87,12 +87,12 @@
        </simpara>
       </note>
       <example>
-       <title>URL내에서</title>
+       <title>URL 안에서</title>
         <programlisting role="php">
 <![CDATA[
 <?php
-    echo "<a href=\"" . htmlspecialchars("/nextpage.php?stage=23&data=" .
-        urlencode($data)) . "\">\n";
+    echo "<a href='" . htmlspecialchars("/nextpage.php?stage=23&data=" .
+        urlencode($data)) . "'>\n";
 ?>
 ]]>
         </programlisting>
@@ -137,7 +137,7 @@
       폼을 보낼때 표준 submit 버튼을 사용하는 대신에 image버튼을 사용할수 있습니다
       <programlisting role="html">
 <![CDATA[
-<input type="image" src="image.gif" name="foo">
+<input type="image" src="image.gif" name="foo" />
 ]]>
       </programlisting>
       유저가 image버튼을 클릭할때, 수행 폼은 추가적인 변수:
@@ -148,9 +148,14 @@
       유효하지 않은 변수이기 때문에, 자동적으로
       <varname>foo_x</varname>와 <varname>foo_y</varname>변수명으로 바뀝니다.
       즉, 밑줄(underscore)로 변경이 됩니다. 그래서 
-      <link linkend="language.variables.external">PHP로 변수를 가져오는 방법</link>에서
+      <link linkend="language.variables.external">외부 변수</link>에서
       설명된것처럼 다른 방법으로 이 변수를 이용할수 있습니다. 예를 들면
       <varname>$_GET['foo_x']</varname>과 같습니다.
+      <note>
+       <para>
+        요청 변수 이름의 공백은 밑줄로 변환됩니다.
+       </para>
+      </note>
      </para>
     </answer>
    </qandaentry>
@@ -161,21 +166,16 @@
     </question>
     <answer>
      <para>
-      To get your &lt;form&gt; result sent as an 
-      <link linkend="language.types.array">array</link> to your PHP script
-      you name the &lt;input&gt;, &lt;select&gt; or &lt;textarea&gt;
-      elements like this:
-      
       PHP스크립트에 <link linkend="language.types.array">배열</link>을 보내는
       &lt;form&gt;을 만들려면 
       &lt;input&gt;, &lt;select&gt; 또는 &lt;textarea&gt; 엘리먼트를 다음처럼
       이름을 붙여봅니다:
       <programlisting role="html">
 <![CDATA[
-<input name="MyArray[]">
-<input name="MyArray[]">
-<input name="MyArray[]">
-<input name="MyArray[]">
+<input name="MyArray[]" />
+<input name="MyArray[]" />
+<input name="MyArray[]" />
+<input name="MyArray[]" />
 ]]>
       </programlisting>
       변수명의 다음에 대괄호가 있습니다. 그것이 이 변수를 배열로 만들어줍니다.
@@ -183,20 +183,20 @@
       그룹화할수 있습니다:
       <programlisting role="html">
 <![CDATA[
-<input name="MyArray[]">
-<input name="MyArray[]">
-<input name="MyOtherArray[]">
-<input name="MyOtherArray[]">
+<input name="MyArray[]" />
+<input name="MyArray[]" />
+<input name="MyOtherArray[]" />
+<input name="MyOtherArray[]" />
 ]]>
       </programlisting>
       이것은 두 배열을 만들어냅니다. MyArray와 MyOtherArray배열은 PHP 스크립트로
       보내집니다. 또한 배열에 특정 키값을 지정할수 있습니다:
       <programlisting role="html">
 <![CDATA[
-<input name="AnotherArray[]">
-<input name="AnotherArray[]">
-<input name="AnotherArray[email]">
-<input name="AnotherArray[phone]">
+<input name="AnotherArray[]" />
+<input name="AnotherArray[]" />
+<input name="AnotherArray[email]" />
+<input name="AnotherArray[phone]" />
 ]]>
       </programlisting>
       AnotherArray배열은 0, 1의 키와 email과 phone키를 내포하게 됩니다.
@@ -204,15 +204,15 @@
       <para>
        <note>
         <para>
-     배열의 키는 HTML에서는 추가적인 특성입니다. 키로 지정하지 않으면
-     배열은 폼에 보여지는 엘리먼트 순서값으로 채워집니다. 첫번째 예제에서는
-     0, 1, 2, 3이 키값이 됩니다.
+         배열의 키는 HTML에서는 추가적인 특성입니다. 키로 지정하지 않으면
+         배열은 폼에 보여지는 엘리먼트 순서값으로 채워집니다. 첫번째 예제에서는
+         0, 1, 2, 3이 키값이 됩니다.
         </para>
        </note>
       </para>
       <para>
       <link linkend="ref.array">배열 함수</link>
-      <link linkend="language.variables.external">PHP로 변수를 가져오는 방법</link>를 참고하세요.
+      <link linkend="language.variables.external">외부 변수</link>를 참고하세요.
      </para>
     </answer>
    </qandaentry>
@@ -220,25 +220,20 @@
    <qandaentry xml:id="faq.html.select-multiple">
     <question>
      <para>
-      How do I get all the results from a select multiple HTML tag?
       다중 선택 (select multiple) HTML 태그에서 어떻게 모든값을 가져올수 있습니까?
      </para>
     </question>
     <answer>
      <para>
-      The select multiple tag in an HTML construct allows users to
-      select multiple items from a list. These items are then passed
-      to the action handler for the form. The problem is that they
-      are all passed with the same widget name. ie.
-      다중 선택 (select multiple)태그는 리스트 중에서 여러 아이템을
-      선택할수있게 합니다. 이 아이템들은 폼의 액션 핸들러로 보내집니다.
-      문제는 그들이 같은 위젯(widget)명으로 전달이 된다는 것입니다.
+      다중 선택 태그는 리스트 중에서 여러 아이템을
+      선택할 수 있게 합니다. 이 아이템들은 폼의 액션 핸들러로 보내집니다.
+      문제는 그들이 같은 위젯 이름으로 전달이 된다는 것입니다. 즉,
       <programlisting role="html">
 <![CDATA[
-<select name="var" multiple>
+<select name="var" multiple="yes">
 ]]>
       </programlisting>
-      선택된 각 옵션(option)값은 액션 핸들러에 다음처럼 도착합니다:
+      선택된 각 옵션 값은 액션 핸들러에 다음처럼 도착합니다:
       <programlisting>
 var=option1
 var=option2
@@ -249,7 +244,7 @@ var=option3
       다음처럼 사용합니다.
       <programlisting role="html">
 <![CDATA[
-<select name="var[]" multiple>
+<select name="var[]" multiple="yes">
 ]]>
       </programlisting>
       이것은 PHP가 <varname>$var</varname>변수를 배열로 취급하고 배열의
@@ -291,7 +286,7 @@ variable = documents.forms[0].elements['var[]'];
       이것은 보통 클라이언트측에서만 가능한것입니다.
      </para>
      <para>
-      <programlisting>
+      <programlisting role="php">
 <![CDATA[
 <?php
 if (isset($_GET['width']) AND isset($_GET['height'])) {
@@ -303,7 +298,7 @@ if (isset($_GET['width']) AND isset($_GET['height'])) {
   // (preserve the original query string
   //   -- post variables will need to handled differently)
 
-  echo "<script language=\"javascript\">\n";
+  echo "<script language='javascript'>\n";
   echo "  location.href=\"${_SERVER['SCRIPT_NAME']}?${_SERVER['QUERY_STRING']}"
             . "&width=\" + screen.width + \"&height=\" + screen.height;\n";
   echo "</script>\n";

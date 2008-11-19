@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.19 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.33 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter xml:id="faq.databases" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>데이터베이스와 관련된 문제</title>
   <titleabbrev>데이터베이스와 관련된 문제</titleabbrev>
@@ -47,9 +47,7 @@
       유닉스에서 PHP를 사용하고 있고 윈도우 박스의 MS 액세스와 연동하기를 원한다면
       유닉스 ODBC 드라이버가 필요합니다.
       <link xlink:href="&url.openlink;">OpenLink Software</link>에 이를 수행할수 있는
-      유닉스 기반(Unix-based) ODBC 드라이버가 있습니다. 그곳에는 시험판(evalution)을
-      다운로드 할수 있는 안내용 프로그램(pilot program)이 있고, 그리고 675달러이상하는
-      상업용 버전도 있습니다.
+      유닉스 기반 ODBC 드라이버가 있습니다.
      </para>
      <para>
       다른 방법은 윈도우 ODBC 드라이버까지 포함되있고 데이터도 저장할수 있는 
@@ -57,24 +55,27 @@
       PHP로(내장 드라이버)로 접근할수 있습니다. 또는 액세스와 PHP 모두에게 가용한
       파일 형식을 이용하는것입니다. 즉 일반 파일(flat files)이나 dBase 형식으로요.
       이에 관련된 글을 OpenLink software의 Tim Hayes가 쓴글을 참고하세요:
-      <programlisting>
-      Using another database as an intermediary is not a good idea, when you can
-      use ODBC from PHP straight to your database - i.e. with OpenLink's drivers. If
-      you do need to use an intermediary file format, OpenLink have now released
-      Virtuoso (a virtual database engine) for NT, Linux and other unix platforms.
-      Please visit our <link xlink:href="&url.openlink;">website</link> for a free download.
-      </programlisting>
+      <blockquote>
+       <para>
+        PHP에서 직접 ODBC를 사용하여 데이터베이스에 접근 할 수 있을 경우 - 즉,
+        OpenLink의 드라이버를 사용할 경우 중간 단계로 다른 데이터베이스를
+        사용하는 것은 좋은 생각이 아닙니다. 중간 파일 형식을 사용해야 한다면,
+        OpenLink에서 Virtuoso(가상 데이터베이스 엔진)를 NT, 리눅스, 기타
+        유닉스 플랫폼에 릴리즈했습니다. <link xlink:href="&url.openlink;">웹
+         사이트</link>에서 무료로 내려받을 수 있습니다.
+       </para>
+      </blockquote>
      </para>
      <para>
       다른 방법은 MySQL을 사용하고, 윈도우상에서 MyODBC드라이버를 사용하여 데이터베이스를
-      일치(synchronizing)시키는 것입니다. Steve Lawrence의 글을 참고하세요:
+      동기화하는 것입니다. Steve Lawrence의 글을 참고하세요:
      </para>
      <para>
       <itemizedlist>
        <listitem>
         <simpara>
-         MySQL의 지시에 따라 사용중인 플래폼에 MySQL을 설치합니다.
-         <link xlink:href="&url.mysql;">www.mysql.com</link>(미러에서 받을수있슴!)에서 받을수 있습니다.
+         MySQL의 지시에 따라 사용중인 플랫폼에 MySQL을 설치합니다.
+         <link xlink:href="&url.mysql;">www.mysql.com</link>에서 받을수 있습니다.
          데이터베이스를 설치할때 외에는 특별한 설정이 필요치않습니다. 계정을 설정하고,
          host 필드에는 %로 놓거나 MySQL을 접속하고자하는 윈도우 컴퓨터의 호스트명을 넣습니다.
          서버명, 계정, 비밀번호를 넣습니다.
@@ -83,7 +84,6 @@
        <listitem>
         <simpara>
          MySQL사이트에서 윈도우드라이버용 MyODBC를 다운받습니다.
-         최종버전은 dbc-2_50_19-win95.zip입니다(NT도 사용할수 있을뿐만아니라 소스도 있습니다)
          윈도우 머신에 그것을 설치합니다. 이 프로그램에 포함되어있는 유틸로 동작을 테스트할수있습니다.
         </simpara>
        </listitem>
@@ -96,9 +96,8 @@
        </listitem>
        <listitem>
         <simpara>
-         전체 설치(full install)로 액세스를 설치합니다. 이렇게 하면 적절한 추가항목(add-ins)도
-         같이 설치가 됩니다. 최소한 ODBC 지원과 링크드 테이블 매니저(linked table manager)가
-         필요합니다.
+         전체 설치로 액세스를 설치해서, 필요한 애드인을 얻습니다...
+         최소한 ODBC 지원과 연결 테이블 관리자가 필요합니다.
         </simpara>
        </listitem>
        <listitem>
@@ -151,10 +150,10 @@
    <qandaentry xml:id="faq.databases.mysql.php5">
     <question>
      <para>
-      PHP 5 부터는 더이상 <link linkend="ref.mysql">MySQL</link> 클라이언트
+      PHP 5 부터는 더이상 MySQL 클라이언트
       라이브러리를 함께 제공하지 않는다고 하는데, 이말은 무슨 의미인가요?
       PHP로 계속 MySQL을 사용할수 있나요? MySQL을 사용하려고 하면 "function undefined"라는
-      에러 메시지를 보여줍니다. 뭣때문인지요?
+      에러 메시지를 보여줍니다. 무엇때문인지요?
      </para>
     </question>
     <answer>
@@ -163,65 +162,55 @@
       클라이언트 라이브러리 자체를 함께 제공하지 않는다는 것입니다. 그 이유는 
       특별한 순서없이 아래글에서 설명하도록 하겠습니다:
      </para>
-     <para>
-      1. 요근래의 대부분의 시스템은 이미 클라이언트 라이브러리가 설치되어있습니다.
-     </para>
-     <para>
-      2. 위에서 언급한대로, 라이브러리를 여러가지 버전을 갖게 되면
-      혼란스러워질수 있습니다. 예를 들면 어떤 버전은 mod_auth_mysql을
-      링크하고 다른 버전에는 PHP를 링크하고나서 아파치안에서 두개 버전을
-      모두 활성화시키면, 큰 충돌이 발생하게 됩니다.
-      또한, 함께 제공된 라이브러리가 설치된 서버버전과 항상 잘 작동하지도
-      않습니다. 이런 경우를 잘 보여주는 예가 mysql.socket 유닉스 도메인 소켓
-      파일이 있는 곳을 찾을수 없을때입니다.
-     </para>
-     <para>
-      3. 유지관리가 약간 더디게 되고 최신판 버전에 점점더 뒤떨어지게 될것입니다.
-     </para>
-     <para>
-      4. 앞으로의 라이브러리 버전은 GPL을 따르고 따라서 우리가 BSD/아파치 스타일의
-      라이센스 프로젝트인 GPL의 라이브러리를 함께 제공할수 없기 때문에 
-      업그레이드 경로를 갖을수 없습니다. PHP 5에서 이런 깨끗한 중단이 최고의 선택으로
-      보입니다.
-     </para>
+     <itemizedlist>
+      <listitem>
+       <para>
+        요근래의 대부분의 시스템은 이미 클라이언트 라이브러리가 설치되어있습니다.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        위에서 언급한대로, 라이브러리를 여러가지 버전을 갖게 되면
+        혼란스러워질수 있습니다. 예를 들면 어떤 버전은 mod_auth_mysql을
+        링크하고 다른 버전에는 PHP를 링크하고나서 아파치안에서 두개 버전을
+        모두 활성화시키면, 큰 충돌이 발생하게 됩니다.
+        또한, 함께 제공된 라이브러리가 설치된 서버버전과 항상 잘 작동하지도
+        않습니다. 이런 경우를 잘 보여주는 예가 mysql.socket 유닉스 도메인 소켓
+        파일이 있는 곳을 찾을수 없을때입니다.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        유지관리가 약간 더디게 되고 최신판 버전에 점점더 뒤떨어지게 될것입니다.
+       </para>
+      </listitem>
+      <listitem>
+       <para>
+        앞으로의 라이브러리 버전은 GPL을 따르고 따라서 우리가 BSD/아파치 스타일의
+        라이센스 프로젝트인 GPL의 라이브러리를 함께 제공할수 없기 때문에 
+        업그레이드 경로를 갖을수 없습니다. PHP 5에서 이런 깨끗한 중단이 최고의 선택으로
+        보입니다.
+       </para>
+      </listitem>
+     </itemizedlist>
      <para>
       이와 같은 사실은 실제로 많은 사람들에게 영향이 있지는 않을것입니다.
-      유닉스 유저, 최소한 그들이 무엇을 하는지 아는 유저,는 PHP를 빌드할때 단순히
-      --with-mysql=/usr 을 추가시킴으로써 시스템의 libmysqlclient에 대한 PHP
-      를 빌드하려 할것이기 때문입니다. 윈도우 유저는 &php.ini;안에
-      <filename>php_mysql.dll</filename> 확장을 활성화시킬수 있습니다.
-      또한 <filename>dll</filename> 디렉토리에 함께 제공된 다른 모든 DLL을 사용하듯이,
-      적절한 <literal>%SYSTEMROOT%</literal> 디렉토리안에
-      <filename>libmySQL.dll</filename>파일을 카피할수 있습니다.
+      유닉스 사용자, 최소한 그들이 무엇을 하는지 아는 사용자는 PHP를 빌드할 때
+      항상 <option role="configure">--with-mysql=/usr</option> 옵션을 추가하여
+      시스템의 libmysqlclient 라이브러리로 PHP를 빌드했습니다. 윈도우 사용자는
+      &php.ini;에서 <filename>php_mysql.dll</filename> 확장을 활성화할 수
+      있습니다. 자세한 설치 안내는 <link linkend="ref.mysql">MySQL
+       레퍼런스</link>를 참고하십시오. 또한,
+      <filename>libmysql.dll</filename>이 시스템 PATH에 들어있는지
+      확인하십시오. 이를 하는 방법은 <link
+       linkend="faq.installation.addtopath">윈도우 시스템 PATH 설정하기</link>
+      FAQ를 읽어보십시오. <filename>libmysql.dll</filename>(과 많은 PHP 관련
+      파일들)은 PHP 폴더에 존재하므로, PHP 폴더를 시스템 PATH에 추가할 수
+      있습니다.
      </para>
     </answer>
    </qandaentry>
 
-   <qandaentry xml:id="faq.databases.upgraded">
-    <question>
-     <para>
-      I upgraded to PHP 4, and now mysql keeps telling me
-      "Warning: MySQL: Unable to save result set in ...". What's up?
-      PHP 4로 업그레이드했습니다. 그런데 mysql이 다음과같은 메시지를 보여줍니다.
-      "Warning: MySQL: Unable to save result set in ...". 뭐죠?
-     </para>
-    </question>
-    <answer>
-     <para>
-      대부분 PHP 4는 MySQL에대한 경로를 지정하지 않으면 
-      '--with-mysql' 옵션으로 컴파일됩니다. 이것은 PHP가 내장(built-in) MySQL 클라이언트
-      라이브러리(MySQL client library)를 사용한다는 것입니다. 시스템이 응용프로그램을
-      실행할때 아파치 모듈로서의 PHP3나 auth-mysql과 같이 다른 버전의 MySQL클라이언트를 
-      사용하면, 다른 버전의 클라이언트 사이에는 충돌이 발생합니다.
-     </para>
-     <para>
-      PHP 4를 다시 컴파일하세요. 그리고 플래그값으로 MySQL경로를 넣으세요.
-      '<link linkend="mysql.configure">--with-mysql=/your/path/to/mysql</link>' 
-      보통 이렇게 하면 해결됩니다.
-     </para>
-    </answer>
-   </qandaentry>
-   
    <qandaentry xml:id="faq.databases.shared-mysql">
     <question>
      <para>
@@ -244,8 +233,8 @@
     <question>
      <para>
       왜 다음과 같은 에러가 발생합니까:
-      "Warning: 0 is not a MySQL result index in &lt;file&gt; 
-      on line &lt;x&gt;" 또는 "Warning: Supplied argument is not 
+      "Warning: 0 is not a MySQL result index in &lt;file&gt;
+      on line &lt;x&gt;" 또는 "Warning: Supplied argument is not
       a valid MySQL result resource in &lt;file&gt; on line &lt;x&gt;?
      </para>
     </question>
@@ -256,16 +245,26 @@
       돌아온 결과 식별자를 사용하기 전에 에러를 점검할 필요가 있습니다.
       다음과 비슷한 방법이면 됩니다.
       <programlisting role="php">
+<![CDATA[
+<?php
+
 $result = mysql_query("SELECT * FROM tables_priv");
 if (!$result) {
     echo mysql_error();
     exit;
 }
+?>
+]]>
       </programlisting>
-      or
+      또는
       <programlisting role="php">
+<![CDATA[
+<?php
+
 $result = mysql_query("SELECT * FROM tables_priv")
-    or die("Bad query: ".mysql_error());
+    or die("Bad query: " . mysql_error());
+?>
+]]>
       </programlisting>
      </para>
     </answer>

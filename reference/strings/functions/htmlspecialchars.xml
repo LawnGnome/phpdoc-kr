@@ -1,100 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
- 	<refentry xml:id="function.htmlspecialchars" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>htmlspecialchars</refname>
-    <refpurpose>
-     특수 문자를 HTML 엔터티로 변환합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>htmlspecialchars</methodname>
-      <methodparam><type>string</type><parameter>string</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>quote_style</parameter></methodparam>
-      <methodparam choice="opt"><type>string</type><parameter>charset</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     어떤 문자들은 HTML에서 특별한 정의를 가지기에, 그 의미를 보존하려면, HTML
-     엔터티로 표현해야 합니다. 이 함수는 이러한 변환을 수행한 문자열을
-     반환합니다; 이 번역은 모든 웹 프로그래밍에서 매우 유용합니다. 모든 HTML
-     문자 엔터티를 번역해야 한다면, 이 함수 대신
-     <function>htmlentities</function>를 사용하십시오.
-    </para>
-    <simpara>
-     이 함수로 게시판이나 방명록 등의 프로그램에서, HTML을 포함하는 사용자
-     입력 텍스트를 막을 수 있습니다. 선택적인 두번째 인수
-     <parameter>quote_style</parameter>은 작은 따옴표와 큰 따옴표를 어떻게
-     처리할지 결정합니다. 기본 모드는 하위 호환 모드
-     <constant>ENT_COMPAT</constant>로, 큰 따옴표만 변환합니다.
-     <constant>ENT_QUOTES</constant>를 지정하면 작은 따옴표와 큰 따옴표 둘 다
-     변환하고, <constant>ENT_NOQUOTES</constant>를 지정하면 작은 따옴표와 큰
-     따옴표 둘 다 변환하지 않습니다.
-    </simpara>
-    <para>
-     다음 문자들을 변역합니다:
-     <itemizedlist>
-      <listitem>
-       <simpara>
-        '&amp;'(앰퍼샌드)는 '&amp;amp;'가 됩니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        '&quot;'(큰 따옴표)는 ENT_NOQUOTES를 지정하지 않았을 때 '&amp;quot;'가
-        됩니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        '&#039;'(작은 따옴표)는 ENT_QUOTES를 지정했을 때만 '&amp;#039;'가
-        됩니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        '&lt;'(보다 작음)는 '&amp;lt;'가 됩니다.
-       </simpara>
-      </listitem>
-      <listitem>
-       <simpara>
-        '&gt;'(보다 큼)는 '&amp;gt;'가 됩니다.
-       </simpara>
-      </listitem>
-     </itemizedlist>
-     <example>
-      <title><function>htmlspecialchars</function> 예제</title>
-      <programlisting role="php">
+<refentry xml:id="function.htmlspecialchars" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>htmlspecialchars</refname>
+  <refpurpose>특수 문자를 HTML 엔터티로 변환</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>htmlspecialchars</methodname>
+   <methodparam><type>string</type><parameter>string</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>quote_style</parameter></methodparam>
+   <methodparam choice="opt"><type>string</type><parameter>charset</parameter></methodparam>
+   <methodparam choice="opt"><type>bool</type><parameter>double_encode</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   어떤 문자들은 HTML에서 특별한 정의를 가지기에, 그 의미를 보존하려면, HTML
+   엔터티로 표현해야 합니다. 이 함수는 이러한 변환을 수행한 문자열을
+   반환합니다; 이 번역은 모든 웹 프로그래밍에서 매우 유용합니다. 모든 HTML
+   문자 엔터티를 번역해야 한다면, 이 함수 대신
+   <function>htmlentities</function>를 사용하십시오.
+  </para>
+  <simpara>
+   이 함수로 게시판이나 방명록 등의 프로그램에서, HTML을 포함하는 사용자
+   입력 텍스트를 막을 수 있습니다.
+  </simpara>
+  <para>
+   변환이 일어나는 문자는:
+   <itemizedlist>
+    <listitem>
+     <simpara>
+      '&amp;'(앰퍼샌드)는 '&amp;amp;'가 됩니다
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      '&quot;'(겹따옴표)는 <constant>ENT_NOQUOTES</constant>를 설정하지 않았을
+      때 '&amp;quot;'가 됩니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      '&#039;'(홑따옴표)는 <constant>ENT_QUOTES</constant>가 설정되었을 때만
+      '&amp;#039;'가 됩니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      '&lt;'(미만)은 '&amp;lt;'가 됩니다.
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      '&gt;'(이상)은 '&amp;gt;'가 됩니다.
+     </simpara>
+    </listitem>
+   </itemizedlist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>string</parameter></term>
+     <listitem>
+      <para>
+       변환할 <type>string</type>.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>quote_style</parameter></term>
+     <listitem>
+      <para>
+       선택적인 두번째 인수
+       <parameter>quote_style</parameter>은 홑따옴표와 겹따옴표를 어떻게
+       처리할지 결정합니다. 기본 모드는 하위 호환 모드
+       <constant>ENT_COMPAT</constant>로, 겹따옴표만 변환합니다.
+       <constant>ENT_QUOTES</constant>를 지정하면 홑따옴표와 겹따옴표 둘 다
+       변환하고, <constant>ENT_NOQUOTES</constant>를 지정하면 홑따옴표와 큰
+       따옴표 둘 다 변환하지 않습니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>charset</parameter></term>
+     <listitem>
+      <para>
+       변환에 사용할 문자셋을 정의합니다. 기본 문자셋은 ISO-8859-1입니다.
+      </para>
+      &reference.strings.charsets;
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>double_encode</parameter></term>
+     <listitem>
+      <para>
+       <parameter>double_encode</parameter>를 끄면 PHP는 이미 존재하는 html
+       엔티티를 인코드하지 않습니다. 기본값은 모두 변환합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   변환된 <type>string</type>.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.2.3</entry>
+       <entry>
+        <parameter>double_encode</parameter> 인수 추가.
+       </entry>
+      </row>
+      <row>
+       <entry>4.1.0</entry>
+       <entry>
+        <parameter>charset</parameter> 인수 추가.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>htmlspecialchars</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $new = htmlspecialchars("<a href='test'>Test</a>", ENT_QUOTES);
 echo $new; // &lt;a href=&#039;test&#039;&gt;TEST&lt;/a&gt;
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     이 함수는 위 목록 이외에는 아무 것도 번역하지 않는 점에 주의하십시오.
-     완전한 엔터티 번역을 위해서는, <function>htmlentities</function>를
-     참고하십시오. 선택적인 두번째 인수는 PHP 3.0.17과 PHP 4.0.3에서
-     추가되었습니다.
-    </para>
-    <para>
-     선택적인 세번째 인수 <parameter>charset</parameter>은 변환에 사용하는
-     문자셋을 정의합니다. 기본 문자셋은 ISO-8859-1입니다. 세번째 인수는 PHP
-     4.1.0부터 지원합니다.
-    </para>
-    &reference.strings.charsets;
-    <para>
-     참고: <function>get_html_translation_table</function>,
-     <function>strip_tags</function>,
-     <function>htmlentities</function>, <function>nl2br</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    이 함수는 위 목록 이외에는 아무 것도 번역하지 않는 점에 주의하십시오.
+    완전한 엔터티 번역을 위해서는, <function>htmlentities</function>를
+    참고하십시오.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>get_html_translation_table</function></member>
+    <member><function>htmlspecialchars_decode</function></member>
+    <member><function>strip_tags</function></member>
+    <member><function>htmlentities</function></member>
+    <member><function>nl2br</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

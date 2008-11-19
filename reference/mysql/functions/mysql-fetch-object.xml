@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.14 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.18 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-fetch-object" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_fetch_object</refname>
@@ -11,6 +12,8 @@
   <methodsynopsis>
    <type>object</type><methodname>mysql_fetch_object</methodname>
    <methodparam><type>resource</type><parameter>result</parameter></methodparam>
+   <methodparam choice="opt"><type>string</type><parameter>class_name</parameter></methodparam>
+   <methodparam choice="opt"><type>array</type><parameter>params</parameter></methodparam>
   </methodsynopsis>
   <para>
 인출된 행으로부터 속성을 가진 객체로 반환하고,
@@ -23,6 +26,24 @@
   <para>
    <variablelist>
     &mysql.result.description;
+    <varlistentry>
+     <term><parameter>class_name</parameter></term>
+     <listitem>
+      <para>
+       생성할 클래스의 이름, 프로퍼티를 설정하고 반환합니다.
+       지정하지 않으면, <classname>stdClass</classname> 객체를 반환합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>params</parameter></term>
+     <listitem>
+      <para>
+       <parameter>class_name</parameter> 객체의 생성자에 넘길 인수들의
+       선택적인 <type>array</type>.
+      </para>
+     </listitem>
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>
@@ -30,12 +51,37 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-속성을 가진 <type>object</type>로 반환하거나, 더 이상의 행이 없을 때에는 &false;를 반환한다.
+   문자열 프로퍼티를 가진 <type>object</type>를 반환하거나, 더 이상의 행이
+   없을 때에는 &false;를 반환한다.
   </para>
   <para>
 <function>mysql_fetch_row</function>는 지정된 result 지시자와 연관된 결과로부터
 한 행의 데이터를 인출하여 배열로 반환한다.
 각 컬럼은 0부터 시작한다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        다른 객체로 반환할 수 있는 기능 추가
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
   </para>
  </refsect1>
 
@@ -66,14 +112,16 @@ mysql_free_result($result);
     <programlisting role="php">
 <![CDATA[
 <?php
+class foo {
+    public $name;
+}
 
-$row = mysql_fetch_object($result);
+mysql_connect("hostname", "user", "password");
+mysql_select_db("mydb");
 
-/* this is valid */
-echo $row->field;
-/* this is invalid */
-// echo $row->0;
-
+$result = mysql_query("select name from mytable limit 1");
+$obj = mysql_fetch_object($result, 'foo');
+var_dump($obj);
 ?>
 ]]>
     </programlisting>

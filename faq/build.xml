@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
-<!-- EN-Revision: 1.26 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.34 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
 <chapter xml:id="faq.build" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>빌드(build)시의 문제</title>
+  <title>빌드 시 문제</title>
   <titleabbrev>빌드 시 발생할수 있는 문제</titleabbrev>
 
   <para>
@@ -256,7 +256,7 @@
    <qandaentry xml:id="faq.build.not-running">
     <question>
      <para>
-      Unix상에서 아파치 모듈을 인스톨하기 위한 모든 단계를 따라했습니다.
+      유닉스에서 아파치 모듈을 인스톨하기 위한 모든 단계를 따라했습니다.
       그리고 브라우저에서 PHP 스크립트를 보려고하면 저장하겠냐고 묻습니다.
      </para>
     </question>
@@ -280,10 +280,7 @@
         <simpara>
          <literal>아파치의 .conf</literal>파일에 다음과 같은 Mime 타입 설정을
          추가했는지 확인하세요.
-         <literal>AddType application/x-httpd-php3 .php3</literal> (for PHP 3)
-        </simpara>
-        <simpara>
-         또는 <literal>AddType application/x-httpd-php .php</literal> (for PHP 4)
+         <literal>AddType application/x-httpd-php .php</literal>
         </simpara>
         <simpara> 
          그리고 &lt;Virtualhost&gt; 이나 &lt;Directory&gt; 블록안에 이
@@ -460,6 +457,17 @@ $ gcc -E test.c >/dev/null
       아무 메시지도 보여주지 않게 되는것입니다.
       또 명심할것은 MySQL 은 기본적으로(default) 지원이 된다는것입니다.
      </para>
+     <note>
+      <para>
+       PHP 4.3.2부터, 빌드(make)가 완료된 후 다음 텍스트를 보게 됩니다:
+      </para>
+      <para>
+       <screen>
+        Build complete.
+        (It is safe to ignore warnings about tempnam and tmpnam).
+       </screen>
+      </para>
+     </note>
     </answer>
    </qandaentry>
 
