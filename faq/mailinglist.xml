@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.16 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.18 Maintainer: fuzzy74 Status: ready -->
  <chapter xml:id="faq.mailinglist" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>메일링리스트</title>
   <titleabbrev>메일링리스트</titleabbrev>
@@ -18,7 +17,7 @@
     <answer>
      <para>
       여러가지 목적을 위한 메일링리스트가 있습니다.
-      메일링리스트의 전체 목록은 <link xlink:href="&url.php.support;">Support</link>
+      메일링리스트의 전체 목록은 <link xlink:href="&url.php.support;">지원</link>
       페이지에서 볼 수 있습니다.
      </para>
      <para>
@@ -29,7 +28,7 @@
       메일을 보냅니다.
      </para>
      <para>
-      <link xlink:href="&url.php.support;">Support</link>페이지의 웹인터페이스를
+      <link xlink:href="&url.php.support;">지원</link>페이지의 웹인터페이스를
       통해서 구독요청(subscribe)이나 구독취소(unsubscribe)를 할수 있습니다.
      </para>
     </answer>
@@ -42,7 +41,7 @@
     <answer>
      <para>
       전세계에 셀수없이 존재합니다. 우리는 예를 들어 몇몇의 IRC 서버와
-      외국어 메일링리스트에 대한 목록을 <link xlink:href="&url.php.support;">Support</link>
+      외국어 메일링리스트에 대한 목록을 <link xlink:href="&url.php.support;">지원</link>
       페이지에 제공하고 있습니다.
      </para>
     </answer>
@@ -72,7 +71,7 @@
     </question>
     <answer>
      <para>
-       <link xlink:href="&url.php.support;">Support</link>페이지에서 archive sites 목록을
+       <link xlink:href="&url.php.support;">지원</link>페이지에서 archive sites 목록을
        발견할수 있습니다. 메일링리스트 기사는 뉴스 메시지로도 저장이 됩니다.
        뉴스리더로 <link xlink:href="&url.php.news;">&url.php.news;</link> 뉴스서버에
        접속할수 있습니다. 뉴스서버를 위한 실험적인 웹 인터페이스도 또한 존재합니다.

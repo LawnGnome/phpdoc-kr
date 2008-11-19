@@ -1,37 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.opendir" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>opendir</refname>
-    <refpurpose>디렉토리 핸들을 엽니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>resource</type><methodname>opendir</methodname>
-      <methodparam><type>string</type><parameter>path</parameter></methodparam>
-     </methodsynopsis>
-    <para> 
-     <function>closedir</function>, <function>readdir</function>,
-     <function>rewinddir</function> 호출에서 사용하는 디렉토리 핸들을
-     반환합니다.
-    </para>
-    <para>
-     <parameter>path</parameter>가 유효하지 않은 디렉토리이거나, 권한 제한이나
-     파일시스템 에러로 인해 디렉토리를 열 수 없는 경우,
-     <function>opendir</function>은 &false;를 반환하고 <link
-      linkend="errorfunc.constants">E_WARNING</link> 레벨의 PHP 에러를
-     발생합니다. <function>opendir</function> 앞에 '<link
-      linkend="language.operators.errorcontrol">@</link>'를 붙여 에러 출력을
-     없앨 수 있습니다.
-    </para>
-    <para>
-     <example>
-      <title><function>opendir</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.opendir" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>opendir</refname>
+  <refpurpose>디렉토리 핸들을 엽니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>resource</type><methodname>opendir</methodname>
+   <methodparam><type>string</type><parameter>path</parameter></methodparam>
+   <methodparam choice="opt"><type>resource</type><parameter>context</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>closedir</function>, <function>readdir</function>,
+   <function>rewinddir</function> 호출에서 사용하는 디렉토리 핸들을
+   엽니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>path</parameter></term>
+     <listitem>
+      <para>
+       열 디렉토리 경로
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>context</parameter></term>
+     <listitem>
+      <para>
+       <parameter>context</parameter> 인수에 대한 설명은 매뉴얼의 <link
+        linkend="ref.stream">스트림 섹션</link>을 참고하십시오.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   성공시엔 디렉토리 핸들 <type>resource</type>, 실패시엔 &false;를
+   반환합니다.
+  </para>
+  <para>
+   <parameter>path</parameter>가 유효하지 않은 디렉토리이거나, 권한 제한이나
+   파일시스템 오류로 인해 디렉토리를 열 수 없는 경우,
+   <function>opendir</function>은 &false;를 반환하고 <link
+    linkend="errorfunc.constants">E_WARNING</link> 레벨의 PHP 오류를
+   발생합니다. <function>opendir</function> 앞에 '<link
+    linkend="language.operators.errorcontrol">@</link>'를 붙여 오류 출력을
+   없앨 수 있습니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        <parameter>path</parameter>가 <literal>ftp://</literal> URL 래퍼를
+        지원합니다.
+       </entry>
+      </row>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        <parameter>path</parameter>에 디렉토리 목록을 지원하는 URL을 사용할 수
+        있습니다. 그러나 PHP 4에서는 <literal>file://</literal> URL 래퍼만
+        지원합니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>opendir</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$dir = "/tmp/";
+$dir = "/etc/php5";
 
 // 알고 있는 디렉토리를 열어서, 내용을 읽어들이는 작업입니다.
 if (is_dir($dir)) {
@@ -44,22 +116,32 @@ if (is_dir($dir)) {
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <literal>PHP 4.3.0</literal>부터 <parameter>path</parameter>는 디렉토리
-     목록을 지원하는 URL일 수 있지만, <literal>PHP 4.3</literal>에서는
-     <literal>file://</literal> URL 래퍼만 지원합니다. <literal>PHP
-      5.0.0</literal>부터는 <literal>ftp://</literal> URL 래퍼도 지원합니다.
-    </para>
-    <para>
-     참고: <function>is_dir</function>,
-     <function>readdir</function>,
-     <link linkend="class.dir">Dir</link>
-     </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
+<![CDATA[
+filename: . : filetype: dir
+filename: .. : filetype: dir
+filename: apache : filetype: dir
+filename: cgi : filetype: dir
+filename: cli : filetype: dir
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>is_dir</function></member>
+    <member><function>readdir</function></member>
+    <member><link linkend="class.dir">Dir</link></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

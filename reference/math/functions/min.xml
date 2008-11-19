@@ -1,45 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.7 $ -->
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.min" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>min</refname>
-    <refpurpose>최소값을 찾습니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-     <methodsynopsis>
-      <type>mixed</type><methodname>min</methodname>
-      <methodparam><type>number</type><parameter>arg1</parameter></methodparam>
-      <methodparam><type>number</type><parameter>arg2</parameter></methodparam>
-      <methodparam choice="opt"><type>number</type><parameter>...</parameter></methodparam>
-     </methodsynopsis>
-     <methodsynopsis>
-      <type>mixed</type><methodname>min</methodname>
-      <methodparam><type>array</type><parameter>numbers</parameter></methodparam>
-      <methodparam choice="opt"><type>array</type><parameter>...</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>min</function>은 인수 중 수치적인 최소값을 반환합니다.
-    </para>
-    <para>
-     단 하나의 인수가 배열로 주어지면, <function>min</function>은 배열에서
-     최소값을 반환합니다. 첫번째 인수가 정수, 문자열, 실수일 경우에는 최소한
-     2개의 인수가 필요하며, <function>min</function>은 이 값들 중 최소값을
-     반환합니다. 비교할 수 있는 값의 갯수는 무제한입니다.
-    </para>
-    <note>
-     <para>
-      PHP는 숫자가 아닌 <type>string</type>을 <literal>0</literal>으로
-      계산하고, 수치적으로 최소값일 경우에는 그 문자열을 반환합니다.
-      복수의 인수가 <literal>0</literal>으로 계산될 경우,
-      <function>min</function>은 첫번째 것(가장 왼쪽의 값)을 반환합니다.
-     </para>
-    </note>
-    <para>
-     <example>
-      <title><function>min</function>의 사용 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.min" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>min</refname>
+  <refpurpose>최소값을 찾습니다</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>min</methodname>
+   <methodparam><type>array</type><parameter>values</parameter></methodparam>
+  </methodsynopsis>
+  <methodsynopsis>
+   <type>mixed</type><methodname>min</methodname>
+   <methodparam><type>mixed</type><parameter>value1</parameter></methodparam>
+   <methodparam><type>mixed</type><parameter>value2</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>value3...</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   단 하나의 인수가 배열로 주어지면, <function>min</function>은 배열에서
+   최소값을 반환합니다. 최소한 
+   두 개의 인수가 주어지면, <function>min</function>은 이 값들 중 최소값을
+   반환합니다.
+  </para>
+  <note>
+   <para>
+    PHP는 수가 아닌 <type>string</type>을 <type>integer</type>로 취급하여
+    <literal>0</literal>으로 계산하지만, 수치적으로 최소값일 경우에는 그
+    문자열을 반환합니다.
+    복수의 인수가 <literal>0</literal>으로 계산될 경우,
+    <function>min</function>은 주어진 문자열 중 가장 낮은 알파벳-숫자 문자열
+    값을 가지는 문자열을 반환하거나, 숫자 <literal>0</literal>을 반환합니다.
+   </para>
+  </note>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>values</parameter></term>
+     <listitem>
+      <para>
+       값들을 가지는 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <function>min</function>은 수치적으로 가장 낮은 인수 값을 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>min</function>의 사용 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo min(2, 3, 1, 6, 7));  // 1
@@ -57,14 +78,20 @@ $val = min(array(2, 4, 8), array(2, 5, 1)); // array(2, 4, 8)
 $val = min('string', array(2, 5, 7), 42);   // string
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     참고: <function>max</function>, <function>count</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>max</function></member>
+    <member><function>count</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

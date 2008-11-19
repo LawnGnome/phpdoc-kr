@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.10 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
  <chapter xml:id="faq.com" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP와 COM</title>
   <titleabbrev>PHP와 COM</titleabbrev>
 
    <para>
-    PHP는 Win32 플랫폼의 COM과 DCOM 객체(object)에 접근할수 있습니다.
+    PHP는 Win32 플랫폼의 COM과 DCOM 객체에 접근할수 있습니다.
    </para>
 
   <qandaset>
@@ -66,8 +66,8 @@
     </question>
     <answer>
      <para>
-      그건 안됩니다. COM 인스턴스(instance)는 리소스로 취급되므로 오직 단일 스크립트의 
-      컨텍스트(context)에서만 가용한것입니다.
+      그건 안됩니다. COM 인스턴스는 리소스로 취급되므로 오직 단일 스크립트의 
+      문맥에서만 가용한것입니다.
      </para>
     </answer>
    </qandaentry>
@@ -80,8 +80,13 @@
     </question>
     <answer>
      <para>
-      현재 PHP 자체에서 제공되는 방법(@, track_errors, ..)으로는 COM 에러를 추적하기는 불가능합니다.
-      하지만 이것을 구현할 방법을 강구중입니다.
+      PHP 5에서, COM 확장은 <literal>com_exception</literal> 예외를
+      발생합니다. 이를 잡아서 <literal>code</literal> 멤버를 조사함으로써
+      다음에 취할 행동을 결정할 수 있습니다.
+     </para>
+     <para>
+      PHP 4에서는 COM 오류를 PHP 자체에서 제공하는 방법(@, track_errors,
+      ..)으로 추적할 수 없습니다.
      </para>
     </answer>
    </qandaentry>
@@ -133,16 +138,18 @@
    <qandaentry xml:id="faq.com.q8">
     <question>
      <para>
-      다른 서버(remote server)에서 COM 객체(object)를 어떻게 실행할수 있습니까?
+      원격 서버에서 COM 객체를 어떻게 실행할수 있습니까?
      </para>
     </question>
     <answer>
      <para>
-      로컬 객체를 실행시키는것과 완전히 똑같습니다. 단지 COM 생성자(constructor)의 두번째 인수(parameter)에
+      로컬 객체를 실행시키는것과 완전히 똑같습니다. 단지 COM 생성자의 두번째 인수에
       다른 서버의 IP를 넘겨주면 됩니다.
      </para>
      <para>
-      &php.ini;파일 내에서 <literal>com.allow_dcom=true</literal>값을 설정해야 한다는것을 잊지마십시오
+      &php.ini;파일 내에서 <xref
+       linkend="ini.com.allow-dcom"/><literal>=</literal>&true;로 값을 설정해야
+      합니다.
      </para>
     </answer>
    </qandaentry>
@@ -156,7 +163,8 @@
     </question>
     <answer>
      <para>
-      &php.ini;파일 내에서 <literal>com.allow_dcom=true</literal>로 설정합니다.
+      &php.ini;를 수정하여 <xref
+       linkend="ini.com.allow-dcom"/><literal>=</literal>&true;로 설정합니다.
      </para>
     </answer>
    </qandaentry>
@@ -164,7 +172,7 @@
    <qandaentry xml:id="faq.com.q10">
     <question>
      <para>
-      PHP에서 ActiveX 객체(object)를 부르거나/변경할수 있습니까?
+      PHP에서 ActiveX 객체를 부르거나/변경할수 있습니까?
      </para>
     </question>
     <answer>
@@ -179,7 +187,7 @@
    <qandaentry xml:id="faq.com.q11">
     <question>
      <para>
-      특정 컴포넌트에서 실행중인 인스턴스(instance)에 접근 가능합니까? 
+      특정 컴포넌트에서 실행중인 인스턴스에 접근 가능합니까? 
      </para>
     </question>
     <answer>
@@ -188,7 +196,11 @@
       다음처럼 그 인스턴스를 만들 수 있습니다.
      </para>
      <programlisting role="php">
-      $word = new COM("C:\docs\word.doc");
+<![CDATA[
+<?php
+$word = new COM("C:\docs\word.doc");
+?>
+]]>
      </programlisting>
      <para>
       위처럼 하면 실행중인 인스턴스가 없을 때에는 새로운 인스턴스를 만들수 있고,
@@ -196,7 +208,6 @@
      </para>
     </answer>
    </qandaentry>
-   
    <qandaentry xml:id="faq.com.q12">
     <question>
      <para>
@@ -205,43 +216,9 @@
     </question>
     <answer>
      <para>
-      PHP 4.3.0을 실행하면, 아래 예제에서 볼수 있듯이 이벤트를 싱크(sink), 연결(bind)
-      할 수 있도록 정의할 수 있습니다. <function>com_print_typeinfo</function>함수를 실행함으로써
-      이벤트 싱크(sink) 클래스에 대한 코드를 만들수 있습니다.
-      <example>
-       <title>COM event sink example</title>
-       <programlisting role="php">
-<![CDATA[
-<?php
-class IEEventSinker {
-  var $terminated = false;
-
-  function ProgressChange($progress, $progressmax) {
-    echo "Download progress: $progress / $progressmax\n";
-  }
-
-  function DocumentComplete(&$dom, $url) {
-    echo "Document $url complete\n";
-  }
-
-  function OnQuit() {
-    echo "Quit!\n";
-    $this->terminated = true;
-  }
-}
-$ie = new COM("InternetExplorer.Application");
-$sink =& new IEEventSinker();
-com_event_sink($ie, $sink, "DWebBrowserEvents2");
-$ie->Visible = true;
-$ie->Navigate("http://www.php.net");
-while(!$sink->terminated) {
-  com_message_pump(4000);
-}
-$ie = null;
-?>
-]]>
-       </programlisting>
-      </example>
+      <function>com_event_sink</function>를 사용하여 이벤트 싱크와 바인드를
+      정의할 수 있습니다. PHP가 이벤트 싱크 클래스의 뼈대을 생성하게 하기
+      위하여 <function>com_print_typeinfo</function>를 사용할 수 있습니다.
      </para>
     </answer>
    </qandaentry>
@@ -249,7 +226,7 @@ $ie = null;
    <qandaentry xml:id="faq.com.q13">
     <question>
      <para>
-      하나 이상의 인터페이스를 갖는 COM 객체의 메소드(method)를 불러
+      하나 이상의 인터페이스를 갖는 COM 객체의 메쏘드를 불러
       들이려고 하는데 문제에 봉착했습니다. 어떻게 해야 합니까?
      </para>
     </question>
@@ -284,8 +261,8 @@ $ie = null;
     </question>
     <answer>
      <para>
-      PHP자체로는 아직 트랜젝션(transaction)을 관리할수 없습니다.
-      따라서 에러가 발생하더라도 롤백(rollback)으로 초기화되지않습니다.
+      PHP 자체로는 아직 트랜젝션을 관리할수 없습니다.
+      따라서 에러가 발생하더라도 롤백으로 초기화되지않습니다.
       트랜젝션을 지원하는 컴포넌트를 사용한다면 트랜젝션 관리를 구현해서 써야합니다.
      </para>
     </answer>

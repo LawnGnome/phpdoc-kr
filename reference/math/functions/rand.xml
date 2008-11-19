@@ -1,27 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.rand" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>rand</refname>
-    <refpurpose>정수형의 난수를 생성합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>rand</methodname>
-      <methodparam choice="opt"><type>int</type><parameter>min</parameter></methodparam>
-      <methodparam><type>int</type><parameter>max</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     선택적인 <parameter>min</parameter>, <parameter>max</parameter> 인수
-     없이 호출하면, <function>rand</function>는 0과 <constant>RAND_MAX</constant>
-     사이의 임의의 난수를 반환합니다. 예를 들어, 5와 15(포함) 사이의
-     난수를 얻으려면, <literal>rand (5, 15)</literal>로 사용합니다.
-    </simpara>
-    <para>
-     <example>
-      <title><function>rand</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.21 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.rand" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>rand</refname>
+  <refpurpose>정수 난수를 생성</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>rand</methodname>
+   <void/>
+  </methodsynopsis>
+  <methodsynopsis>
+   <type>int</type><methodname>rand</methodname>
+   <methodparam><type>int</type><parameter>min</parameter></methodparam>
+   <methodparam><type>int</type><parameter>max</parameter></methodparam>
+  </methodsynopsis>
+  <simpara>
+   선택적인 <parameter>min</parameter>, <parameter>max</parameter> 인수
+   없이 호출하면, <function>rand</function>는 0과
+   <function>getrandmax</function>
+   사이의 임의의 난수를 반환합니다. 예를 들어, 5와 15(포함) 사이의
+   난수를 얻으려면, <literal>rand(5, 15)</literal>로 사용합니다.
+  </simpara>
+  <note>
+   <simpara>
+    몇몇 플랫폼(윈도우 등)에서는, <function>getrandmax</function>가
+    32768입니다. 32768보다 넓은 범위가 필요하면, <parameter>min</parameter>과
+    <parameter>max</parameter>를 지정해서 더 넓은 범위를 만들 수 있으며, 혹은
+    <function>mt_rand</function>를 사용하는 것을 고려해보십시오.
+   </simpara>
+  </note>
+
+  &note.randomseed;
+
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>min</parameter></term>
+     <listitem>
+      <para>
+       반환할 가장 작은 값 (기본값: 0)
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>max</parameter></term>
+     <listitem>
+      <para>
+       반환할 가장 큰 값 (기본값: <function>getrandmax</function>)
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>min</parameter>(혹은 0)과 <parameter>max</parameter>(혹은
+   <function>getrandmax</function>) 사이의 모의 난수 값.
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>3.0.7부터</entry>
+       <entry>
+        3.0.7 이전에 <parameter>max</parameter>의 의미는
+        <parameter>range</parameter>였습니다. 이 버전에서 위에서 보인 간단한
+        예제와 같이 5에서 15사이의 난수를 얻으려면 <literal>rand
+         (5,11)</literal>로 사용해야 합니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>rand</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo rand() . "\n";
@@ -29,46 +104,29 @@ echo rand() . "\n";
 echo rand(5, 15);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제의 출력 예는:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
 <![CDATA[
 7771
 22264
 11
 ]]>
-      </screen>
-     </example>
-    </para>
-
-    <note>
-     <simpara>
-      몇몇 플랫폼(윈도우 등)에서는 <constant>RAND_MAX</constant>는
-      32768까지 입니다. 32768보다 큰 범위가 필요할 경우에는,
-      <parameter>min</parameter>과 <parameter>max</parameter>를 지정하여
-      RAND_MAX보다 큰 범위를 만들거나, <function>mt_rand</function>을
-      사용하십시오.
-     </simpara>
-    </note>
-    &note.randomseed;
-    <note>
-     <para>
-      3.0.7 이전의 버전에서는 <parameter>max</parameter>의 의미는
-      <parameter>range</parameter>였습니다. 이 버전에서 위의 예제와 같이
-      5에서 15 사이의 난수를 얻기 위해서는 <literal>rand (5, 11)</literal>로
-      사용해야만 합니다.
-     </para>
-    </note>
-    <simpara>
-     참고:
-     <function>srand</function>,
-     <function>getrandmax</function>,
-     <function>mt_rand</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>srand</function></member>
+    <member><function>getrandmax</function></member>
+    <member><function>mt_rand</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

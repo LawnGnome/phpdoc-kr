@@ -1,52 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.octdec" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>octdec</refname>
-    <refpurpose>8진수를 10진수로 변환합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>octdec</methodname>
-      <methodparam><type>string</type><parameter>octal_string</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>octal_string</parameter> 인수로 주어진 8진수에 해당하는
-     10진수를 반환합니다. 변환 가능한 가장 큰 숫자는 17777777777로,
-     10진수 2147483647에 해당합니다.
-    </para>
-    <para>
-     <example>
-      <title><function>octdec</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.octdec" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>octdec</refname>
+  <refpurpose>8진수를 10진수로</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>number</type><methodname>octdec</methodname>
+   <methodparam><type>string</type><parameter>octal_string</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>octal_string</parameter> 인수로 표현되는 8진수에 해당하는
+   10진수를 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>octal_string</parameter></term>
+     <listitem>
+      <para>
+       변환할 8진 문자열
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>octal_string</parameter>의 10진 표현
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.1.0부터</entry>
+       <entry>
+        플랫폼의 <type>integer</type>형에 들어가지 않은 큰 수도 변환할 수 있게
+        되었습니다. 큰 수는 <type>float</type>로 반환합니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>octdec</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo octdec('77') . "\n";
 echo octdec(decoct(45));
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제의 출력은:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 63
 45
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     참고:
-     <function>decoct</function>,
-     <function>bindec</function>,
-     <function>hexdec</function>,
-     <function>base_convert</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>decoct</function></member>
+    <member><function>bindec</function></member>
+    <member><function>hexdec</function></member>
+    <member><function>base_convert</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

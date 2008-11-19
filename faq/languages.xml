@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.3 $ -->
-<!-- EN-Revision: 1.12 Maintainer: fuzzy74 Status: ready -->
+<!-- EN-Revision: 1.15 Maintainer: fuzzy74 Status: ready -->
  <chapter xml:id="faq.languages" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP와 다른 프로그래밍 언어</title>
   <titleabbrev>PHP와 다른 프로그래밍 언어</titleabbrev>
@@ -23,7 +22,7 @@
       이 점으로 인해 ASP를 Win32기반 서버로 제한하게 됩니다. 다른 환경이나 웹서버에서 ASP를
       작동하게 하는 몇개의 프로젝트가 진행중입니다:
       <link xlink:href="&url.halcyon;">Halcyon</link>의 <link xlink:href="&url.instantasp;">InstantASP</link> (상업용),
-      <link xlink:href="&url.chilisoft;">Chili!Soft</link>의 <link xlink:href="&url.chilisoft.asp;">Chili!Soft ASP</link> (상업용)
+      <link xlink:href="&url.chilisoft;">Chili!Soft</link>의 Chili!Soft ASP (상업용)
       ASP는 PHP보다 느리고 성가신 언어이며, 약간은 불안정하기까지 합니다. ASP의 문법(pros)은
       그것이 VBScript를 사용하고 있기 때문에 만약에 비주얼 베이직(Visual Basic)을
       다룰줄만 안다면 상대적으로 접근하기 쉽습니다. 또한 ASP는 IIS가 ASP를 올리고 
@@ -67,7 +66,9 @@
      </para>
      <para>
       이 주제에 관해 Michael J Sheldon이 정리한 글이 PHP 메일링리스트에 
-      게제되었습니다. <link xlink:href="&url.coldfusion.summary;"></link>를 보세요.
+      게제되었습니다. <link
+       xlink:href="&url.coldfusion.summary;">&url.coldfusion.summary;</link>에서
+      사본을 볼 수 있습니다.
      </para>
     </answer>
    </qandaentry>
