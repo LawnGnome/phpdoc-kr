@@ -1,54 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.preg-quote" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>preg_quote</refname>
-    <refpurpose>정규 표현식 문자를 인용합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>preg_quote</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-     <methodparam choice="opt"><type>string</type><parameter>delimiter</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>preg_quote</function>는 <parameter>str</parameter>에서
-     정규 표현식 문법에 포함되는 모든 문자의 앞에 백슬래쉬를 덧붙입니다.
-     어떠한 텍스트에 특수 정규 표현식 문자를 포함하는 런타임 문자열을
-     처리할 때 유용합니다.
-    </para>
-    <para>
-     <parameter>delimiter</parameter>를 정의하면, 그 문자들도
-     이스케이프합니다. PCRE 함수에서 요구하는 구분자를 이스케이프 할
-     때 유용합니다. /는 가장 널리 사용되는 구분자입니다.
-    </para>
-    <para>
-     특수 정규 표현식 문자:
-     <literal>. \\ + * ? [ ^ ] $ ( ) { } = ! &lt; &gt; | :</literal>
-    </para>
-    <para>
-     <example>
-      <title><function>preg_quote</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.preg-quote" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>preg_quote</refname>
+  <refpurpose>정규 표현식 문자를 인용</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>preg_quote</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam choice="opt"><type>string</type><parameter>delimiter</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>preg_quote</function>는 <parameter>str</parameter>에서
+   정규 표현식 문법에 포함되는 모든 문자의 앞에 백슬래쉬를 덧붙입니다.
+   어떠한 텍스트에 특수 정규 표현식 문자를 포함하는 런타임 문자열을
+   처리할 때 유용합니다.
+  </para>
+  <para>
+   정규 표현식 특수 문자는:
+   <literal>. \ + * ? [ ^ ] $ ( ) { } = ! &lt; &gt; | :</literal>
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>delimiter</parameter></term>
+     <listitem>
+      <para>
+       <parameter>delimiter</parameter>를 정의하면, 그 문자들도
+       이스케이프합니다. PCRE 함수에서 요구하는 구분자를 이스케이프 할
+       때 유용합니다. /는 가장 널리 사용되는 구분자입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   인용한 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>preg_quote</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$keywords = "$40 for a g3/400";
-$keywords = preg_quote($keywords, "/");
+$keywords = '$40 for a g3/400';
+$keywords = preg_quote($keywords, '/');
 echo $keywords; // \$40 for a g3\/400 를 반환합니다.
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <example>
-      <title>텍스트 안의 단어를 이탤릭체로</title>
-      <programlisting role="php">
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>텍스트 안의 단어를 기울임꼴로</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 // 이 예제에서, preg_quote($word)는 정규 표현식에서
-// 특별한 의미를 지니는 별표(*)의 처리에 사용됩니다.
+// 특별한 의미를 지니는 애스터라이크(*)의 처리에 사용됩니다.
 
 $textbody = "This book is *very* difficult to find.";
 $word = "*very*";
@@ -57,11 +90,17 @@ $textbody = preg_replace("/" . preg_quote($word) . "/",
                          $textbody);
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.bin-safe;
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,72 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.preg-split" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>preg_split</refname>
-    <refpurpose>정규 표션식에 따라 문자열을 나눕니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>preg_split</methodname>
-      <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
-      <methodparam><type>string</type><parameter>subject</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>limit</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
-     </methodsynopsis>
+<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.preg-split" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>preg_split</refname>
+  <refpurpose>정규 표현식에 따라 문자열을 나눔</refpurpose>
+ </refnamediv>
 
-    <para>
-     <parameter>pattern</parameter>에 매치된 경계에 따라서 나눠진
-     <parameter>subject</parameter>의 문자열을 포함하는 배열을 반환합니다.
-    </para>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>preg_split</methodname>
+   <methodparam><type>string</type><parameter>pattern</parameter></methodparam>
+   <methodparam><type>string</type><parameter>subject</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>limit</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>flags</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   정규 표현식에 따라서 주어진 문자열을 나눕니다.
+  </para>
+ </refsect1>
 
-    <para>
-     <parameter>limit</parameter>를 지정하면, <parameter>limit</parameter>
-     횟수까지의 나눠진 문자열을 반환하며, <parameter>limit</parameter>가
-     -1이면 "무제한"을 의미합니다. 이 값은 <parameter>flags</parameter>를
-     지정할 때 유용합니다.
-    </para>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>pattern</parameter></term>
+     <listitem>
+      <para>
+       검색할 패턴 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>subject</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>limit</parameter></term>
+     <listitem>
+      <para>
+       지정하면, <parameter>limit</parameter> 회까지 나눠진 문자열을 반환하며,
+       <parameter>limit</parameter>가 -1이면 "무제한"을 의미합니다. 이 값은
+       <parameter>flags</parameter>를 지정할 때 유용합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>flags</parameter></term>
+     <listitem>
+      <para>
+       <parameter>flags</parameter>는 다음 플래그들을 조합할 수 있습니다
+       (bitwise | 연산자로 조합합니다) :
+       <variablelist>
+        <varlistentry>
+         <term><constant>PREG_SPLIT_NO_EMPTY</constant></term>
+         <listitem>
+          <simpara>
+           이 플래그를 설정하면, <function>preg_split</function>에 의해 나눈
+           후 비어있지 않은 조각만을 반환합니다.
+          </simpara>
+         </listitem>
+        </varlistentry>
+        <varlistentry>
+         <term><constant>PREG_SPLIT_DELIM_CAPTURE</constant></term>
+         <listitem>
+          <simpara>
+           이 플래그를 설정하면, 구분자 패턴 안의 서브패턴도 검출하여
+           반환합니다.
+          </simpara>
+         </listitem>
+        </varlistentry>
+        <varlistentry>
+         <term><constant>PREG_SPLIT_OFFSET_CAPTURE</constant></term>
+         <listitem>
+          <para>
+           이 플래그를 설정하면, 문자열의 시작 위치도 반환합니다. 반환값이
+           매치된 문자열을 오프셋 <literal>0</literal>으로, 문자열 시작 위치를
+           오프셋 <literal>1</literal>로 가지는 배열을 원소로 갖는 배열로
+           변하는 점에 주의하십시오.
+          </para>
+         </listitem>
+        </varlistentry>
+       </variablelist>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
 
-    <para>
-     <parameter>flags</parameter>는 다음 플래그들의 조합을 사용할 수 있습니다
-     (bitwise | 연산자로 결합합니다) :
-      <variablelist>
-       <varlistentry>
-        <term><constant>PREG_SPLIT_NO_EMPTY</constant></term>
-        <listitem>
-         <simpara>
-         이 플래그를 설정하면, <function>preg_split</function>에 의해 비어있지
-         않은 (non-empty) 조각만을 반환합니다.
-         </simpara>
-        </listitem>
-       </varlistentry>
-       <varlistentry>
-        <term><constant>PREG_SPLIT_DELIM_CAPTURE</constant></term>
-        <listitem>
-         <simpara>
-         이 플래그를 설정하면, delimiter 패턴 안의 서브패턴도 검출하고
-         반환합니다. 이 플래그는 4.0.5에서 추가되었습니다.
-         </simpara>
-        </listitem>
-       </varlistentry>
-       <varlistentry>
-        <term><constant>PREG_SPLIT_OFFSET_CAPTURE</constant></term>
-        <listitem>
-         <para>
-          이 플래그를 설정하면, 문자열의 시작 위치도 반환합니다. 반환값이
-          매치된 문자열을 오프셋 <literal>0</literal>으로, 문자열 시작 위치를
-          오프셋 <literal>1</literal>로 가지는 배열을 원소로 갖는 배열로
-          변하는 점에 주의하십시오. 이 플래그는 PHP 4.3.0부터 사용할 수
-          있습니다.
-         </para>
-        </listitem>
-       </varlistentry>
-      </variablelist>
-    </para>
-     <para>
-     <example>
-      <title><function>preg_split</function> 예제 : 검색 문자열의 일부만을 얻기</title>
-      <programlisting role="php">
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>pattern</parameter>에 매치한 경계로 나눠진
+   <parameter>subject</parameter>의 부분을 가진 배열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        <constant>PREG_SPLIT_OFFSET_CAPTURE</constant> 추가
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.5</entry>
+       <entry>
+        <constant>PREG_SPLIT_DELIM_CAPTURE</constant> 추가
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.0</entry>
+       <entry>
+        <parameter>flags</parameter> 인수 추가
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>preg_split</function> 예제 : 검색 문자열의 일부만을 얻기</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 // " ", \r, \t, \n, \f를 포함하여
@@ -74,13 +151,13 @@
 $keywords = preg_split("/[\s,]+/", "hypertext language, programming");
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <example>
-      <title>문자열을 구성 문자로 나누기.</title>
-      <programlisting role="php">
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>문자열을 구성 문자로 나누기.</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $str = 'string';
@@ -88,13 +165,13 @@ $chars = preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY);
 print_r($chars);
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <example>
-      <title>매치와 시작위치로 문자열을 나누기.</title>
-      <programlisting role="php">
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>매치와 시작위치로 문자열을 나누기.</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $str = 'hypertext language programming';
@@ -102,11 +179,9 @@ $chars = preg_split('/ /', $str, -1, PREG_SPLIT_OFFSET_CAPTURE);
 print_r($chars);
 ?>
 ]]>
-      </programlisting>
-      <para>
-      결과는:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 Array
 (
@@ -130,21 +205,37 @@ Array
 
 )
 ]]>
-      </screen>
-     </example>
-    </para>
-    <note>
-     <para>
-      <parameter>flags</parameter>인수는 PHP 4 베타 3에서 추가되었습니다.
-     </para>
-    </note>
-    <para>
-     참고: <function>spliti</function>, <function>split</function>,
-     <function>implode</function>, <function>preg_match</function>,
-     <function>preg_match_all</function>, <function>preg_replace</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <tip>
+   <para>
+    정규 표현식의 힘이 필요하지 않으면, 더 빠른(그리고 간단한)
+    <function>explode</function>나 <function>str_split</function>로 대체할 수
+    있습니다.
+   </para>
+  </tip>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>spliti</function></member>
+    <member><function>split</function></member>
+    <member><function>implode</function></member>
+    <member><function>preg_match</function></member>
+    <member><function>preg_match_all</function></member>
+    <member><function>preg_replace</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
