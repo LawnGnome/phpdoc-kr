@@ -1,53 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.bzdecompress" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <refnamediv>
-    <refname>bzdecompress</refname>
-    <refpurpose>bzip2 인코딩 데이터의 압축을 해제한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>bzdecompress</methodname>
-      <methodparam><type>string</type><parameter>source</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>small</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>bzdecompress</function>는 
-     bzip2 인코딩 데이터를 포함하는 <parameter>source</parameter> 문자열의
-     압축을 해제하고 반환한다.  선택적인 인수 <parameter>small</parameter>
-     이 &true;이면, 메모리를 더 적게 사용하는 대체 압축 해제 알고리즘이 
-     사용될것이다 (최대 메모리 요구량은 2300K 이하이다). 
-     그러나 속도는 반으로 줄게 된다.이 기능에 대해 더많은 정보를
-     얻으려면 <link xlink:href="&url.bzip2;">bzip2 문서</link>를 참고한다.
-    </para>
-    <para>
-     <example>
-      <title><function>bzdecompress</function></title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.bzdecompress" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>bzdecompress</refname>
+  <refpurpose>bzip2 인코드 데이터의 압축 해제</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>bzdecompress</methodname>
+   <methodparam><type>string</type><parameter>source</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>small</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>bzdecompress</function>는 주어진 문자열이 포함하는 bzip2 인코드
+   데이터의 압축을 풉니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>source</parameter></term>
+     <listitem>
+      <para>
+       압출을 풀 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>small</parameter></term>
+     <listitem>
+      <para>
+       &true;면 메모리를 적게 쓰는 압축 해제 알고리즘을 사용합니다. (최대
+       메모리 요구 사항이 2300K 정도까지 내려갑니다) 그러나 작업 속도는 거의
+       절반입니다.
+      </para>
+      <para>
+       이 기능에 대한 자세한 정보는 <link xlink:href="&url.bzip2;">bzip2
+        문서</link>를 참고하십시오.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   압축 해제한 문자열이나 오류 발생시 오류 번호.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>문자열 압축 풀기</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $start_str = "This is not an honest face?";
 $bzstr = bzcompress($start_str);
 
-print( "압축 문자열: " );
-print( $bzstr );
-print( "\n<br>\n" );
+echo "Compressed String: ";
+echo $bzstr;
+echo "\n<br />\n";
 
 $str = bzdecompress($bzstr);
-print( "압축 해제된 문자열: " );
-print( $str );
-print( "\n<br>\n" );
+echo "Decompressed String: ";
+echo $str;
+echo "\n<br />\n";
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <function>bzcompress</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>bzcompress</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

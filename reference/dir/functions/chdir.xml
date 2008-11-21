@@ -1,55 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.chdir" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>chdir</refname>
-    <refpurpose>디렉토리를 변경합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>chdir</methodname>
-      <methodparam><type>string</type><parameter>directory</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     PHP의 현재 디렉토리를 <parameter>directory</parameter>로 변경합니다.
-     &return.success;
-    </para>
-    <para>
-     <example>
-      <title><function>chdir</function> 예제</title>
-       <programlisting role="php">
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.chdir" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>chdir</refname>
+  <refpurpose>디렉토리 변경</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>chdir</methodname>
+   <methodparam><type>string</type><parameter>directory</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   PHP의 현재 디렉토리를 <parameter>directory</parameter>로 변경합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>directory</parameter></term>
+     <listitem>
+      <para>
+       새 현재 디렉토리
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para> 
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>chdir</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-	
+
 // 현재 디렉토리
 echo getcwd() . "\n";
-	
+
 chdir('public_html');
-	
+
 // 현재 디렉토리
 echo getcwd() . "\n";
-	
+
 ?>
 ]]>
-       </programlisting>
-       <para>
-        출력 예는:
-       </para>
-       <screen>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
 <![CDATA[
 /home/vincent
 /home/vincent/public_html
 ]]>
-       </screen>
-     </example>
-    </para>
-    &note.sm.uidcheck.dir;
-    <para>
-     참고: <function>getcwd</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.sm.uidcheck.dir;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>getcwd</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

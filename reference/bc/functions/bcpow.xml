@@ -1,31 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.bcpow" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>bcpow</refname>
-    <refpurpose>
-     임의 정밀도 수를 제곱한다
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>bcpow</methodname>
-      <methodparam><type>string</type><parameter>x</parameter></methodparam>
-      <methodparam><type>int</type><parameter>y</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>scale</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>x</parameter>를 <parameter>y</parameter> 제곱한다
-     선택적인 <parameter>scale</parameter> 인수는 소수점 이하 자릿수를
-     결정하는데 사용한다.
-    </para>
-    <para>
-     <function>bcpowmod</function>,
-     <function>bcsqrt</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: unknown -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.bcpow" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>bcpow</refname>
+  <refpurpose>임의 정밀도 수를 거듭제곱</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>bcpow</methodname>
+   <methodparam><type>string</type><parameter>left_operand</parameter></methodparam>
+   <methodparam><type>string</type><parameter>right_operand</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>scale</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>left_operand</parameter>를
+   <parameter>right_operand</parameter>제곱합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>left_operand</parameter></term>
+     <listitem>
+      <para>
+       왼쪽 연산수, 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>right_operand</parameter></term>
+     <listitem>
+      <para>
+       오른쪽 연산수, 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    &bc.scale.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   결과를 문자열로 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <example>
+   <title><function>bcpow</function> 예제</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+
+echo bcpow('4.2', '3', 2); // 74.08
+
+?>
+]]>
+   </programlisting>
+  </example>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>bcpowmod</function></member>
+    <member><function>bcsqrt</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

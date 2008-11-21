@@ -1,54 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.bzcompress" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>bzcompress</refname>
-    <refpurpose>문자열을 bzip2 인코딩 데이터로 압축한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>bzcompress</methodname>
-      <methodparam><type>string</type><parameter>source</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>blocksize</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>workfactor</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>bzcompress</function>는 <parameter>source</parameter> 문자열을
-     압축하고 bzip2 인코딩 데이터로 반환한다
-    </para>
-    <para>
-     선택적인 인수 <parameter>blocksize</parameter> 는 압축중에 사용할
-     blocksize를 설정하고 1에서 9까지의 숫자가 되어야 하고 여기서 9는
-     가장 압축률이 높지만 자원을 더 많이 사용하게 된다.
-     <parameter>blocksize</parameter>의 기본값은 4이다.
-    </para>
-    <para>
-     선택적인 인수 <parameter>workfactor</parameter> 는 
-     반복이 많은 입력 데이터와 같은 최악의 경우에 압축이 어떻게 동작할지에
-     대해 제어한다. 이 값은 0부터 250이 될수 있고 0은 특수한 상황에서
-     쓰이고, 30은 기본값이 된다. 이 <parameter>workfactor</parameter>에 
-     관계없이, 동일한 출력값이 나온다.
-    </para>
-    <para>
-     <example>
-      <title><function>bzcompress</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: unknown -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.bzcompress" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>bzcompress</refname>
+  <refpurpose>문자열을 bzip2 인코드 데이터로 압축</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>bzcompress</methodname>
+   <methodparam><type>string</type><parameter>source</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>blocksize</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>workfactor</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>bzcompress</function>는 주어진 문자열을
+   압축하고 bzip2 인코딩 데이터로 반환한다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>source</parameter></term>
+     <listitem>
+      <para>
+       압축할 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>blocksize</parameter></term>
+     <listitem>
+      <para>
+       압축중에 사용할
+       blocksize를 설정하고 1에서 9까지의 숫자가 되어야 합니다. 여기서 9는
+       가장 압축률이 높지만 자원을 더 많이 사용하게 된다.
+       <parameter>blocksize</parameter>의 기본값은 4이다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>workfactor</parameter></term>
+     <listitem>
+      <para>
+       반복이 많은 입력 데이터와 같은 최악의 경우에 압축이 어떻게 동작할지에
+       대해 제어한다. 이 값은 0부터 250이 될수 있고, 0은 특수한 상황에서
+       쓰이며 기본값은 30입니다.
+      </para>
+      <para>
+       <parameter>workfactor</parameter>에 
+       관계없이, 성생된 출력은 동일합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   압축된 문자열이나, 오류 발생 시 오류 번호.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <example>
+   <title>데이터 압축하기</title>
+   <programlisting role="php">
 <![CDATA[
 <?php
 $str = "sample data";
 $bzstr = bzcompress($str, 9);
-print( $bzstr );
+echo $bzstr;
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <function>bzdecompress</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+   </programlisting>
+  </example>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>bzdecompress</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
+ <chapter xml:id="configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>실행시 설정</title>
+
+  <sect1 xml:id="configuration.file">
+   <title>설정 파일</title>
+
+   <simpara>
+    설정 파일(&php.ini;)은 PHP를 시작할 때 읽습니다. PHP 서버 모듈 버전은 웹
+    서버가 시작할 때 한번만 일어납니다. <acronym>CGI</acronym>와
+    <acronym>CLI</acronym> 버전에서는 매번 일어납니다.
+   </simpara>
+   <para>
+    &php.ini;는 세 위치에서 찾아집니다 (순서대로):
+    <itemizedlist>
+     <listitem>
+      <para>
+       SAPI 모듈 지정 위치 (아파치 2에서 <literal>PHPIniDir</literal> 지시어,
+       CGI와 CLI에서 <literal>-c</literal> 명령줄 옵션, NSAPI에서
+       <literal>php_ini</literal> 인수, THTTPD에서
+       <literal>PHP_INI_PATH</literal> 환경 변수)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <varname>PHPRC</varname> 환경 변수. PHP 5.2.0 이전에는 아래 언급한
+       레지스트리 키 이후에 확인했습니다.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       PHP 5.2.0부터, 다음 레지스트리 위치가 순서대로 찾아집니다:
+       <literal>HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y.z\IniFilePath</literal>,
+       <literal>HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x.y\IniFilePath</literal>,
+       <literal>HKEY_LOCAL_MACHINE\SOFTWARE\PHP\x\IniFilePath</literal>.
+       x, y, z는 PHP 메이저, 마이너, 릴리즈 버전을 의미합니다.
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       <literal>HKEY_LOCAL_MACHINE\SOFTWARE\PHP\IniFilePath</literal>
+       (윈도우 레지스트리 위치)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       현재 작업 디렉토리 (CLI 제외)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       웹 서버 디렉토리(SAPI 모듈의 경우)나 PHP 디렉토리(윈도우 제외)
+      </para>
+     </listitem>
+     <listitem>
+      <para>
+       윈도우 디렉토리(<filename class="directory">C:\windows</filename>나
+       <filename class="directory">C:\winnt</filename>)(윈도우)나
+       <literal>--with-config-file-path</literal> 컴파일 시 옵션
+      </para>
+     </listitem>
+    </itemizedlist> 
+   </para>
+   <para>
+    <filename>php-SAPI.ini</filename>이 존재하면(SAPI는 사용하는 SAPI,
+    그러므로 파일명은 <filename>php-cli.ini</filename>,
+    <filename>php-apache.ini</filename> 등), &php.ini; 대신 사용합니다. SAPI
+    이름은 <function>php_sapi_name</function>으로 확인할 수 있습니다.
+   </para>
+   <note>
+    <para>
+     아파치 웹 서버는 시작할 때 디렉토리를 루트로 변경하므로, PHP는 루트
+     파일시스템에 &php.ini;가 존재할 경우 이를 읽으려고 시도합니다.
+    </para>
+   </note>
+   <para>
+    확장에 의해 다뤄지는 &php.ini; 지시어는 각 확장 페이지에 문서가 있습니다.
+    <link linkend="ini">핵심 지시어 목록</link>은 부록에 있습니다. 모든 PHP
+    지시어가 매뉴얼에 나와있지 않을 수 있습니다. PHP 버전에 따른 완전한 지시어
+    목록은, &php.ini; 파일을 읽어보십시오. 또는, CVS에서 <link
+     xlink:href="&url.php.cvs.phpini;">최신 &php.ini;</link>를 찾아볼 수
+    있습니다.
+   </para>
+   <para>
+    <example>
+     <title>&php.ini; 예제</title>
+     <programlisting role="ini">
+<![CDATA[
+; any text on a line after an unquoted semicolon (;) is ignored
+[php] ; section markers (text within square brackets) are also ignored
+; Boolean values can be set to either:
+;    true, on, yes
+; or false, off, no, none
+register_globals = off
+track_errors = yes
+
+; you can enclose strings in double-quotes
+include_path = ".:/usr/local/lib/php"
+
+; backslashes are treated the same as any other character
+include_path = ".;c:\php\lib"
+]]>
+</programlisting>
+<!-- TODO: add more details about values and expressions -->
+    </example>
+   </para>
+   <para>
+    PHP 5.1.0부터, .ini 파일 안에서 이미 존재하는 .ini 변수를 참조할 수
+    있습니다. 예: <literal>open_basedir = ${open_basedir}
+     ":/new/dir"</literal>.
+   </para>
+  </sect1>
+
+  <sect1 xml:id="configuration.changes">
+   <title>설정을 바꾸는 방법</title>
+
+   <sect2 xml:id="configuration.changes.apache">
+    <title>PHP를 아파치 모듈로 실행</title>
+    <simpara>
+     PHP를 아파치 모듈로 사용할 때, 아파치 설정 파일(즉 &httpd.conf;)과
+     &htaccess; 파일에서 설정을 변경할 수 있습니다. 이를 위해서는
+     "AllowOverride Options"나 "AllowOverride All" 권한이 필요합니다.
+    </simpara>
+
+    <para>
+     몇몇 아파치 지시어는 PHP 설정을 아파치 설정 파일에서 바꿀 수 있게 합니다.
+     어떤 지시어가 <constant>PHP_INI_ALL</constant>,
+     <constant>PHP_INI_PERDIR</constant>,
+     <constant>PHP_INI_SYSTEM</constant>인지는, <link
+      linkend="ini.list">php.ini 지시어 목록</link> 부록을 참고하십시오.
+    </para>
+
+    <para>
+     <variablelist>
+      <varlistentry>
+       <term>
+        <systemitem role="directive">php_value</systemitem>
+        <parameter>name</parameter>
+        <parameter>value</parameter>
+       </term>
+       <listitem>
+        <para>
+         지정한 지시어의 값을 설정합니다.
+         <constant>PHP_INI_ALL</constant>과
+         <constant>PHP_INI_PERDIR</constant> 형식 지시어에만 사용할 수
+         있습니다. 이전 설정 값을 지우려면 값에 <literal>none</literal>을
+         사용합니다.
+        </para>
+        <note>
+         <simpara>
+          <systemitem role="directive">php_value</systemitem>로 논리 값을
+          설정하지 마십시오. 대신 <systemitem
+           role="directive">php_flag</systemitem>(아래 참고)를 사용해야
+          합니다.
+         </simpara>
+        </note>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>
+        <systemitem role="directive">php_flag</systemitem>
+        <parameter>name</parameter>
+        <parameter>on|off</parameter>
+       </term>
+       <listitem>
+        <para>
+         논리값 지시어를 설정합니다.
+         <constant>PHP_INI_ALL</constant>과
+         <constant>PHP_INI_PERDIR</constant> 형식 지시어에만 사용할 수
+         있습니다.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>
+        <systemitem role="directive">php_admin_value</systemitem>
+        <parameter>name</parameter>
+        <parameter>value</parameter>
+       </term>
+       <listitem>
+        <para>
+         지정한 지시어의 값을 설정합니다. &htaccess; 파일에서 <emphasis>사용할
+          수 없습니다</emphasis>. <systemitem
+          role="directive">php_admin_value</systemitem>로 설정하는 지시어
+         형식은 &htaccess;나 <function>ini_set</function>으로 덮어쓸 수
+         없습니다. 이전 설정 값을 지우려면 값에 <literal>none</literal>을
+         사용합니다.
+        </para>
+       </listitem>
+      </varlistentry>
+      <varlistentry>
+       <term>
+        <systemitem role="directive">php_admin_flag</systemitem>
+        <parameter>name</parameter>
+        <parameter>on|off</parameter>
+       </term>
+       <listitem>
+        <para>
+         논리값 지시어를 설정합니다. &htaccess; 파일에서 <emphasis>사용할
+          수 없습니다</emphasis>. <systemitem
+          role="directive">php_admin_flag</systemitem>로 설정하는 지시어
+         형식은 &htaccess;로 덮어쓸 수 없습니다.
+        </para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </para>
+    <para>
+     <example>
+      <title>아파치 설정 예제</title>
+      <programlisting role="ini">
+<![CDATA[
+<IfModule mod_php5.c>
+  php_value include_path ".:/usr/local/lib/php"
+  php_admin_flag safe_mode on
+</IfModule>
+<IfModule mod_php4.c>
+  php_value include_path ".:/usr/local/lib/php"
+  php_admin_flag safe_mode on
+</IfModule>
+]]>
+      </programlisting>
+     </example>
+    </para>
+    <caution>
+     <para>
+      PHP 상수는 PHP 밖에 존재하지 않습니다. 예를 들어, &httpd.conf;에서
+      <constant>E_ALL</constant>나 <constant>E_NOTICE</constant> 등의 PHP
+      상수를 사용할 수 없습니다. <link
+       linkend="ini.error-reporting">error_reporting</link> 지시어에 이런
+      설정을 하면, 아무런 의미를 가지지 않고 <emphasis>0</emphasis>으로
+      평가됩니다. 대신 할당된 비트마스크 값을 사용하십시오. 이런 상수는
+      &php.ini;에서는 사용할 수 있습니다.
+     </para>
+    </caution>
+   </sect2>
+
+   <sect2 xml:id="configuration.changes.windows">
+    <title>윈도우 레지스트리에서 PHP 설정 바꾸기</title>
+     <simpara>
+      PHP를 윈도우에서 실행할 때, 설정값은 윈도우 레지스트리를 사용하여
+      디렉토리 기반으로 변경할 수 있습니다. 설정값은 레지스트리 키
+      <literal>HKLM\SOFTWARE\PHP\Per Directory Values</literal>에 저장되며, 
+      보조키는 경로명에 해당합니다. 예를 들어,
+      <literal>c:\inetpub\wwwroot</literal> 디렉토리를 위한 설정값은
+      <literal>HKLM\SOFTWARE\PHP\Per Directory
+       Values\c\inetpub\wwwroot</literal> 키에 저장됩니다. 디렉토리 설정은 이
+      디렉토리와 그 밑의 서브디렉토리에서 실행하는 모든 스크립트에 적용됩니다.
+      키 아래 값은 PHP 설정 지시어 이름을 가지고 문자열 값이여야 합니다. 값에
+      사용하는 PHP 상수는 해석되지 않습니다. 그러나,
+      <constant>PHP_INI_USER</constant>로 바꿀 수 있는 설정값만 이 방법을
+      사용할 수 있습니다. <constant>PHP_INI_PERDIR</constant> 값은 사용할 수
+      없습니다.
+     </simpara>
+   </sect2>
+   
+   <sect2 xml:id="configuration.changes.other">
+    <title>PHP의 다른 인터페이스</title>
+    <para>
+     PHP를 어떻게 실행하는가에 관계 없이, <function>ini_set</function>으로
+     몇몇 값을 실행시에 변경할 수 있습니다. 자세한 정보는
+     <function>ini_set</function> 페이지 문서를 참고하십시오.
+    </para>
+    <para>
+     시스템의 모든 설정 목록과 현재 값을 얻고 싶다면,
+     <function>phpinfo</function>를 실행하여 결과 페이지를 살펴보십시오. 각
+     설정 지시어의 값은 실행시에 <function>ini_get</function>이나
+     <function>get_cfg_var</function>를 사용하여 접근할 수 있습니다.
+    </para>
+   </sect2>
+  </sect1>
+
+ </chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
