@@ -1,39 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.uasort" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>uasort</refname>
-    <refpurpose>
-     사용자-정의 비교함수로 배열을 정렬하고 인덱스 연관성을 유지한다
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>uasort</methodname>
-      <methodparam><type>array</type><parameter>array</parameter></methodparam>
-      <methodparam><type>callback</type><parameter>cmp_function</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     이 함수는 배열 인덱스가 그와 관련되어있는 배열 원소들과의 연관성을 유지하면서
-     배열을 정렬한다. 이 함수는 실제 원소 순서가 중요한 
-     연관 배열을 정렬할 때 주로 쓰인다. 비교함수는 사용자-정의된다.
-    </para>
-    <note>
-     <para>
-      사용자-정의 비교함수의 예제코드를 위해
-      <function>usort</function> 와
-      <function>uksort</function> 를 참고.
-     </para>
-    </note>
-    <para>
-     <function>usort</function>, <function>uksort</function>,
-     <function>sort</function>, <function>asort</function>,
-     <function>arsort</function>, <function>ksort</function>,
-     <function>rsort</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.uasort" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>uasort</refname>
+  <refpurpose>사용자 정의 비교 함수로 배열을 정렬하고 인덱스 연관성을 유지</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>uasort</methodname>
+   <methodparam><type>array</type><parameter role="reference">array</parameter></methodparam>
+   <methodparam><type>callback</type><parameter>cmp_function</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   이 함수는 배열 인덱스가 그와 관련되어 있는 배열 원소들과의 연관성을
+   유지하면서 사용자 정의 비교 함수를 사용하여 배열을 정렬한다. 
+  </para>
+  <para>
+   연관 배열을 정렬하면서 실제 원소 순서가 중요할 때 주로 사용합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>array</parameter></term>
+     <listitem>
+      <para>
+       입력 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>cmp_function</parameter></term>
+     <listitem>
+      <para>
+       사용자 정의 비교 함수의 예제는 <function>usort</function>와
+       <function>uksort</function>를 참고하십시오.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>usort</function></member>
+    <member><function>uksort</function></member>
+    <member><function>asort</function></member>
+    <member><function>arsort</function></member>
+    <member><function>ksort</function></member>
+    <member><function>rsort</function></member>
+    <member><function>sort</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

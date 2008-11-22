@@ -1,66 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.apache-lookup-uri" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>apache_lookup_uri</refname>
-    <refpurpose>
-     특정한 URI에 대한 부분 요청을 실행하고 그에 대한 모든 정보를
-     반환한다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>object</type><methodname>apache_lookup_uri</methodname>
-      <methodparam><type>string</type><parameter>filename</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     URI에 대한 부분 요청을 실행합니다. 주어진 자원에 대하여
-     모든 중요한 정보를 포함하여 많은 정보를 클래스로 반환합니다.
-     반환하는 클래스의 속성은 다음과 같습니다:
-     <simplelist>
-      <member>status</member>
-      <member>the_request</member>
-      <member>status_line</member>
-      <member>method</member>
-      <member>content_type</member>
-      <member>handler</member>
-      <member>uri</member>
-      <member>filename</member>
-      <member>path_info</member>
-      <member>args</member>
-      <member>boundary</member>
-      <member>no_cache</member>
-      <member>no_local_copy</member>
-      <member>allowed</member>
-      <member>send_bodyct</member>
-      <member>bytes_sent</member>
-      <member>byterange</member>
-      <member>clength</member>
-      <member>unparsed_uri</member>
-      <member>mtime</member>
-      <member>request_time</member>
-     </simplelist>
-    </para>
-    <para>
-     <example>
-      <title><function>apache_lookup_uri</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<!-- splitted from ./en/functions/apache.xml, last change in rev 1.2 -->
+<refentry xml:id="function.apache-lookup-uri" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>apache_lookup_uri</refname>
+  <refpurpose>지정한 URI에 부분 요청을 수행하고 그에 대한 정보를 반환</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>object</type><methodname>apache_lookup_uri</methodname>
+   <methodparam><type>string</type><parameter>filename</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   URI에 부분 요청을 수행합니다. 주어진 리소스에 대해 중요한 모든 정보를
+   가집니다.
+  </para>
+  &apache.req.module;
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>filename</parameter></term>
+     <listitem>
+      <para>
+       요청할 파일명(URI).
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   URI 정보에 관련된 <type>object</type>. 이 <type>object</type>가 가지는
+   프로퍼티는:
+  </para>
+  <para>
+   <simplelist>
+    <member>status</member>
+    <member>the_request</member>
+    <member>status_line</member>
+    <member>method</member>
+    <member>content_type</member>
+    <member>handler</member>
+    <member>uri</member>
+    <member>filename</member>
+    <member>path_info</member>
+    <member>args</member>
+    <member>boundary</member>
+    <member>no_cache</member>
+    <member>no_local_copy</member>
+    <member>allowed</member>
+    <member>send_bodyct</member>
+    <member>bytes_sent</member>
+    <member>byterange</member>
+    <member>clength</member>
+    <member>unparsed_uri</member>
+    <member>mtime</member>
+    <member>request_time</member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>apache_lookup_uri</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $info = apache_lookup_uri('index.php?var=value');
 print_r($info);
 
 if (file_exists($info->filename)) {
-    echo '파일이 존재합니다!';
+    echo 'file exists!';
 }
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제의 출력 예는:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
 <![CDATA[
 stdClass Object
 (
@@ -82,19 +109,13 @@ stdClass Object
     [bytes_sent] => 0
     [request_time] => 1074282764
 )
-파일이 존재합니다!
+file exists!
 ]]>
-      </screen>
-     </example>
-    </para>
-    <note>
-     <simpara>
-      <function>apache_lookup_uri</function>는 PHP를 아파치 모듈로
-      설치했을 경우에만 작동합니다.
-     </simpara>
-    </note>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

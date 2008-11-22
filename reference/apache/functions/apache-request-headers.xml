@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.apache-request-headers" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>apache_request_headers</refname>
-    <refpurpose>모든 HTTP 요청 헤더를 가져옵니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>apache_request_headers</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     <function>apache_request_headers</function>는 현재 요청의 모든
-     HTTP 헤더를 연합 배열로 반환합니다. PHP를 <productname>Apache</productname>
-     모듈로 사용할때만 지원합니다.
-    </para>
-    <para>
-     <example>
-      <title><function>apache_request_headers</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.apache-request-headers" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>apache_request_headers</refname>
+  <refpurpose>모든 HTTP 요청 헤더를 가져옵니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>apache_request_headers</methodname>
+   <void/>
+  </methodsynopsis>
+  <para>
+   현재 요청에서 모든 HTTP 요청을 가져옵니다.
+  </para>
+  &apache.req.module;
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   현재 요청의 모든 HTTP 헤더에 대한 연관 배열이거나, 실패시엔 &false;.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>apache_request_headers</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $headers = apache_request_headers();
@@ -29,31 +40,52 @@ foreach ($headers as $header => $value) {
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <note>
-     <para>
-      PHP 4.3.0 이전에, <function>apache_request_headers</function>는
-      <function>getallheaders</function>로 불리워졌습니다. PHP 4.3.0 이후의
-      <function>getallheaders</function>는 <function>apache_request_headers</function>의
-      단축형입니다.
-     </para>
-    </note>
-    <note>
-     <para>
-      환경 변수에서 일반 CGI 변수를 읽어서, PHP를 <productname>Apache</productname>
-      모듈로 사용하고 있는지를 확인할 수 있습니다. 모든 사용 가능한
-      <link linkend="language.variables.predefined">환경 변수</link> 목록은
-      <function>phpinfo</function>를 이용해서 볼 수 있습니다.
-     </para>
-    </note>
-    &note.apache.nsapi-module;
-    <para>
-     참고: <function>apache_response_headers</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
+<![CDATA[
+Accept: */*
+Accept-Language: en-us
+Accept-Encoding: gzip, deflate
+User-Agent: Mozilla/4.0
+Host: www.example.com
+Connection: Keep-Alive
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    PHP 4.3.0 이전에, <function>apache_request_headers</function>는
+    <function>getallheaders</function>로 불리워졌습니다. PHP 4.3.0 이후의
+    <function>getallheaders</function>는 <function>apache_request_headers</function>의
+    단축형입니다.
+   </para>
+  </note>
+  <note>
+   <para>
+    환경 변수에서 일반 CGI 변수를 읽어서, PHP를 <productname>Apache</productname>
+    모듈로 사용하고 있는지를 확인할 수 있습니다. 모든 사용 가능한
+    <link linkend="language.variables.predefined">환경 변수</link> 목록은
+    <function>phpinfo</function>를 이용해서 볼 수 있습니다.
+   </para>
+  </note>
+  &note.apache.nsapi-module;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>apache_response_headers</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

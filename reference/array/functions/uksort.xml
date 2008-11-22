@@ -1,66 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.uksort" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>uksort</refname>
-    <refpurpose>
-     사용자-정의된 비교함수를 사용하여 키에 의해 배열을 정렬한다
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>uksort</methodname>
-      <methodparam><type>array</type><parameter>array</parameter></methodparam>
-      <methodparam><type>callback</type><parameter>cmp_function</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     이 함수는 사용자-지원 비교 함수를 사용하여 키들에 의해
-     배열을 정렬할 것이다. 정렬하고자 하는 배열이 흔히 사용되지 않는 방법에
-     의해 정렬할 필요가 있으면, 이 함수를 사용해야 한다.
-    </para>
-    <para>
-     <example>
-      <title><function>uksort</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.uksort" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>uksort</refname>
+  <refpurpose>사용자 정의 비교 함수를 사용하여 키에 의한 배열 정렬</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>uksort</methodname>
+   <methodparam><type>array</type><parameter role="reference">array</parameter></methodparam>
+   <methodparam><type>callback</type><parameter>cmp_function</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>uksort</function>는 사용자 제공 비교 함수를 사용하여 키들에 의해
+   배열을 정렬할 것이다. 정렬하고자 하는 배열이 흔히 사용되지 않는 방법에
+   의해 정렬할 필요가 있으면, 이 함수를 사용해야 한다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>array</parameter></term>
+     <listitem>
+      <para>
+       입력 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>cmp_function</parameter></term>
+     <listitem>
+      <para>
+       콜백 비교 함수.
+      </para>
+      <para>
+       <parameter>cmp_function</parameter> 함수는 <parameter>array</parameter>
+       키로 채워지는 두 개의 인수를 받아야 합니다. 비교 함수는 첫번째 인수가
+       두번째 함수보다 작거나, 같거나, 크다고 판단될 때 0보다 작거나, 같거나,
+       큰 정수를 반환해야 합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>uksort</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-function cmp ($a, $b) {
-    if ($a == $b) return 0;
-    return ($a > $b) ? -1 : 1;
+function cmp($a, $b)
+{
+    $a = ereg_replace('^(a|an|the) ', '', $a);
+    $b = ereg_replace('^(a|an|the) ', '', $b);
+    return strcasecmp($a, $b);
 }
 
-$a = array (4 => "four", 3 => "three", 20 => "twenty", 10 => "ten");
+$a = array("John" => 1, "the Earth" => 2, "an apple" => 3, "a banana" => 4);
 
-uksort ($a, "cmp");
+uksort($a, "cmp");
 
-while (list ($key, $value) = each ($a)) {
+foreach ($a as $key => $value) {
     echo "$key: $value\n";
 }
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제코드는 다음을 출력한다:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
-20: twenty
-10: ten
-4: four
-3: three
+an apple: 3
+a banana: 4
+the Earth: 2
+John: 1
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     <function>usort</function>, <function>uasort</function>,
-     <function>sort</function>, <function>asort</function>,
-     <function>arsort</function>, <function>ksort</function>,
-     <function>natsort</function>, <function>rsort</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>usort</function></member>
+    <member><function>uasort</function></member>
+    <member><function>sort</function></member>
+    <member><function>asort</function></member>
+    <member><function>arsort</function></member>
+    <member><function>ksort</function></member>
+    <member><function>natsort</function></member>
+    <member><function>rsort</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

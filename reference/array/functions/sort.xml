@@ -1,87 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.sort" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>sort</refname>
-    <refpurpose>배열을 정렬한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>sort</methodname>
-      <methodparam><type>array</type><parameter>array</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>sort_flags</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     이 함수는 배열을 정렬한다. 이 함수가 수행되면 원소들은 작은 값에서 
-     큰 값으로 정렬될것이다.
-    </para>
-    <para>
-     <example>
-      <title><function>sort</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.27 Maintainer: fuzzy74 Status: unknown -->
+<refentry xml:id="function.sort" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>sort</refname>
+  <refpurpose>배열 정렬</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>sort</methodname>
+   <methodparam><type>array</type><parameter role="reference">array</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>sort_flags</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   이 함수는 배열을 정렬한다. 이 함수가 수행되면 원소들은 작은 값에서 
+   큰 값으로 정렬될것이다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>array</parameter></term>
+     <listitem>
+      <para>
+       입력 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>sort_flags</parameter></term>
+     <listitem>
+      <para>
+       선택적인 두번째 <parameter>sort_flags</parameter> 인수는
+       아래 값을 사용하며, 정렬 방법을 변경하는데 사용된다:
+      </para>
+      <para>
+       정렬 형식 플래그:
+       <itemizedlist>
+        <listitem>
+         <simpara><constant>SORT_REGULAR</constant> - 통상적인 방법으로 원소를
+          비교 (자료형을 바꾸지 않음)</simpara>
+        </listitem>
+        <listitem>
+         <simpara><constant>SORT_NUMERIC</constant> - 수치적으로 원소를 비교</simpara>
+        </listitem>
+        <listitem>
+         <simpara><constant>SORT_STRING</constant> - 문자열로 원소를 비교</simpara>
+        </listitem>
+        <listitem>
+         <simpara><constant>SORT_LOCALE_STRING</constant> - 현재 로케일에
+          기반하여 문자열로 원소를 비교. PHP 4.4.0과 5.0.2에서 추가. PHP 6
+          전에는, <function>setlocale</function>로 변경할 수 있는 시스템
+          로케일을 사용합니다. PHP 6부터는,
+          <function>i18n_loc_set_default</function>를 사용해야 합니다.
+         </simpara>
+        </listitem>
+       </itemizedlist>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.0.0</entry>
+       <entry>
+        <parameter>sort_flags</parameter> 인수 추가.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>sort</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
-$fruits = array ("lemon", "orange", "banana", "apple");
-sort ($fruits);
-reset ($fruits);
-while (list ($key, $val) = each ($fruits)) {
-    echo "fruits[".$key."] = ".$val."\n";
+$fruits = array("lemon", "orange", "banana", "apple");
+sort($fruits);
+foreach ($fruits as $key => $val) {
+    echo "fruits[" . $key . "] = " . $val . "\n";
 }
 
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제코드는 다음을 출력한다:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 fruits[0] = apple
 fruits[1] = banana
 fruits[2] = lemon
 fruits[3] = orange
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     fruits 는 알파벳순으로 정렬되었다.
-    </para>
-    <para>
-     선택적인 두번째 <parameter>sort_flags</parameter> 인수는
-     이 값들을 사용하여 정렬방법을 변경하는데 사용된다:
-    </para>
-    <para>
-     정렬 방법 플래그:
-     <itemizedlist>
-      <listitem>
-       <simpara>SORT_REGULAR - 통상적인 방법으로 원소를 비교</simpara>
-      </listitem>
-      <listitem>
-       <simpara>SORT_NUMERIC - 수치적으로 원소를 비교</simpara>
-      </listitem>
-      <listitem>
-       <simpara>SORT_STRING - 문자열로 원소를 비교</simpara>
-      </listitem>
-     </itemizedlist>
-    </para>
-    <note>
-     <para>
-      두번째 인수는 PHP 4에서 추가되었다.
-     </para>
-    </note>
-    <para>
-     <function>arsort</function>,
-     <function>asort</function>, <function>ksort</function>,
-     <function>natsort</function>, <function>natcasesort</function>,
-     <function>rsort</function>, <function>usort</function>,
-     <function>array_multisort</function>,
-     <function>uksort</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+  <para>
+   fruits는 알파벳 순으로 정렬되었다.
+  </para>
+ </refsect1>
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.no-key-association;
+  <note>
+   <simpara>
+    대부분의 PHP 정렬 함수와 마찬가지로, <function>sort</function>는 <link
+     xlink:href="&url.wiki.quicksort;">퀵소트</link>를 사용합니다.
+   </simpara>
+  </note>
+  <warning>
+   <simpara>
+    여러 자료형 값을 가지고 있는 배열을 정렬할 때는 조심하십시오.
+    <function>sort</function>가 예측할 수 없는 결과를 생성할 수 있습니다.
+   </simpara>
+  </warning>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>arsort</function></member>
+    <member><function>asort</function></member>
+    <member><function>ksort</function></member>
+    <member><function>rsort</function></member>
+    <member><function>usort</function></member>
+    <member><function>uksort</function></member>
+    <member><function>array_multisort</function></member>
+    <member><function>krsort</function></member>
+    <member><function>natsort</function></member>
+    <member><function>natcasesort</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
