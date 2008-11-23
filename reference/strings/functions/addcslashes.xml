@@ -2,7 +2,7 @@
 <!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
 <refentry xml:id="function.addcslashes" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
-  <refname>AddCSlashes</refname>
+  <refname>addcslashes</refname>
   <refpurpose>C 형식으로 문자열을 슬래시로 인용</refpurpose>
  </refnamediv>
 
