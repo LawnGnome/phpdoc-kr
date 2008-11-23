@@ -1,49 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.natsort" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <refnamediv>
-    <refname>natsort</refname>
-    <refpurpose>
-     "natural order" 알고리즘을 사용하여 배열을 정렬한다
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>natsort</methodname>
-      <methodparam><type>array</type><parameter>array</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     이 함수는 인간의 방식으로 문자숫자 조합된 문자열을 정렬하는 알고리즘으로
-     구현되었다. 이 알고리즘을 "natural ordering"이라고 한다.
-     이 알고리즘과 일반적인 컴퓨터 문자열 정렬 알고리즘
-     (<function>sort</function>를 사용) 사이의 차이점의 예는 다음 예제코드에서
-     확인할수 있다:
-    </para>
-    <para>
-     <example>
-      <title><function>natsort</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.natsort" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>natsort</refname>
+  <refpurpose>"자연순" 알고리즘으로 배열 정렬</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>natsort</methodname>
+   <methodparam><type>array</type><parameter role="reference">array</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   이 함수는 키/값 연결을 유지하면서 사람이 하는 순서로 알파벳-숫자 문자열을
+   정렬하는 알고리즘을 구현합니다. 이 알고리즘을 "자연순"이라고 한다.
+   이 알고리즘과 일반적인 컴퓨터 문자열 정렬
+   알고리즘(<function>sort</function> 사용)과의 차이점은 아래 예제에서
+   확인할 수 있습니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>array</parameter></term>
+     <listitem>
+      <para>
+       입력 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>natsort</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$array1 = $array2 = array ("img12.png", "img10.png", "img2.png", "img1.png");
+$array1 = $array2 = array("img12.png", "img10.png", "img2.png", "img1.png");
 
 sort($array1);
-echo "Standard sorting\n";
+echo "일반 정렬\n";
 print_r($array1);
 
 natsort($array2);
-echo "\nNatural order sorting\n";
+echo "\n자연순 정렬\n";
 print_r($array2);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 코드는 다음의 출력을 생성할것이다:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
-Standard sorting
+일반 정렬
 Array
 (
     [0] => img1.png
@@ -52,7 +73,7 @@ Array
     [3] => img2.png
 )
 
-Natural order sorting
+자연순 정렬
 Array
 (
     [3] => img1.png
@@ -61,26 +82,25 @@ Array
     [0] => img12.png
 )
 ]]>
-      </screen>
-      <para>
-       추가 정보: Martin Pool의 <link
-       xlink:href="&url.strnatcmp;">Natural Order String Comparison</link> 페이지.
-      </para>
-     </example>
-    </para>
-    <note>
-     <para>
-      index/value 연관을 유지시키려면,
-      <literal>uasort($arr, 'strnatcmp')</literal> 사용을 고려하도록 한다.
-     </para>
-    </note>
+    </screen>
     <para>
-     <function>natcasesort</function>,
-     <function>strnatcmp</function>,
-     <function>strnatcasecmp</function> 참고.
+     추가 정보: Martin Pool의 <link
+      xlink:href="&url.strnatcmp;">자연순 문자열 정렬</link> 페이지.
     </para>
-   </refsect1>
-  </refentry>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>natcasesort</function></member>
+    <member><function>strnatcmp</function></member>
+    <member><function>strnatcasecmp</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

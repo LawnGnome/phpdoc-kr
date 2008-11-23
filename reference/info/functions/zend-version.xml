@@ -1,41 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
 <!-- CREDITS: myprogram -->
-  <refentry xml:id="function.zend-version" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>zend_version</refname>
-    <refpurpose>현재 젠드 엔진의 버전을 얻습니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>zend_version</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     현재 실행 중인 젠드 엔진 버전을 가지는 문자열을 반환합니다.
-    </para>
-    <para>
-     <example>
-      <title><function>zend_version</function> 예제</title>
-      <programlisting role="php">
+<refentry xml:id="function.zend-version" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>zend_version</refname>
+  <refpurpose>현재 젠드 엔진의 버전을 얻습니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>zend_version</methodname>
+   <void/>
+  </methodsynopsis>
+  <para>
+   현재 실행 중인 젠드 엔진 버전을 가지는 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   젠드 엔진 버전을 문자열로 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>zend_version</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-// 출력 예. 'Zend engine version: 1.0.4'
-echo "Zend engine version: " . zend_version();
+echo "젠드 엔진 버전: " . zend_version();
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     참고: <function>phpinfo</function>,
-     <function>phpcredits</function>,
-     <function>php_logo_guid</function>,
-     <function>phpversion</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+    &example.outputs.similar;
+    <screen>
+<![CDATA[
+젠드 엔진 버전: 2.2.0
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>phpinfo</function></member>
+    <member><function>phpcredits</function></member>
+    <member><function>php_logo_guid</function></member>
+    <member><function>phpversion</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
