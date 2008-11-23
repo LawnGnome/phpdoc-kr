@@ -1,58 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.ob-end-clean" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>ob_end_clean</refname> 
-    <refpurpose>
-     출력 버퍼를 지우고 출력 버퍼링을 종료합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>ob_end_clean</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     이 함수는 가장 최근의 출력 버퍼의 내용을 버리고 그 출력 버퍼링을
-     종료합니다. <function>ob_end_clean</function>를 호출하면 버퍼 내용은
-     버려지기 때문에, 버퍼의 내용으로 다른 작업을 하기 위해서는
-     <function>ob_end_clean</function>를 호출하기 전에
-     <function>ob_get_contents</function>를 호출해야 합니다. 하나의 버퍼를
-     버리는데 성공하면 &true;, 그 외의 경우에는 &false;를 반환합니다. 실패하는
-     원인은 활성화된 버퍼 없이 이 함수를 호출하였거나, 어떠한 이유로 인해
-     버퍼를 삭제할 수 없는 경우(특수 버퍼의 경우)입니다.
-    </para>
-    <para>
-     다음 예제는 모든 출력 버퍼를 제거하는 간단한 방법입니다:
-    </para>
-    <para>
-     <example>
-      <title><function>ob_end_clean</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.ob-end-clean" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>ob_end_clean</refname> 
+  <refpurpose>출력 버퍼를 지우고 출력 버퍼링을 종료</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>ob_end_clean</methodname>
+   <void/>
+  </methodsynopsis>
+  <para>
+   이 함수는 가장 최근의 출력 버퍼의 내용을 버리고 그 출력 버퍼링을
+   종료합니다. <function>ob_end_clean</function>를 호출하면 버퍼 내용은
+   버려지기 때문에, 버퍼의 내용으로 다른 작업을 하기 위해서는
+   <function>ob_end_clean</function>를 호출하기 전에
+   <function>ob_get_contents</function>를 호출해야 합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success; 실패하는 경우는 활성화된 버퍼가 없는 상태에서 호출하거나
+   버퍼를 지울 수 없는 경우(특수 버퍼일 경우)입니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="errors">
+  &reftitle.errors;
+  <para>
+   함수가 실패하면 <constant>E_NOTICE</constant>가 발생합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.2.0</entry>
+       <entry>
+        논리 반환값 추가.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   다음 예제는 모든 출력 버퍼를 제거하는 간단한 방법입니다:
+  </para>
+  <para>
+   <example>
+    <title><function>ob_end_clean</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-while (@ob_end_clean());
+ob_start();
+echo 'Text that won\'t get displated.';
+ob_end_clean();
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <note>
-     <simpara>
-      이 함수가 실패하면 E_NOTICE를 생성합니다.
-     </simpara>
-     <simpara>
-      논리 반환값은 PHP 4.2.0에서 추가되었습니다.
-     </simpara>
-    </note>
-    <para>
-     참고: <function>ob_start</function>,
-     <function>ob_get_contents</function>,
-     <function>ob_flush</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>ob_start</function></member>
+    <member><function>ob_get_contents</function></member>
+    <member><function>ob_flush</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

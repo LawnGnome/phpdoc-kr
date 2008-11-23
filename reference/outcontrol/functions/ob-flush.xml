@@ -1,36 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.ob-flush" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>ob_flush</refname>
-    <refpurpose>
-     출력 버퍼를 전송합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>ob_flush</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     (존재한다면) 출력 버퍼의 내용을 전송합니다.
-     <function>ob_flush</function>를 호출하면 버퍼 내용이 비워지기 때문에,
-     버퍼의 내용으로 다른 작업을 하려면 <function>ob_flush</function>를
-     호출하기 전에 <function>ob_get_contents</function>를 호출해야 합니다.
-    </para>
-    <para>
-     이 함수는 <function>ob_end_flush</function>처럼 출력 버퍼를 종료하지는
-     않습니다.
-    </para>
-    <para>
-     참고: <function>ob_get_contents</function>,
-     <function>ob_clean</function>,
-     <function>ob_end_flush</function>,
-     <function>ob_end_clean</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.ob-flush" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>ob_flush</refname>
+  <refpurpose>출력 버퍼를 전송합니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>void</type><methodname>ob_flush</methodname>
+   <void/>
+  </methodsynopsis>
+  <para>
+   (존재한다면) 출력 버퍼의 내용을 전송합니다.
+   <function>ob_flush</function>를 호출하면 버퍼 내용이 비워지기 때문에,
+   버퍼의 내용으로 다른 작업을 하려면 <function>ob_flush</function>를
+   호출하기 전에 <function>ob_get_contents</function>를 호출해야 합니다.
+  </para>
+  <para>
+   이 함수는 <function>ob_end_flush</function>처럼 출력 버퍼를 종료하지는
+   않습니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.void;
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  <para>
+   <simplelist>
+    <member><function>ob_get_contents</function></member>
+    <member><function>ob_clean</function></member>
+    <member><function>ob_end_flush</function></member>
+    <member><function>ob_end_clean</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

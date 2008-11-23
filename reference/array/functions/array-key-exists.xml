@@ -1,50 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.array-key-exists" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>array_key_exists</refname>
-    <refpurpose>주어진 키와 인덱스가 배열에 존재하는지 확인한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>array_key_exists</methodname>
-      <methodparam><type>mixed</type><parameter>key</parameter></methodparam>
-      <methodparam><type>array</type><parameter>search</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>array_key_exists</function> 는
-     주어진 <parameter>key</parameter>가 배열 안에서 설정되어 있으면
-     &true;를 반환한다. <parameter>key</parameter>는 배열 인덱스로 사용할수 있는
-     어떤값이든 될수 있다.
-    </para>
-    <para>
-     <example>
-      <title><function>array_key_exists</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.array-key-exists" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>array_key_exists</refname>
+  <refpurpose>주어진 키와 인덱스가 배열에 존재하는지 확인</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>array_key_exists</methodname>
+   <methodparam><type>mixed</type><parameter>key</parameter></methodparam>
+   <methodparam><type>array</type><parameter>search</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>array_key_exists</function> 는
+   주어진 <parameter>key</parameter>가 배열 안에서 설정되어 있으면
+   &true;를 반환한다. <parameter>key</parameter>는 배열 인덱스로 사용할수 있는
+   어떤값이든 될수 있다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>key</parameter></term>
+     <listitem>
+      <para>
+       확인할 값.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>search</parameter></term>
+     <listitem>
+      <para>
+       확일할 키를 가진 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        객체에 대하여 작동하지 않습니다. 이 경우
+        <function>property_exists</function>를 사용해야 합니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>array_key_exists</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$search_array = array("first" => 1, "second" => 4);
-if (array_key_exists("first", $search_array)) {
+$search_array = array('first' => 1, 'second' => 4);
+if (array_key_exists('first', $search_array)) {
     echo "The 'first' element is in the array";
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <note>
-     <simpara>
-      PHP 버전 4.0.6에서는 이 함수의 이름은 <function>key_exists</function>이다.
-     </simpara>
-    </note>
-    <para>
-     <function>isset</function>, 
-     <function>array_keys</function>,
-     <function>in_array</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+  <note>
+   <simpara>
+    PHP 4.0.6에서 이 함수의 이름은 <function>key_exists</function>이다.
+   </simpara>
+  </note>
+  <example>
+   <title><function>array_key_exists</function> 대 <function>isset</function></title>
+   <para>
+    배열 키에 해당하는 값이  &null;일 때, <function>isset</function>은
+    &true;를 반환하지 않지만, <function>array_key_exists</function>는
+    &true;를 반환합니다.
+   </para>
+   <programlisting role="php">
+<![CDATA[
+<?php
+$search_array = array('first' => null, 'second' => 4);
+
+// false 반환
+isset($search_array['first']);
+
+// true 반환
+array_key_exists('first', $search_array);
+?>
+]]>
+   </programlisting>
+  </example>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>isset</function></member>
+    <member><function>array_keys</function></member>
+    <member><function>in_array</function></member>
+    <member><function>property_exists</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

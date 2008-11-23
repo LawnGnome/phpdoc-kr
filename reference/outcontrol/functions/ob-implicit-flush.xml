@@ -1,36 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.ob-implicit-flush" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>ob_implicit_flush</refname> 
-    <refpurpose>
-     절대 출력의 여부를 결정합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>ob_implicit_flush</methodname>
-      <methodparam choice="opt"><type>int</type><parameter>flag</parameter></methodparam>		  
-     </methodsynopsis>
-    <para>
-     <function>ob_implicit_flush</function>는 절대 출력을 켜거나 끕니다.
-     (<parameter>flag</parameter>를 주지 않으면, 기본값으로 켭니다) 절대
-     출력은 모든 출력 호출 뒤에 flush 작동을 하기에, 따로
-     <function>flush</function>을 호출할 필요가 없어집니다.
-    </para>
-    <para>
-     절대 출력을 켜면 출력 버퍼링을 비활성화하며, 출력 버퍼는
-     <function>ob_end_flush</function>를 호출하였을 때와 동일하게 현재 출력을
-     전송합니다.
-    </para>
-    <para>
-     참고: <function>flush</function>,
-     <function>ob_start</function>,
-     <function>ob_end_flush</function>.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.ob-implicit-flush" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>ob_implicit_flush</refname> 
+  <refpurpose>즉시 출력의 여부를 결정</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>void</type><methodname>ob_implicit_flush</methodname>
+   <methodparam choice="opt"><type>int</type><parameter>flag</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>ob_implicit_flush</function>는 즉시 출력을 켜거나 끕니다.
+   즉시 출력은 모든 출력 호출 뒤에 flush 작동을 하기에, 따로
+   <function>flush</function>을 호출할 필요가 없습니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>flag</parameter></term>
+     <listitem>
+      <para>
+       &true;로 즉시 출력을 켜고, &false;로 끕니다. 기본값은 &true;입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.void;
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>flush</function></member>
+    <member><function>ob_start</function></member>
+    <member><function>ob_end_flush</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
