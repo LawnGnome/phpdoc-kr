@@ -1,41 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.isset" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>isset</refname>
-    <refpurpose>존재하는 변수인지 확인합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>isset</methodname>
-      <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
-      <methodparam choice="opt"><type>mixed</type><parameter>var</parameter></methodparam>
-      <methodparam choice="opt"><parameter>...</parameter></methodparam>
-     </methodsynopsis>
-    
-    <simpara>
-     <parameter>var</parameter>가 존재하면 &true;를, 존재하지 않는 다면
-     &false;를 반환합니다.
-    </simpara>
-    <para>
-     변수를 <function>unset</function>으로 지우면, 더 이상 존재하지 않습니다.
-     &null;로 지정한 변수를 확인하면 <function>isset</function>은 &false;를
-     반환합니다. &null; 바이트(<literal>"\0"</literal>)는 PHP &null; 상수와
-     다릅니다.
-    </para>
-    <note>
-     <title>경고</title>
-     <para>
-      <function>isset</function>은 변수만을 받아들이며, 다른 것에는 문법
-      에러를 발생합니다. <link linkend="language.constants">상수</link>가
-      정의되었는지 확인하려면 <function>defined</function> 함수를
-      사용하십시오.
-     </para>
-    </note>
-    <para>
-     <informalexample>
-      <programlisting role="php">
+<!-- EN-Revision: 1.20 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.isset" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>isset</refname>
+  <refpurpose>설정된 변수인지 확인</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>isset</methodname>
+   <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>var</parameter></methodparam>
+   <methodparam choice="opt"><parameter>...</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   변수가 설정되었는지 검사합니다.
+  </para>
+  <para>
+   변수를 <function>unset</function>으로 지우면, 더 이상 설정되어 있지
+   않습니다. &null;로 지정한 변수를 확인하면 <function>isset</function>은
+   &false;를 반환합니다. &null; 바이트(<literal>"\0"</literal>)는 PHP &null;
+   상수와 다릅니다.
+  </para>
+  <para>
+   여러 인수가 주어지면, <function>isset</function>은 모든 변수가 설정되었을
+   경우에만 &true;를 반환합니다. 평가는 왼쪽에서 오른쪽으로 이루어지며,
+   설정되지 않은 변수를 만나면 바로 중단합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>var</parameter></term>
+     <listitem>
+      <para>
+       확인할 변수.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>var</parameter></term>
+     <listitem>
+      <para>
+       다른 변수 ..
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>...</parameter></term>
+     <listitem>
+      <para>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>var</parameter>가 존재하면 &true;, 아니면 &false;를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>isset</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
@@ -43,7 +81,7 @@ $var = '';
 
 // TRUE이기에 텍스트를 출력합니다.
 if (isset($var)) {
-    echo "이 변수는 존재하기에 출력합니다.";
+    echo "이 변수는 설정되었으므로 출력합니다.";
 }
 
 // 다음 예제는 isset()의 반환값을
@@ -65,13 +103,13 @@ var_dump(isset($foo));   // FALSE
 
 ?>
 ]]>
-      </programlisting>
-     </informalexample>
-    </para>
-    <para>
-     배열 원소에도 작동합니다:
-     <informalexample>
-      <programlisting role="php">
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   배열 원소에도 작동합니다:
+   <informalexample>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
@@ -87,23 +125,40 @@ var_dump(array_key_exists('hello', $a)); // TRUE
 
 ?>
 ]]>
-      </programlisting>
-     </informalexample>
-    </para>
-    
-    &note.language-construct;
-    
-    <simpara>
-     참고: <function>empty</function>,
-     <function>unset</function>, 
-     <function>defined</function>,
-     <link linkend="types.comparisons">자료형 비교표</link>,
-     <function>array_key_exists</function>,
-     에러 제어
-     <link linkend="language.operators.errorcontrol">@</link> 연산자.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </informalexample>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <warning>
+   <para>
+    <function>isset</function>은 변수만을 받아들이며, 다른 것을 넘기면 해석
+    오류가 발생합니다. <link linkend="language.constants">상수</link>가
+    정의되었는지 확인하려면 <function>defined</function> 함수를
+    사용하십시오.
+   </para>
+  </warning>
+  &note.language-construct;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>empty</function></member>
+    <member><function>unset</function></member>
+    <member><function>defined</function></member>
+    <member><link linkend="types.comparisons">자료형 비교표</link></member>
+    <member><function>array_key_exists</function></member>
+    <member><function>is_null</function></member>
+    <member>오류 제어 <link linkend="language.operators.errorcontrol">@</link> 연산자</member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

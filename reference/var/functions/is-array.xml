@@ -1,55 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
   <refentry xml:id="function.is-array" xmlns="http://docbook.org/ns/docbook">
    <refnamediv>
     <refname>is_array</refname>
-    <refpurpose>변수가 배열인지 확인합니다.</refpurpose>
+    <refpurpose>변수가 배열인지 확인</refpurpose>
    </refnamediv>
-   <refsect1>
-    <title>설명</title>
+   <refsect1 role="description">
+    &reftitle.description;
      <methodsynopsis>
       <type>bool</type><methodname>is_array</methodname>
       <methodparam><type>mixed</type><parameter>var</parameter></methodparam>
      </methodsynopsis>
     <para>
-     <parameter>var</parameter>가 <type>array</type>면 &true;를, 아니라면
+     주어진 변수가 배열인지 확인합니다.
+    </para>
+   </refsect1>
+   <refsect1 role="parameters">
+    &reftitle.parameters;
+    <para>
+     <variablelist>
+      <varlistentry>
+       <term><parameter>var</parameter></term>
+       <listitem>
+        <para>
+         평가할 변수.
+        </para>
+       </listitem>
+      </varlistentry>
+     </variablelist>
+    </para>
+   </refsect1>
+   <refsect1 role="returnvalues">
+    &reftitle.returnvalues;
+    <para>
+     <parameter>var</parameter>가 <type>array</type>이면 &true;, 아니면
      &false;를 반환합니다.
     </para>
+   </refsect1>
+   <refsect1 role="examples">
+    &reftitle.examples;
     <para>
      <example>
-      <title>변수가 배열인지 확인</title>
+      <title>변수가 배열인지 확인하기</title>
       <programlisting role="php">
 <![CDATA[
 <?php
-$yes = array('이', '변수는', '배열');
+$yes = array('this', 'is', 'an array');
 
-echo is_array($yes) ? '배열' : '배열 아님';
-echo "\n"
+echo is_array($yes) ? 'Array' : 'not an Array';
+echo "\n";
 
-$no = '이 변수는 문자열';
+$no = 'this is a string';
 
-echo is_array($no) ? '배열' : '배열 아님';
+echo is_array($no) ? 'Array' : 'not an Array';
 ?>
 ]]>
       </programlisting>
-      <para>
-       이 예제의 출력은:
-      </para>
+      &example.outputs;
       <screen>
 <![CDATA[
-배열
-배열 아님
+Array
+not an Array
 ]]>
       </screen>
      </example>
     </para>
+   </refsect1>
+   <refsect1 role="seealso">
+    &reftitle.seealso;
     <para>
-     참고:
-     <function>is_float</function>,
-     <function>is_int</function>,
-     <function>is_integer</function>,
-     <function>is_string</function>,
-     <function>is_object</function>.
+     <simplelist>
+      <member><function>is_float</function></member>
+      <member><function>is_int</function></member>
+      <member><function>is_string</function></member>
+      <member><function>is_object</function></member>
+     </simplelist>
     </para>
    </refsect1>
   </refentry>
@@ -74,4 +99,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-client-encoding" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_client_encoding</refname>
@@ -62,6 +63,7 @@ The current character set is: latin1
   &reftitle.seealso;
   <para>
    <simplelist>
+    <member><function>mysql_set_charset</function></member>
     <member><function>mysql_real_escape_string</function></member>
    </simplelist>
   </para>

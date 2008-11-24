@@ -32,7 +32,7 @@
     <programlisting role="php">
 <![CDATA[
 <?php
-pring_r(apahce_response_headers());
+print_r(apache_response_headers());
 ?>
 ]]>
     </programlisting>
@@ -59,7 +59,7 @@ Array
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function>apahce_request_headers</function></member>
+    <member><function>apache_request_headers</function></member>
     <member><function>headers_sent</function></member>
     <member><function>headers_list</function></member>
    </simplelist>

@@ -1,43 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.var-dump" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>var_dump</refname>
-    <refpurpose>변수에 관한 정보를 덤프합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>var_dump</methodname>
-      <methodparam><type>mixed</type><parameter>expression</parameter></methodparam>
-      <methodparam choice="opt"><type>mixed</type><parameter>expression</parameter></methodparam>
-      <methodparam choice="opt"><parameter>...</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     이 함수는 형과 값을 포함하는 하나 이상의 표현을 구조화된 정보로
-     보여줍니다. 배열과 객체는 구조를 보여주기 위해서 재귀적으로 확장합니다.
-    </simpara>
-    <simpara>
-     PHP 객체의 public 속성만을 출력으로 반환합니다.
-     <function>var_export</function>와 <function>print_r</function>은
-     protected 및 private 속성도 반환합니다.
-    </simpara>
-    &tip.ob-capture;
-    <para>
-     <example>
-      <title><function>var_dump</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.var-dump" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>var_dump</refname>
+  <refpurpose>변수에 대한 정보를 덤프</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>void</type><methodname>var_dump</methodname>
+   <methodparam><type>mixed</type><parameter>expression</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>expression</parameter></methodparam>
+   <methodparam choice="opt"><parameter>...</parameter></methodparam>
+  </methodsynopsis>
+  <simpara>
+   이 함수는 형과 값을 포함하는 하나 이상의 표현을 구조화된 정보로
+   보여줍니다. 배열과 객체는 구조를 보여주기 위해서 재귀적으로 확장합니다.
+  </simpara>
+  <simpara>
+   PHP 5에서 객체의 모든 public, private, protected 프로퍼티를 출력에
+   반환합니다.
+  </simpara>
+  &tip.ob-capture;
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>expression</parameter></term>
+     <listitem>
+      <para>
+       내보낼 변수.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.void;
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>var_dump</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $a = array (1, 2, array ("a", "b", "c"));
 var_dump($a);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       출력:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 array(3) {
   [0]=>
@@ -55,8 +80,8 @@ array(3) {
   }
 }
 ]]>
-      </screen>
-      <programlisting role="php">
+    </screen>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $b = 3.1;
@@ -64,23 +89,28 @@ $c = true;
 var_dump($b, $c);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       출력:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 float(3.1)
 bool(true)
 ]]>
-      </screen>
-     </example>
-    </para>
-    <simpara>
-     참고: <function>var_export</function>, <function>print_r</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>var_export</function></member>
+    <member><function>print_r</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

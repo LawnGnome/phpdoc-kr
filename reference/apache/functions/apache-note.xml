@@ -73,7 +73,7 @@ apache_note('name', 'Fredrik Ekengren');
 // 펄 스크립트 호출
 virtual("/perl/some_script.pl");
 
-$result = apahce_note("resultdata");
+$result = apache_note("resultdata");
 ?>
 ]]>
     </programlisting>

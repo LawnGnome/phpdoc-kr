@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-ping" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_ping</refname>
@@ -18,6 +19,11 @@
 이 함수는 스크립트에서 사용된 이후 오랜 시간동안 멈추어 있을 때때,
 접속이 종료되지 않았는지 점검하고 필요시에는 재접속을 하는 용도로 사용된다.
   </para>
+  <note>
+   <para>
+    MySQL 5.0.13부터, 자동 재접속 기능은 사라졌습니다.
+   </para>
+  </note>
  </refsect1>
 
  <refsect1 role="parameters">

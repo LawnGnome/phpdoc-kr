@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-fetch-row" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_fetch_row</refname>
@@ -30,7 +31,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-인출된 행에 대응하는 숫자 색인 배열을 반환하거나 더 이상의 행이 없으면 &false;를 반환한다.
+인출된 행에 대응하는 문자열의 숫자 색인 배열을 반환하거나 더 이상의 행이 없으면 &false;를 반환한다.
   </para>
   <para>
 <function>mysql_fetch_row</function>는 지정된 result 식별자와 연관된 결과로부터
@@ -74,7 +75,7 @@ echo $row[1]; // the email value
    <simplelist>
     <member><function>mysql_fetch_array</function></member>
     <member><function>mysql_fetch_assoc</function></member>
-    <member><function>mysql_data_object</function></member>
+    <member><function>mysql_fetch_object</function></member>
     <member><function>mysql_data_seek</function></member>
     <member><function>mysql_fetch_lengths</function></member>
     <member><function>mysql_result</function></member>

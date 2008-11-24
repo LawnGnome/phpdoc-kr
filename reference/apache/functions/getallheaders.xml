@@ -45,7 +45,7 @@
       <row>
        <entry>4.3.0</entry>
        <entry>
-        <function>apahce_request_headers</function>의 별칭이 되었습니다.
+        <function>apache_request_headers</function>의 별칭이 되었습니다.
         정확히는, 이름이 바뀌었습니다. 이 함수가 아파치에서만 작동하기
         때문입니다.
        </entry>

@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.get-defined-vars" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>get_defined_vars</refname>
-    <refpurpose>
-     모든 정의된 변수의 배열을 반환합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>get_defined_vars</methodname>
-      <void/>
-     </methodsynopsis>
-    <para>
-     이 함수는 환경변수, 서버나 유저 정의 변수 등 모든 정의된 변수 목록을
-     포함하는 다차원 배열을 반환합니다.
-    </para>
-    <para>
-     <informalexample>
-      <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.get-defined-vars" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>get_defined_vars</refname>
+  <refpurpose>
+   모든 정의된 변수의 배열을 반환
+  </refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>get_defined_vars</methodname>
+   <void/>
+  </methodsynopsis>
+  <para>
+   이 함수는 <function>get_defined_vars</function>를 호출하는 영역 안에
+   존재하는 모든 정의된 변수(환경변수, 서버나 유저 정의 변수) 목록을
+   포함하는 다차원 배열을 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   모든 변수를 가진 다차원 배열.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>get_defined_vars</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $b = array(1, 1, 2, 3, 5, 8);
@@ -43,15 +54,44 @@ print_r($arr["_SERVER"]);
 print_r(array_keys(get_defined_vars()));
 ?>
 ]]>
-      </programlisting>
-     </informalexample>
-    </para>
-    <para>
-     참고: <function>get_defined_functions</function>,
-     <function>get_defined_constants</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        반환하는 결과 배열에 <varname>$GLOBALS</varname> 변수가 포함됩니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>isset</function></member>
+    <member><function>get_defined_functions</function></member>
+    <member><function>get_defined_constants</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
