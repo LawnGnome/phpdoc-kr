@@ -1,55 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.base-convert" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>base_convert</refname>
-    <refpurpose>수를 임의의 진수로 변환합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>base_convert</methodname>
-      <methodparam><type>string</type><parameter>number</parameter></methodparam>
-      <methodparam><type>int</type><parameter>frombase</parameter></methodparam>
-      <methodparam><type>int</type><parameter>tobase</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>tobase</parameter>진수로 표현한 <parameter>number</parameter>를
-     포함하는 문자열을 반환합니다. <parameter>number</parameter>의 진수는
-     <parameter>frombase</parameter>로 주어집니다.
-     <parameter>frombase</parameter>와 <parameter>tobase</parameter>는
-     2와 36(포함) 사이의 값이여야 합니다. 10 이상의 진수로 표현되는 자리수는
-     a-z로 표현되며, a는 10, b는 11, ..., z는 35를 의미합니다.
-     <example>
-      <title><function>base_convert</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.base-convert" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>base_convert</refname>
+  <refpurpose>수를 임의의 진법으로 변환</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>base_convert</methodname>
+   <methodparam><type>string</type><parameter>number</parameter></methodparam>
+   <methodparam><type>int</type><parameter>frombase</parameter></methodparam>
+   <methodparam><type>int</type><parameter>tobase</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>tobase</parameter>진법으로 표현한 <parameter>number</parameter>를
+   포함하는 문자열을 반환합니다. <parameter>number</parameter>의 진법은
+   <parameter>frombase</parameter>로 주어집니다.
+   <parameter>frombase</parameter>와 <parameter>tobase</parameter>는
+   2와 36(포함) 사이의 값이여야 합니다. 10 이상의 진수로 표현되는 자리수는
+   a-z로 표현되며, a는 10, b는 11, ..., z는 35를 의미합니다.
+  </para>
+  <warning>
+   <simpara>
+    <function>base_convert</function>는 큰 수에 대해서는 내부적으로
+    "double"이나 "float" 형을 사용하기 때문에, 부정확할 수 있습니다. 더
+    정확한 정보와 제한에 관해서는 <link
+     linkend="language.types.float">부동소수점 수</link> 섹션을 참고하십시오.
+   </simpara>
+  </warning>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>number</parameter></term>
+     <listitem>
+      <para>
+       변환할 수
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>frombase</parameter></term>
+     <listitem>
+      <para>
+       <parameter>number</parameter>의 진법
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>tobase</parameter></term>
+     <listitem>
+      <para>
+       <parameter>number</parameter>를 변환할 진법
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>tobase</parameter>진법으로 변환한 <parameter>number</parameter>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>base_convert</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $hexadecimal = 'A37334';
 echo base_convert($hexadecimal, 16, 2);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       출력:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 101000110111001100110100
 ]]>
-      </screen>
-     </example>
-    </para>
-    <warning>
-     <simpara>
-      <function>base_convert</function>는 큰 수에 대해서는 내부적으로
-      "double"이나 "float" 형을 사용하기 때문에, 부정확할 수 있습니다. 더욱
-      정확한 정보와 제한에 대해서는 <link
-       linkend="language.types.float">부동소수점수</link> 섹션을 참고하십시오.
-     </simpara>
-    </warning>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>intval</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

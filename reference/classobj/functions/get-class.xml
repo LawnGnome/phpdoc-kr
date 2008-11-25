@@ -23,7 +23,7 @@
      <term><parameter>object</parameter></term>
      <listitem>
       <para>
-       확인하는 객체
+       확인할 객체
       </para>
      </listitem>
     </varlistentry>
@@ -52,13 +52,13 @@
       <row>
        <entry>5.0.0부터</entry>
        <entry>
-        클래스명이 원래 문자대로 반환됩니다.
+        클래스명을 원 문자대로 반환합니다.
        </entry>
       </row>
       <row>
        <entry>5.0.0부터</entry>
        <entry>
-        객체 메쏘드에서 호출할 때 <parameter>object</parameter> 인수는
+        객체 메쏘드에서 호출할 때, <parameter>object</parameter> 인수는
         선택적입니다.
        </entry>
       </row>
@@ -83,13 +83,13 @@ class foo {
     }
 }
 
-// create an object
+// 객체 만들기
 $bar = new foo();
 
-// external call
+// 외부 호출
 echo "Its name is " , get_class($bar) , "\n";
 
-// internal call
+// 내부 호출
 $bar->name();
 
 ?>

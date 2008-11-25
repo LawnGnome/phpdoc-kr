@@ -1,26 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.abs" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>abs</refname>
-    <refpurpose>절대값</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>number</type><methodname>abs</methodname>
-      <methodparam><type>mixed</type><parameter>number</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>number</parameter>의 절대값을 반환합니다.
-     <parameter>number</parameter> 인수의 형이 <type>float</type>일 경우,
-     반환값도 <type>float</type>이고, <type>integer</type>일 경우에도
-     마찬가지입니다. (일반적으로 <type>float</type> 값의 범위가
-     <type>integer</type> 값의 범위보다 큽니다)
-    </para>
-    <example>
-     <title><function>abs</function> 예제</title>
-     <programlisting role="php">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.abs" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>abs</refname>
+  <refpurpose>절대값</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>number</type><methodname>abs</methodname>
+   <methodparam><type>mixed</type><parameter>number</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>number</parameter>의 절대값을 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>number</parameter></term>
+     <listitem>
+      <para>
+       처리할 수치 값
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>number</parameter>의 절대값.
+   <parameter>number</parameter> 인수의 자료형이 <type>float</type>일 경우,
+   반환값도 <type>float</type>이고, <type>integer</type>일 경우에도
+   마찬가지입니다. (일반적으로 <type>float</type> 값의 범위가
+   <type>integer</type> 값의 범위보다 큽니다)
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>abs</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $abs = abs(-4.2); // $abs = 4.2; (double/float)
@@ -28,10 +52,11 @@ $abs2 = abs(5);   // $abs2 = 5; (integer)
 $abs3 = abs(-5);  // $abs3 = 5; (integer)
 ?>
 ]]>
-     </programlisting>
-    </example>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.cos" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>cos</refname>
-    <refpurpose>코사인</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>float</type><methodname>cos</methodname>
-      <methodparam><type>float</type><parameter>arg</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>cos</function>은 <parameter>arg</parameter> 인수의 코사인값을
-     반환합니다. <parameter>arg</parameter> 인수는 라디안 값으로 주어집니다.
-    </para>
-    <para>
-     <example>
-      <title><function>cos</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.cos" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>cos</refname>
+  <refpurpose>코사인</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>float</type><methodname>cos</methodname>
+   <methodparam><type>float</type><parameter>arg</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>cos</function>은 <parameter>arg</parameter> 인수의 코사인값을
+   반환합니다. <parameter>arg</parameter> 인수는 라디안입니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>arg</parameter></term>
+     <listitem>
+      <para>
+       라디안 각도
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>arg</parameter>의 코사인
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>cos</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
@@ -26,18 +50,22 @@ echo cos(M_PI); // -1
 
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     참고:
-     <function>acos</function>,
-     <function>sin</function>,
-     <function>tan</function>,
-     <function>deg2rad</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>acos</function></member>
+    <member><function>sin</function></member>
+    <member><function>tan</function></member>
+    <member><function>deg2rad</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

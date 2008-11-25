@@ -1,93 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.4 Maintainer: fuzzy74 Status: ready -->
-<!-- splitted from ./en/functions/classobj.xml, last change in rev 1.1 -->
-  <refentry xml:id="function.get-object-vars" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>get_object_vars</refname>
-    <refpurpose>객체 속성의 연관 배열을 반환한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>get_object_vars</methodname>
-      <methodparam><type>object</type><parameter>obj</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     이 함수는 주어진 객체 <parameter>obj</parameter> 에서 선언된 객체 속성의
-     연관 배열을 반환한다.
-    </para>
-    <note>
-     <para>
-      PHP 4.2.0 이전버전에서는, <parameter>obj</parameter>를 초기화시킨 클래스에서
-      선언된 변수가 어떤 값으로도 설정되어있지 않으면, 그 변수들은 배열로 반환되지 않을것이다.
-      PHP 4.2.0 이후버전부터 그런 키는 <constant>NULL</constant> 값으로 설정된다.
-     </para>
-    </note>
-    <para>
-     <example>
-      <title><function>get_object_vars</function> 사용예</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.get-object-vars" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>get_object_vars</refname>
+  <refpurpose>주어진 객체의 프로퍼티를 얻습니다</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>get_object_vars</methodname>
+   <methodparam><type>object</type><parameter>object</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   영역에 따라 주어진 <parameter>object</parameter>에 접근할 수 있는 비정적
+   프로퍼티를 얻습니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>object</parameter></term>
+     <listitem>
+      <para>
+       객체 인스턴스.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   영역 안에서 지정한 <parameter>object</parameter>에 정의된 접근할 수 있는
+   비정적 프로퍼티의 연관 배열을 반환합니다. 프로퍼티에 값이 할당되어 있지
+   않으면, &null; 값으로 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.2.0 이전</entry>
+       <entry>
+        <parameter>object</parameter> 인스턴스의 클래스에서 선언된 변수 중,
+        값이 할당되지 않은 변수는 반환하는 배열에 포함되지 않습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>get_object_vars</function>의 사용</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-class Point2D {
-    var $x, $y;
-    var $label;
 
-    function Point2D($x, $y) {
-        $this->x = $x;
-        $this->y = $y;
-    }
-
-    function setLabel($label) {
-        $this->label = $label;
-    }
-
-    function getPoint() {
-        return array("x" => $this->x,
-                     "y" => $this->y,
-                     "label" => $this->label);
+class foo {
+    private $a;
+    public $b = 1;
+    public $c;
+    private $d;
+    static $e;
+   
+    public function test() {
+        var_dump(get_object_vars($this));
     }
 }
 
-// "$label" is declared but not defined
-$p1 = new Point2D(1.233, 3.445);
-print_r(get_object_vars($p1));
+$test = new foo;
+var_dump(get_object_vars($test));
 
-$p1->setLabel("point #1");
-print_r(get_object_vars($p1));
+$test->test();
 
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 프로그램의 출력은 다음과 같을것이다:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
- Array
- (
-     [x] => 1.233
-     [y] => 3.445
-     [label] =>
- )
-
- Array
- (
-     [x] => 1.233
-     [y] => 3.445
-     [label] => point #1
- )
+array(2) {
+  ["b"]=>
+  int(1)
+  ["c"]=>
+  NULL
+}
+array(4) {
+  ["a"]=>
+  NULL
+  ["b"]=>
+  int(1)
+  ["c"]=>
+  NULL
+  ["d"]=>
+  NULL
+}
 ]]>
-      </screen>
-     </example>
-    </para>
-    <simpara>
-     <function>get_class_methods</function>,
-     <function>get_class_vars</function> 참고!
-    </simpara>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>get_class_methods</function></member>
+    <member><function>get_class_vars</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

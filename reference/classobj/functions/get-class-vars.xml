@@ -1,46 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.5 Maintainer: fuzzy74 Status: ready -->
-<!-- splitted from ./en/functions/classobj.xml, last change in rev 1.1 -->
-  <refentry xml:id="function.get-class-vars" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>get_class_vars</refname>
-    <refpurpose>
-     클래스의 기본 속성에 대한 배열을 반환한다
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>get_class_vars</methodname>
-      <methodparam><type>string</type><parameter>class_name</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     이 함수는 클래스의 기본 속성에 대한 연관 배열을 반환할것이다. 결과 배열 원소들은
-     <parameter>varname => value</parameter> 형태가 된다.
-    </para>
-    <note>
-     <para>
-      PHP 4.2.0 이전 버전에서는, 초기화되지 않은 클래스 변수들은
-      <function>get_class_vars</function>에 의해 보고되지 않을것이다.
-     </para>
-    </note>
-    <para>
-     <example>
-      <title><function>get_class_vars</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.get-class-vars" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>get_class_vars</refname>
+  <refpurpose>클래스의 기본 프로퍼티를 얻습니다</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>get_class_vars</methodname>
+   <methodparam><type>string</type><parameter>class_name</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   주어진 클래스의 기본 프로퍼티를 얻습니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>class_name</parameter></term>
+     <listitem>
+      <para>
+       클래스명
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   클래스의 기본 public 프로퍼티의 연관 배열을 반환합니다. 반환하는 배열
+   원소는 <literal>varname => value</literal> 형식입니다.
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.2.0 이전</entry>
+       <entry>
+        초기화되지 않은 클래스 변수는 <function>get_class_vars</function>가
+        반환하지 않습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>get_class_vars</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
 class myclass {
 
-    var $var1; // this has no default value...
+    var $var1; // 기본값이 없습니다...
     var $var2 = "xyz";
     var $var3 = 100;
-    
-    // constructor
+    private $var4; // PHP 5
+
+    // 생성자
     function myclass() {
-        return(TRUE);
+        // 몇몇 프로퍼티를 변경
+        $this->var1 = "foo";
+        $this->var2 = "bar";
+        return true;
     }
 
 }
@@ -53,32 +95,35 @@ foreach ($class_vars as $name => $value) {
     echo "$name : $value\n";
 }
 
-?>      
+?>
 ]]>
-      </programlisting>
-      <para>
-       다음을 생성할것이다:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
-// Before PHP 4.2.0
+// PHP 4.2.0 이전
 var2 : xyz
 var3 : 100
 
-// As of PHP 4.2.0
+// PHP 4.2.0부터
 var1 :
 var2 : xyz
 var3 : 100
 ]]>
-      </screen>
-     </example>
-    </para>
-    <simpara>
-     <function>get_class_methods</function>,
-     <function>get_object_vars</function> 참고
-    </simpara>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>get_class_methods</function></member>
+    <member><function>get_object_vars</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

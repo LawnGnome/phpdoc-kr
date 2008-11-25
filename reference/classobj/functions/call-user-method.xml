@@ -1,75 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.5 Maintainer: fuzzy74 Status: ready -->
-<!-- splitted from ./en/functions/classobj.xml, last change in rev 1.4 -->
-  <refentry xml:id="function.call-user-method" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>call_user_method</refname>
-    <refpurpose>
-     특정 객체의 사용자 메소드를 호출한다 [낡았음]
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>mixed</type><methodname>call_user_method</methodname>
-      <methodparam><type>string</type><parameter>method_name</parameter></methodparam>
-      <methodparam><type>object</type><parameter>obj</parameter></methodparam>
-      <methodparam choice="opt"><type>mixed</type><parameter>parameter</parameter></methodparam>
-      <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
-     </methodsynopsis>
-    <warning>
-     <para>
-      이 <function>call_user_method</function> 함수는 PHP 4.1.0 부터 낡은 함수가
-      되었다. 대신 <literal>array(&amp;$obj, "method_name")</literal> 문법을 갖는
-      <function>call_user_func_array</function> 변종(variety)을 사용하도록 한다.
-     </para>
-    </warning>
-    <para>
-     사용자 선언된 <parameter>obj</parameter> 객체에서 <parameter>method_name</parameter>으로
-     참조되는 메소드를 호출한다. 아래 예제코드를 보면, 클래스를 선언하고 객체를 생성하고
-     <varname>print_info</varname> 메소드를 간접적으로 호출하기 위해
-     <function>call_user_method</function> 함수를 사용하는 것을 볼수 있다.
-    </para>
-    <para>
-     <informalexample>
-      <programlisting role="php">
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.call-user-method" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>call_user_method</refname>
+  <refpurpose>특정 객체의 사용자 메쏘드를 호출 [배제됨]</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>mixed</type><methodname>call_user_method</methodname>
+   <methodparam><type>string</type><parameter>method_name</parameter></methodparam>
+   <methodparam><type>object</type><parameter role="reference">obj</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>parameter</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
+  </methodsynopsis>
+  <warning>
+   <para>
+    <function>call_user_method</function> 함수는 PHP 4.1.0부터 배제되었습니다.
+   </para>
+  </warning>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>call_user_method</function> 대체</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-class Country {
-    var $NAME;
-    var $TLD;
-    
-    function Country($name, $tld) {
-        $this->NAME = $name;
-        $this->TLD = $tld;
-    }
-
-    function print_info($prestr="") {
-        echo $prestr."Country: ".$this->NAME."\n";
-        echo $prestr."Top Level Domain: ".$this->TLD."\n";
-    }
-}
-
-$cntry = new Country("Peru","pe");
-
-echo "* Calling the object method directly\n";
-$cntry->print_info();
-
-echo "\n* Calling the same method indirectly\n";
-call_user_method ("print_info", $cntry, "\t");
+call_user_func(array($obj, $method_name), $parameter /* , ... */);
+call_user_func(array(&$obj, $method_name), $parameter /* , ... */); // PHP 4
 ?>
 ]]>
-      </programlisting>
-     </informalexample>
-    </para>
-    <simpara>
-     <function>call_user_func_array</function>,
-     <function>call_user_func</function>,
-     <function>call_user_method_array</function> 참고.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>call_user_func_array</function></member>
+    <member><function>call_user_func</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

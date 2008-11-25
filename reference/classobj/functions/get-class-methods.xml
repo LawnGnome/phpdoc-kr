@@ -1,90 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.5 Maintainer: fuzzy74 Status: ready -->
-<!-- splitted from ./en/functions/classobj.xml, last change in rev 1.2 -->
-  <refentry xml:id="function.get-class-methods" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>get_class_methods</refname>
-    <refpurpose>클래스의 메소드명에 대한 배열을 반환한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>get_class_methods</methodname>
-      <methodparam><type>mixed</type><parameter>class_name</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     이 함수는 <parameter>class_name</parameter>의 클래스에서 선언된 메소드명의
-     배열을 반환한다.
-    </para>
-    <note>
-     <para>
-      PHP 4.0.6 부터 <parameter>class_name</parameter> 대신 객체 자신을 설정할수 있다.
-      예를 들면:
-      <informalexample>
-       <programlisting role="php">
-<![CDATA[
-<?php
-$class_methods = get_class_methods($my_class); // see below the full example
-?>
-]]>
-       </programlisting>
-      </informalexample>
-     </para>
-    </note>
-    <para>
-     <example>
-      <title><function>get_class_methods</function> 예제코드</title> 
-      <programlisting role="php">
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.get-class-methods" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>get_class_methods</refname>
+  <refpurpose>클래스 메쏘드명을 얻습니다</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>get_class_methods</methodname>
+   <methodparam><type>mixed</type><parameter>class_name</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   클래스 메쏘드명을 얻습니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>class_name</parameter></term>
+     <listitem>
+      <para>
+       클래스명이나 객체 인스턴스
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>class_name</parameter>로 지정한 클래스에 정의되어 있는
+   메쏘드명의 배열을 반환합니다. 오류가 발생하면, &null;을 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        PHP 5부터, 메쏘드 명을 선언한 대로(대소문자 구분) 반환합니다. PHP
+        4에서는 소문자였습니다.
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.6</entry>
+       <entry>
+        객체를 지정할 수 있게 되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>get_class_methods</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
 class myclass {
-    // constructor
-    function myclass() {
-        return(TRUE);
-    }
-    
-    // method 1
-    function myfunc1() {
-        return(TRUE);
+    // 생성자
+    function myclass()
+    {
+        return(true);
     }
 
-    // method 2
-    function myfunc2() {
-        return(TRUE);
+    // 메쏘드 1
+    function myfunc1()
+    {
+        return(true);
+    }
+
+    // 메쏘드 2
+    function myfunc2()
+    {
+        return(true);
     }
 }
 
-$my_object = new myclass();
-
-$class_methods = get_class_methods(get_class($my_object));
+$class_methods = get_class_methods('myclass');
+// 또는
+$class_methods = get_class_methods(new myclass());
 
 foreach ($class_methods as $method_name) {
     echo "$method_name\n";
 }
 
-?>      
+?>
 ]]>
-      </programlisting>
-      <para>
-       Will produce:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 myclass
 myfunc1
 myfunc2
 ]]>
-      </screen>
-     </example>
-    </para>
-    <simpara>
-     <function>get_class_vars</function>,
-     <function>get_object_vars</function> 참고.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>get_class</function></member>
+    <member><function>get_class_vars</function></member>
+    <member><function>get_object_vars</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
