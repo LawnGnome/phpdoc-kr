@@ -26,7 +26,7 @@
      <term><parameter>arg</parameter></term>
      <listitem>
       <para>
-       처리할 인수
+       계산할 인수
       </para>
      </listitem>
     </varlistentry>

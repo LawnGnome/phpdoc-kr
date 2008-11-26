@@ -1,51 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.exp" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>exp</refname>
-    <refpurpose><constant>e</constant>(자연로그 밑)의 승수를 계산합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>float</type><methodname>exp</methodname>
-      <methodparam><type>float</type><parameter>arg</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <constant>e</constant>의 <parameter>arg</parameter>승을 반환합니다.
-    </para>
-    <note>
-     <para>
-      'e'는 자연로그의 밑으로, 약 2.718282입니다.
-     </para>
-    </note>
-    <para>
-     <example>
-      <title><function>exp</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.exp" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>exp</refname>
+  <refpurpose><constant>e</constant>의 누승을 계산</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+   <methodsynopsis>
+    <type>float</type><methodname>exp</methodname>
+    <methodparam><type>float</type><parameter>arg</parameter></methodparam>
+   </methodsynopsis>
+  <para>
+   <constant>e</constant>의 <parameter>arg</parameter>승을 반환합니다.
+  </para>
+  <note>
+   <para>
+    'e'는 자연 로그의 밑으로, 약 2.718282입니다.
+   </para>
+  </note>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>arg</parameter></term>
+     <listitem>
+      <para>
+       계산할 인수
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   'e'의 <parameter>arg</parameter>승
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>exp</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo exp(12) . "\n";
 echo exp(5.7);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제의 출력은:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
-1.6257E+005
+1.6275E+005
 298.87
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     참고: <function>log</function>, <function>pow</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>log</function></member>
+    <member><function>pow</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

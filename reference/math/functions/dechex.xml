@@ -1,49 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.dechex" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>dechex</refname>
-    <refpurpose>10진수를 16진수로 변환합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>dechex</methodname>
-      <methodparam><type>int</type><parameter>number</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     주어진 <parameter>number</parameter> 인수에 해당하는
-     16진수 표현의 문자열을 반환합니다. 변환 가능한 가장 큰 숫자는
-     10진수 2147483647로, 결과값은 "7fffffff"이 됩니다.
-    </para>
-    <para>
-     <example>
-      <title><function>dechex</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.dechex" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>dechex</refname>
+  <refpurpose>10진수를 16진수로</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+   <methodsynopsis>
+    <type>string</type><methodname>dechex</methodname>
+    <methodparam><type>int</type><parameter>number</parameter></methodparam>
+   </methodsynopsis>
+  <para>
+   주어진 <parameter>number</parameter> 인수의 16진 표현을 가지는 문자열을
+   반환합니다. 변환할 수 있는 가장 큰 수는 4294967295로, 결과는
+   "ffffffff"입니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>number</parameter></term>
+     <listitem>
+      <para>
+       변환할 10진 값
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>number</parameter> 16진 문자열 표현
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>dechex</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo dechex(10) . "\n";
 echo dechex(47);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제의 출력은:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
 a
 2f
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     참고: <function>hexdec</function>, <function>decbin</function>,
-     <function>decoct</function>, <function>base_convert</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>hexdec</function></member>
+    <member><function>decbin</function></member>
+    <member><function>decoct</function></member>
+    <member><function>base_convert</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
