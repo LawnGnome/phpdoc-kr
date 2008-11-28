@@ -1,34 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.pow" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>pow</refname>
-    <refpurpose>거듭제곱</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>number</type><methodname>pow</methodname>
-      <methodparam><type>number</type><parameter>base</parameter></methodparam>
-      <methodparam><type>number</type><parameter>exp</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>base</parameter>의 <parameter>exp</parameter>승을
-     반환합니다. 이 함수는 가능한 한 <type>integer</type>로 반환합니다.
-    </para>
-    <para>
-     계산을 할 수 없으면 경고가 발생하고, <function>pow</function>는
-     &false;를 반환합니다. PHP 4.2.0부터 <function>pow</function>는 어떠한
-     경고도 발생하지 않습니다.
-    </para>
-    <note>
-     <para>
-      PHP는 음수의 <parameter>base</parameter>를 다루지 못합니다.
-     </para>
-    </note>
-    <example>
-     <title><function>pow</function> 예제</title>
-     <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.pow" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>pow</refname>
+  <refpurpose>거듭제곱 표현</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+   <methodsynopsis>
+    <type>number</type><methodname>pow</methodname>
+    <methodparam><type>number</type><parameter>base</parameter></methodparam>
+    <methodparam><type>number</type><parameter>exp</parameter></methodparam>
+   </methodsynopsis>
+  <para>
+   <parameter>base</parameter>의 <parameter>exp</parameter>승을 반환합니다.
+  </para>
+  <warning>
+   <para>
+    PHP 4.0.6까지 <function>pow</function>는 항상 <type>float</type>를
+    반환하였고, 경고를 발생하지 않았습니다.
+   </para>
+  </warning>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>base</parameter></term>
+     <listitem>
+      <para>
+       사용할 밑
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>exp</parameter></term>
+     <listitem>
+      <para>
+       승수
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>base</parameter>의 <parameter>exp</parameter>승.
+   결과가 정수로 표현될 수 있으면 <type>integer</type>형으로 반환하고, 그렇지
+   않으면 <type>float</type>형으로 반환합니다. 거듭제곱을 계산할 수 없으면
+   &false;를 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.0.6부터</entry>
+       <entry>
+        가능하면 결과를 <type>interger</type>로 반환합니다. 이전에는 항상
+        <type>float</type>로 결과를 반환했습니다. 오래된 버전에서는 복잡한
+        수에 대해서 이상한 결과를 얻을 수도 있습니다.
+       </entry>
+      </row>
+      <row>
+       <entry>4.2.0부터</entry>
+       <entry>
+        PHP가 값을 계산할 수 없을 때, 경고를 발생하지 않습니다. 조용히
+        &false;만 반환합니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>pow</function>의 몇몇 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
@@ -36,27 +99,26 @@ var_dump(pow(2, 8)); // int(256)
 echo pow(-1, 20); // 1
 echo pow(0, 0); // 1
 
-echo pow(-1, 5.5); // 에러
-
+echo pow(-1, 5.5); // PHP >4.0.6  NAN
+echo pow(-1, 5.5); // PHP <=4.0.6 1.#IND
 ?>
 ]]>
-     </programlisting>
-    </example>
-    <warning>
-     <para>
-      PHP 4.0.6과 그 이전에는 <function>pow</function>는 항상
-      <type>float</type>를 반환하고, 경고를 발생하지 않습니다.
-     </para>
-    </warning>
-    <para> 
-     참고:
-     <function>exp</function>,
-     <function>sqrt</function>,
-     <function>bcpow</function>,
-     <function>gmp_pow</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>exp</function></member>
+    <member><function>sqrt</function></member>
+    <member><function>bcpow</function></member>
+    <member><function>gmp_pow</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

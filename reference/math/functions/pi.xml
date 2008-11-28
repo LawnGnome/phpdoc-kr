@@ -1,38 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.pi" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>pi</refname>
-    <refpurpose>파이(pi)값을 얻는다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>Description</title>
-     <methodsynopsis>
-      <type>float</type><methodname>pi</methodname>
-      <void/>
-     </methodsynopsis>
-    <simpara>
-     파이(pi)의 근사값을 반환합니다. 반환되는 <type>float</type>는
-     &php.ini;의 <link linkend="ini.precision">precision</link>이 지시하는
-     정밀도를 가집니다. 기본값은 <literal>14</literal>입니다.
-     또는 <function>pi</function>가 생성하는 결과와 똑같은 값을 가지는
-     <constant>M_PI</constant> 상수를 이용할 수도 있습니다.
-    </simpara>
-    <para>
-     <example>
-      <title><function>pi</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.pi" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>pi</refname>
+  <refpurpose>파이 값을 얻는다</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>float</type><methodname>pi</methodname>
+   <void/>
+  </methodsynopsis>
+  <simpara>
+   파이(pi)의 근사값을 반환합니다. 반환되는 <type>float</type>는
+   &php.ini;의 <link linkend="ini.precision">precision</link>이 지시하는
+   정밀도를 가집니다. 기본값은 <literal>14</literal>입니다.
+   또는 <function>pi</function>가 생성하는 결과와 똑같은 값을 가지는
+   <constant>M_PI</constant> 상수를 이용할 수도 있습니다.
+  </simpara>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   float로 파이 값.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>pi</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo pi(); // 3.1415926535898
 echo M_PI; // 3.1415926535898
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

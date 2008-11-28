@@ -1,27 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.round" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>round</refname>
-    <refpurpose>실수를 반올림합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>float</type><methodname>round</methodname>
-      <methodparam><type>float</type><parameter>val</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>precision</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>val</parameter>를 주어진
-     <parameter>precision</parameter>(소수점 아래의 자리수)까지 반올림한
-     값을 반환합니다. <parameter>precision</parameter>는 음수나 0(기본값)을
-     가질 수 있습니다.
-    </para>
-    <para>
-     <example>
-      <title><function>round</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.round" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>round</refname>
+  <refpurpose>소수 반올림</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>float</type><methodname>round</methodname>
+   <methodparam><type>float</type><parameter>val</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>precision</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>val</parameter>를 주어진
+   <parameter>precision</parameter>(소수점 아래의 자리수)까지 반올림한
+   값을 반환합니다. <parameter>precision</parameter>는 음수나 0(기본값)을
+   가질 수 있습니다.
+  </para>
+  <!-- It's not true
+  <para>
+   <caution>
+    <simpara>
+     정확한 절반을 반올림할때, <function>round</function>는 짝수에서는 내림을 하고,
+     홀수에서는 올림을 합니다. .5(경우에 따라 .05 등)를 항상 한 방향으로 처리하기
+     원한다면 작은 자리수에서 더하거나 빼야합니다. 절반을 반올림할때 올림인가
+     내림인가에 관한 배경은, 항상 내림을 한다면 고객으로부터 돈을 빼았는 것이며,
+     항상 올림을 한다면 돈을 잃어버린다는 고전적인 은행의 문제입니다. 
+     짝수와 홀수를 이용해서 평균을 냄으로써 통계학적으로 평준화하게 됩니다.
+    </simpara>
+   </caution>
+  </para>
+  -->
+  <para>
+   <note>
+    <simpara>
+     PHP는 기본적으로 <literal>"12,300.2"</literal>와 비슷한 문자열을
+     정상적으로 다루지 못합니다. <link
+      linkend="language.types.string.conversion">문자열에서 변환하기</link>를
+     참고하십시오.
+    </simpara>
+   </note>
+  </para>
+  <para>
+   <note>
+    <simpara>
+     <parameter>precision</parameter> 인수는 PHP 4에서 추가되었습니다.
+    </simpara>
+   </note>
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>val</parameter></term>
+     <listitem>
+      <para>
+       반올림할 값
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>precision</parameter></term>
+     <listitem>
+      <para>
+       선택적인 반올림할 소수점 자리, 기본값은 0.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   반올림한 값
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>round</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo round(3.4);         // 3
@@ -34,47 +97,21 @@ echo round(5.045, 2);    // 5.05
 echo round(5.055, 2);    // 5.06
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <!-- It's not true
-    <para>
-     <caution>
-      <simpara>
-       정확한 절반을 반올림할때, <function>round</function>는 짝수에서는 내림을 하고,
-       홀수에서는 올림을 합니다. .5(경우에 따라 .05 등)를 항상 한 방향으로 처리하기
-       원한다면 작은 자리수에서 더하거나 빼야합니다. 절반을 반올림할때 올림인가
-       내림인가에 관한 배경은, 항상 내림을 한다면 고객으로부터 돈을 빼았는 것이며,
-       항상 올림을 한다면 돈을 잃어버린다는 고전적인 은행의 문제입니다. 
-       짝수와 홀수를 이용해서 평균을 냄으로써 통계학적으로 평준화하게 됩니다.
-      </simpara>
-     </caution>
-    </para>
-    -->
-    <para>
-     <note>
-      <simpara>
-       PHP는 기본적으로 <literal>"12,300.2"</literal>과 같은 문자열을 정상적으로
-       다루지 못합니다. <link linkend="language.types.string.conversion">문자열에서
-       변환하기</link>를 참고하십시오.
-      </simpara>
-     </note>
-    </para>
-    <para>
-     <note>
-      <simpara>
-       <parameter>precision</parameter> 인수는 PHP 4에서만 사용할 수 있습니다.
-      </simpara>
-     </note>
-    </para>
-    <simpara>
-     참고:
-     <function>ceil</function>,
-     <function>floor</function>,
-     <function>number_format</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>ceil</function></member>
+    <member><function>floor</function></member>
+    <member><function>number_format</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

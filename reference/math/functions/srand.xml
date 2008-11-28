@@ -1,25 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.srand" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>srand</refname>
-    <refpurpose>난수 생성기를 초기화합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>srand</methodname>
-      <methodparam choice="opt"><type>int</type><parameter>seed</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>seed</parameter>로 난수 생성기를 초기화합니다.
-     PHP 4.2.0부터 <parameter>seed</parameter>는 선택적이 되었고, 생략할
-     경우에도 기본값으로 난수값을 생성합니다.
-    </para>
-    <para>
-     <example>
-      <title><function>srand</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.srand" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>srand</refname>
+  <refpurpose>난수 생성기를 초기화</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>void</type><methodname>srand</methodname>
+   <methodparam choice="opt"><type>int</type><parameter>seed</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>seed</parameter>로 난수 생성기를 초기화합니다.
+   <parameter>seed</parameter>가 주어지지 않으면, 난수 값을 사용합니다.
+  </para>
+
+  &note.randomseed;
+
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>seed</parameter></term>
+     <listitem>
+      <para>
+       선택적인 초기화 값
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.2.0부터</entry>
+       <entry>
+        <parameter>seed</parameter>가 선택적이 되어, 생략하면 난수 값을
+        사용합니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>srand</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 // 마이크로초로 초기화
 function make_seed()
@@ -30,20 +74,21 @@ function make_seed()
 srand(make_seed());
 $randval = rand();
 ]]>
-      </programlisting>
-     </example>
-    </para>
-
-    &note.randomseed;
-
-    <simpara>
-     참고:
-     <function>rand</function>,
-     <function>getrandmax</function>,
-     <function>mt_srand</function>.
-    </simpara>    
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>rand</function></member>
+    <member><function>getrandmax</function></member>
+    <member><function>mt_srand</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

@@ -1,51 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.mt-srand" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>mt_srand</refname>
-    <refpurpose>향상된 난수 생성기를 초기화합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>void</type><methodname>mt_srand</methodname>
-      <methodparam choice="opt"><type>int</type><parameter>seed</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>seed</parameter>로 난수 생생기를 초기화합니다.
-     PHP 4.2.0부터, <parameter>seed</parameter>는 선택적으로 변경되었고,
-     생략할 경우에도 기본값으로 난수를 생성합니다.
-    </para>
-    <para>
-     <example>
-      <title><function>mt_srand</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.mt-srand">
+ <refnamediv>
+  <refname>mt_srand</refname>
+  <refpurpose>향상된 난수 생성기를 초기화</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+   <methodsynopsis>
+    <type>void</type><methodname>mt_srand</methodname>
+    <methodparam choice="opt"><type>int</type><parameter>seed</parameter></methodparam>
+   </methodsynopsis>
+  <para>
+   난수 생성기를 <parameter>seed</parameter>로 초기화합니다.
+   <parameter>seed</parameter>가 주어지지 않으면 난수 값을 사용합니다.
+  </para>
+
+  &note.randomseed;
+
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>seed</parameter></term>
+     <listitem>
+      <para>
+       선택적인 초기화 값
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.2.0부터</entry>
+       <entry>
+        <parameter>seed</parameter>가 선택적이 되어, 생략하면 난수 값을
+        사용합니다.
+       </entry>
+      </row>
+      <row>
+       <entry>5.2.1부터</entry>
+       <entry>
+        PHP의 Mersenne Twister 구현이 Richard Wagner의 새로운 초기화
+        알고리즘을 사용합니다. 동일한 초기화 값을 주어도, 이전 버전처럼 동일한
+        값을 생성하지 않습니다. 이 동작은 다시 변경되지 않을 것이지만, 여기에
+        의존하는 것은 안전하지 않은 것으로 간주됩니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>mt_srand</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-// 마이크로초로 초기화
+// seed with microseconds
 function make_seed()
 {
-    list($usec, $sec) = explode(' ', microtime());
-    return (float) $sec + ((float) $usec * 100000);
+  list($usec, $sec) = explode(' ', microtime());
+  return (float) $sec + ((float) $usec * 100000);
 }
 mt_srand(make_seed());
 $randval = mt_rand();
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-
-    &note.randomseed;
-
-    <simpara>
-     참고:
-     <function>mt_rand</function>,
-     <function>mt_getrandmax</function>,
-     <function>srand</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mt_rand</function></member>
+    <member><function>mt_getrandmax</function></member>
+    <member><function>srand</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

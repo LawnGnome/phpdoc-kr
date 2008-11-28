@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.sin" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>sin</refname>
-    <refpurpose>사인</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>float</type><methodname>sin</methodname>
-      <methodparam><type>float</type><parameter>arg</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>sin</function>은 <parameter>arg</parameter> 인수의 사인값을 반환합니다.
-     <parameter>arg</parameter> 인수는 라디안으로 주어집니다.
-    </para>
-    <para>
-     <example>
-      <title><function>sin</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.sin" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>sin</refname>
+  <refpurpose>사인</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>float</type><methodname>sin</methodname>
+   <methodparam><type>float</type><parameter>arg</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>sin</function>은 <parameter>arg</parameter> 인수의 사인값을 반환합니다.
+   <parameter>arg</parameter> 인수는 라디안으로 주어집니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>arg</parameter></term>
+     <listitem>
+      <para>
+       라디안 값
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>arg</parameter>의 사인
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>sin</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 
@@ -28,18 +52,23 @@ echo sin(60);           // -0.304810621 ...
 
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     참고:
-     <function>asin</function>,
-     <function>cos</function>,
-     <function>tan</function>,
-     <function>deg2rad</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>asin</function></member>
+    <member><function>sinh</function></member>
+    <member><function>cos</function></member>
+    <member><function>tan</function></member>
+    <member><function>deg2rad</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
