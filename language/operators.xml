@@ -653,10 +653,10 @@ function standard_array_compare($op1, $op2)
       <programlisting role="php">
 <![CDATA[
 <?php
-// Example usage for: Ternary Operator
+// 사용 예제: 삼항 연산자
 $action = (empty($_POST['action'])) ? 'default' : $_POST['action'];
 
-// The above is identical to this if/else statement
+// 위 예제는 다음의 if/else 구문과 동일합니다
 if (empty($_POST['action'])) {
     $action = 'default';
 } else {
@@ -767,14 +767,13 @@ $value = @$cache[$key];
   </sect1>
   
   <sect1 xml:id="language.operators.execution">
-   <title>Execution Operators</title>
+   <title>실행 연산자</title>
    <para>
-    PHP supports one execution operator: backticks (``). Note that
-    these are not single-quotes! PHP will attempt to execute the
-    contents of the backticks as a shell command; the output will be
-    returned (i.e., it won't simply be dumped to output; it can be
-    assigned to a variable).  Use of the backtick operator is identical 
-    to <function>shell_exec</function>. 
+    PHP는 하나의 실행 연산자를 지원합니다: 역따옴표(``). 홑따옴표가 아닌 점에
+    주의하십시오! PHP는 역따옴표 안의 내용을 쉘 명령으로 실행하려 할 것입니다;
+    출력을 반환합니다. (즉, 단순히 출력하는 것이 아닙니다; 변수에 할당할 수
+    있습니다) 역따옴표 연산자를 사용하는 것은
+    <function>shell_exec</function>와 동일합니다.
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -788,68 +787,65 @@ echo "<pre>$output</pre>";
    </para>
    <note>
     <para>
-     The backtick operator is disabled when &safemode; is enabled
-     or <function>shell_exec</function> is disabled.
+     역따옴표 연산자는 &safemode;가 켜져있거나
+     <function>shell_exec</function>가 비활성화 되면 사용할 수 없습니다.
     </para>
    </note>
    <para>
-    See also the manual section on <link linkend="ref.exec">Program
-    Execution functions</link>, <function>popen</function>
-    <function>proc_open</function>, and
-    <link linkend="features.commandline">Using PHP from the
-    commandline</link>.
+    매뉴얼 <link linkend="ref.exec">프로그램 실행 함수</link> 섹션,
+    <function>popen</function>, <function>proc_open</function>, <link
+     linkend="features.commandline">PHP를 명령줄에서 사용하기</link>를
+    참고하십시오.
    </para>
   </sect1>
 
   <sect1 xml:id="language.operators.increment">
-   <title>Incrementing/Decrementing Operators</title>
+   <title>증가/감소 연산자</title>
    <para>
-    PHP supports C-style pre- and post-increment and decrement
-    operators.
+    PHP는 C 형식의 사전, 사후 증가 및 감소 연산자를 지원합니다.
    </para>
    <note>
     <simpara>
-     The increment/decrement operators do not affect boolean values.
-     Decrementing &null; values has no effect too, but incrementing them
-     results in <literal>1</literal>.
+     증가/감소 연산자는 논리 값에 영향을 주지 않습니다. &null; 값을 감소하는
+     것도 영향이 없지만, 증가시키면 <literal>1</literal>이 됩니다.
     </simpara>
    </note>
    <table>
-    <title>Increment/decrement Operators</title>
+    <title>증가/감소 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
-       <entry>Example</entry>
-       <entry>Name</entry>
-       <entry>Effect</entry>
+       <entry>예제</entry>
+       <entry>이름</entry>
+       <entry>효과</entry>
       </row>
      </thead>
      <tbody>
       <row>
        <entry>++$a</entry>
        <entry>Pre-increment</entry>
-       <entry>Increments $a by one, then returns $a.</entry>
+       <entry>$a를 1 증가하고, $a를 반환.</entry>
       </row>
       <row>
        <entry>$a++</entry>
        <entry>Post-increment</entry>
-       <entry>Returns $a, then increments $a by one.</entry>
+       <entry>$a를 반환하고, $a를 1 증가.</entry>
       </row>
       <row>
        <entry>--$a</entry>
        <entry>Pre-decrement</entry>
-       <entry>Decrements $a by one, then returns $a.</entry>
+       <entry>$a를 1 감소하고, $a를 반환.</entry>
       </row>
       <row>
        <entry>$a--</entry>
        <entry>Post-decrement</entry>
-       <entry>Returns $a, then decrements $a by one.</entry>
+       <entry>$a를 반환하고, $a를 1 감소.</entry>
       </row>
      </tbody>
     </tgroup>
    </table>
    <para>
-    Here's a simple example script:
+    간단한 예제 스크립트입니다:
     <informalexample>
      <programlisting role="php">
 <![CDATA[
@@ -879,13 +875,12 @@ echo "Should be 4: " . $a . "<br />\n";
     </informalexample>
    </para>
    <para>
-    PHP follows Perl's convention when dealing with arithmetic operations
-    on character variables and not C's.  For example, in Perl 'Z'+1 turns
-    into 'AA', while in C 'Z'+1 turns into '[' ( ord('Z') == 90, ord('[') == 91 ).
-    Note that character variables can be incremented but not decremented and
-    even so only plain ASCII characters (a-z and A-Z) are supported.
+    PHP는 문자 변수에 계산 연산을 할 경우, C가 아닌 펄의 규정을 따릅니다. 예를
+    들면, 펄에서 'Z'+1은 'AA'가 되지만, C에서 'Z'+1은 '['( ord('Z') == 90,
+    ord('[') == 91)입니다. 문자 변수는 증가만 할 수 있고, 감소는 할 수 없으며,
+    ASCII 알파벳 문자(a-z와 A-Z)만 지원합니다.
     <example>
-     <title>Arithmetic Operations on Character Variables</title>
+     <title>문자 변수에 계산 연산</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -910,65 +905,64 @@ AC
     </example>
    </para>
    <para>
-    Incrementing or decrementing booleans has no effect.
+    논리값에 대한 증가나 감소는 영향이 없습니다.
    </para>
   </sect1>
 
   <sect1 xml:id="language.operators.logical">
-   <title>Logical Operators</title>
+   <title>논리 연산자</title>
 
    <table>
-    <title>Logical Operators</title>
+    <title>논리 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
-       <entry>Example</entry>
-       <entry>Name</entry>
-       <entry>Result</entry>
+       <entry>예제</entry>
+       <entry>이름</entry>
+       <entry>결과</entry>
       </row>
      </thead>
      <tbody>
       <row>
        <entry>$a and $b</entry>
        <entry>And</entry>
-       <entry>&true; if both $a and $b are &true;.</entry>
+       <entry>$a와 $b가 모두 &true;이면 &true;.</entry>
       </row>
       <row>
        <entry>$a or $b</entry>
        <entry>Or</entry>
-       <entry>&true; if either $a or $b is &true;.</entry>
+       <entry>$a나 $b가 &true;이면 &true;.</entry>
       </row>
       <row>
        <entry>$a xor $b</entry>
        <entry>Xor</entry>
-       <entry>&true; if either $a or $b is &true;, but not both.</entry>
+       <entry>$a와 $b중 하나만 &true;일 때만 &true;.</entry>
       </row>
       <row>
        <entry>! $a</entry>
        <entry>Not</entry>
-       <entry>&true; if $a is not &true;.</entry>
+       <entry>$a가 &true;가 아니면 &true;.</entry>
       </row>
       <row>
        <entry>$a &amp;&amp; $b</entry>
        <entry>And</entry>
-       <entry>&true; if both $a and $b are &true;.</entry>
+       <entry>$a와 $b가 모두 &true;이면 &true;.</entry>
       </row>
       <row>
        <entry>$a || $b</entry>
        <entry>Or</entry>
-       <entry>&true; if either $a or $b is &true;.</entry>
+       <entry>$a나 $b가 &true;이면 &true;.</entry>
       </row>
      </tbody>
     </tgroup>
    </table>
    <simpara>
-    The reason for the two different variations of "and" and "or"
-    operators is that they operate at different precedences. (See
-    <link linkend="language.operators.precedence">Operator
-    Precedence</link>.)
+    "and"와 "or" 연산자가 두 종류가 있는 것은, 다른 우선권을 가지기
+    때문입니다. (<link linkend="language.operators.precedence">연산자
+     우선권</link> 참고)
    </simpara>
    <example>
-    <title>Logical operators illustrated</title>
+    <title>논리 연산자 설명</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -1008,9 +1002,9 @@ bool(true)
    <simpara>
     There are two <type>string</type> operators. The first is the
     concatenation operator ('.'), which returns the concatenation of its
-    오른쪽 and 왼쪽 arguments. The second is the concatenating assignment
+    right and left arguments. The second is the concatenating assignment
     operator ('.='), which appends the argument on the 오른쪽 side to
-    the argument on the 왼쪽 side. Please read <link
+    the argument on the left side. Please read <link
     linkend="language.operators.assignment">Assignment
     Operators</link> for more information.
    </simpara>

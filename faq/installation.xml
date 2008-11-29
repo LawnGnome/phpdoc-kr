@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.52 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.53 Maintainer: progcom Status: ready -->
  <chapter xml:id="faq.installation" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>설치</title>
   <titleabbrev>설치</titleabbrev>
@@ -144,7 +144,7 @@
       </itemizedlist>
      </para>
      <para>
-      스크립트가 정규 표현식 함수(<function>ereg</function> 계열)를
+      스크립트가 정규 표현식 함수(<function>preg_match</function> 계열)를
       사용한다면, PHP와 아파치를 동일한 정규 표현식 패키지로 컴파일해야
       합니다. PHP와 아파치 1.3.x에서는 자동으로 됩니다.
      </para>
