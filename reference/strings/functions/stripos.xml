@@ -1,40 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.stripos" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>stripos</refname>
-    <refpurpose>
-     대소문자를 구별하지 않고 문자열이 처음 나타나는 위치를 찾습니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>stripos</methodname>
-      <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
-      <methodparam><type>string</type><parameter>needle</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>offset</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>haystack</parameter> <type>string</type>에서
-     <parameter>needle</parameter>이 처음 나타나는 수 위치를 반환합니다.
-     <function>strpos</function>와 달리, <function>stripos</function>는
-     대소문자를 구별하지 않습니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>는 한 문자 이상의 문자열이여야 합니다.
-    </para>
-    <para>
-     <parameter>needle</parameter>을 발견하지 못하면,
-     <function>stripos</function>는 <type>boolean</type> &false;를 반환합니다.
-    </para>
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.stripos" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>stripos</refname>
+  <refpurpose>대소문자를 구분 없이 문자열이 처음 나타나는 위치를 탐색</refpurpose>
+ </refnamediv>
 
-    &return.falseproblem;
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>stripos</methodname>
+   <methodparam><type>string</type><parameter>haystack</parameter></methodparam>
+   <methodparam><type>string</type><parameter>needle</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>offset</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>haystack</parameter> <type>string</type>에서
+   <parameter>needle</parameter>이 처음 나타나는 위치를 반환합니다.
+  </para>
+  <para>
+   <function>strpos</function>와 달리, <function>stripos</function>는
+   대소문자를 구분하지 않습니다.
+  </para>
+ </refsect1>
 
-    <para>
-     <example>
-     <title><function>stripos</function> 예제</title>
-      <programlisting role="php">
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>haystack</parameter></term>
+     <listitem>
+      <para>
+       검색할 문자열
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>needle</parameter></term>
+     <listitem>
+      <para>
+       <parameter>needle</parameter>는 한 문자 이상의 문자열이여야 합니다.
+      </para>
+      <para>
+       <parameter>needle</parameter>이 문자열이 아니라면, 정수로 변환하여
+       해당하는 값의 문자를 적용합니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>offset</parameter></term>
+     <listitem>
+      <para>
+       선택적인 <parameter>offset</parameter> 인수로
+       <parameter>haystack</parameter>의 몇번째 문자에서 검색을 시작할지 지정할
+       수 있습니다. 반환하는 위치는 <parameter>haystack</parameter>의 처음부터
+       세어집니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>needle</parameter>을 발견하지 못하면,
+   <function>stripos</function>는 <type>boolean</type> &false;를 반환합니다.
+  </para>
+  &return.falseproblem;
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>stripos</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $findme    = 'a';
@@ -56,27 +99,33 @@ if ($pos2 !== false) {
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <parameter>needle</parameter>이 문자열이 아니라면, 정수로 변환하여,
-     해당하는 값의 문자로 적용합니다.
-    </para>
-    <para>
-     선택적인 <parameter>offset</parameter> 인수로
-     <parameter>haystack</parameter>의 몇번째 문자에서 검색을 시작할지 지정할
-     수 있습니다. 위치는 여전히 <parameter>haystack</parameter>의 처음부터
-     세어집니다.
-    </para>
-    <para>
-     참고: <function>strpos</function>, <function>strrpos</function>,
-     <function>strrchr</function>, <function>substr</function>,
-     <function>stristr</function>, <function>strstr</function>,
-     <function>strripos</function>, <function>str_ireplace</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.bin-safe;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>strpos</function></member>
+    <member><function>strrpos</function></member>
+    <member><function>strrchr</function></member>
+    <member><function>substr</function></member>
+    <member><function>stristr</function></member>
+    <member><function>strstr</function></member>
+    <member><function>stripos</function></member>
+    <member><function>str_ireplace</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

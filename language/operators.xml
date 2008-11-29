@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.127 Maintainer: progcom Status: wip -->
+<!-- EN-Revision: 1.127 Maintainer: progcom Status: ready -->
  <chapter xml:id="language.operators" xmlns="http://docbook.org/ns/docbook">
   <title>연산자</title>
   <simpara>
@@ -998,15 +998,13 @@ bool(true)
   </sect1>
 
   <sect1 xml:id="language.operators.string">
-   <title>String Operators</title>
+   <title>문자열 연산자</title>
    <simpara>
-    There are two <type>string</type> operators. The first is the
-    concatenation operator ('.'), which returns the concatenation of its
-    right and left arguments. The second is the concatenating assignment
-    operator ('.='), which appends the argument on the 오른쪽 side to
-    the argument on the left side. Please read <link
-    linkend="language.operators.assignment">Assignment
-    Operators</link> for more information.
+    두 개의 <type>string</type> 연산자가 있습니다. 첫번째는 연결
+    연산자('.')로, 오른쪽과 왼쪽 인수의 연결을 반환합니다. 두번째는 연결 할당
+    연산자('.=')로, 오른쪽 인수를 왼쪽 인수에 덧붙입니다. 자세한 정보는 <link
+     linkend="language.operators.assignment">할당 연산자</link>를
+    참고하십시오.
    </simpara>
 
    <para>
@@ -1025,63 +1023,61 @@ $a .= "World!";     // now $a contains "Hello World!"
     </informalexample>
    </para>
    <para>
-    See also the manual sections on the 
-    <link linkend="language.types.string">String type</link> and 
-    <link linkend="ref.strings">String functions</link>.
+    매뉴얼 <link linkend="language.types.string">문자열형</link>과 <link
+     linkend="ref.strings">문자열 함수</link> 섹션을 참고하십시오.
    </para>
   </sect1>
   
   <sect1 xml:id="language.operators.array">
-   <title>Array Operators</title>
+   <title>배열 연산자</title>
    <table>
-    <title>Array Operators</title>
+    <title>배열 연산자</title>
     <tgroup cols="3">
      <thead>
       <row>
-       <entry>Example</entry>
-       <entry>Name</entry>
-       <entry>Result</entry>
+       <entry>예제</entry>
+       <entry>이름</entry>
+       <entry>결과</entry>
       </row>
      </thead>
      <tbody>
       <row>
        <entry>$a + $b</entry>
        <entry>Union</entry>
-       <entry>Union of $a and $b.</entry>
+       <entry>$a와 $b의 합집합.</entry>
       </row>
       <row>
        <entry>$a == $b</entry>
        <entry>Equality</entry>
-       <entry>&true; if $a and $b have the same key/value pairs.</entry>
+       <entry>$a와 $b가 동일한 키/값 쌍을 가지면 &true;.</entry>
       </row>
       <row>
        <entry>$a === $b</entry>
        <entry>Identity</entry>
-       <entry>&true; if $a and $b have the same key/value pairs in the same
-        order and of the same types.</entry>
+       <entry>$a와 $b가 동일한 키/값 쌍을 동일한 순서와 동일한 자료형으로
+        가지면 &true;.</entry>
       </row>
       <row>
        <entry>$a != $b</entry>
        <entry>Inequality</entry>
-       <entry>&true; if $a is not equal to $b.</entry>
+       <entry>$a가 $b와 같지 않으면 &true;.</entry>
       </row>
       <row>
        <entry>$a &lt;&gt; $b</entry>
        <entry>Inequality</entry>
-       <entry>&true; if $a is not equal to $b.</entry>
+       <entry>$a가 $b와 같지 않으면 &true;.</entry>
       </row>
       <row>
        <entry>$a !== $b</entry>
        <entry>Non-identity</entry>
-       <entry>&true; if $a is not identical to $b.</entry>
+       <entry>$a가 $b와 동일하지 않으면 &true;.</entry>
       </row>
      </tbody>
     </tgroup>
    </table>
    <para>
-    The <literal>+</literal> operator
-    appends elements of remaining keys from the 오른쪽 handed array to the 
-    왼쪽 handed, whereas duplicated keys are NOT overwritten.
+    <literal>+</literal> 연산자는 오른쪽 배열에서 왼쪽 배열로 키를 유지하며
+    원소를 덧붙입니다. 중복되는 키를 덮어쓰지 않습니다.
    </para>
    <para>
     <informalexample>
@@ -1102,7 +1098,7 @@ var_dump($c);
 ]]>
      </programlisting>
     </informalexample>
-    When executed, this script will print the following:
+    실행하면, 위 스크립트는 다음을 출력합니다:
     <screen role="php">
 <![CDATA[
 Union of $a and $b:
@@ -1127,12 +1123,11 @@ array(3) {
     </screen>
    </para>
    <para>
-    Elements of arrays are equal for the comparison if they have the
-    same key and value.
+    동일한 키와 값을 가지고 있으면, 비교할 때 같은 배열 원소입니다.
    </para>
    <para>
     <example>
-     <title>Comparing arrays</title>
+     <title>비열 비교하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1147,19 +1142,18 @@ var_dump($a === $b); // bool(false)
     </example>
    </para>
    <para>
-    See also the manual sections on the 
-    <link linkend="language.types.array">Array type</link> and 
-    <link linkend="ref.array">Array functions</link>.
+    매뉴얼 <link linkend="language.types.array">배열형</link>과 <link
+     linkend="ref.array">배열 함수</link> 섹션을 참고하십시오.
    </para>
   </sect1>
   <sect1 xml:id="language.operators.type">
-   <title>Type Operators</title>
+   <title>자료형 연산자</title>
    <para>
-    <literal>instanceof</literal> is used to determine whether a PHP variable
-    is an instantiated object of a certain
-    <link linkend="language.oop5.basic.class">class</link>:
+    <literal>instanceof</literal>는 PHP 변수가 어떤 <link
+     linkend="language.oop5.basic.class">클래스</link>에서 생성된 객체인지
+    확인할 때 사용합니다:
     <example>
-     <title>Using instanceof with classes</title>
+     <title>클래스에 instanceof 사용하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1187,10 +1181,10 @@ bool(false)
     </example>
    </para>
    <para>
-    <literal>instanceof</literal> can also be used to determine whether a variable
-    is an instantiated object of a class that inherits from a parent class:
+    <literal>instanceof</literal>는 변수가 부모 클래스에서 상속받은 클래스인지
+    확인할 때도 사용할 수 있습니다:
     <example>
-     <title>Using instanceof with inherited classes</title>
+     <title>상속 클래스에 instanceof 사용하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1219,12 +1213,12 @@ bool(true)
     </example>
    </para>
    <para>
-    To check if an object is <emphasis>not</emphasis> an instanceof a class, the
-    <link linkend="language.operators.logical">logical <literal>not</literal>
-    operator</link> can be used.
+    객체가 클래스의 인스턴스가 <emphasis>아닌</emphasis>지 확인하려면, <link
+     linkend="language.operators.logical">논리 <literal>not</literal>
+     연산자</link>를 사용할 수 있습니다.
     <example>
-     <title>Using instanceof to check if object is <emphasis>not</emphasis> an
-      instanceof a class</title>
+     <title>객체가 클래스의 인스턴스가 <emphasis>아닌</emphasis>지 확인하기
+      위해 instanceof 사용하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1246,11 +1240,11 @@ bool(true)
     </example>
    </para>
    <para>
-    Lastly, <literal>instanceof</literal> can also be used to determine whether
-    a variable is an instantiated object of a class that implements an
-    <link linkend="language.oop5.interfaces">interface</link>:
+    마지막으로, <literal>instanceof</literal>는 변수가 <link
+     linkend="language.oop5.interfaces">인터페이스</link>를 구현한 클래스의
+    객체 인스턴스인지 확인하기 위해 사용할 수 있습니다:
     <example>
-     <title>Using instanceof for class</title>
+     <title>클래스에 instanceof 사용하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1279,10 +1273,10 @@ bool(true)
     </example>
    </para>
    <para>
-    Although <literal>instanceof</literal> is usually used with a literal classname,
-    it can also be used with another object or a string variable:
+    보통 <literal>instanceof</literal>를 문자 클래스명에 사용하지만, 다른
+    객체나 문자열 변수와도 사용할 수 있습니다:
     <example>
-     <title>Using instanceof with other variables</title>
+     <title>다른 변수와 instanceof 사용하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1316,13 +1310,14 @@ bool(false)
     </example>
    </para>
    <para>
-    There are a few pitfalls to be aware of.  Before PHP version 5.1.0,
-    <literal>instanceof</literal> would call <link linkend="language.oop5.autoload">__autoload()</link>
-    if the class name did not exist.  In addition, if the class was not loaded,
-    a fatal error would occur.  This can be worked around by using a <literal>dynamic
-    class reference</literal>, or a string variable containing the class name:
+    주의해야할 함정이 있습니다. PHP 5.1.0 이전에,
+    <literal>instanceof</literal>는 클래스명이 존재하지 않으면 <link
+     linkend="language.oop5.autoload">__autoload()</link>를 호출했습니다.
+    추가로, 클래스가 적재되지 않으면 치명적인 오류가 발생했습니다. 이는
+    <literal>동적 클래스 참조</literal>를 사용하거나, 클래스명을 가지는 문자열
+    변수로 해결할 수 있습니다:
     <example>
-     <title>Avoiding classname lookups and fatal errors with instanceof in PHP 5.0</title>
+     <title>PHP 5.0 intanceof에서 클래스명 찾기와 치명적인 오류 피하기</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -1340,13 +1335,12 @@ bool(false)
     </example>
    </para>
    <simpara>
-    The <literal>instanceof</literal> operator was introduced in PHP 5.
-    Before this time <function>is_a</function> was used but
-    <function>is_a</function> has since been deprecated in favor of
-    <literal>instanceof</literal>.
+    <literal>instanceof</literal> 연산자는 PHP 5에서 추가되었습니다. 이전에는
+    <function>is_a</function>가 사용되었지만, <function>is_a</function>는
+    <literal>instanceof</literal>의 기능으로 인해 배제되었습니다.
    </simpara>
    <para>
-    See also <function>get_class</function> and 
+    참고: <function>get_class</function>,
     <function>is_a</function>.
    </para>
   </sect1>

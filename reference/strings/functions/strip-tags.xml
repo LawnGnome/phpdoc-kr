@@ -1,89 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.strip-tags" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strip_tags</refname>
-    <refpurpose>문자열에서 HTML과 PHP 태그를 제거합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>strip_tags</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-      <methodparam choice="opt"><type>string</type><parameter>allowable_tags</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     주어진 <parameter>str</parameter>에서 모든 HTML과 PHP 태그를 제거한
-     문자열을 반환합니다. 이 함수는 <function>fgetss</function> 함수와 동일한
-     태그 제거 방식을 사용합니다.
-    </para>
-    <para>
-     선택적인 두번째 인수로 제거하지 않을 태그를 지정할 수 있습니다.
-     <note>
+<!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.strip-tags" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>strip_tags</refname>
+  <refpurpose>문자열에서 HTML과 PHP 태그를 제거</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>strip_tags</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam choice="opt"><type>string</type><parameter>allowable_tags</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   주어진 <parameter>str</parameter>에서 모든 HTML과 PHP 태그를 제거한
+   문자열을 반환합니다. 이 함수는 <function>fgetss</function> 함수와 동일한
+   태그 제거 방식을 사용합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
       <para>
-       <parameter>allowable_tags</parameter>은 PHP 3.0.13과 PHP 4.0b3에서
-       추가되었습니다. PHP 4.3부터 HTML 주석도 제거합니다.
-      </para> 
-     </note>
-     <warning>
-      <para>
-       <function>strip_tags</function>는 HTML의 유효성을 검사하지 않기 때문에,
-       부분적이거나 깨진 태그는 예상 외의 텍스트/데이터를 제거할 수 있습니다.
+       입력 문자열.
       </para>
-     </warning>
-    </para>
-    <para>
-     <example>
-      <title><function>strip_tags</function> 예제</title>
-      <programlisting role="php">
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>allowable_tags</parameter></term>
+     <listitem>
+      <para>
+       선택적인 두번째 인수로 제거하지 않을 태그를 지정할 수 있습니다.
+      </para>
+      <note>
+       <para>
+        HTML 주석과 PHP 태그는 제거됩니다. 이 동작은 하드코드되어 있어서,
+        <parameter>allowable_tags</parameter>로 변경할 수 없습니다.
+       </para> 
+      </note>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   제거한 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        <function>strip_tags</function>는 바이너리 안전입니다
+       </entry>
+      </row>
+      <row>
+       <entry>4.3.0</entry>
+       <entry>
+        HTML 주석은 항상 제거됩니다
+       </entry>
+      </row>
+      <row>
+       <entry>4.0.0</entry>
+       <entry>
+        <parameter>allowable_tags</parameter> 인수 추가
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strip_tags</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$text = '
-<p>테스트 문단.</p>
-<!-- 주석 -->
-다른 텍스트';
-
+$text = '<p>테스트 문단.</p><!-- 주석 --> <a 
+href="#fragment">다른 텍스트</a>';
 echo strip_tags($text);
+echo "\n";
 
-echo "\n\n--------\n";
-
-// <p>를 허용.
-echo strip_tags($text, '<p>');
+// <p>와 <a>를 허용
+echo strip_tags($text, '<p><a>');
 ?>
 ]]>
-      </programlisting>
-      <para>
-       위 예제의 출력은:
-      </para>
-      <screen>
+    </programlisting>
+    &example.outputs;
+    <screen>
 <![CDATA[
-테스트 문단.
-
-다른 텍스트
-
---------
-
-<p>테스트 문단.</p>
-
-다른 텍스트
+테스트 문단. 다른 텍스트
+<p>테스트 문단.</p> <a href="#fragment">다른 텍스트</a>
 ]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
 
-      </screen>
-     </example>
-    </para>
-    <warning>
-     <para>
-      이 함수는 <parameter>allowable_tags</parameter>를 사용하여 허용한 태그
-      안의 어떠한 속성도 변경하지 않습니다. 악성 사용자가 다른 사용자에게
-      보여지는 텍스트를 게시할 때 <literal>style</literal>이나
-      <literal>onmouserover</literal> 속성을 사용하여 악용할 수 있습니다.
-     </para>
-    </warning>
-    <para>
-     참고: <function>htmlspecialchars</function>.
-    </para>
-   </refsect1>
-  </refentry>
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <warning>
+   <para>
+    <function>strip_tags</function>는 HTML의 유효성을 검사하지 않기 때문에,
+    부분적이거나 깨진 태그는 예상 외의 텍스트/데이터를 제거할 수 있습니다.
+   </para>
+  </warning>
+  <warning>
+   <para>
+    이 함수는 <parameter>allowable_tags</parameter>를 사용하여 허용한 태그
+    안의 어떠한 속성도 변경하지 않습니다. 악성 사용자가 다른 사용자에게
+    보여지는 텍스트를 게시할 때 <literal>style</literal>이나
+    <literal>onmouserover</literal> 속성을 사용하여 악용할 수 있습니다.
+   </para>
+  </warning>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>htmlspecialchars</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

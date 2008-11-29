@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.20 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
 <!-- CREDITS: acidd15 -->
 
 <chapter xml:id="install.pecl" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -40,6 +40,12 @@
   <itemizedlist>
    <listitem>
     <simpara>
+     <literal>pecl install extname</literal> 명령은 확장 코드를 자동으로
+     내려받으므로, 따로 다운로드 할 필요가 없습니다.
+    </simpara>
+   </listitem>
+   <listitem>
+    <simpara>
      <link xlink:href="&url.pecl;">&url.pecl;</link>
     </simpara>
     <simpara>
@@ -72,6 +78,11 @@
 $ cvs -d:pserver:cvsread@cvs.php.net:/repository login 
 $ cvs -d:pserver:cvsread@cvs.php.net:/repository co pecl/extname
      </screen>
+    </para>
+    <para>
+     또는, <link xlink:href="&url.php.cvs;pecl/">ViewVC</link> 시스템의
+     각 디렉토리 안에 해당 소스 코드를 받을 수 있는 "Download GNU tarball"
+     링크가 있습니다. 필요한 확장에 적합한 디렉토리로 들어가서 내려받으십시오.
     </para>
    </listitem>
    <listitem>
