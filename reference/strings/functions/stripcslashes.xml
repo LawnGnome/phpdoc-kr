@@ -15,7 +15,7 @@
       <methodparam><type>string</type><parameter>str</parameter></methodparam>
      </methodsynopsis>
     <para>
-     백슬래쉬를 제거한 문자열을 반환합니다. C 형식의 <literal>\n</literal>,
+     백슬래시를 제거한 문자열을 반환합니다. C 형식의 <literal>\n</literal>,
      <literal>\r</literal> ..., 8진과 16진 표현도 인식합니다.
     </para>
     <simpara>

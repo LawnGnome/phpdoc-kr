@@ -246,7 +246,7 @@
      <para>
       GPC (Get/Post/쿠키) 작동의 magic_quotes 상태를 설정합니다.
       magic_quotes가 on이면, 모든 ' (작은 따옴표), &quot; (큰 따옴표), \
-      (백슬래쉬), NUL은 자동적으로 백슬래쉬로 이스케이프됩니다.
+      (백슬래시), NUL은 자동적으로 백슬래시로 이스케이프됩니다.
      </para>
      <note>
       <para>
@@ -258,7 +258,7 @@
        <link linkend="ini.magic-quotes-sybase">magic_quotes_sybase</link>
        지시어도 ON이면 magic_quotes_gpc가 완전히 교체됩니다. 두 지시어를 모두
        활성화하면 작은 따음표는 <emphasis>''</emphasis>로 이스케이프합니다. 큰
-       따옴표, 백슬래쉬, NUL은 건들이지 않고, 이스케이프 하지 않습니다.
+       따옴표, 백슬래시, NUL은 건들이지 않고, 이스케이프 하지 않습니다.
       </para>
      </note>
      <para>
@@ -277,9 +277,9 @@
      <para>
       <parameter>magic_quotes_runtime</parameter>를 활성화하면, 데이터베이스나
       텍스트 파일를 포함한, 어떠한 외부 소스에서 데이터를 가져오는 대부분의
-      함수는 백슬래쉬로 인용됩니다. <link
+      함수는 백슬래시로 인용됩니다. <link
        linkend="ini.magic-quotes-sybase">magic_quotes-sybase</link>도 on이면,
-      작은 따옴표는 백슬래쉬 대신 작은 따옴표로 이스케이프합니다.
+      작은 따옴표는 백슬래시 대신 작은 따옴표로 이스케이프합니다.
      </para>
     </listitem>
    </varlistentry>

@@ -21,7 +21,7 @@
   </para>
   <para>
 <function>mysql_real_escape_string</function>는 MySQL 라이브러리 함수인 
-mysql_real_escape_string를 호출하여, 다음의 문자에 백슬래쉬를 붙인다:
+mysql_real_escape_string를 호출하여, 다음의 문자에 백슬래시를 붙인다:
 <literal>\x00</literal>, <literal>\n</literal>,
 <literal>\r</literal>, <literal>\</literal>, <literal>'</literal>,
 <literal>"</literal>, <literal>\x1a</literal>.

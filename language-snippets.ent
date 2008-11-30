@@ -754,10 +754,10 @@ xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>를
 MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 
 <!ENTITY note.apache.slashes '<note><simpara>윈도우 상에서 아파치 설정 파일에
-경로값을 추가할 때는 다음과 같이 모든 백슬래쉬를 슬래쉬로 바꿔야 합니다:
+경로값을 추가할 때는 다음과 같이 모든 백슬래시를 슬래시로 바꿔야 합니다:
 <filename>c:\directory\file.ext</filename>을
 <filename>c:/directory/file.ext</filename>로 바꿉니다. 디렉토리에는 마지막에
-슬래쉬를 붙여줘야 합니다.</simpara></note>'>
+슬래시를 붙여줘야 합니다.</simpara></note>'>
 
 <!-- Snippets and titles for the contributors section -->
 <!ENTITY Credit.Authors.and.Contributors '저자와 공헌자'>

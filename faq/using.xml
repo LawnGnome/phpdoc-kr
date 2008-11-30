@@ -62,7 +62,7 @@ if (empty($empty)) {
    <qandaentry xml:id="faq.using.addslashes">
     <question>
      <para>
-      작은따옴표(')에 역슬래쉬를 앞에(\') 붙여줄 필요가 있습니다.
+      작은따옴표(')에 역슬래시를 앞에(\') 붙여줄 필요가 있습니다.
       이와 같은 일은 어떻게 정규표현식(regular expression)으로 처리할수
       있을까요? 그리고 "를 \"로, \를 \\로 변환하고 싶습니다.
      </para>
@@ -71,7 +71,7 @@ if (empty($empty)) {
      <para>
       <function>addslashes</function>함수로 이와 같은 일을 처리할수있습니다.
       <function>mysql_escape_string</function>함수도 참고하십시오.
-      또한 <function>stripslashes</function>함수로 역슬래쉬를 벗길 수 있습니다.
+      또한 <function>stripslashes</function>함수로 역슬래시를 벗길 수 있습니다.
      </para>
 
      &note.magicquotes.gpc;
@@ -85,13 +85,13 @@ if (empty($empty)) {
       All my " turn into \" and my ' turn into \', how do I get rid of all 
       these unwanted backslashes?  How and why did they get there?
       "은 \"으로, '는 \'으로 변경이 되어있습니다. 어떻게하면 이런 원치않는
-      역슬래쉬를 제거할수 있을까요? 어떻게 그리고 왜 이런 역슬래쉬가 생긴거죠?
+      역슬래시를 제거할수 있을까요? 어떻게 그리고 왜 이런 역슬래시가 생긴거죠?
      </para>
     </question>
     <answer>
      <para>
       <function>stripslashes</function>함수로 이 <type>string</type>에서 이런
-      역슬래쉬를 벗길수가 있습니다. 이런 마술적인 역슬래쉬가 존재하는 이유는
+      역슬래시를 벗길수가 있습니다. 이런 마술적인 역슬래시가 존재하는 이유는
       <link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>옵션이 활성화되어
       있기 때문입니다.
      </para>

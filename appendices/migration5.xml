@@ -806,14 +806,14 @@ LoadModule php5_module /php/php5apache2.dll
     <listitem>
      <simpara>
       <link linkend="ini.session.hash-function">session.hash_function</link> -
-      해쉬 함수를 선택합니다. (MD5나 SHA-1)
+      해시 함수를 선택합니다. (MD5나 SHA-1)
      </simpara>
     </listitem>
     <listitem>
      <simpara>
       <link
        linkend="ini.session.hash-bits-per-character">session.hash_bits_per_character</link>
-      - 바이너리 해쉬 데이터를 읽을 수 있는 형태로 변환 할 때, 각 문자당 몇
+      - 바이너리 해시 데이터를 읽을 수 있는 형태로 변환 할 때, 각 문자당 몇
       비트를 저장할지 지정합니다 (4에서 6)
      </simpara>
     </listitem>

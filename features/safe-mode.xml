@@ -244,7 +244,7 @@
          open_basedir로 설정된 제한은 실질적으로 디렉토리명이 아닌, 앞첨자(prefix)가
          된다. 이 말의 의미는 "open_basedir = /dir/incl"는 "/dir/include" 과
          "/dir/incls" 디렉토리가 존재한다면 그 두 디렉토리로의 접근도 허용한다는것이다.
-         특정 디렉토리로만 접근을 제한하고자 한다면, 슬래쉬로 끝내면 된다.
+         특정 디렉토리로만 접근을 제한하고자 한다면, 슬래시로 끝내면 된다.
          For example: "open_basedir = /dir/incl/"
        </para>
        <para>

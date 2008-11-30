@@ -201,8 +201,8 @@ foreach ($xml->xpath('//character') as $character) {
 ]]>
     </programlisting>
     <simpara>
-     '<literal>//</literal>'은 와일드카드로 사용됩니다. 절대 결로를
-     지정하려면, 슬래쉬 하나를 생략하십시오.
+     '<literal>//</literal>'은 와일드카드로 사용됩니다. 절대 경로로
+     지정하려면, 슬래시 하나를 생략하십시오.
     </simpara>
    </example>
   </para>

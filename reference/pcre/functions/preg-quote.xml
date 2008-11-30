@@ -15,7 +15,7 @@
   </methodsynopsis>
   <para>
    <function>preg_quote</function>는 <parameter>str</parameter>에서
-   정규 표현식 문법에 포함되는 모든 문자의 앞에 백슬래쉬를 덧붙입니다.
+   정규 표현식 문법에 포함되는 모든 문자의 앞에 백슬래시를 덧붙입니다.
    어떠한 텍스트에 특수 정규 표현식 문자를 포함하는 런타임 문자열을
    처리할 때 유용합니다.
   </para>
