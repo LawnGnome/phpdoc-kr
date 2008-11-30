@@ -38,7 +38,7 @@
     <listitem>
      <simpara>
       "\n" (<acronym>ASCII</acronym> <literal>10</literal>
-      (<literal>0x0A</literal>)), 줄바꿈.
+      (<literal>0x0A</literal>)), 새 줄(줄바꿈).
      </simpara>
     </listitem>
     <listitem>

@@ -1,64 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.html-entity-decode" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>html_entity_decode</refname>
-    <refpurpose>
-     모든 HTML 엔티티를 해당하는 문자로 변환합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>html_entity_decode</methodname>
-      <methodparam><type>string</type><parameter>string</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>quote_style</parameter></methodparam>
-      <methodparam choice="opt"><type>string</type><parameter>charset</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>html_entity_decode</function>는 <parameter>string</parameter>의
-     모든 HTML 엔티티를 해당하는 문자로 변환합니다.
-     <function>htmlentities</function>의 역함수입니다.
-    </para>
-    <para>
-     두번째에 위치하는 선택적인 <parameter>quote_style</parameter> 인수는
-     '작은 따옴표'와 "큰 따옴표"를 어떻게 처리할지 정의합니다. 아래의 상수들을
-     사용할 수 있으며, 기본값은 <constant>ENT_COMPAT</constant>입니다:
-     <table>
-      <title>사용할 수 있는 <parameter>quote_style</parameter> 상수</title>
-      <tgroup cols="2">
-       <thead>
-        <row>
-         <entry>상수명</entry>
-         <entry>설명</entry>
-        </row>
-       </thead>
-       <tbody>
-        <row>
-         <entry><constant>ENT_COMPAT</constant></entry>
-         <entry>큰 따옴표만 변환합니다.</entry>
-        </row>
-        <row>
-         <entry><constant>ENT_QUOTES</constant></entry>
-         <entry>작은 따옴표와 큰 따옴표 둘 다 변환합니다.</entry>
-        </row>
-        <row>
-         <entry><constant>ENT_NOQUOTES</constant></entry>
-         <entry>작은 따옴표와 큰 따옴표 둘 다 변환하지 않습니다.</entry>
-        </row>
-       </tbody>
-      </tgroup>
-     </table>
-    </para>
-    <para>
-     세번째에 위치하는 선택적인 <parameter>charset</parameter>의 기본값은
-     ISO-8859-1 문자셋입니다. 이는 변환에 사용할 문자셋을 정의합니다.
-    </para>
-    &reference.strings.charsets;    
-    <para>
-     <example>
-      <title>HTML 엔티티 디코딩</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.html-entity-decode" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>html_entity_decode</refname>
+  <refpurpose>모든 HTML 엔티티를 해당하는 문자로 변환</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>html_entity_decode</methodname>
+   <methodparam><type>string</type><parameter>string</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>quote_style</parameter></methodparam>
+   <methodparam choice="opt"><type>string</type><parameter>charset</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>html_entity_decode</function>는 <parameter>string</parameter>의
+   모든 HTML 엔티티를 해당하는 문자로 변환합니다.
+   <function>htmlentities</function>의 역함수입니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>string</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>quote_style</parameter></term>
+     <listitem>
+      <para>
+       선택적인 두번째 인수 <parameter>quote_style</parameter>은
+       '홑따옴표'와 "겹따옴표"를 어떻게 처리할지 정의합니다. 아래의 상수들을
+       사용할 수 있으며, 기본값은 <constant>ENT_COMPAT</constant>입니다:
+       <table>
+        <title>사용할 수 있는 <parameter>quote_style</parameter> 상수</title>
+        <tgroup cols="2">
+         <thead>
+          <row>
+           <entry>상수명</entry>
+           <entry>설명</entry>
+          </row>
+         </thead>
+         <tbody>
+          <row>
+           <entry><constant>ENT_COMPAT</constant></entry>
+           <entry>겹따옴표만 변환합니다.</entry>
+          </row>
+          <row>
+           <entry><constant>ENT_QUOTES</constant></entry>
+           <entry>홑따옴표와 겹따옴표 모두 변환합니다.</entry>
+          </row>
+          <row>
+           <entry><constant>ENT_NOQUOTES</constant></entry>
+           <entry>홑따옴표와 겹따옴표 모두 변환하지 않습니다.</entry>
+          </row>
+         </tbody>
+        </tgroup>
+       </table>
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>charset</parameter></term>
+     <listitem>
+      <para>
+       선택적인 세번째 인수 <parameter>charset</parameter>의 기본값은
+       ISO-8859-1 문자셋입니다. 변환에 사용할 문자셋을 정의합니다.
+      </para>
+      &reference.strings.charsets;
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   디코드한 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        멀티바이트 문자셋 지원 추가.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title>HTML 엔티티 디코딩</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $orig = "I'll \"walk\" the <b>dog</b> now";
@@ -75,6 +135,9 @@ echo $b; // I'll "walk" the <b>dog</b> now
 // PHP 4.3.0 이전 사용자는 이렇게 할 수 있습니다:
 function unhtmlentities($string)
 {
+    // 숫자 엔티티 치환
+    $string = preg_replace('~&#x([0-9a-f]+);~ei', 'chr(hexdec("\\1"))', $string);
+    // 문자 엔티티 치환
     $trans_tbl = get_html_translation_table(HTML_ENTITIES);
     $trans_tbl = array_flip($trans_tbl);
     return strtr($string, $trans_tbl);
@@ -86,27 +149,36 @@ echo $c; // I'll "walk" the <b>dog</b> now
 
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <note>
-      <para>
-       trim(html_entity_decode('&amp;nbsp;'));는 문자열을 빈 문자열로 변환하지
-       않습니다. 이는 기본값인 ISO-8859-1 문자셋에서 '&amp;nbsp;' 엔티티가
-       아스키 코드 32(<function>trim</function>에서 잘라냄)가 아닌 아스키 코드
-       160(0xa0)이기 때문입니다.
-      </para>
-     </note>
-    </para>
-    <para>
-     참고: <function>htmlentities</function>,
-     <function>htmlspecialchars</function>,
-     <function>get_html_translation_table</function>, 
-     <function>urldecode</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <para>
+    trim(html_entity_decode('&amp;nbsp;'));는 문자열을 빈 문자열로 변환하지
+    않습니다. 이는 기본값인 ISO-8859-1 문자셋에서 '&amp;nbsp;' 엔티티가
+    (<function>trim</function>에서 잘라내는) 아스키 코드 32가 아닌, 아스키 코드
+    160(0xa0)이기 때문입니다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>htmlentities</function></member>
+    <member><function>htmlspecialchars</function></member>
+    <member><function>get_html_translation_table</function></member>
+    <member><function>urldecode</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
