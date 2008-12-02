@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.3 Maintainer: progcom Status: ready -->
-<!-- CREDITS: cycle98 -->
-  <refentry xml:id="function.strlen" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strlen</refname>
-    <refpurpose>문자열의 길이를 구합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>strlen</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>string</parameter>의 길이를 반환합니다.
-    </para>
-    <para>
-     <example>
-      <title><function>strlen</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.strlen">
+ <refnamediv>
+  <refname>strlen</refname>
+  <refpurpose>문자열 길이를 얻습니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>strlen</methodname>
+   <methodparam><type>string</type><parameter>string</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   주어진 <parameter>string</parameter>의 길이를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>string</parameter></term>
+     <listitem>
+      <para>
+       길이를 측정할 <type>string</type>.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   성공시엔 <parameter>string</parameter>의 길이,
+   <parameter>string</parameter>이 비어있으면 <literal>0</literal>.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strlen</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $str = 'abcdef';
@@ -28,14 +56,22 @@ $str = ' ab cd ';
 echo strlen($str); // 7
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     참고: <function>count</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>count</function></member>
+    <member><function>mb_strlen</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

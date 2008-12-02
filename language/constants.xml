@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.52 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.53 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.constants" xmlns="http://docbook.org/ns/docbook">
   <title>상수</title>
@@ -62,8 +62,9 @@ define("__FOO__", "something");
   <sect1 xml:id="language.constants.syntax">
    <title>문법</title>
    <simpara>
-    <function>define</function>함수를 써서 상수를 정의(define)할수 있다.
-    상수는 한번 정의되면 절대 변경하거나 해제(undefine)할수 없다.
+    <function>define</function> 함수를 사용해서 상수를 정의할 수 있습니다. PHP
+    5.3.0부터 클래스 정의 밖에서 <literal>const</literal> 키워드를 사용할 수도
+    있습니다. 상수가 한번 정의되면, 변경하거나 해제(undefine)할 수 없습니다.
    </simpara>
    <simpara>
     스칼라 데이터(<type>boolean</type>, <type>integer</type>, 
@@ -141,7 +142,22 @@ echo Constant; // "Constant"를 출력하고 경고가 뜬다.
 ]]>
      </programlisting>
     </example>
+   </para>
 
+   <para>
+    <example>
+     <title><literal>const</literal> 키워드를 사용해서 상수 정의하기</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+// PHP 5.3.0부터 작동
+const CONSTANT = 'Hello World';
+
+echo CONSTANT;
+?>
+]]>
+     </programlisting>
+    </example>
    </para>
 
    <simpara>

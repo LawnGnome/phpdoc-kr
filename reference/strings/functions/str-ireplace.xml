@@ -3,7 +3,7 @@
 <refentry xml:id="function.str-ireplace" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>str_ireplace</refname>
-  <refpurpose>대소문자를 구분 없는 <function>str_replace</function>.</refpurpose>
+  <refpurpose>대소문자 구분 없는 <function>str_replace</function></refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

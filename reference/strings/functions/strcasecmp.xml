@@ -1,28 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry xml:id="function.strcasecmp" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strcasecmp</refname>
-    <refpurpose>
-     대소문자를 구별하지 않는 바이너리 호환 문자열 비교
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>strcasecmp</methodname>
-      <methodparam><type>string</type><parameter>str1</parameter></methodparam>
-      <methodparam><type>string</type><parameter>str2</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>str1</parameter>이 <parameter>str2</parameter>보다 작다면 &lt;
-     0 을 반환하고; <parameter>str1</parameter>이
-     <parameter>str2</parameter>보다 크다면 &gt; 0 을 반환합니다. 동일하다면
-     0을 반환합니다.
-     <example>
-      <title><function>strcasecmp</function> 예제</title>
-      <programlisting role="php">
+<refentry xml:id="function.strcasecmp" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>strcasecmp</refname>
+  <refpurpose>대소문자 구분 없는 바이너리 안전 문자열 비교</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>strcasecmp</methodname>
+   <methodparam><type>string</type><parameter>str1</parameter></methodparam>
+   <methodparam><type>string</type><parameter>str2</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   대소문자 구분 없는 바이너리 안전 문자열 비교입니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str1</parameter></term>
+     <listitem>
+      <para>
+       첫번째 문자열
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>str2</parameter></term>
+     <listitem>
+      <para>
+       두번째 문자열
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   <parameter>str1</parameter>이 <parameter>str2</parameter>보다 작다면 &lt;
+   0을 반환하고; <parameter>str1</parameter>이
+   <parameter>str2</parameter>보다 크다면 &gt; 0을 반환합니다. 동일하다면
+   0을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strcasecmp</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $var1 = "Hello";
@@ -32,16 +68,26 @@ if (strcasecmp($var1, $var2) == 0) {
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <simpara>
-     참고: <function>ereg</function>, <function>strcmp</function>,
-     <function>substr</function>, <function>stristr</function>,
-     <function>strncasecmp</function>, <function>strstr</function>.
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>preg_match</function></member>
+    <member><function>strcmp</function></member>
+    <member><function>substr</function></member>
+    <member><function>stristr</function></member>
+    <member><function>strncasecmp</function></member>
+    <member><function>strstr</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

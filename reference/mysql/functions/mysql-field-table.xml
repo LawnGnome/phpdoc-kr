@@ -40,7 +40,7 @@
   &reftitle.examples;
   <para>
    <example>
-    <title>A <function>mysql_field_table</function> 예제</title>
+    <title><function>mysql_field_table</function> 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php

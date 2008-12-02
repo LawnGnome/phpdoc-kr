@@ -1,26 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-	 <refentry xml:id="function.quoted-printable-decode" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>quoted_printable_decode</refname>
-    <refpurpose>
-     인용되어 있는 출력 가능 문자열을 8비트 문자열로 변환합니다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>quoted_printable_decode</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     이 함수는 디코드된 인용되어 있는 출력 가능 문자열에 해당하는 8비트
-     바이너리 문자열을 반환합니다. IMAP 모듈이 없어도 작동한다는 점을
-     제외하고, <function>imap_qprint</function>와 동일합니다.
-    </simpara>
-   </refsect1>
-  </refentry>
+<refentry xml:id="function.quoted-printable-decode" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>quoted_printable_decode</refname>
+  <refpurpose>인용된 인쇄용 문자열을 8비트 문자열로 변환</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>quoted_printable_decode</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   이 함수는 인용된 인쇄용 문자열을 디코드한 8비트 바이너리 문자열을
+   반환합니다. (<link xlink:href="&url.rfc;2821">RFC2821</link> 섹션 4.5.2가
+   아닌, <link xlink:href="&url.rfc;2045">RFC2045</link> 섹션 6.7에 따르므로,
+   줄 시작의 추가적인 마침표는 제거되지 않습니다)
+  </para>
+  <para>
+   IMAP 모듈이 없어도 작동한다는 점을 제외하면,
+   <function>imap_qprint</function>와 동일합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   8비트 바이너리 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

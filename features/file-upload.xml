@@ -426,7 +426,7 @@ foreach ($_FILES["pictures"]["error"] as $key => $error) {
     이 경우에, <varname>$_FILES['userfile']['name'][0]</varname>의 값은
     <filename>review.html</filename>이고,
     <varname>$_FILES['userfile']['name'][1]</varname>의 값은
-    <filename>xwp.out</filename>가 됩니다. 동일하게,
+    <filename>xwp.out</filename>가 됩니다. 마찬가지로,
     <varname>$_FILES['userfile']['size'][0]</varname>는
     <filename>review.html</filename>의 크기를 가지게 되며,
     나머지도 마찬가지입니다.
