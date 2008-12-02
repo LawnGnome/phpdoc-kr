@@ -1,34 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.md5" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <refnamediv>
-    <refname>md5</refname>
-    <refpurpose>문자열의 md5 해시를 계산합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>md5</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-      <methodparam choice='opt'><type>bool</type><parameter>raw_output</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <link xlink:href="&url.rfc;1321">RSA Data Security, Inc. MD5 Message-Digest
-      Algorithm</link>을 사용하여 <parameter>str</parameter>의 MD5 해시를
-     계산하여 반환합니다. 해시는 16진수의 32문자입니다. 선택적인
-     <parameter>raw_output</parameter>를 &true;로 설정하면, md5 다이제스트는
-     16의 길이를 가지는 순수 바이너리 형식으로 반환합니다.
-    </para>
-    <note>
-     <simpara>
-      선택적인 <parameter>raw_output</parameter> 인수는 PHP 5.0.0에서
-      추가되었고, 기본값으로 &false;입니다.
-     </simpara>
-    </note>
-    <para>
-     <example>
-      <title><function>md5</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.md5" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>md5</refname>
+  <refpurpose>문자열의 md5 해시를 계산</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>md5</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam choice='opt'><type>bool</type><parameter>raw_output</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <link xlink:href="&url.rfc;1321">RSA Data Security, Inc. MD5 Message-Digest
+    Algorithm</link>을 사용하여 <parameter>str</parameter>의 MD5 해시를
+   계산하여 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>string</parameter></term>
+     <listitem>
+      <para>
+       문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>raw_output</parameter></term>
+     <listitem>
+      <para>
+       &true;이면, 해시를 길이 16의 바이너리 형식으로 반환합니다. 기본값은
+       &false;입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   16진수 32 문자로 해시를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        <parameter>raw_output</parameter> 인수 추가.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>md5</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $str = 'apple';
@@ -39,15 +92,25 @@ if (md5($str) === '1f3870be274f6c49b3e31a0c6728957f') {
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     참고: <function>crc32</function>, <function>md5_file</function>, 
-     <function>sha1</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>md5_file</function></member>
+    <member><function>sha1_file</function></member>
+    <member><function>crc32</function></member>
+    <member><function>sha1</function></member>
+    <member><function>hash</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

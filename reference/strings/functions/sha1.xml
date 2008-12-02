@@ -1,53 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: progcom Status: ready -->
-  <refentry xml:id="function.sha1" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <refnamediv>
-    <refname>sha1</refname>
-    <refpurpose>문자열의 sha1 해시를 계산합니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>sha1</methodname>
-      <methodparam><type>string</type><parameter>str</parameter></methodparam>
-      <methodparam choice='opt'><type>bool</type><parameter>raw_output</parameter></methodparam>
-     </methodsynopsis>
-    <simpara>
-     <link xlink:href="&url.rfc;3174">US Secure Hash Algorithm 1</link>을 사용하여,
-     <parameter>str</parameter>의 sha1 해시를 계산하여 반환합니다. 해시는
-     16진수를 나타내는 40 문자입니다. 선택적인
-     <parameter>raw_output</parameter>를 &true;로 설정하면, 길이 20인 무변환
-     바이너리 형식의 sha1 다이제스트를 반환합니다.
-    </simpara>
-    <note>
-     <simpara>
-      선택적인 <parameter>raw_output</parameter> 인수는 PHP 5.0.0에서
-      추가되었고, 기본값은 &false;입니다.
-     </simpara>
-    </note>
-    <para>
-     <example>
-      <title><function>sha1</function> 예제</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.sha1" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <refnamediv>
+  <refname>sha1</refname>
+  <refpurpose>문자열의 sha1 해시를 계산</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>sha1</methodname>
+   <methodparam><type>string</type><parameter>str</parameter></methodparam>
+   <methodparam choice='opt'><type>bool</type><parameter>raw_output</parameter></methodparam>
+  </methodsynopsis>
+  <simpara>
+   <link xlink:href="&url.rfc;3174">US Secure Hash Algorithm 1</link>을
+   사용하여 <parameter>str</parameter>의 sha1 해시를 계산합니다.
+  </simpara>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>raw_output</parameter></term>
+     <listitem>
+      <para>
+       선택적인 <parameter>raw_output</parameter>를 &true;로 설정하면, 길이
+       20인 바이너리 형식의 sha1 해시를 반환합니다. 기본값은 &false;입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   sha1 해시를 문자열로 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.0.0</entry>
+       <entry>
+        <parameter>raw_output</parameter> 인수 추가.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>sha1</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $str = 'apple';
-                     
+
 if (sha1($str) === 'd0be2dc421be4fcd0172e5afceea3970e2f3d940') {
     echo "Would you like a green or red apple?";
     exit;
 }
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <simpara>
-     참고: <function>sha1_file</function>, <function>crc32</function>,
-     <function>md5</function> 
-    </simpara>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>sha1_file</function></member>
+    <member><function>crc32</function></member>
+    <member><function>md5</function></member>
+    <member><function>hash</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
