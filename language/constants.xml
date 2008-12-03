@@ -46,7 +46,7 @@ define("__FOO__", "something");
   </para>
   <note>
    <simpara>
-    여기서 문자는 a-z, A-Z와 아스키(ASCII)문자 127에서 255까지이다
+    여기서 문자는 a-z, A-Z와 아스키 문자 127에서 255까지이다
     (0x7f-0xff).
    </simpara>
   </note>

@@ -87,7 +87,7 @@
             <literal>b</literal> - 인수를 정수로 취급하고, 2진수로 표현합니다.
            </member>
            <member>
-            <literal>c</literal> - 인수를 정수로 취급하고, ASCII 값에 해당하는
+            <literal>c</literal> - 인수를 정수로 취급하고, 아스키 값에 해당하는
             문자로 표현합니다.
            </member>
            <member>
@@ -250,7 +250,7 @@ printf($format, $num, $location);
 <?php
 $n =  43951789;
 $u = -43951789;
-$c = 65; // ASCII 65는 'A'
+$c = 65; // 아스키 65는 'A'
 
 // 이중 %%에 주목, '%' 문자를 출력합니다.
 printf("%%b = '%b'\n", $n); // 2진 표현

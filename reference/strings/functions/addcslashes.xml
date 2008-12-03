@@ -55,9 +55,9 @@ echo addcslashes('foo[ ]', 'A..z');
 ]]>
         </programlisting>
        </informalexample>
-       또한, 범위 지정에서 처음 문자가 나중 문자보다 큰 ASCII 값을 가지면
+       또한, 범위 지정에서 처음 문자가 나중 문자보다 큰 아스키 값을 가지면
        범위를 형성하지 않습니다. 단지 처음과 마지막, 피리오드(.)문자만을
-       이스케이프합니다. 문자의 ASCII 값을 찾아보려면 <function>ord</function>
+       이스케이프합니다. 문자의 아스키 값을 찾아보려면 <function>ord</function>
        함수를 이용하십시오.
        <informalexample>
         <programlisting role="php">

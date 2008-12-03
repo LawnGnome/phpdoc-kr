@@ -13,7 +13,7 @@
    <methodparam><type>string</type><parameter>str</parameter></methodparam>
   </methodsynopsis>
   <para>
-   <parameter>str</parameter>의 16진 표현을 갖는 ASCII 문자열을
+   <parameter>str</parameter>의 16진 표현을 갖는 아스키 문자열을
    반환합니다. 높은 니블을 우선하여 바이트 단위로 변환합니다.
   </para>
  </refsect1>

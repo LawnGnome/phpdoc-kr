@@ -1,29 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.5 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
 <!-- CREDITS: cycle98 -->
-  <refentry xml:id="function.strtoupper" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>strtoupper</refname>
-    <refpurpose>문자열을 대문자로 만듭니다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>strtoupper</methodname>
-      <methodparam><type>string</type><parameter>string</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>string</parameter>의 모든 알파벳을 대문자로 바꾼 문자열을
-     반환합니다.
-    </para>
-    <para>
-     '알파벳'은 현재 로케일에 의해 정해집니다. 즉, 기본값인 "C" 로케일에서는
-     umlaut-a(ä) 등의 문자는 변환하지 않습니다.
-    </para>
-    <example>
-     <title>
-      <function>strtoupper</function> 예제</title>
-     <programlisting role="php">
+<refentry xml:id="function.strtoupper" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>strtoupper</refname>
+  <refpurpose>문자열을 대문자로 만듭니다</refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>strtoupper</methodname>
+   <methodparam><type>string</type><parameter>string</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>string</parameter>의 모든 알파벳 문자를 대문자로 바꾼 문자열을
+   반환합니다.
+  </para>
+  <para>
+   '알파벳'은 현재 로케일에 의해 정해집니다. 즉, 기본값인 "C" 로케일에서는
+   umlaut-a (ä) 등의 문자는 변환하지 않습니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>str</parameter></term>
+     <listitem>
+      <para>
+       입력 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   소문자로 바꾼 문자열을 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>strtoupper</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 $str = "Mary Had A Little Lamb and She LOVED It So";
@@ -31,14 +59,29 @@ $str = strtoupper ($str);
 echo $str; // MARY HAD A LITTLE LAMB AND SHE LOVED IT SO 를 출력합니다.
 ?>
 ]]>
-     </programlisting>
-    </example>
-    <para>
-     참고: <function>strtolower</function>, <function>ucfirst</function>,
-     <function>ucwords</function>, <function>mb_strtoupper</function>.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  &note.bin-safe;
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>strtolower</function></member>
+    <member><function>ucfirst</function></member>
+    <member><function>ucwords</function></member>
+    <member><function>mb_strtolower</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
