@@ -4,7 +4,7 @@
 <refentry xml:id="function.bcscale" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>bcscale</refname>
-  <refpurpose>모든 bc 수학 함수의 기본 scale 인수값을 설정</refpurpose>
+  <refpurpose>모든 bc 수학 함수의 기본 scale 인수값 설정</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">

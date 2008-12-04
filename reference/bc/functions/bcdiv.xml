@@ -1,28 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.bcdiv" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>bcdiv</refname>
-    <refpurpose>두개의 임의 정확도 수를 나눈다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>bcdiv</methodname>
-      <methodparam><type>string</type><parameter>left_operand</parameter></methodparam>
-      <methodparam><type>string</type><parameter>right_operand</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>scale</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <parameter>left_operand</parameter>를 <parameter>right_operand</parameter>로
-     나누고 결과값을 반환한다. 선택적인 <parameter>scale</parameter> 인수는
-     결과값의 소수점 이하 자릿수를 결정하는데 사용된다.
-    </para>
-    <para>
-     <function>bcmul</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.bcdiv" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>bcdiv</refname>
+  <refpurpose>두 임의 정밀도 수 나누기</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>bcdiv</methodname>
+   <methodparam><type>string</type><parameter>left_operand</parameter></methodparam>
+   <methodparam><type>string</type><parameter>right_operand</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>scale</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <parameter>left_operand</parameter>를
+   <parameter>right_operand</parameter>로 나눕니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>left_operand</parameter></term>
+     <listitem>
+      <para>
+       왼쪽 연산수, 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>right_operand</parameter></term>
+     <listitem>
+      <para>
+       오른쪽 연산수, 문자열.
+      </para>
+     </listitem>
+    </varlistentry>
+    &bc.scale.description;
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   나눗셈의 결과를 문자열로 반환하거나, <parameter>right_operand</parameter>가
+   0이면 &null;을 반환합니다.
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <example>
+   <title><function>bcdiv</function> 예제</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+
+echo bcdiv('105', '6.55957', 3);  // 16.007
+
+?>
+]]>
+   </programlisting>
+  </example>
+ </refsect1>
+ 
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>bcmul</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
