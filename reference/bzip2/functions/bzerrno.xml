@@ -1,25 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.bzerrno" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>bzerrno</refname>
-    <refpurpose>bzip2 에러 번호를 반환한다</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>int</type><methodname>bzerrno</methodname>
-      <methodparam><type>resource</type><parameter>bz</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     파일 포인터 <parameter>bz</parameter> 에서 반환하는
-     bzip2 에러의 에러 번호를 반환한다.
-    </para>
-    <para>
-     <function>bzerror</function> 과 <function>bzerrstr</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.7 Maintainer: progcom Status: ready -->
+<!-- CREDTIS: fuzzy74 -->
+<refentry xml:id="function.bzerrno" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>bzerrno</refname>
+  <refpurpose>bzip2 오류 번호 반환</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>bzerrno</methodname>
+   <methodparam><type>resource</type><parameter>bz</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   주어진 파일 포인터에서 반환하는 bzip2 오류 번호를 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>bz</parameter></term>
+     <listitem>
+      <para>
+       <function>bzopen</function>으로 성공적으로 연 파일을
+       가리키는 유효한 파일 포인터.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  <para>
+   오류 번호를 정수로 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>bzerror</function></member>
+    <member><function>bzerrstr</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

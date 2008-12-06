@@ -1,45 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.bzread" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>bzread</refname>
-    <refpurpose>bzip2 파일을 바이너리 형태로 판독</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>string</type><methodname>bzread</methodname>
-      <methodparam><type>resource</type><parameter>bz</parameter></methodparam>
-      <methodparam choice="opt"><type>int</type><parameter>length</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>bzread</function>는 <parameter>bz</parameter>에 의해 참조되는
-     bzip2 파일 포인터에서 <parameter>length</parameter> 바이트만큼을 읽어
-     온다. <parameter>length</parameter> (압축되지 않은 상태의) 바이트만큼
-     읽혀지거나 EOF 에 도달하면 읽기를 멈춘다. 선택적인 인수
-     <parameter>length</parameter>가 설정되지 않으면,
-     <function>bzread</function>는 한번에
-     1024 (압축되지 않은 상태의) 바이트만큼 읽어올것이다.
-    </para>
-    <para>
-     <example>
-      <title><function>bzread</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.bzread" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>bzread</refname>
+  <refpurpose>바이너리 안전 bzip2 파일 읽기</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>bzread</methodname>
+   <methodparam><type>resource</type><parameter>bz</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>length</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>bzread</function>는 주어진 bzip2 파일 포인터에서 읽습니다.
+  </para>
+  <para>
+   (압축 해제된) <parameter>length</parameter> 바이트를 읽었거나 EOF에
+   도달했을 때 읽기를 중단합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>bz</parameter></term>
+     <listitem>
+      <para>
+       <function>bzopen</function>으로 성공적으로 연 파일을
+       가리키는 유효한 파일 포인터.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>length</parameter></term>
+     <listitem>
+      <para>
+       지정하지 않으면, <function>bzread</function>는 한 번에 (압축 해제된)
+       1024 바이트를 읽습니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para> 
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   압축해제된 데이터를 반환하거나, 오류 시엔 &false;를 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>bzread</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$bz = bzopen("/tmp/foo.bz2", "r");
-$str = bzread($bz, 2048);
-print( $str );
+
+$file = "/tmp/foo.bz2";
+$bz = bzopen($file, "r") or die("Couldn't open $file");
+
+$decompressed_file = '';
+while (!feof($bz)) {
+  $decompressed_file .= bzread($bz, 4096);
+}
+bzclose($bz);
+
+echo "The contents of $file are: <br />\n";
+echo $decompressed_file;
+
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <function>bzwrite</function> 과 <function>bzopen</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>bzwrite</function></member>
+    <member><function>feof</function></member>
+    <member><function>bzopen</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
