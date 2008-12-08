@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.22 Maintainer: progcom Status: wip -->
+<!-- EN-Revision: 1.23 Maintainer: progcom Status: wip -->
 <chapter xml:id="reference.pcre.pattern.syntax" xmlns="http://docbook.org/ns/docbook">
  <title>패턴 문법</title>
- <titleabbrev>PCRE 정규표현식 문법 설명</titleabbrev>
+ <titleabbrev>PCRE 정규표현식 문법</titleabbrev>
 
    <section xml:id="regexp.reference">
     <title>정규표현식 상세</title>
@@ -829,38 +829,31 @@
       숫자를 부여합니다.
      </para>
      <para>
-      The fact that plain parentheses fulfill two functions is  not
-      always  helpful.  There are often times when a grouping subpattern
-      is required without a capturing requirement.  If  an
-      opening parenthesis is followed by "?:", the subpattern does
-      not do any capturing, and is not counted when computing  the
-      number of any subsequent capturing subpatterns. For example,
-      if the string "the  white  queen"  is  matched  against  the
-      pattern
+      평범한 괄호로 두 함수를 채우는 것이 항상 도움이 되지 않는게 사실입니다.
+      종종 잡아내는 일 없이 서브패턴으로 묶을 필요가 있습니다. 여는 괄호 뒤에
+      "?:"을 붙이면, 그 서브패턴은 잡히지 않고, 잡아낸 서브패턴의 수로
+      세어지지 않습니다. 예를 들어, 문자열 "the white queen"이 패턴
 
       <literal>the ((?:red|white) (king|queen))</literal>
 
-      the captured substrings are "white queen" and  "queen",  and
-      are  numbered  1  and 2. The maximum number of captured substrings
-      is 99, and the maximum number  of  all  subpatterns,
-      both capturing and non-capturing, is 200.
+      에 매치하면, 잡아낸 서브문자열은 "white queen"과 "queen"이고, 1과 2를
+      부여받습니다. 잡아낼 수 있는 서브 문자열의 최대수는 99이고, 잡아내는
+      것과 잡아내지 않는 것을 포함한 모든 서브패턴의 최대수는 200입니다.
      </para>
      <para>
-      As a  convenient  shorthand,  if  any  option  settings  are
-      required  at  the  start  of a non-capturing subpattern, the
-      option letters may appear between the "?" and the ":".  Thus
-      the two patterns
+      편리한 단축형으로, 잡아내지 않는 서브패턴을 시작할 때 "?"와 ":" 사이에
+      옵션 문자를 넣어서 어떠한 옵션이라도 설정할 수 있습니다. 그러므로
+      두 패턴
      </para>
      <literallayout>
       (?i:saturday|sunday)
       (?:(?i)saturday|sunday)
      </literallayout>
      <para>
-      match exactly the same set of strings.  Because  alternative
-      branches  are  tried from left to right, and options are not
-      reset until the end of the subpattern is reached, an  option
-      setting  in  one  branch does affect subsequent branches, so
-      the above patterns match "SUNDAY" as well as "Saturday".
+      는 완전히 동일한 문자열에 매치합니다. 왜냐하면 대체 분기는 왼쪽에서
+      오른쪽으로 시도하며, 옵션을 서브패턴이 종료될 때까지 재설정하지
+      않습니다. 하나의 분기에서 설정한 옵션은 계속되는 분기에 영향을 주므로,
+      위 패턴은 "SUNDAY"와 "Saturday"에도 매치합니다.
      </para>
      <para>
       PHP 4.3.3부터 <literal>(?P&lt;name&gt;pattern)</literal>으로 서브패턴에
@@ -998,15 +991,13 @@
       위해서 사용될 수 있습니다.
      </para>
      <para>
-      When a parenthesized subpattern is quantified with a minimum
-      repeat  count  that is greater than 1 or with a limited maximum,
-      more store is required for the  compiled  pattern,  in
-      proportion to the size of the minimum or maximum.
+      괄호로 싼 서브패턴이 2 이상의 최소 반복이나 최대 제한을 가지면, 컴파일한
+      패턴은 최소/최대의 크기에 따라서 더 많은 공간이 필요합니다.
      </para>
      <para>
       패턴이 .*이나 .{0,}로 시작하고 <link
        linkend="reference.pcre.pattern.modifiers">PCRE_DOTALL</link>
-      옵션(Perl의 /s와 동일)이 설정되면, .이 줄바꿈에도 매치하게 되면, 패턴은
+      옵션(Perl의 /s와 동일)이 설정되어 .이 줄바꿈에도 매치하게 되면, 패턴은
       무조건 고정됩니다. 주제 문자열에 무엇이 붙어도 모든 문자가
       포함되고, 처음 이후에 다른 위치를 잡을 수 없게 되기 때문입니다. PCRE는
       그러한 패턴을 \A가 앞에 있는 것으로 취급합니다. 주제 문자열에 줄바꿈이
@@ -1016,21 +1007,18 @@
       표시할 수 있습니다.
      </para>
      <para>
-      When a capturing subpattern is repeated, the value  captured
-      is the substring that matched the final iteration. For example, after
+      잡아내는 서브패턴이 반복되면, 잡아낸 서브문자열은 마지막 반복에
+      매치합니다. 예를 들어,
 
       <literal>(tweedle[dume]{3}\s*)+</literal>
 
-      has matched "tweedledum tweedledee" the value  of  the  captured
-      substring  is  "tweedledee".  However,  if  there are
-      nested capturing  subpatterns,  the  corresponding  captured
-      values  may  have been set in previous iterations. For example,
-      after
+      가 "tweedledum tweedledee"에 매치한 뒤에, 잡아낸 서브문자열의 값은
+      "tweedledee"입니다. 그러나, 중첩된 잡아내는 서브패턴이 있으면, 잡아낸
+      값이 이전의 반복에서 설정될 수 있습니다. 에를 들어,
 
       <literal>/(a|(b))+/</literal>
 
-      matches "aba" the value of the second captured substring  is
-      "b".
+      가 "aba"에 매치한 뒤에, 두번째 잡아낸 서브 문자열의 값은 "b"입니다.
      </para>
 
     </section>
@@ -1038,27 +1026,24 @@
     <section xml:id="regexp.reference.back-references">
      <title>역참조</title>
      <para>
-      Outside a character class, a backslash followed by  a  digit
-      greater  than  0  (and  possibly  further  digits) is a back
-      reference to a capturing subpattern  earlier  (i.e.  to  its
-      left)  in  the  pattern,  provided there have been that many
-      previous capturing left parentheses.
+      문자열 클래스 밖에서, 백슬래시 뒤에 0을 초과하는 수(몇자리라도 될 수
+      있습니다)가 따라오는 경우는 패턴에서 이전에 잡아낸(즉, 왼쪽의)
+      서브패턴의 역참조입니다. 그 위치에서 잡아내는 왼쪽 괄호로 주어집니다.
      </para>
      <para>
-      However, if the decimal number following  the  backslash  is
-      less  than  10,  it is always taken as a back reference, and
-      causes an error only if there are not  that  many  capturing
-      left  parentheses in the entire pattern. In other words, the
-      parentheses that are referenced need not be to the  left  of
-      the  reference  for  numbers  less  than 10. See the section
-      entitled "Backslash" above for further details of  the  handling
-      of digits following a backslash.
+      그러나 백슬래시 뒤에 붙는 수가 10보다 작으면, 항상 역참조로 취급하여
+      전체 패턴에 충분한 잡아내는 왼쪽 괄호가 없으면 오류가 발생합니다. 즉, 10
+      미만의 참조의 왼쪽에는 참조를 가리키는 괄호가 필요 없습니다. 위에서
+      "백슬래시" 섹션을 참고하여 백슬래시에 따라오는 수를 다루는 상세를
+      알아보십시오.
      </para>
      <para>
       A back reference matches whatever actually matched the  capturing
       subpattern in the current subject string, rather than
       anything matching the subpattern itself. So the pattern
+
       <literal>(sens|respons)e and \1ibility</literal>
+
       matches "sense and sensibility" and "response and  responsibility",
       but  not  "sense  and  responsibility". If caseful
       matching is in force at the time of the back reference, then
