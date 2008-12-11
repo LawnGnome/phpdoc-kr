@@ -1,64 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.array-flip" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>array_flip</refname>
-    <refpurpose>배열안의 모든 키를 각 키의 연관값으로 바꾼다.</refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>array_flip</methodname>
-      <methodparam><type>array</type><parameter>trans</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>array_flip</function>은 뒤집힌 순서의 <type>array</type>를 반환한다.
-     즉, <parameter>trans</parameter>의 키는 값이 되고,
-     <parameter>trans</parameter>의 값은 키가 된다.
-    </para>
-    <para>
-     <parameter>trans</parameter>의 값들은 유효한 키가 되어야 한다는 것에 주의한다.
-     즉, 그 값들은 <type>integer</type>나 <type>string</type>이 될 필요가 있다.
-     어떤 값이 잘못된 타입을 갖으면 경고메시지가 보일것이다. 그리고 결과적으로 
-     키/값 쌍은 <emphasis>뒤집히지 않을것이다</emphasis>.
-    </para>
-    <para>
-     같은 값이 여러번 출현하면, 그 값의 제일 마지막 키를 사용할것이고, 나머지 모두
-     사라지게 될것이다.
-    </para>
-    <para>
-     실패하면,
-     <function>array_flip</function> 는 &false;를 반환한다.
-    </para>
-    <para>
-     <example>
-      <title><function>array_flip</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.array-flip" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>array_flip</refname>
+  <refpurpose>배열 안의 모든 키를 각 키의 연관 값과 교체</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>array_flip</methodname>
+   <methodparam><type>array</type><parameter>trans</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>array_flip</function>은 뒤집힌 순서의 <type>array</type>를 반환한다.
+   즉, <parameter>trans</parameter>의 키는 값이 되고,
+   <parameter>trans</parameter>의 값은 키가 된다.
+  </para>
+  <para>
+   <parameter>trans</parameter>의 값들은 유효한 키가 되어야 한다는 것에 주의한다.
+   즉, 그 값들은 <type>integer</type>나 <type>string</type>이 될 필요가 있다.
+   어떤 값이 잘못된 타입을 갖으면 경고메시지가 보일것이다. 그리고 결과적으로 
+   키/값 쌍은 <emphasis>뒤집히지 않을것이다</emphasis>.
+  </para>
+  <para>
+   같은 값이 여러번 출현하면, 그 값의 제일 마지막 키를 사용할것이고, 나머지 모두
+   사라지게 될것이다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>trans</parameter></term>
+     <listitem>
+      <para>
+       뒤집을 키/값 쌍의 배열.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   성공시엔 뒤집은 배열을, 실패시엔 &false;를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>array_flip</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$trans = array_flip ($trans);
-$original = strtr ($str, $trans);
+$trans = array_flip($trans);
+$original = strtr($str, $trans);
 ?>
 ]]>
-      </programlisting>
-     </example>
-    </para>
-    <para>
-     <example>
-      <title><function>array_flip</function> 예제코드 : 충돌</title>
-      <programlisting role="php">
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title><function>array_flip</function> 예제 : 충돌</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$trans = array ("a" => 1, "b" => 1, "c" => 2);
-$trans = array_flip ($trans);
+$trans = array("a" => 1, "b" => 1, "c" => 2);
+$trans = array_flip($trans);
 print_r($trans);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       now <varname>$trans</varname> is:
-      </para>
-      <screen>
+    </programlisting>
+    <para>
+     이제 <varname>$trans</varname>는:
+    </para>
+    <screen>
 <![CDATA[
 Array
 (
@@ -66,16 +90,22 @@ Array
     [2] => c
 )
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     <function>array_values</function>,
-     <function>array_keys</function>,
-     <function>array_reverse</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>array_values</function></member>
+    <member><function>array_keys</function></member>
+    <member><function>array_reverse</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

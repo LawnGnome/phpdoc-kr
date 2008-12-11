@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.127 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.128 Maintainer: progcom Status: ready -->
  <chapter xml:id="language.operators" xmlns="http://docbook.org/ns/docbook">
   <title>연산자</title>
   <simpara>
@@ -1337,7 +1337,8 @@ bool(false)
    <simpara>
     <literal>instanceof</literal> 연산자는 PHP 5에서 추가되었습니다. 이전에는
     <function>is_a</function>가 사용되었지만, <function>is_a</function>는
-    <literal>instanceof</literal>의 기능으로 인해 배제되었습니다.
+    <literal>instanceof</literal>의 기능으로 인해 배제되었습니다. PHP
+    5.3.0부터 <function>is_a</function>는 배제되지 않게 되었습니다.
    </simpara>
    <para>
     참고: <function>get_class</function>,

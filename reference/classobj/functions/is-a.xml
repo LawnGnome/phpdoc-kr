@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
 <refentry xml:id="function.is-a" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>is_a</refname>
@@ -52,6 +52,30 @@
   <para>
    객체가 이 클래스나 부모 클래스 중 하나이면 &true;, 아니면 &false;를
    반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        이 함수는 배제되지 않고, <literal>E_STRICT</literal> 경고가 발생하지
+        않습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
   </para>
  </refsect1>
  <refsect1 role="examples">
