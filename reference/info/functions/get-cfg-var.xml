@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
 <!-- CREDITS: myprogram -->
 <refentry xml:id="function.get-cfg-var" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>get_cfg_var</refname>
-  <refpurpose>PHP 설정 옵션의 값을 얻습니다</refpurpose>
+  <refpurpose>PHP 설정 옵션의 값 얻기</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -48,6 +48,31 @@
   <para>
    <parameter>option</parameter>으로 지정한 PHP 설정 변수의 현재 값을
    반환하거나, 오류가 발생하면 &false;를 반환합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        <function>get_cfg_var</function>가 "array" ini 옵션을 반환할 수 있도록
+        수정되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
   </para>
  </refsect1>
 

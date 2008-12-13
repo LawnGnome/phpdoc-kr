@@ -63,7 +63,7 @@
     <function>set_time_limit</function> 함수와 설정 지시어 <link
      linkend="ini.max-execution-time">max_execution_time</link>는 스크립트
     자신의 실행 시간에만 영향을 줍니다. <function>system</function>을
-    사용한 시스템 호출이나, 스트림 연산, 데이터베이스 쿼리 등 스크립트
+    사용한 시스템 호출이나, 스트림 연산, 데이터베이스 질의 등 스크립트
     밖에서 발생하는 작동은 스크립트 실행 시간을 측정할 때 포함하지 않습니다.
    </para>
   </note>

@@ -1,55 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.6 Maintainer: fuzzy74 Status: unknown -->
-  <refentry xml:id="function.compact" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>compact</refname>
-    <refpurpose>
-     여러 변수들과 값을 갖는 배열을 생성한다
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>
-     <methodsynopsis>
-      <type>array</type><methodname>compact</methodname>
-      <methodparam><type>mixed</type><parameter>varname</parameter></methodparam>
-      <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>compact</function>는 가변적인 수의 인수를 갖는다. 각 인수는
-     변수명을 포함하는 문자열이거나, 변수명의 배열이 될수 있다.
-     그 배열은 그 안쪽에 다른 변수명의 배열을 포함할수 있다;
-     <function>compact</function>는 재귀적으로 제어된다.
-    </para>
-    <para>
-     이들 각각에 대해, <function>compact</function> 는 현재 심볼 테이블에서
-     그 이름을 갖는 변수를 찾고, 그 변수명이 키가 되고 변수의 내용은 그 키에 대한
-     값이 될수 있도록 출력 배열에 추가한다. 짧게 말해서, 이 함수는
-     <function>extract</function>과 반대이다. 이 함수는 그 배열에 추가된
-     모든 변수들을 갖는 출력 배열을 반환한다.
-    </para>
-    <para>
-     지정되지 않은 모든 문자열은 단순히 무시된다.
-    </para>
-    <para>
-     <example>
-      <title><function>compact</function> 예제코드</title>
-      <programlisting role="php">
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<!-- CREDITS: fuzzy74 -->
+<refentry xml:id="function.compact" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>compact</refname>
+  <refpurpose>변수와 그 값을 가지는 배열 생성</refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>array</type><methodname>compact</methodname>
+   <methodparam><type>mixed</type><parameter>varname</parameter></methodparam>
+   <methodparam choice="opt"><type>mixed</type><parameter>...</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   변수와 그 값을 가지는 배열을 생성합니다.
+  </para>
+  <para>
+   이들 각각에 대해, <function>compact</function> 는 현재 심볼 테이블에서
+   그 이름을 갖는 변수를 찾고, 그 변수명이 키가 되고 변수의 내용은 그 키에 대한
+   값이 될수 있도록 출력 배열에 추가한다. 짧게 말해서, 이 함수는
+   <function>extract</function>과 반대이다.
+  </para>
+  <para>
+   선언되지 않은 모든 문자열은 단순히 무시합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>varname</parameter></term>
+     <listitem>
+      <para>
+       <function>compact</function>는 가변 인수를 가집니다. 각 인수는 변수명을
+       가지는 문자열이거나, 변수명의 배열일 수 있습니다. 배열은 그 안에
+       변수명을 가지는 다른 배열을 포함할 수 있습니다;
+       <function>compact</function>는 재귀적으로 다룹니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   모든 변수를 추가한 결과 배열을 반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>compact</function> 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
-$city = "San Francisco";
+$city  = "San Francisco";
 $state = "CA";
 $event = "SIGGRAPH";
 
-$location_vars = array ("city", "state");
+$location_vars = array("city", "state");
 
-$result = compact ("event", "nothing_here", $location_vars);
+$result = compact("event", "nothing_here", $location_vars);
 ?>
 ]]>
-      </programlisting>
-      <para>
-       이 코드 수행후, <varname>$result</varname> 는 다음과 같이 된다:
-      </para>
-      <screen role="php">
+    </programlisting>
+    &example.outputs;
+    <screen role="php">
 <![CDATA[
 Array
 (
@@ -58,14 +78,32 @@ Array
     [state] => CA
 )
 ]]>
-      </screen>
-     </example>
-    </para>
-    <para>
-     <function>extract</function> 참고.
-    </para>
-   </refsect1>
-  </refentry>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <title>Gotcha</title>
+   <para>
+    PHP의 <link linkend="language.variables.superglobals">자동 전역
+     배열</link>은 함수 안에서 <link
+     linkend="language.variables.variable">가변 변수</link>로 사용할 수
+    없기에, 자동 전역 배열은 <function>compact</function>에 전달할 수
+    없습니다.
+   </para>
+  </note>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>extract</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:

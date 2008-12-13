@@ -13,7 +13,7 @@
    <methodparam><type>string</type><parameter>str</parameter></methodparam>
   </methodsynopsis>
   <para>
-   데이터베이스 쿼리 등에서 처리할 필요가 있는 문자 앞에 백슬래시를 붙인
+   데이터베이스 질의 등에서 처리할 필요가 있는 문자 앞에 백슬래시를 붙인
    문자열을 반환합니다. 이 문자들은 홑따옴표(<literal>'</literal>),
    겹따옴표(<literal>"</literal>), 백슬래시(<literal>\</literal>), NUL(&null;
    바이트)입니다.

@@ -1,46 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.5 $ -->
-<!-- EN-Revision: 1.2 Maintainer: fuzzy74 Status: unknown -->
-<!-- CREDITS: dhyuk -->
-  <refentry xml:id="function.pg-client-encoding" xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>pg_client_encoding</refname>
-    <refpurpose>
-    클라이언트의 인코딩 정보를 받는다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>설명</title>      
-     <methodsynopsis>
-      <type>string</type><methodname>pg_client_encoding</methodname>
-      <methodparam choice="opt"><type>resource</type><parameter>connection</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>pg_client_encoding</function>은 클라이언트 인코딩 정보를
-     문자열로 받는다. 클라이언트 인코딩 정보는 다음 중 하나여야 한다:
-     SQL_ASCII, EUC_JP, EUC_CN, EUC_KR, EUC_TW, UNICODE,
-     MULE_INTERNAL, LATINX (X=1...9), KOI8, WIN, ALT, SJIS, BIG5,
-     WIN1250.
-    </para>
-    <note>
-     <para>
-      이 함수는 PHP-4.0.3 이상 버젼과 PostgreSQL-7.0 이상 버젼이 필요하다.
-      멀티바이트 지원기능 없이 컴파일 되었다면, 
-      <function>pg_set_client_encoding</function>은 항상
-      &quot;SQL_ASCII&quot;를 반환한다.
-      지원되는 인코딩 정보는 PostgreSQL 버젼에 의해 정해진다.
-      멀티바이트 지원과 사용가능한 인코딩에 대한 자세한 정보는 PostreSQL
-      매뉴얼을 참조하라.
-     </para>
-     <para>
-      이 함수는 <function>pg_clientencoding</function> 으로도 사용할 수 있다.
-     </para>
-    </note>
-    <para>
-     <function>pg_set_client_encoding</function> 도 참조하라.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<!-- CREDITS: dhyuk, fuzzy74 -->
+<refentry xml:id="function.pg-client-encoding" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>pg_client_encoding</refname>
+  <refpurpose>
+   클라이언트 인코딩을 얻음
+  </refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>string</type><methodname>pg_client_encoding</methodname>
+   <methodparam choice="opt"><type>resource</type><parameter>connection</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   PostgreSQL은 몇몇 문자셋에 대하여 서버와 클라이언트 사이에 자동 문자셋
+   변환을 지원합니다.
+   <function>pg_client_encoding</function>은 클라이언트 인코딩을
+   문자열로 반환합니다. 반환하는 문자열은 표준 PostgreSQL 인코딩 식별자 중
+   하나입니다.
+  </para>
+  <note>
+   <para>
+    이 함수는 PHP 4.0.3 이상과 PostgreSQL 7.0 이상을 요구합니다. libpq가
+    멀티바이트 인코딩 지원 없이 컴파일 되었다면, 
+    <function>pg_set_client_encoding</function>은 항상
+    <literal>SQL_ASCII</literal>를 반환합니다. 지원하는 인코딩은 PostgreSQL
+    버전에 의존합니다. 지원하는 인코딩에 대해서는 PostgreSQL 문서를
+    참고하십시오.
+   </para>
+   <para>
+    이 함수는 <function>pg_clientencoding</function>으로 불렸습니다.
+   </para>
+  </note>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>connection</parameter></term>
+     <listitem>
+      <para>
+       PostgreSQL 데이터베이스 접속 자원. <parameter>connection</parameter>이
+       존재하지 않으면, 기본 접속을 사용합니다. 기본 접속은
+       <function>pg_connect</function>나 <function>pg_pconnect</function>로
+       만든 마지막 접속입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   클라이언트 인코딩이나, 오류시엔 &false;.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>pg_client_encoding</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+// $conn이 ISO-8859-1 데이터베이스 접속이라고 가정합니다
+$encoding = pg_client_encoding($conn);
+
+echo "클라이언트 인코딩은: ", $encoding, "\n";
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+클라이언트 인코딩은: ISO-8859-1
+]]>
+    </screen>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>pg_set_client_encoding</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
@@ -62,4 +118,3 @@ vim600: syn=xml fen fdm=syntax fdl=2 si
 vim: et tw=78 syn=sgml
 vi: ts=1 sw=1
 -->
-

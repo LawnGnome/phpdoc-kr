@@ -1,31 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $Revision: 1.4 $ -->
-<!-- EN-Revision: 1.1 Maintainer: fuzzy74 Status: unknown -->
-<!-- CREDITS: dhyuk -->
-  <refentry xml:id='function.pg-cancel-query' xmlns="http://docbook.org/ns/docbook">
-   <refnamediv>
-    <refname>pg_cancel_query</refname>
-    <refpurpose>
-    비동기 쿼리를 취소한다.
-    </refpurpose>
-   </refnamediv>
-   <refsect1>
-    <title>함수 설명</title>
-     <methodsynopsis>
-      <type>bool</type><methodname>pg_cancel_query</methodname>
-      <methodparam><type>resource</type><parameter>connection</parameter></methodparam>
-     </methodsynopsis>
-    <para>
-     <function>pg_cancel_query</function>는 
-     <function>pg_send_query</function>가 보낸 비동기 쿼리를 취소한다. 
-     <function>pg_query</function>로 실행한 쿼리는 취소할 수 없다.
-    </para>
-    <para>
-     <function>pg_send_query</function>
-     와 <function>pg_connection_busy</function> 도 참조하라.
-    </para>
-   </refsect1>
-  </refentry>
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<refentry xml:id='function.pg-cancel-query' xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>pg_cancel_query</refname>
+  <refpurpose>
+   비동기 질의 취소
+  </refpurpose>
+ </refnamediv>
+
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>pg_cancel_query</methodname>
+   <methodparam><type>resource</type><parameter>connection</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>pg_cancel_query</function>는 <function>pg_send_query</function>,
+   <function>pg_send_query_params</function>,
+   <function>pg_send_execute</function>로 전송한 비동기 질의를 취소합니다.
+   <function>pg_query</function>로 실행한 질의는 취소할 수 없습니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>connection</parameter></term>
+     <listitem>
+      <para>
+       PostgreSQL 데이터베이스 접속 자원.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+   <para>
+    &return.success;
+   </para>
+ </refsect1>
+ 
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>pg_cancel_query</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+  $dbconn = pg_connect("dbname=publisher") or die("Could not connect");
+
+  if (!pg_connection_busy($dbconn)) {
+      pg_send_query($dbconn, "select * from authors; select count(*) from authors;");
+  }
+  
+  $res1 = pg_get_result($dbconn);
+  echo "First call to pg_get_result(): $res1\n";
+  $rows1 = pg_num_rows($res1);
+  echo "$res1 has $rows1 records\n\n";
+  
+  // 현재 실행중인 질의를 취소합니다. 아직 실행중이라면
+  // 두번째 질의입니다.
+  pg_cancel_query($dbconn);
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+First call to pg_get_result(): Resource id #3
+Resource id #3 has 3 records
+]]>
+    </screen>
+   </example> 
+  </para>
+ </refsect1>
+ 
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>pg_send_query</function></member>
+    <member><function>pg_connection_busy</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
 
 <!-- Keep this comment at the end of the file
 Local variables:
