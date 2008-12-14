@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-field-len" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_field_len</refname>
-  <refpurpose>Returns the length of the specified field</refpurpose>
+  <refpurpose>지정한 필드의 길이를 반환</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,7 +15,7 @@
    <methodparam><type>int</type><parameter>field_offset</parameter></methodparam>
   </methodsynopsis>
   <para>
-<function>mysql_field_len</function>은 특정 필드의 길이를 반환한다.
+<function>mysql_field_len</function>은 지정 필드의 길이를 반환한다.
   </para>
  </refsect1>
 
@@ -31,7 +32,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-성공하면 특정 필드의 길이를, 실패하면 &false;를 반환한다.
+성공하면 지정 필드의 길이를, 실패하면 &false;를 반환한다.
   </para>
  </refsect1>
 
@@ -49,8 +50,8 @@ if (!$result) {
     exit;
 }
 
-// Will get the length of the id field as specified in the database
-// schema. 
+// 데이터베이스 스키마에 지정된
+// id 필드의 길이를 얻습니다.
 $length = mysql_field_len($result, 0);
 echo $length;
 ?>

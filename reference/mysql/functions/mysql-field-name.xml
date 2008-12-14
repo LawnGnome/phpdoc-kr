@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.14 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-field-name" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_field_name</refname>
@@ -85,6 +86,17 @@ password
    </para>
   </note>
  </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>mysql_field_type</function></member>
+    <member><function>mysql_field_len</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

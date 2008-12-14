@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.15 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-escape-string" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_escape_string</refname>
@@ -60,6 +61,12 @@ Escape된 문자열.
       </row>
      </thead>
      <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        E_DEPRECATED 주의가 발생합니다.
+       </entry>
+      </row>
       <row>
        <entry>4.3.0</entry>
        <entry>

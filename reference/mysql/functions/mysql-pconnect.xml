@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-pconnect" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_pconnect</refname>
-  <refpurpose>MySQL 서버로 영속적으로 접속</refpurpose>
+  <refpurpose>MySQL 서버에 지속 접속 열기</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -26,7 +27,7 @@
   </methodsynopsis>
   -->
   <para>
-MySQL 서버로 영속적인 접속을 생성한다.
+MySQL 서버로 지속적인 접속을 생성한다.
   </para>
   <!-- TODO: Integrate this information more nicely with features.persistent -->
   <para>
@@ -35,7 +36,7 @@ MySQL 서버로 영속적인 접속을 생성한다.
 거의 동일하다.
   </para>
   <para>
-첫 번째로, 접속할 때 동일한 호스트, 사용자명, 비밀번호로 이미 열려진 (영속적인) 링크를
+첫 번째로, 접속할 때 동일한 호스트, 사용자명, 비밀번호로 이미 열려진 (지속적인) 링크를
 찾으려 시도한다.
 만약 찾으면 새 접속을 여는 대신에 찾은 접속을 반환할 것이다.
   </para>
@@ -45,7 +46,7 @@ MySQL 서버로 영속적인 접속을 생성한다.
 <function>mysql_pconnect</function>에 의해 열려진 접속을 종료하지 않을 것이다).
   </para>
   <para>
-그러므로, 이 접속 형태를 영속적(persistent)이라고 부른다.
+그러므로, 이 접속 형태를 지속적이라고 부른다.
   </para>
  </refsect1>
 
@@ -88,10 +89,13 @@ PHP 지시어 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
      <term><parameter>client_flags</parameter></term>
      <listitem>
       <para>
-<parameter>client_flags</parameter>는 다음의 상수를 조합하여 사용할 수 있다:
-<constant>MYSQL_CLIENT_COMPRESS</constant>, 
-<constant>MYSQL_CLIENT_IGNORE_SPACE</constant>,
-<constant>MYSQL_CLIENT_INTERACTIVE</constant>.
+       <parameter>client_flags</parameter>는 다음의 상수를 조합하여 사용할 수
+       있습니다:
+       128 (<literal>LOAD DATA LOCAL</literal> 다루기 활성화),
+       <constant>MYSQL_CLIENT_SSL</constant>,
+       <constant>MYSQL_CLIENT_COMPRESS</constant>, 
+       <constant>MYSQL_CLIENT_IGNORE_SPACE</constant>,
+       <constant>MYSQL_CLIENT_INTERACTIVE</constant>.
       </para>
      </listitem>
     </varlistentry> 
@@ -102,7 +106,7 @@ PHP 지시어 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-접속 성공시 MySQL 영속적 접속 식별자를 반환하고, 실패시에는 &false;를 반환한다.
+접속 성공시 MySQL 지속적 접속 식별자를 반환하고, 실패시에는 &false;를 반환한다.
   </para>
  </refsect1>
  
@@ -146,14 +150,14 @@ PHP 지시어 <link linkend="ini.mysql.default-host">mysql.default_host</link>�
   &reftitle.notes;
   <note>
    <para>
-PHP 모듈 버전을사용할 경우에만 영속적 접속이 정상적으로 동작한다.
-더 많은 정보는 <link linkend="features.persistent-connections">영속적 데이터베이스 접속</link>을
+PHP 모듈 버전을사용할 경우에만 지속적 접속이 정상적으로 동작한다.
+더 많은 정보는 <link linkend="features.persistent-connections">지속적 데이터베이스 접속</link>을
 참조하라.
    </para>
   </note>
   <warning>
    <para>
-영속적 접속을 사용하는 것은 MySQL이 허용하는 접속수를
+지속적 접속을 사용하는 것은 MySQL이 허용하는 접속수를
 초과하지 않기 위해 Apache와 MySQL 설정의 일부분 튜닝이 필요하다.
    </para>
   </warning>
@@ -170,7 +174,7 @@ PHP 모듈 버전을사용할 경우에만 영속적 접속이 정상적으로 �
   <para>
    <simplelist>
     <member><function>mysql_connect</function></member>
-    <member><link linkend="features.persistent-connections">영속적 데이터베이스 접속</link></member>
+    <member><link linkend="features.persistent-connections">지속적 데이터베이스 접속</link></member>
    </simplelist>
   </para>
  </refsect1>

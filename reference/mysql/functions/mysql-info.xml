@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-info" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_info</refname>
@@ -29,13 +30,9 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-성공하면 진술문(statement) 정보를, 실패하면 &false;를 반환한다.
-진술문이 제공하는 정보와 반환되는 값이 어떻게 보여지는지 아래의 예제를 참고하라.
-진술문은 &false;를 반환하는  
-   Returns information about the statement on success, or &false; on
-   failure. See the example below for which statements provide information,
-   and what the returned value may look like. Statements that aren't listed 
-   will return &false;
+   성공시엔 진술문 정보를, 실패하면 &false;를 반환합니다. 아래 예제에서 어떤
+   진술문이 정보를 제공하고, 반환값이 어떤 모양인지 참고하십시오. 목록에 없는
+   진술문은 &false;를 반환합니다.
   </para>
  </refsect1>
 

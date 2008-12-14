@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.17 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.19 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-list-tables" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_list_tables</refname>
@@ -17,7 +18,7 @@
 MySQL 데이터베이스로부터 테이블명 목록을 반환한다.
   </para>
   <para>
-이 함수는 권장되지 않는다.
+   이 함수는 배제되었습니다.
 대신, <literal>SHOW TABLES [FROM db_name] [LIKE 'pattern']</literal>을
 <function>mysql_query</function>에서 실행하는 것을 권한다.
   </para>
@@ -49,6 +50,30 @@ MySQL 데이터베이스로부터 테이블명 목록을 반환한다.
 결과 포인터를 탐색하기 위해 <function>mysql_tablename</function>를 사용하거나,
 <function>mysql_fetch_array</function>와 같은 결과 테이블을 위한 특정 함수를
 사용한다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>4.3.7</entry>
+       <entry>
+        이 함수는 배제되었습니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
   </para>
  </refsect1>
 

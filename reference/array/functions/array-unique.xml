@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.17 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.18 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <refentry xml:id="function.array-unique" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>array_unique</refname>
   <refpurpose>배열에서 중복된 값을 제거</refpurpose>
  </refnamediv>
+
  <refsect1 role="description">
   &reftitle.description;
   <methodsynopsis>
    <type>array</type><methodname>array_unique</methodname>
    <methodparam><type>array</type><parameter>array</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>sort_flags</parameter></methodparam>
   </methodsynopsis>
   <para>
    입력 <parameter>array</parameter>를
@@ -34,6 +36,7 @@
    </simpara>
   </note>
  </refsect1>
+
  <refsect1 role="parameters">
   &reftitle.parameters;
   <para>
@@ -46,15 +49,73 @@
       </para>
      </listitem>
     </varlistentry>
+    <varlistentry>
+     <term><parameter>sort_flags</parameter></term>
+     <listitem>
+      <para>
+       선택적인 두번째 인수 <parameter>sort_flags</parameter>는 다음 값을
+       사용해서 정렬 순서를 변경합니다:
+      </para>
+      <para>
+       정렬 형식 플래그는:
+       <itemizedlist>
+        <listitem>
+         <simpara><constant>SORT_REGULAR</constant> - 보통 비교 (자료형 변환
+          없음)</simpara>
+        </listitem>
+        <listitem>
+         <simpara><constant>SORT_NUMERIC</constant> - 수치 비교</simpara>
+        </listitem>
+        <listitem>
+         <simpara><constant>SORT_STRING</constant> - 문자열로 비교</simpara>
+        </listitem>
+        <listitem>
+         <simpara><constant>SORT_LOCALE_STRING</constant> - 현재 로케일에
+          기반한 문자열로 비교. PHP 4.4.0과 PHP 5.0.2에서 추가. PHP 6 이전에,
+          <function>setlocale</function>로 바꿀 수 있는 시스템 로케일을
+          사용합니다. PHP 6부터, <function>i18n_loc_set_default</function>
+          함수를 사용해야 합니다.
+         </simpara>
+        </listitem>
+       </itemizedlist>
+      </para>
+     </listitem>
+    </varlistentry>
    </variablelist>
   </para>
  </refsect1>
+
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
    필터한 배열을 반환합니다.
   </para>
  </refsect1>
+
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.2.9</entry>
+       <entry>
+        선택적인 <parameter>sort_flags</parameter> 추가.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+
  <refsect1 role="examples">
   &reftitle.examples;
   <para>
@@ -106,6 +167,7 @@ array(2) {
    </example>
   </para>
  </refsect1>
+
 </refentry>
 
 <!-- Keep this comment at the end of the file

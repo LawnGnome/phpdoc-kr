@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.21 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 1.23 Maintainer: progcom Status: ready -->
+<!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-affected-rows" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_affected_rows</refname>
@@ -13,9 +14,8 @@
    <methodparam choice="opt"><type>resource</type><parameter>link_identifier</parameter></methodparam>
   </methodsynopsis>
   <para>
-<parameter>link_identifier</parameter>와 연관된
-최근의 INSERT, UPDATE, DELETE 질의에 의해
-변경된 행의 개수를 돌려준다.
+   <parameter>link_identifier</parameter>에 마지막 INSERT, UPDATE, REPLACE,
+   DELETE 질의로 영향받은 행 수를 얻습니다.
   </para>
  </refsect1>
 
