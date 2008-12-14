@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<refentry xml:id="function.property-exists" xmlns="http://docbook.org/ns/docbook">
+ <refnamediv>
+  <refname>property_exists</refname>
+  <refpurpose>
+   객체나 클래스가 프로퍼티를 가졌는지 확인
+  </refpurpose>
+ </refnamediv>
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>property_exists</methodname>
+   <methodparam><type>mixed</type><parameter>class</parameter></methodparam>
+   <methodparam><type>string</type><parameter>property</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   주어진 <parameter>property</parameter>가 지정한 클래스에 존재하는지
+   확인합니다.
+  </para>
+  <note>
+   <para>
+    <function>isset</function>과 다르게, <function>property_exists</function>는
+    프로퍼티가 &null; 값을 가지고 있어도 &true;를 반환합니다.
+   </para>
+  </note>
+ </refsect1>
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>class</parameter></term>
+      <listitem>
+       <para>
+        확인할 클래스명이나 클래스의 객체
+       </para>
+      </listitem>
+     </varlistentry>
+    <varlistentry>
+     <term><parameter>property</parameter></term>
+      <listitem>
+       <para>
+        프로퍼티명
+       </para>
+      </listitem>
+     </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   프로퍼티가 존재하면 &true;, 존재하지 않으면 &false;, 오류시엔 &null;을
+   반환합니다.
+  </para>
+ </refsect1>
+ <refsect1 role="changelog">
+  &reftitle.changelog;
+  <para>
+   <informaltable>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>&Version;</entry>
+       <entry>&Description;</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry>5.3.0</entry>
+       <entry>
+        이 함수는 접근성에 관계 없이 프로퍼티의 존재성을 확인합니다.
+       </entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </informaltable>
+  </para>
+ </refsect1>
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>property_exists</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+class myClass {
+    public $mine;
+    private $xpto;
+    static protected $test;
+
+    static function test() {
+        var_dump(property_exists('myClass', 'xpto')); //true
+    }
+}
+
+var_dump(property_exists('myClass', 'mine'));   //true
+var_dump(property_exists(new myClass, 'mine')); //true
+var_dump(property_exists('myClass', 'xpto'));   //true, as of PHP 5.3.0
+var_dump(property_exists('myClass', 'bar'));    //false
+var_dump(property_exists('myClass', 'test'));   //true, as of PHP 5.3.0
+myClass::test();
+
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>method_exists</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

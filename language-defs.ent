@@ -59,7 +59,7 @@
 <!ENTITY ConfigureOptions  "설정 옵션">
 <!ENTITY Default           "기본값">
 <!ENTITY Definition        "정의">
-<!ENTITY Functions         "함수">
+<!ENTITY Functions         "함수 목록">
 <!ENTITY Name              "이름">
 <!ENTITY Alias             "별칭:">
 <!ENTITY Type              "자료형">
