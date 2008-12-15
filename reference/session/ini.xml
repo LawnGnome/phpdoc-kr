@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.54 Maintainer: progcom Status: ready -->
+<section xml:id="session.configuration" xmlns="http://docbook.org/ns/docbook">
+ &reftitle.runtime;
+ &extension.runtime;
+ <para>
+ <table>
+  <title>세션 설정 옵션</title>
+  <tgroup cols="4">
+   <thead>
+    <row>
+     <entry>이름</entry>
+     <entry>기본값</entry>
+     <entry>변경성</entry>
+     <entry>변경 기록</entry>
+    </row>
+   </thead>
+   <tbody>
+    <row>
+     <entry>session.save_path</entry>
+     <entry>""</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.name</entry>
+     <entry>"PHPSESSID"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.save_handler</entry>
+     <entry>"files"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.auto_start</entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.gc_probability</entry>
+     <entry>"1"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.gc_divisor</entry>
+     <entry>"100"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.3.2부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry>session.gc_maxlifetime</entry>
+     <entry>"1440"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.serialize_handler</entry>
+     <entry>"php"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.cookie_lifetime</entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.cookie_path</entry>
+     <entry>"/"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.cookie_domain</entry>
+     <entry>""</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.cookie_secure</entry>
+     <entry>""</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.0.4부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry>session.cookie_httponly</entry>
+     <entry>""</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 5.2.0부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry>session.use_cookies</entry>
+     <entry>"1"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.use_only_cookies</entry>
+     <entry>"1"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.3.0부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry>session.referer_check</entry>
+     <entry>""</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.entropy_file</entry>
+     <entry>""</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.entropy_length</entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.cache_limiter</entry>
+     <entry>"nocache"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.cache_expire</entry>
+     <entry>"180"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry></entry>
+    </row>
+    <row>
+     <entry>session.use_trans_sid</entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP &lt; 4.2.3에서 PHP_INI_ALL. PHP &lt; 5에서 PHP_INI_PERDIR. PHP
+      4.0.3부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry>session.bug_compat_42</entry>
+     <entry>"1"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.3.0부터 사용 가능. PHP 6.0.0에서 제거.</entry>
+    </row>
+    <row>
+     <entry>session.bug_compat_warn</entry>
+     <entry>"1"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.3.0부터 사용 가능. PHP 6.0.0에서 제거.</entry>
+    </row>
+    <row>
+     <entry>session.hash_function</entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 5.0.0부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry>session.hash_bits_per_character</entry>
+     <entry>"4"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 5.0.0부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry>url_rewriter.tags</entry>
+     <entry>"a=href,area=href,frame=src,form=,fieldset="</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 4.0.4부터 사용 가능.</entry>
+    </row>
+   </tbody>
+  </tgroup>
+ </table>
+ &ini.php.constants;
+ </para>
+ <para>
+  세션 관리 시스템은 &php.ini; 파일에서 설정할 수 있는 옵션을 지원합니다.
+  간단한 설명이 아래 있습니다.
+ <variablelist>
+
+  <varlistentry xml:id="ini.session.save-handler">
+   <term>
+    <parameter>session.save_handler</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.save_handler</literal>는 세션에 할당된 데이터를 저장하고
+     복구하는데 사용하는 핸들러 이름을 정의합니다. 기본값은
+     <literal>files</literal>입니다. 개별 확장이 자신의
+     <literal>save_handler</literal>를 등록할 수 있습니다; 등록된 핸들러는
+     <function>phpinfo</function>를 참조하여 설치 단위로 가져올 수 있습니다.
+     <function>session_set_save_handler</function>를 참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.save-path">
+   <term>
+    <parameter>session.save_path</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.save_path</literal>는 저장 핸들러로 전달되는 인수를
+     정의합니다. 기본 파일 핸들러를 선택한다면, 파일이 생성되는 경로입니다.
+     <function>session_save_path</function>를 참고하십시오.
+    </simpara>
+    <para>
+     세션 파일이 퍼질 디렉토리 단계를 지정하는 선택적인 N 인수 지시어가
+     있습니다. 예를 들어, <literal>'5;/tmp'</literal>로 지정하면 세션 파일을
+     생성할 때
+     <literal>/tmp/4/b/1/e/3/sess_4b1e384ad74619bd212e236e52a5a174If</literal>처럼
+     위치합니다. N을 사용하기 전에 이러한 디렉토리를 생성해야 합니다. 이를
+     위해 <filename>mod_files.sh</filename>라고 불리는 작은 쉘 스크립트가
+     <filename>ext/session</filename>에 존재합니다. N이 사용되고 0보다 크면
+     자동 쓰레기 수거를 수행하지 않습니다. &php.ini;에서 자세한 정보를
+     확인하십시오. 또한, N을 사용할 때 <literal>session.save_path</literal>를
+     "따옴표"로 감싸야 합니다. 구분자(<literal>;</literal>)가 &php.ini;에서
+     주석으로 사용되기 때문입니다.
+    </para>
+    <warning>
+     <para>
+      이 설정을 <filename>/tmp</filename>(기본값)처럼, 누구라도 읽을 수 있는
+      디렉토리로 설정하면, 서버의 다른 사용자가 그 디렉토리 목록을 얻어서
+      세션을 훔칠 수 있습니다.
+     </para>
+    </warning>
+    <note>
+     <simpara>
+      PHP 4.3.6 이전에 윈도우 사용자가 PHP 세션 함수를 사용하려면, 이 값을
+      변경해야 합니다. 유효한 경로를 지정해야 합니다. 예:
+      <filename>c:/temp</filename>.
+     </simpara>
+    </note>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.name">
+   <term>
+    <parameter>session.name</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.name</literal>은 쿠키 이름으로도 사용되는 세션 이름을
+     지정합니다. 알파벳과 숫자만 가질 수 있습니다. 기본값은
+     <literal>PHPSESSID</literal>입니다. <function>session_name</function>을
+     참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+  
+  <varlistentry xml:id="ini.session.auto-start">
+   <term>
+    <parameter>session.auto_start</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.auto_start</literal>는 세션 모듈이 요청 시작에
+     자동적으로 시작할 지 여부를 지정합니다. 기본값은
+     <literal>0</literal>(비활성화)입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.serialize-handler">
+   <term>
+    <parameter>session.serialize_handler</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.serialize_handler</literal>는 데이터 일렬화/해제에
+     사용할 핸들러의 이름을 정의합니다. 현재는 PHP 내부
+     형식(<literal>php</literal>나 <literal>php_binary</literal>)과
+     WDDX(<literal>wddx</literal>)를 지원합니다. WDDX는 PHP가 <link
+      linkend="ref.wddx">WDDX 지원</link>과 함께 컴파일 되었을 경우에만
+     지원합니다. 기본값은 <literal>php</literal>입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.gc-probability">
+   <term>
+    <parameter>session.gc_probability</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.gc_probability</literal>는
+     <literal>session.gc_divisor</literal>와 연계하여 gc(쓰레기 수거) 루틴의
+     시작 확률을 관리합니다. 기본값은 <literal>1</literal>입니다. 자세한
+     내용은 <link linkend="ini.session.gc-divisor">session.gc_divisor</link>를
+     참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.gc-divisor">
+   <term>
+    <parameter>session.gc_divisor</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.gc_divisor</literal>는
+     <literal>session.gc_probability</literal>와 결합하여 각 세션 초기화 시에
+     gc(쓰레기 수거) 프로세스를 시작할 확률을 정의합니다. 확률은
+     gc_probability/gc_divisor를 사용하여 계산합니다. 즉, 1/100은 각 요청시에
+     GC 프로세스를 시작할 확률이 1%입니다.
+     <literal>session.gc_divisor</literal>의 기본값은
+     <literal>100</literal>입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+  
+  <varlistentry xml:id="ini.session.gc-maxlifetime">
+   <term>
+    <parameter>session.gc_maxlifetime</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.gc_maxlifetime</literal>은 데이터가 '쓰레기'로 취급되고
+     청소할 시간을 초 단위로 지정합니다. 쓰레기 수거는 세션 시작시에
+     일어납니다.
+    </simpara>
+    <note>
+     <para>
+      서로 다른 스크립트에서 서로 다른 값의
+      <literal>session.gc_maxlifetime</literal>을 가질 수 있지만, 세션 데이터
+      저장에 같은 공간을 사용하면 최소값을 가진 스크립트가 데이터를
+      청소합니다. 이런 경우, 이 지시어를 <link
+       linkend="ini.session.save-path">session.save_path</link>와 함께
+      사용하십시오.
+     </para>
+    </note>
+    <note>
+     <simpara>기본 파일 기반 세션 핸들러를 사용할 때, 파일시스템이 접근
+      시간(atime)을 추적할 수 있어야 합니다. 윈도우 FAT는 그렇지 않기에, FAT
+      파일시스템이나 atime 추적이 없는 다른 파일시스템에 세션을 저장할 경우
+      세션 쓰레기 수거를 다룰 다른 방법을 고려해야 합니다. PHP 4.2.3부터 atime
+      대신에 mtime(변경 시각)을 사용합니다. 그러므로, atime 추적이 없는
+      파일시스템에서도 문제가 없습니다.
+     </simpara>
+    </note>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.referer-check">
+   <term>
+    <parameter>session.referer_check</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.referer_check</literal>는 각 HTTP 리퍼러를 확인할
+     서브문자열을 가집니다. 클라이언트에서 리퍼러를 전송하고 서브스트링이
+     발견되지 않으면, 부가된 세션 id는 유효하지 않은 것으로 표시합니다.
+     기본값은 빈 문자열입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.entropy-file">
+   <term>
+    <parameter>session.entropy_file</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.entropy_file</literal>은 세션 id 생성 프로세스에서
+     추가적인 무차별 소스로 사용할 외부 자원(파일) 경로를 지정합니다. 예를
+     들면 많은 유닉스 시스템에서 사용할 수 있는
+     <literal>/dev/random</literal>이나 <literal>/dev/urandom</literal>입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.entropy-length">
+   <term>
+    <parameter>session.entropy_length</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.entropy_length</literal>는 위에서 지정한 파일에서 읽을
+     바이트 수를 지정합니다. 기본값은 <literal>0</literal>(비활성화)입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.use-cookies">
+   <term>
+    <parameter>session.use_cookies</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.use_cookies</literal>는 클라이언트측에 세션id를 저장하기
+     위하여 모듈에서 쿠키를 사용할지 여부를 지정합니다. 기본값은
+     <literal>1</literal>(활성화)입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.use-only-cookies">
+   <term>
+    <parameter>session.use_only_cookies</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.use_only_cookies</literal>는 모듈이 클라이언트측에 세션
+     id를 저장하기 위하여 쿠키<emphasis role="strong">만</emphasis> 사용할 지
+     여부를 지정합니다. 이 설정을 활성화하면 URL로 전달되는 세션 id에 관련한
+     공격을 방지할 수 있습니다. 이 설정은 PHP 4.3.0에서 추가되었습니다. PHP
+     6.0부터 기본값은 <literal>1</literal>(활성화)입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+
+  <varlistentry xml:id="ini.session.cookie-lifetime">
+   <term>
+    <parameter>session.cookie_lifetime</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.cookie_lifetime</literal>는 브라우저로 전송한 쿠키의
+     수명을 초 단위로 지정합니다. 값 0은 "브라우저를 닫을 때까지"를
+     의미합니다. 기본값은 <literal>0</literal>입니다.
+     <function>session_get_cookie_params</function>와
+     <function>session_set_cookie_params</function>를 참고하십시오.
+    </simpara>
+    <note>
+     <para>
+      만료 타임스탬프는 서버 시간에 상대적으로 설정되므로, 클라이언트
+      브라우저가 같은 시간일 필요는 없습니다.
+     </para>
+    </note> 
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.cookie-path">
+   <term>
+    <parameter>session.cookie_path</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.cookie_path</literal>는 session_cookie 안의 경로를
+     지정합니다. 기본값은 <literal>/</literal>입니다.
+     <function>session_get_cookie_params</function>와
+     <function>session_set_cookie_params</function>를 참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.cookie-domain">
+   <term>
+    <parameter>session.cookie_domain</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.cookie_domain</literal>은 session_cookie에 설정할
+     도메인을 지정합니다. 기본값은 없음으로, 쿠키 명세에 따라 서버의
+     호스트명으로 쿠키가 생성됩니다.
+     <function>session_get_cookie_params</function>와
+     <function>session_set_cookie_params</function>를 참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.cookie-secure">
+   <term>
+    <parameter>session.cookie_secure</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.cookie_secure</literal>는 쿠키가 안전한 접속으로
+     전송되어야 하는지 지정합니다. 기본값은 <literal>off</literal>입니다. 이
+     설정은 PHP 4.0.4에서 추가되었습니다.
+     <function>session_get_cookie_params</function>와
+     <function>session_set_cookie_params</function>를 참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.cookie-httponly">
+   <term>
+    <parameter>session.cookie_httponly</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     쿠키가 HTTP 프로토콜로만 접근할 수 있는지 기록합니다. 이는 쿠키가
+     JavaScript같은 스크립트 언어로 접근할 수 없음을 의미합니다. 이 설정은 XSS
+     공격을 통한 식별 훔치기를 감소시키는데 도움을 줍니다. (그러나 모든
+     브라우저에서 지원하지는 않습니다)
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.cache-limiter">
+   <term>
+    <parameter>session.cache_limiter</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.cache_limiter</literal>는 세션 페이지의 캐시 제어 방법을
+     지정합니다. (none/nocache/private/private_no_expire/public) 기본값은
+     <literal>nocache</literal>입니다.
+     <function>session_cache_limiter</function>를 참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+
+  <varlistentry xml:id="ini.session.cache-expire">
+   <term>
+    <parameter>session.cache_expire</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.cache_expire</literal>는 분 단위로 캐시한 세션 페이지가
+     살아있을 시간을 지정합니다. nocache 한정에는 효과가 없습니다. 기본값은
+     <literal>180</literal>입니다. <function>session_cache_expire</function>를
+     참고하십시오.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.use-trans-sid">
+   <term>
+    <parameter>session.use_trans_sid</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.use_trans_sid</literal>는 투명 sid 지원을 활성화할지
+     결정합니다. 기본값은 <literal>0</literal>(비활성화)입니다.
+    </simpara>
+    <note>
+     <simpara>
+      PHP 4.1.2까지, <link
+       linkend="configure.enable-trans-sid"><literal>--enable-trans-sid</literal></link>로
+      컴파일시에 활성화했습니다. PHP 4.2.0부터, trans-sid 기능은 항상
+      컴파일됩니다.
+     </simpara>
+     <simpara>
+      URL 기반 세션 관리는 쿠키 기반 세션 관리에 비하여 추가적인 보안 위험이
+      있습니다. 예를 들면, 사용자가 활성적인 세션 ID를 포함하는 URL을 email로
+      친구에게 보낼 수도 있으며, 사용자가 세션 ID를 포함하는 URL을 즐겨찾기에
+      저장하여 항상 같은 세션 ID로 접근할 수도 있습니다.
+     </simpara>
+    </note>
+   </listitem>
+  </varlistentry>
+  
+  <varlistentry xml:id="ini.session.bug-compat-42">
+   <term>
+    <parameter>session.bug_compat_42</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     PHP 4.2.3까지 문서화되지 않은 기능/버그로 <link
+      linkend="ini.register-globals">register_globals</link>가 꺼져있음에도
+     불구하고 전역 영역에서 세션 변수를 초기화할 수 있었습니다. PHP
+     4.3.0부터 <link
+      linkend="ini.session.bug-compat-warn">session.bug_compat_warn</link>이
+     켜져있으면, 이 기능을 사용할 때 경고해줍니다. 이 기능/버그는 이 지시어를
+     비활성화하면 사용할 수 없게 됩니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+  
+  <varlistentry xml:id="ini.session.bug-compat-warn">
+   <term>
+    <parameter>session.bug_compat_warn</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     PHP 4.2.3까지 문서화되지 않은 기능/버그로 <link
+      linkend="ini.register-globals">register_globals</link>가 꺼져있음에도
+     불구하고 전역 영역에서 세션 변수를 초기화할 수 있었습니다. PHP 4.3.0부터
+     <link linkend="ini.session.bug-compat-42">session.bug_compat_42</link>와
+     <link
+      linkend="ini.session.bug-compat-warn">session.bug_compat_warn</link>가
+     켜져 있으면 경고가 발생합니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.hash-function">
+   <term>
+    <parameter>session.hash_function</parameter>
+    <type>mixed</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.hash_function</literal>은 세션 ID 생성에 사용할 해시
+     알고리즘을 지정합니다. '0'은 MD5(128비트)이고, '1'은
+     SHA-1(160비트)입니다.
+    </simpara>
+    <para>
+     PHP 6.0.0부터 <literal>sha512</literal>나
+     <literal>whirlpool</literal>처럼, <link linkend="ref.hash">해시
+      확장</link>(사용할 수 있다면)에서 제공하는 어떠한 알고리즘이라도 지정할
+     수 있습니다. 지원하는 모든 알고리즘의 목록은
+     <function>hash_algos</function> 함수로 얻을 수 있습니다.
+    </para>
+    <note>
+     <para>
+      이 지시어는 PHP 5에서 추가되었습니다.
+     </para>
+    </note>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.hash-bits-per-character">
+   <term>
+    <parameter>session.hash_bits_per_character</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.hash_bits_per_character</literal>는 바이너리 해시
+     데이터를 읽을 수 있는 모양으로 변환할 때 각 문자에 몇 비트를 저장할 지
+     결정합니다. 가능한 값은 '4'(0-9, a-f), '5'(0-9, a-v), '6'(0-9, a-z, A-Z,
+     "-", ",")입니다.
+    </simpara>
+    <note>
+     <para>
+      이 지시어는 PHP 5에서 추가되었습니다.
+     </para>
+    </note>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.url-rewriter.tags">
+   <term>
+    <parameter>url_rewriter.tags</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>url_rewriter.tags</literal>는 투명 sid 지원에서 어떠한 HTML
+     태그를 세션 id를 포함하도록 다시 쓸 지 지정합니다. 기본값은
+     <literal>a=href,area=href,frame=src,input=src,form=fakeentry,fieldset=</literal>입니다.
+    </simpara>
+    <note>
+     <simpara>
+      HTML/XHTML strict 호환하게 하려면, <literal>form</literal> 엔트리를
+      제거하고 폼 필드 주위에 &lt;fieldset&gt; 태그를 사용하십시오.
+     </simpara>
+    </note>
+   </listitem>
+  </varlistentry>
+ </variablelist>
+ </para>
+
+ <para>
+  <link linkend="ini.track-vars"><literal>track_vars</literal></link>와 <link
+   linkend="ini.register-globals"><literal>register_globals</literal></link>
+  환경 설정이 세션 변수의 저장과 복구에 영향을 줍니다.
+ </para>
+
+ <note>
+  <para>
+   PHP 4.0.3부터, <link
+    linkend="ini.track-vars"><literal>track_vars</literal></link>는 항상 켜져
+   있습니다.
+  </para>
+ </note>
+
+</section>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

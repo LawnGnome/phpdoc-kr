@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+
+<appendix xml:id="session.examples" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ &reftitle.examples;
+ <section xml:id="session.examples.basic">
+  <note>
+   <para>
+    PHP 4.1.0부터, <varname>$_POST</varname>, <varname>$_GET</varname>,
+    <varname>$_REQUEST</varname>처럼 <varname>$_SESSION</varname>을 전역
+    변수로 사용할 수 있습니다. <varname>$HTTP_SESSION_VARS</varname>와 달리
+    <varname>$_SESSION</varname>은 항상 전역입니다. 그러므로,
+    <varname>$_SESSION</varname>에 대하여 <link
+     linkend="language.variables.scope"><command>global</command></link>
+    키워드를 사용할 필요가 없습니다. 원한다면, <varname>$_SESSION</varname>
+    대신 <varname>$HTTP_SESSION_VARS</varname>를 사용할 수 있습니다.
+    <varname>$_SESSION</varname>을 사용하려면
+    <function>session_start</function>를 사용하여 세션을 시작해야 합니다.
+   </para>
+   <para>
+    <varname>$_SESSION</varname> 연관 배열에 들어가는 키는 PHP의 일반 변수명과
+    동일한 제한을 가집니다. 즉, 숫자로 시작할 수 없고, 문자나 밑줄로 시작해야
+    합니다. 자세한 내용은 매뉴얼 <link
+     linkend='language.variables'>변수</link> 섹션을 참고하십시오.
+   </para>
+  </note>
+
+  <para>
+   <link linkend="ini.register-globals">register_globals</link>가 꺼져있으면,
+   전역 연관 배열 <varname>$_SESSION</varname>의 멤버만 세션 변수로
+   등록됩니다. 복구된 세션 변수는 <varname>$_SESSION</varname> 배열 안에만
+   존재합니다.
+  </para>
+  <para>
+   <varname>$_SESSION</varname>(또는 PHP 4.0.6 이하에서
+   <varname>$HTTP_SESSION_VARS</varname>)의 사용은 보안 향상과 코드 가독성을
+   위하여 추천됩니다. <varname>$_SESSION</varname>으로,
+   <function>session_register</function>,
+   <function>session_unregister</function>,
+   <function>session_is_registered</function> 함수를 사용할 필요가 없습니다.
+   세션 변수를 다른 변수처럼 접근할 수 있습니다.
+   <example>
+    <title>
+     <varname>$_SESSION</varname>으로 변수 등록하기.
+    </title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+session_start();
+// Use $HTTP_SESSION_VARS with PHP 4.0.6 or less
+if (!isset($_SESSION['count'])) {
+  $_SESSION['count'] = 0;
+} else {
+  $_SESSION['count']++;
+}
+?>
+]]>
+    </programlisting>
+   </example>
+   <example>
+    <title>
+     <varname>$_SESSION</varname>으로 변수 제거하기와 <link
+      linkend="ini.register-globals">register_globals</link> 비활성화.
+    </title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+session_start();
+// Use $HTTP_SESSION_VARS with PHP 4.0.6 or less
+unset($_SESSION['count']);
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <caution>
+    <para>
+     전체 <varname>$_SESSION</varname>을 <literal>unset($_SESSION)</literal>로
+     해제하지 마십시오. <varname>$_SESSION</varname> 자동 전역을 통한 세션
+     변수 등록을 비활성화합니다.
+    </para>
+   </caution>
+  </para>
+  <warning>
+   <para>
+    세션 변수에 참조를 사용할 수 없습니다. 다른 변수에 대한 참조를 복구할
+    방법이 없기 때문입니다.
+   </para>
+  </warning>
+  <para>
+   <link linkend="ini.register-globals">register_globals</link>가 활성화되어
+   있으면, 각 전역 변수를 세션 변수로 등록할 수 있습니다. 세션을 재시작할 때,
+   이 변수들이 해당 전역 변수로 복구됩니다. PHP가 어떤 전역 변수가 세션 변수로
+   등록되어야 하는지 알아야 하기 때문에, 사용자가
+   <function>session_register</function> 함수로 변수를 등록해야 합니다. 단순히
+   <varname>$_SESSION</varname>에 엔트리를 설정할 수도 있습니다.
+   <caution>
+    <para>
+     PHP 4.3.0 이전에, <varname>$_SESSION</varname>을 사용하고 <link
+      linkend="ini.register-globals">register_globals</link>를 비활성화
+     했다면, <function>session_register</function>,
+     <function>session_is_registered</function>,
+     <function>session_unregister</function>를 사용하지 마십시오. 보안과 성능
+     관계로 <link linkend="ini.register-globals">register_globals</link>를
+     끄기를 권합니다.
+    </para>
+   </caution>
+  </para>
+  <para>
+   <link linkend="ini.register-globals">register_globals</link>가 켜져있으면,
+   전역 변수와 <varname>$_SESSION</varname> 엔트리는 자동적으로 이전 세션
+   인스턴스에서 등록한 같은 값을 참조합니다. 그러나,
+   <varname>$_SESSION</varname>에 변수를 등록하면, 전역 변수는 다음 요청부터
+   사용할 수 있습니다.
+  </para>
+  <para>
+   PHP 4.2.3까지 결함이 있습니다. 새 세션 변수를
+   <function>session_register</function>를 사용하여 등록하면, 전역 영역과
+   <varname>$_SESSION</varname> 엔트리가 다음
+   <function>session_start</function>까지 동일한 값을 참조하지 않습니다. 즉,
+   새로 등록한 전역 변수를 변경해도 <varname>$_SESSION</varname> 엔트리에
+   반영되지 않습니다. PHP 4.3.0에서 고쳐졌습니다.
+  </para>
+ </section>
+  
+ <section xml:id="session.idpassing">
+  <title>세션 ID 전달하기</title>
+  <para>
+   세션 id를 전달하는 두가지 방법이 있습니다:
+   <itemizedlist>
+    <listitem>
+     <simpara>
+      쿠키
+     </simpara>
+    </listitem>
+    <listitem>
+     <simpara>
+      URL 인수
+     </simpara>
+    </listitem>
+   </itemizedlist>
+  </para>
+  <para>
+   세션 모듈은 두 방법을 모두 지원합니다. 쿠키가 최적이지만, 항상 사용할 수는
+   없으므로 다른 방법을 제공합니다. 두번째 방법은 세션 id를 직접 URL에
+   덧붙이는 것입니다.
+  </para>
+  <para>
+   PHP는 링크를 투명하게 변경할 수 있습니다. PHP 4.2.0 이후를 사용하지
+   않는다면, PHP를 빌드할 때 수동으로 활성화해야 합니다. 유닉스에서, configure
+   시에 <link linkend="ini.session.use-trans-sid">--enable-trans-sid</link>를
+   넘겨야 합니다. 이 빌드 옵션으로 <literal>session.use_trans_sid</literal>
+   실행시 옵션이 활성화되고, 상대 URI는 자동적으로 세션 id를 가지도록
+   변경됩니다.
+   <note>
+    <para>
+     <link linkend="ini.arg-separator.output">arg_separator.output</link>
+     &php.ini; 지시어로 인수 구분자를 변경할 수 있습니다. 완전한 XHTML 호환을
+     위해서는, &amp;amp;를 지정하십시오.
+    </para>
+   </note> 
+  </para>
+  <para>
+   다른 방법으로는, 세션 시작시에 정의되는 <literal>SID</literal> 상수를
+   사용할 수 있습니다. 클라이언트가 적합한 세션 쿠키를 전송하지 않는다면,
+   <literal>session_name=session_id</literal> 형식을 가집니다. 그렇지 않으면,
+   빈 문자열입니다. 그러므로, 조건에 상관 없이 항상 URL에 붙일 수 있습니다.
+  </para>
+  <para>
+   다음 예제는 어떻게 변수를 등록하고, SID를 사용하여 다른 페이지에 어떻게
+   연결하는지 보여줍니다.
+   <example>
+    <title>한 사용자의 히트 수 세기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+session_start();
+
+if (empty($_SESSION['count'])) {
+ $_SESSION['count'] = 1;
+} else {
+ $_SESSION['count']++;
+}
+?>
+
+<p>
+Hello visitor, you have seen this page <?php echo $_SESSION['count']; ?> times.
+</p>
+
+<p>
+To continue, <a href="nextpage.php?<?php echo htmlspecialchars(SID); ?>">click
+here</a>.
+</p>
+]]>
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   SID를 출력할 때 XSS 관련 공격을 방지하기 위하여
+   <function>htmlspecialchars</function>를 사용합니다.
+  </para>
+  <para>
+   위처럼 SID를 출력하면, PHP 컴파일 시에 <link
+    linkend="ini.session.use-trans-sid">--enable-trans-sid</link>를 사용할
+   필요가 없습니다.
+  </para>
+  <note>
+   <para>
+    외부 사이트를 지정할 수 있는 절대 URL에 대해서는 SID를 붙이지 마십시오.
+    SID가 다른 서버로 유출되어 보안 위험이 생깁니다.
+   </para>
+  </note>
+ </section>
+ 
+ <section xml:id="session.customhandler">
+  <title>사용자 세션 핸들러</title>
+  <para>
+   데이터베이스 저장을 구현하거나, 다른 저장 방법을 사용하기 위하여,
+   <function>session_set_save_handler</function>를 사용하여 사용자 단계
+   저장 함수를 생성할 수 있습니다.
+  </para>
+ </section>
+</appendix>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
