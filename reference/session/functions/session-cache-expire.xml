@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id='function.session-cache-expire'>
+ <refnamediv>
+  <refname>session_cache_expire</refname>
+  <refpurpose>현재 캐시 만료를 반환</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>int</type><methodname>session_cache_expire</methodname>
+   <methodparam choice="opt"><type>string</type><parameter>new_cache_expire</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>session_cache_expire</function>는
+   <literal>session.cache_expire</literal>의 현재 설정을 반환합니다.
+  </para>
+  <para>
+   캐시 만료는 요청 시작시에 <literal>session.cache_limiter</literal>(기본값
+   180)로 초기화됩니다. 그러므로, 매 요청마다
+   (<function>session_start</function> 호출 전에)
+   <function>session_cache_expire</function>를 호출해야 합니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>new_cache_expire</parameter></term>
+     <listitem>
+      <para>
+       <parameter>new_cache_expire</parameter>가 주어지면, 현재 캐시 만료가
+       <parameter>new_cache_expire</parameter>로 교체됩니다.
+      </para>
+      <para>
+       <note>
+        <simpara>
+         <literal>session.cache_limiter</literal>가
+         <literal>nocache</literal>와 <emphasis>다른</emphasis> 값으로
+         설정되어 있을 경우에, <parameter>new_cache_expire</parameter>는 값만
+         설정합니다.
+        </simpara>
+       </note>
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   현재 <literal>session.cache_expire</literal> 설정을 반환합니다. 반환하는
+   값은 분 단위로 읽으며, 기본값은 180입니다.
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>session_cache_expire</function> 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+/* set the cache limiter to 'private' */
+
+session_cache_limiter('private');
+$cache_limiter = session_cache_limiter();
+
+/* set the cache expire to 30 minutes */
+session_cache_expire(30);
+$cache_expire = session_cache_expire();
+
+/* start the session */
+
+session_start();
+
+echo "The cache limiter is now set to $cache_limiter<br />";
+echo "The cached session pages expire after $cache_expire minutes";
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><link linkend="ini.session.cache-expire">session.cache_expire</link></member>
+    <member><link linkend="ini.session.cache-limiter">session.cache_limiter</link></member>
+    <member><function>session_cache_limiter</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

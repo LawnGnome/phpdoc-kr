@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
+<refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.session-set-save-handler">
+ <refnamediv>
+  <refname>session_set_save_handler</refname>
+  <refpurpose>사용자 단계 세션 저장 함수 설정</refpurpose>
+ </refnamediv>
+ 
+ <refsect1 role="description">
+  &reftitle.description;
+  <methodsynopsis>
+   <type>bool</type><methodname>session_set_save_handler</methodname>
+   <methodparam><type>callback</type><parameter>open</parameter></methodparam>
+   <methodparam><type>callback</type><parameter>close</parameter></methodparam>
+   <methodparam><type>callback</type><parameter>read</parameter></methodparam>
+   <methodparam><type>callback</type><parameter>write</parameter></methodparam>
+   <methodparam><type>callback</type><parameter>destroy</parameter></methodparam>
+   <methodparam><type>callback</type><parameter>gc</parameter></methodparam>
+  </methodsynopsis>
+  <para>
+   <function>session_set_save_handler</function>는 세션에 할당된 데이터를
+   저장하고 복구하는데 사용하는 사용자 단계 세션 저장 함수를 설정합니다. PHP
+   세션에서 제공하지 않는 저장 방법을 사용할 때 유용합니다. 예. 세션 데이터를
+   로컬 데이터베이스에 저장.
+  </para>
+ </refsect1>
+
+ <refsect1 role="parameters">
+  &reftitle.parameters;
+  <para>
+   <variablelist>
+    <varlistentry>
+     <term><parameter>open</parameter></term>
+     <listitem>
+      <para>
+       열기 함수, 클래스의 생성자처럼 작동하고 세션이 열릴 때 실행됩니다. 열기
+       함수는 두 인수를 받습니다. 첫번째는 저장 경로이고 두번째는 세션
+       이름입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>close</parameter></term>
+     <listitem>
+      <para>
+       닫기 함수, 클래스의 소멸자처럼 작동하고 세션 연산이 끝났을 때
+       실행됩니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>read</parameter></term>
+     <listitem>
+      <para>
+       읽기 함수는 저장 핸들러가 정상적으로 작동하기 위해 항상 문자열 값을
+       반환해야 합니다. 읽을 데이터가 없으면 빈 문자열을 반환합니다. 다른
+       핸들러에서 오는 값은 논리 표현으로 변환하여 반환합니다. 성공시엔
+       &true;, 실패시엔 &false;입니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>write</parameter></term>
+     <listitem>
+      <para>
+       <note>
+        <para>
+         "쓰기" 핸들러는 출력 스트림이 닫힐 때까지 실행되지 않습니다.
+         그러므로, "쓰기" 핸들러에서 디버그 구문 출력은 브라우저에서 볼 수
+         없습니다. 디버그 출력이 필요하면, 디버그 출력을 파일로 쓰십시오.
+        </para>
+       </note>
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>destroy</parameter></term>
+     <listitem>
+      <para>
+       파괴 핸들러, <function>session_destroy</function>로 세션이 파괴될 때
+       실행되며, 세션 id를 인수로 받습니다.
+      </para>
+     </listitem>
+    </varlistentry>
+    <varlistentry>
+     <term><parameter>gc</parameter></term>
+     <listitem>
+      <para>
+       쓰레기 수거자, 세션 쓰레기 수거가 실행될 때 실행되며, 최대 세션 수명을
+       인수로 받습니다.
+      </para>
+     </listitem>
+    </varlistentry>
+   </variablelist>
+  </para>
+ </refsect1>
+
+ <refsect1 role="returnvalues">
+  &reftitle.returnvalues;
+  <para>
+   &return.success;
+  </para>
+ </refsect1>
+
+ <refsect1 role="examples">
+  &reftitle.examples;
+  <para>
+   <example>
+    <title><function>session_set_save_handler</function> 예제</title>
+    <para>
+     다음 예제는 PHP 세션 기본 저장 핸들러 <parameter>files</parameter>와
+     유사한 파일 기반 세션 저장을 제공합니다. 이 예제는 좋아하는 PHP 지원
+     데이터베이스 엔진으로 데이터베이스 저장을 처리하도록 쉽게 확장할 수
+     있습니다.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+function open($save_path, $session_name)
+{
+  global $sess_save_path;
+
+  $sess_save_path = $save_path;
+  return(true);
+}
+
+function close()
+{
+  return(true);
+}
+
+function read($id)
+{
+  global $sess_save_path;
+
+  $sess_file = "$sess_save_path/sess_$id";
+  return (string) @file_get_contents($sess_file);
+}
+
+function write($id, $sess_data)
+{
+  global $sess_save_path;
+
+  $sess_file = "$sess_save_path/sess_$id";
+  if ($fp = @fopen($sess_file, "w")) {
+    $return = fwrite($fp, $sess_data);
+    fclose($fp);
+    return $return;
+  } else {
+    return(false);
+  }
+
+}
+
+function destroy($id)
+{
+  global $sess_save_path;
+
+  $sess_file = "$sess_save_path/sess_$id";
+  return(@unlink($sess_file));
+}
+
+function gc($maxlifetime)
+{
+  global $sess_save_path;
+
+  foreach (glob("$sess_save_path/sess_*") as $filename) {
+    if (filemtime($filename) + $maxlifetime < time()) {
+      @unlink($filename);
+    }
+  }
+  return true;
+}
+
+session_set_save_handler("open", "close", "read", "write", "destroy", "gc");
+
+session_start();
+
+// proceed to use sessions normally
+
+?>
+]]>
+    </programlisting>
+   </example>
+  </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <warning>
+   <para>
+    PHP 5.0.5부터 <parameter>write</parameter>와 <parameter>close</parameter>
+    핸들러는 객체 파괴가 완료된 후에 호출되므로, 객체를 사용하거나 예외를 던질
+    수 없습니다. 그러나 객체 소멸자는 세션을 사용할 수 있습니다.
+   </para>
+   <para>
+    이 닭과 달걀 문제를 해결하기 위해서 소멸자에서
+    <function>session_write_close</function>를 호출할 수 있습니다.
+   </para>
+  </warning>
+  <warning>
+   <para>
+    몇몇 SAPI에서 스크립트 종료시에 세션이 닫히면 현재 작업 디렉토리가
+    변경됩니다. <function>session_write_close</function>로 세션을 일찍 닫을 수
+    있습니다.
+   </para>
+  </warning>
+ </refsect1>
+
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member>
+     <link linkend="ini.session.save-handler">session.save_handler</link> 설정
+     지시어
+    </member>
+   </simplelist>
+  </para>
+ </refsect1>
+ 
+</refentry>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
