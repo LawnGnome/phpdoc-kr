@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.18 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.19 Maintainer: progcom Status: ready -->
 <refentry xml:id="function.parse-url" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>parse_url</refname>
-  <refpurpose>URL을 처리해서 구성요소를 반환</refpurpose>
+  <refpurpose>URL을 해석해서 구성요소를 반환</refpurpose>
  </refnamediv>
 
  <refsect1 role="description">
@@ -14,13 +14,13 @@
    <methodparam choice="opt"><type>int</type><parameter>component</parameter></methodparam>
   </methodsynopsis>
   <para>
-   이 함수는 URL을 처리하고, 존재하는 URL의 다양한 구성요소를 가진 연관 배열을
+   이 함수는 URL을 해석하고, URL에 존재하는 다양한 구성요소를 가진 연관 배열을
    반환합니다.
   </para>
   <para>
    이 함수는 주어진 URL의 유효성을 검증하는 것이 <emphasis>아니라</emphasis>,
    아래 목록에 있는 부분으로 나누는 일만 합니다. 부분적인 URL도 허용되고,
-   <function>parse_url</function>은 최대한 적절하게 처리하도록 시도합니다.
+   <function>parse_url</function>은 최대한 적절하게 해석하도록 시도합니다.
   </para>
  </refsect1>
 
@@ -32,7 +32,7 @@
      <term><parameter>url</parameter></term>
      <listitem>
       <para>
-       처리할 URL. 유효하지 않은 문자는 <literal>_</literal>로 대체합니다.
+       해석할 URL. 유효하지 않은 문자는 <literal>_</literal>로 대체합니다.
       </para>
      </listitem>
     </varlistentry>
@@ -175,7 +175,7 @@ Array
   </note>
   <note>
    <para>
-    이 함수는 URI가 아닌, URL을 처리하는 목적으로 만들어졌습니다. 그러나, PHP
+    이 함수는 URI가 아닌, URL을 해석하는 목적으로 만들어졌습니다. 그러나, PHP
     하위 호환에 따라서 세개의 슬래시가 나오는 file:/// 스킴(file:///...)을
     허용합니다. 다른 종류의 이러한 스킴은 유효하지 않습니다.
    </para>

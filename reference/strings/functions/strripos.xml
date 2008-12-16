@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.strripos">
  <refnamediv>
   <refname>strripos</refname>
-  <refpurpose>문자열에서 대소문자 구분 없는 문자열의 마지막 위치를 찾습니다</refpurpose>
+  <refpurpose>문자열에서 대소문자 구분 없이 문자열의 마지막 위치를 찾습니다</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
