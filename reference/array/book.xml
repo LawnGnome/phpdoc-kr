@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
+<!-- Purpose: basic.vartype -->
+<!-- Membership: core -->
+
+<book xml:id="book.array" xmlns="http://docbook.org/ns/docbook">
+ <title>배열</title>
+
+ <preface xml:id="intro.array">
+  &reftitle.intro;
+  <para>
+   이 함수들은 배열을 다양한 방법으로 소통하고 조작하게 합니다. 배열은
+   변수 묶음을 저장하고, 관리하고, 연산하는데 필수적입니다.
+  </para>
+  <para>
+   간단한 배열과 다차원 배열을 지원하며, 사용자 생성과 다른 함수에 의하여
+   만들어지는 경우가 있습니다. 데이터베이스 질의에서 배열을 생성하는 특정
+   데이터베이스 다루기 함수가 있으며, 많은 함수가 배열을 반환합니다.
+  </para>
+  <para>
+   매뉴얼 <link linkend="language.types.array">배열</link> 섹션을 참고하여
+   배열에 대한 자세한 설명과 PHP에서 어떻게 구현되고 사용되는지 확인하십시오.
+   다른 방법으로 배열을 조작하는 방법을 <link
+    linkend="language.operators.array">배열 연산자</link>에서 참고하십시오.
+  </para>
+ </preface>
+
+ &reference.array.setup;
+ &reference.array.constants;
+ &reference.array.reference;
+
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

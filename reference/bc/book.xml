@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- Purpose: mathcrypto.math -->
+<!-- Membership: bundled -->
+ 
+<book xml:id="book.bc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title>BCMath 임의 정밀도 수학</title>
+ <titleabbrev>BC 수학</titleabbrev>
+ 
+ <!-- {{{ preface -->
+ <preface xml:id="intro.bc">
+  &reftitle.intro;
+  <para>
+   PHP가 제공하는 임의 정밀도 수학, Binary Calculator는 어떠한 자리수나
+   정밀도라도 문자열로 표현되는 수로 지원합니다.
+  </para>
+ </preface>
+ <!-- }}} -->
+ 
+ &reference.bc.setup;
+ &reference.bc.constants;
+ &reference.bc.reference;
+
+</book>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
