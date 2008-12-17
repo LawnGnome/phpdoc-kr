@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.27 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.28 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <chapter xml:id="faq.general" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>일반적인 정보</title>
@@ -133,20 +133,19 @@
        </listitem>
        <listitem>
         <simpara>실행시 코드 권장을 위한 새 오류 보고 상수 <link
-          xlink:href="&url.php.migrating5-errorrep;">E_STRICT</link>
+         linkend="migrating5.errorrep">E_STRICT</link>
         </simpara>
        </listitem>
        <listitem>
         <simpara>간단한 코드 작성을 위한 많은 새 <link
-          xlink:href="&url.php.migrating5-functions;">함수들</link> (많은 일반
+          linkend="migration5.functions">함수들</link> (많은 일반
          처리에 대해서 코드 작성을 줄임)
         </simpara>
        </listitem>
       </itemizedlist>
-      보다 자세한 정보는 <link
-       xlink:href="&url.php.backwards-incompatible;">하위 호환이 없는
-       변경점</link>에 있는 <link xlink:href="&url.php.migrate-45;">PHP 4에서
-       PHP 5로 이행하기</link> 섹션을 확인하십시오.
+      보다 자세한 정보는 <link linkend="faq.migration5">PHP 4에서 PHP 5로
+       이행하기</link> 섹션과 <link linkend="migration5.incompatible">하위
+       호환이 없는 변경점</link> 섹션을 참고하십시오.
      </para>
     </answer>
    </qandaentry>
