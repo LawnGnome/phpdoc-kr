@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: wip -->
+<!-- splitted from ./index.xml, last change in rev 1.66 -->
+  <chapter xml:id="security.database" xmlns="http://docbook.org/ns/docbook">
+   <title>데이터베이스 보안</title>
+
+   <simpara>
+    최근에, 데이터베이스는 웹사이트에 다양한 동적 내용을 제공하기 위한 모든 웹
+    기반 어플리케이션의 기본 구성 요소입니다. 매우 민감하거나 비밀스러운
+    정보가 데이터베이스에 저장될 수 있으므로, 데이터베이스의 보호에 대하여
+    심각하게 고려해야 합니다.
+   </simpara>
+   <simpara>
+    어떠한 정보를 가져오거나 넣으려면 데이터베이스에 접속하고, 적합한 질의를
+    전송하고, 결과를 가져오고, 접속을 닫습니다. 최근에, 이 작업에 가장 많이
+    사용하는 질의 언어는 구조적 질의 언어(SQL)입니다. 어떻게 공격자가 <link
+     linkend="security.database.sql-injection">SQL 질의를 건들일</link> 수
+    있는지 확인하십시오.
+   </simpara>
+   <simpara>
+    예측할 수 있듯이, PHP는 데이터베이스 자체를 보호할 수 없습니다. 다음 섹션은
+    PHP 스크립트에서 데이터베이스에 접근하고 조작하는 방법에 대한 매우
+    기초적인 설명입니다.
+   </simpara>
+   <simpara>
+    간단한 규칙을 명심하십시오: 철저하게 방어. 더 많은 위치에서 데이터베이스의
+    보호를 증가하기 위한 작업을 한다면, 공격자가 저장된 정보를 빼낼 수 있는
+    성공 가능성이 줄어듭니다. 데이터베이스 스키마와 어플리케이션 처리의 좋은
+    디자인은 최대한의 공포와 함께 하는 것입니다.
+   </simpara>
+
+   <sect1 xml:id="security.database.design">
+    <title>데이터베이스 설계하기</title>
+     <simpara>
+      첫번째 단계는 항상 데이터베이스를 생성하는 것입니다. 써드 파티의
+      데이터베이스를 사용할 수도 있습니다. 데이터베이스를 생성할 때,
+      데이터베이스는 생성 구문을 실행한 오너에게 할당됩니다. 보통, 오너(또는
+      슈퍼유저)만 그 데이터베이스의 객체를 다룰 수 있습니다. 다른 사용자가
+      사용할 수 있게 하려면, 권한을 주어야 합니다.
+     </simpara>
+     <simpara>
+      어플리케이션은 데이터베이스에 오너나 슈퍼유저로 접속해서는 안됩니다.
+      이러한 사용자는 스키마를 변경하거나(예. 테이블 드롭) 전체 내용을 지울 수
+      있기 때문입니다.
+     </simpara>
+     <simpara>
+      어플리케이션이 데이터베이스 객체에 필요한 최소한의 권한만 가지도록,
+      다른 데이터베이스 사용자를 만듭니다. 최소한도로 필요한 권한만 주고,
+      동일한 사용자가 다른 사용을 하지 못하도록 합니다. 이로써 침입자가
+      어플리케이션 권한으로 데이터베이스 사용 권한을 습득해도, 어플리케이션이
+      할 수 있는 변경밖에 하지 못하도록 합니다.
+     </simpara>
+     <simpara>
+      모든 비지니스 로직을 웹 어플리케이션(즉, 스크립트)에 넣지 않기를
+      권합니다. 대신, 뷰, 트리거, 룰을 사용한 데이터베이스 스키마를
+      사용하십시오. 시스템이 발전하면, 새 클라이언트가 데이터베이스를 여는
+      경향이 있고, 각 데이터베이스 클라이언트에 로직을 다시 구현해야 합니다.
+      반복하는 대신에, 트리거로 자동적으로 투명하게 필드를 다룰 수 있습니다.
+      이는 종종 어플리케이션의 디버그 문제를 해결하기 쉽게 하거나 트랜젝션을
+      추적하기 쉽게 합니다.
+     </simpara>
+   </sect1>
+
+   <sect1 xml:id="security.database.connection">
+    <title>데이터베이스 접속하기</title>
+    <simpara>
+     보안을 증가하기 위하여, 클라이언트/서버 간 통신을 암호화하는 SSL 접속을
+     할 수 있습니다. 또는 클라이언트와 데이터베이스 서버간의 네트워크 접속을
+     암호화하기 위하여 ssh를 사용할 수 있습니다. 어떠한 방법을 사용하건,
+     공격자가 트래픽 감시로 데이터베이스에 관한 정보를 얻기 어렵게 합니다.
+    </simpara>
+    <!--simpara>
+     If your database server has native SSL support, consider using <link
+     linkend="ref.openssl">OpenSSL functions</link> in communication between
+     PHP and database via SSL.
+    </simpara-->
+   </sect1>
+
+   <sect1 xml:id="security.database.storage">
+    <title>암호화 저장 모델</title>
+    <simpara>
+     SSL/SSH는 클라이언트에서 서버로 전송되는 데이터를 보호하지만, SSL/SSH가
+     데이터베이스에 저장된 지속 데이터를 보호하지는 않습니다. SSL는 연결용
+     프로토콜입니다.
+    </simpara>
+    <simpara>
+     공격자가 (웹 서버를 건너뛰고) 데이터베이스에 직접 접근할 수 있게 되면,
+     정보를 데이터베이스 자체에서 보호하지 않는 한 저장된 민감한 데이터가
+     유출되거나 오용될 수 있습니다. 데이터 암호화로 이런 위험을 줄일 수
+     있으나, 매우 적은 데이터베이스만 이러한 데이터 암호화를 지원합니다.
+    </simpara>
+    <simpara>
+     이 문제를 해결하기 위한 가장 쉬운 방법은 자체 암호화 패키지를 만들어, PHP
+     스크립트에서 사용하는 것입니다. PHP는 <link
+      linkend="ref.mcrypt">Mcrypt</link>와 <link
+      linkend="ref.mhash">Mhash</link>처럼, 다양한 암호화 알고리즘을 지원하는
+     확장으로 이 일을 도와줍니다. 스크립트에서 데이터베이스에 삽입하기 전에
+     데이터를 암호화하고, 꺼내올 때 해독합니다. 아래 에제를 참고해서 어떻게
+     암호화가 작동하는 지 확인하십시오.
+    </simpara>
+    <simpara>
+     원 표현이 필요하지 않은(즉, 표시되지 않는) 정말로 감춰진 데이터에
+     대해서는, 해시를 생각할 수 있습니다. 해시의 잘 알려진 예는 패스워드
+     대신에, 패스워드의 MD5 해시를 데이터베이스에 저장하는 것입니다.
+     <function>crypt</function>와 <function>md5</function>를 참고하십시오.
+    </simpara>
+    <example>
+     <title>해시 패스워드 필드 사용하기</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+
+// 패스워드 해시 저장
+$query  = sprintf("INSERT INTO users(name,pwd) VALUES('%s','%s');",
+            pg_escape_string($username), md5($password));
+$result = pg_query($connection, $query);
+
+// 사용자가 올바른 패스워드를 입력했는지 질의
+$query = sprintf("SELECT 1 FROM users WHERE name='%s' AND pwd='%s';",
+            pg_escape_string($username), md5($password));
+$result = pg_query($connection, $query);
+
+if (pg_num_rows($result) > 0) {
+    echo 'Welcome, $username!';
+} else {
+    echo 'Authentication failed for $username.';
+}
+
+?>
+]]>
+     </programlisting>
+    </example>
+   </sect1>
+
+   <sect1 xml:id="security.database.sql-injection">
+    <title>SQL 인젝션</title>
+    <simpara>
+     많은 웹 개발자가 SQL 질의가 공격받을 수 있다는 점을 간과하고, SQL 질의를
+     신뢰할 수 있는 명령으로 가정합니다. 이로 인해 SQL 질의에서 접근 제어를
+     우회할 수 있여, 일반적인 인증과 인증 확인을 무시하고, 종종 SQL 질의가 OS
+     단계 명령을 할 수 있도록 합니다.
+    </simpara>
+    <simpara>
+     직접 SQL 명령 인젝션은 공격자가 숨겨진 데이터를 노출하거나, 취약한 부분을
+     덮어쓰거나, 데이터베이스에 위험한 시스템 단계 명령을 실행하게 하는 SQL
+     명령을 생성하거나 대체하는 기술입니다. 어플리케이션이 사용자 입력을
+     받아서, 이를 SQL 질의를 만들 떄 정적 인수로 조합함으로써 일어납니다.
+     유감스럽게도, 아래 예제들은 실제 이야기를 기반으로 하고 있습니다.
+    </simpara>
+    <para>
+     입력 검증이 없고 데이터베이스에 슈퍼유저나 사용자를 만들 수 있는
+     사용자로 접속하는 경우, 공격자가 데이터베이스에 슈퍼유저를 만들 수
+     있습니다.
+     <example>
+      <title>
+       결과셋을 페이지로 나눔 ... 그리고 슈퍼유저 만들기 (PostgreSQL)
+      </title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+
+$offset = $argv[0]; // 주의, 입력 검증 없음!
+$query  = "SELECT id, name FROM products ORDER BY name LIMIT 20 OFFSET $offset;";
+$result = pg_query($conn, $query);
+
+?>
+]]>
+      </programlisting>
+     </example>
+     일반 사용자는 URL에 <varname>$offset</varname>이 인코드되어 있는 'next',
+     'prev' 링크를 클릭합니다. 스크립트는 <varname>$offset</varname>이
+     정수라고 생각합니다. 그러나, 누군가가 다음처럼 URL에 추가적인
+     <function>urlencode</function> 형식을 덧붙이면 어떻게 될까요?
+      <informalexample>
+       <programlisting role="sql">
+<![CDATA[
+0;
+insert into pg_shadow(usename,usesysid,usesuper,usecatupd,passwd)
+    select 'crack', usesysid, 't','t','crack'
+    from pg_shadow where usename='postgres';
+--
+]]>
+       </programlisting>
+      </informalexample>
+      이렇게 되면, 스크립트에서 슈퍼유저 권한을 공격자에게 주게 됩니다.
+      <literal>0;</literal>가 유효한 offset으로 제공되어 원래 질의를 유효하게
+      하고 정료하는 점에 주의하십시오.
+    </para>
+    <note>
+     <para>
+      SQL 해석기에서 개발자가 쓴 쿼리의 나머지 부분을 무시하게 하는 일반적인
+      방법은 <literal>--</literal>를 붙이는 것이며, 이는 SQL에서 주석
+      부호입니다.
+     </para>
+    </note>
+    <para>
+     패스워드를 얻는 방법 중 하나는 검색 결과 페이지를 우회하는 것입니다.
+     공격자에게 필요한 것은 제출한 변수 중 하나라도 제대로 다뤄지지 않으면서
+     SQL 구문에 사용되는 것입니다. 이러한 필터는 일반적으로
+     <literal>SELECT</literal> 구문에서 <literal>WHERE, ORDER BY,
+      LIMIT</literal>, <literal>OFFSET</literal>에 사용됩니다. 데이터베이스가
+     <literal>UNION</literal> 구조를 지원하면, 공격자는 원래 질의에 전체
+     질의를 덧붙여서 임의의 테이블에서 패스워드를 얻을 수 있습니다. 암호화된
+     패스워드 필드를 강력히 권합니다.
+     <example>
+      <title>
+       글을 출력함 ... 그리고 패스워드도 (모든 데이터베이스 서버)
+      </title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+
+$query  = "SELECT id, name, inserted, size FROM products
+                  WHERE size = '$size'
+                  ORDER BY $order LIMIT $limit, $offset;";
+$result = odbc_exec($conn, $query);
+
+?>
+]]>
+      </programlisting>
+     </example>
+     질의에서 정적인 부분은 모든 패스워드를 가져오는 <literal>SELECT</literal>
+     구문과 조합될 수 있습니다:
+     <informalexample>
+      <programlisting role="sql">
+<![CDATA[
+'
+union select '1', concat(uname||'-'||passwd) as name, '1971-01-01', '0' from usertable;
+--
+]]>
+      </programlisting>
+     </informalexample>
+     이 질의(<literal>'</literal>와 <literal>--</literal>로 다룸)가
+     <varname>$query</varname>에서 사용하는 변수 중 하나에 할당되면, 질의
+     괴물이 깨어납니다.
+    </para>
+    <para>
+     SQL UPDATE도 공격받을 수 있습니다. 이런 질의를 잘라내어서 완전한 새
+     질의를 덧붙일 수 있습니다. 또한 공격자가 <literal>SET</literal> 절을 다룰
+     수도 있습니다. 이 경우 질의를 성공적으로 변경하기 위하여 일부 스키마
+     정보를 가지고 있어야 합니다. 이는 폼 변수명을 조사하거나, 브루트 포스로
+     얻을 수 있습니다. 패스워드와 사용자이름을 저장하는 필드의 이름 규칙은
+     그리 많지 않습니다.
+     <example>
+     <title>
+      패스워드 재설정에서 ... 더 많은 권한 얻기 (모든 데이터베이스 서버)
+     </title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+$query = "UPDATE usertable SET pwd='$pwd' WHERE uid='$uid';";
+?>
+]]>
+      </programlisting>
+     </example>
+     악의적인 사용자가 <varname>$uid</varname>에 <literal>' or uid
+      like'%admin'; --</literal> 값을 넣어서 관리자 패스워드를 변경하거나,
+     <varname>$pwd</varname>에 <literal>"hehehe', admin='yes', trusted=100
+      "</literal>(마지막 공백 포함)을 설정하여 권한을 얻을 수도 있습니다.
+     그러면, 질의가 다음처럼 꼬입니다:
+     <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?php
+
+// $uid == ' or uid like'%admin%'; --
+$query = "UPDATE usertable SET pwd='...' WHERE uid='' or uid like '%admin%'; --";
+
+// $pwd == "hehehe', admin='yes', trusted=100 "
+$query = "UPDATE usertable SET pwd='hehehe', admin='yes', trusted=100 WHERE
+...;";
+
+?>
+]]>
+      </programlisting>
+     </informalexample>
+    </para>
+    <para>
+     데티어베이스 호스트의 OS 등급 명령에 접근하는 섬뜩한 예제입니다.
+     <example>
+     <title>데이터베이스 호스트 OS 공격하기 (MSSQL 서버)</title>
+      <programlisting role="php">
+<![CDATA[
+<?php
+
+$query  = "SELECT * FROM products WHERE id LIKE '%$prod%'";
+$result = mssql_query($query);
+
+?>
+]]>
+      </programlisting>
+     </example>
+     공격자가 <varname>$prod</varname>에 <literal>a%' exec master..xp_cmdshell
+      'net user test testpass /ADD' --</literal> 값을 제출하면,
+     <varname>$query</varname>는:
+     <informalexample>
+      <programlisting role="php">
+<![CDATA[
+<?php
+
+$query  = "SELECT * FROM products
+                    WHERE id LIKE '%a%'
+                    exec master..xp_cmdshell 'net user test testpass /ADD'--";
+$result = mssql_query($query);
+
+?>
+]]>
+      </programlisting>
+     </informalexample>
+     MSSQL 서버는 로컬 계정 데이터베이스에 새 사용자를 추가하는 명령을 포함한
+     SQL 구문을 실행하게 됩니다. 어플리케이션이 <literal>sa</literal>로
+     실행되고 MSSQLSERVER 서비스가 적합한 권한을 가지고 있으면, 공격자는
+     머신에 접근할 수 있는 계정을 가지게 됩니다.
+    </para>
+    <note>
+     <para>
+      위 예제 중 일부는 특정 데이터베이스 서버에 묶여 있습니다. 이것은 다른
+      서버에 유사한 공격이 불가능하다는 의미가 아닙니다. 데이터베이스 서버가
+      다른 방식으로 비슷한 취약점을 가질 수 있습니다.
+     </para>
+    </note>
+
+    <sect2 xml:id="security.database.avoiding">
+     <title>기술 피하기</title>
+     <simpara>
+      대부분의 예제에서 공격자가 데이터베이스 스키마에 대한 정보를 가지고
+      있어야 한다고 말할 수 있을겁니다. 맞습니다, 그러나 스키마가 어떻게
+      유출되는지 알 수 없습니다. 그리고 유출되면, 데이터베이스가 노출됩니다.
+      오픈 소스를 사용하거나 CMS나 포럼에 공개되어 있는 데이터베이스 접근
+      패키지를 가지고 있으면, 침입자가 간단히 코드의 사본을 구할 수 있습니다.
+      나쁘게 디자인되어 있으면 그 자체로도 보안 위협이 됩니다.
+     </simpara>
+     <simpara>
+      이러한 공격은 주로 보안을 염두에 두지 않고 쓰여진 코드 취약점에 기반하고
+      있습니다. 어떠한 입력도 믿지 마십시오. 특히 클라이언트측에서 오는 입력은
+      믿지 마십시오. select, hidden input 필드, 쿠키도 마찬가지입니다. 첫번째
+      예제에서 그러한 질의가 재앙을 일으킬 수 있는 점을 보여주고 있습니다.
+     </simpara>
+
+     <itemizedlist>
+      <listitem>
+       <simpara>
+        데이터베이스에 슈퍼유저나 데이터베이스 주인으로 접속하지 마십시오.
+        항상 매우 제한된 권한을 가진 특별 사용자를 사용하십시오.
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        주어진 입력이 기대한 자료형인지 확인하십시오. PHP는 넓은 범위의 입력
+        검증 함수를 가지고 있습니다. 가장 간단한 <link
+         linkend="ref.var">변수 관련 함수</link>와 <link
+         linkend="ref.ctype">문자형
+         함수</link>(예. 각각 <function>is_numeric</function>,
+        <function>ctype_digit</function>)부터 <link linkend="ref.pcre">펄 호환
+         정규표현식</link> 지원까지 있습니다.
+       </simpara>
+      </listitem>
+      <listitem>
+       <para>
+        어플리케이션이 숫자 입력을 기다린다면,
+        <function>is_numeric</function>으로 데이터를 검사하거나,
+        <function>settype</function>으로 자료형을 바꾸거나,
+        <function>sprintf</function>에서 숫자 표현을 사용하십시오.
+        <example>
+         <title>페이지 질의를 작성하는 더 안전한 방법</title>
+         <programlisting role="php">
+<![CDATA[
+<?php
+
+settype($offset, 'integer');
+$query = "SELECT id, name FROM products ORDER BY name LIMIT 20 OFFSET $offset;";
+
+// please note %d in the format string, using %s would be meaningless
+$query = sprintf("SELECT id, name FROM products ORDER BY name LIMIT 20 OFFSET %d;",
+                 $offset);
+
+?>
+]]>
+         </programlisting>
+        </example>
+       </para>
+      </listitem>
+      <listitem>
+       <simpara>
+        숫자가 아닌 사용자 제공 값은 데이터베이스 한정 문자열 회피
+        함수로 인용하십시오. (예.
+        <function>mysql_real_escape_string</function>,
+        <function>sql_escape_string</function> 등) 데이터베이스 한정 문자열
+        회피 함수가 없으면, <function>addslashes</function>와
+        <function>str_replace</function> 함수를 사용할 수 있습니다.
+        (데이터베이스 형식에 따릅니다) <link
+         linkend="security.database.storage">첫번째 예제</link>를
+        확인하십시오. 예제가 보여주듯이, 질의의 정적 부분에 따옴표를 붙이는건
+        충분하지 않으며, 질의를 쉽게 깰 수 있습니다.
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        어떠한 데이터베이스 한정 정보라도 출력하지 마십시오. 특히, 스키마에
+        대해서는 어떠한 경우라도 안됩니다. <link
+         linkend="security.errors">오류 보고</link>와 <link
+         linkend="ref.errorfunc">오류 다루기와 기록 함수</link>를
+        참고하십시오.
+       </simpara>
+      </listitem>
+      <listitem>
+       <simpara>
+        저장된 프로시저와 이전에 정의한 커서를 사용해서 추상적인 데이터 접근을
+        할 수도 있습니다. 이로써 사용자가 직접 테이블이나 뷰에 접근할 수 없게
+        할 수 있지만, 이 해결책은 다른 문제가 있습니다.
+       </simpara>
+      </listitem>
+     </itemizedlist>
+
+     <simpara>
+      다만, 스크립트 안에서나 (기록을 지원한다면) 데이터베이스에서 질의를
+      기록하는 것이 도움이 됩니다. 반면, 기록은 유해한 시도를 방지하지는
+      못합니다. 그러나 어떠한 어플리케이션이 우회되었는지 추적할 때는 도움이
+      됩니다. 기록 자체는 유용하지 않으며, 포함한 정보가 중요합니다.
+      일반적으로 더 자세한 정보가 낫습니다.
+     </simpara>
+    </sect2>
+   </sect1>
+  </chapter>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
