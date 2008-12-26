@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.2 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.4 Maintainer: progcom Status: ready -->
 <refentry xml:id="function.json-last-error" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>json_last_error</refname>
@@ -25,7 +25,7 @@
  <refsect1 role="returnvalues">
   &reftitle.returnvalues;
   <para>
-   정수를 반환합니다, 값은 다음 중 하나입니다:
+   정수를 반환합니다, 값은 다음 상수 중 하나입니다:
   </para>
   <table>
    <title>JSON 오류 코드</title>
@@ -85,7 +85,7 @@ foreach($json as $string)
 			echo ' - Maximum stack depth exceeded';
 		break;
 		case JSON_ERROR_CTRL_CHAR:
-			echo ' - Unxpected control character found';
+			echo ' - Unexpected control character found';
 		break;
 		case JSON_ERROR_SYNTAX:
 			echo ' - Syntax error, malformed JSON';

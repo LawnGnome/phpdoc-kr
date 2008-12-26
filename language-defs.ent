@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.43 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.44 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -63,10 +63,11 @@
 <!ENTITY Name              "이름">
 <!ENTITY Alias             "별칭:">
 <!ENTITY Type              "자료형">
+<!ENTITY Changelog         "변경점">
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
-<!ENTITY reftitle.changelog    '<title>변경 기록</title>'>
+<!ENTITY reftitle.changelog    '<title>&Changelog;</title>'>
 <!ENTITY reftitle.classes      '<title>예약 클래스</title>'>
 <!ENTITY reftitle.classsynopsis '<title>클래스 개요</title>'>
 <!ENTITY reftitle.constants    '<title>예약 상수</title>'>
