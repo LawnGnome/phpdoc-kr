@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.234 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.235 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 
@@ -463,8 +463,8 @@ PHP 코어의 일부입니다.</para>'>
 <!ENTITY extension.runtime '<simpara>이 함수의 작동은 &php.ini; 설정에 영향을
 받습니다.</simpara>'>
 
-<!ENTITY ini.php.constants 'PHP_INI_* 상수에 대한 자세한 상세와 정의는 <xref
-linkend="ini"/>를 참고하십시오.'>
+<!ENTITY ini.php.constants 'PHP_INI_* 모드에 대한 상세와 정의는 <xref
+linkend="configuration.changes.modes"/>를 참고하십시오.'>
 
 <!-- Used in reference/$extname/constants.xml -->
 <!ENTITY extension.constants '<simpara>이 확장은 다음의 상수들을 정의합니다.

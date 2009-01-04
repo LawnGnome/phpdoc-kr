@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.14 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="faq.com" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP와 COM</title>
@@ -147,9 +147,9 @@
       다른 서버의 IP를 넘겨주면 됩니다.
      </para>
      <para>
-      &php.ini;파일 내에서 <xref
-       linkend="ini.com.allow-dcom"/><literal>=</literal>&true;로 값을 설정해야
-      합니다.
+      &php.ini;에서 <link
+       linkend="ini.com.allow-dcom">com.allow_dcom</link><literal>=</literal>&true;로
+      설정해야 합니다.
      </para>
     </answer>
    </qandaentry>
@@ -163,8 +163,9 @@
     </question>
     <answer>
      <para>
-      &php.ini;를 수정하여 <xref
-       linkend="ini.com.allow-dcom"/><literal>=</literal>&true;로 설정합니다.
+      &php.ini;를 수정하여 <link
+       linkend="ini.com.allow-dcom">com.allow_dcom</link><literal>=</literal>&true;로
+      설정합니다.
      </para>
     </answer>
    </qandaentry>

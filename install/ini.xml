@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.22 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.23 Maintainer: progcom Status: ready -->
  <chapter xml:id="configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>실행시 설정</title>
 
@@ -109,6 +109,62 @@ include_path = ".;c:\php\lib"
     PHP 5.1.0부터, .ini 파일 안에서 이미 존재하는 .ini 변수를 참조할 수
     있습니다. 예: <literal>open_basedir = ${open_basedir}
      ":/new/dir"</literal>.
+   </para>
+  </sect1>
+
+  <sect1 xml:id="configuration.changes.modes">
+   <title>환경 설정을 바꿀 수 있는 곳</title>
+
+   <para>
+    이 모드는 PHP 지시어를 언제, 어디서 설정할 수 있는지 결정하고, 매뉴얼의 각
+    지시어는 이 모드를 참조합니다. 예를 들어, 몇몇 설정은 PHP 스크립트 안에서
+    <function>ini_set</function>으로 설정할 수 있지만, 어떤 설정은 &php.ini;나
+    &httpd.conf;를 요구합니다.
+   </para>
+
+   <para>
+    예를 들어, <link linkend="ini.output-buffering">output_buffering</link>
+    설정은 <literal>PHP_INI_PERDIR</literal>이므로
+    <function>ini_set</function>으로 설정할 수 없습니다. 그러나, <link
+     linkend="ini.display-errors">display_errors</link> 지시어는
+    <literal>PHP_INI_ALL</literal>이므로 <function>ini_set</function>을
+    포함하여 어디에서라도 설정할 수 있습니다.
+   </para>
+
+   <para>
+    <table>
+     <title>PHP_INI_* 모드의 정의</title>
+     <tgroup cols="2">
+      <thead>
+       <row>
+        <entry>모드</entry>
+        <entry>의미</entry>
+       </row>
+      </thead>
+      <tbody>
+       <row>
+        <entry><literal>PHP_INI_USER</literal></entry>
+        <entry>
+         사용자 스크립트(<function>ini_set</function> 등)나 <link
+          linkend="configuration.changes.windows">윈도우 레지스트리</link>에서
+         설정할 수 있습니다
+        </entry>
+       </row>
+       <row>
+        <entry><literal>PHP_INI_PERDIR</literal></entry>
+        <entry>&php.ini;, &htaccess;, &httpd.conf;에서 설정할 수 있습니다</entry>
+       </row>
+       <row>
+        <entry><literal>PHP_INI_SYSTEM</literal></entry>
+        <entry>&php.ini;나 &httpd.conf;에서 설정할 수 있습니다</entry>
+       </row>
+       <row>
+        <entry><literal>PHP_INI_ALL</literal></entry>
+        <entry>어디에서라도 설정할 수 있습니다</entry>
+       </row>
+      </tbody>
+     </tgroup>
+    </table>
    </para>
   </sect1>
 

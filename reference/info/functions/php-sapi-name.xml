@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.13 Maintainer: progcom Status: ready -->
 <refentry xml:id="function.php-sapi-name" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>php_sapi_name</refname>
@@ -13,9 +13,10 @@
    <void/>
   </methodsynopsis>
   <simpara>
-   웹 서버와 PHP 사이의 인터페이스(Server API, SAPI) 형식을 설명하는 소문자
-   문자열을 반환합니다. CGI PHP라면 이 문자열은 "cgi"이고, 아파치
-   <literal>mod_php</literal>이면 이 문자열은 "apache"라는 식입니다.
+   PHP가 사용하는 인터페이스(서버 API, SAPI) 형식을 나타내는 소문자 문자열을
+   반환합니다. 예를 들어, CLI PHP에서 이 문자열은 "cli"이고, 아파치에서는
+   사용하는 SAPI에 따라 여러 값일 수 있습니다. 가능한 값은 아래 목록에
+   있습니다.
   </simpara>
  </refsect1>
 
@@ -24,6 +25,12 @@
   <para>
    인터페이스 형식을 소문자 문자열로 반환합니다.
   </para>
+  <para>
+   완전하진 않지만, 가능한 반환값은 aolserver, apache, apache2filter,
+   apache2handler, caudium, cgi(PHP 5.3까지), cgi-fcgi, cli, continuity,
+   embed, isapi, litespeed, milter, nsapi, phttpd, pi3web, roxen, thttpd, tux,
+   webjames를 포함합니다.
+  </para>
  </refsect1>
 
  <refsect1 role="examples">
@@ -31,6 +38,10 @@
   <para>
    <example>
     <title><function>php_sapi_name</function> 예제</title>
+    <para>
+     이 예제는 서브문자열 <literal>cgi</literal>를 확인합니다.
+     <literal>cgi-fcgi</literal>일 수도 있기 때문입니다.
+    </para>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -45,6 +56,25 @@ if (substr($sapi_type, 0, 3) == 'cgi') {
     </programlisting>
    </example>
   </para>
+ </refsect1>
+
+ <refsect1 role="notes">
+  &reftitle.notes;
+  <note>
+   <title>대체 접근법</title>
+   <para>
+    PHP 상수 <constant>PHP_SAPI</constant>는
+    <function>php_sapi_name</function>과 같은 값을 가집니다.
+   </para>
+  </note>
+  <tip>
+   <title>이런 일이!</title>
+   <para>
+    정의된 <acronym>SAPI</acronym>는 명백하지 않을 수 있습니다. 예를 들면,
+    <literal>apache</literal> 대신 <literal>apache2handler</literal>나
+    <literal>apache2filter</literal>로 정의될 수 있기 때문입니다.
+   </para>
+  </tip>
  </refsect1>
 
  <refsect1 role="seealso">

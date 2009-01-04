@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 1.1 Maintainer: progcom Status: ready -->
+
+<sect1 xml:id="control-structures.continue" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <title><literal>continue</literal></title>
+ <simpara>
+  <literal>continue</literal>는 루프 구조 내부에서 현재 루프 반복의 나머지
+  부분을 생략하고 조건 평가를 한 후 다음 반복 시작에서 실행을 지속하게
+  합니다.
+ </simpara>
+ <note>
+  <simpara>
+   PHP에서 <link linkend="control-structures.switch">switch</link>구문은 
+   <literal>continue</literal>에 의해 루프 구조로 사용할수 있다는것을 참고할것.
+  </simpara>
+ </note>
+ <simpara>
+  <literal>continue</literal>는 숫자 인수 옵션을 사용하여 루프의 깊이를
+  표시할수 있고, 루프의 끝까지 건너뛸수 있다.
+ </simpara>
+ <para>
+  <informalexample>
+   <programlisting role="php">
+<![CDATA[
+<?php
+while (list($key, $value) = each($arr)) {
+    if (!($key % 2)) { // skip odd members
+        continue;
+    }
+    do_something_odd($value);
+}
+
+$i = 0;
+while ($i++ < 5) {
+    echo "Outer<br />\n";
+    while (1) {
+        echo "&nbsp;&nbsp;Middle<br />\n";
+        while (1) {
+            echo "&nbsp;&nbsp;Inner<br/ >\n";
+            continue 3;
+        }
+        echo "This never gets output.<br />\n";
+    }
+    echo "Neither does this.<br />\n";
+}
+?>
+]]>
+   </programlisting>
+  </informalexample>
+ </para>
+ <para>
+  <literal>continue</literal> 뒤의 세미콜론을 빼먹으면 혼란스러울 것입니다.
+  여기에 해서는 안되는 일의 예제입니다:
+ </para>
+ <para>
+  <informalexample>
+   <programlisting role="php">
+<![CDATA[
+<?php
+  for ($i = 0; $i < 5; ++$i) {
+      if ($i == 2)
+          continue
+      print "$i\n";
+  }
+?>
+]]>
+   </programlisting>
+   <para>
+    기대했던 결과는:
+   </para>
+   <screen>
+<![CDATA[
+0
+1
+3
+4
+]]>
+   </screen>
+   <para>
+    하지만 스크립트의 출력은:
+   </para>
+   <screen>
+<![CDATA[
+2
+]]>
+   </screen>
+   <para>
+    <function>print</function> 호출의 반환값은
+    <literal>int(1)</literal>이기 때문에, 위에서 언급한 선택적인 수 인수로
+    간주합니다.
+   </para>
+  </informalexample>
+ </para>
+</sect1>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"../../manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->

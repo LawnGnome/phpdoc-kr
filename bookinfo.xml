@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.56 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.57 Maintainer: progcom Status: ready -->
 
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
   &frontpage.authors;
@@ -35,14 +35,14 @@
   </authorgroup>
 
   <copyright>
-   <year>1997-2008</year>
+   <year>1997-2009</year>
    <holder>the PHP Documentation Group (PHP 문서 그룹)</holder>
   </copyright>
 
   <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>저작권</title>
    <simpara>
-    Copyright &copy; 1997 - 2008 by the PHP Documentation Group.
+    Copyright &copy; 1997 - 2009 by the PHP Documentation Group.
     이 저작물은 Creative Commons Attribution 3.0 이상의 사용허가 조항 및
     제약에 따를 경우에 배포할 수 있습니다. <link linkend="cc.license">Creative
      Commons Attribution 3.0 라이센스</link> 사본은 매뉴얼과 함께 배포됩니다.

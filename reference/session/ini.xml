@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.54 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.55 Maintainer: progcom Status: ready -->
 <section xml:id="session.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
@@ -217,8 +217,9 @@
      생성할 때
      <literal>/tmp/4/b/1/e/3/sess_4b1e384ad74619bd212e236e52a5a174If</literal>처럼
      위치합니다. N을 사용하기 전에 이러한 디렉토리를 생성해야 합니다. 이를
-     위해 <filename>mod_files.sh</filename>라고 불리는 작은 쉘 스크립트가
-     <filename>ext/session</filename>에 존재합니다. N이 사용되고 0보다 크면
+     위해 <filename>mod_files.sh</filename>로 불리는 작은 쉘 스크립트가
+     <filename>ext/session</filename>에 존재합니다. 윈도우 버전은
+     <filename>mod_files.bat</filename>입니다. N이 사용되고 0보다 크면
      자동 쓰레기 수거를 수행하지 않습니다. &php.ini;에서 자세한 정보를
      확인하십시오. 또한, N을 사용할 때 <literal>session.save_path</literal>를
      "따옴표"로 감싸야 합니다. 구분자(<literal>;</literal>)가 &php.ini;에서
