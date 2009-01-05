@@ -130,11 +130,11 @@ echo $user; // name 출력
   &reftitle.seealso;
   <para>
    <simplelist>
-    <member><function></function></member>
-    <member><function></function></member>
-    <member><function></function></member>
-    <member><function></function></member>
-    <member><function></function></member>
+    <member><function>preg_match</function></member>
+    <member><function>stristr</function></member>
+    <member><function>strpos</function></member>
+    <member><function>strrchr</function></member>
+    <member><function>substr</function></member>
    </simplelist>
   </para>
  </refsect1>
