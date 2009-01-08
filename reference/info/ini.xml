@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.25 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.26 Maintainer: progcom Status: ready -->
 <section xml:id="info.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
@@ -81,6 +81,12 @@
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
      <entry>PHP 6.0.0에서 제거.</entry>
+    </row>
+    <row>
+     <entry>zend.enable_gc</entry>
+     <entry>"1"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 5.3.0부터 사용할 수 있습니다.</entry>
     </row>
     </tbody>
    </tgroup>
@@ -280,6 +286,18 @@
       함수는 백슬래시로 인용됩니다. <link
        linkend="ini.magic-quotes-sybase">magic_quotes-sybase</link>도 on이면,
       작은 따옴표는 백슬래시 대신 작은 따옴표로 이스케이프합니다.
+     </para>
+    </listitem>
+   </varlistentry>
+
+   <varlistentry xml:id="ini.zend.enable-gc">
+    <term>
+     <parameter>zend.enable_gc</parameter>
+     <type>boolean</type>
+    </term>
+    <listitem>
+     <para>
+      순환 참조 수집기의 활성화 여부.
      </para>
     </listitem>
    </varlistentry>

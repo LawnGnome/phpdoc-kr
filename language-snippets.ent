@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.235 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.238 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 
@@ -336,10 +336,9 @@ xmlns:xlink='http://www.w3.org/1999/xlink'>php_timezonedb.dll</link>.</simpara><
 <type>integer</type> 유닉스 타임스탬프입니다. 즉, 기본값은
 <function>time</function> 값입니다.</para></listitem></varlistentry>'>
 
-<!ENTITY date.datetime.description '<varlistentry><term><parameter>
-object</parameter></term><listitem><para>절차식 전용:
-<function>date_create</function>가 반환하는 <classname>DateTime</classname>
-객체.</para></listitem></varlistentry>'>
+<!ENTITY date.datetime.description '<varlistentry><term><parameter>object</parameter></term>
+<listitem><para>절차식 전용: <function>date_create</function>가 반환하는
+<classname>DateTime</classname> 객체.</para></listitem></varlistentry>'>
 
 <!ENTITY date.datetimezone.description '<varlistentry><term><parameter>
 obejct</parameter></term><listitem><para>절차식 전용:
@@ -593,6 +592,8 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 '<varlistentry><term><parameter>stmt</parameter></term><listitem><para>순차
 형식 전용: <function>mysqli_stmt_init</function>가 반환한 statement
 식별자.</para></listitem></varlistentry>'>
+<!ENTITY mysqli.available.mysqlnd '<link
+linkend="mysqli.overview.mysqlnd">mysqlnd</link>에서만 사용할 수 있습니다.'>
 
 <!-- Notes for SAPI/Apache -->
 <!ENTITY note.apache.nsapi-module '<note><para>PHP 4.3.3부터 이 함수를
