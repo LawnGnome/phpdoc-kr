@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.80 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.81 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <appendix xml:id="wrappers" xmlns="http://docbook.org/ns/docbook"
  xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -917,6 +917,78 @@ class_tree.php: 1.8K
       <row>
        <entry><function>rmdir</function> 지원</entry>
        <entry>아니오</entry>
+      </row>
+     </tbody>
+    </tgroup>
+   </table>
+  </para>
+ </section>
+
+
+ <section xml:id="wrappers.phar">
+  <title>Phar</title>
+  <simpara>
+   <filename>phar://</filename> 스트림 래퍼는 PHP 5.3.0부터 사용할 수
+   있습니다. 자세한 설명은 <link linkend="phar.using.stream">Phar 스트림
+    래퍼</link>를 참고하십시오.
+  </simpara>
+
+  <para>
+   <table>
+    <title>래퍼 요약</title>
+    <tgroup cols="2">
+     <thead>
+      <row>
+       <entry>속성</entry>
+       <entry>지원</entry>
+      </row>
+     </thead>
+     <tbody>
+      <row>
+       <entry><link linkend="ini.allow-url-fopen">allow_url_fopen</link>으로
+        제한</entry>
+       <entry>아니오</entry>
+      </row>
+      <row>
+       <entry><link linkend="ini.allow-url-include">allow_url_include</link>로
+       제한</entry>
+       <entry>아니오</entry>
+      </row>
+      <row>
+       <entry>읽기 허용</entry>
+       <entry>네</entry>
+      </row>
+      <row>
+       <entry>쓰기 허용</entry>
+       <entry>네</entry>
+      </row>
+      <row>
+       <entry>추가 허용</entry>
+       <entry>아니오</entry>
+      </row>
+      <row>
+       <entry>동시 읽기/쓰기 허용</entry>
+       <entry>네</entry>
+      </row>
+      <row>
+       <entry><function>stat</function> 지원</entry>
+       <entry>네</entry>
+      </row>
+      <row>
+       <entry><function>unlink</function> 지원</entry>
+       <entry>네</entry>
+      </row>
+      <row>
+       <entry><function>rename</function> 지원</entry>
+       <entry>네</entry>
+      </row>
+      <row>
+       <entry><function>mkdir</function> 지원</entry>
+       <entry>네</entry>
+      </row>
+      <row>
+       <entry><function>rmdir</function> 지원</entry>
+       <entry>네</entry>
       </row>
      </tbody>
     </tgroup>

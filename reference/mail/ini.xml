@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.15 Maintainer: progcom Status: ready -->
 <section xml:id="mail.configuration" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.runtime;
  &extension.runtime;
@@ -17,25 +17,37 @@
    </thead>
    <tbody>
     <row>
-     <entry>SMTP</entry>
+     <entry><link linkend="ini.mail.add-x-header">mail.add_x_header</link></entry>
+     <entry>"0"</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 5.3.0부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry><link linkend="ini.mail.log">mail.log</link></entry>
+     <entry>""</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>PHP 5.3.0부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry><link linkend="ini.smtp">SMTP</link></entry>
      <entry>"localhost"</entry>
      <entry>PHP_INI_ALL</entry>
      <entry></entry>
     </row>
     <row>
-     <entry>smtp_port</entry>
+     <entry><link linkend="ini.smtp-port">smtp_port</link></entry>
      <entry>"25"</entry>
      <entry>PHP_INI_ALL</entry>
      <entry></entry>
     </row>
     <row>
-     <entry>sendmail_from</entry>
+     <entry><link linkend="ini.sendmail-from">sendmail_from</link></entry>
      <entry>NULL</entry>
      <entry>PHP_INI_ALL</entry>
      <entry>PHP 4.3.0부터 사용할 수 있습니다.</entry>
     </row>
     <row>
-     <entry>sendmail_path</entry>
+     <entry><link linkend="ini.sendmail-path">sendmail_path</link></entry>
      <entry>"/usr/sbin/sendmail -t -i"</entry>
      <entry>PHP_INI_SYSTEM</entry>
      <entry></entry>
@@ -50,6 +62,32 @@
  
  <para>
  <variablelist>
+  <varlistentry xml:id="ini.mail.add-x-header">
+   <term>
+    <parameter>mail.add_x_header</parameter>
+    <type>bool</type>
+   </term>
+   <listitem>
+    <para>
+     스크립트의 UID와 파일명을 가지는
+     <literal>X-PHP-Originating-Script</literal>를 추가합니다.
+    </para>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.mail.log">
+   <term>
+    <parameter>mail.log</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <para>
+     모든 <function>mail</function> 호출에 대하여 스크립트 경로, 줄 수,
+     <literal>To</literal> 주소, 헤더를 기록합니다.
+    </para>
+   </listitem>
+  </varlistentry>
+
   <varlistentry xml:id="ini.smtp">
    <term>
     <parameter>SMTP</parameter>

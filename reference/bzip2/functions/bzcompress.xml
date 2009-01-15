@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.11 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.12 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 <refentry xml:id="function.bzcompress" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
@@ -11,8 +11,8 @@
   <methodsynopsis>
    <type>mixed</type><methodname>bzcompress</methodname>
    <methodparam><type>string</type><parameter>source</parameter></methodparam>
-   <methodparam choice="opt"><type>int</type><parameter>blocksize</parameter></methodparam>
-   <methodparam choice="opt"><type>int</type><parameter>workfactor</parameter></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>blocksize</parameter><initializer>4</initializer></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>workfactor</parameter><initializer>0</initializer></methodparam>
   </methodsynopsis>
   <para>
    <function>bzcompress</function>는 주어진 문자열을
@@ -47,8 +47,8 @@
      <listitem>
       <para>
        반복이 많은 입력 데이터와 같은 최악의 경우에 압축이 어떻게 동작할지에
-       대해 제어한다. 이 값은 0부터 250이 될수 있고, 0은 특수한 상황에서
-       쓰이며 기본값은 30입니다.
+       대해 제어한다. 이 값은 0부터 250이 될수 있고, 0은 특별한 값으로
+       기본값입니다.
       </para>
       <para>
        <parameter>workfactor</parameter>에 
