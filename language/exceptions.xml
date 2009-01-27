@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.8 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
  <chapter xml:id="language.exceptions" xmlns="http://docbook.org/ns/docbook">
   <title>예외</title>
 
@@ -200,7 +200,7 @@ class TestException
 
             case self::THROW_DEFAULT:
                 // 기본 예외 던지기
-                throw new Exception('2 isnt allowed as a parameter', 6);
+                throw new Exception('2 is not allowed as a parameter', 6);
                 break;
 
             default: 
