@@ -821,7 +821,7 @@ MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 목록을 참고하십시오.</para>'>
 <!ENTITY see.http.configuration.force_exit '"exits"의 의미에 대해서
 &link.http.configuration; <link
-linkend="http.configuration.force_exit">http.force_exit</link>를
+linkend="http.configuration.force-exit">http.force_exit</link>를
 참고하십시오.'>
 
 <!ENTITY link.http.configuration '<link linkend="http.configuration">INI
