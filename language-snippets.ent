@@ -1,4 +1,4 @@
-<!-- EN-Revision: 1.238 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.242 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 
@@ -216,6 +216,14 @@ linkend="ini.register-long-arrays">register_long_arrays</link> 지시어로
 
 <!ENTITY manual.migration.seealso 'PHP 버전에 맞는 이행 가이드를
 참고하십시오.'>
+
+<!ENTITY style.oop '객체 기반 스타일'>
+<!ENTITY style.procedural '절차식 스타일'>
+
+<!ENTITY resource '<link linkend="language.types.resource">자원</link>'>
+
+<!ENTITY foreach '<link linkend="control-structures.foreach">foreach</link>'>
+
 
 <!-- Returns -->
 
@@ -899,6 +907,9 @@ linkend="svn.constants.type">type 상수</link>를 참고하십시오.'>
 발생합니다.'>
 <!ENTITY imagick.imagickpixeliterator.throws '오류시에
 ImagickPixenIterratorException이 발생합니다.'>
+
+<!-- Imagick version infos -->
+<!ENTITY imagick.method.available.0x629 '이 메쏘드는 Imagick을 ImageMagick 6.2.9 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
 
 <!ENTITY note.openssl.cnf '<note
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수가 제대로 작동하려면
