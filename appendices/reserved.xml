@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.80 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.83 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 
  <appendix xml:id="reserved" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -113,7 +113,7 @@
         <link linkend="control-structures.for">for</link>
        </entry>
        <entry>
-        <link linkend="control-structures.foreach">foreach</link>
+        &foreach;
        </entry>
        <entry>
         <link linkend="functions.user-defined">function</link>
@@ -355,6 +355,24 @@
      </varlistentry>
     </variablelist>
    </sect2>
+
+   <sect2 xml:id="reserved.classes.closure">
+    <title>Closure</title>
+
+    <simpara>
+     기선언 최종 클래스 <classname>Closure</classname>는 PHP 5.3.0에서
+     나왔습니다. <link linkend="functions.anonymous">익명 함수</link>의 내부
+     구현에 사용됩니다.
+    </simpara>
+    <simpara>
+     이 클래스는 객체의 수동 생성과 <link
+      linkend="language.oop5.magic.invoke">호출 마법</link>의
+     <literal>__invoke</literal> 메쏘드를 금지합니다.
+     (<constant>E_RECOVERABLE_ERROR</constant> 발생)
+    </simpara>
+
+   </sect2>
+
 
    <sect2 xml:id="reserved.classes.special">
     <title>특수 클래스</title>

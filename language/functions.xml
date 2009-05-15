@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 1.69 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 1.70 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
- <chapter xml:id="language.functions" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <chapter xml:id="language.functions" xmlns="http://docbook.org/ns/docbook">
   <title>함수</title>
 
   <sect1 xml:id="functions.user-defined">
@@ -584,10 +584,40 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
     <function>get_extension_funcs</function>, 
     <function>dl</function>섹션을 참고할것.
    </para>
+  </sect1>
 
-   <!-- FIXME: Fixes build -->
-   <para xml:id='functions.anonymous'><link xlink:href="http://php.net/manual/en/functions.anonymous">Anonymous Functions</link></para>
-
+  <sect1 xml:id="functions.anonymous">
+   <title>익명 함수</title>
+   <para>
+    익명 함수는 이름을 지정하지 않은 함수를 생성할 수 있게 합니다. <link
+     linkend="language.types.callback">콜백</link> 인수에 매우 유용하나, 다른
+    용도로 사용할 수도 있습니다.
+   </para>
+   <para>
+    <example>
+     <title>익명 함수 예제</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+echo preg_replace_callback('~-([a-z])~', function ($match) {
+    return strtoupper($match[1]);
+}, 'hello-world');
+// 출력: helloWorld
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+   <para>
+    익명 함수는 내부적으로 <link
+     linkend="reserved.classes.closure"><literal>Closure</literal>
+     클래스</link>로 구현됩니다.
+   </para>
+   <note>
+    <para>
+     익명 함수는 PHP 5.3.0부터 사용할 수 있습니다.
+    </para>
+   </note>
   </sect1>
 
  </chapter>
