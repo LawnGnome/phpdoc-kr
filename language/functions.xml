@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- EN-Revision: 1.69 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
- <chapter xml:id="language.functions" xmlns="http://docbook.org/ns/docbook">
+ <chapter xml:id="language.functions" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>함수</title>
 
   <sect1 xml:id="functions.user-defined">
@@ -584,6 +584,10 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
     <function>get_extension_funcs</function>, 
     <function>dl</function>섹션을 참고할것.
    </para>
+
+   <!-- FIXME: Fixes build -->
+   <para xml:id='functions.anonymous'><link xlink:href="http://php.net/manual/en/functions.anonymous">Anonymous Functions</link></para>
+
   </sect1>
 
  </chapter>
