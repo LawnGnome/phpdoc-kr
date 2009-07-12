@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.59 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
  <appendix xml:id="migration5" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP 4에서 PHP 5.0.x로 이행</title>
   <para>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.12 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: n/a Maintainer: pcraft Status: ok -->
 <refentry xml:id="function.mysql-result" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_result</refname>

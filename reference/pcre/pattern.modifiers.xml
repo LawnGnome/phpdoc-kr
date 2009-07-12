@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
 <article xml:id="reference.pcre.pattern.modifiers" xmlns="http://docbook.org/ns/docbook">
  <title>패턴 변경자</title>
  <titleabbrev>정규표현식 패턴에 존재하는 변경자</titleabbrev>

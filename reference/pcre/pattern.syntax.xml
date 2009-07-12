@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.23 Maintainer: progcom Status: wip -->
+<!-- EN-Revision: n/a Maintainer: progcom Status: wip -->
 <chapter xml:id="reference.pcre.pattern.syntax" xmlns="http://docbook.org/ns/docbook">
  <title>패턴 문법</title>
  <titleabbrev>PCRE 정규표현식 문법</titleabbrev>

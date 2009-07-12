@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.9 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 283836 Maintainer: progcom Status: ready -->
 <refentry xmlns="http://docbook.org/ns/docbook" xml:id="function.session-unregister">
  <refnamediv>
   <refname>session_unregister</refname>

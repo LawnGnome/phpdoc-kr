@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.265 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 <!ENTITY changelog.randomseed '<row><entry>4.2.0</entry><entry>난수 생성기는 자동으로 초기화됩니다.</entry></row>'>

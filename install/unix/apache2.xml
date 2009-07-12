@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.10 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 283796 Maintainer: progcom Status: ready -->
    <sect1 xml:id="install.unix.apache2" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>유닉스 시스템 아파치 2.0</title>
     <para>

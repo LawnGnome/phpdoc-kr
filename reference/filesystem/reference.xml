@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 1.16 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 283810 Maintainer: progcom Status: ready -->
 
 <reference xml:id="ref.filesystem" xmlns="http://docbook.org/ns/docbook">
  <title>파일시스템 &Functions;</title>
