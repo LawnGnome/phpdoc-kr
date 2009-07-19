@@ -236,7 +236,7 @@ preg_match_all("/\(?  (\d{3})?  \)?  (?(1)  [\-\s] ) \d{3}-\d{4}/x",
 // 문자열이 더블 쿼터(")안에 있을 경우에는 백슬래시가 하나 더 필요합니다.
 $html = "<b>bold text</b><a href=howdy.html>click me</a>";
 
-preg_match_all("/(<([\w]+)[^>]*>)(.*)(<\/\\2>)/", $html, $matches);
+preg_match_all("/(<([\w]+)[^>]*>)(.*?)(<\/\\2>)/", $html, $matches);
 
 foreach ($matches as $val) {
   echo "matched: " . $val[0] . "\n";
