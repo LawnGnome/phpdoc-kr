@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 283791 Maintainer: progcom Status: ready -->
 <!-- CREDITS: rhheo -->
 
 <preface xml:id="preface" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -7,8 +7,8 @@
  <info><title>서문</title>
   <abstract>
    <simpara>
-    <acronym>PHP</acronym>는 하이퍼텍스트 전처리기("PHP:
-    Hypertext Preprocessor")를 의미하며, 널리 쓰이는 오픈 소스 일반 스크립트
+    <acronym>PHP</acronym>는 하이퍼텍스트 전처리기(&quot;<literal>PHP:
+     Hypertext Preprocessor</literal>&quot;)를 의미하며, 널리 쓰이는 오픈 소스 일반 스크립트
     언어입니다. 특히 웹 개발에 적합하고 HTML에 삽입할 수 있습니다. 문법은 C,
     Java, Perl과 흡사하여 배우기 쉽습니다. 주 목표는 웹 개발자가 동적으로
     생성되는 웹 페이지를 빠르게 개발할 수 있게 하는 것이지만, PHP로 할 수 있는

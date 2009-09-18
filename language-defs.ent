@@ -1,4 +1,4 @@
-<!-- EN-Revision: 279251 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 287860 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -31,7 +31,7 @@
 <!ENTITY AuthenticationServices			"인증 서비스">
 <!ENTITY OtherServices				"기타 서비스">
 <!ENTITY CompressionExtentions			"압축 확장">
-<!ENTITY CalendarandEventRelatedExtentions	"달력과 이벤트 관련 확장">
+<!ENTITY CalendarandEventRelatedExtentions	"날짜와 시간 관련 확장">
 <!ENTITY NonTextMIMEOutput			"비텍스트 MIME 출력">
 <!ENTITY ImageProcessingandGeneration		"이미지 처리와 생성">
 <!ENTITY AudioFormatsManipulation		"오디오 형식 조작">

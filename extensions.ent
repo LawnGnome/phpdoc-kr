@@ -1,11 +1,11 @@
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 287860 Maintainer: progcom Status: ready -->
 
 <!--
   Entities for the categorized extension list, so it does not need
   to be translated, and thus it is not going to be outdated.
 -->
 
-<!ENTITY extcat.intro '<title>확장 분류</title><para>이 부록은 PHP 매뉴얼에
+<!ENTITY extcat.intro '<title>확장 목록/분류</title><para>이 부록은 PHP 매뉴얼에
 문서화된 150개가 넘는 확장을 몇몇 기준에 따라 분류한 것입니다.</para>'>
 
 <!ENTITY extcat.alphabetical '<title>알파벳순</title>'>
@@ -48,7 +48,7 @@
 
 <!ENTITY extcat.purpose.compression '<title>압축 확장</title>'>
 
-<!ENTITY extcat.purpose.calendar '<title>달력과 이벤트 관련 확장</title>'>
+<!ENTITY extcat.purpose.calendar '<title>날짜와 시간 관련 확장</title>'>
 
 <!ENTITY extcat.purpose.utilspec '<title>특정 용도 한정 확장</title>'>
 <!ENTITY extcat.purpose.utilspec.nontext '<title>텍스트가 아닌 MIME 출력</title>'>

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 288078 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 <!ENTITY changelog.randomseed '<row><entry>4.2.0</entry><entry>난수 생성기는 자동으로 초기화됩니다.</entry></row>'>
 
 <!-- Notes -->
+
+<!ENTITY note.regex.deprecated '<note><para>PHP 5.3.0부터 regex 확장은
+배제되었습니다. <link linkend="book.pcre">PCRE 확장</link>이 같은 기능을
+합니다. 이 함수를 호출하면 <constant>E_DEPRECATED</constant> 주의가
+발생합니다.</para></note>'>
 
 <!ENTITY note.bin-safe '<note><simpara>이 함수는 바이너리
 안전입니다.</simpara></note>'>
@@ -86,8 +91,9 @@ linkend="ini.register-globals">register_globals</link>의 기본값은
 
 <!ENTITY tip.fopen-wrapper '<tip><simpara><link linkend="ini.allow-url-fopen"
 >fopen 래퍼</link>를 활성화하면, 파일명으로 URL을 사용할 수 있습니다.
-파일 이름을 지정하는 방법은 <function>fopen</function>을, 지원하는 URL 프로토콜
-목록은 <xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
+파일 이름을 지정하는 방법은 <function>fopen</function>을 참고하십시오.
+다양한 래퍼의 기능, 사용법, 제공하는 예약 정의 변수들에 대해서는 
+<xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
 <!ENTITY tip.fopen-wrapper.stat '<tip><simpara>PHP 5.0.0부터 이 함수는
 <emphasis>몇몇</emphasis> URL 래퍼를 사용할 수 있습니다. 기능적으로
@@ -115,6 +121,11 @@ linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 예고 없이 변경될 수 있습니다. 이 확장 모듈의 사용은 사용자의 책임하에
 이루어집니다.</simpara></warning>'>
 
+<!ENTITY warn.deprecated.feature-5-3.0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은 PHP 5.3.0부터
+<emphasis>배제</emphasis>되었습니다. 이 기능에 의존하지 않기를
+권합니다.</simpara></warning>'>
+
 <!ENTITY warn.deprecated.feature-5-3-0.removed-6-0-0 '<warning
 xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은 PHP 5.3.0부터
 <emphasis>배제되고</emphasis> PHP 6.0.0부터 <emphasis>제거됩니다</emphasis>.
@@ -129,6 +140,11 @@ xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5.3.0부터
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <emphasis>배제되었고</emphasis> PHP 5.3.0부터
 <emphasis>제거됩니다</emphasis>.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-5-3-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 별칭은 PHP 5.3.0부터
+<emphasis>배제</emphasis>되었습니다. 이 기능에 의존하지 않기를
+권합니다.</simpara></warning>'>
 
 <!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <emphasis>실험적</emphasis>입니다. 이 함수의 작동, 함수의 이름,
@@ -185,6 +201,15 @@ PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 �
 <!ENTITY example.outputs.64bit '<para>64비트 머신에서 위 예제의 출력:</para>'>
 
 <!ENTITY example.outputs.similar '<para>위 예제의 출력 예시:</para>'>
+
+<!ENTITY examples.outputs '<para>위 예제들의 출력:</para>'>
+
+<!ENTITY examples.outputs.32bit '<para>32비트 머신에서 위 예제들의 출력:</para>'>
+
+<!ENTITY examples.outputs.64bit '<para>64비트 머신에서 위 예제들의 출력:</para>'>
+
+<!ENTITY examples.outputs.similar '<para>위 예제들의 출력 예시:</para>'>
+
 
 <!ENTITY array.resetspointer '<note><simpara>이 함수는 사용 후에
 <type>array</type> 포인터를 <function>reset</function>합니다.</simpara></note>'>
@@ -374,10 +399,10 @@ xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>를 통해 설치할
 <!ENTITY date.timezone.bc '<simpara>여기에 있는 시간대 목록을 사용하지
 마십시오(UTC 제외). 하위 호환을 위해서 남겨져 있을 뿐입니다.</simpara>'>
 
-
 <!ENTITY date.timezone.errors.description '<para>모든 날짜/시간 함수 호출은
 시간대가 유효하지 않을 때 <constant>E_NOTICE</constant>를, 시스템 설정이나
-<varname>TZ</varname> 환경 변수를 사용할 때 <constant>E_STRICT</constant>를
+<varname>TZ</varname> 환경 변수를 사용할 때 <constant>E_STRICT</constant>나
+<constant>E_WARNING</constant> 메세지를
 생성합니다. <function>date_default_timezone_set</function>을
 참고하십시오.</para>'>
 
@@ -396,6 +421,21 @@ xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>를 통해 설치할
 <!ENTITY date.datetime.retval.changelog
 '<row><entry>5.3.0</entry><entry>반환값을 &null;에서
 <classname>DateTime</classname>으로 변경.</entry></row>'>
+
+<!ENTITY date.timezone.dbversion '이 목록은 timezone 데이터베이스 버전에
+기초하고 있습니다.'>
+
+<!ENTITY date.timezone.africa '아프리카'>
+<!ENTITY date.timezone.america '아메리카'>
+<!ENTITY date.timezone.antarctica '남극'>
+<!ENTITY date.timezone.arctic '북극'>
+<!ENTITY date.timezone.asia '아시아'>
+<!ENTITY date.timezone.atlantic '대서양'>
+<!ENTITY date.timezone.australia '호주'>
+<!ENTITY date.timezone.europe '유럽'>
+<!ENTITY date.timezone.indian '인도'>
+<!ENTITY date.timezone.pacific '태평양'>
+<!ENTITY date.timezone.othres '기타'>
 
 <!ENTITY date.datetime.description '<varlistentry><term><parameter>object</parameter></term>
 <listitem><para>절차식 전용: <function>date_create</function>가 반환하는
@@ -976,6 +1016,36 @@ ImagickPixenIterratorException이 발생합니다.'>
 <!ENTITY imagick.method.available.0x629 '이 메쏘드는 Imagick을 ImageMagick 6.2.9 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
 <!ENTITY imagick.method.available.0x631 '이 메쏘드는 Imagick을 ImageMagick 6.3.1 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
 <!ENTITY imagick.method.available.0x632 '이 메쏘드는 Imagick을 ImageMagick 6.3.2 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x636 '이 메쏘드는 Imagick을 ImageMagick 6.3.6 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x637 '이 메쏘드는 Imagick을 ImageMagick 6.3.7 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x638 '이 메쏘드는 Imagick을 ImageMagick 6.3.8 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x639 '이 메쏘드는 Imagick을 ImageMagick 6.3.9 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x640 '이 메쏘드는 Imagick을 ImageMagick 6.4.0 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x641 '이 메쏘드는 Imagick을 ImageMagick 6.4.1 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x642 '이 메쏘드는 Imagick을 ImageMagick 6.4.2 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x643 '이 메쏘드는 Imagick을 ImageMagick 6.4.3 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x644 '이 메쏘드는 Imagick을 ImageMagick 6.4.4 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+
+<!ENTITY imagick.constant.available '이 상수는 Imagick이 다음 ImageMagick 버전으로 컴파일 했을 때만 사용할 수 있습니다:'>
+
+<!-- Imagick default channel information -->
+<!ENTITY imagick.default.channel.info '기본값은
+<constant>Imagick::CHANNEL_DEFAULT</constant>. <link
+linkend="imagick.constants.channel">채널 상수</link> 목록을 참고하십시오.'>
+
+<!-- Fuzz parameter -->
+<!ENTITY imagick.parameter.fuzz 'fuzz 양. 예를 들면, fuzz를 10으로 설정했을 때
+붉은색의 농도를 100과 102로 설정한 것은 같은 색으로 취급합니다.'>
+
+<!-- Channel parameter -->
+<!ENTITY imagick.parameter.channel '채널 모드에 유효한 채널 상수를 제공합니다.
+둘 이상의 채널을 적용하려면, 비트 연산자를 이용해서 <link
+linkend="imagick.constants.channel">채널 상수</link>를 조합하십시오.
+&imagick.default.channel.info;'>
+
+<!-- Alpha parameter -->
+<!ENTITY imagick.parameter.alpha '투명도 단계: 1.0은 모두 보이고 0.0은
+완전한 투명입니다.'>
 
 <!ENTITY imagick.imagickexception.throw '오류 시에
 <classname>ImagickException</classname>을 던집니다.'>
@@ -1045,4 +1115,20 @@ xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0�
 컨텍스트를 넘겼을 때,
 <varname linkend="streamwrapper.props.context">streamWrapper->context</varname>
 프로퍼티가 갱신됩니다.</para></note>'>
+
+<!-- Gmagick -->
+<!ENTITY gmagick.return.success '성공시에 &true;를 반환합니다.'>
+<!ENTITY gmagick.gmagicexception.thorw '오류 시에
+<classname>GmagickException</classname>을 던집니다.'>
+
+<!-- Reflection -->
+<!ENTITY reflection.export.return '<parameter>return</parameter> 인수를
+&true;로 설정하면, export를 <type>string</type>으로 반환합니다.
+그렇지 않으면 &null;을 반환합니다.'>
+
+<!ENTITY reflection.export.param.return '&true;로 설정하면 export를 반환하고,
+반대의 경우는 버립니다. &false;로 설정(기본값)은 반대를 수행합니다.'>
+
+<!ENTITY reflection.export.param.name 'export할 reflection'>
+
 
