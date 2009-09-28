@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 283799 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 288721 Maintainer: progcom Status: ready -->
   <chapter xml:id="security.general" xmlns="http://docbook.org/ns/docbook">
    <title>일반적인 고려 사항</title>
    <simpara>
@@ -50,7 +50,7 @@ sgml-indent-step:1
 sgml-indent-data:t
 indent-tabs-mode:nil
 sgml-parent-document:nil
-sgml-default-dtd-file:"../../manual.ced"
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
 sgml-exposed-tags:nil
 sgml-local-catalogs:nil
 sgml-local-ecat-files:nil
