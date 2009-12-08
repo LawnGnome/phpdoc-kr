@@ -16,7 +16,7 @@
    출력 버퍼의 모든 내용을 버립니다.
   </para>
   <para>
-   이 함수는 <function>ob_enc_clean</function>처럼 출력 버퍼를 파괴하지는
+   이 함수는 <function>ob_end_clean</function>처럼 출력 버퍼를 파괴하지는
    않습니다.
   </para>
  </refsect1>
