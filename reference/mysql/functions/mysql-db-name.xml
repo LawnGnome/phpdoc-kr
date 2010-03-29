@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 288721 Maintainer: pcraft Status: ok -->
+<!-- EN-Revision: 297028 Maintainer: pcraft Status: ok -->
 <refentry xml:id="function.mysql-db-name" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>mysql_db_name</refname>

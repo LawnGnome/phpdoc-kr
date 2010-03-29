@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 288721 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 297028 Maintainer: progcom Status: ready -->
 <para xmlns="http://docbook.org/ns/docbook">
  PHP 4.3.0 이상에서 다음 문자셋을 지원합니다.
  <table>

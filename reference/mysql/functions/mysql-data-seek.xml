@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 288721 Maintainer: pcraft Status: ready -->
+<!-- EN-Revision: 297028 Maintainer: pcraft Status: ready -->
 <!-- CREDITS: pcraft -->
 <refentry xml:id="function.mysql-data-seek" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
