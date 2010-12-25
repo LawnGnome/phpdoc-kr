@@ -1,4 +1,4 @@
-<!-- EN-Revision: 287860 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 298760 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -62,34 +62,39 @@
 <!ENTITY Alias             "별칭:">
 <!ENTITY Type              "자료형">
 <!ENTITY Changelog         "변경점">
+<!ENTITY Methods           "메소드">
+<!ENTITY InheritedMethods  "상속된 메소드">
+<!ENTITY InheritedProperties "상속된 프로퍼티">
+<!ENTITY Properties        "프로퍼티">
+<!ENTITY Constants         "상수">
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
-<!ENTITY reftitle.changelog    '<title>&Changelog;</title>'>
-<!ENTITY reftitle.classes      '<title>예약 클래스</title>'>
-<!ENTITY reftitle.classsynopsis '<title>클래스 개요</title>'>
-<!ENTITY reftitle.constants    '<title>예약 상수</title>'>
-<!ENTITY reftitle.constructor  '<title>생성자</title>'>
-<!ENTITY reftitle.description  '<title>설명</title>'>
-<!ENTITY reftitle.encoding     '<title>인코딩</title>'>
-<!ENTITY reftitle.examples     '<title>예제</title>'>
-<!ENTITY reftitle.exceptions   '<title>예외</title>'>
-<!ENTITY reftitle.errors       '<title>오류/예외</title>'>
-<!ENTITY reftitle.faq          '<title>&FAQ;</title>'>
-<!ENTITY reftitle.install      '<title>설치</title>'>
-<!ENTITY reftitle.intro        '<title>소개</title>'>
-<!ENTITY reftitle.indices      '<title>인덱스</title>'>
-<!ENTITY reftitle.interfacesynopsis '<title>인터페이스 개요</title>'>
-<!ENTITY reftitle.methods      '<title>메쏘드</title>'>
-<!ENTITY reftitle.notes        '<title>주의</title>'>
-<!ENTITY reftitle.parameters   '<title>인수</title>'>
-<!ENTITY reftitle.options      '<title>옵션</title>'>
-<!ENTITY reftitle.properties   '<title>프로퍼티</title>'>
-<!ENTITY reftitle.required     '<title>요구 조건</title>'>
-<!ENTITY reftitle.resources    '<title>자원형</title>'>
-<!ENTITY reftitle.runtime      '<title>실행시 설정</title>'>
-<!ENTITY reftitle.returnvalues '<title>반환값</title>'>
-<!ENTITY reftitle.seealso      '<title>참고</title>'>
-<!ENTITY reftitle.setup	       '<title>설치/설정</title>'>
-<!ENTITY reftitle.unicode      '<title>유니코드</title>'>
+<!ENTITY reftitle.changelog    '<title xmlns="http://docbook.org/ns/docbook">&Changelog;</title>'>
+<!ENTITY reftitle.classes      '<title xmlns="http://docbook.org/ns/docbook">예약 클래스</title>'>
+<!ENTITY reftitle.classsynopsis '<title xmlns="http://docbook.org/ns/docbook">클래스 개요</title>'>
+<!ENTITY reftitle.constants    '<title xmlns="http://docbook.org/ns/docbook">예약 상수</title>'>
+<!ENTITY reftitle.constructor  '<title xmlns="http://docbook.org/ns/docbook">생성자</title>'>
+<!ENTITY reftitle.description  '<title xmlns="http://docbook.org/ns/docbook">설명</title>'>
+<!ENTITY reftitle.encoding     '<title xmlns="http://docbook.org/ns/docbook">인코딩</title>'>
+<!ENTITY reftitle.examples     '<title xmlns="http://docbook.org/ns/docbook">예제</title>'>
+<!ENTITY reftitle.exceptions   '<title xmlns="http://docbook.org/ns/docbook">예외</title>'>
+<!ENTITY reftitle.errors       '<title xmlns="http://docbook.org/ns/docbook">오류/예외</title>'>
+<!ENTITY reftitle.faq          '<title xmlns="http://docbook.org/ns/docbook">&FAQ;</title>'>
+<!ENTITY reftitle.install      '<title xmlns="http://docbook.org/ns/docbook">설치</title>'>
+<!ENTITY reftitle.intro        '<title xmlns="http://docbook.org/ns/docbook">소개</title>'>
+<!ENTITY reftitle.indices      '<title xmlns="http://docbook.org/ns/docbook">인덱스</title>'>
+<!ENTITY reftitle.interfacesynopsis '<title xmlns="http://docbook.org/ns/docbook">인터페이스 개요</title>'>
+<!ENTITY reftitle.methods      '<title xmlns="http://docbook.org/ns/docbook">메쏘드</title>'>
+<!ENTITY reftitle.notes        '<title xmlns="http://docbook.org/ns/docbook">주의</title>'>
+<!ENTITY reftitle.parameters   '<title xmlns="http://docbook.org/ns/docbook">인수</title>'>
+<!ENTITY reftitle.options      '<title xmlns="http://docbook.org/ns/docbook">옵션</title>'>
+<!ENTITY reftitle.properties   '<title xmlns="http://docbook.org/ns/docbook">프로퍼티</title>'>
+<!ENTITY reftitle.required     '<title xmlns="http://docbook.org/ns/docbook">요구 조건</title>'>
+<!ENTITY reftitle.resources    '<title xmlns="http://docbook.org/ns/docbook">자원형</title>'>
+<!ENTITY reftitle.runtime      '<title xmlns="http://docbook.org/ns/docbook">실행시 설정</title>'>
+<!ENTITY reftitle.returnvalues '<title xmlns="http://docbook.org/ns/docbook">반환값</title>'>
+<!ENTITY reftitle.seealso      '<title xmlns="http://docbook.org/ns/docbook">참고</title>'>
+<!ENTITY reftitle.setup	       '<title xmlns="http://docbook.org/ns/docbook">설치/설정</title>'>
+<!ENTITY reftitle.unicode      '<title xmlns="http://docbook.org/ns/docbook">유니코드</title>'>
 

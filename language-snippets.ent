@@ -1,116 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 288078 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 306338 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
-<!ENTITY changelog.randomseed '<row><entry>4.2.0</entry><entry>난수 생성기는 자동으로 초기화됩니다.</entry></row>'>
+<!ENTITY changelog.randomseed '<row xmlns="http://docbook.org/ns/docbook"><entry>4.2.0</entry><entry>난수 생성기는 자동으로 초기화됩니다.</entry></row>'>
 
 <!-- Notes -->
 
-<!ENTITY note.regex.deprecated '<note><para>PHP 5.3.0부터 regex 확장은
+<!ENTITY note.regex.deprecated '<note xmlns="http://docbook.org/ns/docbook"><para>PHP 5.3.0부터 regex 확장은
 배제되었습니다. <link linkend="book.pcre">PCRE 확장</link>이 같은 기능을
 합니다. 이 함수를 호출하면 <constant>E_DEPRECATED</constant> 주의가
 발생합니다.</para></note>'>
 
-<!ENTITY note.bin-safe '<note><simpara>이 함수는 바이너리
+<!ENTITY note.bin-safe '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 바이너리
 안전입니다.</simpara></note>'>
 
-<!ENTITY note.clearstatcache '<note><simpara>이 함수의 결과는 캐시에
+<!ENTITY note.clearstatcache '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수의 결과는 캐시에
 저장합니다. 자세한 설명은 <function>clearstatcache</function>를
 참고하십시오.</simpara></note>'>
 
-<!ENTITY note.context-support '<note><simpara>Context 지원은 PHP 5.0.0에서
+<!ENTITY note.context-support '<note xmlns="http://docbook.org/ns/docbook"><simpara>Context 지원은 PHP 5.0.0에서
 추가되었습니다. <literal>contexts</literal>에 관한 자세한 설명은 <xref
 linkend="ref.stream"/>을 참고하십시오.</simpara></note>'>
 
-<!ENTITY note.exec-bg '<note><para>백그라운드에서 실행하기 위해서 이 함수로
+<!ENTITY note.exec-bg '<note xmlns="http://docbook.org/ns/docbook"><para>백그라운드에서 실행하기 위해서 이 함수로
 프로그램을 시작하면, 프로그램의 출력은 파일이나, 다른 출력 스트림으로 보내야
 합니다. 그렇지 않으면, 프로그램이 종료할 때까지 PHP가 멈출 수
 있습니다.</para></note>'>
 
-<!ENTITY note.func-callback '<note><simpara>함수 이름 대신에, 객체의 참조와
+<!ENTITY note.func-callback '<note xmlns="http://docbook.org/ns/docbook"><simpara>함수 이름 대신에, 객체의 참조와
 메쏘드 이름을 가지는 배열을 사용할 수 있습니다.</simpara></note>'>
 
-<!ENTITY note.funcnoparam '<note><para>이 함수는 인수를 현재 영역(scope)에
+<!ENTITY note.func-callback-exceptions '<note xmlns="http://docbook.org/ns/docbook"><para><function>call_user_func</function>와 <function>call_user_func_array</function> 등으로 등록한 콜백은 이전 콜백 실행시에 처리하지 않은 예외(uncaught exception)가 존재할 경우 호출되지 않습니다.</para></note>'>
+
+<!ENTITY note.funcnoparam '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 인수를 현재 영역(scope)에
 의존하기 때문에, 함수의 인수로 사용할 수 없습니다. 이 값을 함수에 넘겨야
 한다면, 결과값을 변수에 할당하여 그 변수로 넘겨야 합니다.</para></note>'>
 
-<!ENTITY note.line-endings '<note><simpara>PHP가 매킨토시 컴퓨터에서 파일을
+<!ENTITY note.line-endings '<note xmlns="http://docbook.org/ns/docbook"><simpara>PHP가 매킨토시 컴퓨터에서 파일을
 읽거나 작성할 때 행의 끝을 판단하지 못하면, <link
 linkend="ini.auto-detect-line-endings">auto_detect_line_endings</link> 실행
 옵션을 활성화 함으로써 문제가 해결될 수 있습니다.</simpara></note>'>
 
-<!ENTITY note.no-remote '<note><simpara>이 함수는
+<!ENTITY note.no-remote '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <link linkend="features.remote-files">원격 파일</link>을 다루지 못합니다.
 파일은 서버 파일시스템을 통해서 사용 가능해야만 합니다.</simpara></note>'>
 
-<!ENTITY note.not-bin-safe '<warning><simpara>이 함수는 (아직) 바이너리
+<!ENTITY note.not-bin-safe '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 (아직) 바이너리
 안전하지 않습니다!</simpara></warning>'>
 
-<!ENTITY note.no-key-association '<note><simpara>이 함수는
+<!ENTITY note.no-key-association '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <parameter>array</parameter>에 새로운 키를 할당합니다. 이 작업은 단순히 키를
 재배열할 뿐만 아니라, 이미 할당되어 있는 키를 제거할 수
 있습니다.</simpara></note>'>
 
-<!ENTITY note.no-windows '<note><simpara>이 함수는 윈도우 플랫폼에서는
+<!ENTITY note.no-windows '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 윈도우 플랫폼에서는
 작동하지 않습니다.</simpara></note>'>
 
-<!ENTITY note.no-windows.extension '<note><simpara>이 확장 모듈은 윈도우
+<!ENTITY note.no-windows.extension '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 확장 모듈은 윈도우
 플랫폼에서는 사용할 수 없습니다.</simpara></note>'>
 
-<!ENTITY note.randomseed '<note><simpara>PHP 4.2.0부터 
+<!ENTITY note.randomseed '<note xmlns="http://docbook.org/ns/docbook"><simpara>PHP 4.2.0부터 
 <function>srand</function>나 <function>mt_srand</function>를 이용한
 난수값 생성기 초기화를 할 필요가 없습니다. 자동적으로 이루어집니다.
 </simpara></note>'>
 
-<!ENTITY note.registerglobals '<note><title>register_globals: 중요
+<!ENTITY note.registerglobals '<note xmlns="http://docbook.org/ns/docbook"><title>register_globals: 중요
 경고</title><para>PHP 4.2.0부터 PHP 지시어 <link
 linkend="ini.register-globals">register_globals</link>의 기본값은
-<emphasis>off</emphasis>이고, PHP 6.0.0에서 완전히 사라집니다. PHP
+<emphasis>off</emphasis>입니다. PHP
 커뮤니티에서는 이 지시어에 의존하지 않는 &link.superglobals; 방식의 사용을
 권합니다.</para></note>'>
 
-<!ENTITY note.is-superglobal "<note><para>이는 '자동전역' 변수입니다.
+<!ENTITY note.is-superglobal "<note xmlns='http://docbook.org/ns/docbook'><para>이는 '자동전역' 변수입니다.
 스크립트의 모든 영역에서 사용할 수 있습니다. 함수나 메쏘드 안에서 접근하기
 위해서 <command>global $variable;</command>를 할 필요가
 없습니다.</para></note>">
 
-<!ENTITY note.superglobals '<note><title>자동 전역: 사용상
+<!ENTITY note.superglobals '<note xmlns="http://docbook.org/ns/docbook"><title>자동 전역: 사용상
 주의</title><para><varname>$_GET</varname>, <varname>$_POST</varname>,
 <varname>$_SERVER</varname> 등의 자동 전역 배열은 PHP 4.1.0부터 사용할 수
 있습니다. 자세한 내용은 매뉴얼의 &link.superglobals; 섹션을
 읽어보십시오.</para></note>'>
 
-<!ENTITY note.uses-ob '<note><para>이 함수를 특정 인수와 함께 사용할 때,
+<!ENTITY note.uses-ob '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수를 특정 인수와 함께 사용할 때,
 내부적으로 출력 버퍼링을 사용합니다. 그러므로, <function>ob_start</function>
 콜백 함수 안에서는 사용할 수 없습니다.</para></note>'>
 
-<!ENTITY note.filesystem-time-res '<note><para>시간 정밀도는 각각 파일
+<!ENTITY note.filesystem-time-res '<note xmlns="http://docbook.org/ns/docbook"><para>시간 정밀도는 각각 파일
 시스템에 따라 다를 수 있습니다.</para></note>'>
+
+<!ENTITY note.uses_autoload '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수를 사용할 때 클래스를 찾을 수 없으면, 등록된 <link linkend="language.oop5.autoload">오토로더</link>를 사용합니다.</para></note>'>
 
 <!-- Tips -->
 
-<!ENTITY tip.fopen-wrapper '<tip><simpara><link linkend="ini.allow-url-fopen"
+<!ENTITY tip.fopen-wrapper '<tip xmlns="http://docbook.org/ns/docbook"><simpara><link linkend="ini.allow-url-fopen"
 >fopen 래퍼</link>를 활성화하면, 파일명으로 URL을 사용할 수 있습니다.
 파일 이름을 지정하는 방법은 <function>fopen</function>을 참고하십시오.
 다양한 래퍼의 기능, 사용법, 제공하는 예약 정의 변수들에 대해서는 
 <xref linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
-<!ENTITY tip.fopen-wrapper.stat '<tip><simpara>PHP 5.0.0부터 이 함수는
+<!ENTITY tip.fopen-wrapper.stat '<tip xmlns="http://docbook.org/ns/docbook"><simpara>PHP 5.0.0부터 이 함수는
 <emphasis>몇몇</emphasis> URL 래퍼를 사용할 수 있습니다. 기능적으로
 <function>stat</function> 패밀리를 지원하는 래퍼 목록은 <xref
 linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
-<!ENTITY tip.ob-capture '<tip><simpara>어떠한 결과가 브라우저로 직접
+<!ENTITY tip.ob-capture '<tip xmlns="http://docbook.org/ns/docbook"><simpara>어떠한 결과가 브라우저로 직접
 출력될 때, <link linkend="ref.outcontrol">출력 제어 함수</link>를
 이용해서 이 함수의 출력을 캡쳐하여, (예를 들면) <type>string</type>으로
 저장할 수 있습니다.</simpara></tip>'>
 
-<!ENTITY tip.userlandnaming '<tip><simpara>참고: <xref linkend="userlandnaming" />.</simpara></tip>'>
+<!ENTITY tip.userlandnaming '<tip xmlns="http://docbook.org/ns/docbook"><simpara>참고: <xref linkend="userlandnaming" />.</simpara></tip>'>
 
 
 <!-- Warnings -->
 
-<!ENTITY warn.escapeshell '<warning><para>사용자가 입력한 데이터를 이 함수로
+<!ENTITY warn.escapeshell '<warning xmlns="http://docbook.org/ns/docbook"><para>사용자가 입력한 데이터를 이 함수로
 넘길 때는, <function>escapeshellarg</function>나
 <function>escapeshellcmd</function>를 이용하여, 사용자가 위험한 명령을
 실행하는 조작을 하지 못하게 해야 합니다.</para></warning>'>
@@ -121,27 +125,28 @@ linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 예고 없이 변경될 수 있습니다. 이 확장 모듈의 사용은 사용자의 책임하에
 이루어집니다.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.feature-5-3.0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은 PHP 5.3.0부터
+<!ENTITY warn.deprecated.feature-5-3.0 '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은 PHP 5.3.0부터
 <emphasis>배제</emphasis>되었습니다. 이 기능에 의존하지 않기를
 권합니다.</simpara></warning>'>
 
 <!ENTITY warn.deprecated.feature-5-3-0.removed-6-0-0 '<warning
 xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은 PHP 5.3.0부터
-<emphasis>배제되고</emphasis> PHP 6.0.0부터 <emphasis>제거됩니다</emphasis>.
+<emphasis>배제됩니다</emphasis>.
 이 기능에 의존하지 않기를 권합니다.</simpara></warning>'>
 
 <!ENTITY warn.deprecated.function-5-3-0.removed-6-0-0 '<warning
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5.3.0부터
-<emphasis>배제되었고</emphasis> PHP 6.0.0부터 <emphasis>제거됩니다</emphasis>.
+<emphasis>배제됩니다</emphasis>.
 이 기능에 의존하지 않기를 권합니다.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.function.removed-5-3-0 '<warning
+<!ENTITY removed.php.future '이 배제된 기능은 추후 <emphasis xmlns="http://docbook.org/ns/docbook">제거</emphasis>될 <emphasis xmlns="http://docbook.org/ns/docbook">예정</emphasis>입니다.'>
+
+<!ENTITY warn.deprecated.function.removed-5-3-0 '<warning xmlns="http://docbook.org/ns/docbook"
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <emphasis>배제되었고</emphasis> PHP 5.3.0부터
 <emphasis>제거됩니다</emphasis>.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.alias-5-3-0 '<warning
+<!ENTITY warn.deprecated.alias-5-3-0 '<warning xmlns="http://docbook.org/ns/docbook"
 xmlns="http://docbook.org/ns/docbook"><simpara>이 별칭은 PHP 5.3.0부터
 <emphasis>배제</emphasis>되었습니다. 이 기능에 의존하지 않기를
 권합니다.</simpara></warning>'>
@@ -152,30 +157,30 @@ xmlns="http://docbook.org/ns/docbook"><simpara>이 별칭은 PHP 5.3.0부터
 변경할 수 있습니다. 이 함수의 사용에 관한 것은 사용자
 책임입니다.</simpara></warning>'>
 
-<!ENTITY warn.imaprecodeyaz '<warning><simpara><link
+<!ENTITY warn.imaprecodeyaz '<warning xmlns="http://docbook.org/ns/docbook"><simpara><link
 linkend="ref.imap">IMAP</link>, <link linkend="ref.recode">recode</link>,
 <link linkend="ref.yaz">YAZ</link>, <link linkend="ref.cyrus">Cyrus</link>
 확장은 같은 내부 심볼을 공유하기 때문에, 동시에 사용할 수
 없습니다.</simpara></warning>'>
 
-<!ENTITY warn.install.cgi '<warning><para>CGI 설정을 사용할 때, 서버가 여러
+<!ENTITY warn.install.cgi '<warning xmlns="http://docbook.org/ns/docbook"><para>CGI 설정을 사용할 때, 서버가 여러
 공격에 노출됩니다. 그러한 공격을 막기 위해 <link linkend="security.cgi-bin">CGI
 보안 섹션</link>을 읽어보십시오.</para></warning>'>
 
-<!ENTITY note.magicquotes.gpc '<note><title>지시어 주의:
+<!ENTITY note.magicquotes.gpc '<note xmlns="http://docbook.org/ns/docbook"><title>지시어 주의:
 magic_quotes_gpc</title><para>지시어 <link
 linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link>의 기본값은
 <literal>on</literal>입니다. 이것은 모든 GET, POST, COOKIE 데이터에 대해
 <function>addslashes</function>를 실행합니다. 이를 제거하기 위해서
 <function>stripslashes</function>를 사용할 수 있습니다.</para></note>'>
 
-<!ENTITY warn.no-win32-fopen-wrapper '<warning><para>PHP 4.3.0 이전의
+<!ENTITY warn.no-win32-fopen-wrapper '<warning xmlns="http://docbook.org/ns/docbook"><para>PHP 4.3.0 이전의
 윈도우 버전 PHP에서는 이 함수를 이용하여 원격 파일에
 접근할 수 없습니다. <link linkend="ini.allow-url-fopen">allow_url_fopen</link>을
 활성화하여도 마찬가지입니다.
 </para></warning>'>
 
-<!ENTITY warn.ssl-non-standard '<warning><para>SSL을 사용할 때, 마이크로소프트
+<!ENTITY warn.ssl-non-standard '<warning xmlns="http://docbook.org/ns/docbook"><para>SSL을 사용할 때, 마이크로소프트
 IIS는 <literal>close_notify</literal> 식별자를 보내지 않은채 접속을 종료하는
 프로토콜 오류가 있습니다. PHP는 데이터의 마지막에 도달했을때, 이를 "SSL: Fatal
 Protocol Error"로 보고합니다. 이를 처리하기 위해서는 <link
@@ -186,131 +191,151 @@ PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 �
 <function>fsockopen</function>을 사용한다면, 경고를 직접 검출하여 없애야
 합니다.</para></warning>'>
 
-<!ENTITY warn.undocumented.func '<warning><simpara>이 함수는 현재
+<!ENTITY warn.undocumented.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 현재
 문서화 되어있지 않습니다; 인수 목록만을 제공합니다.</simpara></warning>'>
 
 
 <!-- Misc -->
 
-<!ENTITY no.function.parameters '<para>이 함수는 인수가 없습니다.</para>'>
+<!ENTITY version.trunk.after.53 '<emphasis
+	xmlns="http://docbook.org/ns/docbook">이 변화는 PHP <link
+linkend="about.phpversions">개발 버전</link>에 적용되었으며, 5.3 이후에 적용될 것입니다.'>
 
-<!ENTITY example.outputs '<para>위 예제의 출력:</para>'>
+<!ENTITY version.trunk.changelog '미래'>
 
-<!ENTITY example.outputs.32bit '<para>32비트 머신에서 위 예제의 출력:</para>'>
+<!ENTITY no.function.parameters '<para xmlns="http://docbook.org/ns/docbook">이 함수는 인수가 없습니다.</para>'>
 
-<!ENTITY example.outputs.64bit '<para>64비트 머신에서 위 예제의 출력:</para>'>
+<!ENTITY example.outputs '<para xmlns="http://docbook.org/ns/docbook">위 예제의 출력:</para>'>
 
-<!ENTITY example.outputs.similar '<para>위 예제의 출력 예시:</para>'>
+<!ENTITY example.outputs.32bit '<para xmlns="http://docbook.org/ns/docbook">32비트 머신에서 위 예제의 출력:</para>'>
 
-<!ENTITY examples.outputs '<para>위 예제들의 출력:</para>'>
+<!ENTITY example.outputs.64bit '<para xmlns="http://docbook.org/ns/docbook">64비트 머신에서 위 예제의 출력:</para>'>
 
-<!ENTITY examples.outputs.32bit '<para>32비트 머신에서 위 예제들의 출력:</para>'>
+<!ENTITY example.outputs.similar '<para xmlns="http://docbook.org/ns/docbook">위 예제의 출력 예시:</para>'>
 
-<!ENTITY examples.outputs.64bit '<para>64비트 머신에서 위 예제들의 출력:</para>'>
+<!ENTITY examples.outputs '<para xmlns="http://docbook.org/ns/docbook">위 예제들의 출력:</para>'>
 
-<!ENTITY examples.outputs.similar '<para>위 예제들의 출력 예시:</para>'>
+<!ENTITY examples.outputs.32bit '<para xmlns="http://docbook.org/ns/docbook">32비트 머신에서 위 예제들의 출력:</para>'>
+
+<!ENTITY examples.outputs.64bit '<para xmlns="http://docbook.org/ns/docbook">64비트 머신에서 위 예제들의 출력:</para>'>
+
+<!ENTITY examples.outputs.similar '<para xmlns="http://docbook.org/ns/docbook">위 예제들의 출력 예시:</para>'>
 
 
-<!ENTITY array.resetspointer '<note><simpara>이 함수는 사용 후에
+<!ENTITY array.resetspointer '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 사용 후에
 <type>array</type> 포인터를 <function>reset</function>합니다.</simpara></note>'>
 
-<!ENTITY seelalso.array.sorting '<link linkend="array.sorting">배열 정렬 함수
+<!ENTITY seelalso.array.sorting '<link xmlns="http://docbook.org/ns/docbook" linkend="array.sorting">배열 정렬 함수
 비교</link>'>
 
-<!ENTITY seealso.callback '<link
+<!ENTITY seealso.callback '<link xmlns="http://docbook.org/ns/docbook"
 linkend="language.types.callback">callback</link>형에 대한 정보'>
 
-<!ENTITY avail.register-long-arrays 'PHP 5.0.0부터, 긴 형태의 PHP <link
-linkend="language.variables.predefined">예약 변수</link> 배열을 <link
+<!ENTITY avail.register-long-arrays 'PHP 5.0.0부터, 긴 형태의 PHP <link xmlns="http://docbook.org/ns/docbook"
+linkend="language.variables.predefined">예약 변수</link> 배열을 <link xmlns="http://docbook.org/ns/docbook"
 linkend="ini.register-long-arrays">register_long_arrays</link> 지시어로
 제거할 수 있습니다.'>
 
-<!ENTITY ini.shorthandbytes '<simpara><type>integer</type> 형이 사용될 때,
+<!ENTITY ini.shorthandbytes '<simpara xmlns="http://docbook.org/ns/docbook"><type>integer</type> 형이 사용될 때,
 바이트로 값을 측정합니다. <link linkend="faq.using.shorthandbytes">FAQ</link>에
 나와 있는 단축어를 사용할 수도 있습니다.</simpara>'>
 
 <!ENTITY info.deprecated.alias '하위 호환을 위하여, 다음의 권장하지 않는
 별칭을 사용할 수 있습니다: '>
 
+<!ENTITY info.method.alias '다음 메소드의 별칭입니다: '>
+
 <!ENTITY info.function.alias '이 함수는 다음 함수의 별칭입니다: '>
 
-<!ENTITY info.function.alias.deprecated '<simpara>이 함수 축약은 배제되었고,
+<!ENTITY info.function.alias.deprecated '<simpara xmlns="http://docbook.org/ns/docbook">이 함수 별칭은 배제되었고,
 하위 호환을 위하여 남겨져 있습니다. 앞으로 PHP에서 제거될 수 있으므로
 사용하지 않기를 권합니다.</simpara>'>
 
-<!ENTITY ext.window.path.dll '이 확장이 동작하려면, <acronym>DLL</acronym>
-파일이 윈도우 시스템 <literal>PATH</literal>에 존재하여야 합니다. 이를 위한
+<!ENTITY ext.window.path.dll '이 확장이 동작하려면, <acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym>
+파일이 윈도우 시스템 <literal xmlns="http://docbook.org/ns/docbook">PATH</literal>에 존재하여야 합니다. 이를 위한
 정보는, 
-"<link linkend="faq.installation.addtopath">윈도우에서 PHP 디렉토리를 PATH에
-추가하기</link>"에 관한 <acronym>FAQ</acronym>을 참고하십시오. DLL 파일을 PHP
+"<link xmlns="http://docbook.org/ns/docbook" linkend="faq.installation.addtopath">윈도우에서 PHP 디렉토리를 PATH에
+추가하기</link>"에 관한 <acronym xmlns="http://docbook.org/ns/docbook">FAQ</acronym>을 참고하십시오. DLL 파일을 PHP
 폴더에서 윈도우 시스템 디렉토리로 복사하여도 작동하지만(시스템 디렉토리는
-기본적으로 시스템 <literal>PATH</literal>에 존재하기 때문), 권장하지 않습니다.
-<emphasis>이 확장은 다음 파일이 <literal>PATH</literal> 상에 존재하여야
+기본적으로 시스템 <literal xmlns="http://docbook.org/ns/docbook">PATH</literal>에 존재하기 때문), 권장하지 않습니다.
+<emphasis>이 확장은 다음 파일이 <literal xmlns="http://docbook.org/ns/docbook">PATH</literal> 상에 존재하여야
 합니다:</emphasis> '>
 
 <!ENTITY manual.migration.seealso 'PHP 버전에 맞는 이행 가이드를
 참고하십시오.'>
 
-<!ENTITY style.oop '객체 기반 스타일'>
-<!ENTITY style.procedural '절차식 스타일'>
+<!ENTITY style.oop '객체 기반 형식'>
+<!ENTITY style.procedural '절차식 형식'>
 
-<!ENTITY resource '<link linkend="language.types.resource">자원</link>'>
+<!ENTITY resource '<link xmlns="http://docbook.org/ns/docbook" linkend="language.types.resource">자원</link>'>
 
-<!ENTITY foreach '<link linkend="control-structures.foreach">foreach</link>'>
+<!ENTITY foreach '<link xmlns="http://docbook.org/ns/docbook" linkend="control-structures.foreach">foreach</link>'>
 
-<!ENTITY parameter.context '<literal>contexts</literal>에 대한 설명은
-매뉴얼 <link linkend="context">context</link> 섹션을 참고하십시오.'>
+<!ENTITY parameter.context '<literal xmlns="http://docbook.org/ns/docbook">contexts</literal>에 대한 설명은
+매뉴얼 <link xmlns="http://docbook.org/ns/docbook" linkend="context">context</link> 섹션을 참고하십시오.'>
 
-<!ENTITY parameter.use_include_path '&true;로 설정하면, <link
+<!ENTITY parameter.use_include_path '&true;로 설정하면, <link xmlns="http://docbook.org/ns/docbook"
 linkend="ini.include-path">include_path</link>에서도 파일명을 찾습니다.'>
 
 <!-- Returns -->
+
+<!ENTITY return.falseforfailture '실패시 &false;를 반환합니다.'>
+<!ENTITY return.falseforfailture.style.procedural '&style.procedural;은 실패시 &false;를 반환합니다.'>
 
 <!ENTITY return.success '성공할 경우 &true;를, 실패할 경우 &false;를
 반환합니다.'>
 
 <!ENTITY return.void '값을 반환하지 않습니다.'>
 
-<!ENTITY return.falseproblem '<warning><simpara>이 함수는 논리 &false;를
+<!ENTITY return.falseproblem '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 논리 &false;를
 반환하지만, <literal>0</literal>이나 &quot;&quot; 등, 논리 &false;로 취급할 수 있는 다른 값을 반환할 수 있습니다. 자세한 정보는 <link
 linkend="language.types.boolean">논리형</link> 섹션을 참고하십시오.
 이 함수의 반환값을 확인하려면 
 <link linkend="language.operators.comparison">=== 연산자</link>를
 이용하십시오.</simpara></warning>'>
 
-
+<!-- OpenSSL -->
+<!ENTITY openssl.param.x509 '<valistentry xmlns="http://docbook.org/ns/docbook">
+ <term><parameter>x509</parameter></term>
+ <listitem>
+  <para>
+   적합한 값은 <link linkend="openssl.certparams">키/인증 파라메터</link>를
+   참고하십시오.
+  </para>
+ </listitem>
+</varlistentry>'>
 
 
 <!-- Image (GD) Notes -->
-<!ENTITY note.config.t1lib '<note><simpara>이 함수는
+<!ENTITY note.config.t1lib '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <option role="configure">--enable-t1lib</option>를 사용하여 PHP를
 컴파일 했을 경우에만 사용할 수 있습니다.</simpara></note>'>
 
-<!ENTITY note.config.jpeg '<note><simpara>JPEG 지원은 PHP를 GD-1.8 이상에서
+<!ENTITY note.config.jpeg '<note xmlns="http://docbook.org/ns/docbook"><simpara>JPEG 지원은 PHP를 GD-1.8 이상에서
 컴파일해야 합니다.</simpara></note>'>
 
-<!ENTITY note.config.wbmp '<note><simpara>WBMP 지원은 PHP를 GD-1.8 이상에서
+<!ENTITY note.config.wbmp '<note xmlns="http://docbook.org/ns/docbook"><simpara>WBMP 지원은 PHP를 GD-1.8 이상에서
 컴파일해야 합니다.</simpara></note>'>
 
-<!ENTITY note.bundled.gd '<note><simpara>이 함수는 PHP에 포함된 GD 라이브러리를
+<!ENTITY note.bundled.gd '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP에 포함된 GD 라이브러리를
 사용하여 컴파일하였을 경우에만 사용할 수 있습니다.</simpara></note>'>
 
-<!ENTITY note.freetype '<note><simpara>이 함수는 PHP에 freetype 지원을 포함하여
+<!ENTITY note.freetype '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP에 freetype 지원을 포함하여
 컴파일해야 합니다. (<option
 role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 
-<!ENTITY note.gd.2 '<note><simpara>이 함수는 GD 2.0.1 이상이 필요합니다.
+<!ENTITY note.gd.2 '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 GD 2.0.1 이상이 필요합니다.
 (2.0.28 이상을 권장합니다)</simpara></note>'>
 
-<!ENTITY note.gd.notrequired '<note><simpara>이 함수는 GD 이미지 라이브러리가
+<!ENTITY note.gd.notrequired '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 GD 이미지 라이브러리가
 필요하지 않습니다.</simpara></note>'>
 
-<!ENTITY gd.image.description '<varlistentry><term><parameter>
+<!ENTITY gd.image.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
 image</parameter></term><listitem><para><function>imagecreatetruecolor</function>
 등의 이미지 생성 함수에서 반환한 이미지
 자원.</para></listitem></varlistentry>'>
 
-<!ENTITY gd.font.description '<varlistentry><term><parameter>
+<!ENTITY gd.font.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
 font</parameter></term><listitem><para>litin2 인코딩의 내장
 글꼴 1, 2, 3, 4, 5(큰 숫자가 큰 글꼴)나 <function>imageloadfont</function>로
 등록한 글꼴 식별자를 사용할 수 있습니다.</para></listitem></varlistentry>'>
@@ -318,27 +343,27 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 <!-- DBM notes -->
 
 <!ENTITY dbm.dbm-identifier.description
-'<varlistentry><term><parameter>dbm_identifier</parameter></term><listitem><para><function>dbmopen</function>이
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>dbm_identifier</parameter></term><listitem><para><function>dbmopen</function>이
 반환한 DBM 연결 식별자입니다.</para></listitem></varlistentry>'>
 
 <!-- cURL notes -->
 
 <!ENTITY curl.ch.description
-'<varlistentry><term><parameter>ch</parameter></term><listitem><para><function>curl_init</function>가
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>ch</parameter></term><listitem><para><function>curl_init</function>가
 반환한 cURL 핸들입니다.</para></listitem></varlistentry>'>
 
 <!ENTITY curl.mh.description
-'<varlistentry><term><parameter>mh</parameter></term><listitem><para><function>curl_multi_init</function>가
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>mh</parameter></term><listitem><para><function>curl_multi_init</function>가
 반환한 curl 다중 핸들입니다.</para></listitem></varlistentry>'>
 
 <!-- IMAP notes -->
 
 <!ENTITY imap.imap-stream.description
-'<varlistentry><term><parameter>imap_stream</parameter></term><listitem><para><function>imap_open</function>이
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>imap_stream</parameter></term><listitem><para><function>imap_open</function>이
 반환한 IMAP 스트림입니다.</para></listitem></varlistentry>'>
 
-<!ENTITY imap.pattern '<para>검색을 시작할 우편함 계층을
-지정합니다.</para><para><parameter>pattern</parameter> 부분에 사용할 수 있는
+<!ENTITY imap.pattern '<para xmlns="http://docbook.org/ns/docbook">검색을 시작할 우편함 계층을
+지정합니다.</para><para xmlns="http://docbook.org/ns/docbook"><parameter>pattern</parameter> 부분에 사용할 수 있는
 두 개의 특수 문자가 존재합니다: &apos;<literal>*</literal>&apos;와
 &apos;<literal>&#37;</literal>&apos;. &apos;<literal>*</literal>&apos;는 모든
 우편함을 반환합니다. <parameter>pattern</parameter>이
@@ -352,14 +377,14 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 
 <!-- mbstring notes -->
 
-<!ENTITY note.mbstring.encoding.internal '<note><para>내부 인코딩이나
+<!ENTITY note.mbstring.encoding.internal '<note xmlns="http://docbook.org/ns/docbook"><para>내부 인코딩이나
 <function>mb_regex_encoding</function>으로 정의한 문자 인코딩을 이 함수의 문자
 인코딩으로 사용할 수 있습니다.</para></note>'>
 
-<!ENTITY mbstring.encoding.parameter '<para><parameter>encoding</parameter>
+<!ENTITY mbstring.encoding.parameter '<para xmlns="http://docbook.org/ns/docbook"><parameter>encoding</parameter>
 인수는 문자 인코딩입니다. 생략하면, 내부 문자 인코딩값을 사용합니다.</para>'>
 
-<!ENTITY mbstring.warning.e-modifier '<warning><para>신뢰할 수 없는 입력에
+<!ENTITY mbstring.warning.e-modifier '<warning xmlns="http://docbook.org/ns/docbook"><para>신뢰할 수 없는 입력에
 대해서 <literal>e</literal> 변경자를 사용하지 마십시오. 자동 회피를 수행하지
 않습니다. (<function>preg_replace</function>와 마찬가지) 주의하지 않으면
 원격 코드 실행 취약점을 가지게 됩니다.</para></warning>'>
@@ -367,13 +392,13 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 <!-- MCVE notes -->
 
 <!ENTITY mcve.conn.description
-'<varlistentry><term><parameter>conn</parameter></term><listitem><para><function>m_initengine</function>이
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>conn</parameter></term><listitem><para><function>m_initengine</function>이
 반환한 MCVE_CONN 리소스입니다.</para></listitem></varlistentry>'>
 
 <!-- memcache notes -->
 
 <!ENTITY memcached.parameter.expiration '만료 시간, 기본값은 0. 자세한 정보는
-<link linkend="memcached.expiration">만료 시간</link>을 참고하십시오.'>
+<link xmlns="http://docbook.org/ns/docbook" linkend="memcached.expiration">만료 시간</link>을 참고하십시오.'>
 
 <!ENTITY memcached.parameter.server_key '값을 저장할 서버를 인식하는 키.'>
 
@@ -384,22 +409,40 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 <!ENTITY memcached.parameter.value '저장할 값.'>
 
 <!ENTITY memcached.result.getresultcode '필요할 경우
-<methodname>Memcached::getResultCode</methodname> 사용.'>
+<methodname xmlns="http://docbook.org/ns/docbook">Memcached::getResultCode</methodname> 사용.'>
+
+<!-- geaman notes -->
+
+<!ENTITY gearman.parameter.host '잡 서버 호스트 이름.'>
+
+<!ENTITY gearman.parameter.port '잡 서버 포트.'>
+
+<!ENTITY gearman.parameter.functionname '워커가 실행할 등록된 함수'>
+
+<!ENTITY gearman.parameter.workload '처리할 직렬화된 데이터'>
+
+<!ENTITY gearman.parameter.data '작업 수행에 필요할 수 있는 추가 데이터'>
+
+<!ENTITY gearman.parameter.context '태스크에 할당된 어플리케이션 컨텍스트'>
+
+<!ENTITY gearman.parameter.unique '특정 태스크를 인식하는데 사용하는 고유 ID'>
+
+<!ENTITY gearman.parameter.jobhandle 'Gearman 서버에 할당된 잡 핸들'>
 
 <!-- Date and time entities -->
-<!ENTITY date.timezone.intro.title '<title>지원하는 시간대 목록</title>'>
+<!ENTITY date.timezone.intro.title '<title xmlns="http://docbook.org/ns/docbook">지원하는 시간대 목록</title>'>
 
-<!ENTITY date.timezone.intro "<para>여기에서 PHP에서 지원하는 모든 시간대
+<!ENTITY date.timezone.intro "<para xmlns='http://docbook.org/ns/docbook'>여기에서 PHP에서 지원하는 모든 시간대
 목록을 확인할 수 있습니다. 이는 <function>date_default_timezone_set</function>
 등에서 사용합니다.</para><note><simpara>최신 버전의 시간대 데이터베이스는
 PECL의 <link xlink:href='&url.pecl.package.get;timezonedb' 
 xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>를 통해 설치할 수
 있습니다.</simpara></note>">
 
-<!ENTITY date.timezone.bc '<simpara>여기에 있는 시간대 목록을 사용하지
+<!ENTITY date.timezone.bc '<simpara xmlns="http://docbook.org/ns/docbook">여기에 있는 시간대 목록을 사용하지
 마십시오(UTC 제외). 하위 호환을 위해서 남겨져 있을 뿐입니다.</simpara>'>
 
-<!ENTITY date.timezone.errors.description '<para>모든 날짜/시간 함수 호출은
+<!ENTITY date.timezone.errors.description '<para xmlns="http://docbook.org/ns/docbook">모든 날짜/시간 함수 호출은
 시간대가 유효하지 않을 때 <constant>E_NOTICE</constant>를, 시스템 설정이나
 <varname>TZ</varname> 환경 변수를 사용할 때 <constant>E_STRICT</constant>나
 <constant>E_WARNING</constant> 메세지를
@@ -407,19 +450,19 @@ xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>를 통해 설치할
 참고하십시오.</para>'>
 
 <!ENTITY date.timezone.errors.changelog
-'<row><entry>5.1.0</entry><entry><para>시간대 오류시
+'<row xmlns="http://docbook.org/ns/docbook"><entry>5.1.0</entry><entry><para>시간대 오류시
 <constant>E_STRICT</constant>와 <constant>E_NOTICE</constant>가
 발생합니다.</para></entry></row>'>
 
 <!ENTITY date.timestamp.description
-'<varlistentry><term><parameter>timestamp</parameter></term><listitem><para>선택적인
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>timestamp</parameter></term><listitem><para>선택적인
 <parameter>timestamp</parameter> 인수는 <parameter>timestamp</parameter>가
 주어지지 않았을 경우, 현재 로컬 시간을 기본값으로 가지는
 <type>integer</type> 유닉스 타임스탬프입니다. 즉, 기본값은
 <function>time</function> 값입니다.</para></listitem></varlistentry>'>
 
 <!ENTITY date.datetime.retval.changelog
-'<row><entry>5.3.0</entry><entry>반환값을 &null;에서
+'<row xmlns="http://docbook.org/ns/docbook"><entry>5.3.0</entry><entry>반환값을 &null;에서
 <classname>DateTime</classname>으로 변경.</entry></row>'>
 
 <!ENTITY date.timezone.dbversion '이 목록은 timezone 데이터베이스 버전에
@@ -437,11 +480,16 @@ xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>를 통해 설치할
 <!ENTITY date.timezone.pacific '태평양'>
 <!ENTITY date.timezone.othres '기타'>
 
-<!ENTITY date.datetime.description '<varlistentry><term><parameter>object</parameter></term>
+<!ENTITY date.datetime.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>object</parameter></term>
 <listitem><para>절차식 전용: <function>date_create</function>가 반환하는
 <classname>DateTime</classname> 객체.</para></listitem></varlistentry>'>
 
-<!ENTITY date.datetimezone.description '<varlistentry><term><parameter>
+<!ENTITY date.datetimezone.description.modified '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
+obejct</parameter></term><listitem><para>절차식 전용:
+<function>date_create</function>가 반환하는
+<classname>DateTime</classname> 객체. 이 함수는 객체를 변경합니다.</para></listitem></varlistentry>'>
+
+<!ENTITY date.datetimezone.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
 obejct</parameter></term><listitem><para>절차식 전용:
 <function>timezone_open</function>이 반환하는
 <classname>DateTimeZone</classname> 객체.</para></listitem></varlistentry>'>
@@ -458,73 +506,189 @@ linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 
 
 <!-- FileSystem entities -->
-<!ENTITY fs.validfp.all '<para>파일 포인터는 <function>fopen</function>,
+<!ENTITY fs.validfp.all '<para xmlns="http://docbook.org/ns/docbook">파일 포인터는 <function>fopen</function>,
 <function>fsockopen</function>을 통하여 성공적으로 열려,
 <function>fclose</function>로 닫지 않은 유효한 파일이여야 합니다.</para>'>
 
-<!ENTITY fs.file.pointer '<para>일반적으로 <function>fopen</function>으로
+<!ENTITY fs.file.pointer '<para xmlns="http://docbook.org/ns/docbook">일반적으로 <function>fopen</function>으로
 생성하는 파일 시스템 포인터 <type>resource</type>.</para>'>
 
 <!-- GNUPG -->
-<!ENTITY gnupg.identifier '<para><function>gnupg_init</function>나
+<!ENTITY gnupg.identifier '<para xmlns="http://docbook.org/ns/docbook"><function>gnupg_init</function>나
 <classname>gnupg</classname> 호출로 생성되는 gnupg 식별자.</para>'>
 
-<!ENTITY gnupg.fingerprint '<para>fingerprint 키.</para>'>
+<!ENTITY gnupg.fingerprint '<para xmlns="http://docbook.org/ns/docbook">fingerprint 키.</para>'>
 
 <!-- HaruDoc -->
-<!ENTITY haru.error '<para>오류 시에 <classname>HaruException</classname>을
+<!ENTITY haru.error '<para xmlns="http://docbook.org/ns/docbook">오류 시에 <classname>HaruException</classname>을
 던짐.</para>'>
 
 <!-- ODBC -->
-<!ENTITY odbc.connection.id '<para>ODBC 접속 식별자.
+<!ENTITY odbc.connection.id '<para xmlns="http://docbook.org/ns/docbook">ODBC 접속 식별자.
 <function>odbc_connect</function>를 참고하십시오.</para>'>
 
 <!ENTITY odbc.parameter.search '이 인수는 다음 검색 패턴을 허용합니다:
 "&#x25;"로 0개 이상의 문자, "_"로 하나의 문자.'>
 
+<!-- OAUTH -->
+<!ENTITY oauth.callback.error '콜백 함수가 호출되지 않거나, 지정되지 않으면
+<constant xmlns="http://docbook.org/ns/docbook">E_ERROR</constant>
+등급의 오류가 발생합니다.'>
+
+<!ENTITY oauth.changelog.error.null '이전에는 실패시 &false;가 아닌 &null;을 반환했습니다.'>
+
 <!-- Oracle -->
-<!ENTITY oci.charset "<para>오라클 서버 버전 9.2 이상을 사용하면, 새로운 연결에
+<!ENTITY oci.db "<para xmlns='http://docbook.org/ns/docbook' xmlns:xlink='http://www.w3.org/1999/xlink'>접속을 위해 <literal>오라클 인스턴스</literal>를 포함합니다.
+<link xlink:href='&url.orcale.oic.connect;'>Easy Connect string</link>이나
+<filename>tnsnames.ora</filename> 파일의 Connect Name, 로컬 오라클 인스턴스의 이름일 수 있습니다.</para>
+<para xmlns='http://docbook.org/ns/docbook'>지정하지 않으면, PHP는
+접속할 <literal>오라클 인스턴스</literal>를 찾기 위해 <constant>TWO_TASK</constant>(리눅스)나 <constant>LOCAL</constant>(윈도우), 그리고 <constant>ORACLE_SID</constant> 등의 환경 변수를 사용합니다.</para>
+<para xmlns='http://docbook.org/ns/docbook'>
+Easy Connect naming 방식을 사용하려면, PHP가 오라클 10g 이상의 클라이언트 라이브러리를 사용해야 합니다. 오라클 10g에서 Easy Connect string 형식은:
+<emphasis>[//]host_name[:port][/service_name]</emphasis> 입니다. 오라클 11g에서는:
+<emphasis>[//]host_name[:port][/service_name][:server_type][/instance_name]</emphasis> 입니다.
+서비스 이름은 데이터베이스 서버에서 오라클 유틸리티 <literal>lsnrctl status</literal>를 실행하여 찾을 수 있습니다.
+</para>
+<para xmlns='http://docbook.org/ns/docbook'>
+<filename>tnsnames.ora</filename> 파일은 오라클 넷 검색 경로에 있을 수 있습니다.
+<filename>$ORACLE_HOME/network/admin</filename>과 <filename>/etc</filename> 등을 포함합니다. <literal>TNS_ADMIN</literal>을 설정하여 <filename>$TNS_ADMIN/tnsnames.ora</filename>를 읽게 할 수도 있습니다. 웹 데몬이 이 파일에 읽기 권한을 가지도록 설정하십시오.
+</para>">
+
+<!ENTITY oci.charset "<para xmlns='http://docbook.org/ns/docbook'>오라클 서버 버전 9.2 이상을 사용하면, 새로운 연결에
 사용할 <parameter>charset</parameter> 인수를 지정할 수 있습니다. 오라클 서버
 &lt; 9.2를 사용한다면, 이 인수는 무시되고, 대신 <literal>NLS_LANG</literal>
 환경 변수를 사용합니다.</para>">
 
-<!ENTITY oci.datatypes '<para>oci8 드라이버에서 수행하는 자료형 매핑에 대한
+<!ENTITY oci.sessionmode '<para
+xmlns="http://docbook.org/ns/docbook">This
+parameter is available since version PHP 5 (PECL OCI8 1.1) and
+accepts the
+following values: <constant>OCI_DEFAULT</constant>,
+<constant>OCI_SYSOPER</constant> and <constant>OCI_SYSDBA</constant>.
+If either <constant>OCI_SYSOPER</constant> or
+<constant>OCI_SYSDBA</constant> were specified, this function will
+try
+to establish privileged connection using external credentials.
+Privileged connections are disabled by default. To enable them you
+need to set <link
+linkend="ini.oci8.privileged-connect">oci8.privileged_connect</link>
+to <literal>On</literal>.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+PHP 5.3 (PECL OCI8 1.3.4) introduced the
+<constant>OCI_CRED_EXT</constant> mode value. This tells Oracle to
+use
+External or OS authentication, which must be configured in the
+database.  The <constant>OCI_CRED_EXT</constant> flag can only be
+used
+with username of &quot;/&quot; and a empty password.
+<link
+linkend="ini.oci8.privileged-connect">oci8.privileged_connect</link>
+may be <literal>On</literal> or <literal>Off</literal>.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+<constant>OCI_CRED_EXT</constant> may be combined with the
+<constant>OCI_SYSOPER</constant> or
+<constant>OCI_SYSDBA</constant> modes.
+</para>
+<para xmlns="http://docbook.org/ns/docbook">
+<constant>OCI_CRED_EXT</constant> is not supported on Windows for
+security reasons.
+</para>'>
+
+<!ENTITY oci.datatypes '<para xmlns="http://docbook.org/ns/docbook">oci8 드라이버에서 수행하는 자료형 매핑에 대한
 상세는 <link linkend="oci8.datatypes">드라이버가 지원하는 자료형</link>을
 참고하십시오.</para>'>
 
+<!ENTITY oci.datatypes '<para
+xmlns="http://docbook.org/ns/docbook">For details on the data type
+mapping performed by
+the OCI8 extension, see the <link linkend="oci8.datatypes">datatypes
+ supported by the driver</link></para>'>
+
+<!ENTITY oci.parameter.connection '<para
+xmlns="http://docbook.org/ns/docbook">An Oracle connection identifier,
+returned by <function>oci_connect</function>,
+<function>oci_pconnect</function>,
+or <function>oci_new_connect</function>.</para>'>
+
+<!ENTITY oci.name.compat.note 'The old function name can still be
+used
+in current versions, however it is deprecated and not recommended.'>
+
+<!ENTITY oci.availability.note.10g '<note
+xmlns="http://docbook.org/ns/docbook"><title>Oracle version
+requirement</title>
+<para>This function is available when PHP is linked with Oracle
+Database
+libraries from version 10g onwards.</para></note>'>
+
+<!ENTITY oci.clientinfo.tip '<tip
+xmlns="http://docbook.org/ns/docbook"><title>Performance</title><para>With
+older versions of
+OCI8 or the Oracle Database, the client information can be set using
+the Oracle
+<literal>DBMS_APPLICATION_INFO</literal> package. This is less
+efficient than
+using <function>oci_set_client_info</function>.</para></tip>'>
+
+<!ENTITY oci.roundtrip.caution '<caution
+xmlns="http://docbook.org/ns/docbook"><title>Roundtrip Gotcha</title>
+<para>Some but not all OCI8 functions cause roundtrips.  Roundtrips
+to the
+database may not occur with queries when result caching is enabled.
+</para></caution>'>
+
+<!ENTITY oci.use.setprefetch '<para
+xmlns="http://docbook.org/ns/docbook">For
+queries returning a large number of rows, performance can be
+significantly improved by
+increasing <link
+linkend="ini.oci8.default-prefetch">oci8.default_prefetch</link>
+or using <function>oci_set_prefetch</function>.
+</para>'>
+
+
+<!ENTITY oci.arg.statement.id
+"<para xmlns='http://docbook.org/ns/docbook'>A valid OCI8
+statement
+identifier created by <function>oci_parse</function> and executed
+by <function>oci_execute</function>, or a <literal>REF
+CURSOR</literal> statement identifier.</para>">
+
 <!-- PCNTL Notes -->
-<!ENTITY pcntl.parameter.status '<para><parameter>status</parameter> 인수는
+<!ENTITY pcntl.parameter.status '<para xmlns="http://docbook.org/ns/docbook"><parameter>status</parameter> 인수는
 <function>pnctl_waitpid</function>의 성공적인 호출이 제공하는 status
 인수입니다.</para>'>
 
 <!-- PS Nodes -->
-<!ENTITY ps.note.visible '<para>문서를 출력하거나 볼 때 노트는 나타나지
+<!ENTITY ps.note.visible '<para xmlns="http://docbook.org/ns/docbook">문서를 출력하거나 볼 때 노트는 나타나지
 않지만, 문서를 Acrobat Distiller™나 Ghostview를 사용해서 pdf로 변환했을 때는
 나타납니다.</para>'>
 
 <!-- XSLT Notes -->
-<!ENTITY note.xslt.windows '<note><para>윈도우를 사용한다면, 경로 앞에
+<!ENTITY note.xslt.windows '<note xmlns="http://docbook.org/ns/docbook"><para>윈도우를 사용한다면, 경로 앞에
 <literal>file://</literal>이 필요한 점에 주의하십시오.</para></note>'>
 
 
 <!-- Notes for safe-mode limited functions: -->
-<!ENTITY note.sm.disabled '<note><simpara>&sm.disabled;</simpara></note>'>
+<!ENTITY note.sm.disabled '<note xmlns="http://docbook.org/ns/docbook"><simpara>&sm.disabled;</simpara></note>'>
 
-<!ENTITY note.sm.uidcheck '<note><simpara><link
+<!ENTITY note.sm.uidcheck '<note xmlns="http://docbook.org/ns/docbook"><simpara><link
 linkend="features.safe-mode">안전 모드</link>일 때, PHP는 조작하려는 파일이나
 디렉토리가 실행중인 스크립트와 같은 UID(owner)인지
 확인합니다.</simpara></note>'>
 
-<!ENTITY note.sm.uidcheck.dir '<note><simpara><link 
+<!ENTITY note.sm.uidcheck.dir '<note xmlns="http://docbook.org/ns/docbook"><simpara><link 
 linkend="features.safe-mode">안전 모드</link>를 활성화했을 경우, PHP는
 작업하려는 디렉토리가 실행중인 스크립트와 같은 UID(owner)를 가지고
 있는지 확인합니다.</simpara></note>'>
 
-<!ENTITY note.open-basedir.func '<note><para>이 함수는 <link
+<!ENTITY note.open-basedir.func '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 <link
 linkend="ini.open-basedir">open_basedir</link>에 영향을
 받습니다.</para></note>'>
 
-<!ENTITY note.language-construct '<note><simpara>이것은 함수가 아닌
+<!ENTITY note.language-construct '<note xmlns="http://docbook.org/ns/docbook"><simpara>이것은 함수가 아닌
 언어 구조이기 때문에, <link linkend="functions.variable-functions">가변
 함수</link> 방식으로 호출할 수 없습니다.</simpara></note>'>
 
@@ -534,13 +698,13 @@ linkend="ini.open-basedir">open_basedir</link>에 영향을
 <!ENTITY sm.uidcheck '작업하려는 파일이나 디렉토리가 실행 중인
 스크립트와 같은 UID (owner)를 가지고 있는지 확인합니다.'>
 
-<!ENTITY warn.sm.exec '<warning><simpara><link
+<!ENTITY warn.sm.exec '<warning xmlns="http://docbook.org/ns/docbook"><simpara><link
 linkend="features.safe-mode">안전 모드</link>에서 명령어는
 <function>escapeshellcmd</function>로 회피처리됩니다. 그러므로, <literal>echo
 y | echo x</literal>는 <literal>echo y \| echo x</literal>가
 됩니다.</simpara></warning>'>
 
-<!ENTITY note.exec-path '<note><simpara><link linkend="features.safe-mode">안전
+<!ENTITY note.exec-path '<note xmlns="http://docbook.org/ns/docbook"><simpara><link linkend="features.safe-mode">안전
 모드</link>에서 실행 명령은 <link
 linkend="ini.safe-mode-exec-dir">safe_mode_exec_dir</link> 안에서만 실행할 수
 있습니다. 실용적인 이유로, 현재는 실행 경로에 <literal>..</literal>을 허용하지
@@ -549,50 +713,50 @@ linkend="ini.safe-mode-exec-dir">safe_mode_exec_dir</link> 안에서만 실행�
 <!ENTITY sm.uidcheck.dir '작업하려는 디렉토리가 실행 중인 스크립트와
 같은 UID (owner)를 가지고 있는지 확인합니다.'>
 
-<!ENTITY sm.disabled '이 함수는 PHP가 <link linkend="features.safe-mode">안전
+<!ENTITY sm.disabled '이 함수는 PHP가 <link xmlns="http://docbook.org/ns/docbook" linkend="features.safe-mode">안전
 모드</link>일 때는 사용할 수 없습니다.'>
 
 <!-- Common pieces in partintro-sections -->
-<!ENTITY no.config '<para>이 확장은 &php.ini; 설정이 존재하지 않습니다.</para>'>
-<!ENTITY no.resource '<para>이 확장은 리소스형을 정의하지 않습니다.</para>'>
-<!ENTITY no.constants '<para>이 확장은 상수를 정의하지 않습니다.</para>'>
-<!ENTITY no.requirement '<para>이 확장을 빌드할 때 외부 라이브러리가 필요하지
+<!ENTITY no.config '<para xmlns="http://docbook.org/ns/docbook">이 확장은 &php.ini; 설정이 존재하지 않습니다.</para>'>
+<!ENTITY no.resource '<para xmlns="http://docbook.org/ns/docbook">이 확장은 리소스형을 정의하지 않습니다.</para>'>
+<!ENTITY no.constants '<para xmlns="http://docbook.org/ns/docbook">이 확장은 상수를 정의하지 않습니다.</para>'>
+<!ENTITY no.requirement '<para xmlns="http://docbook.org/ns/docbook">이 확장을 빌드할 때 외부 라이브러리가 필요하지
 않습니다.</para>'>
-<!ENTITY no.install '<para>이 함수들은 설치하지 않아도 사용할 수 있습니다;
+<!ENTITY no.install '<para xmlns="http://docbook.org/ns/docbook">이 함수들은 설치하지 않아도 사용할 수 있습니다;
 PHP 코어의 일부입니다.</para>'>
 
 <!-- Used in every chapter that has directive descriptions -->
-<!ENTITY ini.descriptions.title '<para>위 설정 지시어에 대한
+<!ENTITY ini.descriptions.title '<para xmlns="http://docbook.org/ns/docbook">위 설정 지시어에 대한
 간단한 설명입니다.</para>'>
 
 <!-- Common pieces for reference part BEGIN -->
 
 <!-- Used in reference/$extname/ini.xml -->
-<!ENTITY extension.runtime '<simpara>이 함수의 작동은 &php.ini; 설정에 영향을
+<!ENTITY extension.runtime '<simpara xmlns="http://docbook.org/ns/docbook">이 함수의 작동은 &php.ini; 설정에 영향을
 받습니다.</simpara>'>
 
-<!ENTITY ini.php.constants 'PHP_INI_* 모드에 대한 상세와 정의는 <xref
+<!ENTITY ini.php.constants 'PHP_INI_* 모드에 대한 상세와 정의는 <xref xmlns="http://docbook.org/ns/docbook"
 linkend="configuration.changes.modes"/>를 참고하십시오.'>
 
 <!-- Used in reference/$extname/constants.xml -->
-<!ENTITY extension.constants '<simpara>이 확장은 다음의 상수들을 정의합니다.
+<!ENTITY extension.constants '<simpara xmlns="http://docbook.org/ns/docbook">이 확장은 다음의 상수들을 정의합니다.
 이 확장을 PHP에 내장했거나, 실행시에 동적으로 읽어들일 경우에만 사용할 수
 있습니다.</simpara>'>
 
 <!-- For STANDARD Constants used in reference/$extname/constants.xml -->
-<!ENTITY extension.constants.core '<simpara>아래 상수들은 PHP 코어의 일부로,
+<!ENTITY extension.constants.core '<simpara xmlns="http://docbook.org/ns/docbook">아래 상수들은 PHP 코어의 일부로,
 항상 사용할 수 있습니다.</simpara>'>
 
 <!-- Used in reference/$extname/classes.xml -->
-<!ENTITY extension.classes '<simpara>이 확장은 다음의 클래스들을 정의합니다.
+<!ENTITY extension.classes '<simpara xmlns="http://docbook.org/ns/docbook">이 확장은 다음의 클래스들을 정의합니다.
 이 확장을 PHP에 내장했거나, 실행시에 동적으로 읽어들일 경우에만 사용할 수
 있습니다.</simpara>'>
 
-<!ENTITY note.extension.php5 '<note><simpara>이 확장은 PHP 5를
+<!ENTITY note.extension.php5 '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 확장은 PHP 5를
 요구합니다.</simpara></note>'>
 
 <!-- PDO entities -->
-<!ENTITY pdo.driver-constants '<simpara>아래 상수는 이 드라이버에서 정의된
+<!ENTITY pdo.driver-constants '<simpara xmlns="http://docbook.org/ns/docbook">아래 상수는 이 드라이버에서 정의된
 것으로, 확장을 PHP에 컴파일하였거나 실행중에 동적 로드하였을 때만 사용할 수
 있습니다. 추가로, 드라이버-특정 상수는 이 드라이버를 사용할 때만 사용할 수
 있습니다. mysql-특정 속성를 postgres 드라이버에서 사용하면 기대하지 않은
@@ -602,28 +766,33 @@ linkend="configuration.changes.modes"/>를 참고하십시오.'>
 있습니다.</simpara>'>
 
 <!-- PECL entities -->
-<!ENTITY pecl.moved '이 <link xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
+<!ENTITY pecl.moved '이 <link xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에서 제공하지 않습니다.'>
 
 <!ENTITY pecl.bundled '이 <link xmlns:xlink="http://www.w3.org/1999/xlink"
 xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에 포함되어 있습니다.'>
 
-<!ENTITY pecl.info 'PECL 확장 설치에 관한 정보는 매뉴얼의 <link
+<!ENTITY pecl.info 'PECL 확장 설치에 관한 정보는 매뉴얼의 <link xmlns="http://docbook.org/ns/docbook"
 linkend="install.pecl">PECL 확장 설치</link>에 있습니다. 새 릴리즈, 내려받기,
 소스파일, 개발자 정보, CHANGELOG 등의 추가 정보는 여기에 있습니다: '>
 
-<!ENTITY pecl.source.4 'PHP 4에서 이 <acronym>PECL</acronym> 확장의 소스는 PHP
-소스의 <filename>ext/</filename> 디렉토리 안이나, 위의 <acronym>PECL</acronym>
+<!ENTITY pecl.info.dead '이 확장은 관리되지 않고 죽은 상태로 보입니다.
+그러나, 이 확장에 대한 소스 코드는 <acronym
+xmlns="http://docbook.org/ns/docbook">PECL</acronym> <acronym
+xmlns="http://docbook.org/ns/docbook">SVN</acronym>에 존재합니다: '>
+
+<!ENTITY pecl.source.4 'PHP 4에서 이 <acronym xmlns="http://docbook.org/ns/docbook">PECL</acronym> 확장의 소스는 PHP
+소스의 <filename xmlns="http://docbook.org/ns/docbook">ext/</filename> 디렉토리 안이나, 위의 <acronym xmlns="http://docbook.org/ns/docbook">PECL</acronym>
 링크에서 찾을 수 있습니다.'>
 
-<!ENTITY pecl.windows.4 'PHP 4에서 이 <acronym>DLL</acronym> 형식은 내려받은
-PHP 윈도우 바이너리 안의 <filename>extensions/</filename> 디렉토리 안에
+<!ENTITY pecl.windows.4 'PHP 4에서 이 <acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym> 형식은 내려받은
+PHP 윈도우 바이너리 안의 <filename xmlns="http://docbook.org/ns/docbook">extensions/</filename> 디렉토리 안에
 있습니다.'>
 
-<!ENTITY pecl.windows.download '이 <acronym>PECL</acronym> 확장에 대한
-<acronym>DLL</acronym>은 현재 사용할 수 없습니다.
-<link linkend="install.windows.building">윈도우에서 빌드하기</link> 섹션을
+<!ENTITY pecl.windows.download '이 <acronym xmlns="http://docbook.org/ns/docbook">PECL</acronym> 확장에 대한
+<acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym>은 현재 사용할 수 없습니다.
+<link xmlns="http://docbook.org/ns/docbook" linkend="install.windows.building">윈도우에서 빌드하기</link> 섹션을
 참고하십시오.'>
 
 <!ENTITY pecl.windows.download.unbundled '&pecl.windows.download;'>
@@ -633,24 +802,24 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link>
 저장소로 옮겨졌으며, 더 이상 PHP로 제공되지 않습니다.'>
 
 <!-- kept for BC -->
-<!ENTITY note.pecl-php5 '<note><simpara>이 확장은 PHP 5에서 제거되어, <link
+<!ENTITY note.pecl-php5 '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 확장은 PHP 5에서 제거되어, <link
 xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 저장소로 이동되었습니다.</simpara></note>'>
 
 <!-- Common pieces for reference part END -->
 
 
-<!ENTITY windows.builtin '<simpara>PHP 윈도우 버전에서는
+<!ENTITY windows.builtin '<simpara xmlns="http://docbook.org/ns/docbook">PHP 윈도우 버전에서는
 이 확장에 대한 지원이 포함되어 있습니다. 이 함수들을 이용하기 위해서 추가로
 확장을 읽어들일 필요가 없습니다.</simpara>'>
 
 <!-- These are here as helpers for manual consistency and brievety-->
-<!ENTITY safemode '<link linkend="ini.safe-mode">안전 모드</link>'>
+<!ENTITY safemode '<link xmlns="http://docbook.org/ns/docbook" linkend="ini.safe-mode">안전 모드</link>'>
 
-<!ENTITY sqlsafemode '<link linkend="ini.sql.safe-mode">SQL 안전 모드</link>'>
+<!ENTITY sqlsafemode '<link xmlns="http://docbook.org/ns/docbook" linkend="ini.sql.safe-mode">SQL 안전 모드</link>'>
 
 <!-- APD Notes -->
 <!ENTITY apd.debug-level.description
-'<varlistentry><term><parameter>debug_level</parameter></term><listitem><para><literal>XXX_TRACE</literal>
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>debug_level</parameter></term><listitem><para><literal>XXX_TRACE</literal>
 상수에 해당하는 정수값.</para><para><constant>MEMORY_TRACE</constant> 사용은
 권장하지 않습니다. 매우 느리고 정확하지 않습니다.
 <constant>ASSIGNMENT_TRACE</constant>는 아직 지원하지
@@ -659,82 +828,84 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 
 <!-- BCMath Notes -->
 <!ENTITY bc.scale.description
-'<varlistentry><term><parameter>scale</parameter></term><listitem><para>이
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>scale</parameter></term><listitem><para>이
 선택적인 인수는 소수점 아래 자리수를 설정합니다.
 <function>bcscale</function>을 사용하여 모든 함수에 대한 전역 기본값을 설정할
 수 있습니다.</para></listitem></varlistentry>'>
 
 <!-- FBSQL Notes -->
 <!ENTITY fbsql.link-identifier.description
-'<varlistentry><term><parameter>link_identifier</parameter></term><listitem><para><function>fbsql_connect</function>나
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>link_identifier</parameter></term><listitem><para><function>fbsql_connect</function>나
 <function>fbsql_pconnect</function>가 반환한 FrontBase 연결
 식별자.</para><para>선택적이고 지정하지 않았을 때, 함수는 FrontBase 서버로
 열려있는 연결을 찾고, 찾지 못하면 <function>fbsql_connect</function>를 인수
 없이 호출했을 때처럼 연결을 시도합니다.</para></listitem></varlistentry>'>
 
 <!ENTITY fbsql.result.description
-'<varlistentry><term><parameter>result</parameter></term><listitem><para><function>fbsql_query</function>나
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>result</parameter></term><listitem><para><function>fbsql_query</function>나
 <function>fbsql_db_query</function>가 반환한 결과셋
 식별자.</para></listitem></varlistentry>'>
 
 <!-- GMP Notes -->
 <!ENTITY gmp.return 'GMP 수 <type>resource</type>.'>
-<!ENTITY gmp.parameter '<para>GMP 수 <type>resource</type>나 수로 변환할 수
+<!ENTITY gmp.parameter '<para xmlns="http://docbook.org/ns/docbook">GMP 수 <type>resource</type>나 수로 변환할 수
 있는 문자열일 수 있습니다.</para>'>
 
 <!-- MySQLi Notes -->
 <!ENTITY mysqli.result.description
-'<varlistentry><term><parameter>result</parameter></term><listitem><para>순차
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>result</parameter></term><listitem><para>순차
 형식 전용: <function>mysqli_query</function>나
 <function>mysqli_store_result</function>나
 <function>mysqli_use_result</function>가 반환한 결과셋
 식별자.</para></listitem></varlistentry>'>
 <!ENTITY mysqli.link.description
-'<varlistentry><term><parameter>link</parameter></term><listitem><para>순차
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>link</parameter></term><listitem><para>순차
 형식 전용: <function>mysqli_connect</function>나
 <function>mysqli_init</function>가 반환한 연결
 식별자.</para></listitem></varlistentry>'>
 <!ENTITY mysqli.stmt.description
-'<varlistentry><term><parameter>stmt</parameter></term><listitem><para>순차
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>stmt</parameter></term><listitem><para>순차
 형식 전용: <function>mysqli_stmt_init</function>가 반환한 statement
 식별자.</para></listitem></varlistentry>'>
 <!ENTITY mysqli.available.mysqlnd '<link
 linkend="mysqli.overview.mysqlnd">mysqlnd</link>에서만 사용할 수 있습니다.'>
+<!ENTITY mysqli.charset.note '<note xmlns="http://docbook.org/ns/docbook">
+<para>MySQLnd는 항상 서버 기본 문자셋을 가정합니다. 이 문자셋은 접속/인증 중에 보내져서 mysqlnd가 사용하게 합니다.</para><para>Libmysql은 <filename>my.cnf</filename>의 기본 문자셋을 사용하거나, <function>mysqli_init</function> 이후, <function>mysqli_real_connect</function> 이전에 명시적으로 호출한 <function>mysqli_options</function>로 지정할 수 있습니다.'>
 
 <!-- Notes for SAPI/Apache -->
-<!ENTITY note.apache.nsapi-module '<note><para>PHP 4.3.3부터 이 함수를
+<!ENTITY note.apache.nsapi-module '<note xmlns="http://docbook.org/ns/docbook"><para>PHP 4.3.3부터 이 함수를
 넷스케이프/iPlanet/SunONE 웹서버의 <link linkend="ref.nsapi">NSAPI 서버
 모듈</link>에서도 사용할 수 있습니다.</para></note>'>
 
-<!ENTITY apache.req.module '<simpara>이 함수는 PHP를 아파치 모듈로 설치하였을
+<!ENTITY apache.req.module '<simpara xmlns="http://docbook.org/ns/docbook">이 함수는 PHP를 아파치 모듈로 설치하였을
 때만 지원합니다.</simpara>'>
 
 <!-- SimpleXML Notes -->
-<!ENTITY simplexml.iteration '<note><simpara>SimpleXML은 대부분의 메쏘드에
+<!ENTITY simplexml.iteration '<note xmlns="http://docbook.org/ns/docbook"><simpara>SimpleXML은 대부분의 메쏘드에
 추가 반복자 속성 규칙을 가지고 있습니다. 이들은 <function>var_dump</function>나
 객체를 조사하는 어떠한 것으로도 볼 수 없습니다.</simpara></note>'>
 
 <!-- SQLite Notes -->
-<!ENTITY sqlite.case-fold '<para><constant>SQLITE_ASSOC</constant>와
+<!ENTITY sqlite.case-fold '<para xmlns="http://docbook.org/ns/docbook"><constant>SQLITE_ASSOC</constant>와
 <constant>SQLITE_BOTH</constant>로 반환한 열 이름은 <link
 linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라서
 대소문자가 변환됩니다.</para>'>
 
-<!ENTITY sqlite.decode-bin '<para><parameter>decode_binary</parameter>
+<!ENTITY sqlite.decode-bin '<para xmlns="http://docbook.org/ns/docbook"><parameter>decode_binary</parameter>
 인수가 &true;(기본값)로 설정되면, PHP는
 <function>sqlite_escape_string</function>를 사용하여 인코드한 데이터로
 취급하여 이진 인코딩을 해제합니다. 다른 sqlite 적용 프로그램에서 생성한
 데이터베이스를 사용하지 않는 한, 기본값으로 사용하면 됩니다.</para>'>
 
-<!ENTITY sqlite.no-unbuffered '<note><para>이 함수는 버퍼 없는 결과
+<!ENTITY sqlite.no-unbuffered '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 버퍼 없는 결과
 핸들(unbuffered result handles)을 다룰 수 없습니다.</para></note>'>
 
-<!ENTITY sqlite.param-compat '<note><simpara>(MySQL 같은) 다른 데이터베이스
+<!ENTITY sqlite.param-compat '<note xmlns="http://docbook.org/ns/docbook"><simpara>(MySQL 같은) 다른 데이터베이스
 확장과 호환성을 유지하기 위하여 두가지 다른 형식의 문법을 지원합니다. 권장하는
 방식은 <parameter>dbhandle</parameter> 인수를 함수의 첫번째 인수로
 사용하는 것입니다.</simpara></note>'>
 
-<!ENTITY sqlite.result-type '<para>선택적인 <parameter>result_type</parameter>
+<!ENTITY sqlite.result-type '<para xmlns="http://docbook.org/ns/docbook">선택적인 <parameter>result_type</parameter>
 인수는 반환하는 배열이 어떤 형식일지에 대한 대한 상수를 받습니다.
 <constant>SQLITE_ASSOC</constant>를 사용하면 연상배열(이름 필드)로 반환합니다.
 <constant>SQLITE_NUM</constant>은 수치배열(순차적인 필드 번호)를 반환합니다.
@@ -742,33 +913,33 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 <constant>SQLITE_BOTH</constant>가 기본값입니다.</para>'>
 
 <!-- Database Notes -->
-<!ENTITY database.field-case '<note><simpara>이 함수가 반환하는
+<!ENTITY database.field-case '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수가 반환하는
 필드 이름은 <emphasis>대소문자를 구별</emphasis>합니다.</simpara></note>'>
 
-<!ENTITY database.fetch-null '<note><simpara>이 함수는 NULL 필드를 PHP &null;
+<!ENTITY database.fetch-null '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 NULL 필드를 PHP &null;
 값으로 설정합니다.</simpara></note>'>
 
 <!-- MSQL Notes -->
 <!-- The msql.*.description entities are used in the parameters refsect1 -->
 <!ENTITY msql.linkid.description
-'<varlistentry><term><parameter>link_identifier</parameter></term><listitem><para>mSQL
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>link_identifier</parameter></term><listitem><para>mSQL
 연결. 지정하지 않으면 <function>msql_connect</function>로 연 마지막 연결을
 사용합니다. 연결이 없으면, <function>msql_connect</function>를 호출하여 연결을
 만들어 사용합니다.</para></listitem></varlistentry>'>
 
 <!ENTITY msql.result.description
-'<varlistentry><term><parameter>result</parameter></term><listitem><para><function>msql_query</function>
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>result</parameter></term><listitem><para><function>msql_query</function>
 호출을 통한 결과 <type>resource</type>.</para></listitem></varlistentry>'>
 
 <!ENTITY msql.field-offset.req.description
-'<varlistentry><term><parameter>field_offset</parameter></term><listitem><para>숫자
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>field_offset</parameter></term><listitem><para>숫자
 필드 오프셋. <parameter>filed_offset</parameter>은 <literal>1</literal>부터
 시작합니다.</para></listitem></varlistentry>'>
 
 <!-- MyuSQL Notes -->
 <!-- The mysql.*.description entities are used in the parameters refsect1 -->
 <!ENTITY mysql.linkid.description
-'<varlistentry><term><parameter>link_identifier</parameter></term><listitem><para>MySQL
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>link_identifier</parameter></term><listitem><para>MySQL
 연결. 지정하지 않으면 <function>mysql_connect</function>로 연 마지막 연결을
 사용합니다. 연결이 없으면, 인수 없이 <function>mysql_connect</function>를
 호출하여 연결을 만듭니다. 연결이 성립되지 않으면
@@ -776,26 +947,26 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 생성합니다.</para></listitem></varlistentry>'>
 
 <!ENTITY mysql.result.description
-'<varlistentry><term><parameter>result</parameter></term><listitem><para><function>mysql_query</function>
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>result</parameter></term><listitem><para><function>mysql_query</function>
 호출을 통한 결과 <type>resource</type>.</para></listitem></varlistentry>'>
 
 <!ENTITY msql.field-offset.req.description
-'<varlistentry><term><parameter>field_offset</parameter></term><listitem><para>숫자
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>field_offset</parameter></term><listitem><para>숫자
 필드 오프셋. <parameter>filed_offset</parameter>은 <literal>0</literal>부터
 시작합니다. <parameter>filed_offset</parameter>이 존재하지 않으면
 <constant>E_WARNING</constant>를 생성합니다.</para></listitem></varlistentry>'>
 
 <!-- Sybase Notes -->
-<!ENTITY sybase.ct.only '<note><simpara>이 함수는 Sybase를 CT 라이브러리
+<!ENTITY sybase.ct.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 Sybase를 CT 라이브러리
 인터페이스로 이용할 때만 사용할 수 있으며, DB 라이브러리로는 사용할 수
 없습니다.</simpara></note>'>
 
-<!ENTITY sybase.db.only '<note><simpara>이 함수는 Sybase를 DB 라이브러리
+<!ENTITY sybase.db.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 Sybase를 DB 라이브러리
 인터페이스로 이용할 때만 사용할 수 있으며, CT 라이브러리로는 사용할 수
 없습니다.</simpara></note>'>
 
 <!ENTITY sybase.linkid.description
-'<varlistentry><term><parameter>link_identifier</parameter></term><listitem><para>Sybase
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>link_identifier</parameter></term><listitem><para>Sybase
 연결. 지정하지 않으면 <function>sybase_connect</function>로 연 마지막 연결을
 사용합니다. 연결이 없으면, 인수 없이 <function>sybase_connect</function>를
 호출하여 연결을 만듭니다. 연결이 성립되지 않으면
@@ -803,52 +974,52 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 생성합니다.</para></listitem></varlistentry>'>
 
 <!-- CPDF Notes -->
-<!ENTITY cpdf.ul '<para>선택 인수 <parameter>mode</parameter>는
+<!ENTITY cpdf.ul '<para xmlns="http://docbook.org/ns/docbook">선택 인수 <parameter>mode</parameter>는
 단위 길이를 결정합니다. <literal>0</literal>이나 생략할 경우, 페이지에 지정된
 기본 단위를 사용합니다. 그 외에는, 현재 단위를 무시하고 좌표를
 포스트스크립트 점으로 측정합니다.</para>'>
 
 <!ENTITY cpdf.mode.description
-'<varlistentry><term><parameter>mode</parameter></term><listitem><para>선택적인
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>mode</parameter></term><listitem><para>선택적인
 <parameter>mode</parameter> 인수는 단위 길이를 결정합니다.
 <literal>0</literal>이나 생략할 경우, 페이지에 지정된 기본 단위를 사용합니다.
 그 외에는, 현재 단위에 관계 없이 좌표를 포스트스크립트 점으로
 측정합니다.</para></listitem></varlistentry>'>
 
 <!ENTITY cpdf.pdf-document.description
-'<varlistentry><term><parameter>pdf_document</parameter></term><listitem><para><function>cpdf_open</function>이
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>pdf_document</parameter></term><listitem><para><function>cpdf_open</function>이
 반환한 문서 핸들.</para></listitem></varlistentry>'>
 
 <!-- Xattr entities -->
-<!ENTITY xattr.namespace '<para>확장 속성은 user와 root의 두가지 이름공간을
+<!ENTITY xattr.namespace '<para xmlns="http://docbook.org/ns/docbook">확장 속성은 user와 root의 두가지 이름공간을
 가집니다. user 이름공간은 모든 사용자가 사용할 수 있지만, root 이름공간은 root
 권한을 가진 사용자만 사용할 수 있습니다. xattr은 기본적으로 user 이름공간에서
 실행하지만, <parameter>flags</parameter> 인수를 사용하여 변경할 수
 있습니다.</para>'>
 
 <!-- Notes for IPv6 -->
-<!ENTITY ipv6.brackets '<note><simpara>숫자로 이루어진 IPv6 주소(예.
+<!ENTITY ipv6.brackets '<note xmlns="http://docbook.org/ns/docbook"><simpara>숫자로 이루어진 IPv6 주소(예.
 <literal>fe80::1</literal>)를
 지정할 때는 IP를 대괄호로 감싸야 합니다. 예를 들면, 
 <literal>tcp://[fe80::1]:80</literal>.</simpara></note>'>
 
-<!ENTITY ipv6.php5 '<note><simpara>IPv6는 PHP 5.0.0부터
+<!ENTITY ipv6.php5 '<note xmlns="http://docbook.org/ns/docbook"><simpara>IPv6는 PHP 5.0.0부터
 지원합니다.</simpara></note>'>
 
 <!-- Notes for tidy -->
-<!ENTITY note.tidy.ze2 '<note><simpara>이 함수는 Zend Engine 2(PHP &gt;=
+<!ENTITY note.tidy.ze2 '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 Zend Engine 2(PHP &gt;=
 5.0.0)에서만 사용할 수 있습니다.</simpara></note>'>
 
 <!ENTITY note.tidy.object '<classname>Tidy</classname> 객체.'>
 
-<!ENTITY note.tidy1.only '<note><simpara>이 함수는 Tidy 1.0에서만 사용할 수
+<!ENTITY note.tidy1.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 Tidy 1.0에서만 사용할 수
 있습니다. Tidy 2.0에서는 제거되었습니다.</simpara></note>'>
 
-<!ENTITY note.tidy2.only '<note><simpara>선택적인 인수
+<!ENTITY note.tidy2.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>선택적인 인수
 <parameter>config</parameter>와 <parameter>encoding</parameter>은 Tidy 2.0에서
 추가되었습니다.</simpara></note>'>
 
-<!ENTITY tidy.conf-enc '<para><parameter>config</parameter> 인수는 배열이나
+<!ENTITY tidy.conf-enc '<para xmlns="http://docbook.org/ns/docbook"><parameter>config</parameter> 인수는 배열이나
 문자열을 전달할 수 있습니다. 문자열을 넘기면, 설정 파일의 이름으로 해석합니다.
 그 외에는 옵션 자체로 해석합니다. 각 옵션의 설명은 <link
 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -862,12 +1033,12 @@ xlink:href="&url.tidy.conf;">&url.tidy.conf;</link>를
 <literal>big5</literal>, <literal>shiftjis</literal>.</para>'>
 
 <!-- Snippets for the installation section -->
-<!ENTITY warn.apache2.compat '<warning><para>제품 환경에서 아파치 2 쓰레드 MPM
-사용을 권하지 않습니다. prefork MPM을 사용하거나, Apache 1을 사용하십시오.
+<!ENTITY warn.apache2.compat '<warning xmlns="http://docbook.org/ns/docbook"><para>제품 환경에서 아파치 2 쓰레드 MPM
+사용을 권하지 않습니다. 아파치 2.0과 2.2 기본 MPM인 perfork MPM을 사용하십시오.
 이유는 관련 FAQ <link linkend="faq.installation.apache2">아파치2 쓰레드
 MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 
-<!ENTITY note.apache.slashes '<note><simpara>윈도우 상에서 아파치 설정 파일에
+<!ENTITY note.apache.slashes '<note xmlns="http://docbook.org/ns/docbook"><simpara>윈도우 상에서 아파치 설정 파일에
 경로값을 추가할 때는 다음과 같이 모든 백슬래시를 슬래시로 바꿔야 합니다:
 <filename>c:\directory\file.ext</filename>을
 <filename>c:/directory/file.ext</filename>로 바꿉니다. 디렉토리에는 마지막에
@@ -876,7 +1047,7 @@ MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 <!-- Snippets and titles for the contributors section -->
 <!ENTITY Credit.Authors.and.Contributors '저자와 공헌자'>
 
-<!ENTITY Credit.Introduction '<para>현재 가장 활발한 사람을 매뉴얼 첫 페이지에
+<!ENTITY Credit.Introduction '<para xmlns="http://docbook.org/ns/docbook">현재 가장 활발한 사람을 매뉴얼 첫 페이지에
 표시하지만, 그 외에도 현재 작업을 돕는, 또는 과거에 프로젝트에 많은 양의 도움을
 준 공헌자들이 많이 있습니다. 많은 수의 이름이 남지 않은 매뉴얼 페이지의 사용자
 노트는 계속하여 참조되어지고, 매우 고마운 일입니다. 아래의 모든 목록은 알파벳
@@ -900,45 +1071,45 @@ MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 <!ENTITY listendand ' 그리고'>
 
 <!-- classkit and runkit entities -->
-<!ENTITY note.classkit.selfmanipulaion '<note><simpara>이 함수는 현재 실행
+<!ENTITY note.classkit.selfmanipulaion '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 현재 실행
 방식으로 사용할 수 없습니다.</simpara></note>'>
 
-<!ENTITY note.runkit.selfmanipulaion '<note><simpara>이 함수는 현재 실행
+<!ENTITY note.runkit.selfmanipulaion '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 현재 실행
 방식으로 사용할 수 없습니다.</simpara></note>'>
 
-<!ENTITY note.runkit.sandbox '<note><simpara>Sandbox
+<!ENTITY note.runkit.sandbox '<note xmlns="http://docbook.org/ns/docbook"><simpara>Sandbox
 지원(<function>runkit_linux</function>, <function>runkit_lint_file</function>,
 <classname>Runkit_Sandbox</classname> 클래스에 필요합니다)은 PHP 5.1이나 특별히 패치된 PHP 5.0에서
 쓰레드 안전(therad safety)을 활성화해야 합니다. 자세한 정보는 runkit 패키지에
 포함된 <filename>README</filename> 파일을 참고하십시오.</simpara></note>'>
 
-<!ENTITY note.runkit.internal-override '<note><simpara>기본적으로 사용자
+<!ENTITY note.runkit.internal-override '<note xmlns="http://docbook.org/ns/docbook"><simpara>기본적으로 사용자
 함수만 삭제하거나, 이름을 바꾸거나, 변경할 수 있습니다. 내장 함수를 덮어쓰려면
 &php.ini; 파일에서 <literal>runkit.internal_override</literal>을
 활성화하여야 합니다.</simpara></note>'>
 
 <!-- SSH2 Extension -->
-<!ENTITY note.ssh2.subsystem.publickey '<note><simpara>공개키 부시스템은
+<!ENTITY note.ssh2.subsystem.publickey '<note xmlns="http://docbook.org/ns/docbook"><simpara>공개키 부시스템은
 서버에서 공개키를 관리하여 어떤 클라이언트가 <emphasis>이미</emphasis>
 인증되었는지 확인하는데 사용합니다. 공개키를 사용하여 원격 시스템을 인증하려면
 <function>ssh2_auth_pubkey_file</function> 함수를
 사용하십시오.</simpara></note>'>
 
 <!-- HTTP -->
-<!ENTITY see.http.request.options '<para>&link.http.request.options;의 전체
+<!ENTITY see.http.request.options '<para xmlns="http://docbook.org/ns/docbook">&link.http.request.options;의 전체
 목록을 참고하십시오.</para>'>
 <!ENTITY see.http.configuration.force_exit '"exits"의 의미에 대해서
 &link.http.configuration; <link
 linkend="http.configuration.force-exit">http.force_exit</link>를
 참고하십시오.'>
 
-<!ENTITY link.http.configuration '<link linkend="http.configuration">INI
+<!ENTITY link.http.configuration '<link xmlns="http://docbook.org/ns/docbook" linkend="http.configuration">INI
 설정</link>'>
 <!ENTITY link.http.request.option '<link
 linkend="http.request.options">요청 옵션</link>'>
-<!ENTITY link.http.request.options '<link linkend="http.request.options">요청
+<!ENTITY link.http.request.options '<link xmlns="http://docbook.org/ns/docbook" linkend="http.request.options">요청
 옵션들</link>'>
-<!ENTITY link.http.request.info '<link linkend="http.request.info">요청/응답
+<!ENTITY link.http.request.info '<link xmlns="http://docbook.org/ns/docbook" linkend="http.request.info">요청/응답
 정보</link>'>
 <!ENTITY returns.http.response '성공시 HTTP 응답을 문자열로, 실패시 &false;를
 반환합니다.'>
@@ -957,32 +1128,32 @@ linkend="class.httpresponse"><classname>HttpResponse</classname></link>
 이름으로 저장&quot; 창을 띄웁니다)'>
 <!ENTITY http.use.ob_start '<function>ob_start</function>와 사용합니다.'>
 
-<!ENTITY note.http.response.recalculate.etag.lm '<note><simpara>이전에
+<!ENTITY note.http.response.recalculate.etag.lm '<note xmlns="http://docbook.org/ns/docbook"><simpara>이전에
 계산했거나 정의한 <literal>ETag</literal>와 <literal>Last-Modified</literal>은
 다시 계산되어 적용될 수 있습니다.</simpara></note>'>
-<!ENTITY note.http.throttling.yields.process '<note><simpara>엔티티를 완전히
+<!ENTITY note.http.throttling.yields.process '<note xmlns="http://docbook.org/ns/docbook"><simpara>엔티티를 완전히
 전송할 때까지 현재 프로세스나 쓰레드에 양보하는 간단한 속도제어를
 제공합니다.</simpara></note>'>
-<!ENTITY note.http.send.API '<note><simpara>이 함수는 다음 함수와 함께
+<!ENTITY note.http.send.API '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 다음 함수와 함께
 사용해야 합니다: <function>http_send_data</function>,
 <function>http_seld_file</function> &listendand;
 <function>http_send_stream</function>.</simpara></note>'>
-<!ENTITY note.http.send.API.mayuse '<note><simpara>이 함수는 다음 함수와 함께
+<!ENTITY note.http.send.API.mayuse '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 다음 함수와 함께
 사용할 수 있습니다: <function>http_send_data</function>,
 <function>http_seld_file</function> &listendand;
 <function>http_send_stream</function>.</simpara></note>'>
 <!ENTITY note.http.request.encodecookies
-'<note><simpara>&link.http.request.option; <literal>encodecookies</literal>는
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>&link.http.request.option; <literal>encodecookies</literal>는
 쿠키값이 <function>urlencode</function>를 통할 지 여부를
 제어합니다.</simpara></note>'>
 <!ENTITY note.http.request.affects.any
-'<note><simpara>&http.request.affects.any;</simpara></note>'>
-<!ENTITY note.http.ob.once '<note><simpara>이 출력 핸들러는 한번만 사용할 수
+'<note xmlns="http://docbook.org/ns/docbook"><simpara>&http.request.affects.any;</simpara></note>'>
+<!ENTITY note.http.ob.once '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 출력 핸들러는 한번만 사용할 수
 있습니다.</simpara></note>'>
 
 <!-- XMLWriter Notes -->
 <!ENTITY xmlwriter.xmlwriter.description
-'<varlistentry><term><parameter>xmlwriter</parameter></term><listitem><para>순차적
+'<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>xmlwriter</parameter></term><listitem><para>순차적
 호출에서만 사용. XMLWriter <type>resource</type>가 수정됩니다. 이 자원은
 <function>xmlwriter_open_uri</function>나
 <function>xmlwriter_open_memory</function> 호출로
@@ -991,6 +1162,27 @@ linkend="class.httpresponse"><classname>HttpResponse</classname></link>
 <!-- SOAP notes -->
 <!ENTITY soap.wsdl.mode.only "<note><para>이 함수는 WSDL 모드에서만
 작동합니다.</para></note>">
+
+<!-- Stomp notes -->
+<!ENTITY stomp.param.link "<varlistentry
+xmlns='http://docbook.org/ns/docbook'><term><parameter>link</parameter></term><listitem><para>Procedural
+style only: The stomp link identifier returned by
+<function>stomp_connect</function>.</para></listitem></varlistentry>">
+<!ENTITY stomp.param.headers "<varlistentry
+xmlns='http://docbook.org/ns/docbook'><term><parameter>headers</parameter></term><listitem><para>Associative
+array containing the additional headers (example:
+receipt).</para></listitem></varlistentry>">
+<!ENTITY stomp.note.transaction "<note
+xmlns='http://docbook.org/ns/docbook'><para>A transaction header may
+be specified, indicating that the message acknowledgment should be
+part of the named transaction.</para></note>">
+<!ENTITY stomp.note.sync "<tip
+xmlns='http://docbook.org/ns/docbook'><simpara>Stomp is
+inherently asynchronous. Synchronous communication can be
+implemented adding a receipt header. This will cause methods
+to not return anything until the server has acknowledged
+receipt of the message or until read timeout was
+reached.</simpara></tip>">
 
 <!-- SVN notes -->
 <!ENTITY svn.relativepath "<note><simpara>상대 경로는 PHP 바이너리가 있는
@@ -1025,6 +1217,11 @@ ImagickPixenIterratorException이 발생합니다.'>
 <!ENTITY imagick.method.available.0x642 '이 메쏘드는 Imagick을 ImageMagick 6.4.2 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
 <!ENTITY imagick.method.available.0x643 '이 메쏘드는 Imagick을 ImageMagick 6.4.3 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
 <!ENTITY imagick.method.available.0x644 '이 메쏘드는 Imagick을 ImageMagick 6.4.4 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x645 '이 메쏘드는 Imagick을 ImageMagick 6.4.5 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x647 '이 메쏘드는 Imagick을 ImageMagick 6.4.7 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x649 '이 메쏘드는 Imagick을 ImageMagick 6.4.9 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x653 '이 메쏘드는 Imagick을 ImageMagick 6.5.3 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
+<!ENTITY imagick.method.available.0x657 '이 메쏘드는 Imagick을 ImageMagick 6.5.7 이상으로 컴파일 했을 때만 사용할 수 있습니다.'>
 
 <!ENTITY imagick.constant.available '이 상수는 Imagick이 다음 ImageMagick 버전으로 컴파일 했을 때만 사용할 수 있습니다:'>
 
@@ -1048,9 +1245,23 @@ linkend="imagick.constants.channel">채널 상수</link>를 조합하십시오.
 완전한 투명입니다.'>
 
 <!ENTITY imagick.imagickexception.throw '오류 시에
-<classname>ImagickException</classname>을 던집니다.'>
+<classname xmlns="http://docbook.org/ns/dobcook">ImagickException</classname>을 던집니다.'>
 
-<!ENTITY note.openssl.cnf '<note
+<!ENTITY imagick.bestfit.note '<note xmlns="http://docbook.org/ns/docbook">
+ <simpara>
+  The behavior of the parameter <parameter>bestfit</parameter>
+changed in Imagick 3.0.0.
+  Before this version given dimensions 400x400 an image of dimensions
+200x150 would be
+  left untouched. In Imagick 3.0.0 and later the image would be
+scaled up to size 400x300 as
+  this is the "best fit" for the given dimensions. If
+<parameter>bestfit</parameter>
+  parameter is used both width and height must be given.
+ </simpara>
+</note>'>
+
+<!ENTITY note.openssl.cnf '<note xmlns="http://docbook.org/ns/docbook"
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수가 제대로 작동하려면
 유효한 <filename>openssl.cnf</filename>을 설치해야 합니다. 자세한 정보는 <link
 linkend="openssl.installation">설치 섹션</link>의 주석을
@@ -1061,7 +1272,7 @@ linkend="openssl.installation">설치 섹션</link>의 주석을
 &true;입니다.</para>'>
 
 <!-- COM/Dotnet -->
-<!ENTITY com.variant-arith '<note
+<!ENTITY com.variant-arith '<note xmlns="http://docbook.org/ns/docbook"
 xmlns="http://docbook.org/ns/docbook"><para>variant 연산 함수와 마찬가지로, 이
 함수의 인수로는 PHP 자료형(정수, 문자열, 소수, 논리, &null;)이나 COM,
 VARIANT, DOTNET 클래스의 인스턴스를 사용할 수 있습니다. PHP 자료형은 <xref
@@ -1072,19 +1283,19 @@ COM과 DOTNET 객체는 기본 프로퍼티 값을 variant 값으로
 참조하십시오. PHP 함수 이름은 차이가 있습니다; 예를 들어, PHP에서
 <function>variant_add</function>는 MSDN 문서의 <literal>VarAdd()</literal>에
 해당합니다.</para></note>'>
-<!ENTITY com.use-oo-instead '<note
+<!ENTITY com.use-oo-instead '<note xmlns="http://docbook.org/ns/docbook"
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5에 존재하지
 않습니다; 프로퍼티에 접근하거나 메쏘드를 호출하려면, 일반적인 OO 문법을
 사용해야 합니다.</simpara></note>'>
 
 <!-- phar -->
-<!ENTITY phar.write '<note xmlns="http://docbook.org/ns/docbook"><para>이
+<!ENTITY phar.write '<note xmlns="http://docbook.org/ns/docbook" xmlns="http://docbook.org/ns/docbook"><para>이
 메쏘드가 <classname>Phar</classname> 객체에 작용하려면 &php.ini; 설정
 <literal>phar.readonly</literal>을 <literal>0</literal>으로 설정해야 합니다.
 그렇지 않으면, <classname>PharException</classname>이
 발생합니다.</para></note>'>
 
-<!ENTITY phar.removed.pharcompress '<note
+<!ENTITY phar.removed.pharcompress '<note xmlns="http://docbook.org/ns/docbook"
 xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0부터
 제거되었습니다. 대신, <function>Phar::compress</function>,
 <function>Phar::decompress</function>,
@@ -1092,13 +1303,21 @@ xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0�
 <function>Phar::decompressFiles</function>를 사용할 수
 있습니다.</para></note>'>
 
-<!ENTITY phar.removed.pharfileinfocompress '<note
+<!ENTITY phar.removed.pharfileinfocompress '<note xmlns="http://docbook.org/ns/docbook"
 xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0부터
 제거되었습니다. 대신, <function>PharFileInfo::isCompressed</function>,
 <function>PharFileInfo::decompress</function>,
 <function>PharFileInfo::compress</function>를 사용할 수
 있습니다.</para></note>'>
 
+<!-- XML -->
+<!ENTITY libxml.required '<para
+xmlns="http://docbook.org/ns/docbook">This extension requires the
+<link linkend="book.libxml">libxml</link> PHP extension. This means
+that passing in
+<option role="configure">--enable-libxml</option> is also required,
+although this is implicitly accomplished
+because libxml is enabled by default.</para>'>
 
 <!-- XMLReader -->
 <!ENTITY xmlreader.libxml20620.note '<caution><para>이 함수는 PHP가 libxml
@@ -1109,9 +1328,9 @@ xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0�
 반환하는 리소스.'>
 
 <!-- User streams -->
-<!ENTITY userstream.not.implemented.warning '<para>이 메쏘드 호출을 실패했을
+<!ENTITY userstream.not.implemented.warning '<para xmlns="http://docbook.org/ns/docbook">이 메쏘드 호출을 실패했을
 때 <constant>E_WARNING</constant>이 발생합니다. (즉, 구현되지 않음)</para>'>
-<!ENTITY userstream.updates.context '<note><para>호출한 함수로 유효한
+<!ENTITY userstream.updates.context '<note xmlns="http://docbook.org/ns/docbook"><para>호출한 함수로 유효한
 컨텍스트를 넘겼을 때,
 <varname linkend="streamwrapper.props.context">streamWrapper->context</varname>
 프로퍼티가 갱신됩니다.</para></note>'>
@@ -1131,4 +1350,54 @@ xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0�
 
 <!ENTITY reflection.export.param.name 'export할 reflection'>
 
+<!-- SPL -->
+<!ENTITY spl.datastructures.intro.title '<title
+xmlns="http://docbook.org/ns/docbook">Datastructures</title>'>
+
+<!ENTITY spl.exceptions.intro.title '<title
+xmlns="http://docbook.org/ns/docbook">Exceptions</title>'>
+<!ENTITY spl.exceptions.intro '<partintro
+xmlns="http://docbook.org/ns/docbook"><para>SPL provides a set of
+standard Exceptions.</para><para>See also the <xref
+linkend="reserved.exceptions" /></para></partintro>'>
+
+<!ENTITY spl.files.intro.title '<title
+xmlns="http://docbook.org/ns/docbook">File Handling</title>'>
+<!ENTITY spl.files.intro '<partintro
+xmlns="http://docbook.org/ns/docbook"><para>SPL provides a number of
+classes to work with files.</para></partintro>'>
+
+<!ENTITY spl.interfaces.intro.title '<title
+xmlns="http://docbook.org/ns/docbook">Interfaces</title>'>
+<!ENTITY spl.interfaces.intro '<para
+xmlns="http://docbook.org/ns/docbook">SPL provides a set of
+interfaces.</para><para xmlns="http://docbook.org/ns/docbook">See also
+the <xref linkend="reserved.interfaces" /></para>'>
+<!ENTITY spl.interfaces.list '<title
+xmlns="http://docbook.org/ns/docbook">Interface list</title>'>
+
+<!ENTITY spl.iterators.intro.title '<title
+xmlns="http://docbook.org/ns/docbook">Iterators</title>'>
+<!ENTITY spl.iterators.intro '<para
+xmlns="http://docbook.org/ns/docbook">SPL provides a set of iterators
+to traverse over objects.</para>'>
+
+<!ENTITY spl.misc.intro.title '<title
+xmlns="http://docbook.org/ns/docbook">Miscellaneous Classes and
+Interfaces</title>'>
+<!ENTITY spl.misc.intro '<partintro
+xmlns="http://docbook.org/ns/docbook"><para>Classes and interfaces
+which do not fit into the other SPL categories.</para></partintro>'>
+
+<!-- Win32Service -->
+<!ENTITY win32service.false.error ', &false; if there is a
+problem with the parameters or a <link
+xmlns="http://docbook.org/ns/docbook"
+linkend="win32service.constants.errors">Win32 Error
+Code</link> on failure.'>
+<!ENTITY win32service.success.false.error 'Returns &true; on
+success&win32service.false.error;'>
+<!ENTITY win32service.noerror.false.error 'Returns <constant
+xmlns="http://docbook.org/ns/docbook">WIN32_NO_ERROR</constant>
+on success&win32service.false.error;'>
 
