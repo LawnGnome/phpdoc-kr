@@ -141,12 +141,12 @@ xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5.3.0부터
 
 <!ENTITY removed.php.future '이 배제된 기능은 추후 <emphasis xmlns="http://docbook.org/ns/docbook">제거</emphasis>될 <emphasis xmlns="http://docbook.org/ns/docbook">예정</emphasis>입니다.'>
 
-<!ENTITY warn.deprecated.function.removed-5-3-0 '<warning xmlns="http://docbook.org/ns/docbook"
+<!ENTITY warn.deprecated.function.removed-5-3-0 '<warning
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <emphasis>배제되었고</emphasis> PHP 5.3.0부터
 <emphasis>제거됩니다</emphasis>.</simpara></warning>'>
 
-<!ENTITY warn.deprecated.alias-5-3-0 '<warning xmlns="http://docbook.org/ns/docbook"
+<!ENTITY warn.deprecated.alias-5-3-0 '<warning
 xmlns="http://docbook.org/ns/docbook"><simpara>이 별칭은 PHP 5.3.0부터
 <emphasis>배제</emphasis>되었습니다. 이 기능에 의존하지 않기를
 권합니다.</simpara></warning>'>
@@ -199,7 +199,7 @@ PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 �
 
 <!ENTITY version.trunk.after.53 '<emphasis
 	xmlns="http://docbook.org/ns/docbook">이 변화는 PHP <link
-linkend="about.phpversions">개발 버전</link>에 적용되었으며, 5.3 이후에 적용될 것입니다.'>
+linkend="about.phpversions">개발 버전</link>에 적용되었으며, 5.3 이후에 적용될 것입니다.</emphasis>'>
 
 <!ENTITY version.trunk.changelog '미래'>
 
@@ -295,7 +295,7 @@ linkend="language.types.boolean">논리형</link> 섹션을 참고하십시오.
 이용하십시오.</simpara></warning>'>
 
 <!-- OpenSSL -->
-<!ENTITY openssl.param.x509 '<valistentry xmlns="http://docbook.org/ns/docbook">
+<!ENTITY openssl.param.x509 '<varlistentry xmlns="http://docbook.org/ns/docbook">
  <term><parameter>x509</parameter></term>
  <listitem>
   <para>
@@ -304,7 +304,6 @@ linkend="language.types.boolean">논리형</link> 섹션을 참고하십시오.
   </para>
  </listitem>
 </varlistentry>'>
-
 
 <!-- Image (GD) Notes -->
 <!ENTITY note.config.t1lib '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
@@ -434,7 +433,7 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 
 <!ENTITY date.timezone.intro "<para xmlns='http://docbook.org/ns/docbook'>여기에서 PHP에서 지원하는 모든 시간대
 목록을 확인할 수 있습니다. 이는 <function>date_default_timezone_set</function>
-등에서 사용합니다.</para><note><simpara>최신 버전의 시간대 데이터베이스는
+등에서 사용합니다.</para><note xmlns='http://docbook.org/ns/docbook'><simpara>최신 버전의 시간대 데이터베이스는
 PECL의 <link xlink:href='&url.pecl.package.get;timezonedb' 
 xmlns:xlink='http://www.w3.org/1999/xlink'>timezonedb</link>를 통해 설치할 수
 있습니다.</simpara></note>">
@@ -495,12 +494,12 @@ obejct</parameter></term><listitem><para>절차식 전용:
 <classname>DateTimeZone</classname> 객체.</para></listitem></varlistentry>'>
 
 <!-- DomXml Notes -->
-<!ENTITY node.inserted '이 노드는 <function>domnode_append_child</function>
+<!ENTITY node.inserted '이 노드는 <function xmlns="http://docbook.org/ns/docbook">domnode_append_child</function>
 등을 통하여 삽입하지 않으면 보여지지 않습니다.'>
 
 
 <!-- Dom Notes -->
-<!ENTITY dom.node.inserted '이 노드는 <link
+<!ENTITY dom.node.inserted '이 노드는 <link xmlns="http://docbook.org/ns/docbook"
 linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 통하여 삽입하지 않으면 보여지지 않습니다.'>
 
@@ -539,7 +538,7 @@ linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 
 <!-- Oracle -->
 <!ENTITY oci.db "<para xmlns='http://docbook.org/ns/docbook' xmlns:xlink='http://www.w3.org/1999/xlink'>접속을 위해 <literal>오라클 인스턴스</literal>를 포함합니다.
-<link xlink:href='&url.orcale.oic.connect;'>Easy Connect string</link>이나
+<link xlink:href='&url.oracle.oic.connect;'>Easy Connect string</link>이나
 <filename>tnsnames.ora</filename> 파일의 Connect Name, 로컬 오라클 인스턴스의 이름일 수 있습니다.</para>
 <para xmlns='http://docbook.org/ns/docbook'>지정하지 않으면, PHP는
 접속할 <literal>오라클 인스턴스</literal>를 찾기 위해 <constant>TWO_TASK</constant>(리눅스)나 <constant>LOCAL</constant>(윈도우), 그리고 <constant>ORACLE_SID</constant> 등의 환경 변수를 사용합니다.</para>
@@ -769,7 +768,7 @@ linkend="configuration.changes.modes"/>를 참고하십시오.'>
 <!ENTITY pecl.moved '이 <link xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에서 제공하지 않습니다.'>
 
-<!ENTITY pecl.bundled '이 <link xmlns:xlink="http://www.w3.org/1999/xlink"
+<!ENTITY pecl.bundled '이 <link xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink"
 xlink:href="&url.pecl;">PECL</link> 확장은 PHP
 배포판에 포함되어 있습니다.'>
 
@@ -797,7 +796,7 @@ PHP 윈도우 바이너리 안의 <filename xmlns="http://docbook.org/ns/docbook
 
 <!ENTITY pecl.windows.download.unbundled '&pecl.windows.download;'>
 
-<!ENTITY pecl.moved-ver '이 확장은 <link
+<!ENTITY pecl.moved-ver '이 확장은 <link xmlns="http://docbook.org/ns/docbook"
 xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link>
 저장소로 옮겨졌으며, 더 이상 PHP로 제공되지 않습니다.'>
 
@@ -847,7 +846,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 식별자.</para></listitem></varlistentry>'>
 
 <!-- GMP Notes -->
-<!ENTITY gmp.return 'GMP 수 <type>resource</type>.'>
+<!ENTITY gmp.return 'GMP 수 <type xmlns="http://docbook.org/ns/docbook">resource</type>.'>
 <!ENTITY gmp.parameter '<para xmlns="http://docbook.org/ns/docbook">GMP 수 <type>resource</type>나 수로 변환할 수
 있는 문자열일 수 있습니다.</para>'>
 
@@ -867,10 +866,10 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>stmt</parameter></term><listitem><para>순차
 형식 전용: <function>mysqli_stmt_init</function>가 반환한 statement
 식별자.</para></listitem></varlistentry>'>
-<!ENTITY mysqli.available.mysqlnd '<link
+<!ENTITY mysqli.available.mysqlnd '<link xmlns="http://docbook.org/ns/docbook"
 linkend="mysqli.overview.mysqlnd">mysqlnd</link>에서만 사용할 수 있습니다.'>
 <!ENTITY mysqli.charset.note '<note xmlns="http://docbook.org/ns/docbook">
-<para>MySQLnd는 항상 서버 기본 문자셋을 가정합니다. 이 문자셋은 접속/인증 중에 보내져서 mysqlnd가 사용하게 합니다.</para><para>Libmysql은 <filename>my.cnf</filename>의 기본 문자셋을 사용하거나, <function>mysqli_init</function> 이후, <function>mysqli_real_connect</function> 이전에 명시적으로 호출한 <function>mysqli_options</function>로 지정할 수 있습니다.'>
+<para>MySQLnd는 항상 서버 기본 문자셋을 가정합니다. 이 문자셋은 접속/인증 중에 보내져서 mysqlnd가 사용하게 합니다.</para><para>Libmysql은 <filename>my.cnf</filename>의 기본 문자셋을 사용하거나, <function>mysqli_init</function> 이후, <function>mysqli_real_connect</function> 이전에 명시적으로 호출한 <function>mysqli_options</function>로 지정할 수 있습니다.</para></note>'>
 
 <!-- Notes for SAPI/Apache -->
 <!ENTITY note.apache.nsapi-module '<note xmlns="http://docbook.org/ns/docbook"><para>PHP 4.3.3부터 이 함수를
@@ -1099,13 +1098,13 @@ MPM</link> 사용하기를 읽어보십시오.</para></warning>'>
 <!ENTITY see.http.request.options '<para xmlns="http://docbook.org/ns/docbook">&link.http.request.options;의 전체
 목록을 참고하십시오.</para>'>
 <!ENTITY see.http.configuration.force_exit '"exits"의 의미에 대해서
-&link.http.configuration; <link
+&link.http.configuration; <link xmlns="http://docbook.org/ns/docbook"
 linkend="http.configuration.force-exit">http.force_exit</link>를
 참고하십시오.'>
 
 <!ENTITY link.http.configuration '<link xmlns="http://docbook.org/ns/docbook" linkend="http.configuration">INI
 설정</link>'>
-<!ENTITY link.http.request.option '<link
+<!ENTITY link.http.request.option '<link xmlns="http://docbook.org/ns/docbook"
 linkend="http.request.options">요청 옵션</link>'>
 <!ENTITY link.http.request.options '<link xmlns="http://docbook.org/ns/docbook" linkend="http.request.options">요청
 옵션들</link>'>
@@ -1114,19 +1113,19 @@ linkend="http.request.options">요청 옵션</link>'>
 <!ENTITY returns.http.response '성공시 HTTP 응답을 문자열로, 실패시 &false;를
 반환합니다.'>
 <!ENTITY returns.http.false.orexits '성공시 &false;를 반환하거나 
-<emphasis>종료</emphasis>합니다.'>
+<emphasis xmlns="http://docbook.org/ns/docbook">종료</emphasis>합니다.'>
 <!ENTITY http.request.affects '다음 요청 방식에만 적용됩니다:'>
 <!ENTITY http.request.affects.any '모든 요청 방식에 적용됩니다.'>
-<!ENTITY http.response.class.php51 'PHP 5.1.0 이상을 사용할 때 <link
+<!ENTITY http.response.class.php51 'PHP 5.1.0 이상을 사용할 때 <link xmlns="http://docbook.org/ns/docbook"
 linkend="class.httpresponse"><classname>HttpResponse</classname></link>
 클래스'>
 <!ENTITY http.maynotwork.SAPI '다음 SAPI에서는 정상 작동하지 않을 수
 있습니다:'>
 <!ENTITY http.content.disposition '데이터가 파일 등에서 전송해야 할 때
-<literal>Content-Disposition</literal> 헤더가 매우 유용합니다. 반드시
+<literal xmlns="http://docbook.org/ns/docbook">Content-Disposition</literal> 헤더가 매우 유용합니다. 반드시
 클라이언트/사용자에 의해 &quot;저장&quot;됩니다. (브라우저의 &quot;다른
 이름으로 저장&quot; 창을 띄웁니다)'>
-<!ENTITY http.use.ob_start '<function>ob_start</function>와 사용합니다.'>
+<!ENTITY http.use.ob_start '<function xmlns="http://docbook.org/ns/docbook">ob_start</function>와 사용합니다.'>
 
 <!ENTITY note.http.response.recalculate.etag.lm '<note xmlns="http://docbook.org/ns/docbook"><simpara>이전에
 계산했거나 정의한 <literal>ETag</literal>와 <literal>Last-Modified</literal>은
@@ -1160,7 +1159,7 @@ linkend="class.httpresponse"><classname>HttpResponse</classname></link>
 만들어집니다.</para></listitem></varlistentry>'>
 
 <!-- SOAP notes -->
-<!ENTITY soap.wsdl.mode.only "<note><para>이 함수는 WSDL 모드에서만
+<!ENTITY soap.wsdl.mode.only "<note xmlns='http://docbook.org/ns/docbook'><para>이 함수는 WSDL 모드에서만
 작동합니다.</para></note>">
 
 <!-- Stomp notes -->
@@ -1185,13 +1184,13 @@ receipt of the message or until read timeout was
 reached.</simpara></tip>">
 
 <!-- SVN notes -->
-<!ENTITY svn.relativepath "<note><simpara>상대 경로는 PHP 바이너리가 있는
+<!ENTITY svn.relativepath "<note xmlns='http://docbook.org/ns/docbook'><simpara>상대 경로는 PHP 바이너리가 있는
 디렉토리를 현재 작업 디렉토리로 인식합니다. 스크립트의 작업 디렉토리를
 얻으려면, <function>realpath</function>나 dirname(__FILE__)을
 사용하십시오.</simpara></note>">
-<!ENTITY svn.referto.status '사용할 수 있는 값에 대해서는 <link
+<!ENTITY svn.referto.status '사용할 수 있는 값에 대해서는 <link xmlns="http://docbook.org/ns/docbook"
 linkend="svn.constants.status">status 상수</link>를 참고하십시오.'>
-<!ENTITY svn.referto.type '사용할 수 있는 값에 대해서는 <link
+<!ENTITY svn.referto.type '사용할 수 있는 값에 대해서는 <link xmlns="http://docbook.org/ns/docbook"
 linkend="svn.constants.type">type 상수</link>를 참고하십시오.'>
 
 <!-- Imagick generic return types -->
@@ -1227,7 +1226,7 @@ ImagickPixenIterratorException이 발생합니다.'>
 
 <!-- Imagick default channel information -->
 <!ENTITY imagick.default.channel.info '기본값은
-<constant>Imagick::CHANNEL_DEFAULT</constant>. <link
+<constant xmlns="http://docbook.org/ns/docbook">Imagick::CHANNEL_DEFAULT</constant>. <link xmlns="http://docbook.org/ns/docbook"
 linkend="imagick.constants.channel">채널 상수</link> 목록을 참고하십시오.'>
 
 <!-- Fuzz parameter -->
@@ -1236,7 +1235,7 @@ linkend="imagick.constants.channel">채널 상수</link> 목록을 참고하십�
 
 <!-- Channel parameter -->
 <!ENTITY imagick.parameter.channel '채널 모드에 유효한 채널 상수를 제공합니다.
-둘 이상의 채널을 적용하려면, 비트 연산자를 이용해서 <link
+둘 이상의 채널을 적용하려면, 비트 연산자를 이용해서 <link xmlns="http://docbook.org/ns/docbook"
 linkend="imagick.constants.channel">채널 상수</link>를 조합하십시오.
 &imagick.default.channel.info;'>
 
@@ -1245,7 +1244,7 @@ linkend="imagick.constants.channel">채널 상수</link>를 조합하십시오.
 완전한 투명입니다.'>
 
 <!ENTITY imagick.imagickexception.throw '오류 시에
-<classname xmlns="http://docbook.org/ns/dobcook">ImagickException</classname>을 던집니다.'>
+<classname xmlns="http://docbook.org/ns/docbook">ImagickException</classname>을 던집니다.'>
 
 <!ENTITY imagick.bestfit.note '<note xmlns="http://docbook.org/ns/docbook">
  <simpara>
@@ -1261,7 +1260,7 @@ scaled up to size 400x300 as
  </simpara>
 </note>'>
 
-<!ENTITY note.openssl.cnf '<note xmlns="http://docbook.org/ns/docbook"
+<!ENTITY note.openssl.cnf '<note
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수가 제대로 작동하려면
 유효한 <filename>openssl.cnf</filename>을 설치해야 합니다. 자세한 정보는 <link
 linkend="openssl.installation">설치 섹션</link>의 주석을
@@ -1272,7 +1271,7 @@ linkend="openssl.installation">설치 섹션</link>의 주석을
 &true;입니다.</para>'>
 
 <!-- COM/Dotnet -->
-<!ENTITY com.variant-arith '<note xmlns="http://docbook.org/ns/docbook"
+<!ENTITY com.variant-arith '<note
 xmlns="http://docbook.org/ns/docbook"><para>variant 연산 함수와 마찬가지로, 이
 함수의 인수로는 PHP 자료형(정수, 문자열, 소수, 논리, &null;)이나 COM,
 VARIANT, DOTNET 클래스의 인스턴스를 사용할 수 있습니다. PHP 자료형은 <xref
@@ -1283,19 +1282,19 @@ COM과 DOTNET 객체는 기본 프로퍼티 값을 variant 값으로
 참조하십시오. PHP 함수 이름은 차이가 있습니다; 예를 들어, PHP에서
 <function>variant_add</function>는 MSDN 문서의 <literal>VarAdd()</literal>에
 해당합니다.</para></note>'>
-<!ENTITY com.use-oo-instead '<note xmlns="http://docbook.org/ns/docbook"
+<!ENTITY com.use-oo-instead '<note
 xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5에 존재하지
 않습니다; 프로퍼티에 접근하거나 메쏘드를 호출하려면, 일반적인 OO 문법을
 사용해야 합니다.</simpara></note>'>
 
 <!-- phar -->
-<!ENTITY phar.write '<note xmlns="http://docbook.org/ns/docbook" xmlns="http://docbook.org/ns/docbook"><para>이
+<!ENTITY phar.write '<note xmlns="http://docbook.org/ns/docbook"><para>이
 메쏘드가 <classname>Phar</classname> 객체에 작용하려면 &php.ini; 설정
 <literal>phar.readonly</literal>을 <literal>0</literal>으로 설정해야 합니다.
 그렇지 않으면, <classname>PharException</classname>이
 발생합니다.</para></note>'>
 
-<!ENTITY phar.removed.pharcompress '<note xmlns="http://docbook.org/ns/docbook"
+<!ENTITY phar.removed.pharcompress '<note
 xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0부터
 제거되었습니다. 대신, <function>Phar::compress</function>,
 <function>Phar::decompress</function>,
@@ -1303,7 +1302,7 @@ xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0�
 <function>Phar::decompressFiles</function>를 사용할 수
 있습니다.</para></note>'>
 
-<!ENTITY phar.removed.pharfileinfocompress '<note xmlns="http://docbook.org/ns/docbook"
+<!ENTITY phar.removed.pharfileinfocompress '<note
 xmlns="http://docbook.org/ns/docbook"><para>이 메쏘드는 phar 확장 2.0.0부터
 제거되었습니다. 대신, <function>PharFileInfo::isCompressed</function>,
 <function>PharFileInfo::decompress</function>,
@@ -1320,11 +1319,11 @@ although this is implicitly accomplished
 because libxml is enabled by default.</para>'>
 
 <!-- XMLReader -->
-<!ENTITY xmlreader.libxml20620.note '<caution><para>이 함수는 PHP가 libxml
+<!ENTITY xmlreader.libxml20620.note '<caution xmlns="http://docbook.org/ns/docbook"><para>이 함수는 PHP가 libxml
 20620 이후와 함께 컴파일 되었을 때만 사용할 수 있습니다.</para></caution>'>
 
 <!-- inotify -->
-<!ENTITY inotify.instance.description '<function>inotify_init</function>가
+<!ENTITY inotify.instance.description '<function xmlns="http://docbook.org/ns/docbook">inotify_init</function>가
 반환하는 리소스.'>
 
 <!-- User streams -->
@@ -1341,8 +1340,8 @@ because libxml is enabled by default.</para>'>
 <classname>GmagickException</classname>을 던집니다.'>
 
 <!-- Reflection -->
-<!ENTITY reflection.export.return '<parameter>return</parameter> 인수를
-&true;로 설정하면, export를 <type>string</type>으로 반환합니다.
+<!ENTITY reflection.export.return '<parameter xmlns="http://docbook.org/ns/docbook">return</parameter> 인수를
+&true;로 설정하면, export를 <type xmlns="http://docbook.org/ns/docbook">string</type>으로 반환합니다.
 그렇지 않으면 &null;을 반환합니다.'>
 
 <!ENTITY reflection.export.param.return '&true;로 설정하면 export를 반환하고,
