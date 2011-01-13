@@ -134,8 +134,7 @@ echo $some_var ? 'true': 'false'; // 구문을 변경하여 처리
   &reftitle.notes;
   <simpara>
    <function>print</function>와 <function>echo</function>의 차이에 대해서는,
-   FAQT의 Knowledge Base Article을 읽어보십시오: <link
-    xlink:href="&url.echo-print;">&url.echo-print;</link>
+   FAQT의 Knowledge Base Article을 읽어보십시오: 
   </simpara>
   &note.language-construct;
  </refsect1>

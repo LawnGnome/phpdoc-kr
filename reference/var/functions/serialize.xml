@@ -114,14 +114,6 @@ if (!odbc_execute($stmt, &$sqldata)) {
         객체 일렬화 처리가 고정되었습니다.
        </entry>
       </row>
-      <row>
-       <entry>4.0.0</entry>
-       <entry>
-        객체를 일렬화할 때, 메쏘드를 잃어버리지 않습니다. 자세한 정보는 <link
-         linkend="language.oop.serialization">객체 일렬화</link>를
-        참고하십시오.
-       </entry>
-      </row>
      </tbody>
     </tgroup>
    </informaltable>
@@ -142,7 +134,7 @@ if (!odbc_execute($stmt, &$sqldata)) {
   <para>
    <simplelist>
     <member><function>unserialize</function></member>
-    <member><link linkend="language.oop.serialization">객체 일렬화</link></member>
+    <member><link linkend="language.oop5.serialization">Serializing Objects</link></member>
    </simplelist>
   </para>
  </refsect1>

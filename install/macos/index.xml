@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 297028 Maintainer: progcom Status: ready -->
-<chapter xml:id="install.macosx" xmlns="http://docbook.org/ns/docbook">
+<chapter xml:id="install.macos" xmlns="http://docbook.org/ns/docbook">
  <title>Mac OS X에 설치</title>
  <para>
   이 장은 Mac OS X에 PHP를 설치하기 위해 필요한 정보와 힌트를 포함하고
@@ -10,8 +10,7 @@
  </para>
  &install.macos.packages;
  &install.macos.bundled;
- &install.macos.server;
- &install.macos.client;
+ &install.macos.compile;
 </chapter>
 
 <!-- Keep this comment at the end of the file

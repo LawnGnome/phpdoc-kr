@@ -416,13 +416,13 @@ foreach ($headers as $name => $content) {
     </question>
     <answer>
      <para>
-      이와같은 상용라이브러리를 대체하기 위해 PHP로 쓰여진것이 있습니다.
-      다음과 같습니다.
-      <link xlink:href="&url.pdf.ros;">&url.pdf.ros;</link>, 
-      <link xlink:href="&url.pdf.fpdf;">&url.pdf.fpdf;</link>, 
-      <link xlink:href="&url.pdf.pdf4php;">&url.pdf.pdf4php;</link>, and 
-      <link xlink:href="&url.pdf.phppdflib;">&url.pdf.phppdflib;</link>.
-      이와 더불어 <link xlink:href="&url.pdf.panda;">Panda</link>모듈도 있습니다.
+      There are a few alternatives written in PHP such as 
+      <link xlink:href="&url.pdf.fpdf;">FPDF</link> and
+      <link xlink:href="&url.pdf.tcpdf;">TCPDF</link>.
+     </para>
+     <para>
+      There is also the <link linkend="book.haru">Haru</link> extension
+      that uses the free libHaru external library.
      </para>
     </answer>
    </qandaentry>
