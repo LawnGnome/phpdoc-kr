@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 288721 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- EN-Revision: 312969 Maintainer: progcom Status: ready -->
 
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
   &frontpage.authors;
-  <pubdate>&php.build-date;</pubdate>
+  <pubdate><?dbtimestamp format="Y-m-d"?></pubdate>
   &frontpage.editors;
 
   <authorgroup xml:id="translators">
@@ -42,7 +42,7 @@
   <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>저작권</title>
    <simpara>
-    Copyright &copy; 1997 - 2009 by the PHP Documentation Group.
+    Copyright © 1997 - <?dbtimestamp format="Y"?> by the PHP Documentation Group.
     이 저작물은 Creative Commons Attribution 3.0 이상의 사용허가 조항 및
     제약에 따를 경우에 배포할 수 있습니다. <link linkend="cc.license">Creative
      Commons Attribution 3.0 라이센스</link> 사본은 매뉴얼과 함께 배포됩니다.
@@ -50,8 +50,8 @@
     수 있습니다.
    </simpara>
    <simpara>
-    변경 여부에 관계 없이, 이 문서의 전체나 부분에 대한 재배포나 출판에
-    관심이 있을 경우 저작권자(<link
+    어떠한 경우에도, 이 문서의 전체나 부분에 대한 재배포나 출판을 할 경우엔,
+    저작권자(<link
      xlink:href="mailto:&email.php.doc.license;">&email.php.doc.license;</link>)에게
     문의하십시오. 주의: 이 주소는 공개적으로 기록되는 메일링
     리스트입니다.
