@@ -8,12 +8,12 @@
   <application>PHP</application> 바이너리를 빌드해야 합니다.
  </para>
  <note>
-  <title>윈도우&reg; 사용자 주의</title>
+  <title>윈도우® 사용자 주의</title>
   <simpara>
-   윈도우&reg; 환경에서 이 모듈을 사용하려면, PHP/Win32 바이너리 패키지에
+   윈도우® 환경에서 이 모듈을 사용하려면, PHP/Win32 바이너리 패키지에
    들어 있는 <emphasis>iconv.dll</emphasis>, 또는
    <emphasis>iconv-1.3.dll</emphasis>(4.2.1 이전) DLL 파일을
-   <literal>PATH</literal> 환경 변수로 지정한 디렉토리나 윈도우&reg;의 시스템
+   <literal>PATH</literal> 환경 변수로 지정한 디렉토리나 윈도우®의 시스템
    디렉토리에 놓아야 합니다.
   </simpara>
   <simpara>
