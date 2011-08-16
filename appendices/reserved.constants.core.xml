@@ -506,7 +506,7 @@
     </varlistentry>
     <varlistentry>
      <term>
-      <constant>__CONPILER_HALT_OFFSET__</constant>
+      <constant>__COMPILER_HALT_OFFSET__</constant>
       (<type>integer</type>)
      </term>
      <listitem>
