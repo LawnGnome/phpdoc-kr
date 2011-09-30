@@ -8,7 +8,7 @@
     linkend="migration52">5.2.x</link>.
   </para>
 
-  <section xml:id='migration5.changes'>
+  <section xml:id="migration5.changes">
    <title>PHP 5.0.x부터 바뀐 것들</title>
    <para>
     PHP 5와 내장된 젠드 엔진 2는 PHP의 성능과 능력을 대폭 향상하면서, 기존의
@@ -850,7 +850,7 @@ LoadModule php5_module /php/php5apache2.dll
    </para>
   </section>
 
-  <section xml:id='migration5.oop'>
+  <section xml:id="migration5.oop">
    <title>새로운 객체 모델</title>
    <para>
     PHP 5에서 새로운 객체 모델이 존재합니다. PHP의 객체 조작은 완전히 새로
@@ -880,7 +880,7 @@ LoadModule php5_module /php/php5apache2.dll
    </para>
   </section>
 
-  <section xml:id='migrating5.errorrep'>
+  <section xml:id="migrating5.errorrep">
    <title>오류 보고</title>
    <para>
     PHP 5부터 새 오류 보고 상수 E_STRICT가 2048 값으로 나왔습니다. 이는 코드에

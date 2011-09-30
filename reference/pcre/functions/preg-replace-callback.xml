@@ -152,7 +152,7 @@ fclose($fp);
   <para>
    <example>
     <title><function>preg_replace_callback</function> 예제</title>
-    <programlisting role='php'>
+    <programlisting role="php">
 <![CDATA[
 <?php
 // 이 문장은 2002년에 사용되었습니다.

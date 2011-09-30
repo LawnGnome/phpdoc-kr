@@ -15,7 +15,7 @@
  <section xml:id="apache.installation">
   &reftitle.install;
   <para>
-   아파치에 PHP 설치는 <link linkend='install'>설치 챕터</link>를
+   아파치에 PHP 설치는 <link linkend="install">설치 챕터</link>를
    참고하십시오.
   </para>
  </section>
