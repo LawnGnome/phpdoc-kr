@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 283798 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 313564 Maintainer: progcom Status: ready -->
  <chapter xml:id="language.oop5" xmlns="http://docbook.org/ns/docbook">
-  <title>클래스와 객체 (PHP 5)</title>
+  <title>클래스와 객체</title>
 
   <sect1  xml:id="oop5.intro">
    <title>소개</title>
    <para>
-    PHP 5는 새로운 객체 모델을 가집니다. PHP의 객체 조작은 완전히 새로
-    쓰여졌고, 더욱 나은 성능과 많은 기능을 허용합니다.
+    PHP 5는 좋은 성능과 많은 기능을 가진 새로운 객체 모델이 작성되었습니다.
+    이는 PHP 4에서 큰 변경점입니다. PHP 5는 완전한 객체 모델을 가집니다.
+   </para>
+   <para>
+    PHP 5는
+    <link linkend="language.oop5.visibility">visibility</link>, 
+    <link linkend="language.oop5.abstract">추상화</link>,
+    <link linkend="language.oop5.final">final</link> 클래스와 메소드를
+    포함하여,
+    <link linkend="language.oop5.magic">magic methods</link>, 
+    <link linkend="language.oop5.interfaces">인터페이스</link>, 
+    <link linkend="language.oop5.cloning">복제</link>
+    <link linkend="language.oop5.typehinting">typehinting</link> 등의 기능을
+    가지고 있습니다.
+   </para>
+   <para>
+    PHP는 객체를 참조 또는 핸들 방식으로 다룹니다. 각 변수는 객체 참조를
+    사용하며, 전체 객체를 복제하지 않습니다.
+    <link linkend="language.oop5.references">객체와 참조</link>를 읽어
+    보십시오.
    </para>
    &tip.userlandnaming;
   </sect1>
@@ -23,6 +41,7 @@
   &language.oop5.static;
   &language.oop5.abstract;
   &language.oop5.interfaces;
+  &language.oop5.traits;
   &language.oop5.overloading;
   &language.oop5.iterations;
   &language.oop5.patterns;
