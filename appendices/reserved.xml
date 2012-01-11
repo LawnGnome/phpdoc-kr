@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 297028 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 321886 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
 
  <appendix xml:id="reserved" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -310,7 +310,7 @@
       <term><classname>Directory</classname></term>
       <listitem>
        <simpara>
-        <link linkend="class.dir">dir</link>에서 이 클래스가 나타납니다.
+        <function>dir</function> 로 생성.
        </simpara>
       </listitem>
      </varlistentry>
@@ -318,6 +318,8 @@
       <term><classname>stdClass</classname></term>
       <listitem>
        <simpara>
+        <link linkend="language.types.object.casting">object로
+         형변환</link> 시 생성.
        </simpara>
       </listitem>
      </varlistentry>
@@ -325,6 +327,7 @@
       <term><classname>__PHP_Incomplete_Class</classname></term>
       <listitem>
        <simpara>
+        <function>unserialize</function>로 생성될 수 있음.
        </simpara>
       </listitem>
      </varlistentry>
@@ -332,7 +335,7 @@
    </sect2>
    
    <sect2 xml:id="reserved.classes.php5">
-    <title>PHP 5의 기선언 클래스</title>
+    <title>PHP 5 기선언 클래스</title>
     
     <simpara>
      여기 추가된 기선언 클래스는 PHP 5.0.0에서 소개되었다.
@@ -365,12 +368,9 @@
      구현에 사용됩니다.
     </simpara>
     <simpara>
-     이 클래스는 객체의 수동 생성과 <link
-      linkend="language.oop5.magic.invoke">호출 마법</link>의
-     <literal>__invoke</literal> 메쏘드를 금지합니다.
-     (<constant>E_RECOVERABLE_ERROR</constant> 발생)
+     자세한 정보는, 해당 <link linkend="class.closure">클래스 페이지</link>를
+     참고하십시오.
     </simpara>
-
    </sect2>
 
 
@@ -387,6 +387,17 @@
       <term><classname>self</classname></term>
       <listitem>
        <simpara>
+        <link linkend="language.oop5.paamayim-nekudotayim">현재
+        클래스</link>.
+       </simpara>
+      </listitem>
+     </varlistentry>
+     <varlistentry>
+      <term><classname>static</classname></term>
+      <listitem>
+       <simpara>
+        <link linkend="language.oop5.late-static-bindings">실행 시점에서
+        현재 클래스</link>.
        </simpara>
       </listitem>
      </varlistentry>
@@ -394,6 +405,8 @@
       <term><classname>parent</classname></term>
       <listitem>
        <simpara>
+        <link linkend="language.oop5.paamayim-nekudotayim">부모
+        클래스</link>.
        </simpara>
       </listitem>
      </varlistentry>
