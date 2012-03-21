@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 288721 Maintainer: progcom Status: ready -->
-<!-- Purpose: database.vendors -->
+<!-- EN-Revision: 323651 Maintainer: progcom Status: ready -->
 <!-- Membership: bundled, external, pecl -->
 
  <reference xml:id="ref.pdo-pgsql" xmlns="http://docbook.org/ns/docbook">
@@ -107,7 +106,7 @@
        다음 예제는 PostgreSQL 데이터베이스에 접속하는 PDO_PGSQL DSN을
        보여줍니다:
        <programlisting><![CDATA[
-pgsql:host=localhost port=5432 dbname=testdb user=bruce password=mypass
+pgsql:host=localhost;port=5432;dbname=testdb;user=bruce;password=mypass
 ]]>
        </programlisting>
       </para>
