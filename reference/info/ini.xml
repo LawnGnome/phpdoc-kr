@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 283819 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 324588 Maintainer: progcom Status: ready -->
 <section xml:id="info.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
@@ -9,10 +9,10 @@
    <tgroup cols="4">
     <thead>
      <row>
-      <entry>이름</entry>
-      <entry>기본값</entry>
-      <entry>설정권한</entry>
-      <entry>변경점</entry>
+      <entry>&Name;</entry>
+      <entry>&Default;</entry>
+      <entry>&Changeable;</entry>
+      <entry>&Changelog;</entry>
      </row>
     </thead>
     <tbody>
@@ -68,19 +68,25 @@
      <entry><link linkend="ini.max-input-nesting-level">max_input_nesting_level</link></entry>
      <entry>"64"</entry>
      <entry>PHP_INI_SYSTEM|PHP_INI_PERDIR</entry>
-     <entry>PHP 4.4.8부터 가능. PHP 5.0.0에서 제거.</entry>
+     <entry>PHP 4.4.8과 PHP 5.2.3부터 사용 가능.</entry>
+    </row>
+    <row>
+     <entry><link linkend="ini.max-input-vars">max_input_vars</link></entry>
+     <entry>1000</entry>
+     <entry>PHP_INI_PERDIR</entry>
+     <entry>PHP 5.3.9부터 사용 가능.</entry>
     </row>
     <row>
      <entry><link linkend="ini.magic-quotes-gpc">magic_quotes_gpc</link></entry>
      <entry>"1"</entry>
      <entry>PHP_INI_PERDIR</entry>
-     <entry>PHP &lt;=4.2.3에서 PHP_INI_ALL. PHP 6.0.0에서 제거.</entry>
+     <entry>PHP &lt;=4.2.3에서 PHP_INI_ALL. PHP 5.4.0에서 제거.</entry>
     </row>
     <row>
      <entry><link linkend="ini.magic-quotes-runtime">magic_quotes_runtime</link></entry>
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
-     <entry>PHP 6.0.0에서 제거.</entry>
+     <entry>PHP 5.4.0에서 제거.</entry>
     </row>
     <row>
      <entry><link linkend="ini.zend.enable-gc">zend.enable_gc</link></entry>
@@ -222,7 +228,8 @@
     <listitem>
      <para>
       POST, GET, 파일 업로드 등의 입력 데이터 처리에 허용하는 최대 시간을
-      설정합니다. 
+      설정합니다. 이 시간은 서버에 모든 데이터가 도착한 시간부터 스크립트
+      실행을 시작하는 사이로 측정됩니다.
      </para>
     </listitem>
    </varlistentry>
@@ -241,6 +248,22 @@
     </listitem>
    </varlistentry>
 
+   <varlistentry xml:id="ini.max-input-vars">
+    <term>
+     <parameter>max_input_vars</parameter>
+     <type>integer</type>
+    </term>
+    <listitem>
+     <para>
+      받아들일 수 있는 <link linkend="language.variables.external">입력
+      변수</link> 수입니다. hash collisions를 사용하는 denial of service
+     공격을 방어하기 위하여 사용합니다. 이 지시어에 지정된 수보다 많은 입력
+     변수가 존재할 경우 <constant>E_WARNING</constant>이 발생하고, 요청의
+     나머지 변수는 무시됩니다. 이 제한은 다중 차원 입력 배열에 대해서는 각
+     중첩 레벨에 대하여 적용됩니다.
+     </para>
+    </listitem>
+   </varlistentry>
 
    <varlistentry xml:id="ini.magic-quotes-gpc">
     <term>
@@ -248,7 +271,7 @@
      <type>boolean</type>
     </term>
     <listitem>
-     &warn.deprecated.feature-5-3-0.removed-6-0-0;
+     &warn.deprecated.feature-5-3-0.removed-5-4-0;
      <para>
       GPC (Get/Post/쿠키) 작동의 magic_quotes 상태를 설정합니다.
       magic_quotes가 on이면, 모든 ' (작은 따옴표), &quot; (큰 따옴표), \
@@ -279,13 +302,63 @@
      <type>boolean</type>
     </term>
     <listitem>
-     &warn.deprecated.feature-5-3-0.removed-6-0-0;
+     &warn.deprecated.feature-5-3-0.removed-5-4-0;
      <para>
       <parameter>magic_quotes_runtime</parameter>를 활성화하면, 데이터베이스나
       텍스트 파일를 포함한, 어떠한 외부 소스에서 데이터를 가져오는 대부분의
       함수는 백슬래시로 인용됩니다. <link
        linkend="ini.magic-quotes-sybase">magic_quotes-sybase</link>도 on이면,
       작은 따옴표는 백슬래시 대신 작은 따옴표로 이스케이프합니다.
+     </para>
+     <para>
+      <parameter>magic_quotes_runtime</parameter>에 영향을 받는 함수
+      (PECL 함수는 포함하지 않습니다):
+      <simplelist>
+       <member><function>get_meta_tags</function></member>
+       <member><function>file_get_contents</function></member>
+       <member><function>file</function></member>
+       <member><function>fgets</function></member>
+       <member><function>fwrite</function></member>
+       <member><function>fread</function></member>
+       <member><function>fputcsv</function></member>
+       <member><function>stream_socket_recvfrom</function></member>
+       <member><function>exec</function></member>
+       <member><function>system</function></member>
+       <member><function>passthru</function></member>
+       <member><function>stream_get_contents</function></member>
+       <member><function>bzread</function></member>
+       <member><function>gzfile</function></member>
+       <member><function>gzgets</function></member>
+       <member><function>gzwrite</function></member>
+       <member><function>gzread</function></member>
+       <member><function>exif_read_data</function></member>
+       <member><function>dba_insert</function></member>
+       <member><function>dba_replace</function></member>
+       <member><function>dba_fetch</function></member>
+       <member><function>ibase_fetch_row</function></member>
+       <member><function>ibase_fetch_assoc</function></member>
+       <member><function>ibase_fetch_object</function></member>
+       <member><function>mssql_fetch_row</function></member>
+       <member><function>mssql_fetch_object</function></member>
+       <member><function>mssql_fetch_array</function></member>
+       <member><function>mssql_fetch_assoc</function></member>
+       <member><function>mysqli_fetch_row</function></member>
+       <member><function>mysqli_fetch_array</function></member>
+       <member><function>mysqli_fetch_assoc</function></member>
+       <member><function>mysqli_fetch_object</function></member>
+       <member><function>pg_fetch_row</function></member>
+       <member><function>pg_fetch_assoc</function></member>
+       <member><function>pg_fetch_array</function></member>
+       <member><function>pg_fetch_object</function></member>
+       <member><function>pg_fetch_all</function></member>
+       <member><function>pg_select</function></member>
+       <member><function>sybase_fetch_object</function></member>
+       <member><function>sybase_fetch_array</function></member>
+       <member><function>sybase_fetch_assoc</function></member>
+       <member><function>SplFileObject::fgets</function></member>
+       <member><function>SplFileObject::fgetcsv</function></member>
+       <member><function>SplFileObject::fwrite</function></member>
+      </simplelist>
      </para>
     </listitem>
    </varlistentry>

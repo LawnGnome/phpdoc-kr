@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 323642 Maintainer: progcom Status: ready -->
 <section xml:id="session.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
@@ -9,10 +9,10 @@
   <tgroup cols="4">
    <thead>
     <row>
-     <entry>이름</entry>
-     <entry>기본값</entry>
-     <entry>변경권한</entry>
-     <entry>변경 기록</entry>
+     <entry>&Name;</entry>
+     <entry>&Default;</entry>
+     <entry>&Changeable;</entry>
+     <entry>&Changelog;</entry>
     </row>
    </thead>
    <tbody>
@@ -173,6 +173,42 @@
      <entry>PHP_INI_ALL</entry>
      <entry>PHP 4.0.4부터 사용 가능.</entry>
     </row>
+     <row>
+      <entry><link linkend="ini.session.upload-progress.enabled">session.upload_progress.enabled</link></entry>
+      <entry>"1"</entry>
+      <entry>PHP_INI_PERDIR</entry>
+      <entry>PHP 5.4.0부터 사용 가능.</entry>
+     </row>
+     <row>
+      <entry><link linkend="ini.session.upload-progress.cleanup">session.upload_progress.cleanup</link></entry>
+      <entry>"1"</entry>
+      <entry>PHP_INI_PERDIR</entry>
+      <entry>PHP 5.4.0부터 사용 가능.</entry>
+     </row>
+     <row>
+      <entry><link linkend="ini.session.upload-progress.prefix">session.upload_progress.prefix</link></entry>
+      <entry>"upload_progress_"</entry>
+      <entry>PHP_INI_PERDIR</entry>
+      <entry>PHP 5.4.0부터 사용 가능.</entry>
+     </row>
+     <row>
+      <entry><link linkend="ini.session.upload-progress.name">session.upload_progress.name</link></entry>
+      <entry>"PHP_SESSION_UPLOAD_PROGRESS"</entry>
+      <entry>PHP_INI_PERDIR</entry>
+      <entry>PHP 5.4.0부터 사용 가능.</entry>
+     </row>
+     <row>
+      <entry><link linkend="ini.session.upload-progress.freq">session.upload_progress.freq</link></entry>
+      <entry>"1%"</entry>
+      <entry>PHP_INI_PERDIR</entry>
+      <entry>PHP 5.4.0부터 사용 가능.</entry>
+     </row>
+     <row>
+      <entry><link linkend="ini.session.upload-progress.min-freq">session.upload_progress.min_freq</link></entry>
+      <entry>"1"</entry>
+      <entry>PHP_INI_PERDIR</entry>
+      <entry>PHP 5.4.0부터 사용 가능.</entry>
+     </row>
    </tbody>
   </tgroup>
  </table>
@@ -672,6 +708,105 @@
     </note>
    </listitem>
   </varlistentry>
+
+  <varlistentry xml:id="ini.session.upload-progress.enabled">
+   <term>
+    <parameter>session.upload_progress.enabled</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     업로드 진행율 추적을 켜고, <varname>$_SESSION</varname> 변수를
+     생성합니다. 기본값은 1로, 활성화되어 있습니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.upload-progress.cleanup">
+   <term>
+    <parameter>session.upload_progress.cleanup</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     모든 POST 데이터를 읽는 즉시(업로드 완료 등) 진행율 정보를 제거합니다.
+     기본값은 1로, 활성화되어 있습니다.
+    </simpara>
+    <note>
+     <simpara>
+      이 기능을 켜 두는 것을 강력히 권합니다.
+     </simpara>
+    </note>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.upload-progress.prefix">
+   <term>
+    <parameter>session.upload_progress.prefix</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <varname>$_SESSION</varname>에서 사용할 업로드 진행율 키의 prefix입니다. 이
+     키는 <literal>$_POST[ini_get("session.upload_progress.name")]</literal>과
+     결합하여 고유 인덱스를 제공합니다.
+    </simpara>
+    <simpara>
+     기본값은 "upload_progress_"입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.upload-progress.name">
+   <term>
+    <parameter>session.upload_progress.name</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     진행율 정보를 저장하는 <varname>$_SESSION</varname>에서 사용하는 키
+     이름입니다. <link linkend="ini.session.upload-progress.prefix">session.upload_progress.prefix</link>를 참조하십시오.
+    </simpara>
+    <simpara>
+     <literal>$_POST[ini_get("session.upload_progress.name")]</literal>이
+     전달되지 않거나 사용할 수 없으면, 업로드 진행율은 기록되지 않습니다.
+    </simpara>
+    <simpara>
+     기본값은 "PHP_SESSION_UPLOAD_PROGRESS"입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.upload-progress.freq">
+   <term>
+    <parameter>session.upload_progress.freq</parameter>
+    <type>mixed</type>
+   </term>
+   <listitem>
+    <simpara>
+     업로드 진행율 정보가 업데이트되는 주기를 정합니다. 바이트 단위(예. "100
+     바이트마다 업로드 진행 정보를 업데이트")나 백분율(예."업로드 진행 정보는
+     전체 파일 크기의 1%마다 업데이트")로 정할 수 있습니다.
+    </simpara>
+    <simpara>
+     기본값은 "1%"입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.session.upload-progress.min-freq">
+   <term>
+    <parameter>session.upload_progress.min-freq</parameter>
+    <type>integer</type>
+   </term>
+   <listitem>
+    <simpara>
+     업데이트 사이의 최소 주기를 초로 지정합니다.
+     기본값은 "1"(1초)입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+
  </variablelist>
  </para>
 
@@ -679,6 +814,13 @@
   <link linkend="ini.track-vars"><literal>track_vars</literal></link>와 <link
    linkend="ini.register-globals"><literal>register_globals</literal></link>
   환경 설정이 세션 변수의 저장과 복구에 영향을 줍니다.
+ </para>
+
+ <para>
+  업로드 진행율은 session.upload_progress.enabled이 켜져 있고,
+  $_POST[ini_get("session.upload_progress.name")] 변수가 설정되지 않으면
+  기록되지 않습니다.
+  이 기능에 관한 자세한 사항은 <link linkend="session.upload-progress">세션 업로드 진행율</link>을 참고하십시오.
  </para>
 
  <note>
