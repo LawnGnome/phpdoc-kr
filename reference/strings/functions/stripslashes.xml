@@ -93,7 +93,7 @@ function stripslashes_deep($value)
 }
 
 // 예시
-$array = array("f\\'oo", "\\'ar", array("fo\\'o", "b\\'ar"));
+$array = array("f\\'oo", "b\\'ar", array("fo\\'o", "b\\'ar"));
 $array = stripslashes_deep($array);
 
 // 출력
