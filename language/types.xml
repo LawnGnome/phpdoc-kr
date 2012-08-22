@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 297028 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 324122 Maintainer: progcom Status: ready -->
 <chapter xml:id="language.types" xmlns="http://docbook.org/ns/docbook">
  <title>자료형</title>
 
@@ -30,7 +30,7 @@
 
    <listitem>
     <simpara>
-     <type>float</type> (소수, <type>double</type>)
+     <type>float</type> (부동소수, <type>double</type>)
     </simpara>
    </listitem>
 
@@ -63,7 +63,7 @@
   </itemizedlist>
 
   <para>
-   마지막으로 두가지 특별형:
+   마지막으로 세가지 특수형:
   </para>
 
   <itemizedlist>
@@ -77,6 +77,12 @@
    <listitem>
     <simpara>
      <type>NULL</type>
+    </simpara>
+   </listitem>
+
+   <listitem>
+    <simpara>
+     <type>callable</type>
     </simpara>
    </listitem>
 
@@ -188,6 +194,7 @@ if (is_string($a_bool)) {
  &language.types.object;
  &language.types.resource;
  &language.types.null;
+ &language.types.callable;
  &language.types.pseudo-types;
  &language.types.type-juggling;
 
