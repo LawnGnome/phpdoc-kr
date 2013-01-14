@@ -359,7 +359,7 @@ Making a bowl of acidophilus raspberry.
 
    <sect2 xml:id="functions.variable-arg-list">
     <title>가변 길이 인수 목록</title>
-	
+
     <simpara>
      PHP 4 이상에서는 사용자 선언 함수에서 가변 길이 변수 목록 기능을
      지원합니다.

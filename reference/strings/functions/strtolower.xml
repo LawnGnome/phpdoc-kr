@@ -55,7 +55,7 @@
 <![CDATA[
 <?php
 $str = "Mary Had A Little Lamb and She LOVED It So";
-$str = strtolower($str);	
+$str = strtolower($str);
 echo $str; // mary had a little lamb and she loved it so 를 출력합니다.
 ?>
 ]]>

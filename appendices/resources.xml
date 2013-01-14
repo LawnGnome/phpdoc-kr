@@ -41,7 +41,7 @@
     </entry>
     <entry>Aspell 사전</entry>
    </row>
-   <row>	
+   <row>
    <entry>bzip2</entry>
     <entry>
      <function>bzopen</function>

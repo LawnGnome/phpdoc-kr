@@ -19,16 +19,16 @@
     </para>
    </note>
    <para>
-   	윈도우에 PHP를 인스톨하는데에는 크게 두가지 방법이 있습니다.
+    윈도우에 PHP를 인스톨하는데에는 크게 두가지 방법이 있습니다.
     <link linkend="install.windows.manual">수동설치</link>
     를 하거나 <link linkend="install.windows.installer">설치관리자</link> 를 사용하는 것입니다.
    </para>
    <para>
-   	Microsoft Visual Studio 를 가지고 있다면, 원본 소스코드로 부터 PHP를 
+    Microsoft Visual Studio 를 가지고 있다면, 원본 소스코드로 부터 PHP를 
     <link linkend="install.windows.building">빌드</link> 할 수가 있습니다.
    </para>
    <para>
-   	일단 PHP를 설치 했다면, 기능을 추가시키기 위해 
+    일단 PHP를 설치 했다면, 기능을 추가시키기 위해 
     <link linkend="install.windows.extensions">몇가지 확장모듈을 적재</link> 하기를 원할수도 있을 것입니다.
    </para>
    <warning>
