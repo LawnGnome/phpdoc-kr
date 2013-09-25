@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 306338 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 331384 Maintainer: progcom Status: ready -->
 <!-- Keep 'em sorted -->
 
 <!ENTITY changelog.randomseed '<row xmlns="http://docbook.org/ns/docbook"><entry>4.2.0</entry><entry>난수 생성기는 자동으로 초기화됩니다.</entry></row>'>
+
+<!ENTITY installation.enabled.disable '이 확장은 기본값으로 활성화됩니다. 컴파일 시에 다음 옵션으로 비활성화 할 수 있습니다: '>
+
+<!-- Cautions -->
+<!ENTITY caution.cryptographically-insecure '<caution xmlns="http://docbook.org/ns/docbook"><para>이 함수는 보안 암호  값을 생성하지 않으므로, 암호화 목적으로 사용해서는 안됩니다. 보안 암호 값이 필요한 경우, <function>openssl_random_pseudo_bytes</function>를 고려하십시오.</para></caution>'>
 
 <!-- Notes -->
 
 <!ENTITY note.regex.deprecated '<note xmlns="http://docbook.org/ns/docbook"><para>PHP 5.3.0부터 regex 확장은
 배제되었습니다. <link linkend="book.pcre">PCRE 확장</link>이 같은 기능을
 합니다. 이 함수를 호출하면 <constant>E_DEPRECATED</constant> 주의가
-발생합니다.</para></note>'>
+발생합니다. PCRE로 변환하는 데 필요한 도움은 <link linkend="reference.pcre.pattern.posix">차이점 목록</link>을 참고하십시오.</para></note>'>
 
 <!ENTITY note.bin-safe '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 바이너리
 안전입니다.</simpara></note>'>
@@ -20,7 +25,7 @@
 
 <!ENTITY note.context-support '<note xmlns="http://docbook.org/ns/docbook"><simpara>Context 지원은 PHP 5.0.0에서
 추가되었습니다. <literal>contexts</literal>에 관한 자세한 설명은 <xref
-linkend="ref.stream"/>을 참고하십시오.</simpara></note>'>
+linkend="book.stream"/>을 참고하십시오.</simpara></note>'>
 
 <!ENTITY note.exec-bg '<note xmlns="http://docbook.org/ns/docbook"><para>백그라운드에서 실행하기 위해서 이 함수로
 프로그램을 시작하면, 프로그램의 출력은 파일이나, 다른 출력 스트림으로 보내야
@@ -31,6 +36,9 @@ linkend="ref.stream"/>을 참고하십시오.</simpara></note>'>
 메쏘드 이름을 가지는 배열을 사용할 수 있습니다.</simpara></note>'>
 
 <!ENTITY note.func-callback-exceptions '<note xmlns="http://docbook.org/ns/docbook"><para><function>call_user_func</function>와 <function>call_user_func_array</function> 등으로 등록한 콜백은 이전 콜백 실행시에 처리하지 않은 예외(uncaught exception)가 존재할 경우 호출되지 않습니다.</para></note>'>
+
+<!ENTITY note.funcbyref '<note xmlns="http://docbook.org/ns/docbook"><para>인수가 참조로 전달되면,
+인수에 대한 변화는 이 함수가 반환하는 값에 영향을 줍니다.</para></note>'>
 
 <!ENTITY note.funcnoparam '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 인수를 현재 영역(scope)에
 의존하기 때문에, 함수의 인수로 사용할 수 없습니다. 이 값을 함수에 넘겨야
@@ -82,14 +90,30 @@ linkend="ini.register-globals">register_globals</link>의 기본값은
 있습니다. 자세한 내용은 매뉴얼의 &link.superglobals; 섹션을
 읽어보십시오.</para></note>'>
 
-<!ENTITY note.uses-ob '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수를 특정 인수와 함께 사용할 때,
-내부적으로 출력 버퍼링을 사용합니다. 그러므로, <function>ob_start</function>
+<!ENTITY note.uses-ob '<note xmlns="http://docbook.org/ns/docbook"><para><parameter>return</parameter> 인수와
+함께 사용할 때, 내부적으로 출력 버퍼링을 사용합니다. 그러므로, <function>ob_start</function>
 콜백 함수 안에서는 사용할 수 없습니다.</para></note>'>
 
 <!ENTITY note.filesystem-time-res '<note xmlns="http://docbook.org/ns/docbook"><para>시간 정밀도는 각각 파일
 시스템에 따라 다를 수 있습니다.</para></note>'>
 
-<!ENTITY note.uses_autoload '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수를 사용할 때 클래스를 찾을 수 없으면, 등록된 <link linkend="language.oop5.autoload">오토로더</link>를 사용합니다.</para></note>'>
+<!ENTITY note.uses-autoload '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수를 사용할 때 클래스를 찾을 수 없으면, 등록된 <link linkend="language.oop5.autoload">오토로더</link>를 사용합니다.</para></note>'>
+
+<!ENTITY note.network.header.sapi '<note xmlns="http://docbook.org/ns/docbook">
+   <para>
+    헤더는 SAPI에서 사용할 수 있을 경우에만 접근하고 출력할 수 있습니다.
+   </para>
+  </note>
+'>
+
+<!ENTITY note.passwordhashing '<note xmlns="http://docbook.org/ns/docbook">
+ <title>안전한 패스워드 해싱</title>
+ <para>
+  이 함수는 해싱 알고리즘의 fast nature로 인하여, 패스워드를 암호화하는데 권장하지 않습니다.
+  <link linkend="faq.passwords.fasthash">자세한 내용</link>을 읽어보십시오. 
+ </para>
+</note>
+'>
 
 <!-- Tips -->
 
@@ -105,7 +129,7 @@ linkend="ini.register-globals">register_globals</link>의 기본값은
 linkend="wrappers"/>를 참고하십시오.</simpara></tip>'>
 
 <!ENTITY tip.ob-capture '<tip xmlns="http://docbook.org/ns/docbook"><simpara>어떠한 결과가 브라우저로 직접
-출력될 때, <link linkend="ref.outcontrol">출력 제어 함수</link>를
+출력될 때, <link linkend="book.outcontrol">출력 제어 함수</link>를
 이용해서 이 함수의 출력을 캡쳐하여, (예를 들면) <type>string</type>으로
 저장할 수 있습니다.</simpara></tip>'>
 
@@ -139,17 +163,45 @@ xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5.3.0부터
 <emphasis>배제됩니다</emphasis>.
 이 기능에 의존하지 않기를 권합니다.</simpara></warning>'>
 
+<!ENTITY warn.deprecated.feature-5-3-0.removed-5-4-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은 PHP 5.3.0부터
+<emphasis>배제되어</emphasis>, PHP 5.4.0부터 <emphasis>제거됩니다</emphasis>.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function-5-3-0.removed-5-4-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5.3.0부터
+<emphasis>배제되어</emphasis>, PHP 5.4.0부터 <emphasis>제거됩니다</emphasis>.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.feature-5-5-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 기능은 PHP 5.5.0부터
+<emphasis>배제됩니다</emphasis>. 이 기능에 의존하지 마십시오.</simpara></warning>'>
+
 <!ENTITY removed.php.future '이 배제된 기능은 추후 <emphasis xmlns="http://docbook.org/ns/docbook">제거</emphasis>될 <emphasis xmlns="http://docbook.org/ns/docbook">예정</emphasis>입니다.'>
 
 <!ENTITY warn.deprecated.function.removed-5-3-0 '<warning
-xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
-<emphasis>배제되었고</emphasis> PHP 5.3.0부터
+xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5.3.0부터
+<emphasis>배제되어</emphasis>
 <emphasis>제거됩니다</emphasis>.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.function.removed-5-5-0 '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 PHP 5.5.0부터
+<emphasis>배제되어</emphasis> <emphasis>제거됩니다</emphasis>.</simpara></warning>'>
 
 <!ENTITY warn.deprecated.alias-5-3-0 '<warning
 xmlns="http://docbook.org/ns/docbook"><simpara>이 별칭은 PHP 5.3.0부터
 <emphasis>배제</emphasis>되었습니다. 이 기능에 의존하지 않기를
 권합니다.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.func-5-4-0 '<warning xmlns="http://docbook.org/ns/docbook">
+<simpara>이 함수는 PHP 5.4.0부터 <emphasis>배제되었습니다</emphasis>. 이 함수에
+의존하지 마십시오.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.alias-5-4-0 '<warning xmlns="http://docbook.org/ns/docbook">
+<simpara>이 별칭은 PHP 5.4.0부터 <emphasis>배제되었습니다</emphasis>. 이 별칭에
+의존하지 마십시오.</simpara></warning>'>
+
+<!ENTITY warn.deprecated.func-5-5-0 '<warning xmlns="http://docbook.org/ns/docbook">
+<simpara>이 함수는 PHP 5.5.0부터 <emphasis>배제되었습니다</emphasis>. 이 함수에
+의존하지 마십시오.</simpara></warning>'>
 
 <!ENTITY warn.experimental.func '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는
 <emphasis>실험적</emphasis>입니다. 이 함수의 작동, 함수의 이름,
@@ -158,8 +210,8 @@ xmlns="http://docbook.org/ns/docbook"><simpara>이 별칭은 PHP 5.3.0부터
 책임입니다.</simpara></warning>'>
 
 <!ENTITY warn.imaprecodeyaz '<warning xmlns="http://docbook.org/ns/docbook"><simpara><link
-linkend="ref.imap">IMAP</link>, <link linkend="ref.recode">recode</link>,
-<link linkend="ref.yaz">YAZ</link>, <link linkend="ref.cyrus">Cyrus</link>
+linkend="book.imap">IMAP</link>, <link linkend="book.recode">recode</link>,
+<link linkend="book.yaz">YAZ</link>, <link linkend="book.cyrus">Cyrus</link>
 확장은 같은 내부 심볼을 공유하기 때문에, 동시에 사용할 수
 없습니다.</simpara></warning>'>
 
@@ -197,6 +249,8 @@ PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 �
 
 <!-- Misc -->
 
+<!ENTITY version.exists.asof '다음부터 존재: PHP '>
+
 <!ENTITY version.trunk.after.53 '<emphasis
 	xmlns="http://docbook.org/ns/docbook">이 변화는 PHP <link
 linkend="about.phpversions">개발 버전</link>에 적용되었으며, 5.3 이후에 적용될 것입니다.</emphasis>'>
@@ -206,6 +260,10 @@ linkend="about.phpversions">개발 버전</link>에 적용되었으며, 5.3 이�
 <!ENTITY no.function.parameters '<para xmlns="http://docbook.org/ns/docbook">이 함수는 인수가 없습니다.</para>'>
 
 <!ENTITY example.outputs '<para xmlns="http://docbook.org/ns/docbook">위 예제의 출력:</para>'>
+
+<!ENTITY example.outputs.53 '<para xmlns="http://docbook.org/ns/docbook">PHP 5.3에서 위 예제의 출력:</para>'>
+
+<!ENTITY example.outputs.54 '<para xmlns="http://docbook.org/ns/docbook">PHP 5.4에서 위 예제의 출력:</para>'>
 
 <!ENTITY example.outputs.32bit '<para xmlns="http://docbook.org/ns/docbook">32비트 머신에서 위 예제의 출력:</para>'>
 
@@ -223,7 +281,7 @@ linkend="about.phpversions">개발 버전</link>에 적용되었으며, 5.3 이�
 
 
 <!ENTITY array.resetspointer '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 사용 후에
-<type>array</type> 포인터를 <function>reset</function>합니다.</simpara></note>'>
+입력 배열의 <type>array</type> 포인터를 <function>reset</function>합니다.</simpara></note>'>
 
 <!ENTITY seelalso.array.sorting '<link xmlns="http://docbook.org/ns/docbook" linkend="array.sorting">배열 정렬 함수
 비교</link>'>
@@ -271,6 +329,8 @@ linkend="ini.register-long-arrays">register_long_arrays</link> 지시어로
 
 <!ENTITY foreach '<link xmlns="http://docbook.org/ns/docbook" linkend="control-structures.foreach">foreach</link>'>
 
+<!ENTITY yield '<link xmlns="http://docbook.org/ns/docbook" linkend="control-structures.yield">yield</link>'>
+
 <!ENTITY parameter.context '<literal xmlns="http://docbook.org/ns/docbook">contexts</literal>에 대한 설명은
 매뉴얼 <link xmlns="http://docbook.org/ns/docbook" linkend="context">context</link> 섹션을 참고하십시오.'>
 
@@ -287,8 +347,11 @@ linkend="ini.include-path">include_path</link>에서도 파일명을 찾습니�
 
 <!ENTITY return.void '값을 반환하지 않습니다.'>
 
+<!ENTITY return.callbacksort '이 비교 함수는 첫번째 인수가 두번째 인수보다 작거나, 같거나, 클 경우에
+각각 0보다 작거나, 같거나, 큰 정수를 반환해야 합니다.'>
+
 <!ENTITY return.falseproblem '<warning xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 논리 &false;를
-반환하지만, <literal>0</literal>이나 &quot;&quot; 등, 논리 &false;로 취급할 수 있는 다른 값을 반환할 수 있습니다. 자세한 정보는 <link
+반환하지만, 논리 &false;로 취급할 수 있는 다른 값을 반환할 수 있습니다. 자세한 정보는 <link
 linkend="language.types.boolean">논리형</link> 섹션을 참고하십시오.
 이 함수의 반환값을 확인하려면 
 <link linkend="language.operators.comparison">=== 연산자</link>를
@@ -329,6 +392,9 @@ role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 <!ENTITY note.gd.notrequired '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 GD 이미지 라이브러리가
 필요하지 않습니다.</simpara></note>'>
 
+<!ENTITY note.gd.interpolation '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 <function>imagesetinterpolation</function>으로
+설정한 보간 메소드에 영향을 받습니다.</para></note>'>
+
 <!ENTITY gd.image.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
 image</parameter></term><listitem><para><function>imagecreatetruecolor</function>
 등의 이미지 생성 함수에서 반환한 이미지
@@ -339,11 +405,45 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 글꼴 1, 2, 3, 4, 5(큰 숫자가 큰 글꼴)나 <function>imageloadfont</function>로
 등록한 글꼴 식별자를 사용할 수 있습니다.</para></listitem></varlistentry>'>
 
+<!ENTITY gd.return.identifier '성공 시에 이미지 자원 지시자를, 오류 시에 &false;를 반환합니다.'>
+
+<!ENTITY gd.value.red 'Red 컴포넌트 값.'>
+
+<!ENTITY gd.value.green 'Green 컴포넌트 값.'>
+
+<!ENTITY gd.value.blue 'Blue 컴포넌트 값.'>
+
+<!ENTITY gd.source.height '원본 높이.'>
+
+<!ENTITY gd.source.width '원본 너비.'>
+
+<!ENTITY gd.image.path '저장할 파일 경로. 지정하지 않거나 &null;일 경우에는, raw 이미지 스트림을 직접 출력합니다.'>
+
+<!ENTITY gd.image.new '파일이나 URL에서 새 이미지를 생성'>
+
+<!ENTITY gd.image.source '원본 이미지 링크 자원.'>
+
+<!ENTITY gd.image.destination '목표 이미지 링크 자원.'>
+
+<!ENTITY gd.image.output '브라우저나 파일로 출력 이미지'>
+
+<!ENTITY gd.image.colors '이미지를 파일에서 생성하였을 경우, 이미지에서 사용한 색만 해석됩니다.
+팔레트에 존재하는 색은 해석되지 않습니다.'>
+
+<!ENTITY gd.font.size '글꼴 크기. GD 버전에 따라, 픽셀 크기(GD1)나 포인트 크기(GD2)로 지정해야 합니다.'>
+
 <!-- DBM notes -->
 
 <!ENTITY dbm.dbm-identifier.description
 '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>dbm_identifier</parameter></term><listitem><para><function>dbmopen</function>이
 반환한 DBM 연결 식별자입니다.</para></listitem></varlistentry>'>
+
+<!-- JSON notes -->
+
+<!ENTITY json.implementation.superset '<note xmlns="http://docbook.org/ns/docbook"><para>PHP는
+JSON을 확장하여 구현합니다 - 스칼라 형과 &null;을 인코드 및 디코드 할 수 있습니다.
+JSON 표준은 배열이나 객체 안에 존재할 때만 지원합니다.
+</para></note>'>
 
 <!-- cURL notes -->
 
@@ -388,6 +488,16 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 않습니다. (<function>preg_replace</function>와 마찬가지) 주의하지 않으면
 원격 코드 실행 취약점을 가지게 됩니다.</para></warning>'>
 
+<!-- mcrypt notes -->
+
+<!ENTITY mcrypt.parameter.cipher '<para xmlns="http://docbook.org/ns/docbook"><constant>MCRYPT_ciphername</constant> 상수 중 하나이거나, 알고리즘 이름 문자열.</para>'>
+
+<!ENTITY mcrypt.parameter.iv '<para xmlns="http://docbook.org/ns/docbook">CBC, CFB, OFB 모드와 일부 알고리즘의
+STREAM 모드 초기화에 사용합니다. 필요한 알고리즘에 IV를 제공하지 않을 경우, 경고를 발생하고 모든 바이트를
+"<literal>\0</literal>"로 설정한 IV를 사용합니다.</para>'>
+
+<!ENTITY mcrypt.parameter.mode '<para xmlns="http://docbook.org/ns/docbook"><constant>MCRYPT_MODE_modename</constant> 상수 중 하나이거나, 다음 문자열 중 하나: "ecb", "cbc", "cfb", "ofb", "nofb" or "stream".</para>'>
+
 <!-- MCVE notes -->
 
 <!ENTITY mcve.conn.description
@@ -399,7 +509,9 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 <!ENTITY memcached.parameter.expiration '만료 시간, 기본값은 0. 자세한 정보는
 <link xmlns="http://docbook.org/ns/docbook" linkend="memcached.expiration">만료 시간</link>을 참고하십시오.'>
 
-<!ENTITY memcached.parameter.server_key '값을 저장할 서버를 인식하는 키.'>
+<!ENTITY memcached.parameter.server_key '값을 저장하거나 가져올 서버를 인식하는 키. 아이템에 대한 실제 키를
+해싱하는 대신에, 대화할 memcached 서버가 정해질 때 서버 키를 해시합니다. 이로써 하나의 서버에 대한 관련된
+아이템들을 묶을 수 있게 되고, 여러 명령을 효율적으로 처리하게 됩니다.'>
 
 <!ENTITY memcached.parameter.items '서버에 저장할 키/값 배열.'>
 
@@ -409,6 +521,16 @@ font</parameter></term><listitem><para>litin2 인코딩의 내장
 
 <!ENTITY memcached.result.getresultcode '필요할 경우
 <methodname xmlns="http://docbook.org/ns/docbook">Memcached::getResultCode</methodname> 사용.'>
+
+<!-- password notes -->
+
+<!ENTITY password.parameter.algo '<link xmlns="http://docbook.org/ns/docbook" linkend="password.constants">패스워드 알고리즘 상수</link>는 패스워드를 해싱할 때 사용할 알고리즘을 나타냅니다.'>
+
+<!ENTITY password.parameter.hash '<function xmlns="http://docbook.org/ns/docbook">password_hash</function> 함수로 생성한 해시.'>
+
+<!ENTITY password.parameter.options '옵션을 포함하는 연관 배열. 각 알고리즘에서 지원하는 옵션은 <link xmlns="http://docbook.org/ns/docbook" linkend="password.constants">패스워드 알고리즘 상수</link> 문서를 참고하십시오.'>
+
+<!ENTITY password.parameter.password '사용자 패스워드.'>
 
 <!-- geaman notes -->
 
@@ -499,18 +621,64 @@ obejct</parameter></term><listitem><para>절차식 전용:
 
 
 <!-- Dom Notes -->
-<!ENTITY dom.node.inserted '이 노드는 <link xmlns="http://docbook.org/ns/docbook"
-linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
+<!ENTITY dom.node.inserted '이 노드는
+<function xmlns="http://docbook.org/ns/docbook">DOMNode::appendChild</function> 등을
 통하여 삽입하지 않으면 보여지지 않습니다.'>
+
+<!ENTITY dom.allowstatic '<para xmlns="http://docbook.org/ns/docbook">이 메소드는 정적으로 호출<emphasis>할 수</emphasis>있지만, <constant>E_STRICT</constant> 오류가 발생합니다.</para>'>
+<!ENTITY dom.malformederror '<para xmlns="http://docbook.org/ns/docbook">오류가 있는 HTML은 성공적으로 읽을 수 있지만, 잘못된 마크업을 만날 때 마다 <constant>E_WARNING</constant> 오류가 발생합니다. <link linkend="function.libxml-use-internal-errors">libxml의 오류 처리 함수functions</link>로 이러한 오류를 다룰 수 있습니다.</para>'>
+ 
+<!-- Dom Examples -->
+<!ENTITY dom.book.example '<para xmlns="http://docbook.org/ns/docbook">다음 예제는 다음 내용의 <filename>book.xml</filename>을 사용합니다:</para>
+<programlisting role="xml" xmlns="http://docbook.org/ns/docbook">
+<!-- Warning: The CDATA markup here is a little tricky. Please DO NOT BREAK it! -->
+<![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE books [
+  <!ELEMENT books   (book+)>
+  <!ELEMENT book    (title, author+, xhtml:blurb?)>
+  <!ELEMENT title   (#PCDATA)>
+  <!ELEMENT blurb   (#PCDATA)>
+  <!ELEMENT author  (#PCDATA)>
+  <!ATTLIST books   xmlns        CDATA  #IMPLIED>
+  <!ATTLIST books   xmlns:xhtml  CDATA  #IMPLIED>
+  <!ATTLIST book    id           ID     #IMPLIED>
+  <!ATTLIST author  email        CDATA  #IMPLIED>
+]>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+<books xmlns="http://books.php/" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <book id="php-basics">
+    <title>PHP Basics</title>
+    <author email="jim.smith@basics.php">Jim Smith</author>
+    <author email="jane.smith@basics.php">Jane Smith</author>
+    <xhtml:blurb><![CDATA[
+<p><em>PHP Basics</em> provides an introduction to PHP.</p>
+]]]]><![CDATA[></xhtml:blurb>
+  </book>
+  <book id="php-advanced">
+    <title>PHP Advanced Programming</title>
+    <author email="jon.doe@advanced.php">Jon Doe</author>
+  </book>
+</books>
+]]></programlisting>'>
 
 
 <!-- FileSystem entities -->
+<!ENTITY fs.emits.warning.on.failure '<para xmlns="http://docbook.org/ns/docbook">
+실패 시, <constant>E_WARNING</constant>이 발생합니다.
+</para>'>
+
 <!ENTITY fs.validfp.all '<para xmlns="http://docbook.org/ns/docbook">파일 포인터는 <function>fopen</function>,
 <function>fsockopen</function>을 통하여 성공적으로 열려,
 <function>fclose</function>로 닫지 않은 유효한 파일이여야 합니다.</para>'>
 
 <!ENTITY fs.file.pointer '<para xmlns="http://docbook.org/ns/docbook">일반적으로 <function>fopen</function>으로
 생성하는 파일 시스템 포인터 <type>resource</type>.</para>'>
+
+<!ENTITY fs.file.32bit '<note xmlns="http://docbook.org/ns/docbook"><simpara>
+    PHP의 정수형은 부호 있는 형식이고 많은 플랫폼이 32비트 정수를 사용하기에, 
+    몇몇 파일시스템 함수는 2GB가 넘는 파일에 대해서 예측할 수 없는 결과를 반환합니다.
+   </simpara></note>'>
 
 <!-- GNUPG -->
 <!ENTITY gnupg.identifier '<para xmlns="http://docbook.org/ns/docbook"><function>gnupg_init</function>나
@@ -544,7 +712,7 @@ linkend="domnode.appendchild">DOMNode->appendChild()</link> 등을
 접속할 <literal>오라클 인스턴스</literal>를 찾기 위해 <constant>TWO_TASK</constant>(리눅스)나 <constant>LOCAL</constant>(윈도우), 그리고 <constant>ORACLE_SID</constant> 등의 환경 변수를 사용합니다.</para>
 <para xmlns='http://docbook.org/ns/docbook'>
 Easy Connect naming 방식을 사용하려면, PHP가 오라클 10g 이상의 클라이언트 라이브러리를 사용해야 합니다. 오라클 10g에서 Easy Connect string 형식은:
-<emphasis>[//]host_name[:port][/service_name]</emphasis> 입니다. 오라클 11g에서는:
+<emphasis>[//]host_name[:port][/service_name]</emphasis> 입니다. 오라클 11g부터는:
 <emphasis>[//]host_name[:port][/service_name][:server_type][/instance_name]</emphasis> 입니다.
 서비스 이름은 데이터베이스 서버에서 오라클 유틸리티 <literal>lsnrctl status</literal>를 실행하여 찾을 수 있습니다.
 </para>
@@ -556,22 +724,23 @@ Easy Connect naming 방식을 사용하려면, PHP가 오라클 10g 이상의 �
 <!ENTITY oci.charset "<para xmlns='http://docbook.org/ns/docbook'>오라클 서버 버전 9.2 이상을 사용하면, 새로운 연결에
 사용할 <parameter>charset</parameter> 인수를 지정할 수 있습니다. 오라클 서버
 &lt; 9.2를 사용한다면, 이 인수는 무시되고, 대신 <literal>NLS_LANG</literal>
-환경 변수를 사용합니다.</para>">
+환경 변수를 사용합니다.</para>
+<para xmlns='http://docbook.org/ns/docbook'>인수를 사용하면 접속에 필요한
+시간을 줄일 수 있습니다.
+</para>">
 
 <!ENTITY oci.sessionmode '<para
-xmlns="http://docbook.org/ns/docbook">This
-parameter is available since version PHP 5 (PECL OCI8 1.1) and
-accepts the
-following values: <constant>OCI_DEFAULT</constant>,
-<constant>OCI_SYSOPER</constant> and <constant>OCI_SYSDBA</constant>.
-If either <constant>OCI_SYSOPER</constant> or
-<constant>OCI_SYSDBA</constant> were specified, this function will
-try
-to establish privileged connection using external credentials.
-Privileged connections are disabled by default. To enable them you
-need to set <link
+xmlns="http://docbook.org/ns/docbook">이 인수는 PHP 5 (PECL OCI8 1.1)부터 사용할
+수 있고 다음 값을 받아들입니다:
+<constant>OCI_DEFAULT</constant>,
+<constant>OCI_SYSOPER</constant>, <constant>OCI_SYSDBA</constant>.
+<constant>OCI_SYSOPER</constant>나 
+<constant>OCI_SYSDBA</constant>를 지정하면, 이 함수는 외부 인증을 사용하여
+권한을 가진 접속을 시도합니다.
+권한을 가진 접속은 기본값으로 비활성화 되어 있습니다. 활성화하려면
+<link
 linkend="ini.oci8.privileged-connect">oci8.privileged_connect</link>
-to <literal>On</literal>.
+를 <literal>On</literal>으로 설정해야 합니다.
 </para>
 <para xmlns="http://docbook.org/ns/docbook">
 PHP 5.3 (PECL OCI8 1.3.4) introduced the
@@ -606,10 +775,9 @@ the OCI8 extension, see the <link linkend="oci8.datatypes">datatypes
  supported by the driver</link></para>'>
 
 <!ENTITY oci.parameter.connection '<para
-xmlns="http://docbook.org/ns/docbook">An Oracle connection identifier,
-returned by <function>oci_connect</function>,
+xmlns="http://docbook.org/ns/docbook"><function>oci_connect</function>,
 <function>oci_pconnect</function>,
-or <function>oci_new_connect</function>.</para>'>
+<function>oci_new_connect</function>가 반환한 오라클 접속 지시자.</para>'>
 
 <!ENTITY oci.name.compat.note 'The old function name can still be
 used
@@ -639,14 +807,10 @@ database may not occur with queries when result caching is enabled.
 </para></caution>'>
 
 <!ENTITY oci.use.setprefetch '<para
-xmlns="http://docbook.org/ns/docbook">For
-queries returning a large number of rows, performance can be
-significantly improved by
-increasing <link
-linkend="ini.oci8.default-prefetch">oci8.default_prefetch</link>
-or using <function>oci_set_prefetch</function>.
+xmlns="http://docbook.org/ns/docbook">많은 열을 반환하는 쿼리에 대해서,
+<link linkend="ini.oci8.default-prefetch">oci8.default_prefetch</link>
+나 <function>oci_set_prefetch</function>를 사용하여 성능을 향상시킬 수 있습니다.
 </para>'>
-
 
 <!ENTITY oci.arg.statement.id
 "<para xmlns='http://docbook.org/ns/docbook'>A valid OCI8
@@ -668,6 +832,16 @@ CURSOR</literal> statement identifier.</para>">
 <!-- XSLT Notes -->
 <!ENTITY note.xslt.windows '<note xmlns="http://docbook.org/ns/docbook"><para>윈도우를 사용한다면, 경로 앞에
 <literal>file://</literal>이 필요한 점에 주의하십시오.</para></note>'>
+
+<!ENTITY xslt.parameter.processor '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
+processor</parameter></term><listitem><para><function>xslt_create</function>로 생성한 <acronym>XSLT</acronym>
+프로세서 연결 지시자.</para></listitem>
+</varlistentry>'>
+ 
+<!ENTITY xslt.parameter.xh '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
+xh</parameter></term><listitem><para><function>xslt_create</function>로 생성한 <acronym>XSLT</acronym>
+프로세서 연결 지시자..</para></listitem>
+</varlistentry>'>
 
 
 <!-- Notes for safe-mode limited functions: -->
@@ -832,6 +1006,12 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 <function>bcscale</function>을 사용하여 모든 함수에 대한 전역 기본값을 설정할
 수 있습니다.</para></listitem></varlistentry>'>
 
+<!-- CTYPE Notes -->
+<!ENTITY note.ctype.parameter.integer '<note xmlns="http://docbook.org/ns/docbook"><para>
+-128이상 255이하의 <type>integer</type>를 지정할 경우, 한 문자의 ASCII 값으로 해석합니다.
+(음수는 256이 더해져 확장 ASCII 영역의 문자가 됩니다) 그 외의 정수는 그 정수를 표현하는 10진
+문자열로 해석합니다.</para></note>'>
+
 <!-- FBSQL Notes -->
 <!ENTITY fbsql.link-identifier.description
 '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>link_identifier</parameter></term><listitem><para><function>fbsql_connect</function>나
@@ -869,12 +1049,12 @@ xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="&url.pecl;">PECL</link> �
 <!ENTITY mysqli.available.mysqlnd '<link xmlns="http://docbook.org/ns/docbook"
 linkend="mysqli.overview.mysqlnd">mysqlnd</link>에서만 사용할 수 있습니다.'>
 <!ENTITY mysqli.charset.note '<note xmlns="http://docbook.org/ns/docbook">
-<para>MySQLnd는 항상 서버 기본 문자셋을 가정합니다. 이 문자셋은 접속/인증 중에 보내져서 mysqlnd가 사용하게 합니다.</para><para>Libmysql은 <filename>my.cnf</filename>의 기본 문자셋을 사용하거나, <function>mysqli_init</function> 이후, <function>mysqli_real_connect</function> 이전에 명시적으로 호출한 <function>mysqli_options</function>로 지정할 수 있습니다.</para></note>'>
+<para>MySQLnd는 항상 서버 기본 문자셋을 가정합니다. 이 문자셋은 접속/인증 중에 보내져서 mysqlnd가 사용하게 합니다.</para><para>Libmysqlclient는 <filename>my.cnf</filename>의 기본 문자셋을 사용하거나, <function>mysqli_init</function> 이후, <function>mysqli_real_connect</function> 이전에 명시적으로 호출한 <function>mysqli_options</function>로 지정할 수 있습니다.</para></note>'>
 
 <!-- Notes for SAPI/Apache -->
-<!ENTITY note.apache.nsapi-module '<note xmlns="http://docbook.org/ns/docbook"><para>PHP 4.3.3부터 이 함수를
+<!ENTITY note.apache.nsapi-module '<para xmlns="http://docbook.org/ns/docbook">PHP 4.3.3부터 이 함수를
 넷스케이프/iPlanet/SunONE 웹서버의 <link linkend="ref.nsapi">NSAPI 서버
-모듈</link>에서도 사용할 수 있습니다.</para></note>'>
+모듈</link>에서도 사용할 수 있습니다.</para>'>
 
 <!ENTITY apache.req.module '<simpara xmlns="http://docbook.org/ns/docbook">이 함수는 PHP를 아파치 모듈로 설치하였을
 때만 지원합니다.</simpara>'>
@@ -945,6 +1125,13 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 <constant>E_WARNING</constant> 등급의 오류를
 생성합니다.</para></listitem></varlistentry>'>
 
+<!ENTITY mysql.linkid-noreopen.description '<varlistentry
+xmlns="http://docbook.org/ns/docbook"><term><parameter>
+link_identifier</parameter></term><listitem><para>MySQL 접속.
+연결 지시어가 지정되지 않으면,
+<function>mysql_connect</function>로 연 마지막 연결로 가정합니다. 연결이 없거나 성립하지 않으면,
+<constant>E_WARNING</constant> 등급의 오류가 발생합니다.</para></listitem></varlistentry>'>
+
 <!ENTITY mysql.result.description
 '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>result</parameter></term><listitem><para><function>mysql_query</function>
 호출을 통한 결과 <type>resource</type>.</para></listitem></varlistentry>'>
@@ -954,6 +1141,14 @@ linkend="ini.sqlite.assoc-case">sqlite.assoc_case</link> 설정 옵션에 따라
 필드 오프셋. <parameter>filed_offset</parameter>은 <literal>0</literal>부터
 시작합니다. <parameter>filed_offset</parameter>이 존재하지 않으면
 <constant>E_WARNING</constant>를 생성합니다.</para></listitem></varlistentry>'>
+
+<!ENTITY mysql.alternative.note '<para xmlns="http://docbook.org/ns/docbook">이 확장은 PHP 5.5.0부터 배제되었고,
+차후 제거될 것입니다.
+대신, <link linkend="book.mysqli">MySQLi</link>나 <link linkend="ref.pdo-mysql">PDO_MySQL</link> 확장을
+사용하십시오.
+<link linkend="mysqlinfo.api.choosing">MySQL: API 선택하기</link> 가이드와
+<link linkend="faq.databases.mysql.deprecated">관련 FAQ</link>를 참조하십시오.
+이 함수를 대체하여:</para>'>
 
 <!-- Sybase Notes -->
 <!ENTITY sybase.ct.only '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 Sybase를 CT 라이브러리
@@ -1114,6 +1309,7 @@ linkend="http.request.options">요청 옵션</link>'>
 반환합니다.'>
 <!ENTITY returns.http.false.orexits '성공시 &false;를 반환하거나 
 <emphasis xmlns="http://docbook.org/ns/docbook">종료</emphasis>합니다.'>
+<!ENTITY returns.session.storage.retval '반환 값(보통 성공 시 &true;, 실패 시 &false;). 이 값은 처리를 위해 내부적으로 PHP로 반환되는 점에 주의하십시오.'>
 <!ENTITY http.request.affects '다음 요청 방식에만 적용됩니다:'>
 <!ENTITY http.request.affects.any '모든 요청 방식에 적용됩니다.'>
 <!ENTITY http.response.class.php51 'PHP 5.1.0 이상을 사용할 때 <link xmlns="http://docbook.org/ns/docbook"
@@ -1193,6 +1389,15 @@ linkend="svn.constants.status">status 상수</link>를 참고하십시오.'>
 <!ENTITY svn.referto.type '사용할 수 있는 값에 대해서는 <link xmlns="http://docbook.org/ns/docbook"
 linkend="svn.constants.type">type 상수</link>를 참고하십시오.'>
 
+<!-- FANN notes -->
+<!ENTITY fann.ann.description '<para xmlns="http://docbook.org/ns/docbook">Neural network <type>resource</type>.</para>'>
+<!ENTITY fann.train.description '<para xmlns="http://docbook.org/ns/docbook">Neural network training data <type>resource</type>.</para>'>
+<!ENTITY fann.errdat.description '<para xmlns="http://docbook.org/ns/docbook">Either neural network <type>resource</type> or neural network trainining data <type>resource</type>.</para>'>
+<!ENTITY fann.return.void '<para xmlns="http://docbook.org/ns/docbook">No value is returned.</para>'>
+<!ENTITY fann.return.bool '<para xmlns="http://docbook.org/ns/docbook">Returns &true; on success, or &false; otherwise.</para>'>
+<!ENTITY fann.return.ann '<para xmlns="http://docbook.org/ns/docbook"> Returns a neural network <type>resource</type> on success, or &false; on error.</para>'>
+<!ENTITY fann.return.train '<para xmlns="http://docbook.org/ns/docbook"> Returns a train data <type>resource</type> on success, or &false; on error.</para>'>
+
 <!-- Imagick generic return types -->
 <!ENTITY imagick.return.success '성공시에 &true;를 반환합니다.'>
 <!ENTITY imagick.imagick.throws '오류시에 ImagickException이 발생합니다.'>
@@ -1248,14 +1453,10 @@ linkend="imagick.constants.channel">채널 상수</link>를 조합하십시오.
 
 <!ENTITY imagick.bestfit.note '<note xmlns="http://docbook.org/ns/docbook">
  <simpara>
-  The behavior of the parameter <parameter>bestfit</parameter>
-changed in Imagick 3.0.0.
-  Before this version given dimensions 400x400 an image of dimensions
-200x150 would be
-  left untouched. In Imagick 3.0.0 and later the image would be
-scaled up to size 400x300 as
-  this is the "best fit" for the given dimensions. If
-<parameter>bestfit</parameter>
+  The behavior of the parameter <parameter>bestfit</parameter> changed in Imagick 3.0.0.
+  Before this version given dimensions 400x400 an image of dimensions 200x150 would be
+  left untouched. In Imagick 3.0.0 and later the image would be scaled up to size 400x300 as
+  this is the "best fit" for the given dimensions. If <parameter>bestfit</parameter>
   parameter is used both width and height must be given.
  </simpara>
 </note>'>
@@ -1331,7 +1532,7 @@ because libxml is enabled by default.</para>'>
 때 <constant>E_WARNING</constant>이 발생합니다. (즉, 구현되지 않음)</para>'>
 <!ENTITY userstream.updates.context '<note xmlns="http://docbook.org/ns/docbook"><para>호출한 함수로 유효한
 컨텍스트를 넘겼을 때,
-<varname linkend="streamwrapper.props.context">streamWrapper->context</varname>
+<varname linkend="streamwrapper.props.context">streamWrapper::$context</varname>
 프로퍼티가 갱신됩니다.</para></note>'>
 
 <!-- Gmagick -->
@@ -1347,7 +1548,10 @@ because libxml is enabled by default.</para>'>
 <!ENTITY reflection.export.param.return '&true;로 설정하면 export를 반환하고,
 반대의 경우는 버립니다. &false;로 설정(기본값)은 반대를 수행합니다.'>
 
-<!ENTITY reflection.export.param.name 'export할 reflection'>
+<!ENTITY reflection.invoke.reference '함수가 인수로 참조를 필요로 하면,
+주어진 인수 목록에도 참조여야 합니다.'>
+
+<!ENTITY reflection.export.param.name '내보낼 reflection'>
 
 <!-- SPL -->
 <!ENTITY spl.datastructures.intro.title '<title
@@ -1355,10 +1559,7 @@ xmlns="http://docbook.org/ns/docbook">Datastructures</title>'>
 
 <!ENTITY spl.exceptions.intro.title '<title
 xmlns="http://docbook.org/ns/docbook">Exceptions</title>'>
-<!ENTITY spl.exceptions.intro '<para
-xmlns="http://docbook.org/ns/docbook">SPL provides a set of
-standard Exceptions.</para><para xmlns="http://docbook.org/ns/docbook">See also the <xref
-linkend="reserved.exceptions" /></para>'>
+<!ENTITY spl.exceptions.intro '<para xmlns="http://docbook.org/ns/docbook">SPL provides a set of standard Exceptions.</para><para xmlns="http://docbook.org/ns/docbook">See also the <xref linkend="reserved.exceptions" /></para>'>
 
 <!ENTITY spl.files.intro.title '<title
 xmlns="http://docbook.org/ns/docbook">File Handling</title>'>
@@ -1400,3 +1601,178 @@ success&win32service.false.error;'>
 xmlns="http://docbook.org/ns/docbook">WIN32_NO_ERROR</constant>
 on success&win32service.false.error;'>
 
+<!-- SNMP -->
+<!ENTITY snmp.set.type.values '<para xmlns="http://docbook.org/ns/docbook">
+ The <acronym>MIB</acronym> defines the type of each object id. It has to be specified as a single character from the below list.
+</para>
+<table xmlns="http://docbook.org/ns/docbook">
+ <title>types</title>
+ <tgroup cols="2">
+  <tbody>
+   <row><entry>=</entry><entry>The type is taken from the MIB</entry></row>
+   <row><entry>i</entry><entry>INTEGER</entry> </row>
+   <row><entry>u</entry><entry>INTEGER</entry></row>
+   <row><entry>s</entry><entry>STRING</entry></row>
+   <row><entry>x</entry><entry>HEX STRING</entry></row>
+   <row><entry>d</entry><entry>DECIMAL STRING</entry></row>
+   <row><entry>n</entry><entry>NULLOBJ</entry></row>
+   <row><entry>o</entry><entry>OBJID</entry></row>
+   <row><entry>t</entry><entry>TIMETICKS</entry></row>
+   <row><entry>a</entry><entry>IPADDRESS</entry></row>
+   <row><entry>b</entry><entry>BITS</entry></row>
+  </tbody>
+ </tgroup>
+</table>
+<para xmlns="http://docbook.org/ns/docbook">
+ If <constant>OPAQUE_SPECIAL_TYPES</constant> was defined while compiling the <acronym>SNMP</acronym> library, the following are also valid:
+</para>
+<table xmlns="http://docbook.org/ns/docbook">
+ <title>types</title>
+ <tgroup cols="2">
+  <tbody>
+   <row><entry>U</entry><entry>unsigned int64</entry></row>
+   <row><entry>I</entry><entry>signed int64</entry></row>
+   <row><entry>F</entry><entry>float</entry></row>
+   <row><entry>D</entry><entry>double</entry></row>
+  </tbody>
+ </tgroup>
+</table>
+'>
+<!ENTITY snmp.set.type.values.asn.mapping '<para xmlns="http://docbook.org/ns/docbook">
+ Most of these will use the obvious corresponding ASN.1 type.  &apos;s&apos;, &apos;x&apos;, &apos;d&apos; and &apos;b&apos; are all different ways of specifying an OCTET STRING value, and
+ the &apos;u&apos; unsigned type is also used for handling Gauge32 values.
+</para>
+'>
+<!ENTITY snmp.set.type.values.equal.note '<para xmlns="http://docbook.org/ns/docbook">
+ If the MIB-Files are loaded by into the MIB Tree with "snmp_read_mib" or by specifying it in the libsnmp config, &apos;=&apos; may be used as
+ the <parameter>type</parameter> parameter for all object ids as the type can then be automatically read from the MIB.
+</para>
+'>
+<!ENTITY snmp.set.type.values.bitset.note '<para xmlns="http://docbook.org/ns/docbook">
+ Note that there are two ways to set a variable of the type BITS like e.g.
+ "SYNTAX    BITS {telnet(0), ftp(1), http(2), icmp(3), snmp(4), ssh(5), https(6)}":
+</para>
+<itemizedlist xmlns="http://docbook.org/ns/docbook">
+ <listitem>
+  <simpara>
+   Using type "b" and a list of bit numbers. This method is not recommended since GET query for the same OID would return e.g. 0xF8.
+  </simpara>
+ </listitem>
+ <listitem>
+  <simpara>
+   Using type "x" and a hex number but without(!) the usual "0x" prefix.
+  </simpara>
+ </listitem>
+</itemizedlist>
+<para xmlns="http://docbook.org/ns/docbook">
+ See examples section for more details.
+</para>
+'>
+<!ENTITY snmp.methods.exceptions_enable.refsect '<refsect1 role="errors" xmlns="http://docbook.org/ns/docbook">
+&reftitle.errors;
+<para>
+ This method does not throw any exceptions by default.
+ To enable throwing an SNMPException exception when some of library errors occur
+ the SNMP class parameter <parameter>exceptions_enabled</parameter>
+ should be set to a corresponding value. See <link linkend="snmp.props.exceptions-enabled">
+ <parameter>SNMP::$exceptions_enabled</parameter> explanation</link> for more details.
+</para>
+</refsect1>
+'>
+
+<!-- Eio -->
+<!ENTITY eio.callback.proto '<para xmlns="http://docbook.org/ns/docbook">
+<parameter xmlns="http://docbook.org/ns/docbook">callback</parameter> function is called when the request is done.
+It should match the following prototype: <programlisting role="php"><![CDATA[
+void callback(mixed $data, int $result[, resource $req]);
+]]></programlisting>
+<variablelist xmlns="http://docbook.org/ns/docbook">
+<varlistentry xmlns="http://docbook.org/ns/docbook">
+<term><parameter>data</parameter></term>
+<listitem><para>is custom data passed to the request.</para></listitem>
+</varlistentry>
+<varlistentry xmlns="http://docbook.org/ns/docbook">
+<term><parameter>result</parameter></term>
+<listitem><para>request-specific result value; basically, the value returned by corresponding
+system call.</para></listitem>
+</varlistentry>
+<varlistentry xmlns="http://docbook.org/ns/docbook">
+<term><parameter>req</parameter></term>
+<listitem><para>is optional request resource which can be used with functions like <function>eio_get_last_error</function></para></listitem>
+</varlistentry>
+</variablelist>
+</para>
+'>
+
+<!ENTITY eio.request.pri.values '<para
+xmlns="http://docbook.org/ns/docbook">The request priority: <constant
+xmlns="http://docbook.org/ns/docbook">EIO_PRI_DEFAULT</constant>, <constant
+xmlns="http://docbook.org/ns/docbook">EIO_PRI_MIN</constant>, <constant
+xmlns="http://docbook.org/ns/docbook">EIO_PRI_MAX</constant>, or &null;.
+If &null; passed, <parameter
+xmlns="http://docbook.org/ns/docbook">pri</parameter> internally is set to
+<constant xmlns="http://docbook.org/ns/docbook">EIO_PRI_DEFAULT</constant>.
+</para>
+'>
+
+<!ENTITY eio.warn.relpath '<warning
+xmlns="http://docbook.org/ns/docbook"><simpara xmlns="http://docbook.org/ns/docbook">Avoid relative
+paths</simpara></warning>
+'>
+
+<!ENTITY trader.arg.array.of.real 'Array of real values.'>
+<!ENTITY trader.arg.array.of.real.high 'High price, array of real values.'>
+<!ENTITY trader.arg.array.of.real.low 'Low price, array of real values.'>
+<!ENTITY trader.arg.array.of.real.close 'Closing price, array of real values.'>
+<!ENTITY trader.arg.array.of.real.open 'Opening price, array of real values.'>
+<!ENTITY trader.arg.array.of.real.volume 'Volume traded, array of real values.'>
+<!ENTITY trader.arg.array.of.real.periods 'Array of real values.'>
+<!ENTITY trader.arg.penetration 'Percentage of penetration of a candle within another candle.'>
+<!ENTITY trader.arg.vfactor 'Volume Factor. Valid range from 1 to 0.'>
+<!ENTITY trader.arg.time.period 'Number of period. Valid range from 2 to 100000.'>
+<!ENTITY trader.arg.fast.period 'Number of period for the fast MA. Valid range from 2 to 100000.'>
+<!ENTITY trader.arg.slow.period 'Number of period for the slow MA. Valid range from 2 to 100000.'>
+<!ENTITY trader.arg.signal.period 'Smoothing for the signal line (nb of period). Valid range from 1 to 100000.'>
+<!ENTITY trader.arg.fastk.period 'Time period for building the Fast-K line. Valid range from 1 to 100000.'>
+<!ENTITY trader.arg.fastd.period 'Smoothing for making the Fast-D line. Valid range from 1 to 100000, usually set to 3.'>
+<!ENTITY trader.arg.slowk.period 'Smoothing for making the Slow-K line. Valid range from 1 to 100000, usually set to 3.'>
+<!ENTITY trader.arg.slowd.period 'Smoothing for making the Slow-D line. Valid range from 1 to 100000.'>
+<!ENTITY trader.arg.min.period 'Value less than minimum will be changed to Minimum period. Valid range from 2 to 100000'>
+<!ENTITY trader.arg.max.period 'Value higher than minimum will be changed to Maximum period. Valid range from 2 to 100000'>
+<!ENTITY trader.arg.ma.type 'Type of Moving Average. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.fast.ma.type 'Type of Moving Average for fast MA. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.slow.ma.type 'Type of Moving Average for slow MA. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.fastd.ma.type 'Type of Moving Average for Fast-D. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.slowk.ma.type 'Type of Moving Average for Slow-K. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.slowd.ma.type 'Type of Moving Average for Slow-D. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.slowk.ma.type 'Type of Moving Average for Slow-K. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.signal.ma.type 'Type of Moving Average for signal line. <link xmlns="http://docbook.org/ns/docbook" linkend="trader.constants">TRADER_MA_TYPE_*</link> series of constants should be used.'>
+<!ENTITY trader.arg.nbdevup 'Deviation multiplier for upper band. Valid range from <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-min">TRADER_REAL_MIN</link> to <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-max">TRADER_REAL_MAX</link>.'>
+<!ENTITY trader.arg.nbdevdn 'Deviation multiplier for lower band. Valid range from <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-min">TRADER_REAL_MIN</link> to <link xmlns="http://docbook.org/ns/docbook" linkend="constant.trader-real-max">TRADER_REAL_MAX</link>.'>
+<!ENTITY trader.arg.fast.limit 'Upper limit use in the adaptive algorithm. Valid range from 0.01 to 0.99.'>
+<!ENTITY trader.arg.slow.limit 'Lower limit use in the adaptive algorithm. Valid range from 0.01 to 0.99.'>
+
+<!-- Mongo -->
+<!ENTITY mongo.setreadpreference.parameters '<variablelist xmlns="http://docbook.org/ns/docbook"><varlistentry><term><parameter>read_preference</parameter></term><listitem><para>The read preference mode: <constant>MongoClient::RP_PRIMARY</constant>, <constant>MongoClient::RP_PRIMARY_PREFERRED</constant>, <constant>MongoClient::RP_SECONDARY</constant>, <constant>MongoClient::RP_SECONDARY_PREFERRED</constant>, or <constant>MongoClient::RP_NEAREST</constant>.</para></listitem></varlistentry><varlistentry><term><parameter>tags</parameter></term><listitem><para>An array of zero or more tag sets, where each tag set is itself an array of criteria used to match tags on replica set members.</para></listitem></varlistentry></variablelist>'>
+<!ENTITY mongo.setreadpreference.returnvalues '<para xmlns="http://docbook.org/ns/docbook">Returns &true; on success, or &false; otherwise.</para>'>
+<!ENTITY mongo.setreadpreference.errors '<para xmlns="http://docbook.org/ns/docbook">Emits <constant>E_WARNING</constant> if either parameter is invalid, or if one or more tag sets are provided with the <constant>MongoClient::RP_PRIMARY</constant> read preference mode.</para>'>
+<!ENTITY mongo.getreadpreference.returnvalues '<para xmlns="http://docbook.org/ns/docbook">This function returns an array describing the read preference. The array contains the values <literal>type</literal> for the string read preference mode (corresponding to the <classname>MongoClient</classname> constants), and <literal>tagsets</literal> containing a list of all tag set criteria. If no tag sets were specified, <literal>tagsets</literal> will not be present in the array.</para>'>
+<!ENTITY mongo.writes.parameters.writeconcern '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"w"</literal></para><para>See <link linkend="mongo.writeconcerns">WriteConcerns</link>. The default value for <classname>MongoClient</classname> is <literal>1</literal>.</para></listitem>'>
+<!ENTITY mongo.writes.parameters.writeconcerntimeout '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"wtimeout"</literal></para><para>How long to wait for <link linkend="mongo.writeconcerns">WriteConcern</link> acknowledgement. The default value for <classname>MongoClient</classname> is <literal>10000</literal> milliseconds.</para></listitem>'>
+<!ENTITY mongo.writes.parameters.fsync '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"fsync"</literal></para><para>Boolean, defaults to &false;. Forces the insert to be synced to disk before returning success. If &true;, an acknowledged insert is implied and will override setting <literal>w</literal> to <literal>0</literal>.</para></listitem>'>
+<!-- <!ENTITY mongo.writes.parameters.sockettimeoutms '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"socketTimeoutMS"</literal></para><para>Integer, defaults to <literal>MongoCursor::$timeout</literal>.  If acknowledged writes are used, this sets how long (in milliseconds) for the client to wait for a database response.  If the database does not respond within the timeout period, a <classname>MongoCursorTimeoutException</classname> will be thrown.</para></listitem>'> -->
+<!ENTITY mongo.writes.parameters.journal '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"j"</literal></para><para>Boolean, defaults to &false;. Forces the insert to be synced to the journal before returning success. If &true;, an acknowledged insert is implied and will override setting <literal>w</literal> to <literal>0</literal>.</para></listitem>'>
+<!ENTITY mongo.writes.parameters.safe '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"safe"</literal></para><para><emphasis>Deprecated</emphasis>. Please use the <link linkend="mongo.writeconcerns">WriteConcern</link> <literal>w</literal> option.</para></listitem>'>
+<!ENTITY mongo.writes.parameters.timeout '<listitem xmlns="http://docbook.org/ns/docbook"><para><literal>"timeout"</literal></para><para>Integer, defaults to <literal>MongoCursor::$timeout</literal>.  If acknowledged writes are used, this sets how long (in milliseconds) for the client to wait for a database response.  If the database does not respond within the timeout period, a <classname>MongoCursorTimeoutException</classname> will be thrown.</para></listitem>'>
+<!ENTITY mongo.errors.exceptions.writeconcern '<para xmlns="http://docbook.org/ns/docbook">Throws <classname>MongoCursorException</classname> if the "w" option is set and the write fails.</para><para xmlns="http://docbook.org/ns/docbook">Throws <classname>MongoCursorTimeoutException</classname> if the "w" option is set to a value greater than one and the operation takes longer than <varname>MongoCursor::$timeout</varname> milliseconds to complete.  This does not kill the operation on the server, it is a client-side timeout. The operation in <literal>MongoCollection::$wtimeout</literal> is milliseconds.</para>'>
+<!ENTITY mongo.errors.deprecated '<para xmlns="http://docbook.org/ns/docbook">Issues <constant>E_DEPRECATED</constant> warning</para>'>
+<!ENTITY mongo.gridfs.store.metadata.note '<note xmlns="http://docbook.org/ns/docbook"><para>These fields may also overwrite those that would be created automatically by the driver, as described in the MongoDB core documentation for the <link xlink:href="&url.mongodb.docs.gridfs;#the-files-collection" xmlns:xlink="http://www.w3.org/1999/xlink">files collection</link>. Some practical use cases for this behavior would be to specify a custom <literal>chunkSize</literal> or <literal>_id</literal> for the file.</para></note>'>
+<!ENTITY mongo.gridfs.store.return '<para xmlns="http://docbook.org/ns/docbook">Returns the <literal>_id</literal> of the saved file document. This will be a generated <classname>MongoId</classname> unless an <literal>_id</literal> was explicitly specified in the <parameter>extra</parameter> parameter.</para>'>
+
+<!-- Radius -->
+<!ENTITY radius.request.required '<note xmlns="http://docbook.org/ns/docbook"><para>A request must be created via <function>radius_create_request</function> before this function can be called.</para></note>'>
+<!ENTITY radius.parameter.attribute-type '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>type</parameter></term><listitem><para>The attribute type.</para></listitem></varlistentry>'>
+<!ENTITY radius.parameter.handle '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>radius_handle</parameter></term><listitem><para>The RADIUS resource.</para></listitem></varlistentry>'>
+<!ENTITY radius.parameter.options '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>options</parameter></term><listitem><para>A bitmask of the attribute options. The available options include <link linkend="constant.radius-option-tagged"><constant>RADIUS_OPTION_TAGGED</constant></link> and <link linkend="constant.radius-option-salt"><constant>RADIUS_OPTION_SALT</constant></link>.</para></listitem></varlistentry>'>
+<!ENTITY radius.parameter.tag '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>tag</parameter></term><listitem><para>The attribute tag. This parameter is ignored unless the <link linkend="constant.radius-option-tagged"><constant>RADIUS_OPTION_TAGGED</constant></link> option is set.</para></listitem></varlistentry>'>
+<!ENTITY radius.parameter.vendor '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>vendor</parameter></term><listitem><para>The vendor ID.</para></listitem></varlistentry>'>
