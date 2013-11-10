@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 331632 Maintainer: progcom Status: ready -->
 <refentry xml:id="function.ob-start" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>ob_start</refname> 
@@ -10,19 +10,20 @@
   &reftitle.description;
   <methodsynopsis>
    <type>bool</type><methodname>ob_start</methodname>
-   <methodparam choice="opt"><type>callback</type><parameter>output_callback</parameter></methodparam>
-   <methodparam choice="opt"><type>int</type><parameter>chunk_size</parameter></methodparam>
-   <methodparam choice="opt"><type>bool</type><parameter>erase</parameter></methodparam>
+   <methodparam choice="opt"><type>callable</type><parameter>output_callback</parameter><initializer>&null;</initializer></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>chunk_size</parameter><initializer>0</initializer></methodparam>
+   <methodparam choice="opt"><type>int</type><parameter>flags</parameter><initializer><constant>PHP_OUTPUT_HANDLER_STDFLAGS</constant></initializer></methodparam>
   </methodsynopsis>
   <para>
-   출력 버퍼링을 켭니다. 출력 버퍼링을 활성화하면, (헤더를 제외한)
+   출력 버퍼링을 켭니다. 출력 버퍼링을 활성화한 동안, (헤더를 제외한)
    스크립트의 모든 출력을 내부 버퍼에 저장하고, 실제로 전송하지 않습니다.
   </para>
   <para>
    이 내부 버퍼의 내용은 <function>ob_get_contents</function>를 이용해서
    문자열 변수로 복사할 수 있습니다. 내부 버퍼에 들어있는 내용을 출력하려면,
-   <function>ob_end_flush</function>를 사용하십시오. 반대로,
-   <function>ob_end_clean</function>은 버퍼 내용을 출력 없이 지웁니다.
+   <function>ob_end_flush</function>를 사용하십시오. 또는,
+   <function>ob_end_clean</function>로 버퍼 내용을 출력하지 않고 지울 수
+   있습니다.
   </para>
   <warning>
    <para>
@@ -33,10 +34,10 @@
    </para>
   </warning>
   <para>
-   출력 버퍼는 쌓을 수 있습니다. 즉, <function>ob_start</function>가 작동중일
+   출력 버퍼는 중첩할 수 있습니다. 즉, <function>ob_start</function>가 작동 중일
    때, 다른 <function>ob_start</function>를 호출할 수 있습니다. 정확한 횟수의
    <function>ob_end_flush</function>을 호출하면 아무런 문제가 없습니다. 여러
-   개의 출력 콜백 함수가 작동중이면, 출력은 감싸여진 순서대로 필터링됩니다.
+   개의 출력 콜백 함수가 작동중이면, 출력은 중첩한 순서대로 필터링됩니다.
   </para>
  </refsect1>
 
@@ -53,17 +54,36 @@
        함수는 (<function>ob_flush</function>, <function>ob_clean</function>
        등의 함수로) 출력 버퍼를 보내거나(전송) 비울 때, 또는 요청 마지막에
        출력 버퍼를 브라우저로 보낼 때 호출됩니다.
-       <parameter>output_callback</parameter>이 호출되면, 출력 버퍼의 내용을
-       인수로 받고, 브라우저로 전송할 새 출력 버퍼를 결과로 반환하여
+       <parameter>output_callback</parameter>을 호출 할 때 출력 버퍼의 내용을
+       인수로 보내고, 브라우저로 전송할 새 출력 버퍼를 결과로 반환하여
        작동합니다. <parameter>output_callback</parameter>이 호출할 수 있는
        함수가 아니라면, 이 함수는 &false;를 반환합니다.
+       다음이 콜백 형태입니다:
       </para>
       <para>
-       콜백 함수가 두 인수를 가지고 있으면, 두번째 인수는
-       <constant>PHP_OUTPUT_HANDLER_START</constant>,
-       <constant>PHP_OUTPUT_HANDLER_CONT</constant>,
-       <constant>PHP_OUTPUT_HANDLER_END</constant>로 구성된 비트 필드로
-       채워집니다.
+       <methodsynopsis>
+        <type>bool</type><methodname><replaceable>handler</replaceable></methodname>
+        <methodparam><type>string</type><parameter>buffer</parameter></methodparam>
+        <methodparam choice="opt"><type>int</type><parameter>phase</parameter></methodparam>
+       </methodsynopsis>
+       <variablelist>
+        <varlistentry>
+         <term><parameter>buffer</parameter></term>
+         <listitem>
+          <simpara>
+           출력 버퍼의 내용.
+          </simpara>
+         </listitem>
+        </varlistentry>
+        <varlistentry>
+         <term><parameter>phase</parameter></term>
+         <listitem>
+          <simpara>
+           <constant>PHP_OUTPUT_HANDLER_*</constant> 상수의 비트 마스크.
+          </simpara>
+         </listitem>
+        </varlistentry>
+       </variablelist>
       </para>
       <para>
        <parameter>output_callback</parameter>이 &false;를 반환하면, 원 입력이
@@ -99,17 +119,65 @@
       <para>
        선택적인 <parameter>chunk_size</parameter> 인수가 전달되면, 버퍼 길이가
        <parameter>chunk_size</parameter>와 같거나 초과하게 되는 출력 호출 후에
-       버퍼가 전송됩니다. 기본값인 0은 함수를 마지막에만 호출하며, 특수값 1은
-       <parameter>chunk_size</parameter>를 4096으로 설정합니다.
+       버퍼가 전송됩니다. 기본값인 <literal>0</literal>으로 지정하면,
+       출력 버퍼가 닫힐 경우에만 출력 함수를 호출합니다.
+      </para>
+      <para>
+       PHP 5.4.0 이전에는, <literal>1</literal>을 특수 값으로 인식하여,
+       chunk 크기를 4096 바이트로 설정하였습니다.
       </para>
      </listitem>
     </varlistentry>
     <varlistentry>
-     <term><parameter>erase</parameter></term>
+     <term><parameter>flags</parameter></term>
      <listitem>
       <para>
-       선택적인 <parameter>erase</parameter> 인수를 &false;로 설정하면,
-       스크립트가 종료될 때 까지 버퍼가 지워지지 않습니다. (PHP 4.3.0부터)
+       <parameter>flags</parameter> 인수는 출력 버퍼에 사용할 수 있는 동작을
+       제어하는 비트마스크입니다. 기본값은 출력 버퍼를 지울 수 있고, 비울 수
+       있고, 제거할 수 있는 상태로, 
+       <constant>PHP_OUTPUT_HANDLER_CLEANABLE</constant> |
+       <constant>PHP_OUTPUT_HANDLER_FLUSHABLE</constant> |
+       <constant>PHP_OUTPUT_HANDLER_REMOVABLE</constant>, 또는 간단하게
+       <constant>PHP_OUTPUT_HANDLER_STDFLAGS</constant>로 설정할 수 있습니다.
+      </para>
+      <para>
+       각 플래그는 다음 설명과 같이 함수 모음을 제어합니다:
+       <informaltable>
+        <tgroup cols="2">
+         <thead>
+          <row>
+           <entry>상수</entry>
+           <entry>함수들</entry>
+          </row>
+         </thead>
+         <tbody>
+          <row>
+           <entry><constant>PHP_OUTPUT_HANDLER_CLEANABLE</constant></entry>
+           <entry>
+            <function>ob_clean</function>,
+            <function>ob_end_clean</function>,
+            <function>ob_get_clean</function>.
+           </entry>
+          </row>
+          <row>
+           <entry><constant>PHP_OUTPUT_HANDLER_FLUSHABLE</constant></entry>
+           <entry>
+            <function>ob_end_flush</function>,
+            <function>ob_flush</function>,
+            <function>ob_get_flush</function>.
+           </entry>
+          </row>
+          <row>
+           <entry><constant>PHP_OUTPUT_HANDLER_REMOVABLE</constant></entry>
+           <entry>
+            <function>ob_end_clean</function>,
+            <function>ob_end_flush</function>,
+            <function>ob_get_flush</function>.
+           </entry>
+          </row>
+         </tbody>
+        </tgroup>
+       </informaltable>
       </para>
      </listitem>
     </varlistentry>
@@ -137,10 +205,36 @@
      </thead>
      <tbody>
       <row>
+       <entry>5.4.0</entry>
+       <entry>
+        <function>ob_start</function>의 세번째 인수가
+        <parameter>erase</parameter>로 불리는 <type>boolean</type>
+        인수(&false;로 설정할 경우 스크립트가 종료될 때까지 출력 버퍼의 삭제를
+        방지)에서 <parameter>flags</parameter>로 불리는 <type>integer</type>
+        인수로 변경되었습니다. 불행히도, 이 결과 PHP 5.4.0 이전에 세번째 인수를 
+        사용하던 코드와 API 호환성이 깨졌습니다. 모든 버전에서 호환성을 가지게
+        하기 위해서는,  <link linkend="function.ob-start.flags-bc">플래그
+        예제</link>를 참고하십시오.
+       </entry>
+      </row>
+      <row>
+       <entry>5.4.0</entry>
+       <entry>
+        <literal>1</literal> chunk 크기는 출력 버퍼에 1 바이트가 전달되게
+        바뀌었습니다.
+       </entry>
+      </row>
+      <row>
        <entry>4.3.2</entry>
        <entry>
         <parameter>output_callback</parameter>가 실행될 수 없을 때, &false;를
         반환하게 되었습니다.
+       </entry>
+      </row>
+      <row>
+       <entry>4.2.0</entry>
+       <entry>
+        <parameter>erase</parameter> 인수가 추가되었습니다.
        </entry>
       </row>
      </tbody>
@@ -167,7 +261,6 @@ function callback($buffer)
 ob_start("callback");
 
 ?>
-
 <html>
 <body>
 <p>It's like comparing apples to oranges.</p>
@@ -191,6 +284,26 @@ ob_end_flush();
 </html>
 ]]>
     </screen>
+   </example>
+  </para>
+
+  <para>
+   <example xml:id="function.ob-start.flags-bc">
+    <title>PHP 5.3과 5.4에서 호환되는 지울 수 없는 출력 버퍼 생성하기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+if (version_compare(PHP_VERSION, '5.4.0', '>=')) {
+  ob_start(null, 0, PHP_OUTPUT_HANDLER_STDFLAGS ^
+    PHP_OUTPUT_HANDLER_REMOVABLE);
+} else {
+  ob_start(null, 0, false);
+}
+
+?>
+]]>
+    </programlisting>
    </example>
   </para>
  </refsect1>
