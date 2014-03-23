@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE translation SYSTEM "../dtds/translation.dtd">
+<!DOCTYPE translation SYSTEM "../doc-base/phpbook/phpbook-xsml/translation.dtd">
 
 <translation xmlns="http://docbook.org/ns/docbook">
 
@@ -14,23 +14,23 @@
  </chmindex>
 
  <translators>
-  <person name="LEE Yun-young" email="progcom@php.net" nick="progcom" cvs="yes" editor="yes"/>
+  <person name="LEE Yun-young" email="progcom@php.net" nick="progcom" vcs="yes" editor="yes"/>
 
-  <person name="Yu Ilho" email="acidd15@php.net" nick="acidd15" cvs="yes"/>
-  <person name="Younsoo Kim" email="corean@php.net" nick="corean" cvs="yes"/>
-  <person name="Lee Seung Hwan" email="cycle98@php.net" nick="cycle98" cvs="yes"/>
-  <person name="Sunghyuk Do" email="dhyuk@hands.pe.kr" nick="dhyuk" cvs="no"/>
-  <person name="Seungjoon Shim" email="ftfuture@php.net" nick="ftfuture" cvs="yes"/>
-  <person name="Jin Tae-young" email="fuzzy74@php.net" nick="fuzzy74" cvs="yes"/>
-  <person name="Jungmin Song" email="karoora@php.net" nick="karoora" cvs="yes"/>
-  <person name="Bong-woon Suk" email="program:at:mytechnic dot com" nick="myprogram" cvs="no"/>
-  <person name="Jaemin Byon" email="noribsd@php.net" nick="noribsd" cvs="yes"/>
-  <person name="Joong-yeon Choi" email="pcraft@php.net" nick="pcraft" cvs="yes"/>
-  <person name="WonHee Hwang" email="regina@php.net" nick="regina" cvs="yes"/>
-  <person name="Ryeonho Heo" email="rhheo@php.net" nick="rhheo" cvs="yes"/>
-  <person name="Sungkook KIM" email="spermwhale@php.net" nick="spermwhale" cvs="yes"/>
-  <person name="Jeongha Kwon" email="suvia@php.net" nick="suvia" cvs="yes"/>
-  <person name="Gwangjong Lee" email="vizvil@php.net" nick="vizvil" cvs="yes"/>
+  <person name="Yu Ilho" email="acidd15@php.net" nick="acidd15" vcs="yes"/>
+  <person name="Younsoo Kim" email="corean@php.net" nick="corean" vcs="yes"/>
+  <person name="Lee Seung Hwan" email="cycle98@php.net" nick="cycle98" vcs="yes"/>
+  <person name="Sunghyuk Do" email="dhyuk@hands.pe.kr" nick="dhyuk" vcs="no"/>
+  <person name="Seungjoon Shim" email="ftfuture@php.net" nick="ftfuture" vcs="yes"/>
+  <person name="Jin Tae-young" email="fuzzy74@php.net" nick="fuzzy74" vcs="yes"/>
+  <person name="Jungmin Song" email="karoora@php.net" nick="karoora" vcs="yes"/>
+  <person name="Bong-woon Suk" email="program:at:mytechnic dot com" nick="myprogram" vcs="no"/>
+  <person name="Jaemin Byon" email="noribsd@php.net" nick="noribsd" vcs="yes"/>
+  <person name="Joong-yeon Choi" email="pcraft@php.net" nick="pcraft" vcs="yes"/>
+  <person name="WonHee Hwang" email="regina@php.net" nick="regina" vcs="yes"/>
+  <person name="Ryeonho Heo" email="rhheo@php.net" nick="rhheo" vcs="yes"/>
+  <person name="Sungkook KIM" email="spermwhale@php.net" nick="spermwhale" vcs="yes"/>
+  <person name="Jeongha Kwon" email="suvia@php.net" nick="suvia" vcs="yes"/>
+  <person name="Gwangjong Lee" email="vizvil@php.net" nick="vizvil" vcs="yes"/>
  </translators>
 
  <work-in-progress>
