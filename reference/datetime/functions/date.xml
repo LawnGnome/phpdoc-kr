@@ -26,7 +26,7 @@
   <para>
    <variablelist>
     <varlistentry>
-     <term><parameter>formant</parameter></term>
+     <term><parameter>format</parameter></term>
      <listitem> 
       <para>
        출력하는 날짜 <type>string</type>의 형식. 아래 형식화 옵션을
