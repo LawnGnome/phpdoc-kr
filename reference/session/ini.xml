@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 331182 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 334727 Maintainer: progcom Status: ready -->
 <section xml:id="session.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
@@ -266,6 +266,13 @@
      확인하십시오. 또한, N을 사용할 때 <literal>session.save_path</literal>를
      "따옴표"로 감싸야 합니다. 구분자(<literal>;</literal>)가 &php.ini;에서
      주석으로 사용되기 때문입니다.
+    </para>
+    <para>
+     파일 저장 모듈은 기본값으로 600 모드를 사용하여 파일을 생성합니다.
+     이 기본값은 부수적인 <literal>MODE</literal> 인수로 변경할 수 있습니다:
+     <literal>N;MODE;/path</literal> 에서 <literal>MODE</literal> 는 실제
+     모드 표현입니다.
+     <literal>MODE</literal> 설정은 프로세스 umask에 영향을 주지 않습니다.
     </para>
     <warning>
      <para>
@@ -636,12 +643,6 @@
      결정합니다. 기본값은 <literal>0</literal>(비활성화)입니다.
     </simpara>
     <note>
-     <simpara>
-      PHP 4.1.2까지, <link
-       linkend="configure.enable-trans-sid"><literal>--enable-trans-sid</literal></link>로
-      컴파일시에 활성화했습니다. PHP 4.2.0부터, trans-sid 기능은 항상
-      컴파일됩니다.
-     </simpara>
      <simpara>
       URL 기반 세션 관리는 쿠키 기반 세션 관리에 비하여 추가적인 보안 위험이
       있습니다. 예를 들면, 사용자가 활성적인 세션 ID를 포함하는 URL을 email로

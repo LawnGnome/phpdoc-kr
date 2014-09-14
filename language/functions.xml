@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 333678 Maintainer: progcom Status: ready -->
 <!-- CREDITS: fuzzy74 -->
  <chapter xml:id="language.functions" xmlns="http://docbook.org/ns/docbook">
   <title>함수</title>
@@ -8,7 +8,7 @@
    <title>사용자 선언 함수</title>
  
    <para>
-    다음과 같은 문법을 사용하여 함수를 선언한다:
+    다음과 같은 문법으로 함수를 선언할 수 있습니다:
    </para>
    <para>
     <example>
@@ -28,9 +28,8 @@ function foo($arg_1, $arg_2, /* ..., */ $arg_n)
    </para>
    
    <simpara>
-    모든 유효 PHP코드는 특정 함수 내에서 뿐만 아니라, 여러 다른 함수나
-    <link linkend="keyword.class">class</link>정의 안에서도 
-    나타날수있다.
+    모든 유효한 PHP 코드를 함수 내부에서 사용할 수 있고, 다른 함수나
+    <link linkend="keyword.class">class</link> 정의도 사용할 수 있습니다.
    </simpara>
    <para>
     함수 이름은 PHP의 다른 라벨과 같은 규칙을 따릅니다. 유효한 함수 이름은
@@ -45,7 +44,7 @@ function foo($arg_1, $arg_2, /* ..., */ $arg_n)
    </simpara>
    <para>
     아래 예제 코드와 같이 함수가 조건적으로 선언되면 그 함수가 호출되기
-    <emphasis>전에</emphasis> 함수를 선언해야 한다.
+    <emphasis>전에</emphasis> 함수를 선언해야 합니다.
    </para>
    <para>
     <example>
@@ -120,12 +119,11 @@ bar();
    </para>
    <simpara>
     PHP는 함수 오버로딩(overloading)을 지원하지 않으며, 함수 정의를
-    해제하거나 이미 선언된 함수를 다시 선언할수 없다.
+    해제하거나 이미 선언된 함수를 다시 선언할 수 없습니다.
    </simpara>
    <note>
     <simpara>
-     함수명은 선언시에 그 함수를 호출하기 편하게 만들겠지만,
-     대소문자 구별을 하지 않는다. 
+     함수명은 대소문자를 구별하지 않지만, 선언한 대로 호출하는 것이 일반적으로 좋은 형태입니다.
     </simpara>
    </note>   
    <simpara>
@@ -138,8 +136,8 @@ bar();
 
    <para>
     PHP에서 재귀 함수 호출을 할 수 있습니다. 그러나 100-200 재귀 레벨을
-    넘어서는 함수/메쏘드 호출을 피하십시오. 스택 한계에 도달하여 현재
-    스크립트가 중단됩니다.
+    넘어서는 함수/메소드 호출을 피하십시오. 스택 한계에 도달하여 현재
+    스크립트가 중단될 수 있습니다.
     <example>
      <title>재귀 함수</title>
      <programlisting role="php">
@@ -247,18 +245,13 @@ echo makecoffee("espresso");
 ?>
 ]]>
       </programlisting>
-     </example>
-    </para>
- 
-    <para>
-     위 예제 코드의 출력은 다음과 같다:
-    </para>
-    <para>
-     <screen>
+      &example.outputs;
+      <screen>
 Making a cup of cappuccino.
 Making a cup of .
 Making a cup of espresso.
-     </screen>
+      </screen>
+     </example>
     </para>
     <para>
      PHP는 <type>array</type>와 특별형 &null;을 기본값으로 사용할 수 있습니다.
@@ -361,17 +354,167 @@ Making a bowl of acidophilus raspberry.
     <title>가변 길이 인수 목록</title>
 
     <simpara>
-     PHP 4 이상에서는 사용자 선언 함수에서 가변 길이 변수 목록 기능을
-     지원합니다.
-     이 기능은 <function>func_num_args</function>,
+     PHP는 사용자 선언 함수에서 가변 길이 인수 목록을 지원합니다. PHP 5.6 이상에서는
+     <literal>...</literal> 토큰을 사용하고, PHP 5.5 이하에서는  
+     <function>func_num_args</function>,
      <function>func_get_arg</function>,
-     <function>func_get_args</function>함수를 사용하여 손쉽게 사용가능하다.
+     <function>func_get_args</function> 함수를 사용합니다.
     </simpara>
 
-    <simpara>
-     특별한 문법이 필요하지 않다. 인수 목록은 함수선언부에서 밝혀야하고
-     일반 인수와 동일하게 작동할것이다.
-    </simpara>
+    <sect3 xml:id="functions.variable-arg-list.new">
+     <title>PHP 5.6+에서 <literal>...</literal></title>
+
+     <para>
+      PHP 5.6 이상에서, 인수 목록은 <literal>...</literal> 토큰을 포함하여 함수가 가변 수의 인수를
+      받을 수 있다고 표시할 수 있습니다. 인수는 배열로 주어진 변수에 전달됩니다; 예제:
+
+      <example>
+       <title>가변 인수에 접근하기 위한 <literal>...</literal> 사용하기</title>
+       <programlisting role="php">
+<![CDATA[
+<?php
+function sum(...$numbers) {
+    $acc = 0;
+    foreach ($numbers as $n) {
+        $acc += $n;
+    }
+    return $acc;
+}
+
+echo sum(1, 2, 3, 4);
+?>
+]]>
+       </programlisting>
+       &example.outputs;
+       <screen>
+<![CDATA[
+10
+]]>
+       </screen>
+      </example>
+     </para>
+     <para>
+      또한 함수를 호출할 때 <literal>...</literal>을 사용하여
+      <type>array</type>, <classname>Traversable</classname> 변수, 또는
+      literal을 인수 목록에 포함할 수 있습니다.
+      literal into the argument list:
+
+      <example>
+       <title>인수 제공을 위한 <literal>...</literal> 사용하기</title>
+       <programlisting role="php">
+<![CDATA[
+<?php
+function add($a, $b) {
+    return $a + $b;
+}
+
+echo add(...[1, 2])."\n";
+
+$a = [1, 2];
+echo add(...$a);
+?>
+]]>
+       </programlisting>
+       &example.outputs;
+       <screen>
+<![CDATA[
+3
+3
+]]>
+       </screen>
+      </example>
+     </para>
+
+     <para>
+      보통의 위치 인수를 <literal>...</literal> 앞에 지정할 수 있습니다.
+      이 경우, 위치 인수에 어울리지 않는 인수만이 <literal>...</literal>로 생성되는 배열에
+      추가됩니다.
+     </para>
+
+     <para>
+      <literal>...</literal> 토큰 앞에
+      <link linkend="language.oop5.typehinting">type hint</link>를
+      추가할 수 있습니다. 이 정보가 존재할 경우, <literal>...</literal>에 들어가는
+      모든 인수는 해당 클래스의 객체여야 합니다.
+
+      <example>
+       <title>Type hinted variable arguments</title>
+       <programlisting role="php">
+<![CDATA[
+<?php
+function total_intervals($unit, DateInterval ...$intervals) {
+    $time = 0;
+    foreach ($intervals as $interval) {
+        $time += $interval->$unit;
+    }
+    return $time;
+}
+
+$a = new DateInterval('P1D');
+$b = new DateInterval('P2D');
+echo total_intervals('d', $a, $b).' days';
+
+// This will fail, since null isn't a DateInterval object.
+echo total_intervals('d', null);
+?>
+]]>
+       </programlisting>
+       &example.outputs;
+       <screen>
+<![CDATA[
+3 days
+Catchable fatal error: Argument 2 passed to total_intervals() must be an instance of DateInterval, null given, called in - on line 14 and defined in - on line 2
+]]>
+       </screen>
+      </example>
+     </para>
+
+     <para>
+      마지막으로, <literal>...</literal> 앞에 앰퍼샌드를 붙여서(<literal>&amp;</literal>)
+      가변 인수를 <link linkend="functions.arguments.by-reference">참조로</link> 전달할
+      수 있습니다.
+     </para>
+    </sect3>
+
+    <sect3 xml:id="functions.variable-arg-list.old">
+     <title>PHP 구 버전</title>
+
+     <para>
+      가변 인수로 만들기 위한 특별한 문법은 필요하지 않습니다; 하지만 함수의 인수에 접근하려면
+      <function>func_num_args</function>, <function>func_get_arg</function>,
+      <function>func_get_args</function> 함수를 사용해야 합니다.
+     </para>
+
+     <para>
+      
+      위 예제 중 첫번째를 PHP 5.5 이전에서는 다음과 같이 사용합니다:
+
+      <example>
+       <title>PHP 5.5 이전의 가변 길이 인수 접근하기</title>
+       <programlisting role="php">
+<![CDATA[
+<?php
+function sum() {
+    $acc = 0;
+    foreach (func_get_args() as $n) {
+        $acc += $n;
+    }
+    return $acc;
+}
+
+echo sum(1, 2, 3, 4);
+?>
+]]>
+       </programlisting>
+       &example.outputs;
+       <screen>
+<![CDATA[
+10
+]]>
+       </screen>
+      </example>
+     </para>
+    </sect3>
 
    </sect2>
 
