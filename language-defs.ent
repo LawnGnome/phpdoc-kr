@@ -11,35 +11,35 @@
 <!ENTITY Features          "기능">
 <!ENTITY Security          "보안">
 <!ENTITY FunctionReference "함수 레퍼런스">
-<!ENTITY VariableandTypeRelatedExtentions	"변수와 형 관련 확장">
-<!ENTITY TextProcessing				"텍스트 처리">
-<!ENTITY AffectionPHPsBehaviour			"PHP 동작에 미치는 영향">
-<!ENTITY SessionExtensions			"세션 확장">
-<!ENTITY OtherBasicExtensions			"기타 기본 확장">
-<!ENTITY DatabaseExtentions			"데이터베이스 확장">
-<!ENTITY AbstractionLayers			"추상 레이어">
-<!ENTITY VendorSpecificDatabaseExtensions	"특정 벤더 데이터베이스 확장">
-<!ENTITY XMLManipulation			"XML 조작">
-<!ENTITY WebServices				"웹 서비스">
-<!ENTITY CreditCardProcessing			"신용카드 처리">
-<!ENTITY MathematicalExtentions			"수학 확장">
-<!ENTITY CryptographyExtentions			"암호화 확장">
+<!ENTITY VariableandTypeRelatedExtentions    "변수와 형 관련 확장">
+<!ENTITY TextProcessing                "텍스트 처리">
+<!ENTITY AffectionPHPsBehaviour            "PHP 동작에 미치는 영향">
+<!ENTITY SessionExtensions            "세션 확장">
+<!ENTITY OtherBasicExtensions            "기타 기본 확장">
+<!ENTITY DatabaseExtentions            "데이터베이스 확장">
+<!ENTITY AbstractionLayers            "추상 레이어">
+<!ENTITY VendorSpecificDatabaseExtensions    "특정 벤더 데이터베이스 확장">
+<!ENTITY XMLManipulation            "XML 조작">
+<!ENTITY WebServices                "웹 서비스">
+<!ENTITY CreditCardProcessing            "신용카드 처리">
+<!ENTITY MathematicalExtentions            "수학 확장">
+<!ENTITY CryptographyExtentions            "암호화 확장">
 <!ENTITY HumanLanguageandCharacterEncodingSupport "자연어와 문자 인코딩 지원">
-<!ENTITY FileSystemRelatedExtensions		"파일 시스템 관련 확장">
-<!ENTITY ProcessControlExtentions		"프로세스 관리 확장">
-<!ENTITY MailRelatedExtentions			"메일 관련 확장">
-<!ENTITY AuthenticationServices			"인증 서비스">
-<!ENTITY OtherServices				"기타 서비스">
-<!ENTITY CompressionExtentions			"압축 확장">
-<!ENTITY CalendarandEventRelatedExtentions	"날짜와 시간 관련 확장">
-<!ENTITY NonTextMIMEOutput			"비텍스트 MIME 출력">
-<!ENTITY ImageProcessingandGeneration		"이미지 처리와 생성">
-<!ENTITY AudioFormatsManipulation		"오디오 형식 조작">
-<!ENTITY CommandLineSpecificExtentions		"명령줄 특정 확장">
-<!ENTITY WindowsOnlyExtentions			"윈도우 전용 확장">
-<!ENTITY ServerSpecificExtentions		"특정 서버 확장">
-<!ENTITY SearchEngineExtentions			"검색 엔진 확장">
-<!ENTITY MiscExtentions				"기타 확장">
+<!ENTITY FileSystemRelatedExtensions        "파일 시스템 관련 확장">
+<!ENTITY ProcessControlExtentions        "프로세스 관리 확장">
+<!ENTITY MailRelatedExtentions            "메일 관련 확장">
+<!ENTITY AuthenticationServices            "인증 서비스">
+<!ENTITY OtherServices                "기타 서비스">
+<!ENTITY CompressionExtentions            "압축 확장">
+<!ENTITY CalendarandEventRelatedExtentions    "날짜와 시간 관련 확장">
+<!ENTITY NonTextMIMEOutput            "비텍스트 MIME 출력">
+<!ENTITY ImageProcessingandGeneration        "이미지 처리와 생성">
+<!ENTITY AudioFormatsManipulation        "오디오 형식 조작">
+<!ENTITY CommandLineSpecificExtentions        "명령줄 특정 확장">
+<!ENTITY WindowsOnlyExtentions            "윈도우 전용 확장">
+<!ENTITY ServerSpecificExtentions        "특정 서버 확장">
+<!ENTITY SearchEngineExtentions            "검색 엔진 확장">
+<!ENTITY MiscExtentions                "기타 확장">
 <!ENTITY PEAR              "PEAR: PHP 확장 및 어플리케이션 저장소">
 <!ENTITY FAQ               "FAQ: 자주 물어보는 질문들">
 <!ENTITY FAQabbrev         "FAQ">
@@ -95,6 +95,6 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.runtime      '<title xmlns="http://docbook.org/ns/docbook">실행시 설정</title>'>
 <!ENTITY reftitle.returnvalues '<title xmlns="http://docbook.org/ns/docbook">반환값</title>'>
 <!ENTITY reftitle.seealso      '<title xmlns="http://docbook.org/ns/docbook">참고</title>'>
-<!ENTITY reftitle.setup	       '<title xmlns="http://docbook.org/ns/docbook">설치/설정</title>'>
+<!ENTITY reftitle.setup        '<title xmlns="http://docbook.org/ns/docbook">설치/설정</title>'>
 <!ENTITY reftitle.unicode      '<title xmlns="http://docbook.org/ns/docbook">유니코드</title>'>
 

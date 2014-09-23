@@ -252,7 +252,7 @@ PHP 4.3.7 이후는 <literal>https://</literal> 래퍼를 통해 스트림을 �
 <!ENTITY version.exists.asof '다음부터 존재: PHP '>
 
 <!ENTITY version.trunk.after.53 '<emphasis
-	xmlns="http://docbook.org/ns/docbook">이 변화는 PHP <link
+    xmlns="http://docbook.org/ns/docbook">이 변화는 PHP <link
 linkend="about.phpversions">개발 버전</link>에 적용되었으며, 5.3 이후에 적용될 것입니다.</emphasis>'>
 
 <!ENTITY version.trunk.changelog '미래'>
