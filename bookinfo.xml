@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 334762 Maintainer: progcom Status: ready -->
-
+<!-- Reviewed: yes Maintainer: acidd15 -->
  <info xmlns="http://docbook.org/ns/docbook" xml:id="bookinfo">
   &frontpage.authors;
   <pubdate><?dbtimestamp format="Y-m-d"?></pubdate>
