@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 332727 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.abstract" xmlns="http://docbook.org/ns/docbook">
+  <title>클래스 추상화</title>
+
+  <para>
+   PHP 5 에서 abstract 클래스와 메서드가 소개 되었습니다. abstract 클래스는 
+   인스턴스화 될수 없으며, 최소한 하나의 abstract 메서드 또한 포함되어 있어야 합니다.
+   abstract 메서드는 선언만 가능합니다. - 구현부를 가질순 없습니다. 
+  </para>
+
+  <para>
+   abstract 클래스로부터 상속받을때, abstract로 명시된 메서드중 부모 클래스에 정의된 메서드일 경우
+   반드시 자식 클래스에서 그 구현부를 정의해 줘야 합니다. 또한 해당 메서드들은 반드시 동일한 access 
+   지정자를 가져야 합니다(<link linkend="language.oop5.visibility">visibility</link>).
+   예를 들어, abstract 메서드가 protected 로 선언 되어 있다면, 이의 구현 함수는 반드시 
+   protected나 public으로 선언되어야만 합니다. private 은 안됩니다. 그리고, 메서드의 선언이 동일해야 합니다.
+   예를 들면... 메서드명, 인자의 개수, 인자의 타입, 리턴 타입 등이 동일해야 합니다. 
+   하지만 자식 클래스의 메서드에 추가 인자가 붙을 경우에는 예외로 합니다.
+   위의 사항은 5.4 버전의 생성자에도 유효하게 적용됩니다. 5.4 이전에는 생성자 선언이 달라도 됐습니다.
+  </para>
+
+  <example>
+   <title>추상 클래스 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+abstract class AbstractClass
+{
+    // 확장시 구현부가 필요한 메서드 정의
+    abstract protected function getValue();
+    abstract protected function prefixValue($prefix);
+
+    // 공통 메서드
+    public function printOut() {
+        print $this->getValue() . "\n";
+    }
+}
+
+class ConcreteClass1 extends AbstractClass
+{
+    protected function getValue() {
+        return "ConcreteClass1";
+    }
+
+    public function prefixValue($prefix) {
+        return "{$prefix}ConcreteClass1";
+    }
+}
+
+class ConcreteClass2 extends AbstractClass
+{
+    public function getValue() {
+        return "ConcreteClass2";
+    }
+
+    public function prefixValue($prefix) {
+        return "{$prefix}ConcreteClass2";
+    }
+}
+
+$class1 = new ConcreteClass1;
+$class1->printOut();
+echo $class1->prefixValue('FOO_') ."\n";
+
+$class2 = new ConcreteClass2;
+$class2->printOut();
+echo $class2->prefixValue('FOO_') ."\n";
+?>
+]]>
+   </programlisting>
+   &example.outputs;
+   <screen>
+<![CDATA[
+ConcreteClass1
+FOO_ConcreteClass1
+ConcreteClass2
+FOO_ConcreteClass2
+]]>
+   </screen>
+  </example>
+
+  <example>
+   <title>추상 클래스 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+abstract class AbstractClass
+{
+    // 필수 인자를 정의하고 있는 abstract 메서드
+    abstract protected function prefixName($name);
+
+}
+
+class ConcreteClass extends AbstractClass
+{
+
+    // 부모 클래스의 메서드에 추가 인자를 정의할 수 있습니다.
+    public function prefixName($name, $separator = ".") {
+        if ($name == "Pacman") {
+            $prefix = "Mr";
+        } elseif ($name == "Pacwoman") {
+            $prefix = "Mrs";
+        } else {
+            $prefix = "";
+        }
+        return "{$prefix}{$separator} {$name}";
+    }
+}
+
+$class = new ConcreteClass;
+echo $class->prefixName("Pacman"), "\n";
+echo $class->prefixName("Pacwoman"), "\n";
+?>
+]]>
+   </programlisting>
+   &example.outputs;
+   <screen>
+<![CDATA[
+Mr. Pacman
+Mrs. Pacwoman
+]]>
+   </screen>
+  </example>
+
+  <para>
+   사용자정의 클래스 또는 함수중 abstract가 정의되지 않은 오래된 코드는 수정하지 않아도 동작할 것입니다.
+  </para>
+ </sect1>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
