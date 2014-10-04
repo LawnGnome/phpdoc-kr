@@ -47,7 +47,16 @@
    8비트 바이너리 문자열을 반환합니다.
   </para>
  </refsect1>
-
+ 
+ <refsect1 role="seealso">
+  &reftitle.seealso;
+  <para>
+   <simplelist>
+    <member><function>quoted_printable_encode</function></member>
+   </simplelist>
+  </para>
+ </refsect1>
+ 
 </refentry>
 
 <!-- Keep this comment at the end of the file
