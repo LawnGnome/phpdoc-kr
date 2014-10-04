@@ -3,6 +3,7 @@
 <!-- CREDITS: regina, fuzzy74 -->
  <chapter xml:id="features.persistent-connections" xmlns="http://docbook.org/ns/docbook">
   <title>지속적인 데이터베이스 접속</title>
+  
   <simpara>
     지속적인 접속은 스크립트 수행이 종료되어도 
     연결을 끊지 않는 접속을 말한다. 지속적인 접속이 요청되면, 
@@ -18,8 +19,8 @@
     나을 것도 <emphasis>없다</emphasis>라던가, transaction을 효율적으로 
     처리하는 것도 <emphasis>아니</emphasis>다라던가, 혹은 다른 어떤 
     특별한 것을 하는 것도 아니라고 한다. 사실, 이런 말들에 대해 명백히 
-    말하자면, 지속적인 접속은 비지속적인 접속에 비해 어떠한 기능적인 향상도
-    주지 못한다.
+    말하자면, 지속적인 접속은 비지속적인 접속에 비해 <emphasis>어떠한</emphasis>
+    기능적인 향상도 주지 못한다.
   </simpara>
   <simpara>
    왜?
