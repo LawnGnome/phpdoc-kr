@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 327202 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.autoload" xmlns="http://docbook.org/ns/docbook">
+  <title>클래스 자동로딩</title>
+  <para>
+   많은 개발자들이 객체지향 어플리케이션을 만들때 클래스 하나당 하나의 php 소스파일을 만들어
+   클래스를 정의합니다.
+   스크립트마다 매번 이렇게 많은 클래스를 include 하는것은 꽤 성가신 일입니다.
+  </para>
+  <para>
+   php 5 에서는 더 이상 그렇게 하지 않아도 됩니다. <function>__autoload</function> 함수를 
+   정의하면 사용하려는 클래스나 인터페이스가 아직 정의되지 않았을 경우 자동으로 호출됩니다.
+   이 함수는 PHP가 오류로 실패하기 이전에 적절한 class가 로드 될수 있도록 마지막 기회를 제공합니다.
+  </para>
+  <tip>
+   <para>
+    <function>spl_autoload_register</function> 는 클래스 자동로딩에 대한 더욱 유연한 기능을 제공합니다.
+    이러한 이유로 <function>__autoload</function> 가 미래에는 완전히 제거되거나, 사용을 지양하게 될지도 모릅니다.
+   </para>
+  </tip>
+  <note>
+   <para>
+    5.3.0 이전에서는 __autoload 함수 내부에서 발생한 exception은 <link linkend="language.exceptions">catch</link> 블럭으로 
+    catch되지 않고, fatal 에러를 야기했습니다. 5.3.0 이상부터는 <link linkend="language.exceptions">catch</link> 블럭으로 
+    catch할 수 있게 되었습니다. 하지만 한가지 조건이 있습니다. 사용자정의 exception을 발생시킬때 사용자정의 exception class가 
+    이미 존재해야 합니다. __autoload 함수를 재귀적으로 사용해서 사용자정의 exception class를 로드 시키는것도 한가지 방법이 
+    될수 있습니다.
+   </para>
+  </note>
+  <note>
+   <para>
+    CLI에서는 자동로딩을 지원하지 않습니다.
+    <link linkend="features.commandline">interactive mode</link>.
+   </para>
+  </note>
+  <note>
+   <para>
+    클래스명을 <function>call_user_func</function> 에서 사용하는 경우, <literal>../</literal>과 같은 위험한 문자가 포함되어 있을 수가 있습니다.
+    사용자가 입력한 값을 그대로 사용하지 않을것을 권장하며, 아니면 최소한 <function>__autoload</function> 에서 입력값을 검증해줘야 합니다.
+   </para>
+  </note>
+  <para>
+   <example>
+    <title>자동로딩 예제</title>
+    <para>
+     이 예제는 <literal>MyClass1</literal>과 <literal>MyClass2</literal>를 
+     각각 <filename>MyClass1.php</filename>과 <filename>MyClass2.php</filename>로부터 로드를 시도합니다.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+function __autoload($class_name) {
+    include $class_name . '.php';
+}
+
+$obj  = new MyClass1();
+$obj2 = new MyClass2(); 
+?>
+]]>
+    </programlisting>
+   </example>
+   <example>
+    <title>다른 자동로딩 예제</title>
+    <para>
+     이 예제는 <literal>ITest</literal> 인터페이스의 로드를 시도합니다.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+
+function __autoload($name) {
+    var_dump($name);
+}
+
+class Foo implements ITest {
+}
+
+/*
+string(5) "ITest"
+
+Fatal error: Interface 'ITest' not found in ...
+*/
+?>
+]]>
+    </programlisting>
+   </example>
+   <example>
+    <title>5.3.0 이후의 자동로딩 예외 핸들링</title>
+    <para>
+     이 예제는 예외를 발생하고, tray/catch 블럭을 사용하는 모습을 보여줍니다.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+function __autoload($name) {
+    echo "Want to load $name.\n";
+    throw new Exception("Unable to load $name.");
+}
+
+try {
+    $obj = new NonLoadableClass();
+} catch (Exception $e) {
+    echo $e->getMessage(), "\n";
+}
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+Want to load NonLoadableClass.
+Unable to load NonLoadableClass.
+]]>
+    </screen>
+   </example>
+   <example>
+    <title>5.3.0 이후의 자동로딩 예외 핸들링 - 사용자정의 exception 을 찾을수 없음</title>
+    <para>
+     이 예제는 로딩할 수 없는 사용자정의 exception 에 대한 경우를 보여줍니다.
+    </para>
+    <programlisting role="php">
+<![CDATA[
+<?php
+function __autoload($name) {
+    echo "Want to load $name.\n";
+    throw new MissingException("Unable to load $name.");
+}
+
+try {
+    $obj = new NonLoadableClass();
+} catch (Exception $e) {
+    echo $e->getMessage(), "\n";
+}
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+Want to load NonLoadableClass.
+Want to load MissingException.
+
+Fatal error: Class 'MissingException' not found in testMissingException.php on line 4
+]]>
+    </screen>
+   </example>
+  </para>
+
+  <simplesect role="seealso">
+   &reftitle.seealso;
+   <para>
+    <simplelist>
+     <member><function>unserialize</function></member>
+     <member><link linkend="unserialize-callback-func">unserialize_callback_func</link></member>
+     <member><function>spl_autoload</function></member>
+     <member><function>spl_autoload_register</function></member>
+    </simplelist>
+   </para>
+  </simplesect>
+
+ </sect1>
+ 
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
