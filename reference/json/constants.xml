@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 331700 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
 
 <appendix xml:id="json.constants" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.constants;
  &extension.constants;
  <para>
-  다음 상수들은 <function>json_last_error</function>에서 반환하는 오류 형식을
-  나타냅니다.
+  다음 상수들은 <function>json_last_error</function>에서 반환하는 오류 형식을 나타냅니다.
  </para>
  <variablelist>
-  <varlistentry>
+  <varlistentry xml:id="constant.json-error-none">
    <term>
     <constant>JSON_ERROR_NONE</constant>
      (<type>integer</type>)
    </term>
    <listitem>
     <simpara>
-     오류가 발생하지 않았습니다. PHP 5.3.0부터 존재합니다.
+     오류가 발생하지 않음. PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
-  <varlistentry>
+  <varlistentry xml:id="constant.json-error-depth">
    <term>
     <constant>JSON_ERROR_DEPTH</constant>
      (<type>integer</type>)
    </term>
    <listitem>
     <simpara>
-     최대 스택 깊이 초과. PHP 5.3.0부터 존재합니다.
+     허용된 최대 스택 깊이를 초과함. PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
@@ -38,32 +37,29 @@
    </term>
    <listitem>
     <simpara>
-     언더플로우나 모드가 매치하지 않을 경우 발생합니다.
-     PHP 5.3.0부터 존재합니다.
+     언더플로 또는 모드 불일치가 발생함. PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
-  <varlistentry>
+  <varlistentry xml:id="constant.json-error-ctrl-char">
    <term>
     <constant>JSON_ERROR_CTRL_CHAR</constant>
      (<type>integer</type>)
    </term>
    <listitem>
     <simpara>
-     제어 문자 오류, 인코드 오류일 수 있음.
-     PHP 5.3.0부터 존재합니다.
+     제어 문자 오류, 잘못 인코드되었을 수 있음. PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
-  <varlistentry>
+  <varlistentry xml:id="constant.json-error-syntax">
    <term>
     <constant>JSON_ERROR_SYNTAX</constant>
      (<type>integer</type>)
    </term>
    <listitem>
     <simpara>
-     문법 오류.
-     PHP 5.3.0부터 존재합니다.
+     문법 오류. PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
@@ -74,10 +70,10 @@
    </term>
    <listitem>
     <simpara>
-     잘못된 UTF-8 문자들. 인코드 오류일 수 있음. PHP 5.3.3부터 존재합니다.
+     잘못된 형식의 UTF-8 문자들임, 정확하지 못한 인코드가 문제일 수 있슴. 이 상수는 PHP 5.3.1 버전에서 사용가능함.
     </simpara>
    </listitem>
-  </varlistentry>
+  </varlistentry> 
   <varlistentry xml:id="constant.json-error-recursion">
    <term>
     <constant>JSON_ERROR_RECURSION</constant>
@@ -85,13 +81,13 @@
    </term>
    <listitem>
     <para>
-     <function>json_encode</function>에 전달한 객체나 배열이 재귀 참조를
-     가지고 있어서, 인코드 할 수 없습니다.
-     <constant>JSON_PARTIAL_OUTPUT_ON_ERROR</constant> 옵션을 설정하면,
-     재귀 참조를 &null;로 인코드 합니다.
+     The object or array passed to <function>json_encode</function> include
+     recursive references and cannot be encoded.
+     If the <constant>JSON_PARTIAL_OUTPUT_ON_ERROR</constant> option was
+     given, &null; will be encoded in the place of the recursive reference.
     </para>
     <para>
-     이 상수는 PHP 5.5.0부터 존재합니다.
+     This constant is available as of PHP 5.5.0.
     </para>
    </listitem>
   </varlistentry>
@@ -102,14 +98,15 @@
    </term>
    <listitem>
     <para>
-     <function>json_encode</function>로 전달한 값이
-     <link linkend="language.types.float.nan"><constant>NAN</constant></link>이나
-     <link linkend="function.is-infinite"><constant>INF</constant></link>입니다.
-     <constant>JSON_PARTIAL_OUTPUT_ON_ERROR</constant> 옵션을 설정하면,
-     이러한 특수한 수를 <literal>0</literal>으로 인코드 합니다.
+     The value passed to <function>json_encode</function> includes either
+     <link linkend="language.types.float.nan"><constant>NAN</constant></link>
+     or <link linkend="function.is-infinite"><constant>INF</constant></link>.
+     If the <constant>JSON_PARTIAL_OUTPUT_ON_ERROR</constant> option was
+     given, <literal>0</literal> will be encoded in the place of these
+     special numbers.
     </para>
     <para>
-     이 상수는 PHP 5.5.0부터 존재합니다.
+     This constant is available as of PHP 5.5.0.
     </para>
    </listitem>
   </varlistentry>
@@ -120,20 +117,20 @@
    </term>
    <listitem>
     <para>
-     <type>resource</type> 등의 지원하지 않는 형식의 값이
-     <function>json_encode</function>에 주어졌습니다.
-     <constant>JSON_PARTIAL_OUTPUT_ON_ERROR</constant> 옵션을 설정하면,
-     지원하지 않는 값을 &null;로 인코드 합니다.
+     A value of an unsupported type was given to
+     <function>json_encode</function>, such as a <type>resource</type>.
+     If the <constant>JSON_PARTIAL_OUTPUT_ON_ERROR</constant> option was
+     given, &null; will be encoded in the place of the unsupported value.
     </para>
     <para>
-     이 상수는 PHP 5.5.0부터 존재합니다.
+     This constant is available as of PHP 5.5.0.
     </para>
    </listitem>
   </varlistentry>
  </variablelist>
 
  <para>
-  다음 상수는 <function>json_encode</function> 옵션으로 조합할 수 있습니다.
+  다음 상수들은 <function>json_encode</function>에서 옵션값을 설정하기 위해 결합될 수 있습니다.
  </para>
  <variablelist>
   <varlistentry xml:id="constant.json-hex-tag">
@@ -143,8 +140,8 @@
    </term>
    <listitem>
     <simpara>
-     모든 &lt;와 &gt;를 \u003C와 \u003E로 변환합니다.
-     PHP 5.3.0부터 존재합니다.
+     &lt; 와 &gt;은 모두 \u003C 와 \u003E으로 변환됩니다.
+     PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
@@ -155,8 +152,8 @@
    </term>
    <listitem>
     <simpara>
-     모든 &amp;를 \u0026으로 변환합니다.
-     PHP 5.3.0부터 존재합니다.
+     &amp;는 모두 \u0026으로 변환됩니다.
+     Available since PHP 5.3.0.
     </simpara>
    </listitem>
   </varlistentry>
@@ -167,8 +164,8 @@
    </term>
    <listitem>
     <simpara>
-     모든 '를 \u0027로 변환합니다.
-     PHP 5.3.0부터 존재합니다.
+     '(작은따옴표)는 모두 \u0027으로 변환됩니다.
+     PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
@@ -179,8 +176,8 @@
    </term>
    <listitem>
     <simpara>
-     모든 "를 \u0022로 변환합니다.
-     PHP 5.3.0부터 존재합니다.
+     "(큰따옴표)는 모두 \u0022으로 변환됩니다.
+     PHP 5.3.0 이후 버전에서 사용가능함.
     </simpara>
    </listitem>
   </varlistentry>
@@ -191,9 +188,10 @@
    </term>
    <listitem>
     <simpara>
-     연관 배열이 아닐 경우에도 배열 대신 객체로 출력합니다.
-     객체 출력이 필요하지만, 배열이 비어 있을 경우에 유용합니다.
-     PHP 5.3.0부터 존재합니다.
+     Outputs an object rather than an array when a non-associative array is
+     used. Especially useful when the recipient of the output is expecting
+     an object and the array is empty.
+     Available since PHP 5.3.0.
     </simpara>
    </listitem>
   </varlistentry>
@@ -204,8 +202,8 @@
    </term>
    <listitem>
     <simpara>
-     수치 문자열을 수로 인코드합니다.
-     PHP 5.3.3부터 존재합니다.
+     Encodes numeric strings as numbers.
+     Available since PHP 5.3.3.
     </simpara>
    </listitem>
   </varlistentry>
@@ -216,8 +214,8 @@
    </term>
    <listitem>
     <simpara>
-     큰 정수를 원 문자열 값으로 인코드합니다.
-     PHP 5.4.0부터 존재합니다.
+     Encodes large integers as their original string value.
+     Available since PHP 5.4.0.
     </simpara>
    </listitem>
   </varlistentry>
@@ -228,8 +226,8 @@
    </term>
    <listitem>
     <simpara>
-     반환하는 데이터를 형식화하기 위하여 공백을 사용합니다.
-     PHP 5.4.0부터 존재합니다.
+     Use whitespace in returned data to format it.
+     Available since PHP 5.4.0.
     </simpara>
    </listitem>
   </varlistentry>
@@ -240,8 +238,8 @@
    </term>
    <listitem>
     <simpara>
-     <literal>/</literal>를 회피하지 않습니다.
-     PHP 5.4.0부터 존재합니다.
+     Don't escape <literal>/</literal>.
+     Available since PHP 5.4.0.
     </simpara>
    </listitem>
   </varlistentry>
@@ -252,8 +250,8 @@
    </term>
    <listitem>
     <simpara>
-     멀티바이트 유니코드 문자를 그대로 인코드합니다. (기본값은 \uXXXX로 회피합니다)
-     PHP 5.4.0부터 존재합니다.
+     Encode multibyte Unicode characters literally (default is to escape as \uXXXX).
+     Available since PHP 5.4.0.
     </simpara>
    </listitem>
   </varlistentry>
