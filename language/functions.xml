@@ -247,9 +247,11 @@ echo makecoffee("espresso");
       </programlisting>
       &example.outputs;
       <screen>
+<![CDATA[
 Making a cup of cappuccino.
 Making a cup of .
 Making a cup of espresso.
+]]>
       </screen>
      </example>
     </para>
@@ -299,18 +301,15 @@ echo makeyogurt("raspberry");   // won't work as expected
 ?>
 ]]>
       </programlisting>
-     </example>
-    </para>
- 
-    <para>
-     위 예제 코드의 출력은 다음과 같다:
-    </para>
-    <para>
-     <screen>
+      &example.outputs;
+      <screen>
+<![CDATA[
 Warning: Missing argument 2 in call to makeyogurt() in 
 /usr/local/etc/httpd/htdocs/phptest/functest.html on line 41
 Making a bowl of raspberry .
-     </screen>
+]]>
+      </screen>
+     </example>
     </para>
     <para>
      위 코드를 아래 코드와 비교하라:
@@ -330,16 +329,13 @@ echo makeyogurt("raspberry");   // works as expected
 ?>
 ]]>
       </programlisting>
-     </example>
-    </para>
- 
-    <para>
-     이 예제코드의 출력은 다음과 같다:
-    </para>
-    <para>
-     <screen>
+      &example.outputs;
+      <screen>
+<![CDATA[
 Making a bowl of acidophilus raspberry.
-     </screen>
+]]>
+      </screen>
+     </example>
     </para>
 
     <note>
@@ -529,6 +525,12 @@ echo sum(1, 2, 3, 4);
     현재 함수를 호출한 코드줄로 제어를 되돌린다. 
     자세한 정보는 <function>return</function>섹션을 참고할것.
    </para>
+   <note>
+    <para>
+     If the <function>return</function> is omitted the value &null; will be
+     returned.
+    </para>
+   </note>
    <para>
     <example>
      <title><function>return</function>의 사용예</title>
@@ -673,6 +675,32 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
      </programlisting>
     </example>
    </para>
+    <para>
+    When calling static methods, the function call is stronger than the static property operator:
+    <example>
+     <title>Variable method example with static properties</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+class Foo
+{
+    static $variable = 'static property';
+    static function Variable()
+    {
+        echo 'Method Variable called';
+    }
+}
+
+echo Foo::$variable; // This prints 'static property'. It does need a $variable in this scope.
+$variable = "Variable";
+Foo::$variable();  // This calls $foo->Variable() reading $variable in this scope.
+
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+   
    <para>
     또 <function>call_user_func</function>,
     <link linkend="language.variables.variable">variable variables</link>, 
@@ -731,36 +759,169 @@ $foo->$funcname();  // $foo->Var()를 호출합니다.
 
   <sect1 xml:id="functions.anonymous">
    <title>익명 함수</title>
-   <para>
-    익명 함수는 이름을 지정하지 않은 함수를 생성할 수 있게 합니다. <link
-     linkend="language.types.callback">콜백</link> 인수에 매우 유용하나, 다른
-    용도로 사용할 수도 있습니다.
-   </para>
-   <para>
-    <example>
-     <title>익명 함수 예제</title>
-     <programlisting role="php">
+   <simpara>
+    Anonymous functions, also known as <literal>closures</literal>, allow the
+    creation of functions which have no specified name. They are most useful as
+    the value of <link linkend="language.types.callback">callback</link>
+    parameters, but they have many other uses.
+   </simpara>
+
+   <example>
+    <title>Anonymous function example</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 echo preg_replace_callback('~-([a-z])~', function ($match) {
     return strtoupper($match[1]);
 }, 'hello-world');
-// 출력: helloWorld
+// outputs helloWorld
 ?>
 ]]>
-     </programlisting>
-    </example>
-   </para>
-   <para>
-    익명 함수는 내부적으로 <link
-     linkend="reserved.classes.closure"><literal>Closure</literal>
-     클래스</link>로 구현됩니다.
-   </para>
-   <note>
+    </programlisting>
+   </example>
+
+   <simpara>
+    Closures can also be used as the values of variables; PHP automatically 
+    converts such expressions into instances of the
+    <classname>Closure</classname> internal class. Assigning a closure to a
+    variable uses the same syntax as any other assignment, including the
+    trailing semicolon:
+   </simpara>
+
+   <example>
+    <title>Anonymous function variable assignment example</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+$greet = function($name)
+{
+    printf("Hello %s\r\n", $name);
+};
+
+$greet('World');
+$greet('PHP');
+?>
+]]>
+    </programlisting>
+   </example>
+   
+   <simpara>
+    Closures may also inherit variables from the parent scope. 
+    Any such variables must be passed to the <literal>use</literal> language construct. 
+    Inheriting variables from the parent scope is <emphasis>not</emphasis> 
+    the same as using global variables. 
+    Global variables exist in the global scope, which is the same no
+    matter what function is executing. The parent scope of a closure is the
+    function in which the closure was declared (not necessarily the function it
+    was called from). See the following example:
+   </simpara>
+
+   <example>
+    <title>Closures and scoping</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+// A basic shopping cart which contains a list of added products
+// and the quantity of each product. Includes a method which
+// calculates the total price of the items in the cart using a
+// closure as a callback.
+class Cart
+{
+    const PRICE_BUTTER  = 1.00;
+    const PRICE_MILK    = 3.00;
+    const PRICE_EGGS    = 6.95;
+
+    protected $products = array();
+    
+    public function add($product, $quantity)
+    {
+        $this->products[$product] = $quantity;
+    }
+    
+    public function getQuantity($product)
+    {
+        return isset($this->products[$product]) ? $this->products[$product] :
+               FALSE;
+    }
+    
+    public function getTotal($tax)
+    {
+        $total = 0.00;
+        
+        $callback =
+            function ($quantity, $product) use ($tax, &$total)
+            {
+                $pricePerItem = constant(__CLASS__ . "::PRICE_" .
+                    strtoupper($product));
+                $total += ($pricePerItem * $quantity) * ($tax + 1.0);
+            };
+        
+        array_walk($this->products, $callback);
+        return round($total, 2);
+    }
+}
+
+$my_cart = new Cart;
+
+// Add some items to the cart
+$my_cart->add('butter', 1);
+$my_cart->add('milk', 3);
+$my_cart->add('eggs', 6);
+
+// Print the total with a 5% sales tax.
+print $my_cart->getTotal(0.05) . "\n";
+// The result is 54.29
+?>
+]]>
+    </programlisting>
+   </example>
+   
+   <simpara>
+    Anonymous functions are implemented using the <link linkend="class.closure">
+    <classname>Closure</classname></link> class.
+   </simpara>
+   
+   <sect2 role="changelog">
+    &reftitle.changelog;
     <para>
-     익명 함수는 PHP 5.3.0부터 사용할 수 있습니다.
+     <informaltable>
+      <tgroup cols="2">
+       <thead>
+        <row>
+         <entry>&Version;</entry>
+         <entry>&Description;</entry>
+        </row>
+       </thead>
+       <tbody>
+        <row>
+         <entry>5.4.0</entry>
+         <entry>
+          <varname>$this</varname> can be used in anonymous functions.
+         </entry>
+        </row>
+        <row>
+         <entry>5.3.0</entry>
+         <entry>
+          Anonymous functions become available.
+         </entry>
+        </row>
+       </tbody>
+      </tgroup>
+     </informaltable>
     </para>
-   </note>
+   </sect2>
+
+   <sect2 role="notes">
+    &reftitle.notes;
+    <note>
+     <simpara>
+      It is possible to use <function>func_num_args</function>,
+      <function>func_get_arg</function>, and <function>func_get_args</function>
+      from within a closure.
+     </simpara>
+    </note>
+   </sect2>
+   
   </sect1>
 
  </chapter>
