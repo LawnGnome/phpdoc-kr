@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 330913 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.constants" xmlns="http://docbook.org/ns/docbook">
+  <title>클래스 상수</title>
+  <para>
+   클래스마다 값을 변경할수없는 상수값을 정의하는것이 가능합니다. 
+   상수는 일반 변수와 달리 선언하거나 사용할때 <varname>$</varname> 기호를 사용할 수 없습니다.
+  </para>
+  <para>
+   값은 상수를 표현해야 합니다. (예를들어) 변수, 프로퍼티, 수학적 연산이나 함수의 리턴값이 될수 없습니다.
+  </para>
+  <para>
+   인터페이스는 <literal>상수</literal>를 가질 수 있습니다. <link linkend="language.oop5.interfaces">interface 문서</link> 에서 그 예를 확인하실 수 있습니다.
+  </para>
+  <para>
+   PHP 5.3.0 이후에는 변수를 사용하여 클래스를 참조할수 있습니다. 변수 값은 키워드가 될수가 없습니다.(예를들어 <literal>self</literal>,<literal>parent</literal> and <literal>static</literal>)
+  </para>
+  <example>
+   <title>상수의 정의와 사용</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+class MyClass
+{
+    const CONSTANT = 'constant value';
+
+    function showConstant() {
+        echo  self::CONSTANT . "\n";
+    }
+}
+
+echo MyClass::CONSTANT . "\n";
+
+$classname = "MyClass";
+echo $classname::CONSTANT . "\n"; // As of PHP 5.3.0
+
+$class = new MyClass();
+$class->showConstant();
+
+echo $class::CONSTANT."\n"; // As of PHP 5.3.0
+?>
+]]>
+   </programlisting>
+  </example>
+  
+  <example>
+   <title>정적 데이터 예제</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+class foo {
+    // As of PHP 5.3.0
+    const BAR = <<<'EOT'
+bar
+EOT;
+}
+?>
+]]>
+   </programlisting>
+   <para>
+    heredoc 과 달리, nowdoc 은 정적데이터 컨텍스트 내에서 사용될수 있습니다.
+   </para>
+  </example>
+  <note>
+   <para>
+    Nowdoc 지원이 PHP 5.3.0 에 추가되었습니다.
+   </para>
+  </note>
+ </sect1>
+ 
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
