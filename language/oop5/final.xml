@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- $Revision$ -->
+<!-- EN-Revision: 331135 Maintainer: progcom Status: ready -->
+<!-- Reviewed: no -->
+
  <sect1 xml:id="language.oop5.final" xmlns="http://docbook.org/ns/docbook">
   <title>Final 키워드</title>
   <para>
    PHP 5는 자식 클래스가 메쏘드를 덮어 쓰는 것을 막도록, final 키워드를
-   지원합니다. 정의시에 final을 앞에 붙이면 됩니다. 클래스 자체를 final로
+   지원합니다. 정의시에 <emphasis>final</emphasis>을 앞에 붙이면 됩니다. 클래스 자체를 final로
    정의하면 상속할 수 없습니다.
   </para>
-  
-  <example>
-   <title>Final 메쏘드 예제</title>
+  <para>
+   <example>
+    <title>Final 메쏘드 예제</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -31,12 +34,13 @@ class ChildClass extends BaseClass {
 // 결과는 Fatal error: Cannot override final method BaseClass::moreTesting()
 ?> 
 ]]>
-   </programlisting>
-  </example>
-
-  <example>
-   <title>Final 클래스 예제</title>
-   <programlisting role="php">
+    </programlisting>
+   </example>
+  </para>
+  <para>
+   <example>
+    <title>Final 클래스 예제</title>
+    <programlisting role="php">
 <![CDATA[
 <?php
 final class BaseClass {
@@ -55,8 +59,14 @@ class ChildClass extends BaseClass {
 // 결과는 Fatal error: Class ChildClass may not inherit from final class (BaseClass)
 ?>
 ]]>
-   </programlisting>
-  </example>
+    </programlisting>
+   </example>
+  </para>
+  <note>
+   <simpara>
+    프로퍼티는 final로 선언될수 없으며, 오직 클래스와 메서드만 final로 선언될 수 있습니다.
+   </simpara>
+  </note>
  </sect1>
  
 <!-- Keep this comment at the end of the file
