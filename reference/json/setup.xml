@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 288721 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 297373 Maintainer: progcom Status: ready -->
 
 <chapter xml:id="json.setup" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  &reftitle.setup;
 
  <section xml:id="json.requirements">
   &reftitle.required;
+  &no.install;
+ </section>
+
+ <section xml:id="json.installation">
+  &reftitle.install;
   <para>
-   PHP 5.2.0부터 JSON 확장은 번들되고, 기본값으로 PHP에 컴파일 됩니다.
+   JSON 확장기능은 PHP 5.2.0부터는 기본 설치에 포함되어 있으며, 기본적으로 PHP에서 컴파일 됩니다.
   </para>
   <para>
    &pecl.info; 
    <link xlink:href="&url.pecl.package;json">&url.pecl.package;json</link>
   </para>
- </section>
-
- <section xml:id="json.installation">
-  &reftitle.install;
-  &no.install;
  </section>
 
  <section xml:id="json.configuration">
