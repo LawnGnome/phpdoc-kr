@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- $EN-Revision: 329174 $ -->
+<!-- $Revision$ -->
+<!-- EN-Revision: 334418 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
 <appendix xml:id="aliases" xmlns="http://docbook.org/ns/docbook">
  <title>함수 별칭 목록</title>
  <para>
-  PHP에서 하나 이상의 이름으로 호출할 수 있는 함수는 그다지 많지 않습니다.
+  PHP에는 하나 이상의 이름으로 호출할 수 있는 함수들이 몇 존재 합니다.
   어떤 경우에는 여러 이름들 중에서 추천하는 이름이 없는 경우도 있습니다.
   <function>is_int</function>와 <function>is_integer</function>는 동등하게 사용하는 사례입니다.
   하지만, API 정비나 다른 이유들로 인해 함수의 이름을 변경하고,
@@ -38,11 +40,6 @@
       <entry>add</entry>
       <entry><function>swfsprite_add</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
-     </row>
-     <row>
-      <entry>add_root</entry>
-      <entry><function>domxml_add_root</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>addaction</entry>
@@ -85,16 +82,6 @@
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
      </row>
      <row>
-      <entry>attributes</entry>
-      <entry><function>domxml_attributes</function></entry>
-      <entry></entry>
-     </row>
-     <row>
-      <entry>children</entry>
-      <entry><function>domxml_children</function></entry>
-      <entry></entry>
-     </row>
-     <row>
       <entry>chop</entry>
       <entry><function>rtrim</function></entry>
       <entry>Base syntax</entry>
@@ -125,24 +112,9 @@
       <entry><link linkend="ref.misc">Miscellaneous functions</link></entry>
      </row>
      <row>
-      <entry>dir</entry>
-      <entry><function>getdir</function></entry>
-      <entry>Base syntax</entry>
-     </row>
-     <row>
       <entry>diskfreespace</entry>
       <entry><function>disk_free_space</function></entry>
       <entry><link linkend="ref.filesystem">Filesystem</link></entry>
-     </row>
-     <row>
-      <entry>domxml_getattr</entry>
-      <entry><function>domxml_get_attribute</function></entry>
-      <entry></entry>
-     </row>
-     <row>
-      <entry>domxml_setattr</entry>
-      <entry><function>domxml_set_attribute</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>doubleval</entry>
@@ -195,16 +167,6 @@
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
      </row>
      <row>
-      <entry>dtd</entry>
-      <entry><function>domxml_intdtd</function></entry>
-      <entry></entry>
-     </row>
-     <row>
-      <entry>dumpmem</entry>
-      <entry><function>domxml_dumpmem</function></entry>
-      <entry></entry>
-     </row>
-     <row>
       <entry>fbsql</entry>
       <entry><function>fbsql_db_query</function></entry>
       <entry><link linkend="ref.fbsql">FrontBase</link></entry>
@@ -215,11 +177,6 @@
       <entry>Base syntax</entry>
      </row>
      <row>
-      <entry>get_attribute</entry>
-      <entry><function>domxml_get_attribute</function></entry>
-      <entry></entry>
-     </row>
-     <row>
       <entry>getascent</entry>
       <entry><function>swffont_getAscent</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
@@ -228,11 +185,6 @@
       <entry>getascent</entry>
       <entry><function>swftext_getAscent</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
-     </row>
-     <row>
-      <entry>getattr</entry>
-      <entry><function>domxml_get_attribute</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>getdescent</entry>
@@ -428,16 +380,6 @@
       <entry>labelframe</entry>
       <entry><function>swfsprite_labelFrame</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
-     </row>
-     <row>
-      <entry>last_child</entry>
-      <entry><function>domxml_last_child</function></entry>
-      <entry></entry>
-     </row>
-     <row>
-      <entry>lastchild</entry>
-      <entry><function>domxml_last_child</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>ldap_close</entry>
@@ -890,21 +832,6 @@
       <entry><link linkend="ref.mysql">MySQL</link></entry>
      </row>
      <row>
-      <entry>name</entry>
-      <entry><function>domxml_attrname</function></entry>
-      <entry></entry>
-     </row>
-     <row>
-      <entry>new_child</entry>
-      <entry><function>domxml_new_child</function></entry>
-      <entry></entry>
-     </row>
-     <row>
-      <entry>new_xmldoc</entry>
-      <entry><function>domxml_new_xmldoc</function></entry>
-      <entry></entry>
-     </row>
-     <row>
       <entry>nextframe</entry>
       <entry><function>swfmovie_nextFrame</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
@@ -913,11 +840,6 @@
       <entry>nextframe</entry>
       <entry><function>swfsprite_nextFrame</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
-     </row>
-     <row>
-      <entry>node</entry>
-      <entry><function>domxml_node</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>ociassignelem</entry>
@@ -1175,11 +1097,6 @@
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
      </row>
      <row>
-      <entry>parent</entry>
-      <entry><function>domxml_parent</function></entry>
-      <entry></entry>
-     </row>
-     <row>
       <entry>pdf_add_outline</entry>
       <entry><function>pdf_add_bookmark</function></entry>
       <entry><link linkend="ref.pdf">PDF</link></entry>
@@ -1218,11 +1135,6 @@
       <entry>rewind</entry>
       <entry><function>rewinddir</function></entry>
       <entry>Base syntax</entry>
-     </row>
-     <row>
-      <entry>root</entry>
-      <entry><function>domxml_root</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>rotate</entry>
@@ -1265,24 +1177,9 @@
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
      </row>
      <row>
-      <entry>set_attribute</entry>
-      <entry><function>domxml_set_attribute</function></entry>
-      <entry></entry>
-     </row>
-     <row>
-      <entry>set_content</entry>
-      <entry><function>domxml_set_content</function></entry>
-      <entry></entry>
-     </row>
-     <row>
       <entry>setaction</entry>
       <entry><function>swfbutton_setAction</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
-     </row>
-     <row>
-      <entry>setattr</entry>
-      <entry><function>domxml_set_attribute</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>setbackground</entry>
@@ -1548,11 +1445,6 @@
       <entry>swftextfield</entry>
       <entry><function>swftextfield_init</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
-     </row>
-     <row>
-      <entry>unlink</entry>
-      <entry><function>domxml_unlink_node</function></entry>
-      <entry></entry>
      </row>
      <row>
       <entry>xptr_new_context</entry>
