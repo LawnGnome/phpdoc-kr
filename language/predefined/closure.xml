@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 318298 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+<phpdoc:classref xml:id="class.closure" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
+
+ <title>Closure 클래스</title>
+ <titleabbrev>Closure</titleabbrev>
+
+ <partintro>
+
+<!-- {{{ Closure intro -->
+  <section xml:id="closure.intro">
+   &reftitle.intro;
+   <para>
+    <link linkend="functions.anonymous">익명 함수</link>를 만들기 위해 사용되는 클래스 입니다.
+   </para>
+
+   <para>
+    PHP 5.3 에서 구현된 익명함수는 이 타입의 객체로 대체 되었습니다.
+    이 때문에 늘 구현 상세를 고려해야 했습니다. 하지만 이제 그러지 않아도 됩니다.
+    PHP 5.4 부터 이 클래스는 객체가 만들어진 이후부터 익명함수를 조금더 제어 할수 있는 메서드를 가지게 되었습니다.
+   </para>
+
+   <para>
+    여기에 나열된 메서드 이외에, 이 클래스는 <literal>__invoke</literal> 메서드를 가집니다.
+    이것은 <link linkend="language.oop5.magic.invoke">매직콜</link>을 구현한 다른 클래스들과의 일관성을 위한것이며, 함수를 호출하기 위해 사용되지는 않습니다.
+   </para>
+
+  </section>
+<!-- }}} -->
+
+  <section xml:id="closure.synopsis">
+   &reftitle.classsynopsis;
+
+<!-- {{{ Synopsis -->
+   <classsynopsis>
+    <ooclass><classname>Closure</classname></ooclass>
+
+<!-- {{{ Class synopsis -->
+    <classsynopsisinfo>
+     <ooclass>
+      <classname>Closure</classname>
+     </ooclass>
+    </classsynopsisinfo>
+<!-- }}} -->
+    
+    <classsynopsisinfo role="comment">&Methods;</classsynopsisinfo>
+    <xi:include xpointer="xmlns(db=http://docbook.org/ns/docbook) xpointer(id('class.closure')/db:refentry/db:refsect1[@role='description']/descendant::db:methodsynopsis[1])" />
+   </classsynopsis>
+<!-- }}} -->
+
+  </section>
+
+ </partintro>
+
+ &language.predefined.closure.construct;
+ &language.predefined.closure.bind;
+ &language.predefined.closure.bindto;
+
+</phpdoc:classref>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
