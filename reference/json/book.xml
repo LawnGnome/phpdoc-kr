@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 288721 Maintainer: progcom Status: ready -->
-<!-- Purpose: basic.other -->
-<!-- Membership: pecl, bundled -->
+<!-- EN-Revision: 331384 Maintainer: progcom Status: ready -->
 
 <book xml:id="book.json" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <?phpdoc extension-membership="bundled" ?>
  <title>자바스크립트 객체 표기</title>
  <titleabbrev>JSON</titleabbrev>
 
@@ -14,10 +13,12 @@
    데이터 교환 형식을 구현합니다. 디코딩은 Douglas Crockford의 JSON_checker에
    기반한 해석기가 다룹니다.
   </para>
+  &json.implementation.superset;
  </preface>
 
  &reference.json.setup;
  &reference.json.constants;
+ &reference.json.jsonserializable;
  &reference.json.reference;
 
 </book>
