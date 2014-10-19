@@ -6,7 +6,7 @@
 <refentry xml:id="function.curl-close" xmlns="http://docbook.org/ns/docbook">
  <refnamediv>
   <refname>curl_close</refname>
-  <refpurpose>cURL 세션을 닫습니다.</refpurpose>
+  <refpurpose>cURL 세션을 닫음</refpurpose>
  </refnamediv>
  
  <refsect1 role="description">
