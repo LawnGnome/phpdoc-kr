@@ -2,8 +2,6 @@
 <!-- $Revision$ -->
 <!-- EN-Revision: 326064 Maintainer: SuHun Han Status: ready -->
 <!-- Reviewed: yes Maintainer: acidd15 -->
-
-<!-- Membership: bundled, external -->
  
 <book xml:id="book.curl" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <?phpdoc extension-membership="bundledexternal" ?>
