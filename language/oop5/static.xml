@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 333207 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.static" xmlns="http://docbook.org/ns/docbook">
+  <title>static 키워드</title>
+
+  <tip>
+   <simpara>
+    이 문서에서는 정적 메서드와 프로퍼티를 정의할수 있는 <literal>static</literal> 키워드의 사용법을 설명합니다.
+    <literal>static</literal> 키워드는 또한 <link linkend="language.variables.scope.static">정적 변수를 정의</link>
+    와 <link linkend="language.oop5.late-static-bindings">늦은 정적 바인딩</link>에 사용될 수 있습니다.
+    각각의 <literal>static</literal> 이 의미하는바는 문서를 참조하시기 바랍니다.
+   </simpara>
+  </tip>
+
+  <para>
+   클래스의 메서드와 프로퍼티를 static으로 선언한다는 것은 해당 클래스의 인스턴스화가 필요없이 해당 프로퍼티와 메서드에 접근가능 하게함을 의미합니다.
+   static 키워드로 선언된 프로퍼티는 인스턴스화된 클래스의 객체로 접근할 수 없습니다.(하지만 static 메서드는 가능합니다.)
+  </para>
+
+  <para>
+   PHP 4 와의 호환을 위해서, <link
+   linkend="language.oop5.visibility">접근 지정자</link>
+   선언이 사용되지 않았다면, 프로퍼티와 메서드는 <literal>public</literal> 으로 선언된것으로 다루게 됩니다.
+  </para>
+
+  <para>
+   static 메서드가 인스턴스객체의 필요없이 호출이 가능한 이유로, 의사변수 <varname>$this</varname> 는 static으로 선언된 메서드안에는 존재하지 않습니다.
+  </para>
+  
+  <para>
+   정적 프로퍼티는 객체의 -&gt; 연산자를 통한 접근을 할수 없습니다.
+  </para>
+
+  <para>
+   non-static 메서드의 정적인 호출은 <constant>E_STRICT</constant> 수준의 경고를 발생합니다.
+  </para>
+
+  <para>
+   다른 PHP 의 정적 변수처럼, static 프로퍼티는 리터털이나 상수로만 초기화 될수 있습니다; 표현식은 허용되지 않습니다.
+   (예를들어)정수나 배열로 static 프로퍼티를 초기화 할수 있지만, 다른변수나, 함수의 리턴값, 객체로는 초기화할수 없습니다. 
+  </para>
+
+  <para>
+   PHP 5.3.0 이후에서는 변수를 사용하여 클래스를 참조할 수 있습니다. 변수의 값은 (e.g. <literal>self</literal>,
+   <literal>parent</literal> and <literal>static</literal>) 키워드로 지정될 수 없습니다.
+  </para>
+
+  <example>
+   <title>정적 프로퍼티 예제</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+class Foo
+{
+    public static $my_static = 'foo';
+
+    public function staticValue() {
+        return self::$my_static;
+    }
+}
+
+class Bar extends Foo
+{
+    public function fooStatic() {
+        return parent::$my_static;
+    }
+}
+
+
+print Foo::$my_static . "\n";
+
+$foo = new Foo();
+print $foo->staticValue() . "\n";
+print $foo->my_static . "\n";      // Undefined "Property" my_static 
+
+print $foo::$my_static . "\n";
+$classname = 'Foo';
+print $classname::$my_static . "\n"; // As of PHP 5.3.0
+
+print Bar::$my_static . "\n";
+$bar = new Bar();
+print $bar->fooStatic() . "\n";
+?>
+]]>
+   </programlisting>
+  </example>
+
+  <example>
+   <title>정적 메서드 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class Foo {
+    public static function aStaticMethod() {
+        // ...
+    }
+}
+
+Foo::aStaticMethod();
+$classname = 'Foo';
+$classname::aStaticMethod(); // PHP 5.3.0 이후부터 지원
+?> 
+]]>
+    </programlisting>
+  </example>
+
+ </sect1>
+ 
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
