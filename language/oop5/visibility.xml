@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 331736 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.visibility" xmlns="http://docbook.org/ns/docbook">
+  <title>가시성</title>
+  <para>
+   프로퍼티나 메서드의 가시성은 <emphasis>public</emphasis>,
+   <emphasis>protected</emphasis>,
+   <emphasis>private</emphasis> 키워드를 앞에 붙여 정의할수 있습니다.
+   public 으로 선언된 클래스 멤버는 어느곳에서든 접근할 수 있습니다.
+   protected 로 선언된 멤버는 클래스 자신의 내부나 상속된 클래스나 그 부모 클래스에서만 접근할 수 있습니다.
+   private 으로 선언된 멤버는 해당 클래스의 멤버만 접근 가능합니다. 
+  </para>
+
+  <sect2 xml:id="language.oop5.visibility-members">
+   <title>프로퍼티 가시성</title>
+   <para>
+    클래스 프로퍼티는 public, private, protected 로 정의되어야 합니다.
+    <emphasis>var</emphasis> 키워드로 선언된 프로퍼티는 public으로 정의됩니다.
+   </para>
+   <para>
+    <example>
+     <title>프로퍼티 선언</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * Define MyClass
+ */
+class MyClass
+{
+    public $public = 'Public';
+    protected $protected = 'Protected';
+    private $private = 'Private';
+
+    function printHello()
+    {
+        echo $this->public;
+        echo $this->protected;
+        echo $this->private;
+    }
+}
+
+$obj = new MyClass();
+echo $obj->public; // Works
+echo $obj->protected; // Fatal Error
+echo $obj->private; // Fatal Error
+$obj->printHello(); // Shows Public, Protected and Private
+
+
+/**
+ * Define MyClass2
+ */
+class MyClass2 extends MyClass
+{
+    // We can redeclare the public and protected method, but not private
+    protected $protected = 'Protected2';
+
+    function printHello()
+    {
+        echo $this->public;
+        echo $this->protected;
+        echo $this->private;
+    }
+}
+
+$obj2 = new MyClass2();
+echo $obj2->public; // Works
+echo $obj2->protected; // Fatal Error
+echo $obj2->private; // Undefined
+$obj2->printHello(); // Shows Public, Protected2, Undefined
+
+?> 
+]]>
+     </programlisting>
+    </example>
+   </para>
+   <note>
+    <simpara>
+     PHP 4 에서 <emphasis>var</emphasis> 키워드를 이용한 변수선언방법은 현재도 호환성의 이유로 유지되고 있습니다
+     (public 키워드의 동의어로서). 이것은 PHP 5.1.3 이전의 PHP 5버전에서는 <constant>E_STRICT</constant> 경고를 발생했습니다.
+    </simpara>
+   </note>
+  </sect2>
+
+  <sect2 xml:id="language.oop5.visiblity-methods">
+   <title>메서드 가시성</title>
+   <para>
+    클래스 메서드는 pubolic, private, protected로 정의 될수 있습니다.
+    명시적으로 가시성을 선언하지 않은 메서드는 public으로 정의 됩니다.
+   </para>
+   <para>
+    <example>
+     <title>메서드 선언</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * Define MyClass
+ */
+class MyClass
+{
+    // Declare a public constructor
+    public function __construct() { }
+
+    // Declare a public method
+    public function MyPublic() { }
+
+    // Declare a protected method
+    protected function MyProtected() { }
+
+    // Declare a private method
+    private function MyPrivate() { }
+
+    // This is public
+    function Foo()
+    {
+        $this->MyPublic();
+        $this->MyProtected();
+        $this->MyPrivate();
+    }
+}
+
+$myclass = new MyClass;
+$myclass->MyPublic(); // Works
+$myclass->MyProtected(); // Fatal Error
+$myclass->MyPrivate(); // Fatal Error
+$myclass->Foo(); // Public, Protected and Private work
+
+
+/**
+ * Define MyClass2
+ */
+class MyClass2 extends MyClass
+{
+    // This is public
+    function Foo2()
+    {
+        $this->MyPublic();
+        $this->MyProtected();
+        $this->MyPrivate(); // Fatal Error
+    }
+}
+
+$myclass2 = new MyClass2;
+$myclass2->MyPublic(); // Works
+$myclass2->Foo2(); // Public and Protected work, not Private
+
+class Bar 
+{
+    public function test() {
+        $this->testPrivate();
+        $this->testPublic();
+    }
+
+    public function testPublic() {
+        echo "Bar::testPublic\n";
+    }
+    
+    private function testPrivate() {
+        echo "Bar::testPrivate\n";
+    }
+}
+
+class Foo extends Bar 
+{
+    public function testPublic() {
+        echo "Foo::testPublic\n";
+    }
+    
+    private function testPrivate() {
+        echo "Foo::testPrivate\n";
+    }
+}
+
+$myFoo = new foo();
+$myFoo->test(); // Bar::testPrivate 
+                // Foo::testPublic
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+  </sect2>
+
+  <sect2 xml:id="language.oop5.visibility-other-objects">
+   <title>다른 객체로부터의 가시성</title>
+   <para>
+    같은 타입의 객체는 private과 protected를 가지는 다른 객체라도 서로 접근이 가능합니다.
+    왜냐하면 객체 내부의 특정 상세 구현부를 이미 알고 있기 때문입니다.  
+   </para>
+   <example>
+    <title>같은 타입의 객체에서의 private 멤버에 대한 접근</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class Test
+{
+    private $foo;
+
+    public function __construct($foo)
+    {
+        $this->foo = $foo;
+    }
+
+    private function bar()
+    {
+        echo 'Accessed the private method.';
+    }
+
+    public function baz(Test $other)
+    {
+        // We can change the private property:
+        $other->foo = 'hello';
+        var_dump($other->foo);
+
+        // We can also call the private method:
+        $other->bar();
+    }
+}
+
+$test = new Test('test');
+
+$test->baz(new Test('other'));
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+string(5) "hello"
+Accessed the private method.
+]]>
+    </screen>
+   </example>
+  </sect2>
+ </sect1>
+ 
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
