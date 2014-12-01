@@ -858,8 +858,7 @@
  </para>
 
  <para>
-  <link linkend="ini.track-vars"><literal>track_vars</literal></link>와 <link
-   linkend="ini.register-globals"><literal>register_globals</literal></link>
+  <link linkend="ini.register-globals"><literal>register_globals</literal></link>
   환경 설정이 세션 변수의 저장과 복구에 영향을 줍니다.
  </para>
 
@@ -869,14 +868,6 @@
   기록되지 않습니다.
   이 기능에 관한 자세한 사항은 <link linkend="session.upload-progress">세션 업로드 진행율</link>을 참고하십시오.
  </para>
-
- <note>
-  <para>
-   PHP 4.0.3부터, <link
-    linkend="ini.track-vars"><literal>track_vars</literal></link>는 항상 켜져
-   있습니다.
-  </para>
- </note>
 
 </section>
 
