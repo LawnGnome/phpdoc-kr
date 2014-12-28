@@ -1,76 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
+<!-- EN-Revision: 334698 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
  <sect1 xml:id="language.oop5.interfaces" xmlns="http://docbook.org/ns/docbook">
-  <title>Object Interfaces</title>
+  <title>객체 인터페이스</title>
   <para>
-   Object interfaces allow you to create code which specifies which methods a
-   class must implement, without having to define how these methods are
-   handled.
+   객체 인터페이스는 클래스가 반드시 구현해야할 메서드를 해당 메서드가 어떻게 동작하는지 알 필요없이 지정하는 코드를 만들수 있습니다.
   </para>
   <para>
-   Interfaces are defined using the <literal>interface</literal> keyword, in the same way as a
-   standard class, but without any of the methods having their contents
-   defined.
+   인터페이스는 <literal>interface</literal> 키워드를 사용해 정의할 수 있습니다. 일반클래스와 방식이 같지만, 메서드의 구현부가 정의되지 않음이 다릅니다.
   </para>
   <para>
-   All methods declared in an interface must be public; this is the nature of an
-   interface.
+   interface 내부의 모든 메서드는 반드시 public 이어야만 합니다; 이것은 interface 의 특성입니다.
   </para>
   <sect2 xml:id="language.oop5.interfaces.implements">
-   <title><literal>implements</literal></title>
+   <title><literal>구현</literal></title>
    <para>
-    To implement an interface, the <literal>implements</literal> operator is used.
-    All methods in the interface must be implemented within a class; failure to do
-    so will result in a fatal error. Classes may implement more than one interface
-    if desired by separating each interface with a comma.
+    인터페이스를 구현하기 위해서는, <literal>implements</literal> 키워드가 사용됩니다.
+    인터페이스 내부의 모든 메서드는 클래스 안에 모두 구현되어야 합니다.; 그렇지 않을경우 fata error에 마주하게 됩니다.
+    각각의 인터페이스를 쉼표로 구분하여 지정하면 클래스는 하나 이상의 인터페이스를 구현할수 있습니다.
    </para>
    <note>
     <para>
-     Prior to PHP 5.3.9, a class could not implement two interfaces that
-     specified a method with the same name, since it would cause ambiguity.
-     More recent versions of PHP allow this as long as the duplicate methods
-     have the same signature.
+     PHP 5.3.9 이전에서는, 두개의 인터페이스가 같은 메서드명을 정의하고 있을 경우 클래스를 구현할수 없었습니다.
+     모호하기 때문입니다. 최근의 버전에서는 메서드명이 같더라도 메서드의 시그너쳐(메서드 정의 형태)가 완전히 동일할 경우에는 
+     구현이 가능합니다.
     </para>
    </note>
    <note>
     <para>
-     Interfaces can be extended like classes using the <link linkend="language.oop5.inheritance">extends</link> 
-     operator.
+     인터페이스도 클래스처럼 <link linkend="language.oop5.inheritance">extends</link> 키워드를 사용해 확장이 가능합니다.
     </para>
    </note>
    <note>
     <para>
-     The class implementing the interface must use the exact same method
-     signatures as are defined in the interface. Not doing so will result in a
-     fatal error.
+     인터페이스를 구현하는 클래스는 인터페이스에 정의된 메서드와 완전히 동일한 메서드 시그너쳐를 사용해야 합니다.
+     그렇지 않을 경우 fatal error 에 마주할 것입니다.
      </para>
     </note>
   </sect2>
   <sect2 xml:id="language.oop5.interfaces.constants">
-   <title><literal>Constants</literal></title>
+   <title><literal>상수</literal></title>
    <para>
-    It's possible for interfaces to have constants. Interface constants works exactly 
-    like <link linkend="language.oop5.constants">class constants</link> except
-    they cannot be overridden by a class/interface that inherits them.
+    인터페이스가 상수를 가지는것이 가능합니다.
+    인터페이스 상수는 <link linkend="language.oop5.constants">클래스 상수</link>와 완전히 동일하게 동작합니다. 
+    하지만, 상속받은 클래스/인터페이스 에서 재정의 할수 없습니다.
    </para>
   </sect2>
   <sect2 xml:id="language.oop5.interfaces.examples">
    &reftitle.examples;
    <example xml:id="language.oop5.interfaces.examples.ex1">
-    <title>Interface example</title>
+    <title>인터페이스 예제</title>
      <programlisting role="php">
 <![CDATA[
 <?php
 
-// Declare the interface 'iTemplate'
+// 인터페이스 선언 'iTemplate'
 interface iTemplate
 {
     public function setVariable($name, $var);
     public function getHtml($template);
 }
 
-// Implement the interface
-// This will work
+// 인터페이스 구현
+// 동작합니다.
 class Template implements iTemplate
 {
     private $vars = array();
@@ -90,7 +84,7 @@ class Template implements iTemplate
     }
 }
 
-// This will not work
+// 동작하지 않습니다.
 // Fatal error: Class BadTemplate contains 1 abstract methods
 // and must therefore be declared abstract (iTemplate::getHtml)
 class BadTemplate implements iTemplate
@@ -107,7 +101,7 @@ class BadTemplate implements iTemplate
     </programlisting>
    </example>
    <example xml:id="language.oop5.interfaces.examples.ex2">
-    <title>Extendable Interfaces</title>
+    <title>확장가능한 인터페이스</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -121,7 +115,7 @@ interface b extends a
     public function baz(Baz $baz);
 }
 
-// This will work
+// 동작합니다.
 class c implements b
 {
     public function foo()
@@ -133,7 +127,7 @@ class c implements b
     }
 }
 
-// This will not work and result in a fatal error
+// 동작하지 않고 fatal error 가 납니다.
 class d implements b
 {
     public function foo()
@@ -149,7 +143,7 @@ class d implements b
      </programlisting>
    </example>
    <example xml:id="language.oop5.interfaces.examples.ex3">
-    <title>Multiple interface inheritance</title>
+    <title>인터페이스 다중 상속</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -187,7 +181,7 @@ class d implements c
      </programlisting>
    </example>
    <example xml:id="language.oop5.interfaces.examples.ex4">
-    <title>Interfaces with constants</title>
+    <title>인터페이스 상수</title>
      <programlisting role="php">
 <![CDATA[
 <?php
@@ -200,8 +194,8 @@ interface a
 echo a::b;
 
 
-// This will however not work because it's not allowed to 
-// override constants.
+// 원하는데로 동작하지 않습니다.
+// 왜냐하면 재정의를 허용하지 않기 때문입니다.
 class b implements a
 {
     const b = 'Class constant';
@@ -211,10 +205,9 @@ class b implements a
      </programlisting>
    </example>
    <para>
-     An interface, together with type-hinting, provides a good way to make sure
-     that a particular object contains particular methods. See
-     <link linkend="language.operators.type">instanceof</link> operator and
-     <link linkend="language.oop5.typehinting">type hinting</link>.
+     인터페이스에서, 타입힌팅을 사용하면, 특정 객체에 특정 메서드를 가지게 하는 좋은 방법을 제공합니다.
+    <link linkend="language.operators.type">instanceof</link> 와
+     <link linkend="language.oop5.typehinting">타입 힌트</link>를 보시기 바랍니다.
    </para>
   </sect2>
 
