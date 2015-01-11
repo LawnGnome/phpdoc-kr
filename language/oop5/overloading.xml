@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 332595 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.overloading" xmlns="http://docbook.org/ns/docbook">
+  <title>오버로딩</title>
+
+  <para>
+   PHP 에서 오버로딩의 의미는 동적으로 프로퍼티나 메서드를 <quote>생성</quote>함을 의미합니다.
+   이러한 동적 엔터티들은 클래스의 매직 메서드를 통해 다양한 형태로 처리됩니다.
+  </para>
+
+  <para>
+   오버로딩 기능은 현재 스코프에서 정의되지 않거나 <link linkend="language.oop5.visibility">보이지</link>
+   않는 프로퍼티나 메서드를 조작하려고 할때 호출됩니다.
+   이 문서에서는 <quote>접근불가 프로퍼티</quote> 와 <quote>접근불가 메서드</quote>를 
+   위의 내용을 지칭하는데 사용하겠습니다.
+  </para>
+
+  <para>
+   모든 오버로딩 메서드는 <literal>public</literal> 으로 정의되어야 합니다.
+  </para>
+
+  <note>
+   <para>
+    매직 매서드의 인자는 <link linkend="functions.arguments.by-reference">참조 전달</link> 이 될 수 없습니다.
+   </para>
+  </note>
+
+  <note>
+   <para>
+    PHP의 <quote>오버로딩</quote>에 대한 해석은 다른 대부분의 객체 지향 언어들과는 다릅니다.
+    일반적으로는 오버로딩은 동일한 이름을 사용하여 인자의 갯수와 타입을 달리하여 다중으로 메서드를 정의할 수 있는 기능을 의미합니다.
+   </para>
+  </note>
+
+
+  <sect2 xml:id="language.oop5.overloading.changelog">
+   &reftitle.changelog;
+   <para>
+    <informaltable>
+     <tgroup cols="2">
+      <thead>
+       <row>
+        <entry>&Version;</entry>
+        <entry>&Description;</entry>
+       </row>
+      </thead>
+      <tbody>
+       <row>
+        <entry>5.3.0</entry>
+        <entry>
+         추가됨 <link linkend="object.callstatic">__callStatic()</link>.
+         public 으로 강제하고 non-static 선언일때 경고를 추가함.
+        </entry>
+       </row>
+       <row>
+        <entry>5.1.0</entry>
+        <entry>
+         추가됨 <link linkend="object.isset">__isset()</link> and <link linkend="object.unset">__unset()</link>. 
+         <link linkend="object.get">__get()</link> 의 private 프로퍼팅의 오버로딩에 대한 대응이 추가됨.
+        </entry>
+       </row>
+       <row>
+        <entry>5.0.0</entry>
+        <entry>
+         추가됨 <link linkend="object.get">__get()</link>.
+        </entry>
+       </row>
+      </tbody>
+     </tgroup>
+    </informaltable>
+   </para>
+  </sect2>
+
+
+  <sect2 xml:id="language.oop5.overloading.members">
+   <title>프로퍼티 오버로딩</title>
+
+   <methodsynopsis xml:id="object.set">
+    <modifier>public</modifier> <type>void</type><methodname>__set</methodname>
+    <methodparam><type>string</type><parameter>name</parameter></methodparam>
+    <methodparam><type>mixed</type><parameter>value</parameter></methodparam>
+   </methodsynopsis>
+   <methodsynopsis xml:id="object.get">
+    <modifier>public</modifier> <type>mixed</type><methodname>__get</methodname>
+    <methodparam><type>string</type><parameter>name</parameter></methodparam>
+   </methodsynopsis>
+   <methodsynopsis xml:id="object.isset">
+    <modifier>public</modifier> <type>bool</type><methodname>__isset</methodname>
+    <methodparam><type>string</type><parameter>name</parameter></methodparam>
+   </methodsynopsis>
+   <methodsynopsis xml:id="object.unset">
+    <modifier>public</modifier> <type>void</type><methodname>__unset</methodname>
+    <methodparam><type>string</type><parameter>name</parameter></methodparam>
+   </methodsynopsis>
+
+   <para>
+    <link linkend="object.set">__set()</link> 은
+    접근불가 프로퍼티에 쓰기를 할때 실행됩니다.
+   </para>
+
+   <para>
+    <link linkend="object.get">__get()</link> 은
+    접근불가 프로퍼티에서 읽기를 할때 사용합니다.
+   </para>
+
+   <para>
+    <link linkend="object.isset">__isset()</link> 은
+    접근불가 프로퍼티에 대해 <function>isset</function> 나 <function>empty</function> 가 호출되었을때 불려집니다.
+   </para>
+
+   <para>
+    <link linkend="object.unset">__unset()</link> 은
+    접근불가 프로퍼티를 <function>unset</function> 했을때 호출됩니다.
+   </para>
+
+   <para>
+    <varname>$name</varname> 인자는 다루고자 하는 프로퍼티 이름입니다.
+    <link linkend="object.set">__set()</link> 메서드의 <varname>$value</varname> 인자는 <varname>$name</varname> 의 값으로 세팅하고자 하는 값입니다.
+   </para>
+
+   <para>
+    프로퍼티 오버로딩은 객체 컨텍스트내에서만 동작합니다.
+    이 매직메서드들은 정적 컨텍스트내에서는 불려지지 않을 것입니다.
+    게다가 이 메서드들은 <link linkend="language.oop5.static">static</link> 으로 선언할 수 없습니다.
+    PHP 5.3.0 이후로는 매직 오버로딩 메서드가 <literal>static</literal> 으로 선언되어 있을경우 경고를 발생합니다.
+   </para>
+
+   <note>
+    <para>
+     <link linkend="object.set">__set()</link> 의 리턴값은 무시됩니다. 
+     이것은 PHP가 할당연산을 처리하는 방식에 기인합니다.
+     비슷하게, 연결된 할당은 <link linkend="object.get">__get()</link> 을 절대 호출하지 않습니다.
+     예:
+     <literal><![CDATA[ $a = $obj->b = 8; ]]></literal>
+    </para>
+   </note>
+
+   <example>
+    <title>
+     <link linkend="object.get">__get()</link>, <link linkend="object.set">__set()</link>, <link linkend="object.isset">__isset()</link>
+     과 <link linkend="object.unset">__unset()</link> 메서드로 프로퍼티 오버로딩하기
+    </title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class PropertyTest
+{
+    /**  오버로드된 데이터의 위치  */
+    private $data = array();
+
+    /**  선언된 프로퍼티는 오버로딩 하지 않음  */
+    public $declared = 1;
+
+    /**  외부 클래스에서 접근하는 경우에만 오버로딩 됨  */
+    private $hidden = 2;
+
+    public function __set($name, $value)
+    {
+        echo "Setting '$name' to '$value'\n";
+        $this->data[$name] = $value;
+    }
+
+    public function __get($name)
+    {
+        echo "Getting '$name'\n";
+        if (array_key_exists($name, $this->data)) {
+            return $this->data[$name];
+        }
+
+        $trace = debug_backtrace();
+        trigger_error(
+            'Undefined property via __get(): ' . $name .
+            ' in ' . $trace[0]['file'] .
+            ' on line ' . $trace[0]['line'],
+            E_USER_NOTICE);
+        return null;
+    }
+
+    /**  PHP 5.1.0 이후 */
+    public function __isset($name)
+    {
+        echo "Is '$name' set?\n";
+        return isset($this->data[$name]);
+    }
+
+    /**  PHP 5.1.0 이후  */
+    public function __unset($name)
+    {
+        echo "Unsetting '$name'\n";
+        unset($this->data[$name]);
+    }
+
+    /**  매직 메서드는 아님  */
+    public function getHidden()
+    {
+        return $this->hidden;
+    }
+}
+
+
+echo "<pre>\n";
+
+$obj = new PropertyTest;
+
+$obj->a = 1;
+echo $obj->a . "\n\n";
+
+var_dump(isset($obj->a));
+unset($obj->a);
+var_dump(isset($obj->a));
+echo "\n";
+
+echo $obj->declared . "\n\n";
+
+echo "Let's experiment with the private property named 'hidden':\n";
+echo "Privates are visible inside the class, so __get() not used...\n";
+echo $obj->getHidden() . "\n";
+echo "Privates not visible outside of class, so __get() is used...\n";
+echo $obj->hidden . "\n";
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen role="php">
+<![CDATA[
+Setting 'a' to '1'
+Getting 'a'
+1
+
+Is 'a' set?
+bool(true)
+Unsetting 'a'
+Is 'a' set?
+bool(false)
+
+1
+
+Let's experiment with the private property named 'hidden':
+Privates are visible inside the class, so __get() not used...
+2
+Privates not visible outside of class, so __get() is used...
+Getting 'hidden'
+
+
+Notice:  Undefined property via __get(): hidden in <file> on line 70 in <file> on line 29
+]]>
+    </screen>
+
+   </example>
+  </sect2>
+
+  <sect2 xml:id="language.oop5.overloading.methods">
+   <title>메서드 오버로딩</title>
+
+   <methodsynopsis xml:id="object.call">
+    <modifier>public</modifier> <type>mixed</type><methodname>__call</methodname>
+    <methodparam><type>string</type><parameter>name</parameter></methodparam>
+    <methodparam><type>array</type><parameter>arguments</parameter></methodparam>
+   </methodsynopsis>
+   <methodsynopsis xml:id="object.callstatic">
+    <modifier>public static</modifier> <type>mixed</type><methodname>__callStatic</methodname>
+    <methodparam><type>string</type><parameter>name</parameter></methodparam>
+    <methodparam><type>array</type><parameter>arguments</parameter></methodparam>
+   </methodsynopsis>
+
+   <para>
+    <link linkend="object.call">__call()</link>은
+    오브젝트 컨텍스트내에서 접근불가 메서드를 호출할때 불려집니다.
+   </para>
+
+   <para>
+    <link linkend="object.callstatic">__callStatic()</link> 은
+    정적 컨텍스트내에서 접근불가 메서드를 호출할때 불려집니다.
+   </para>
+
+   <para>
+    <varname>$name</varname>인자는 불려질 메서드의 이름입니다.
+    <varname>$arguments</varname> 는 <varname>$name</varname> 메서드로 전달될 파라미터 배열입니다.
+   </para>
+
+   <example>
+    <title>
+     <link linkend="object.call">__call()</link>
+     과 <link linkend="object.callstatic">__callStatic()</link> 로 메서드 오버로딩하기
+    </title>
+    <programlisting role="php">
+  <![CDATA[
+<?php
+class MethodTest
+{
+    public function __call($name, $arguments)
+    {
+        // 주의: $name 의 값은 대소를 구분합니다.
+        echo "Calling object method '$name' "
+             . implode(', ', $arguments). "\n";
+    }
+
+    /**  PHP 5.3.0 이후  */
+    public static function __callStatic($name, $arguments)
+    {
+        // 주의: $name 의 값은 대소를 구분합니다.
+        echo "Calling static method '$name' "
+             . implode(', ', $arguments). "\n";
+    }
+}
+
+$obj = new MethodTest;
+$obj->runTest('in object context');
+
+MethodTest::runTest('in static context');  // As of PHP 5.3.0
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen role="php">
+<![CDATA[
+Calling object method 'runTest' in object context
+Calling static method 'runTest' in static context
+]]>
+    </screen>
+   </example>
+
+  </sect2>
+
+ </sect1>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
