@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 333259 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.decon" xmlns="http://docbook.org/ns/docbook">
+  <title>생성자와 소멸자</title>
+
+  <sect2 xml:id="language.oop5.decon.constructor">
+   <title>생성자</title>
+   <methodsynopsis xml:id="object.construct">
+    <type>void</type><methodname>__construct</methodname>
+    <methodparam choice="opt"><type>mixed</type><parameter>args</parameter><initializer>""</initializer></methodparam>
+    <methodparam choice="opt"><parameter>...</parameter></methodparam>
+   </methodsynopsis>
+   <para>
+    PHP 5 에서는 클래스의 생성자 메서드를 선언하는것을 허용합니다.
+    클래스는 새로이 생성된 오브젝트마다 자신의 생성자 메서드를 호출합니다.
+    그래서, 객체 초기화를 위해 사용할수 있습니다.
+   </para>
+   <note>
+    <simpara>
+     부모 생성자는 자식클래스가 생성자를 가지고 있을경우 내부적으로 호출되지 않습니다.
+     부모 생성자를 호출하기 위해서는 자식 생성자 내에서 <function>parent::__construct</function> 호출이 필요합니다.
+     자식이 생성자를 가지지 않는다면 다른 일반적인 클래스 메서드처럼 부모클래스의 생성자가 상속됩니다(private 메서드는 제외).
+    </simpara>
+   </note>
+   <example>
+    <title>생성자 사용하기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class BaseClass {
+   function __construct() {
+       print "In BaseClass constructor\n";
+   }
+}
+
+class SubClass extends BaseClass {
+   function __construct() {
+       parent::__construct();
+       print "In SubClass constructor\n";
+   }
+}
+
+class OtherSubClass extends BaseClass {
+    // inherits BaseClass's constructor
+}
+
+// In BaseClass constructor
+$obj = new BaseClass();
+
+// In BaseClass constructor
+// In SubClass constructor
+$obj = new SubClass();
+
+// In BaseClass constructor
+$obj = new OtherSubClass();
+?> 
+]]>
+    </programlisting>
+   </example>
+   <para>
+    하위 호환성을 위해, PHP 5 가 클래스에서 <link linkend="object.construct">__construct()</link> 함수를 찾지 못할경우,
+    그리고, 부모 클래스로부터 상속하지 않은 경우, 클래스이름에 기반한 예전방식의 생성자를 함수를 찾게 될것입니다.
+    호환성 문제가 생길수 있는 케이스는 클래스가 <link linkend="object.construct">__construct()</link> 메서드를 가진경우 해당 메서드를 다른 의미로 사용하는 경우 입니다.
+   </para>
+   <para>
+    다른 메서드와는 다르게, <link linkend="object.construct">__construct()</link> 가 부모의 <link linkend="object.construct">__construct()</link>와는 다르게 재정의 되어도 
+    <constant>E_STRICT</constant> 에러메시지를 발생하지 않습니다.
+   </para>
+   <para>
+    PHP 5.3.3 이후로 네임스페이스 클래스의 마지막 엘리먼트명을 더이상 생성자로 다루지 않습니다.
+    이변경은 비네임스페이스 클래스들에게는 영향을 미치지 않습니다.
+   </para>
+   <example>
+    <title>네임스페이스 클래스의 생성자</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+namespace Foo;
+class Bar {
+    public function Bar() {
+        // treated as constructor in PHP 5.3.0-5.3.2
+        // treated as regular method as of PHP 5.3.3
+    }
+}
+?>
+]]>
+    </programlisting>
+   </example>
+  </sect2>
+
+  <sect2 xml:id="language.oop5.decon.destructor">
+   <title>소멸자</title>
+   <methodsynopsis xml:id="object.destruct">
+    <type>void</type><methodname>__destruct</methodname>
+    <void />
+   </methodsynopsis>
+   <para>
+    PHP 5는 C++과 같은 객체지향 언어에 존재하는 비슷한 개념의 소멸자를 선보였습니다.
+    소멸자 메서드는 더이상 객체를 참조하지 않거나, 종료가 일어나는동안 호출될수 있을 것입니다.
+   </para>
+   <example>
+    <title>소멸자 예제</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class MyDestructableClass {
+   function __construct() {
+       print "In constructor\n";
+       $this->name = "MyDestructableClass";
+   }
+
+   function __destruct() {
+       print "Destroying " . $this->name . "\n";
+   }
+}
+
+$obj = new MyDestructableClass();
+?> 
+]]>
+    </programlisting>
+   </example>
+   <para>
+    생성자처럼, 부모 소멸자는 묵시적으로 호출되지 않습니다.
+    부모 소멸자를 호출하기 위해서는, 소멸자 내부에서 <function>parent::__destruct</function> 를 명시적으로 호출해 줘야 합니다.
+    또한 생성자처럼, 자식 클래스가 소멸자를 가지지 않는다면 부모의 것을 상속합니다.
+   </para>
+   <para>
+    소멸자는 <function>exit</function> 로 스크립트 실행이 중단되더라도 실행됩니다.
+    소멸자 내부에서 <function>exit</function> 를 호출 하는 것은 남은 종료 루틴을 막게 됩니다.
+   </para>
+   <note>
+    <para>
+     스크립트가 종료되는 동안에 소멸자가 호출된 경우 HTTP 헤더는 이미 보내진 뒤입니다.
+     스크립트가 종료될때의 작업디렉터리는 SAPI 마다 다를수 있습니다.(예를 들면 Apache)
+    </para>
+   </note>
+   <note>
+    <para>
+     소멸자 내부에서 예외를 발생시키려고 시도할경우(스크립트 종료시점) fatal error 를 발생시킵니다.
+    </para>
+   </note>
+  </sect2>
+
+ </sect1>
+
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
