@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
+<!-- EN-Revision: 330347 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
  <sect1 xml:id="language.oop5.serialization" xmlns="http://docbook.org/ns/docbook">
-  <title>Object Serialization</title>
-  <title>Serializing objects - objects in sessions</title>
+  <title>객체 직렬화</title>
+  <title>객체를 직렬화하기 - 세션의 객체</title>
 
   <para>
-   <function>serialize</function> returns a string containing a
-   byte-stream representation of any value that can be stored in
-   PHP. <function>unserialize</function> can use this string to
-   recreate the original variable values. Using serialize to
-   save an object will save all variables in an object.  The
-   methods in an object will not be saved, only the name of
-   the class.
+   <function>serialize</function> 
+   는 PHP에 저장할수 있는 어떠한 값의 바이트스트림 표현을 포함한 문자열을 반환합니다.
+   <function>unserialize</function>
+   는 이 문자열을 원래의 변수값을 재생성하는데 사용할수 있습니다.
+   serialize로 객체를 저장하는것은 객체안의 모든 변수들을 저장하는것을 의미합니다.
+   클래스명을 제외한 객체내부의 메서드는 저장되지 않을 것입니다. 
   </para>
   
   <para>
@@ -71,13 +72,13 @@
    are serialized automatically at the end of each PHP page, and are 
    unserialized automatically on each of the following pages. This means that 
    these objects can show up on any of the application's pages once they become 
-   part of the session. However, regarding the <function>session_register</function>
-   function: &removed.php.future;
+   part of the session. However, the <function>session_register</function> is
+   removed since PHP 5.4.0.
   </para>
   
   <para>
    It is strongly recommended that if an application serializes objects, for use
-   later in the application, that the application include the class definition
+   later in the application, that the application includes the class definition
    for that object throughout the application. Not doing so might result in an
    object being unserialized without a class definition, which will result in
    PHP giving the object a class of <classname>__PHP_Incomplete_Class_Name</classname>,
@@ -89,6 +90,15 @@
    by running <literal>session_register("a")</literal>, you should include the
    file <literal>classa.inc</literal> on all of your pages, not only <filename>page1.php</filename>
    and <filename>page2.php</filename>.
+  </para>
+
+  <para>
+   Beyond the above advice, note that you can also hook into the serialization
+   and unserialization events on an object using the
+   <link linkend="object.sleep">__sleep()</link> and
+   <link linkend="object.wakeup">__wakeup()</link> methods. Using
+   <link linkend="object.sleep">__sleep()</link> also allows you to only
+   serialize a subset of the object's properties.
   </para>
  </sect1>
  
