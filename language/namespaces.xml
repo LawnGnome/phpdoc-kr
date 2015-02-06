@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- EN-Revision: 288721 Maintainer: acidd15 Status: ready -->
+<!-- EN-Revision: 335023 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: yes Maintainer: progcom -->
 <chapter xml:id="language.namespaces" xmlns="http://docbook.org/ns/docbook"
  version="1.1">
  <title>네임스페이스</title>
 
  <sect1 xml:id="language.namespaces.rationale">
-  <title>Namespaces overview</title>
+  <title>네임스페이스 개요</title>
+  <?phpdoc print-version-for="namespaces"?>
   <simpara>
-   What are namespaces? In the broadest definition namespaces are a way of encapsulating
-   items.  This can be seen as an abstract concept in many places. For example, in any
-   operating system directories serve to group related files, and act as a namespace for
-   the files within them. As a concrete example, the file <literal>foo.txt</literal> can
-   exist in both directory <literal>/home/greg</literal> and in <literal>/home/other</literal>,
-   but two copies of <literal>foo.txt</literal> cannot co-exist in the same directory. In
-   addition, to access the <literal>foo.txt</literal> file outside of the
-   <literal>/home/greg</literal> directory, we must prepend the directory name to the file
-   name using the directory separator to get <literal>/home/greg/foo.txt</literal>. This
-   same principle extends to namespaces in the programming world.
+   네임스페이스란 무엇일까요? 넓은 의미로 볼 때 네임스페이스는 내용을 캡슐화 하는 방법중 하나입니다. 이것은 다양한 관점에서 추상적인 개념으로 볼 수 있습니다.
+   예를 들면 운영체제에서 디렉토리는 관련된 파일들의 그룹을 담당하고, 그 안에 있는 파일들의 네임스페이스 역할을 합니다.
+   구체적인 예로, 파일 <literal>foo.txt</literal>는 디렉토리<literal>/home/greg</literal> 와 <literal>/home/other</literal>에 각각 존재 할 수 있습니다.
+   하지만, <literal>foo.txt</literal>라는 두개의 사본은 동일한 디렉토리에 동시에 존재할 수는 없습니다. 게다가 <literal>/home/greg</literal> 디렉토리 바깥에서 <literal>foo.txt</literal> 파일에 접근하려면,
+   디렉토리 구분자와 함께 파일 이름 앞에 디렉토리 이름을 붙여서 <literal>/home/greg/foo.txt</literal> 처럼 접근해야 합니다.
+   이와 같은 원칙은 프로그래밍 세계에서 네임스페이스로 확장됩니다.
   </simpara>
   <simpara>
    In the PHP world, namespaces are designed to solve two problems that authors
@@ -40,7 +38,7 @@
    </orderedlist>
   </para>
   <simpara>
-   PHP Namespaces provide a way in which to group related classes,
+   PHP Namespaces provide a way in which to group related classes, interfaces, 
    functions and constants.  Here is an example of namespace syntax in PHP:
   </simpara>
   <example>
@@ -68,16 +66,21 @@ echo constant($d); // see "Namespaces and dynamic language features" section
     ]]>
    </programlisting>
   </example>
-  <simpara>
-   Namespaces are available in PHP as of PHP 5.3.0.
-  </simpara>
+  <note>
+   <para>
+    Namespace names <literal>PHP</literal> and <literal>php</literal>, and compound names starting
+    with these names (like <literal>PHP\Classes</literal>) are reserved for internal language use 
+    and should not be used in the userspace code. 
+   </para>
+  </note>
  </sect1>
 
  <sect1 xml:id="language.namespaces.definition">
   <title>Defining namespaces</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
-   Although any valid PHP code can be contained within a namespace, only three
-   type of code are affected by namespaces: classes, functions and constants.
+   Although any valid PHP code can be contained within a namespace, only the following
+   types of code are affected by namespaces: classes (including abstracts and traits), interfaces, functions and constants.
   </para>
   <para>
    Namespaces are declared using the <literal>namespace</literal>
@@ -121,6 +124,7 @@ namespace MyProject; // fatal error - namespace must be the first statement in t
  </sect1>
  <sect1 xml:id="language.namespaces.nested">
   <title>Declaring sub-namespaces</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    Much like directories and files, PHP namespaces also contain the ability to specify
    a hierarchy of namespace names.  Thus, a namespace name can be defined with
@@ -147,6 +151,7 @@ function connect() { /* ... */  }
  </sect1>
  <sect1 xml:id="language.namespaces.definitionmultiple">
   <title>Defining multiple namespaces in the same file</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    Multiple namespaces may also be declared in the same file.  There are two allowed
    syntaxes.
@@ -261,6 +266,7 @@ echo MyProject\Connection::start();
  </sect1>
  <sect1 xml:id="language.namespaces.basics">
   <title>Using namespaces: Basics</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    Before discussing the use of namespaces, it is important to understand how PHP
    knows which namespaced element your code is requesting.  A simple analogy can be made
@@ -406,6 +412,7 @@ $c = new \Exception('error'); // instantiates global class Exception
  </sect1>
  <sect1 xml:id="language.namespaces.dynamic">
   <title>Namespaces and dynamic language features</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    PHP's implementation of namespaces is influenced by its dynamic nature as a programming
    language.  Thus, to convert code like the following example into namespaced code:
@@ -491,6 +498,7 @@ echo constant('namespacename\constname'), "\n"; // also prints namespaced
  </sect1>
  <sect1 xml:id="language.namespaces.nsconstants">
   <title>namespace keyword and __NAMESPACE__ constant</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    PHP supports two ways of abstractly accessing elements within the current namespace,
    the <constant>__NAMESPACE__</constant> magic constant, and the <literal>namespace</literal>
@@ -552,7 +560,7 @@ function get($classname)
 <?php
 namespace MyProject;
 
-use blah\blah as mine; // see "Using namespaces: importing/aliasing"
+use blah\blah as mine; // see "Using namespaces: Aliasing/Importing"
 
 blah\mine(); // calls function MyProject\blah\mine()
 namespace\blah\mine(); // calls function MyProject\blah\mine()
@@ -585,19 +593,21 @@ $b = namespace\CONSTANT; // assigns value of constant CONSTANT to $b
  </sect1>
  <sect1 xml:id="language.namespaces.importing">
   <title>Using namespaces: Aliasing/Importing</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    The ability to refer to an external fully qualified name with an alias, or importing,
    is an important feature of namespaces.  This is similar to the
    ability of unix-based filesystems to create symbolic links to a file or to a directory.
   </para>
   <para>
-   PHP namespaces support
-   two kinds of aliasing or importing: aliasing a class name, and aliasing a namespace name.
-   Note that importing a function or constant is not supported.
+   All versions of PHP that support namespaces support three kinds of aliasing
+   or importing: aliasing a class name, aliasing an interface name, and
+   aliasing a namespace name. PHP 5.6+ also allows aliasing or importing
+   function and constant names.
   </para>
   <para>
    In PHP, aliasing is accomplished with the <literal>use</literal> operator.  Here
-   is an example showing all 3 kinds of importing:
+   is an example showing all 5 kinds of importing:
    <example>
     <title>importing/aliasing with the use operator</title>
     <programlisting role="php">
@@ -610,13 +620,24 @@ use My\Full\Classname as Another;
 use My\Full\NSname;
 
 // importing a global class
-use \ArrayObject;
+use ArrayObject;
+
+// importing a function (PHP 5.6+)
+use function My\Full\functionName;
+
+// aliasing a function (PHP 5.6+)
+use function My\Full\functionName as func;
+
+// importing a constant (PHP 5.6+)
+use const My\Full\CONSTANT;
 
 $obj = new namespace\Another; // instantiates object of class foo\Another
 $obj = new Another; // instantiates object of class My\Full\Classname
 NSname\subns\func(); // calls function My\Full\NSname\subns\func
 $a = new ArrayObject(array(1)); // instantiates object of class ArrayObject
-// without the "use \ArrayObject" we would instantiate an object of class foo\ArrayObject
+// without the "use ArrayObject" we would instantiate an object of class foo\ArrayObject
+func(); // calls function My\Full\functionName
+echo CONSTANT; // echoes the value of My\Full\CONSTANT
 ?>
 ]]>
     </programlisting>
@@ -624,7 +645,7 @@ $a = new ArrayObject(array(1)); // instantiates object of class ArrayObject
    Note that for namespaced names (fully qualified namespace names containing
    namespace separator, such as <literal>Foo\Bar</literal> as opposed to global names that
    do not, such as <literal>FooBar</literal>), the leading backslash is unnecessary and not
-   allowed, as import names
+   recommended, as import names
    must be fully qualified, and are not processed relative to the current namespace.
   </para>
   <para>
@@ -681,9 +702,46 @@ $obj = new \Another\thing; // instantiates object of class Another\thing
     </programlisting>
    </example>
   </para>
+  <sect2 xml:id="language.namespaces.importing.scope">
+   <title>Scoping rules for importing</title>
+   <para>
+    The <literal>use</literal> keyword must be declared in the 
+    outermost scope of a file (the global scope) or inside namespace 
+    declarations. This is because the importing is done at compile 
+    time and not runtime, so it cannot be block scoped. The following 
+    example will show an illegal use of the <literal>use</literal> 
+    keyword:
+   </para>
+   <para>
+    <example>
+     <title>Illegal importing rule</title>
+     <programlisting role="php">
+<![CDATA[
+<?php
+namespace Languages;
+
+class Greenlandic
+{
+    use Languages\Danish;
+
+    ...
+}
+?>
+]]>
+     </programlisting>
+    </example>
+   </para>
+   <note>
+    <para>
+     Importing rules are per file basis, meaning included files will 
+     <emphasis>NOT</emphasis> inherit the parent file's importing rules.
+    </para>
+   </note>
+  </sect2>
  </sect1>
  <sect1 xml:id="language.namespaces.global">
   <title>Global space</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    Without any namespace definition, all class and function definitions are
    placed into the global space - as it was in PHP before namespaces were
@@ -711,11 +769,12 @@ function fopen() {
  </sect1>
  <sect1 xml:id="language.namespaces.fallback">
   <title>Using namespaces: fallback to global function/constant</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
-   Inside a namespace, when PHP encounters a unqualified Name in a class name, function or
+   Inside a namespace, when PHP encounters an unqualified Name in a class name, function or
    constant context, it resolves these with different priorities.  Class names always
    resolve to the current namespace name.  Thus to access internal or non-namespaced
-   user classes, One must refer to them with their fully qualified Name as in:
+   user classes, one must refer to them with their fully qualified Name as in:
    <example>
     <title>Accessing global classes inside a namespace</title>
     <programlisting role="php">
@@ -767,6 +826,7 @@ if (is_array('hi')) { // prints "is not array"
 
  <sect1 xml:id="language.namespaces.rules">
   <title>Name resolution rules</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    For the purposes of these resolution rules, here are some important definitions:
    <variablelist>
@@ -791,9 +851,9 @@ if (is_array('hi')) { // prints "is not array"
      <term>Fully qualified name</term>
      <listitem>
       <para>
-       This is an identifier with a namespace separator that begins with a namespace
-       separator, such as <literal>\Foo\Bar</literal>.  <literal>namespace\Foo</literal>
-       is also a fully qualified name.
+       This is an identifier with a namespace separator that begins with a
+       namespace separator, such as <literal>\Foo\Bar</literal>. The namespace
+       <literal>\Foo</literal> is also a fully qualified name.
       </para>
      </listitem>
     </varlistentry>
@@ -958,7 +1018,7 @@ D::foo();   // using import rules, calls method "foo" of class "D" defined in na
 A\B::foo();   // calls method "foo" of class "B" from namespace "A\A"
               // if class "A\A\B" not found, it tries to autoload class "A\A\B"
 
-\A\B::foo();  // calls method "foo" of class "B" from namespace "A\B"
+\A\B::foo();  // calls method "foo" of class "B" from namespace "A"
               // if class "A\B" not found, it tries to autoload class "A\B"
 ?>
 ]]>
@@ -967,6 +1027,7 @@ A\B::foo();   // calls method "foo" of class "B" from namespace "A\A"
  </sect1>
  <sect1 xml:id="language.namespaces.faq">
   <title>FAQ: things you need to know about namespaces</title>
+  <?phpdoc print-version-for="namespaces"?>
   <para>
    This FAQ is split into two sections: common questions, and some specifics of
    implementation that are helpful to understand fully.
@@ -1078,6 +1139,7 @@ A\B::foo();   // calls method "foo" of class "B" from namespace "A\A"
 <![CDATA[
 <?php
 $a = new \stdClass;
+?>
 ]]>
      </programlisting>
     </example>
@@ -1092,6 +1154,7 @@ $a = new \stdClass;
 <![CDATA[
 <?php
 $a = new stdClass;
+?>
 ]]>
      </programlisting>
     </example>
@@ -1274,7 +1337,7 @@ function my() {}
 function foo() {}
 function sort(&$a)
 {
-    sort($a);
+    \sort($a); // calls the global function "sort"
     $a = array_flip($a);
     return $a;
 }
@@ -1414,10 +1477,10 @@ name\func();
      <programlisting role="php">
       <![CDATA[
 <?php
-$a = new "dangerous\name"; // \n is a newline inside double quoted strings!
+$a = "dangerous\name"; // \n is a newline inside double quoted strings!
 $obj = new $a;
 
-$a = new 'not\at\all\dangerous'; // no problems here.
+$a = 'not\at\all\dangerous'; // no problems here.
 $obj = new $a;
 ?>
       ]]>
