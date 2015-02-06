@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 298760 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 331319 Maintainer: progcom Status: ready -->
 
 <!-- Part title used mostly in manual.xml itself -->
 <!ENTITY PHPManual         "PHP 매뉴얼">
@@ -41,13 +41,21 @@
 <!ENTITY ServerSpecificExtentions        "특정 서버 확장">
 <!ENTITY SearchEngineExtentions            "검색 엔진 확장">
 <!ENTITY MiscExtentions                "기타 확장">
+<!ENTITY Appendices        "부록">
 <!ENTITY PEAR              "PEAR: PHP 확장 및 어플리케이션 저장소">
 <!ENTITY FAQ               "FAQ: 자주 물어보는 질문들">
 <!ENTITY FAQabbrev         "FAQ">
 <!ENTITY Internals         "PHP와 Zend 엔진 내부">
 <!ENTITY Internals2        "PHP 코어: Zend 엔진 해커 가이드">
 <!ENTITY ZendAPI           "Zend API: PHP 코어 해킹">
-<!ENTITY FunctionIndex     "함수 인덱스">
+<!ENTITY IndexListing      "인덱스 목록">
+<!ENTITY FunctionListing   "함수와 메소드 목록">
+<!ENTITY FunctionListingDescription   "매뉴얼의 모든 함수와 메소드 목록">
+<!ENTITY ExampleListing    "예제 목록">
+<!ENTITY ExampleListingDescription   "매뉴얼의 모든 예제 목록">
+<!ENTITY ChangelogListingTitle "변경점">
+<!ENTITY ChangelogListingDescription "이 확장의 클래스/함수/메소드에 다음과 같은 변경이 이루어졌습니다.">
+<!ENTITY ChangelogListingBundledDescription "번들 확장 함수에 다음과 같은 변경이 이루어졌습니다.">
 <!ENTITY CHMEdition        "HTML 도움말 에디션">
 <!ENTITY ReservedConstants "예약 상수">
 <!ENTITY MissingStuff      "빠진 내용">
@@ -68,10 +76,10 @@
 <!ENTITY InheritedProperties "상속된 프로퍼티">
 <!ENTITY Properties        "프로퍼티">
 <!ENTITY Constants         "상수">
+<!ENTITY NotAvailable      "사용할 수 없음">
 
 <!-- These are using in reference/$extname/reference.xml and other
 supplemental files to mark section titles -->
-<!ENTITY reftitle.changelog    '<title xmlns="http://docbook.org/ns/docbook">&Changelog;</title>'>
 <!ENTITY reftitle.classes      '<title xmlns="http://docbook.org/ns/docbook">예약 클래스</title>'>
 <!ENTITY reftitle.classsynopsis '<title xmlns="http://docbook.org/ns/docbook">클래스 개요</title>'>
 <!ENTITY reftitle.constants    '<title xmlns="http://docbook.org/ns/docbook">예약 상수</title>'>
@@ -80,8 +88,7 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.encoding     '<title xmlns="http://docbook.org/ns/docbook">인코딩</title>'>
 <!ENTITY reftitle.examples     '<title xmlns="http://docbook.org/ns/docbook">예제</title>'>
 <!ENTITY reftitle.exceptions   '<title xmlns="http://docbook.org/ns/docbook">예외</title>'>
-<!ENTITY reftitle.errors       '<title xmlns="http://docbook.org/ns/docbook">오류/예외</title>'>
-<!ENTITY reftitle.faq          '<title xmlns="http://docbook.org/ns/docbook">&FAQ;</title>'>
+<!ENTITY reftitle.errors       '<title xmlns="http://docbook.org/ns/docbook">오류/예외</title>'><!ENTITY reftitle.faq          '<title xmlns="http://docbook.org/ns/docbook">&FAQ;</title>'>
 <!ENTITY reftitle.install      '<title xmlns="http://docbook.org/ns/docbook">설치</title>'>
 <!ENTITY reftitle.intro        '<title xmlns="http://docbook.org/ns/docbook">소개</title>'>
 <!ENTITY reftitle.indices      '<title xmlns="http://docbook.org/ns/docbook">인덱스</title>'>
@@ -98,4 +105,4 @@ supplemental files to mark section titles -->
 <!ENTITY reftitle.seealso      '<title xmlns="http://docbook.org/ns/docbook">참고</title>'>
 <!ENTITY reftitle.setup        '<title xmlns="http://docbook.org/ns/docbook">설치/설정</title>'>
 <!ENTITY reftitle.unicode      '<title xmlns="http://docbook.org/ns/docbook">유니코드</title>'>
-
+<!ENTITY reftitle.usage        '<title xmlns="http://docbook.org/ns/docbook">사용법</title>'>
