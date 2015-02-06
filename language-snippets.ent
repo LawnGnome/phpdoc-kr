@@ -429,7 +429,7 @@ image</parameter></term><listitem><para><function>imagecreatetruecolor</function
 자원.</para></listitem></varlistentry>'>
 
 <!ENTITY gd.font.description '<varlistentry xmlns="http://docbook.org/ns/docbook"><term><parameter>
-font</parameter></term><listitem><para>litin2 인코딩의 내장
+font</parameter></term><listitem><para>latin2 인코딩의 내장
 글꼴 1, 2, 3, 4, 5(큰 숫자가 큰 글꼴)나 <function>imageloadfont</function>로
 등록한 글꼴 식별자를 사용할 수 있습니다.</para></listitem></varlistentry>'>
 
@@ -792,11 +792,17 @@ Easy Connect naming 방식을 사용하려면, PHP가 오라클 10<emphasis>g</e
 <filename>$ORACLE_HOME/network/admin</filename>과 <filename>/etc</filename> 등을 포함합니다. <literal>TNS_ADMIN</literal>을 설정하여 <filename>$TNS_ADMIN/tnsnames.ora</filename>를 읽게 할 수도 있습니다. 웹 데몬이 이 파일에 읽기 권한을 가지도록 설정하십시오.
 </para>">
 
-<!ENTITY oci.charset "<para xmlns='http://docbook.org/ns/docbook'>오라클 서버 버전 9.2 이상을 사용하면, 새로운 연결에
-사용할 <parameter>charset</parameter> 인수를 지정할 수 있습니다. 오라클 서버
-&lt; 9.2를 사용한다면, 이 인수는 무시되고, 대신 <literal>NLS_LANG</literal>
-환경 변수를 사용합니다.</para>
-<para xmlns='http://docbook.org/ns/docbook'>인수를 사용하면 접속에 필요한
+<!ENTITY oci.charset "<para
+xmlns='http://docbook.org/ns/docbook'>오라클 클라이언트 라이브러리가
+사용할 문자셋을 결정합니다. 이 문자셋은 데이터베이스 문자셋과 일치하지 않아도
+됩니다. 일치하지 않을 경우, 오라클이 데이베이스 문자셋과 데이터 변환을
+수행합니다. 문자셋에 의존하는 것은 유용한 결과가 아닐 수 있습니다. 또한
+변환 수행을 위한 시간 오버헤드가 추가됩니다.
+</para>
+<para xmlns='http://docbook.org/ns/docbook'>지정하지 않을 경우,
+오라클 클라이언트 라이브러리는
+<constant>NLS_LANG</constant> 환경 변수를 통해 문자 셋을 결정합니다.</para>
+<para xmlns='http://docbook.org/ns/docbook'>이 인수를 사용하면 접속에 필요한
 시간을 줄일 수 있습니다.
 </para>">
 
@@ -835,12 +841,6 @@ security reasons.
 <!ENTITY oci.datatypes '<para xmlns="http://docbook.org/ns/docbook">oci8 드라이버에서 수행하는 자료형 매핑에 대한
 상세는 <link linkend="oci8.datatypes">드라이버가 지원하는 자료형</link>을
 참고하십시오.</para>'>
-
-<!ENTITY oci.datatypes '<para
-xmlns="http://docbook.org/ns/docbook">For details on the data type
-mapping performed by
-the OCI8 extension, see the <link linkend="oci8.datatypes">datatypes
- supported by the driver</link></para>'>
 
 <!ENTITY oci.parameter.connection '<para
 xmlns="http://docbook.org/ns/docbook"><function>oci_connect</function>,
