@@ -415,7 +415,9 @@ linkend="language.types.boolean">논리형</link> 섹션을 참고하십시오.
 컴파일해야 합니다. (<option
 role="configure">--with-freetype-dir=DIR</option>)</simpara></note>'>
 
-<!ENTITY note.gd.2 '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 GD 이미지 라이브러리가
+<!ENTITY note.gd.2 '<note xmlns="http://docbook.org/ns/docbook"><simpara>이 함수는 GD 2.0.1 이후 버전이 필요합니다. (2.0.28 이후를 권장합니다)</simpara></note>'>
+
+<!ENTITY note.gd.notrequired '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 GD 이미지 라이브러리가
 필요하지 않습니다.</para></note>'>
 
 <!ENTITY note.gd.interpolation '<note xmlns="http://docbook.org/ns/docbook"><para>이 함수는 <function>imagesetinterpolation</function>으로
@@ -682,6 +684,8 @@ obejct</parameter></term><listitem><para>절차식 전용:
 <!ENTITY date.timezone.pacific '태평양'>
 <!ENTITY date.timezone.othres '기타'>
 
+<!ENTITY date.formats '유효한 형식은 <link xmlns="http://docbook.org/ns/docbook" linkend="datetime.formats">날짜와 시간 형식</link>에서 설명하고 있습니다.'>
+<!ENTITY date.formats.parameter '날짜/시간 문자열. &date.formats;'>
 
 <!-- DomXml Notes -->
 <!ENTITY node.inserted '이 노드는 <function xmlns="http://docbook.org/ns/docbook">domnode_append_child</function>
