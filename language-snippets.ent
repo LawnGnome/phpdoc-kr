@@ -346,7 +346,7 @@ linkend="ini.register-long-arrays">register_long_arrays</link> 지시어로
 추가하기</link>"에 관한 <acronym xmlns="http://docbook.org/ns/docbook">FAQ</acronym>을 참고하십시오. DLL 파일을 PHP
 폴더에서 윈도우 시스템 디렉토리로 복사하여도 작동하지만(시스템 디렉토리는
 기본적으로 시스템 <envar xmlns="http://docbook.org/ns/docbook">PATH</envar>에 존재하기 때문), 권장하지 않습니다.
-<emphasis>이 확장은 다음 파일이 <envar xmlns="http://docbook.org/ns/docbook">PATH</envar> 상에 존재하여야
+<emphasis xmlns="http://docbook.org/ns/docbook">이 확장은 다음 파일이 <envar>PATH</envar> 상에 존재하여야
 합니다:</emphasis> '>
 
 <!ENTITY manual.migration.seealso 'PHP 버전에 맞는 이행 가이드를
