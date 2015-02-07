@@ -1,4 +1,5 @@
-<!-- EN-Revision: 290424 Maintainer: progcom Status: ready -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- EN-Revision: 331319 Maintainer: progcom Status: ready -->
 
 <!--
   Entities for the categorized extension list, so it does not need
@@ -30,7 +31,7 @@
 <!ENTITY extcat.purpose.webservice '<title xmlns="http://docbook.org/ns/docbook">웹 서비스</title>'>
 
 <!ENTITY extcat.purpose.creditcard '<title xmlns="http://docbook.org/ns/docbook">신용카드 처리</title>'>
-   
+
 <!ENTITY extcat.purpose.mathcrypto '<title xmlns="http://docbook.org/ns/docbook">수학과 암호화</title>'>
 <!ENTITY extcat.purpose.mathcrypto.math '<title xmlns="http://docbook.org/ns/docbook">수학 확장</title>'>
 <!ENTITY extcat.purpose.mathcrypto.crypto '<title xmlns="http://docbook.org/ns/docbook">암호화 확장</title>'>
@@ -69,13 +70,13 @@
 <!ENTITY extcat.membership.bundled '<title xmlns="http://docbook.org/ns/docbook">번들 확장</title><para xmlns="http://docbook.org/ns/docbook">이 확장은
 PHP에 번들됩니다.</para>'>
 
-<!ENTITY extcat.membership.external '<title xmlns="http://docbook.org/ns/docbook">외부 확장</title><para xmlns="http://docbook.org/ns/docbook">이 확장을
-컴파일 하려면, 외부 라이브러리가 필요합니다.</para>'>
+<!ENTITY extcat.membership.external '<title xmlns="http://docbook.org/ns/docbook">외부 확장</title><para xmlns="http://docbook.org/ns/docbook">이 확장들은 PHP에 번들되지만,
+컴파일할 때는 외부 라이브러리가 필요합니다.</para>'>
 
 <!ENTITY extcat.membership.pecl '<title xmlns="http://docbook.org/ns/docbook">PECL 확장</title><para xmlns="http://docbook.org/ns/docbook">이 확장은 <link
 xmlns:xlink="http://www.w3.org/1999/xlink"
-xlink:href="&url.pecl;">PECL</link>에서 받을 수 있습니다. PHP 매뉴얼에 없는
-더 많은 PECL 확장이 존재합니다.</para>'>
+xlink:href="&url.pecl;">PECL</link>에서 받을 수 있습니다. 외부 라이브러리가 필요할 수도 있습니다. PHP 매뉴얼에 기재되지 않은
+많은 PECL 확장이 존재합니다.</para>'>
 
 <!-- ======================================================================= -->
 
@@ -87,7 +88,6 @@ xlink:href="&url.pecl;">PECL</link>에서 받을 수 있습니다. PHP 매뉴얼
 다른 확장의 기능으로 인하여 배제될 확장입니다.</para>'>
 
 <!ENTITY extcat.state.experimental '<title xmlns="http://docbook.org/ns/docbook">실험적 확장</title><para xmlns="http://docbook.org/ns/docbook">이 확장의
-작동-함수 이름과 확장에 대한 문서를 포함한 모든 것-은 PHP 다음 버전에서 아무런
+동작-함수 이름과 확장에 대한 문서를 포함한 모든 것-은 PHP 다음 버전에서 아무런
 설명 없이 변경될 수 있습니다. 이 확장으로 인한 문제는 스스로 책임져야
 합니다.</para>'>
-
