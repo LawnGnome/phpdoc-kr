@@ -1,42 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: n/a Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 335965 Maintainer: progcom Status: ready -->
  <chapter xml:id="language.exceptions" xmlns="http://docbook.org/ns/docbook">
   <title>예외</title>
 
-  <para>
-   PHP 5는 다른 프로그래밍 언어와 유사한 예외 모델을 가지고 있습니다. 예외는
-   <literal>throw</literal>해서, PHP 안에서 잡을("<literal>catch</literal>")
-   수 있습니다. 잠재적인 예외를 쉽게 잡기 위해서 코드를 <literal>try</literal>
-   블럭으로 감쌀 수 있습니다. 각 <literal>try</literal>는 최소한 하나의
-   해당하는 <literal>catch</literal> 블럭을 가져야 합니다. 여러
-   <literal>catch</literal> 블럭은 각각 다른 예외 클래스를 잡을 수 있습니다.
-   일반적인 실행(<literal>try</literal> 블럭에서 예외를 던지지 않거나, 던져진
-   예외 클래스에 해당하는 <literal>catch</literal>가 없을 경우)은 마지막 catch
-   블럭 정의 이후로 진행합니다. 예외는 <literal>catch</literal> 블럭 안에서
-   <literal>throw</literal>할(또는 다시 던질) 수 있습니다.
+  <sect1 xml:id="language.exceptions.extending">
+   <title>예외 확장하기</title>
+   <para>
+    내장 Exception 클래스를 확장하여 사용자 정의 예외 클래스를 정의할 수
+    있습니다. 내장 Exception 클래스를
+    상속한 자식 클래스에서 다음 멤버와 프로퍼티에 접근할 수 있습니다.
+   </para>
+   <example>
+    <title>내장 Exception 클래스</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+class Exception
+{
+    protected $message = 'Unknown exception';   // 예외 메시지
+    private   $string;                          // __toString 캐시
+    protected $code = 0;                        // 사용자 정의 예외 코드
+    protected $file;                            // 예외가 발생한 소스 파일 이름
+    protected $line;                            // 예외가 발생한 소스 라인
+    private   $trace;                           // backtrace
+    private   $previous;                        // 중첩 예외의 경우 이전 예외
+
+    public function __construct($message = null, $code = 0, Exception $previous = null);
+
+    final private function __clone();           // 예외의 복제를 금지합니다.
+
+    final public  function getMessage();        // 예외 메시지
+    final public  function getCode();           // 예외 코드
+    final public  function getFile();           // 소스 파일 이름
+    final public  function getLine();           // 소스 라인
+    final public  function getTrace();          // backtrace() 배열
+    final public  function getPrevious();       // 이전 예외
+    final public  function getTraceAsString();  // trace의 형식화 문자열 
+
+    // Overrideable
+    public function __toString();               // 출력을 위한 형식화 문자열
+}
+?>
+]]>
+    </programlisting>
+   </example>
+   <para>
+    클래스가 내장 Exception 클래스를 상속받아 <link
+     linkend="language.oop5.decon">생성자</link>를 재정의 할 경우에는, <link
+     linkend="language.oop5.paamayim-nekudotayim">parent::__construct()</link>를
+    호출하여 모든 사용가능한 데이터가 적합하게 할당될 수 있도록 하길 권합니다.
+    <link linkend="language.oop5.magic">__toString()</link> 메쏘드를 덮어써서,
+    객체가 문자열로 표현될 때 사용자 출력을 제공할 수 있습니다.
+   </para>
+   <note>
+    <para>
+     예외는 복제할 수 없습니다. 예외에 대하여 <link
+     linkend="language.oop5.cloning">clone</link>을 하려 경우
+     치명적인 <constant>E_ERROR</constant> 오류가 발생합니다.
+    </para>
+   </note>
+   <example>
+    <title>Exception 클래스 확장하기 (PHP 5.3.0+)</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * 사용자 예외 클래스 정의하기
+ */
+class MyException extends Exception
+{
+    // 예외를 재정의해서 메시지를 필수값으로 만듭니다
+    public function __construct($message, $code = 0, Exception $previous = null) {
+        // 처리할 코드
+    
+        // 모든 값이 할당되도록 합니다
+        parent::__construct($message, $code, $previous);
+    }
+
+    // 객체의 사용자 문자열 표현
+    public function __toString() {
+        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
+    }
+
+    public function customFunction() {
+        echo "A custom function for this type of exception\n";
+    }
+}
+
+
+/**
+ * 예외를 테스트할 클래스를 작성합니다
+ */
+class TestException
+{
+    public $var;
+
+    const THROW_NONE    = 0;
+    const THROW_CUSTOM  = 1;
+    const THROW_DEFAULT = 2;
+
+    function __construct($avalue = self::THROW_NONE) {
+
+        switch ($avalue) {
+            case self::THROW_CUSTOM:
+                // throw custom exception
+                throw new MyException('1 is an invalid parameter', 5);
+                break;
+
+            case self::THROW_DEFAULT:
+                // throw default one.
+                throw new Exception('2 is not allowed as a parameter', 6);
+                break;
+
+            default: 
+                // No exception, object will be created.
+                $this->var = $avalue;
+                break;
+        }
+    }
+}
+
+
+// 예제 1
+try {
+    $o = new TestException(TestException::THROW_CUSTOM);
+} catch (MyException $e) {      // Will be caught
+    echo "Caught my exception\n", $e;
+    $e->customFunction();
+} catch (Exception $e) {        // Skipped
+    echo "Caught Default Exception\n", $e;
+}
+
+// 계속 실행
+var_dump($o); // Null
+echo "\n\n";
+
+
+// 예제 2
+try {
+    $o = new TestException(TestException::THROW_DEFAULT);
+} catch (MyException $e) {      // Doesn't match this type
+    echo "Caught my exception\n", $e;
+    $e->customFunction();
+} catch (Exception $e) {        // Will be caught
+    echo "Caught Default Exception\n", $e;
+}
+
+// 계속 실행
+var_dump($o); // Null
+echo "\n\n";
+
+
+// 예제 3
+try {
+    $o = new TestException(TestException::THROW_CUSTOM);
+} catch (Exception $e) {        // Will be caught
+    echo "Default Exception caught\n", $e;
+}
+
+// 계속 실행
+var_dump($o); // Null
+echo "\n\n";
+
+
+// 예제 4
+try {
+    $o = new TestException();
+} catch (Exception $e) {        // Skipped, no exception
+    echo "Default Exception caught\n", $e;
+}
+
+// 계속 실행
+var_dump($o); // TestException
+echo "\n\n";
+?>
+]]>
+    </programlisting>
+    <note>
+     <para>
+      PHP 5.3.0 미만의 PHP 5 버전에서는 예외 중첩을 지원하지 않습니다.
+      이 예제를 실행하기 위해서 MyException 클래스를 교체하는
+      다음 코드 조각을 사용할 수 있습니다.
+     </para>
+     <programlisting role="php">
+<![CDATA[
+<?php
+/**
+ * 사용자 예외 클래스 정의하기
+ */
+class MyException extends Exception
+{
+    // 예외를 재정의해서 메시지를 필수값으로 만듭니다
+    public function __construct($message, $code = 0) {
+        // 처리할 코드
+    
+        // 모든 값이 할당되도록 합니다
+        parent::__construct($message, $code);
+    }
+
+    // 객체의 사용자 문자열 표현
+    public function __toString() {
+        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
+    }
+
+    public function customFunction() {
+        echo "A custom function for this type of exception\n";
+    }
+}
+?>
+]]>
+     </programlisting>
+    </note>
+   </example>
+  </sect1>
+
+  <simplesect xml:id="language.exceptions.introduction">
+   <para>
+    PHP 5는 다른 프로그래밍 언어와 유사한 예외 모델을 가지고 있습니다. 예외를
+    &throw;해서, PHP 안에서 잡을(&catch;)
+    수 있습니다. 잠재적인 예외를 잡기 위해서 코드를 
+    &try; 블록으로 감쌀 수 있습니다. 각 &try;는 최소한 하나의
+    &catch;나 &finally; 블록을 가져야 합니다.
+   </para>
+   
+   <para>
+    던지는 객체는 반드시 <classname>Exception</classname> 클래스나
+    <classname>Exception</classname>의 자식 클래스이여야 합니다.
+    다른 객체를 던질 경우 PHP Fatal 오류를 발생합니다.
+   </para>
+  </simplesect>
+  
+  <simplesect xml:id="language.exceptions.catch">
+   <title><literal>catch</literal></title>
+   <para>
+    여러 &catch; 블록이 각각 다른 예외 클래스를 잡을 수 있습니다.
+    일반적인 실행(&try; 블록에서 예외를 던지지 않거나, 던져진
+    예외 클래스에 해당하는 &catch;가 존재하지 않을 경우)에서는
+    마지막 &catch; 블록 정의 이후로 진행합니다.
+    예외는 &catch; 블록 안에서 (다시) &throw;할 수 있습니다.
   </para>
   <para>
-   예외가 던져지면, 따라오는 구문은 실행되지 않고, PHP는 첫번째 해당하는
-   <literal>catch</literal> 블럭을 찾습니다. 예외를 잡지 않으면,
-   <function>set_exception_handler</function>로 핸들러를 정의하지 않는 한,
-   "<literal>Uncaught Exception ...</literal>" 메세지로 PHP Fatal Error가
-   발생합니다. 
+   예외가 던져지면, 따라오는 구문은 실행되지 않고, PHP는 해당하는 첫번째
+   &catch; 블록을 찾습니다.
+   예외가 잡히지 않으면, "<literal>Uncaught Exception ...</literal>" 메세지로
+   PHP Fatal Error가 발생합니다. 
+   <function>set_exception_handler</function>로 핸들러를 정의하여
+   해당 오류를 처리할 수 있습니다.
   </para>
-  <note>
+  </simplesect>
+
+  <simplesect xml:id="language.exceptions.finally">
+   <title><literal>finally</literal></title>
    <para>
-    내부 PHP 함수는 주로 <link linkend="ini.error-reporting">오류
-     보고</link>를 사용합니다. 최근의 <link linkend="language.oop5">객체
-     지향</link> 확장만 예외를 사용합니다. 그러나, 오류는 간단히 <link
-     linkend="class.errorexception">ErrorException</link>으로 변환할 수
-    있습니다.
+    PHP 5.5 이후 부터 &catch; 블록 이후 또는 대신하여 &finally; 블록을
+    지정할 수 있습니다. &finally; 블록은 예외 발생 유무와 관계 없이
+    &try;와 &catch; 블록 이후에 항상 실행됩니다.
    </para>
-  </note>
-  <tip>
-   <para>
-    <link linkend="intro.spl">표준 PHP 라이브러리(SPL)</link>는 좋은 내장
-    예외를 제공합니다.
-   </para>
-  </tip>
+  </simplesect>
+
+  <simplesect xml:id="language.exceptions.notes">
+   &reftitle.notes;
+  
+   <note>
+    <para>
+     내부 PHP 함수는 주로 <link linkend="ini.error-reporting">오류
+     보고</link>를 사용합니다. 최근의
+     <link linkend="language.oop5">객체 지향</link> 확장만이
+     예외를 사용합니다. 그러나, 오류는 <link
+     linkend="class.errorexception">ErrorException</link>을
+     사용하여 간단히 예외로 변환할 수 있습니다.
+    </para>
+   </note>
+   <tip>
+    <para>
+     <link linkend="intro.spl">표준 PHP 라이브러리(SPL)</link>는
+     여러 가지 <link linkend="spl.exceptions">내장 예외</link>를
+     제공합니다.
+    </para>
+   </tip>
+  </simplesect>
+
+  <simplesect xml:id="language.exceptions.examples">
+   &reftitle.examples;
+   
    <example>
     <title>예외 던지기</title>
     <programlisting role="php">
@@ -46,7 +292,7 @@ function inverse($x) {
     if (!$x) {
         throw new Exception('Division by zero.');
     }
-    else return 1/$x;
+    return 1/$x;
 }
 
 try {
@@ -57,7 +303,7 @@ try {
 }
 
 // 계속 실행
-echo 'Hello World';
+echo "Hello World\n";
 ?>
 ]]>
     </programlisting>
@@ -71,7 +317,51 @@ Hello World
     </screen>
    </example>
    <example>
-    <title>중첩 에외</title>
+    <title> <literal>finally</literal> 블록과 예외 다루기</title>
+    <programlisting role="php">
+<![CDATA[
+<?php
+function inverse($x) {
+    if (!$x) {
+        throw new Exception('Division by zero.');
+    }
+    return 1/$x;
+}
+
+try {
+    echo inverse(5) . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+} finally {
+    echo "First finally.\n";
+}
+
+try {
+    echo inverse(0) . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+} finally {
+    echo "Second finally.\n";
+}
+
+// 계속 실행
+echo "Hello World\n";
+?>
+]]>
+    </programlisting>
+    &example.outputs;
+    <screen>
+<![CDATA[
+0.2
+First finally.
+Caught exception: Division by zero.
+Second finally.
+Hello World
+]]>
+    </screen>
+   </example>
+   <example>
+    <title>중첩 예외</title>
     <programlisting role="php">
 <![CDATA[
 <?php
@@ -84,7 +374,7 @@ class Test {
             try {
                 throw new MyException('foo!');
             } catch (MyException $e) {
-                /* rethrow it */
+                // rethrow it
                 throw $e;
             }
         } catch (Exception $e) {
@@ -106,169 +396,8 @@ string(4) "foo!"
 ]]>
     </screen>
    </example>
+  </simplesect>
    
-  <sect1 xml:id="language.exceptions.extending">
-   <title>예외 확장하기</title>
-   <para>
-    내장 Exception 클래스를 확장하여 사용자 정의 예외 클래스를 정의할 수
-    있습니다. 멤버와 프로퍼티는 아래에 있습니다. 내장 Exception 클래스에서
-    상속받은 자식 클래스에서 어떤 것에 접근할 수 있는지 확인하십시오.
-   </para>
-   <example>
-    <title>내장 Exception 클래스</title>
-    <programlisting role="php">
-<![CDATA[
-<?php
-class Exception
-{
-    protected $message = 'Unknown exception';   // 예외 메세지
-    protected $code = 0;                        // 사용자 정의 예외 코드
-    protected $file;                            // 예외 소스 파일명
-    protected $line;                            // 예외 소스 줄
-
-    function __construct($message = null, $code = 0);
-
-    final function getMessage();                // 예외 메세지
-    final function getCode();                   // 예외 코드
-    final function getFile();                   // 소스 파일명
-    final function getLine();                   // 소스 줄
-    final function getTrace();                  // backtrace() 배열
-    final function getTraceAsString();          // 추적의 형식화된 문자열
-
-    /* Overrideable */
-    function __toString();                       // 출력용 형식화된 문자열
-}
-?>
-]]>
-    </programlisting>
-   </example>
-   <para>
-    내장 Exception 클래스를 확장해서 <link
-     linkend="language.oop5.decon">생성자</link>를 재정의할 경우에는, <link
-     linkend="language.oop5.paamayim-nekudotayim">parent::__construct()</link>를
-    호출하여 모든 사용가능한 데이터가 적합하게 할당될 수 있도록 하길 권합니다.
-    <link linkend="language.oop5.magic">__toString()</link> 메쏘드를 덮어써서,
-    객체가 문자열로 표현될 때 사용자 출력을 제공할 수 있습니다.
-   </para>
-   <example>
-    <title>Exception 클래스 확장하기</title>
-    <programlisting role="php">
-<![CDATA[
-<?php
-/**
- * 사용자 예외 클래스 정의
- */
-class MyException extends Exception
-{
-    // 예외를 재정의해서 메세지가 필수가 됩니다
-    public function __construct($message, $code = 0) {
-        // some code
-    
-        // 모든 것이 제대로 할당되도록 합니다
-        parent::__construct($message, $code);
-    }
-
-    // 객체의 사용자 문자열 표현
-    public function __toString() {
-        return __CLASS__ . ": [{$this->code}]: {$this->message}\n";
-    }
-
-    public function customFunction() {
-        echo "A Custom function for this type of exception\n";
-    }
-}
-
-
-/**
- * 예외를 시험하는 클래스 생성
- */
-class TestException
-{
-    public $var;
-
-    const THROW_NONE    = 0;
-    const THROW_CUSTOM  = 1;
-    const THROW_DEFAULT = 2;
-
-    function __construct($avalue = self::THROW_NONE) {
-
-        switch ($avalue) {
-            case self::THROW_CUSTOM:
-                // 사용자 예외 던지기
-                throw new MyException('1 is an invalid parameter', 5);
-                break;
-
-            case self::THROW_DEFAULT:
-                // 기본 예외 던지기
-                throw new Exception('2 is not allowed as a parameter', 6);
-                break;
-
-            default: 
-                // 예외 없음, 객체 생성.
-                $this->var = $avalue;
-                break;
-        }
-    }
-}
-
-
-// 예제 1
-try {
-    $o = new TestException(TestException::THROW_CUSTOM);
-} catch (MyException $e) {      // 잡아집니다
-    echo "Caught my exception\n", $e;
-    $e->customFunction();
-} catch (Exception $e) {        // 무시
-    echo "Caught Default Exception\n", $e;
-}
-
-// 계속 실행
-var_dump($o);
-echo "\n\n";
-
-
-// 예제 2
-try {
-    $o = new TestException(TestException::THROW_DEFAULT);
-} catch (MyException $e) {      // 형식에 맞지 않음
-    echo "Caught my exception\n", $e;
-    $e->customFunction();
-} catch (Exception $e) {        // 잡아집니다
-    echo "Caught Default Exception\n", $e;
-}
-
-// 계속 실행
-var_dump($o);
-echo "\n\n";
-
-
-// 예제 3
-try {
-    $o = new TestException(TestException::THROW_CUSTOM);
-} catch (Exception $e) {        // 잡아집니다
-    echo "Default Exception caught\n", $e;
-}
-
-// 계속 실행
-var_dump($o);
-echo "\n\n";
-
-
-// 예제 4
-try {
-    $o = new TestException();
-} catch (Exception $e) {        // 무시, 예외 없음
-    echo "Default Exception caught\n", $e;
-}
-
-// 계속 실행
-var_dump($o);
-echo "\n\n";
-?>
-]]>
-    </programlisting>
-   </example>
-  </sect1>
 
  </chapter>
  
