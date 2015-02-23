@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 297028 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 335796 Maintainer: progcom Status: ready -->
+<!-- CREDITS: TaeL Kim -->
+<!-- Reviewed: yes Maintainer: progcom -->
  <appendix xml:id="debugger" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>PHP에서 디버깅</title>
 
   <sect1 xml:id="debugger-about">
    <title>PHP에서 디버깅에 대하여</title>
    <simpara>
-    PHP는 내부 디버깅 기능을 가지고 있지 않습니다. 다음의 외부 디버거를 사용할
+    PHP 5.6은 <link linkend="migration56.new-features.phpdbg">phpdbg 인터랙티브 디버거</link>를 탑재하고 있습니다.
+    PHP 5.6 미만 버전은 내부 디버깅 기능을 가지고 있지 않습니다. 다음의 외부 디버거를 사용할
     수 있습니다. <link xlink:href="&url.zend.ide;">Zend IDE</link>는 디버거를
     포함하고 있고, 다음과 같은 많은 무료 디버거가 존재합니다. <link
      xlink:href="&url.dbg;">&url.dbg;</link>의 DBG, <link
