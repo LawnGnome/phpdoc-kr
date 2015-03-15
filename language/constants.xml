@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 323859 Maintainer: progcom Status: ready -->
-<!-- CREDITS: fuzzy74 -->
+<!-- CREDITS: fuzzy74,TaeL Kim -->
+<!-- Reviewed: yes Maintainer: acidd15 -->
  <chapter xml:id="language.constants" xmlns="http://docbook.org/ns/docbook">
   <title>상수</title>
-
   <simpara>
    상수는 단순한 값을 위한 식별자(이름)이다. 이름이 제시하는것과 같이,
    이 값은 스크립트 실행중에는 변경될수 없다. (실질적으로 상수가 아닌
@@ -67,10 +67,8 @@ define("__FOO__", "something");
     있습니다. 상수가 한번 정의되면, 변경하거나 해제(undefine)할 수 없습니다.
    </simpara>
    <simpara>
-    상수는 스칼라 데이터(<type>boolean</type>, <type>integer</type>,
-    <type>float</type>, <type>string</type>)만 가질 수 있습니다.
-    <type>resource</type>를 상수로 등록할 수 있지만, 피하십시오. 예상할 수
-    없는 결과를 낳을 수 있습니다.
+   PHP 5.6 이전에는 스칼라 데이터(<type>boolean</type>, <type>integer</type>, 
+    <type>float</type> and <type>string</type>)만 상수로 등록할 수 있습니다. 5.6 이후에는 스칼라 표현식을 상수로 정의할 수 있고, <type>array</type> 또한 등록할 수 있습니다. 또, <type>resource</type>를 상수로 정의할 수는 있지만 예상치 못한 문제를 야기할 수 있으므로 사용하지 않을 것을 권고합니다.
    </simpara>
    <simpara>
     단순히 상수명을 써서 상수값을 얻을 수 있다. 변수와는 달리 
@@ -107,7 +105,8 @@ define("__FOO__", "something");
      </listitem>
      <listitem>
       <simpara>
-       상수는 단순 지정(assingment)이 아니라 <function>define</function>
+        PHP 5.3 이전에는,단순한 할당 연산이 아니라
+       <function>define</function>
        함수로만 정의될수 있다.
       </simpara>
      </listitem>
@@ -124,7 +123,10 @@ define("__FOO__", "something");
      </listitem>
      <listitem>
       <simpara>
-       상수는 스칼라 값만 쓸수 있다.
+       PHP 5.6 이후에서는, 상수는 스칼라 값 혹은 array의 값으로만 평가됩니다.
+       상수 스칼라 표현식에 array를 쓸 수 있습니다.
+       (예를들어,  <literal>const FOO = array(1,2,3)[0];</literal>)
+       하지만 최종 결과는 스칼라 값이어야 합니다.
        </simpara>
      </listitem>
     </itemizedlist>
@@ -155,6 +157,11 @@ echo Constant; // "Constant"를 출력하고 경고가 뜬다.
 const CONSTANT = 'Hello World';
 
 echo CONSTANT;
+
+// PHP 5.6.0 부터 작동
+const ANOTHER_CONST = CONSTANT.'; Goodbye World';
+
+echo ANOTHER_CONST;
 ?>
 ]]>
      </programlisting>
@@ -165,8 +172,10 @@ echo CONSTANT;
     <para>
      <function>define</function>을 통하여 정의하는 상수와 달리,
      <literal>const</literal> 키워드를 통하여 정의하는 상수는 컴파일 시에
-     정의되기에 최상위 영역에서 선언해야 합니다. 함수, 루프,
-     <literal>if</literal> 구문 안에서는 선언할 수 없습니다.
+     정의되기에 최상위 영역에서 선언해야 합니다. 
+     함수, 루프,
+     <literal>if</literal>구문이나 <literal>try</literal>/
+     <literal>catch</literal>블록 안에서는 선언할 수 없습니다.
     </para>
    </note>
 
@@ -212,10 +221,8 @@ echo CONSTANT;
        <row xml:id="constant.file">
         <entry><constant>__FILE__</constant></entry>
         <entry>
-         파일의 전체경로와 파일명. 포함한 파일 안에서 사용하면, 포함된
-         파일명을 반환합니다.. PHP 4.0.2부터, <constant>__FILE__</constant>은
-         언제나 절대 경로를 가지고 있습니다. 이전에는 특정한 경우에서 상대
-         경로를 가지고 있었습니다.
+         심볼릭 링크를 통해 해석된 경우를 포함한 파일의 전체 경로와 이름.
+         include 내부에서 사용할 경우, include된 파일명이 반환됩니다.
         </entry>
        </row>
        <row xml:id="constant.dir">
@@ -224,14 +231,12 @@ echo CONSTANT;
          파일의 디렉토리. 포함한 파일 안에서는, 포함된 파일의 디렉토리를
          반환합니다. 이는 <literal>dirname(__FILE__)</literal>과 동일합니다.
          디렉토리명은 루트 디렉토리가 아닌 이상, 마지막에 슬래시가 없습니다.
-         (PHP 5.3.0에서 추가)
         </entry>
        </row>
        <row xml:id="constant.function">
         <entry><constant>__FUNCTION__</constant></entry>
         <entry>
-         함수명. (PHP 4.3.0에서 추가) PHP 5부터 이 상수는 정의된 그대로의
-         함수명을 반환합니다. (대소문자 구분) PHP 4에서는 항상 소문자였습니다.
+         The function name.
         </entry>
        </row>
        <row xml:id="constant.class">
@@ -240,16 +245,15 @@ echo CONSTANT;
          클래스명. (PHP 4.3.0에서 추가) PHP 5부터 이 상수는 정의된 그대로의
          클래스명을 반환합니다. (대소문자 구분) PHP 4에서는 항상
          소문자였습니다. 클래스명은 선언한 이름공간을 포함합니다. (예.
-         <literal>Foo\Bar</literal>) PHP 5.4부터 __CLASS__는 특성에서도
-         동작합니다. 특성 메소드 안에서 사용할 때, __CLASS__는 특성이 사용되는
+         <literal>Foo\Bar</literal>) PHP 5.4부터 __CLASS__는 trait에서도
+         동작합니다. trait 메소드 안에서 사용할 때, __CLASS__는 trait가 사용되는
          클래스명입니다.
         </entry>
        </row>
        <row xml:id="constant.trait">
         <entry><constant>__TRAIT__</constant></entry>
         <entry>
-         특성명. (PHP 5.4.0에서 추가) PHP 5.4부터 이 상수는 선언된 특성명을
-         반환합니다. (대소문자 구분) 특성명은 선언한 이름공간을 포함합니다.
+         trait 명. trait 명은 이를 선언한 네임스페이스를 포함합니다.
          (예. <literal>Foo\Bar</literal>)
         </entry>
        </row>
@@ -257,15 +261,13 @@ echo CONSTANT;
        <row xml:id="constant.method">
         <entry><constant>__METHOD__</constant></entry>
         <entry>
-         클래스 메쏘드명 (PHP 5.0.0에서 추가) 메쏘드 명은 정의한 대로
-         반환됩니다. (대소문자 구분)
+         클래스 메소드명.
         </entry>
        </row>
        <row xml:id="constant.namespace">
         <entry><constant>__NAMESPACE__</constant></entry>
         <entry>
-         현재 이름공간 이름 (대소문자 구분). 이 상수는 컴파일 시에
-         정의됩니다. (PHP 5.3.0에서 추가)
+         현재 네임스페이스 이름.
         </entry>
        </row>
       </tbody>
@@ -279,6 +281,63 @@ echo CONSTANT;
     <function>file_exists</function>,
     <function>function_exists</function>.
    </para>
+   
+   <sect2 xml:id="language.constants.predefined.changelog">
+    &reftitle.changelog;
+
+    <para>
+     <informaltable>
+      <tgroup cols="2">
+       <thead>
+        <row>
+         <entry>&Version;</entry>
+         <entry>&Description;</entry>
+        </row>
+       </thead>
+       <tbody>
+        <row>
+         <entry>5.4.0</entry>
+         <entry>
+           <constant>__TRAIT__</constant> 상수 추가됨
+         </entry>
+        </row>
+        <row>
+         <entry>5.3.0</entry>
+         <entry>
+          <constant>__DIR__</constant> 와 <constant>__NAMESPACE__</constant> 상수가 추가됨
+         </entry>
+        </row>
+        <row>
+         <entry>5.0.0</entry>
+         <entry>
+          <constant>__METHOD__</constant> 상수가 추가됨
+         </entry>
+        </row>
+        <row>
+         <entry>5.0.0</entry>
+         <entry>
+          이 버전 이전에는 마법 상수의 값은 언제나 소문자였습니다.
+          이제는 모든 버전에서 대소문자를 구분합니다(선언 당시의 이름이 됩니다).
+         </entry>
+        </row>
+        <row>
+         <entry>4.3.0</entry>
+         <entry>
+          <constant>__FUNCTION__</constant> 과 <constant>__CLASS__</constant> 상수가 추가됨
+         </entry>
+        </row>
+        <row>
+         <entry>4.0.2</entry>
+         <entry>
+          <constant>__FILE__</constant>은 기존 버전에서 특정 상황에서 상대경로로 나타나는 것과 달리 언제나 심볼릭 링크로 해석된 절대경로를 나타냅니다.
+         </entry>
+        </row>
+       </tbody>
+      </tgroup>
+     </informaltable>
+    </para>
+   </sect2>
+   
   </sect1>
  </chapter>
  
