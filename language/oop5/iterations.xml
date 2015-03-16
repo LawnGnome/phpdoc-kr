@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Revision$ -->
+<!-- EN-Revision: 328430 Maintainer: acidd15 Status: ready -->
+<!-- Reviewed: no -->
+
+ <sect1 xml:id="language.oop5.iterations" xmlns="http://docbook.org/ns/docbook">
+  <title>객체 순회</title>
+  <para>
+   PHP 5 에서는 객체를 리스트처럼 순회할수 있는 방법을 제공합니다. 예를 들면 &foreach; 구문입니다.
+   기본적으로, <link linkend="language.oop5.visibility">가시적인</link> 모든 프로퍼티를 순회 가능합니다.
+  </para>
+
+  <example>
+   <title>간단한 객체 순회</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+class MyClass
+{
+    public $var1 = 'value 1';
+    public $var2 = 'value 2';
+    public $var3 = 'value 3';
+
+    protected $protected = 'protected var';
+    private   $private   = 'private var';
+
+    function iterateVisible() {
+       echo "MyClass::iterateVisible:\n";
+       foreach($this as $key => $value) {
+           print "$key => $value\n";
+       }
+    }
+}
+
+$class = new MyClass();
+
+foreach($class as $key => $value) {
+    print "$key => $value\n";
+}
+echo "\n";
+
+
+$class->iterateVisible();
+
+?>
+]]>
+   </programlisting>
+   &example.outputs; 
+   <screen role="php">
+<![CDATA[
+var1 => value 1
+var2 => value 2
+var3 => value 3
+
+MyClass::iterateVisible:
+var1 => value 1
+var2 => value 2
+var3 => value 3
+protected => protected var
+private => private var
+]]>
+   </screen>
+
+  </example>
+
+ <para>
+  출력 결과처럼, &foreach; 를 통해 접근가능한 모든 <link linkend="language.oop5.visibility">가시적</link> 프로퍼티를 
+  순회합니다.
+ </para>
+ <para>
+  조금더 나아가, <interfacename>Iterator</interfacename> <link linkend="language.oop5.interfaces">인터페이스</link>
+  를 구현할수도 있습니다. 그렇게 하면 객체로 하여금 어떤방식으로 순회하게 될지, 각 순회마다 어떤값을 가져올지를 정의할 수 있습니다. 
+ </para>
+
+  <example>
+   <title>Iterator 를 구현한 객체 순회</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+class MyIterator implements Iterator
+{
+    private $var = array();
+
+    public function __construct($array)
+    {
+        if (is_array($array)) {
+            $this->var = $array;
+        }
+    }
+
+    public function rewind()
+    {
+        echo "rewinding\n";
+        reset($this->var);
+    }
+  
+    public function current()
+    {
+        $var = current($this->var);
+        echo "current: $var\n";
+        return $var;
+    }
+  
+    public function key() 
+    {
+        $var = key($this->var);
+        echo "key: $var\n";
+        return $var;
+    }
+  
+    public function next() 
+    {
+        $var = next($this->var);
+        echo "next: $var\n";
+        return $var;
+    }
+  
+    public function valid()
+    {
+        $key = key($this->var);
+        $var = ($key !== NULL && $key !== FALSE);
+        echo "valid: $var\n";
+        return $var;
+    }
+
+}
+
+$values = array(1,2,3);
+$it = new MyIterator($values);
+
+foreach ($it as $a => $b) {
+    print "$a: $b\n";
+}
+?>
+]]>
+   </programlisting>
+   &example.outputs;
+   <screen role="php">
+<![CDATA[
+rewinding
+valid: 1
+current: 1
+key: 0
+0: 1
+next: 2
+valid: 1
+current: 2
+key: 1
+1: 2
+next: 3
+valid: 1
+current: 3
+key: 2
+2: 3
+next:
+valid: 
+]]>
+   </screen>
+
+  </example>
+
+  <para>
+   <interfacename>IteratorAggregate</interfacename>
+   <link linkend="language.oop5.interfaces">인터페이스</link>
+   <interfacename>Iterator</interfacename> 의 모든 메서드를 구현하는 대신 다른 대안으로 사용될수 있습니다.
+   <interfacename>IteratorAggregate</interfacename> 는 
+   <methodname>IteratorAggregate::getIterator</methodname> 메서드만 구현하면 되며, <interfacename>Iterator</interfacename>
+   를 구현한 클래스의 인스턴스를 반환해야 합니다.
+  </para>
+
+  <example>
+   <title>IteratorAggregate 를 구현한 객체 순회</title>
+   <programlisting role="php">
+<![CDATA[
+<?php
+class MyCollection implements IteratorAggregate
+{
+    private $items = array();
+    private $count = 0;
+
+    // Required definition of interface IteratorAggregate
+    public function getIterator() {
+        return new MyIterator($this->items);
+    }
+
+    public function add($value) {
+        $this->items[$this->count++] = $value;
+    }
+}
+
+$coll = new MyCollection();
+$coll->add('value 1');
+$coll->add('value 2');
+$coll->add('value 3');
+
+foreach ($coll as $key => $val) {
+    echo "key/value: [$key -> $val]\n\n";
+}
+?>
+]]>
+   </programlisting>
+   &example.outputs;  
+   <screen role="php">
+<![CDATA[
+rewinding
+current: value 1
+valid: 1
+current: value 1
+key: 0
+key/value: [0 -> value 1]
+
+next: value 2
+current: value 2
+valid: 1
+current: value 2
+key: 1
+key/value: [1 -> value 2]
+
+next: value 3
+current: value 3
+valid: 1
+current: value 3
+key: 2
+key/value: [2 -> value 3]
+
+next:
+current:
+valid:
+]]>
+   </screen>
+
+  </example>
+
+  <note>
+   <para>
+    순회에 대한 좀더 다양한 예제는 다음을 참고하세요.
+    <link linkend="spl.iterators">SPL Extension</link>.
+   </para>
+  </note> 
+
+  <note>
+   <para>
+    PHP 5.5 나 그 이후에는 <link linkend="language.generators">generators</link> 를 확인해 보셔도 좋습니다.
+    이것은 iterator를 정의하는 또다른 방법을 제공합니다.
+   </para>
+  </note> 
+
+ </sect1>
+ 
+<!-- Keep this comment at the end of the file
+Local variables:
+mode: sgml
+sgml-omittag:t
+sgml-shorttag:t
+sgml-minimize-attributes:nil
+sgml-always-quote-attributes:t
+sgml-indent-step:1
+sgml-indent-data:t
+indent-tabs-mode:nil
+sgml-parent-document:nil
+sgml-default-dtd-file:"~/.phpdoc/manual.ced"
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+vim600: syn=xml fen fdm=syntax fdl=2 si
+vim: et tw=78 syn=sgml
+vi: ts=1 sw=1
+-->
