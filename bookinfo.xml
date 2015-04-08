@@ -45,7 +45,7 @@
   </copyright>
 
   <legalnotice xml:id="copyright" xmlns:xlink="http://www.w3.org/1999/xlink">
-   <title>저작권</title>
+   <info><title>저작권</title></info>
    <simpara>
     Copyright © 1997 - <?dbtimestamp format="Y"?> by the PHP Documentation Group.
     이 저작물은 Creative Commons Attribution 3.0 이상의 사용허가 조항 및
