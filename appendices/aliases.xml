@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 334418 Maintainer: acidd15 Status: ready -->
+<!-- EN-Revision: 336237 Maintainer: acidd15 Status: ready -->
 <!-- Reviewed: no -->
 <appendix xml:id="aliases" xmlns="http://docbook.org/ns/docbook">
  <title>함수 별칭 목록</title>
@@ -1130,11 +1130,6 @@
       <entry>remove</entry>
       <entry><function>swfsprite_remove</function></entry>
       <entry><link linkend="ref.ming">Ming (flash)</link></entry>
-     </row>
-     <row>
-      <entry>rewind</entry>
-      <entry><function>rewinddir</function></entry>
-      <entry>Base syntax</entry>
      </row>
      <row>
       <entry>rotate</entry>

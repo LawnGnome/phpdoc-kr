@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 331477 Maintainer: acidd15 Status: ready -->
+<!-- EN-Revision: 336715 Maintainer: acidd15 Status: ready -->
 <!-- Reviewed: no -->
 
 <refentry xml:id="function.array-udiff" xmlns="http://docbook.org/ns/docbook">
@@ -134,7 +134,7 @@ Array
     <programlisting role="php">
 <![CDATA[
 <?php
-Class MyCalendar {
+class MyCalendar {
     public $free = array();
     public $booked = array();
 

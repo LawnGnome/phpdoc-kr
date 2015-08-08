@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 330333 Maintainer: acidd15 Status: ready -->
+<!-- EN-Revision: 337170 Maintainer: acidd15 Status: ready -->
 <!-- Reviewed: no -->
 
 <part xml:id="reserved.interfaces" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -16,6 +16,7 @@
  &language.predefined.traversable;
  &language.predefined.iterator;
  &language.predefined.iteratoraggregate;
+ &language.predefined.throwable;
  &language.predefined.arrayaccess;
  &language.predefined.serializable;
  &language.predefined.closure;

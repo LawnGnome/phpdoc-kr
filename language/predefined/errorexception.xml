@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 332523 Maintainer: acidd15 Status: ready -->
+<!-- EN-Revision: 336073 Maintainer: acidd15 Status: ready -->
 <!-- Reviewed: no -->
 
 <phpdoc:exceptionref xml:id="class.errorexception"
@@ -85,8 +85,12 @@
      <programlisting role="php">
  <![CDATA[
 <?php
-function exception_error_handler($errno, $errstr, $errfile, $errline ) {
-    throw new ErrorException($errstr, 0, $errno, $errfile, $errline);
+function exception_error_handler($severity, $message, $file, $line) {
+    if (!(error_reporting() & $severity)) {
+        // This error code is not included in error_reporting
+        return;
+    }
+    throw new ErrorException($message, 0, $severity, $file, $line);
 }
 set_error_handler("exception_error_handler");
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 318298 Maintainer: acidd15 Status: ready -->
+<!-- EN-Revision: 336800 Maintainer: acidd15 Status: ready -->
 <!-- Reviewed: no -->
 
 <phpdoc:classref xml:id="class.closure" xmlns:phpdoc="http://php.net/ns/phpdoc" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude">
@@ -58,6 +58,7 @@
  &language.predefined.closure.construct;
  &language.predefined.closure.bind;
  &language.predefined.closure.bindto;
+ &language.predefined.closure.call;
 
 </phpdoc:classref>
 

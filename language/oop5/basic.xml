@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 333213 Maintainer: acidd15 Status: ready -->
+<!-- EN-Revision: 336715 Maintainer: acidd15 Status: ready -->
 <!-- Reviewed: no -->
 
  <sect1 xml:id="language.oop5.basic" xmlns="http://docbook.org/ns/docbook">
@@ -122,8 +122,8 @@ $this is not defined.
 $instance = new SimpleClass();
 
 // 변수를 사용해서 가능합니다.:
-$className = 'Foo';
-$instance = new $className(); // Foo()
+$className = 'SimpleClass';
+$instance = new $className(); // new SimpleClass()
 ?>
 ]]>
     </programlisting>
