@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 334727 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 337501 Maintainer: progcom Status: ready -->
+<!-- CREDITS: acidd15 -->
 <section xml:id="session.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
@@ -215,6 +216,12 @@
       <entry>PHP_INI_PERDIR</entry>
       <entry>PHP 5.4.0부터 사용 가능.</entry>
      </row>
+     <row>
+      <entry><link linkend="ini.session.lazy-write">session.lazy_write</link></entry>
+      <entry>"1"</entry>
+      <entry>PHP_INI_ALL</entry>
+      <entry>Available since PHP 7.0.0.</entry>
+     </row>
    </tbody>
   </tgroup>
  </table>
@@ -281,6 +288,20 @@
       세션을 훔칠 수 있습니다.
      </para>
     </warning>
+    <caution>
+     <para>
+      When using the optional directory level argument <literal>N</literal>,
+      as described above, note that using a value higher than 1 or 2 is
+      inappropriate for most sites due to the large number of directories
+      required: for example, a value of 3 implies that <literal>64^3</literal>
+      directories exist on the filesystem, which can result in a lot of wasted
+      space and inodes.
+     </para>
+     <para>
+      Only use <literal>N</literal> greater than 2 if you are absolutely
+      certain that your site is large enough to require it.
+     </para>
+    </caution>
     <note>
      <simpara>
       PHP 4.3.6 이전에 윈도우 사용자가 PHP 세션 함수를 사용하려면, 이 값을
@@ -398,15 +419,6 @@
        linkend="ini.session.save-path">session.save_path</link>와 함께
       사용하십시오.
      </para>
-    </note>
-    <note>
-     <simpara>기본 파일 기반 세션 핸들러를 사용할 때, 파일시스템이 접근
-      시간(atime)을 추적할 수 있어야 합니다. 윈도우 FAT는 그렇지 않기에, FAT
-      파일시스템이나 atime 추적이 없는 다른 파일시스템에 세션을 저장할 경우
-      세션 쓰레기 수거를 다룰 다른 방법을 고려해야 합니다. PHP 4.2.3부터 atime
-      대신에 mtime(변경 시각)을 사용합니다. 그러므로, atime 추적이 없는
-      파일시스템에서도 문제가 없습니다.
-     </simpara>
     </note>
    </listitem>
   </varlistentry>
@@ -850,6 +862,19 @@
     <simpara>
      업데이트 사이의 최소 주기를 초로 지정합니다.
      기본값은 "1"(1초)입니다.
+    </simpara>
+   </listitem>
+  </varlistentry>
+  
+  <varlistentry xml:id="ini.session.lazy-write">
+   <term>
+    <parameter>session.lazy_write</parameter>
+    <type>boolean</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>session.lazy_write</literal>, when set to 1, means that session
+     data is only rewritten if it changes. Defaults to 1, enabled.
     </simpara>
    </listitem>
   </varlistentry>
