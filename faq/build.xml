@@ -23,10 +23,10 @@
       GNU autoconf 패키지가 설치되어 있어야 합니다.
       그리고 나서 CVS 서버에서 소스를 가져오신 후에 최상위 디렉토리에서
       <command>./buildconf</command>명령을 실행하세요. (또한,
-      <literal>--enable-maintainer-mode</literal>옵션으로 configure를 실행하지 않으면,
+      <literal>--enable-maintainer-mode</literal>옵션으로 <command>configure</command>를 실행하지 않으면,
       <filename>configure.in</filename>파일이 갱신되었을때,
       configure 스크립트는 자동적으로 재생성 되지 않을겁니다.
-      그래서 configure.in 파일이 갱신되었다는것을 알고나서 손수 재생성해야 할것입니다.
+      그래서 <filename>configure.in</filename> 파일이 갱신되었다는것을 알고나서 손수 재생성해야 할것입니다.
       이것을 알아챌수 있는 방법은 configure 나 <filename>config.status</filename>이 실행된후
       Makefile의 @VARIABLE@같은 것을 찾아 보는 것입니다.)
      </para>
@@ -177,18 +177,13 @@
       빠뜨린 경우가 대부분입니다.
      </para>
      <para>
-      아파치 1.2.x에 설치한다면, 설정 파일의 EXTRA_LIBS에 적절한 정보를
-      추가하여 아파치 설정 스크립트를 다시 실행하셨습니까? 제사한 정보는 <link
-       linkend="install">설치 챕터</link>를 참고하십시오.
-     </para>
-     <para>
       어떤분들의 보고에 따르면 아파치와 같이 설치할때에는 <filename>libphp4.a</filename>파일
       다음에 '-ldl'옵션을 추가해야한다고 합니다. 
      </para>
     </answer>
    </qandaentry>
 
-   <qandaentry xml:id="faq.build.Apache">
+   <qandaentry xml:id="faq.build.apache">
     <question>
      <para>
       아파치 1.3 버전과 같이 설치하는 방법을 잘 모르겠습니다.
