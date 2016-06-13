@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- $Revision$ -->
-<!-- EN-Revision: 313269 Maintainer: leoslee Status: ready -->
+<!-- EN-Revision: 335032 Maintainer: leoslee Status: ready -->
 <!-- Reviewed: Yes Maintainer: desty -->
-
-<!-- Membership: pecl, external -->
 
 <book xml:id="book.oauth" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
  <title>OAuth</title>
@@ -11,7 +9,7 @@
  <preface xml:id="intro.oauth">
   &reftitle.intro;
   <para>
-   이 확장은 OAuth 사용자와 제공자의 연결을 제공합니다. OAuth는
+   이 확장은 OAuth 1.0a 사용자와 제공자의 연결을 제공합니다. OAuth는
    애플리케이션이 사용자 이름과 비밀번호를 저장할 필요 없이
    안전하게 데이터를 액세스할 수 있도록 하는 인증 프로토콜입니다.
   </para>
