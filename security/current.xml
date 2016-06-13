@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 297028 Maintainer: progcom Status: ready -->
 <!-- splitted from ./index.xml, last change in rev 1.66 -->
+<!-- Reviewed: yes Maintainer: desty -->
   <chapter xml:id="security.current" xmlns="http://docbook.org/ns/docbook">
    <title>최신 버전 따라가기</title>
    <simpara>
