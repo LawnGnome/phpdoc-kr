@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 331319 Maintainer: progcom Status: ready -->
 
+<!-- Reviewed: Yes Maintainer: desty -->
 <!--
   Entities for the categorized extension list, so it does not need
   to be translated, and thus it is not going to be outdated.
