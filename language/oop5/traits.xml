@@ -12,7 +12,7 @@
    트레이트는 PHP와 같은 단일상속 언어를 위한 코드 재사용 기법입니다.
    트레이트는 단일상속의 몇가지 한계를 줄이기 위해 고안되었습니다. 
    개발자들은 서로 다른 클래스 계층구조를 가지는 독립 클래스들에서 자유롭게 메서드셋을 재사용할수 있습니다.
-   트레이트와 클래스의 조합에 대한 의의는 복잡성을 줄이고, 다중상속과 믹신(Mixin)과 연관된 통상적인 문제를 줄이는데 있습니다.
+   트레이트와 클래스의 조합에 대한 의의는 복잡성을 줄이고, 다중상속과 믹스인(Mixin)과 연관된 통상적인 문제를 줄이는데 있습니다.
   </para>
   <para>
    트레이트는 클래스와 비슷하지만, 매끄럽고 일관된 방법으로 기능을 그룹화하기 위해 고안되었습니다.
@@ -176,14 +176,14 @@ Hello World!
     <literal>insteadof</literal> 연산자로 확실하게 사용할 메서드를 골라줄 필요가 있습니다.
    </para>
    <para>
-    이 방법은 다른 메서드들을 배제하고 하나믜 메서드만 허용합니다. <literal>as</literal> 연산자를 사용하면
+    이 방법은 다른 메서드들을 배제하고 하나의 메서드만 허용합니다. <literal>as</literal> 연산자를 사용하면
     충돌되는 메서드를 다른 이름을 사용하여 포함할수 있습니다.
    </para>
    <example xml:id="language.oop5.traits.conflict.ex1">
     <title>충돌 해결 예제</title>
     <para>
-     이 예제에서는, Talker 는 틀레이트 A와 B를 사용합니다.
-     A와 B의 메서드가 충돌하지만, 트레이트 B의 smallTalk와 트레이트 A의 bigTalk의 사용하도록 정의 합니다. 
+     이 예제에서, Talker는 트레이트 A와 B를 사용합니다.
+     A와 B의 메서드가 충돌하지만, 트레이트 B의 smallTalk와 트레이트 A의 bigTalk의 사용하도록 정의 합니다.
     </para>
     <para>
      Aliased_Talker는 <literal>as</literal> 연산자를 사용하여 B의 bigTalk 구현을 
@@ -233,7 +233,7 @@ class Aliased_Talker {
   <sect2 xml:id="language.oop5.traits.visibility">
    <title>메서드 가시성 변경</title>
    <para>
-    <literal>as</literal> 구문을 사용하여, 가시성또한 조정할 수 있습니다. 
+    <literal>as</literal> 구문을 사용하여, 가시성 또한 조정할 수 있습니다. 
    </para>
    <example xml:id="language.oop5.traits.visibility.ex1">
     <title>메서드 가시성 변경 예제</title>
@@ -266,7 +266,7 @@ class MyClass2 {
    <title>트레이트로 조합된 트레이트</title>
    <para>
     클래스들이 트레이트를 사용할수 있는것처럼 트레이트도 트레이트를 사용할 수 있습니다.
-    하나또는 여러 트레이트를 하나의 트레이트로 정의하기 위해서, 부분적 혹은 전체적으로 조합할수 있습니다. 
+    하나 또는 여러 트레이트를 하나의 트레이트로 정의하기 위해서, 부분적 혹은 전체적으로 조합할 수 있습니다. 
    </para>
    <example xml:id="language.oop5.traits.composition.ex1">
     <title>Traits Composed from Traits</title>
@@ -314,7 +314,7 @@ Hello World!
     트레이트는 클래스의 요구사항을 강요하기위해 추상 메서드의 사용을 지원합니다.
    </para>
    <example xml:id="language.oop5.traits.abstract.ex1">
-    <title>추상 메서드에 의햔 요구사항 표현</title>
+    <title>추상 메서드에 의한 요구사항 표현</title>
     <programlisting role="php">
 <![CDATA[
 <?php
