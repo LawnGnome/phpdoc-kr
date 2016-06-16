@@ -4,9 +4,8 @@
     <title>마이크로소프트 윈도우에서 Apache 2.0.x</title>
     <para>
      이 섹션은 마이크로소프트 윈도우 시스템에서 아파치 2.0.x에 PHP 설치에 관한
-     정보와 힌트를 가지고 있습니다. <link
-      linkend="install.windows.apache1">아파치 1.3.x 사용자를 위한 지시와
-      정보는 별도 페이지</link>에 존재합니다.
+     정보와 힌트를 가지고 있습니다. 아파치 1.3.x 사용자를 위한 지시와
+      정보는 별도 페이지에 존재합니다.
     </para>
     <note>
      <para>
@@ -114,7 +113,7 @@ PHPIniDir "C:/php"
        <filename>php5apache2.dll</filename>을 사용하는 점에 주의하십시오.
        <filename>php4apache.dll</filename>이나
        <filename>php5apache.dll</filename>이 <emphasis>아닙니다</emphasis>.
-       이들은 <link linkend="install.windows.apache1">아파치 1.3.x</link>에
+       이들은 아파치 1.3.x에
        사용하도록 설계되었습니다.
       </simpara>
      </note>
