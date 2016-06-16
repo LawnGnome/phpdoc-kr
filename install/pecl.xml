@@ -90,7 +90,7 @@ $ cvs -d:pserver:cvsread@cvs.php.net:/repository co pecl/extname
      <emphasis>PECL 확장모듈 모음</emphasis> 에서 다운로드 받을 수 있습니다.
      또는 <link xlink:href="&url.php.snapshots;">PECL 스냅샷</link> 을 가져오거나,
      <link xlink:href="&url.pecl.win;">PECL4WIN</link> 에서 확장모듈 DLL을 구할수 있습니다.
-     윈도우에서 PHP를 컴파일하기 위해서는 <link linkend="install.windows.building">절충 장</link> 을 읽어 보십시오.
+     윈도우에서 PHP를 컴파일하기 위해서는 절충 장 을 읽어 보십시오.
     </simpara>
    </listitem>
   </itemizedlist>
@@ -109,13 +109,11 @@ $ cvs -d:pserver:cvsread@cvs.php.net:/repository co pecl/extname
    섹션을 참고하십시오)
   </para>
   <para>
-   확장을 PHP 안에 컴파일하려면, <link
-    linkend="install.windows.building">소스에서 빌드하기</link> 문서를
+   확장을 PHP 안에 컴파일하려면, 소스에서 빌드하기 문서를
    확인하십시오.
   </para>
   <para>
-   독립 확장(DLL 파일)을 컴파일하려면, <link
-    linkend="install.windows.building">소스에서 빌드하기</link> 문서를
+   독립 확장(DLL 파일)을 컴파일하려면, 소스에서 빌드하기 문서를
    확인하십시오. DLL 파일이 PHP 배포판이나 PECL에 존재하지 않는다면, 그 확장을
    사용하기 전에 컴파일해야 합니다.
   </para>
