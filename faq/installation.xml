@@ -464,7 +464,7 @@ cgi error:
     <answer>
      <para>
       여러 방법이 있습니다. 아파치를 사용한다면, 적합한 설치 지시를
-      읽어보십시오. (<link linkend="install.windows.apache1">아파치 1</link>,
+      읽어보십시오. (아파치 1,
       <link linkend="install.windows.apache2">아파치 2</link>) 그 외의
       경우에는 <varname>PHPRC</varname> 환경 변수를 설정해야 합니다:
      </para>
