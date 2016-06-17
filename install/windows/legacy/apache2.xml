@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- EN-Revision: 288721 Maintainer: progcom Status: ready -->
-   <sect1 xml:id="install.windows.apache2" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <sect1 xml:id="install.windows.legacy.apache2" xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>마이크로소프트 윈도우에서 Apache 2.0.x</title>
     <para>
      이 섹션은 마이크로소프트 윈도우 시스템에서 아파치 2.0.x에 PHP 설치에 관한
@@ -9,7 +9,7 @@
     </para>
     <note>
      <para>
-      <link linkend="install.windows.manual">수동 설치 단계</link>를 먼저
+      <link linkend="install.windows.legacy.manual">수동 설치 단계</link>를 먼저
       읽어야 합니다!
      </para>
     </note>
@@ -44,7 +44,7 @@
     </warning>
     <para>
      가장 최신 버전의 <link xlink:href="&url.apache;">아파치 2.0.x</link>와
-     적합한 PHP 버전을 받으십시오. <link linkend="install.windows.manual">수동
+     적합한 PHP 버전을 받으십시오. <link linkend="install.windows.legacy.manual">수동
       설치 단계</link>에 따르고 PHP와 아파치 통합을 진행하십시오.
     </para>
     <para>
@@ -56,7 +56,7 @@
     
     &note.apache.slashes;
     
-    <sect2 xml:id="install.windows.apache2.cgi">
+    <sect2 xml:id="install.windows.apache2.legacy.cgi">
      <title>CGI 바이너리로 설치</title>
     
      <para>
@@ -81,7 +81,7 @@ Action application/x-httpd-php "/php/php-cgi.exe"
      &warn.install.cgi;
     </sect2>
     
-    <sect2 xml:id="install.windows.apache2.module">
+    <sect2 xml:id="install.windows.apache2.legacy.module">
      <title>아파치 모듈로 설치</title>
      <para>
       아파치 2.0에 PHP 모듈을 설치하려면 아래 두 줄을 아파치 &httpd.conf; 설정
