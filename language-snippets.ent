@@ -1021,7 +1021,7 @@ PHP 윈도우 바이너리 안의 <filename xmlns="http://docbook.org/ns/docbook
 
 <!ENTITY pecl.windows.download '이 <acronym xmlns="http://docbook.org/ns/docbook">PECL</acronym> 확장에 대한
 <acronym xmlns="http://docbook.org/ns/docbook">DLL</acronym>은 현재 사용할 수 없습니다.
-<link xmlns="http://docbook.org/ns/docbook" linkend="install.windows.building">윈도우에서 빌드하기</link> 섹션을
+<link xmlns="http://docbook.org/ns/docbook" linkend="install.windows.legacy.building">윈도우에서 빌드하기</link> 섹션을
 참고하십시오.'>
 
 <!ENTITY pecl.windows.download.unbundled '&pecl.windows.download;'>
