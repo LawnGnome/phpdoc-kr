@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- EN-Revision: 297028 Maintainer: progcom Status: ready -->
+<!-- EN-Revision: 339963 -->
 <section xml:id="outcontrol.configuration" xmlns="http://docbook.org/ns/docbook">
  &reftitle.runtime;
  &extension.runtime;
  <para>
   <table>
-   <title>출력 제어 설정 옵션</title>
+   <title>Output Control configuration options</title>
    <tgroup cols="4">
     <thead>
      <row>
-      <entry>이름</entry>
-      <entry>기본값</entry>
-      <entry>설정권한</entry>
-      <entry>변경점</entry>
+      <entry>&Name;</entry>
+      <entry>&Default;</entry>
+      <entry>&Changeable;</entry>
+      <entry>&Changelog;</entry>
      </row>
     </thead>
     <tbody>
@@ -26,18 +26,32 @@
      <entry><link linkend="ini.output-handler">output_handler</link></entry>
      <entry>NULL</entry>
      <entry>PHP_INI_PERDIR</entry>
-     <entry>PHP 4.0.4부터 사용할 수 있습니다.</entry>
+     <entry>Available since PHP 4.0.4.</entry>
     </row>
     <row>
      <entry><link linkend="ini.implicit-flush">implicit_flush</link></entry>
      <entry>"0"</entry>
      <entry>PHP_INI_ALL</entry>
-     <entry>PHP &lt;= 4.2.3에서는 PHP_INI_PERDIR입니다.</entry>
+     <entry>PHP_INI_PERDIR in PHP &lt;= 4.2.3.</entry>
+    </row>
+    <row>
+     <entry><link linkend="ini.url-rewriter.tags">url_rewriter.tags</link></entry>
+     <entry>"a=href,area=href,frame=src,form=,fieldset="</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>Available since PHP 4.0.4. Before PHP 7.1.0, this was used to set
+     session's trans sid rewrite. From PHP 7.1.0, it is only used by 
+     <function>output_add_rewrite_var</function>.</entry>
+    </row>
+    <row>
+     <entry><link linkend="ini.url-rewriter.hosts">url_rewriter.hosts</link></entry>
+     <entry><literal>$_SERVER['HTTP_HOST']</literal> is used as default.</entry>
+     <entry>PHP_INI_ALL</entry>
+     <entry>Available since PHP 7.1.0</entry>
     </row>
     </tbody>
    </tgroup>
   </table>
-  &ini.php.constants;
+   &ini.php.constants;
  </para>
  
  &ini.descriptions.title;
@@ -51,10 +65,11 @@
    </term>
    <listitem>
     <para>
-     이 지시어를 'On'으로 설정하여 모든 파일에 출력 버퍼링을 활성화 할 수
-     있습니다. 버퍼의 크기를 제한하려면 이 지시어의 값으로 'On' 대신 최대
-     바이트 수를 사용하십시오. (예. output_buffering=4096)
-     PHP 4.3.5부터 PHP-CLI에서는 이 지시어가 항상 Off입니다.
+     You can enable output buffering for all files by setting this directive
+     to 'On'. If you wish to limit the size of the buffer to a certain size -
+     you can use a maximum number of bytes instead of 'On', as a value for
+     this directive (e.g., output_buffering=4096).
+     As of PHP 4.3.5, this directive is always Off in PHP-CLI.
     </para>
    </listitem>
   </varlistentry>
@@ -66,24 +81,24 @@
    </term>
    <listitem>
     <para>
-     스크립트의 모든 출력을 어떤 함수를 통하게 할 수 있습니다. 예를 들면,
-     output_handler를 <function>mb_output_handler</function>로 설정하면, 문자
-     인코딩을 지정한 인코딩으로 변경할 수 있습니다. 출력 핸들러 설정은
-     자동적으로 출력 버퍼링을 켭니다.
+     You can redirect all of the output of your scripts to a function. For
+     example, if you set output_handler to
+     <function>mb_output_handler</function>, character encoding will be
+     transparently converted to the specified encoding. Setting any output
+     handler automatically turns on output buffering.
     </para>
     <note>
      <para>
-      <function>mb_output_hadler</function>와
-      <function>ob_iconv_handler</function>를 동시에 사용할 수 없고,
-      <function>ob_gzhandler</function>와 <link
-       linkend="ini.zlib.output-compression">zlib.output_compression</link>도
-      동시에 사용할 수 없습니다.
+      You cannot use both <function>mb_output_handler</function> with
+      <function>ob_iconv_handler</function> and you cannot use both
+      <function>ob_gzhandler</function> and
+      <link linkend="ini.zlib.output-compression">zlib.output_compression</link>.
      </para>
     </note>
     <note>
      <para>
-      이 지시어로는 내장 함수만 사용할 수 있습니다. 사용자 정의 함수에
-      대해서는 <function>ob_start</function>를 사용하십시오.
+      Only built-in functions can be used with this directive. For user
+      defined functions, use <function>ob_start</function>.
      </para>
     </note>
    </listitem>
@@ -96,22 +111,67 @@
    </term>
    <listitem>
     <para>
-     기본값으로 &false;입니다. &true;로 변경하면 PHP가 모든 출력 블럭 뒤에
-     바로 전송하도록 출력 레이어를 설정합니다. 이는 PHP
-     함수 <function>flush</function>를 모든 <function>printf</function>,
-     <function>echo</function>, <literal>HTML</literal> 블럭 뒤에 호출하는
-     것과 동일합니다.
+     &false; by default. Changing this to &true; tells PHP to tell the
+     output layer to flush itself automatically after every output block.
+     This is equivalent to calling the PHP function
+     <function>flush</function> after each and every call to
+     <function>print</function> or <function>echo</function> and each and
+     every <literal>HTML</literal> block.
     </para>
     <para>
-     PHP를 웹 환경에서 사용할 때, 이 옵션을 켜는 것은
-     심각한 성능 저하를 일으킵니다. 일반적으로 디버깅 목적으로만 사용할 것을
-     권장합니다. <literal>CLI SAPI</literal>에서는 기본값으로 &true;입니다.
+     When using PHP within an web environment, turning
+     this option on has serious performance implications and is generally
+     recommended for debugging purposes only. This value defaults to
+     &true; when operating under the <literal>CLI SAPI</literal>.
     </para>
     <para>
-     참고: <function>ob_implicit_flush</function>.
+     See also <function>ob_implicit_flush</function>.
     </para>
    </listitem>
   </varlistentry>
+
+  <varlistentry xml:id="ini.url-rewriter.tags">
+   <term>
+    <parameter>url_rewriter.tags</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>url_rewriter.tags</literal> specifies which HTML tags
+     are rewritten by <function>output_add_rewrite_var</function> values.
+     Defaults to
+     <literal>a=href,area=href,frame=src,input=src,form=</literal>
+    </simpara>
+    <simpara>
+     <literal>form</literal> is special tag. <literal>&lt;input hidden="session_id" name="session_name"&gt;</literal>
+     is added as form variable.
+    </simpara>
+    <note>
+     <simpara>
+      Before PHP 7.1.0, <link linkend="ini.url-rewriter.tags">url_rewriter.tags</link>
+      was used to specify <link linkend="ini.session.trans-sid-tags">session.trans_sid_tags</link>.
+      Since PHP 7.1.0, <literal>fieldset</literal> is no longer considered as special tag.
+     </simpara>
+    </note>
+   </listitem>
+  </varlistentry>
+
+  <varlistentry xml:id="ini.url-rewriter.hosts">
+   <term>
+    <parameter>url_rewriter.hosts</parameter>
+    <type>string</type>
+   </term>
+   <listitem>
+    <simpara>
+     <literal>url_rewriter.hosts</literal> specifies which hosts are
+     rewritten to include <function>output_add_rewrite_var</function> values.
+     Defaults to <literal>$_SERVER['HTTP_HOST']</literal>. Multiple hosts
+     can be specified by ",", no space is allowed between hosts. e.g.
+     <literal>php.net,wiki.php.net,bugs.php.net</literal>
+    </simpara>
+   </listitem>
+  </varlistentry>
+
  </variablelist>
  </para>
 </section>
